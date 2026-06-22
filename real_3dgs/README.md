@@ -8,8 +8,13 @@
 | `nike.splat` | huggingface `cakewalk/splat-data` | 270k | Nike 跑鞋(光滑) |
 | `plush.splat` | huggingface `cakewalk/splat-data` | 281k | 毛绒玩具(光滑) |
 | `luigi.ply` | huggingface `dylanebert/3dgs` | 14.5k | Luigi 人偶(`.ply` 格式) |
-| **`primitives.ply`** | **本地生成**(`generate_primitives.py`) | 166k | ⭐ **几何体组合**(cube+sphere+cylinder),棱角分明,crease/corner 实验首选 |
-| `train.splat` | 同上 | 1.0M | ⚠ **完整户外大场景**(机车+背景),非单物体,PCA 无法干净取景——留作参考,未用于干净 demo |
+| **`primitives.ply`** | **本地生成**(`generate_primitives.py`) | 166k | ⭐ **几何体组合**(cube+sphere+cylinder),合成、棱角分明、法线精确,crease/corner ground-truth 首选 |
+| `lego.ply` | huggingface `ZehaoYu/mip-splatting` | 242k | 真实角物体:乐高推土机(海量直角棱/角,社区基准) |
+| `drums.ply` | 同上 | 297k | 真实"几何体组合":圆柱鼓身 + 圆盘镲 + 细支架 |
+| `chair.ply` | 同上 | 211k | 真实角物体:椅子(平面 + 直腿) |
+| `train.splat` | cakewalk/splat-data | 1.0M | ⚠ **完整户外大场景**(机车+背景),非单物体,PCA 无法干净取景——留作参考,未用于干净 demo |
+
+> **联网检索结论**:纯几何体(单独 cube/sphere/cylinder)的现成捕获 3DGS 几乎不存在(故 `primitives.ply` 自生成);棱角/几何体组合的现成模型主要来自 **NeRF-synthetic**(lego/drums/chair/mic 等,完整 INRIA `.ply`,免登录直链)。lego/drums/chair 三者已下载并实验。
 
 > `train` / `truck` / `bonsai` 这些是 Mip-NeRF360 / Tanks&Temples 的**完整 360° 场景**(背景一大堆),不是"简单模型";所以第 3 个单物体我换成了 `luigi`。
 
@@ -45,9 +50,17 @@ $P experiment.py nike.splat  mid  1.35 0.18 220000 45
 $P experiment.py plush.splat thin 1.35 0.18 220000 45
 $P experiment.py luigi.ply   thin 1.45 0.10 220000 45
 $P montage.py
-# 几何体组合(先生成,再用斜视角 iso + 大邻域 K=30 + 不平滑法线 smooth=0):
+# 几何体组合(合成,先生成,再用斜视角 iso + 大邻域 K=30 + 不平滑法线 smooth=0):
 $P generate_primitives.py
 $P experiment.py primitives.ply iso 1.3 0.5 300000 45 30 0
+# 真实角物体(捕获 3DGS,smooth=1) —— 先下载(.ply 已 gitignore):
+B=https://huggingface.co/datasets/ZehaoYu/mip-splatting/resolve/main
+for f in lego drums chair; do curl -sL -o $f.ply "$B/$f.ply"; done
+$P experiment.py lego.ply  thin 1.30 0.20 220000 45 14 1
+$P experiment.py drums.ply mid  1.40 0.20 220000 45 14 1
+$P experiment.py chair.ply mid  1.40 0.20 220000 45 14 1
+# 几何/角物体合集 montage(任意场景列表):
+$P montage.py geometric primitives lego drums chair   # -> outputs/geometric_comparison.png
 ```
 `experiment.py` 完整参数:`<scene> [view=mid] [dist] [opacity_cut] [max_splats] [fov] [K=10] [smooth=1]`。
 - `view`:`thin/mid/long`(PCA 轴,适合捕获物体)或 `iso/iso2`(斜 45°,适合轴对齐几何体——能看到 cube 的 3 个面 → 棱/角才会显现)。
