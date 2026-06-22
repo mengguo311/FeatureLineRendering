@@ -23,6 +23,8 @@ dist_mul = float(sys.argv[3]) if len(sys.argv) > 3 else 1.35
 opacity_cut = float(sys.argv[4]) if len(sys.argv) > 4 else 0.18
 max_splats = int(sys.argv[5]) if len(sys.argv) > 5 else 220000
 fov = float(sys.argv[6]) if len(sys.argv) > 6 else 45.0
+Knn = int(sys.argv[7]) if len(sys.argv) > 7 else 10        # structure-tensor neighbourhood
+do_smooth = int(sys.argv[8]) if len(sys.argv) > 8 else 1   # 1=denoise normals (real scenes); 0=raw (synthetic)
 stem = os.path.splitext(os.path.basename(scene))[0]
 OUT = "outputs"
 os.makedirs("%s/comparison" % OUT, exist_ok=True)
@@ -41,8 +43,13 @@ print("[%s] scene: %d gaussians" % (stem, len(pos)))
 center = np.median(pos, axis=0)
 C = np.cov((pos - center).T)
 ev_, evec = np.linalg.eigh(C)
+def _u(v): v = np.asarray(v, float); return v / np.linalg.norm(v)
 axes = {"thin": (evec[:, 0], evec[:, 1]), "mid": (evec[:, 1], evec[:, 0]),
-        "long": (evec[:, 2], evec[:, 1])}
+        "long": (evec[:, 2], evec[:, 1]),
+        # oblique world-space views (good for axis-aligned geometric scenes:
+        # show 3 cube faces -> edges/corners become visible creases/corners)
+        "iso": (_u([1.0, 0.8, 1.4]), _u([0, 1, 0])),
+        "iso2": (_u([1.3, 0.7, -1.1]), _u([0, 1, 0]))}
 d_, up_ = axes[view_axis]
 scale = np.linalg.norm(np.percentile(pos, 95, 0) - np.percentile(pos, 5, 0))
 
@@ -90,25 +97,29 @@ print("[%s] occlusion px=%d  crease px=%d" % (stem, int(occlusion.sum()), int(cr
 ssort = np.sort(scl, axis=1)
 smin, smid = ssort[:, 0], ssort[:, 1]
 ratio = smin / (smid + 1e-9)                            # smaller = flatter/more reliable
-flat = ratio < np.quantile(ratio, 0.6)                 # adaptive: keep flattest 60%
+flat = ratio <= np.quantile(ratio, 0.6) + 1e-9         # adaptive; keep all if uniform
 print("[%s] flat (reliable-normal): %d / %d" % (stem, int(flat.sum()), len(pos)))
 
-K = 10
 tree = cKDTree(pos)
-dist, nbr = tree.query(pos, k=K + 1)
+dist, nbr = tree.query(pos, k=Knn + 1)
 nbr = nbr[:, 1:]; dist = dist[:, 1:]
 sig = np.median(dist) + 1e-6
 wts = np.exp(-(dist ** 2) / (2 * sig ** 2))
 
+# sign-consistent neighbour normals -> smoothed normal field (denoising)
 nn = normal[nbr]
 sgn = np.sign(np.einsum('nki,ni->nk', nn, normal)); sgn[sgn == 0] = 1
 nn = nn * sgn[..., None]
 nsm = np.einsum('nk,nki->ni', wts, nn)
 nsm /= (np.linalg.norm(nsm, axis=1, keepdims=True) + 1e-9)
-nn2 = nsm[nbr]
-sgn2 = np.sign(np.einsum('nki,ni->nk', nn2, nsm)); sgn2[sgn2 == 0] = 1
-nn2 = nn2 * sgn2[..., None]
-T = np.einsum('nk,nki,nkj->nij', wts, nn2, nn2) / wts.sum(1)[:, None, None]
+
+# local normal-structure tensor: on denoised normals for real (noisy) scenes,
+# on raw exact normals for synthetic scenes (do_smooth=0).
+base_n = nsm if do_smooth else normal
+bn = base_n[nbr]
+sb = np.sign(np.einsum('nki,ni->nk', bn, base_n)); sb[sb == 0] = 1
+bn = bn * sb[..., None]
+T = np.einsum('nk,nki,nkj->nij', wts, bn, bn) / wts.sum(1)[:, None, None]
 ev = np.linalg.eigvalsh(T)
 l3, l2, l1 = ev[:, 0], ev[:, 1], ev[:, 2]
 r2 = l2 / (l1 + 1e-9); r3 = l3 / (l1 + 1e-9)

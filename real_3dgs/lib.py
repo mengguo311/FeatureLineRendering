@@ -27,42 +27,51 @@ def load_scene_ctx(path, opacity_cut=0.18, max_splats=220000):
 
 
 # ------------------------------------------- object-space (view-independent)
-def compute_object_space(sc, k=10):
-    """Per-Gaussian: anisotropy flat-filter, KNN-smoothed normal, structure-tensor ratios."""
+def compute_object_space(sc, k=10, tensor_smooth=True):
+    """Per-Gaussian: anisotropy flat-filter, KNN-smoothed normal, structure-tensor ratios.
+    tensor_smooth=True  : build the structure tensor on KNN-smoothed normals
+                          (denoises heavily-noisy REAL scans).
+    tensor_smooth=False : build it on RAW normals (preserves sharp normal jumps ->
+                          recovers genuine creases on clean/CAD-like geometry)."""
     pos, scl, normal = sc["pos"], sc["scl"], sc["normal"]
     ssort = np.sort(scl, axis=1)
     ratio = ssort[:, 0] / (ssort[:, 1] + 1e-9)
-    flat = ratio < np.quantile(ratio, 0.6)                 # keep flattest 60%
+    flat = ratio <= np.quantile(ratio, 0.6)                # keep flattest 60% (<= so uniform-scale synthetic objects keep all, not none)
 
     tree = cKDTree(pos)
     dist, nbr = tree.query(pos, k=k + 1)
     nbr, dist = nbr[:, 1:], dist[:, 1:]
     wts = np.exp(-(dist ** 2) / (2 * (np.median(dist) + 1e-6) ** 2))
 
-    nn = normal[nbr]
+    nn = normal[nbr]                                        # raw, sign-corrected
     sgn = np.sign(np.einsum('nki,ni->nk', nn, normal)); sgn[sgn == 0] = 1
     nn = nn * sgn[..., None]
-    nsm = np.einsum('nk,nki->ni', wts, nn)
+    nsm = np.einsum('nk,nki->ni', wts, nn)                  # smoothed per-Gaussian normal
     nsm /= (np.linalg.norm(nsm, axis=1, keepdims=True) + 1e-9)
 
-    nn2 = nsm[nbr]
-    sgn2 = np.sign(np.einsum('nki,ni->nk', nn2, nsm)); sgn2[sgn2 == 0] = 1
-    nn2 = nn2 * sgn2[..., None]
-    T = np.einsum('nk,nki,nkj->nij', wts, nn2, nn2) / wts.sum(1)[:, None, None]
+    if tensor_smooth:
+        src = nsm[nbr]
+        sgn2 = np.sign(np.einsum('nki,ni->nk', src, nsm)); sgn2[sgn2 == 0] = 1
+        src = src * sgn2[..., None]
+    else:
+        src = nn                                           # raw -> keeps crease discontinuity
+    T = np.einsum('nk,nki,nkj->nij', wts, src, src) / wts.sum(1)[:, None, None]
     ev = np.linalg.eigvalsh(T)
     l3, l2, l1 = ev[:, 0], ev[:, 1], ev[:, 2]
     sc.update(nsm=nsm, r2=l2 / (l1 + 1e-9), r3=l3 / (l1 + 1e-9), flat=flat, tree=tree, nbr=nbr)
     return sc
 
 
-def candidate_indices(sc, eye, topk=(2500, 3000, 1500)):
-    """Select silhouette/crease/corner candidate Gaussian indices for a camera."""
+def candidate_indices(sc, eye, topk=(2500, 3000, 1500), crease_r2=0.40):
+    """Select silhouette/crease/corner candidate Gaussian indices for a camera.
+    crease_r2: min lambda2/lambda1 for a crease. 0.40 fits noisy real scans; lower
+    (~0.25) for clean/CAD geometry where 60-deg edges give r2~=0.33."""
     pos, nsm, r2, r3, flat = sc["pos"], sc["nsm"], sc["r2"], sc["r3"], sc["flat"]
     vdir = pos - eye; vdir /= (np.linalg.norm(vdir, axis=1, keepdims=True) + 1e-9)
     ndotv = np.abs(np.einsum('ni,ni->n', nsm, vdir))
     I = np.arange(len(pos))
-    silh = I[flat & (ndotv < 0.18) & (r2 < 0.40)]
-    crease = I[flat & (r2 > 0.40) & (r3 < 0.15)]
+    silh = I[flat & (ndotv < 0.18) & (r2 < crease_r2)]
+    crease = I[flat & (r2 > crease_r2) & (r3 < 0.15)]
     corner = I[flat & (r3 > 0.30)]
 
     def tk(sel, score, n):
@@ -76,6 +85,10 @@ def candidate_indices(sc, eye, topk=(2500, 3000, 1500)):
 # ----------------------------------------------------------------- camera
 def camera_axes(sc, view="mid", dist=1.35):
     e = sc["evec"]
+    if view in ("iso", "iso2"):                            # oblique WORLD-space 3/4 view
+        d_ = np.array([1.0, 0.8, 1.4]) if view == "iso" else np.array([1.3, 0.7, -1.1])
+        d_ = d_ / np.linalg.norm(d_)
+        return sc["center"] + d_ * sc["scale"] * dist, sc["center"], np.array([0.0, 1.0, 0.0])
     axes = {"thin": (e[:, 0], e[:, 1]), "mid": (e[:, 1], e[:, 0]), "long": (e[:, 2], e[:, 1])}
     d_, up_ = axes[view]
     eye = sc["center"] + d_ * sc["scale"] * dist

@@ -84,9 +84,9 @@ def project_visible_w(sc, gb, sel, wfull, tol):
 
 
 # --------------------------------------------------------------- per-frame fusion
-def fuse_frame(sc, eye, target, up):
+def fuse_frame(sc, eye, target, up, crease_r2=0.40):
     gb = lib.render_gbuffer(sc, eye, target, up, W, H, FOV)
-    cand = lib.candidate_indices(sc, eye)
+    cand = lib.candidate_indices(sc, eye, crease_r2=crease_r2)
     isl = lib.image_space_lines(gb)
     tol = TOL_SCALE * sc["scale"]
 
@@ -159,14 +159,16 @@ def flicker(M_t, M_t1, gb_t, gb_t1, score_t, budget):
 
 
 # --------------------------------------------------------------- run one scene
-def run_scene(scene, view="mid", dist=1.35, opacity_cut=0.18):
+def run_scene(scene, view="mid", dist=1.35, opacity_cut=0.18, tensor_smooth=True):
     stem = os.path.splitext(os.path.basename(scene))[0]
     os.makedirs("outputs/fused", exist_ok=True)
     sc = lib.load_scene_ctx(scene, opacity_cut, 220000)
-    lib.compute_object_space(sc, k=10)
+    kk = 30 if not tensor_smooth else 10                  # dense synthetic needs larger nbhd
+    lib.compute_object_space(sc, k=kk, tensor_smooth=tensor_smooth)
+    crease_r2 = 0.25 if not tensor_smooth else 0.40       # clean/CAD geometry -> lower
 
     eye, target, up = lib.camera_axes(sc, view=view, dist=dist)
-    Ft = fuse_frame(sc, eye, target, up)
+    Ft = fuse_frame(sc, eye, target, up, crease_r2)
 
     # STEP 0 density gate
     n_struct = len(Ft["cu"]) + len(Ft["ku"])
@@ -189,7 +191,7 @@ def run_scene(scene, view="mid", dist=1.35, opacity_cut=0.18):
     # improve on smooth objects — the surviving creases still ride the noisy ridge).
     BIG = 10 ** 9
     eye_t1 = sc["center"] + rot_about(up, ROT_DEG) @ (eye - sc["center"])
-    Ft1 = fuse_frame(sc, eye_t1, target, up)
+    Ft1 = fuse_frame(sc, eye_t1, target, up, crease_r2)
     gb_t, gb_t1 = Ft["gb"], Ft1["gb"]
     bd_im, _, r_im, dxi, dyi = flicker(Ft["crease_im"], Ft1["crease_im"], gb_t, gb_t1, Ft["cre"], BIG)
     bd_fu, _, r_fu, dxf, dyf = flicker(Ft["crease_fused"], Ft1["crease_fused"], gb_t, gb_t1, Ft["cre"], BIG)
@@ -281,18 +283,23 @@ if __name__ == "__main__":
         run_scene(sys.argv[1],
                   sys.argv[2] if len(sys.argv) > 2 else "mid",
                   float(sys.argv[3]) if len(sys.argv) > 3 else 1.35,
-                  float(sys.argv[4]) if len(sys.argv) > 4 else 0.18)
+                  float(sys.argv[4]) if len(sys.argv) > 4 else 0.18,
+                  tensor_smooth=(len(sys.argv) <= 5 or sys.argv[5].lower() != "raw"))
     else:
-        objs = [("nike.splat", "mid", 1.35, 0.18), ("plush.splat", "thin", 1.35, 0.18),
-                ("luigi.ply", "thin", 1.45, 0.10)]
+        # 3 smooth captured objects (fusion SUPPRESSES noise creases) + 1 angular
+        # synthetic object with real creases (fusion KEEPS them) -> the contrast IS the story
+        objs = [("nike.splat", "mid", 1.35, 0.18, True),
+                ("plush.splat", "thin", 1.35, 0.18, True),
+                ("luigi.ply", "thin", 1.45, 0.10, True),
+                ("primitives.ply", "iso", 1.3, 0.15, False)]
         for a in objs:
             run_scene(*a)
         import matplotlib.image as mpimg
-        fig, ax = plt.subplots(3, 1, figsize=(15.5, 16.0))
-        for a, (sc, *_ ) in zip(ax, objs):
-            stem = os.path.splitext(os.path.basename(sc))[0]
+        fig, ax = plt.subplots(len(objs), 1, figsize=(15.5, 5.3 * len(objs)))
+        for a, o in zip(ax, objs):
+            stem = os.path.splitext(os.path.basename(o[0]))[0]
             a.imshow(mpimg.imread("outputs/fused/%s_fused3.png" % stem)); a.axis("off")
-        fig.suptitle("Hybrid fusion on 3 real 3DGS scenes — [image-space | object-space | FUSED]  (CPU, no GPU)",
-                     fontsize=13, y=0.999)
-        plt.tight_layout(); plt.savefig("outputs/fused/all_fused.png", dpi=130, bbox_inches="tight")
+        fig.suptitle("Hybrid fusion — [image-space | object-space | FUSED].  Smooth objects: noise creases SUPPRESSED;  "
+                     "angular object (primitives): real creases KEPT  (CPU, no GPU)", fontsize=12, y=0.999)
+        plt.tight_layout(); plt.savefig("outputs/fused/all_fused.png", dpi=120, bbox_inches="tight")
         print("saved outputs/fused/all_fused.png")
