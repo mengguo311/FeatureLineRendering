@@ -130,7 +130,8 @@ def render(pos, cov3d, normal, rgb, opacity, eye, target, up,
         print("  render done: %d splats, %.1fs" % (len(order), time.time() - t0))
     return dict(color=np.clip(col, 0, 1), depth=depth, normal=nn,
                 alpha=alpha, mask=m, upx=upx, vpx=vpx, z=z, valid=valid,
-                Rcw=Rcw, eye=eye, focal=focal, cx=cx, cy=cy, W=W, H=H)
+                Rcw=Rcw, eye=eye, focal=focal, cx=cx, cy=cy, W=W, H=H,
+                maxeig=maxeig, radius=radius, cov2d=cov2d)
 
 
 # ----------------------------------------------------------------------
