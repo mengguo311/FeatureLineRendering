@@ -1,0 +1,101 @@
+{
+  "scene": "lego",
+  "args": {
+    "scene": "lego",
+    "f": 0.3,
+    "views": 100,
+    "edge": "sharp",
+    "steps": 100,
+    "lr": 0.35,
+    "delta_max": 5.0,
+    "huber": 2.0,
+    "lam_s": 0.02,
+    "lam_t": 0.02,
+    "no_tangent": false,
+    "opt_length": false,
+    "fg_gate": false,
+    "dir_weight": false,
+    "rel_tol": 0.02,
+    "one_sided_vis": false,
+    "tau_in": 1.5,
+    "min_ratio": 0.5,
+    "max_med": 1.5,
+    "prune_resid3": false,
+    "view_chunk": 25,
+    "vis_every": 25,
+    "tag": "_probe",
+    "no_viz": true,
+    "device": "cuda"
+  },
+  "views_pull": 100,
+  "n_seeds": 29916,
+  "n_keep": 26292,
+  "rows": [
+    {
+      "stage": "BEFORE  seeds (M1a)",
+      "kind": "points",
+      "P1.5": 0.5920801378115296,
+      "R1.5": 0.3168486832596211,
+      "P2.5": 0.7377368210786843,
+      "R2.5": 0.43915997391619943,
+      "n": 29916
+    },
+    {
+      "stage": "AFTER   pull",
+      "kind": "points",
+      "P1.5": 0.6128094534358175,
+      "R1.5": 0.31807129607009316,
+      "P2.5": 0.7470017634792843,
+      "R2.5": 0.435336946515096,
+      "n": 29916
+    },
+    {
+      "stage": "AFTER   pull+prune",
+      "kind": "points",
+      "P1.5": 0.6331471007527847,
+      "R1.5": 0.2978180071025073,
+      "P2.5": 0.7646311382321511,
+      "R2.5": 0.41091764770658384,
+      "n": 26292
+    },
+    {
+      "stage": "BEFORE  linelets init",
+      "kind": "segments",
+      "P1.5": 0.5274433511942966,
+      "R1.5": 0.4667738236998714,
+      "P2.5": 0.6686142055040005,
+      "R2.5": 0.540235450967409,
+      "n": 29916
+    },
+    {
+      "stage": "AFTER   pull",
+      "kind": "segments",
+      "P1.5": 0.5558574077044294,
+      "R1.5": 0.477566736067782,
+      "P2.5": 0.6918447316843301,
+      "R2.5": 0.5474599960006186,
+      "n": 29916
+    },
+    {
+      "stage": "AFTER   pull+prune",
+      "kind": "segments",
+      "P1.5": 0.5781188116185811,
+      "R1.5": 0.44949369410926565,
+      "P2.5": 0.7123660614585412,
+      "R2.5": 0.520371939329438,
+      "n": 26292
+    }
+  ],
+  "gate_points": false,
+  "gate_segments": false,
+  "t_method_s": 7.010915040969849,
+  "t_cache_s": 0.5422613620758057,
+  "t_pull_s": 5.4723780155181885,
+  "peak_vram_gb": 0.5535097122192383,
+  "pngs": [],
+  "move_px_median": 4.58975887298584,
+  "move_px_p90": 4.99999475479126,
+  "inlier_ratio_median": 0.8076923076923077,
+  "n_vis_median": 57.0,
+  "total_s": 9.391525030136108
+}
