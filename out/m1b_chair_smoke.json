@@ -1,0 +1,101 @@
+{
+  "scene": "chair",
+  "args": {
+    "scene": "chair",
+    "f": 0.3,
+    "views": 10,
+    "edge": "sharp",
+    "steps": 5,
+    "lr": 0.35,
+    "delta_max": 5.0,
+    "huber": 2.0,
+    "lam_s": 0.02,
+    "lam_t": 0.02,
+    "no_tangent": false,
+    "opt_length": false,
+    "fg_gate": false,
+    "dir_weight": false,
+    "rel_tol": 0.02,
+    "one_sided_vis": false,
+    "tau_in": 1.5,
+    "min_ratio": 0.5,
+    "max_med": 1.5,
+    "prune_resid3": false,
+    "view_chunk": 25,
+    "vis_every": 25,
+    "tag": "_smoke",
+    "no_viz": true,
+    "device": "cuda"
+  },
+  "views_pull": 10,
+  "n_seeds": 17065,
+  "n_keep": 13175,
+  "rows": [
+    {
+      "stage": "BEFORE  seeds (M1a)",
+      "kind": "points",
+      "P1.5": 0.618416638873633,
+      "R1.5": 0.6235506181715132,
+      "P2.5": 0.7358663719099385,
+      "R2.5": 0.7627131072325823,
+      "n": 17065
+    },
+    {
+      "stage": "AFTER   pull",
+      "kind": "points",
+      "P1.5": 0.6331336189002703,
+      "R1.5": 0.6398166274215777,
+      "P2.5": 0.7523554933492416,
+      "R2.5": 0.7721431858849375,
+      "n": 17065
+    },
+    {
+      "stage": "AFTER   pull+prune",
+      "kind": "points",
+      "P1.5": 0.6696780266494071,
+      "R1.5": 0.5494106901211427,
+      "P2.5": 0.790879913552818,
+      "R2.5": 0.6649564166060944,
+      "n": 13175
+    },
+    {
+      "stage": "BEFORE  linelets init",
+      "kind": "segments",
+      "P1.5": 0.4704617912061949,
+      "R1.5": 0.794630098812706,
+      "P2.5": 0.570682236856573,
+      "R2.5": 0.8511162907586252,
+      "n": 17065
+    },
+    {
+      "stage": "AFTER   pull",
+      "kind": "segments",
+      "P1.5": 0.4786816398880006,
+      "R1.5": 0.8125130548166982,
+      "P2.5": 0.5791460316787695,
+      "R2.5": 0.8614947142176455,
+      "n": 17065
+    },
+    {
+      "stage": "AFTER   pull+prune",
+      "kind": "segments",
+      "P1.5": 0.5389869736365479,
+      "R1.5": 0.7019276896225057,
+      "P2.5": 0.6471226275294948,
+      "R2.5": 0.7604474580108134,
+      "n": 13175
+    }
+  ],
+  "gate_points": false,
+  "gate_segments": false,
+  "t_method_s": 1.6415290832519531,
+  "t_cache_s": 1.794616937637329,
+  "t_pull_s": 0.791069746017456,
+  "peak_vram_gb": 0.759800910949707,
+  "pngs": [],
+  "move_px_median": 1.350409984588623,
+  "move_px_p90": 2.742646598815918,
+  "inlier_ratio_median": 1.0,
+  "n_vis_median": 5.0,
+  "total_s": 4.3596203327178955
+}

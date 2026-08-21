@@ -1,0 +1,336 @@
+{
+  "note": "M1b headline table \u2014 measurement only over existing linelets; no renderer, no training, no tuning.",
+  "view_split": {
+    "train": 80,
+    "val": 10,
+    "test": [
+      5,
+      15,
+      25,
+      35,
+      45,
+      55,
+      65,
+      75,
+      85,
+      95
+    ]
+  },
+  "block0_scene_scoping": {
+    "chair": {
+      "views": [
+        5,
+        15,
+        25
+      ],
+      "object_px_mean": 133182.0,
+      "interior_frac": 0.9145014846167756,
+      "crease_px_per_kpx_object": 90.48599614302577,
+      "canny_edge_purity@1.5": 0.2842480360834884,
+      "solid_surface": true,
+      "role": "texture false-positive STRESS scene (most Canny edges are not creases)"
+    },
+    "lego": {
+      "views": [
+        5,
+        15,
+        25
+      ],
+      "object_px_mean": 205293.0,
+      "interior_frac": 0.8927954699267219,
+      "crease_px_per_kpx_object": 230.6670229453742,
+      "canny_edge_purity@1.5": 0.6634578857209377,
+      "solid_surface": true,
+      "role": "PRIMARY hard-surface scene (edge field is mostly real geometry)"
+    },
+    "ficus": {
+      "views": [
+        5,
+        15,
+        25
+      ],
+      "object_px_mean": 72619.0,
+      "interior_frac": 0.32586901410509955,
+      "crease_px_per_kpx_object": 134.6631008201313,
+      "canny_edge_purity@1.5": 0.34757227795194723,
+      "solid_surface": false,
+      "role": "excluded \u2014 thin/foliage: only 33% of object pixels are >4px from a silhouette, so 'crease vs flat surface' is not well posed"
+    }
+  },
+  "block1_heldout_test_pr": {
+    "lego": {
+      "ungated": {
+        "n_linelets_kept": 25870,
+        "n_total": 29916,
+        "source": "linelets_lego_ungated_test.npz",
+        "points": {
+          "P@1.5": 0.6128523831256117,
+          "R@1.5": 0.2720342828392296,
+          "P@2.5": 0.7431175468931835,
+          "R@2.5": 0.3774809238117932
+        },
+        "segments": {
+          "P@1.5": 0.5628129586618378,
+          "R@1.5": 0.41929161261132786,
+          "P@2.5": 0.7022424217075929,
+          "R@2.5": 0.4888868313769894
+        }
+      },
+      "gated": {
+        "n_linelets_kept": 25279,
+        "n_total": 29916,
+        "source": "linelets_lego_gated_test.npz",
+        "points": {
+          "P@1.5": 0.6251413540170143,
+          "R@1.5": 0.26955231812366726,
+          "P@2.5": 0.7575351860120609,
+          "R@2.5": 0.3735280696152159
+        },
+        "segments": {
+          "P@1.5": 0.5825939357695191,
+          "R@1.5": 0.416832987859787,
+          "P@2.5": 0.7258692560417416,
+          "R@2.5": 0.4868795842884091
+        }
+      },
+      "delta_gated_minus_ungated": {
+        "points": {
+          "P@1.5": 0.012288970891402573,
+          "R@1.5": -0.0024819647155623348,
+          "P@2.5": 0.01441763911887739,
+          "R@2.5": -0.003952854196577316
+        },
+        "segments": {
+          "P@1.5": 0.01978097710768134,
+          "R@1.5": -0.00245862475154085,
+          "P@2.5": 0.023626834334148694,
+          "R@2.5": -0.0020072470885802995
+        }
+      },
+      "eval_views": [
+        5,
+        15,
+        25,
+        35,
+        45,
+        55,
+        65,
+        75,
+        85,
+        95
+      ]
+    }
+  },
+  "block2_temporal": {
+    "lego": {
+      "trajectory": "TEST views 5->15",
+      "frames": [
+        30,
+        60,
+        120,
+        240
+      ],
+      "variants": {
+        "ungated": {
+          "per_frame_density": [
+            {
+              "frames": 30,
+              "obj_strict": 0.47340805903068095,
+              "img_strict": 0.49991457468131817,
+              "obj_tol": 0.09937155466570205,
+              "img_tol": 0.09560552292520921,
+              "reduction_strict": 1.0559908416111679,
+              "reduction_tol": 0.9621015113111371,
+              "a_temp_px": 5.410639117364019,
+              "obj_on_px": 26741.344827586207,
+              "img_on_px": 41730.06896551724,
+              "n_linelets": 25870
+            },
+            {
+              "frames": 60,
+              "obj_strict": 0.3842751480197264,
+              "img_strict": 0.4085934555432095,
+              "obj_tol": 0.05106805984013966,
+              "img_tol": 0.05143815595737748,
+              "reduction_strict": 1.0632835811756287,
+              "reduction_tol": 1.0072471152888194,
+              "a_temp_px": 1.3088604015740375,
+              "obj_on_px": 26706.881355932204,
+              "img_on_px": 41811.627118644064,
+              "n_linelets": 25870
+            },
+            {
+              "frames": 120,
+              "obj_strict": 0.3262966272301036,
+              "img_strict": 0.34099701956741185,
+              "obj_tol": 0.024329311471015927,
+              "img_tol": 0.028974984284762785,
+              "reduction_strict": 1.0450522350233844,
+              "reduction_tol": 1.1909496213767232,
+              "a_temp_px": 0.3216827175006654,
+              "obj_on_px": 26684.579831932773,
+              "img_on_px": 41859.1512605042,
+              "n_linelets": 25870
+            },
+            {
+              "frames": 240,
+              "obj_strict": 0.29369512937820225,
+              "img_strict": 0.300100096491577,
+              "obj_tol": 0.01062835189343647,
+              "img_tol": 0.018310648434542862,
+              "reduction_strict": 1.0218082170001765,
+              "reduction_tol": 1.722811647387267,
+              "a_temp_px": 0.07972871062772467,
+              "obj_on_px": 26665.276150627615,
+              "img_on_px": 41872.82008368201,
+              "n_linelets": 25870
+            }
+          ],
+          "obj_floor_pct": -0.10365752508665219,
+          "obj_floor_se_pct": 0.11927603987966776,
+          "img_floor_pct": 0.7088088022887575,
+          "img_floor_se_pct": 0.018443304652054723,
+          "obj_floor_consistent_with_zero": true,
+          "img_floor_consistent_with_zero": false,
+          "floor_ratio_img_over_obj": null,
+          "floor_ratio_lower_bound": 5.254539770034869,
+          "motion_coeff_obj": 3.032697261980165,
+          "motion_coeff_img": 2.6556313521654746,
+          "reduction_tol_finest": 1.722811647387267,
+          "finest_frames": 240,
+          "obj_tol_finest_pct": 1.062835189343647,
+          "img_tol_finest_pct": 1.8310648434542862
+        },
+        "gated": {
+          "per_frame_density": [
+            {
+              "frames": 30,
+              "obj_strict": 0.47231077234687124,
+              "img_strict": 0.4999037648653749,
+              "obj_tol": 0.09884836799813698,
+              "img_tol": 0.09562101728399384,
+              "reduction_strict": 1.0584212644174862,
+              "reduction_tol": 0.9673504906605644,
+              "a_temp_px": 5.412765258921219,
+              "obj_on_px": 26129.310344827587,
+              "img_on_px": 41730.24137931035,
+              "n_linelets": 25279
+            },
+            {
+              "frames": 60,
+              "obj_strict": 0.38391710978972016,
+              "img_strict": 0.4085614973125152,
+              "obj_tol": 0.05116176464833458,
+              "img_tol": 0.05142484852979079,
+              "reduction_strict": 1.0641919489764164,
+              "reduction_tol": 1.0051421971713552,
+              "a_temp_px": 1.3093324675235958,
+              "obj_on_px": 26087.745762711864,
+              "img_on_px": 41812.79661016949,
+              "n_linelets": 25279
+            },
+            {
+              "frames": 120,
+              "obj_strict": 0.3257355654894843,
+              "img_strict": 0.341016426071138,
+              "obj_tol": 0.024207567847017584,
+              "img_tol": 0.028974101551792603,
+              "reduction_strict": 1.0469118579627346,
+              "reduction_tol": 1.196902627099825,
+              "a_temp_px": 0.32179031905384414,
+              "obj_on_px": 26067.168067226892,
+              "img_on_px": 41858.86554621849,
+              "n_linelets": 25279
+            },
+            {
+              "frames": 240,
+              "obj_strict": 0.29355218162275176,
+              "img_strict": 0.30008815293553687,
+              "obj_tol": 0.010489409155593536,
+              "img_tol": 0.01830363489025944,
+              "reduction_strict": 1.022265108971953,
+              "reduction_tol": 1.7449633834236433,
+              "a_temp_px": 0.07975566930075438,
+              "obj_on_px": 26048.37238493724,
+              "img_on_px": 41872.76987447699,
+              "n_linelets": 25279
+            }
+          ],
+          "obj_floor_pct": -0.09997729673818426,
+          "obj_floor_se_pct": 0.13876552036116307,
+          "img_floor_pct": 0.7075788138884702,
+          "img_floor_se_pct": 0.01803231284166231,
+          "obj_floor_consistent_with_zero": true,
+          "img_floor_consistent_with_zero": false,
+          "floor_ratio_img_over_obj": null,
+          "floor_ratio_lower_bound": 3.9851528782838117,
+          "motion_coeff_obj": 3.019299224297763,
+          "motion_coeff_img": 2.6563271952047676,
+          "reduction_tol_finest": 1.7449633834236433,
+          "finest_frames": 240,
+          "obj_tol_finest_pct": 1.0489409155593536,
+          "img_tol_finest_pct": 1.830363489025944
+        }
+      },
+      "guard": {
+        "obj_floor_change_pp": 0.003680228348467929,
+        "obj_tol_finest_change_pp": -0.01389427378429331,
+        "allowed_pp": 0.02,
+        "pass": true,
+        "note": "measured on the gated-vs-ungated pair; both the fitted floor and the directly-measured finest-motion value must not regress"
+      }
+    }
+  },
+  "block3_flat_fp_density": {
+    "scene": "chair",
+    "views": [
+      5,
+      15,
+      25,
+      35,
+      45,
+      55,
+      65,
+      75,
+      85,
+      95
+    ],
+    "sil_clear_px": 4.0,
+    "by_threshold": {
+      "crease_clear_5px": {
+        "ungated": {
+          "flat_area_px": 882582,
+          "fp_line_px": 19519,
+          "fp_line_px_per_kpx": 22.115792073711,
+          "fp_linelet_centres": 3797,
+          "fp_linelets_per_kpx": 4.30214982857117
+        },
+        "gated": {
+          "flat_area_px": 882582,
+          "fp_line_px": 18756,
+          "fp_line_px_per_kpx": 21.251283166889877,
+          "fp_linelet_centres": 3750,
+          "fp_linelets_per_kpx": 4.248896986342346
+        },
+        "delta_pct": -3.9090117321584072
+      },
+      "crease_clear_8px": {
+        "ungated": {
+          "flat_area_px": 803546,
+          "fp_line_px": 9733,
+          "fp_line_px_per_kpx": 12.112561073043732,
+          "fp_linelet_centres": 1699,
+          "fp_linelets_per_kpx": 2.1143780194288815
+        },
+        "gated": {
+          "flat_area_px": 803546,
+          "fp_line_px": 9528,
+          "fp_line_px_per_kpx": 11.85744188882777,
+          "fp_linelet_centres": 1749,
+          "fp_linelets_per_kpx": 2.176602210701067
+        },
+        "delta_pct": -2.1062365149491336
+      }
+    }
+  }
+}

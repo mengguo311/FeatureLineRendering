@@ -1,0 +1,20 @@
+# --- regenerable caches (3.9 GB): rebuilt by dt_pull.build_dt_cache / build_geom_cache
+cache/
+
+# --- python
+__pycache__/
+*.pyc
+
+# --- large intermediate evidence arrays from the M1a recipe exploration (103 MB),
+#     regenerable by scripts/explore/syn/run_final.py
+scripts/explore/**/*.npz
+scripts/explore/**/*.npy
+
+# --- rendered videos (20 MB), regenerable in ~9 min:
+#     python scripts/m1b_make_video.py --scenes chair lego --frames 240 --gif
+out/*.mp4
+out/*.gif
+
+# --- throwaway linelet dumps; the four *_test.npz the tables depend on ARE tracked
+out/linelets_*_smoke.npz
+out/linelets_*_probe.npz

@@ -1,0 +1,77 @@
+{
+  "scene": "chair",
+  "cp_ratio": 0.8,
+  "cp_views": 20,
+  "n_keep_base": 16208,
+  "n_keep_cp": 13124,
+  "flat_fp": {
+    "crease_clear_5px": {
+      "base": {
+        "n_linelets": 16208,
+        "fp_line_px_per_kpx": 22.122590308889144,
+        "fp_linelets_per_kpx": 4.303282867767527,
+        "flat_area_px": 882582
+      },
+      "carrier_persistence": {
+        "n_linelets": 13124,
+        "fp_line_px_per_kpx": 12.999358699814861,
+        "fp_linelets_per_kpx": 2.8552587748220564,
+        "flat_area_px": 882582
+      }
+    },
+    "crease_clear_8px": {
+      "base": {
+        "n_linelets": 16208,
+        "fp_line_px_per_kpx": 12.113805556869176,
+        "fp_linelets_per_kpx": 2.1143780194288815,
+        "flat_area_px": 803546
+      },
+      "carrier_persistence": {
+        "n_linelets": 13124,
+        "fp_line_px_per_kpx": 7.424590502597237,
+        "fp_linelets_per_kpx": 1.4485791728164907,
+        "flat_area_px": 803546
+      }
+    }
+  },
+  "stroke_temporal": {
+    "base": {
+      "chain": {
+        "n_linelets": 16208,
+        "n_nms": 8679,
+        "n_strokes": 1184,
+        "median_vertices": 4.0
+      },
+      "OURS": {
+        "frechet_median": 0.08221067766801349,
+        "P_pop": 0.06802177824353986,
+        "unmatched_frac": 0.024820730660858884,
+        "cut_frac": 0.043201047582680986,
+        "n_strokes_per_frame": 751.5546218487395
+      },
+      "BASELINE": {
+        "frechet_median": 1.2519852361886836,
+        "P_pop": 0.7559110827219001
+      }
+    },
+    "carrier_persistence": {
+      "chain": {
+        "n_linelets": 13124,
+        "n_nms": 7164,
+        "n_strokes": 956,
+        "median_vertices": 4.0
+      },
+      "OURS": {
+        "frechet_median": 0.07235741161138196,
+        "P_pop": 0.07550440177458112,
+        "unmatched_frac": 0.017704926986739738,
+        "cut_frac": 0.05779947478784138,
+        "n_strokes_per_frame": 661.1512605042017
+      },
+      "BASELINE": {
+        "frechet_median": 1.2544630501507688,
+        "P_pop": 0.7557991109568121
+      }
+    }
+  }
+}
