@@ -74,7 +74,7 @@ carrier (99 721 gaussians) and the f=0.4 proposal set (39 888 seeds):
 | **COVERED but culled** | **0.1862** | **31.5%** | carrier exists, not selected as a proposal |
 | **UNCOVERED** | **0.3663** | **61.9%** | no carrier gaussian within τ at all |
 
-n = 1 648 144 visible GT crease points over 10 TEST views. Per-view UNCOVERED range
+n = 1 748 144 visible GT crease points over 10 TEST views. Per-view UNCOVERED range
 **0.3215 – 0.4478** — it never reaches 0.45 in *any* single view, so the miss is not a
 threshold that a different view sample would have crossed.
 
