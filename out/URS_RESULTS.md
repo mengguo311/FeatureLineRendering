@@ -58,21 +58,74 @@ space as the `R@1.5` metric this probe explains. n = 1 748 144 GT crease points.
 | **baseline** (current OVERALL-recipe linelets) | **0.4338** | 149 580 sampled from 29 916 linelets | — |
 | **URS train, TEED thr 0.5** — **PRIMARY** | **0.7617** | 89 748 | 20 TRAIN |
 | URS train, TEED thr 0.9 (repo pipeline default) | 0.7287 | 89 748 | 20 TRAIN |
-| URS all-views, thr 0.5 (deliberately leaky) | 0.7668 | 89 748 | 25 incl. TEST |
-| URS all-views, thr 0.9 (deliberately leaky) | 0.7549 | 89 748 | 25 incl. TEST |
+| URS "all-views" thr 0.5 — **mislabelled, contains NO test view** | 0.7668 | 89 748 | 20 TRAIN + 5 VAL |
+| URS "all-views" thr 0.9 — **same mislabel** | 0.7549 | 89 748 | 20 TRAIN + 5 VAL |
+| **URS genuinely leaky, thr 0.5** (corrected) | **0.7610** | 89 748 | **35 incl. all 10 TEST** |
 | **chair sanity control** (baseline carrier) | **0.6195** | 85 325 | — |
 
-**URS lifts lego coverage +0.3279 over baseline (+75.6% relative), from 0.4338 to 0.7617.**
+**URS lifts lego coverage from 0.4338 to 0.7617 (+0.3279).** Against the corrected,
+sampling-converged baseline of 0.4502 the lift is **+0.3115**.
 
 Two robustness observations:
 
-- **The result is not leakage-driven.** The deliberately leaky arm that may use TEST views
-  scores 0.7668, only **+0.005** above the method-legal TRAIN arm at 0.7617. Building the
-  carrier from the scored views buys essentially nothing, so the primary number is not
-  propped up by test contact.
+- **The result is not leakage-driven — but the arm that was supposed to show this was
+  broken, and is corrected below.** The arm originally labelled "all_leaky" used source views
+  `range(0, 100, 4)` = all EVEN indices, while TEST = {5,15,…,95} = all ODD. Its intersection
+  with TEST is **empty**: it was 20 TRAIN + 5 VAL views, so the leakage sensitivity was never
+  actually run and the first version of this claim was unsupported. Re-run with source views
+  that genuinely contain all 10 TEST views (35 views, 10 of them TEST):
+  **coverage 0.7610 vs the TRAIN arm's 0.7617, a delta of −0.0007.** Handing the builder the
+  exact views it is scored on buys *nothing*. The conclusion now holds on a test that was
+  actually performed.
 - **It is not threshold-cherry-picked.** Even at the repo's own stricter pipeline threshold
   (TEED 0.9) the TRAIN arm reaches 0.7287, within 0.022 of the gate. The conclusion does not
   hinge on the generous 0.5 threshold, though 0.5 is what clears it.
+
+### Uncertainty: the GO margin is thin
+
+The 10 TEST views are the independent units, not the 1.75 M crease points. A view-level
+bootstrap (20 000 resamples, seed 20260829) gives:
+
+| | value |
+|---|---|
+| coverage | 0.7617 |
+| 95% CI | **[0.7433, 0.7793]** |
+| SE | 0.0092 |
+| margin over 0.75 | **+0.0117 = 1.27 SE** |
+| P(coverage ≥ 0.75) | **0.90** |
+| per-view range | 0.7043 – 0.8052 |
+
+**The CI straddles the threshold.** This is a GO at roughly 1.3 standard errors, not a
+comfortable one, and the honest reading is "≈90% confident the true coverage clears 0.75",
+not "coverage clears 0.75". A different draw of 10 test views could return NO-GO.
+
+### Correction: the frozen N_SEG=5 under-credits the segment baseline
+
+`urs_verdict.py` freezes N_SEG=5 samples along each linelet and its docstring claims this
+"matches how the harness rasterises linelets". That claim is **wrong**: `run_m1b.py` draws
+the projected segment continuously with `cv2.line(..., shift=4)`. With projected segment
+lengths reaching ~13 px at p90, five samples leave gaps above the τ=1.5 px tolerance, so the
+baseline is under-credited. Denser sampling, converged:
+
+| N_SEG | baseline coverage |
+|---|---|
+| 5 (frozen) | 0.4338 |
+| 17 | 0.4488 |
+| 33 | **0.4502** (converged) |
+
+The frozen value is kept for the **gate** — which is unaffected, since URS is a point cloud
+where N_SEG plays no role — but the fair baseline is **0.4502**, so the corrected lift is
+**+0.3115**, not the +0.3279 first reported.
+
+### Near-duplicate source views
+
+The TRAIN arm is method-legal, but `view_split.py`'s claim of an even orbit spread does not
+hold for NeRF-synthetic poses. Angular distance from each TEST view to its nearest TRAIN
+source view: min **5.59°** (test 75 → train 41), median 22.2°, and **4 of 10 within 15°**.
+So for some test views a train-sourced point is close to a test-sourced one. This is a
+property of the frozen split and applies to every result in this repo, not just URS — and the
+corrected genuine-leaky arm bounds its effect directly: giving the builder the actual test
+views changes coverage by −0.0007, so view proximity is not what is carrying the number.
 
 ### On the spec's "~38.1%" baseline expectation
 The spec anticipated a baseline near 38.1%; measured with this frozen metric it is **0.4338**.
