@@ -1,0 +1,93 @@
+{
+ "thresholds": {
+  "P_min": 0.85,
+  "R_min": 0.65,
+  "speedup_min": 7.0,
+  "abort_R": 0.6,
+  "abort_P": 0.8
+ },
+ "scenes": {
+  "chair": {
+   "source": "out/m1b_chair_ngmecv2_final_test.json",
+   "n_frontier": 8,
+   "operating_point": {
+    "keep_frac": 1.0,
+    "n": 20654,
+    "P1.5": 0.6921468800426256,
+    "R1.5": 0.6679794223990715,
+    "sP1.5": 0.5704718275513017,
+    "sR1.5": 0.8579369302309866
+   },
+   "best_P_anywhere": {
+    "P": 0.782951097504635,
+    "R": 0.2954798832079454
+   },
+   "max_R_anywhere": {
+    "P": 0.6921468800426256,
+    "R": 0.6679794223990715
+   },
+   "recall_floor_reachable": true
+  },
+  "lego": {
+   "source": "out/m1b_lego_ngmecv2_final_test.json",
+   "n_frontier": 8,
+   "operating_point": null,
+   "best_P_anywhere": {
+    "P": 0.7100419710224534,
+    "R": 0.15734534043709686
+   },
+   "max_R_anywhere": {
+    "P": 0.6622590911635348,
+    "R": 0.408031000833115
+   },
+   "recall_floor_reachable": false
+  }
+ },
+ "P": {
+  "chair": 0.6921468800426256,
+  "lego": null
+ },
+ "R": {
+  "chair": 0.6679794223990715,
+  "lego": null
+ },
+ "temporal_ratios": {
+  "30": 8.50229540732525,
+  "60": 11.352186463756896,
+  "120": 12.850381534460041,
+  "240": 13.123979857208276
+ },
+ "temporal_speedup_max": 13.123979857208276,
+ "temporal_speedup_min": 8.50229540732525,
+ "gate_P": false,
+ "gate_R": false,
+ "gate_temporal": true,
+ "GO": false,
+ "early_abort": {
+  "chair": false,
+  "lego": true
+ },
+ "weights": {
+  "w_teed": 1.0,
+  "w_2dgs": 0.0,
+  "w_epi": 0.25,
+  "selected_on": "chair val",
+  "criterion": "max P@1.5 subject to R@1.5 >= 0.65; if unreachable, max P anywhere",
+  "op": {
+   "keep_frac": 0.9,
+   "n": 19761,
+   "P1.5": 0.5622033383978744,
+   "R1.5": 0.6565971474417928,
+   "sP1.5": 0.42591463800122675,
+   "sR1.5": 0.8277087509079513
+  },
+  "bestP": {
+   "P": 0.7505619631427622,
+   "R": 0.2990626597289036
+  },
+  "maxR": {
+   "P": 0.545872472062586,
+   "R": 0.6754104201693727
+  }
+ }
+}
