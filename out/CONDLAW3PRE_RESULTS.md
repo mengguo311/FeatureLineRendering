@@ -358,3 +358,65 @@ be noticed after the measurement. The §5b anchor-policy caveat is now **retired
 statistic, and that statistic is no longer an anchor.
 
 Frozen to `out/condlaw3pre_amend.json`. **Ship remains untouched and unblinded.**
+
+---
+
+# STAGE 2 — SHIP UNBLINDED (2026-08-29): **PASS on both frozen tests**
+
+Measured with the pipeline frozen at commit `92ce75f`, **before ship had a trained model or
+any scored artifact**:
+
+```
+scripts/run_2dgs_ship.sh                          # frozen recipe, byte-identical to lego's
+scripts/condlaw_chair_test.py --scene ship --views test --no_vanilla \
+    --model2dgs out/2dgs_ship                     # -> out/condlaw_ship_test.{json,npz}
+```
+
+The 2DGS recipe was reused **unchanged** (`lambda_normal 0.05, lambda_dist 0.0,
+depth_ratio 1.0, 30000 iter`); `diff` against `run_2dgs_lego.sh` differs only in
+scene/output/port. Any per-scene tuning would have been a forking path on the predicted
+quantity. Training was healthy: test PSNR 28.75 -> 30.06 -> **30.52** at 7k/15k/30k, the
+same range as chair's Run A (29.98).
+
+## Result
+
+| quantity | value | source |
+|---|---|---|
+| **DRR@80(ship)** | **0.712874** | `out/condlaw_ship_test.json` |
+| 95% bootstrap CI | **[0.7025, 0.7223]** | `out/condlaw3pre_ship_null.json` |
+| AUC | 0.830221 | `out/condlaw_ship_test.json` |
+| measured chance floor | 0.2001 | `out/condlaw3pre_ship_null.json` |
+| n_TrueCrease / n_Distractor | 129 275 / 8 599 | `out/condlaw_ship_test.json` |
+| statistic / split | 2DGS `theta_normal`, refined / frozen TEST {5,…,95} | — |
+
+## Verdict against the FROZEN gate
+
+| test | criterion | measured | result |
+|---|---|---|---|
+| **PRIMARY** (falsifier) | affine band **[0.692, 0.852]**, `D_hat = 0.7721` | **0.7129** | **PASS** |
+| **SECONDARY** (sanity) | monotonic `lego' 0.4334 < ship < chair 0.9858` | 0.4334 < **0.7129** < 0.9858 | **PASS** |
+| | and ship in `[0.4477, 0.9848]` | 0.7129 | **PASS** |
+
+### VERDICT: PASS (both)
+
+The prediction was **0.7721**; the measurement is **0.7129**, inside the band and 0.0592
+below the point estimate. The 95% CI [0.7025, 0.7223] lies **entirely inside** the frozen
+band, so the pass is not a boundary artefact.
+
+**What this establishes.** The Conditional Law is promoted from a 2-point dichotomy to a
+**3-point, pre-registered, falsifiable relation**: an a-priori mesh-only scalar
+(`rho_flat_mesh`) computed with no images and no reconstruction predicted a
+reconstruction-dependent rankability number on an unseen scene to within 0.06, and the
+ordering `lego' 0.433 < ship 0.713 < chair 0.986` matches the flat-mass ordering
+`0.000 < 0.145 < 0.236`. All three anchors are now the **same statistic** on the same
+held-out split.
+
+**Caveats that remain, stated as before.** (i) One interior point is still weak evidence in
+isolation — the frozen ordering prediction `mic < materials < ship` is the cheap way to
+strengthen it. (ii) The affine band is narrower than the spread of `D_hat` across scalar
+variants ([0.681, 0.936] amended), so the *form* of the map is far less established than the
+*monotonicity*. (iii) The Stage-1.5 re-anchor widened the primary interval at the bottom,
+making monotonicity easier to pass; the PRIMARY affine test, which ship also passed, was
+not so widened.
+
+Frozen to `out/condlaw3pre_stage2_verdict.json`.
