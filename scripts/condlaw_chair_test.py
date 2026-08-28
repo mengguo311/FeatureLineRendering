@@ -141,7 +141,11 @@ if __name__ == "__main__":
           f"flat_fab {int(flat_fab.sum())}/{len(flat_fab)}  "
           f"sharp_cre {int(sharp_cre.sum())}/{len(sharp_cre)}")
 
-    tag = a.views
+    # scene MUST be in the artifact name: with --scene ship this script would
+    # otherwise write out/condlaw_chair_test.* and silently DESTROY the chair
+    # anchor that CONDLAW_RESULTS.md is read from.  For scene=chair the path is
+    # byte-identical to before, so the committed chair artifacts keep their names.
+    tag = f"{a.scene}_{a.views}"
     dump, rows = {}, {}
     for arm in raw:
         for st in ("theta_depth", "theta_normal"):
@@ -165,11 +169,11 @@ if __name__ == "__main__":
                                           "thr": D["thr"], "recall": D["recall"],
                                           "n_cre": D["n_cre"], "n_dec": D["n_dec"]}
     dump["flat_fab"], dump["sharp_cre"] = flat_fab, sharp_cre
-    np.savez_compressed(os.path.join(TIER1, f"out/condlaw_chair_{tag}.npz"), **dump)
+    np.savez_compressed(os.path.join(TIER1, f"out/condlaw_{tag}.npz"), **dump)
     json.dump({"scene": a.scene, "views": views, "view_set": a.views,
                "flat_deg": G2.FLAT_DEG, "sharp_deg": G2.SHARP_DEG,
                "target_recall": a.target, "model2dgs": a.model2dgs, "rows": rows},
-              open(os.path.join(TIER1, f"out/condlaw_chair_{tag}.json"), "w"),
+              open(os.path.join(TIER1, f"out/condlaw_{tag}.json"), "w"),
               indent=1, default=float)
 
     T = round(a.target * 100)
@@ -183,4 +187,4 @@ if __name__ == "__main__":
             continue
         print(f"{arm_st:<48} {scope:<9} {r['auc']:7.4f} {r['drr']:7.4f} "
               f"{r['thr']:7.2f} {r['recall']:6.3f} {r['n_cre']:7d} {r['n_dec']:7d}")
-    print(f"\nwrote out/condlaw_chair_{tag}.{{json,npz}}")
+    print(f"\nwrote out/condlaw_{tag}.{{json,npz}}")

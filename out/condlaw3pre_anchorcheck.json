@@ -1,0 +1,139 @@
+{
+ "meta": {
+  "density": 63662.0,
+  "n_query": 20000,
+  "n_min": 5,
+  "d_far_mult": 1.5,
+  "seed": 0,
+  "cap": 400,
+  "scales": [
+   0.01,
+   0.02,
+   0.04
+  ],
+  "mesh_dir": "/home/u00134/3dgs_line/bcr/meshes/NeRF_Mesh",
+  "note": "tessellation-debiased: neighbourhoods are drawn from an AREA-UNIFORM resampling of the surface, not from face centroids, so validity does not correlate with flatness"
+ },
+ "scenes": {
+  "chair": {
+   "n_faces": 258582,
+   "surface_area": 11.519554283541755,
+   "bbox_diag": 2.8358054654933578,
+   "n_cloud": 733358,
+   "density": 63662.0,
+   "n_crease_pts": 228079,
+   "crease_len_total": 305.3289300227846,
+   "median_edge_scale": 0.0027647166865266922,
+   "by_R": {
+    "0.01": {
+     "R": 0.01,
+     "expected_neighbours": 20.00000715128334,
+     "n_valid": 19999,
+     "n_query": 20000,
+     "valid_frac": 0.99995,
+     "median": 12.906054465534488,
+     "rho_flat": 0.4431721586079304,
+     "frac<10": 0.4807240362018101,
+     "frac<20": 0.5528276413820691,
+     "d_far": 0.015,
+     "n_far": 12968,
+     "far_frac_of_surface": 0.6484324216210811,
+     "rho_flat_far": 0.6693399136335595,
+     "far_frac<10": 0.720311536088834
+    },
+    "0.02": {
+     "R": 0.02,
+     "expected_neighbours": 80.00002860513337,
+     "n_valid": 20000,
+     "n_query": 20000,
+     "valid_frac": 1.0,
+     "median": 28.048074530874715,
+     "rho_flat": 0.3342,
+     "frac<10": 0.3718,
+     "frac<20": 0.43765,
+     "d_far": 0.03,
+     "n_far": 10591,
+     "far_frac_of_surface": 0.52955,
+     "rho_flat_far": 0.6114625625531112,
+     "far_frac<10": 0.6726465867245774
+    },
+    "0.04": {
+     "R": 0.04,
+     "expected_neighbours": 320.00011442053346,
+     "n_valid": 20000,
+     "n_query": 20000,
+     "valid_frac": 1.0,
+     "median": 36.19117932146061,
+     "rho_flat": 0.2364,
+     "frac<10": 0.26305,
+     "frac<20": 0.30895,
+     "d_far": 0.06,
+     "n_far": 7869,
+     "far_frac_of_surface": 0.39345,
+     "rho_flat_far": 0.5799974583809887,
+     "far_frac<10": 0.6332443766679374
+    }
+   }
+  },
+  "lego": {
+   "n_faces": 2035374,
+   "surface_area": 55.75460483555897,
+   "bbox_diag": 2.9443536856182884,
+   "n_cloud": 3549450,
+   "density": 63662.0,
+   "n_crease_pts": 971793,
+   "crease_len_total": 1192.761747349521,
+   "median_edge_scale": 0.0023391055332275573,
+   "by_R": {
+    "0.01": {
+     "R": 0.01,
+     "expected_neighbours": 20.00000715128334,
+     "n_valid": 20000,
+     "n_query": 20000,
+     "valid_frac": 1.0,
+     "median": 35.26439117242866,
+     "rho_flat": 0.12945,
+     "frac<10": 0.134,
+     "frac<20": 0.2043,
+     "d_far": 0.015,
+     "n_far": 3973,
+     "far_frac_of_surface": 0.19865,
+     "rho_flat_far": 0.3508683614397181,
+     "far_frac<10": 0.35514724389630004
+    },
+    "0.02": {
+     "R": 0.02,
+     "expected_neighbours": 80.00002860513337,
+     "n_valid": 20000,
+     "n_query": 20000,
+     "valid_frac": 1.0,
+     "median": 40.05506635787777,
+     "rho_flat": 0.00365,
+     "frac<10": 0.00615,
+     "frac<20": 0.0303,
+     "d_far": 0.03,
+     "n_far": 272,
+     "far_frac_of_surface": 0.0136,
+     "rho_flat_far": 0.04044117647058824,
+     "far_frac<10": 0.051470588235294115
+    },
+    "0.04": {
+     "R": 0.04,
+     "expected_neighbours": 320.00011442053346,
+     "n_valid": 20000,
+     "n_query": 20000,
+     "valid_frac": 1.0,
+     "median": 43.997125559229644,
+     "rho_flat": 0.0,
+     "frac<10": 0.0,
+     "frac<20": 0.0,
+     "d_far": 0.06,
+     "n_far": 1,
+     "far_frac_of_surface": 5e-05,
+     "rho_flat_far": 0.0,
+     "far_frac<10": 0.0
+    }
+   }
+  }
+ }
+}
