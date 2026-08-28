@@ -1,0 +1,152 @@
+{
+ "thresholds": {
+  "TEED_LIFT_P_REF": 0.0607,
+  "GO_abs": 0.04248999999999999,
+  "NOGO_abs": 0.018209999999999997,
+  "GO_frac": 0.7,
+  "NOGO_frac": 0.3
+ },
+ "primary_metric": "segments/pull+prune[tuned+len], interpolated canny P@R, beyond-reach excluded, canny frontier f<=0.50 (reproduces the published +0.0607 exactly)",
+ "frozen_script_metric": "points/pull+prune[tuned], Pareto-envelope LIFT_P_lb, full canny frontier f<=1.00 (MIS-SPECIFIED vs the spec)",
+ "arms": {
+  "teed05": {
+   "primary": {
+    "LIFT_P": 0.060714485285887854,
+    "f": 0.4,
+    "P": 0.6148098269372986,
+    "R": 0.7207241173242568,
+    "matched_f_dP": 0.01035554621547008,
+    "matched_f_dR": 0.04937273370509032
+   },
+   "frozen_variant": {
+    "LIFT_P": 0.08004899316472702,
+    "f": 0.5,
+    "P": 0.6611950972040048,
+    "R": 0.6579449355491599,
+    "matched_f_dP": 0.020005889670903887,
+    "matched_f_dR": 0.028349058837038088
+   },
+   "primary_frac": 1.0002386373292893,
+   "primary_call": "GO",
+   "frozen_frac": 1.318764302549045,
+   "frozen_call": "GO"
+  },
+  "teed09": {
+   "primary": {
+    "LIFT_P": 0.04237210949322623,
+    "f": 0.3,
+    "P": 0.6425420092072104,
+    "R": 0.675915241817637,
+    "matched_f_dP": -0.014732452574671817,
+    "matched_f_dR": 0.0800133285452056
+   },
+   "frozen_variant": {
+    "LIFT_P": 0.01271052517735205,
+    "f": 0.3,
+    "P": 0.7075076586064514,
+    "R": 0.5671592203374464,
+    "matched_f_dP": -0.027779430066864452,
+    "matched_f_dR": 0.06390371008842866
+   },
+   "primary_frac": 0.698057817021849,
+   "primary_call": "PARTIAL",
+   "frozen_frac": 0.20939909682622818,
+   "frozen_call": "NO-GO"
+  },
+  "pidinet_native_0.5": {
+   "primary": {
+    "LIFT_P": 0.02767575587251303,
+    "f": 0.4,
+    "P": 0.5882820459909266,
+    "R": 0.7150139578995321,
+    "matched_f_dP": -0.016172234730901902,
+    "matched_f_dR": 0.043662574280365685
+   },
+   "frozen_variant": {
+    "LIFT_P": 0.058343381210407275,
+    "f": 0.5,
+    "P": 0.6394894852496851,
+    "R": 0.6496928984612634,
+    "matched_f_dP": -0.001699722283415861,
+    "matched_f_dR": 0.02009702174914163
+   },
+   "primary_frac": 0.45594325984370726,
+   "primary_call": "PARTIAL",
+   "frozen_frac": 0.9611759672225252,
+   "frozen_call": "GO"
+  },
+  "pidinet_native_0.9": {
+   "primary": {
+    "LIFT_P": 0.013011892433792194,
+    "f": 0.45,
+    "P": 0.5732970615696662,
+    "R": 0.7152955838430054,
+    "matched_f_dP": -0.0034905453624709537,
+    "matched_f_dR": 0.014472783986975934
+   },
+   "frozen_variant": {
+    "LIFT_P": 0.030489974891778404,
+    "f": 0.5,
+    "P": 0.6414229532363579,
+    "R": 0.6388720435673096,
+    "matched_f_dP": 0.0002337457032569601,
+    "matched_f_dR": 0.00927616685518784
+   },
+   "primary_frac": 0.21436396101799332,
+   "primary_call": "NO-GO",
+   "frozen_frac": 0.5023060113966789,
+   "frozen_call": "PARTIAL"
+  },
+  "dexined_native_0.5": {
+   "primary": {
+    "LIFT_P": 0.016323268834981697,
+    "f": 0.35,
+    "P": 0.5873110592029048,
+    "R": 0.7059092903087892,
+    "matched_f_dP": -0.04614661343295279,
+    "matched_f_dR": 0.06628931970005747
+   },
+   "frozen_variant": {
+    "LIFT_P": 0.03930885860440125,
+    "f": 0.5,
+    "P": 0.620454962643679,
+    "R": 0.652971213823694,
+    "matched_f_dP": -0.020734244889421882,
+    "matched_f_dR": 0.023375337111572247
+   },
+   "primary_frac": 0.26891711425011033,
+   "primary_call": "NO-GO",
+   "frozen_frac": 0.6475923987545512,
+   "frozen_call": "PARTIAL"
+  },
+  "dexined_native_0.7": {
+   "primary": {
+    "LIFT_P": 0.03380202310772629,
+    "f": 0.35,
+    "P": 0.6040544797226779,
+    "R": 0.7065541845175406,
+    "matched_f_dP": -0.02940319291317972,
+    "matched_f_dR": 0.06693421390880883
+   },
+   "frozen_variant": {
+    "LIFT_P": 0.05760680136649399,
+    "f": 0.5,
+    "P": 0.6387529054057718,
+    "R": 0.6556244370930198,
+    "matched_f_dP": -0.0024363021273291485,
+    "matched_f_dR": 0.026028560380897958
+   },
+   "primary_frac": 0.556870232417237,
+   "primary_call": "PARTIAL",
+   "frozen_frac": 0.9490412086737066,
+   "frozen_call": "GO"
+  }
+ },
+ "primary_arm": "pidinet_native_0.5",
+ "headline": {
+  "arm": "pidinet_native_0.5",
+  "LIFT_P": 0.02767575587251303,
+  "fraction_of_TEED": 0.45594325984370726,
+  "call": "PARTIAL"
+ }
+}
