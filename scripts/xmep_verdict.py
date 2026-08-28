@@ -9,10 +9,24 @@ on TEED (BIPED weights). Is the lift a property of learned edge priors in genera
 TEED-specific artifact? This scores a second frozen zero-shot learned detector on the
 identical pipeline and asks what fraction of TEED's lift it reproduces.
 
-METRIC. Identical to the TEED verdict, by IMPORT rather than by copy: the arm's P@1.5 minus
-the CANNY f-frontier's Pareto-envelope precision at the SAME recall, best over f in
-[0.22, 0.50]. teedgen_verdict.analyse() is called directly so the two numbers cannot drift.
-Positive LIFT_P = information the f dial alone cannot buy.
+METRIC (CORRECTED 2026-08-29 — see the note below).
+PRIMARY = the SPEC metric, i.e. exactly the lift that produced the published TEED chair
+reference +0.0607:
+    segments / pull+prune[tuned+len]
+    INTERPOLATED canny P at the same recall (not the Pareto envelope)
+    rows beyond canny's reach EXCLUDED
+    canny frontier restricted to f in {0.15,0.22,0.30,0.35,0.40,0.45,0.50}
+Verified: this returns teed05 = +0.0607 at f=0.40 (segP 0.6148, segR 0.7207), byte-matching
+RECALL_RESULTS.md:198.
+
+SECONDARY (labelled, retained for the audit trail) = the variant this script originally froze:
+points / pull+prune[tuned], Pareto-envelope lower bound LIFT_P_lb, FULL canny frontier
+(f <= 1.00). That variant is MIS-SPECIFIED against the spec's own reference: it scores TEED
+itself at +0.0800, ~32% above the +0.0607 the thresholds are normalised by, so comparing it
+to those thresholds is apples-to-oranges and generous. It is reported, never used for the call.
+
+teedgen_verdict.analyse() is called directly for both, so no formula is copied and the
+numbers cannot drift from the published ones.
 
 FROZEN THRESHOLDS (verbatim from tier1/xmep_spec.md; TEED chair reference LIFT_P = +0.0607):
     GO       LIFT_P >= 0.70 * 0.0607 = +0.04249   mechanism generalises
@@ -38,7 +52,10 @@ GO_FRAC, NOGO_FRAC = 0.70, 0.30
 GO_ABS = GO_FRAC * TEED_LIFT_P_REF
 NOGO_ABS = NOGO_FRAC * TEED_LIFT_P_REF
 FMIN, FMAX = 0.22, 0.50
-KIND, STAGE = "points", TV.PTS
+# PRIMARY = spec metric; SECONDARY = the originally-frozen mis-specified variant.
+KIND, STAGE = "segments", TV.SEG                  # primary
+KIND2, STAGE2 = "points", TV.PTS                  # secondary, labelled
+PUB_CANNY_F = [0.15, 0.22, 0.30, 0.35, 0.40, 0.45, 0.50]
 
 
 def load_arms(prefix):
@@ -72,20 +89,24 @@ if __name__ == "__main__":
     ap.add_argument("--out", default="out/xmep_verdict.json")
     a = ap.parse_args()
 
-    arms = load_arms(a.prefix)
-    if "canny" not in arms:
+    full = load_arms(a.prefix)
+    if "canny" not in full:
         sys.exit(f"no canny frontier under prefix {a.prefix}")
-    if a.arm not in arms:
-        sys.exit(f"arm {a.arm} not found; have {sorted(arms)}")
-    front, res = TV.analyse(arms, KIND, STAGE, FMIN, FMAX)
+    if a.arm not in full:
+        sys.exit(f"arm {a.arm} not found; have {sorted(full)}")
+    pub = dict(full)
+    pub["canny"] = {f: d for f, d in full["canny"].items() if f in PUB_CANNY_F}
+    front, res = TV.analyse(pub, KIND, STAGE, FMIN, FMAX)            # PRIMARY, spec metric
+    _, res2 = TV.analyse(full, KIND2, STAGE2, FMIN, FMAX)            # SECONDARY, mis-specified
 
-    def summarise(name):
-        rows = [r for r in res[name]["rows"] if FMIN - 1e-9 <= r["f"] <= FMAX + 1e-9
-                and np.isfinite(r["LIFT_P_lb"])]
+    def summarise(name, R=None, key="LIFT_P", drop_beyond=True):
+        R = res if R is None else R
+        rows = [r for r in R[name]["rows"] if FMIN - 1e-9 <= r["f"] <= FMAX + 1e-9
+                and np.isfinite(r[key]) and not (drop_beyond and r["beyond_canny_Rmax"])]
         if not rows:
             return None
-        b = max(rows, key=lambda r: r["LIFT_P_lb"])
-        return {"best_LIFT_P": b["LIFT_P_lb"], "at_f": b["f"], "P": b["P"], "R": b["R"],
+        b = max(rows, key=lambda r: r[key])
+        return {"best_LIFT_P": b[key], "at_f": b["f"], "P": b["P"], "R": b["R"],
                 "canny_P_env_at_R": b["canny_P_env_at_R"],
                 "beyond_canny_Rmax": b["beyond_canny_Rmax"],
                 "matched_f_dP": b["matched_f_dP"], "matched_f_dR": b["matched_f_dR"],
@@ -94,6 +115,8 @@ if __name__ == "__main__":
 
     X = summarise(a.arm)
     T = summarise(a.teed_arm) if a.teed_arm in res else None
+    X2 = summarise(a.arm, res2, "LIFT_P_lb", False)
+    T2 = summarise(a.teed_arm, res2, "LIFT_P_lb", False) if a.teed_arm in res2 else None
     lift = X["best_LIFT_P"]
     frac = lift / TEED_LIFT_P_REF
 
@@ -117,7 +140,8 @@ if __name__ == "__main__":
     print("=" * 74)
     print("XMEP — FROZEN GO/NO-GO (thresholds committed before any lift was computed)")
     print("=" * 74)
-    print(f"  prefix {a.prefix}   metric {KIND}/{STAGE}   f-band [{FMIN}, {FMAX}]")
+    print(f"  prefix {a.prefix}   PRIMARY metric {KIND}/{STAGE} (spec)   "
+          f"f-band [{FMIN}, {FMAX}]")
     print(f"  cross-model arm : {a.arm}")
     print(f"    best LIFT_P   = {lift:+.4f}  at f={X['at_f']:.2f}  "
           f"(P={X['P']:.4f} R={X['R']:.4f})")
@@ -125,6 +149,10 @@ if __name__ == "__main__":
         print(f"  in-run TEED arm : {a.teed_arm}")
         print(f"    best LIFT_P   = {T['best_LIFT_P']:+.4f}  at f={T['at_f']:.2f}")
     print(f"  spec TEED reference LIFT_P = {TEED_LIFT_P_REF:+.4f}")
+    if X2:
+        print(f"  [secondary, MIS-SPECIFIED variant — not used for the call] "
+              f"{a.arm} LIFT_P_lb = {X2['best_LIFT_P']:+.4f}"
+              + (f", {a.teed_arm} = {T2['best_LIFT_P']:+.4f}" if T2 else ""))
     print(f"\n  FRACTION of TEED lift    = {frac:.3f}")
     print(f"    GO      >= {GO_FRAC:.2f} ({GO_ABS:+.5f})")
     print(f"    NO-GO   <  {NOGO_FRAC:.2f} ({NOGO_ABS:+.5f})")
@@ -138,7 +166,12 @@ if __name__ == "__main__":
                               "NOGO_abs": NOGO_ABS, "fband": [FMIN, FMAX],
                               "kind": KIND, "stage": STAGE},
                "prefix": a.prefix, "arm": a.arm, "teed_arm": a.teed_arm,
+               "primary_metric": f"{KIND}/{STAGE}, interpolated canny P@R, beyond-reach "
+                                 f"excluded, canny frontier f<={max(PUB_CANNY_F)}",
+               "secondary_metric_mis_specified":
+                   f"{KIND2}/{STAGE2}, Pareto-envelope LIFT_P_lb, full canny frontier",
                "cross_model": X, "teed_in_run": T,
+               "cross_model_secondary": X2, "teed_in_run_secondary": T2,
                "best_LIFT_P": lift, "fraction_of_TEED": frac,
                "gate_directions": dirs, "gate_directions_ok": dir_ok,
                "manifest_ok_count": ok, "manifest_failures": bad,
