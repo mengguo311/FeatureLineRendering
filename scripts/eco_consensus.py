@@ -192,7 +192,7 @@ def consensus_per_gaussian(scene, cache, thr, tau, rho, K, key="native", nms=Tru
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--scene", default="chair")
-    ap.add_argument("--det", required=True, choices=["dexined", "teed"],
+    ap.add_argument("--det", required=True, choices=["dexined", "teed", "pidinet"],
                     help="which CMEPI carrier's cached probability maps to run consensus on")
     ap.add_argument("--thr", type=float, default=None,
                     help="default: the CMEPI carrier threshold (dexined 0.7, teed 0.5)")
