@@ -1,0 +1,182 @@
+{
+  "metric": "forward-warped stroke temporal residual (discrete Frechet, px) + popping penalty P_pop",
+  "pipelines": {
+    "A": "OURS: object-space carrier (3D-chained DT-pulled linelets), projected per frame",
+    "B": "BASELINE: naive image-space Canny on the rendered frame, re-traced per frame, no object-space carrier"
+  },
+  "warp": "identical depth-based forward warp for both pipelines",
+  "held_out": "TEST views only; trajectory 5->15",
+  "args": {
+    "scenes": [
+      "lego"
+    ],
+    "frames": [
+      30,
+      60,
+      120,
+      240
+    ],
+    "variant": "eco_lego",
+    "viz_tag": "_eco_lego",
+    "view_a": 5,
+    "view_b": 15,
+    "nms_mult": 1.0,
+    "knn": 10,
+    "cos_tan": 0.6,
+    "cos_col": 0.5,
+    "gap_mult": 4.0,
+    "min_nodes": 3,
+    "canny_lo": 50,
+    "canny_hi": 150,
+    "min_len": 4,
+    "approx_eps": 1.0,
+    "n_resample": 16,
+    "max_cand": 6,
+    "cand_radius": 40.0,
+    "match_thresh": 3.0,
+    "carrier_persistence": false,
+    "cp_ratio": 0.8,
+    "cp_views": 20,
+    "raw_path": false,
+    "fg_only": false,
+    "fg_erode": 2,
+    "geom2dgs": null,
+    "tag": "_eco_lego"
+  },
+  "scenes": {
+    "lego": {
+      "scene": "lego",
+      "chain": {
+        "n_linelets": 33698,
+        "n_nms": 19123,
+        "n_strokes": 2574,
+        "median_vertices": 4.0
+      },
+      "variant": "eco_lego",
+      "trajectory": "TEST views 5->15, look-at-corrected orbit (object stays framed)",
+      "orbit_target": [
+        -0.012758489698171616,
+        -0.14727139472961426,
+        0.0937424749135971
+      ],
+      "by_frames": {
+        "30": {
+          "A": {
+            "frechet_median": 0.579934040983238,
+            "frechet_mean": 0.7702705032600614,
+            "frechet_p90": 1.5974510015507215,
+            "chamfer_median": 0.3069782572181723,
+            "P_pop": 0.2185339477953907,
+            "unmatched_frac": 0.19659722646507297,
+            "cut_frac": 0.021936721330317713,
+            "n_strokes_per_frame": 1581.4137931034484,
+            "mean_vertices_per_stroke": 4.945307536451121,
+            "n_matched_total": 36929,
+            "warp_dropped_frac": 0.0005256880640333514
+          },
+          "B": {
+            "frechet_median": 1.5095295875300603,
+            "frechet_mean": 1.586802602181854,
+            "frechet_p90": 2.6852052329905445,
+            "chamfer_median": 0.5185470501530096,
+            "P_pop": 0.8029875775217926,
+            "unmatched_frac": 0.8012721101701417,
+            "cut_frac": 0.0017154673516506854,
+            "n_strokes_per_frame": 616.3448275862069,
+            "mean_vertices_per_stroke": 2.2442806142181495,
+            "n_matched_total": 3588,
+            "warp_dropped_frac": 0.1600888171524021
+          },
+          "_seconds": 100.08778810501099
+        },
+        "60": {
+          "A": {
+            "frechet_median": 0.3039410944830671,
+            "frechet_mean": 0.5084370260877518,
+            "frechet_p90": 1.2363717613241283,
+            "chamfer_median": 0.17701949194651773,
+            "P_pop": 0.132639595076414,
+            "unmatched_frac": 0.10920963681082992,
+            "cut_frac": 0.023429958265584104,
+            "n_strokes_per_frame": 1580.2203389830509,
+            "mean_vertices_per_stroke": 4.945440786536322,
+            "n_matched_total": 83188,
+            "warp_dropped_frac": 0.0004995840121097185
+          },
+          "B": {
+            "frechet_median": 1.3935806624037852,
+            "frechet_mean": 1.4821383885188482,
+            "frechet_p90": 2.62609361867464,
+            "chamfer_median": 0.4800693857130355,
+            "P_pop": 0.7637591003192361,
+            "unmatched_frac": 0.7618587947932781,
+            "cut_frac": 0.0019003055259580377,
+            "n_strokes_per_frame": 616.4915254237288,
+            "mean_vertices_per_stroke": 2.243435463252073,
+            "n_matched_total": 8765,
+            "warp_dropped_frac": 0.15983939603458533
+          },
+          "_seconds": 190.05660820007324
+        },
+        "120": {
+          "A": {
+            "frechet_median": 0.15553214729068843,
+            "frechet_mean": 0.3213966654775149,
+            "frechet_p90": 0.7925421712780215,
+            "chamfer_median": 0.09380385015136908,
+            "P_pop": 0.08230736250432047,
+            "unmatched_frac": 0.05853755179439851,
+            "cut_frac": 0.023769810709921936,
+            "n_strokes_per_frame": 1580.9327731092437,
+            "mean_vertices_per_stroke": 4.943686668418432,
+            "n_matched_total": 177351,
+            "warp_dropped_frac": 0.0005009570421551344
+          },
+          "B": {
+            "frechet_median": 1.2736390347701905,
+            "frechet_mean": 1.3982578620285142,
+            "frechet_p90": 2.5819128411440744,
+            "chamfer_median": 0.44219846092158205,
+            "P_pop": 0.7338833241470641,
+            "unmatched_frac": 0.7315549708435596,
+            "cut_frac": 0.002328353303504772,
+            "n_strokes_per_frame": 617.1344537815127,
+            "mean_vertices_per_stroke": 2.2405564594242726,
+            "n_matched_total": 19980,
+            "warp_dropped_frac": 0.160807745080839
+          },
+          "_seconds": 384.6061429977417
+        },
+        "240": {
+          "A": {
+            "frechet_median": 0.07807854151222451,
+            "frechet_mean": 0.19726019189932464,
+            "frechet_p90": 0.4403436961566181,
+            "chamfer_median": 0.047760989947196936,
+            "P_pop": 0.05943802314760026,
+            "unmatched_frac": 0.03512038171815969,
+            "cut_frac": 0.02431764142944058,
+            "n_strokes_per_frame": 1581.2050209205022,
+            "mean_vertices_per_stroke": 4.942781415684958,
+            "n_matched_total": 365071,
+            "warp_dropped_frac": 0.0004963270547917658
+          },
+          "B": {
+            "frechet_median": 1.2039123137139285,
+            "frechet_mean": 1.3431561074162401,
+            "frechet_p90": 2.5559562232826325,
+            "chamfer_median": 0.420844402759067,
+            "P_pop": 0.7188503648107614,
+            "unmatched_frac": 0.7166383451464889,
+            "cut_frac": 0.0022120196642724235,
+            "n_strokes_per_frame": 615.3305439330544,
+            "mean_vertices_per_stroke": 2.240506823764792,
+            "n_matched_total": 42183,
+            "warp_dropped_frac": 0.16091263163847458
+          },
+          "_seconds": 761.9997234344482
+        }
+      }
+    }
+  }
+}

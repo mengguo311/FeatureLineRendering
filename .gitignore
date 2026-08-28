@@ -32,3 +32,13 @@ out/cmepi_backup/
 #     M1a score vectors; the per-arm m1b_*.json summaries ARE tracked
 out/linelets_*_tc_pidinet_*.npz
 out/linelets_*_tc_dexined_*.npz
+
+# --- ECO per-gaussian consensus fields (28 MB), regenerable in ~10 s each:
+#     python scripts/eco_consensus.py --scene <s> --det <d> --K <K> --tau <t> --rho <r> --sigma_c <s>
+#     The out/eco_consensus_*.json provenance files, which ARE tracked, record every argument.
+out/eco_C_*.npy
+
+# --- ECO per-arm linelet dumps (247 MB), regenerable by scripts/eco_m1b.sh;
+#     the per-arm m1b_*_ec_*.json summaries ARE tracked
+out/linelets_*_ec_*.npz
+out/linelets_*_eco_*_test.npz
