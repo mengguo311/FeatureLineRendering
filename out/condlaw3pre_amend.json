@@ -1,0 +1,92 @@
+{
+ "amendment": "Stage-1.5 same-statistic lego re-anchor; supersedes the Stage-1 band",
+ "lego_prime": {
+  "drr80": 0.433354797166774,
+  "ci": [
+   0.41982721614080276,
+   0.4477409315303713
+  ],
+  "auc": 0.736226111309026,
+  "thr": 7.380294597226305,
+  "recall": 0.8,
+  "n_crease": 152390,
+  "n_distractor": 4659,
+  "null_mean": 0.19973921442369608,
+  "statistic": "2DGS[default] theta_normal, refined",
+  "source": "out/condlaw_lego_test.json",
+  "ci_source": "out/condlaw3pre_legoprime_null.json",
+  "model2dgs": "/home/u00134/3dgs_line/tier1/out/2dgs_lego",
+  "views": [
+   5,
+   15,
+   25,
+   35,
+   45,
+   55,
+   65,
+   75,
+   85,
+   95
+  ]
+ },
+ "lego_old": {
+  "drr80": 0.512323,
+  "ci_hi": 0.5281,
+  "statistic": "mesh dihedral on TEED decals (lego-lineage)",
+  "source": "out/condlaw_lego_drr.json"
+ },
+ "chair": {
+  "drr80": 0.985772,
+  "ci": [
+   0.9848,
+   0.9866
+  ],
+  "source": "out/condlaw_chair_test.json"
+ },
+ "shift_lego": -0.07896820283322598,
+ "sanity_gate": {
+  "band": [
+   0.4,
+   0.62
+  ],
+  "nogo_at": 0.723,
+  "verdict": "GO"
+ },
+ "ship": {
+  "t": 0.613155668358714,
+  "rho_flat_R0.04": 0.14495,
+  "D_hat_old": 0.8026209380287648,
+  "band_old": [
+   0.7226209380287648,
+   0.8826209380287647
+  ],
+  "D_hat_new": 0.772072536382832,
+  "band_new": [
+   0.6920725363828321,
+   0.852072536382832
+  ],
+  "D_hat_new_all_variants": {
+   "rho_flat@R=0.01": 0.7629033803721217,
+   "rho_flat_far@R=0.01": 0.6997351835338012,
+   "rho_flat@R=0.02": 0.8010201567895533,
+   "rho_flat_far@R=0.02": 0.9101640805396085,
+   "rho_flat@R=0.04": 0.772072536382832,
+   "rho_flat_far@R=0.04": 0.935565704802211,
+   "proxy2_flatarea_per_creasept@R=0.04": 0.6810401651214032
+  },
+  "D_hat_new_range": [
+   0.6810401651214032,
+   0.935565704802211
+  ]
+ },
+ "amended_prereg": {
+  "PRIMARY_monotonicity": "0.4477 < DRR@80(ship) < 0.9848, ordered lego' < ship < chair, ALL SAME-STATISTIC",
+  "SECONDARY_affine_band": [
+   0.6920725363828321,
+   0.852072536382832
+  ],
+  "HARD_GO_FLOOR": 0.4477409315303713,
+  "falsified_if": "DRR@80(ship) <= 0.4477 or >= 0.9848",
+  "pipeline": "scripts/condlaw_chair_test.py --scene ship --views test --no_vanilla --model2dgs out/2dgs_ship, statistic 2DGS[default] theta_normal refined"
+ }
+}

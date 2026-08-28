@@ -285,3 +285,76 @@ ever widened.
 `out/condlaw3pre_{rhoflat,rhoflat2,anchorcheck,prereg}.json`; `out/CONDLAW3PRE_RESULTS.md`;
 `logs/condlaw3pre_rhoflat{,2}.log`. Mesh-side only, CPU; `CUDA_VISIBLE_DEVICES=1`, u00134
 processes only.
+
+---
+
+# STAGE 1.5 AMENDMENT — same-statistic lego re-anchor (2026-08-29)
+
+Stage 1 calibrated on anchors measured with **different statistics**: chair 0.986 via the
+chair lineage (2DGS rendered-normal ribbon `theta_normal` on mesh-refined flat/sharp classes),
+lego 0.512 via the lego lineage (mesh dihedral on TEED-defined decals). Since Stage 2 scores
+ship with the **chair** lineage, the lower anchor was cross-lineage and confounded the
+flat-mass effect with a statistic-change effect. lego already has a trained 2DGS on disk, so
+the same-statistic anchor was measured directly — **before ship is touched or unblinded**.
+
+```
+scripts/condlaw_chair_test.py --scene lego --views test --no_vanilla     --model2dgs out/2dgs_lego          ->  out/condlaw_lego_test.{json,npz}
+```
+
+Identical statistic, identical class construction, identical frozen TEST split
+`{5,15,…,95}` as chair's 0.986. (`--model2dgs` had to be passed explicitly: it defaults to
+`out/2dgs_chair`, so omitting it would have scored lego's pixels with **chair's** model.
+The JSON records `model2dgs = /home/u00134/3dgs_line/tier1/out/2dgs_lego` as the guard.)
+
+## lego' — the same-statistic anchor
+
+| quantity | value | source |
+|---|---|---|
+| **lego' DRR@80** | **0.433355** | `out/condlaw_lego_test.json` |
+| 95% bootstrap CI | [0.4198, 0.4477] | `out/condlaw3pre_legoprime_null.json` |
+| AUC | 0.7362 | same |
+| measured chance floor (label permutation) | 0.1997 | same |
+| n_TrueCrease / n_Distractor | 152 390 / 4 659 | `out/condlaw_lego_test.json` |
+| shift vs old lego-lineage anchor | **-0.0790** (0.4334 vs 0.5123) | — |
+
+**Frozen sanity gate [0.40, 0.62] -> GO.** lego' is comfortably inside, far from the 0.723
+NO-GO trigger, so the original calibration slope was **not** a metric artefact: swapping the
+lower anchor to the same statistic moves it by only 0.079.
+
+**An instrument difference worth stating precisely.** Under this chair-lineage refinement
+lego's flat class is **not empty**: 4 659 of 23 577 fabric loci (19.8%) are mesh-flat by the
+ribbon **depth**-dihedral criterion (`theta_depth < 5°`). CONDLAW's "0 of 3814 distractors
+flat" used a **different statistic on a different population** (3D ball normal *dispersion*
+on the TEED-defined decal class), so there is no contradiction — but it explains why lego'
+sits at 0.433, well above the 0.200 chance floor, rather than at chance. The lego end of the
+law is "poorly rankable", not "unrankable", once measured with the chair instrument.
+
+## Amended ship calibration — UNCONDITIONAL (supersedes the Stage-1 band)
+
+`t(ship) = 0.6132` is **unchanged** — `rho_flat` is untouched and ship was not inspected.
+Only the anchors moved.
+
+| anchors | D_hat(ship) | SECONDARY band | PRIMARY monotonicity interval |
+|---|---|---|---|
+| OLD — lego 0.512, cross-lineage | 0.8026 | [0.723, 0.883] | (0.5281, 0.9848) |
+| **NEW — lego' 0.4334, same-statistic** | **0.7721** | **[0.692, 0.852]** | **(0.4477, 0.9848)** |
+
+### AMENDED FROZEN PRE-REGISTRATION for ship
+- **PRIMARY (load-bearing):** `0.4477 < DRR@80(ship) < 0.9848`, ordered **lego' < ship < chair**,
+  now **all three measured with the same statistic**.
+- **SECONDARY (affine):** `DRR@80(ship) in [0.692, 0.852]` (`D_hat = 0.7721 +/- 0.08`).
+- **HARD GO FLOOR:** `DRR@80(ship) > 0.4477`.
+- **FALSIFIED IF:** `DRR@80(ship) <= 0.4477` or `>= 0.9848`.
+- **PIPELINE (frozen):** `scripts/condlaw_chair_test.py --scene ship --views test
+  --no_vanilla --model2dgs out/2dgs_ship`, reading
+  `2DGS[default]|theta_normal|refined`.
+- Amended `D_hat(ship)` across all 7 scalar variants: **[0.681, 0.936]** (was [0.725, 0.943]).
+
+**Declared cost of this fix.** Re-anchoring **widens** the primary interval at the bottom
+(0.5281 -> 0.4477), i.e. it makes the monotonicity test *easier to pass*, not harder. That is
+the price of removing the cross-lineage confound, and it is stated here rather than left to
+be noticed after the measurement. The §5b anchor-policy caveat is now **retired**: the old
+0.512-vs-0.279 ambiguity came from choosing an orientation policy for the lego-lineage
+statistic, and that statistic is no longer an anchor.
+
+Frozen to `out/condlaw3pre_amend.json`. **Ship remains untouched and unblinded.**
