@@ -42,3 +42,11 @@ out/eco_C_*.npy
 #     the per-arm m1b_*_ec_*.json summaries ARE tracked
 out/linelets_*_ec_*.npz
 out/linelets_*_eco_*_test.npz
+
+# --- TGAP per-f pull dumps (659 MB) + per-arm linelet sets (31 MB) + label dumps (11 MB).
+#     All regenerable in ~4 min by scripts/tgap_pull_all.sh (+ scripts/tgap_e_variants_cpu.py
+#     for the E variants, scripts/tgap_temporal.py for the per-arm linelet sets). The jsons
+#     and out/TGAP_RESULTS.md that every number in the report is read from ARE tracked.
+out/tgap_pull_*.npz
+out/tgap_labels_*.npz
+out/linelets_lego_tgap*_test.npz
