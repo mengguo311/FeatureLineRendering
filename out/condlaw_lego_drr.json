@@ -1,0 +1,260 @@
+{
+ "meta": {
+  "target_recall": 0.8,
+  "scope": "own",
+  "test_npz": "out/diag2dgs_lego_test.npz",
+  "val_npz": "out/diag2dgs_lego_val_sweep.npz",
+  "definition": "DRR@80 = frac(decal < t*) at t* = max{t: frac(crease>=t) >= 0.80}"
+ },
+ "rows": [
+  {
+   "signal": "mesh3d_rho4_xi0.25_nmin5",
+   "arm": "GT-mesh",
+   "name": "mesh dihedral (theta_max)",
+   "status": "OK",
+   "scope": "own",
+   "n_cre_test": 28826,
+   "n_dec_test": 3814,
+   "auc_test": 0.39643535407333974,
+   "frozen": {
+    "drr": 0.27897220765600417,
+    "thr": 0.024921854249502887,
+    "recall": 0.800006938180809,
+    "n_cre": 28826,
+    "n_dec": 3814
+   },
+   "oracle_sign": -1,
+   "oracle": {
+    "drr": 0.5123230204509701,
+    "thr": -87.15996753642014,
+    "recall": 0.800006938180809,
+    "n_cre": 28826,
+    "n_dec": 3814
+   },
+   "val": {
+    "auc_val": 0.4360178996520784,
+    "sign": -1,
+    "n_cre_val": 28251,
+    "n_dec_val": 4064,
+    "thr_val": -87.181376743997,
+    "drr_val": 0.48006889763779526,
+    "recall_val": 0.8000070793954196
+   },
+   "val_on_test": {
+    "drr": 0.5123230204509701,
+    "thr": -87.181376743997,
+    "recall": 0.8004232290293485,
+    "n_cre": 28826,
+    "n_dec": 3814,
+    "sign": -1
+   }
+  },
+  {
+   "signal": "spreadmesh_rho4_xi0.25_nmin5",
+   "arm": "GT-mesh",
+   "name": "mesh normal-dispersion (split-free)",
+   "status": "OK",
+   "scope": "own",
+   "n_cre_test": 28826,
+   "n_dec_test": 3814,
+   "auc_test": 0.4675268215989971,
+   "frozen": {
+    "drr": 0.10461457787100158,
+    "thr": 40.655782724712466,
+    "recall": 0.800006938180809,
+    "n_cre": 28826,
+    "n_dec": 3814
+   },
+   "oracle_sign": -1,
+   "oracle": {
+    "drr": 0.1691137912952281,
+    "thr": -48.09204600809269,
+    "recall": 0.800006938180809,
+    "n_cre": 28826,
+    "n_dec": 3814
+   },
+   "val": {
+    "auc_val": 0.4881587269435379,
+    "sign": -1,
+    "n_cre_val": 28251,
+    "n_dec_val": 4064,
+    "thr_val": -48.168117253113635,
+    "drr_val": 0.14591535433070865,
+    "recall_val": 0.8000070793954196
+   },
+   "val_on_test": {
+    "drr": 0.16203460933403252,
+    "thr": -48.168117253113635,
+    "recall": 0.8047942829390133,
+    "n_cre": 28826,
+    "n_dec": 3814,
+    "sign": -1
+   }
+  },
+  {
+   "signal": "surfel3d_rho4_xi0.25_nmin5",
+   "arm": "2DGS",
+   "name": "surfel dihedral (theta_max)",
+   "status": "OK",
+   "scope": "own",
+   "n_cre_test": 28737,
+   "n_dec_test": 3801,
+   "auc_test": 0.4109599786365086,
+   "frozen": {
+    "drr": 0.18468823993685873,
+    "thr": 13.726527568333463,
+    "recall": 0.8000139193374395,
+    "n_cre": 28737,
+    "n_dec": 3801
+   },
+   "oracle_sign": -1,
+   "oracle": {
+    "drr": 0.3249144961852144,
+    "thr": -65.37183353173657,
+    "recall": 0.8000139193374395,
+    "n_cre": 28737,
+    "n_dec": 3801
+   },
+   "val": {
+    "auc_val": 0.4089889654053509,
+    "sign": -1,
+    "n_cre_val": 28155,
+    "n_dec_val": 4050,
+    "thr_val": -65.31572869108571,
+    "drr_val": 0.31703703703703706,
+    "recall_val": 0.8
+   },
+   "val_on_test": {
+    "drr": 0.3264930281504867,
+    "thr": -65.31572869108571,
+    "recall": 0.7995267425270557,
+    "n_cre": 28737,
+    "n_dec": 3801,
+    "sign": -1
+   }
+  },
+  {
+   "signal": "spread2dgs_rho4_xi0.25_nmin5",
+   "arm": "2DGS",
+   "name": "surfel normal-dispersion (split-free)",
+   "status": "OK",
+   "scope": "own",
+   "n_cre_test": 28737,
+   "n_dec_test": 3801,
+   "auc_test": 0.5645493481297977,
+   "frozen": {
+    "drr": 0.2825572217837411,
+    "thr": 31.803567826101634,
+    "recall": 0.8000139193374395,
+    "n_cre": 28737,
+    "n_dec": 3801
+   },
+   "oracle_sign": 1,
+   "oracle": {
+    "drr": 0.2825572217837411,
+    "thr": 31.803567826101634,
+    "recall": 0.8000139193374395,
+    "n_cre": 28737,
+    "n_dec": 3801
+   },
+   "val": {
+    "auc_val": 0.5552660426957473,
+    "sign": 1,
+    "n_cre_val": 28155,
+    "n_dec_val": 4050,
+    "thr_val": 31.894133713485495,
+    "drr_val": 0.26987654320987653,
+    "recall_val": 0.8
+   },
+   "val_on_test": {
+    "drr": 0.28781899500131547,
+    "thr": 31.894133713485495,
+    "recall": 0.7964296899467586,
+    "n_cre": 28737,
+    "n_dec": 3801,
+    "sign": 1
+   }
+  },
+  {
+   "signal": "surfel3d_perlinelet",
+   "arm": "2DGS",
+   "name": "surfel dihedral, per-linelet radius",
+   "status": "OK",
+   "scope": "own",
+   "n_cre_test": 27159,
+   "n_dec_test": 3708,
+   "auc_test": 0.36106917698655244,
+   "frozen": {
+    "drr": 0.13565264293419632,
+    "thr": 14.488222722165684,
+    "recall": 0.8000294561655437,
+    "n_cre": 27159,
+    "n_dec": 3708
+   },
+   "oracle_sign": -1,
+   "oracle": {
+    "drr": 0.40668824163969797,
+    "thr": -60.05841387696596,
+    "recall": 0.8000294561655437,
+    "n_cre": 27159,
+    "n_dec": 3708
+   },
+   "val": null,
+   "val_on_test": null
+  },
+  {
+   "signal": "ribbon2dgs",
+   "arm": "2DGS",
+   "name": "rendered-normal ribbon (2DGS)",
+   "status": "OK",
+   "scope": "own",
+   "n_cre_test": 28961,
+   "n_dec_test": 3770,
+   "auc_test": 0.33068901679446894,
+   "frozen": {
+    "drr": 0.16259946949602122,
+    "thr": 12.25526230763563,
+    "recall": 0.8000069058388868,
+    "n_cre": 28961,
+    "n_dec": 3770
+   },
+   "oracle_sign": -1,
+   "oracle": {
+    "drr": 0.516710875331565,
+    "thr": -33.82333807590369,
+    "recall": 0.8000069058388868,
+    "n_cre": 28961,
+    "n_dec": 3770
+   },
+   "val": null,
+   "val_on_test": null
+  },
+  {
+   "signal": "ribbon3dgs_vanilla",
+   "arm": "2DGS",
+   "name": "rendered-normal ribbon (vanilla 3DGS)",
+   "status": "OK",
+   "scope": "own",
+   "n_cre_test": 28963,
+   "n_dec_test": 3770,
+   "auc_test": 0.38746339768904825,
+   "frozen": {
+    "drr": 0.16445623342175067,
+    "thr": 14.966929167170811,
+    "recall": 0.8000207160860409,
+    "n_cre": 28963,
+    "n_dec": 3770
+   },
+   "oracle_sign": -1,
+   "oracle": {
+    "drr": 0.3952254641909814,
+    "thr": -34.60941943322856,
+    "recall": 0.8000207160860409,
+    "n_cre": 28963,
+    "n_dec": 3770
+   },
+   "val": null,
+   "val_on_test": null
+  }
+ ]
+}

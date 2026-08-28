@@ -1,0 +1,122 @@
+{
+ "scene": "chair",
+ "views": [
+  5,
+  15,
+  25,
+  35,
+  45,
+  55,
+  65,
+  75,
+  85,
+  95
+ ],
+ "view_set": "test",
+ "flat_deg": 5.0,
+ "sharp_deg": 20.0,
+ "target_recall": 0.8,
+ "model2dgs": "/home/u00134/3dgs_line/tier1/out/2dgs_chair",
+ "rows": {
+  "vanilla-3DGS|theta_depth|headline": {
+   "status": "OK",
+   "auc": 0.3943332705095625,
+   "drr": 0.13653117022401473,
+   "thr": 11.307605529956756,
+   "recall": 0.8000030337044565,
+   "n_cre": 65926,
+   "n_dec": 132402
+  },
+  "vanilla-3DGS|theta_depth|refined": {
+   "status": "OK",
+   "auc": 0.44744812713560955,
+   "drr": 0.18266768273639236,
+   "thr": 14.053660681793552,
+   "recall": 0.8000152504892866,
+   "n_cre": 39343,
+   "n_dec": 80047
+  },
+  "vanilla-3DGS|theta_normal|headline": {
+   "status": "OK",
+   "auc": 0.634576391385824,
+   "drr": 0.35087083276687664,
+   "thr": 9.877552109091056,
+   "recall": 0.8000030337044565,
+   "n_cre": 65926,
+   "n_dec": 132402
+  },
+  "vanilla-3DGS|theta_normal|refined": {
+   "status": "OK",
+   "auc": 0.696688675983903,
+   "drr": 0.4408909765512761,
+   "thr": 11.150574378853916,
+   "recall": 0.8000152504892866,
+   "n_cre": 39343,
+   "n_dec": 80047
+  },
+  "2DGS[default]|theta_depth|headline": {
+   "status": "OK",
+   "auc": 0.6392160661828227,
+   "drr": 0.4487589446602852,
+   "thr": 8.939727022277081,
+   "recall": 0.8000030204180258,
+   "n_cre": 66216,
+   "n_dec": 192014
+  },
+  "2DGS[default]|theta_depth|refined": {
+   "status": "OK",
+   "auc": 0.7750415301660182,
+   "drr": 0.6479581617892511,
+   "thr": 19.45201520220325,
+   "recall": 0.8,
+   "n_cre": 39565,
+   "n_dec": 134805
+  },
+  "2DGS[default]|theta_normal|headline": {
+   "status": "OK",
+   "auc": 0.8457486886369407,
+   "drr": 0.7860885143791598,
+   "thr": 6.157012841158703,
+   "recall": 0.8000060412009907,
+   "n_cre": 66212,
+   "n_dec": 192014
+  },
+  "2DGS[default]|theta_normal|refined": {
+   "status": "OK",
+   "auc": 0.9757223861750287,
+   "drr": 0.9857720410963985,
+   "thr": 12.483911088761106,
+   "recall": 0.800020220402386,
+   "n_cre": 39564,
+   "n_dec": 134805
+  },
+  "GT-mesh_(ceiling_control)|theta_depth|headline": {
+   "status": "OK",
+   "auc": 0.8619626025038932,
+   "drr": 0.7999156311518951,
+   "thr": 10.177025820043426,
+   "recall": 0.8000030204180258,
+   "n_cre": 66216,
+   "n_dec": 192014
+  },
+  "GT-mesh_(ceiling_control)|theta_depth|refined": {
+   "status": "OK",
+   "auc": 1.0,
+   "drr": 1.0,
+   "thr": 27.248997700652946,
+   "recall": 0.8,
+   "n_cre": 39565,
+   "n_dec": 134805
+  },
+  "GT-mesh_(ceiling_control)|theta_normal|headline": {
+   "status": "TOO_FEW",
+   "n_fab": 0,
+   "n_cre": 0
+  },
+  "GT-mesh_(ceiling_control)|theta_normal|refined": {
+   "status": "TOO_FEW",
+   "n_fab": 0,
+   "n_cre": 0
+  }
+ }
+}

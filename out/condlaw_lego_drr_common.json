@@ -1,0 +1,260 @@
+{
+ "meta": {
+  "target_recall": 0.8,
+  "scope": "common",
+  "test_npz": "out/diag2dgs_lego_test.npz",
+  "val_npz": "out/diag2dgs_lego_val_sweep.npz",
+  "definition": "DRR@80 = frac(decal < t*) at t* = max{t: frac(crease>=t) >= 0.80}"
+ },
+ "rows": [
+  {
+   "signal": "mesh3d_rho4_xi0.25_nmin5",
+   "arm": "GT-mesh",
+   "name": "mesh dihedral (theta_max)",
+   "status": "OK",
+   "scope": "common",
+   "n_cre_test": 26760,
+   "n_dec_test": 3644,
+   "auc_test": 0.3999202827835835,
+   "frozen": {
+    "drr": 0.2829308452250274,
+    "thr": 0.022882130184648585,
+    "recall": 0.8,
+    "n_cre": 26760,
+    "n_dec": 3644
+   },
+   "oracle_sign": -1,
+   "oracle": {
+    "drr": 0.5142700329308453,
+    "thr": -87.17308405015548,
+    "recall": 0.8,
+    "n_cre": 26760,
+    "n_dec": 3644
+   },
+   "val": {
+    "auc_val": NaN,
+    "sign": -1,
+    "n_cre_val": 0,
+    "n_dec_val": 0,
+    "thr_val": NaN,
+    "drr_val": NaN,
+    "recall_val": NaN
+   },
+   "val_on_test": {
+    "drr": NaN,
+    "thr": NaN,
+    "recall": NaN,
+    "n_cre": 26760,
+    "n_dec": 3644,
+    "sign": -1
+   }
+  },
+  {
+   "signal": "spreadmesh_rho4_xi0.25_nmin5",
+   "arm": "GT-mesh",
+   "name": "mesh normal-dispersion (split-free)",
+   "status": "OK",
+   "scope": "common",
+   "n_cre_test": 26760,
+   "n_dec_test": 3644,
+   "auc_test": 0.4754208753172896,
+   "frozen": {
+    "drr": 0.11004390779363336,
+    "thr": 40.67703202232653,
+    "recall": 0.8,
+    "n_cre": 26760,
+    "n_dec": 3644
+   },
+   "oracle_sign": -1,
+   "oracle": {
+    "drr": 0.15203073545554335,
+    "thr": -48.114131683581284,
+    "recall": 0.8,
+    "n_cre": 26760,
+    "n_dec": 3644
+   },
+   "val": {
+    "auc_val": NaN,
+    "sign": -1,
+    "n_cre_val": 0,
+    "n_dec_val": 0,
+    "thr_val": NaN,
+    "drr_val": NaN,
+    "recall_val": NaN
+   },
+   "val_on_test": {
+    "drr": NaN,
+    "thr": NaN,
+    "recall": NaN,
+    "n_cre": 26760,
+    "n_dec": 3644,
+    "sign": -1
+   }
+  },
+  {
+   "signal": "surfel3d_rho4_xi0.25_nmin5",
+   "arm": "2DGS",
+   "name": "surfel dihedral (theta_max)",
+   "status": "OK",
+   "scope": "common",
+   "n_cre_test": 26760,
+   "n_dec_test": 3644,
+   "auc_test": 0.4183062765501863,
+   "frozen": {
+    "drr": 0.18880351262349068,
+    "thr": 13.741212212734844,
+    "recall": 0.8,
+    "n_cre": 26760,
+    "n_dec": 3644
+   },
+   "oracle_sign": -1,
+   "oracle": {
+    "drr": 0.31366630076838636,
+    "thr": -65.45228775283759,
+    "recall": 0.8,
+    "n_cre": 26760,
+    "n_dec": 3644
+   },
+   "val": {
+    "auc_val": NaN,
+    "sign": -1,
+    "n_cre_val": 0,
+    "n_dec_val": 0,
+    "thr_val": NaN,
+    "drr_val": NaN,
+    "recall_val": NaN
+   },
+   "val_on_test": {
+    "drr": NaN,
+    "thr": NaN,
+    "recall": NaN,
+    "n_cre": 26760,
+    "n_dec": 3644,
+    "sign": -1
+   }
+  },
+  {
+   "signal": "spread2dgs_rho4_xi0.25_nmin5",
+   "arm": "2DGS",
+   "name": "surfel normal-dispersion (split-free)",
+   "status": "OK",
+   "scope": "common",
+   "n_cre_test": 26760,
+   "n_dec_test": 3644,
+   "auc_test": 0.5723598613688533,
+   "frozen": {
+    "drr": 0.2906147091108672,
+    "thr": 31.74349735621847,
+    "recall": 0.8,
+    "n_cre": 26760,
+    "n_dec": 3644
+   },
+   "oracle_sign": 1,
+   "oracle": {
+    "drr": 0.2906147091108672,
+    "thr": 31.74349735621847,
+    "recall": 0.8,
+    "n_cre": 26760,
+    "n_dec": 3644
+   },
+   "val": {
+    "auc_val": NaN,
+    "sign": -1,
+    "n_cre_val": 0,
+    "n_dec_val": 0,
+    "thr_val": NaN,
+    "drr_val": NaN,
+    "recall_val": NaN
+   },
+   "val_on_test": {
+    "drr": NaN,
+    "thr": NaN,
+    "recall": NaN,
+    "n_cre": 26760,
+    "n_dec": 3644,
+    "sign": -1
+   }
+  },
+  {
+   "signal": "surfel3d_perlinelet",
+   "arm": "2DGS",
+   "name": "surfel dihedral, per-linelet radius",
+   "status": "OK",
+   "scope": "common",
+   "n_cre_test": 26760,
+   "n_dec_test": 3644,
+   "auc_test": 0.3636193841587375,
+   "frozen": {
+    "drr": 0.13693743139407244,
+    "thr": 14.520822838689334,
+    "recall": 0.8,
+    "n_cre": 26760,
+    "n_dec": 3644
+   },
+   "oracle_sign": -1,
+   "oracle": {
+    "drr": 0.40257958287596046,
+    "thr": -60.05841387696596,
+    "recall": 0.8,
+    "n_cre": 26760,
+    "n_dec": 3644
+   },
+   "val": null,
+   "val_on_test": null
+  },
+  {
+   "signal": "ribbon2dgs",
+   "arm": "2DGS",
+   "name": "rendered-normal ribbon (2DGS)",
+   "status": "OK",
+   "scope": "common",
+   "n_cre_test": 26760,
+   "n_dec_test": 3644,
+   "auc_test": 0.33407451321581927,
+   "frozen": {
+    "drr": 0.16437980241492864,
+    "thr": 12.13831880243985,
+    "recall": 0.8,
+    "n_cre": 26760,
+    "n_dec": 3644
+   },
+   "oracle_sign": -1,
+   "oracle": {
+    "drr": 0.5120746432491767,
+    "thr": -33.54471319366563,
+    "recall": 0.8,
+    "n_cre": 26760,
+    "n_dec": 3644
+   },
+   "val": null,
+   "val_on_test": null
+  },
+  {
+   "signal": "ribbon3dgs_vanilla",
+   "arm": "2DGS",
+   "name": "rendered-normal ribbon (vanilla 3DGS)",
+   "status": "OK",
+   "scope": "common",
+   "n_cre_test": 26760,
+   "n_dec_test": 3644,
+   "auc_test": 0.3907547821100353,
+   "frozen": {
+    "drr": 0.16630076838638858,
+    "thr": 14.974013914903392,
+    "recall": 0.8,
+    "n_cre": 26760,
+    "n_dec": 3644
+   },
+   "oracle_sign": -1,
+   "oracle": {
+    "drr": 0.3902305159165752,
+    "thr": -34.57449748233251,
+    "recall": 0.8,
+    "n_cre": 26760,
+    "n_dec": 3644
+   },
+   "val": null,
+   "val_on_test": null
+  }
+ ]
+}
