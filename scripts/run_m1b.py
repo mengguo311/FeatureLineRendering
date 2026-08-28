@@ -206,6 +206,12 @@ def main():
                     help="additionally keep only the top fraction of the measured-best "
                          "mesh-free statistic (linelet_prune.consensus_statistic)")
     ap.add_argument("--len_thr", type=float, default=0.9)
+    # CAP: the headline stage is pull+prune[TUNED+len], but the npz only ever stored the SPEC
+    # prune mask, so that stage cannot be reconstructed from disk.  This opt-in flag adds the
+    # tuned mask and the tuned length-modulated half-lengths to the npz.  Default off, so an
+    # un-flagged run writes byte-identical output to every arm produced before it.
+    ap.add_argument("--dump_tuned", action="store_true",
+                    help="also store keep_tuned / l_mod_tuned / inlier_ratio_tuned in the npz")
     ap.add_argument("--len_lo", type=float, default=0.25)
     ap.add_argument("--len_hi", type=float, default=1.5)
     ap.add_argument("--len_mod", action="store_true",
@@ -418,9 +424,12 @@ def main():
           "total_s": time.time() - t_all}
     jp = os.path.join(OUT, f"m1b_{args.scene}{tag}.json")
     json.dump(js, open(jp, "w"), indent=2)
+    extra = ({"keep_tuned": keep_t, "l_mod_tuned": l_mod_t,
+              "inlier_ratio_tuned": st_t["inlier_ratio"],
+              "median_resid_tuned": st_t["median_resid"]} if args.dump_tuned else {})
     np.savez(os.path.join(OUT, f"linelets_{args.scene}{tag}.npz"),
              p0=P0, p=P1, t=t1, l=l1, keep=keep, inlier_ratio=st["inlier_ratio"],
-             median_resid=st["median_resid"], n_vis=nv, seed_idx=idx)
+             median_resid=st["median_resid"], n_vis=nv, seed_idx=idx, **extra)
     print(f"  wrote {jp}")
 
 
