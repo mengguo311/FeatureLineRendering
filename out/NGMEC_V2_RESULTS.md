@@ -106,6 +106,35 @@ repo: chair has never exceeded P=0.830 (at R=0.170) and lego has never exceeded 
 P=0.744. NG-MEC-v2 does not regress those, but the joint gate `P>=0.85 AND R>=0.65` has
 never been approached on either scene, and lego's recall ceiling is the binding constraint.
 
+### NG-MEC-v2 vs the prior best — it ties, it does not improve
+
+At the gate's own operating point (max P subject to R >= 0.65) on chair TEST:
+
+| | P@1.5 | R@1.5 | source |
+|---|---|---|---|
+| prior best over all runs | 0.6929 | 0.6681 | `out/m1b_chair_ng_epi_t1.5_r0_m3_f0.40.json` |
+| **NG-MEC-v2** | **0.6921** | **0.6680** | `out/m1b_chair_ngmecv2_final_test.json` |
+| delta | **-0.0008** | -0.0001 | |
+
+So the three-cue additive score reproduces the best previously-known chair operating point
+to within 0.001 and does not beat it. That is the honest headline: the added cues bought
+nothing on chair, and the epipolar cue's small AUC lift (0.8542 -> 0.8610 at the gaussian
+level) does not translate into end-to-end precision at fixed recall.
+
+### Silent-fallback trap: checked, did not fire
+
+`run_m1b.py:58-62` does NOT error when `--score` fails to resolve — it silently recomputes
+the DEFAULT Canny recipe, so a bad path yields a baseline run that looks successful. Every
+run reported here was verified against that trap:
+
+- both final TEST runs log `[seeds] reusing OVERALL score ...ngmecv2_g0_e0p25.npy`, with
+  seed counts matching `round(0.4*N)` exactly (chair 22754, lego 39888);
+- all 16 sweep runs record an existing `ngmecv2` score path and produce **16 distinct
+  frontiers** — a fallback would have produced one identical frontier 16 times;
+- the `(0,0)` control is rank-identical to the pure TEED base (so the quoted baseline is
+  genuinely pure-TEED, not Canny), and the selected vector reproduces `w=(1, 0, 0.25)`
+  exactly.
+
 This is consistent with, not contradicted by, the three independent prior NO-GOs on lego
 precision (ECO epipolar consensus, TGAP TEED-gated relaxation, DIAG-2DGS dihedral — the last
 of which failed on the GT mesh itself) and with CONDLAW's finding that lego's static
