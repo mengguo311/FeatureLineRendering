@@ -63,7 +63,10 @@ def per_view_dP(scene="lego", tau=1.5):
     """Per-view segment precision for the matched-f Canny and TEED dumps. Mesh EVAL-ONLY."""
     import run_m1b as RM
     import tune_lib
-    h = tune_lib.Harness(scene, eval_split="test")            # mesh_oracle lives here
+    from src import view_split
+    # run_m1b.py:313 builds the harness as Harness(scene, views=tuple(eval_views));
+    # the frozen TEST split is the eval split here, so pass it explicitly.
+    h = tune_lib.Harness(scene, views=tuple(view_split.TEST))   # mesh_oracle lives here
     out = {}
     for name, path in (("canny", DUMP_CANNY), ("teed", DUMP_TEED)):
         z = np.load(os.path.join(TIER1, path), allow_pickle=True)
