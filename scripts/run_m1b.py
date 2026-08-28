@@ -37,12 +37,18 @@ SYN = os.path.join(TIER1, "scripts/explore/syn")
 
 
 # ===================================================================== METHOD PATH
+SCORE_OVERRIDE = None   # set by --score: use an alternative M1a OVERALL score .npy
+                        # (e.g. the same recipe with EDGE_SOURCE="teed"). None = published.
+
+
 def get_seeds(scene, f, X, verbose=True):
     """M1a seeds = top-f of the OVERALL recipe score (reused, NOT rebuilt).
 
     Uses the cached per-gaussian score written by scripts/explore/syn/run_final.py;
-    if it is absent, runs the same recipe through m1a_seeds.extract_seeds."""
-    p = os.path.join(SYN, f"finalscore_overall_{scene}.npy")
+    if it is absent, runs the same recipe through m1a_seeds.extract_seeds.
+    SCORE_OVERRIDE swaps in a score computed from a different photometric edge source;
+    everything downstream of the score is untouched, so any delta is the detector's."""
+    p = SCORE_OVERRIDE or os.path.join(SYN, f"finalscore_overall_{scene}.npy")
     if os.path.exists(p):
         s = np.load(p)
         if len(s) != len(X):
@@ -174,6 +180,9 @@ def viz(h, v, seeds_pos, p, t, l, keep, inl, path, tag=""):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--scene", default="chair")
+    ap.add_argument("--score", default=None,
+                    help="alternative M1a OVERALL score .npy (e.g. TEED-sourced). "
+                         "Default = the published Canny-sourced score.")
     ap.add_argument("--f", type=float, default=0.30, help="M1a seed keep-fraction")
     ap.add_argument("--views", type=int, default=100, help="train views used for the pull")
     ap.add_argument("--edge", default="sharp", choices=sorted(dt_pull.EDGE_SETS))
@@ -219,6 +228,8 @@ def main():
     ap.add_argument("--no_viz", action="store_true")
     ap.add_argument("--device", default="cuda")
     args = ap.parse_args()
+    global SCORE_OVERRIDE
+    SCORE_OVERRIDE = args.score
     os.makedirs(OUT, exist_ok=True)
     tag = args.tag
     torch.cuda.reset_peak_memory_stats()

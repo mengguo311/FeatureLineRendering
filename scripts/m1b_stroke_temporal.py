@@ -22,6 +22,7 @@ sys.path.insert(0, TIER1)
 sys.path.insert(0, os.path.join(TIER1, "scripts"))
 
 from src import common, render, visibility, strokes, stroke_metric, view_split
+from src import render2dgs
 import temporal_m1b as T
 
 OUT = os.path.join(TIER1, "out")
@@ -71,7 +72,16 @@ def baseline_strokes(gray, lo, hi, min_len, eps, fg=None):
     return strokes.trace_polylines(e > 0, min_len=min_len, approx_eps=eps)
 
 
-def frame_data(g, keep_g, cam, chain3d, args):
+def frame_data(g, keep_g, cam, chain3d, args, g2=None):
+    """g2 = (gaussians, pipe, bg_white) of a trained 2DGS model, or None.
+
+    When given, ONLY the occlusion test that projects the 3D stroke graph uses the 2DGS
+    z-buffer -- because that is the surface those strokes were built on, and culling them
+    against a different reconstruction's depth would drop correct strokes. Everything the
+    METRIC touches (the warp depth, the baseline's gray image, the foreground mask) stays
+    on the vanilla render for BOTH pipelines, so the operator is identical and the numbers
+    remain comparable with the published --variant gated/ungated runs.
+    """
     gb = render.render_gbuffer(g, keep_g, cam, with_albedo=True)
     depth = gb["depth"].detach().cpu().numpy()
     alb = gb["albedo"].detach().cpu().numpy()
@@ -81,10 +91,17 @@ def frame_data(g, keep_g, cam, chain3d, args):
         import cv2
         a = (gb["alpha"].detach().cpu().numpy() > 0.5).astype(np.uint8)
         fg = cv2.erode(a, np.ones((2 * args.fg_erode + 1,) * 2, np.uint8)) > 0
-    A = ours_strokes(chain3d, cam, gb["depth"], fg=fg)
+    if g2 is not None:
+        gb2 = render2dgs.render_gbuffer_2dgs(g2[0], g2[1], cam, bg_white=g2[2])
+        depth_ours = gb2["depth"]
+    else:
+        depth_ours = gb["depth"]
+    A = ours_strokes(chain3d, cam, depth_ours, fg=fg)
     B = baseline_strokes(gray, args.canny_lo, args.canny_hi, args.min_len,
                          args.approx_eps, fg=fg)
     del gb
+    if g2 is not None:
+        del gb2
     return {"depth": depth, "gray": gray, "A": A, "B": B, "cam": cam}
 
 
@@ -161,6 +178,12 @@ def run_scene(scene, args):
     cams, _ = common.load_cameras(scene)
     g = common.load_gaussians(scene)
     keep_g = render.defloat_mask(g["mu"], g["opacity"])
+    g2 = None
+    if args.geom2dgs:
+        _g2, _pipe, _m2 = render2dgs.load_2dgs(os.path.expanduser(args.geom2dgs))
+        g2 = (_g2, _pipe, _m2.get("white_background", True))
+        print(f"  [{scene}] OURS occlusion z-buffer from 2DGS "
+              f"{_m2['model_path']} it={_m2['iteration']}", flush=True)
     chain3d, cinfo = build_chains(scene, args.variant, args)
     target = np.median(g["mu"][keep_g], axis=0)          # mesh-free scene centre
     traj = ("raw interp_cameras (rotation and centre slerped independently; CLIPS the "
@@ -175,7 +198,7 @@ def run_scene(scene, args):
                 if args.raw_path else
                 T.orbit_cameras(cams[args.view_a], cams[args.view_b], nf, target))
         t0 = time.time()
-        frames = [frame_data(g, keep_g, c, chain3d, args) for c in path]
+        frames = [frame_data(g, keep_g, c, chain3d, args, g2=g2) for c in path]
         m = sequence_metrics(frames, args)
         m["_seconds"] = time.time() - t0
         res["by_frames"][str(nf)] = m
@@ -189,15 +212,23 @@ def run_scene(scene, args):
 
 
 def _dump_vis(scene, fr, args):
+    """Write the vector stroke-path figures.
+
+    `--viz_tag` (default "", i.e. the published file names bit-for-bit) namespaces these
+    four files.  Without it EVERY invocation of this script for a scene overwrites the
+    PUBLISHED M1b stroke paths out/m1b_vector_<scene>_{A_ours,B_baseline}.{svg,png}, which
+    carry no --tag of their own -- an unguarded clobber that has already happened once.
+    Any run that is not re-deriving the published figures must pass a non-empty --viz_tag."""
     H, W = fr["depth"].shape
+    vt = getattr(args, "viz_tag", "") or ""
     for p, tag in (("A", "A_ours"), ("B", "B_baseline")):
-        strokes.write_svg(os.path.join(OUT, f"m1b_vector_{scene}_{tag}.svg"),
+        strokes.write_svg(os.path.join(OUT, f"m1b_vector_{scene}{vt}_{tag}.svg"),
                           fr[p], W, H, width=1.2)
         m = strokes.raster_polylines(fr[p], H, W)
         img = np.full((H, W, 3), 255, np.uint8)
         img[m] = (20, 20, 20)
-        cv2.imwrite(os.path.join(OUT, f"m1b_vector_{scene}_{tag}.png"), img)
-    print(f"    wrote out/m1b_vector_{scene}_{{A_ours,B_baseline}}.{{svg,png}} "
+        cv2.imwrite(os.path.join(OUT, f"m1b_vector_{scene}{vt}_{tag}.png"), img)
+    print(f"    wrote out/m1b_vector_{scene}{vt}_{{A_ours,B_baseline}}.{{svg,png}} "
           f"(OURS {len(fr['A'])} strokes, BASELINE {len(fr['B'])})", flush=True)
 
 
@@ -206,6 +237,10 @@ def main():
     ap.add_argument("--scenes", nargs="+", default=["lego", "chair"])
     ap.add_argument("--frames", type=int, nargs="+", default=[30, 60, 120, 240])
     ap.add_argument("--variant", default="ungated")
+    ap.add_argument("--viz_tag", default="",
+                    help="namespace for the four out/m1b_vector_<scene>*.{svg,png} figures. "
+                         "Default \"\" reproduces the PUBLISHED file names exactly; pass a "
+                         "non-empty value from any experiment that must not overwrite them.")
     ap.add_argument("--view_a", type=int, default=5)
     ap.add_argument("--view_b", type=int, default=15)
     # chaining
@@ -236,6 +271,9 @@ def main():
                     help="control: restrict BOTH pipelines to the object interior, so "
                          "silhouette strokes with no depth are not charged as popping")
     ap.add_argument("--fg_erode", type=int, default=2)
+    ap.add_argument("--geom2dgs", default=None,
+                    help="path to a trained 2DGS model; OURS strokes are then occlusion-"
+                         "tested against its z-buffer (Plan #1). Metric operator unchanged.")
     ap.add_argument("--tag", default="")
     args = ap.parse_args()
 

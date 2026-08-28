@@ -18,3 +18,17 @@ out/*.gif
 # --- throwaway linelet dumps; the four *_test.npz the tables depend on ARE tracked
 out/linelets_*_smoke.npz
 out/linelets_*_probe.npz
+
+# --- cached edge-probability maps (626 MB across teed/pidinet/dexined x chair/lego),
+#     regenerable in ~25 s/scene:
+#     python scripts/cmepi_cache_edges.py --det {teed,pidinet,dexined} --scene {chair,lego}
+out/*_edges_*/
+
+# --- CMEPI pre-flight file-level safety copies of the protected set (140 MB).
+#     Detection lives in out/CMEPI_protected_manifest.sha256, which IS tracked.
+out/cmepi_backup/
+
+# --- CMEPI per-arm linelet dumps (186 MB), regenerable by scripts/cmepi_m1b.sh from the
+#     M1a score vectors; the per-arm m1b_*.json summaries ARE tracked
+out/linelets_*_tc_pidinet_*.npz
+out/linelets_*_tc_dexined_*.npz

@@ -39,7 +39,7 @@ class MeshOracle:
             pts.append(a[i][None] + ts[:, None] * seg[i][None])
         return np.concatenate(pts, 0) if pts else np.zeros((0, 3))
 
-    def render_depth(self, cam, view_key=None, max_elems=8_000_000):
+    def render_depth(self, cam, view_key=None, max_elems=None):
         """GT mesh depth via EXACT barycentric triangle rasterization (z-min buffer).
 
         NOTE: bcr/bcr_v1.py used a centroid splat, which is only valid when every
@@ -49,6 +49,12 @@ class MeshOracle:
         footprint and the crease occlusion cull. This does real coverage instead.
         Depth is perspective-correct (barycentric interpolation of 1/z).
         """
+        # Chunk size only -- scatter_reduce "amin" is order-independent, so the depth
+        # buffer is bit-identical for any chunking.  GPU 1 is shared (~4 GB free) and the
+        # 2.03M-face lego mesh OOM'd at the 8M default, so this is env-overridable and
+        # halves itself on OutOfMemoryError instead of aborting the run.
+        if max_elems is None:
+            max_elems = int(os.environ.get("MESH_ORACLE_MAX_ELEMS", 8_000_000))
         if view_key is not None and view_key in self._depth_cache:
             return self._depth_cache[view_key]
         H, Wd = cam.H, cam.W
@@ -94,29 +100,38 @@ class MeshOracle:
             gx, gy = gx.reshape(-1), gy.reshape(-1)         # [P]
             idx_all = torch.nonzero(sel, as_tuple=True)[0]
             chunk = max(1, int(max_elems // (g * g)))
-            for s in range(0, len(idx_all), chunk):
+            s = 0
+            while s < len(idx_all):
                 ii = idx_all[s:s + chunk]
-                sx = x0[ii][:, None] + gx[None]             # [m,P] pixel x (integer coords)
-                sy = y0[ii][:, None] + gy[None]
-                Xi, Yi, Zi = X[ii], Y[ii], zc[ii]           # [m,3]
-                ax, ay = Xi[:, 0:1], Yi[:, 0:1]
-                bx, by = Xi[:, 1:2], Yi[:, 1:2]
-                cx_, cy_ = Xi[:, 2:3], Yi[:, 2:3]
-                area = (bx - ax) * (cy_ - ay) - (by - ay) * (cx_ - ax)
-                good = area.abs() > 1e-12
-                area = torch.where(good, area, torch.ones_like(area))
-                l0 = ((bx - sx) * (cy_ - sy) - (by - sy) * (cx_ - sx)) / area
-                l1 = ((cx_ - sx) * (ay - sy) - (cy_ - sy) * (ax - sx)) / area
-                l2 = 1.0 - l0 - l1
-                inside = (l0 >= 0) & (l1 >= 0) & (l2 >= 0) & good & \
-                         (sx >= 0) & (sx <= Wd - 1) & (sy >= 0) & (sy <= H - 1)
-                if not inside.any():
+                try:
+                    sx = x0[ii][:, None] + gx[None]         # [m,P] pixel x (integer)
+                    sy = y0[ii][:, None] + gy[None]
+                    Xi, Yi, Zi = X[ii], Y[ii], zc[ii]       # [m,3]
+                    ax, ay = Xi[:, 0:1], Yi[:, 0:1]
+                    bx, by = Xi[:, 1:2], Yi[:, 1:2]
+                    cx_, cy_ = Xi[:, 2:3], Yi[:, 2:3]
+                    area = (bx - ax) * (cy_ - ay) - (by - ay) * (cx_ - ax)
+                    good = area.abs() > 1e-12
+                    area = torch.where(good, area, torch.ones_like(area))
+                    l0 = ((bx - sx) * (cy_ - sy) - (by - sy) * (cx_ - sx)) / area
+                    l1 = ((cx_ - sx) * (ay - sy) - (cy_ - sy) * (ax - sx)) / area
+                    l2 = 1.0 - l0 - l1
+                    inside = (l0 >= 0) & (l1 >= 0) & (l2 >= 0) & good & \
+                             (sx >= 0) & (sx <= Wd - 1) & (sy >= 0) & (sy <= H - 1)
+                    if inside.any():
+                        invz = l0 / Zi[:, 0:1] + l1 / Zi[:, 1:2] + l2 / Zi[:, 2:3]
+                        zpix = 1.0 / invz.clamp(min=1e-9)   # perspective-correct depth
+                        m = inside & torch.isfinite(zpix)
+                        flat = (sy.long() * Wd + sx.long())[m]
+                        dbuf.scatter_reduce_(0, flat, zpix[m], reduce="amin",
+                                             include_self=True)
+                except torch.cuda.OutOfMemoryError:
+                    if chunk <= 1:
+                        raise
+                    torch.cuda.empty_cache()
+                    chunk = max(1, chunk // 2)
                     continue
-                invz = l0 / Zi[:, 0:1] + l1 / Zi[:, 1:2] + l2 / Zi[:, 2:3]
-                zpix = 1.0 / invz.clamp(min=1e-9)           # perspective-correct depth
-                m = inside & torch.isfinite(zpix)
-                flat = (sy.long() * Wd + sx.long())[m]
-                dbuf.scatter_reduce_(0, flat, zpix[m], reduce="amin", include_self=True)
+                s += chunk
 
         depth = dbuf.view(H, Wd).clone()
         depth[~torch.isfinite(depth)] = 1e9

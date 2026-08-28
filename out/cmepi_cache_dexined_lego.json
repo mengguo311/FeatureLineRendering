@@ -1,0 +1,631 @@
+{
+  "experiment": "CMEPI",
+  "detector": "DexiNed",
+  "det_key": "dexined",
+  "scene": "lego",
+  "citation": "Soria et al., 'Dense Extreme Inception Network', WACV 2020; weights DexiNed_BIPED_10.pth via kornia",
+  "train_data": "BIPED",
+  "frozen_zero_shot": true,
+  "fine_tuned": false,
+  "ckpt": "/home/u00134/.cache/torch/hub/checkpoints/DexiNed_BIPED_10.pth",
+  "ckpt_sha256": "bd4c603ef71113b447bffb72a73b9a54ca890e78f4bc8f34cb73f1efb2681e74",
+  "n_params": 35215245,
+  "scales": [
+    1.0,
+    0.64
+  ],
+  "cache": "/home/u00134/3dgs_line/tier1/out/dexined_edges_lego",
+  "n_views": 100,
+  "runtime_s": 37.81366753578186,
+  "ms_per_view": 378.1366753578186,
+  "device": "cuda",
+  "viz": [
+    "/home/u00134/3dgs_line/tier1/out/cmepi_sample_dexined_lego_v0.png",
+    "/home/u00134/3dgs_line/tier1/out/cmepi_sample_dexined_lego_v5.png",
+    "/home/u00134/3dgs_line/tier1/out/cmepi_sample_dexined_lego_v25.png"
+  ],
+  "background": "white composite",
+  "stored": "raw probability, float16",
+  "per_view": [
+    {
+      "view": 0,
+      "name": "r_0.png",
+      "frac_gt_0.5_native": 0.0653734375,
+      "frac_gt_0.5_ms": 0.0875765625
+    },
+    {
+      "view": 1,
+      "name": "r_1.png",
+      "frac_gt_0.5_native": 0.0641359375,
+      "frac_gt_0.5_ms": 0.0851703125
+    },
+    {
+      "view": 2,
+      "name": "r_2.png",
+      "frac_gt_0.5_native": 0.0615640625,
+      "frac_gt_0.5_ms": 0.0839203125
+    },
+    {
+      "view": 3,
+      "name": "r_3.png",
+      "frac_gt_0.5_native": 0.0679046875,
+      "frac_gt_0.5_ms": 0.0889375
+    },
+    {
+      "view": 4,
+      "name": "r_4.png",
+      "frac_gt_0.5_native": 0.0744640625,
+      "frac_gt_0.5_ms": 0.1003890625
+    },
+    {
+      "view": 5,
+      "name": "r_5.png",
+      "frac_gt_0.5_native": 0.0811796875,
+      "frac_gt_0.5_ms": 0.1125296875
+    },
+    {
+      "view": 6,
+      "name": "r_6.png",
+      "frac_gt_0.5_native": 0.0556828125,
+      "frac_gt_0.5_ms": 0.0779984375
+    },
+    {
+      "view": 7,
+      "name": "r_7.png",
+      "frac_gt_0.5_native": 0.0663796875,
+      "frac_gt_0.5_ms": 0.0870875
+    },
+    {
+      "view": 8,
+      "name": "r_8.png",
+      "frac_gt_0.5_native": 0.061240625,
+      "frac_gt_0.5_ms": 0.0885859375
+    },
+    {
+      "view": 9,
+      "name": "r_9.png",
+      "frac_gt_0.5_native": 0.0744140625,
+      "frac_gt_0.5_ms": 0.102590625
+    },
+    {
+      "view": 10,
+      "name": "r_10.png",
+      "frac_gt_0.5_native": 0.05480625,
+      "frac_gt_0.5_ms": 0.0759296875
+    },
+    {
+      "view": 11,
+      "name": "r_11.png",
+      "frac_gt_0.5_native": 0.086615625,
+      "frac_gt_0.5_ms": 0.1132515625
+    },
+    {
+      "view": 12,
+      "name": "r_12.png",
+      "frac_gt_0.5_native": 0.096840625,
+      "frac_gt_0.5_ms": 0.1259203125
+    },
+    {
+      "view": 13,
+      "name": "r_13.png",
+      "frac_gt_0.5_native": 0.0386140625,
+      "frac_gt_0.5_ms": 0.0561671875
+    },
+    {
+      "view": 14,
+      "name": "r_14.png",
+      "frac_gt_0.5_native": 0.0878734375,
+      "frac_gt_0.5_ms": 0.11093125
+    },
+    {
+      "view": 15,
+      "name": "r_15.png",
+      "frac_gt_0.5_native": 0.0716453125,
+      "frac_gt_0.5_ms": 0.099653125
+    },
+    {
+      "view": 16,
+      "name": "r_16.png",
+      "frac_gt_0.5_native": 0.072934375,
+      "frac_gt_0.5_ms": 0.09843125
+    },
+    {
+      "view": 17,
+      "name": "r_17.png",
+      "frac_gt_0.5_native": 0.0537921875,
+      "frac_gt_0.5_ms": 0.0745703125
+    },
+    {
+      "view": 18,
+      "name": "r_18.png",
+      "frac_gt_0.5_native": 0.0723140625,
+      "frac_gt_0.5_ms": 0.092975
+    },
+    {
+      "view": 19,
+      "name": "r_19.png",
+      "frac_gt_0.5_native": 0.046228125,
+      "frac_gt_0.5_ms": 0.0648625
+    },
+    {
+      "view": 20,
+      "name": "r_20.png",
+      "frac_gt_0.5_native": 0.0405015625,
+      "frac_gt_0.5_ms": 0.0604484375
+    },
+    {
+      "view": 21,
+      "name": "r_21.png",
+      "frac_gt_0.5_native": 0.0662203125,
+      "frac_gt_0.5_ms": 0.0852734375
+    },
+    {
+      "view": 22,
+      "name": "r_22.png",
+      "frac_gt_0.5_native": 0.0716671875,
+      "frac_gt_0.5_ms": 0.10295625
+    },
+    {
+      "view": 23,
+      "name": "r_23.png",
+      "frac_gt_0.5_native": 0.0742390625,
+      "frac_gt_0.5_ms": 0.1045203125
+    },
+    {
+      "view": 24,
+      "name": "r_24.png",
+      "frac_gt_0.5_native": 0.0598734375,
+      "frac_gt_0.5_ms": 0.08226875
+    },
+    {
+      "view": 25,
+      "name": "r_25.png",
+      "frac_gt_0.5_native": 0.0682421875,
+      "frac_gt_0.5_ms": 0.0919171875
+    },
+    {
+      "view": 26,
+      "name": "r_26.png",
+      "frac_gt_0.5_native": 0.05625,
+      "frac_gt_0.5_ms": 0.0769
+    },
+    {
+      "view": 27,
+      "name": "r_27.png",
+      "frac_gt_0.5_native": 0.08691875,
+      "frac_gt_0.5_ms": 0.11668125
+    },
+    {
+      "view": 28,
+      "name": "r_28.png",
+      "frac_gt_0.5_native": 0.043434375,
+      "frac_gt_0.5_ms": 0.064
+    },
+    {
+      "view": 29,
+      "name": "r_29.png",
+      "frac_gt_0.5_native": 0.0523875,
+      "frac_gt_0.5_ms": 0.0710484375
+    },
+    {
+      "view": 30,
+      "name": "r_30.png",
+      "frac_gt_0.5_native": 0.083640625,
+      "frac_gt_0.5_ms": 0.1076828125
+    },
+    {
+      "view": 31,
+      "name": "r_31.png",
+      "frac_gt_0.5_native": 0.0848,
+      "frac_gt_0.5_ms": 0.1024359375
+    },
+    {
+      "view": 32,
+      "name": "r_32.png",
+      "frac_gt_0.5_native": 0.060403125,
+      "frac_gt_0.5_ms": 0.083859375
+    },
+    {
+      "view": 33,
+      "name": "r_33.png",
+      "frac_gt_0.5_native": 0.0612703125,
+      "frac_gt_0.5_ms": 0.0815484375
+    },
+    {
+      "view": 34,
+      "name": "r_34.png",
+      "frac_gt_0.5_native": 0.0715375,
+      "frac_gt_0.5_ms": 0.0974359375
+    },
+    {
+      "view": 35,
+      "name": "r_35.png",
+      "frac_gt_0.5_native": 0.071403125,
+      "frac_gt_0.5_ms": 0.100571875
+    },
+    {
+      "view": 36,
+      "name": "r_36.png",
+      "frac_gt_0.5_native": 0.0582109375,
+      "frac_gt_0.5_ms": 0.077840625
+    },
+    {
+      "view": 37,
+      "name": "r_37.png",
+      "frac_gt_0.5_native": 0.0754671875,
+      "frac_gt_0.5_ms": 0.095890625
+    },
+    {
+      "view": 38,
+      "name": "r_38.png",
+      "frac_gt_0.5_native": 0.0632578125,
+      "frac_gt_0.5_ms": 0.087790625
+    },
+    {
+      "view": 39,
+      "name": "r_39.png",
+      "frac_gt_0.5_native": 0.0949546875,
+      "frac_gt_0.5_ms": 0.125153125
+    },
+    {
+      "view": 40,
+      "name": "r_40.png",
+      "frac_gt_0.5_native": 0.0724625,
+      "frac_gt_0.5_ms": 0.1001484375
+    },
+    {
+      "view": 41,
+      "name": "r_41.png",
+      "frac_gt_0.5_native": 0.0557734375,
+      "frac_gt_0.5_ms": 0.0732921875
+    },
+    {
+      "view": 42,
+      "name": "r_42.png",
+      "frac_gt_0.5_native": 0.05211875,
+      "frac_gt_0.5_ms": 0.073171875
+    },
+    {
+      "view": 43,
+      "name": "r_43.png",
+      "frac_gt_0.5_native": 0.0642328125,
+      "frac_gt_0.5_ms": 0.0849359375
+    },
+    {
+      "view": 44,
+      "name": "r_44.png",
+      "frac_gt_0.5_native": 0.07646875,
+      "frac_gt_0.5_ms": 0.10075625
+    },
+    {
+      "view": 45,
+      "name": "r_45.png",
+      "frac_gt_0.5_native": 0.0748796875,
+      "frac_gt_0.5_ms": 0.103846875
+    },
+    {
+      "view": 46,
+      "name": "r_46.png",
+      "frac_gt_0.5_native": 0.044428125,
+      "frac_gt_0.5_ms": 0.0595734375
+    },
+    {
+      "view": 47,
+      "name": "r_47.png",
+      "frac_gt_0.5_native": 0.08209375,
+      "frac_gt_0.5_ms": 0.1054859375
+    },
+    {
+      "view": 48,
+      "name": "r_48.png",
+      "frac_gt_0.5_native": 0.0670515625,
+      "frac_gt_0.5_ms": 0.0917828125
+    },
+    {
+      "view": 49,
+      "name": "r_49.png",
+      "frac_gt_0.5_native": 0.0665640625,
+      "frac_gt_0.5_ms": 0.086025
+    },
+    {
+      "view": 50,
+      "name": "r_50.png",
+      "frac_gt_0.5_native": 0.0737875,
+      "frac_gt_0.5_ms": 0.097765625
+    },
+    {
+      "view": 51,
+      "name": "r_51.png",
+      "frac_gt_0.5_native": 0.0581875,
+      "frac_gt_0.5_ms": 0.0809640625
+    },
+    {
+      "view": 52,
+      "name": "r_52.png",
+      "frac_gt_0.5_native": 0.0604453125,
+      "frac_gt_0.5_ms": 0.082746875
+    },
+    {
+      "view": 53,
+      "name": "r_53.png",
+      "frac_gt_0.5_native": 0.059515625,
+      "frac_gt_0.5_ms": 0.084359375
+    },
+    {
+      "view": 54,
+      "name": "r_54.png",
+      "frac_gt_0.5_native": 0.0736359375,
+      "frac_gt_0.5_ms": 0.1025140625
+    },
+    {
+      "view": 55,
+      "name": "r_55.png",
+      "frac_gt_0.5_native": 0.0365046875,
+      "frac_gt_0.5_ms": 0.0516375
+    },
+    {
+      "view": 56,
+      "name": "r_56.png",
+      "frac_gt_0.5_native": 0.074265625,
+      "frac_gt_0.5_ms": 0.0950421875
+    },
+    {
+      "view": 57,
+      "name": "r_57.png",
+      "frac_gt_0.5_native": 0.09273125,
+      "frac_gt_0.5_ms": 0.12031875
+    },
+    {
+      "view": 58,
+      "name": "r_58.png",
+      "frac_gt_0.5_native": 0.0862109375,
+      "frac_gt_0.5_ms": 0.1151453125
+    },
+    {
+      "view": 59,
+      "name": "r_59.png",
+      "frac_gt_0.5_native": 0.0756984375,
+      "frac_gt_0.5_ms": 0.10455625
+    },
+    {
+      "view": 60,
+      "name": "r_60.png",
+      "frac_gt_0.5_native": 0.0628328125,
+      "frac_gt_0.5_ms": 0.0856390625
+    },
+    {
+      "view": 61,
+      "name": "r_61.png",
+      "frac_gt_0.5_native": 0.0940171875,
+      "frac_gt_0.5_ms": 0.12303125
+    },
+    {
+      "view": 62,
+      "name": "r_62.png",
+      "frac_gt_0.5_native": 0.082225,
+      "frac_gt_0.5_ms": 0.1019078125
+    },
+    {
+      "view": 63,
+      "name": "r_63.png",
+      "frac_gt_0.5_native": 0.03879375,
+      "frac_gt_0.5_ms": 0.056784375
+    },
+    {
+      "view": 64,
+      "name": "r_64.png",
+      "frac_gt_0.5_native": 0.0531234375,
+      "frac_gt_0.5_ms": 0.0702625
+    },
+    {
+      "view": 65,
+      "name": "r_65.png",
+      "frac_gt_0.5_native": 0.033096875,
+      "frac_gt_0.5_ms": 0.047471875
+    },
+    {
+      "view": 66,
+      "name": "r_66.png",
+      "frac_gt_0.5_native": 0.0825171875,
+      "frac_gt_0.5_ms": 0.10851875
+    },
+    {
+      "view": 67,
+      "name": "r_67.png",
+      "frac_gt_0.5_native": 0.07573125,
+      "frac_gt_0.5_ms": 0.1017890625
+    },
+    {
+      "view": 68,
+      "name": "r_68.png",
+      "frac_gt_0.5_native": 0.0499453125,
+      "frac_gt_0.5_ms": 0.0701671875
+    },
+    {
+      "view": 69,
+      "name": "r_69.png",
+      "frac_gt_0.5_native": 0.060371875,
+      "frac_gt_0.5_ms": 0.0856890625
+    },
+    {
+      "view": 70,
+      "name": "r_70.png",
+      "frac_gt_0.5_native": 0.03433125,
+      "frac_gt_0.5_ms": 0.0479671875
+    },
+    {
+      "view": 71,
+      "name": "r_71.png",
+      "frac_gt_0.5_native": 0.0581515625,
+      "frac_gt_0.5_ms": 0.0734265625
+    },
+    {
+      "view": 72,
+      "name": "r_72.png",
+      "frac_gt_0.5_native": 0.0539640625,
+      "frac_gt_0.5_ms": 0.074653125
+    },
+    {
+      "view": 73,
+      "name": "r_73.png",
+      "frac_gt_0.5_native": 0.04799375,
+      "frac_gt_0.5_ms": 0.06864375
+    },
+    {
+      "view": 74,
+      "name": "r_74.png",
+      "frac_gt_0.5_native": 0.0735375,
+      "frac_gt_0.5_ms": 0.10145625
+    },
+    {
+      "view": 75,
+      "name": "r_75.png",
+      "frac_gt_0.5_native": 0.053246875,
+      "frac_gt_0.5_ms": 0.0703953125
+    },
+    {
+      "view": 76,
+      "name": "r_76.png",
+      "frac_gt_0.5_native": 0.038771875,
+      "frac_gt_0.5_ms": 0.0545171875
+    },
+    {
+      "view": 77,
+      "name": "r_77.png",
+      "frac_gt_0.5_native": 0.083646875,
+      "frac_gt_0.5_ms": 0.1071296875
+    },
+    {
+      "view": 78,
+      "name": "r_78.png",
+      "frac_gt_0.5_native": 0.0656734375,
+      "frac_gt_0.5_ms": 0.090246875
+    },
+    {
+      "view": 79,
+      "name": "r_79.png",
+      "frac_gt_0.5_native": 0.09670625,
+      "frac_gt_0.5_ms": 0.1264828125
+    },
+    {
+      "view": 80,
+      "name": "r_80.png",
+      "frac_gt_0.5_native": 0.0630328125,
+      "frac_gt_0.5_ms": 0.0879609375
+    },
+    {
+      "view": 81,
+      "name": "r_81.png",
+      "frac_gt_0.5_native": 0.061378125,
+      "frac_gt_0.5_ms": 0.083675
+    },
+    {
+      "view": 82,
+      "name": "r_82.png",
+      "frac_gt_0.5_native": 0.0892296875,
+      "frac_gt_0.5_ms": 0.1151125
+    },
+    {
+      "view": 83,
+      "name": "r_83.png",
+      "frac_gt_0.5_native": 0.07266875,
+      "frac_gt_0.5_ms": 0.1011875
+    },
+    {
+      "view": 84,
+      "name": "r_84.png",
+      "frac_gt_0.5_native": 0.0514015625,
+      "frac_gt_0.5_ms": 0.0680140625
+    },
+    {
+      "view": 85,
+      "name": "r_85.png",
+      "frac_gt_0.5_native": 0.063534375,
+      "frac_gt_0.5_ms": 0.08905625
+    },
+    {
+      "view": 86,
+      "name": "r_86.png",
+      "frac_gt_0.5_native": 0.0619796875,
+      "frac_gt_0.5_ms": 0.081384375
+    },
+    {
+      "view": 87,
+      "name": "r_87.png",
+      "frac_gt_0.5_native": 0.0760828125,
+      "frac_gt_0.5_ms": 0.1002671875
+    },
+    {
+      "view": 88,
+      "name": "r_88.png",
+      "frac_gt_0.5_native": 0.07626875,
+      "frac_gt_0.5_ms": 0.099353125
+    },
+    {
+      "view": 89,
+      "name": "r_89.png",
+      "frac_gt_0.5_native": 0.0348703125,
+      "frac_gt_0.5_ms": 0.04903125
+    },
+    {
+      "view": 90,
+      "name": "r_90.png",
+      "frac_gt_0.5_native": 0.0712578125,
+      "frac_gt_0.5_ms": 0.0957953125
+    },
+    {
+      "view": 91,
+      "name": "r_91.png",
+      "frac_gt_0.5_native": 0.0691984375,
+      "frac_gt_0.5_ms": 0.0916640625
+    },
+    {
+      "view": 92,
+      "name": "r_92.png",
+      "frac_gt_0.5_native": 0.0672640625,
+      "frac_gt_0.5_ms": 0.088490625
+    },
+    {
+      "view": 93,
+      "name": "r_93.png",
+      "frac_gt_0.5_native": 0.07728125,
+      "frac_gt_0.5_ms": 0.101490625
+    },
+    {
+      "view": 94,
+      "name": "r_94.png",
+      "frac_gt_0.5_native": 0.0725265625,
+      "frac_gt_0.5_ms": 0.102603125
+    },
+    {
+      "view": 95,
+      "name": "r_95.png",
+      "frac_gt_0.5_native": 0.0500578125,
+      "frac_gt_0.5_ms": 0.070340625
+    },
+    {
+      "view": 96,
+      "name": "r_96.png",
+      "frac_gt_0.5_native": 0.0713671875,
+      "frac_gt_0.5_ms": 0.0992546875
+    },
+    {
+      "view": 97,
+      "name": "r_97.png",
+      "frac_gt_0.5_native": 0.0739734375,
+      "frac_gt_0.5_ms": 0.1028734375
+    },
+    {
+      "view": 98,
+      "name": "r_98.png",
+      "frac_gt_0.5_native": 0.0392140625,
+      "frac_gt_0.5_ms": 0.0541046875
+    },
+    {
+      "view": 99,
+      "name": "r_99.png",
+      "frac_gt_0.5_native": 0.06635625,
+      "frac_gt_0.5_ms": 0.0875015625
+    }
+  ]
+}

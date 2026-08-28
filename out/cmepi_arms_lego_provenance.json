@@ -1,0 +1,54 @@
+{
+  "note": "CMEPI cross-model edge-prior invariance. Each arm is a FROZEN ZERO-SHOT published checkpoint, no fine-tuning, no per-scene tuning. The arms ride source='teed' because that source is simply the cached-probability-map READER (final_recipe.teed_prob); the 'cache' dir is what selects the detector. key='native' is fixed for every detector, matching the TEED headline arm, so threshold is the only tuned degree of freedom and it is selected ON VAL ONLY. DexiNed uses the ORIGINAL REPO's BGR channel order (pre-registered before any number was produced, not chosen post hoc).",
+  "scene": "lego",
+  "arms": {
+    "pidinet_native_0.3": {
+      "detector": "pidinet",
+      "frozen_zero_shot": true,
+      "fine_tuned": false,
+      "thr": 0.3
+    },
+    "pidinet_native_0.5": {
+      "detector": "pidinet",
+      "frozen_zero_shot": true,
+      "fine_tuned": false,
+      "thr": 0.5
+    },
+    "pidinet_native_0.7": {
+      "detector": "pidinet",
+      "frozen_zero_shot": true,
+      "fine_tuned": false,
+      "thr": 0.7
+    },
+    "pidinet_native_0.9": {
+      "detector": "pidinet",
+      "frozen_zero_shot": true,
+      "fine_tuned": false,
+      "thr": 0.9
+    },
+    "dexined_native_0.3": {
+      "detector": "dexined",
+      "frozen_zero_shot": true,
+      "fine_tuned": false,
+      "thr": 0.3
+    },
+    "dexined_native_0.5": {
+      "detector": "dexined",
+      "frozen_zero_shot": true,
+      "fine_tuned": false,
+      "thr": 0.5
+    },
+    "dexined_native_0.7": {
+      "detector": "dexined",
+      "frozen_zero_shot": true,
+      "fine_tuned": false,
+      "thr": 0.7
+    },
+    "dexined_native_0.9": {
+      "detector": "dexined",
+      "frozen_zero_shot": true,
+      "fine_tuned": false,
+      "thr": 0.9
+    }
+  }
+}

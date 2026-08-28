@@ -1,0 +1,631 @@
+{
+  "experiment": "CMEPI",
+  "detector": "PiDiNet",
+  "det_key": "pidinet",
+  "scene": "chair",
+  "citation": "Su et al., 'Pixel Difference Networks for Efficient Edge Detection', ICCV 2021; weights table5_pidinet.pth",
+  "train_data": "BSDS500-aug + PASCAL VOC Context",
+  "frozen_zero_shot": true,
+  "fine_tuned": false,
+  "ckpt": "/home/u00134/3dgs_line/ext/pidinet/weights/table5_pidinet.pth",
+  "ckpt_sha256": "80860ac267258b5f27486e0ef152a211d0b08120f62aeb185a050acc30da486c",
+  "n_params": 710149,
+  "scales": [
+    1.0,
+    0.64
+  ],
+  "cache": "/home/u00134/3dgs_line/tier1/out/pidinet_edges_chair",
+  "n_views": 100,
+  "runtime_s": 21.772523164749146,
+  "ms_per_view": 217.72523164749146,
+  "device": "cuda",
+  "viz": [
+    "/home/u00134/3dgs_line/tier1/out/cmepi_sample_pidinet_chair_v0.png",
+    "/home/u00134/3dgs_line/tier1/out/cmepi_sample_pidinet_chair_v5.png",
+    "/home/u00134/3dgs_line/tier1/out/cmepi_sample_pidinet_chair_v25.png"
+  ],
+  "background": "white composite",
+  "stored": "raw probability, float16",
+  "per_view": [
+    {
+      "view": 0,
+      "name": "r_0.png",
+      "frac_gt_0.5_native": 0.0545578125,
+      "frac_gt_0.5_ms": 0.07301875
+    },
+    {
+      "view": 1,
+      "name": "r_1.png",
+      "frac_gt_0.5_native": 0.05791875,
+      "frac_gt_0.5_ms": 0.0752984375
+    },
+    {
+      "view": 2,
+      "name": "r_2.png",
+      "frac_gt_0.5_native": 0.076353125,
+      "frac_gt_0.5_ms": 0.1046
+    },
+    {
+      "view": 3,
+      "name": "r_3.png",
+      "frac_gt_0.5_native": 0.069678125,
+      "frac_gt_0.5_ms": 0.093165625
+    },
+    {
+      "view": 4,
+      "name": "r_4.png",
+      "frac_gt_0.5_native": 0.0772625,
+      "frac_gt_0.5_ms": 0.0981734375
+    },
+    {
+      "view": 5,
+      "name": "r_5.png",
+      "frac_gt_0.5_native": 0.0673859375,
+      "frac_gt_0.5_ms": 0.0916671875
+    },
+    {
+      "view": 6,
+      "name": "r_6.png",
+      "frac_gt_0.5_native": 0.063953125,
+      "frac_gt_0.5_ms": 0.084434375
+    },
+    {
+      "view": 7,
+      "name": "r_7.png",
+      "frac_gt_0.5_native": 0.051421875,
+      "frac_gt_0.5_ms": 0.0698953125
+    },
+    {
+      "view": 8,
+      "name": "r_8.png",
+      "frac_gt_0.5_native": 0.0883765625,
+      "frac_gt_0.5_ms": 0.1164609375
+    },
+    {
+      "view": 9,
+      "name": "r_9.png",
+      "frac_gt_0.5_native": 0.065978125,
+      "frac_gt_0.5_ms": 0.09071875
+    },
+    {
+      "view": 10,
+      "name": "r_10.png",
+      "frac_gt_0.5_native": 0.0631734375,
+      "frac_gt_0.5_ms": 0.0864640625
+    },
+    {
+      "view": 11,
+      "name": "r_11.png",
+      "frac_gt_0.5_native": 0.06175,
+      "frac_gt_0.5_ms": 0.0862578125
+    },
+    {
+      "view": 12,
+      "name": "r_12.png",
+      "frac_gt_0.5_native": 0.05889375,
+      "frac_gt_0.5_ms": 0.08315625
+    },
+    {
+      "view": 13,
+      "name": "r_13.png",
+      "frac_gt_0.5_native": 0.062434375,
+      "frac_gt_0.5_ms": 0.0874890625
+    },
+    {
+      "view": 14,
+      "name": "r_14.png",
+      "frac_gt_0.5_native": 0.07765625,
+      "frac_gt_0.5_ms": 0.1043296875
+    },
+    {
+      "view": 15,
+      "name": "r_15.png",
+      "frac_gt_0.5_native": 0.05885,
+      "frac_gt_0.5_ms": 0.072259375
+    },
+    {
+      "view": 16,
+      "name": "r_16.png",
+      "frac_gt_0.5_native": 0.06201875,
+      "frac_gt_0.5_ms": 0.0856625
+    },
+    {
+      "view": 17,
+      "name": "r_17.png",
+      "frac_gt_0.5_native": 0.073459375,
+      "frac_gt_0.5_ms": 0.098921875
+    },
+    {
+      "view": 18,
+      "name": "r_18.png",
+      "frac_gt_0.5_native": 0.0670890625,
+      "frac_gt_0.5_ms": 0.0906015625
+    },
+    {
+      "view": 19,
+      "name": "r_19.png",
+      "frac_gt_0.5_native": 0.0575375,
+      "frac_gt_0.5_ms": 0.0750375
+    },
+    {
+      "view": 20,
+      "name": "r_20.png",
+      "frac_gt_0.5_native": 0.0628,
+      "frac_gt_0.5_ms": 0.0860703125
+    },
+    {
+      "view": 21,
+      "name": "r_21.png",
+      "frac_gt_0.5_native": 0.0597875,
+      "frac_gt_0.5_ms": 0.08054375
+    },
+    {
+      "view": 22,
+      "name": "r_22.png",
+      "frac_gt_0.5_native": 0.065684375,
+      "frac_gt_0.5_ms": 0.083640625
+    },
+    {
+      "view": 23,
+      "name": "r_23.png",
+      "frac_gt_0.5_native": 0.06914375,
+      "frac_gt_0.5_ms": 0.0947984375
+    },
+    {
+      "view": 24,
+      "name": "r_24.png",
+      "frac_gt_0.5_native": 0.0854578125,
+      "frac_gt_0.5_ms": 0.1165328125
+    },
+    {
+      "view": 25,
+      "name": "r_25.png",
+      "frac_gt_0.5_native": 0.0716671875,
+      "frac_gt_0.5_ms": 0.097240625
+    },
+    {
+      "view": 26,
+      "name": "r_26.png",
+      "frac_gt_0.5_native": 0.0909765625,
+      "frac_gt_0.5_ms": 0.1198890625
+    },
+    {
+      "view": 27,
+      "name": "r_27.png",
+      "frac_gt_0.5_native": 0.0556734375,
+      "frac_gt_0.5_ms": 0.0765640625
+    },
+    {
+      "view": 28,
+      "name": "r_28.png",
+      "frac_gt_0.5_native": 0.0683796875,
+      "frac_gt_0.5_ms": 0.0926890625
+    },
+    {
+      "view": 29,
+      "name": "r_29.png",
+      "frac_gt_0.5_native": 0.059790625,
+      "frac_gt_0.5_ms": 0.0814984375
+    },
+    {
+      "view": 30,
+      "name": "r_30.png",
+      "frac_gt_0.5_native": 0.0557203125,
+      "frac_gt_0.5_ms": 0.0780671875
+    },
+    {
+      "view": 31,
+      "name": "r_31.png",
+      "frac_gt_0.5_native": 0.0936703125,
+      "frac_gt_0.5_ms": 0.1224109375
+    },
+    {
+      "view": 32,
+      "name": "r_32.png",
+      "frac_gt_0.5_native": 0.087615625,
+      "frac_gt_0.5_ms": 0.119015625
+    },
+    {
+      "view": 33,
+      "name": "r_33.png",
+      "frac_gt_0.5_native": 0.0535453125,
+      "frac_gt_0.5_ms": 0.0726203125
+    },
+    {
+      "view": 34,
+      "name": "r_34.png",
+      "frac_gt_0.5_native": 0.0698453125,
+      "frac_gt_0.5_ms": 0.0965859375
+    },
+    {
+      "view": 35,
+      "name": "r_35.png",
+      "frac_gt_0.5_native": 0.0634546875,
+      "frac_gt_0.5_ms": 0.0769171875
+    },
+    {
+      "view": 36,
+      "name": "r_36.png",
+      "frac_gt_0.5_native": 0.0692609375,
+      "frac_gt_0.5_ms": 0.082903125
+    },
+    {
+      "view": 37,
+      "name": "r_37.png",
+      "frac_gt_0.5_native": 0.0615765625,
+      "frac_gt_0.5_ms": 0.0828921875
+    },
+    {
+      "view": 38,
+      "name": "r_38.png",
+      "frac_gt_0.5_native": 0.073375,
+      "frac_gt_0.5_ms": 0.095821875
+    },
+    {
+      "view": 39,
+      "name": "r_39.png",
+      "frac_gt_0.5_native": 0.0751265625,
+      "frac_gt_0.5_ms": 0.09364375
+    },
+    {
+      "view": 40,
+      "name": "r_40.png",
+      "frac_gt_0.5_native": 0.059275,
+      "frac_gt_0.5_ms": 0.079971875
+    },
+    {
+      "view": 41,
+      "name": "r_41.png",
+      "frac_gt_0.5_native": 0.088515625,
+      "frac_gt_0.5_ms": 0.1138
+    },
+    {
+      "view": 42,
+      "name": "r_42.png",
+      "frac_gt_0.5_native": 0.0597296875,
+      "frac_gt_0.5_ms": 0.08430625
+    },
+    {
+      "view": 43,
+      "name": "r_43.png",
+      "frac_gt_0.5_native": 0.0657078125,
+      "frac_gt_0.5_ms": 0.088721875
+    },
+    {
+      "view": 44,
+      "name": "r_44.png",
+      "frac_gt_0.5_native": 0.0733609375,
+      "frac_gt_0.5_ms": 0.0990640625
+    },
+    {
+      "view": 45,
+      "name": "r_45.png",
+      "frac_gt_0.5_native": 0.0670375,
+      "frac_gt_0.5_ms": 0.0918640625
+    },
+    {
+      "view": 46,
+      "name": "r_46.png",
+      "frac_gt_0.5_native": 0.0650765625,
+      "frac_gt_0.5_ms": 0.089078125
+    },
+    {
+      "view": 47,
+      "name": "r_47.png",
+      "frac_gt_0.5_native": 0.0772484375,
+      "frac_gt_0.5_ms": 0.1019234375
+    },
+    {
+      "view": 48,
+      "name": "r_48.png",
+      "frac_gt_0.5_native": 0.05398125,
+      "frac_gt_0.5_ms": 0.06688125
+    },
+    {
+      "view": 49,
+      "name": "r_49.png",
+      "frac_gt_0.5_native": 0.059684375,
+      "frac_gt_0.5_ms": 0.0821375
+    },
+    {
+      "view": 50,
+      "name": "r_50.png",
+      "frac_gt_0.5_native": 0.072109375,
+      "frac_gt_0.5_ms": 0.0967859375
+    },
+    {
+      "view": 51,
+      "name": "r_51.png",
+      "frac_gt_0.5_native": 0.0627359375,
+      "frac_gt_0.5_ms": 0.08469375
+    },
+    {
+      "view": 52,
+      "name": "r_52.png",
+      "frac_gt_0.5_native": 0.07109375,
+      "frac_gt_0.5_ms": 0.09336875
+    },
+    {
+      "view": 53,
+      "name": "r_53.png",
+      "frac_gt_0.5_native": 0.0564875,
+      "frac_gt_0.5_ms": 0.0732
+    },
+    {
+      "view": 54,
+      "name": "r_54.png",
+      "frac_gt_0.5_native": 0.054471875,
+      "frac_gt_0.5_ms": 0.0696078125
+    },
+    {
+      "view": 55,
+      "name": "r_55.png",
+      "frac_gt_0.5_native": 0.0737828125,
+      "frac_gt_0.5_ms": 0.09984375
+    },
+    {
+      "view": 56,
+      "name": "r_56.png",
+      "frac_gt_0.5_native": 0.0885546875,
+      "frac_gt_0.5_ms": 0.11918125
+    },
+    {
+      "view": 57,
+      "name": "r_57.png",
+      "frac_gt_0.5_native": 0.0511625,
+      "frac_gt_0.5_ms": 0.0678671875
+    },
+    {
+      "view": 58,
+      "name": "r_58.png",
+      "frac_gt_0.5_native": 0.066590625,
+      "frac_gt_0.5_ms": 0.085728125
+    },
+    {
+      "view": 59,
+      "name": "r_59.png",
+      "frac_gt_0.5_native": 0.06209375,
+      "frac_gt_0.5_ms": 0.0874234375
+    },
+    {
+      "view": 60,
+      "name": "r_60.png",
+      "frac_gt_0.5_native": 0.0704765625,
+      "frac_gt_0.5_ms": 0.095115625
+    },
+    {
+      "view": 61,
+      "name": "r_61.png",
+      "frac_gt_0.5_native": 0.0849625,
+      "frac_gt_0.5_ms": 0.1095125
+    },
+    {
+      "view": 62,
+      "name": "r_62.png",
+      "frac_gt_0.5_native": 0.0924625,
+      "frac_gt_0.5_ms": 0.1203015625
+    },
+    {
+      "view": 63,
+      "name": "r_63.png",
+      "frac_gt_0.5_native": 0.0843671875,
+      "frac_gt_0.5_ms": 0.110571875
+    },
+    {
+      "view": 64,
+      "name": "r_64.png",
+      "frac_gt_0.5_native": 0.054021875,
+      "frac_gt_0.5_ms": 0.070565625
+    },
+    {
+      "view": 65,
+      "name": "r_65.png",
+      "frac_gt_0.5_native": 0.0636015625,
+      "frac_gt_0.5_ms": 0.08094375
+    },
+    {
+      "view": 66,
+      "name": "r_66.png",
+      "frac_gt_0.5_native": 0.0825875,
+      "frac_gt_0.5_ms": 0.1098140625
+    },
+    {
+      "view": 67,
+      "name": "r_67.png",
+      "frac_gt_0.5_native": 0.0830703125,
+      "frac_gt_0.5_ms": 0.110325
+    },
+    {
+      "view": 68,
+      "name": "r_68.png",
+      "frac_gt_0.5_native": 0.05061875,
+      "frac_gt_0.5_ms": 0.0677421875
+    },
+    {
+      "view": 69,
+      "name": "r_69.png",
+      "frac_gt_0.5_native": 0.063221875,
+      "frac_gt_0.5_ms": 0.0841546875
+    },
+    {
+      "view": 70,
+      "name": "r_70.png",
+      "frac_gt_0.5_native": 0.0753640625,
+      "frac_gt_0.5_ms": 0.1014578125
+    },
+    {
+      "view": 71,
+      "name": "r_71.png",
+      "frac_gt_0.5_native": 0.0593671875,
+      "frac_gt_0.5_ms": 0.075496875
+    },
+    {
+      "view": 72,
+      "name": "r_72.png",
+      "frac_gt_0.5_native": 0.0711796875,
+      "frac_gt_0.5_ms": 0.098359375
+    },
+    {
+      "view": 73,
+      "name": "r_73.png",
+      "frac_gt_0.5_native": 0.0607859375,
+      "frac_gt_0.5_ms": 0.082440625
+    },
+    {
+      "view": 74,
+      "name": "r_74.png",
+      "frac_gt_0.5_native": 0.0695140625,
+      "frac_gt_0.5_ms": 0.0969765625
+    },
+    {
+      "view": 75,
+      "name": "r_75.png",
+      "frac_gt_0.5_native": 0.0671125,
+      "frac_gt_0.5_ms": 0.08463125
+    },
+    {
+      "view": 76,
+      "name": "r_76.png",
+      "frac_gt_0.5_native": 0.0734359375,
+      "frac_gt_0.5_ms": 0.0995515625
+    },
+    {
+      "view": 77,
+      "name": "r_77.png",
+      "frac_gt_0.5_native": 0.0793984375,
+      "frac_gt_0.5_ms": 0.1056890625
+    },
+    {
+      "view": 78,
+      "name": "r_78.png",
+      "frac_gt_0.5_native": 0.086871875,
+      "frac_gt_0.5_ms": 0.1076859375
+    },
+    {
+      "view": 79,
+      "name": "r_79.png",
+      "frac_gt_0.5_native": 0.0495125,
+      "frac_gt_0.5_ms": 0.0646921875
+    },
+    {
+      "view": 80,
+      "name": "r_80.png",
+      "frac_gt_0.5_native": 0.0720140625,
+      "frac_gt_0.5_ms": 0.097884375
+    },
+    {
+      "view": 81,
+      "name": "r_81.png",
+      "frac_gt_0.5_native": 0.0646921875,
+      "frac_gt_0.5_ms": 0.0892203125
+    },
+    {
+      "view": 82,
+      "name": "r_82.png",
+      "frac_gt_0.5_native": 0.0871921875,
+      "frac_gt_0.5_ms": 0.1117859375
+    },
+    {
+      "view": 83,
+      "name": "r_83.png",
+      "frac_gt_0.5_native": 0.0610484375,
+      "frac_gt_0.5_ms": 0.0834984375
+    },
+    {
+      "view": 84,
+      "name": "r_84.png",
+      "frac_gt_0.5_native": 0.0494046875,
+      "frac_gt_0.5_ms": 0.0671703125
+    },
+    {
+      "view": 85,
+      "name": "r_85.png",
+      "frac_gt_0.5_native": 0.0967953125,
+      "frac_gt_0.5_ms": 0.1234296875
+    },
+    {
+      "view": 86,
+      "name": "r_86.png",
+      "frac_gt_0.5_native": 0.059078125,
+      "frac_gt_0.5_ms": 0.0780421875
+    },
+    {
+      "view": 87,
+      "name": "r_87.png",
+      "frac_gt_0.5_native": 0.0533421875,
+      "frac_gt_0.5_ms": 0.0731859375
+    },
+    {
+      "view": 88,
+      "name": "r_88.png",
+      "frac_gt_0.5_native": 0.0590734375,
+      "frac_gt_0.5_ms": 0.079846875
+    },
+    {
+      "view": 89,
+      "name": "r_89.png",
+      "frac_gt_0.5_native": 0.0666078125,
+      "frac_gt_0.5_ms": 0.08913125
+    },
+    {
+      "view": 90,
+      "name": "r_90.png",
+      "frac_gt_0.5_native": 0.0753859375,
+      "frac_gt_0.5_ms": 0.1008984375
+    },
+    {
+      "view": 91,
+      "name": "r_91.png",
+      "frac_gt_0.5_native": 0.067559375,
+      "frac_gt_0.5_ms": 0.0904390625
+    },
+    {
+      "view": 92,
+      "name": "r_92.png",
+      "frac_gt_0.5_native": 0.0879671875,
+      "frac_gt_0.5_ms": 0.1185390625
+    },
+    {
+      "view": 93,
+      "name": "r_93.png",
+      "frac_gt_0.5_native": 0.060690625,
+      "frac_gt_0.5_ms": 0.0853046875
+    },
+    {
+      "view": 94,
+      "name": "r_94.png",
+      "frac_gt_0.5_native": 0.0679234375,
+      "frac_gt_0.5_ms": 0.0862359375
+    },
+    {
+      "view": 95,
+      "name": "r_95.png",
+      "frac_gt_0.5_native": 0.06963125,
+      "frac_gt_0.5_ms": 0.095984375
+    },
+    {
+      "view": 96,
+      "name": "r_96.png",
+      "frac_gt_0.5_native": 0.0726890625,
+      "frac_gt_0.5_ms": 0.09816875
+    },
+    {
+      "view": 97,
+      "name": "r_97.png",
+      "frac_gt_0.5_native": 0.04989375,
+      "frac_gt_0.5_ms": 0.065796875
+    },
+    {
+      "view": 98,
+      "name": "r_98.png",
+      "frac_gt_0.5_native": 0.062609375,
+      "frac_gt_0.5_ms": 0.0889265625
+    },
+    {
+      "view": 99,
+      "name": "r_99.png",
+      "frac_gt_0.5_native": 0.083253125,
+      "frac_gt_0.5_ms": 0.108525
+    }
+  ]
+}
