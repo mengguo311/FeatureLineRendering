@@ -1,0 +1,58 @@
+{
+ "thresholds": {
+  "TEMPORAL_MIN": 6.0,
+  "LIFT_P_MIN": 0.02,
+  "VIEW_CONSISTENCY": 0.7,
+  "BUDGET_CAP": 89748,
+  "fband": [
+   0.22,
+   0.5
+  ],
+  "kind": "segments",
+  "stage": "AFTER   pull+prune[tuned+len]",
+  "reference_arm": "teed_native_0.5"
+ },
+ "temporal": {
+  "P_pop_ratio": {
+   "30": 2.1783780827979426,
+   "60": 3.952345955622915,
+   "120": 6.85822384720667,
+   "240": 10.20670127412637
+  },
+  "frechet_ratio": {
+   "30": 1.7521310717030494,
+   "60": 2.7140529645534297,
+   "120": 4.6388020494686275,
+   "240": 8.639729240409103
+  },
+  "min_P_pop_ratio": 2.1783780827979426,
+  "max_P_pop_ratio": 10.20670127412637,
+  "min_frechet_ratio": 1.7521310717030494,
+  "source": "out/m1b_stroke_temporal_table_urse2e040.json"
+ },
+ "temporal_baseline": {
+  "P_pop_ratio": {
+   "30": 3.4911281912248926,
+   "60": 5.483348185810599,
+   "120": 8.69461890864554,
+   "240": 12.104615065550597
+  },
+  "frechet_ratio": {
+   "30": 2.522134247709854,
+   "60": 4.423830494906542,
+   "120": 7.863936761802851,
+   "240": 14.806743683937146
+  },
+  "min_P_pop_ratio": 3.4911281912248926,
+  "max_P_pop_ratio": 12.104615065550597,
+  "min_frechet_ratio": 2.522134247709854,
+  "source": "out/m1b_stroke_temporal_table_tcL_tcteed040.json"
+ },
+ "temporal_pass": false,
+ "manifest_ok_count": 332,
+ "manifest_failures": 0,
+ "n_carrier": 89748,
+ "within_budget": true,
+ "call": "ABORT-NO-GO (temporal)",
+ "GO": false
+}
