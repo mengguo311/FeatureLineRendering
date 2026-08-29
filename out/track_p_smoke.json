@@ -1,0 +1,57 @@
+{
+ "arms": {
+  "A": "per-frame TEED",
+  "B": "unculled object-space linelets"
+ },
+ "frames": 30,
+ "teed_thr": 0.5,
+ "variants": {
+  "chair": "tcteed",
+  "lego": "tcteed040"
+ },
+ "held_out": "TEST cams only",
+ "conditions": {
+  "chair|T1_orbit": {
+   "scene": "chair",
+   "trajectory": "T1_orbit",
+   "E_warp_A": {
+    "E_warp": 0.5798985050662502,
+    "E_warp_mean": 0.6389813182433088,
+    "E_frechet": 1.8357155359289352,
+    "n_matched": 1661
+   },
+   "E_warp_B": {
+    "E_warp": 0.1844108353457555,
+    "E_warp_mean": 0.22752540077956274,
+    "E_frechet": 0.3465209921533248,
+    "n_matched": 19607
+   },
+   "E_warp_ratio_A_over_B": 3.144601042444101,
+   "survival_A": {
+    "n": 2921,
+    "median": 0.0,
+    "mean": 1.189661074974324,
+    "max": 29,
+    "P_gt_2": 0.10681273536460116,
+    "P_gt_4": 0.06983909619993153,
+    "P_gt_8": 0.03560424512153372,
+    "P_gt_16": 0.01643272851763095,
+    "P_gt_32": 0.0
+   },
+   "survival_B": {
+    "n": 513,
+    "median": 29.0,
+    "mean": 25.717348927875243,
+    "max": 29,
+    "P_gt_2": 0.9454191033138402,
+    "P_gt_4": 0.9259259259259259,
+    "P_gt_8": 0.898635477582846,
+    "P_gt_16": 0.8771929824561403,
+    "P_gt_32": 0.0
+   },
+   "median_lifetime_ratio_B_over_A": Infinity,
+   "n_strokes_B_chain": 1137,
+   "_seconds": 62.11743712425232
+  }
+ }
+}

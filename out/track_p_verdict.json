@@ -1,0 +1,144 @@
+{
+ "FROZEN": true,
+ "thresholds": {
+  "E_warp_ratio_min": 2.0,
+  "median_lifetime_ratio_min": 2.0,
+  "rule": "worst case over all 6 conditions",
+  "conditions": [
+   "chair|T1_orbit",
+   "chair|T2_orbit_zoom",
+   "chair|T3_spline",
+   "lego|T1_orbit",
+   "lego|T2_orbit_zoom",
+   "lego|T3_spline"
+  ]
+ },
+ "guard_track_o_frechet_mult_B_240": {
+  "chair|T1_orbit": 39.94092373764461,
+  "chair|T2_orbit_zoom": 42.59802451198299,
+  "chair|T3_spline": 12.902221401401068
+ },
+ "code_sha256": {
+  "scripts/track_p_temporal.py": "eae3ac98ea204f0eb0d997c865679e1977dbcef65b47fb70257a49f92a9fa652",
+  "scripts/track_p_verdict.py": "23fc81c89912b4545607cd59cb1fc75f872d868f16bcce919b66bd293e5eeec0"
+ },
+ "manifest_at_freeze": {
+  "ok": 332,
+  "failures": 0
+ },
+ "results_files_existing_at_freeze": [],
+ "note": "Written before any Track-P number was computed. The same hashes are re-verified at scoring time.",
+ "results": {
+  "chair|T1_orbit": {
+   "E_warp_A": 0.5131076156870432,
+   "E_warp_B": 0.025098745587766848,
+   "E_warp_ratio": 20.443556188606188,
+   "median_life_A": 0.0,
+   "median_life_B": 239.0,
+   "life_ratio": Infinity,
+   "E_warp_pass": true,
+   "life_pass": true
+  },
+  "chair|T2_orbit_zoom": {
+   "E_warp_A": 0.5396767161112984,
+   "E_warp_B": 0.024963229494767286,
+   "E_warp_ratio": 21.618866109628314,
+   "median_life_A": 0.0,
+   "median_life_B": 239.0,
+   "life_ratio": Infinity,
+   "E_warp_pass": true,
+   "life_pass": true
+  },
+  "chair|T3_spline": {
+   "E_warp_A": 0.4802281113928955,
+   "E_warp_B": 0.07395079619524825,
+   "E_warp_ratio": 6.493886964042624,
+   "median_life_A": 0.0,
+   "median_life_B": 28.0,
+   "life_ratio": Infinity,
+   "E_warp_pass": true,
+   "life_pass": true
+  },
+  "lego|T1_orbit": {
+   "E_warp_A": 0.5136469187501917,
+   "E_warp_B": 0.049498850681495885,
+   "E_warp_ratio": 10.376946367003384,
+   "median_life_A": 0.0,
+   "median_life_B": 117.0,
+   "life_ratio": Infinity,
+   "E_warp_pass": true,
+   "life_pass": true
+  },
+  "lego|T2_orbit_zoom": {
+   "E_warp_A": 0.5367955681654005,
+   "E_warp_B": 0.050589368456861544,
+   "E_warp_ratio": 10.610837504783948,
+   "median_life_A": 0.0,
+   "median_life_B": 47.0,
+   "life_ratio": Infinity,
+   "E_warp_pass": true,
+   "life_pass": true
+  },
+  "lego|T3_spline": {
+   "E_warp_A": 0.5431827472839366,
+   "E_warp_B": 0.16047862672640026,
+   "E_warp_ratio": 3.3847669210804496,
+   "median_life_A": 0.0,
+   "median_life_B": 20.0,
+   "life_ratio": Infinity,
+   "E_warp_pass": true,
+   "life_pass": true
+  }
+ },
+ "min_E_warp_ratio": 3.3847669210804496,
+ "min_life_ratio": Infinity,
+ "primary_pass": true,
+ "secondary_pass": true,
+ "failing_E_warp": [],
+ "failing_life": [],
+ "code_drift": {},
+ "guard": {
+  "chair|T1_orbit": {
+   "track_o_frechet_mult_B": 39.94092373764461,
+   "note": "Track O reference recorded at freeze"
+  },
+  "chair|T2_orbit_zoom": {
+   "track_o_frechet_mult_B": 42.59802451198299,
+   "note": "Track O reference recorded at freeze"
+  },
+  "chair|T3_spline": {
+   "track_o_frechet_mult_B": 12.902221401401068,
+   "note": "Track O reference recorded at freeze"
+  }
+ },
+ "manifest_after": {
+  "ok": 332,
+  "failures": 0
+ },
+ "GO": true,
+ "call": "GO",
+ "guard_check": {
+  "chair|T1_orbit": {
+   "track_p_E_frechet_ratio": 40.02011031698568,
+   "track_o_frechet_mult_B": 39.94092373764461,
+   "delta": 0.07918657934106932,
+   "rel_delta": 0.001982592587522758,
+   "no_regress": true
+  },
+  "chair|T2_orbit_zoom": {
+   "track_p_E_frechet_ratio": 42.5181176427431,
+   "track_o_frechet_mult_B": 42.59802451198299,
+   "delta": -0.07990686923989188,
+   "rel_delta": -0.0018758350922449818,
+   "no_regress": true
+  },
+  "chair|T3_spline": {
+   "track_p_E_frechet_ratio": 12.935866427191067,
+   "track_o_frechet_mult_B": 12.902221401401068,
+   "delta": 0.033645025789999394,
+   "rel_delta": 0.0026076924851363703,
+   "no_regress": true
+  }
+ },
+ "secondary_degenerate_note": "median lifetime of arm A is 0.0 in ALL SIX conditions (>50% of per-frame TEED strokes fail to survive even one transition), so the frozen ratio B/A is +inf everywhere and passes trivially without discriminating between conditions. The survival CURVES P(life>K) and the raw medians are the informative form and are reported in full."
+}
