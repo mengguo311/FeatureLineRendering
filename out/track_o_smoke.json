@@ -1,0 +1,80 @@
+{
+ "scene": "chair",
+ "arms": {
+  "A": "per-frame TEED",
+  "B": "linelets tcteed",
+  "C": "NG-MEC cull ngmecf030"
+ },
+ "chain_B": {
+  "n_linelets": 15971,
+  "n_nms": 8640,
+  "n_strokes": 1137,
+  "median_vertices": 4.0
+ },
+ "chain_C": {
+  "n_linelets": 15993,
+  "n_nms": 8483,
+  "n_strokes": 1144,
+  "median_vertices": 4.0
+ },
+ "teed_thr": 0.5,
+ "held_out": "TEST cams only",
+ "target": [
+  -0.033542077988386154,
+  0.3395997881889343,
+  -0.05564781650900841
+ ],
+ "trajectories": {
+  "T1_orbit": {
+   "by_frames": {
+    "30": {
+     "A_perframe_TEED": {
+      "frechet_median": 1.841295442325017,
+      "frechet_mean": 1.8320604429441916,
+      "frechet_p90": 2.7456604490488092,
+      "chamfer_median": 0.5825887378487201,
+      "P_pop": 0.853567923509695,
+      "unmatched_frac": 0.8535219464982007,
+      "cut_frac": 4.597701149425287e-05,
+      "n_strokes_per_frame": 387.0,
+      "mean_vertices_per_stroke": 2.1572355393376386,
+      "n_matched_total": 1649,
+      "warp_dropped_frac": 0.24028353812421765
+     },
+     "B_unculled": {
+      "frechet_median": 0.34652409117041794,
+      "frechet_mean": 0.43716969314794757,
+      "frechet_p90": 0.7270542004201022,
+      "chamfer_median": 0.18440991473873777,
+      "P_pop": 0.092917830717118,
+      "unmatched_frac": 0.06557417387025768,
+      "cut_frac": 0.027343656846860312,
+      "n_strokes_per_frame": 727.3103448275862,
+      "mean_vertices_per_stroke": 5.062214815891581,
+      "n_matched_total": 19607,
+      "warp_dropped_frac": 0.0005854971903609992
+     },
+     "C_ngmec": {
+      "frechet_median": 0.33902475623153006,
+      "frechet_mean": 0.43056964022867644,
+      "frechet_p90": 0.725645833999856,
+      "chamfer_median": 0.18435435856045432,
+      "P_pop": 0.09953739549259931,
+      "unmatched_frac": 0.06371660600337302,
+      "cut_frac": 0.035820789489226304,
+      "n_strokes_per_frame": 728.7241379310345,
+      "mean_vertices_per_stroke": 5.107412367724929,
+      "n_matched_total": 19683,
+      "warp_dropped_frac": 0.0
+     },
+     "mult_B": 9.18626615496787,
+     "mult_C": 8.575349186961182,
+     "frechet_mult_B": 5.313614519861714,
+     "frechet_mult_C": 5.431153355265719,
+     "_seconds": 89.9344003200531,
+     "C_over_B": 0.9334967050049701
+    }
+   }
+  }
+ }
+}
