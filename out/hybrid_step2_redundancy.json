@@ -1,0 +1,49 @@
+{
+ "scene": "chair",
+ "gate": {
+  "cache": "/home/u00134/3dgs_line/tier1/cache/seedgate_chair_2dgs_chair_gradn_q90_r0_hp1_S17065_v80.npz",
+  "n_seeds": 17065,
+  "n_keep": 10117,
+  "keep_frac": 0.5928508643422209,
+  "vote_frac": 0.75,
+  "signal": "gradn",
+  "tau": null,
+  "tau_q": 90.0,
+  "r": 0,
+  "model": "/home/u00134/3dgs_line/tier1/out/2dgs_chair",
+  "n_views": 80,
+  "median_pass_frac": 0.8064516129032258,
+  "n_never_visible": 0
+ },
+ "groups": {
+  "baseline  (prune keep)": {
+   "n": 16039,
+   "P1.5": 0.6067140304797369,
+   "R1.5": 0.7077155528595667,
+   "P2.5": 0.7233038455484082,
+   "R2.5": 0.7662067544615565,
+   "n_px": 19324
+  },
+  "gate KEEPS (prune keep & gate pass)": {
+   "n": 9981,
+   "P1.5": 0.6692148221274271,
+   "R1.5": 0.511503713941509,
+   "P2.5": 0.7882016225756007,
+   "R2.5": 0.5787030272504364,
+   "n_px": 11343
+  },
+  "gate VETOES (prune keep & gate drop)": {
+   "n": 6058,
+   "P1.5": 0.5727828751753846,
+   "R1.5": 0.5776335092303725,
+   "P2.5": 0.6923250825580488,
+   "R2.5": 0.6730338680730125,
+   "n_px": 12623
+  }
+ },
+ "prune_drop_rate": 0.060123058892469966,
+ "prune_drop_given_gate_drop": 0.1280944156591825,
+ "auc_m1a_predicts_gate": 0.6333268348122021,
+ "mean_pct_gate_keep": 0.554313205290078,
+ "mean_pct_gate_drop": 0.42098637047787585
+}

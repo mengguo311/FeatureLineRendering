@@ -26,14 +26,22 @@ def defloat_mask(mu, opacity, k=8, dist_factor=3.0, opa_min=0.1):
 
 
 def render_gbuffer(g, keep_mask, cam, device="cuda", r_min=1.0, r_max=15.0,
-                   frag_alpha_min=0.01, with_albedo=False):
+                   frag_alpha_min=0.01, with_albedo=False, with_median_depth=False):
     """g: dict from common.load_gaussians; keep_mask: bool [N] (de-floater);
     cam: common.Camera. Returns dict of torch tensors on `device`.
 
     with_albedo=True additionally composites the VIEW-INDEPENDENT SH degree-0 albedo
     (common.load_gaussians["albedo"]) with the same transmittance weights, giving
     out["albedo"][H,W,3] = sum(T a c) / sum(T a). Off by default so nothing else in the
-    pipeline pays for it."""
+    pipeline pays for it.
+
+    with_median_depth=True additionally returns out["depth_median"][H,W]: the depth of the
+    FIRST front-to-back fragment at which the accumulated opacity reaches 0.5, i.e. the
+    standard 2DGS/GOF "median depth". Unlike the transmittance-weighted MEAN depth (which
+    interpolates ACROSS a depth discontinuity and therefore floats a silhouette pixel out
+    into empty space), the median depth snaps to the surface that actually owns the pixel.
+    inf where the pixel never accumulates 0.5 opacity. Off by default; when off this
+    function is bit-identical to before."""
     H, Wd = cam.H, cam.W
     mu = g["mu"][keep_mask]
     opa = g["opacity"][keep_mask]
@@ -103,6 +111,8 @@ def render_gbuffer(g, keep_mask, cam, device="cuda", r_min=1.0, r_max=15.0,
                "alpha": alpha_buf.view(H, Wd)}
         if with_albedo:
             out["albedo"] = albedo.view(H, Wd, 3)
+        if with_median_depth:
+            out["depth_median"] = depth.view(H, Wd).clone()
         return out
 
     pix = torch.cat(frag_pix)
@@ -143,8 +153,25 @@ def render_gbuffer(g, keep_mask, cam, device="cuda", r_min=1.0, r_max=15.0,
     nn = torch.linalg.norm(normal, dim=1, keepdim=True)
     normal = torch.where(nn > 1e-6, normal / nn.clamp(min=1e-6), normal)
 
+    if with_median_depth:
+        # T*(1-a) == the transmittance AFTER this fragment == 1 - accumulated opacity.
+        # It is monotonically decreasing along the (already front-to-back) run, so the
+        # FIRST fragment with T*(1-a) <= 0.5 is also the one with minimum z among those
+        # satisfying it -> an amin scatter picks it exactly.
+        T_after = T * (1.0 - fa)
+        med = torch.full((H * Wd,), float("inf"), device=dev)
+        sel_m = T_after <= 0.5
+        if sel_m.any():
+            med.scatter_reduce_(0, pix[sel_m], fz[sel_m], reduce="amin",
+                                include_self=True)
+        # pixels that never reach 0.5 opacity but do have some coverage keep the mean depth
+        fb = (~torch.isfinite(med)) & hit
+        med[fb] = depth[fb]
+
     out = {"depth": depth.view(H, Wd), "normal": normal.view(H, Wd, 3),
            "alpha": wsum.clamp(max=1.0).view(H, Wd)}
+    if with_median_depth:
+        out["depth_median"] = med.view(H, Wd)
     if with_albedo:
         alb_n = torch.zeros_like(albedo)
         alb_n[hit] = albedo[hit] / wsum[hit][:, None]

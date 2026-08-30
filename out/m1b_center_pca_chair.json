@@ -1,0 +1,121 @@
+{
+  "scene": "chair",
+  "views": [
+    0,
+    14,
+    28,
+    42,
+    57,
+    71,
+    85,
+    99
+  ],
+  "K_NN": 128,
+  "rad_mults": [
+    3.0,
+    4.0,
+    6.0
+  ],
+  "median_splat_spacing": 0.006248915723222208,
+  "depth_window_px": 9,
+  "scores": {
+    "a@3": {
+      "name": "(a) centre PCA S_center, gather 3x spacing",
+      "n_fabric": 32183,
+      "n_crease": 34663,
+      "fabric_p05": 0.026023926788819415,
+      "fabric_p50": 0.1287168358888224,
+      "fabric_p95": 0.23385875344709497,
+      "crease_p05": 0.040489099497473084,
+      "crease_p50": 0.1391368870559387,
+      "crease_p95": 0.2372015194554488,
+      "separation": -0.19336965394962188,
+      "auc": 0.5430791426782107
+    },
+    "a@4": {
+      "name": "(a) centre PCA S_center, gather 4x spacing",
+      "n_fabric": 59268,
+      "n_crease": 44766,
+      "fabric_p05": 0.02444565484613511,
+      "fabric_p50": 0.1362126516987895,
+      "fabric_p95": 0.23981138225203333,
+      "crease_p05": 0.04158527874204453,
+      "crease_p50": 0.1356075996047959,
+      "crease_p95": 0.2282611913916167,
+      "separation": -0.1982261035099888,
+      "auc": 0.5019426831466364
+    },
+    "a@6": {
+      "name": "(a) centre PCA S_center, gather 6x spacing",
+      "n_fabric": 76781,
+      "n_crease": 49428,
+      "fabric_p05": 0.03622413360970955,
+      "fabric_p50": 0.13206494789196516,
+      "fabric_p95": 0.24369685286924392,
+      "crease_p05": 0.04545140797593091,
+      "crease_p50": 0.1255307035882571,
+      "crease_p95": 0.21230337800057578,
+      "separation": -0.198245444893313,
+      "auc": 0.46636305044930004
+    },
+    "at@3": {
+      "name": "(a') centre thickness sqrt(l3) px, gather 3x",
+      "n_fabric": 32183,
+      "n_crease": 34663,
+      "fabric_p05": 0.5275381782658011,
+      "fabric_p50": 1.3327821937119437,
+      "fabric_p95": 2.0010351593057707,
+      "crease_p05": 0.673953902791308,
+      "crease_p50": 1.3805469491579738,
+      "crease_p95": 2.0447322905922447,
+      "separation": -1.3270812565144627,
+      "auc": 0.5378701530270651
+    },
+    "at@4": {
+      "name": "(a') centre thickness sqrt(l3) px, gather 4x",
+      "n_fabric": 59268,
+      "n_crease": 44766,
+      "fabric_p05": 0.6601750222466367,
+      "fabric_p50": 1.8201093272510815,
+      "fabric_p95": 2.6573044893676863,
+      "crease_p05": 0.8886937077637472,
+      "crease_p50": 1.8011402956107385,
+      "crease_p95": 2.5699808620825846,
+      "separation": -1.7686107816039391,
+      "auc": 0.4970474394230711
+    },
+    "at@6": {
+      "name": "(a') centre thickness sqrt(l3) px, gather 6x",
+      "n_fabric": 76781,
+      "n_crease": 49428,
+      "fabric_p05": 1.2392169636837524,
+      "fabric_p50": 2.6808946799061015,
+      "fabric_p95": 3.914067983600158,
+      "crease_p05": 1.4126467109270635,
+      "crease_p50": 2.496703743848106,
+      "crease_p95": 3.4156568737497515,
+      "separation": -2.5014212726730944,
+      "auc": 0.42921931310651046
+    },
+    "b": {
+      "name": "(b) rendered-depth window plane RMSE [px-equiv]",
+      "n_fabric": 90611,
+      "n_crease": 50965,
+      "fabric_p05": 0.33376557010781205,
+      "fabric_p50": 0.9475055529150895,
+      "fabric_p95": 2.20164968046405,
+      "crease_p05": 0.29202870277810067,
+      "crease_p50": 0.6733743503523667,
+      "crease_p95": 1.5679637594744906,
+      "separation": -1.9096209776859494,
+      "auc": 0.33647896304331554
+    }
+  },
+  "pixel_coverage": {
+    "a@3": 0.47215629767757245,
+    "a@4": 0.7348279369384642,
+    "a@6": 0.8914575916822061
+  },
+  "gate_score_key": "a@3",
+  "verdict": "NO-GO \u2014 2DGS (or equivalent geometry-regularised training) is MANDATORY"
+}

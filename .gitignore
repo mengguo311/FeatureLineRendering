@@ -59,3 +59,16 @@ out/condlaw_*.npz
 # --- trained 2DGS models: 91MB+ of weights, regenerable by scripts/run_2dgs_<scene>.sh
 #     with the frozen recipe. The out/condlaw_*_test.json scores read off them ARE tracked.
 out/2dgs_ship/
+
+# --- large point clouds / model dumps (regenerable) — keep repo lean
+out/*.npz
+out/*.npy
+out/2dgs_chair/
+out/2dgs_chair_dist/
+out/teed_edges_*/
+ext/
+logs/
+# keep: *.md summaries, *_spec.md, out/*.json (metrics), out/*.png/*.svg (figures), src/, scripts/
+out/2dgs_lego/
+out/2dgs_chair_reporecipe/
+*.ply

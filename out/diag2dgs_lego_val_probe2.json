@@ -1,0 +1,195 @@
+{
+ "scene": "lego",
+ "f": 0.5,
+ "split": "val",
+ "views": [
+  0,
+  10,
+  20,
+  30,
+  40,
+  50,
+  60,
+  70,
+  80,
+  90
+ ],
+ "n_linelets": 49860,
+ "model2dgs": {
+  "model_path": "/home/u00134/3dgs_line/tier1/out/2dgs_lego",
+  "iteration": 30000,
+  "ply": "/home/u00134/3dgs_line/tier1/out/2dgs_lego/point_cloud/iteration_30000/point_cloud.ply",
+  "n_gauss": 124180,
+  "depth_ratio": 1.0,
+  "white_background": true,
+  "lambda_normal": null,
+  "lambda_dist": null
+ },
+ "surfel_median_scale_max": 0.011334334965795279,
+ "linelet_median_half_length": 0.010007488541305065,
+ "labels": {
+  "rule": "TrueCrease: median over visible split views of GT-crease distance <= 1.5 px; DecalDistractor: median > 3.0 px AND TEED prob > 0.5 in >= half the views it is visible in",
+  "n_seen": 49644,
+  "n_crease": 28409,
+  "n_decal": 4067,
+  "n_teed_high": 23832,
+  "n_far_not_teed_high": 4701
+ },
+ "n_common_measurable": 40111,
+ "signals": {
+  "surfel3d_rho3_xi0.25_nmin5|own": {
+   "n_crease": 26834,
+   "n_decal": 3980,
+   "measurable_frac": 0.9438026474127558,
+   "AUC": 0.39193988313783273,
+   "median_crease": 32.01870601396996,
+   "median_decal": 49.89486225976094,
+   "median_gap": -17.87615624579098,
+   "p05_crease": 5.385723877230328,
+   "p95_decal": 86.89647618518335
+  },
+  "surfel3d_rho3_xi0.25_nmin5|common": {
+   "n_crease": 21794,
+   "n_decal": 3639,
+   "measurable_frac": 0.8044725230645808,
+   "AUC": 0.4051910866503037,
+   "median_crease": 31.840632542007583,
+   "median_decal": 47.85315213532651,
+   "median_gap": -16.012519593318927,
+   "p05_crease": 5.127000426023274,
+   "p95_decal": 86.65846157862516
+  },
+  "spread2dgs_rho3_xi0.25_nmin5|own": {
+   "n_crease": 26834,
+   "n_decal": 3980,
+   "measurable_frac": 0.9438026474127558,
+   "AUC": 0.5114391084137989,
+   "median_crease": 35.69094804709792,
+   "median_decal": 35.50950151697509,
+   "median_gap": 0.18144653012282674,
+   "p05_crease": 20.488048166718386,
+   "p95_decal": 47.62981765464977
+  },
+  "spread2dgs_rho3_xi0.25_nmin5|common": {
+   "n_crease": 21794,
+   "n_decal": 3639,
+   "measurable_frac": 0.8044725230645808,
+   "AUC": 0.5266345041076751,
+   "median_crease": 35.547487863260045,
+   "median_decal": 34.95656112012783,
+   "median_gap": 0.5909267431322149,
+   "p05_crease": 19.759914516258675,
+   "p95_decal": 47.14236330163001
+  },
+  "surfel3d_perlinelet|own": {
+   "n_crease": 23439,
+   "n_decal": 3748,
+   "measurable_frac": 0.8610108303249098,
+   "AUC": 0.35634609886568114,
+   "median_crease": 30.121277576109563,
+   "median_decal": 49.9531338289282,
+   "median_gap": -19.83185625281864,
+   "p05_crease": 5.034952706880726,
+   "p95_decal": 87.06244685421346
+  },
+  "surfel3d_perlinelet|common": {
+   "n_crease": 21794,
+   "n_decal": 3639,
+   "measurable_frac": 0.8044725230645808,
+   "AUC": 0.3592271463517481,
+   "median_crease": 30.349425365158602,
+   "median_decal": 49.645002186989906,
+   "median_gap": -19.295576821831304,
+   "p05_crease": 5.252593249466122,
+   "p95_decal": 86.95000186302654
+  },
+  "mesh3d_rho3_xi0.25_nmin5|own": {
+   "n_crease": 28028,
+   "n_decal": 4045,
+   "measurable_frac": 0.9911552346570397,
+   "AUC": 0.33893769130392826,
+   "median_crease": 45.57992597954374,
+   "median_decal": 89.96785941361249,
+   "median_gap": -44.38793343406875,
+   "p05_crease": 0.0,
+   "p95_decal": 90.0
+  },
+  "mesh3d_rho3_xi0.25_nmin5|common": {
+   "n_crease": 21794,
+   "n_decal": 3639,
+   "measurable_frac": 0.8044725230645808,
+   "AUC": 0.3369027486961464,
+   "median_crease": 46.5094287937297,
+   "median_decal": 89.97161579364307,
+   "median_gap": -43.46218699991337,
+   "p05_crease": 0.0,
+   "p95_decal": 90.0
+  },
+  "spreadmesh_rho3_xi0.25_nmin5|own": {
+   "n_crease": 28028,
+   "n_decal": 4045,
+   "measurable_frac": 0.9911552346570397,
+   "AUC": 0.4643043518374615,
+   "median_crease": 43.992144410037476,
+   "median_decal": 44.63711253550061,
+   "median_gap": -0.6449681254631372,
+   "p05_crease": 34.555898862430105,
+   "p95_decal": 51.49711237775383
+  },
+  "spreadmesh_rho3_xi0.25_nmin5|common": {
+   "n_crease": 21794,
+   "n_decal": 3639,
+   "measurable_frac": 0.8044725230645808,
+   "AUC": 0.4691031712846032,
+   "median_crease": 43.9246828225987,
+   "median_decal": 44.56824791287506,
+   "median_gap": -0.6435650902763612,
+   "p05_crease": 34.8533340192069,
+   "p95_decal": 51.2669951104742
+  },
+  "ribbon2dgs|own": {
+   "n_crease": 28385,
+   "n_decal": 4053,
+   "measurable_frac": 0.9948054552747694,
+   "AUC": 0.2801529635448156,
+   "median_crease": 20.632228407987387,
+   "median_decal": 41.12561310697791,
+   "median_gap": -20.49338469899052,
+   "p05_crease": 6.096244743417116,
+   "p95_decal": 82.98428732455965
+  },
+  "ribbon2dgs|common": {
+   "n_crease": 21794,
+   "n_decal": 3639,
+   "measurable_frac": 0.8044725230645808,
+   "AUC": 0.2883279173851596,
+   "median_crease": 20.557776853012136,
+   "median_decal": 40.53186279398251,
+   "median_gap": -19.974085940970376,
+   "p05_crease": 6.205509221236394,
+   "p95_decal": 83.28026382980944
+  },
+  "ribbon3dgs_vanilla|own": {
+   "n_crease": 28387,
+   "n_decal": 4053,
+   "measurable_frac": 0.9948455675892499,
+   "AUC": 0.3680827183337181,
+   "median_crease": 23.27028147891702,
+   "median_decal": 30.008885763488745,
+   "median_gap": -6.738604284571725,
+   "p05_crease": 8.962365426966224,
+   "p95_decal": 65.38125448423646
+  },
+  "ribbon3dgs_vanilla|common": {
+   "n_crease": 21794,
+   "n_decal": 3639,
+   "measurable_frac": 0.8044725230645808,
+   "AUC": 0.3682109526755349,
+   "median_crease": 23.403021586927494,
+   "median_decal": 30.031339089901774,
+   "median_gap": -6.62831750297428,
+   "p05_crease": 9.01557826316363,
+   "p95_decal": 65.7493786493917
+  }
+ }
+}

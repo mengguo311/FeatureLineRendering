@@ -1,0 +1,7 @@
+{
+  "m1_soft_g1.0":       {"source": "teed_soft", "key": "native", "thr": 0.5, "nms": true, "soft_gamma": 1.0},
+  "m2_cc25":            {"source": "teed_cc",   "key": "native", "thr": 0.5, "nms": true, "cc_minlen": 25},
+  "m2_cc10":            {"source": "teed_cc",   "key": "native", "thr": 0.5, "nms": true, "cc_minlen": 10},
+  "m3_maskM1a_d2":      {"source": "cannymask", "key": "native", "thr": 0.5, "nms": true, "mask_dilate": 2},
+  "m3_masksharplow_d2": {"source": "cannymask", "key": "native", "thr": 0.5, "nms": true, "mask_dilate": 2, "cfgs": [[0, 20, 60]]}
+}
