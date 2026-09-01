@@ -14,8 +14,9 @@ limit we quantify. Per-frame 2D detection remains the precision reference we tra
 against rather than claim to beat. What the
 primitive buys is stability where it counts: on a three-axis protocol that compares
 methods only at **matched precision and matched line density**, our lines pop
-**1.72–8.35×** less per scene×trajectory condition (two synthetic scenes, three
-trajectories) than the strongest 2D baseline we could construct — an EMA accumulator
+**1.72–8.35×** less per scene×trajectory condition (two synthetic scenes × two
+trajectories, four conditions; a third trajectory appears in the stroke-level results)
+than the strongest 2D baseline we could construct — an EMA accumulator
 driven by *oracle* rigid flow, so no estimated flow can improve its inputs — with 1.72× as the frozen
 conservative floor at the adversarial worst cell, and ≥9.8× less than memoryless
 detectors. A second contribution characterizes why the primitive's precision is bounded

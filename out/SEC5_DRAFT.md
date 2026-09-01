@@ -52,7 +52,8 @@ frozen zero-shot DINOv2 features separates crease from texture at AUC **0.8401 /
 chain-level read, against ≈0.71 photometric and ≈0.65 geometric baselines (Fig 7). Read
 honestly, the probe recognizes *which surface* a point lies on — fabric field vs piping,
 stud field vs decal — a surface-identity readout rather than an edge-type detector. The
-signal the primitive needs exists, in features every modern pipeline already has.
+signal the primitive needs exists, in features every modern pipeline already has — though
+Act 4 shows that reading it out is supervision-bound.
 
 ## 5.4 Act 4 — and it is supervision-bound under our frozen protocol
 
