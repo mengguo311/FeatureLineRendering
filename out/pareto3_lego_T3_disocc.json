@@ -1,0 +1,44 @@
+{
+  "scene": "lego",
+  "traj": "T3_spline",
+  "frames": 240,
+  "operating_point": {
+    "baseline": "CANNY 50/150 a=0.85",
+    "ours": "OURS f=0.22",
+    "advantage_pop2": 1.719
+  },
+  "frozen": {
+    "eps": 0.0753699541091919,
+    "eps_rule": "2% of median finite scene depth",
+    "median_scene_depth": 3.7684977054595947,
+    "pop_threshold_px": 2.0
+  },
+  "baseline": {
+    "n_pooled_px": 2914371,
+    "n_oob_dropped": 287,
+    "pop_gt2px_overall": 0.05954526722918942,
+    "n_pop": 173537,
+    "frac_px_disocc": 0.06601252894706953,
+    "frac_POP_in_disocc": 0.3326898586468592,
+    "frac_POP_in_interior": 0.6673101413531408,
+    "pop_RATE_disocc": 0.30009616134314004,
+    "pop_RATE_interior": 0.04254356929095153
+  },
+  "ours": {
+    "n_pooled_px": 2515085,
+    "n_oob_dropped": 534,
+    "pop_gt2px_overall": 0.03457258899798615,
+    "n_pop": 86953,
+    "frac_px_disocc": 0.0340743950999668,
+    "frac_POP_in_disocc": 0.4007337297160535,
+    "frac_POP_in_interior": 0.5992662702839465,
+    "pop_RATE_disocc": 0.40659276546091017,
+    "pop_RATE_interior": 0.02144904986241374
+  },
+  "gate": {
+    "frac_baseline_pop_in_disocc": 0.3326898586468592,
+    "GO>=": 0.6,
+    "NO-GO<": 0.4,
+    "verdict": "NO-GO"
+  }
+}
