@@ -2,8 +2,8 @@
 
 Framing (three-way reconciled, A-ANCHOR): the paper is anchored on the POSITIVE,
 deployable primitive — **Contribution A: interior temporal stability at matched precision
-AND density (5.19–8.35× per-condition vs an oracle-flow accumulated ceiling; ≥9.8× vs
-memoryless; threshold-invariant)** — with **Contribution B as the diagnostic BOUNDARY**
+AND density (1.72–8.35× per-condition vs an oracle-flow accumulated ceiling, ≥5.19× in 3 of 4
+conditions; ≥9.8× vs memoryless; threshold-invariant where measured)** — with **Contribution B as the diagnostic BOUNDARY**
 (why the primitive's precision is what it is: the ceiling arc, ending supervision-bound
 under our frozen protocol), and the **honesty protocol third**. Both self-disclosed
 regressions are the primitive's measured envelope and get dedicated figure real-estate

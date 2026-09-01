@@ -103,10 +103,10 @@ ax.axis("off")
 ax.text(0.02, 0.95, "interior temporal stability\nat MATCHED precision\nAND density",
         fontsize=11.5, fontweight="bold", va="top", transform=ax.transAxes)
 ax.text(0.02, 0.56,
-        "5.19–8.35×\nfewer popped line-pixels than an\nORACLE-FLOW accumulated\n"
-        "2D baseline (per condition)",
+        "1.72–8.35×\nfewer popped line-pixels than an\nORACLE-FLOW accumulated\n"
+        "2D baseline (≥5.19× in 3 of 4\nconditions)",
         fontsize=10.5, va="top", transform=ax.transAxes, color="#1a7f37")
-ax.text(0.02, 0.16, "worst adversarial cell:\n1.72× (disclosed)",
+ax.text(0.02, 0.13, "worst adversarial cell:\n1.72× = the frozen floor",
         fontsize=10, va="top", transform=ax.transAxes, color="#c0392b")
 ax2 = axs[1, 4]
 ax2.axis("off")
