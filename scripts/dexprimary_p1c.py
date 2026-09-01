@@ -79,6 +79,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--scene", default="chair", choices=["chair", "lego"])
     ap.add_argument("--no_dino", action="store_true")
+    ap.add_argument("--dump_feats", action="store_true",
+                    help="persist per-candidate features (incl. the 384-d DINO descriptor) "
+                         "to out/dexp1d_feats_<scene>.npz for Phase 1d, then exit before "
+                         "the probe stage")
     args = ap.parse_args()
     scene = args.scene
     t00 = time.time()
@@ -148,6 +152,18 @@ def main():
     DD[dcnt == 0] = np.nan
     print(f"[p1c] features done {time.time()-t00:.0f}s  "
           f"dino views/candidate median {np.median(dcnt)}", flush=True)
+
+    if args.dump_feats:
+        chain = ES.chain_candidates(P)
+        np.savez(os.path.join(OUT, f"dexp1d_feats_{scene}.npz"),
+                 P=P, refv=refv, y=y, d3=d3, chain=chain,
+                 FA=FA.astype(np.float32), FB=FB.astype(np.float32),
+                 FC=FC.astype(np.float32), DD=DD.astype(np.float16),
+                 dcnt=dcnt, x_eval_half=(P[:, 0] >= np.median(P[:, 0])),
+                 refs=np.array(refs))
+        print(f"[p1c] dumped features -> out/dexp1d_feats_{scene}.npz "
+              f"({(DD.astype(np.float16).nbytes + FA.nbytes*3)/1e6:.0f} MB)", flush=True)
+        return
 
     # ---------------- CHAINS (METHOD path) ----------------
     chain = ES.chain_candidates(P)

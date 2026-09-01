@@ -225,3 +225,66 @@ def chain_candidates(P, r=0.005, k=8, cos_min=0.6, min_size=10):
     cnt = np.bincount(lab, minlength=n_comp)
     lab = np.where(cnt[lab] >= min_size, lab, -1)
     return lab
+
+
+# ---------------------------------------------------------------- Phase 1d: pseudo-labels
+# MESH-FREE supervision sources. These functions see ONLY method-path features (FAM-A/B/C
+# arrays + DINO descriptors). They never see mesh labels — that is the whole point of the
+# Phase 1d falsification, and it is what the AST check verifies.
+#
+# Every threshold below is FROZEN A PRIORI from physics, not tuned on any mesh AUC:
+# a geometric crease is (i) a rendered-normal discontinuity, (ii) a rendered-depth
+# curvature, (iii) a shading-contrast (luminance) step. The vote V is the mean PERCENTILE
+# of those three cues (scale-free, sign fixed toward "crease" by the physics, never by
+# measured AUC — alpha_drop is deliberately excluded because its sign is not decidable
+# a priori).
+
+def _pct(x):
+    """Percentile-rank transform in [0,1]; NaN stays NaN."""
+    out = np.full(len(x), np.nan, np.float32)
+    m = np.isfinite(x)
+    r = np.argsort(np.argsort(x[m]))
+    out[m] = r / max(len(r) - 1, 1)
+    return out
+
+
+def crease_vote(FA, FB):
+    """V in [0,1]: mean percentile of (normal_angle, depth_curv, luma_step)."""
+    v = np.stack([_pct(FB[:, B_NAMES.index("normal_angle")]),
+                  _pct(FB[:, B_NAMES.index("depth_curv")]),
+                  _pct(FA[:, A_NAMES.index("luma_step")])], 1)
+    return np.nanmean(v, 1)
+
+
+def pseudo_labels_votes(FA, FB, q_pos=0.85, q_neg=0.50):
+    """PL-VOTE: pseudo-positive = vote above the q_pos quantile, pseudo-negative = below
+    q_neg, middle band unlabeled (-1). Quantiles frozen a priori (~15% positives, matching
+    no measured class prior — just 'creases are the sparse class')."""
+    V = crease_vote(FA, FB)
+    y = np.full(len(V), -1, np.int8)
+    m = np.isfinite(V)
+    hi = np.nanquantile(V[m], q_pos)
+    lo = np.nanquantile(V[m], q_neg)
+    y[m & (V >= hi)] = 1
+    y[m & (V <= lo)] = 0
+    return y, V
+
+
+def pseudo_labels_cluster(DD, FA, FB, k=8, seed=0, max_fit=60000):
+    """PL-CLUSTER (self-supervised): k-means the DINO descriptors, then orient each cluster
+    by the mesh-free crease vote — a cluster is pseudo-positive iff its mean vote exceeds
+    the global mean vote. Labels every finite-descriptor point (no band)."""
+    from sklearn.cluster import KMeans
+    V = crease_vote(FA, FB)
+    ok = np.isfinite(DD[:, 0]) & np.isfinite(V)
+    X = DD[ok].astype(np.float32)
+    X = X / (np.linalg.norm(X, axis=1, keepdims=True) + 1e-9)
+    rng = np.random.default_rng(seed)
+    sub = rng.choice(len(X), min(max_fit, len(X)), replace=False)
+    km = KMeans(n_clusters=k, n_init=4, random_state=seed).fit(X[sub])
+    cl = km.predict(X)
+    gmean = float(np.mean(V[ok]))
+    cmean = np.array([V[ok][cl == c].mean() if (cl == c).any() else -1 for c in range(k)])
+    y = np.full(len(DD), -1, np.int8)
+    y[ok] = (cmean[cl] > gmean).astype(np.int8)
+    return y, cl, cmean
