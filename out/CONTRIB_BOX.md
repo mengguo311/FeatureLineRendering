@@ -3,7 +3,8 @@
    whose rendered strokes flicker **1.72–8.35× less** (popped line-pixels, per condition;
    **≥5.19× in three of four conditions**)
    than even an **oracle-flow temporally-accumulated** 2D edge baseline, and ≥9.8× less
-   than standard per-frame detectors. This is not stability-by-construction bought with
+   than standard per-frame detectors — which remain the precision reference this primitive
+   trades against, not a baseline we claim to beat in general. This is not stability-by-construction bought with
    sparsity or imprecision: every comparison is at **matched precision AND matched line
    density**, the oracle baseline is handed our exact rigid flow, and the stability is
    threshold-invariant. The measured envelope ships with it: the 1.72× cell is the frozen conservative floor,
