@@ -82,4 +82,6 @@ forward. The boundary is the contribution; pretending it away is not.
    0.6371 vs a 0.72 gate; transfer 0.8245 one direction), with every recovery attempt we
    falsified reported.
 3. **Pre-registered gates as method** — every gate frozen before its numbers existed and
-   evaluated on its letter, unfavorable outcomes included.
+   evaluated on its letter, unfavorable outcomes included. The mesh-free guarantee is a
+   runtime and test-time property; development-time model selection used mesh-scored
+   *validation* views, disclosed in §3.4.
