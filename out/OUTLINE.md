@@ -1,29 +1,36 @@
 # OUTLINE — paper skeleton (path C). Frozen ledger: `out/RESULTS_MASTER.md`
 
-Framing (three-way reconciled): a **forensic diagnostic** (Contribution B — why precision is
-supervision-bound for frozen post-hoc extraction) + a **surgical, honestly-scoped
-stabilization primitive** (Contribution A — interior stability at matched precision and
-density). The structure itself counters the "failed system in denial" read: the negative
-results are the primary scientific content of §4, and both self-disclosed failures get
-dedicated figure real-estate (§5, Fig 3/4).
+Framing (three-way reconciled, A-ANCHOR): the paper is anchored on the POSITIVE,
+deployable primitive — **Contribution A: interior temporal stability at matched precision
+AND density (5.19–8.35× per-condition vs an oracle-flow accumulated ceiling; ≥9.8× vs
+memoryless; threshold-invariant)** — with **Contribution B as the diagnostic BOUNDARY**
+(why the primitive's precision is what it is: the ceiling arc, ending supervision-bound
+under our frozen protocol), and the **honesty protocol third**. Both self-disclosed
+regressions are the primitive's measured envelope and get dedicated figure real-estate
+(Fig 3/4). Sandwich rule for the supervision-bound result, everywhere it appears: the
+signal EXISTS (0.8401/0.9044) → it collapses under mesh-free supervision through a
+pre-frozen 0.72 gate to 0.6371 → the chair→lego 0.8245 transfer route stays open. Never
+"impossible"; always "supervision-bound under our frozen protocol".
 
 ---
 
 ## Abstract
-- One system claim: object-space feature lines from a frozen 3DGS are an order of magnitude
-  more stable than per-frame 2D detection at matched precision and density, and the residual
-  precision gap is characterized — not patched — as supervision-bound. [RESULTS_MASTER §1.1,
-  §2 arc → Fig 1]
+- One system claim (A-anchored): object-space feature lines from a frozen 3DGS are an
+  order of magnitude more stable than per-frame 2D detection at matched precision and
+  density; the residual precision gap is then characterized — not patched — via the
+  boundary arc, ending supervision-bound under our frozen protocol (signal exists
+  0.8401/0.9044 → mesh-free 0.6371 → transfer 0.8245 open). [RESULTS_MASTER §1.1, §2 arc
+  → Fig 1]
 - Quotes only: ≥9.8× vs memoryless [→ Fig 2], 1.72× conservative lower bound vs an
   oracle-flow accumulator [→ Fig 3], the 4-act ceiling arc [→ Fig 6–8, Tab 3].
 
 ## 1. Introduction
 - Problem: clean, temporally stable 3D feature lines from a FROZEN 3DGS; the two blockers
   (precision on textured surfaces; per-frame instability). [narrative; no numbers]
-- Contribution list (B first as the scientific insight, A as the deployable primitive):
-  (i) the coverage-ceiling characterization ending in the supervision-bound falsification
-  [§2 → Tab 3, Fig 8]; (ii) interior stability at matched precision/density with a
-  measured operational envelope [§1 → Fig 2–4]; (iii) the honesty protocol as method —
+- Contribution box (A-anchor ordering — see out/CONTRIB_BOX.md for the frozen text):
+  (i) **A, primary**: interior temporal stability at matched precision AND density
+  [§1 → Fig 2–4]; (ii) **B, boundary diagnostic**: the ceiling arc with the
+  existence-proof sandwich [§2 → Tab 3, Fig 6–8]; (iii) the honesty protocol —
   7 frozen gates, all reported, 5 failed/marginal [§3 → Tab 4].
 - Fig 1 (teaser): our lines over trajectory frames vs per-frame Canny/PiDiNet flicker
   (existing viz assets, e.g. `out/m1b_vector_*` frames). [qualitative; NO new numbers]
@@ -48,7 +55,7 @@ dedicated figure real-estate (§5, Fig 3/4).
 - The exact-rigid-flow warp operator shared by every metric and every baseline (identical
   operator = the fairness spine of §5). [§1.2]
 
-## 4. The coverage-ceiling characterization (Contribution B — PRIMARY)
+## 5. The precision boundary: coverage-ceiling characterization (Contribution B — diagnostic)
 The 4-act arc, each act one subsection, each with its frozen gate verdict:
 - Act 1 — the ceiling exists: pipeline R@1.5 caps 0.7908 chair / 0.5572 lego; pool coverage
   0.7382/0.6337; lego UNCOVERED 0.3663. [→ Fig 6]
@@ -59,26 +66,28 @@ The 4-act arc, each act one subsection, each with its frozen gate verdict:
   (recall 0.6753 / R_miss 0.6914). [→ Tab 3, Fig 6b]
 - Act 3 — the separating signal is semantic surface identity: DINOv2 xsplit 0.8401/0.9044,
   guarded chain 0.8205/0.8913, vs photometric ≈0.71 / geometric ≈0.65. [→ Fig 7]
-- Act 4 — supervision-bound: mesh-free collapse 0.8395→0.6371 chair (bar 0.72),
-  0.9046→0.6569 lego; transfer asymmetry 0.8245 / 0.5626 as the disclosed asterisk.
+- Act 4 — the sandwich: the signal EXISTS (Act 3, 0.8401/0.9044) → it collapses under the
+  best mesh-free supervision through the pre-frozen 0.72 gate to 0.6371 chair
+  (0.9046→0.6569 lego) → the chair→lego 0.8245 transfer route stays open (0.5626 back) —
+  supervision-bound under our frozen protocol.
   [→ Fig 8]
 
-## 5. Interior stability at matched precision & density (Contribution A — scoped)
-- 5.1 The three-axis Pareto protocol (pooled pixel metric, matched-P-and-density dominance
+## 4. Interior stability at matched precision & density (Contribution A — PRIMARY)
+- 4.1 The three-axis Pareto protocol (pooled pixel metric, matched-P-and-density dominance
   rule, interior restriction). [§1.2 → Fig 2]
-- 5.2 vs memoryless detectors: ≥9.8× flicker at every shared point; ours'
+- 4.2 vs memoryless detectors: ≥9.8× flicker at every shared point; ours'
   threshold-invariant pop (0.0042–0.0049); the PARETO-1 mean-statistic FAIL (2.42×)
   disclosed WITH its measured mechanism (0.28 px floor, p95=1.00; floor-free 12.8×/12.2×
   at the same point). [→ Fig 2 + Tab 2]
-- 5.3 vs the oracle-flow accumulated ceiling: per-condition worsts 5.19/5.49/8.35/**1.72×**;
+- 4.3 vs the oracle-flow accumulated ceiling: per-condition worsts 5.19/5.49/8.35/**1.72×**;
   the lego×T3 NO-GO is the FIGURE, not a footnote — frozen conservative lower bound.
   [→ Fig 3]
-- 5.4 The operational envelope (disclosed here, in the results section, not in
+- 4.4 The operational envelope (disclosed here, in the results section, not in
   Limitations): disocclusion decomposition — ours WORSE inside disocclusion (0.407 vs
   0.300), advantage is interior (1.98× over 93–97 % of px), PARETO-3 NO-GO (33.3 % < 60 %,
   residual = diffuse EMA drift; disocc 7.1× harder but 6.6 % of px) ⇒ no mechanism claim;
   failure boundary predictable (max occlusion-flux condition). [→ Fig 4]
-- 5.5 Stroke-level corroboration (banked): Track P E_warp 3.38–21.62× across 2×3
+- 4.5 Stroke-level corroboration (banked): Track P E_warp 3.38–21.62× across 2×3
   conditions; survival 37–183 vs 1.0–1.5 mean frames, P(life>32) 0.29–0.83 vs
   0.005–0.009; M1b Fréchet 2.43–29.92×, P_pop 3.44–11.49×; motion-proportional scaling vs
   baseline popping floor. [→ Tab 1 + Fig 5]
@@ -92,8 +101,8 @@ The 4-act arc, each act one subsection, each with its frozen gate verdict:
   and the transfer asymmetry (§4 Act 4).
 
 ## 7. Conclusion
-- The deployable primitive is A; the transferable insight is B; the method is the honesty
-  protocol (Tab 4). [no new numbers]
+- The primitive is A (primary); B is the measured boundary that scopes it; the honesty
+  protocol is how both stay trustworthy (Tab 4). [no new numbers]
 
 ---
 
@@ -158,8 +167,9 @@ The 4-act arc, each act one subsection, each with its frozen gate verdict:
 (a) every §1–3 headline number mapped to exactly one fig/tab id — PASS (matrix above; the
     §3 gate-table numbers 0.095/0.6753/0.6371/0.4110 map once via Tab 4; their §2
     appearances map to Fig 6b/Tab 3 as *distinct claims* of the arc);
-(b) B positioned PRIMARY (§4 + intro ordering), A scoped to "interior stability at matched
-    precision/density" throughout — PASS;
+(b) A positioned PRIMARY (anchor framing, §4 ordering, contribution box), B as boundary
+    diagnostic, protocol third; A scoped to "interior stability at matched
+    precision/density" throughout — PASS (revised per the A-anchor reconciliation);
 (c) both self-disclosed failures have dedicated real-estate: 0.407-vs-0.300 = Fig 4 (own
     panel), 1.72× NO-GO = Fig 3 highlighted cell + §5.3 prose — PASS;
 (d) no claim requires a number absent from the ledger; the only ledger-external content is

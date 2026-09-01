@@ -1,7 +1,13 @@
 # RESULTS_MASTER — the frozen claim ledger (path-C convergence)
 
 STATUS: experiments FROZEN (three-way consensus). This file is the single canonical source
-the paper draws from. Every number carries its source file; nothing here is new. Numbers
+the paper draws from. FRAMING (A-ANCHOR, reconciled): Contribution A (§1, interior temporal
+stability at matched precision/density) is PRIMARY; Contribution B (§2) is the diagnostic
+BOUNDARY that scopes A's precision; the honesty protocol (§3) is third. The
+supervision-bound result is always stated as the sandwich — the signal EXISTS
+(0.8401/0.9044) → collapses under mesh-free supervision through the pre-frozen 0.72 gate
+(0.6371/0.6569) → the chair→lego 0.8245 transfer route stays open — never "impossible",
+always "supervision-bound under our frozen protocol". Every number carries its source file; nothing here is new. Numbers
 that could not be located in a committed result file are marked [NEEDS-SOURCE].
 
 INVARIANT (stated once, holds everywhere): **the GT mesh never enters the method path.**
@@ -95,7 +101,7 @@ must quote them per-statistic as above, never as one range.
 
 ---
 
-## 2. Contribution B — the coverage-ceiling characterization (4-act negative-result methodology)
+## 2. Contribution B — the precision BOUNDARY: coverage-ceiling characterization (4-act arc, diagnostic)
 
 ### Act 1 — the ceiling exists
 Re-ranking the fixed vanilla-3DGS pool caps pipeline recall at **R@1.5 = 0.7908 chair /
@@ -124,7 +130,7 @@ texture at per-point xsplit AUC **0.8401 chair / 0.9044 lego**, leakage-guarded 
 (fabric field vs piping; studs vs decals) — a surface-identity readout, not edge-type
 detection.
 
-### Act 4 — that signal is supervision-bound (the EVAL-oracle falsification)
+### Act 4 — the sandwich: the signal exists, and is supervision-bound under our frozen protocol
 Phase 1d **NO-GO**: trained on the best mesh-free pseudo-labels, the same probe collapses
 **0.8395 → 0.6371** chair (frozen bar 0.72; lego 0.9046 → 0.6569), below even its
 photometric baseline — zero label-noise denoising; DINOv2's surface-identity memorization
@@ -134,9 +140,11 @@ chair→lego at **0.8245** (but lego→chair 0.5626) — recoverable with labele
 scenes, in one direction of two tested; a future-work sentence, not a method.
 
 **The arc in one line**: coverage is bounded by the carrier; the miss-set is geometrically
-invisible (K_geom≈0), photometrically reachable but placement-bound, semantically separable
-only with in-scene mesh supervision — so precision is supervision-bound for frozen post-hoc
-extraction, and the deployable contribution is Contribution A.
+invisible (K_geom≈0), photometrically reachable but placement-bound, and semantically
+separable — the signal EXISTS (0.8401/0.9044) but collapses without mesh supervision
+(0.6371, frozen 0.72 gate) with the chair→lego 0.8245 transfer route open — i.e. precision
+is supervision-bound under our frozen protocol, which is exactly the boundary that scopes
+Contribution A.
 
 ---
 
