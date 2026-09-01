@@ -54,9 +54,9 @@ must quote them per-statistic as above, never as one range.
   beats it on BOTH P@1.5 and px/frame; advantage = the minimum ratio over dominating OURS
   points. Precision for PARETO-2/3 is measured on the trajectory frames themselves
   (mesh EVAL-only DTs on every 10th frame) because accumulation is trajectory-dependent.
-- **Oracle-flow accumulated baseline** (`PARETO2` [NEEDS-SOURCE: PARETO2_RESULTS.md not
-  written before the freeze; construction + all numbers live in
-  `pareto2_{scene}_{traj}.json` and `scripts/pareto2_flowacc.py` docstring]):
+- **Oracle-flow accumulated baseline** (`PARETO2_RESULTS.md`; per-cell numbers in
+  `pareto2_{scene}_{traj}.json` + `pareto2_verdict.json`, construction in
+  `scripts/pareto2_flowacc.py`):
   A_t = α·backwarp(A_{t−1}) + (1−α)·E_t, rethreshold 0.5, α ∈ {0…0.85}, EXACT rigid
   backward flow with occlusion-aware fallback — deliberately stronger than any RAFT
   variant a reviewer could build. RAFT was deliberately NOT run (weaker baseline would
@@ -166,7 +166,5 @@ Sources index: `PARETO_RESULTS.md` · `pareto_{chair,lego}.json` · `pareto_verd
 `m1b_stroke_temporal_table{,_tc_tcteed}.md` · `CAP_RESULTS.md` · `LEGO_CEILING_AUTOPSY.md` ·
 `DIAG2DGS_RESULTS.md` · `m1b_albedo_step_falsify_{scene}.json` ·
 `DEXPRIMARY_P0/P1B/P1C/P1D_RESULTS.md` · `dexprimary_p1c_{chair,lego}.json` ·
-`dexprimary_p1d.json`. Known gap: **PARETO2_RESULTS.md was never written** (session limit
-hit between the run and the write-up); its numbers are fully covered by
-`pareto2_*.json` + `pareto2_verdict.json`, but the prose doc is [NEEDS-SOURCE] and should
-be back-filled from those files before submission.
+`dexprimary_p1d.json` · `PARETO2_RESULTS.md` (prose write-up of the PARETO-2 run; numbers
+verified consistent with `pareto2_*.json` + `pareto2_verdict.json`).
