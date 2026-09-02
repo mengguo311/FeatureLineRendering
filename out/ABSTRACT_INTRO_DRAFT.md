@@ -30,7 +30,10 @@ rather than patching it: coverage is capped by the frozen carrier; the missing c
 carry no geometric signal even under the ground-truth mesh (AUC 0.3964); the
 crease-vs-texture signal *exists* in frozen DINOv2 features (AUC 0.8401/0.9044) yet
 collapses to 0.6371 under our best mesh-free supervision through a pre-registered 0.72
-gate — precision is supervision-bound under our frozen protocol, not solved. Every
+gate — precision is supervision-bound under our frozen protocol, not solved — and the
+obvious patch is falsified: no post-hoc discriminator filter we tested — up to an
+in-scene mesh oracle — reached the pipeline's own precision at matched recall without
+severing crease connectivity (Appendix A). Every
 experimental gate in the paper was frozen before its numbers existed; all outcomes,
 including the unfavorable ones, are reported.
 
@@ -78,9 +81,11 @@ in-scene oracle, we characterize it: a four-act forensic bounds the achievable p
 (carrier coverage ceiling; no geometric cue on the miss-set, even from the GT mesh; the
 separating signal exists in frozen semantic features; and it collapses without mesh
 supervision through a pre-registered gate), ending at a route that
-worked in one of the two directions tested (0.8245 chair→lego; 0.5626 reverse). The boundary is the contribution; pretending it away is not.
+worked in one of the two directions tested (0.8245 chair→lego; 0.5626 reverse) — then
+pressure-tests the boundary itself: post-hoc filtering of the line-candidate cloud is
+falsified as a repair class, oracle ranking included (Appendix A). The boundary is the contribution; pretending it away is not.
 
-**Contributions.** (verbatim from the contribution box)
+**Contributions.** (condensed from the contribution box)
 1. **An interior temporal-stability finding for object-space lines on a frozen 3DGS** —
    1.72–8.35× less popping than an oracle-flow accumulated 2D baseline at matched
    precision and density (≥5.19× in three of four conditions; the 1.72× cell breached its
@@ -88,10 +93,14 @@ worked in one of the two directions tested (0.8245 chair→lego; 0.5626 reverse)
    n=2 synthetic scenes, at precision bounded by contribution 2 (mesh-free
    discriminability 0.6371 AUC); per-frame 2D detection remains the precision reference we
    trade against, not a baseline we claim to beat in general.
-2. **A measured precision boundary** — the four-act characterization ending
-   supervision-bound under our frozen protocol (signal exists 0.8401/0.9044; mesh-free
-   0.6371 vs a 0.72 gate; transfer 0.8245 one direction), with every recovery attempt we
-   falsified reported.
+2. **A measured precision boundary, with the obvious repair falsified** — the four-act
+   characterization ending supervision-bound under our frozen protocol (signal exists
+   0.8401/0.9044; mesh-free 0.6371 vs a 0.72 gate; transfer 0.8245 one direction), plus a
+   structural-impossibility result for post-hoc candidate filtering: no tested gate —
+   mesh-free or in-scene mesh oracle, point- or chain-pooled — reaches the pipeline's
+   precision at matched recall while preserving crease connectivity (the topological
+   trilemma, Appendix A). Every recovery attempt we falsified is reported — a boundary
+   with a named route forward.
 3. **Pre-registered gates as method** — every gate frozen before its numbers existed and
    evaluated on its letter, unfavorable outcomes included. The mesh-free guarantee is a
    runtime and test-time property; development-time model selection used mesh-scored

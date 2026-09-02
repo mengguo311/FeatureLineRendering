@@ -22,8 +22,11 @@ characterization of why is itself a contribution: coverage is capped by the froz
 (AUC 0.3964); the discriminating signal exists in frozen semantic features (0.8401/0.9044)
 — and collapses under mesh-free supervision through a pre-registered gate (0.6371 vs a
 0.72 bar), leaving cross-scene transfer (0.8245, one direction) as the tested route
-forward. Precision on textured surfaces is supervision-bound under our frozen protocol;
-we ship the boundary, measured, rather than a patch.
+forward — and the patch family itself is falsified: no tested post-hoc filter of the candidate
+cloud — mesh-free or oracle-ranked, point- or chain-pooled — reached the pipeline's
+precision at matched recall with crease connectivity intact (the topological trilemma,
+Appendix A). Precision on textured surfaces is supervision-bound under our frozen
+protocol; we ship the boundary, measured, rather than a patch.
 
 Methodologically, every gate in this study was frozen before its numbers existed and
 evaluated on its letter (the full ledger is Tab 4); the unfavorable outcomes — including the two failed stability

@@ -75,7 +75,11 @@ noisy, and the richer representation learns them the more faithfully — zero de
 route stays open, and we measured it: the mesh-supervised probe transfers chair→lego at
 **0.8245**, nearly matching lego's in-scene ceiling, though not in reverse (0.5626).
 Precision is therefore **supervision-bound under our frozen protocol** — with labeled
-training scenes as the named, tested-in-one-direction path forward.
+training scenes as the named, tested-in-one-direction path forward. Appendix A closes the
+loop at deployment granularity: used as an actual gate on the line-candidate cloud, the
+deployment-legal direction of that transfer (0.5626, chance) leaves precision untouched,
+and even an in-scene mesh oracle cannot filter the cloud to the pipeline's precision
+without severing crease connectivity.
 
 ## 5.5 What the boundary buys
 
@@ -84,5 +88,7 @@ carrier (5.1), the miss-set geometrically invisible (5.2), the discriminator sem
 extant (5.3), its mesh-free readout falsified through a frozen gate (5.4) — explains
 *why* we ship a stability primitive at a measured precision rather than patching precision
 with an in-scene oracle: every patch we tested either equals chance, stays
-detector-bound, or requires supervision the method path is not allowed to touch. The
-boundary is measured, disclosed, and has exactly one open door.
+detector-bound, requires supervision the method path is not allowed to touch, or — when
+granted that supervision as an explicit oracle — fragments the very chains it is meant to
+purify (Appendix A). The boundary is measured, disclosed, and has exactly one open door:
+labeled scenes feeding a topology-aware construction, not a post-hoc filter.

@@ -25,8 +25,9 @@ supervision-bound (§5.4).
 multi-view 2D edge maps, and motivates its design in part by the observation that
 detectors mis-fire on shading textures and produce view-inconsistent edge shifts. Two of
 its ideas map onto our study with opposite outcomes. Its **curve-level aggregation** —
-deciding at the curve, not the pixel — transfers well: our chain-level reads consistently
-strengthen per-point signals (§5.3). Its **view-consistency premise** — that texture
+deciding at the curve, not the pixel — transfers well as a *read*: our chain-level reads
+consistently strengthen per-point signals (§5.3) — though Appendix A bounds what
+chain-level *gating* of a fixed candidate cloud can deliver. Its **view-consistency premise** — that texture
 mis-fires can be filtered because they are view-inconsistent — **does not transfer to our
 setting**: on rigid, static scenes, printed *albedo* texture edges are fixed surface loci
 and reproject almost as consistently as true creases (multi-view consistency 0.870 vs

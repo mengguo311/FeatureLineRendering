@@ -168,6 +168,41 @@ because failed gates were reported instead of defended.
 
 ---
 
+## 4. Appendix A — post-lock falsification probes (Phases 1e/1f; ADDITIVE ledger)
+
+Post-camera-ready probes answering "why not just filter the cloud with a discriminator /
+chain pooling?" — run with the same discipline (tau frozen on VAL views {0,10,…,90} only,
+TEST {5,15,…,95} evaluated once per arm, macro segment-raster P@1.5px = the banked M1b
+convention of `m1b_chair_gated_test.json`, its baseline quoted never re-run). Gate SCORES are mesh-free at the target
+scene; the in-scene mesh probe appears ONLY as a labelled oracle upper bound. These rows
+scope the REPAIR CLASS (post-hoc keep/drop filtering of a fixed candidate cloud); the
+precision boundary itself stays supervision-bound (§2), never "impossible".
+
+| arm (chair ref40 cloud, 272,366 pts; baseline 0.6573 / R 0.5959) | TEST P@1.5 | TEST R@1.5 | topology guard (bar 0.90) | source |
+|---|---|---|---|---|
+| ungated cloud | 0.3189 | 0.9540 | 0.9910 | `phase1e_test_eval.json` |
+| transfer gate (method-legal lego→chair, AUC 0.5626 = chance; the banked 0.8245 is the chair-mesh-fit reverse, ILLEGAL as a chair gate) | 0.3216 | 0.9505 | 0.9892 | `phase1e_test_eval.json` |
+| in-scene mesh-free vote probe (PL-VOTE refit) | 0.4081 | 0.6365 | 0.8888 | `phase1e_test_eval.json` |
+| in-scene mesh-free raw vote (frozen constants) | 0.4458 | 0.6156 | 0.8811 | `phase1e_test_eval.json` |
+| **mesh ORACLE, point-gated (labelled upper bound ONLY; in-sample AUC 0.9578)** | **0.7970** | 0.6337 | **0.6372** | `phase1e_test_eval.json` |
+| mesh ORACLE, chain-mean-pooled (1,692 P1c/P1d chain components) | 0.6458 | 0.6482 | 0.7481 | `phase1f_test_eval.json` |
+| mesh ORACLE, chain-median-pooled | 0.6178 | 0.6755 | 0.7970 | `phase1f_test_eval.json` |
+| all chains, ZERO thresholding (the chain-coverage ceiling; 42.36 % of candidates are unchained) | 0.4091 | 0.7245 | **0.8782** | `phase1f_test_eval.json` |
+
+Frozen probe gates: Phase 1e GO required mesh-free P@1.5 ≥ 0.71 at R ≥ 0.5959 AND
+topology ≥ 0.90 → **NO-GO** (best mesh-free 0.4458). Phase 1f diagnostic fork →
+**STRUCTURAL** for the filtering repair class: chain pooling repairs part of the
+point-level severing (0.6372 → 0.7481) but the zero-threshold chain ceiling is 0.8782 <
+0.90 — the unchained 42.36 % are the bridge points — and even the oracle's chain-gated
+precision (0.6458) lands below the 0.6573 baseline. **The topological trilemma:** no
+tested gate — mesh-free or oracle, point- or chain-pooled — attains P@1.5 ≥ 0.71, R@1.5 ≥
+0.5959, and topology ≥ 0.90 simultaneously. Probe caveats: chair only (n=1 scene at the
+cloud level), oracle bound is in-sample (loosest), cloud rasterised as points inside the
+segment-raster convention. Full protocol + caveats: `PHASE1E_GATE_CHECK.md`,
+`PHASE1F_CHAIN_GATE.md`.
+
+---
+
 Sources index: `PARETO_RESULTS.md` · `pareto_{chair,lego}.json` · `pareto_verdict.json` ·
 `pareto2_{chair,lego}_{T1_orbit,T3_spline}.json` · `pareto2_verdict.json` ·
 `pareto3_lego_T3_disocc.json` · `PARETO3_RESULTS.md` · `TRACK_P_RESULTS.md` ·
@@ -175,4 +210,6 @@ Sources index: `PARETO_RESULTS.md` · `pareto_{chair,lego}.json` · `pareto_verd
 `DIAG2DGS_RESULTS.md` · `m1b_albedo_step_falsify_{scene}.json` ·
 `DEXPRIMARY_P0/P1B/P1C/P1D_RESULTS.md` · `dexprimary_p1c_{chair,lego}.json` ·
 `dexprimary_p1d.json` · `PARETO2_RESULTS.md` (prose write-up of the PARETO-2 run; numbers
-verified consistent with `pareto2_*.json` + `pareto2_verdict.json`).
+verified consistent with `pareto2_*.json` + `pareto2_verdict.json`) ·
+`phase1e_test_eval.json` · `phase1e_scores_meta.json` · `phase1f_test_eval.json` ·
+`PHASE1E_GATE_CHECK.md` · `PHASE1F_CHAIN_GATE.md` (Appendix-A probes).

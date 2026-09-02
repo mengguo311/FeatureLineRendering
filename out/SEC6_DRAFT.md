@@ -32,8 +32,14 @@ mechanism for why 2D accumulation trails; the temporal bound is empirical.
 in frozen DINOv2 features (0.8401/0.9044 with mesh labels) but collapsed to **0.6371**
 under our best mesh-free supervision, through a pre-registered 0.72 gate (NO-GO). The one
 measured route forward — cross-scene transfer of a mesh-supervised probe — works in one
-direction of the two tested (0.8245 chair→lego, 0.5626 reverse). Any deployment needing
-crease-level precision on textured surfaces currently needs labeled scenes.
+direction of the two tested (0.8245 chair→lego, 0.5626 reverse). Appendix A sharpens
+this limit at deployment granularity: gating the line-candidate cloud with the
+deployment-legal transfer probe converts nothing (precision 0.3216 vs 0.3189 ungated, at
+matched recall), and even an in-scene mesh-oracle ranking cannot reach precision 0.71,
+baseline recall, and crease connectivity 0.90 simultaneously — post-hoc filtering is a
+falsified repair class (cloud-level probes: chair only, n=1; Appendix A). Any deployment needing crease-level precision on textured
+surfaces currently needs labeled scenes — and, per Appendix A, a topology-aware
+construction rather than a filter to spend them on.
 
 **Geometry cannot rescue it (K_geom ≈ 0).** This is not an artifact of our reconstruction:
 even the **GT mesh's own dihedral scores AUC 0.3964** on crease-vs-decal, with

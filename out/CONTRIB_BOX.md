@@ -11,13 +11,17 @@
    pre-registered 2× bar and stands as the reported floor, and inside disocclusion regions
    the baseline is locally better — both disclosed. All numbers are on n=2 synthetic
    scenes, at precision bounded by contribution 2.
-2. **A diagnostic that locates exactly what the primitive's precision needs.** The
-   crease-vs-texture signal the pipeline is missing **exists** — frozen DINOv2 features
-   separate it at AUC 0.84/0.90 — and we pin down what unlocks it: with mesh labels it is
-   fully readable; under the best mesh-free supervision it collapses to 0.64 through a
-   pre-registered gate; a mesh-labeled *other* scene transfers at 0.82. Precision is
-   supervision-bound under our frozen protocol — a measured boundary with a named route
-   forward, not a dead end.
+2. **A diagnostic that locates exactly what the primitive's precision needs — and a
+   falsification of the obvious repair.** The crease-vs-texture signal the pipeline is
+   missing **exists** — frozen DINOv2 features separate it at AUC 0.84/0.90 — and we pin
+   down what unlocks it: with mesh labels it is fully readable; under the best mesh-free
+   supervision it collapses to 0.64 through a pre-registered gate; a mesh-labeled *other*
+   scene transfers at 0.82. We then pressure-test the boundary: post-hoc discriminator
+   filtering of the line-candidate cloud is falsified as a repair class — no tested gate,
+   mesh-free or in-scene mesh oracle, point- or chain-pooled, reaches the pipeline's
+   precision at matched recall while preserving crease connectivity (the topological
+   trilemma, Appendix A). Precision is supervision-bound under our frozen protocol — a
+   measured boundary with a named route forward, not a dead end.
 
 Every experimental gate in this paper was frozen before its numbers existed and evaluated
 on its letter; all outcomes are reported, including the unfavorable ones, with
