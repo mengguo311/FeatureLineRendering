@@ -191,10 +191,10 @@ def tab(n, path, cap, width=1.0, pl="t"):
 
 
 FIG2 = ("\\begin{figure*}[t]\\centering\\setcounter{figure}{1}"
-        "\\begin{minipage}{0.475\\textwidth}\\centering"
+        "\\begin{minipage}{0.465\\textwidth}\\centering"
         "\\includegraphics[width=\\textwidth]{assets/pareto_chair.png}\\\\(a) chair"
         "\\end{minipage}\\hfill"
-        "\\begin{minipage}{0.475\\textwidth}\\centering"
+        "\\begin{minipage}{0.465\\textwidth}\\centering"
         "\\includegraphics[width=\\textwidth]{assets/pareto_lego.png}\\\\(b) lego"
         "\\end{minipage}"
         "\\caption{PARETO-1 precision/line-density operating frontiers: (a) chair, "
@@ -248,7 +248,9 @@ SUPP = [
         0.85, pl="t"),
     fig(8, "assets/fig8_supervision.png",
         "Act 4: the mesh-free supervision collapse, and the asymmetric cross-scene "
-        "transfer.", 0.75, pl="t"),
+        "transfer. The mesh-supervised bars show the ceilings as recomputed in the "
+        "falsification study; they agree with Act 3's split values quoted in the text "
+        "to the third decimal.", 0.75, pl="t"),
 ]
 
 

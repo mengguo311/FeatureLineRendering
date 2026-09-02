@@ -46,12 +46,12 @@ panel = cv2.imread(f"{OUT}/dexprimary_p1c_chair.png")           # existing P1c v
 H, W = panel.shape[:2]
 mid = panel[:, int(W * 0.315):int(W * 0.72)]                    # middle panel: DINO prob map
 fig = plt.figure(figsize=(12.5, 5.0))
-ax = fig.add_axes([0.02, 0.04, 0.46, 0.86])
+ax = fig.add_axes([0.02, 0.03, 0.46, 0.80])
 ax.imshow(cv2.cvtColor(mid, cv2.COLOR_BGR2RGB))
 ax.set_xticks([]); ax.set_yticks([])
 ax.set_title("frozen DINOv2 probe: predicted crease-probability\n"
              "(fabric field suppressed, structural piping/frame kept)", fontsize=10)
-ax2 = fig.add_axes([0.56, 0.12, 0.42, 0.76])
+ax2 = fig.add_axes([0.56, 0.12, 0.42, 0.70])
 names = list(vals["chair"].keys())
 x = np.arange(len(names))
 w = 0.36
@@ -70,21 +70,21 @@ ax2.legend(fontsize=9)
 ax2.set_title("the separating signal EXISTS — and only the\nsemantic family carries it",
               fontsize=10)
 plt.suptitle("Fig 7 — Act 3: the missing precision signal exists in frozen DINOv2 features",
-             fontsize=11)
+             fontsize=11, y=0.975)
 plt.savefig(f"{OUT}/fig7_semantic.png", dpi=160)
 plt.close()
 print("wrote fig7_semantic.png")
 
 
 # ================================================================ table renderer
-def render_table(fname, title, cols, rows, col_w=None, highlight=None, fs=9):
-    fig, ax = plt.subplots(figsize=(max(7.5, 1.9 * len(cols)), 0.42 * len(rows) + 1.4))
+def render_table(fname, title, cols, rows, col_w=None, highlight=None, fs=9, figw=None, rs=1.35):
+    fig, ax = plt.subplots(figsize=(figw or max(7.5, 1.9 * len(cols)), 0.42 * len(rows) + 1.4))
     ax.axis("off")
     t = ax.table(cellText=rows, colLabels=cols, loc="center", cellLoc="center",
                  colWidths=col_w)
     t.auto_set_font_size(False)
     t.set_fontsize(fs)
-    t.scale(1, 1.35)
+    t.scale(1, rs)
     for (r, cc), cell in t.get_celld().items():
         if r == 0:
             cell.set_facecolor("#e8e8e8"); cell.set_text_props(fontweight="bold")
@@ -106,7 +106,8 @@ render_table("tab1_stroke_ratios.png",
      ["chair · T3 spline", "6.49×", "lego · 30f", "2.43×", "3.44×"],
      ["lego · T1 orbit", "10.38×", "lego · 240f", "14.03×", "11.49×"],
      ["lego · T2 orbit+zoom", "10.61×", "", "", ""],
-     ["lego · T3 spline (worst)", "3.38×", "", "", ""]])
+     ["lego · T3 spline (worst)", "3.38×", "", "", ""]],
+    col_w=[0.20, 0.25, 0.13, 0.27, 0.15], figw=11.5)
 
 # Tab 2 — PARETO-1 failing-point anatomy (chair CANNY 150/300; ledger §1.3)
 render_table("tab2_floor_anatomy.png",
@@ -116,7 +117,7 @@ render_table("tab2_floor_anatomy.png",
      ["pop-rate P(d>2 px)", "12.8×", "—", "floor-free"],
      ["pop-rate P(d>3 px)", "15.4×", "—", "floor-free"],
      ["pixel flicker (1 px tol)", "12.2×", "—", "floor-free"]],
-    col_w=[0.34, 0.12, 0.16, 0.38],
+    col_w=[0.35, 0.10, 0.15, 0.40], figw=9.8, rs=1.6,
     highlight={(1, 1): True, (1, 2): True})
 
 # Tab 3 — K_geom ~= 0 (ledger §2 Act 2)
@@ -130,7 +131,7 @@ render_table("tab3_kgeom.png",
      ["GT-mesh normal dispersion", "0.4675 (medians 44.52° vs 44.84°)", "0.32° apart"],
      ["SH-DC albedo step", "fabric p50 0.1235 vs crease 0.1211", "gate LEAKS"],
      ["multi-view consistency", "texture 0.870 vs crease 0.937", "non-separating"]],
-    col_w=[0.42, 0.38, 0.20])
+    col_w=[0.42, 0.38, 0.20], figw=10.8)
 
 # Tab 4 — the frozen-gate ledger (ledger §3, verbatim values)
 render_table("tab4_gate_ledger.png",
@@ -143,5 +144,5 @@ render_table("tab4_gate_ledger.png",
      ["Phase 1b triangulation recall > ceiling", "0.79", "0.6753", "MARGINAL; localization fix banked"],
      ["Phase 1d mesh-free discriminator", "0.78/0.72", "0.6371", "NO-GO; supervision-bound"],
      ["DIAG2DGS dihedral gate", "0.80", "0.4110", "FAIL; K_geom≈0 established"]],
-    col_w=[0.34, 0.10, 0.14, 0.42], fs=8.5)
+    col_w=[0.32, 0.09, 0.13, 0.46], fs=8.5, figw=11.0)
 print("ALL RENDERED")

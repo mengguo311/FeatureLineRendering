@@ -56,7 +56,7 @@ def gate(scene, d):
 
 
 def plot(scene, d):
-    fig, axs = plt.subplots(1, 2, figsize=(13, 5.4))
+    fig, axs = plt.subplots(1, 2, figsize=(10.5, 4.4))
     for ax, ykey, ylab in ((axs[0], "E_pool_mean", "pooled E_warp (mean, px, cap 20)"),
                            (axs[1], "flicker", "pixel flicker (1px-tol XOR/union)")):
         for kind in ("ours", "canny", "pidinet"):
@@ -69,13 +69,14 @@ def plot(scene, d):
             ax.scatter(x, y, s=sz, c=COL[kind], label=kind.upper(), zorder=3,
                        edgecolors="white", linewidths=0.5)
             for r in rr:
-                ax.annotate(str(r["param"]), (r["P15_macro"], r[ykey]), fontsize=6,
+                ax.annotate(str(r["param"]), (r["P15_macro"], r[ykey]), fontsize=10,
                             xytext=(3, 3), textcoords="offset points", c=COL[kind])
         ax.set_yscale("log")
-        ax.set_xlabel("precision P@1.5 (held-out TEST, interior)")
-        ax.set_ylabel(ylab)
+        ax.set_xlabel("precision P@1.5 (held-out TEST, interior)", fontsize=13)
+        ax.set_ylabel(ylab, fontsize=13)
+        ax.tick_params(labelsize=12)
         ax.grid(alpha=0.25, which="both")
-        ax.legend()
+        ax.legend(fontsize=11)
     axs[0].set_title(f"{scene} — coherence vs precision (marker size = px/frame density)\n"
                      f"240-frame T1 orbit, all methods interior-restricted, pooled metric")
     p = os.path.join(OUT, f"pareto_{scene}.png")
