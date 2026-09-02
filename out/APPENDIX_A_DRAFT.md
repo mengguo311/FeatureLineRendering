@@ -50,7 +50,10 @@ insufficient; a build that wanted this precision would need *topology-aware
 construction* — connectivity as a constraint during line formation, not a casualty of
 filtering after it — plus labeled scenes. This is why §5's boundary ships as a measured
 boundary: the obvious patches are not merely unattempted, they are falsified. Probe
-scope, disclosed: cloud-level results are chair-only (n=1 scene); the oracle bound is
+scope, disclosed: cloud-level results are chair-only (n=1 scene) — chair being the
+deliberately selected texture-stress case (Canny edge purity 0.28), so the repair class
+was falsified on its adversarial home ground and no scene-independent impossibility is
+claimed; the oracle bound is
 in-sample (loosest); the cloud is rasterised as points inside the segment-raster
 convention (its 272k points saturate recall at 0.9540 ungated, so the NO-GO is not a
 rasterisation artifact).

@@ -37,7 +37,13 @@ this limit at deployment granularity: gating the line-candidate cloud with the
 deployment-legal transfer probe converts nothing (precision 0.3216 vs 0.3189 ungated, at
 matched recall), and even an in-scene mesh-oracle ranking cannot reach precision 0.71,
 baseline recall, and crease connectivity 0.90 simultaneously — post-hoc filtering is a
-falsified repair class (cloud-level probes: chair only, n=1; Appendix A). Any deployment needing crease-level precision on textured
+falsified repair class (cloud-level probes: chair only, n=1; Appendix A). To pre-empt
+the reading that this falsification merely benchmarked a pathological scene: chair is the
+*selected* texture-stress adversary (Canny edge purity 0.28 — most of its edge field is
+not crease), the two barriers are mechanistic rather than chair-specific (a supervision
+gap that is transfer-asymmetric by measurement, and bridge-point severing that follows
+from thresholding any fixed candidate set), and extending the falsification to more
+scenes is named future work, not an implied result. Any deployment needing crease-level precision on textured
 surfaces currently needs labeled scenes — and, per Appendix A, a topology-aware
 construction rather than a filter to spend them on.
 

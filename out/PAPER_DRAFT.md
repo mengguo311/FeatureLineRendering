@@ -504,7 +504,13 @@ this limit at deployment granularity: gating the line-candidate cloud with the
 deployment-legal transfer probe converts nothing (precision 0.3216 vs 0.3189 ungated, at
 matched recall), and even an in-scene mesh-oracle ranking cannot reach precision 0.71,
 baseline recall, and crease connectivity 0.90 simultaneously — post-hoc filtering is a
-falsified repair class (cloud-level probes: chair only, n=1; Appendix A). Any deployment needing crease-level precision on textured
+falsified repair class (cloud-level probes: chair only, n=1; Appendix A). To pre-empt
+the reading that this falsification merely benchmarked a pathological scene: chair is the
+*selected* texture-stress adversary (Canny edge purity 0.28 — most of its edge field is
+not crease), the two barriers are mechanistic rather than chair-specific (a supervision
+gap that is transfer-asymmetric by measurement, and bridge-point severing that follows
+from thresholding any fixed candidate set), and extending the falsification to more
+scenes is named future work, not an implied result. Any deployment needing crease-level precision on textured
 surfaces currently needs labeled scenes — and, per Appendix A, a topology-aware
 construction rather than a filter to spend them on.
 
@@ -626,7 +632,10 @@ insufficient; a build that wanted this precision would need *topology-aware
 construction* — connectivity as a constraint during line formation, not a casualty of
 filtering after it — plus labeled scenes. This is why §5's boundary ships as a measured
 boundary: the obvious patches are not merely unattempted, they are falsified. Probe
-scope, disclosed: cloud-level results are chair-only (n=1 scene); the oracle bound is
+scope, disclosed: cloud-level results are chair-only (n=1 scene) — chair being the
+deliberately selected texture-stress case (Canny edge purity 0.28), so the repair class
+was falsified on its adversarial home ground and no scene-independent impossibility is
+claimed; the oracle bound is
 in-sample (loosest); the cloud is rasterised as points inside the segment-raster
 convention (its 272k points saturate recall at 0.9540 ungated, so the NO-GO is not a
 rasterisation artifact).

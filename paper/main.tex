@@ -1,0 +1,68 @@
+% PHASE 1h assembly — IEEEtran conference template (neutral stand-in; no venue banked).
+% Double-blind: anonymized author block, no repo URLs, no acknowledgements.
+% Body prose is transcribed verbatim from out/PAPER_DRAFT.md by scripts/phase1h_md2tex.py;
+% every number is gated by scripts/phase1h_gate.py (md<->PDF multiset conservation).
+\documentclass[conference]{IEEEtran}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\renewcommand{\thetable}{\arabic{table}}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\makeatletter
+\def\thesectiondis{\arabic{section}.}
+\def\thesubsectiondis{\arabic{section}.\arabic{subsection}\ }
+\makeatother
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\dbltopfraction}{0.95}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.85}
+\renewcommand{\dblfloatpagefraction}{0.85}
+\setcounter{dbltopnumber}{3}
+
+\begin{document}
+
+\title{Interior Temporal Stability of Object-Space Feature Lines on a Frozen 3DGS:\\
+an Isolated Finding at Matched Precision and Density,\\ and a Measured Precision Boundary}
+
+\author{\IEEEauthorblockN{Anonymous submission}\\
+\IEEEauthorblockA{Paper ID —— \quad (double-blind review)}}
+
+\maketitle
+
+\begin{abstract}
+\input{abstract}
+\end{abstract}
+
+\input{body_main}
+
+\clearpage
+\begin{thebibliography}{9}
+\bibitem{kerbl3dgs} B.~Kerbl, G.~Kopanas, T.~Leimk\"uhler, and G.~Drettakis.
+3D Gaussian splatting for real-time radiance field rendering.
+\emph{ACM Trans.\ Graph.\ (SIGGRAPH)}, 2023.
+\bibitem{canny1986} J.~Canny. A computational approach to edge detection.
+\emph{IEEE TPAMI}, 1986.
+\bibitem{dexined} X.~Soria, E.~Riba, and A.~Sappa. Dense extreme inception network:
+Towards a robust CNN model for edge detection. In \emph{WACV}, 2020.
+\bibitem{teed} X.~Soria, Y.~Li, M.~Rouhani, and A.~Sappa. Tiny and efficient model for
+the edge detection generalization. In \emph{ICCV Workshops}, 2023.
+\bibitem{pidinet} Z.~Su, W.~Liu, Z.~Yu, D.~Hu, Q.~Liao, Q.~Tian, M.~Pietik\"ainen, and
+L.~Liu. Pixel difference networks for efficient edge detection. In \emph{ICCV}, 2021.
+\bibitem{dinov2} M.~Oquab et~al. DINOv2: Learning robust visual features without
+supervision. \emph{TMLR}, 2024.
+\bibitem{emap} L.~Li, S.~Peng, Z.~Yu, S.~Liu, R.~Pautrat, X.~Yin, and M.~Pollefeys.
+3D neural edge reconstruction. In \emph{CVPR}, 2024.
+\bibitem{sketchsplat} SketchSplat. arXiv preprint arXiv:2503.14786, 2025.
+\bibitem{nerf} B.~Mildenhall, P.~P. Srinivasan, M.~Tancik, J.~T. Barron,
+R.~Ramamoorthi, and R.~Ng. NeRF: Representing scenes as neural radiance fields for view
+synthesis. In \emph{ECCV}, 2020.
+\end{thebibliography}
+
+\clearpage
+\input{supp_floats}
+
+\clearpage
+\input{body_appendix}
+
+\end{document}

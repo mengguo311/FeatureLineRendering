@@ -1,0 +1,31 @@
+Line drawings rendered from per-frame image-space edge detection flicker: strokes appear,
+vanish, and re-form with every camera step. We report an \textbf{interior temporal-stability
+finding} for feature lines bound to a \emph{frozen} 3D Gaussian Splatting reconstruction ---
+static object-space 3D polylines, projected per frame with a visibility test --- together
+with a diagnostic characterization of the precision such lines can reach. This is deliberately not a general 3D line detector: view-dependent silhouettes are out
+of scope by construction, exhaustive recovery of geometric creases is a ceiling we measure
+rather than hide, and at disocclusion boundaries our stability advantage reverses --- a
+limit we quantify. Per-frame 2D detection remains the precision reference we trade
+against rather than claim to beat. What object-space binding buys is measured on a
+three-axis protocol that compares
+methods only at \textbf{matched precision and matched line density}, our lines pop
+\textbf{1.72--8.35$\times$} less per scene$\times$trajectory condition (two synthetic scenes $\times$ two
+trajectories, four conditions; a third trajectory appears in the stroke-level results)
+than the strongest 2D baseline we could construct --- an EMA accumulator
+driven by \emph{oracle} rigid flow, so no estimated flow can improve its inputs. The worst
+cell, 1.72$\times$ (the stress spline on the geometry-dense scene), \textbf{breached our pre-registered
+2$\times$ bar and is reported as the claim's floor rather than re-tuned}; the other three
+conditions sit at 5.19--8.35$\times$, and the advantage over memoryless detectors is $\geq$9.8$\times$. These
+are stability numbers at the lines' \emph{bounded} precision --- mesh-free crease-vs-texture
+discriminability caps at 0.6371 AUC (below its 0.72 gate) --- on n=2 synthetic scenes. A second contribution characterizes why the primitive's precision is bounded
+rather than patching it: coverage is capped by the frozen carrier; the missing creases
+carry no geometric signal even under the ground-truth mesh (AUC 0.3964); the
+crease-vs-texture signal \emph{exists} in frozen DINOv2 features (AUC 0.8401/0.9044) yet
+collapses to 0.6371 under our best mesh-free supervision through a pre-registered 0.72
+gate --- precision is supervision-bound under our frozen protocol, not solved --- and the
+obvious patch is falsified: no post-hoc discriminator filter we tested --- up to an
+in-scene mesh oracle --- reached the pipeline's own precision at matched recall without
+severing crease connectivity (Appendix A). Every
+experimental gate in the paper was frozen before its numbers existed; all outcomes,
+including the unfavorable ones, are reported.
+
