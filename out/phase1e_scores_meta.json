@@ -1,0 +1,37 @@
+{
+  "n_chair": 272366,
+  "banked_refs": {
+    "transfer_lego_to_chair": 0.5626,
+    "transfer_chair_to_lego": 0.8245,
+    "raw_vote_chair_evalhalf": 0.6329,
+    "plvote_probe_xsplit": 0.6371,
+    "mesh_ceiling_xsplit": 0.8395
+  },
+  "transfer": {
+    "fit_scene": "lego",
+    "fit_rows": 144096,
+    "fit_used": 60000,
+    "auc_chair_labeled": 0.5626483971694244,
+    "n_eval": 234703,
+    "sanity_vs_banked_0.5626": true
+  },
+  "raw_vote": {
+    "auc_chair_labeled_all": 0.6372253711871039,
+    "auc_chair_evalhalf": 0.6329373511548818,
+    "sanity_vs_banked_0.6329": true
+  },
+  "vote_probe": {
+    "fit_rows": 176924,
+    "fit_used": 60000,
+    "auc_chair_labeled_all": 0.6383193914421422,
+    "auc_chair_evalhalf": 0.6413850880917933,
+    "banked_xsplit_ref": 0.6371
+  },
+  "oracle": {
+    "fit_rows": 234703,
+    "fit_used": 60000,
+    "auc_in_sample_all": 0.9578470297561938,
+    "auc_evalhalf_in_sample": 0.9585236229589932,
+    "note": "IN-SCENE MESH-SUPERVISED, fit on ALL labels incl. eval rows -> in-sample; ORACLE UPPER BOUND ONLY, never a GO trigger. Banked honest xsplit ceiling 0.8395."
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "banked_baseline_test": {
+    "P1.5": 0.6572744617818822,
+    "R1.5": 0.5959019132724314,
+    "n": 15091,
+    "src": "m1b_chair_gated_test.json"
+  },
+  "test_views": [
+    5,
+    15,
+    25,
+    35,
+    45,
+    55,
+    65,
+    75,
+    85,
+    95
+  ],
+  "arms": {
+    "transfer": {
+      "tau_frozen": 4.777505211267127e-14,
+      "n_kept": 256578,
+      "P1.5": 0.3216451810427818,
+      "R1.5": 0.9504932824472302,
+      "P2.5": 0.3977692490695191,
+      "R2.5": 0.982644951747918,
+      "recall_matched_to_banked": true,
+      "starved_on_val": false
+    },
+    "vote_probe": {
+      "tau_frozen": 0.09681987115869778,
+      "n_kept": 109964,
+      "P1.5": 0.4080578379791673,
+      "R1.5": 0.6364546802749602,
+      "P2.5": 0.5028581338831096,
+      "R2.5": 0.6992159145725854,
+      "recall_matched_to_banked": true,
+      "starved_on_val": false
+    },
+    "raw_vote": {
+      "tau_frozen": 0.6153119278581518,
+      "n_kept": 86886,
+      "P1.5": 0.44579287178180566,
+      "R1.5": 0.6155805248429187,
+      "P2.5": 0.5439216606283835,
+      "R2.5": 0.7049740656407903,
+      "recall_matched_to_banked": true,
+      "starved_on_val": false
+    },
+    "oracle": {
+      "tau_frozen": 0.6150790811086223,
+      "n_kept": 46160,
+      "P1.5": 0.7969905492095313,
+      "R1.5": 0.6336834649049918,
+      "P2.5": 0.8901488112451673,
+      "R2.5": 0.723470339167375,
+      "recall_matched_to_banked": true,
+      "starved_on_val": false
+    }
+  },
+  "ungated_cloud": {
+    "n": 272366,
+    "P1.5": 0.3189346375144991,
+    "R1.5": 0.9540055067450988,
+    "P2.5": 0.39475919858821135,
+    "R2.5": 0.9855594798275776
+  },
+  "topology_guard": {
+    "convention": "GT crease 8-conn segments per TEST view (pooled); covered iff min chamfer-DT over segment px <= 1.5; PRIMARY = frac of baseline-stroke-covered segments retaining >=1 gated point",
+    "n_gt_segments_total": 2595,
+    "n_gt_segments_per_view": [
+      354,
+      120,
+      334,
+      88,
+      217,
+      333,
+      212,
+      256,
+      405,
+      276
+    ],
+    "n_baseline_covered": 1673,
+    "baseline_frac_of_all": 0.6447013487475916,
+    "ungated_cloud_of_baseline_covered": 0.9910340705319785,
+    "baseline_strokes_src": "linelets_chair_p1e_valref.npz",
+    "arms": {
+      "transfer": {
+        "coverage_of_baseline_covered": 0.9892408846383742,
+        "coverage_of_all_gt_segments": 0.9857418111753372
+      },
+      "vote_probe": {
+        "coverage_of_baseline_covered": 0.8888224745965332,
+        "coverage_of_all_gt_segments": 0.6978805394990366
+      },
+      "raw_vote": {
+        "coverage_of_baseline_covered": 0.8810520023909145,
+        "coverage_of_all_gt_segments": 0.7171483622350674
+      },
+      "oracle": {
+        "coverage_of_baseline_covered": 0.6371787208607292,
+        "coverage_of_all_gt_segments": 0.5976878612716763
+      }
+    }
+  },
+  "verdicts_meshfree_arms": {
+    "transfer": "NO-GO (precision below 0.71 at matched recall)",
+    "vote_probe": "NO-GO (topology fragmentation)",
+    "raw_vote": "NO-GO (topology fragmentation)"
+  },
+  "verdict_overall": "NO-GO",
+  "oracle_note": "oracle arm is a LABELLED UPPER BOUND ONLY and is excluded from the verdict by the mesh-never-in-method-path invariant",
+  "script_md5": "98b58715d12487041643deba76562905"
+}
