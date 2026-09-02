@@ -36,3 +36,10 @@ Every plotted value was asserted against the ledger to its stated precision befo
   characterized by construction, not a failed attempt: the right panel's asymmetric
   transfer (0.8245 chair→lego vs 0.5626 back) marks the one future-work route the bound
   leaves open.
+
+- **Fig 5** (`fig5_survival.png`, from `track_p_temporal.json`): stroke-survival curves,
+  6 conditions — object-space strokes persist P(life>32) 0.29–0.83 (mean life 37–183
+  frames) while per-frame strokes sit at 0.005–0.009 (mean 1.0–1.5). Drift gate 100/0.
+  Erratum documented in `scripts/render_fig5.py`: five lego cells of TRACK_P_RESULTS.md's
+  prose table differ from the json in the 3rd decimal (formatting artifact, same run);
+  no quoted range is affected.

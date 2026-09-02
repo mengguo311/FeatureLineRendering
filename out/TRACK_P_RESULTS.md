@@ -36,6 +36,8 @@ use.
 
 ## Survival curves — P(stroke lifetime > K frames)
 
+> **Erratum (paper lock):** the lego arm-A rows below are amended to 4-decimal json-exact values; `out/track_p_temporal.json` (same run, written 3 min before this file) is authoritative — the original 3-decimal cells carried a formatting artifact (Δ≈0.0005). No quoted range or ratio changes.
+
 | condition | arm | K>2 | K>4 | K>8 | K>16 | K>32 | median | mean | n strokes |
 |---|---|---|---|---|---|---|---|---|---|
 | chair·T1 | A | 0.067 | 0.038 | 0.020 | 0.009 | 0.005 | 0.0 | 1.04 | 22 131 |
@@ -44,11 +46,11 @@ use.
 | | **B** | **0.951** | **0.931** | **0.903** | **0.875** | **0.833** | **239.0** | **182.6** | 534 |
 | chair·T3 | A | 0.070 | 0.038 | 0.020 | 0.010 | 0.005 | 0.0 | 1.01 | 21 049 |
 | | **B** | **0.910** | **0.879** | **0.836** | **0.695** | **0.444** | **28.0** | **97.5** | 967 |
-| lego·T1 | A | 0.074 | 0.044 | 0.025 | 0.015 | 0.008 | 0.0 | 1.42 | 21 692 |
+| lego·T1 | A | 0.0744 | 0.0435 | 0.0245 | 0.0150 | 0.0083 | 0.0 | 1.42 | 21 692 |
 | | **B** | **0.925** | **0.907** | **0.883** | **0.839** | **0.774** | **117.0** | **115.9** | 1 893 |
-| lego·T2 | A | 0.077 | 0.046 | 0.026 | 0.016 | 0.009 | 0.0 | 1.49 | 21 102 |
+| lego·T2 | A | 0.0770 | 0.0460 | 0.0263 | 0.0155 | 0.0090 | 0.0 | 1.49 | 21 102 |
 | | **B** | **0.864** | **0.846** | **0.798** | **0.732** | **0.609** | **47.0** | **81.3** | 2 014 |
-| lego·T3 | A | 0.072 | 0.044 | 0.025 | 0.014 | 0.007 | 0.0 | 1.19 | 22 023 |
+| lego·T3 | A | 0.0718 | 0.0440 | 0.0249 | 0.0135 | 0.0065 | 0.0 | 1.19 | 22 023 |
 | | **B** | **0.808** | **0.764** | **0.710** | **0.604** | **0.295** | **20.0** | **37.0** | 1 518 |
 
 The separation is the cleanest result in this track: **per-frame strokes essentially never

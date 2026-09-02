@@ -557,7 +557,7 @@ undisclosed-limit system or an unmeasured negative.
 | Fig 2 | out/pareto_{chair,lego}.png | PARETO-1 frontiers | rendered, drift-checked |
 | Fig 3 | out/fig3_pareto2.png | per-condition worst advantage; 1.72x gate-breach flagged | rendered, drift-checked |
 | Fig 4 | out/fig4_pareto3.png | disocclusion decomposition + 33.3% gate | rendered, drift-checked |
-| Fig 5 | (spec only) survival curves P(life>K) from TRACK_P_RESULTS.md | NOT yet rendered |
+| Fig 5 | out/fig5_survival.png | survival curves P(life>K), 6 conditions | rendered, drift-checked (100/0 vs track_p_temporal.json; a 5-cell 3rd-decimal formatting erratum in TRACK_P_RESULTS.md's prose table is documented in scripts/render_fig5.py — no ledger- or paper-quoted number affected) |
 | Fig 6 | out/fig6_ceiling.png | Act-1 ceiling + recovery attempts | rendered, drift-checked |
 | Fig 7 | out/fig7_semantic.png | Act-3 DINO prob map + AUC bars | rendered, drift-checked |
 | Fig 8 | out/fig8_supervision.png | Act-4 collapse + transfer | rendered, drift-checked |
