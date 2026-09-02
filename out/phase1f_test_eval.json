@@ -1,0 +1,93 @@
+{
+  "banked_baseline_test": {
+    "P1.5": 0.6572744617818822,
+    "R1.5": 0.5959019132724314,
+    "n": 15091,
+    "src": "m1b_chair_gated_test.json"
+  },
+  "phase1e_point_oracle_quoted": {
+    "P1.5": 0.7969905492095313,
+    "R1.5": 0.6336834649049918,
+    "n_kept": 46160,
+    "topology_guard": 0.6371787208607292,
+    "src": "phase1e_test_eval.json"
+  },
+  "test_views": [
+    5,
+    15,
+    25,
+    35,
+    45,
+    55,
+    65,
+    75,
+    85,
+    95
+  ],
+  "chain_stats": {
+    "n_points": 272366,
+    "n_chained": 156979,
+    "chain_cover": 0.5763531424627156,
+    "n_chains": 1692,
+    "size_min": 10,
+    "size_median": 21.0,
+    "size_max": 20349
+  },
+  "script_md5": "98b58715d12487041643deba76562905",
+  "cpu_only": true,
+  "arms": {
+    "chain_mean": {
+      "tau_frozen": 0.18095957169718602,
+      "n_kept": 78190,
+      "n_chains_kept": 658,
+      "P1.5": 0.6458037669315265,
+      "R1.5": 0.6482323865029306,
+      "P2.5": 0.7569549260752503,
+      "R2.5": 0.7442923702192832,
+      "recall_matched_to_banked": true,
+      "starved_on_val": false
+    },
+    "chain_median": {
+      "tau_frozen": 0.06673169937692981,
+      "n_kept": 87447,
+      "n_chains_kept": 806,
+      "P1.5": 0.6178188407097089,
+      "R1.5": 0.6754513499983932,
+      "P2.5": 0.7327264067099435,
+      "R2.5": 0.7771248974297545,
+      "recall_matched_to_banked": true,
+      "starved_on_val": false
+    }
+  },
+  "all_chains_test": {
+    "n_kept": 156979,
+    "P1.5": 0.40907679652489987,
+    "R1.5": 0.7245081501919471
+  },
+  "topology_guard": {
+    "convention": "identical to Phase 1e: GT crease 8-conn segments per TEST view (pooled); covered iff min chamfer-DT over segment px <= 1.5; PRIMARY = frac of baseline-stroke-covered segments retaining >=1 surviving gated point",
+    "n_gt_segments_total": 2595,
+    "n_baseline_covered": 1675,
+    "baseline_strokes_src": "linelets_chair_p1e_valref.npz",
+    "arms": {
+      "chain_mean": {
+        "coverage_of_baseline_covered": 0.7480597014925373,
+        "coverage_of_all_gt_segments": 0.7136801541425819
+      },
+      "chain_median": {
+        "coverage_of_baseline_covered": 0.7970149253731343,
+        "coverage_of_all_gt_segments": 0.7707129094412332
+      },
+      "all_chains": {
+        "coverage_of_baseline_covered": 0.8782089552238806,
+        "coverage_of_all_gt_segments": 0.859344894026975
+      }
+    }
+  },
+  "verdict_fork": {
+    "primary_arm": "chain_mean",
+    "topology_guard": 0.7480597014925373,
+    "phase1e_point_oracle_topo": 0.6371787208607292,
+    "verdict": "STRUCTURAL impossibility: post-hoc thresholding cannot preserve 1D crease continuity even with chain pooling (guard 0.7481 < 0.90; point-oracle was 0.6372). Full builds need topology-aware construction, not thresholding."
+  }
+}
