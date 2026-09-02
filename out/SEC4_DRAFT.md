@@ -57,8 +57,8 @@ P(d>2 px) — the floor-free statistic §4.2 motivates: the worst shared advanta
 condition is **5.19×** (chair·orbit), **5.49×** (chair·spline), **8.35×** (lego·orbit),
 and **1.72×** (lego·spline); §4.4 decomposes where this advantage lives and how much of
 the baseline's residual is its own accumulator drift. The shared operating points sit at
-P@1.5 0.30–0.59 on chair (9 and 8 of 21 baseline points shared) and 0.63 on lego (3 and 5
-of 21) — on lego the baseline's highest-precision configurations are not dominated by any
+P@1.5 0.28–0.59 on chair (9 and 8 of 21 baseline points shared) and 0.62–0.64 on lego (3
+and 5 of 21) — on lego the baseline's highest-precision configurations are not dominated by any
 of our points and are therefore outside the comparison, a truncation the dominance rule
 imposes by construction and we report rather than hide. The last cell breaches our frozen 2× bar and
 we keep it as the headline of this subsection rather than a footnote: **1.72× is the

@@ -1,7 +1,7 @@
 # Interior Temporal Stability of Object-Space Feature Lines on a Frozen 3DGS:
 # an Isolated Finding at Matched Precision and Density, and a Measured Precision Boundary
 
-*(assembled from gate-passed section drafts; canonical numbers: out/RESULTS_MASTER.md; audits: out/ASSEMBLY_AUDIT.md, out/COLDREAD_AUDIT.md)*
+*(assembled from gate-passed section drafts; canonical numbers: out/RESULTS_MASTER.md; audits: out/ASSEMBLY_AUDIT.md, out/COLDREAD_AUDIT.md, out/CAMERA_READY_CHECKLIST.md)*
 
 ## Interior Temporal Stability of Object-Space Feature Lines on a Frozen 3DGS:
 ## an Isolated Finding at Matched Precision and Density, and a Measured Precision Boundary
@@ -312,8 +312,8 @@ P(d>2 px) — the floor-free statistic §4.2 motivates: the worst shared advanta
 condition is **5.19×** (chair·orbit), **5.49×** (chair·spline), **8.35×** (lego·orbit),
 and **1.72×** (lego·spline); §4.4 decomposes where this advantage lives and how much of
 the baseline's residual is its own accumulator drift. The shared operating points sit at
-P@1.5 0.30–0.59 on chair (9 and 8 of 21 baseline points shared) and 0.63 on lego (3 and 5
-of 21) — on lego the baseline's highest-precision configurations are not dominated by any
+P@1.5 0.28–0.59 on chair (9 and 8 of 21 baseline points shared) and 0.62–0.64 on lego (3
+and 5 of 21) — on lego the baseline's highest-precision configurations are not dominated by any
 of our points and are therefore outside the comparison, a truncation the dominance rule
 imposes by construction and we report rather than hide. The last cell breaches our frozen 2× bar and
 we keep it as the headline of this subsection rather than a footnote: **1.72× is the
@@ -539,7 +539,7 @@ forward. Precision on textured surfaces is supervision-bound under our frozen pr
 we ship the boundary, measured, rather than a patch.
 
 Methodologically, every gate in this study was frozen before its numbers existed and
-evaluated on its letter; the unfavorable outcomes — including the two failed stability
+evaluated on its letter (the full ledger is Tab 4); the unfavorable outcomes — including the two failed stability
 gates and the supervision-bound NO-GO — are reported with the same prominence as the
 favorable ones, because several of this paper's most useful sentences (the quantization
 floor, the disocclusion reversal, the oracle-baseline gap) exist only because a failed

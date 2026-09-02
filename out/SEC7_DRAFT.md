@@ -26,7 +26,7 @@ forward. Precision on textured surfaces is supervision-bound under our frozen pr
 we ship the boundary, measured, rather than a patch.
 
 Methodologically, every gate in this study was frozen before its numbers existed and
-evaluated on its letter; the unfavorable outcomes — including the two failed stability
+evaluated on its letter (the full ledger is Tab 4); the unfavorable outcomes — including the two failed stability
 gates and the supervision-bound NO-GO — are reported with the same prominence as the
 favorable ones, because several of this paper's most useful sentences (the quantization
 floor, the disocclusion reversal, the oracle-baseline gap) exist only because a failed

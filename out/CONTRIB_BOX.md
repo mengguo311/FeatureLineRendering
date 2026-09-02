@@ -1,5 +1,5 @@
 **Contributions.**
-1. **A temporally stable line primitive for frozen 3DGS.** Object-space 3D feature lines
+1. **An interior temporal-stability finding for object-space lines on a frozen 3DGS.** Object-space 3D feature lines
    whose rendered strokes flicker **1.72–8.35× less** (popped line-pixels, per condition;
    **≥5.19× in three of four conditions**)
    than even an **oracle-flow temporally-accumulated** 2D edge baseline, and ≥9.8× less
@@ -7,8 +7,10 @@
    trades against, not a baseline we claim to beat in general. This is not stability-by-construction bought with
    sparsity or imprecision: every comparison is at **matched precision AND matched line
    density**, the oracle baseline is handed our exact rigid flow, and the stability is
-   threshold-invariant. The measured envelope ships with it: the 1.72× cell is the frozen conservative floor,
-   and inside disocclusion regions the baseline is locally better — both disclosed.
+   threshold-invariant. The measured envelope ships with it: the 1.72× cell breached its
+   pre-registered 2× bar and stands as the reported floor, and inside disocclusion regions
+   the baseline is locally better — both disclosed. All numbers are on n=2 synthetic
+   scenes, at precision bounded by contribution 2.
 2. **A diagnostic that locates exactly what the primitive's precision needs.** The
    crease-vs-texture signal the pipeline is missing **exists** — frozen DINOv2 features
    separate it at AUC 0.84/0.90 — and we pin down what unlocks it: with mesh labels it is
