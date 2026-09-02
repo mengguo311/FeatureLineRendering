@@ -623,6 +623,9 @@ tested operating point attains precision ≥ 0.71, recall ≥ the baseline's 0.5
 topology ≥ 0.90 *simultaneously*. That is the trilemma, and it is a property of the
 repair class: post-hoc keep/drop filtering of a fixed candidate cloud trades precision
 against 1D continuity for every ranking we could construct, up to an in-sample oracle.
+The oracle also bounds the class: any learned gate's ranking on this fixed cloud is
+dominated by the in-sample oracle, so the trilemma binds post-hoc discriminator gating
+as a *class*, not merely the gates we built.
 
 **A.3 What this hardens.** Two independent barriers now stand between the cloud and a
 deployable precision fix: the supervision gap (mesh-free discrimination is chance-level
@@ -634,8 +637,9 @@ filtering after it — plus labeled scenes. This is why §5's boundary ships as 
 boundary: the obvious patches are not merely unattempted, they are falsified. Probe
 scope, disclosed: cloud-level results are chair-only (n=1 scene) — chair being the
 deliberately selected texture-stress case (Canny edge purity 0.28), so the repair class
-was falsified on its adversarial home ground and no scene-independent impossibility is
-claimed; the oracle bound is
+was falsified on its adversarial home ground, no scene-independent impossibility is
+claimed, and extending the falsification beyond chair is named future work; the oracle
+bound is
 in-sample (loosest); the cloud is rasterised as points inside the segment-raster
 convention (its 272k points saturate recall at 0.9540 ungated, so the NO-GO is not a
 rasterisation artifact).

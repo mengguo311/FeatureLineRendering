@@ -229,26 +229,26 @@ FLOATS = [
 # Supplementary floats (referenced from the main text; placed after References with
 # their md numbering preserved via \setcounter — standard supplementary convention).
 SUPP = [
-    tab(4, "assets/tab4_gate_ledger.png",
-        "The frozen-gate ledger: every pre-registered gate, its bar, its measured "
-        "value, and its disposition.", 0.62, pl="p"),
     tab(1, "assets/tab1_stroke_ratios.png",
         "Matched-stroke E-warp ratios across scenes, trajectories and detectors.",
-        0.8, pl="p"),
+        0.8, pl="t"),
     tab(2, "assets/tab2_floor_anatomy.png",
-        "Floor anatomy of the pooled-mean statistic.", 0.62, pl="p"),
+        "Floor anatomy of the pooled-mean statistic.", 0.62, pl="t"),
     tab(3, "assets/tab3_kgeom.png",
-        "K\\textsubscript{geom}: geometric cues on the miss-set.", 0.55, pl="p"),
+        "K\\textsubscript{geom}: geometric cues on the miss-set.", 0.55, pl="t"),
+    tab(4, "assets/tab4_gate_ledger.png",
+        "The frozen-gate ledger: every pre-registered gate, its bar, its measured "
+        "value, and its disposition.", 0.62, pl="t"),
     fig(4, "assets/fig4_pareto3.png",
         "Disocclusion decomposition of the hardest cell: the advantage is interior, "
         "reverses inside disocclusion regions, and the mechanism gate lands NO-GO.",
-        0.75, pl="p"),
+        0.75, pl="t"),
     fig(7, "assets/fig7_semantic.png",
         "Act 3: frozen-DINOv2 crease-probability read-out and probe AUCs.",
-        0.85, pl="p"),
+        0.85, pl="t"),
     fig(8, "assets/fig8_supervision.png",
         "Act 4: the mesh-free supervision collapse, and the asymmetric cross-scene "
-        "transfer.", 0.75, pl="p"),
+        "transfer.", 0.75, pl="t"),
 ]
 
 
