@@ -1,6 +1,10 @@
-# Object-Space Feature Lines from a Frozen 3DGS: Interior Temporal Stability at Matched Precision and Density, with a Measured Precision Boundary
+# Interior Temporal Stability of Object-Space Feature Lines on a Frozen 3DGS:
+# an Isolated Finding at Matched Precision and Density, and a Measured Precision Boundary
 
-*(assembled from gate-passed section drafts; canonical numbers: out/RESULTS_MASTER.md; assembly audit: out/ASSEMBLY_AUDIT.md)*
+*(assembled from gate-passed section drafts; canonical numbers: out/RESULTS_MASTER.md; audits: out/ASSEMBLY_AUDIT.md, out/COLDREAD_AUDIT.md)*
+
+## Interior Temporal Stability of Object-Space Feature Lines on a Frozen 3DGS:
+## an Isolated Finding at Matched Precision and Density, and a Measured Precision Boundary
 
 ## Abstract & §1 Introduction
 *(All numbers from `RESULTS_MASTER.md`.)*
@@ -8,22 +12,25 @@
 ## Abstract
 
 Line drawings rendered from per-frame image-space edge detection flicker: strokes appear,
-vanish, and re-form with every camera step. We present an **interior temporal
-stabilization primitive** for feature lines bound to a *frozen* 3D Gaussian Splatting
-reconstruction: static object-space 3D polylines, projected per frame with a visibility
-test. This is deliberately not a general 3D line detector: view-dependent silhouettes are out
+vanish, and re-form with every camera step. We report an **interior temporal-stability
+finding** for feature lines bound to a *frozen* 3D Gaussian Splatting reconstruction —
+static object-space 3D polylines, projected per frame with a visibility test — together
+with a diagnostic characterization of the precision such lines can reach. This is deliberately not a general 3D line detector: view-dependent silhouettes are out
 of scope by construction, exhaustive recovery of geometric creases is a ceiling we measure
 rather than hide, and at disocclusion boundaries our stability advantage reverses — a
 limit we quantify. Per-frame 2D detection remains the precision reference we trade
-against rather than claim to beat. What the
-primitive buys is stability where it counts: on a three-axis protocol that compares
+against rather than claim to beat. What object-space binding buys is measured on a
+three-axis protocol that compares
 methods only at **matched precision and matched line density**, our lines pop
 **1.72–8.35×** less per scene×trajectory condition (two synthetic scenes × two
 trajectories, four conditions; a third trajectory appears in the stroke-level results)
 than the strongest 2D baseline we could construct — an EMA accumulator
-driven by *oracle* rigid flow, so no estimated flow can improve its inputs — with 1.72× as the frozen
-conservative floor at the adversarial worst cell, and ≥9.8× less than memoryless
-detectors. A second contribution characterizes why the primitive's precision is bounded
+driven by *oracle* rigid flow, so no estimated flow can improve its inputs. The worst
+cell, 1.72× (the stress spline on the geometry-dense scene), **breached our pre-registered
+2× bar and is reported as the claim's floor rather than re-tuned**; the other three
+conditions sit at 5.19–8.35×, and the advantage over memoryless detectors is ≥9.8×. These
+are stability numbers at the lines' *bounded* precision — mesh-free crease-vs-texture
+discriminability caps at 0.6371 AUC (below its 0.72 gate) — on n=2 synthetic scenes. A second contribution characterizes why the primitive's precision is bounded
 rather than patching it: coverage is capped by the frozen carrier; the missing creases
 carry no geometric signal even under the ground-truth mesh (AUC 0.3964); the
 crease-vs-texture signal *exists* in frozen DINOv2 features (AUC 0.8401/0.9044) yet
@@ -58,12 +65,14 @@ how to construct: an EMA accumulator given our own *oracle* rigid flow with an
 occlusion-aware fallback — no estimated flow can improve on its inputs, though we make no
 claim over accumulator designs beyond this family.
 
-Against this ceiling, the primitive's advantage is **1.72–8.35×** fewer popped line-pixels
-per condition (≥5.19× in three of four; the fourth — the maximum-occlusion-flux spline on
-the geometry-dense scene — sets the frozen 1.72× floor), and ≥9.8× against memoryless
-detectors at every shared point. The advantage is interior (1.98× at the hardest cell) and
+Against this ceiling, the stability finding is **1.72–8.35×** fewer popped line-pixels
+per condition on the two scenes (≥5.19× in three of four; the fourth — the stress spline
+on the geometry-dense scene — **breached the pre-registered 2× bar at 1.72× and stands as
+the reported floor**), and ≥9.8× against memoryless detectors at every shared point — all
+at the lines' bounded precision (mesh-free discriminability 0.6371 AUC; §5). The advantage is interior (1.98× at the hardest cell) and
 is a property of the parameterization: it is invariant to the acceptance threshold across
-the full sweep where measured, while per-frame detectors destabilize as they sparsify.
+the full sweep where measured (the chair sweep; not repeated on lego), while per-frame
+detectors destabilize as they sparsify.
 
 Precision is the other half of the story, and we do not claim to have solved it. Per-frame
 image-space detection is the precision reference this primitive trades against: on the
@@ -73,15 +82,17 @@ Canny stays more precise at every density we reach. Rather than patch this gap w
 in-scene oracle, we characterize it: a four-act forensic bounds the achievable precision
 (carrier coverage ceiling; no geometric cue on the miss-set, even from the GT mesh; the
 separating signal exists in frozen semantic features; and it collapses without mesh
-supervision through a pre-registered gate), ending at a named, one-direction-tested route
-forward. The boundary is the contribution; pretending it away is not.
+supervision through a pre-registered gate), ending at a route that
+worked in one of the two directions tested (0.8245 chair→lego; 0.5626 reverse). The boundary is the contribution; pretending it away is not.
 
 **Contributions.** (verbatim from the contribution box)
-1. **A temporally stable interior line primitive for frozen 3DGS** — 1.72–8.35× less
-   popping than an oracle-flow accumulated 2D baseline at matched precision and density
-   (≥5.19× in three of four conditions; 1.72× frozen floor), ≥9.8× vs memoryless
-   detection; per-frame 2D detection remains the precision reference we trade against,
-   not a baseline we claim to beat in general.
+1. **An interior temporal-stability finding for object-space lines on a frozen 3DGS** —
+   1.72–8.35× less popping than an oracle-flow accumulated 2D baseline at matched
+   precision and density (≥5.19× in three of four conditions; the 1.72× cell breached its
+   pre-registered 2× bar and is the reported floor), ≥9.8× vs memoryless detection — on
+   n=2 synthetic scenes, at precision bounded by contribution 2 (mesh-free
+   discriminability 0.6371 AUC); per-frame 2D detection remains the precision reference we
+   trade against, not a baseline we claim to beat in general.
 2. **A measured precision boundary** — the four-act characterization ending
    supervision-bound under our frozen protocol (signal exists 0.8401/0.9044; mesh-free
    0.6371 vs a 0.72 gate; transfer 0.8245 one direction), with every recovery attempt we
@@ -130,8 +141,10 @@ whereas the specular and shading-induced mis-fires that motivate the premise are
 different error population that our scenes barely contain. We read this as a domain statement, not a criticism of SketchSplat's results on its own
 benchmarks. A fair question is why no EMAP/SketchSplat-style static-curve output appears
 as a *stability* baseline: any static object-space curve set shares our by-construction
-stability, so between static primitives the discriminating axes are precision, coverage
-and density — which our §5 characterization addresses at the representation level (its
+stability — which is precisely why our contribution is stated as a *measurement* of what
+staticness is worth against the strongest dynamic family at matched precision and density,
+a quantity no static-curve paper reports, rather than a ranking among static methods.
+Between static primitives the discriminating axes are precision, coverage and density — which our §5 characterization addresses at the representation level (its
 semantic-blindness result is representation-independent — even the GT mesh's dihedral
 scores 0.3964 — and so applies to any edge-seeded method, theirs included; the coverage
 ceiling, by contrast, is measured for our carrier only)
@@ -214,7 +227,10 @@ computed on the 10 held-out **test** views and on test-anchored trajectories tha
 selection step ever consumed, under gates frozen before the numbers existed. What
 pre-registration covers here is the reported evaluation, not the existence of a
 development loop — and with n=2 scenes there is no held-out *scene*, a scope limit §6
-owns.
+owns. This loop is also why §5.4 matters beyond the discriminator: deploying on a
+mesh-less scene would require mesh-free selection, whose strongest tested form §5.4
+bounds; the tested mitigation is cross-scene transfer of development-time choices
+(0.8245 in the one direction that worked).
 
 **Frozen constants (committed defaults, printed for reproduction).** De-floater:
 opacity > 0.1 and k-NN (k=8) mean spacing < 3× its median. Detector: TEED, probability
@@ -224,7 +240,7 @@ median residual ≤1.5 px. Chaining: 3D NMS radius 1.0× local spacing, k=10 nei
 tangent cosine ≥0.60, collinearity cosine ≥0.50, gap ≤4.0× spacing, ≥3 nodes per stroke.
 Visibility: 3×3-min z-buffer window, relative tolerance 0.02. Seed construction and
 half-length initialization follow the released implementation (`src/seeds.py`,
-`src/dt_pull.py`), which we ship.
+`src/dt_pull.py`), which we release.
 
 ## 3.5 What the method does not contain
 
@@ -243,8 +259,11 @@ every baseline rather than being part of the method.
 ## 4.1 Protocol: three axes, one dominance rule
 
 A temporal-stability claim for a line primitive is easy to fake and easy to dismiss: a
-method can look stable by drawing fewer lines, easier lines, or blurrier lines. Our
-protocol closes all three doors at once. Every method — ours and every baseline — is swept
+method can look stable by drawing fewer lines or blurrier lines. Our protocol closes
+those doors — precision and pixel-density are matched jointly — but we name what it does
+not close: matched density is not matched *coverage* (§5.1 shows creases with no carrier
+at all, which our lines cannot ink at any density), so the comparison certifies stability
+of what is drawn, not equivalence of what is drawable. Every method — ours and every baseline — is swept
 over its acceptance threshold to trace an operating curve over three axes: precision
 (P@1.5 against held-out GT creases), line density (rendered line-pixels per frame), and a
 pixel-pooled stability statistic. Stability is compared **only at shared operating
@@ -286,13 +305,21 @@ baseline would warp and accumulate edges over time. We therefore built the stron
 member of that family we know how to construct — an EMA accumulator
 (A_t = α·warp(A_{t−1}) + (1−α)·E_t, rethresholded, α up to 0.85) driven by the **exact
 rigid flow** with an occlusion-aware fallback, i.e. an oracle upper bound on every
-estimated-flow variant — and swept it on the same three axes (Fig 3). Accumulation
-genuinely helps the 2D baselines. It does not close the gap: the worst shared advantage
-per condition is **5.19×** (chair·orbit), **5.49×** (chair·spline), **8.35×**
-(lego·orbit), and **1.72×** (lego·spline). The last cell breaches our frozen 2× floor and
+estimated-flow variant — and swept it on the same three axes (Fig 3); the oracle claim covers the flow *input*
+only — we make no claim over accumulator designs beyond this EMA family. Accumulation
+genuinely helps the 2D baselines. It does not close the gap on the pooled pop-rate
+P(d>2 px) — the floor-free statistic §4.2 motivates: the worst shared advantage per
+condition is **5.19×** (chair·orbit), **5.49×** (chair·spline), **8.35×** (lego·orbit),
+and **1.72×** (lego·spline); §4.4 decomposes where this advantage lives and how much of
+the baseline's residual is its own accumulator drift. The shared operating points sit at
+P@1.5 0.30–0.59 on chair (9 and 8 of 21 baseline points shared) and 0.63 on lego (3 and 5
+of 21) — on lego the baseline's highest-precision configurations are not dominated by any
+of our points and are therefore outside the comparison, a truncation the dominance rule
+imposes by construction and we report rather than hide. The last cell breaches our frozen 2× bar and
 we keep it as the headline of this subsection rather than a footnote: **1.72× is the
-frozen conservative lower bound** of the claim, measured against an oracle no practical
-system can exceed, in the single condition that maximizes occlusion flux.
+reported floor of the claim — a breached pre-registered gate, not a designed margin** —
+measured against a baseline whose flow input no practical system can exceed, in the
+single condition that maximizes occlusion flux.
 
 ## 4.4 The operational envelope
 
@@ -320,6 +347,10 @@ stroke *survival*: object-space strokes persist for 37–183 frames on average w
 per-frame strokes persist for 1.0–1.5 (P(lifetime>32): 0.29–0.83 vs 0.005–0.009). Our
 stroke residual falls in proportion to per-frame motion, i.e. it is warp-resampling error
 and nothing else; the per-frame baselines saturate at a motion-independent popping floor.
+These stroke-level harnesses predate the accumulated baseline and compare against
+memoryless detection only; the oracle accumulator exists only in the pixel-pooled
+protocol, so the third trajectory is covered at stroke level but not against
+accumulation.
 
 *(Scope reminder for the section header: frozen 3DGS, static NeRF-synthetic scenes, known
 poses; see §6. The precision these curves operate at is itself bounded — §5 characterizes
@@ -335,35 +366,40 @@ Throughout, the GT mesh labels and scores only — it never enters the method pa
 
 The primitive of §4 operates at a bounded precision, and the bound begins with coverage:
 re-ranking the frozen gaussian pool — keeping *everything* — caps pipeline recall at
-R@1.5 = 0.7908 (chair) / 0.5572 (lego); the pool's own 2D coverage is 0.7382 / 0.6337, and
-on lego 0.3663 of visible GT crease points have no carrier within 1.5 px at all (Fig 6).
+R@1.5 = 0.7908 (chair) / 0.5572 (lego); the pool's own 2D point coverage is 0.7382 /
+0.6337 — on chair the pipeline's recall exceeds point coverage because rasterized segments
+interpolate *between* carriers, so the binding form of the ceiling is lego's, where 0.3663
+of visible GT crease points have no carrier within 1.5 px at all and interpolation cannot
+manufacture one (Fig 6).
 Some of those uncovered creases are flat decals with literally zero geometric footprint.
 
 This admission invites a specific attack, so we answer it here rather than in a rebuttal:
 *if the lines live on a baked radiance carrier, is §4's stability just the passive
-reprojection of 2D edges — an inherited artifact that this ceiling proves?* No, and the
-matched-density protocol of §4.1–4.2 is the direct evidence. On the texture-bound scene,
+reprojection of 2D edges — an inherited artifact that this ceiling proves?* Not on the
+evidence — though the evidence is single-scene, as §6 states plainly. On the texture-bound scene,
 the carrier surface under a high-contrast fabric edge is indistinguishable from the
 carrier under a crease — on this population the fabric-bound rows of Act 2 apply directly
 (the albedo-step gate leaks, 0.1235 vs 0.1211, and multi-view consistency does not
 separate, 0.870 vs 0.937), and the geometric cues of Tab 3 are at or below chance on the
-decisive decal population — yet at matched line density our extracted set is substantially **more precise than the
-photometric edge field itself** (P@1.5 0.662 at 4,947 px/frame vs per-frame Canny 0.532 at
-5,973 px/frame; Fig 2): the pipeline actively **suppresses** texture edges that enjoy the
+decisive decal population — yet our extracted set is substantially **more precise than the photometric edge field
+itself** — P@1.5 0.662 at 4,947 px/frame vs per-frame Canny 0.532 at 5,973 px/frame, and,
+in the dominance-consistent direction (ours denser AND more precise), 0.636 at 7,942
+px/frame vs the same 0.532 (Fig 2): the pipeline actively **suppresses** texture edges that enjoy the
 same carrier support and the same image contrast as the creases it keeps. That is genuine
 multi-view selectivity performed by the object-space aggregation — work the carrier could
 not have done for us (Act 2) and the 2D edge field did not do for us (Fig 2) — not passive
-reprojection. (We disclose the converse case with equal prominence: on lego, where strong
-image edges largely *are* creases, per-frame Canny is more precise than our lines at every
-density; there our advantage is stability only.) The ceiling, then, bounds *which* creases
+reprojection. The converse case gets equal prominence: on lego, where strong image edges
+largely *are* creases, per-frame Canny is more precise than our lines at every density;
+there our advantage is stability only. The ceiling, then, bounds *which* creases
 the primitive can carry — it says nothing against *how stably* it carries them, which is
 §4's claim and survives at matched precision and density.
 
 ## 5.2 Act 2 — no geometric cue separates the miss-set (K_geom ≈ 0)
 
 Could a better geometric gate recover the uncovered creases or reject the texture? On the
-decisive population (lego decals vs true creases), every geometric channel is at or below
-chance (Tab 3): 2DGS surfel dihedral 0.4110, rendered-normal ribbons 0.3307/0.3875, and —
+decisive population (lego decals vs true creases), no geometric channel is usable (Tab 3;
+several score *below* chance — decals locally out-score creases — so even sign-flipped
+they reverse the intended semantics): 2DGS surfel dihedral 0.4110, rendered-normal ribbons 0.3307/0.3875, and —
 the controlling result — the **GT mesh's own dihedral, 0.3964**, with normal-dispersion
 medians 44.52° vs 44.84°: given *perfect* geometry, the two classes differ by 0.32°. The
 low-level photometric escape routes close the same way: the SH-DC albedo-step gate leaks
@@ -378,7 +414,9 @@ fix, stays detector-bound at MARGINAL (recall 0.6753 / miss-set recovery 0.6914;
 The missing discriminator is not hiding in geometry; it is semantic. A linear probe on
 frozen zero-shot DINOv2 features separates crease from texture at AUC **0.8401 / 0.9044**
 (chair / lego, held-out spatial split), 0.8205 / 0.8913 under the leakage-guarded
-chain-level read, against ≈0.71 photometric and ≈0.65 geometric baselines (Fig 7). Read
+chain-level read, against ≈0.71 photometric and ≈0.65 geometric probe baselines on the candidate
+population — a different population and feature set from §5.2's decal test, which is why
+a nonzero geometric number here does not contradict K_geom≈0 there (Fig 7). Read
 honestly, the probe recognizes *which surface* a point lies on — fabric field vs piping,
 stud field vs decal — a surface-identity readout rather than an edge-type detector. The
 signal the primitive needs exists, in features every modern pipeline already has — though
@@ -389,8 +427,10 @@ Act 4 shows that reading it out is supervision-bound.
 The signal exists (0.8401/0.9044) — but it collapses under mesh-free supervision: trained
 on our best mesh-free pseudo-labels (physics-frozen geometric-photometric votes, and a
 fully self-supervised clustering variant), the same probe falls to **0.6371** on chair
-through a pre-registered 0.72 gate (0.9046 → 0.6569 on lego), beneath even its photometric
-baseline. The failure mode is instructive: the pseudo-labels' errors are systematic, not
+through a pre-registered 0.72 gate (on lego 0.9046 — the ceiling as recomputed in this
+study; 0.9044 in Act 3's split — falls to 0.6569), beneath even its photometric baseline:
+the best mesh-free number *anywhere* is the chair photometric probe at 0.7326 — touching
+the gate on one scene, 0.5637 on the other — while the semantic probe collapses on both. The failure mode is instructive: the pseudo-labels' errors are systematic, not
 noisy, and the richer representation learns them the more faithfully — zero denoising. One
 route stays open, and we measured it: the mesh-supervised probe transfers chair→lego at
 **0.8245**, nearly matching lego's in-scene ceiling, though not in reverse (0.5626).
@@ -456,6 +496,13 @@ signal to find, for any method that seeds on geometry.
 carrier within 1.5 px at all (flat decals prominent among them). Our lines cannot draw
 what the carrier never represented, and §5.2 shows the recovery attempts we falsified.
 
+**Further disclosed limits, collected.** Four limits disclosed elsewhere belong in this
+list too: all pipeline constants were selected during development with mesh-scored
+validation views (§3.4); the pooled-*mean* stability statistic failed its own 3× gate at
+one point (2.42×, §4.2); no third-party static-curve method was compared (§2, an
+evaluation boundary); and the shared operating points on lego sit at P@1.5 ≈ 0.63 with the
+baseline's highest-precision configurations excluded by the dominance rule (§4.3).
+
 **Evaluation dependency.** GT supervision (crease labels, precision/recall scoring) comes
 from the mesh, confined to `mesh_oracle.py` and the eval scripts — the method path never
 imports it (AST-verified per phase). The flip side of this hygiene: our quantitative
@@ -469,18 +516,20 @@ in-vitro.
 We set out to extract clean, temporally stable 3D feature lines from a frozen 3DGS, and we
 report exactly what that produced — two contributions, each scoped to what was measured.
 
-**A stability primitive.** Object-space feature lines whose rendered strokes are
+**A stability finding.** Object-space feature lines whose rendered strokes are
 **1.72–8.35×** more temporally stable per condition than an oracle-flow temporally
-accumulated 2D baseline — **5.19× or better in three of four scene×trajectory conditions,
-with the 1.72× adversarial cell as the frozen conservative floor** — and ≥9.8× more stable
-than memoryless per-frame detection, at matched precision *and* matched line density. The
-stability is invariant to the acceptance threshold across the full sweep where measured,
+accumulated 2D baseline — **5.19× or better in three of four scene×trajectory conditions;
+the 1.72× stress-spline cell breached its pre-registered 2× bar and stands as the reported
+floor** — and ≥9.8× more stable than memoryless per-frame detection, at matched precision
+*and* matched line density, on n=2 synthetic scenes and at precision bounded by the second
+contribution (mesh-free discriminability 0.6371 AUC). The stability is invariant to the
+acceptance threshold across the chair sweep (not repeated on lego),
 consistent with it being a property of the object-space parameterization rather than of
 line selection. The claim ships with its measured envelope: the advantage is interior
 (1.98×), reverses inside disocclusion regions, and is valid for frozen reconstructions of
 static scenes with known poses.
 
-**A boundary forensics.** The primitive's precision is *not* solved, and the four-act
+**A boundary forensics.** The primitive's precision is *not* solved — the four-act
 characterization of why is itself a contribution: coverage is capped by the frozen carrier
 (0.7908/0.5572); the missing creases carry no geometric signal even under the GT mesh
 (AUC 0.3964); the discriminating signal exists in frozen semantic features (0.8401/0.9044)
@@ -500,19 +549,16 @@ undisclosed-limit system or an unmeasured negative.
 
 ---
 
-## Figure & table assets (rendered, drift-checked against RESULTS_MASTER.md)
+## Figure & table assets
 
-| ref | file | content |
-|---|---|---|
-| Fig 1 | out/fig1_teaser.png | teaser: ours vs per-frame lines over trajectory frames + 2-frame overlap |
-| Fig 2 | out/pareto_{chair,lego}.png | PARETO-1 frontiers: P@1.5 vs pooled E_warp & flicker, density-sized markers |
-| Fig 3 | out/fig3_pareto2.png | per-condition worst advantage vs oracle-flow EMA; 1.72x flagged |
-| Fig 4 | out/fig4_pareto3.png | disocclusion decomposition + 33.3% mechanism gate |
-| Fig 5 | (from TRACK_P_RESULTS.md tables) | survival curves P(life>K) |
-| Fig 6 | out/fig6_ceiling.png | Act-1 ceiling + recovery attempts |
-| Fig 7 | out/fig7_semantic.png | Act-3 DINO prob map + AUC bars |
-| Fig 8 | out/fig8_supervision.png | Act-4 collapse + transfer asymmetry |
-| Tab 1 | out/tab1_stroke_ratios.png | stroke-level E_warp / Frechet / P_pop ratios |
-| Tab 2 | out/tab2_floor_anatomy.png | PARETO-1 failing-point anatomy |
-| Tab 3 | out/tab3_kgeom.png | K_geom ~= 0 cue table |
-| Tab 4 | out/tab4_gate_ledger.png | the frozen-gate ledger |
+| ref | file | content | status |
+|---|---|---|---|
+| Fig 1 | out/fig1_teaser.png | teaser: ours vs per-frame lines + 2-frame overlap | rendered, drift-checked |
+| Fig 2 | out/pareto_{chair,lego}.png | PARETO-1 frontiers | rendered, drift-checked |
+| Fig 3 | out/fig3_pareto2.png | per-condition worst advantage; 1.72x gate-breach flagged | rendered, drift-checked |
+| Fig 4 | out/fig4_pareto3.png | disocclusion decomposition + 33.3% gate | rendered, drift-checked |
+| Fig 5 | (spec only) survival curves P(life>K) from TRACK_P_RESULTS.md | NOT yet rendered |
+| Fig 6 | out/fig6_ceiling.png | Act-1 ceiling + recovery attempts | rendered, drift-checked |
+| Fig 7 | out/fig7_semantic.png | Act-3 DINO prob map + AUC bars | rendered, drift-checked |
+| Fig 8 | out/fig8_supervision.png | Act-4 collapse + transfer | rendered, drift-checked |
+| Tab 1-4 | out/tab{1..4}_*.png | stroke ratios / floor anatomy / K_geom / gate ledger | rendered, drift-checked |

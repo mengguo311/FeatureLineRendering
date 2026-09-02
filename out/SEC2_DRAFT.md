@@ -35,8 +35,10 @@ whereas the specular and shading-induced mis-fires that motivate the premise are
 different error population that our scenes barely contain. We read this as a domain statement, not a criticism of SketchSplat's results on its own
 benchmarks. A fair question is why no EMAP/SketchSplat-style static-curve output appears
 as a *stability* baseline: any static object-space curve set shares our by-construction
-stability, so between static primitives the discriminating axes are precision, coverage
-and density — which our §5 characterization addresses at the representation level (its
+stability — which is precisely why our contribution is stated as a *measurement* of what
+staticness is worth against the strongest dynamic family at matched precision and density,
+a quantity no static-curve paper reports, rather than a ranking among static methods.
+Between static primitives the discriminating axes are precision, coverage and density — which our §5 characterization addresses at the representation level (its
 semantic-blindness result is representation-independent — even the GT mesh's dihedral
 scores 0.3964 — and so applies to any edge-seeded method, theirs included; the coverage
 ceiling, by contrast, is measured for our carrier only)

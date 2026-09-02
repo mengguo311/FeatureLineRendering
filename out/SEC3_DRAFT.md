@@ -58,7 +58,10 @@ computed on the 10 held-out **test** views and on test-anchored trajectories tha
 selection step ever consumed, under gates frozen before the numbers existed. What
 pre-registration covers here is the reported evaluation, not the existence of a
 development loop — and with n=2 scenes there is no held-out *scene*, a scope limit §6
-owns.
+owns. This loop is also why §5.4 matters beyond the discriminator: deploying on a
+mesh-less scene would require mesh-free selection, whose strongest tested form §5.4
+bounds; the tested mitigation is cross-scene transfer of development-time choices
+(0.8245 in the one direction that worked).
 
 **Frozen constants (committed defaults, printed for reproduction).** De-floater:
 opacity > 0.1 and k-NN (k=8) mean spacing < 3× its median. Detector: TEED, probability
@@ -68,7 +71,7 @@ median residual ≤1.5 px. Chaining: 3D NMS radius 1.0× local spacing, k=10 nei
 tangent cosine ≥0.60, collinearity cosine ≥0.50, gap ≤4.0× spacing, ≥3 nodes per stroke.
 Visibility: 3×3-min z-buffer window, relative tolerance 0.02. Seed construction and
 half-length initialization follow the released implementation (`src/seeds.py`,
-`src/dt_pull.py`), which we ship.
+`src/dt_pull.py`), which we release.
 
 ## 3.5 What the method does not contain
 

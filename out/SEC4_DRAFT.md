@@ -4,8 +4,11 @@
 ## 4.1 Protocol: three axes, one dominance rule
 
 A temporal-stability claim for a line primitive is easy to fake and easy to dismiss: a
-method can look stable by drawing fewer lines, easier lines, or blurrier lines. Our
-protocol closes all three doors at once. Every method — ours and every baseline — is swept
+method can look stable by drawing fewer lines or blurrier lines. Our protocol closes
+those doors — precision and pixel-density are matched jointly — but we name what it does
+not close: matched density is not matched *coverage* (§5.1 shows creases with no carrier
+at all, which our lines cannot ink at any density), so the comparison certifies stability
+of what is drawn, not equivalence of what is drawable. Every method — ours and every baseline — is swept
 over its acceptance threshold to trace an operating curve over three axes: precision
 (P@1.5 against held-out GT creases), line density (rendered line-pixels per frame), and a
 pixel-pooled stability statistic. Stability is compared **only at shared operating
@@ -47,13 +50,21 @@ baseline would warp and accumulate edges over time. We therefore built the stron
 member of that family we know how to construct — an EMA accumulator
 (A_t = α·warp(A_{t−1}) + (1−α)·E_t, rethresholded, α up to 0.85) driven by the **exact
 rigid flow** with an occlusion-aware fallback, i.e. an oracle upper bound on every
-estimated-flow variant — and swept it on the same three axes (Fig 3). Accumulation
-genuinely helps the 2D baselines. It does not close the gap: the worst shared advantage
-per condition is **5.19×** (chair·orbit), **5.49×** (chair·spline), **8.35×**
-(lego·orbit), and **1.72×** (lego·spline). The last cell breaches our frozen 2× floor and
+estimated-flow variant — and swept it on the same three axes (Fig 3); the oracle claim covers the flow *input*
+only — we make no claim over accumulator designs beyond this EMA family. Accumulation
+genuinely helps the 2D baselines. It does not close the gap on the pooled pop-rate
+P(d>2 px) — the floor-free statistic §4.2 motivates: the worst shared advantage per
+condition is **5.19×** (chair·orbit), **5.49×** (chair·spline), **8.35×** (lego·orbit),
+and **1.72×** (lego·spline); §4.4 decomposes where this advantage lives and how much of
+the baseline's residual is its own accumulator drift. The shared operating points sit at
+P@1.5 0.30–0.59 on chair (9 and 8 of 21 baseline points shared) and 0.63 on lego (3 and 5
+of 21) — on lego the baseline's highest-precision configurations are not dominated by any
+of our points and are therefore outside the comparison, a truncation the dominance rule
+imposes by construction and we report rather than hide. The last cell breaches our frozen 2× bar and
 we keep it as the headline of this subsection rather than a footnote: **1.72× is the
-frozen conservative lower bound** of the claim, measured against an oracle no practical
-system can exceed, in the single condition that maximizes occlusion flux.
+reported floor of the claim — a breached pre-registered gate, not a designed margin** —
+measured against a baseline whose flow input no practical system can exceed, in the
+single condition that maximizes occlusion flux.
 
 ## 4.4 The operational envelope
 
@@ -81,6 +92,10 @@ stroke *survival*: object-space strokes persist for 37–183 frames on average w
 per-frame strokes persist for 1.0–1.5 (P(lifetime>32): 0.29–0.83 vs 0.005–0.009). Our
 stroke residual falls in proportion to per-frame motion, i.e. it is warp-resampling error
 and nothing else; the per-frame baselines saturate at a motion-independent popping floor.
+These stroke-level harnesses predate the accumulated baseline and compare against
+memoryless detection only; the oracle accumulator exists only in the pixel-pooled
+protocol, so the third trajectory is covered at stroke level but not against
+accumulation.
 
 *(Scope reminder for the section header: frozen 3DGS, static NeRF-synthetic scenes, known
 poses; see §6. The precision these curves operate at is itself bounded — §5 characterizes

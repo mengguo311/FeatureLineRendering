@@ -45,6 +45,13 @@ signal to find, for any method that seeds on geometry.
 carrier within 1.5 px at all (flat decals prominent among them). Our lines cannot draw
 what the carrier never represented, and §5.2 shows the recovery attempts we falsified.
 
+**Further disclosed limits, collected.** Four limits disclosed elsewhere belong in this
+list too: all pipeline constants were selected during development with mesh-scored
+validation views (§3.4); the pooled-*mean* stability statistic failed its own 3× gate at
+one point (2.42×, §4.2); no third-party static-curve method was compared (§2, an
+evaluation boundary); and the shared operating points on lego sit at P@1.5 ≈ 0.63 with the
+baseline's highest-precision configurations excluded by the dominance rule (§4.3).
+
 **Evaluation dependency.** GT supervision (crease labels, precision/recall scoring) comes
 from the mesh, confined to `mesh_oracle.py` and the eval scripts — the method path never
 imports it (AST-verified per phase). The flip side of this hygiene: our quantitative
