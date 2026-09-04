@@ -381,6 +381,18 @@ R@1.5 = 0.7908 (chair) / 0.5572 (lego); the pool's own 2D point coverage is 0.73
 interpolate *between* carriers, so the binding form of the ceiling is lego's, where 0.3663
 of visible GT crease points have no carrier within 1.5 px at all and interpolation cannot
 manufacture one (Fig 6).
+
+Both figures are stated at the crease definition we use throughout — mesh edges of dihedral
+at least 30 deg — and lego is unusually sensitive to that choice, so we report the sensitivity
+rather than leave it implicit. lego's mesh contains a single family of roughly 213,711 edges at
+exactly 30.000 deg, split near-evenly by the threshold through the asset's six-decimal vertex
+quantisation; moving the threshold to 30.05 deg drops 47% of lego's crease pixels and raises the
+ceiling to 0.6408, after which it plateaus. This is a property of the asset, not of the
+reconstruction or the extractor, and it does not represent a better pipeline: precision over the
+identical rasterised segments falls from 0.6360 to 0.3004 over the same range, F1 is
+flat-to-declining, and the joint operating gate is not met at any threshold on either scene.
+chair, which has no such family, is unaffected. The ceiling conclusion is therefore robust to the
+threshold even though the individual number is not.
 Some of those uncovered creases are flat decals with literally zero geometric footprint.
 
 This admission invites a specific attack, so we answer it here rather than in a rebuttal:

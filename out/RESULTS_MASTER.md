@@ -109,6 +109,21 @@ Re-ranking the fixed vanilla-3DGS pool caps pipeline recall at **R@1.5 = 0.7908 
 2D coverage ceiling is 0.7382 / 0.6337 and the visible-carrier UNCOVERED fraction on lego
 is 0.3663 (`DEXPRIMARY_P0_RESULTS.md`, reproducing `LEGO_CEILING_AUTOPSY.md` Fig. B exactly).
 
+> **Threshold sensitivity of the lego ceiling (audited; see `LEGO_THRESHOLD_AUDIT.md`).** The GT
+> crease set is defined as mesh edges with dihedral >= 30 deg (`src/mesh_oracle.py`). lego's mesh
+> carries one family of ~213,711 edges at exactly 30.000 deg, which that threshold splits roughly
+> in half through the .obj's 6-decimal vertex quantisation. Nudging the threshold to 30.05 deg
+> therefore removes 47% of lego's crease pixels and moves lego's ceiling from R@1.5 = 0.5572 to
+> 0.6408; it plateaus thereafter (0.6467 at 45 deg). **This is an artifact of asset quantisation,
+> not of the method, and it is not an improvement:** precision over the same rasterised segments
+> falls 0.6360 -> 0.3004 across the same range, 3D F1 is flat-to-declining (0.1953 -> 0.1873), and
+> the frozen joint operating gate `P@1.5 >= 0.85 AND R@1.5 >= 0.65` is not met at any threshold on
+> either scene, moving monotonically further out of reach. chair is stable (0.7908 -> 0.7905 at
+> 30.05 deg). The `rho_B2 < 0.30` carrier gate holds at every audited threshold in both its
+> spec-literal reading (0.0799 -> 0.0625) and its most adverse visible-only reading
+> (0.2934 -> 0.2946). The coverage-ceiling conclusion is therefore threshold-robust; the specific
+> value 0.5572 is threshold-specific and should always be quoted with its 30 deg definition.
+
 ### Act 2 — geometry cannot discriminate the miss-set (K_geom ≈ 0)
 On lego decals every geometric channel is at/below chance for crease-vs-decal: 2DGS surfel
 dihedral **0.4110**, 2DGS rendered-normal ribbon 0.3307, vanilla-3DGS ribbon 0.3875,
