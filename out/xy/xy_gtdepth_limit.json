@@ -1,0 +1,37 @@
+{
+ "rel_eps": 0.02,
+ "min_frac": 0.5,
+ "n_gbuf_views": 80,
+ "radius_world": 0.004859630205541837,
+ "note": "GT-mesh depth substituted into the FROZEN tri_edges.surface_cull. Bounds every retraining scheme: the best a retrain can do to the depth buffer the extractor consumes is make it exact.",
+ "A_vanilla": {
+  "frozen_3dgs_cull": {
+   "n": 219877,
+   "recall": 0.8431,
+   "precision": 0.7315,
+   "F1": 0.7833
+  },
+  "EXACT_GT_DEPTH_cull": {
+   "n": 187690,
+   "recall": 0.8964,
+   "precision": 0.7541,
+   "F1": 0.8191
+  }
+ },
+ "B_ORACLE": {
+  "frozen_3dgs_cull": {
+   "n": 220989,
+   "recall": 0.8793,
+   "precision": 0.7319,
+   "F1": 0.7989
+  },
+  "EXACT_GT_DEPTH_cull": {
+   "n": 187801,
+   "recall": 0.8965,
+   "precision": 0.7539,
+   "F1": 0.819
+  }
+ },
+ "delta_F1_perfect_geometry_over_A": 0.0358,
+ "rule_required": 0.15
+}

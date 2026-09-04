@@ -1,0 +1,96 @@
+{
+ "control": "shared reference z-buffer for the occlusion split and the warp",
+ "ref_scene": "cadpartA",
+ "n_orbit": 60,
+ "budget": 20000,
+ "conditions": {
+  "A_vanilla": {
+   "seed": 0,
+   "n_chains": 502,
+   "n_strokes_per_frame": 407.9,
+   "P_pop": 0.27873,
+   "frechet_median": 0.53811,
+   "frechet_p90": 1.28056,
+   "unmatched_frac": 0.27415,
+   "warp_dropped_frac": 0.0045
+  },
+  "B_ORACLE": {
+   "runs": [
+    {
+     "seed": 0,
+     "n_chains": 506,
+     "n_strokes_per_frame": 409.15,
+     "P_pop": 0.29498,
+     "frechet_median": 0.5223,
+     "frechet_p90": 1.1678,
+     "unmatched_frac": 0.2904,
+     "warp_dropped_frac": 0.0088
+    },
+    {
+     "seed": 1,
+     "n_chains": 506,
+     "n_strokes_per_frame": 407.85,
+     "P_pop": 0.29889,
+     "frechet_median": 0.52012,
+     "frechet_p90": 1.18044,
+     "unmatched_frac": 0.29445,
+     "warp_dropped_frac": 0.00882
+    },
+    {
+     "seed": 2,
+     "n_chains": 506,
+     "n_strokes_per_frame": 408.05,
+     "P_pop": 0.29769,
+     "frechet_median": 0.52646,
+     "frechet_p90": 1.17951,
+     "unmatched_frac": 0.29292,
+     "warp_dropped_frac": 0.00832
+    }
+   ],
+   "n_strokes_per_frame": 408.35,
+   "P_pop": 0.29719,
+   "P_pop_sd": 0.00164,
+   "frechet_median": 0.52296
+  },
+  "Bp_honest": {
+   "runs": [
+    {
+     "seed": 0,
+     "n_chains": 506,
+     "n_strokes_per_frame": 407.97,
+     "P_pop": 0.27912,
+     "frechet_median": 0.52495,
+     "frechet_p90": 1.22354,
+     "unmatched_frac": 0.27399,
+     "warp_dropped_frac": 0.00319
+    },
+    {
+     "seed": 1,
+     "n_chains": 506,
+     "n_strokes_per_frame": 406.63,
+     "P_pop": 0.27823,
+     "frechet_median": 0.52032,
+     "frechet_p90": 1.20501,
+     "unmatched_frac": 0.27306,
+     "warp_dropped_frac": 0.00321
+    },
+    {
+     "seed": 2,
+     "n_chains": 506,
+     "n_strokes_per_frame": 405.97,
+     "P_pop": 0.27975,
+     "frechet_median": 0.5228,
+     "frechet_p90": 1.22063,
+     "unmatched_frac": 0.27495,
+     "warp_dropped_frac": 0.00321
+    }
+   ],
+   "n_strokes_per_frame": 406.86,
+   "P_pop": 0.27903,
+   "P_pop_sd": 0.00062,
+   "frechet_median": 0.52269
+  }
+ },
+ "delta_P_pop_B_minus_A": 0.01846,
+ "delta_strokes_B_minus_A": 0.45
+}
