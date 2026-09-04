@@ -1,5 +1,17 @@
 # LATEX_ASSEMBLY_CHECK — Phase 1h: LaTeX/PDF assembly + translation gate + scoping hardening
-# **VERDICT: PASS (GO) — main.pdf compiles under IEEEtran conference within the declared 8-content-page budget; md→PDF numeral multiset conserved 304/304 (133 distinct, zero lost / zero invented); all 13 assets embedded, all Fig/Tab references resolve; scoping airtight with the anti-toy-scene rebuttal in §6 AND Appendix A; final audit 0 blockers / 0 majors**
+# **VERDICT: PASS (GO) — main.pdf compiles under IEEEtran conference within the declared 8-content-page budget; md→PDF numeral multiset conserved 304/304 (133 distinct, zero lost / zero invented); all 15 assets embedded, all Fig/Tab references resolve; scoping airtight with the anti-toy-scene rebuttal in §6 AND Appendix A; final audit 0 blockers / 0 majors**
+
+
+> **Erratum (2026-09-05), applied above.** This audit predates the crown-jewel figset
+> (`d5c9650`: `fig9_crownjewel.png`, `tab5_per_scene.png`). Four counts were stale and are
+> now corrected in place: the asset count (13 → **15**, in the verdict line and in the
+> file-manifest line), the supplementary-float enumeration
+> (now includes **Fig 9** and **Tab 5**, both on p12), and the per-float reference-count list
+> (now includes **Fig9×1** and **Tab5×1**, each `md 1 / pdf_ref 1` per the current gate).
+> The page-budget verdict — content p1–8, References p9 — is **re-verified true** of the
+> shipped PDF as of 2026-09-05; it was transiently false at commit `aa2dae5` (content p1–9).
+> Fig 9 and Tab 5 are SUPP-native floats: they cost **+1 supplementary page and ZERO content
+> pages**. See `out/SHIP_PDF_STATUS.md`.
 
 Spec `tier1/phase1h_spec.md`. FROZEN invariants honored: no experiment, no scoring, no
 recompute of any banked number (the only .md edits are the sanctioned prose-only scoping
@@ -15,7 +27,7 @@ handles git).
 ## 1. Deliverables
 
 - **`paper/main.tex`** (+ `abstract.tex`, `body_main.tex`, `body_appendix.tex`,
-  `supp_floats.tex`, `assets/` with the 13 PNGs) — assembled from `out/PAPER_DRAFT.md`
+  `supp_floats.tex`, `assets/` with the 15 PNGs) — assembled from `out/PAPER_DRAFT.md`
   by the deterministic converter `scripts/phase1h_md2tex.py` (prose transcribed
   verbatim; only the .md build banner / duplicate titles / grouping header dropped;
   per-section italic meta notes kept). **Template: IEEEtran, `[conference]` mode**
@@ -29,9 +41,9 @@ handles git).
 - **`paper/main.pdf`** — compiles cleanly with **tectonic** (XeTeX engine; the
   environment has no pdflatex/latexmk — recorded as the sanctioned substitute; zero
   errors, zero unresolved references). **13 pages**: content **p1–8**, References +
-  supplementary header p9, supplementary floats p10–12 (Tab 1–4, Fig 4, Fig 7, Fig 8 in
-  numeric order, numbering counter-pinned to match all in-text references), Appendix A
-  p13. **Double-blind**: "Anonymous submission / Paper ID (double-blind review)", no
+  supplementary header p9, supplementary floats p10–12 (Tab 1–4, Fig 4, Fig 7, Fig 8, **Fig 9,
+  Tab 5** in numeric order, numbering counter-pinned to match all in-text references),
+  Appendix A p13. **Double-blind**: "Anonymous submission / Paper ID (double-blind review)", no
   names/affiliations/emails/URLs/acknowledgements anywhere incl. References; PDF
   metadata clean (no Author/Title; Creator=tectonic) — audited.
 - **`scripts/phase1h_gate.py`** → `out/phase1h_gate.json` (the machine-checked gate).
@@ -42,7 +54,7 @@ handles git).
 |---|---|
 | (a) numeral multiset conservation, .md content region ↔ PDF (bibliography block excluded on the PDF side — reference years/ids are the only sanctioned new numerals) | **PASS — 304/304 occurrences, 133/133 distinct, lost {} / invented {}** (commas normalized; verified AFTER the A.2 + A.3 prose additions, which are zero-number by construction and by diff-multiset check) |
 | (b) page budget — declared: CVF/NeurIPS-family norm, **8 content pages excluding references; appendix/supplementary beyond** | **PASS — content ends p8; References start p9** (reached with zero prose cuts: 5 low-load-bearing floats → supplementary [Tab 1–3 (1–2 in-text refs each), Fig 4, Fig 7] + Fig 8 and Tab 4 [zero/one refs] + width tuning; every float still in-PDF and referenced) |
-| (c) Fig/Tab reference integrity | **PASS — 0 unresolved (`??`); per-Fig/Tab PDF reference counts equal the .md body counts exactly** (Fig2×4, Fig3/4/5/7×1, Fig6×3, Tab1×2, Tab2/4×1, Tab3×3; Fig 1 and Fig 8 have zero body references in the .md itself — pre-existing, teaser-conventional for Fig 1; logged below); printed heading numbers arabic and matching every `§x.y`; `Appendix A` heading matches all 11 prose mentions |
+| (c) Fig/Tab reference integrity | **PASS — 0 unresolved (`??`); per-Fig/Tab PDF reference counts equal the .md body counts exactly** (Fig2×4, Fig3/4/5/7×1, **Fig9×1**, Fig6×3, Tab1×2, Tab2/4×1, Tab3×3, **Tab5×1**; Fig 1 and Fig 8 have zero body references in the .md itself — pre-existing, teaser-conventional for Fig 1; logged below); printed heading numbers arabic and matching every `§x.y`; `Appendix A` heading matches all 11 prose mentions |
 
 ## 3. Reviewer-defense scoping hardening (audited in the PDF text itself — lens 1 PASS)
 

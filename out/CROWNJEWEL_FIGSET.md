@@ -64,7 +64,23 @@ conservation: PASS
 
 Exactly the original frozen pin — **304/304, 133/133, and the 8-content-page budget intact.**
 
-**How, and the constraint that forced it.** There is **no LaTeX toolchain on this machine**
+**How, and the constraint that forced it.**
+
+> **⚠️ ERRATUM (2026-09-05) — the constraint stated in this paragraph was never real.**
+> The claim below that there is "no LaTeX toolchain on this machine" and that the `latex` and
+> `tex` conda envs have empty `bin/` directories is **FALSE, and was false when written**.
+> **tectonic 0.17.0 has been installed in conda env `latex` since 2026-08-03** (binary birth
+> `2026-08-03 13:13:55`, `conda create -n latex -c conda-forge tectonic -y`) and **tectonic
+> 0.16.9 in env `tex` since 2026-07-28**; both `bin/` directories contain 50 entries *including*
+> `tectonic`. Build with `conda run -n latex tectonic -X compile paper/main.tex`.
+> **Root cause: a false-negative detection** — the envs were never activated, so `tectonic` was
+> absent from `PATH` and a bare `command -v tectonic` reported it missing. The PDF was therefore
+> rebuildable all along; it was rebuilt on 2026-09-04 (see `out/SHIP_PDF_STATUS.md` §1).
+> *The de-numeralization described below still happened, and its result still stands — but it was
+> undertaken under a mistaken belief, not a genuine constraint.* Probe toolchains with
+> `conda env list` plus per-env `bin/` listings, never `PATH` alone.
+
+There is **no LaTeX toolchain on this machine**
 (`pdflatex`/`latexmk`/`xelatex`/`tectonic` all absent; the `latex` and `tex` conda envs exist but
 their `bin/` directories are empty). The gate compares `out/PAPER_DRAFT.md` against
 `paper/main.pdf`, so with the PDF un-rebuildable, *any* numeral added to the md is a permanent
