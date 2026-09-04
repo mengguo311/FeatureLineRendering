@@ -1,5 +1,5 @@
 \section{Introduction}
-\begin{figure*}[t]\centering\setcounter{figure}{0}\includegraphics[width=0.7\textwidth]{assets/fig1_teaser.png}\caption{Teaser: object-space strokes versus per-frame line detection, with a two-frame overlap visualizing stroke identity across a camera step.}\label{fig:1}\end{figure*}
+\begin{figure*}[t]\centering\setcounter{figure}{0}\includegraphics[width=0.36\textwidth]{assets/fig1_teaser.png}\caption{Teaser: object-space strokes versus per-frame line detection, with a two-frame overlap visualizing stroke identity across a camera step.}\label{fig:1}\end{figure*}
 Stylized and technical renderings of 3D scenes want \emph{lines} --- creases, seams, part
 boundaries --- and they want those lines to hold still. A line drawing produced by running
 an edge detector on every rendered frame is precise frame-by-frame but temporally
@@ -291,7 +291,7 @@ geometry $\times$ non-uniform multi-axis motion) where per-frame line-pixel turn
 by occlusion-boundary churn.
 
 \subsection{Stroke-level corroboration}
-\begin{figure*}[t]\centering\setcounter{figure}{4}\includegraphics[width=0.7\textwidth]{assets/fig5_survival.png}\caption{Stroke-survival curves P(life${}>{}$K) for the six scene$\times$trajectory conditions: object-space strokes persist for tens-to-hundreds of frames; per-frame strokes essentially never do.}\label{fig:5}\end{figure*}
+\begin{figure*}[t]\centering\setcounter{figure}{4}\includegraphics[width=0.53\textwidth]{assets/fig5_survival.png}\caption{Stroke-survival curves P(life${}>{}$K) for the six scene$\times$trajectory conditions: object-space strokes persist for tens-to-hundreds of frames; per-frame strokes essentially never do.}\label{fig:5}\end{figure*}
 The pixel-pooled results above are corroborated by the independently built stroke-level
 harness (Tab.~\ref{tab:1}, Fig.~\ref{fig:5}): matched-stroke E\_warp ratios of \textbf{3.38--21.62$\times$} across 2 scenes $\times$
 3 trajectories against per-frame TEED (scorer and thresholds hash-frozen before any number

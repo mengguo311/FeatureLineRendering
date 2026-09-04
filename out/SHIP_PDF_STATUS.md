@@ -1,28 +1,162 @@
-# SHIP_PDF_STATUS — camera-ready PDF rebuilt for real
+# SHIP_PDF_STATUS — camera-ready PDF: rebuilt, finalized, budget closed
 
-**VERDICT: the PDF is rebuilt, real, and gate-clean. Two things this task uncovered must be
-settled before ship: (a) the content-page budget is over by one page, (b) the premise of the
-original ship-blocker was false and three banked docs now assert things that are no longer true.**
+**VERDICT: SHIP. All four frozen GO/NO-GO criteria hold on the built artifact.**
 
-- ✅ **`paper/main.pdf` rebuilt for real** — 14 pages, 0 errors, 0 unresolved refs, 0 overfull hboxes.
-- ✅ **Fig 9 + Tab 5 verifiably render** — captions, embedded images at native resolution, and the
-  shipped PNGs re-verified **byte-identical** to a fresh render whose 38-check ledger drift gate passed.
-- ✅ **`phase1h_gate.py` on the fresh PDF: conservation PASS, 304/304, 133/133, 0 lost / 0 invented,
-  0 unresolved refs.** Fig9 and Tab5 both flipped `pdf-ref 0 → 1`, `captioned 0 → 1`.
-- ✅ **Fig 9 placement: KEEP IN SUPP** — measured on real builds, not guessed. Promotion lands on
-  9 content pages in *both* prose states, never ≤ 8.
-- ❗ **CORRECTION: no toolchain was installed. There never was a missing toolchain.** tectonic has
-  been on this machine since 2026-07-28. The prior "no LaTeX on dss9" blocker was a **false negative**.
-- ❌ **content pages = 9, over the declared 8** — with Fig 9 already in SUPP. Cause isolated to
-  the prose added in `d5c9650`, **not** the new floats. Not fixed here; a fully measured remedy
-  sweep (20 builds) is below.
+| frozen criterion | result |
+|---|---|
+| gate numeral conservation 304/304 PASS | ✅ 304/304, 133/133, lost {} / invented {} |
+| 0 unresolved refs | ✅ 0 (`??` count 0 over the whole PDF; 0 `^!` errors, 0 overfull hboxes) |
+| red-team threshold paragraph present in body | ✅ verbatim, 180 words, body **p6** (refs start p9) |
+| Fig 9 full size | ✅ printed width **bit-identical** to pre-finalize (≈ 7.00 in) |
 
-Every number below is from a real `pdfinfo` / `pdftotext` / `pdfimages` / gate / drift-gate run.
-Nothing is estimated or carried over from the stale PDF. All claims were then re-derived by four
-independent read-only audits plus an adversarial completeness critic; **35/35 quantitative claims
-CONFIRMED, 0 refuted** — and the critic caught one **false narrative claim**, corrected in §1.
+**Final artifact: 13 pages, References p9, CONTENT PAGES = 8** — the self-declared budget is met.
+
+Path taken: **(a)**, the spec's preferred route — width-shrink Fig 1 / Fig 5 only, all prose kept.
+
+**Two things the orchestrator must weigh before submitting** (details in §0.3 and §7):
+1. The compliance has **zero margin** — the measured flip point is **2.13 pt** of float height. Any
+   reflow (a venue `.cls`, a different tectonic, one rebuttal sentence) returns the paper to 9.
+2. Fig 1's entire in-figure text layer is now **invisible** at print size. A measured, verified,
+   **strictly better** alternative exists and is one line away — see §0.4.
+
+Every number here is from a real `pdfinfo` / `pdftotext` / `pdfimages` / gate run. All claims were
+re-derived by four independent read-only audits plus an adversarial critic across two rounds; the
+audits corrected four of my numbers and found one harness bug, all fixed and recorded below.
 
 ---
+
+## 0. What changed in the finalize
+
+Exactly **two numbers** in `paper/body_main.tex`. `git diff` = 1 file, 2 insertions, 2 deletions:
+
+```
+- \includegraphics[width=0.7\textwidth]{assets/fig1_teaser.png}
++ \includegraphics[width=0.36\textwidth]{assets/fig1_teaser.png}
+- \includegraphics[width=0.7\textwidth]{assets/fig5_survival.png}
++ \includegraphics[width=0.53\textwidth]{assets/fig5_survival.png}
+```
+
+**Not one word of prose changed** — an independent word-level diff of the full extracted PDF text
+yields 7 opcodes, all pure reorderings of float captions and one section heading: zero prose lost,
+zero added. No asset re-rendered (`git diff -- paper/assets` empty). `main.tex`, `abstract.tex`,
+`body_appendix.tex` and `supp_floats.tex` untouched.
+
+Printed size of **every** embedded float, pre-finalize (`aa2dae5`) vs finalized — exactly two moved:
+
+| float | before | after | Δ |
+|---|---|---|---|
+| **Fig 1 teaser** | 5.000 in | **2.571 in** | **−48.6 %** |
+| **Fig 5 survival** | 5.003 in | **3.786 in** | **−24.3 %** |
+| Fig 2 / Fig 3 / Fig 6 | 3.318 / 3.484 / 4.708 in | identical | same |
+| Fig 4 / Fig 7 / Fig 8 | 5.355 / 6.061 / 5.362 in | identical | same |
+| **Fig 9 (crown jewel)** | ≈ 7.00 in | ≈ 7.00 in | **same — guardrail 2 held** |
+| Tab 1–5 | 5.716 / 4.431 / 3.923 / 4.431 / 5.862 in | identical | same |
+
+All 15 asset PNGs remain embedded (15 image XObjects + 15 alpha smasks), before and after.
+
+*Precision note on Fig 9's width:* `pdfimages` reports integer ppi, giving 7.006 in; a
+content-stream extraction gives 6.997 in; deriving `\textwidth` from two independently-scaled
+floats (Fig 1 and Fig 5 both yield 7.1429 in) puts 0.98·`\textwidth` at 7.000 in. The true value
+sits in a ±0.005 in band around **7.00 in**. The guardrail claim does not depend on this: the value
+is **identical before and after**, since `supp_floats.tex` is unchanged.
+
+### 0.1 Why (0.36, 0.53) — and what was ruled out
+
+**88 isolated probe builds** across both rounds (63 this round, 25 previously) swept the Fig 1 /
+Fig 5 widths; every probe asserted both guardrails on its own sources before compiling, and
+`~/3dgs_line` was never touched by any of them. The feasible region is **sharply discrete and
+not monotone** — it is *not* a smooth trade, and making both figures smaller can *cost* a page:
+
+- Both equal: `0.37 → 9`, **`0.36 → 8`**. Yet `(0.37,0.37)` carries 0.44 in *less* total float
+  height than `(0.36,0.53)` and still lands on 9.
+- Fig 5 small branch: `(0.53,0.32) → 9`, **`(0.52,0.32) → 8`**; `(0.50,0.34) → 8`.
+- Fig 1 small branch: `(0.36,0.54) → 9`, **`(0.36,0.53) → 8`**.
+- **No point with both figures ≥ 0.44**: `(0.42,0.42)`, `(0.44,0.40)`, `(0.46,0.38)`,
+  `(0.48,0.36)`, `(0.40,0.36)`, `(0.38,0.36)` → all 9.
+- **Shrinking Fig 1 further does NOT buy Fig 5 back.** An audit proposed that, since Fig 1's text
+  is already destroyed at 0.36, driving it to 0.30 would free ~13 pt against ~6 pt spent lifting
+  Fig 5 to 0.56. **Measured and refuted** — 10 probes with Fig 5 > 0.53, spanning Fig 1 from 0.28
+  to 0.36, *all* land on 9: `(0.28,0.60) (0.30,0.56) (0.30,0.58) (0.30,0.60) (0.32,0.55)
+  (0.32,0.56) (0.34,0.54) (0.36,0.54) (0.36,0.56) (0.36,0.60)`. The reasoning was global-area
+  arithmetic; the mechanism is **per-page** — Fig 1 sits on the page-2 float slot and Fig 5 on
+  page 6, so height freed at Fig 1 cannot relieve the page-8 overflow. **Fig 5 ≤ 0.53 is a hard
+  ceiling independent of Fig 1**, which is exactly what makes `(0.36, 0.53)` the right corner.
+
+`(0.36,0.53)` was chosen over its mirror `(0.52,0.32)` because **Fig 5 is a data plot** (axis
+labels, tick labels, a 5-entry legend) while **Fig 1 is a pictorial teaser**. At `(0.36,0.40)`
+Fig 5 was rendered and inspected and its legend was **illegible**; at 0.53 it is small but readable.
+
+### 0.2 A harness bug, and six results that were void
+
+The first attempt at the Fig 5 > 0.53 sweep silently rebuilt the *already-finalized* configuration
+six times and reported six spurious PASSes. Cause: the probe script patched `width=0.7\textwidth`,
+but the real sources had already been changed to 0.36/0.53, so its assertion threw — and the shell
+script had no `set -e`, so it continued and compiled the unpatched copy. The harness was rewritten
+to substitute **any** width via regex and to `set -euo pipefail`, then re-validated by reproducing
+two known points (`0.36/0.53 → 8`, `0.36/0.54 → 9`) before the sweep was re-run. **The six void
+results are discarded; every figure quoted in this document comes from the fixed harness.**
+
+### 0.3 The honest cost — stated at full strength
+
+Fig 1 is now **2.571 in** wide. Its eight rendered thumbnails remain interpretable, but **the
+figure's entire text layer is gone at print size** — not merely the annotation panel: the internal
+title bar, all four column labels (`frame 100/240` … `frames 100+101 overlaid (red=t, blue=t+1)`),
+both row labels (`OURS — static 3D lines, projected per frame` / `per-frame image-space detection
+(Canny)`) and the right-hand annotation block are all at the same scale. Measured ink-band heights
+at 600 dpi: **1.32–1.44 pt**, against **9.00 pt** for body text — 15–21 % of body-text scale. The
+annotation block carries the paper's headline numbers (1.72–8.35×, ≥5.19× in 3 of 4 conditions,
+1.72× as the frozen floor, ≥9.8× vs memoryless detectors).
+
+**Two facts that partly mitigate this, both measured:** the same panel measured **3.72 pt** at the
+original 0.70 width — i.e. it was *already* below print legibility before the finalize. The shrink
+took it from unreadable to invisible; it did not destroy a functioning artifact. And every number
+in it appears in the body prose, so no information is lost from the paper. Fig 5's in-figure text
+measures ~2.6 pt (~29 % of body text) — "small but readable" is generous; it is below common
+camera-ready minimums, but that was equally true at 0.70.
+
+Also worth recording: at 2.571 in the teaser is **35 % narrower than a single text column**
+(3.484 in) yet still occupies a full-width two-column float slot, leaving ~2.3 in of white space
+on each side. That is a visible layout defect independent of legibility — and §0.4 fixes it.
+
+### 0.4 A strictly better alternative, measured and ready
+
+Converting **Fig 1 to a single-column float** (`figure` instead of `figure*`, at `\columnwidth`),
+leaving Fig 5 at 0.53, was built and fully gated. It **dominates the shipped configuration on
+every axis**:
+
+| | shipped (0.36 `figure*`) | Fig 1 single-column |
+|---|---|---|
+| content pages | 8 | **8** |
+| Fig 1 printed width | 2.571 in | **3.487 in (+35.6 %)** |
+| Fig 1 page | p2 | **p1 — beside the abstract, where a teaser belongs** |
+| dead white space around it | ~2.3 in each side | **none** |
+| Fig 5 | 0.53 | 0.53 (unchanged) |
+| column-area consumed by Fig 1 | 2.176 col-in | **1.474 col-in (−32 %)** |
+| gate | PASS 304/304 | **PASS 304/304, 133/133, 0 unresolved refs, Fig9/Tab5 1/1** |
+| Fig 9 | untouched | untouched |
+| prose | unchanged | unchanged |
+
+**It was not applied** because the spec defines path (a) as a *width-shrink* of Fig 1 / Fig 5, and
+a float-class change is outside that letter; the instruction was to execute the spec exactly. It
+touches only Fig 1, honours both guardrails, and needs one line changed in `body_main.tex`:
+
+```
+\begin{figure*}[t]...\includegraphics[width=0.36\textwidth]{assets/fig1_teaser.png}...\end{figure*}
+→  \begin{figure}[t]...\includegraphics[width=\columnwidth]{assets/fig1_teaser.png}...\end{figure}
+```
+
+Recommended, subject to the orchestrator's judgement on moving the teaser to a single column.
+
+### 0.5 Zero margin — a genuine ship risk
+
+Page 8 is filled to the last line in **both** columns (last ink at the standard 1.02 in bottom
+margin, measured on a 150 dpi raster). The measured flip point is **2.13 pt** of vertical height on
+the Fig 5 axis (`0.53` PASS / `0.54` FAIL) and **2.18 pt** on the Fig 1 axis (`0.36` PASS / `0.37`
+FAIL) — under one-fifth of a text line. A venue's own `.cls`, a different tectonic build, one added
+rebuttal sentence, or the font substitution the log already reports (`TU/ptm` undefined → `TU/lmr`,
+so a venue compiling with real Times will produce different metrics) all return this to 9 content
+pages. **"content = 8" should be treated as achieved, not as robust.** More-shrunk configurations
+would carry revision headroom; that robustness axis was not swept.
 
 ## 1. Toolchain — CORRECTED: it already existed; nothing was installed
 
@@ -33,279 +167,191 @@ are empty"*. **Both were false when written:**
 
 ```
 $ ls ~/bin/miniconda3/envs/{latex,tex}/bin | wc -l     -> 50 each, both include `tectonic`
-$ stat envs/latex/bin/tectonic   -> Birth: 2026-08-03 13:13:55   (32 days before this task)
+$ stat envs/latex/bin/tectonic   -> Birth: 2026-08-03 13:13:55   (32 days before the rebuild)
 $ stat envs/tex/bin/tectonic     -> Birth: 2026-07-28 05:24:31
 $ grep 'cmd:' envs/latex/conda-meta/history
     2026-08-03 13:13:56  conda create -n latex -c conda-forge tectonic -y   (+tectonic-0.17.0)
     2026-09-04 23:04:44  conda install -n latex -c conda-forge tectonic -y  (-openssl-3.6.3 / +openssl-3.6.4)
 ```
 
-Decisive control: the **`tex` env was never touched by this task** and runs
-`conda run -n tex tectonic --version` → `Tectonic 0.16.9`, exit 0, right now. Today's
-`conda install` changed exactly one package (`openssl 3.6.3 → 3.6.4`), and `ldd` shows tectonic
-does not link openssl at all — so that bump cannot be what made it runnable.
+Decisive control: the **`tex` env was never touched** and runs `conda run -n tex tectonic
+--version` → `Tectonic 0.16.9` right now. The 2026-09-04 `conda install` changed exactly one
+package (`openssl`), and `ldd` shows tectonic does not link openssl at all. Note
+`out/LATEX_ASSEMBLY_CHECK.md` line 30 already recorded the PDF *"compiles cleanly with tectonic"* —
+two banked docs directly contradict each other on this.
 
-**Root cause of the false blocker: a false-negative detection.** tectonic was installed in
-non-default conda envs and therefore not on `PATH`; a bare `command -v tectonic` reports absent.
-An earlier `ls .../envs/latex/bin | head -40` on a 50-entry directory also hides `tectonic`, which
-sorts last. Any future toolchain probe must check `conda env list` + per-env `bin/`, not `PATH`.
+**Root cause: a false-negative detection.** tectonic was installed in non-default conda envs and so
+absent from `PATH`; a bare `command -v tectonic` reports absent. An `ls .../envs/latex/bin |
+head -40` on a 50-entry directory also hides `tectonic`, which sorts last. Probe toolchains with
+`conda env list` + per-env `bin/`, never `PATH` alone.
 
-**Which env was used, and why.** Builds ran in the pre-existing **`latex`** env (tectonic 0.17.0),
-not `vfsdgs` as the spec suggested. Solving into `vfsdgs` would have risked perturbing the env
-every banked experiment runs in, for zero benefit — tectonic is a standalone binary. `vfsdgs`,
-`tex` and `base` were left untouched; `vfsdgs` was re-verified working (numpy 1.23.5, torch
-2.3.1+cu121) after the fact. The tectonic bundle cache (`~/.cache/tectonic`, 46 MB,
-`default_bundle_v33` + prebuilt `latex-33.fmt`) was already warm.
-
-**These three statements are now stale and should be corrected in the repo** (this doc supersedes
-them in prose only; neither file was edited):
-1. `d5c9650` commit message — "no LaTeX on dss9 … PDF un-rebuildable".
-2. `out/CROWNJEWEL_FIGSET.md` — "their `bin/` directories are empty".
-3. `out/CROWNJEWEL_FIGSET.md` — "the 8-content-page budget intact" (see §7).
-
-## 2. The build
+Builds run in the pre-existing **`latex`** env (tectonic 0.17.0), not `vfsdgs` — solving into
+`vfsdgs` would risk perturbing the env every banked experiment uses, for no benefit. `vfsdgs`,
+`tex` and `base` untouched; `vfsdgs` re-verified working afterwards.
 
 ```
-$ cd ~/3dgs_line/tier1/paper && tectonic -X compile main.tex --keep-logs
-Output written on main.xdv (14 pages, 72384 bytes).
-note: Writing `main.pdf` (2.0373239517211914 MiB)
+cd ~/3dgs_line/tier1/paper && conda run -n latex tectonic -X compile main.tex --keep-logs
 ```
+
+## 2. The finalized build
 
 | | value |
 |---|---|
-| errors (`^!` in `main.log`) | **0** |
+| pages | **13** |
+| errors (`^!` in `main.log`) | **0**; no undefined-reference/citation/rerun warnings |
 | Overfull hboxes | **0** |
-| Underfull warnings | **12** (several at badness 10000, incl. one `\vbox` while `\output` is active) |
-| font warnings | `TU/ptm/{m,bx}/{n,it}` undefined → `TU/lmr` substituted; "some font shapes not available, defaults substituted" |
-| unresolved refs (`??`) | **0** |
-| "rerun to get cross-references right" | **0** (tectonic multi-passes internally) |
-| fonts | 12 faces, **all Type 1C, all embedded + subset** — satisfies IEEEtran's camera-ready "Type 1 only" rule |
+| Underfull warnings | **11** (10 `\hbox` + 1 `\vbox`) — pre-existing, not regressions |
+| font warnings | `TU/ptm/{m,bx}/{n,it}` undefined → `TU/lmr` substituted; `inputenc` ignored under XeTeX — pre-existing |
+| unresolved refs (`??`) | **0** over the whole PDF, bibliography included (stricter than the gate, which excises the bib) |
+| fonts | 12 faces, all **Type 1C, embedded + subset**; identical faces, subset tags and object IDs before and after |
 
-**The Underfull/font warnings are pre-existing, not regressions.** The `bB` control build (§6)
-compiled from the exact `2beba1d` sources produces `pdftotext -layout` output **byte-identical**
-to the banked stale PDF, and `pdffonts` returns the identical 12 faces with identical subset tags
-and object IDs. They are worth resolving before submission but nothing here introduced them.
+Anonymization re-checked: zero hits for `u00134`, `3dgs_line`, `mizuho`, `/home/`, `/tmp`, or
+Author/Title metadata. Reproducibility: the shipped `main.pdf` extracted text is **byte-identical**
+to an independent scratch build from the same two widths.
 
-**The PDF really is new, not relabelled:**
+## 3. Page counts
 
-| | stale (banked) | rebuilt |
+`pdftotext` split on form-feed, trailing empty block dropped (no interior block is empty, so
+"drop trailing" and "count non-blank" agree); headings matched after whitespace-stripping —
+**IEEEtran small caps mean a naive `grep References` returns 0; the extracted text is
+`R EFERENCES`**, and a case-insensitive substring grep additionally hits the prose word
+"references." further down the same page.
+
+| measure | pre-finalize | **finalized** |
 |---|---|---|
-| md5 | `43b0dbdf0d104f219a4bf2df56f007e7` | `13474a03f8d0f3d7c02a158dd83bfb5f` |
-| bytes | 1,879,281 | 2,136,289 |
-| CreationDate | Wed Sep 2 23:58:45 2026 | Fri Sep 4 23:05:50 2026 |
-| pages | 12 | 14 |
+| total pages | 14 | **13** |
+| References heading page | 10 | **9** (first line of the page) |
+| **CONTENT pages** | 9 ❌ | **8 ✅** |
+| Supplementary heading page | 10 | 9 |
+| Supplementary float pages | 11–13 | 10–12 |
+| Appendix A page | 14 | 13 |
 
-Anonymization re-checked on the new file: zero hits for `u00134`, `3dgs_line`, `mizuho`, `/home/`,
-`/tmp`, or Author/Title metadata.
+Cross-checked three ways: `pdfinfo` → 13; `main.log` → *"Output written on main.xdv (13 pages)"*;
+the gate's own non-blank-block count → 13.
 
-## 3. Verified page counts
+**On the authority of "8":** self-declared, not venue-imposed. `paper/main.tex` line 1 says
+*"IEEEtran conference template (neutral stand-in; no venue banked)"*, and a repo-wide grep finds no
+banked venue. Its only source is `out/LATEX_ASSEMBLY_CHECK.md` (b): *"declared: CVF/NeurIPS-family
+norm, 8 content pages excluding references"* — a family internally split (**CVF/CVPR 8, NeurIPS
+2022+ 9**), while the class in use is `IEEEtran[conference]`, whose norm differs again. The
+finalize meets the declared 8, so this is moot for shipping; it stays documented because it is the
+fallback if the Fig 1 cost is rejected (spec path (b)).
 
-Counted from the rebuilt PDF: `pdftotext` splits on form-feed, the trailing empty block is
-discarded, and headings are matched after whitespace-stripping (**IEEEtran small-caps means a
-naive `grep References` returns 0 — the extracted text is `R EFERENCES`**).
-
-| measure | value |
-|---|---|
-| **total pages** | **14** |
-| References heading first appears on page | **10** |
-| **CONTENT pages (strictly before References)** | **9** |
-| Supplementary heading page | 10 (below the bibliography, same page) |
-| Supplementary float pages | 11 – 13 |
-| Appendix A starts on page | 14 |
-| declared budget | **8 content pages, refs excluded** |
-| **budget status** | ❌ **OVER by 1 page** |
-
-Page 9 is a **small partial spill**: 26 non-empty lines / **225 words**, and by `pdftotext -bbox`
-every one of those words is in the **left column only** (x ∈ [49, 300] of a 612 pt page,
-y stopping at 360 of 792). Full content pages carry 611–953 words; page 9 carries ~24 % of a page.
-
-**How binding is "8"?** The number is self-declared, not venue-imposed: `paper/main.tex` line 1
-says *"IEEEtran conference template (neutral stand-in; **no venue banked**)"*, and a repo-wide
-grep finds no banked venue. Its only source is `out/LATEX_ASSEMBLY_CHECK.md` (b): *"declared:
-CVF/NeurIPS-family norm, 8 content pages excluding references"*. That family is internally split —
-**CVF/CVPR is 8, NeurIPS (2022+) is 9** — and the class actually in use is `IEEEtran[conference]`,
-whose own norm differs again. So: the **declared** number is definitively exceeded (measured), but
-whether it *binds* is an open call the orchestrator owns, and it is cheap to make it moot (§7).
-
-## 4. Fig 9 / Tab 5 really render
+## 4. Fig 9 / Tab 5 render — and their values are provenance-gated
 
 | check | result |
 |---|---|
-| Fig 9 caption in PDF text | ✅ p13 — *"Fig. 9. Object-space feature lines versus per-frame Canny on a held-out orbit…"* |
-| `TABLE 5` heading + full caption | ✅ p13 — *"P ER - SCENE HELD - OUT SUMMARY: … FICUS IS EXCLUDED BY SCENE SCOPING …"* (letterspaced small caps) |
-| Fig 9 **image** embedded | ✅ obj 26 on p13 at **2312×765** = exactly `assets/fig9_crownjewel.png` |
-| Tab 5 **image** embedded | ✅ obj 28 on p13 at **2040×390** = exactly `assets/tab5_per_scene.png` |
-| both **after** References | ✅ p13 > p10 — in SUPP, not the main body |
-| in-text prose refs | ✅ exactly one `Fig. 9` **and** one `Tab. 5`, both in the same p5 sentence |
-| visual render check | ✅ p13 rasterised and inspected: Fig 9's three panels (motion-independent Canny floor / 3.44×→11.49× ratio sweep with the silhouette-controlled bound in red / both confound controls) and Tab 5's chair-lego-ficus-excluded rows all display correctly |
-| **values provenance-gated** | ✅ `render_fig9_crownjewel.py` re-run into scratch: **38/38 ledger drift checks OK, 0 mismatches**, and the regenerated PNGs are **md5-identical / 0 max pixel diff** to the shipped `paper/assets/` copies |
-| stale PDF contained either | ❌ zero hits for both — the staleness this task closes |
-| total embedded images | 15 image XObjects (+15 alpha smasks) = all 15 asset PNGs |
+| Fig 9 caption in PDF text | ✅ p12 |
+| `TABLE 5` heading + full caption | ✅ p12 (letterspaced small caps) |
+| Fig 9 image embedded | ✅ 2312×765 = `assets/fig9_crownjewel.png`, ≈ 7.00 in printed |
+| Tab 5 image embedded | ✅ 2040×390 = `assets/tab5_per_scene.png`, 5.862 in printed |
+| both after References | ✅ p12 > p9 — in SUPP, not the main body |
+| in-text prose refs | ✅ exactly one `Fig. 9` and one `Tab. 5`, same body sentence (p5) |
+| visual render check | ✅ page rasterised and inspected: Fig 9's three panels and Tab 5's chair/lego/ficus-excluded rows all display correctly |
+| **values provenance-gated** | ✅ `render_fig9_crownjewel.py` re-run into scratch: **38/38 ledger drift checks OK, 0 mismatches**; regenerated PNGs **md5-identical / 0 max pixel diff** to the shipped assets |
 
-## 5. Gate re-run on the freshly-built PDF
+**Fig 9 placement: SUPP — re-measured on the current layout.** The earlier promotion measurement
+predated the finalize, so it was re-run: with the post-shrink layout (which freed ~3.06 column-
+inches) and Fig 9 promoted into the body at full 0.98 width, the build still yields **9 content
+pages**. The SUPP decision therefore stands on a measurement of the *shipped* layout, not an
+inference from the old one. A plausible but **false** inference was also tested and refuted:
+*"the old PDF was only under budget because it lacked the crown jewel"* — adding Fig 9 + Tab 5 as
+SUPP floats costs **+1 total page and ZERO content pages**.
+
+## 5. Gate on the finalized PDF
 
 ```
-{ "pages_total": 14, "references_start_page": 10, "content_pages": 9,
-  "supplementary_page": 10, "appendix_page": 14,
+{ "pages_total": 13, "references_start_page": 9, "content_pages": 8,
+  "supplementary_page": 9, "appendix_page": 13,
   "md_numerals": 304, "md_distinct": 133, "pdf_numerals": 304, "pdf_distinct": 133,
   "lost": {}, "invented": {}, "unresolved_refs": 0, "conservation": "PASS" }
 ```
 
-| float | stale gate | fresh gate |
-|---|---|---|
-| Fig9 | md 1 · pdf-ref **0** · captioned **0** | md 1 · pdf-ref **1** · captioned **1** ✅ |
-| Tab5 | md 1 · pdf-ref **0** · captioned **0** | md 1 · pdf-ref **1** · captioned **1** ✅ |
+Idempotent: re-running leaves `out/phase1h_gate.json` byte-identical. The numeral logic was also
+independently re-implemented from the docstring and reproduced 304/133 on both sides. All 14 floats
+report `captioned ≥ 1`; every `md` count equals its `pdf_ref` count.
 
-All 14 floats now report `captioned ≥ 1` and every `md` count equals its `pdf_ref` count. The gate
-reads `paper/main.pdf` through `pdftotext` at run time, so it cannot have served a cached result;
-an independent re-run reproduced `out/phase1h_gate.json` byte-identically.
+### 5.1 What 304/304 does NOT certify — read before quoting it
 
-### 5.1 What 304/304 does NOT certify — read this before quoting it
+1. **Every table's numbers are invisible to the gate.** Tab 1–5 are `\includegraphics` **rasters**;
+   `pdftotext` on the supplementary pages yields captions only. Precision, recall, popping rates,
+   Fréchet ratios and the whole frozen-gate ledger live in PNG pixels, outside the multiset check.
+   **304/304 certifies the PROSE.** *Countervailing:* Fig 9 / Tab 5 **are** independently gated
+   (§4). Tab 1–4 have no such re-verification here.
+2. **The gate is invariant to deleting load-bearing prose.** A probe build removing the entire
+   180-word red-team paragraph still returns 304/304 PASS. The gate is therefore *not* what
+   protects guardrail 1 — direct textual verification is (§6).
+3. **The metric was partly preserved by removing numbers from the paper.** `d5c9650` says so:
+   *"De-numeralized threshold para (8 numerals) to keep gate PASS"* — values `{30, 213711, 30.000,
+   30.05, 47, 0.6408, 0.6360, 0.3004}` now live only in `RESULTS_MASTER` / `LEGO_THRESHOLD_AUDIT`.
+4. **Fragility:** `first_page()` returns the first page whose space-stripped text *contains*
+   `REFERENCES`, unrestricted to headings, and `content_pages = ref_pg - 1` is never validated.
+   Pages 1–2 already contain the word "reference"; only the singular form saves it.
 
-Three coverage limits, all verified:
+## 6. Guardrail verification (on the built artifact, not just the sources)
 
-1. **Every table's numbers are invisible to the gate.** Tab 1–5 are `\includegraphics` **rasters**
-   inside `table*` environments; `pdftotext` on pages 11–13 yields captions only, no tabular body.
-   So precision, recall, popping rates, Fréchet ratios and the entire frozen-gate ledger live in
-   PNG pixels, outside the multiset check. A wrong or stale value in any result table would leave
-   the gate at PASS, 0 lost / 0 invented. **304/304 certifies the PROSE.**
-   *Countervailing evidence, newly measured:* the two crown-jewel rasters **are** independently
-   provenance-gated — `render_fig9_crownjewel.py` asserts all 38 plotted values against the banked
-   ledger before writing, and the shipped PNGs reproduce byte-identically (§4). That check now
-   covers Fig 9 / Tab 5; Tab 1–4 have no equivalent re-verification in this task.
-2. **The gate is invariant to deleting load-bearing prose.** Probe build `bE`, which removes the
-   entire 180-word red-team lego-threshold paragraph, still returns 304/304 / PASS.
-3. **The metric was partly preserved by removing numbers from the paper.** `d5c9650` states it
-   outright: *"De-numeralized threshold para (8 numerals) to keep gate PASS"* — the exact values
-   `{30, 213711, 30.000, 30.05, 47, 0.6408, 0.6360, 0.3004}` now live only in
-   `RESULTS_MASTER` / `LEGO_THRESHOLD_AUDIT`.
+**G1 — red-team threshold paragraph intact in the body.** Source: `body_main.tex` lines 329–341,
+**byte-identical to HEAD** (the only diff hunks are the two `\includegraphics` widths), 180 words.
+Rendered: verified in reading-order text (`pdftotext` *without* `-layout`; with `-layout` the two
+columns interleave line-by-line so multi-line sentences cannot match — a trap that produced a
+spurious MISSING on the first attempt), de-hyphenated across line breaks. All eight probes match on
+**body page 6**, References start p9:
 
-**Fragility worth fixing:** `phase1h_gate.py`'s `first_page()` returns the first page whose
-space-stripped text *contains* `REFERENCES`, unrestricted to headings, and `content_pages =
-ref_pg - 1` is never validated. Pages 1 and 2 already contain the word "reference"; only the
-singular form saves it. Any future plural in the body ("cross-references") would silently resolve
-`references_start_page` to 1 or 2 and report `content_pages` 0 or 1 as a clean value. It did not
-fire here — page 10 is the only match under the gate's exact logic — but it is unguarded.
+- "Both figures are stated at the crease definition we use throughout" ✅
+- "lego is unusually sensitive to that choice, so we report the sensitivity rather than leave it implicit" ✅
+- "lego's mesh contains a single large family of edges lying at exactly the threshold angle" ✅
+- "nudging the threshold by a twentieth of a degree therefore discards nearly half of lego's crease pixels and raises the measured ceiling materially, after which it plateaus" ✅
+- "This is a property of the asset, not of the reconstruction or of the extractor" ✅
+- "precision over the identical rasterised segments falls by more than half across the same range, F-score is flat-to-declining, and the joint operating gate is met at no threshold on either scene" ✅
+- "chair, which carries no such family, is unaffected" ✅
+- "The ceiling conclusion is therefore robust to the threshold even though the individual number is not; the per-threshold values are tabulated in the results ledger" ✅
 
-## 6. Fig 9 placement — decided on measured builds
+**G2 — Fig 9 not shrunk.** `supp_floats.tex` unchanged vs `aa2dae5` (`git diff` empty), still
+`width=0.98\textwidth`; printed width identical before and after (§0).
 
-**DECISION: Fig 9 STAYS IN SUPP.** Built and measured, not inferred. Every probe ran in an
-isolated scratch directory; `~/3dgs_line` was never touched by any of them.
+**Float adjacency did not break.** Fig 5 caption p6 / cited p5, unchanged. Fig 6 **improved**
+(caption p7 → p6, now co-located with two of its three callouts). Fig 9 cited p5 / printed p12
+(was p13) — the pre-existing gap narrowed by one. One cosmetic regression: **Fig 3 was cited on its
+own caption page (p5/p5) and is now cited p4 with its caption on p5.**
 
-| build | body prose | Fig 9 placement | total pp | refs pg | **content pp** |
-|---|---|---|---|---|---|
-| **bB** — exact `2beba1d` sources (reproduction control) | banked | absent | 12 | 9 | **8** |
-| **bC** — `2beba1d` body + current SUPP floats | banked | SUPP | 13 | 9 | **8** |
-| **bD** — `2beba1d` body, Fig 9 promoted | banked | **main body** | 14 | 10 | **9** |
-| **SHIPPED** — current HEAD | +16 lines | SUPP | 14 | 10 | **9** |
-| **bA** — current HEAD, Fig 9 promoted | +16 lines | **main body** | 14 | 10 | **9** |
-
-Promotion lands on **9 content pages in both prose states**, never ≤ 8 → the spec's promotion
-condition fails → **keep in SUPP**. `bD` is decisive: even at the banked prose length that genuinely
-fits in 8 pages, moving Fig 9 into the body costs **+1 content page**. The SUPP placement is
-**budget-forced, not merely conservative**.
-
-`CROWNJEWEL_FIGSET.md` flagged this as *"a scout simulation suggested … 8 → 9, which I could **not**
-verify here … should be treated as unconfirmed."* **Now confirmed by a real build.**
-
-**A plausible-sounding inference that is wrong, and was tested:** *"the stale PDF was only under
-budget because it was missing the crown-jewel figure."* False. `bC` adds Fig 9 + Tab 5 as SUPP
-floats to the banked body and costs **+1 total page and ZERO content pages** (12 → 13 pp, refs
-still p9). The floats were correctly free, exactly as `d5c9650` intended.
-
-## 7. The one open blocker: content pages = 9
-
-Not anticipated by the spec, which assumed the 8-page budget still held. It does not.
-
-**Attribution is measured.** `bB` reproduces the banked 12 pp / refs p9 / 8-content build *exactly*
-(its five `.tex` files md5-match `git show 2beba1d:paper/*`, and its extracted text is byte-identical
-to the stale PDF) → the toolchain is faithful and the change is real. `bC` then shows the new floats
-cost **zero** content pages. `git log 2beba1d..HEAD -- paper/` returns exactly **one** commit
-(`d5c9650`, +16 lines in `body_main.tex`) — no confound. The 9th content page is bought by those
-**16 lines of prose**: the 3-line Fig 9 / Tab 5 cross-reference sentence plus the 13-line (180-word)
-de-numeralised lego threshold-sensitivity paragraph. Word arithmetic agrees: body words went
-6331 → 6552, **+221**, essentially the entire 225-word page-9 spill.
-
-**Nothing was edited to fix it.** Cutting frozen-thesis prose and resizing camera-ready figures are
-editorial calls that belong to the orchestrator. But the *measurement* half is now done in full —
-**20 probe builds**, sweeping both levers to their thresholds:
-
-| remedy | prose cut | float widths (fig1/fig5, fig6) | content pp |
-|---|---|---|---|
-| shipped | — | 0.70, 0.66 | 9 |
-| drop the 180-word paragraph only | 180 w | 0.70, 0.66 | 9 (spill 26 → 9 lines) |
-| width-only ladder — 8 probes: 0.66/0.62, 0.64/0.60, 0.62/0.58, 0.58/0.54, 0.56/0.52, 0.54/0.50, **0.53/0.50** | none | 0.66 → 0.53 | **all 9** |
-| **bH — width-only, at threshold** | **none** | **0.52, 0.50** (+ Fig2 0.465→0.40, Fig3 →0.88 col) | ✅ **8** |
-| para cut + width ladder — 3 probes: 0.68/0.64, 0.66/0.62, 0.64/0.60 | 180 w | 0.68 → 0.64 | all 9 |
-| **bG — para cut + mild widths** | **180 w** | **0.60, 0.56** | ✅ **8** |
-
-**Findings from the sweep (these change the recommendation):**
-
-- **No remedy avoids shrinking the two large figures.** Dropping the paragraph alone fails; widths
-  alone at anything gentler than 0.52 fail. The real choice is *how much* shrink, traded against
-  whether the red-team paragraph stays.
-- **Both thresholds are sharp page-break cliffs.** Width-only: **0.53 → 9, 0.52 → 8** — a 0.01
-  `\textwidth` margin. Para-cut: **0.64 → 9, 0.60 → 8**. Either remedy is therefore **brittle to any
-  future prose edit**, and whichever is adopted should be re-measured after the next source change.
-  (My earlier framing of this sweep as "an editorial choice, not a measurement" was wrong — locating
-  the minimum sufficient width is a measurement, and it is now made. Only accepting the resulting
-  legibility cost is editorial.)
-- **`bH` is gate-verified, not merely inferred** (run against a scratch copy of the gate, leaving
-  `out/phase1h_gate.json` untouched): `pages_total 13, references_start_page 9, content_pages 8,
-  304/304, 133/133, lost {}, invented {}, unresolved_refs 0, conservation PASS, Fig9 1/1, Tab5 1/1`.
-- `bH` preserves every banked number and the whole red-team disclosure; `bG` keeps figures ~14 %
-  larger but deletes a red-team paragraph whose exact values already live only in
-  `RESULTS_MASTER` / `LEGO_THRESHOLD_AUDIT`.
-
-Legibility cost of `bH` (raster resolution *rises* in every case — 468 → 630 ppi for Fig 1 — so
-nothing is resampled; only printed size, and therefore in-figure type size, shrinks):
-
-| float | shipped | under bH | Δ |
-|---|---|---|---|
-| Fig 1 teaser | 5.00 in | 3.71 in | −25.7 % |
-| Fig 2 panels | 3.32 in | 2.85 in | −14.0 % |
-| Fig 3 | 3.48 in | 3.07 in | −12.0 % |
-| Fig 5 survival | 5.00 in | 3.71 in | −25.8 % |
-| Fig 6 ceiling | 4.71 in | 3.57 in | −24.2 % |
-
-Under `bG` the three large floats shrink only ~14 %. Note `phase1h_spec.md` grades NO-GO only if
-the overflow *"requires cuts of substantive content"* — `bH` requires none, so on the project's own
-wording this is a PARTIAL at worst, and closable.
-
-## 8. Invariants
+## 7. Invariants
 
 | invariant | status |
 |---|---|
-| Mesh EVAL-ONLY / no method-path code touched | ✅ `git diff` contains **no** `scripts/` change at all |
-| No banked number altered | ✅ no `.tex` source modified (`git diff -- 'paper/*.tex'` empty); no banked `out/*.json` or `*RESULTS*.md` changed other than the gate's own output |
-| No fabricated page count or gate result | ✅ every figure traces to a real invocation on a real build; independently re-derived by 4 read-only audits, **35/35 CONFIRMED, 0 refuted** |
-| Probe builds isolated | ✅ all 20 ran in scratch; `~/3dgs_line` untouched by every one |
-| Working tree | `M out/phase1h_gate.json`, `M paper/main.pdf`, `?? paper/main.log`, `?? out/SHIP_PDF_STATUS.md`, `?? ship_pdf_spec.md` |
+| Mesh EVAL-ONLY / no method-path code touched | ✅ `git diff` contains **no** `scripts/` change |
+| No banked number altered | ✅ no prose changed anywhere; no banked `out/*.json` or `*RESULTS*.md` changed except the gate's own output |
+| No asset re-rendered | ✅ `git diff -- paper/assets` empty |
+| No fabricated page count or gate result | ✅ every figure traces to a real invocation on a real build |
+| Probe builds isolated | ✅ all **88** probe builds (63 this round + 25 previously) ran in scratch; `~/3dgs_line` untouched by every one |
 
-⚠️ `paper/main.log` is untracked and **not** covered by `.gitignore` (`git check-ignore -v` returns
-nothing), so a naive `git add -A` would commit a LaTeX build log — and would sweep in
-`ship_pdf_spec.md` (the orchestrator prompt) too.
+Repo-level, four tracked files differ from `aa2dae5`: `paper/body_main.tex`, `paper/main.pdf`,
+`out/phase1h_gate.json`, and this document. ⚠️ `paper/main.log`, `ship_pdf_spec.md` and
+`ship_finalize_spec.md` are untracked and **not** covered by `.gitignore` — stage explicitly,
+never `git add -A`.
 
-## 9. What the orchestrator has to decide
+## 8. Remaining items for the orchestrator
 
-1. **Commit the rebuilt PDF.** It is strictly better than the stale one: real, current, Fig 9 +
-   Tab 5 present and ledger-verified, gate PASS. Stage it explicitly — do not `git add -A`.
-2. **Close the 9-content-page overrun**: adopt `bH` (no prose touched, figures −26 %) or `bG`
-   (red-team paragraph cut, figures −14 %). Both are built, measured and gate-verified. Re-measure
-   after any later prose edit — both sit on page-break cliffs. Or, alternatively, decide the
-   self-declared 8 does not bind (no venue is banked; the cited "CVF/NeurIPS family" is itself split
-   8 vs 9) — but decide it explicitly rather than by drift.
-3. **Correct three now-false banked statements** — none were edited by this task:
-   - `out/LATEX_ASSEMBLY_CHECK.md` line 2 (top VERDICT) and line 44 (b): both still assert the
-     8-content-page budget **PASS — content ends p8; References start p9**. False of the shipped
-     PDF (content ends p9, References start p10).
-   - `out/CROWNJEWEL_FIGSET.md` line 65: "the 8-content-page budget intact" — that quoted
-     `content_pages 8` from the gate reading the **stale** PDF. Its 304/304 half does survive.
-   - `out/CROWNJEWEL_FIGSET.md` + commit `d5c9650`: the "no LaTeX on dss9 / empty `bin/`" claim
-     (§1). Root cause was a `PATH`-only probe; worth fixing the probe, not just the sentence.
-4. **Fig 9 placement needs no further thought: SUPP, measured, settled.**
-5. Optional, pre-existing, reviewer-visible: **Fig 1 and Fig 8 have zero in-text callouts** in both
-   the `.md` and the PDF (their `md == pdf_ref` check passes vacuously at 0 == 0) — a teaser going
-   uncited is usually tolerated, Fig 8 sitting in supplementary with no callout is less so. And
-   `supp_floats.tex` pins every float number with hardcoded `\setcounter`, so inserting or
-   reordering any float silently misnumbers everything downstream with no LaTeX warning.
+1. **Decide on Fig 1.** Either accept the −48.6 % shrink and its dead text layer (§0.3), adopt the
+   strictly-better single-column variant (§0.4, one line, fully gated), or take spec path (b) and
+   relabel the budget to 9 by reverting the two width numbers.
+2. **Treat "content = 8" as fragile** (§0.5, 2.13 pt margin) when planning rebuttal edits or a
+   venue-`.cls` recompile.
+3. **`out/CROWNJEWEL_FIGSET.md` still asserts, as banked fact, that there is no LaTeX toolchain and
+   that the conda envs' `bin/` directories are empty.** Both false (§1). The spec bundled this fix
+   into path (b) only, so taking path (a) leaves it standing — but it is independent of the page
+   budget and should be corrected regardless. Its *other* flagged claim, "8-content-page budget
+   intact", is **true again** now that content = 8. Commit `d5c9650`'s message repeats the same
+   falsehood; immutable history, left as-is, this document is the correction of record.
+4. **`out/LATEX_ASSEMBLY_CHECK.md` is NOT fully correct again** — an earlier draft of this document
+   said "no edit needed"; that was an incomplete audit conclusion. Its *page-budget* claims are
+   restored (content p1–8, References p9), but three defects introduced by `d5c9650` remain:
+   (i) the top-line VERDICT still says **"all 13 assets embedded"** when there are now **15**;
+   (ii) its supplementary-float enumeration (p10–12) omits **Fig 9 and Tab 5**;
+   (iii) its per-float reference-count list omits **Fig 9 ×1 and Tab 5 ×1**, both of which the gate
+   now reports as `md 1 / pdf_ref 1`.
+5. Pre-existing, reviewer-visible: **Fig 1 and Fig 8 have zero in-text callouts** in both the `.md`
+   and the PDF (their `md == pdf_ref` check passes vacuously at 0 == 0). `supp_floats.tex` pins
+   every float number with hardcoded `\setcounter`, so inserting or reordering any float silently
+   misnumbers everything downstream with no LaTeX warning. And the finalize leaves an incoherent
+   size hierarchy that tracks spec scope rather than importance — Fig 6 (4.708 in, untouched
+   because the spec fenced it off) is now larger than Fig 5 (3.786 in) and Fig 1 (2.571 in).
