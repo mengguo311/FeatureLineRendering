@@ -82,7 +82,11 @@ def main():
     figtab = {}
     ok_counts = True
     md_body = md                                            # md content region
-    for n in range(1, 9):
+    # Ranges cover every float that exists, incl. Fig 9 / Tab 5 (crown-jewel temporal set).
+    # A float added to the .md but not yet in the banked PDF shows pdf_ref 0 / captioned 0
+    # until paper/main.pdf is rebuilt; that is PDF staleness, not a reference error, and it
+    # cannot affect the verdict -- `conservation` is decided solely by the numeral multiset.
+    for n in range(1, 10):
         md_c = len(re.findall(r"Figs? %d" % n, md_body))
         pdf_c = len(re.findall(r"Fig\.\s*%d[^.\d]" % n, body_pdf)) \
             - len(re.findall(r"Fig\.\s*%d\.\s" % n, body_pdf)) * 0
@@ -90,7 +94,7 @@ def main():
         pdf_ref = len(re.findall(r"Fig\.\s*%d(?!\.)" % n, body_pdf))
         figtab[f"Fig{n}"] = {"md": md_c, "pdf_ref": pdf_ref, "captioned":
                              len(re.findall(r"Fig\.\s*%d\." % n, body_pdf))}
-    for n in range(1, 5):
+    for n in range(1, 6):
         md_c = len(re.findall(r"Tab %d" % n, md_body))
         pdf_ref = len(re.findall(r"Tab\.\s*%d(?!\.)" % n, body_pdf))
         figtab[f"Tab{n}"] = {"md": md_c, "pdf_ref": pdf_ref, "captioned":

@@ -7,9 +7,25 @@
 WHY THIS EXISTS
     ECO established that every arm re-ranks ONE identical candidate pool (n_seeds is
     bit-identical across arms at matched f), so the f=1.00 point -- which keeps every gaussian
-    -- bounds the recall of every possible re-ranking.  On lego that bound is R@1.5 = 0.5572,
-    i.e. R >= 0.65 is unreachable by ANY ranking method.  The binding constraint there is POOL
-    COVERAGE.  This probe attributes the miss-set before any new method is designed.
+    -- bounds the recall of every possible re-ranking.  On lego that bound is R@1.5 = 0.5572.
+    The binding constraint there is POOL COVERAGE.  This probe attributes the miss-set before
+    any new method is designed.
+
+    CORRECTION (2026-09-04, out/LEGO_THRESHOLD_AUDIT.md).  This docstring used to add
+    "i.e. R >= 0.65 is unreachable by ANY ranking method".  That sentence is WITHDRAWN: it is
+    false.  The bound 0.5572 is stated at the oracle's 30 deg crease definition, and lego's
+    mesh carries one family of ~213,711 edges at exactly 30.000 deg that the threshold splits
+    roughly in half through the .obj's 6-decimal vertex quantisation.  Re-scoring this same
+    probe at higher thresholds gives R@1.5 = 0.6408 (30.05 deg), 0.6467 (45 deg) and -- past
+    the audited sweep -- 0.6650 (60 deg) and 0.6716 (80 deg), so the 0.65 line IS crossed.
+    What survives, and is what this probe is actually for, is the CONCLUSION: recall plateaus
+    near 0.67, a third of crease pixels stay unreachable by any re-ranking at every threshold,
+    precision over the same segments falls 0.6360 -> 0.3004 as the threshold rises, and the
+    frozen joint operating gate P@1.5 >= 0.85 AND R@1.5 >= 0.65 is met at NO threshold on
+    either scene.  Quote 0.5572 with its 30 deg definition; never as a method-independent
+    impossibility claim.  (The separate NGMEC-v2 statement that no lego frontier point reaches
+    R = 0.65 concerns the re-ranked operating frontier, whose lego maximum is 0.4080 -- a
+    different and still-correct quantity, unaffected by this correction.)
 
 THE MEASUREMENT, using the SAME harness that produces the published P@1.5 / R@1.5
     run_m1b.eval_segments computes recall as

@@ -251,6 +251,20 @@ SUPP = [
         "transfer. The mesh-supervised bars show the ceilings as recomputed in the "
         "falsification study; they agree with Act 3's split values quoted in the text "
         "to the third decimal.", 0.75, pl="t"),
+    fig(9, "assets/fig9_crownjewel.png",
+        "Object-space feature lines versus per-frame Canny on a held-out orbit, under an "
+        "identical forward-warp operator for both pipelines. Left: per-frame detection "
+        "saturates at a motion-independent popping floor while object-space strokes fall "
+        "in proportion to the per-frame motion. Centre: the popping-rate ratio over the "
+        "frame sweep, with the silhouette-controlled bound marked in red. Right: both "
+        "confounds controlled --- the object-space pipeline draws more strokes per frame, "
+        "not fewer, and almost none of them fail to warp.", 0.98, pl="t"),
+    tab(5, "assets/tab5_per_scene.png",
+        "Per-scene held-out summary: segment-raster precision and recall, popping rate for "
+        "both pipelines, and the popping and Fr\\'echet ratios. ficus is excluded by scene "
+        "scoping rather than omitted --- too little of its surface lies far enough from a "
+        "silhouette for crease-versus-flat to be well posed --- and no ficus result was "
+        "ever run.", 0.82, pl="t"),
 ]
 
 
