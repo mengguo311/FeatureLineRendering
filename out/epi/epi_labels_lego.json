@@ -1,0 +1,39 @@
+{
+ "scene": "lego",
+ "n_miss": 437138,
+ "n_flat": 437138,
+ "n_hit_calib": 60000,
+ "n_flat_pool": 566005,
+ "n_surface_samples": 4000000,
+ "rounds": [
+  {
+   "sampled": 4000000,
+   "pass_margin": 1176015,
+   "pass_margin_and_testvis": 566005
+  }
+ ],
+ "margin_px": 3.0,
+ "margin_world": 0.01015906859921531,
+ "px_world": 0.0033863561997384364,
+ "flat_rule": "d(any mesh edge with dihedral >= 10 deg) > margin AND visible in >=1 TEST view (mesh depth, 3x3 min |dz| < 0.015)",
+ "flat_d_to_GT_crease_quantiles": {
+  "p1": 0.010313368455938195,
+  "p5": 0.011006305754324684,
+  "p25": 0.013518211570392062,
+  "p50": 0.016821235426000662,
+  "p75": 0.02206000494931899,
+  "p95": 0.030749153139528907
+ },
+ "miss_d_to_edge10_quantiles": {
+  "p50": 0.0,
+  "p95": 0.0,
+  "p99": 3.469446951953614e-18
+ },
+ "miss_theta_bands": {
+  "exactly30": 214007,
+  ">=30.05": 223135,
+  ">=45": 198460,
+  "exactly90": 108621
+ },
+ "seconds": 40.337772369384766
+}
