@@ -1,0 +1,288 @@
+{
+ "scene": "lego",
+ "cloud": "dexprimary_p1c_cloud_lego.npz",
+ "n_cloud_raw": 474442,
+ "n_cloud_kept": 350002,
+ "tau_px": 1.5,
+ "radius_world": 0.005079534299607655,
+ "bbox_diag": 2.9443536856182884,
+ "views_TEST": [
+  5,
+  15,
+  25,
+  35,
+  45,
+  55,
+  65,
+  75,
+  85,
+  95
+ ],
+ "n_crease_pts": 971793,
+ "n_seen": 554207,
+ "recall_3D": 0.21123695658842273,
+ "recall_2D_anyview": 0.9473463886237453,
+ "n_miss_3D": 437138,
+ "miss_fraction_3D": 0.7887630434115772,
+ "n_miss_2D": 29181,
+ "miss_fraction_2D": 0.05265361137625472,
+ "spec_literal": {
+  "definition": "geometric = dihedral >= 30 deg on GT mesh; decal = dihedral ~0 (flat)",
+  "n_geometric": 437138,
+  "n_decal": 0,
+  "g_literal": 1.0,
+  "TAUTOLOGY": "the GT crease set IS defined as dihedral>=30 edges, so every miss is 'geometric' by construction; g_literal is 1.000 with no measurement"
+ },
+ "photometric_calibration": {
+  "stat": "max Sobel |grad| of the GT render within 1.5px, max over TEST views",
+  "null_random_fg_pixels": {
+   "p1": 1.275,
+   "p5": 3.824,
+   "p10": 8.551,
+   "p25": 20.261,
+   "p50": 42.738,
+   "p75": 78.947,
+   "p90": 117.445,
+   "p95": 147.42,
+   "p99": 206.254
+  },
+  "hit_set_recovered_creases": {
+   "p1": 18.561,
+   "p5": 32.442,
+   "p10": 42.851,
+   "p25": 65.622,
+   "p50": 111.65,
+   "p75": 162.787,
+   "p90": 204.089,
+   "p95": 230.712,
+   "p99": 245.638
+  },
+  "miss_set": {
+   "p1": 5.315,
+   "p5": 16.797,
+   "p10": 25.615,
+   "p25": 43.285,
+   "p50": 71.847,
+   "p75": 110.207,
+   "p90": 154.62,
+   "p95": 181.405,
+   "p99": 232.803
+  }
+ },
+ "g_photometric_sweep": [
+  {
+   "thresh": 2,
+   "null_frac_above": 0.9774,
+   "hit_frac_above": 1.0,
+   "miss_frac_above_g": 0.999
+  },
+  {
+   "thresh": 4,
+   "null_frac_above": 0.9485,
+   "hit_frac_above": 1.0,
+   "miss_frac_above_g": 0.9947
+  },
+  {
+   "thresh": 6,
+   "null_frac_above": 0.927,
+   "hit_frac_above": 1.0,
+   "miss_frac_above_g": 0.9885
+  },
+  {
+   "thresh": 8,
+   "null_frac_above": 0.9057,
+   "hit_frac_above": 0.9994,
+   "miss_frac_above_g": 0.9823
+  },
+  {
+   "thresh": 10,
+   "null_frac_above": 0.8841,
+   "hit_frac_above": 0.999,
+   "miss_frac_above_g": 0.9763
+  },
+  {
+   "thresh": 12,
+   "null_frac_above": 0.8611,
+   "hit_frac_above": 0.9979,
+   "miss_frac_above_g": 0.9698
+  },
+  {
+   "thresh": 16,
+   "null_frac_above": 0.8079,
+   "hit_frac_above": 0.9936,
+   "miss_frac_above_g": 0.9531
+  },
+  {
+   "thresh": 20,
+   "null_frac_above": 0.7537,
+   "hit_frac_above": 0.987,
+   "miss_frac_above_g": 0.9344
+  },
+  {
+   "thresh": 25,
+   "null_frac_above": 0.6889,
+   "hit_frac_above": 0.9749,
+   "miss_frac_above_g": 0.9039
+  },
+  {
+   "thresh": 30,
+   "null_frac_above": 0.6268,
+   "hit_frac_above": 0.9591,
+   "miss_frac_above_g": 0.8676
+  },
+  {
+   "thresh": 40,
+   "null_frac_above": 0.524,
+   "hit_frac_above": 0.9142,
+   "miss_frac_above_g": 0.7817
+  }
+ ],
+ "photometric_AUC": {
+  "note": "threshold-free. >0.5 means the first group has HIGHER image gradient. 'raw' reads the pixel itself; 'dil' takes the max within tau_px.",
+  "AUC_hit_vs_miss_dil": 0.6751,
+  "AUC_hit_vs_miss_raw": 0.6907,
+  "AUC_allcrease_vs_randomfg_dil": 0.7017,
+  "AUC_allcrease_vs_randomfg_raw": 0.7431,
+  "AUC_missset_vs_randomfg_raw": 0.7153,
+  "AUC_hitset_vs_randomfg_raw": 0.8461
+ },
+ "photometric_raw_undilated": {
+  "null_random_fg": {
+   "p1": 0.354,
+   "p5": 0.791,
+   "p10": 1.275,
+   "p25": 3.553,
+   "p50": 10.753,
+   "p75": 28.04,
+   "p90": 58.64,
+   "p95": 82.763,
+   "p99": 141.261
+  },
+  "hit_set": {
+   "p1": 4.43,
+   "p5": 10.977,
+   "p10": 16.621,
+   "p25": 31.145,
+   "p50": 59.082,
+   "p75": 101.819,
+   "p90": 150.673,
+   "p95": 178.253,
+   "p99": 228.423
+  },
+  "miss_set": {
+   "p1": 1.118,
+   "p5": 3.335,
+   "p10": 6.316,
+   "p25": 14.853,
+   "p50": 30.889,
+   "p75": 58.105,
+   "p90": 92.083,
+   "p95": 118.616,
+   "p99": 171.87
+  }
+ },
+ "operating_point": {
+  "rule": "threshold = p95 of the random-foreground null (5% null FP rate)",
+  "threshold": 147.42,
+  "hit_set_frac_above": 0.3244,
+  "g_honest": 0.1167,
+  "n_retrainable": 51021,
+  "n_unrecoverable": 386117
+ },
+ "dihedral_band_crosstab": [
+  {
+   "band": "EXACTLY 30 deg (12-gon tessellation)",
+   "n_seen": 238708,
+   "frac_of_seen": 0.4307,
+   "recall_3D": 0.1035,
+   "n_miss": 214007,
+   "frac_of_missset": 0.4896,
+   "photo_p50": 67.058,
+   "photo_raw_p50": 28.286,
+   "photo_frac_above_T5": 0.1003,
+   "flat_sheet_px_p50": 3.249
+  },
+  {
+   "band": "30-44 deg",
+   "n_seen": 33347,
+   "frac_of_seen": 0.0602,
+   "recall_3D": 0.2648,
+   "n_miss": 24517,
+   "frac_of_missset": 0.0561,
+   "photo_p50": 82.064,
+   "photo_raw_p50": 41.836,
+   "photo_frac_above_T5": 0.2156,
+   "flat_sheet_px_p50": 2.608
+  },
+  {
+   "band": "44-60 deg",
+   "n_seen": 56806,
+   "frac_of_seen": 0.1025,
+   "recall_3D": 0.3418,
+   "n_miss": 37387,
+   "frac_of_missset": 0.0855,
+   "photo_p50": 94.368,
+   "photo_raw_p50": 48.248,
+   "photo_frac_above_T5": 0.2816,
+   "flat_sheet_px_p50": 3.214
+  },
+  {
+   "band": "60-90 deg",
+   "n_seen": 59389,
+   "frac_of_seen": 0.1072,
+   "recall_3D": 0.3896,
+   "n_miss": 36253,
+   "frac_of_missset": 0.0829,
+   "photo_p50": 90.469,
+   "photo_raw_p50": 40.478,
+   "photo_frac_above_T5": 0.2181,
+   "flat_sheet_px_p50": 1.468
+  },
+  {
+   "band": "EXACTLY 90 deg (box corner)",
+   "n_seen": 140965,
+   "frac_of_seen": 0.2544,
+   "recall_3D": 0.2294,
+   "n_miss": 108621,
+   "frac_of_missset": 0.2485,
+   "photo_p50": 85.382,
+   "photo_raw_p50": 39.08,
+   "photo_frac_above_T5": 0.1773,
+   "flat_sheet_px_p50": 6.214
+  },
+  {
+   "band": ">90 deg",
+   "n_seen": 24992,
+   "frac_of_seen": 0.0451,
+   "recall_3D": 0.3457,
+   "n_miss": 16353,
+   "frac_of_missset": 0.0374,
+   "photo_p50": 86.693,
+   "photo_raw_p50": 44.011,
+   "photo_frac_above_T5": 0.1569,
+   "flat_sheet_px_p50": 3.059
+  }
+ ],
+ "flat_sheet_px_all_seen": {
+  "p1": 0.227,
+  "p5": 0.823,
+  "p10": 1.329,
+  "p25": 2.418,
+  "p50": 3.249,
+  "p75": 5.159,
+  "p90": 7.117,
+  "p95": 11.083,
+  "p99": 22.166
+ },
+ "flat_sheet_px_miss_set": {
+  "p1": 0.227,
+  "p5": 0.842,
+  "p10": 1.468,
+  "p25": 2.419,
+  "p50": 3.249,
+  "p75": 6.03,
+  "p90": 7.117,
+  "p95": 11.083,
+  "p99": 22.166
+ }
+}

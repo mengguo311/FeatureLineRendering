@@ -1,0 +1,242 @@
+{
+ "experiment": "Y",
+ "radius_world": 0.004859630205541837,
+ "tau_px": 1.5,
+ "views_TEST": [
+  5,
+  15,
+  25,
+  35,
+  45,
+  55,
+  65,
+  75,
+  85,
+  95
+ ],
+ "n_orbit_frames": 60,
+ "conditions": {
+  "A_vanilla": {
+   "label": "A_vanilla",
+   "scene": "cadpartA",
+   "cloud": "dexprimary_p1b_cloud_cadpartA_ref40.npz",
+   "n_cloud_raw": 227018,
+   "n_cloud_kept": 219877,
+   "recall_3D": 0.8431,
+   "precision_3D": 0.7315,
+   "F1_3D": 0.7833,
+   "chamfer_gt_to_pred_median": 0.001071,
+   "chamfer_pred_to_gt_median": 0.002777,
+   "chamfer_symmetric_median": 0.001924,
+   "n_gaussians": 75539,
+   "n_cloud_budget_matched": 19819,
+   "recall_3D_budget": 0.7156,
+   "precision_3D_budget": 0.3489,
+   "F1_3D_budget": 0.4691,
+   "n_chains": 502,
+   "n_chain_pts": 7294,
+   "temporal_heldout_orbit": {
+    "OURS": {
+     "P_pop": 0.27866075986848127,
+     "frechet_median": 0.5380621926837763,
+     "frechet_p90": 1.2819267124036964,
+     "unmatched_frac": 0.2740832114394459,
+     "cut_frac": 0.004577548429035374,
+     "warp_dropped_frac": 0.004500556068055377,
+     "n_strokes_per_frame": 407.8813559322034
+    },
+    "canny_baseline": {
+     "P_pop": 0.9071466438108344,
+     "frechet_median": 1.62478164486139,
+     "frechet_p90": 2.706848851671798,
+     "unmatched_frac": 0.9063768353103091,
+     "cut_frac": 0.0007698085005251789,
+     "warp_dropped_frac": 0.5205947425636448,
+     "n_strokes_per_frame": 391.7118644067797
+    }
+   },
+   "floater_halo": {
+    "n_gauss": 75539,
+    "n_kept_by_defloat": 32476,
+    "defloat_removed_frac": 0.5701,
+    "n_within_3px_of_GT_crease": 30527,
+    "n_in_3to10px_shell": 34181,
+    "halo_ratio_shell_over_near": 1.1197,
+    "frac_of_near_crease_surviving_defloat": 0.5616,
+    "near_crease": {
+     "opacity_p50": 0.1591,
+     "opacity_frac_below_0.1": 0.4309,
+     "min_scale_px_p50": 0.013,
+     "aniso_p50": 551.44
+    },
+    "shell_3to10px": {
+     "opacity_p50": 0.0733,
+     "opacity_frac_below_0.1": 0.5618,
+     "min_scale_px_p50": 0.084,
+     "aniso_p50": 94.16
+    },
+    "all": {
+     "opacity_p50": 0.107,
+     "opacity_frac_below_0.1": 0.4876,
+     "min_scale_px_p50": 0.056,
+     "aniso_p50": 138.42
+    },
+    "view0_alpha_frac_in_0.02_0.35": 0.03089,
+    "view5_alpha_frac_in_0.02_0.35": 0.03376
+   }
+  },
+  "B_ORACLE": {
+   "label": "B_ORACLE",
+   "scene": "cadpartB",
+   "cloud": "dexprimary_p1b_cloud_cadpartB_ref40.npz",
+   "n_cloud_raw": 227018,
+   "n_cloud_kept": 220989,
+   "recall_3D": 0.8793,
+   "precision_3D": 0.7319,
+   "F1_3D": 0.7989,
+   "chamfer_gt_to_pred_median": 0.001063,
+   "chamfer_pred_to_gt_median": 0.002777,
+   "chamfer_symmetric_median": 0.00192,
+   "n_gaussians": 192068,
+   "n_cloud_budget_matched": 19805,
+   "recall_3D_budget": 0.749,
+   "precision_3D_budget": 0.367,
+   "F1_3D_budget": 0.4926,
+   "n_chains": 519,
+   "n_chain_pts": 7328,
+   "temporal_heldout_orbit": {
+    "OURS": {
+     "P_pop": 0.30010981826635236,
+     "frechet_median": 0.4724779836295007,
+     "frechet_p90": 1.2254779324067726,
+     "unmatched_frac": 0.2960828779316389,
+     "cut_frac": 0.004026940334713333,
+     "warp_dropped_frac": 0.005234952478767665,
+     "n_strokes_per_frame": 436.35593220338984
+    },
+    "canny_baseline": {
+     "P_pop": 0.9059963342003702,
+     "frechet_median": 1.6756600584077703,
+     "frechet_p90": 2.719481271498383,
+     "unmatched_frac": 0.9046878726261834,
+     "cut_frac": 0.001308461574187005,
+     "warp_dropped_frac": 0.47610933498343405,
+     "n_strokes_per_frame": 437.5762711864407
+    }
+   },
+   "floater_halo": {
+    "n_gauss": 192068,
+    "n_kept_by_defloat": 60773,
+    "defloat_removed_frac": 0.6836,
+    "n_within_3px_of_GT_crease": 97807,
+    "n_in_3to10px_shell": 82034,
+    "halo_ratio_shell_over_near": 0.8387,
+    "frac_of_near_crease_surviving_defloat": 0.4311,
+    "near_crease": {
+     "opacity_p50": 0.0645,
+     "opacity_frac_below_0.1": 0.5652,
+     "min_scale_px_p50": 0.063,
+     "aniso_p50": 71.27
+    },
+    "shell_3to10px": {
+     "opacity_p50": 0.0324,
+     "opacity_frac_below_0.1": 0.7175,
+     "min_scale_px_p50": 0.292,
+     "aniso_p50": 16.13
+    },
+    "all": {
+     "opacity_p50": 0.0488,
+     "opacity_frac_below_0.1": 0.6235,
+     "min_scale_px_p50": 0.15,
+     "aniso_p50": 31.94
+    },
+    "view0_alpha_frac_in_0.02_0.35": 0.02947,
+    "view5_alpha_frac_in_0.02_0.35": 0.03187
+   }
+  },
+  "Bp_honest": {
+   "label": "Bp_honest",
+   "scene": "cadpartH",
+   "cloud": "dexprimary_p1b_cloud_cadpartH_ref40.npz",
+   "n_cloud_raw": 227018,
+   "n_cloud_kept": 219888,
+   "recall_3D": 0.8463,
+   "precision_3D": 0.7317,
+   "F1_3D": 0.7848,
+   "chamfer_gt_to_pred_median": 0.001071,
+   "chamfer_pred_to_gt_median": 0.002775,
+   "chamfer_symmetric_median": 0.001923,
+   "n_gaussians": 93083,
+   "n_cloud_budget_matched": 19827,
+   "recall_3D_budget": 0.7199,
+   "precision_3D_budget": 0.349,
+   "F1_3D_budget": 0.4701,
+   "n_chains": 510,
+   "n_chain_pts": 7318,
+   "temporal_heldout_orbit": {
+    "OURS": {
+     "P_pop": 0.28040526787298936,
+     "frechet_median": 0.5181734781792845,
+     "frechet_p90": 1.2218281670869369,
+     "unmatched_frac": 0.2761362003025417,
+     "cut_frac": 0.004269067570447685,
+     "warp_dropped_frac": 0.00312606342211675,
+     "n_strokes_per_frame": 414.3728813559322
+    },
+    "canny_baseline": {
+     "P_pop": 0.9097276201617679,
+     "frechet_median": 1.6997427288700115,
+     "frechet_p90": 2.69654843029373,
+     "unmatched_frac": 0.9087078010883202,
+     "cut_frac": 0.0010198190734477207,
+     "warp_dropped_frac": 0.5124447249242305,
+     "n_strokes_per_frame": 387.5762711864407
+    }
+   },
+   "floater_halo": {
+    "n_gauss": 93083,
+    "n_kept_by_defloat": 36881,
+    "defloat_removed_frac": 0.6038,
+    "n_within_3px_of_GT_crease": 41004,
+    "n_in_3to10px_shell": 40582,
+    "halo_ratio_shell_over_near": 0.9897,
+    "frac_of_near_crease_surviving_defloat": 0.5053,
+    "near_crease": {
+     "opacity_p50": 0.1087,
+     "opacity_frac_below_0.1": 0.4879,
+     "min_scale_px_p50": 0.011,
+     "aniso_p50": 610.66
+    },
+    "shell_3to10px": {
+     "opacity_p50": 0.0654,
+     "opacity_frac_below_0.1": 0.5877,
+     "min_scale_px_p50": 0.083,
+     "aniso_p50": 90.27
+    },
+    "all": {
+     "opacity_p50": 0.0878,
+     "opacity_frac_below_0.1": 0.5238,
+     "min_scale_px_p50": 0.046,
+     "aniso_p50": 156.79
+    },
+    "view0_alpha_frac_in_0.02_0.35": 0.03025,
+    "view5_alpha_frac_in_0.02_0.35": 0.03234
+   }
+  }
+ },
+ "verdict": {
+  "delta_F1_B_minus_A": 0.0156,
+  "delta_F1_B_minus_A_budget_matched": 0.0235,
+  "F1_A": 0.7833,
+  "F1_B": 0.7989,
+  "rule_F1_gain_required": 0.15,
+  "F1_gate_passed": false,
+  "P_pop_A": 0.27866,
+  "P_pop_B": 0.30011,
+  "frechet_median_A": 0.53806,
+  "frechet_median_B": 0.47248,
+  "temporal_worsened_by_B": true,
+  "Y_DECISION": "KILL retraining permanently",
+  "note": "Condition B is a GT-mesh-supervised ORACLE UPPER BOUND. A failure here bounds every non-oracle retraining scheme from above."
+ }
+}

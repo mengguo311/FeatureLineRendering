@@ -1,0 +1,43 @@
+{
+ "radius_world": 0.004859630205541837,
+ "n_gt_seen": 28304,
+ "note": "ceiling = perfect cull of the RAW candidate pool (precision forced to 1.0). It bounds every selection/scoring rule, so it bounds every retraining scheme acting through this extractor.",
+ "conditions": {
+  "A_vanilla": {
+   "n_raw_candidates": 227018,
+   "n_kept_canonical": 219877,
+   "actual_recall": 0.8431,
+   "actual_precision": 0.7315,
+   "actual_F1": 0.7833,
+   "n_kept_perfect_cull": 163023,
+   "ceiling_recall": 0.9142,
+   "ceiling_precision": 1.0,
+   "ceiling_F1": 0.9552
+  },
+  "B_ORACLE": {
+   "n_raw_candidates": 227018,
+   "n_kept_canonical": 220989,
+   "actual_recall": 0.8793,
+   "actual_precision": 0.7319,
+   "actual_F1": 0.7989,
+   "n_kept_perfect_cull": 163123,
+   "ceiling_recall": 0.9144,
+   "ceiling_precision": 1.0,
+   "ceiling_F1": 0.9553
+  },
+  "Bp_honest": {
+   "n_raw_candidates": 227018,
+   "n_kept_canonical": 219888,
+   "actual_recall": 0.8463,
+   "actual_precision": 0.7317,
+   "actual_F1": 0.7848,
+   "n_kept_perfect_cull": 163038,
+   "ceiling_recall": 0.9129,
+   "ceiling_precision": 1.0,
+   "ceiling_F1": 0.9545
+  }
+ },
+ "delta_ceiling_F1_B_minus_A": 0.0001,
+ "bar_A_plus_0.15": 0.9333,
+ "bar_is_below_ceiling": true
+}
