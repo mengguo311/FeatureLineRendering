@@ -1,0 +1,98 @@
+{
+ "title": "B3 master per-scene table \u2014 shipped M1b object-space lines (gated variant), held-out TEST, mesh EVAL-ONLY",
+ "shipped_generator": "M1b: frozen-3DGS carrier seeds -> linelets -> multi-view DT pull (TRAIN views) -> consensus prune -> 3D NMS + chaining -> per-frame projection through the 3DGS z-buffer",
+ "context_columns_note": "triangulation recall and DINOv2 AUC are Contribution B DIAGNOSTIC precision-boundary rows; they are NOT stages of the shipped generator",
+ "temporal_definition": "forward-warped stroke residual on the 240-frame look-at orbit between TEST views 5 and 15; P_pop = popped-stroke fraction, ratio = Canny/OURS (higher = OURS steadier); ratios at 240 frames (the finest-motion end of the banked 7-13x band)",
+ "rows": [
+  {
+   "scene": "chair",
+   "shipped_lines_n": 15091,
+   "points_P@1.5": 0.7352870886733158,
+   "points_R@1.5": 0.5032555102490177,
+   "points_F1@1.5": 0.5975366197525654,
+   "segments_P@1.5": 0.6572744617818822,
+   "segments_R@1.5": 0.5959019132724314,
+   "segments_F1@1.5": 0.6250853704514752,
+   "ungated_segments_P@1.5": 0.6458621175514214,
+   "ungated_segments_R@1.5": 0.6439865825956861,
+   "P_pop_ours_240f": 0.06656359216999275,
+   "P_pop_canny_240f": 0.7551882943315438,
+   "P_pop_ratio_240f": 11.34536568283325,
+   "frechet_ours_240f": 0.040945752575920376,
+   "frechet_canny_240f": 1.2252312772894105,
+   "frechet_ratio_240f": 29.923281420157654,
+   "strokes_per_frame_ours": 750.7991631799163,
+   "strokes_per_frame_canny": 577.5774058577406,
+   "CONTEXT_triangulation_3D_recall": 0.6753165145125389,
+   "CONTEXT_dinov2_auc": 0.8401,
+   "sources": {
+    "m1b": "m1b_chair_gated_test.json",
+    "temporal": "m1b_stroke_temporal_table.json[headline]",
+    "triangulation": "dexprimary_p1b_chair_ref40.json",
+    "discriminator": "RESULTS_MASTER.md (DINOv2 semantic family, held-out, P1c/P1d)"
+   }
+  },
+  {
+   "scene": "lego",
+   "shipped_lines_n": 20142,
+   "points_P@1.5": 0.6435896386790417,
+   "points_R@1.5": 0.227539847224411,
+   "points_F1@1.5": 0.33621244701266656,
+   "segments_P@1.5": 0.6196430770449965,
+   "segments_R@1.5": 0.2856159615283188,
+   "segments_F1@1.5": 0.39100400153638354,
+   "ungated_segments_P@1.5": 0.5917302139458386,
+   "ungated_segments_R@1.5": 0.29458142246722036,
+   "P_pop_ours_240f": 0.0625577961050928,
+   "P_pop_canny_240f": 0.7190666485389275,
+   "P_pop_ratio_240f": 11.49443703756675,
+   "frechet_ours_240f": 0.08572949639967634,
+   "frechet_canny_240f": 1.2024603184415492,
+   "frechet_ratio_240f": 14.026214651204798,
+   "strokes_per_frame_ours": 1121.673640167364,
+   "strokes_per_frame_canny": 615.3849372384938,
+   "CONTEXT_triangulation_3D_recall": 0.21123695658842273,
+   "CONTEXT_dinov2_auc": 0.9044,
+   "sources": {
+    "m1b": "m1b_lego_gated_test.json",
+    "temporal": "m1b_stroke_temporal_table.json[headline]",
+    "triangulation": "xy/xy_expX_lego_p1c.json (p1c cloud, same generator; no p1b json for lego)",
+    "discriminator": "RESULTS_MASTER.md (DINOv2 semantic family, held-out, P1c/P1d)"
+   }
+  },
+  {
+   "scene": "ficus",
+   "shipped_lines_n": 5305,
+   "points_P@1.5": 0.2194690095852315,
+   "points_R@1.5": 0.13392135940968447,
+   "points_F1@1.5": 0.16634062889458154,
+   "segments_P@1.5": 0.22173077776959627,
+   "segments_R@1.5": 0.16987542660959165,
+   "segments_F1@1.5": 0.19236983502750926,
+   "ungated_segments_P@1.5": 0.19744639737183492,
+   "ungated_segments_R@1.5": 0.22644155057006446,
+   "P_pop_ours_240f": 0.10286219286040872,
+   "P_pop_canny_240f": 0.7856527756992007,
+   "P_pop_ratio_240f": 7.637915874157836,
+   "frechet_ours_240f": 0.10102193561157688,
+   "frechet_canny_240f": 1.147807691136825,
+   "frechet_ratio_240f": 11.36196494541616,
+   "strokes_per_frame_ours": 420.78242677824267,
+   "strokes_per_frame_canny": 570.81589958159,
+   "CONTEXT_triangulation_3D_recall": 0.6488582306272919,
+   "CONTEXT_dinov2_auc": null,
+   "sources": {
+    "m1b": "m1b_ficus_gated_test.json",
+    "temporal": "m1b_stroke_temporal_table_ship_ficus.json",
+    "triangulation": "dexprimary_p1b_ficus_ref40.json",
+    "discriminator": "not run (P1c is scoped to chair/lego)"
+   }
+  }
+ ],
+ "caveats": [
+  "ficus: the banked headline table (out/m1b_headline_table.md) EXCLUDES ficus by design ('thin/foliage: only 33% of object pixels are >4px from a silhouette, so crease vs flat surface is not well posed'); it is run here for completeness with the identical frozen recipe and reported straight. Its GT crease set (mesh_oracle, split-vertex face adjacency) covers only ~31% of the geometric >=30deg edges and none of the 31,390 open-boundary leaf-rim edges, so P/R vs 'GT creases' understates what the lines capture on a plant.",
+  "train-fit vs test-eval: the DT pull (the only fitted step) consumed the 80 TRAIN views; every P/R and temporal number is on the 10 held-out TEST views / the TEST-to-TEST orbit. The prune/length thresholds ('tuned') were selected on VAL views per the M1b protocol; no number here is in-sample.",
+  "line-buffer pivot NO-GO (motivation for shipping the frozen design): pre-registered EPIPOLAR ACCUMULATION TEST, corrected labels (out/EPIPOLAR_ACCUM_RESULTS.md): lego S_bar AUC 0.698 / Recall@85%P 0.000 (NO-GO, structural), chair 0.859 / 0.000 (NO-GO, knife-edge). Multi-view accumulation of raw DexiNed does not separate missed creases from flat surface at 85% precision; the mechanism is DexiNed's ~5 px spatial response tail on edge-dense surfaces, not dead zeros. (The B3 spec's 0.572/0.733 figures are from the superseded first run with a label bug.)",
+  "GT crease topology (inherited, all scenes): src/mesh_oracle.py builds GT creases from split-vertex face adjacency; the banked crease set covers 37% (lego) / 43% (chair) / ~31% (ficus) of the geometric >=30deg edges. All P/R here are against that banked definition, as in every prior result."
+ ]
+}

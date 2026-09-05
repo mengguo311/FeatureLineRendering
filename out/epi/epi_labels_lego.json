@@ -1,33 +1,101 @@
 {
  "scene": "lego",
+ "tag": "",
  "n_miss": 437138,
- "n_flat": 437138,
+ "n_miss_full": 437138,
+ "n_flat_pool": 972959,
+ "n_base": 437138,
+ "n_geo_arm": 300000,
  "n_hit_calib": 60000,
- "n_flat_pool": 566005,
- "n_surface_samples": 4000000,
+ "n_surface_samples": 24000000,
  "rounds": [
   {
    "sampled": 4000000,
-   "pass_margin": 1176015,
-   "pass_margin_and_testvis": 566005
+   "pass_margin": 361227,
+   "pass_margin_and_testvis": 162640
+  },
+  {
+   "sampled": 4000000,
+   "pass_margin": 360804,
+   "pass_margin_and_testvis": 162455
+  },
+  {
+   "sampled": 4000000,
+   "pass_margin": 360100,
+   "pass_margin_and_testvis": 161669
+  },
+  {
+   "sampled": 4000000,
+   "pass_margin": 359949,
+   "pass_margin_and_testvis": 161856
+  },
+  {
+   "sampled": 4000000,
+   "pass_margin": 361340,
+   "pass_margin_and_testvis": 162264
+  },
+  {
+   "sampled": 4000000,
+   "pass_margin": 359959,
+   "pass_margin_and_testvis": 162075
   }
  ],
  "margin_px": 3.0,
  "margin_world": 0.01015906859921531,
  "px_world": 0.0033863561997384364,
- "flat_rule": "d(any mesh edge with dihedral >= 10 deg) > margin AND visible in >=1 TEST view (mesh depth, 3x3 min |dz| < 0.015)",
- "flat_d_to_GT_crease_quantiles": {
-  "p1": 0.010313368455938195,
-  "p5": 0.011006305754324684,
-  "p25": 0.013518211570392062,
-  "p50": 0.016821235426000662,
-  "p75": 0.02206000494931899,
-  "p95": 0.030749153139528907
+ "flat_rule": "d(merged-mesh edge with dihedral >= 10 deg, or boundary, or non-manifold edge) > margin AND visible in >=1 TEST view (mesh depth, 3x3 min |dz| < 0.015)",
+ "mesh_topology": {
+  "V_split": 1406799,
+  "V_merged": 1020651,
+  "adj_edges_split": 2696076,
+  "adj_edges_merged": 3021188,
+  "edges_ge10_split": 374572,
+  "edges_ge10_merged": 713686,
+  "edges_ge30_merged": 482952,
+  "boundary_edges_merged": 19357,
+  "nonmanifold_edges_merged": 11056
  },
- "miss_d_to_edge10_quantiles": {
+ "banked_vs_geometric_a30": {
+  "n_banked_a30_samples": 971793,
+  "n_geometric_a30_samples": 2946225,
+  "frac_banked_within_1e-4_of_geometric": 0.9931199339777093,
+  "frac_geometric_within_1e-4_of_banked": 0.37383804699233764
+ },
+ "geometric_a30_missset": {
+  "n_seen": 1580272,
+  "recall_3D": 0.17455476019318195,
+  "n_miss": 1304428,
+  "recall_3D_on_banked_subset": 0.19873607211347838,
+  "recall_3D_on_non_banked_subset": 0.1590283023867442,
+  "frac_seen_in_banked": 0.3910181285247097,
+  "n_arm": 300000
+ },
+ "flat_pool_by_margin_px": {
+  "3": 972959,
+  "4.5": 162022,
+  "6": 27745,
+  "8": 2511
+ },
+ "flat_d_to_banked_crease_px_quantiles": {
+  "p1": 3.108385356875798,
+  "p5": 3.3810226170262014,
+  "p25": 3.9431346329833357,
+  "p50": 4.7098732342260785,
+  "p75": 5.8835505710880485,
+  "p95": 8.720909340582661
+ },
+ "flat_d_to_geo10_px_quantiles": {
+  "p1": 3.013271361103591,
+  "p5": 3.066873115139905,
+  "p25": 3.3425574981883672,
+  "p50": 3.6381124708187733,
+  "p75": 4.162669021076857,
+  "p95": 5.525604039931988
+ },
+ "miss_d_to_geo10_px_quantiles": {
   "p50": 0.0,
   "p95": 0.0,
-  "p99": 3.469446951953614e-18
+  "p99": 1.024536920310272e-15
  },
  "miss_theta_bands": {
   "exactly30": 214007,
@@ -35,5 +103,5 @@
   ">=45": 198460,
   "exactly90": 108621
  },
- "seconds": 40.337772369384766
+ "seconds": 93.86156463623047
 }

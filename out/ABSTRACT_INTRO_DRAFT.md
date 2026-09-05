@@ -42,7 +42,7 @@ including the unfavorable ones, are reported.
 Stylized and technical renderings of 3D scenes want *lines* — creases, seams, part
 boundaries — and they want those lines to hold still. A line drawing produced by running
 an edge detector on every rendered frame is precise frame-by-frame but temporally
-incoherent: most of its strokes do not survive even one frame transition. With 3D Gaussian
+incoherent: most of its strokes do not survive even one frame transition (Fig 1). With 3D Gaussian
 Splatting (3DGS) now a standard scene representation, we ask a narrow question: given a
 *frozen* 3DGS — no retraining, no densification — can feature lines be bound to the
 reconstruction so that they are *stable* under camera motion? We answer for the interior

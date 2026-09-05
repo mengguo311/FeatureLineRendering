@@ -124,6 +124,19 @@ is 0.3663 (`DEXPRIMARY_P0_RESULTS.md`, reproducing `LEGO_CEILING_AUTOPSY.md` Fig
 > (0.2934 -> 0.2946). The coverage-ceiling conclusion is therefore threshold-robust; the specific
 > value 0.5572 is threshold-specific and should always be quoted with its 30 deg definition.
 
+> **GT crease-set coverage (disclosed 2026-09-05; `EPIPOLAR_ACCUM_RESULTS.md`, `epi/epi_labels_*.json`).**
+> `src/mesh_oracle.py` builds the crease set from `face_adjacency` of the OBJ as trimesh loads it.
+> The NeRF-synthetic OBJs use v/vt/vn triplets, so trimesh keeps one vertex per triplet and every
+> hard-shaded crease / UV seam is an OPEN-BOUNDARY edge with no adjacency, i.e. absent from the
+> crease set. On position-merged meshes the banked a30 set covers **37.4 % (lego) / 43.1 % (chair) /
+> ~31 % (ficus)** of the geometric >=30 deg edges (banked set is a strict subset: 99.3 % / 100 %
+> contained), and none of the 31,390 open leaf-rim edges of ficus. EVERY prior P/R, ceiling and
+> miss-set number (0.7908/0.5572, 0.3663, 0.385, the 79 % lego miss, the P1b/P1c/P1e/P1f rows) is
+> scored against that subset. Not a softening of the ceiling: the frozen triangulation's 3D recall
+> on the FULL geometric set is 0.1746 lego / 0.5976 chair, with the never-counted creases slightly
+> harder (0.1590 / 0.5446) than the counted ones (0.1987 / 0.6654). Paper: §5.1, §6 (evaluation
+> dependency), Appendix A.4. The mesh stays EVAL-ONLY; nothing in the method path changes.
+
 ### Act 2 — geometry cannot discriminate the miss-set (K_geom ≈ 0)
 On lego decals every geometric channel is at/below chance for crease-vs-decal: 2DGS surfel
 dihedral **0.4110**, 2DGS rendered-normal ribbon 0.3307, vanilla-3DGS ribbon 0.3875,
@@ -174,6 +187,7 @@ Contribution A.
 | Phase 1b 3D recall >0.79 (triangulation breaks ceiling) | 0.79 | **0.6753** | MARGINAL; localization fix banked, ceiling stands |
 | Phase 1d mesh-free FAM-C ≥0.78 (deployable discriminator) | 0.78/0.72 | **0.6371** | NO-GO; path B closed |
 | (also disclosed) DIAG2DGS dihedral gate ≥0.80 | 0.80 | **0.4110** | FAIL; K_geom≈0 established |
+| Epipolar accumulation (line-buffer pivot): S̄ AUC ≥0.80 AND Recall@85%P ≥0.55 (NO-GO if AUC ≤0.65 OR R ≤0.42) | 0.80 / 0.55 | **lego 0.698 / 0.000; chair 0.859 / 0.000** | NO-GO both scenes; learned line-field pivot KILLED, frozen pipeline shipped (§5 below, Appendix A.4) |
 
 Why none were re-tuned: the honesty protocol IS the methodology — chance clouds,
 spread-matched jitter, paired seeding, budget matching, leakage-guarded splits, and
@@ -215,6 +229,64 @@ tested gate — mesh-free or oracle, point- or chain-pooled — attains P@1.5 �
 cloud level), oracle bound is in-sample (loosest), cloud rasterised as points inside the
 segment-raster convention. Full protocol + caveats: `PHASE1E_GATE_CHECK.md`,
 `PHASE1F_CHAIN_GATE.md`.
+
+---
+
+## 5. B3 ship + the line-buffer kill-test (ADDITIVE ledger, 2026-09-05)
+
+**What is shipped (reconciliation).** The shipped line generator is the M1b pipeline ONLY:
+frozen-3DGS carrier seeds → linelets → multi-view DT pull on the 80 TRAIN views → consensus
+prune → 3D NMS + chaining → per-frame projection through the 3DGS z-buffer
+(`scripts/run_m1b.py` frozen args f=0.30, `--edge sharp`, 100 views, `--gate`; strokes via
+`scripts/m1b_stroke_temporal.build_chains/ours_strokes`). The DexiNed multi-view
+triangulation (Phase 1b) and the DINOv2 crease-vs-texture probe (Phases 1c/1d/1e/1f) are
+Contribution-B DIAGNOSTIC precision-boundary instruments: no triangulated candidate is ever
+converted into a stroke and no discriminator threshold is deployed (paper §3.5).
+
+**Master per-scene table** (`out/ship/tab_master_perscene.{md,json,png}`; figures
+`out/ship/fig_lines_{chair,lego,ficus}.{png,pdf}`; script `scripts/ship_b3.py`). Held-out
+TEST views, mesh EVAL-ONLY, M1b gated variant for P/R (`m1b_<scene>_gated_test.json`, row
+`AFTER pull+prune[tuned+len]` / segments and `[tuned]` / points), ungated variant for the
+temporal orbit (`m1b_stroke_temporal_table.json` headline; ficus
+`m1b_stroke_temporal_table_ship_ficus.json`, identical recipe, own tag):
+
+| scene | lines | points P/R/F1@1.5 | segments P/R/F1@1.5 | P_pop 240 f OURS / Canny | ratio | Frechet 240 f OURS / Canny | ratio |
+|---|---|---|---|---|---|---|---|
+| chair | 15,091 | 0.735 / 0.503 / 0.598 | 0.657 / 0.596 / 0.625 | 0.067 / 0.755 | **11.35×** | 0.041 / 1.225 | **29.92×** |
+| lego | 20,142 | 0.644 / 0.228 / 0.336 | 0.620 / 0.286 / 0.391 | 0.063 / 0.719 | **11.49×** | 0.086 / 1.202 | **14.03×** |
+| ficus (new, NOT in the paper's n=2) | 5,305 | 0.219 / 0.134 / 0.166 | 0.222 / 0.170 / 0.192 | 0.103 / 0.786 | **7.64×** | 0.101 / 1.148 | **11.36×** |
+
+ficus caveat: `m1b_headline_table.md` EXCLUDES ficus by design (only 33 % of object pixels
+are >4 px from a silhouette; crease-vs-flat ill-posed); run here with the identical frozen
+recipe for completeness, reported straight, and its GT crease set covers ~31 % of the
+geometric creases and no leaf rims. Ficus artefacts: `dexined_edges_ficus/`,
+`cache/dexp0_gt_ficus_a30.npz`, `dexprimary_p1b_ficus_ref40.{json,npz}` (3D recall 0.6489 vs
+single-view 0.5483), `m1b_ficus_{gated,ungated}_test.{json,npz}`.
+
+**Line-buffer pivot: KILLED by the pre-registered EPIPOLAR ACCUMULATION TEST**
+(`EPIPOLAR_ACCUM_RESULTS.md`, `epi/EPI_ACCUM_{lego,chair}.md`, `scripts/epi_accum.py`
+md5 bf2e3486a5006970938a944ca7bd801c). S̄ = occlusion-aware (3DGS z-buffer, eps 0.02) mean
+over 100 views of RAW DexiNed probability at the banked miss-set vs equal-count flat GT
+surface (>3 px from any geometric edge of the position-merged mesh): **lego AUC 0.698 /
+R@85%P 0.000 (NO-GO, structural); chair 0.859 / 0.000 (NO-GO, knife-edge)**; single-view
+AUC 0.644 / 0.738, paired multi-view lift +0.049 / +0.133. Kill mechanism = DexiNed's ≈5 px
+spatial response tail on edge-dense surface (flat S̄ 0.136 at 3–4 px → 0.036 at 8–12 px vs
+miss 0.220; 83 % of lego flat surface within 4.5 px of an edge), NOT dead zeros (only 11 % of
+lego's miss-set undetected in every view). Independent recomputation agrees to 1e-9. The
+first run (0.5716 / 0.733, quoted in `B3_ship_spec.md` v1) used a flat class contaminated by
+the split-vertex topology and is SUPERSEDED.
+
+**Open discrepancy for the orchestrator (not edited).** Paper §3.2/§3.4 describe the DT
+pull as descending TEED probability fields ("Detector: TEED, NMS-thinned, threshold 0.5"),
+but the banked M1b runs behind the ledger P/R baseline and the 7–13× crown jewel use
+`--edge sharp` = Canny (blur 0, 50/150) DT fields (`src/dt_pull.EDGE_SETS`); TEED enters only
+as the M1a seed-ranking score of the Track-P/PARETO `tcteed` variants. Every number is
+correct; the prose attribution of the pull field needs a decision.
+
+**Assembly note.** All paper edits of 2026-09-05 are additive paragraphs (§2, §3.5, §5.1,
+§5.5, §6 ×2, Appendix A.4); no banked numeral was altered. They introduce new numerals, so
+`paper/*.tex` must be re-synced (`scripts/phase1h_md2tex.py`) and the md→PDF numeral pin
+re-run before shipping the PDF.
 
 ---
 

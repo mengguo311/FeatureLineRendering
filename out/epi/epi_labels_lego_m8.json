@@ -1,0 +1,96 @@
+{
+ "scene": "lego",
+ "n_miss": 437138,
+ "n_flat": 437138,
+ "n_miss_full": 437138,
+ "tag": "_m8",
+ "n_hit_calib": 60000,
+ "n_flat_pool": 467347,
+ "n_surface_samples": 48000000,
+ "rounds": [
+  {
+   "sampled": 4000000,
+   "pass_margin": 68398,
+   "pass_margin_and_testvis": 38839
+  },
+  {
+   "sampled": 4000000,
+   "pass_margin": 68912,
+   "pass_margin_and_testvis": 38956
+  },
+  {
+   "sampled": 4000000,
+   "pass_margin": 68404,
+   "pass_margin_and_testvis": 38873
+  },
+  {
+   "sampled": 4000000,
+   "pass_margin": 68302,
+   "pass_margin_and_testvis": 38865
+  },
+  {
+   "sampled": 4000000,
+   "pass_margin": 68358,
+   "pass_margin_and_testvis": 38843
+  },
+  {
+   "sampled": 4000000,
+   "pass_margin": 68367,
+   "pass_margin_and_testvis": 38715
+  },
+  {
+   "sampled": 4000000,
+   "pass_margin": 68576,
+   "pass_margin_and_testvis": 38931
+  },
+  {
+   "sampled": 4000000,
+   "pass_margin": 68693,
+   "pass_margin_and_testvis": 38936
+  },
+  {
+   "sampled": 4000000,
+   "pass_margin": 68436,
+   "pass_margin_and_testvis": 38880
+  },
+  {
+   "sampled": 4000000,
+   "pass_margin": 68798,
+   "pass_margin_and_testvis": 39109
+  },
+  {
+   "sampled": 4000000,
+   "pass_margin": 68723,
+   "pass_margin_and_testvis": 39211
+  },
+  {
+   "sampled": 4000000,
+   "pass_margin": 69118,
+   "pass_margin_and_testvis": 39189
+  }
+ ],
+ "margin_px": 8.0,
+ "margin_world": 0.02709084959790749,
+ "px_world": 0.0033863561997384364,
+ "flat_rule": "d(any mesh edge with dihedral >= 10 deg) > margin AND visible in >=1 TEST view (mesh depth, 3x3 min |dz| < 0.015)",
+ "flat_d_to_GT_crease_quantiles": {
+  "p1": 0.02719440971766664,
+  "p5": 0.0275931666133776,
+  "p25": 0.02943397154087362,
+  "p50": 0.03176308445591164,
+  "p75": 0.03536943169443553,
+  "p95": 0.04611405485995086
+ },
+ "miss_d_to_edge10_quantiles": {
+  "p50": 0.0,
+  "p95": 0.0,
+  "p99": 3.469446951953614e-18
+ },
+ "miss_theta_bands": {
+  "exactly30": 214007,
+  ">=30.05": 223135,
+  ">=45": 198460,
+  "exactly90": 108621
+ },
+ "seconds": 75.64472961425781
+}

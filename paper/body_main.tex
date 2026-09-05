@@ -3,7 +3,7 @@
 Stylized and technical renderings of 3D scenes want \emph{lines} --- creases, seams, part
 boundaries --- and they want those lines to hold still. A line drawing produced by running
 an edge detector on every rendered frame is precise frame-by-frame but temporally
-incoherent: most of its strokes do not survive even one frame transition. With 3D Gaussian
+incoherent: most of its strokes do not survive even one frame transition (Fig.~\ref{fig:1}). With 3D Gaussian
 Splatting (3DGS)~\cite{kerbl3dgs} now a standard scene representation, we ask a narrow question: given a
 \emph{frozen} 3DGS --- no retraining, no densification --- can feature lines be bound to the
 reconstruction so that they are \emph{stable} under camera motion? We answer for the interior
@@ -388,7 +388,7 @@ signal the primitive needs exists, in features every modern pipeline already has
 Act 4 shows that reading it out is supervision-bound.
 
 \subsection{Act 4 --- and it is supervision-bound under our frozen protocol}
-The signal exists (0.8401/0.9044) --- but it collapses under mesh-free supervision: trained
+The signal exists (0.8401/0.9044) --- but it collapses under mesh-free supervision (Fig.~\ref{fig:8}): trained
 on our best mesh-free pseudo-labels (physics-frozen geometric-photometric votes, and a
 fully self-supervised clustering variant), the same probe falls to \textbf{0.6371} on chair
 through a pre-registered 0.72 gate (on lego 0.9046 --- the ceiling as recomputed in this

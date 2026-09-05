@@ -1,4 +1,4 @@
-# SHIP_PDF_STATUS — camera-ready PDF: rebuilt, finalized, Fig 1 approved
+# SHIP_PDF_STATUS — camera-ready PDF: rebuilt, finalized, Fig 1 approved, callouts closed
 
 **VERDICT: SHIP. All frozen guardrails hold on the built artifact.**
 
@@ -11,8 +11,11 @@
 | red-team threshold paragraph present in body | ✅ verbatim & ungutted, body **p6** (§6) |
 | Fig 9 full size | ✅ `width=0.98\textwidth`, printed 7.006 in, **unchanged**; `supp_floats.tex` untouched |
 | Fig 1 single-column | ✅ `\columnwidth`, printed **3.487 in**, on **p1** |
+| every float `md == pdf_ref` **non-vacuously** | ✅ all 14 at ≥1 == ≥1 (Fig 1 / Fig 8 flipped 0==0 → 1==1, §0.6) |
 
-**Final artifact: 13 pages, References p9, CONTENT PAGES = 8.** `md5 963059db94806106c7949c4b960f5bae`
+**Final artifact: 13 pages, References p9, CONTENT PAGES = 8.** `md5 551c2ad450198c6f4a92f7c047fc36d7`
+*(the step-1/step-2 artifact was `md5 963059db94806106c7949c4b960f5bae`; superseded by the step-3
+callout rebuild of 2026-09-05, §0.6 — content, page budget and every float number are unchanged.)*
 
 Shipped configuration: **Fig 1 as a single-column float at `\columnwidth`; Fig 5 at 0.53\textwidth.**
 This supersedes the interim path-(a) config (Fig 1 as a 0.36\textwidth `figure*`), which is
@@ -29,7 +32,8 @@ audits corrected several of my numbers and found one harness bug, all fixed and 
 
 ## 0. What changed
 
-The camera-ready was closed in two approved steps, both touching only Fig 1 / Fig 5 presentation:
+The camera-ready was closed in three approved steps. Steps 1–2 touched only Fig 1 / Fig 5
+presentation; step 3 (§0.6) added two in-text figure callouts and is the only one that touches prose:
 
 **Step 1 — path (a) width-shrink** (`ship_finalize_spec.md`): Fig 1 `0.70 → 0.36\textwidth`,
 Fig 5 `0.70 → 0.53\textwidth`. Closed the 9→8 content-page gap.
@@ -43,7 +47,7 @@ Exactly one line changed; Fig 5 left at 0.53 as instructed:
 + \begin{figure}[t]...\includegraphics[width=\columnwidth]{assets/fig1_teaser.png}...\end{figure}
 ```
 
-**Not one word of prose changed** across either step. An independent word-level diff of the
+**Not one word of prose changed** across steps 1–2 (step 3 adds exactly two parentheticals, §0.6). An independent word-level diff of the
 extracted PDF text confirms the token stream is preserved (similarity 0.986; per-page multisets
 identical on pages 9–13). Prose *did* reflow across page boundaries — ~4.2 % of words changed page
 as Fig 1 vacated the page-2 float slot — but no word was added, removed or altered. No asset re-rendered
@@ -171,8 +175,9 @@ Fig1 = single-column, Fig5 = 0.53 / 0.54 / 0.56 / 0.57 / 0.58 / 0.59  -> content
 Fig1 = single-column, Fig5 = 0.60 / 0.66 / 0.70                        -> content 9  fail
 ```
 
-Shipping at 0.53 therefore leaves **0.06 `\textwidth` = 0.429 in of Fig 5 width = ≈12.8 pt of
-float height** in hand — about **6× the step-1 margin**. Freeing Fig 1's second column bought
+*(Re-measured on the post-callout sources in step 3 and **unchanged** — 0.53/0.56/0.58/0.59 → 8,
+0.60/0.62 → 9. See §0.6.)* Shipping at 0.53 therefore leaves **0.06 `\textwidth` = 0.429 in of
+Fig 5 width = ≈12.8 pt of float height** in hand — about **6× the step-1 margin**. Freeing Fig 1's second column bought
 genuine slack, not just a bigger teaser. The budget should still be re-checked after any prose
 edit or a venue-`.cls` recompile (the build substitutes fonts: `TU/ptm` undefined → `TU/lmr`, so a
 venue compiling with real Times will produce different metrics), but this is no longer a knife-edge.
@@ -180,6 +185,98 @@ venue compiling with real Times will produce different metrics), but this is no 
 *Unused option, measured and available:* Fig 5 could be enlarged to as much as 0.59 (4.21 in,
 +11 % over shipped) while keeping content = 8. It was left at 0.53 because the approval spec said
 to change only Fig 1.
+
+### 0.6 Step 3 — the Fig 1 / Fig 8 callouts (2026-09-05, `ship_callouts_spec.md`)
+
+§8 item 6 flagged that **Fig 1 and Fig 8 had zero in-text callouts** in both the `.md` and the PDF,
+so their `md == pdf_ref` check passed **vacuously at 0 == 0**. Both are now called out, once each,
+in prose that already made the factual point the figure carries — no new claim, no new number:
+
+| | added text (verbatim) |
+|---|---|
+| **Fig 1**, Intro ¶1 | `.md` → `…do not survive even one frame transition (Fig 1). With 3D Gaussian` |
+| | `.tex` → `…do not survive even one frame transition (Fig.~\ref{fig:1}). With 3D Gaussian` |
+| **Fig 8**, §5.4 Act 4 | `.md` → `…but it collapses under mesh-free supervision (Fig 8): trained` |
+| | `.tex` → `…but it collapses under mesh-free supervision (Fig.~\ref{fig:8}): trained` |
+
+**Why these two anchors carry no fabrication.** Fig 1's fourth column is a two-frame overlap
+(frames 100+101, red = *t*, blue = *t+1*) in which the per-frame Canny row resolves into separated
+red and blue fringes while the object-space row composites to purple — which *is* the sentence it
+is attached to, "most of its strokes do not survive even one frame transition." Fig 8's left panel
+plots chair 0.8395 / 0.6371 and lego 0.9046 / 0.6569 against a dashed `frozen NO-GO bar 0.72`, and
+its own title is "Act 4: the semantic signal is supervision-bound" — which *is* the clause it is
+attached to, "it collapses under mesh-free supervision." The Fig 8 callout is deliberately placed
+**before** the sentence's photometric aside (0.7326 / 0.5637), because Fig 8 does **not** plot
+those two numbers; attaching it later would have implied it does. Fig 8's chair bar reads 0.8395
+where the prose quotes Act 3's 0.8401 — the caption already reconciles this ("as recomputed in the
+falsification study … agree … to the third decimal"), and the prose was **not** harmonised to the
+figure, which would have moved a banked number.
+
+**Everything the frozen go/no-go asked for, measured on the rebuilt artifact:**
+
+| frozen requirement | result |
+|---|---|
+| numeral conservation stays 304/304 | ✅ **304/304, 133/133, lost {} / invented {}** — unchanged. A single digit is not a numeral to `NUM = \d+\.\d+\|\d{2,}`, so `Fig 1` / `Fig 8` add none |
+| 0 unresolved refs, 0 lost/invented numerals | ✅ `unresolved_refs 0`; `??` count 0 over the whole PDF |
+| Fig 1 / Fig 8 `md == pdf_ref` **non-vacuous** | ✅ both **md 1 / pdf_ref 1 / captioned 1**. Zero floats now pass vacuously; zero `md != pdf_ref` mismatches |
+| **no float misnumbering downstream** | ✅ float **numbers and caption pages byte-identical** to the shipped PDF (Fig 1 p1; 2,3 p5; 5,6 p6; 4,7,8 p11; 9 p12; Tab 1–4 p10, Tab 5 p12), and all 15 printed image sizes identical. `supp_floats.tex` untouched |
+| page budget content p1–8, References p9 | ✅ `content_pages 8`, `references_start_page 9`, `pages_total 13`, supp p9, appendix p13 — every value unchanged |
+
+Compile health is unchanged: **0 errors, 0 Overfull hboxes, the same 12 Underfull warnings**, and
+`main.log` is **identical to the shipped build except one line** — `main.xdv` grew 72260 → 72316
+bytes. `out/phase1h_gate.json` changes in **exactly two fields**: the Fig1 and Fig8 blocks, 0/0 →
+1/1. Nothing else in it moved.
+
+A whole-PDF word-multiset diff adds exactly four real tokens — `(Fig.` ×2, `1).` and `8):` — and
+alters no word. It is *not* a pure addition, and the difference is worth stating precisely: two
+tokens are **re-punctuated** (`transition.` → `transition`, `supervision:` → `supervision`) because
+the period and the colon moved outside the new parentheses, and five more are `pdftotext`
+de-hyphenation artifacts of moved line breaks (`perframe` → `per-` + `frame`, `pseudolabels` →
+`pseudo-labels`, `inscene` → `in-scene`, `frame-by-frame` → `frame-byframe`). No word is added,
+removed or changed beyond the two parentheticals, and the numeral multiset is untouched — but
+"removes nothing" would be wrong, so it is not claimed. Prose reflowed across the p1→p5 boundaries and was fully absorbed by
+p5; pages 6–13 are untouched apart from the Fig 8 line in §5.4. Both edits are **in-line**: neither
+file gained or lost a line (`body_main.tex` 528, `PAPER_DRAFT.md` 677, unchanged), so the
+line-number citations banked elsewhere still resolve — `body_main.tex:329–341` is still the
+red-team threshold paragraph and is still **byte-identical to `7fb5976`**.
+
+**The `.md` and the `.tex` were edited by hand, in lockstep, and the converter was not re-run.**
+`scripts/phase1h_md2tex.py` would regenerate `body_main.tex` with Fig 1 back as a `figure*` at
+`0.7\textwidth`, destroying step 2 and the page budget with it. Instead the hand edit was *verified
+against* the converter: running it on the edited `.md` into a scratch directory reproduces both new
+lines character-for-character, and the resulting file differs from the shipped `body_main.tex` by
+**exactly the two pre-existing camera-ready float lines** (Fig 1 single-column, Fig 5 at 0.53) —
+i.e. the same divergence set as before this step. The callout step introduces **no new drift**
+between the `.md` source of truth and the shipped `.tex`.
+
+**Page-budget headroom re-measured, as §0.5 requires.** §0.5 says the budget "should still be
+re-checked after any prose edit", and step 3 is a prose edit, so the Fig 5 width sweep was re-run in
+scratch **on the post-callout sources** rather than inheriting the pre-callout result. The ceiling
+is **unchanged**: content = 8 at Fig 5 = 0.53 / 0.56 / 0.58 / **0.59**, and content = 9 at 0.60 /
+0.62 — the same flip point as before the callouts. Shipping at 0.53 therefore still leaves the
+≈12.8 pt of float height §0.5 claims. Six probe builds, all in scratch; `~/3dgs_line` untouched by
+every one, and each asserted its own sources (post-callout, Fig 1 single-column, Fig 5 at the swept
+width) before compiling.
+
+**One honest interaction with §0.3, stated rather than buried.** The Fig 1 callout now invites the
+reader to look at a teaser whose in-figure text §0.3 measures as **still below print-legible**
+(~1.8–2.6 pt), and the fourth-column header the callout leans on — "frames 100+101 overlaid
+(red = *t*, blue = *t+1*)" — is one of the four column labels named there. The *visual* content the
+callout points at is legible at 1× (two rows of panels; a purple composite on top, separated red and
+blue fringes below), and every number the teaser carries is in the body prose, so nothing is lost —
+but item 6a does not repair item 1's residual cost, and the two should be read together.
+
+**Source drafts kept in parity.** `out/PAPER_DRAFT.md` is an *assembly* of the section drafts
+(`assemble_spec.md`), and this repo's discipline is to edit the source draft and mirror it, never
+the assembly alone. Both callouts were therefore also applied to `out/ABSTRACT_INTRO_DRAFT.md`
+(Fig 1) and `out/SEC5_DRAFT.md` (Fig 8), which were byte-identical to the assembly at both passages
+before the edit and are byte-identical again after it. Without this, a future re-assembly would
+regenerate `PAPER_DRAFT.md` *without* the callouts while the PDF kept its two `\ref`s — flipping the
+gate to `md 0 / pdf_ref 1`, a **real mismatch, strictly worse than the 0 == 0 vacuity 6a fixed**.
+
+*Ordering note:* `out/phase1h_gate.json` is git-tracked and the gate compares the `.md` against
+`paper/main.pdf`. It must be run **after** the rebuild — running it in between would bank a real
+`md 1 / pdf_ref 0` mismatch. Sources were edited, then tectonic ran, then the gate.
 
 ## 1. Toolchain — CORRECTED: it already existed; nothing was installed
 
@@ -292,7 +389,10 @@ SUPP floats costs **+1 total page and ZERO content pages**.
 
 Idempotent: re-running leaves `out/phase1h_gate.json` byte-identical. The numeral logic was also
 independently re-implemented from the docstring and reproduced 304/133 on both sides. All 14 floats
-report `captioned ≥ 1`; every `md` count equals its `pdf_ref` count.
+report `captioned ≥ 1`; every `md` count equals its `pdf_ref` count — and **since step 3 (§0.6)
+none of those equalities is vacuous**: the last two 0 == 0 matches, Fig 1 and Fig 8, are now
+1 == 1. *(The gate block quoted above is the step-1/step-2 run; the step-3 run is identical to it
+except that the Fig1 and Fig8 `figtab` entries read `md 1 / pdf_ref 1 / captioned 1`.)*
 
 ### 5.1 What 304/304 does NOT certify — read before quoting it
 
@@ -348,12 +448,17 @@ Everything else is identical across the two builds:
 
 | float | step-1 caption / cited | shipped caption / cited |
 |---|---|---|
-| Fig 1 | p2 / — | **p1** / — |
+| Fig 1 | p2 / — | **p1** / — → **p1 / p1** after step 3 |
 | Fig 2 | p5 / p4, p6 | p5 / p4, p6 |
 | Fig 3 | p5 / p4 | p5 / p4 |
 | Fig 5 | p6 / p5 | p6 / p5 |
 | Fig 6 | p6 / p5, p6, p7 | p6 / p5, p6, p7 |
+| Fig 8 | p11 / — | p11 / — → **p11 / p7** after step 3 |
 | Fig 9 | p12 / p5 | p12 / p5 |
+
+*(The `cited` column is measured on the PDF. Step 3 changed it for Fig 1 and Fig 8 only, and moved
+no caption: every caption page in this table is the same before and after. The Fig 8 row is new —
+the original table measured only the six floats step 2 could plausibly have moved.)*
 
 *Correction to an earlier draft:* three adjacency changes previously reported here — Fig 6's caption
 moving p7 → p6, Fig 9's p13 → p12, and Fig 3's citation splitting from p5/p5 to p4/p5 — are all
@@ -366,16 +471,26 @@ this step caused, and it is an improvement: the teaser now sits on the first pag
 | invariant | status |
 |---|---|
 | Mesh EVAL-ONLY / no method-path code touched | ✅ `git diff` contains **no** `scripts/` change |
-| No banked number altered | ✅ no prose changed anywhere; no banked `out/*.json` or `*RESULTS*.md` changed except the gate's own output |
+| No banked number altered | ✅ **no banked number altered in any step.** Steps 1–2 changed no prose at all; step 3 (§0.6) adds two figure callouts and nothing else — the numeral multiset is byte-for-byte the same 304/133. No `*RESULTS*.md` changed; the only `out/*.json` change is the gate's own output |
 | No asset re-rendered | ✅ `git diff -- paper/assets` empty |
 | No fabricated page count or gate result | ✅ every figure traces to a real invocation on a real build |
 | Probe builds isolated | ✅ all **97** probe builds across three rounds ran in scratch; `~/3dgs_line` untouched by every one |
 
-Repo-level, this step changes five tracked files vs `7fb5976`: `paper/body_main.tex` (one line),
-`paper/main.pdf`, `out/CROWNJEWEL_FIGSET.md`, `out/LATEX_ASSEMBLY_CHECK.md`, and this document.
-`out/phase1h_gate.json` is **byte-identical** — the single-column change alters no value the gate
-reports. ⚠️ `paper/main.log`, `ship_pdf_spec.md`, `ship_finalize_spec.md` and
-`ship_fig1_approve_spec.md` are untracked and **not** covered by `.gitignore` — stage explicitly,
+Repo-level, **step 2** changed five tracked files vs `7fb5976`: `paper/body_main.tex` (one line),
+`paper/main.pdf`, `out/CROWNJEWEL_FIGSET.md`, `out/LATEX_ASSEMBLY_CHECK.md`, and this document; at
+that point `out/phase1h_gate.json` was **byte-identical**, because the single-column change altered
+no value the gate reports.
+
+**Step 3** (§0.6) changes eight tracked files on top of that: `paper/body_main.tex` (one line, again),
+`out/PAPER_DRAFT.md` (one line — the `.md` is the gate's source of truth and must move in lockstep),
+`out/ABSTRACT_INTRO_DRAFT.md` and `out/SEC5_DRAFT.md` (the two section drafts the assembly is built
+from, kept byte-identical to it),
+`paper/main.pdf`, `out/phase1h_gate.json` (**no longer byte-identical** — the Fig1 and Fig8 `figtab`
+blocks go 0/0 → 1/1, and nothing else in the file moves), `out/LATEX_ASSEMBLY_CHECK.md` (Erratum 2),
+and this document. `paper/assets` is still untouched and `scripts/` is still untouched.
+
+⚠️ `paper/main.log`, `ship_pdf_spec.md`, `ship_finalize_spec.md`, `ship_fig1_approve_spec.md` and
+`ship_callouts_spec.md` are untracked and **not** covered by `.gitignore` — stage explicitly,
 never `git add -A`.
 
 ## 8. Status of the previously-flagged items
@@ -401,10 +516,56 @@ never `git add -A`.
 5. **Commit `d5c9650`'s message** repeats the same false "no LaTeX on dss9" claim. Immutable
    history — left as-is; this document and the `CROWNJEWEL_FIGSET.md` erratum are the correction
    of record.
-6. **Still open, pre-existing, reviewer-visible** (not introduced by any of this work):
-   **Fig 1 and Fig 8 have zero in-text callouts** in both the `.md` and the PDF — their
-   `md == pdf_ref` check passes vacuously at 0 == 0. `supp_floats.tex` pins every float number
-   with hardcoded `\setcounter`, so inserting or reordering any float silently misnumbers
-   everything downstream with no LaTeX warning. And the size hierarchy still tracks spec scope
-   rather than importance — Fig 6 (4.708 in, never in scope for any spec) remains larger than
-   Fig 5 (3.786 in) and Fig 1 (3.487 in).
+6. *(This item originally bundled **three** independent defects. Only the first is fixed; the
+   other two are re-listed unchanged rather than retired with it.)*
+
+   **6a. Zero in-text callouts for Fig 1 and Fig 8 — RESOLVED (2026-09-05, §0.6).** Both figures
+   now carry one callout each, placed in prose that already made the point the figure supports:
+   Fig 1 in Introduction ¶1, Fig 8 in §5.4 (Act 4). Their `md == pdf_ref` check is now
+   **non-vacuous at 1 == 1**, and no float anywhere in the paper still matches at 0 == 0. The
+   frozen go/no-go held on every clause: 304/304 numeral conservation, 0 unresolved refs, 0
+   lost / 0 invented, **zero float-number or caption-page change**, content p1–8 / References p9.
+   Verbatim text, the fabrication check on both anchors, and the full measurement table are in
+   §0.6. The callouts were applied to the **source drafts too** (`out/ABSTRACT_INTRO_DRAFT.md`,
+   `out/SEC5_DRAFT.md`), not just to the `PAPER_DRAFT.md` assembly — otherwise a re-assembly would
+   silently regress this fix into a real `md 0 / pdf_ref 1` mismatch. `out/LATEX_ASSEMBLY_CHECK.md`
+   carried the same claim in two places and now carries a dated **Erratum 2** (item 7 below).
+
+   **6b. `\setcounter` fragility — STILL OPEN, untouched.** `supp_floats.tex` pins every float
+   number with a hardcoded `\setcounter`, so inserting or reordering any float silently misnumbers
+   everything downstream with no LaTeX warning. Step 3 added **no float** — only two `\ref`s — so
+   this hazard is neither triggered nor reduced; the 9 hardcoded `\setcounter` calls are all still
+   there. It was verified *empirically* rather than assumed: every float number and caption page in
+   the rebuilt PDF is identical to the shipped one.
+
+   **6c. Size hierarchy tracks spec scope rather than importance — STILL OPEN, untouched.**
+   Fig 6 (4.708 in, never in scope for any spec) remains larger than Fig 5 (3.786 in) and Fig 1
+   (3.487 in). Step 3 changed no float width; all 15 printed image sizes are identical.
+
+7. **`out/LATEX_ASSEMBLY_CHECK.md` — ERRATUM 2 added (2026-09-05).** Two of its statements were
+   falsified by the callout step and one was already wrong. Row (c) asserted *"Fig 1 and Fig 8 have
+   zero body references in the .md itself"* — struck, and the per-float list now carries **Fig1×1**
+   and **Fig8×1**. Row (b)'s *"every float still in-PDF and referenced"* was **false** for exactly
+   those two floats while the callouts were missing, and is now true of all 14. And §5's deferred
+   entry recorded the blocker as *"adding \"(Fig 1)\" would change the pinned reference counts"* —
+   **factually wrong**, since the gate's `\d+\.\d+|\d{2,}` never matches a single digit; that
+   mistaken belief is what kept the defect open, so it is corrected on the record rather than just
+   deleted. §5's *other* Fig 8 item (the 0.8395-vs-0.8401 chair-bar reconciliation) is a different
+   defect and remains genuinely deferred.
+
+8. **Doc debt found while doing item 6a — reported, deliberately NOT edited.** Four banked
+   documents quote per-float reference counts. They are dated audits of earlier commits, and
+   editing them would corrupt the record rather than fix anything — so they are left stale on
+   purpose, not overlooked. **One of them this step really does falsify, and saying otherwise would
+   be wrong:** `out/CAMERA_READY_CHECKLIST.md` lines 11–13 count **whole-file** `Fig N` occurrences
+   in `PAPER_DRAFT.md` (including the asset table), a different convention from the gate's body-only
+   count; under that convention Fig 1 and Fig 8 each go **1 → 2** because of the callouts, so two of
+   its twelve numbers are now stale. They were correct at the commit they audit, and the other ten
+   still match exactly. `out/PHASE1G_CONVERGE.md` line 84 uses the same convention but is a
+   *diff-vs-HEAD* statement about commit `afca8ec` ("reference counts identical to HEAD"), so it is
+   self-dating and stays true of what it asserts; `out/CROWNJEWEL_FIGSET.md` §6 still says the gate reports
+   `Fig9: md 1 pdf-ref 0 captioned 0`, which commit `aa2dae5` already superseded; and
+   `out/PAPER_DRAFT.md`'s asset table has no Fig 9 or Tab 5 row (it sits *below* the gate's md
+   cut-off, which is why it drifted unnoticed). Item 4 above says "all three stale counts" while
+   the erratum it describes says "Four counts" — a pre-existing off-by-one that turns on whether
+   the asset count is counted once or twice; left as found.

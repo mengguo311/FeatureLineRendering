@@ -64,7 +64,7 @@ Act 4 shows that reading it out is supervision-bound.
 
 ## 5.4 Act 4 — and it is supervision-bound under our frozen protocol
 
-The signal exists (0.8401/0.9044) — but it collapses under mesh-free supervision: trained
+The signal exists (0.8401/0.9044) — but it collapses under mesh-free supervision (Fig 8): trained
 on our best mesh-free pseudo-labels (physics-frozen geometric-photometric votes, and a
 fully self-supervised clustering variant), the same probe falls to **0.6371** on chair
 through a pre-registered 0.72 gate (on lego 0.9046 — the ceiling as recomputed in this

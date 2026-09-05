@@ -13,6 +13,20 @@
 > Fig 9 and Tab 5 are SUPP-native floats: they cost **+1 supplementary page and ZERO content
 > pages**. See `out/SHIP_PDF_STATUS.md`.
 
+> **Erratum 2 (2026-09-05), applied to row (c), row (b) and §5.** The ship-polish callout step
+> (`tier1/ship_callouts_spec.md`) added one in-text callout each for **Fig 1** (Introduction ¶1)
+> and **Fig 8** (§5.4, Act 4). Row (c)'s per-float list therefore now carries **Fig1×1** and
+> **Fig8×1**, and its former parenthetical — *"Fig 1 and Fig 8 have zero body references in the
+> .md itself"* — is **no longer true and has been struck**. Row (b)'s trailing claim, *"every
+> float still in-PDF and referenced"*, was **false** for exactly those two floats while the
+> callouts were missing; it is **now true of all 14**. The §5 deferred entry for Fig 1 is
+> retired, and the blocker it recorded — *"adding \"(Fig 1)\" would change the pinned reference
+> counts"* — was **factually wrong**: the gate's numeral regex `\d+\.\d+|\d{2,}` never matches a
+> single digit, so `Fig 1` / `Fig 8` contribute **zero** numerals to either side. The pin held at
+> **304/304, 133/133, lost {} / invented {}** across the rebuild, and the page budget stayed
+> content p1–8 / References p9. §5's *other* Fig 8 item (the 0.8395-vs-0.8401 chair-bar
+> reconciliation) is a genuinely different defect and remains deferred, untouched.
+
 Spec `tier1/phase1h_spec.md`. FROZEN invariants honored: no experiment, no scoring, no
 recompute of any banked number (the only .md edits are the sanctioned prose-only scoping
 hardening + the A.2 oracle-domination clause, verified zero-number by diff multiset);
@@ -53,8 +67,8 @@ handles git).
 | check | result |
 |---|---|
 | (a) numeral multiset conservation, .md content region ↔ PDF (bibliography block excluded on the PDF side — reference years/ids are the only sanctioned new numerals) | **PASS — 304/304 occurrences, 133/133 distinct, lost {} / invented {}** (commas normalized; verified AFTER the A.2 + A.3 prose additions, which are zero-number by construction and by diff-multiset check) |
-| (b) page budget — declared: CVF/NeurIPS-family norm, **8 content pages excluding references; appendix/supplementary beyond** | **PASS — content ends p8; References start p9** (reached with zero prose cuts: 5 low-load-bearing floats → supplementary [Tab 1–3 (1–2 in-text refs each), Fig 4, Fig 7] + Fig 8 and Tab 4 [zero/one refs] + width tuning; every float still in-PDF and referenced) |
-| (c) Fig/Tab reference integrity | **PASS — 0 unresolved (`??`); per-Fig/Tab PDF reference counts equal the .md body counts exactly** (Fig2×4, Fig3/4/5/7×1, **Fig9×1**, Fig6×3, Tab1×2, Tab2/4×1, Tab3×3, **Tab5×1**; Fig 1 and Fig 8 have zero body references in the .md itself — pre-existing, teaser-conventional for Fig 1; logged below); printed heading numbers arabic and matching every `§x.y`; `Appendix A` heading matches all 11 prose mentions |
+| (b) page budget — declared: CVF/NeurIPS-family norm, **8 content pages excluding references; appendix/supplementary beyond** | **PASS — content ends p8; References start p9** (reached with zero prose cuts: 5 low-load-bearing floats → supplementary [Tab 1–3 (1–2 in-text refs each), Fig 4, Fig 7] + Fig 8 and Tab 4 [one in-text ref each; Fig 8's added 2026-09-05, Erratum 2] + width tuning; every float still in-PDF and referenced) |
+| (c) Fig/Tab reference integrity | **PASS — 0 unresolved (`??`); per-Fig/Tab PDF reference counts equal the .md body counts exactly** (**Fig1×1**, Fig2×4, Fig3/4/5/7×1, **Fig8×1**, **Fig9×1**, Fig6×3, Tab1×2, Tab2/4×1, Tab3×3, **Tab5×1**; since 2026-09-05 **no float passes vacuously** — all 14 match at ≥1 == ≥1, where Fig 1 and Fig 8 previously matched at 0 == 0. See Erratum 2); printed heading numbers arabic and matching every `§x.y`; `Appendix A` heading matches all 11 prose mentions |
 
 ## 3. Reviewer-defense scoping hardening (audited in the PDF text itself — lens 1 PASS)
 
@@ -112,8 +126,10 @@ handles git).
   analogous pair IS reconciled in §5.4; the chair reconciliation sentence would add a
   numeral → breaks the frozen 304 pin; both are real ledger numbers, documented in
   `FIGURES.md`).
-- Fig 1 uncited in body prose (pre-existing in the .md; teaser convention) — adding
-  "(Fig 1)" would change the pinned reference counts.
+- ~~Fig 1 uncited in body prose (pre-existing in the .md; teaser convention) — adding
+  "(Fig 1)" would change the pinned reference counts.~~ **RETIRED 2026-09-05 — done.** Fig 1 and
+  Fig 8 both now carry one callout each; the recorded blocker was wrong (single digits are not
+  numerals to the gate, so the 304 pin was never at risk). See Erratum 2.
 - Ref [8] (SketchSplat) is title+arXiv-id only — author fields deliberately left
   minimal rather than risk fabrication; complete during the related-work sweep.
 - `render_fig5.py` docstring "verbatim" nit (pre-1h, logged in PHASE1G_CONVERGE.md).

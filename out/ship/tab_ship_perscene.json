@@ -1,0 +1,494 @@
+{
+ "deliverable": "B3 per-scene table",
+ "held_out": "TEST views [5,15,...,95]; DT pull on TRAIN views only",
+ "definitions": {
+  "P/R@1.5": "pixel precision/recall at 1.5 px vs GT-mesh crease pixels (mesh EVAL-ONLY), mean over the 10 TEST views; points = linelet centres, segments = rasterised linelets",
+  "temporal": "forward-warped stroke residual on the 240-frame look-at orbit between TEST views 5 and 15; P_pop = popped-stroke fraction, ratio = Canny/OURS (higher = OURS steadier)",
+  "triangulation": "DexiNed multi-view triangulation (Phase 1b) 3D recall @1.5px-equiv of TEST-visible GT crease points vs single-view depth lift"
+ },
+ "scenes": {
+  "chair": {
+   "m1b_gated": {
+    "variant": "gated",
+    "args": {
+     "f": 0.3,
+     "edge": "sharp",
+     "views": 100,
+     "gate": true,
+     "pull_split": "train",
+     "eval_split": "test"
+    },
+    "n_lines": 15091,
+    "n_seeds": 17065,
+    "eval_views": [
+     5,
+     15,
+     25,
+     35,
+     45,
+     55,
+     65,
+     75,
+     85,
+     95
+    ],
+    "points": {
+     "P@1.5": 0.7352870886733158,
+     "R@1.5": 0.5032555102490177,
+     "F1@1.5": 0.5975366197525654,
+     "P@2.5": 0.851884111342369,
+     "R@2.5": 0.6106406191660503,
+     "F1@2.5": 0.7113658051129004
+    },
+    "segments": {
+     "P@1.5": 0.6572744617818822,
+     "R@1.5": 0.5959019132724314,
+     "F1@1.5": 0.6250853704514752,
+     "P@2.5": 0.777655719808287,
+     "R@2.5": 0.6718833329126994,
+     "F1@2.5": 0.7209104382563857
+    },
+    "seeds_before_pull_points": {
+     "P@1.5": 0.6755159199589424,
+     "R@1.5": 0.5656276923048383
+    },
+    "source": "m1b_chair_gated_test.json"
+   },
+   "m1b_ungated": {
+    "variant": "ungated",
+    "args": {
+     "f": 0.3,
+     "edge": "sharp",
+     "views": 100,
+     "gate": false,
+     "pull_split": "train",
+     "eval_split": "test"
+    },
+    "n_lines": 15574,
+    "n_seeds": 17065,
+    "eval_views": [
+     5,
+     15,
+     25,
+     35,
+     45,
+     55,
+     65,
+     75,
+     85,
+     95
+    ],
+    "points": {
+     "P@1.5": 0.7297943719063108,
+     "R@1.5": 0.5298793873377264,
+     "F1@1.5": 0.6139732479627221,
+     "P@2.5": 0.8460505855577949,
+     "R@2.5": 0.6456211474618088,
+     "F1@2.5": 0.7323704509072173
+    },
+    "segments": {
+     "P@1.5": 0.6458621175514214,
+     "R@1.5": 0.6439865825956861,
+     "F1@1.5": 0.6449229864906119,
+     "P@2.5": 0.7630407880224246,
+     "R@2.5": 0.713311693171257,
+     "F1@2.5": 0.7373387092802283
+    },
+    "seeds_before_pull_points": {
+     "P@1.5": 0.6755222540517972,
+     "R@1.5": 0.5656276923048383
+    },
+    "source": "m1b_chair_ungated_test.json"
+   },
+   "temporal": {
+    "trajectory": "TEST views 5->15, look-at-corrected orbit (object stays framed)",
+    "variant": "ungated",
+    "chain": {
+     "n_linelets": 16208,
+     "n_nms": 8679,
+     "n_strokes": 1184,
+     "median_vertices": 4.0
+    },
+    "by_frames": {
+     "30": {
+      "P_pop_ours": 0.09254435629090121,
+      "P_pop_canny": 0.7884599076681574,
+      "P_pop_ratio": 8.519805412982027,
+      "frechet_med_ours": 0.32964192739550957,
+      "frechet_med_canny": 1.3799617504451906,
+      "frechet_ratio": 4.186244636257968,
+      "strokes_per_frame_ours": 756.2068965517242,
+      "strokes_per_frame_canny": 577.1379310344828
+     },
+     "60": {
+      "P_pop_ours": 0.07575442659646178,
+      "P_pop_canny": 0.7704396859267902,
+      "P_pop_ratio": 10.170226619638552,
+      "frechet_med_ours": 0.16441030587882094,
+      "frechet_med_canny": 1.2933083252675366,
+      "frechet_ratio": 7.866345837351418,
+      "strokes_per_frame_ours": 753.7966101694915,
+      "strokes_per_frame_canny": 576.9152542372881
+     },
+     "120": {
+      "P_pop_ours": 0.06801000302149326,
+      "P_pop_canny": 0.755760256749054,
+      "P_pop_ratio": 11.112486739784593,
+      "frechet_med_ours": 0.08221640681501372,
+      "frechet_med_canny": 1.2516785228443428,
+      "frechet_ratio": 15.224193945383796,
+      "strokes_per_frame_ours": 751.5714285714286,
+      "strokes_per_frame_canny": 575.3613445378152
+     },
+     "240": {
+      "P_pop_ours": 0.06656359216999275,
+      "P_pop_canny": 0.7551882943315438,
+      "P_pop_ratio": 11.34536568283325,
+      "frechet_med_ours": 0.040945752575920376,
+      "frechet_med_canny": 1.2252312772894105,
+      "frechet_ratio": 29.923281420157654,
+      "strokes_per_frame_ours": 750.7991631799163,
+      "strokes_per_frame_canny": 577.5774058577406
+     }
+    },
+    "source": "m1b_stroke_temporal_table.json[headline]"
+   },
+   "triangulation": {
+    "tri_sup2_recall_3D": 0.6753165145125389,
+    "tri_sup2_precision_3D": 0.1635776859079327,
+    "singleview_recall_3D": 0.6582528310403271,
+    "miss_set_recovery": 0.6913915051123245,
+    "source": "dexprimary_p1b_chair_ref40.json"
+   },
+   "discriminator_auc": {
+    "value": 0.8401,
+    "source": "RESULTS_MASTER.md (DINOv2 semantic family, held-out, P1c/P1d)"
+   },
+   "figure": null
+  },
+  "lego": {
+   "m1b_gated": {
+    "variant": "gated",
+    "args": {
+     "f": 0.3,
+     "edge": "sharp",
+     "views": 100,
+     "gate": true,
+     "pull_split": "train",
+     "eval_split": "test"
+    },
+    "n_lines": 20142,
+    "n_seeds": 29916,
+    "eval_views": [
+     5,
+     15,
+     25,
+     35,
+     45,
+     55,
+     65,
+     75,
+     85,
+     95
+    ],
+    "points": {
+     "P@1.5": 0.6435896386790417,
+     "R@1.5": 0.227539847224411,
+     "F1@1.5": 0.33621244701266656,
+     "P@2.5": 0.7748025093797585,
+     "R@2.5": 0.3227181129957607,
+     "F1@2.5": 0.45565030610579843
+    },
+    "segments": {
+     "P@1.5": 0.6196430770449965,
+     "R@1.5": 0.2856159615283188,
+     "F1@1.5": 0.39100400153638354,
+     "P@2.5": 0.7617663257705545,
+     "R@2.5": 0.368924893854535,
+     "F1@2.5": 0.49710222561035783
+    },
+    "seeds_before_pull_points": {
+     "P@1.5": 0.5746375104109995,
+     "R@1.5": 0.2920336776031053
+    },
+    "source": "m1b_lego_gated_test.json"
+   },
+   "m1b_ungated": {
+    "variant": "ungated",
+    "args": {
+     "f": 0.3,
+     "edge": "sharp",
+     "views": 100,
+     "gate": false,
+     "pull_split": "train",
+     "eval_split": "test"
+    },
+    "n_lines": 21151,
+    "n_seeds": 29916,
+    "eval_views": [
+     5,
+     15,
+     25,
+     35,
+     45,
+     55,
+     65,
+     75,
+     85,
+     95
+    ],
+    "points": {
+     "P@1.5": 0.6245640020145473,
+     "R@1.5": 0.23157468788407928,
+     "F1@1.5": 0.3378733271528143,
+     "P@2.5": 0.7537140355563873,
+     "R@2.5": 0.32865964421097665,
+     "F1@2.5": 0.4577261834674758
+    },
+    "segments": {
+     "P@1.5": 0.5917302139458386,
+     "R@1.5": 0.29458142246722036,
+     "F1@1.5": 0.39334410376568857,
+     "P@2.5": 0.7300562702553874,
+     "R@2.5": 0.37829177451854834,
+     "F1@2.5": 0.4983529916897779
+    },
+    "seeds_before_pull_points": {
+     "P@1.5": 0.5746394688970111,
+     "R@1.5": 0.2920475964751068
+    },
+    "source": "m1b_lego_ungated_test.json"
+   },
+   "temporal": {
+    "trajectory": "TEST views 5->15, look-at-corrected orbit (object stays framed)",
+    "variant": "ungated",
+    "chain": {
+     "n_linelets": 25870,
+     "n_nms": 14302,
+     "n_strokes": 1897,
+     "median_vertices": 4.0
+    },
+    "by_frames": {
+     "30": {
+      "P_pop_ours": 0.23361792288842786,
+      "P_pop_canny": 0.8028926191405313,
+      "P_pop_ratio": 3.43677663602882,
+      "frechet_med_ours": 0.6192521545812144,
+      "frechet_med_canny": 1.502927654432435,
+      "frechet_ratio": 2.4270043201526357,
+      "strokes_per_frame_ours": 1120.7586206896551,
+      "strokes_per_frame_canny": 616.8275862068965
+     },
+     "60": {
+      "P_pop_ours": 0.1440544780488687,
+      "P_pop_canny": 0.7636185993385699,
+      "P_pop_ratio": 5.300901503940209,
+      "frechet_med_ours": 0.32959449517205885,
+      "frechet_med_canny": 1.3987511936607873,
+      "frechet_ratio": 4.243854840265444,
+      "strokes_per_frame_ours": 1120.9322033898304,
+      "strokes_per_frame_canny": 616.0169491525423
+     },
+     "120": {
+      "P_pop_ours": 0.09062675301160242,
+      "P_pop_canny": 0.7338572132307726,
+      "P_pop_ratio": 8.097578130563953,
+      "frechet_med_ours": 0.16997466819844492,
+      "frechet_med_canny": 1.2723380831830218,
+      "frechet_ratio": 7.485457078213389,
+      "strokes_per_frame_ours": 1121.2689075630253,
+      "strokes_per_frame_canny": 617.218487394958
+     },
+     "240": {
+      "P_pop_ours": 0.0625577961050928,
+      "P_pop_canny": 0.7190666485389275,
+      "P_pop_ratio": 11.49443703756675,
+      "frechet_med_ours": 0.08572949639967634,
+      "frechet_med_canny": 1.2024603184415492,
+      "frechet_ratio": 14.026214651204798,
+      "strokes_per_frame_ours": 1121.673640167364,
+      "strokes_per_frame_canny": 615.3849372384938
+     }
+    },
+    "source": "m1b_stroke_temporal_table.json[headline]"
+   },
+   "triangulation": {
+    "tri_sup2_recall_3D": 0.21123695658842273,
+    "tri_sup2_precision_3D": null,
+    "singleview_recall_3D": null,
+    "miss_set_recovery": null,
+    "source": "xy/xy_expX_lego_p1c.json (p1c cloud, same generator; no p1b json for lego)"
+   },
+   "discriminator_auc": {
+    "value": 0.9044,
+    "source": "RESULTS_MASTER.md (DINOv2 semantic family, held-out, P1c/P1d)"
+   },
+   "figure": null
+  },
+  "ficus": {
+   "m1b_gated": {
+    "variant": "gated",
+    "args": {
+     "f": 0.3,
+     "edge": "sharp",
+     "views": 100,
+     "gate": true,
+     "pull_split": "train",
+     "eval_split": "test"
+    },
+    "n_lines": 5305,
+    "n_seeds": 7363,
+    "eval_views": [
+     5,
+     15,
+     25,
+     35,
+     45,
+     55,
+     65,
+     75,
+     85,
+     95
+    ],
+    "points": {
+     "P@1.5": 0.2194690095852315,
+     "R@1.5": 0.13392135940968447,
+     "F1@1.5": 0.16634062889458154,
+     "P@2.5": 0.28881044419473784,
+     "R@2.5": 0.21303908987726702,
+     "F1@2.5": 0.24520462808467292
+    },
+    "segments": {
+     "P@1.5": 0.22173077776959627,
+     "R@1.5": 0.16987542660959165,
+     "F1@1.5": 0.19236983502750926,
+     "P@2.5": 0.2959890527477933,
+     "R@2.5": 0.24335309422734047,
+     "F1@2.5": 0.267102625847321
+    },
+    "seeds_before_pull_points": {
+     "P@1.5": 0.1868858801246825,
+     "R@1.5": 0.21018030014309813
+    },
+    "source": "m1b_ficus_gated_test.json"
+   },
+   "m1b_ungated": {
+    "variant": "ungated",
+    "args": {
+     "f": 0.3,
+     "edge": "sharp",
+     "views": 100,
+     "gate": false,
+     "pull_split": "train",
+     "eval_split": "test"
+    },
+    "n_lines": 6687,
+    "n_seeds": 7363,
+    "eval_views": [
+     5,
+     15,
+     25,
+     35,
+     45,
+     55,
+     65,
+     75,
+     85,
+     95
+    ],
+    "points": {
+     "P@1.5": 0.1969812159713619,
+     "R@1.5": 0.16594307539564232,
+     "F1@1.5": 0.1801349182240649,
+     "P@2.5": 0.2617441366759262,
+     "R@2.5": 0.2624692492659505,
+     "F1@2.5": 0.2621061914687998
+    },
+    "segments": {
+     "P@1.5": 0.19744639737183492,
+     "R@1.5": 0.22644155057006446,
+     "F1@1.5": 0.21095229808930369,
+     "P@2.5": 0.2642403751163323,
+     "R@2.5": 0.31388256673184817,
+     "F1@2.5": 0.28693013603837075
+    },
+    "seeds_before_pull_points": {
+     "P@1.5": 0.1868858801246825,
+     "R@1.5": 0.21018030014309813
+    },
+    "source": "m1b_ficus_ungated_test.json"
+   },
+   "temporal": {
+    "trajectory": "TEST views 5->15, look-at-corrected orbit (object stays framed)",
+    "variant": "ungated",
+    "chain": {
+     "n_linelets": 7172,
+     "n_nms": 4872,
+     "n_strokes": 612,
+     "median_vertices": 4.0
+    },
+    "by_frames": {
+     "30": {
+      "P_pop_ours": 0.4172392260363277,
+      "P_pop_canny": 0.8759017304127726,
+      "P_pop_ratio": 2.0992794439142948,
+      "frechet_med_ours": 0.5885248847610935,
+      "frechet_med_canny": 1.6922723789456529,
+      "frechet_ratio": 2.8754474496564675,
+      "strokes_per_frame_ours": 420.58620689655174,
+      "strokes_per_frame_canny": 573.1034482758621
+     },
+     "60": {
+      "P_pop_ours": 0.27472503705062334,
+      "P_pop_canny": 0.8536832562838728,
+      "P_pop_ratio": 3.1074097412044948,
+      "frechet_med_ours": 0.3606736795579053,
+      "frechet_med_canny": 1.438590045198994,
+      "frechet_ratio": 3.9886194272960016,
+      "strokes_per_frame_ours": 421.66101694915255,
+      "strokes_per_frame_canny": 569.3389830508474
+     },
+     "120": {
+      "P_pop_ours": 0.16367506791496741,
+      "P_pop_canny": 0.8198815711343633,
+      "P_pop_ratio": 5.009202571770484,
+      "frechet_med_ours": 0.1985871862674858,
+      "frechet_med_canny": 1.3281997870357205,
+      "frechet_ratio": 6.688245158208294,
+      "strokes_per_frame_ours": 420.78991596638656,
+      "strokes_per_frame_canny": 570.8571428571429
+     },
+     "240": {
+      "P_pop_ours": 0.10286219286040872,
+      "P_pop_canny": 0.7856527756992007,
+      "P_pop_ratio": 7.637915874157836,
+      "frechet_med_ours": 0.10102193561157688,
+      "frechet_med_canny": 1.147807691136825,
+      "frechet_ratio": 11.36196494541616,
+      "strokes_per_frame_ours": 420.78242677824267,
+      "strokes_per_frame_canny": 570.81589958159
+     }
+    },
+    "source": "m1b_stroke_temporal_table_ship_ficus.json"
+   },
+   "triangulation": {
+    "tri_sup2_recall_3D": 0.6488582306272919,
+    "tri_sup2_precision_3D": 0.12797711138914675,
+    "singleview_recall_3D": 0.5483295832327684,
+    "miss_set_recovery": 0.611709472521403,
+    "source": "dexprimary_p1b_ficus_ref40.json"
+   },
+   "discriminator_auc": {
+    "value": null,
+    "source": "not run (P1c is scoped to chair/lego)"
+   },
+   "figure": null
+  }
+ },
+ "caveats": [
+  "ficus: the banked headline table (out/m1b_headline_table.md) EXCLUDES ficus by design ('thin/foliage: only 33% of object pixels are >4px from a silhouette, so crease vs flat surface is not well posed'); it is run here for completeness with the identical frozen recipe and reported straight. Its GT crease set (mesh_oracle, split-vertex face adjacency) covers only ~31% of the geometric >=30deg edges and none of the 31,390 open-boundary leaf-rim edges, so P/R vs 'GT creases' understates what the lines capture on a plant.",
+  "train-fit vs test-eval: the DT pull (the only fitted step) consumed the 80 TRAIN views; every P/R and temporal number is on the 10 held-out TEST views / the TEST-to-TEST orbit. The prune/length thresholds ('tuned') were selected on VAL views per the M1b protocol; no number here is in-sample.",
+  "line-buffer pivot NO-GO (motivation for shipping the frozen design): pre-registered EPIPOLAR ACCUMULATION TEST, corrected labels (out/EPIPOLAR_ACCUM_RESULTS.md): lego S_bar AUC 0.698 / Recall@85%P 0.000 (NO-GO, structural), chair 0.859 / 0.000 (NO-GO, knife-edge). Multi-view accumulation of raw DexiNed does not separate missed creases from flat surface at 85% precision; the mechanism is DexiNed's ~5 px spatial response tail on edge-dense surfaces, not dead zeros. (The B3 spec's 0.572/0.733 figures are from the superseded first run with a label bug.)",
+  "GT crease topology (inherited, all scenes): src/mesh_oracle.py builds GT creases from split-vertex face adjacency; the banked crease set covers 37% (lego) / 43% (chair) / ~31% (ficus) of the geometric >=30deg edges. All P/R here are against that banked definition, as in every prior result."
+ ]
+}
