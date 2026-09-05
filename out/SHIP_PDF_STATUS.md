@@ -569,3 +569,17 @@ never `git add -A`.
    cut-off, which is why it drifted unnoticed). Item 4 above says "all three stale counts" while
    the erratum it describes says "Four counts" — a pre-existing off-by-one that turns on whether
    the asset count is counted once or twice; left as found.
+
+> **Erratum 3 (2026-09-05, B3 close-out resync).** `paper/*.tex` regenerated from the updated
+> `out/PAPER_DRAFT.md` via `scripts/phase1h_md2tex.py` (converter now emits the shipped Fig 1
+> `\columnwidth` and Fig 5 `0.53\textwidth` layouts itself, and maps `S̄`, `10⁻⁹`, `σ` to LaTeX);
+> `main.pdf` rebuilt with tectonic (env `latex`); gate re-run (`out/phase1h_gate.json`):
+> **numeral conservation PASS 393/393 (183/183 distinct), lost {} / invented {}, 0 unresolved
+> refs, all 14 Fig/Tab reference counts md == pdf**. New PDF `md5 5b76cdb48e9971f9d1919ccae3cc0618`,
+> 15 pages, References p10, Appendix A p14–15. **RESIDUAL: content pages = 9 (criterion 8).**
+> The shipped p8 sat on a page cliff; the mandated disclosures (Canny/TEED pull-field attribution
+> in §3.2/§3.4/§3.5, the GT-subset pointer in §5.1, the line-field NO-GO in §6 — ≈15 md lines
+> after compression; the long versions live in Appendix A.4/A.5, outside the content budget)
+> spill 23 layout lines of §7 onto p9. Restoring 8 content pages requires cutting ≈25 column
+> lines of frozen prose — an editorial decision left to the orchestrator; no banked numeral
+> changed and no LaTeX numeral was hand-edited.

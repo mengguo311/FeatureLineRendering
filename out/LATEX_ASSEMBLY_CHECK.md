@@ -150,3 +150,9 @@ session limit and was resumed after reset; both agents completed on the current 
 `scripts/{phase1h_md2tex.py,phase1h_gate.py}`, `out/phase1h_gate.json`, this file.
 .md hardening edits: `out/{APPENDIX_A_DRAFT,SEC6_DRAFT,PAPER_DRAFT}.md` (prose-only,
 zero-number, diff-multiset verified). Nothing committed.
+
+> **Erratum 3 (2026-09-05, B3 close-out resync).** Gate re-run after the epipolar / GT-subset /
+> pull-field-attribution prose edits: **393/393 numerals conserved, 183/183 distinct, lost {} /
+> invented {}, 0 unresolved refs, Fig1–9 / Tab1–5 reference counts all md == pdf** (was 304/304,
+> 133/133 before the additions). Page budget: **content pages 9 (criterion 8), References p10,
+> 15 pages total** — see `SHIP_PDF_STATUS.md` Erratum 3 for the cause and the open decision.

@@ -63,3 +63,64 @@ in-sample (loosest); the cloud is rasterised as points inside the segment-raster
 convention (its 272k points saturate recall at 0.9540 ungated, so the NO-GO is not a
 rasterisation artifact).
 
+\textbf{A.4 A learned line field cannot escape the boundary either (the epipolar accumulation
+test).} \emph{(Numbers from \texttt{EPIPOLAR\_ACCUM\_RESULTS.md}; script \texttt{scripts/epi\_accum.py},
+arrays \texttt{out/epi/}. Mesh EVAL-ONLY: it supplies the two label sets and the visibility
+of their points; the accumulated feature is mesh-free.)} The remaining objection is
+representational: a dedicated 3D edge field, trained on the detector's multi-view 2D edge
+maps and combined with the frozen 3DGS for occlusion, might integrate sub-threshold
+evidence coherently across views and so recover creases that per-view thresholding
+misses. Any such field, whatever its architecture, can learn at most what its
+multi-view projection loss can see; the closed-form upper bound of that loss is the
+occlusion-aware multi-view mean $\bar{S}$ of the \emph{raw} detector probability at the true 3D
+location. We evaluated $\bar{S}$ on the GT creases the frozen pipeline misses (lego 437,138
+points, chair 73,371 --- the pre-registered miss-set of the coverage analysis) against an
+equal number of genuinely flat GT surface points (farther than 3 px, twice the scoring
+tolerance, from any geometric $\geq$10$^{\circ}$ edge, boundary edge, or non-manifold edge of the
+position-merged mesh; visible in $\geq$1 held-out view under the same mesh-depth rule), over
+all 100 views, with occlusion from the frozen 3DGS z-buffer under the pipeline's own
+tolerance, using DexiNed's raw sigmoid maps (never thresholded; continuity asserted at
+run time) and the pipeline's half-pixel convention, calibrated on the recovered creases.
+Gate, frozen before any number: GO iff AUC $\geq$ 0.80 and recall $\geq$ 0.55 at 85 \% precision;
+NO-GO iff AUC $\leq$ 0.65 or that recall $\leq$ 0.42.
+
+Result: \textbf{lego AUC 0.698, recall at 85 \% precision 0.000; chair 0.859 / 0.000 --- NO-GO on
+both scenes.} The single-view baseline (the same points scored in one view, balanced)
+reaches AUC 0.644 / 0.738 (best views 0.758 / 0.828); the paired multi-view lift is
++0.049 (lego) / +0.133 (chair) AUC --- real, but it does not reach the recall criterion.
+Two readings the numbers rule out. (i) \emph{Dead zeros}: only 11 \% of lego's missed creases
+are undetected by the pipeline's own rule in every visible view (they are true dead
+zeros, $\bar{S}$ median 0.010); the other 89 \% are detected somewhere and score AUC 0.76 against
+flat surface. (ii) \emph{An over-strict negative class}: the flat set's distance to the nearest
+geometric edge sweeps the criterion continuously --- $\bar{S}$ on flat surface is 0.136 at 3--4 px,
+0.097 at 4--5 px, 0.073 at 5--6 px, 0.036 at 8--12 px (missed creases 0.220) --- i.e. the
+detector's response tail reaches $\approx$5 px, and 83 \% of lego's flat surface lies within 4.5 px
+of an edge (97 \% within 6 px). Widening the margin lets the criterion pass (lego 6 px:
+AUC 0.831, recall 0.665) only by restricting the negative class to the 3 \% of the surface
+that is farther from any edge than the detector's footprint --- which is not the surface a
+line field must reject. On chair the zero recall is a knife-edge (removing the 1,000
+highest-scoring flat points --- 1.4 \%, on rails that are silhouettes in most views --- lifts
+it to 0.53); on lego it is structural (removing 5,000 lifts it to 0.055). The kill
+mechanism is therefore the spatial resolution of the 2D supervision on an edge-dense
+surface, not missing signal, and it binds any field trained on that supervision. All
+mesh-free analysis choices (native/multi-scale maps, bilinear/1.5 px-max sampling, two
+occlusion tolerances, 100 or 80 views, mean/median/trimmed/logit/max aggregation, a 3 px
+silhouette peel) leave lego's best AUC at 0.713 and its recall at 85 \% precision below
+0.004; the headline numbers were reproduced to $10^{-9}$ by an independent re-computation
+from the saved arrays. A first run of this test with a flat set built from the
+split-vertex adjacency (the topology issue of A.5) read 0.572 / 0.733 and is superseded.
+
+\textbf{A.5 The ground-truth crease set is a topology-selected subset.} The crease set is
+built from face adjacency of the mesh as loaded from the asset file, and the
+NeRF-synthetic OBJs store split vertices (one per position/texture/normal triplet): a
+hard-shaded crease or a UV seam is therefore an \emph{open-boundary} edge with no face
+adjacency and is absent from the crease set. Measured on position-merged copies of the
+meshes, the crease set used throughout covers \textbf{37 \% (lego) / 43 \% (chair) / 31 \% (ficus)}
+of the geometric $\geq$30$^{\circ}$ edges, and none of a plant's open leaf rims; every precision/recall
+number in this paper --- ours and every baseline's --- is scored against that subset. The
+subset does not flatter the ceiling: on the full geometric crease set the frozen
+multi-view triangulation of \S5.2 recovers 0.175 (lego) / 0.598 (chair) of visible
+creases, with the never-counted creases slightly \emph{harder} (0.159 / 0.545) than the counted
+ones (0.199 / 0.665), so the coverage conclusions stand; the absolute recall values are
+definition-specific and are always to be quoted with it.
+

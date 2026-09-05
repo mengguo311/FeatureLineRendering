@@ -19,7 +19,8 @@ OUTDIR = os.path.join(TIER1, "paper")
 UNI = [("—", "---"), ("–", "--"), ("×", "$\\times$"), ("≥", "$\\geq$"),
        ("≤", "$\\leq$"), ("≈", "$\\approx$"), ("→", "$\\rightarrow$"),
        ("·", "$\\cdot$"), ("°", "$^{\\circ}$"), ("α", "$\\alpha$"),
-       ("−", "$-$"), ("é", "\\'e"), ("½", "$\\tfrac12$"), ("§", "\\S")]
+       ("−", "$-$"), ("é", "\\'e"), ("½", "$\\tfrac12$"), ("§", "\\S"),
+       ("S\u0304", "$\\bar{S}$"), ("10\u207b\u2079", "$10^{-9}$"), ("σ", "$\\sigma$")]
 
 # first-BODY-mention citation anchors: (literal text, cite key)
 CITES = [("3D Gaussian\nSplatting (3DGS)", "kerbl3dgs"),
@@ -208,7 +209,7 @@ FLOATS = [
     ("\\section{Introduction}",
      fig(1, "assets/fig1_teaser.png",
          "Teaser: object-space strokes versus per-frame line detection, with a "
-         "two-frame overlap visualizing stroke identity across a camera step.", 0.7)),
+         "two-frame overlap visualizing stroke identity across a camera step.", col=True)),
     ("\\ref{fig:2}", FIG2),
     ("\\ref{fig:3}",
      fig(3, "assets/fig3_pareto2.png",
@@ -219,7 +220,7 @@ FLOATS = [
      fig(5, "assets/fig5_survival.png",
          "Stroke-survival curves P(life${}>{}$K) for the six scene$\\times$trajectory "
          "conditions: object-space strokes persist for tens-to-hundreds of frames; "
-         "per-frame strokes essentially never do.", 0.7)),
+         "per-frame strokes essentially never do.", 0.53)),
     ("\\ref{fig:6}",
      fig(6, "assets/fig6_ceiling.png",
          "Act 1: the carrier coverage ceiling, and the recovery ladder from "

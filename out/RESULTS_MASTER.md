@@ -276,17 +276,25 @@ lego's miss-set undetected in every view). Independent recomputation agrees to 1
 first run (0.5716 / 0.733, quoted in `B3_ship_spec.md` v1) used a flat class contaminated by
 the split-vertex topology and is SUPERSEDED.
 
-**Open discrepancy for the orchestrator (not edited).** Paper §3.2/§3.4 describe the DT
-pull as descending TEED probability fields ("Detector: TEED, NMS-thinned, threshold 0.5"),
-but the banked M1b runs behind the ledger P/R baseline and the 7–13× crown jewel use
-`--edge sharp` = Canny (blur 0, 50/150) DT fields (`src/dt_pull.EDGE_SETS`); TEED enters only
-as the M1a seed-ranking score of the Track-P/PARETO `tcteed` variants. Every number is
-correct; the prose attribution of the pull field needs a decision.
+**Pull-field attribution (RESOLVED 2026-09-05, prose only; no number changed).** Paper
+§3.2/§3.4 previously described the DT pull as descending TEED probability fields. Verified
+against every banked run config (`m1b_*_test.json` / `m1b_*_tc_*.json` args): ALL M1b runs
+pull on `--edge sharp` = Canny (blur 0, hysteresis 50/150) DT fields
+(`src/dt_pull.EDGE_SHARP`); the ledger P/R baseline (`_gated_test`) and the 7–13× stroke-
+temporal runs (`_ungated_test`) use the published Canny-sourced M1a seed score
+(`score=None`), while the Track-P (`chair=tcteed`, `lego=tcteed040`) and PARETO
+(`OURS_SWEEP` = `tc_teed05` / `tc_teed_native_0.5`) variants swap in the TEED-sourced seed
+score (native scale, NMS-thinned, threshold 0.5) — seed RANKING only. §3.2, §3.4 and §3.5
+now say exactly that; TEED remains named where it ranks seeds and as the per-frame
+baseline of Track P.
 
-**Assembly note.** All paper edits of 2026-09-05 are additive paragraphs (§2, §3.5, §5.1,
-§5.5, §6 ×2, Appendix A.4); no banked numeral was altered. They introduce new numerals, so
-`paper/*.tex` must be re-synced (`scripts/phase1h_md2tex.py`) and the md→PDF numeral pin
-re-run before shipping the PDF.
+**Assembly note (resynced 2026-09-05).** Paper edits: §3.2/§3.4/§3.5 pull-field attribution
+(Canny pull field; TEED seed-ranking only in §4.1–4.4), §5.1 GT-subset pointer, §5.5 pointer,
+§6 line-field limitation (short), Appendix A.4 (epipolar test, full) and A.5 (GT-subset
+disclosure, full). No banked numeral altered. `paper/*.tex` regenerated with
+`scripts/phase1h_md2tex.py`, `main.pdf` rebuilt (tectonic), gate PASS 393/393 (183/183, lost {} /
+invented {}, 0 unresolved refs). RESIDUAL: content pages 9 vs the 8-page criterion (≈23 layout
+lines of §7 spill to p9); see `SHIP_PDF_STATUS.md` Erratum 3.
 
 ---
 

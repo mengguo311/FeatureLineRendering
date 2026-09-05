@@ -149,10 +149,14 @@ The design splits the labor between two unequally reliable sources. The \textbf{
 coarse and 3D: the frozen gaussian cloud (de-floatered by opacity and a k-NN spacing
 test) anchors \emph{where in space} feature lines may live and supplies visibility --- but its
 fine-scale geometry is untrustworthy (\S5.2), so it is never asked to localize an edge.
-The \textbf{corrector} is precise and 2D: per-view edge probability maps from \textbf{TEED} --- a
-frozen, zero-shot, BIPED-trained detector of 58,910 parameters, chosen among frozen
-detectors on validation views and never fine-tuned --- NMS-thinned, thresholded at 0.5, and
-converted to sub-pixel \textbf{distance-transform (DT) fields}, one per training view. Short oriented 3D segments ("linelets" --- a position, a unit tangent, and a half-length,
+The \textbf{corrector} is precise and 2D: per-view \textbf{Canny} edge maps of the training
+photographs (unblurred, hysteresis 50/150), converted to sub-pixel \textbf{distance-transform
+(DT) fields}, one per training view. A learned detector enters only through the \emph{seed
+ranking}, never the pull field: seeds are ranked by a multi-view photometric score whose
+edge source is a blurred Canny union in the shipped configuration and, in the
+matched-precision configurations of \S4.1--4.4, \textbf{TEED} --- a frozen, zero-shot,
+BIPED-trained detector of 58,910 parameters, chosen among frozen detectors on validation
+views and never fine-tuned --- NMS-thinned and thresholded at 0.5. Short oriented 3D segments ("linelets" --- a position, a unit tangent, and a half-length,
 one per kept carrier seed, initialized from the carrier's local structure) are then
 optimized by gradient descent so that samples along their projections descend these DT
 fields \emph{in many views simultaneously} --- the multi-view DT pull, run for a fixed iteration
@@ -191,8 +195,11 @@ bounds; the tested mitigation is cross-scene transfer of development-time choice
 (0.8245 in the one direction that worked).
 
 \textbf{Frozen constants (committed defaults, printed for reproduction).} De-floater:
-opacity > 0.1 and k-NN (k=8) mean spacing < 3$\times$ its median. Detector: TEED, probability
-NMS-thinned, threshold 0.5. DT pull: 100 gradient steps, learning rate 0.35, per-step
+opacity > 0.1 and k-NN (k=8) mean spacing < 3$\times$ its median. Pull field: Canny, no blur,
+hysteresis 50/150, distance-transformed (every configuration). Seed ranking: Canny-sourced
+(blurred two-scale union, $\sigma$ = 2.0 and 2.5, thresholds 100/200 and 75/150) for \S5.1 and \S4.5;
+TEED-sourced (native scale, NMS-thinned, threshold 0.5) for the sweeps of \S4.1--4.4. DT
+pull: 100 gradient steps, learning rate 0.35, per-step
 displacement cap 5.0 px. Acceptance: visible in $\geq$3 pull views, inlier fraction $\geq$0.50,
 median residual $\leq$1.5 px. Chaining: 3D NMS radius 1.0$\times$ local spacing, k=10 neighbors,
 tangent cosine $\geq$0.60, collinearity cosine $\geq$0.50, gap $\leq$4.0$\times$ spacing, $\geq$3 nodes per stroke.
@@ -202,8 +209,12 @@ half-length initialization follow the released implementation (\texttt{src/seeds
 
 \subsection{What the method does not contain}
 No mesh in the runtime path (\S3.1, provenance in \S3.4). No per-frame optimization. No
-temporal filter. No learned component beyond the frozen zero-shot 2D detector whose
-evidence the DT pull aggregates. The
+temporal filter. No learned component beyond the frozen zero-shot 2D detector that ranks
+seeds in the \S4.1--4.4 configurations (the pull field is Canny throughout). The multi-view
+DexiNed triangulation and the DINOv2 probe of \S5 and Appendix A are \emph{diagnostic
+instruments}, not stages of the shipped generator: no triangulated candidate becomes a
+stroke and no discriminator threshold is deployed; the shipped generator is exactly
+\S3.2--3.3. The
 evaluation protocol (matched precision-and-density comparison, pooled warp metric,
 interior restriction) is specified with the experiments in \S4.1, because it is shared by
 every baseline rather than being part of the method.
@@ -338,6 +349,10 @@ rasterised segments falls by more than half across the same range, F-score is fl
 and the joint operating gate is met at no threshold on either scene. chair, which carries no such
 family, is unaffected. The ceiling conclusion is therefore robust to the threshold even though
 the individual number is not; the per-threshold values are tabulated in the results ledger.
+
+The crease set is also a topology-selected subset of the geometric $\geq$30$^{\circ}$ edges --- \textbf{37 \%
+(lego) / 43 \% (chair) / 31 \% (ficus)}, Appendix A.5 --- and every precision/recall number
+here is relative to it.
 Some of those uncovered creases are flat decals with literally zero geometric footprint.
 
 This admission invites a specific attack, so we answer it here rather than in a rebuttal:
@@ -414,7 +429,8 @@ with an in-scene oracle: every patch we tested either equals chance, stays
 detector-bound, requires supervision the method path is not allowed to touch, or --- when
 granted that supervision as an explicit oracle --- fragments the very chains it is meant to
 purify (Appendix A). The boundary is measured, disclosed, and has exactly one open door:
-labeled scenes feeding a topology-aware construction, not a post-hoc filter.
+labeled scenes feeding a topology-aware construction, not a post-hoc filter --- and a learned
+3D edge field is not a second door (Appendix A.4).
 
 \section{Limitations}
 \emph{(All numbers from \texttt{RESULTS\_MASTER.md}. Nothing here is softened; several of these limits
@@ -464,6 +480,11 @@ from thresholding any fixed candidate set), and extending the falsification to m
 scenes is named future work, not an implied result. Any deployment needing crease-level precision on textured
 surfaces currently needs labeled scenes --- and, per Appendix A, a topology-aware
 construction rather than a filter to spend them on.
+
+\textbf{A learned edge field would not lift the ceiling either.} Its closed-form upper bound
+fails a pre-registered gate on both scenes (lego AUC \textbf{0.698}, recall \textbf{0.000} at 85 \%
+precision; chair \textbf{0.859 / 0.000}) --- the detector's $\approx$5 px response tail, not missing
+signal (Appendix A.4).
 
 \textbf{Geometry cannot rescue it (K\_geom $\approx$ 0).} This is not an artifact of our reconstruction:
 even the \textbf{GT mesh's own dihedral scores AUC 0.3964} on crease-vs-decal, with
