@@ -293,8 +293,9 @@ baseline of Track P.
 §6 line-field limitation (short), Appendix A.4 (epipolar test, full) and A.5 (GT-subset
 disclosure, full). No banked numeral altered. `paper/*.tex` regenerated with
 `scripts/phase1h_md2tex.py`, `main.pdf` rebuilt (tectonic), gate PASS 393/393 (183/183, lost {} /
-invented {}, 0 unresolved refs). RESIDUAL: content pages 9 vs the 8-page criterion (≈23 layout
-lines of §7 spill to p9); see `SHIP_PDF_STATUS.md` Erratum 3.
+invented {}, 0 unresolved refs). Content pages 9 vs the self-declared 8: ACCEPTED by orchestrator decision
+(integrity disclosures not cut; long forms in Appendix A.4/A.5; venue-conditional fallback cut
+recorded); see `SHIP_PDF_STATUS.md` Erratum 3 (RESOLVED).
 
 ---
 

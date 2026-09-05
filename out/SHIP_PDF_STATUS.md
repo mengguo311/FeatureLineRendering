@@ -583,3 +583,19 @@ never `git add -A`.
 > spill 23 layout lines of §7 onto p9. Restoring 8 content pages requires cutting ≈25 column
 > lines of frozen prose — an editorial decision left to the orchestrator; no banked numeral
 > changed and no LaTeX numeral was hand-edited.
+
+> **Erratum 3 — RESIDUAL RESOLVED (orchestrator editorial decision, 2026-09-05): ACCEPT 9 content
+> pages.** The mandated honesty disclosures (Canny/TEED pull-field attribution in §3.2/§3.4/§3.5,
+> GT-subset coverage in §5.1, line-field NO-GO in §6) are NOT cut to hit the self-declared 8-page
+> budget. Rationale: (1) the 8-page figure is self-declared — no venue is banked — and IEEEtran /
+> NeurIPS norms allow 9; (2) the p9 overflow is entirely integrity disclosure, and trimming frozen
+> prose to fit a cosmetic budget would invert the project's priorities; (3) the long forms already
+> sit in Appendix A.4/A.5, outside the content budget. The shipped artifact is the current
+> 393/393-gate, 15-page `main.pdf` (`md5 5b76cdb48e9971f9d1919ccae3cc0618`; content p1–9,
+> References p10, Appendix A p14–15). The `content_pages == 8` row of the criteria table above is
+> superseded by this decision; every other row still holds.
+>
+> **FALLBACK (preserved verbatim from the residual note):** "Restoring 8 content pages requires
+> cutting ≈25 column lines of frozen prose — an editorial decision left to the orchestrator; no
+> banked numeral changed and no LaTeX numeral was hand-edited." If a venue with a hard 8-page limit
+> is later chosen, that staged ≈25-column-line cut executes THEN as a venue-specific step — not now.

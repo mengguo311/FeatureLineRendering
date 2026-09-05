@@ -156,3 +156,8 @@ zero-number, diff-multiset verified). Nothing committed.
 > invented {}, 0 unresolved refs, Fig1–9 / Tab1–5 reference counts all md == pdf** (was 304/304,
 > 133/133 before the additions). Page budget: **content pages 9 (criterion 8), References p10,
 > 15 pages total** — see `SHIP_PDF_STATUS.md` Erratum 3 for the cause and the open decision.
+
+> **Erratum 3 — resolved 2026-09-05:** 9 content pages ACCEPTED by orchestrator decision (integrity
+> disclosures are not cut for a self-declared budget; long forms in Appendix A.4/A.5). Shipped artifact
+> = the 393/393-gate 15-page `main.pdf`. Fallback ≈25-column-line cut is venue-conditional only; see
+> `SHIP_PDF_STATUS.md` Erratum 3.
