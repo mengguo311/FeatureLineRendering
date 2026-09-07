@@ -1,0 +1,90 @@
+{
+  "lego": {
+    "pool": 99721,
+    "f": 0.4,
+    "k": 39888,
+    "O_ref": 0.8068341355796229,
+    "jaccard_ref": 0.6762128884499822,
+    "pairwise": {
+      "TEED|DexiNed": 0.8068341355796229,
+      "TEED|PiDiNet": 0.7061522262334536,
+      "TEED|AGREE_min3": 0.7992378660248697,
+      "TEED|AGREE_geo3": 0.8470718010429201,
+      "TEED|AGREE_min2": 0.876328720417168,
+      "DexiNed|PiDiNet": 0.7322252306458082,
+      "DexiNed|AGREE_min3": 0.8243080625752106,
+      "DexiNed|AGREE_geo3": 0.8702115924588849,
+      "DexiNed|AGREE_min2": 0.8953319294023265,
+      "PiDiNet|AGREE_min3": 0.837645407139992,
+      "PiDiNet|AGREE_geo3": 0.8335088247091857,
+      "PiDiNet|AGREE_min2": 0.7453369434416366,
+      "AGREE_min3|AGREE_geo3": 0.926845166466105,
+      "AGREE_min3|AGREE_min2": 0.8677547131969514,
+      "AGREE_geo3|AGREE_min2": 0.9018251103088648
+    },
+    "arms": {
+      "AGREE_min3": {
+        "overlap_vs_TEED": 0.7992378660248697,
+        "jaccard_vs_TEED": 0.6656088191080675,
+        "O_ref_TEED_vs_DexiNed": 0.8068341355796229,
+        "tier0_pass": true
+      },
+      "AGREE_geo3": {
+        "overlap_vs_TEED": 0.8470718010429201,
+        "jaccard_vs_TEED": 0.7347134034965643,
+        "O_ref_TEED_vs_DexiNed": 0.8068341355796229,
+        "tier0_pass": false
+      },
+      "AGREE_min2": {
+        "overlap_vs_TEED": 0.876328720417168,
+        "jaccard_vs_TEED": 0.7798799669797639,
+        "O_ref_TEED_vs_DexiNed": 0.8068341355796229,
+        "tier0_pass": false
+      }
+    }
+  },
+  "chair": {
+    "pool": 56884,
+    "f": 0.3,
+    "k": 17065,
+    "O_ref": 0.7994140052739526,
+    "jaccard_ref": 0.6658531823506443,
+    "pairwise": {
+      "TEED|DexiNed": 0.7994140052739526,
+      "TEED|PiDiNet": 0.7351303838265456,
+      "TEED|AGREE_min3": 0.8056841488426604,
+      "TEED|AGREE_geo3": 0.8526809258716671,
+      "TEED|AGREE_min2": 0.8683855845297392,
+      "DexiNed|PiDiNet": 0.7513038382654557,
+      "DexiNed|AGREE_min3": 0.8262525637269265,
+      "DexiNed|AGREE_geo3": 0.8675651919132727,
+      "DexiNed|AGREE_min2": 0.8882508057427483,
+      "PiDiNet|AGREE_min3": 0.8518019337825959,
+      "PiDiNet|AGREE_geo3": 0.8549663053032522,
+      "PiDiNet|AGREE_min2": 0.774802226779959,
+      "AGREE_min3|AGREE_geo3": 0.9268092587166715,
+      "AGREE_min3|AGREE_min2": 0.883914444769997,
+      "AGREE_geo3|AGREE_min2": 0.906358042777615
+    },
+    "arms": {
+      "AGREE_min3": {
+        "overlap_vs_TEED": 0.8056841488426604,
+        "jaccard_vs_TEED": 0.6745988911240861,
+        "O_ref_TEED_vs_DexiNed": 0.7994140052739526,
+        "tier0_pass": false
+      },
+      "AGREE_geo3": {
+        "overlap_vs_TEED": 0.8526809258716671,
+        "jaccard_vs_TEED": 0.7431942387251648,
+        "O_ref_TEED_vs_DexiNed": 0.7994140052739526,
+        "tier0_pass": false
+      },
+      "AGREE_min2": {
+        "overlap_vs_TEED": 0.8683855845297392,
+        "jaccard_vs_TEED": 0.7673864636735539,
+        "O_ref_TEED_vs_DexiNed": 0.7994140052739526,
+        "tier0_pass": false
+      }
+    }
+  }
+}
