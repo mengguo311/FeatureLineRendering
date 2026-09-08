@@ -1,0 +1,9 @@
+DESIGN ARGUE (NO CODE — reasoning only, then I push back). Context: E-TRAJ-chair just banked — crown jewel is trajectory-robust on chair (published 10.18x on unseen VAL orbit, all 3 arms SAFE). The ACTIVE breakthrough stands: improving EVIDENCE QUALITY that ranks carriers moves the recall-vs-stability frontier OUTWARD at ZERO temporal cost (TEED f=0.40 STRICTLY DOMINATES shipped lego on P/R/temporal). Fusion is dead (union<best single). REPLACING weak evidence pays, not fusing.
+
+Question: pick the SINGLE highest-EV, cheapest-to-falsify next frontier-push experiment among these, and pre-register its go/no-go. Give me your reasoning and a sharp adversarial critique of your own pick, then I will push back.
+
+Candidate A (agreement-RANK): rank each carrier by cross-detector AGREEMENT (TEED x PiDiNet response product/min along the carrier tangent), NOT fusion of ink. Hypothesis: agreement suppresses texture-decal false carriers better than single TEED, lifting precision at fixed temporal. RISK: this smells like fusion-in-disguise which we already killed (ECO~0, union<best). Falsification cost: cheap if PiDiNet already cached.
+
+Candidate B (90-deg corner channel): add a junction/corner-detector response as the carrier rank for the exactly-90-deg corner family (24.85% of lego miss-set, current recall 0.229 — the LARGEST recoverable block). Hypothesis: a corner-tuned evidence channel recovers carriers that edge-detectors structurally miss. RISK: corners are POINTS not lines; may not chain into stable curves. Falsification cost: medium.
+
+Constraints for the go/no-go you propose: must be on the banked 240-frame TEST orbit, gate+mask-matched vs shipped, mesh EVAL-ONLY, temporal P_pop ratio must stay >= 10.345x (HARD), held-out. Name the exact P/R/ratio thresholds that would count as a WIN vs a clean NO-GO. Direct answer, NO heavy multi-agent workflow.
