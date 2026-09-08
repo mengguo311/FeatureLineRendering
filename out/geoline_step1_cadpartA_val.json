@@ -1,0 +1,294 @@
+{
+ "scene": "cadpartA",
+ "split": "val",
+ "views": [
+  0,
+  10,
+  20,
+  30,
+  40,
+  50,
+  60,
+  70,
+  80,
+  90
+ ],
+ "linelet_file": "linelets_cadpartA_gated_test.npz",
+ "n_linelets": 9743,
+ "n_keep": 3049,
+ "frozen": {
+  "rho": 4.0,
+  "xi": 0.25,
+  "n_min": 5,
+  "source": "out/diag2dgs_lego_test.json headline (no --visible_only)"
+ },
+ "bars": {
+  "AUC": 0.8,
+  "median_gap_deg": 25.0,
+  "lego_measured": {
+   "surfel3d": {
+    "AUC": 0.411,
+    "gap": -17.33
+   },
+   "ribbon3dgs_vanilla": {
+    "AUC": 0.3875,
+    "gap": -5.94
+   }
+  }
+ },
+ "mesh_eval_only": "GT mesh read via tune_lib.Harness -> src.mesh_oracle for LABELS ONLY; no mesh quantity enters any signal.",
+ "linelet_median_half_length": 0.02840704470872879,
+ "gaussian_cloud": {
+  "n_defloatered": 32476
+ },
+ "labels": {
+  "rule_pos": "TrueCrease: median over visible split views of GT-crease distance <= 1.5 px",
+  "rule_neg_primary": "offcrease: median > 3.0 px",
+  "rule_neg_legorule": "offcrease_dexhi: median > 3.0 px AND DexiNed native prob > 0.5 in >= half the visible views (TEED cache absent for cadpart)",
+  "n_seen": 9743,
+  "n_crease": 5428,
+  "n_offcrease": 3093,
+  "n_offcrease_dexhi": 391,
+  "n_dex_high": 4857
+ },
+ "n_common_measurable": 8681,
+ "signals": {
+  "surfel3d_vanilla3dgs|offcrease|own": {
+   "arm": "surfel3d_vanilla3dgs",
+   "n_crease": 4901,
+   "n_neg": 2683,
+   "measurable_frac": 0.890998665708714,
+   "AUC": 0.6294147033362706,
+   "median_crease": 49.97749255754285,
+   "median_neg": 33.43627527087153,
+   "median_gap": 16.54121728667132,
+   "p05_crease": 6.050705468341136,
+   "p95_neg": 82.45345848132614,
+   "gate": "NO-GO"
+  },
+  "surfel3d_vanilla3dgs|offcrease|common": {
+   "arm": "surfel3d_vanilla3dgs",
+   "n_crease": 4901,
+   "n_neg": 2683,
+   "measurable_frac": 0.890998665708714,
+   "AUC": 0.6294147033362706,
+   "median_crease": 49.97749255754285,
+   "median_neg": 33.43627527087153,
+   "median_gap": 16.54121728667132,
+   "p05_crease": 6.050705468341136,
+   "p95_neg": 82.45345848132614,
+   "gate": "NO-GO"
+  },
+  "surfel3d_vanilla3dgs|offcrease_dexhi|own": {
+   "arm": "surfel3d_vanilla3dgs",
+   "n_crease": 4901,
+   "n_neg": 282,
+   "measurable_frac": 0.890998665708714,
+   "AUC": 0.41557736805775636,
+   "median_crease": 49.97749255754285,
+   "median_neg": 57.67382941061421,
+   "median_gap": -7.696336853071358,
+   "p05_crease": 6.050705468341136,
+   "p95_neg": 87.11589738965259,
+   "gate": "NO-GO"
+  },
+  "surfel3d_vanilla3dgs|offcrease_dexhi|common": {
+   "arm": "surfel3d_vanilla3dgs",
+   "n_crease": 4901,
+   "n_neg": 282,
+   "measurable_frac": 0.890998665708714,
+   "AUC": 0.41557736805775636,
+   "median_crease": 49.97749255754285,
+   "median_neg": 57.67382941061421,
+   "median_gap": -7.696336853071358,
+   "p05_crease": 6.050705468341136,
+   "p95_neg": 87.11589738965259,
+   "gate": "NO-GO"
+  },
+  "spread3dgs|offcrease|own": {
+   "arm": "spread3dgs",
+   "n_crease": 4901,
+   "n_neg": 2683,
+   "measurable_frac": 0.890998665708714,
+   "AUC": 0.6366808997806209,
+   "median_crease": 36.49936905368735,
+   "median_neg": 30.939726135140095,
+   "median_gap": 5.559642918547258,
+   "p05_crease": 19.21276726683615,
+   "p95_neg": 46.50391420836425,
+   "gate": "NO-GO"
+  },
+  "spread3dgs|offcrease|common": {
+   "arm": "spread3dgs",
+   "n_crease": 4901,
+   "n_neg": 2683,
+   "measurable_frac": 0.890998665708714,
+   "AUC": 0.6366808997806209,
+   "median_crease": 36.49936905368735,
+   "median_neg": 30.939726135140095,
+   "median_gap": 5.559642918547258,
+   "p05_crease": 19.21276726683615,
+   "p95_neg": 46.50391420836425,
+   "gate": "NO-GO"
+  },
+  "spread3dgs|offcrease_dexhi|own": {
+   "arm": "spread3dgs",
+   "n_crease": 4901,
+   "n_neg": 282,
+   "measurable_frac": 0.890998665708714,
+   "AUC": 0.3950141887384395,
+   "median_crease": 36.49936905368735,
+   "median_neg": 40.66210795666264,
+   "median_gap": -4.162738902975285,
+   "p05_crease": 19.21276726683615,
+   "p95_neg": 47.55861082571534,
+   "gate": "NO-GO"
+  },
+  "spread3dgs|offcrease_dexhi|common": {
+   "arm": "spread3dgs",
+   "n_crease": 4901,
+   "n_neg": 282,
+   "measurable_frac": 0.890998665708714,
+   "AUC": 0.3950141887384395,
+   "median_crease": 36.49936905368735,
+   "median_neg": 40.66210795666264,
+   "median_gap": -4.162738902975285,
+   "p05_crease": 19.21276726683615,
+   "p95_neg": 47.55861082571534,
+   "gate": "NO-GO"
+  },
+  "ribbon3dgs_vanilla|offcrease|own": {
+   "arm": "ribbon3dgs_vanilla",
+   "n_crease": 5428,
+   "n_neg": 3093,
+   "measurable_frac": 1.0,
+   "AUC": 0.6332452269977064,
+   "median_crease": 8.963346121830558,
+   "median_neg": 5.95799680020168,
+   "median_gap": 3.005349321628878,
+   "p05_crease": 1.5790157916978724,
+   "p95_neg": 26.363786676371006,
+   "gate": "NO-GO"
+  },
+  "ribbon3dgs_vanilla|offcrease|common": {
+   "arm": "ribbon3dgs_vanilla",
+   "n_crease": 4901,
+   "n_neg": 2683,
+   "measurable_frac": 0.890998665708714,
+   "AUC": 0.645445341427807,
+   "median_crease": 10.063729858573534,
+   "median_neg": 6.150730691338297,
+   "median_gap": 3.9129991672352373,
+   "p05_crease": 1.5953988673102883,
+   "p95_neg": 29.06757966996584,
+   "gate": "NO-GO"
+  },
+  "ribbon3dgs_vanilla|offcrease_dexhi|own": {
+   "arm": "ribbon3dgs_vanilla",
+   "n_crease": 5428,
+   "n_neg": 391,
+   "measurable_frac": 1.0,
+   "AUC": 0.5132386394691163,
+   "median_crease": 8.963346121830558,
+   "median_neg": 7.371485948931289,
+   "median_gap": 1.5918601728992687,
+   "p05_crease": 1.5790157916978724,
+   "p95_neg": 43.63647762173301,
+   "gate": "NO-GO"
+  },
+  "ribbon3dgs_vanilla|offcrease_dexhi|common": {
+   "arm": "ribbon3dgs_vanilla",
+   "n_crease": 4901,
+   "n_neg": 282,
+   "measurable_frac": 0.890998665708714,
+   "AUC": 0.47122312569008207,
+   "median_crease": 10.063729858573534,
+   "median_neg": 10.408865111545673,
+   "median_gap": -0.3451352529721383,
+   "p05_crease": 1.5953988673102883,
+   "p95_neg": 49.27212565301985,
+   "gate": "NO-GO"
+  },
+  "surfel3d_vanilla3dgs_visibleonly|offcrease|own": {
+   "arm": "surfel3d_vanilla3dgs_visibleonly",
+   "n_crease": 4901,
+   "n_neg": 2683,
+   "measurable_frac": 0.890998665708714,
+   "AUC": 0.6294147033362706,
+   "median_crease": 49.97749255754285,
+   "median_neg": 33.43627527087153,
+   "median_gap": 16.54121728667132,
+   "p05_crease": 6.050705468341136,
+   "p95_neg": 82.45345848132614,
+   "gate": "NO-GO"
+  },
+  "surfel3d_vanilla3dgs_visibleonly|offcrease|common": {
+   "arm": "surfel3d_vanilla3dgs_visibleonly",
+   "n_crease": 4901,
+   "n_neg": 2683,
+   "measurable_frac": 0.890998665708714,
+   "AUC": 0.6294147033362706,
+   "median_crease": 49.97749255754285,
+   "median_neg": 33.43627527087153,
+   "median_gap": 16.54121728667132,
+   "p05_crease": 6.050705468341136,
+   "p95_neg": 82.45345848132614,
+   "gate": "NO-GO"
+  },
+  "surfel3d_vanilla3dgs_visibleonly|offcrease_dexhi|own": {
+   "arm": "surfel3d_vanilla3dgs_visibleonly",
+   "n_crease": 4901,
+   "n_neg": 282,
+   "measurable_frac": 0.890998665708714,
+   "AUC": 0.41557736805775636,
+   "median_crease": 49.97749255754285,
+   "median_neg": 57.67382941061421,
+   "median_gap": -7.696336853071358,
+   "p05_crease": 6.050705468341136,
+   "p95_neg": 87.11589738965259,
+   "gate": "NO-GO"
+  },
+  "surfel3d_vanilla3dgs_visibleonly|offcrease_dexhi|common": {
+   "arm": "surfel3d_vanilla3dgs_visibleonly",
+   "n_crease": 4901,
+   "n_neg": 282,
+   "measurable_frac": 0.890998665708714,
+   "AUC": 0.41557736805775636,
+   "median_crease": 49.97749255754285,
+   "median_neg": 57.67382941061421,
+   "median_gap": -7.696336853071358,
+   "p05_crease": 6.050705468341136,
+   "p95_neg": 87.11589738965259,
+   "gate": "NO-GO"
+  },
+  "surfel3d_vanilla3dgs|offcrease|keep_only": {
+   "arm": "surfel3d_vanilla3dgs",
+   "n_crease": 2480,
+   "n_neg": 360,
+   "measurable_frac": 0.29549420096479523,
+   "AUC": 0.34431451612903224,
+   "median_crease": 50.508568703021865,
+   "median_neg": 59.204500628235884,
+   "median_gap": -8.695931925214019,
+   "p05_crease": 10.399882341446235,
+   "p95_neg": 86.4109905971089,
+   "gate": "NO-GO"
+  },
+  "ribbon3dgs_vanilla|offcrease|keep_only": {
+   "arm": "ribbon3dgs_vanilla",
+   "n_crease": 2600,
+   "n_neg": 409,
+   "measurable_frac": 0.3129426254746998,
+   "AUC": 0.5779452698890352,
+   "median_crease": 22.73074747670609,
+   "median_neg": 16.598850922358928,
+   "median_gap": 6.131896554347161,
+   "p05_crease": 3.786368587579114,
+   "p95_neg": 50.341186933585284,
+   "gate": "NO-GO"
+  }
+ },
+ "dexined_prevalence": {
+  "frac_seen_dexhi": 0.49851175202709636
+ }
+}
