@@ -132,10 +132,19 @@ def run_split(args, split):
 
     rows = {}
     for kk, (s, okm) in sig.items():
-        for negname, neg in (("keep_only", offcrease & KEEP),      # THE GATED CLASS
-                             ("offcrease", offcrease),
-                             ("offcrease_dexhi", offcrease_dexhi)):
-            r = score(s, okm, crease, neg, kk)
+        # TWO readings of "prune survivors", because they are NOT the same population and
+        # the dispatch's wording and the STEP-1 number it cites disagree:
+        #   keep_only  positives = ALL TrueCrease, negatives = off-crease AND survivors.
+        #              This is the dispatch's LITERAL wording ("TrueCrease vs off-crease
+        #              PRUNE-SURVIVORS").
+        #   keep_both  BOTH classes restricted to survivors.  This is what STEP 1 computed,
+        #              i.e. the definition behind the 0.3672 the dispatch quotes as motive.
+        # Both are scored and both are gated; if they disagree the report says so.
+        for negname, neg, extra in (("keep_only", offcrease & KEEP, None),
+                                    ("keep_both", offcrease & KEEP, KEEP),
+                                    ("offcrease", offcrease, None),
+                                    ("offcrease_dexhi", offcrease_dexhi, None)):
+            r = score(s, okm if extra is None else (okm & extra), crease, neg, kk)
             # score() stamps the STEP-1 bars (AUC 0.80 AND gap +25 deg). Step 2 is gated
             # ONLY on AUC >= 0.75 vs prune survivors, so rename to prevent misreading.
             r["step1_bar_gate"] = r.pop("gate")
@@ -175,28 +184,42 @@ def main():
         res[sp] = run_split(args, sp)
 
     verdict = {}
-    for arm in ("surfel3d_2dgs", "ribbon2dgs", "surfel3d_vanilla3dgs", "ribbon3dgs_vanilla"):
-        t = res["test"]["signals"][f"{arm}|keep_only"]
-        v = res["val"]["signals"][f"{arm}|keep_only"]
-        okt = t["AUC"] == t["AUC"] and t["AUC"] >= GATE_AUC
-        okv = (t["AUC"] == t["AUC"] and v["AUC"] == v["AUC"]
-               and abs(t["AUC"] - v["AUC"]) <= GATE_VAL_TOL)
-        verdict[arm] = {"AUC_test": t["AUC"], "AUC_val": v["AUC"],
-                        "n_neg_test": t["n_neg"], "n_neg_val": v["n_neg"],
-                        "leg_auc": bool(okt), "leg_val_agree": bool(okv),
-                        "gate": "GO" if (okt and okv) else "NO-GO"}
+    for defn in ("keep_only", "keep_both"):
+        for arm in ("surfel3d_2dgs", "ribbon2dgs",
+                    "surfel3d_vanilla3dgs", "ribbon3dgs_vanilla"):
+            t = res["test"]["signals"][f"{arm}|{defn}"]
+            v = res["val"]["signals"][f"{arm}|{defn}"]
+            okt = t["AUC"] == t["AUC"] and t["AUC"] >= GATE_AUC
+            okv = (t["AUC"] == t["AUC"] and v["AUC"] == v["AUC"]
+                   and abs(t["AUC"] - v["AUC"]) <= GATE_VAL_TOL)
+            verdict[f"{defn}|{arm}"] = {
+                "AUC_test": t["AUC"], "AUC_val": v["AUC"],
+                "abs_diff": (abs(t["AUC"] - v["AUC"])
+                             if t["AUC"] == t["AUC"] and v["AUC"] == v["AUC"] else None),
+                "n_pos_test": t["n_crease"], "n_neg_test": t["n_neg"],
+                "n_pos_val": v["n_crease"], "n_neg_val": v["n_neg"],
+                "leg_auc": bool(okt), "leg_val_agree": bool(okv),
+                "gate": "GO" if (okt and okv) else "NO-GO"}
     res["verdict_per_arm"] = verdict
-    res["VERDICT"] = ("GO" if any(verdict[a]["gate"] == "GO"
-                                  for a in ("surfel3d_2dgs", "ribbon2dgs")) else "NO-GO")
+    res["VERDICT_by_definition"] = {
+        d: ("GO" if any(verdict[f"{d}|{a}"]["gate"] == "GO"
+                        for a in ("surfel3d_2dgs", "ribbon2dgs")) else "NO-GO")
+        for d in ("keep_only", "keep_both")}
+    res["VERDICT"] = ("GO" if all(v == "GO" for v in
+                                  res["VERDICT_by_definition"].values()) else "NO-GO")
 
     p = os.path.join(OUT, f"geoline_step2_{args.scene}.json")
     json.dump(res, open(p, "w"), indent=1)
     print(f"\n  FROZEN GATE: AUC vs off-crease PRUNE-SURVIVORS >= {GATE_AUC} on TEST, "
           f"VAL within {GATE_VAL_TOL}")
     for a, r in verdict.items():
-        print(f"    {a:24s} TEST {r['AUC_test']:.4f}  VAL {r['AUC_val']:.4f}  "
-              f"(n_neg {r['n_neg_test']}/{r['n_neg_val']})  {r['gate']}")
-    print(f"\n  === STEP 2 VERDICT: {res['VERDICT']} ===")
+        dd = f"{r['abs_diff']:.4f}" if r["abs_diff"] is not None else "  nan"
+        print(f"    {a:38s} TEST {r['AUC_test']:.4f}  VAL {r['AUC_val']:.4f}  "
+              f"|d| {dd}  (n {r['n_pos_test']}/{r['n_neg_test']})  "
+              f"auc:{'P' if r['leg_auc'] else 'F'} val:{'P' if r['leg_val_agree'] else 'F'}"
+              f"  {r['gate']}")
+    print(f"\n  by definition: {res['VERDICT_by_definition']}")
+    print(f"  === STEP 2 VERDICT: {res['VERDICT']} ===")
     print(f"  -> {p}", flush=True)
 
 
