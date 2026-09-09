@@ -133,7 +133,72 @@ def build_prism_shallow(R=1.10, r=0.52, HZ=0.62,
     return V, Q
 
 
+def build_step():
+    """STEP-8 concave solid: a three-tier axis-aligned ziggurat (stepped block).
+
+    All 22 faces are axis-aligned and planar by construction.  It is the first solid in the
+    set that is NOT convex: each ledge meets the box above it at a REFLEX edge, so 8 of its
+    crease edges are genuinely concave.  Concavity is the axis none of gcube / gicosa /
+    gprism / cadpart samples, it is what real CAD parts carry as pockets, slots and steps,
+    and it attacks the statistic under test directly -- the inlier ratio is a fraction over
+    VISIBLE views, and a valley is visible from fewer of them, so `min_views >= 3` may bind
+    here for the first time (it removed 0.000 of the pool on all four earlier solids).
+    The three tiers also introduce feature-scale disparity within one object.
+    """
+    tiers = [(0.90, 0.75, -0.62, -0.20),      # (half_x, half_y, z_lo, z_hi), widest first
+             (0.62, 0.50, -0.20, 0.18),
+             (0.36, 0.28, 0.18, 0.56)]
+    V, Q = [], []
+
+    def quad(pts, want):
+        """append a quad wound so its outward normal points along `want`"""
+        i0 = len(V)
+        p = np.asarray(pts, np.float64)
+        n = np.cross(p[1] - p[0], p[2] - p[0])
+        if n @ np.asarray(want, np.float64) < 0:
+            p = p[::-1]
+        V.extend(p.tolist())
+        Q.append([i0, i0 + 1, i0 + 2, i0 + 3])
+
+    def frame(X, Y, x, y, z):
+        """Rectangular annulus at height z, outward normal +z, split into 4 TRAPEZOIDS that
+        meet along the outer-to-inner diagonals.
+
+        CONSTRUCTION FIX, disclosed.  A first build used the obvious picture-frame split
+        (two full-height side strips plus two short strips).  Its inner edges are strict
+        SUPERSETS of the sides of the box above, so the two do not share vertices and the
+        mesh acquires T-junctions: trimesh then registered only 4 of the 8 reflex edges as
+        face adjacencies.  The trapezoid split makes each inner edge exactly one side of the
+        inner rectangle, so the solid is a clean manifold and all 8 concave creases exist.
+        Rendering was unaffected either way (silhouette IoU was already 1.00000), so this is
+        a topology fix, not a tuning decision, and it was made before any P/R was computed
+        on this solid."""
+        for a, b, c_, d_ in (((-X, -Y), (X, -Y), (x, -y), (-x, -y)),      # bottom
+                             ((X, -Y), (X, Y), (x, y), (x, -y)),          # right
+                             ((X, Y), (-X, Y), (-x, y), (x, y)),          # top
+                             ((-X, Y), (-X, -Y), (-x, -y), (-x, y))):     # left
+            quad([[a[0], a[1], z], [b[0], b[1], z],
+                  [c_[0], c_[1], z], [d_[0], d_[1], z]], [0, 0, 1])
+
+    hx0, hy0, z0, _ = tiers[0]
+    quad([[-hx0, -hy0, z0], [hx0, -hy0, z0], [hx0, hy0, z0], [-hx0, hy0, z0]], [0, 0, -1])
+    for t, (hx, hy, za, zb) in enumerate(tiers):
+        quad([[hx, -hy, za], [hx, hy, za], [hx, hy, zb], [hx, -hy, zb]], [1, 0, 0])
+        quad([[-hx, -hy, za], [-hx, hy, za], [-hx, hy, zb], [-hx, -hy, zb]], [-1, 0, 0])
+        quad([[-hx, hy, za], [hx, hy, za], [hx, hy, zb], [-hx, hy, zb]], [0, 1, 0])
+        quad([[-hx, -hy, za], [hx, -hy, za], [hx, -hy, zb], [-hx, -hy, zb]], [0, -1, 0])
+        if t + 1 < len(tiers):
+            nx, ny, _, _ = tiers[t + 1]
+            frame(hx, hy, nx, ny, zb)                      # ledge -> CONCAVE edges above
+        else:
+            quad([[-hx, -hy, zb], [hx, -hy, zb], [hx, hy, zb], [-hx, hy, zb]], [0, 0, 1])
+    V = np.asarray(V, np.float64)
+    V *= MAXR / np.linalg.norm(V, axis=1).max()            # match the frozen camera framing
+    return V, Q
+
+
 SOLIDS = {"gcube": (build_cube, "cube, 90 deg"),
+          "gstep": (build_step, "three-tier stepped block, CONCAVE, 90 deg"),
           "gicosa": (build_icosahedron, "icosahedron, 41.81 deg"),
           "gprism": (build_prism_shallow, "shallow-chamfer hex nut, 30-40 deg band")}
 
@@ -175,7 +240,12 @@ def main():
     dev = "cuda" if torch.cuda.is_available() else "cpu"
     build, desc = SOLIDS[args.scene]
     V, F = build()
-    F = orient_convex(V, F) if args.scene in ("gcube", "gicosa") else XC.orient_outward(V, F)
+    if args.scene in ("gcube", "gicosa"):
+        F = orient_convex(V, F)
+    elif args.scene == "gstep":
+        pass                       # wound outward by construction; the solid is NOT convex
+    else:
+        F = XC.orient_outward(V, F)
     Qp = pad(F)
     N = XC.face_normals(V, Qp)
 
@@ -207,7 +277,10 @@ def main():
     dih = sorted(set(np.round(deg[sel], 2).tolist()))
     print(f"[{args.scene}] pick_lights: {XC.N_LIGHTS} lights, min crease contrast {margin:.4f}")
     print(f"[{args.scene}] GT crease edges@30deg = {int(sel.sum())} of {len(deg)} adjacencies")
+    conv = getattr(m, "face_adjacency_convex", None)
+    n_concave = int((~np.asarray(conv)[sel]).sum()) if conv is not None else -1
     print(f"[{args.scene}] crease dihedral (deg): {dih}")
+    print(f"[{args.scene}] concave crease edges: {n_concave} of {int(sel.sum())}")
     print(f"[{args.scene}] |dI| across creases: min={d_int.min():.4f} "
           f"p05={np.percentile(d_int,5):.4f} median={np.median(d_int):.4f} max={d_int.max():.4f}")
     assert d_int.min() > 0.02, "a GT crease is photometrically invisible"
@@ -244,6 +317,7 @@ def main():
     rep = {"scene": args.scene, "desc": desc, "n_verts": int(len(V)), "n_faces": int(len(F)),
            "max_nonplanarity": planar, "n_crease_edges": int(sel.sum()),
            "crease_dihedrals_deg": dih, "min_crease_contrast": float(margin),
+           "n_concave_crease_edges": n_concave,
            "crease_intensity_step": {"min": float(d_int.min()),
                                      "p05": float(np.percentile(d_int, 5)),
                                      "median": float(np.median(d_int)),

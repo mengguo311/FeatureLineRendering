@@ -54,7 +54,7 @@ from src import view_split                                              # noqa: 
 import run_m1b                                                          # noqa: E402
 
 OUT = os.path.join(TIER1, "out")
-POOLS = {"gcube": "_step4", "cadpartA": "_step3pool",
+POOLS = {"gcube": "_step4", "cadpartA": "_step3pool", "gstep": "_step4",
          "gprism": "_step4", "gicosa": "_step4"}
 MAX_MED, MIN_VIEWS = 1.5, 3           # the SHIPPED constants, untouched
 KF = [1.0, 0.9, 0.8, 0.7, 0.6, 0.55, 0.5, 0.45, 0.4, 0.35, 0.32, 0.30, 0.28,
