@@ -296,6 +296,11 @@ def main():
                      "trunk_arc": prev["trunk_arc"],
                      "arc_vs_trunk": arc / prev["trunk_arc"],
                      "arc_vs_dd2": arc / prev["total_arc_world"]}
+    # persist the carrier of record so downstream renders draw EXACTLY these strokes
+    np.savez(os.path.join(OUT, f"carrier_dd3_{SCENE}.npz"),
+             pts=np.concatenate(merged, 0),
+             offs=np.cumsum([0] + [len(V) for V in merged]),
+             open_end=np.array(open_end, bool))
     print(f"  [assemble] {len(merged)} strokes, {n_join} join endpoints (no taper), "
           f"arc {arc:.3f} vs dd2 {prev['total_arc_world']:.3f} "
           f"(trunk {prev['trunk_arc']:.3f})", flush=True)
