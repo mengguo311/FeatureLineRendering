@@ -1,0 +1,58 @@
+{
+ "scene": "cadpartA",
+ "support_test": "2DGS normal-discontinuity, median over visible TRAIN views",
+ "support_frac": 0.5,
+ "threshold_rule": "fill stroke kept iff >= 50% of its vertices carry support >= the MEDIAN TRUNK VERTEX support (reference is the trusted trunk in the same scene; nothing hand-set)",
+ "support": {
+  "trunk_median_deg": 21.56426239013672,
+  "n_fill_before": 28,
+  "n_kept": 8,
+  "n_dropped": 20,
+  "kept_frac_median": 0.6941176470588235,
+  "dropped_frac_median": 0.0,
+  "reported_density_kept": 7.75,
+  "reported_density_dropped": 4.360613810741688
+ },
+ "merged": {
+  "n_strokes": 50,
+  "n_trunk": 42,
+  "n_fill_kept": 8,
+  "median_vertices": 5.0,
+  "n_endpoint_snaps": 4,
+  "total_arc_world": 11.7971178453994,
+  "prev_merge_arc": 18.299428917430625,
+  "prev_merge_strokes": 70,
+  "arc_vs_prev_merge": 0.6446713664469811,
+  "trunk_arc_world": 9.633975660452574,
+  "arc_vs_trunk": 1.2245326603664275
+ },
+ "temporal_240": {
+  "A": {
+   "frechet_median": 0.03688707125495888,
+   "frechet_mean": 0.06675033889300834,
+   "frechet_p90": 0.08053511978521026,
+   "chamfer_median": 0.025984590809268085,
+   "P_pop": 0.07429944316529422,
+   "unmatched_frac": 0.07415403223797422,
+   "cut_frac": 0.0001454109273199974,
+   "n_strokes_per_frame": 38.05857740585774,
+   "mean_vertices_per_stroke": 6.9731847871564785,
+   "n_matched_total": 8407,
+   "warp_dropped_frac": 0.0
+  },
+  "B": {
+   "frechet_median": 1.406094687944088,
+   "frechet_mean": 1.4696981009509587,
+   "frechet_p90": 2.560393472930711,
+   "chamfer_median": 0.46837632863228285,
+   "P_pop": 0.8098408877743879,
+   "unmatched_frac": 0.807913751552109,
+   "cut_frac": 0.001927136222278829,
+   "n_strokes_per_frame": 421.1422594142259,
+   "mean_vertices_per_stroke": 2.8431151497671383,
+   "n_matched_total": 19384,
+   "warp_dropped_frac": 0.4680811929329911
+  }
+ },
+ "gate_cut_pass": true
+}
