@@ -1,0 +1,92 @@
+{
+  "metric": "forward-warped stroke temporal residual (discrete Frechet, px) + popping penalty P_pop",
+  "pipelines": {
+    "A": "OURS: object-space carrier (3D-chained DT-pulled linelets), projected per frame",
+    "B": "BASELINE: naive image-space Canny on the rendered frame, re-traced per frame, no object-space carrier"
+  },
+  "warp": "identical depth-based forward warp for both pipelines",
+  "held_out": "TEST views only; trajectory 5->15",
+  "args": {
+    "scenes": [
+      "cadpartA"
+    ],
+    "frames": [
+      240
+    ],
+    "variant": "svdexined",
+    "viz_tag": "_svdexined",
+    "view_a": 5,
+    "view_b": 15,
+    "nms_mult": 1.0,
+    "knn": 10,
+    "cos_tan": 0.6,
+    "cos_col": 0.5,
+    "gap_mult": 4.0,
+    "min_nodes": 3,
+    "canny_lo": 50,
+    "canny_hi": 150,
+    "min_len": 4,
+    "approx_eps": 1.0,
+    "n_resample": 16,
+    "max_cand": 6,
+    "cand_radius": 40.0,
+    "match_thresh": 3.0,
+    "carrier_persistence": false,
+    "cp_ratio": 0.8,
+    "cp_views": 20,
+    "raw_path": false,
+    "fg_only": false,
+    "fg_erode": 2,
+    "geom2dgs": null,
+    "tag": "_svdexined"
+  },
+  "scenes": {
+    "cadpartA": {
+      "scene": "cadpartA",
+      "chain": {
+        "n_linelets": 220680,
+        "n_nms": 29673,
+        "n_strokes": 4007,
+        "median_vertices": 4.0
+      },
+      "variant": "svdexined",
+      "trajectory": "TEST views 5->15, look-at-corrected orbit (object stays framed)",
+      "orbit_target": [
+        0.044852087274193764,
+        -3.699349576891109e-06,
+        0.41301076114177704
+      ],
+      "by_frames": {
+        "240": {
+          "A": {
+            "frechet_median": 0.03828043976354489,
+            "frechet_mean": 0.1420128220154925,
+            "frechet_p90": 0.1068752929299294,
+            "chamfer_median": 0.028125436503838867,
+            "P_pop": 0.16931820542527812,
+            "unmatched_frac": 0.036532650097109313,
+            "cut_frac": 0.13278555532816883,
+            "n_strokes_per_frame": 2665.36820083682,
+            "mean_vertices_per_stroke": 5.129770631854052,
+            "n_matched_total": 617230,
+            "warp_dropped_frac": 0.0040919512895229385
+          },
+          "B": {
+            "frechet_median": 1.4058453361688072,
+            "frechet_mean": 1.469702838846173,
+            "frechet_p90": 2.562342141354486,
+            "chamfer_median": 0.467361353086464,
+            "P_pop": 0.8097965488407832,
+            "unmatched_frac": 0.8078696393258258,
+            "cut_frac": 0.0019269095149575465,
+            "n_strokes_per_frame": 421.163179916318,
+            "mean_vertices_per_stroke": 2.84290644471276,
+            "n_matched_total": 19390,
+            "warp_dropped_frac": 0.4680526546320287
+          },
+          "_seconds": 1671.8290176391602
+        }
+      }
+    }
+  }
+}
