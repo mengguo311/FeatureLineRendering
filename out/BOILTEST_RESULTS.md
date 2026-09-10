@@ -74,3 +74,63 @@ results; it bounds where the claim may be extended.
 `out/featviz/boiltest_cadpartA_consecutive_strip.png` (8 adjacent frames, ours top, Canny
 bottom), `_cadpartA_adjacent_overlay.png` (frame 100 red / 101 blue, ours beside Canny), and
 the same pair for gcube as calibration. `out/boiltest.json`, `scripts/boiltest.py`.
+
+---
+
+# PART 2 — the same test on the TEXTURED scenes: lego and chair
+
+Identical protocol: 8 consecutive orbit frames (100–107 of 240), ours vs per-frame Canny,
+side-by-side strip plus adjacent-frame red/blue overlay plus `ink_churn`. Each scene uses its
+**banked shipped carrier**, exactly what `--variant gated` loads, so this reproduces the setup
+behind the banked lego and chair temporal cells. **MESH EVAL-ONLY: reads no mesh at all.**
+
+## VERDICT: PASS on both. Judged on the strip.
+
+**chair is unambiguous.** The Canny panel is a dense field of short marks covering the whole
+chair — Canny firing on the printed fabric — and that field is in **completely different places
+in every frame**. Adjacent frames share almost no stipple. Meanwhile our 1,166 strokes hold the
+silhouette and the seat and back structure in place across all eight frames.
+
+**lego passes too.** Its Canny marks relocate frame to frame rather than shimmering in place,
+which is whole-segment turnover, not sub-pixel drift. The character differs from chair: lego's
+Canny output is sparser, so it reads as a flickering scatter rather than a boiling field. Our
+1,895 strokes hold steady.
+
+## The number, and the mechanism it exposes
+
+| scene | ours | Canny | ratio | regime |
+|---|---|---|---|---|
+| gcube | 0.0255 | **0.0852** | 3.34x | clean solid |
+| cadpartA | 0.0145 | **0.0985** | 6.80x | clean solid |
+| **lego** | 0.0584 | **0.5359** | **9.18x** | textured |
+| **chair** | 0.0159 | **0.4482** | **28.12x** | textured |
+
+**Canny's own instability jumps 5 to 6 fold between the two regimes**, from 0.085–0.099 on
+clean solids to 0.448–0.536 on textured ones. On lego and chair the baseline turns over roughly
+**half its ink every single frame**. Ours stays between 0.015 and 0.058 everywhere.
+
+That is the mechanism stated properly: **the baseline's instability is driven by texture, not
+by per-frame-ness as such.** Texture edges are view-dependent and move; geometric edges on a
+flat-shaded solid are crisp and persistent, so a per-frame detector is already stable there.
+
+## The claim, correctly bounded
+
+Not "10–20x more temporally stable". The honest form, which this pair of tests establishes and
+delimits:
+
+> **Where texture dominates the image, per-frame edge detection reorganises about half its ink
+> between adjacent frames while our object-space strokes hold, a 9x to 28x ink-level gap that
+> is plainly visible. Where geometry dominates and the surface is untextured, the baseline is
+> already stable and no visible temporal advantage exists.**
+
+Two honest riders. On lego and chair **ours also draws more than Canny**, 1,895 and 1,166
+strokes against a sparse or stippled baseline, so the comparison there is favourable on
+completeness as well as stability — the reverse of the clean solids. And these two carriers are
+the shipped ones rendered with Part B only; they carry no dd3 merge or dihedral gate, so they
+are dense working drawings rather than the polished cadpartA aesthetic.
+
+## Files
+
+`out/featviz/boiltest_{lego,chair}_consecutive_strip.png` and `_adjacent_overlay.png`,
+alongside the cadpartA and gcube pair from Part 1. `out/boiltest.json` now holds all four
+scenes.

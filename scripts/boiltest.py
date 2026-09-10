@@ -27,7 +27,10 @@ from dd3 import project_runs, draw_runs
 
 OUT = os.path.join(TIER1, "out")
 N_ORBIT, F0, NF, TOL = 240, 100, 8, 1.5
-POOLS = {"cadpartA": "_step3pool", "gcube": "_step4"}
+POOLS = {"cadpartA": "_step3pool", "gcube": "_step4",
+         "lego": "_gated_test", "chair": "_gated_test"}   # the banked SHIPPED
+# carriers for the textured scenes: exactly what --variant gated loads, so this
+# reproduces the setup behind the banked lego 11.49x / chair temporal cells.
 
 
 def ink(img):
