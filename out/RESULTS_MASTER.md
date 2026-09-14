@@ -37,7 +37,7 @@ T2 orbit+zoom, T3 adversarial spline) × 3 frozen detectors (Canny, PiDiNet, TEE
 |---|---|---|---|
 | Interior pop-rate advantage at the HARDEST cell (lego × T3 spline, vs oracle-flow EMA at matched P & density) | **1.98×** (rate 0.0425 vs 0.0214 over the 93–97 % interior) | disocclusion decomposition | `pareto3_lego_T3_disocc.json` |
 | Pixel-pooled pop>2px advantage vs the STRONGEST accumulated 2D baseline (oracle rigid flow + occlusion-aware EMA), across all shared matched-P-and-density points | **1.72× – 21.4×** (per-condition worst: chair-T1 5.19×, chair-T3 5.49×, lego-T1 8.35×, lego-T3 1.72×) | PARETO-2, 4 conditions | `pareto2_verdict.json` |
-| Pixel flicker advantage vs MEMORYLESS per-frame detectors at every shared matched point | **≥ 9.8×** (both scenes) | PARETO-1 matched-P + matched-density | `PARETO_RESULTS.md` |
+| Pixel flicker advantage vs MEMORYLESS per-frame detectors at every shared matched point | **≥ 9.78×** (minimum at lego PiDiNet thr=0.4; on lego the shared points are PiDiNet-only, because every lego Canny point is more precise than OURS and is therefore unshared — the lego bound is a PiDiNet statement; chair minimum 12.24×) | PARETO-1 matched-P + matched-density | `PARETO_RESULTS.md`, `pareto_verdict.json` |
 | Stroke-level E_warp ratio vs per-frame TEED, 6 conditions (2 scenes × 3 trajectories) | **3.38× – 21.62×** (worst = lego·spline) | Track P, scorer + thresholds hash-frozen pre-run | `TRACK_P_RESULTS.md` |
 | Stroke-level Fréchet / P_pop ratio vs per-frame Canny, 30–240 frames | Fréchet **2.43×–29.92×**, P_pop **3.44×–11.49×** (headline "7–13×" = 240f band across variants) | M1b stroke-temporal + sparsity & silhouette controls (§2a/2b) | `m1b_stroke_temporal_table.md`, `m1b_stroke_temporal_table_tc_tcteed.md` |
 | Stroke survival: object-space strokes persist 37–183 frames mean vs 1.0–1.5 for per-frame detection | P(life>32): 0.29–0.83 vs 0.005–0.009 | Track P survival curves (the SECONDARY inf-ratio is degenerate and is NOT quoted) | `TRACK_P_RESULTS.md` |
@@ -77,7 +77,8 @@ must quote them per-statistic as above, never as one range.
   The gate was NOT re-tuned; the paper quotes pop/flicker as primary and discloses the
   mean-statistic collapse. (`PARETO_RESULTS.md`, `pareto_verdict.json`)
 - **PARETO-2 NO-GO on the letter**: lego × T3 spline worst shared advantage **1.72×**
-  < the 2× floor (5/6 other conditions PASS at 5.19–8.35×). Frozen as a conservative
+  < the 2× floor (3 of the 4 conditions PASS at 5.19–8.35×; "5/6" in earlier text was
+  wrong — `pareto2_verdict.json` holds exactly four conditions). Frozen as a conservative
   lower bound vs the oracle-flow ceiling; the claim is SCOPED, not defended.
   (`pareto2_verdict.json`)
 

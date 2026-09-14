@@ -1,5 +1,5 @@
 # PARETO-2 — oracle-flow temporally-accumulated 2D baseline (the memoryless-strawman defuse)
-# **FROZEN-GATE VERDICT: NO-GO on the letter (lego/T3_spline worst pop>2px advantage = 1.72×, < 2× bar) => the temporal claim is SCOPED to an honest bounded lower-bound, NOT killed. 5 of 6 scene×trajectory conditions PASS (chair T1 5.19×, chair T3 5.49×, lego T1 8.35×).**
+# **FROZEN-GATE VERDICT: NO-GO on the letter (lego/T3_spline worst pop>2px advantage = 1.72×, < 2× bar) => the temporal claim is SCOPED to an honest bounded lower-bound, NOT killed. 3 of 4 scene×trajectory conditions PASS (chair T1 5.19×, chair T3 5.49×, lego T1 8.35×); the earlier "5 of 6" was a miscount — `pareto2_verdict.json` holds exactly four conditions.**
 
 Spec `tier1/pareto2_flowbaseline_spec.md`. Three-way consensus pre-registered this as the
 #1 unaddressed reviewer threat: our Canny/PiDiNet coherence baselines are MEMORYLESS. This
@@ -97,5 +97,5 @@ accumulation (oracle or RAFT) can fix because there is no past-frame corresponde
   point for the paper figure, not scored here.
 - One accumulator family (EMA + rethreshold). A learned temporal filter is out of scope and
   would still be bounded by the disocclusion correspondence gap the next experiment probes.
-- PARETO-1's banked 9.8× flicker floor-free result and the 7–13× stroke-level temporal win
+- PARETO-1's banked 9.78× flicker floor-free result (lego shared points are PiDiNet-only) and the 7–13× stroke-level temporal win
   are different statistics/baselines; this neither reproduces nor replaces them.

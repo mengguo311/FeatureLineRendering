@@ -96,18 +96,26 @@ roughly in proportion, so ~71% of what it buys is tessellation. Precision on tha
 | E-FMARGIN margin term | pegged to the control, which is not the knee; every arm cleared; would have selected f=0.60, an arm measured at **10.27x**, below the invariant | `E_FMARGIN_RESULTS.md` §3 |
 | E-FMARGIN trajectory gate | fired correctly — control swung **28.6%** between orbits, so the bar cannot be transported | `E_FMARGIN_RESULTS.md` §2 |
 
-## 8. TRAJECTORY ROBUSTNESS — both risks closed SAFE
+## 8. TRAJECTORY ROBUSTNESS — chair closed SAFE; lego NOT closed
+
+> **RETRACTION (2026-09-15).** This section previously read "both risks closed SAFE" and
+> labelled the lego published arm SAFE. That was wrong: a −24.6% swing exceeds the 20 %
+> trajectory-validity gate frozen in `E_FMARGIN_RESULTS.md`, the same gate that voided the
+> lego control at −28.6%. Lego's trajectory robustness is therefore NOT established; only
+> chair's is. The "SAFE bar of 8.0x" quoted in `E_TRAJ_CHAIR_RESULTS.md` is Track O's arm-C
+> bar and was never frozen for this comparison.
 
 | arm | TEST orbit | VAL orbit (0→10) | swing | band |
 |---|---|---|---|---|
-| lego published (ungated) | 11.494x | **8.663x** | −24.6% | **SAFE** |
+| lego published (ungated) | 11.494x | **8.663x** | −24.6% | **NOT CLOSED** (exceeds 20 % validity gate) |
 | chair published (ungated) | 11.35x | **10.18x** | −10.3% | **SAFE** |
-| lego gated canny control | 12.10x | 8.64x | −28.6% | — |
+| lego gated canny control | 12.10x | 8.64x | −28.6% | INVALID (E-FMARGIN gate fired) |
 | chair gated canny control | 10.71x | 12.18x | +13.7% | — |
 
 Sources: `..._etraj_lego_valorb_ungated.json`, `..._etraj_valorb_{ungated,gated}.json`,
 `..._fm_valorb_canny030.json`. **Trajectory sensitivity is a scene property**: lego swings
-~25–29%, chair ~7–14% and in both directions.
+~25–29%, chair ~7–14% and in both directions. The swing is driven by OUR P_pop (lego OURS
+0.0626 → 0.0817 across orbits) while the Canny baseline is nearly orbit-invariant.
 
 ## 9. OPEN ITEMS
 

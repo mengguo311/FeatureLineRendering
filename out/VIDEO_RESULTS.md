@@ -10,7 +10,17 @@ the same operator behind the 12.03x.
 
 ---
 
-## VERDICT: GO on all five pre-registered visual legs
+## VERDICT: GO on four of five pre-registered visual legs (leg 5 amended 2026-09-15)
+
+> **ERRATUM (2026-09-15).** Leg 5 was originally marked PASS from the every-20th-frame
+> contact sheet, which exaggerates change. The consecutive-frame test that followed
+> (`BOILTEST_RESULTS.md`, `boiltest_cadpartA_consecutive_strip.png`) and the five-solid
+> turntable (`TURNTABLE_GALLERY_RESULTS.md`) show per-frame Canny structurally stable on
+> cadpartA and the other clean solids. Leg 5 is therefore FAIL on consecutive frames, and
+> the "12x lower popping" below is a stroke-identity P_pop ratio whose baseline side
+> includes a 46.8 % silhouette warp-drop share (`dd3.json temporal_240.B.warp_dropped_frac`),
+> not a visible-stability measurement. Visible temporal superiority is established only on
+> the textured scenes (lego, chair).
 
 | leg, worded on the rendered output | result |
 |---|---|
@@ -18,7 +28,7 @@ the same operator behind the 12.03x.
 | no stroke visibly jitters, snakes or changes length | **PASS** |
 | stroke-count trace drifts smoothly, no spikes | **PASS** |
 | at the marked worst pair, frames indistinguishable apart from camera motion | **PASS** |
-| the Canny clip beside it visibly boils | **PASS** |
+| the Canny clip beside it visibly boils | **FAIL / UNVERIFIED on consecutive frames** (original PASS from every-20th-frame contact sheet retracted; see erratum) |
 
 ## 1. The finding the video was built to expose, and it is real
 
@@ -73,9 +83,12 @@ single frame ever gains or loses five strokes.
 | P_pop mean | **0.0673** | **0.8100** |
 | cut mean | 0.00012 | 0.00193 |
 
-The contact sheet makes it plain: our tiles hold the same clean line structure across the whole
-orbit, while the Canny tiles are dense scribble that reorganises completely between samples.
-Roughly **8x fewer strokes and 12x lower popping**.
+The contact sheet shows our tiles holding the same clean line structure across the whole
+orbit. The Canny tiles differ between every-20th-frame samples, but on consecutive frames
+the Canny drawing holds its structure (see erratum above and `BOILTEST_RESULTS.md`); the
+earlier reading "reorganises completely between samples" was a contact-sheet artefact.
+Roughly **8x fewer strokes**, and a **12x lower stroke-identity P_pop** whose baseline side
+is 46.8 % silhouette warp-drop — not a visible-flicker ratio.
 
 ## 5. Deliverables
 
