@@ -26,12 +26,16 @@ partial top edge and a few verticals.
 
 **Canny looks better than us on these solids, decisively.**
 
-Yet the banked ratios say 20.77x and 13.90x in our favour. Both are true, and the
-reconciliation is the finding: **Canny's ink is stable while its stroke IDENTITY is not.** Its
-271 to 470 short polylines get re-decomposed every frame, so the stroke-level matcher behind
-P_pop sees enormous churn, while the drawn pixels barely move. `P_pop` is a stroke-identity
-metric. On a flat-shaded polyhedron, image edges are crisp and persistent, so identity churn
-and visible flicker come apart completely.
+Yet the banked ratios say 20.77x and 13.90x in our favour. The reconciliation has two parts,
+and the first was missed when this was written: **(i) 41–68 % of the baseline's P_pop on these
+solids is silhouette warp-drop** — strokes on the object outline sit where the gaussian
+z-buffer is empty, cannot be forward-warped, and are charged as pops by `pop_penalty` without
+ever being compared; with the silhouette control the ratios fall to 7.06x (gcube) and 5.60x
+(gicosa) (see §3 correction). **(ii) Canny's remaining ink is stable while its stroke IDENTITY
+is not.** Its 271 to 470 short polylines get re-decomposed every frame by the tracer
+(junction split, min_len 4), so the stroke-level matcher behind P_pop sees churn while the
+drawn pixels barely move. `P_pop` is a stroke-identity metric. On a flat-shaded polyhedron,
+image edges are crisp and persistent, so identity churn and visible flicker come apart.
 
 The temporal crown jewel was established on **lego and chair**, textured scenes where Canny
 fires on decals and the ink genuinely boils. **Extending that claim to clean solids on the
@@ -49,13 +53,22 @@ messier, because of the through-hole and chamfers, so the reading may still hold
 
 ## 3. Per solid
 
-| solid | strokes | arc | runs/frame ours | strokes/frame Canny | P_pop | cut | ratio | banked from |
-|---|---|---|---|---|---|---|---|---|
-| cadpartA | 42 | 9.634 | 25–42 | 374–465 | 0.0771 | 0.0002 | 10.50x | Step 3 step3spec |
-| gcube | 23 | 5.618 | 17–24 | 271–450 | 0.0381 | 0.0000 | 20.77x | Step 4 |
-| gprism | 44 | 6.699 | 25–40 | 285–366 | 0.0459 | 0.0001 | 18.97x | Step 4 |
-| gicosa | 25 | 4.093 | 14–24 | 361–470 | 0.0636 | 0.0000 | 13.90x | Step 4 |
-| gstep | 57 | 9.346 | 27–57 | 284–474 | 0.0676 | n/a | 11.24x | Step 8 ship |
+> **CORRECTION (2026-09-15, HYGIENE item 5).** The "ratio" column below is the banked
+> `fg_only=False` number; 35–68 % of the Canny baseline's strokes on these solids are
+> silhouette strokes the z-buffer cannot warp, charged as pops without comparison
+> (`B.warp_dropped_frac`). The **ratio fg_only** column is the same carrier, orbit and harness
+> re-run with the silhouette control the published lego/chair cells use
+> (`out/m1b_stroke_temporal_table_fg_{step3spec,s4,s8ship}.json`). The `ink_churn` column is
+> the 7-scene `out/boiltest.json` (all five solids now measured). **Canny is complete and
+> visually stable on every clean solid; ours is not superior there.**
+
+| solid | strokes | arc | runs/frame ours | strokes/frame Canny | P_pop | cut | ratio (uncontrolled) | BASE warp-drop | **ratio fg_only** | ink_churn ours / Canny (ratio) | banked from |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| cadpartA | 42 | 9.634 | 25–42 | 374–465 | 0.0771 | 0.0002 | 10.50x | 0.468 | **4.79x** | 0.0145 / 0.0987 (6.82x) | Step 3 step3spec |
+| gcube | 23 | 5.618 | 17–24 | 271–450 | 0.0381 | 0.0000 | 20.77x | 0.406 | **7.06x** | 0.0255 / 0.0851 (3.34x) | Step 4 |
+| gprism | 44 | 6.699 | 25–40 | 285–366 | 0.0459 | 0.0001 | 18.97x | 0.593 | **5.17x** | 0.0535 / 0.0707 (1.32x) | Step 4 |
+| gicosa | 25 | 4.093 | 14–24 | 361–470 | 0.0636 | 0.0000 | 13.90x | 0.675 | **5.60x** | 0.0287 / 0.0890 (3.10x) | Step 4 |
+| gstep | 57 | 9.346 | 27–57 | 284–474 | 0.0676 | 0.0011 | 11.24x | 0.351 | **2.80x** | 0.0145 / 0.0901 (6.23x) | Step 8 ship |
 
 **Clause-by-clause, and I mark what I did not verify rather than guessing:**
 

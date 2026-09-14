@@ -30,8 +30,18 @@ whole finding that prompted this test is that the two come apart:
 | **cadpartA** | **0.0145** | **0.0985** | **6.80x** |
 | gcube (calibration) | 0.0255 | 0.0852 | 3.34x |
 
+> **UPDATE (2026-09-15, HYGIENE item 5).** `scripts/boiltest.py` overwrote `out/boiltest.json`
+> on each run, so these two rows survived only in git blob `95f3872`. The test was re-run over
+> ALL SEVEN scenes into one json (`logs/boiltest_all7.log`); the two rows above reproduce
+> (cadpartA 0.0145 / 0.0987 = 6.82x, gcube 0.0255 / 0.0851 = 3.34x, rasteriser drift only),
+> and the three solids never measured before are: **gicosa 0.0287 / 0.0890 = 3.10x, gprism
+> 0.0535 / 0.0707 = 1.32x, gstep 0.0145 / 0.0901 = 6.23x**. Every clean solid sits below
+> lego's 9.17x; gprism is close to parity. The "P_pop's 10–20x" referred to below is itself
+> warp-drop-inflated (baseline drop 0.35–0.68 on the solids); with the silhouette control the
+> solid P_pop ratios are 2.2x–7.1x (`GEOLINE_STEP4_RESULTS.md` §4, `GEOLINE_STEP8_RESULTS.md` §6).
+
 So a real ink-level advantage exists, **6.8x on cadpartA**, but it is far below P_pop's
-10–20x, and it does not clear the visibility bar.
+uncontrolled 10–20x, and it does not clear the visibility bar.
 
 ## 2. Why the number says one thing and the picture says another
 
@@ -73,7 +83,9 @@ results; it bounds where the claim may be extended.
 
 `out/featviz/boiltest_cadpartA_consecutive_strip.png` (8 adjacent frames, ours top, Canny
 bottom), `_cadpartA_adjacent_overlay.png` (frame 100 red / 101 blue, ours beside Canny), and
-the same pair for gcube as calibration. `out/boiltest.json`, `scripts/boiltest.py`.
+the same pair for gcube as calibration. `out/boiltest.json` (since 2026-09-15: ONE json holding
+all seven scenes — cadpartA, gcube, gicosa, gprism, gstep, lego, chair; strips and overlays
+for all seven under `out/featviz/boiltest_<scene>_*.png`), `scripts/boiltest.py`.
 
 ---
 
@@ -100,14 +112,21 @@ Canny output is sparser, so it reads as a flickering scatter rather than a boili
 
 | scene | ours | Canny | ratio | regime |
 |---|---|---|---|---|
+| gprism | 0.0535 | **0.0707** | 1.32x | clean solid (added 2026-09-15) |
+| gicosa | 0.0287 | **0.0890** | 3.10x | clean solid (added 2026-09-15) |
 | gcube | 0.0255 | **0.0852** | 3.34x | clean solid |
+| gstep | 0.0145 | **0.0901** | 6.23x | clean solid (added 2026-09-15) |
 | cadpartA | 0.0145 | **0.0985** | 6.80x | clean solid |
 | **lego** | 0.0584 | **0.5359** | **9.18x** | textured |
 | **chair** | 0.0159 | **0.4482** | **28.12x** | textured |
 
-**Canny's own instability jumps 5 to 6 fold between the two regimes**, from 0.085–0.099 on
-clean solids to 0.448–0.536 on textured ones. On lego and chair the baseline turns over roughly
-**half its ink every single frame**. Ours stays between 0.015 and 0.058 everywhere.
+(The 2026-09-15 seven-scene re-run, `out/boiltest.json`, reproduces every row within
+rasteriser drift: cadpartA 6.82x, gcube 3.34x, lego 9.17x, chair 28.16x.)
+
+**Canny's own instability jumps roughly 4.5 to 7.6 fold between the two regimes**, from
+0.071–0.099 on clean solids to 0.448–0.536 on textured ones. On lego and chair the baseline
+turns over roughly **half its traced-fragment ink every single frame**. Ours stays between
+0.015 and 0.058 everywhere.
 
 That is the mechanism stated properly: **the baseline's instability is driven by texture, not
 by per-frame-ness as such.** Texture edges are view-dependent and move; geometric edges on a
@@ -132,5 +151,7 @@ are dense working drawings rather than the polished cadpartA aesthetic.
 ## Files
 
 `out/featviz/boiltest_{lego,chair}_consecutive_strip.png` and `_adjacent_overlay.png`,
-alongside the cadpartA and gcube pair from Part 1. `out/boiltest.json` now holds all four
-scenes.
+alongside the cadpartA and gcube pair from Part 1. `out/boiltest.json` holds all SEVEN scenes
+since the 2026-09-15 re-run (the earlier "now holds all four scenes" was false: the script
+overwrote the file with whatever `--solids` the last run used, and the clean-solid rows
+survived only in git blob `95f3872`).

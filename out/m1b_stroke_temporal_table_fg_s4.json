@@ -1,0 +1,188 @@
+{
+  "metric": "forward-warped stroke temporal residual (discrete Frechet, px) + popping penalty P_pop",
+  "pipelines": {
+    "A": "OURS: object-space carrier (3D-chained DT-pulled linelets), projected per frame",
+    "B": "BASELINE: naive image-space Canny on the rendered frame, re-traced per frame, no object-space carrier"
+  },
+  "warp": "identical depth-based forward warp for both pipelines",
+  "held_out": "TEST views only; trajectory 5->15",
+  "args": {
+    "scenes": [
+      "gcube",
+      "gicosa",
+      "gprism"
+    ],
+    "frames": [
+      240
+    ],
+    "variant": "step4",
+    "viz_tag": "_fg_s4",
+    "view_a": 5,
+    "view_b": 15,
+    "nms_mult": 1.0,
+    "knn": 10,
+    "cos_tan": 0.6,
+    "cos_col": 0.5,
+    "gap_mult": 4.0,
+    "min_nodes": 3,
+    "canny_lo": 50,
+    "canny_hi": 150,
+    "min_len": 4,
+    "approx_eps": 1.0,
+    "n_resample": 16,
+    "max_cand": 6,
+    "cand_radius": 40.0,
+    "match_thresh": 3.0,
+    "carrier_persistence": false,
+    "cp_ratio": 0.8,
+    "cp_views": 20,
+    "raw_path": false,
+    "fg_only": true,
+    "fg_erode": 2,
+    "geom2dgs": null,
+    "tag": "_fg_s4"
+  },
+  "scenes": {
+    "gcube": {
+      "scene": "gcube",
+      "chain": {
+        "n_linelets": 5610,
+        "n_nms": 265,
+        "n_strokes": 23,
+        "median_vertices": 6.0
+      },
+      "variant": "step4",
+      "trajectory": "TEST views 5->15, look-at-corrected orbit (object stays framed)",
+      "orbit_target": [
+        0.03655850701034069,
+        -0.0632791817188263,
+        -0.024179418571293354
+      ],
+      "by_frames": {
+        "240": {
+          "A": {
+            "frechet_median": 0.02386565223885362,
+            "frechet_mean": 0.033527065378911335,
+            "frechet_p90": 0.04667920942123951,
+            "chamfer_median": 0.018945652564403816,
+            "P_pop": 0.08428423383471138,
+            "unmatched_frac": 0.08428423383471138,
+            "cut_frac": 0.0,
+            "n_strokes_per_frame": 21.89121338912134,
+            "mean_vertices_per_stroke": 8.752429943510464,
+            "n_matched_total": 4788,
+            "warp_dropped_frac": 0.0
+          },
+          "B": {
+            "frechet_median": 1.2859562363160872,
+            "frechet_mean": 1.4062541550046646,
+            "frechet_p90": 2.48699652719351,
+            "chamfer_median": 0.44012930180256016,
+            "P_pop": 0.5951515592997403,
+            "unmatched_frac": 0.5929800325756301,
+            "cut_frac": 0.0021715267241102297,
+            "n_strokes_per_frame": 87.88284518828452,
+            "mean_vertices_per_stroke": 2.312017985004302,
+            "n_matched_total": 8627,
+            "warp_dropped_frac": 0.0
+          },
+          "_seconds": 34.896244287490845
+        }
+      }
+    },
+    "gicosa": {
+      "scene": "gicosa",
+      "chain": {
+        "n_linelets": 3828,
+        "n_nms": 226,
+        "n_strokes": 25,
+        "median_vertices": 5.0
+      },
+      "variant": "step4",
+      "trajectory": "TEST views 5->15, look-at-corrected orbit (object stays framed)",
+      "orbit_target": [
+        0.006019887514412403,
+        0.001382110989652574,
+        0.20738618075847626
+      ],
+      "by_frames": {
+        "240": {
+          "A": {
+            "frechet_median": 0.03365424239958778,
+            "frechet_mean": 0.07373506639462,
+            "frechet_p90": 0.07742564044659894,
+            "chamfer_median": 0.024523896926929266,
+            "P_pop": 0.09798787654094505,
+            "unmatched_frac": 0.09798787654094505,
+            "cut_frac": 0.0,
+            "n_strokes_per_frame": 16.343096234309623,
+            "mean_vertices_per_stroke": 4.971367308538449,
+            "n_matched_total": 3514,
+            "warp_dropped_frac": 0.0
+          },
+          "B": {
+            "frechet_median": 1.243997196364183,
+            "frechet_mean": 1.362583923170901,
+            "frechet_p90": 2.435429654037231,
+            "chamfer_median": 0.42779664584182964,
+            "P_pop": 0.5490534274253055,
+            "unmatched_frac": 0.5441908412470131,
+            "cut_frac": 0.004862586178292341,
+            "n_strokes_per_frame": 18.9581589958159,
+            "mean_vertices_per_stroke": 2.1593729649784934,
+            "n_matched_total": 2078,
+            "warp_dropped_frac": 0.0
+          },
+          "_seconds": 26.702160596847534
+        }
+      }
+    },
+    "gprism": {
+      "scene": "gprism",
+      "chain": {
+        "n_linelets": 5760,
+        "n_nms": 360,
+        "n_strokes": 44,
+        "median_vertices": 5.5
+      },
+      "variant": "step4",
+      "trajectory": "TEST views 5->15, look-at-corrected orbit (object stays framed)",
+      "orbit_target": [
+        0.07492759078741074,
+        0.0020669864024966955,
+        0.45383232831954956
+      ],
+      "by_frames": {
+        "240": {
+          "A": {
+            "frechet_median": 0.028381131764653497,
+            "frechet_mean": 0.057433820518338556,
+            "frechet_p90": 0.07781151830671736,
+            "chamfer_median": 0.018270880924333606,
+            "P_pop": 0.12108920716700451,
+            "unmatched_frac": 0.12108920716700451,
+            "cut_frac": 0.0,
+            "n_strokes_per_frame": 30.686192468619247,
+            "mean_vertices_per_stroke": 5.371489525103526,
+            "n_matched_total": 6443,
+            "warp_dropped_frac": 0.0
+          },
+          "B": {
+            "frechet_median": 1.3929227055556197,
+            "frechet_mean": 1.5014905757125407,
+            "frechet_p90": 2.564885376162079,
+            "chamfer_median": 0.47693237297883656,
+            "P_pop": 0.6257056118997515,
+            "unmatched_frac": 0.6245530818752344,
+            "cut_frac": 0.0011525300245169645,
+            "n_strokes_per_frame": 25.698744769874477,
+            "mean_vertices_per_stroke": 2.2864828716563776,
+            "n_matched_total": 2357,
+            "warp_dropped_frac": 0.0
+          },
+          "_seconds": 32.56988048553467
+        }
+      }
+    }
+  }
+}

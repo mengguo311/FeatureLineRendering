@@ -19,8 +19,10 @@ the same operator behind the 12.03x.
 > cadpartA and the other clean solids. Leg 5 is therefore FAIL on consecutive frames, and
 > the "12x lower popping" below is a stroke-identity P_pop ratio whose baseline side
 > includes a 46.8 % silhouette warp-drop share (`dd3.json temporal_240.B.warp_dropped_frac`),
-> not a visible-stability measurement. Visible temporal superiority is established only on
-> the textured scenes (lego, chair).
+> not a visible-stability measurement. Re-scored with the silhouette control on the identical
+> persisted carrier (`out/dd3_fgonly.json`, 2026-09-15) the ratio is **5.76x** (OURS P_pop
+> 0.1122 vs BASE 0.6463). Visible temporal superiority is established only on the textured
+> scenes (lego, chair); on cadpartA Canny is complete and stable.
 
 | leg, worded on the rendered output | result |
 |---|---|
@@ -88,7 +90,8 @@ orbit. The Canny tiles differ between every-20th-frame samples, but on consecuti
 the Canny drawing holds its structure (see erratum above and `BOILTEST_RESULTS.md`); the
 earlier reading "reorganises completely between samples" was a contact-sheet artefact.
 Roughly **8x fewer strokes**, and a **12x lower stroke-identity P_pop** whose baseline side
-is 46.8 % silhouette warp-drop — not a visible-flicker ratio.
+is 46.8 % silhouette warp-drop — **5.76x with the silhouette control** — not a visible-flicker
+ratio.
 
 ## 5. Deliverables
 

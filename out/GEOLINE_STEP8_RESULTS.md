@@ -132,13 +132,25 @@ recall was itself a property of the four solids it was measured on.
 
 ## 6. Temporal, ungated, trip-wire 3x
 
-| gstep operating point | strokes | OURS P_pop | BASE P_pop | ratio | Frechet ratio | cut |
-|---|---|---|---|---|---|---|
-| kf 0.22, clause off | 38 | 0.0708 | 0.7598 | **10.74x** | 45.21 | 0.0057 |
-| shipped rule | 57 | 0.0676 | 0.7601 | **11.24x** | 33.07 | 0.0011 |
+> **CORRECTION (2026-09-15, HYGIENE item 5).** The ratios first reported here were run with
+> `fg_only=False`; 35.1 % of the Canny baseline's gstep strokes are silhouette strokes charged
+> as pops without comparison (`m1b_stroke_temporal_table_s8{ship,step8kf22}.json`
+> `B.warp_dropped_frac`). Re-run with the silhouette control used for the published lego/chair
+> cells (`out/m1b_stroke_temporal_table_fg_s8{ship,kf22}.json`, identical carriers and orbit):
 
-Both far above the trip-wire. **Temporal is not what kills this**, and the concave solid holds
-the object-space advantage as well as the convex ones did.
+| gstep operating point | strokes | ratio (fg_only=False, **warp-drop-inflated**) | BASE warp-drop | OURS P_pop fg_only | BASE P_pop fg_only | **ratio fg_only (honest)** | OURS cut fg_only |
+|---|---|---|---|---|---|---|---|
+| kf 0.22, clause off | 38 | 10.74x | 0.351 | 0.2785 | 0.6030 | **2.17x** | 0.0004 |
+| shipped rule | 57 | 11.24x | 0.351 | 0.2158 | 0.6036 | **2.80x** | 0.0000 |
+
+**Both fall BELOW the 3x trip-wire once the control is applied.** The sentences "Both far
+above the trip-wire. Temporal is not what kills this, and the concave solid holds the
+object-space advantage as well as the convex ones did" are withdrawn. Under the control the
+interior-restricted Canny baseline keeps 127 fragments per frame on gstep and OUR P_pop rises
+to 0.22–0.28 (the reflex ledges put many of our stroke endpoints on the eroded interior
+boundary). Ink-level churn on gstep is 6.23x (`boiltest.json`), below lego's 9.17x, and the
+consecutive-frame strip shows Canny complete and stable. Stroke identity is not what kills
+this solid, but no temporal advantage over per-frame Canny is claimed on it either.
 
 ## 7. A file-handling disclosure
 

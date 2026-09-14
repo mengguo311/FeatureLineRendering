@@ -89,12 +89,23 @@ squeeze on any solid whose trunk is weak.
 | P_pop | 0.0766 |
 | unmatched | 0.0766 |
 | **cut** | **0.0000** |
-| baseline per-frame Canny P_pop | 0.8843 |
-| ratio | **11.55x** |
+| baseline per-frame Canny P_pop | 0.8843 (of which **warp-dropped 0.675** — silhouette strokes charged as pops without comparison) |
+| ratio (fg_only=False, **warp-drop-inflated**) | 11.55x |
+| ratio, silhouette control, on the gallery's FALLBACK carrier (Step-4 zero-knob, 25 strokes; `out/m1b_stroke_temporal_table_fg_s4.json`) | **5.60x** (OURS P_pop 0.0980, cut 0.0000; BASE 0.5491, 19 fragments/frame) |
+| ratio, silhouette control, on the pilot's 37-stroke merged carrier | **not re-run** — the merged carrier was never persisted; only the uncontrolled 11.55x exists |
+| ink_churn ours / Canny (`boiltest.json`, fallback carrier) | 0.0287 / 0.0890 = **3.10x** |
 
-Stability is excellent and the merge cost nothing: `cut` is exactly zero, and the ratio sits
-between cadpart's dd3 12.03x and its merge70 8.89x. **Completeness, not stability, is what
-failed.**
+> **CORRECTION (2026-09-15, HYGIENE item 5).** "Stability is excellent" below refers to OUR
+> strokes (cut exactly zero), which stands. The 11.55x ratio does not: two-thirds of the
+> baseline's strokes on gicosa are unwarpable silhouette strokes charged as pops. With the
+> silhouette control the fallback carrier scores 5.60x, and the turntable strip shows
+> per-frame Canny drawing the complete icosahedron steadily while ours draws ~6 edges
+> (`TURNTABLE_GALLERY_RESULTS.md`, clauses (b) and (d) FAIL). **Canny is complete and stable
+> on gicosa; we are not superior there.**
+
+Our strokes are stable and the merge cost nothing: `cut` is exactly zero. The uncontrolled
+ratio sits between cadpart's dd3 12.03x and its merge70 8.89x, but see the correction above.
+**Completeness, not our stroke persistence, is what failed.**
 
 ## 5. What the locked rule costs, stated so the cost is visible
 

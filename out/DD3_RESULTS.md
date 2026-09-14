@@ -85,8 +85,17 @@ junctions read as crisp mitres rather than thinning out.
 | P_pop | 0.0673 | **0.0673** |
 | unmatched | 0.0672 | 0.0672 |
 | **cut** | 0.0001 | **0.0001** |
-| ratio vs per-frame Canny | 12.03x | **12.03x** |
+| ratio vs per-frame Canny (fg_only=False, **warp-drop-inflated**: baseline drop 0.468) | 12.03x | **12.03x** |
+| **ratio vs per-frame Canny, silhouette control (fg_only)** — `out/dd3_fgonly.json`, 2026-09-15 | — | **5.76x** (OURS P_pop 0.1122, cut 0.0012; BASE 0.6463, 76 fragments/frame) |
 | join endpoints (no taper) | — | **8** |
+
+> **CORRECTION (2026-09-15, HYGIENE item 5).** The 12.03x was run without the silhouette
+> control the published lego/chair cells carry; 46.8 % of the Canny baseline's strokes are
+> unwarpable silhouette strokes charged as pops. Re-scoring the byte-identical persisted
+> carrier (`out/carrier_dd3_cadpartA.npz`) with `fg_only=True` gives **5.76x**. Both are
+> stroke-identity ratios; ink-level churn on cadpartA is 6.82x (`boiltest.json`) and the
+> consecutive-frame strip shows per-frame Canny complete and visually stable on cadpartA
+> (`BOILTEST_RESULTS.md`). **No visible temporal superiority is claimed on this solid.**
 
 Carrier and temporal are identical by construction, since Part A changed nothing and Part B is
 rendering only. Reported not gated: mesh P/R unchanged, DexiNed cloud P 0.7302 / R 0.8431,

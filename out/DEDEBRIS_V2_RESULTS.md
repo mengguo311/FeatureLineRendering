@@ -32,16 +32,24 @@ Read from `dd2_diff_vs_step3.png`, trunk in black, kept fill in **green**:
 
 ## 2. The arms side by side
 
-| arm | strokes | fill kept | drawn arc | vs trunk | P_pop | **cut** | ratio |
-|---|---|---|---|---|---|---|---|
-| STEP3 trunk | 42 | — | 9.634 | 1.00x | 0.0771 | 0.0002 | 10.50x |
-| merge70 (current best) | 70 | 28/28 | 18.299 | 1.90x | 0.0910 | 0.0001 | 8.89x |
-| de-debris v1 | 50 | 8/28 | 11.797 | 1.22x | 0.0743 | 0.0001 | 10.90x |
-| **de-debris v2** | **59** | **17/28** | **14.870** | **1.54x** | **0.0673** | **0.0001** | **12.03x** |
+| arm | strokes | fill kept | drawn arc | vs trunk | P_pop | **cut** | ratio (fg_only=False, warp-drop-inflated) | **ratio fg_only** |
+|---|---|---|---|---|---|---|---|---|
+| STEP3 trunk | 42 | — | 9.634 | 1.00x | 0.0771 | 0.0002 | 10.50x | **4.79x** |
+| merge70 (current best) | 70 | 28/28 | 18.299 | 1.90x | 0.0910 | 0.0001 | 8.89x | not re-run (carrier not persisted) |
+| de-debris v1 | 50 | 8/28 | 11.797 | 1.22x | 0.0743 | 0.0001 | 10.90x | not re-run (carrier not persisted) |
+| **de-debris v2** (= dd3 carrier of record) | **59** | **17/28** | **14.870** | **1.54x** | **0.0673** | **0.0001** | 12.03x | **5.76x** |
+
+> **CORRECTION (2026-09-15, HYGIENE item 5).** The "ratio" column was measured without the
+> silhouette control; the Canny baseline's warp-drop is 0.468 on every cadpartA cell, i.e.
+> nearly half its strokes are charged as pops without comparison. The `ratio fg_only` column is
+> the same carrier re-scored with `--fg_only` (`out/m1b_stroke_temporal_table_fg_step3spec.json`,
+> `out/dd3_fgonly.json`). The `cut` judgements in this document are unaffected (they are
+> about OUR strokes); the "ratio vs per-frame Canny" is not a visible-stability statement
+> on this solid (`BOILTEST_RESULTS.md`: Canny is complete and stable on cadpartA).
 
 v2 keeps **17 of 28** fill strokes against v1's 8, retains **1.54x** the trunk's arc against
-v1's 1.22x, and posts the **best temporal ratio of any arm built so far**, 12.03x, with cut at
-0.0001. Median cross-stroke dihedral over all fill vertices measured **37.49 deg**, comfortably
+v1's 1.22x, and posts the best uncontrolled temporal ratio of the four cadpartA merge arms,
+12.03x (5.76x with the silhouette control), with cut at 0.0001. Median cross-stroke dihedral over all fill vertices measured **37.49 deg**, comfortably
 above the 30 deg threshold, which is direct confirmation that most of the fill really does sit
 on dihedral creases rather than on flat faces.
 
@@ -67,7 +75,8 @@ pre-registration.
 
 **Keep the 70-stroke merge as the current best carrier**, per the standing decision, OR adopt
 v2 if you judge the trade acceptable: v2 gives up 0.36x of arc against merge70 while removing
-11 genuinely unsupported fill strokes and improving the temporal ratio from 8.89x to 12.03x.
+11 genuinely unsupported fill strokes and improving the uncontrolled temporal ratio from 8.89x
+to 12.03x (5.76x under the silhouette control; merge70 not re-scored, carrier not persisted).
 That is a judgement about the picture, which is yours. My reading is that v2 is the better
 drawing and merge70 is the more complete one.
 

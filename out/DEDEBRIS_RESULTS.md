@@ -29,7 +29,7 @@ Per the spec's own rule, *"NO-GO if it also strips real completeness or the debr
 | P_pop | 0.0910 | 0.0743 |
 | unmatched | 0.0909 | 0.0742 |
 | **cut** | 0.0001 | **0.0001** |
-| ratio vs per-frame Canny | 8.89x | **10.90x** |
+| ratio vs per-frame Canny (fg_only=False, **warp-drop-inflated**: baseline drop 0.468; neither carrier persisted, so NOT re-scored under the silhouette control — the persisted cadpartA carriers score 4.79x (trunk) / 5.76x (dd3) controlled, see `DEDEBRIS_V2_RESULTS.md`) | 8.89x | **10.90x** |
 
 The spec expected arc to "drop slightly". It dropped by **36 percent**, removing **75 percent
 of everything the merge had added** over the trunk. That is not a polish, it is a partial

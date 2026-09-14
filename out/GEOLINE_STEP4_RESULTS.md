@@ -46,7 +46,8 @@ outside the range cadpart already covers. Only the shallow-chamfer prism does.
 - **NOT-GENERAL** otherwise, reported per solid, straight.
 - Dissociation (reported, not gated): oracle ceiling arm per solid. Misses bar but oracle
   clears R 0.60 => RANKER failure; oracle also misses => POOL failure.
-- Temporal (reported, ungated): trip-wire at 3x; cadpart zero-knob is 10.50x.
+- Temporal (reported, ungated): trip-wire at 3x; cadpart zero-knob is 10.50x uncontrolled
+  (**4.79x with the silhouette control**, see §4 correction).
 
 ## Three declarations carried into the write-up
 1. f = 1.00 is the DELETION of the M1a seed-selection stage, not a tuned value. It was
@@ -126,19 +127,35 @@ perturbing vertex radii. That is the natural Step 5.
 
 ## 4. Temporal — reported UNGATED, trip-wire 3x
 
+> **CORRECTION (2026-09-15, HYGIENE item 5).** The ratios in the first table below were run
+> with `fg_only=False`, and on these solids 41–68 % of the per-frame Canny baseline's strokes
+> are silhouette strokes that the gaussian z-buffer cannot forward-warp; `stroke_metric.pop_penalty`
+> charges every such stroke as a pop without comparing it. The published lego/chair cells
+> carry a silhouette control (`--fg_only`, `m1b_stroke_temporal_table.md` §2b) that was never
+> run on any solid. It has now been run on every solid cell with the identical carrier, orbit
+> and harness (`out/m1b_stroke_temporal_table_fg_{step3spec,s4}.json`). **The honest
+> numbers are the fg_only column.** They are stroke-identity ratios, not visible flicker: the
+> consecutive-frame strips (`BOILTEST_RESULTS.md`, `TURNTABLE_GALLERY_RESULTS.md`) show
+> per-frame Canny complete and visually stable on every clean solid, and ours drawing a partial
+> subset. **We are NOT temporally superior on clean solids in any visible sense.**
+
 240-frame TEST orbit, identical warp and per-frame Canny baseline.
 
-| solid | strokes | OURS P_pop | BASE P_pop | **ratio** | Frechet ratio | unmatched | cut |
-|---|---|---|---|---|---|---|---|
-| cadpartA (zero-knob) | 42 | 0.0771 | 0.8097 | **10.50x** | 37.03 | — | — |
-| gcube | 23 | 0.0381 | 0.7907 | **20.77x** | 49.78 | 0.0381 | 0.0000 |
-| gicosa | 25 | 0.0636 | 0.8842 | **13.90x** | 35.74 | 0.0636 | 0.0000 |
-| gprism | 44 | 0.0459 | 0.8702 | **18.97x** | 44.49 | 0.0458 | 0.0001 |
+| solid | strokes | OURS P_pop | BASE P_pop | ratio (fg_only=False, **warp-drop-inflated**) | BASE warp-drop | **OURS P_pop fg_only** | **BASE P_pop fg_only** | **ratio fg_only (honest)** | ink_churn ratio (`boiltest.json`) |
+|---|---|---|---|---|---|---|---|---|---|
+| cadpartA (zero-knob) | 42 | 0.0771 | 0.8097 | 10.50x | 0.468 | 0.1351 | 0.6462 | **4.79x** | 6.82x |
+| gcube | 23 | 0.0381 | 0.7907 | 20.77x | 0.406 | 0.0843 | 0.5952 | **7.06x** | 3.34x |
+| gicosa | 25 | 0.0636 | 0.8842 | 13.90x | 0.675 | 0.0980 | 0.5491 | **5.60x** | 3.10x |
+| gprism | 44 | 0.0459 | 0.8702 | 18.97x | 0.593 | 0.1211 | 0.6257 | **5.17x** | 1.32x |
 
-**No solid comes near the 3x trip-wire; all three new solids beat cadpart.** The decomposition
-is the striking part: `cut_frac` is **0.0000 to 0.0001** on all three, so essentially the whole
-popping penalty is `unmatched`, which is correct hidden-line removal rather than topological
-instability. On clean solids the object-space representation is not fragmenting at all.
+Under the control the interior-restricted Canny baseline shrinks to 19–88 fragments per frame
+(gicosa 19, gprism 26, cadpartA 76, gcube 88) because on a flat-shaded solid most of its ink
+WAS the silhouette, and OUR P_pop roughly doubles because interior clipping cuts our strokes at
+the eroded boundary. What survives on the solids is OUR absolute persistence (`cut_frac`
+0.0000–0.0016 with or without the control, warp-drop 0.000), not a comparative stability
+advantage. The earlier sentence "No solid comes near the 3x trip-wire; all three new solids
+beat cadpart" is withdrawn: the honest ratios are 4.8x–7.1x on these four solids, and the
+concave gstep falls BELOW the 3x trip-wire (Step 8 §6).
 
 ## 5. Builder self-checks — all three run, all three passed, all three reported
 
