@@ -102,17 +102,28 @@ claim that cadpartA has no reachable frontier point.
 cadpart's ratio is not calibrated against the chair/lego invariant and is not transported here.
 240-frame TEST orbit, identical warp and per-frame Canny baseline.
 
-| operating point | R / P | strokes | OURS P_pop | BASE P_pop | ratio |
-|---|---|---|---|---|---|
-| shipped f = 0.30 (banked) | 0.1584 / 0.9211 | — | 0.0530 | 0.8100 | **15.28x** |
-| f = 1.00, spec prune | 0.4206 / 0.8139 | 42 | 0.0771 | 0.8097 | **10.50x** |
-| **B ribbon, kf 0.25** | 0.5031 / 0.7080 | 20 | 0.1063 | 0.8099 | **7.62x** |
-| A2 prune, kf 0.35 | 0.6250 / 0.7486 | 46 | 0.1078 | 0.8100 | **7.52x** |
+> **CORRECTION (2026-09-15, HYGIENE item 5).** The "ratio" column was run with
+> `fg_only=False`; on cadpartA 46.8 % of the Canny baseline's strokes are silhouette strokes
+> the z-buffer cannot warp, charged as pops without comparison. The **ratio fg_only** column
+> re-scores the identical carriers with the silhouette control the published lego/chair cells
+> use (`out/m1b_stroke_temporal_table_fg_{gated,step3spec,step3B,step3A2}.json`). The
+> shipped f=0.30 uncontrolled cell survives only in `logs/cadpartA_m1b.log`.
 
-**The recall is bought with temporal coherence, roughly halving the ratio.** All four points
-remain far steadier than the per-frame image-space baseline, but the trade is real and it is
-the same axis on which lego's f = 1.00 was ruled NO-GO. Anyone adopting f = 1.00 on a solid is
-making that trade knowingly.
+| operating point | R / P | strokes | OURS P_pop | BASE P_pop | ratio (uncontrolled, warp-drop-inflated) | OURS P_pop fg_only | BASE P_pop fg_only | **ratio fg_only** |
+|---|---|---|---|---|---|---|---|---|
+| shipped f = 0.30 (banked) | 0.1584 / 0.9211 | — | 0.0530 | 0.8100 | 15.28x | 0.1312 | 0.6463 | **4.93x** |
+| f = 1.00, spec prune | 0.4206 / 0.8139 | 42 | 0.0771 | 0.8097 | 10.50x | 0.1351 | 0.6462 | **4.79x** |
+| **B ribbon, kf 0.25** | 0.5031 / 0.7080 | 20 | 0.1063 | 0.8099 | 7.62x | 0.1924 | 0.6457 | **3.36x** |
+| A2 prune, kf 0.35 | 0.6250 / 0.7486 | 46 | 0.1078 | 0.8100 | 7.51x | 0.1691 | 0.6463 | **3.82x** |
+
+**The recall is bought with stroke-identity persistence, roughly halving the ratio** under
+either protocol (controlled: 4.93x → 3.36x–3.82x). The earlier sentence "All four points
+remain far steadier than the per-frame image-space baseline" is withdrawn: under the control
+the ratios are 3.4x–4.9x, the interior-restricted Canny baseline keeps 76 fragments per
+frame, and the consecutive-frame strips (`BOILTEST_RESULTS.md`) show per-frame Canny complete
+and visually stable on cadpartA — **no visible temporal advantage is claimed on this solid**.
+The trade is real and it is the same axis on which lego's f = 1.00 was ruled NO-GO. Anyone
+adopting f = 1.00 on a solid is making that trade knowingly.
 
 ## 6. Caveats on the record
 

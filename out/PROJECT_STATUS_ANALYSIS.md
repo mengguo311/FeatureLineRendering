@@ -66,9 +66,30 @@ Where it does NOT hold, and the new mechanism you need to know about:
   6.5x was never run on any solid. The rest of the baseline's solid P_pop is the tracer
   re-decomposing junctions, a property of `trace_polylines` (junction split, min_len 4,
   DP eps 1.0), not of Canny.
-- The clean-solid ink_churn numbers (cadpartA 6.80x, gcube 3.34x) exist only in git blob
-  `95f3872:out/boiltest.json` and the strip PNG headers; `scripts/boiltest.py:122` overwrote
-  the live JSON with lego/chair. gicosa, gprism and gstep have no ink-level measurement at all.
+- The clean-solid ink_churn numbers (cadpartA 6.80x, gcube 3.34x) originally existed only in
+  git blob `95f3872:out/boiltest.json`; `scripts/boiltest.py:122` overwrote the live JSON with
+  lego/chair. **Resolved 2026-09-15 (HYGIENE item 5):** boiltest re-run over all seven scenes
+  into one `out/boiltest.json`, and every solid temporal cell re-run with the silhouette
+  control. Results, stroke-identity P_pop ratio vs per-frame Canny, 240-frame TEST orbit:
+
+  | solid cell | uncontrolled (banked) | baseline warp-drop | **fg_only (honest)** | ink_churn ratio |
+  |---|---|---|---|---|
+  | cadpartA zero-knob (42 strokes) | 10.50x | 0.468 | **4.79x** | 6.82x |
+  | cadpartA shipped f=0.30 | 15.28x | 0.468 | **4.93x** | — |
+  | cadpartA ribbon B kf0.25 / A2 kf0.35 | 7.62x / 7.51x | 0.468 | **3.36x / 3.82x** | — |
+  | cadpartA DexiNed carrier (4,007) | 4.78x | 0.468 | **3.32x** (cut 0.149) | — |
+  | cadpartA dd3 carrier (59) | 12.03x | 0.468 | **5.76x** | — |
+  | gcube | 20.77x | 0.406 | **7.06x** | 3.34x |
+  | gicosa | 13.90x | 0.675 | **5.60x** | 3.10x |
+  | gprism | 18.97x | 0.593 | **5.17x** | 1.32x |
+  | gstep ship / kf0.22 | 11.24x / 10.74x | 0.351 | **2.80x / 2.17x** (below the 3x trip-wire) | 6.23x |
+
+  Under the control the interior-restricted Canny baseline keeps only 19–127 fragments per
+  frame on the solids (most of its ink was silhouette) and OUR P_pop roughly doubles (interior
+  clipping cuts our strokes at the eroded boundary). Not re-scored because their carriers were
+  never persisted: merge70, de-debris v1, the gicosa-pilot 37-stroke merged carrier. Lego and
+  chair boiltest values reproduce within rasteriser drift (9.17x, 28.16x). **On every clean
+  solid per-frame Canny is complete and visually stable, and we are not superior there.**
 
 What genuinely survives on solids is an absolute property of our strokes, not a comparison:
 P_pop 0.038 to 0.077, cut 0.0000 to 0.0011, warp-drop ≤0.005, cut exactly zero on 99% of
@@ -338,21 +359,27 @@ Cost is one capture, one COLMAP run, one 3DGS training, one pipeline run. Nothin
 
 ## Hygiene that must happen before any of this is written up (none of it an experiment)
 
-- Re-run `boiltest.py` over all seven scenes into one JSON (or make the script merge) so the
-  clean-solid numbers exist outside git history.
-- Re-run every solid temporal cell with `--fg_only` so the solid ratios stop being warp-drop;
-  until then quote no solid P_pop ratio as stability, only OUR absolute persistence.
-- Amend `VIDEO_RESULTS.md` leg 5 to FAIL (4/5 GO) per BOILTEST; propagate the BOILTEST /
-  TURNTABLE bound into GEOLINE_STEP3/4/8, STROKEVIZ, MERGE, DEDEBRIS(_V2), DD3, GICOSA before
-  any of those ratios are cited.
-- Fix "5 of 6" → "3 of 4" and "≥9.8x" → "≥9.78x" in `RESULTS_MASTER.md` and
-  `PARETO2_RESULTS.md`; restate the accumulated-baseline range as 1.72–9.46x with lego-T1
-  having no shared accumulated point; replace 19.8%/18.2% with 16.1%/14.8%.
-- Retract the "SAFE" label on lego's −24.6% swing in `E_LEDGER.md` §8; drop the borrowed 8.0x
-  bar from `E_TRAJ_CHAIR_RESULTS.md`; report the envelope per scene × orbit × statistic.
-- Remove the "stated future work" and "poster asset" clauses from `scripts/comparison_fig.py`
-  and re-render the figure with the ink-matched poster still and a matching ours illustration
-  (lego strip) or a matching cadpartA number; label the stability axis as unmatched density.
+- ~~Re-run `boiltest.py` over all seven scenes into one JSON~~ **DONE 2026-09-15**
+  (`out/boiltest.json`, 7 scenes, `logs/boiltest_all7.log`; `scripts/boiltest.py` gained the
+  gicosa/gprism/gstep pool mappings, keep masks verified identical to the turntable carriers).
+- ~~Re-run every solid temporal cell with `--fg_only`~~ **DONE 2026-09-15** for every persisted
+  solid carrier (12 cells: `out/m1b_stroke_temporal_table_fg_*.json`, `out/dd3_fgonly.json`;
+  logs `logs/fgonly_{solids,cadA_extra,dd3}.log`); table in §1a. merge70, de-debris v1 and
+  the gicosa-pilot merged carrier were never persisted and remain uncontrolled.
+- ~~Amend `VIDEO_RESULTS.md` leg 5 to FAIL; propagate the BOILTEST / TURNTABLE bound into
+  GEOLINE_STEP3/4/8, STROKEVIZ, MERGE, DEDEBRIS(_V2), DD3, GICOSA~~ **DONE 2026-09-15**: each
+  of those write-ups now carries a dated correction block with the fg_only numbers and the
+  statement that per-frame Canny is complete and stable on the solids.
+- ~~Fix "5 of 6" → "3 of 4" and "≥9.8x" → "≥9.78x" in `RESULTS_MASTER.md` and
+  `PARETO2_RESULTS.md`~~ **DONE (commit b21acae)**. Still open: restate the
+  accumulated-baseline range as 1.72–9.46x with lego-T1 having no shared accumulated point;
+  replace 19.8%/18.2% with 16.1%/14.8%.
+- ~~Retract the "SAFE" label on lego's −24.6% swing in `E_LEDGER.md` §8~~ **DONE (b21acae)**.
+  Still open: drop the borrowed 8.0x bar from `E_TRAJ_CHAIR_RESULTS.md`; report the envelope
+  per scene × orbit × statistic.
+- ~~Remove the "stated future work" and "poster asset" clauses from `scripts/comparison_fig.py`~~
+  **DONE (b21acae)**. Still open: re-render with the ink-matched poster still and a matching
+  ours illustration; label the stability axis as unmatched density.
 - Bank the fine-grid A2 sweep as a JSON or drop "target MET" from the Step-3 write-up and the
   commit-message narrative.
 - Compute mesh P/R for the dd3 carrier (`out/carrier_dd3_cadpartA.npz`) so the visual-first

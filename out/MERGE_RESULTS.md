@@ -85,14 +85,21 @@ content is genuinely in the trunk's holes rather than redundant with it.
 
 ## 2. Temporal, decomposed — and why judging on `cut` mattered again
 
-| arm | strokes | med verts | P_pop | = unmatched | + **cut** | ratio | drawn arc |
-|---|---|---|---|---|---|---|---|
-| STEP3 trunk | 42 | 5 | 0.0771 | 0.0770 | 0.0002 | 10.50x | 9.634 |
-| **MERGE** | **70** | **5** | 0.0910 | 0.0909 | **0.0001** | 8.89x | **18.299 (1.90x)** |
-| DexiNed raw | 4,007 | 4 | 0.1693 | 0.0365 | 0.1328 | 4.78x | — |
+> **CORRECTION (2026-09-15, HYGIENE item 5).** The "ratio" column is `fg_only=False`
+> (baseline warp-drop 0.468, silhouette strokes charged as pops). With the silhouette
+> control: STEP3 trunk **4.78x**, DexiNed raw **3.32x**
+> (`out/m1b_stroke_temporal_table_fg_sv{step3,dexined}.json`); the merge70 carrier was not
+> persisted and is **not re-scored**. Per-frame Canny is complete and visually stable on
+> cadpartA (`BOILTEST_RESULTS.md`); no visible temporal advantage is claimed here.
 
-**Total P_pop says the merge is worse than the trunk, 0.0910 against 0.0771, and the ratio
-falls from 10.50x to 8.89x. The `cut` term says it is marginally BETTER, 0.0001 against
+| arm | strokes | med verts | P_pop | = unmatched | + **cut** | ratio (uncontrolled) | **ratio fg_only** | drawn arc |
+|---|---|---|---|---|---|---|---|---|
+| STEP3 trunk | 42 | 5 | 0.0771 | 0.0770 | 0.0002 | 10.50x | **4.78x** | 9.634 |
+| **MERGE** | **70** | **5** | 0.0910 | 0.0909 | **0.0001** | 8.89x | not re-run (carrier not persisted) | **18.299 (1.90x)** |
+| DexiNed raw | 4,007 | 4 | 0.1693 | 0.0365 | 0.1328 | 4.78x | **3.32x** | — |
+
+**Total P_pop says the merge is worse than the trunk, 0.0910 against 0.0771, and the
+uncontrolled ratio falls from 10.50x to 8.89x. The `cut` term says it is marginally BETTER, 0.0001 against
 0.0002.** The entire increase is `unmatched`, which is more strokes producing more correct
 hidden-line events, not instability. Had we gated on P_pop as originally tempting, this build
 would have been rejected for getting more complete. That is the second time the decomposition

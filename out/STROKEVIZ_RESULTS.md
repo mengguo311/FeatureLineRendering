@@ -21,7 +21,8 @@ P_pop stops a pretty still fooling us about stability.
   confidence are added to feed the chainer. **Never chained or timed before; its temporal
   behaviour is unknown.**
 - **Carrier 2, STEP3 geometric ranker**: `linelets_cadpartA_step3pool.npz` at its spec-prune
-  `keep`, the zero-knob point P 0.8139 / R 0.4206, banked temporal 10.50x.
+  `keep`, the zero-knob point P 0.8139 / R 0.4206, banked temporal 10.50x (uncontrolled;
+  **4.78x with the silhouette control**, see §1 correction).
 
 Both go through the **identical frozen `strokes.chain_linelets_3d`** (3D NMS, tangent-consistent
 linking, collinear merge with gap). No new clustering code.
@@ -59,20 +60,30 @@ will over-segment into many short chains; the STEP3 carrier gives the steadier v
 240-frame orbit, identical warp and per-frame Canny baseline, both carriers through the
 identical frozen chainer.
 
-| carrier | strokes | P_pop | = unmatched | + **cut** | baseline P_pop | ratio | Frechet |
-|---|---|---|---|---|---|---|---|
-| DexiNed cloud | 4,007 | 0.1693 | 0.0365 | **0.1328** | 0.8098 | 4.78x | 36.7x |
-| **STEP3 ranker** | 42 | 0.0771 | 0.0770 | **0.0002** | 0.8097 | **10.50x** | 37.2x |
+> **CORRECTION (2026-09-15, HYGIENE item 5).** The "ratio" column was measured with
+> `fg_only=False`; the Canny baseline's warp-drop on cadpartA is 0.468 (silhouette strokes
+> charged as pops without comparison). Re-scored with the silhouette control
+> (`out/m1b_stroke_temporal_table_fg_sv{dexined,step3}.json`): DexiNed carrier **3.32x**
+> (OURS P_pop 0.1950, cut **0.1486**), STEP3 carrier **4.78x** (OURS P_pop 0.1351, cut
+> 0.0016), interior Canny 0.646 with 76 fragments/frame. The `cut` verdict below is
+> unchanged in direction (DexiNed still churns topologically, ~90x on the controlled run);
+> the "ratio vs Canny" is not a visible-stability statement on cadpartA.
+
+| carrier | strokes | P_pop | = unmatched | + **cut** | baseline P_pop | ratio (uncontrolled) | **ratio fg_only** | Frechet |
+|---|---|---|---|---|---|---|---|---|
+| DexiNed cloud | 4,007 | 0.1693 | 0.0365 | **0.1328** | 0.8098 | 4.78x | **3.32x** (cut 0.1486) | 36.7x |
+| **STEP3 ranker** | 42 | 0.0771 | 0.0770 | **0.0002** | 0.8097 | 10.50x | **4.78x** (cut 0.0016) | 37.2x |
 
 **This is why the decomposition mattered.** Total P_pop says DexiNed is 2.2x worse. The `cut`
-term says it is **664x** worse. For the STEP3 carrier 99.7 percent of popping is `unmatched`,
+term says it is roughly **780x** worse on the uncontrolled run (0.1328 vs 0.00017; "664x"
+was computed from rounded values) and ~90x on the controlled one. For the STEP3 carrier 99.7 percent of popping is `unmatched`,
 which is correct hidden-line removal: lines *should* vanish behind the object. For the DexiNed
 carrier 78 percent of popping is `cut`, genuine topological churn as 4,007 short chains split
 and merge between frames. Judging on total P_pop alone would have understated the gap by two
 orders of magnitude.
 
-The STEP3 arm reproduces the banked Step-3 cell exactly, P_pop 0.0771 and 10.50x, which
-confirms the viz path and the metric path are seeing the same strokes.
+The STEP3 arm reproduces the banked Step-3 cell exactly, P_pop 0.0771 and 10.50x
+(uncontrolled), which confirms the viz path and the metric path are seeing the same strokes.
 
 ## 2. What the frames show
 
