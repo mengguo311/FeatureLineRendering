@@ -98,8 +98,34 @@ junctions read as crisp mitres rather than thinning out.
 > (`BOILTEST_RESULTS.md`). **No visible temporal superiority is claimed on this solid.**
 
 Carrier and temporal are identical by construction, since Part A changed nothing and Part B is
-rendering only. Reported not gated: mesh P/R unchanged, DexiNed cloud P 0.7302 / R 0.8431,
-STEP3 zero-knob P 0.8139 / R 0.4206.
+rendering only.
+
+**Mesh P/R of the dd3 carrier itself (added 2026-09-15, HYGIENE item 6; `out/dd3_meshpr.json`,
+`scripts/dd3_meshpr.py`, `logs/dd3_meshpr.log`). MESH EVAL-ONLY, reported not gated.**
+Until this date no P/R had been computed for merge70, dd2 or dd3; the two numbers quoted here
+("DexiNed cloud P 0.7302 / R 0.8431, STEP3 zero-knob P 0.8139 / R 0.4206") were the P/R of the
+INPUT carriers, and they are two different metrics: the 0.7302 / 0.8431 is the **DexiNed
+triangulated point cloud** (`dexprimary_p1b_cadpartA_ref40.json`, subset `tri_sup1`, 220,255
+points) scored as a **3-D point set at the px1.5-equivalent radius 0.004860**, not the dd3
+carrier and not the segment metric; the 0.8139 / 0.4206 is the STEP3 zero-knob linelets scored
+by **segment raster at 1.5 px on the 10 held-out TEST views**. The dd3 carrier (59 polylines,
+442 edges, fields `pts/offs/open_end` — sufficient, since P/R needs only the 3-D geometry) is
+now scored under BOTH conventions; each harness first reproduced its banked input number
+exactly (0.8139 / 0.4206 and 0.7302 / 0.8431) before dd3 was scored.
+
+| carrier | metric | P | R | notes |
+|---|---|---|---|---|
+| STEP3 zero-knob linelets (42-stroke trunk's input, 7,208 linelets) | segment raster @1.5 px, TEST macro | 0.8139 | 0.4206 | banked, reproduced |
+| **dd3 carrier of record (59 strokes)** | **segment raster @1.5 px, TEST macro** | **0.8979** | **0.4520** | @2.5 px: 0.9067 / 0.4659; per-view P 0.73–0.98, R 0.31–0.52; edges subdivided to the trunk's median length (no-subdivision sensitivity 0.8961 / 0.4517) |
+| DexiNed triangulated cloud, tri_sup1 (fill's input) | 3-D points @ radius 0.004860 | 0.7302 | 0.8431 | banked, reproduced; **NOT a dd3 number** |
+| **dd3 carrier of record** | **3-D samples @ radius 0.004860** (spacing radius/5) | **0.9329** | **0.3202** | STEP3 zero-knob segments sampled the same way: 0.8948 / 0.3015 |
+
+Reading, straight: the dd3 drawing is **more precise than the trunk it grew from** (0.898 vs
+0.814 at 1.5 px; the dihedral gate and de-hairing removed unsupported content) and only
+**modestly more complete in crease terms** (R 0.452 vs 0.421) even though it draws 1.54x the
+trunk's arc — much of the added arc lands on creases the trunk already covered or beyond
+1.5 px of any GT crease. It draws **under half of the visible GT crease pixels**. The DexiNed
+cloud's R 0.843 is the coverage the *input* cloud has, not what the drawing achieves.
 
 **Declared polyhedron-scope limit, restated.** The inherited min-length and straightness
 filters, the 30 deg crease threshold, and the straightness leg above all bake a polyhedron

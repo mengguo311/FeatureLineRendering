@@ -1,0 +1,159 @@
+{
+ "scene": "cadpartA",
+ "carrier": "out/carrier_dd3_cadpartA.npz",
+ "test_views": [
+  5,
+  15,
+  25,
+  35,
+  45,
+  55,
+  65,
+  75,
+  85,
+  95
+ ],
+ "mesh_eval_only": "GT mesh read only via cached oracle labels (tune_lib.Harness, dexprimary_p0.gt_labels); method path untouched; nothing tuned",
+ "carrier_fields": {
+  "pts": [
+   501,
+   3
+  ],
+  "offs": [
+   60
+  ],
+  "open_end": [
+   59,
+   2
+  ]
+ },
+ "n_strokes": 59,
+ "n_edges": 442,
+ "harness_check_step3_zero_knob": {
+  "P@1.5": 0.8138724142918224,
+  "R@1.5": 0.4205731862847545,
+  "P@2.5": 0.8985174974672505,
+  "R@2.5": 0.4324633206605397,
+  "banked": "P 0.8139 / R 0.4206"
+ },
+ "subdivision_max_len_world": 0.042796213179826736,
+ "n_linelets_after_subdivision": 531,
+ "visibility_and_guard_per_view": [
+  {
+   "view": 5,
+   "drawn_subdivided": 274,
+   "drawn_raw_edges": 224,
+   "raw_edges_total": 442
+  },
+  {
+   "view": 15,
+   "drawn_subdivided": 340,
+   "drawn_raw_edges": 287,
+   "raw_edges_total": 442
+  },
+  {
+   "view": 25,
+   "drawn_subdivided": 398,
+   "drawn_raw_edges": 336,
+   "raw_edges_total": 442
+  },
+  {
+   "view": 35,
+   "drawn_subdivided": 427,
+   "drawn_raw_edges": 359,
+   "raw_edges_total": 442
+  },
+  {
+   "view": 45,
+   "drawn_subdivided": 424,
+   "drawn_raw_edges": 355,
+   "raw_edges_total": 442
+  },
+  {
+   "view": 55,
+   "drawn_subdivided": 418,
+   "drawn_raw_edges": 350,
+   "raw_edges_total": 442
+  },
+  {
+   "view": 65,
+   "drawn_subdivided": 361,
+   "drawn_raw_edges": 308,
+   "raw_edges_total": 442
+  },
+  {
+   "view": 75,
+   "drawn_subdivided": 371,
+   "drawn_raw_edges": 314,
+   "raw_edges_total": 442
+  },
+  {
+   "view": 85,
+   "drawn_subdivided": 345,
+   "drawn_raw_edges": 295,
+   "raw_edges_total": 442
+  },
+  {
+   "view": 95,
+   "drawn_subdivided": 347,
+   "drawn_raw_edges": 298,
+   "raw_edges_total": 442
+  }
+ ],
+ "dd3_segment_raster": {
+  "P@1.5": 0.897923679308907,
+  "R@1.5": 0.4520017663684692,
+  "P@2.5": 0.9066511356726078,
+  "R@2.5": 0.46587014646353875,
+  "n_px_per_view_mean": 2469,
+  "per_view_P@1.5": [
+   0.7305452620434092,
+   0.8101371001246365,
+   0.8849523809523809,
+   0.9248258159149249,
+   0.9139622641509434,
+   0.8895093737534903,
+   0.9155761924862811,
+   0.9433887569279493,
+   0.9825132167547783,
+   0.9838264299802761
+  ],
+  "per_view_R@1.5": [
+   0.3114619643223293,
+   0.398991784914115,
+   0.506559220389805,
+   0.519669827889006,
+   0.4958411135630623,
+   0.4492129246064623,
+   0.43182527301092044,
+   0.4572160289243748,
+   0.4735934806456668,
+   0.47564604541895067
+  ],
+  "sensitivity_no_subdivision_P@1.5": 0.8961418584688436,
+  "sensitivity_no_subdivision_R@1.5": 0.4516664591890501
+ },
+ "radius_px1.5_equiv": 0.004859630205541837,
+ "n_seen_gt_crease_samples": 28304,
+ "harness_check_dexined_cloud_tri_sup1": {
+  "precision_3D": 0.7302444893418991,
+  "recall_3D": 0.8430963821368005,
+  "chamfer_median": 0.0010706046550338075,
+  "n_points": 220255,
+  "banked": "tri_sup1: P 0.7302 / R 0.8431 (n 220,255)"
+ },
+ "dd3_point3D": {
+  "precision_3D": 0.9328867463845238,
+  "recall_3D": 0.32016676088185414,
+  "chamfer_median": 0.1006275715785247,
+  "n_points": 15973,
+  "sample_spacing_world": 0.0009719260411083675
+ },
+ "step3_zero_knob_point3D_sampled": {
+  "precision_3D": 0.8947784964727493,
+  "recall_3D": 0.3015474844544941,
+  "chamfer_median": 0.1334336265148439,
+  "n_points": 307038
+ },
+ "elapsed_s": 4.910376310348511
+}

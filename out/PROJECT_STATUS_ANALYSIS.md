@@ -141,10 +141,15 @@ corners. STROKEVIZ's decomposition was the right call: total P_pop says DexiNed-
 (4,007 strokes) is 2.2x worse than the STEP3 trunk; the `cut` term says ~780x
 (0.1328 vs 0.00017; the write-up's "664x" used rounded values).
 
-Two honest limits: no mesh P/R was ever computed for merge70, dd2 or dd3 (only the input
-carriers' P/R is quoted; `out/carrier_dd3_cadpartA.npz` is sitting there ready), and the
-"12.03x vs Canny" is the warp-drop-inflated ratio above (baseline `warp_dropped_frac` 0.468 in
-`dd3.json`). "Best temporal ratio of any arm built so far" is true only among the four
+Two honest limits, one now closed. **Mesh P/R for the dd3 carrier (HYGIENE item 6, done
+2026-09-15, `out/dd3_meshpr.json`):** segment raster at 1.5 px on the TEST views **P 0.898 /
+R 0.452** (STEP3 trunk input 0.814 / 0.421, reproduced by the same call); 3-D samples at the
+px1.5-equivalent radius **P 0.933 / R 0.320**. The 0.7302 / 0.8431 the DD3 write-up used to
+quote beside the visual result is the DexiNed input cloud under the 3-D point metric, not a
+dd3 number, and the write-up now says so. So the dd3 drawing is cleaner than its trunk but
+still draws under half of the visible GT crease pixels; the 1.54x arc gain bought only +0.03
+recall. The other limit stands: the "12.03x vs Canny" is the warp-drop-inflated ratio above
+(baseline `warp_dropped_frac` 0.468 in `dd3.json`; 5.76x controlled). "Best temporal ratio of any arm built so far" is true only among the four
 cadpartA merge arms. The gicosa pilot of the byte-identical pipeline was NO-GO on
 completeness: a better cloud (P 0.765 / R 0.969) gave a worse tile (37 strokes, 12 fill)
 because gap-filling concentrates the cloud's residual false positives once the trunk has
@@ -382,8 +387,9 @@ Cost is one capture, one COLMAP run, one 3DGS training, one pipeline run. Nothin
   ours illustration; label the stability axis as unmatched density.
 - Bank the fine-grid A2 sweep as a JSON or drop "target MET" from the Step-3 write-up and the
   commit-message narrative.
-- Compute mesh P/R for the dd3 carrier (`out/carrier_dd3_cadpartA.npz`) so the visual-first
-  result has a correctness number beside it.
+- ~~Compute mesh P/R for the dd3 carrier~~ **DONE 2026-09-15** (`out/dd3_meshpr.json`:
+  segment raster P 0.898 / R 0.452 at 1.5 px; 3-D P 0.933 / R 0.320; harness checks
+  reproduced both banked input numbers; DD3 write-up label corrected).
 - Restore the four-solid `geoline_step6.json` from `logs/step6.log` or rename the gstep file;
   fill gstep cut 0.0011 in the turntable gallery.
 - Mark as unsourced until an artifact exists: "AUC 0.446 on lego", the 213,711-edge count,
