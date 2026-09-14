@@ -1,0 +1,20 @@
+DESIGN-ARGUE ANSWER to argueB (driver-side, banked while agent login expired). NO CODE. To be adversarially re-checked by the dss9 agent once /login is restored, then executed.
+
+DISK STATUS (checked this fire):
+- NO real-capture dataset on dss9 (~/data holds only finance CSVs + synthetic 2GB generation dir). No Tanks&Temples, no Mip-NeRF360, no DTU, no COLMAP output anywhere under ~. All must be DOWNLOADED. 178G free on /dev/sda2 (79% used) -> room for one object dataset.
+
+CANDIDATE WEIGH (honesty of fit to "textured BOUNDED OBJECT with ESTIMATED poses, enough texture that per-frame image-space genuinely boils"):
+1. Tanks&Temples IGNATIUS (bronze statue). BEST FIT. Bounded single object; genuinely COLMAP-ESTIMATED poses (T&T ships casual video-derived poses, the estimated-pose point is honest, not calibrated); bronze surface has fine engraved relief/patina texture -> per-frame Canny/DexiNed WILL boil, so the comparison is meaningful. Reservation: masking needed to isolate the object from background (fg_only silhouette control must use the T&T object mask, not a synthetic alpha); download+COLMAP is the cost.
+2. DTU. WEAKEST on the exact point we are testing: poses are CALIBRATED (robot-arm), NOT estimated. Undercuts the whole reason for B (survives ESTIMATED poses). Reject.
+3. Mip-NeRF360. Mostly UNBOUNDED scenes (garden/bicycle/kitchen); not a bounded object. Only marginally object-centric. Reject for the bounded-object claim.
+4. Casual phone capture. No rig confirmed on dss9; would need our own COLMAP run and is the least reproducible for a reviewer. Fallback only.
+
+CONVERGE: Tanks&Temples Ignatius. Object-bounded + estimated poses + real texture that boils = the honest closest match to the claim. Requires: download T&T Ignatius, run COLMAP (or use shipped poses), frozen vanilla 3DGS shipped recipe, shipped M1b pipeline + temporal harness UNCHANGED, object mask for the fg_only silhouette control.
+
+FROZEN PRE-REGISTERED GO/NO-GO (verbatim, freeze before running):
+- GO iff: silhouette-controlled P_pop ratio >=5x at 240 frames AND ink_churn ratio >=8x on consecutive frames AND consecutive-frame strip judged visibly steadier.
+- NO-GO iff: either number misses OR pipeline yields <300 strokes/frame (primitive does not survive estimated poses + real photometry).
+- Mesh-free eval ONLY (no GT mesh on real capture); matched-precision is the ONE non-transportable axis, reported not gated. No per-scene tuning. Object-space combine only.
+- A NO-GO is a CRITICAL HONEST FINDING (crown does not survive real poses), not a failure. Report straight.
+
+BLOCKER: Claude Code agent login expired ("Please run /login"); /login needs interactive OAuth browser flow I cannot complete headlessly. Needs the user to re-auth the dss9 tmux m1b session before the agent can adversarially critique this and execute B.

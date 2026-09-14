@@ -1,0 +1,10 @@
+DESIGN-ARGUE, NO CODE THIS TURN. Hygiene 1-6 are done and verified against JSON. Item 7 stays a flagged decision, do not fake data. Now we argue experiment B: the ONE make-or-break test of whether the crown claim survives REAL poses.
+
+The crown claim (temporal stability > per-frame image-space at matched precision/density) currently holds ONLY on chair/lego, both NeRF-synthetic with PERFECT poses. The single fatal-and-fixable reviewer objection is: does it survive COLMAP-ESTIMATED poses + real photometry on a REAL captured TEXTURED BOUNDED object?
+
+Your job THIS turn, adversarial, no code:
+1. Argue which real dataset already on dss9 disk (or trivially downloadable) is HONESTLY closest to "textured bounded object with estimated poses." Candidates I want you to weigh explicitly: Tanks&Temples Ignatius (bronze statue, bounded, textured, COLMAP poses), a Mip-NeRF360 object-ish scene, DTU (bounded+textured but poses are CALIBRATED not estimated -> weaker for the "estimated poses" point), a casual phone capture if a rig exists. State what is actually on disk vs must-download.
+2. Push back on the honesty of each: is it truly a bounded OBJECT (not an unbounded scene)? Are poses truly ESTIMATED (COLMAP) not calibrated? Is there enough texture that per-frame image-space Canny/DexiNed genuinely boils, so the comparison is meaningful?
+3. Converge on ONE dataset + the FROZEN pre-registered go/no-go, restated exactly: GO if silhouette-controlled P_pop ratio >=5x at 240 frames AND ink_churn ratio >=8x consecutive-frames AND the consecutive strip is judged visibly steadier. NO-GO if either misses OR pipeline yields <300 strokes/frame. Mesh-free eval only (no GT mesh on real capture), matched-precision is the one non-transportable axis. Frozen vanilla 3DGS shipped recipe, shipped M1b pipeline + temporal harness UNCHANGED, no per-scene tuning.
+
+Give me your pick, your honest reservations, and the disk/download status. Direct reasoning, NO heavy 15-agent workflow, NO code execution this turn.
