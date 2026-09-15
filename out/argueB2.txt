@@ -1,0 +1,13 @@
+DESIGN-ARGUE (NO code yet, NO heavy workflow — direct answer): Exp B Truck M1b ingestion adapter.
+
+CONTEXT: Frozen vanilla 2DGS on T&T Truck (COLMAP estimated poses) is trained: test PSNR 25.09 @30k, 1.16M gaussians, ckpt out/2dgs_truck/point_cloud/iteration_30000. Pre-registered go/no-go is FROZEN (GO iff fg_only P_pop>=5x@240f AND ink_churn>=8x consec AND strip visibly steadier; NO-GO if either misses or <300 strokes/frame).
+
+BLOCKER: src/common.py load_cameras()/load_gaussians() are hardwired to synthetic Blender (transforms_train.json single intrinsic; outputs/{scene}_static/point_cloud.ply fixed H/W). Truck = per-cam COLMAP intrinsics 1957x1091 + trained 2DGS ply. scripts/colmap_loader.py reads the COLMAP sparse but returns gs_io.Camera, not src.common.Camera, and does not feed the trained ply into extract_seeds/the OVERALL score recipe.
+
+QUESTION TO ARGUE (answer directly, adversarially, then converge):
+1. What is the MINIMAL adapter that feeds Truck (cams with per-image K + real rgb_paths + gaussians dict from the 2DGS ply) into the EXISTING OVERALL-score recipe so the photometric edge/score computation is BYTE-IDENTICAL and ONLY the data source changes? Enumerate every place the recipe assumes single-intrinsic / fixed H,W / Blender white-bg composite, and confirm each is data-plumbing not method.
+2. 2DGS ply vs 3DGS ply: does load_gaussians' normal=shortest-cov-axis + albedo=0.5+SH_C0*f_dc read the same fields from a 2DGS ply? (2DGS has 2 scales + a flat disk normal — is scale_2 present/degenerate? does that change the score?) This is the one place the method could silently differ — adjudicate honestly.
+3. If (2) means the score is NOT identical between 2DGS and 3DGS, is the honest fix to train vanilla 3DGS on Truck instead (matching the synthetic pipeline exactly), or to accept the 2DGS-specific score and state it? Pre-register which.
+4. Confirm mesh-free eval only, no per-scene tuning, object-space combine only. Restate the frozen go/no-go verbatim.
+
+Then give a GO/NO-GO on writing the adapter and the exact file(s) to touch. Keep it to the answer.
