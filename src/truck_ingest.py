@@ -15,6 +15,7 @@ transposed B 0.169; 404k dense splatted px at cam0; 66.7% in-front on 2.58M gaus
 """
 import json
 import os
+import cv2
 import numpy as np
 from plyfile import PlyData
 
@@ -35,11 +36,23 @@ def load_truck_cameras(cams_json=CAMS_JSON, img_dir=IMG_DIR):
         pos = np.array(c["position"], np.float64)    # camera center in world
         W, H = int(c["width"]), int(c["height"])
         fx, fy = float(c["fx"]), float(c["fy"])
+        name = c["img_name"]
+        # T&T ships HALF-RESOLUTION images while COLMAP intrinsics are full-res.
+        # The gbuffer renders at cam W/H and photo_edge_dt reads the on-disk jpg, so the
+        # two must agree. Rescale K + W/H to the ACTUAL image size (pose/method untouched;
+        # this is the standard 3DGS resolution-downscale, applied consistently to both paths).
+        _ip = f"{img_dir}/{name}.jpg"
+        _im = cv2.imread(_ip)
+        if _im is not None:
+            aH, aW = _im.shape[:2]
+            if (aW, aH) != (W, H):
+                sx, sy = aW / float(W), aH / float(H)
+                fx, fy = fx * sx, fy * sy
+                W, H = aW, aH
         K = np.array([[fx, 0, W / 2.0], [0, fy, H / 2.0], [0, 0, 1]], np.float64)
         w2c = np.eye(4)
         w2c[:3, :3] = R.T
         w2c[:3, 3] = -R.T @ pos
-        name = c["img_name"]
         cams.append(Camera(K, w2c, H, W, name=name))
         rgb_paths.append(f"{img_dir}/{name}.jpg")
     return cams, rgb_paths
