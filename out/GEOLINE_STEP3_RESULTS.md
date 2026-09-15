@@ -156,7 +156,15 @@ adopting f = 1.00 on a solid is making that trade knowingly.
 
 ## 8. Two checks on the commit-message claims for `4e52b0d`
 
-**(a) "Pre-registered target R>=0.60 @ P>=0.75 MET" — CONFIRMED, after a disclosed grid
+**(a) "Pre-registered target R>=0.60 @ P>=0.75 MET" — UNBACKED (HYGIENE item 7, 2026-09-15).**
+> RETRACTION: the 15-agent audit (PROJECT_STATUS_ANALYSIS.md) found the fine-grid A2 sweep
+> table below is NOT banked as a JSON on disk; only the COARSE grid is, and its R-satisfying
+> point (kf 0.35) lands at P 0.7486 — 0.0014 SHORT of the 0.75 bar. As measured on banked
+> artifacts the target is NOT met. The fine-grid numbers below are retained for the record
+> but are UNVERIFIED (no backing JSON); do NOT cite "target MET". Re-establish only if the
+> fine sweep is re-run and its JSON committed.
+
+(original claim, now unbacked:) after a disclosed grid
 refinement.** On the coarse keep-fraction grid the R-satisfying point was kf 0.35 at
 **P 0.7486**, i.e. 0.0014 short of 0.75, so the claim was not visible as measured. A finer
 sweep on arm A2 only, refining resolution on a pre-registered axis without moving any bar,
