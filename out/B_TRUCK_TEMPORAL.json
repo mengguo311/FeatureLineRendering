@@ -1,0 +1,34 @@
+{
+ "experiment": "B \u2014 real-capture Truck (COLMAP estimated poses), mesh-free",
+ "carrier": {
+  "n_linelets": 239020,
+  "n_nms": 126906,
+  "n_strokes": 16171,
+  "median_vertices": 4.0
+ },
+ "n_frames_pop": 240,
+ "n_frames_churn": 30,
+ "fg_only": true,
+ "trajectory": "REAL consecutive capture cameras (not synthetic orbit)",
+ "P_pop": {
+  "ours": 0.5696278345342392,
+  "canny": 0.8829838346399664,
+  "ratio_canny_over_ours": 1.5501065452005964,
+  "strokes_per_frame": 1515.4041666666667
+ },
+ "ink_churn": {
+  "ours": 0.8175718744553031,
+  "canny": 0.9031292402475851,
+  "ratio": 1.1046481275414268
+ },
+ "prereg": {
+  "pop_ratio>=5": false,
+  "ink_churn_ratio>=8": false,
+  "strokes>=300": true,
+  "strip_steadier": "SEE truck_consecutive_strip.png"
+ },
+ "matched_precision": "NON-transportable (no GT mesh on real capture) \u2014 reported not gated",
+ "VERDICT_numeric": "NO-GO",
+ "strip": "/home/u00134/3dgs_line/tier1/out/featviz/truck_consecutive_strip.png",
+ "elapsed_s": 3739.13724732399
+}
