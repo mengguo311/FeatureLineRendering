@@ -1,0 +1,18 @@
+  [chain] truck/truck_gal: 239020 linelets -> NMS 126906 -> 16171 strokes, vertices/stroke med 4 max 48 (8.4s)
+[truck] carrier -> 16171 strokes (NMS 126906 linelets, med vtx 4)
+[truck] 251 cams -> temporal over 240 consecutive real-capture frames, fg_only ON
+  [frame_data] 0/240
+  [frame_data] 40/240
+  [frame_data] 80/240
+  [frame_data] 120/240
+  [frame_data] 160/240
+  [frame_data] 200/240
+  [frame_data] 240/240
+[P_pop fg_only] OURS 0.5696 (1515 strokes/frame)  CANNY 0.8830  ratio(Canny/ours) 1.55x
+[ink_churn] OURS 0.8176 (max 0.8951)  CANNY 0.9031 (max 0.9252)  ratio 1.10x
+
+=== VERDICT (numeric, pending eyeball of strip): NO-GO ===
+    P_pop ratio 1.55x (need>=5, MISS)
+    ink_churn ratio 1.10x (need>=8, MISS)
+    strokes/frame 1515 (need>=300, PASS)
+    wrote out/B_TRUCK_TEMPORAL.json + /home/u00134/3dgs_line/tier1/out/featviz/truck_consecutive_strip.png  (3739s)
