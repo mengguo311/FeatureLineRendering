@@ -1,81 +1,68 @@
-# --- regenerable caches (3.9 GB): rebuilt by dt_pull.build_dt_cache / build_geom_cache
-cache/
 
-# --- python
-__pycache__/
-*.pyc
-
-# --- large intermediate evidence arrays from the M1a recipe exploration (103 MB),
-#     regenerable by scripts/explore/syn/run_final.py
-scripts/explore/**/*.npz
-scripts/explore/**/*.npy
-
-# --- rendered videos (20 MB), regenerable in ~9 min:
-#     python scripts/m1b_make_video.py --scenes chair lego --frames 240 --gif
-out/*.mp4
-out/*.gif
-
-# --- throwaway linelet dumps; the four *_test.npz the tables depend on ARE tracked
-out/linelets_*_smoke.npz
-out/linelets_*_probe.npz
-
-# --- cached edge-probability maps (626 MB across teed/pidinet/dexined x chair/lego),
-#     regenerable in ~25 s/scene:
-#     python scripts/cmepi_cache_edges.py --det {teed,pidinet,dexined} --scene {chair,lego}
-out/*_edges_*/
-
-# --- CMEPI pre-flight file-level safety copies of the protected set (140 MB).
-#     Detection lives in out/CMEPI_protected_manifest.sha256, which IS tracked.
-out/cmepi_backup/
-
-# --- CMEPI per-arm linelet dumps (186 MB), regenerable by scripts/cmepi_m1b.sh from the
-#     M1a score vectors; the per-arm m1b_*.json summaries ARE tracked
-out/linelets_*_tc_pidinet_*.npz
-out/linelets_*_tc_dexined_*.npz
-
-# --- ECO per-gaussian consensus fields (28 MB), regenerable in ~10 s each:
-#     python scripts/eco_consensus.py --scene <s> --det <d> --K <K> --tau <t> --rho <r> --sigma_c <s>
-#     The out/eco_consensus_*.json provenance files, which ARE tracked, record every argument.
-out/eco_C_*.npy
-
-# --- ECO per-arm linelet dumps (247 MB), regenerable by scripts/eco_m1b.sh;
-#     the per-arm m1b_*_ec_*.json summaries ARE tracked
-out/linelets_*_ec_*.npz
-out/linelets_*_eco_*_test.npz
-
-# --- TGAP per-f pull dumps (659 MB) + per-arm linelet sets (31 MB) + label dumps (11 MB).
 #     All regenerable in ~4 min by scripts/tgap_pull_all.sh (+ scripts/tgap_e_variants_cpu.py
-#     for the E variants, scripts/tgap_temporal.py for the per-arm linelet sets). The jsons
 #     and out/TGAP_RESULTS.md that every number in the report is read from ARE tracked.
-out/tgap_pull_*.npz
-out/tgap_labels_*.npz
-out/linelets_lego_tgap*_test.npz
-
+cache/
+# --- cached edge-probability maps (626 MB across teed/pidinet/dexined x chair/lego),
+# --- CMEPI per-arm linelet dumps (186 MB), regenerable by scripts/cmepi_m1b.sh from the
+# --- CMEPI pre-flight file-level safety copies of the protected set (140 MB).
 # --- CONDLAW: per-locus chair score dumps (regenerable in ~70 s by
-#     scripts/condlaw_chair_test.py --views {test,repro}). The out/condlaw_*.json
-#     summaries and out/CONDLAW_RESULTS.md that every reported number is read from ARE tracked.
-out/condlaw_*.npz
-
-# --- trained 2DGS models: 91MB+ of weights, regenerable by scripts/run_2dgs_<scene>.sh
-#     with the frozen recipe. The out/condlaw_*_test.json scores read off them ARE tracked.
-out/2dgs_ship/
-
+data/realcap/
+#     Detection lives in out/CMEPI_protected_manifest.sha256, which IS tracked.
+# --- ECO per-arm linelet dumps (247 MB), regenerable by scripts/eco_m1b.sh;
+# --- ECO per-gaussian consensus fields (28 MB), regenerable in ~10 s each:
+# --- epipolar accumulation arrays (out/epi/), up to 1.7GiB each, regenerable by scripts/epi_accum.py
+ext/
+ext/gaussian-splatting/
+#     for the E variants, scripts/tgap_temporal.py for the per-arm linelet sets). The jsons
+# keep: *.md summaries, *_spec.md, out/*.json (metrics), out/*.png/*.svg (figures), src/, scripts/
+# --- large intermediate evidence arrays from the M1a recipe exploration (103 MB),
 # --- large point clouds / model dumps (regenerable) — keep repo lean
-out/*.npz
-out/*.npy
+logs/
+#     M1a score vectors; the per-arm m1b_*.json summaries ARE tracked
 out/2dgs_chair/
 out/2dgs_chair_dist/
-out/teed_edges_*/
-ext/
-logs/
-# keep: *.md summaries, *_spec.md, out/*.json (metrics), out/*.png/*.svg (figures), src/, scripts/
-out/2dgs_lego/
 out/2dgs_chair_reporecipe/
-*.ply
-
-# --- epipolar accumulation arrays (out/epi/), up to 1.7GiB each, regenerable by scripts/epi_accum.py
-out/**/*.npz
-out/**/*.npy
+out/2dgs_lego/
+out/2dgs_ship/
+out/cmepi_backup/
+out/condlaw_*.npz
+out/eco_C_*.npy
+out/*_edges_*/
 out/epi/*.npz
-
-data/realcap/
+out/*.gif
+out/linelets_*_ec_*.npz
+out/linelets_*_eco_*_test.npz
+out/linelets_lego_tgap*_test.npz
+out/linelets_*_probe.npz
+out/linelets_*_smoke.npz
+out/linelets_*_tc_dexined_*.npz
+out/linelets_*_tc_pidinet_*.npz
+out/*.mp4
+out/**/*.npy
+out/*.npy
+out/**/*.npz
+out/*.npz
+out/teed_edges_*/
+out/tgap_labels_*.npz
+out/tgap_pull_*.npz
+*.ply
+*.pyc
+__pycache__/
+# --- python
+#     python scripts/cmepi_cache_edges.py --det {teed,pidinet,dexined} --scene {chair,lego}
+#     python scripts/eco_consensus.py --scene <s> --det <d> --K <K> --tau <t> --rho <r> --sigma_c <s>
+#     python scripts/m1b_make_video.py --scenes chair lego --frames 240 --gif
+#     regenerable by scripts/explore/syn/run_final.py
+# --- regenerable caches (3.9 GB): rebuilt by dt_pull.build_dt_cache / build_geom_cache
+#     regenerable in ~25 s/scene:
+# --- rendered videos (20 MB), regenerable in ~9 min:
+#     scripts/condlaw_chair_test.py --views {test,repro}). The out/condlaw_*.json
+scripts/explore/**/*.npy
+scripts/explore/**/*.npz
+#     summaries and out/CONDLAW_RESULTS.md that every reported number is read from ARE tracked.
+# --- TGAP per-f pull dumps (659 MB) + per-arm linelet sets (31 MB) + label dumps (11 MB).
+#     The out/eco_consensus_*.json provenance files, which ARE tracked, record every argument.
+#     the per-arm m1b_*_ec_*.json summaries ARE tracked
+# --- throwaway linelet dumps; the four *_test.npz the tables depend on ARE tracked
+# --- trained 2DGS models: 91MB+ of weights, regenerable by scripts/run_2dgs_<scene>.sh
+#     with the frozen recipe. The out/condlaw_*_test.json scores read off them ARE tracked.

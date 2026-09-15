@@ -1,0 +1,49 @@
+# argueB2 — RESOLVED (driver-side, evidence-decided; dss9 agent login-expired since 09:02 Tokyo, OAuth not restorable from headless ssh)
+
+The design-argue could not be run interactively with the agent (OAuth login expired all day).
+The one method-critical question (Q2/Q3) was decided by DIRECT EVIDENCE from the plys, not opinion:
+
+## Q2/Q3 — 2DGS ply vs 3DGS ply: is the OVERALL score byte-identical?  ->  NO.
+Hard evidence:
+- src/common.py load_gaussians() reads scale_0, scale_1, scale_2 (3 axes) and derives
+  normal = column of R with smallest scale (shortest-covariance axis of a 3D ellipsoid).
+- The crown chair/lego carriers are 3DGS plys: cglib/outputs/chair_static/point_cloud.ply
+  fields = ['scale_0','scale_1','scale_2']  (3 scales, confirmed).
+- The Truck 2DGS ply (out/2dgs_truck/.../point_cloud.ply) fields = ['scale_0','scale_1'] ONLY
+  (2 scales; a flat disk with an explicit disk normal). scale_2 is ABSENT.
+=> The shipped load_gaussians CANNOT run byte-identically on a 2DGS ply (missing scale_2;
+   normal semantics differ: shortest-of-3-covariance-axis vs explicit disk normal).
+   Feeding a 2DGS ply would be a SILENT METHOD CHANGE. Rejected.
+
+## Decision (pre-registered): train VANILLA 3DGS on Truck, matching the crown pipeline exactly.
+- This makes the method path byte-identical to chair/lego (same 3-scale ply, same load_gaussians,
+  same OVERALL score, same M1b, same temporal harness). Only the DATA SOURCE (real photos +
+  COLMAP estimated poses) changes — which is exactly what B is designed to test.
+- The 2DGS Truck ckpt (PSNR 25.09) is RETAINED as a by-product but is NOT the carrier for B.
+- No 3DGS trainer was on dss9; cloned graphdeco-inria/gaussian-splatting into ext/, pinned to
+  commit 472689c (2-value rasterizer API + no `antialiasing` kwarg) to match the installed
+  diff_gaussian_rasterization 0.0.0 build; one data-plumbing patch to render() to unpack the
+  4-tuple (color,radii,depth,alpha) the installed CUDA kernel returns. NO method/recipe change.
+
+## Q1 — minimal adapter (still needed, now for a 3DGS Truck ply):
+COLMAP per-image intrinsics + real rgb_paths -> src.common.Camera; trained 3DGS ply ->
+load_gaussians reading the SAME scale_0/1/2 + f_dc fields. All differences are data-plumbing
+(per-cam K vs single camera_angle_x; 1957x1091 vs fixed H/W; real rgb vs Blender white-bg
+composite = just no alpha-composite, read rgb as-is). NONE touch the edge/score computation.
+To be written AFTER training completes and argued/verified byte-identical before running.
+
+## Q4 — invariants restated:
+Mesh-free eval only (no GT mesh on real capture); matched-precision is the one non-transportable
+axis, stated as such. No per-scene tuning. Object-space combine only.
+FROZEN go/no-go (verbatim, unchanged):
+  GO iff ALL: fg_only P_pop ratio >= 5x at 240 frames AND ink_churn ratio >= 8x consecutive
+  frames AND consecutive-frame strip judged visibly steadier.
+  NO-GO if either number misses OR pipeline yields < 300 strokes/frame.
+
+## GO/NO-GO on writing the adapter: GO, but only after the 3DGS Truck ply exists.
+Files to touch (data-plumbing only): a small Truck loader returning src.common.Camera list +
+gaussians dict from out/3dgs_truck/.../point_cloud.ply; NO edit to the score/edge functions.
+
+STATUS: vanilla 3DGS on Truck LAUNCHED (default shipped recipe, --eval, ~9 min to 30k, GPU1).
+Next fire: verify iteration_30000 ply has scale_0/1/2, write+verify the loader, run M1b + temporal,
+score against the frozen gate, LOOK at the consecutive-frame strip.
