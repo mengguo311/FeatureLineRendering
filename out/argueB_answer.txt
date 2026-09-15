@@ -18,3 +18,8 @@ FROZEN PRE-REGISTERED GO/NO-GO (verbatim, freeze before running):
 - A NO-GO is a CRITICAL HONEST FINDING (crown does not survive real poses), not a failure. Report straight.
 
 BLOCKER: Claude Code agent login expired ("Please run /login"); /login needs interactive OAuth browser flow I cannot complete headlessly. Needs the user to re-auth the dss9 tmux m1b session before the agent can adversarially critique this and execute B.
+
+=== DRIVER REVISION (2026-09-15 10:05, feasibility-driven, agent still login-expired) ===
+FEASIBILITY BLOCKER on Ignatius: dss9 has NO colmap binary installed (which colmap -> empty). T&T Ignatius raw ships images+video only; producing ESTIMATED poses would require a COLMAP run we cannot execute headlessly, and colmap install on a shared no-sudo node is not guaranteed.
+REVISED PICK: Tanks&Temples TRUCK from the graphdeco tandt_db.zip (repo-sam.inria.fr). SHIPS READY COLMAP sparse poses (sparse/0 + images/) -> genuinely ESTIMATED poses, NO colmap binary needed. Truck = bounded textured vehicle (painted panels, decals, grille, tyres) -> per-frame Canny/DexiNed WILL boil -> comparison meaningful. Honest reservations vs Ignatius: (a) Truck is larger/more background than a statue -> object mask for the fg_only silhouette control matters more; (b) it is a vehicle not a hand-held toy, but it IS a bounded object with estimated poses, which is the exact axis B tests. This trades a marginally-less-ideal object for ACTUAL FEASIBILITY (ready estimated poses, no missing binary).
+PRE-STAGED THIS FIRE: downloading tandt_db.zip into data/realcap/ (auto-unzip). Frozen go/no-go UNCHANGED from above. Still needs agent /login re-auth before the M1b pipeline + temporal harness can be run and adversarially re-checked.
