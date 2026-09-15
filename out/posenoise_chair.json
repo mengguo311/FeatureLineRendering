@@ -1,0 +1,74 @@
+{
+ "experiment": "confound-isolation: chair crown ink_churn under COLMAP-magnitude pose noise",
+ "scene": "chair",
+ "carrier_strokes": 1166,
+ "protocol": "boiltest churn, 8 consecutive orbit frames, per-frame INDEPENDENT rigid jitter on eval cams only; method/carrier/gaussians untouched; mesh-free",
+ "seed": 20260915,
+ "sweep": [
+  {
+   "level": 0,
+   "sigma_rot_deg": 0.0,
+   "sigma_trans_frac": 0.0,
+   "induced_px_mean": 7.961117025153066e-14,
+   "ink_churn_ours": 0.01593998232555465,
+   "ink_churn_canny": 0.4488002065948086,
+   "ratio_canny_over_ours": 28.155627617936652
+  },
+  {
+   "level": 1,
+   "sigma_rot_deg": 0.02,
+   "sigma_trans_frac": 0.0005,
+   "induced_px_mean": 0.8772985034336127,
+   "ink_churn_ours": 0.033369882009011156,
+   "ink_churn_canny": 0.4906697187965237,
+   "ratio_canny_over_ours": 14.703969245801467
+  },
+  {
+   "level": 2,
+   "sigma_rot_deg": 0.05,
+   "sigma_trans_frac": 0.001,
+   "induced_px_mean": 1.4727224323204953,
+   "ink_churn_ours": 0.10977230048825974,
+   "ink_churn_canny": 0.6372376669448541,
+   "ratio_canny_over_ours": 5.805086202169984
+  },
+  {
+   "level": 3,
+   "sigma_rot_deg": 0.1,
+   "sigma_trans_frac": 0.002,
+   "induced_px_mean": 2.287350609670161,
+   "ink_churn_ours": 0.12160421534133982,
+   "ink_churn_canny": 0.6551256027019836,
+   "ratio_canny_over_ours": 5.3873593186146005
+  },
+  {
+   "level": 4,
+   "sigma_rot_deg": 0.2,
+   "sigma_trans_frac": 0.005,
+   "induced_px_mean": 8.67169624180728,
+   "ink_churn_ours": 0.4742430622121043,
+   "ink_churn_canny": 0.9161781778348511,
+   "ratio_canny_over_ours": 1.9318747090602502
+  },
+  {
+   "level": 5,
+   "sigma_rot_deg": 0.5,
+   "sigma_trans_frac": 0.01,
+   "induced_px_mean": 21.869467331951142,
+   "ink_churn_ours": 0.6559985553517447,
+   "ink_churn_canny": 0.9100659014145646,
+   "ratio_canny_over_ours": 1.3872986365443893
+  }
+ ],
+ "truck_reference_induced_px": {
+  "half_res": 0.38,
+  "full_res": 0.76,
+  "note": "COLMAP BA reproj residual, NOT proven == pose error"
+ },
+ "self_validation": {
+  "L0_ratio": 28.155627617936652,
+  "banked_chair": 28.16,
+  "PASS": true,
+  "note": "L0 (sigma=0) must reproduce banked boiltest chair 28.16x"
+ }
+}
