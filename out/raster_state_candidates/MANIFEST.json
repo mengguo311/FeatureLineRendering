@@ -1,0 +1,276 @@
+{
+  "schema": 1,
+  "base_commit": "e0293bd5c847698b9dbe67175ef1cc96a8243df1",
+  "primary": "lego",
+  "secondary": "chair",
+  "seed": 20260919,
+  "inputs": {
+    "lego": {
+      "gs": {
+        "path": "/home/u00134/cglib/outputs/lego_static/point_cloud.ply",
+        "sha256": "aa3630f69affbf3c23cfe841734e9aebb42597aede28fa4a0e5e72e3a31e2d23"
+      },
+      "cameras": {
+        "path": "/home/u00134/cglib/data/full/lego/transforms_train.json",
+        "sha256": "82d46cfbd405d7da8562b6fa75b6fb0631a3f941adf66f0c023acb8bf9ea273a"
+      }
+    },
+    "chair": {
+      "gs": {
+        "path": "/home/u00134/cglib/outputs/chair_static/point_cloud.ply",
+        "sha256": "18244c1f692b6eb688a02cf180fe53b89d35144888f1887bbd4ef15c01c39a55"
+      },
+      "cameras": {
+        "path": "/home/u00134/cglib/data/full/chair/transforms_train.json",
+        "sha256": "f096327d91a775c3d3dbc62d03a244839f6b7d8683b9a7b400573c6e0a414f1f"
+      }
+    }
+  },
+  "train_indices": [
+    1,
+    7,
+    14,
+    21,
+    27,
+    33,
+    41,
+    47,
+    53,
+    59,
+    67,
+    73,
+    79,
+    86,
+    93,
+    99
+  ],
+  "audit_indices": [
+    1,
+    27,
+    53,
+    79
+  ],
+  "dev_validation_indices": [
+    2,
+    22,
+    42,
+    62
+  ],
+  "test_sealed": [
+    5,
+    15,
+    25,
+    35,
+    45,
+    55,
+    65,
+    75,
+    85,
+    95
+  ],
+  "secondary_cheap_indices": [
+    1,
+    27,
+    53,
+    79
+  ],
+  "resolution": 400,
+  "renderer": {
+    "upstream_commit": "472689c0dc70417448fb451bf529ae532d32c095",
+    "rgb": "verified stock official Python + two-output CUDA kernel; see per-run hashes",
+    "depth": "legacy vanilla GS disc depth; NOT official depth"
+  },
+  "candidate_recipe": {
+    "source": "fresh M1a TRAIN-only -> existing linelet/DT pull/prune/chaining recipe",
+    "legacy_cache_allowed": false,
+    "seed_fraction": 0.3,
+    "pull_steps": 100,
+    "pull_lr": 0.35,
+    "delta_max": 5.0,
+    "edge": "sharp",
+    "prune": {
+      "tau_in": 1.5,
+      "min_ratio": 0.5,
+      "max_med": 1.5,
+      "min_views": 3
+    },
+    "chain": {
+      "nms_radius_mult": 1.0,
+      "k": 10,
+      "cos_tan": 0.6,
+      "cos_col": 0.5,
+      "gap_mult": 4.0,
+      "min_nodes": 3
+    }
+  },
+  "state": {
+    "type": "existing opacity-weighted Gaussian disc proxy; not official anisotropic rasterizer internal fragments",
+    "k": 8,
+    "k_sensitivity": 4,
+    "r_min": 1.0,
+    "r_max": 15.0,
+    "frag_alpha_min": 0.01,
+    "coverage_alpha": 0.5,
+    "compositing": "float64 segmented transmittance; statistics over ALL fragments; top-k normalized within retained mass"
+  },
+  "fields": {
+    "max_pixels_per_channel": 600,
+    "min_response": {
+      "topk": 0.15,
+      "rgb": 2.0,
+      "entropy": 0.04,
+      "margin": 0.05,
+      "variance": 0.0001,
+      "dispersion": 0.02,
+      "depth": 0.005,
+      "normal": 8.0,
+      "alpha": 0.08
+    },
+    "arm_channels": {
+      "B": [
+        "topk"
+      ],
+      "C": [
+        "rgb"
+      ],
+      "D": [
+        "topk",
+        "rgb",
+        "entropy",
+        "margin",
+        "variance",
+        "dispersion"
+      ]
+    }
+  },
+  "anchor": {
+    "layer_rel_tol": 0.01,
+    "layer_spacing": 3.0,
+    "min_layer_mass": 0.8,
+    "max_reprojection_px": 3.0,
+    "max_dominant_distance_spacing": 4.0
+  },
+  "fusion": {
+    "radius_spacing": 3.0,
+    "min_id_weight": 0.1,
+    "min_views": 3,
+    "min_angle_deg": 15.0,
+    "lift_cos": 0.35,
+    "min_tangent_cos": 0.7,
+    "min_tangent_fraction": 0.6,
+    "pca_weight": 0.15,
+    "max_clusters": 3000,
+    "half_length_spacing": [
+      0.75,
+      3.0
+    ]
+  },
+  "null": {
+    "N1": "independent per-view ID permutation AFTER valid anchors; geometry fixed; tests identity grouping only",
+    "N2": "roll each channel field and tangent by (47,31) pixels; sample within coverage; same per-view/source budget",
+    "shift": [
+      47,
+      31
+    ],
+    "matched_comparisons": [
+      "B",
+      "C",
+      "D"
+    ],
+    "real_vs_null_persistence_ratio": 1.5
+  },
+  "downstream": {
+    "pull_steps": 100,
+    "pull_lr": 0.35,
+    "delta_max": 5.0,
+    "edge": "sharp",
+    "prune": {
+      "tau_in": 1.5,
+      "min_ratio": 0.5,
+      "max_med": 1.5,
+      "min_views": 3
+    },
+    "chain": {
+      "nms_radius_mult": 1.0,
+      "k": 10,
+      "cos_tan": 0.6,
+      "cos_col": 0.5,
+      "gap_mult": 4.0,
+      "min_nodes": 3
+    },
+    "new_linelet_cap": 3000
+  },
+  "trajectory": {
+    "frames": 120,
+    "fps": 24,
+    "resolution": 400,
+    "elevation_deg": 25.0,
+    "elevation_swing_deg": 8.0,
+    "reference_train_index": 1,
+    "azimuth_degrees": 360.0,
+    "target": "median defloated Gaussian centers",
+    "radius": "distance from TRAIN1 camera to target"
+  },
+  "brush": {
+    "width_px": 1,
+    "background": "white",
+    "color": "black",
+    "visibility": "existing GS depth / 3x3 minimum / 2% tolerance"
+  },
+  "ink_matching": {
+    "method": "fixed global path subset, deterministic hash order; separate length-matched and AA-area-matched displays, calibrated on full DEV orbit after path freeze",
+    "target": "minimum native mean across all six arms",
+    "tolerance": 0.03,
+    "affects_candidate_generation": false
+  },
+  "regions": [
+    {
+      "id": "R1",
+      "view": 53,
+      "box": [
+        70,
+        100,
+        152,
+        126
+      ],
+      "description": "cab roof upper horizontal frame"
+    },
+    {
+      "id": "R2",
+      "view": 53,
+      "box": [
+        46,
+        201,
+        218,
+        254
+      ],
+      "description": "continuous track belt and wheel assembly outline"
+    },
+    {
+      "id": "R3",
+      "view": 53,
+      "box": [
+        260,
+        101,
+        347,
+        126
+      ],
+      "description": "bucket lower lip"
+    }
+  ],
+  "policy": {
+    "mesh_free": true,
+    "vanilla_only": true,
+    "test_generation": false,
+    "extra_2dgs_normals": false,
+    "gs_training": false,
+    "runtime_2d_ink": false,
+    "gs_original_training_split": "not independently verified"
+  },
+  "limits": {
+    "smoke_seconds": 120,
+    "each_step_seconds": 900,
+    "each_arm_pull_seconds": 300,
+    "render_seconds": 900
+  }
+}
