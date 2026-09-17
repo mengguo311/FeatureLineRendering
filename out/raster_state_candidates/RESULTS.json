@@ -1,0 +1,983 @@
+{
+  "schema": 1,
+  "generated_at_commit": "e67c4749d925c42ba913f5c69af51bbf374988ed",
+  "base_commit": "e0293bd5c847698b9dbe67175ef1cc96a8243df1",
+  "manifest_sha256": "43bdee970291e302efc453d97b6df0e01b5d737f3d4f38d0be2d7c2e9a092aef",
+  "script_sha256": "3e93eb5ec55a0c1930297427dda2d99da57e2c62f2e28b15178d94b8972eb688",
+  "decision": {
+    "decision": "NO-GO",
+    "review_type": "assistant internal inspection, not blinded human evaluation",
+    "G1": {
+      "pass": false,
+      "clear_improvement_upper_bound": 1,
+      "required": 2,
+      "regions": 3
+    },
+    "G2": {
+      "persistence_effect_pass": true,
+      "strong_visual_nonnull_claim_established": false
+    },
+    "G3": {
+      "pass": false,
+      "clear_improvement_upper_bound": 1,
+      "required": 2
+    },
+    "G4": {
+      "pass": false,
+      "matched_ink_overall_benefit": false,
+      "roof_local_benefit": true
+    },
+    "G5": {
+      "fixed_object_space_paths": true,
+      "runtime_image_evidence": false,
+      "flicker_free_claim_established": false
+    },
+    "secondary_action": "four TRAIN views only; initial linelet diagnostic; no full downstream/DEV",
+    "parameter_rescue": false,
+    "scope": "declared circular Gaussian-disc proxy, not official anisotropic fragments"
+  },
+  "scope": "existing opacity-weighted Gaussian disc proxy; not official anisotropic rasterizer internal fragments",
+  "official_rgb": {
+    "renderer_commit": "472689c0dc70417448fb451bf529ae532d32c095",
+    "renderer_git_source_sha256": "75fcc86a57d27d9ea55b2904a4faaf075e7f73dba8c54bcb6cbd4c02c4884084",
+    "renderer_local_ABI_patch_used": false,
+    "kernel_commit": "59f5f77e3ddbac3ed9db93ec2cfe99ed6c5d121d",
+    "kernel_repo": "https://github.com/graphdeco-inria/diff-gaussian-rasterization",
+    "kernel_source_diff": "",
+    "kernel_binary_path": "/home/u00134/3dgs_line/tier1/out/vrss/vendor/official_site/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so",
+    "kernel_binary_sha256": "583e896f3aaa1c2dece9c67eaaa26d919f98aae0597591bf6693b9a19530e9e9",
+    "kernel_wrapper_sha256": "eafa9c3f670258b34535b7ee2832e6d8410d6a68762037216f04935ccdafba34"
+  },
+  "primary": "lego",
+  "train_views": [
+    1,
+    7,
+    14,
+    21,
+    27,
+    33,
+    41,
+    47,
+    53,
+    59,
+    67,
+    73,
+    79,
+    86,
+    93,
+    99
+  ],
+  "test_sealed": [
+    5,
+    15,
+    25,
+    35,
+    45,
+    55,
+    65,
+    75,
+    85,
+    95
+  ],
+  "arms": {
+    "A": {
+      "raw_linelets": 29916,
+      "new_linelets": 0,
+      "pruned_linelets": 24479,
+      "new_after_prune": 0,
+      "after_nms": 14391,
+      "final_chains": 2024,
+      "new_in_chains": 0,
+      "chains_with_new": 0,
+      "path_sha256": "985fb9705b1b82f84d45ecd17c18030da09761902098b2570f2373abc121c1f2",
+      "raw_sha256": "3d9c1bbad186e4b9682b57e1df773fb27fa8b6b75fcb9deb0b94e79d068b3d96",
+      "seconds": 4.039750006981194,
+      "observations": null,
+      "clusters": 0,
+      "median_support_views": null,
+      "render_means": {
+        "native": {
+          "visible_length_px": 7382.0613235723,
+          "ink_area_px": 7010.662810457517,
+          "overlap_rate": 0.24861381207666072,
+          "fragments": 1197.5166666666667,
+          "short_fragment_fraction_lt12px": 0.8984779341227437
+        },
+        "length_matched": {
+          "visible_length_px": 7382.0613235723,
+          "ink_area_px": 7010.662810457517,
+          "overlap_rate": 0.24861381207666072,
+          "fragments": 1197.5166666666667,
+          "short_fragment_fraction_lt12px": 0.8984779341227437
+        },
+        "area_matched": {
+          "visible_length_px": 7382.0613235723,
+          "ink_area_px": 7010.662810457517,
+          "overlap_rate": 0.24861381207666072,
+          "fragments": 1197.5166666666667,
+          "short_fragment_fraction_lt12px": 0.8984779341227437
+        }
+      }
+    },
+    "B": {
+      "raw_linelets": 30628,
+      "new_linelets": 712,
+      "pruned_linelets": 25119,
+      "new_after_prune": 652,
+      "after_nms": 14869,
+      "final_chains": 2019,
+      "new_in_chains": 121,
+      "chains_with_new": 103,
+      "path_sha256": "5772f3a499895d22c7e316d8ea3f674182f62e45f5ae3f3d4a48d7869a2e77c0",
+      "raw_sha256": "be229f19f9c9fad63dd0789a7d156a19b51b2f987d5c2cb7d2a1a349fca3a9ea",
+      "seconds": 3.042060413979925,
+      "observations": 8218,
+      "clusters": 712,
+      "median_support_views": 3.0,
+      "render_means": {
+        "native": {
+          "visible_length_px": 7416.036233041401,
+          "ink_area_px": 7037.38656862745,
+          "overlap_rate": 0.2475817827560757,
+          "fragments": 1188.8333333333333,
+          "short_fragment_fraction_lt12px": 0.8972186369073771
+        },
+        "length_matched": {
+          "visible_length_px": 7380.433932513002,
+          "ink_area_px": 7014.931209150326,
+          "overlap_rate": 0.2463506807536971,
+          "fragments": 1182.6083333333333,
+          "short_fragment_fraction_lt12px": 0.8968581984195078
+        },
+        "area_matched": {
+          "visible_length_px": 7375.704919079423,
+          "ink_area_px": 7009.980294117647,
+          "overlap_rate": 0.24634822836164397,
+          "fragments": 1181.7833333333333,
+          "short_fragment_fraction_lt12px": 0.8968409364735866
+        }
+      }
+    },
+    "C": {
+      "raw_linelets": 30209,
+      "new_linelets": 293,
+      "pruned_linelets": 24733,
+      "new_after_prune": 280,
+      "after_nms": 14526,
+      "final_chains": 2026,
+      "new_in_chains": 89,
+      "chains_with_new": 80,
+      "path_sha256": "5fc9c68d305198c5e4ba101dde1f54f6bb25d54763d4da5838ffcebf36c33907",
+      "raw_sha256": "39e172da32b91a55ef145f97896360dd0e037f801694ddca3caa6081c0e1dc78",
+      "seconds": 2.977887341985479,
+      "observations": 4107,
+      "clusters": 293,
+      "median_support_views": 4.0,
+      "render_means": {
+        "native": {
+          "visible_length_px": 7451.217075489669,
+          "ink_area_px": 7045.8790196078435,
+          "overlap_rate": 0.25155074415689915,
+          "fragments": 1197.1416666666667,
+          "short_fragment_fraction_lt12px": 0.8988690896232839
+        },
+        "length_matched": {
+          "visible_length_px": 7383.309435907047,
+          "ink_area_px": 6999.595359477124,
+          "overlap_rate": 0.24966992719027062,
+          "fragments": 1184.4166666666667,
+          "short_fragment_fraction_lt12px": 0.8982386489843324
+        },
+        "area_matched": {
+          "visible_length_px": 7395.185511458927,
+          "ink_area_px": 7008.253333333332,
+          "overlap_rate": 0.24994370095742274,
+          "fragments": 1186.4416666666666,
+          "short_fragment_fraction_lt12px": 0.898207332941706
+        }
+      }
+    },
+    "D": {
+      "raw_linelets": 32854,
+      "new_linelets": 2938,
+      "pruned_linelets": 26995,
+      "new_after_prune": 2512,
+      "after_nms": 15869,
+      "final_chains": 2136,
+      "new_in_chains": 722,
+      "chains_with_new": 480,
+      "path_sha256": "f7bdf92f142c8f94316a7d0d552265d2f01b03ae3552aaf641bc9d9471b3d534",
+      "raw_sha256": "392f6c905e5787cbfd08c3511856fd56ea5741d14ce3a53dd83b5e8f2c6426a0",
+      "seconds": 3.447560845001135,
+      "observations": 41801,
+      "clusters": 2938,
+      "median_support_views": 4.0,
+      "render_means": {
+        "native": {
+          "visible_length_px": 7828.167654108335,
+          "ink_area_px": 7421.38068627451,
+          "overlap_rate": 0.2486375988461316,
+          "fragments": 1278.95,
+          "short_fragment_fraction_lt12px": 0.9016505353771201
+        },
+        "length_matched": {
+          "visible_length_px": 7381.807414394875,
+          "ink_area_px": 7094.442745098039,
+          "overlap_rate": 0.23782794932518517,
+          "fragments": 1208.0333333333333,
+          "short_fragment_fraction_lt12px": 0.9015592872493227
+        },
+        "area_matched": {
+          "visible_length_px": 7280.775056415164,
+          "ink_area_px": 7010.540588235293,
+          "overlap_rate": 0.236380617248344,
+          "fragments": 1192.7666666666667,
+          "short_fragment_fraction_lt12px": 0.9014570162352844
+        }
+      }
+    },
+    "N1": {
+      "raw_linelets": 29916,
+      "new_linelets": 0,
+      "pruned_linelets": 24479,
+      "new_after_prune": 0,
+      "after_nms": 14391,
+      "final_chains": 2024,
+      "new_in_chains": 0,
+      "chains_with_new": 0,
+      "path_sha256": "985fb9705b1b82f84d45ecd17c18030da09761902098b2570f2373abc121c1f2",
+      "raw_sha256": "3d9c1bbad186e4b9682b57e1df773fb27fa8b6b75fcb9deb0b94e79d068b3d96",
+      "seconds": 2.922768122050911,
+      "observations": 37706,
+      "clusters": 0,
+      "median_support_views": 0.0,
+      "render_means": {
+        "native": {
+          "visible_length_px": 7382.0613235723,
+          "ink_area_px": 7010.662810457517,
+          "overlap_rate": 0.24861381207666072,
+          "fragments": 1197.5166666666667,
+          "short_fragment_fraction_lt12px": 0.8984779341227437
+        },
+        "length_matched": {
+          "visible_length_px": 7382.0613235723,
+          "ink_area_px": 7010.662810457517,
+          "overlap_rate": 0.24861381207666072,
+          "fragments": 1197.5166666666667,
+          "short_fragment_fraction_lt12px": 0.8984779341227437
+        },
+        "area_matched": {
+          "visible_length_px": 7382.0613235723,
+          "ink_area_px": 7010.662810457517,
+          "overlap_rate": 0.24861381207666072,
+          "fragments": 1197.5166666666667,
+          "short_fragment_fraction_lt12px": 0.8984779341227437
+        }
+      }
+    },
+    "N2": {
+      "raw_linelets": 31489,
+      "new_linelets": 1573,
+      "pruned_linelets": 25606,
+      "new_after_prune": 1144,
+      "after_nms": 15157,
+      "final_chains": 2049,
+      "new_in_chains": 277,
+      "chains_with_new": 205,
+      "path_sha256": "39c5da350ae8373b5bc7202dda354911a4e0a3828cb3d26122be7d634b96259f",
+      "raw_sha256": "8fed152d927654d4af2d4a591fc93d9e3420bceb11f59b696d23cf21f3216435",
+      "seconds": 3.020738117978908,
+      "observations": 37706,
+      "clusters": 1573,
+      "median_support_views": 3.0,
+      "render_means": {
+        "native": {
+          "visible_length_px": 7611.1380145844,
+          "ink_area_px": 7231.588202614379,
+          "overlap_rate": 0.2458303466140258,
+          "fragments": 1216.8416666666667,
+          "short_fragment_fraction_lt12px": 0.8952194238084383
+        },
+        "length_matched": {
+          "visible_length_px": 7381.211299238288,
+          "ink_area_px": 7061.795326797385,
+          "overlap_rate": 0.23966854033004337,
+          "fragments": 1178.1083333333333,
+          "short_fragment_fraction_lt12px": 0.8944686546714827
+        },
+        "area_matched": {
+          "visible_length_px": 7297.813491142687,
+          "ink_area_px": 7007.197156862746,
+          "overlap_rate": 0.23669475430129197,
+          "fragments": 1163.3916666666667,
+          "short_fragment_fraction_lt12px": 0.8943177161039881
+        }
+      }
+    }
+  },
+  "channel_anchors": {
+    "topk": {
+      "samples": 9600,
+      "accepted": 8218,
+      "reasons": {
+        "accepted": 8218,
+        "cross_depth_layer": 1126,
+        "dominant_neighborhood": 184,
+        "reprojection": 72
+      },
+      "median_of_accepted_view_reprojection_medians": 0.45370400589962456,
+      "mean_silhouette_fraction": 0.15875
+    },
+    "rgb": {
+      "samples": 9600,
+      "accepted": 4107,
+      "reasons": {
+        "accepted": 4107,
+        "cross_depth_layer": 5084,
+        "dominant_neighborhood": 242,
+        "reprojection": 167
+      },
+      "median_of_accepted_view_reprojection_medians": 0.6364508430486511,
+      "mean_silhouette_fraction": 0.09156249999999999
+    },
+    "entropy": {
+      "samples": 9600,
+      "accepted": 7599,
+      "reasons": {
+        "accepted": 7599,
+        "cross_depth_layer": 1519,
+        "dominant_neighborhood": 126,
+        "reprojection": 356
+      },
+      "median_of_accepted_view_reprojection_medians": 0.803120093168791,
+      "mean_silhouette_fraction": 0.2996875
+    },
+    "margin": {
+      "samples": 9600,
+      "accepted": 8283,
+      "reasons": {
+        "accepted": 8283,
+        "cross_depth_layer": 1048,
+        "dominant_neighborhood": 60,
+        "reprojection": 209
+      },
+      "median_of_accepted_view_reprojection_medians": 0.8370629056886161,
+      "mean_silhouette_fraction": 0.2721875
+    },
+    "variance": {
+      "samples": 9600,
+      "accepted": 6082,
+      "reasons": {
+        "accepted": 6082,
+        "cross_depth_layer": 2522,
+        "dominant_neighborhood": 259,
+        "reprojection": 737
+      },
+      "median_of_accepted_view_reprojection_medians": 0.9224226387852646,
+      "mean_silhouette_fraction": 0.10958333333333334
+    },
+    "dispersion": {
+      "samples": 9600,
+      "accepted": 7512,
+      "reasons": {
+        "accepted": 7512,
+        "cross_depth_layer": 1694,
+        "dominant_neighborhood": 192,
+        "reprojection": 202
+      },
+      "median_of_accepted_view_reprojection_medians": 0.6917282235120907,
+      "mean_silhouette_fraction": 0.18541666666666667
+    }
+  },
+  "primary_k4_k8_mean_mask_jaccard": 0.08934569976544224,
+  "matched_null_comparisons": {
+    "B": {
+      "matched_real_clusters": 586,
+      "stronger_null_clusters": 184,
+      "ratio_to_stronger_null": 3.1847826086956523,
+      "persistence_effect_pass": true,
+      "visual_semantic_value": "not established by counts"
+    },
+    "C": {
+      "matched_real_clusters": 293,
+      "stronger_null_clusters": 34,
+      "ratio_to_stronger_null": 8.617647058823529,
+      "persistence_effect_pass": true,
+      "visual_semantic_value": "not established by counts"
+    },
+    "D": {
+      "matched_real_clusters": 2717,
+      "stronger_null_clusters": 1573,
+      "ratio_to_stronger_null": 1.7272727272727273,
+      "persistence_effect_pass": true,
+      "visual_semantic_value": "not established by counts"
+    }
+  },
+  "ink_calibration": {
+    "A": {
+      "length_selected_paths": 2024,
+      "area_selected_paths": 2024,
+      "area_evaluations": 13,
+      "length_relative_error": 1.2320335227624591e-16,
+      "area_relative_error": 0.0
+    },
+    "B": {
+      "length_selected_paths": 2008,
+      "area_selected_paths": 2006,
+      "area_evaluations": 13,
+      "length_relative_error": 0.00022045211871830227,
+      "area_relative_error": 9.735403888655914e-05
+    },
+    "C": {
+      "length_selected_paths": 2004,
+      "area_selected_paths": 2007,
+      "area_evaluations": 13,
+      "length_relative_error": 0.00016907368823365453,
+      "area_relative_error": 0.0003436874927988634
+    },
+    "D": {
+      "length_selected_paths": 2022,
+      "area_selected_paths": 1996,
+      "area_evaluations": 13,
+      "length_relative_error": 3.439543052953529e-05,
+      "area_relative_error": 1.7433761332931073e-05
+    },
+    "N1": {
+      "length_selected_paths": 2024,
+      "area_selected_paths": 2024,
+      "area_evaluations": 13,
+      "length_relative_error": 1.2320335227624591e-16,
+      "area_relative_error": 0.0
+    },
+    "N2": {
+      "length_selected_paths": 1984,
+      "area_selected_paths": 1961,
+      "area_evaluations": 13,
+      "length_relative_error": 0.00011514728701832183,
+      "area_relative_error": 0.0004943403624548961
+    }
+  },
+  "videos": {
+    "native": {
+      "path": "out/raster_state_candidates/lego/render/rgb_A_D_native.mp4",
+      "sha256": "cc1d85e255c05851619584a3acd47680c41f7db1cef49e81cb6bb7bb5b4ebba3",
+      "bytes": 4880547,
+      "decoded_frames": 120
+    },
+    "length_matched": {
+      "path": "out/raster_state_candidates/lego/render/rgb_A_D_length_matched.mp4",
+      "sha256": "f238720ed6977be4d429fdc353b1a321e02e3b421293d9376acd81bb4596814b",
+      "bytes": 4819289,
+      "decoded_frames": 120
+    },
+    "area_matched": {
+      "path": "out/raster_state_candidates/lego/render/rgb_A_D_area_matched.mp4",
+      "sha256": "b0f66c28faac8a409c9105948e0f4437941a147e56becf41fc5b4a24042644b7",
+      "bytes": 4829563,
+      "decoded_frames": 120
+    }
+  },
+  "primary_seconds": {
+    "smoke": 1.6141031570150517,
+    "baseline": 54.682875848026015,
+    "step1": 23.004171826003585,
+    "step2": 6.506037453014869,
+    "step3": 17.59826034901198,
+    "step4_smoke": 2.9965469980379567,
+    "step4": 67.81300128099974,
+    "render": 414.37180984101724
+  },
+  "source_audit": {
+    "B": {
+      "distance_to_A_in_spacing_quantiles": [
+        0.33780571175500557,
+        1.3401381905924563,
+        31.59813226836421
+      ],
+      "fraction_within_one_spacing": 0.4353932584269663,
+      "new_prune_survival": 0.9157303370786517,
+      "new_chain_survival": 0.1699438202247191
+    },
+    "C": {
+      "distance_to_A_in_spacing_quantiles": [
+        0.383726979778574,
+        0.98156433827607,
+        2.2050408422140007
+      ],
+      "fraction_within_one_spacing": 0.515358361774744,
+      "new_prune_survival": 0.9556313993174061,
+      "new_chain_survival": 0.3037542662116041
+    },
+    "D": {
+      "distance_to_A_in_spacing_quantiles": [
+        0.42318418721976125,
+        1.4962206236477,
+        25.70565023956769
+      ],
+      "fraction_within_one_spacing": 0.36759700476514634,
+      "new_prune_survival": 0.85500340367597,
+      "new_chain_survival": 0.24574540503744044
+    },
+    "N2": {
+      "distance_to_A_in_spacing_quantiles": [
+        0.6146535476179136,
+        3.5916133062302316,
+        30.276317075220195
+      ],
+      "fraction_within_one_spacing": 0.21805467260012715,
+      "new_prune_survival": 0.7272727272727273,
+      "new_chain_survival": 0.1760966306420852
+    }
+  },
+  "D_overlapping_source_survival": {
+    "topk": {
+      "initial": 1627,
+      "after_prune": 1483,
+      "in_chains": 412
+    },
+    "rgb": {
+      "initial": 818,
+      "after_prune": 758,
+      "in_chains": 265
+    },
+    "entropy": {
+      "initial": 1352,
+      "after_prune": 1124,
+      "in_chains": 320
+    },
+    "margin": {
+      "initial": 1069,
+      "after_prune": 829,
+      "in_chains": 229
+    },
+    "variance": {
+      "initial": 890,
+      "after_prune": 784,
+      "in_chains": 246
+    },
+    "dispersion": {
+      "initial": 1524,
+      "after_prune": 1323,
+      "in_chains": 396
+    }
+  },
+  "region_trace": {
+    "R1": {
+      "description": "cab roof upper horizontal frame",
+      "single_view_counts": {
+        "topk": {
+          "evidence_pixels": 87,
+          "accepted_anchors": 66,
+          "reasons": {
+            "accepted": 66,
+            "cross_depth_layer": 15,
+            "dominant_neighborhood": 3,
+            "reprojection": 3
+          }
+        },
+        "rgb": {
+          "evidence_pixels": 71,
+          "accepted_anchors": 46,
+          "reasons": {
+            "accepted": 46,
+            "cross_depth_layer": 23,
+            "dominant_neighborhood": 2
+          }
+        },
+        "entropy": {
+          "evidence_pixels": 48,
+          "accepted_anchors": 35,
+          "reasons": {
+            "accepted": 35,
+            "cross_depth_layer": 11,
+            "reprojection": 2
+          }
+        },
+        "margin": {
+          "evidence_pixels": 31,
+          "accepted_anchors": 26,
+          "reasons": {
+            "accepted": 26,
+            "cross_depth_layer": 4,
+            "dominant_neighborhood": 1
+          }
+        },
+        "variance": {
+          "evidence_pixels": 0,
+          "accepted_anchors": 0,
+          "reasons": {}
+        },
+        "dispersion": {
+          "evidence_pixels": 51,
+          "accepted_anchors": 48,
+          "reasons": {
+            "accepted": 48,
+            "cross_depth_layer": 2,
+            "dominant_neighborhood": 1
+          }
+        }
+      },
+      "A_raw_centers_visible": 784,
+      "D_new_raw_centers_visible": 172,
+      "D_new_after_prune_centers_visible": 152,
+      "D_new_chain_vertices_visible": 57,
+      "note": "ROI center counts only; not semantic coverage, not matched lines"
+    },
+    "R2": {
+      "description": "continuous track belt and wheel assembly outline",
+      "single_view_counts": {
+        "topk": {
+          "evidence_pixels": 84,
+          "accepted_anchors": 62,
+          "reasons": {
+            "accepted": 62,
+            "cross_depth_layer": 19,
+            "dominant_neighborhood": 3
+          }
+        },
+        "rgb": {
+          "evidence_pixels": 14,
+          "accepted_anchors": 2,
+          "reasons": {
+            "accepted": 2,
+            "cross_depth_layer": 12
+          }
+        },
+        "entropy": {
+          "evidence_pixels": 87,
+          "accepted_anchors": 70,
+          "reasons": {
+            "accepted": 70,
+            "cross_depth_layer": 17
+          }
+        },
+        "margin": {
+          "evidence_pixels": 114,
+          "accepted_anchors": 101,
+          "reasons": {
+            "accepted": 101,
+            "cross_depth_layer": 11,
+            "dominant_neighborhood": 2
+          }
+        },
+        "variance": {
+          "evidence_pixels": 411,
+          "accepted_anchors": 245,
+          "reasons": {
+            "accepted": 245,
+            "cross_depth_layer": 112,
+            "dominant_neighborhood": 16,
+            "reprojection": 38
+          }
+        },
+        "dispersion": {
+          "evidence_pixels": 42,
+          "accepted_anchors": 30,
+          "reasons": {
+            "accepted": 30,
+            "cross_depth_layer": 12
+          }
+        }
+      },
+      "A_raw_centers_visible": 336,
+      "D_new_raw_centers_visible": 74,
+      "D_new_after_prune_centers_visible": 68,
+      "D_new_chain_vertices_visible": 11,
+      "note": "ROI center counts only; not semantic coverage, not matched lines"
+    },
+    "R3": {
+      "description": "bucket lower lip",
+      "single_view_counts": {
+        "topk": {
+          "evidence_pixels": 22,
+          "accepted_anchors": 16,
+          "reasons": {
+            "accepted": 16,
+            "cross_depth_layer": 6
+          }
+        },
+        "rgb": {
+          "evidence_pixels": 29,
+          "accepted_anchors": 14,
+          "reasons": {
+            "accepted": 14,
+            "cross_depth_layer": 15
+          }
+        },
+        "entropy": {
+          "evidence_pixels": 55,
+          "accepted_anchors": 48,
+          "reasons": {
+            "accepted": 48,
+            "cross_depth_layer": 6,
+            "reprojection": 1
+          }
+        },
+        "margin": {
+          "evidence_pixels": 45,
+          "accepted_anchors": 44,
+          "reasons": {
+            "accepted": 44,
+            "cross_depth_layer": 1
+          }
+        },
+        "variance": {
+          "evidence_pixels": 1,
+          "accepted_anchors": 1,
+          "reasons": {
+            "accepted": 1
+          }
+        },
+        "dispersion": {
+          "evidence_pixels": 53,
+          "accepted_anchors": 27,
+          "reasons": {
+            "accepted": 27,
+            "cross_depth_layer": 24,
+            "reprojection": 2
+          }
+        }
+      },
+      "A_raw_centers_visible": 115,
+      "D_new_raw_centers_visible": 39,
+      "D_new_after_prune_centers_visible": 34,
+      "D_new_chain_vertices_visible": 11,
+      "note": "ROI center counts only; not semantic coverage, not matched lines"
+    }
+  },
+  "secondary": {
+    "scope": "4 TRAIN views, Step1-3 plus initial linelets; no complete NPR claim",
+    "views": [
+      1,
+      27,
+      53,
+      79
+    ],
+    "arms": {
+      "B": {
+        "observations": 1983,
+        "preclusters": 1310,
+        "support_histogram": {
+          "1": 1001,
+          "2": 240,
+          "3": 59,
+          "4": 10
+        },
+        "repeat_ge3": 69,
+        "accepted_before_cap": 66,
+        "accepted": 66,
+        "rejection_reasons": {
+          "single_or_two_view": 1241,
+          "tangent_inconsistent": 3
+        },
+        "accepted_support_median": 3.0,
+        "accepted_source_counts": {
+          "0": 66,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+        }
+      },
+      "C": {
+        "observations": 1544,
+        "preclusters": 509,
+        "support_histogram": {
+          "1": 305,
+          "2": 109,
+          "3": 73,
+          "4": 22
+        },
+        "repeat_ge3": 95,
+        "accepted_before_cap": 91,
+        "accepted": 91,
+        "rejection_reasons": {
+          "single_or_two_view": 414,
+          "tangent_inconsistent": 4
+        },
+        "accepted_support_median": 3.0,
+        "accepted_source_counts": {
+          "0": 0,
+          "1": 91,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+        }
+      },
+      "D": {
+        "observations": 9341,
+        "preclusters": 2778,
+        "support_histogram": {
+          "1": 1796,
+          "2": 624,
+          "3": 269,
+          "4": 89
+        },
+        "repeat_ge3": 358,
+        "accepted_before_cap": 338,
+        "accepted": 338,
+        "rejection_reasons": {
+          "single_or_two_view": 2420,
+          "tangent_inconsistent": 20
+        },
+        "accepted_support_median": 3.0,
+        "accepted_source_counts": {
+          "0": 246,
+          "1": 185,
+          "2": 175,
+          "3": 153,
+          "4": 74,
+          "5": 162
+        }
+      },
+      "N1": {
+        "observations": 7884,
+        "preclusters": 3732,
+        "support_histogram": {
+          "1": 3730,
+          "2": 2
+        },
+        "repeat_ge3": 0,
+        "accepted_before_cap": 0,
+        "accepted": 0,
+        "rejection_reasons": {
+          "single_or_two_view": 3732
+        },
+        "accepted_support_median": 0.0,
+        "accepted_source_counts": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0
+        }
+      },
+      "N2": {
+        "observations": 7884,
+        "preclusters": 2340,
+        "support_histogram": {
+          "1": 1962,
+          "2": 351,
+          "3": 27
+        },
+        "repeat_ge3": 27,
+        "accepted_before_cap": 26,
+        "accepted": 26,
+        "rejection_reasons": {
+          "single_or_two_view": 2313,
+          "tangent_inconsistent": 1
+        },
+        "accepted_support_median": 3.0,
+        "accepted_source_counts": {
+          "0": 20,
+          "1": 17,
+          "2": 20,
+          "3": 20,
+          "4": 11,
+          "5": 17
+        }
+      }
+    },
+    "matched": {
+      "B": {
+        "matched_real_clusters": 31,
+        "stronger_null_clusters": 1,
+        "ratio_to_stronger_null": 31.0,
+        "persistence_effect_pass": true,
+        "visual_semantic_value": "not established by counts"
+      },
+      "C": {
+        "matched_real_clusters": 82,
+        "stronger_null_clusters": 0,
+        "ratio_to_stronger_null": 82.0,
+        "persistence_effect_pass": true,
+        "visual_semantic_value": "not established by counts"
+      },
+      "D": {
+        "matched_real_clusters": 276,
+        "stronger_null_clusters": 26,
+        "ratio_to_stronger_null": 10.615384615384615,
+        "persistence_effect_pass": true,
+        "visual_semantic_value": "not established by counts"
+      }
+    },
+    "k4_k8_mean_mask_jaccard": 0.19641238558620866,
+    "seconds": {
+      "smoke": 1.5148607320152223,
+      "step1": 5.824229285994079,
+      "step2": 1.8160413410514593,
+      "step3": 3.3115830720053054
+    }
+  },
+  "checks": {
+    "stage_failures": {},
+    "per_stage_rgb_reads": {
+      "chair_transfer/access_step3.json": [],
+      "chair_transfer/access_step2.json": [],
+      "chair_transfer/access_smoke.json": [],
+      "chair_transfer/access_step1.json": [],
+      "lego/access_baseline.json": [
+        "/home/u00134/cglib/data/full/lego/train/r_1.png",
+        "/home/u00134/cglib/data/full/lego/train/r_7.png",
+        "/home/u00134/cglib/data/full/lego/train/r_14.png",
+        "/home/u00134/cglib/data/full/lego/train/r_21.png",
+        "/home/u00134/cglib/data/full/lego/train/r_27.png",
+        "/home/u00134/cglib/data/full/lego/train/r_33.png",
+        "/home/u00134/cglib/data/full/lego/train/r_41.png",
+        "/home/u00134/cglib/data/full/lego/train/r_47.png",
+        "/home/u00134/cglib/data/full/lego/train/r_53.png",
+        "/home/u00134/cglib/data/full/lego/train/r_59.png",
+        "/home/u00134/cglib/data/full/lego/train/r_67.png",
+        "/home/u00134/cglib/data/full/lego/train/r_73.png",
+        "/home/u00134/cglib/data/full/lego/train/r_79.png",
+        "/home/u00134/cglib/data/full/lego/train/r_86.png",
+        "/home/u00134/cglib/data/full/lego/train/r_93.png",
+        "/home/u00134/cglib/data/full/lego/train/r_99.png"
+      ],
+      "lego/access_step3.json": [],
+      "lego/access_render_outputs.json": [],
+      "lego/access_step2.json": [],
+      "lego/access_step4_smoke.json": [
+        "/home/u00134/cglib/data/full/lego/train/r_1.png",
+        "/home/u00134/cglib/data/full/lego/train/r_7.png"
+      ],
+      "lego/access_smoke.json": [],
+      "lego/access_step1.json": [],
+      "lego/access_step4.json": [
+        "/home/u00134/cglib/data/full/lego/train/r_1.png",
+        "/home/u00134/cglib/data/full/lego/train/r_7.png",
+        "/home/u00134/cglib/data/full/lego/train/r_14.png",
+        "/home/u00134/cglib/data/full/lego/train/r_21.png",
+        "/home/u00134/cglib/data/full/lego/train/r_27.png",
+        "/home/u00134/cglib/data/full/lego/train/r_33.png",
+        "/home/u00134/cglib/data/full/lego/train/r_41.png",
+        "/home/u00134/cglib/data/full/lego/train/r_47.png",
+        "/home/u00134/cglib/data/full/lego/train/r_53.png",
+        "/home/u00134/cglib/data/full/lego/train/r_59.png",
+        "/home/u00134/cglib/data/full/lego/train/r_67.png",
+        "/home/u00134/cglib/data/full/lego/train/r_73.png",
+        "/home/u00134/cglib/data/full/lego/train/r_79.png",
+        "/home/u00134/cglib/data/full/lego/train/r_86.png",
+        "/home/u00134/cglib/data/full/lego/train/r_93.png",
+        "/home/u00134/cglib/data/full/lego/train/r_99.png"
+      ]
+    },
+    "tests": "33 passing unit tests; see TEST_RESULTS.txt",
+    "mesh_precision_recall_computed": false,
+    "original_GS_training_split_independently_verified": false
+  },
+  "input_artifact_sha256": {
+    "lego/step1.json": "bc474a3b0c931de6e7d9ca2689b6bba5aa651381c071b8dc0ef674430efe920d",
+    "lego/step2.json": "307a3eee7a1609d996660b360de14cc1cc2b03d6cb3093684852330bdf0a3ebf",
+    "lego/step3.json": "4990b0e84ecd6e686d88e060c62ba17935c6dec8772d192a07ed6f6c9478e845",
+    "lego/step4.json": "9623720118a7b9d89d6381e8ac19db32ae359672685f9a7e05af79ca66cdec5f",
+    "lego/render.json": "a2db5417c9fa5745fd31ebbfb653a3fb470ee4e95de82847f76c6a5c7041ac3c",
+    "lego/DECISION.json": "399de97c5a5aaca61d13a1cc71ea2b90ec8a1faa534bc84d833f6e136e6a1d1f",
+    "lego/diagnostics/audit.json": "ccdff6cf425bc712dac2c27a4e47070c6d5467dbf3765b0782b345e0bae9aff7",
+    "lego/diagnostics/region_trace.json": "f8b11e06847479d394b40254da862130213ede29af972f6249cf3eea5fae6c01",
+    "chair_transfer/step3.json": "4e5a58cc681c2b53c847924c5f5f47fb42c205d50c19eafb3468c86df2ca751d"
+  }
+}

@@ -1,0 +1,390 @@
+{
+  "provenance": {
+    "commit": "e67c4749d925c42ba913f5c69af51bbf374988ed",
+    "manifest_sha256": "43bdee970291e302efc453d97b6df0e01b5d737f3d4f38d0be2d7c2e9a092aef",
+    "sources": {
+      "scripts/run_raster_candidates.py": "46c4528fe5742523dbbc708814b501058ad89813058e7a2dba81c3ce1eff5a14",
+      "src/raster_state.py": "cb91863afffc22d4f70180a170e633b007e1e0e8bd54369750fc5cd598875c2e",
+      "src/render.py": "539e4456e6487906195a2e0b6394e228e03032c67fe9438007d2abe2fad12f15",
+      "src/dt_pull.py": "7a1788900a44cd1abd0e6c4eec736c5abdfa3d5db41ab25da11c37cc8bfe37d2",
+      "src/strokes.py": "456ec09e1664b1531309dba2b65df22735d6b353e0579ef876d4b7abdf2ec3d6",
+      "scripts/explore/syn/m1a_seeds.py": "75f9aaa74a80ef4c1fe1fd49366d175f1856665d91d6c10a913ee2d211a0e8fa",
+      "src/id_anchor.py": "73c5b065c8d574e7bedeeaa32b90aa50c8c666e984162ea13bb7dd56446f4ffd",
+      "src/candidate_fusion.py": "583481f06ff5ee559b4ba4696ac909bd5b5ab5ec80d85db7ae9bb389bc135a9e",
+      "scripts/raster_candidate_outputs.py": "0158aab6cdad92ecd9b6ead49f033643a445b13564e3e9048e691471cbde5bdb"
+    }
+  },
+  "arms": {
+    "B": {
+      "observations": 1983,
+      "preclusters": 1310,
+      "support_histogram": {
+        "1": 1001,
+        "2": 240,
+        "3": 59,
+        "4": 10
+      },
+      "repeat_ge3": 69,
+      "accepted_before_cap": 66,
+      "accepted": 66,
+      "rejection_reasons": {
+        "single_or_two_view": 1241,
+        "tangent_inconsistent": 3
+      },
+      "accepted_support_median": 3.0,
+      "accepted_source_counts": {
+        "0": 66,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "C": {
+      "observations": 1544,
+      "preclusters": 509,
+      "support_histogram": {
+        "1": 305,
+        "2": 109,
+        "3": 73,
+        "4": 22
+      },
+      "repeat_ge3": 95,
+      "accepted_before_cap": 91,
+      "accepted": 91,
+      "rejection_reasons": {
+        "single_or_two_view": 414,
+        "tangent_inconsistent": 4
+      },
+      "accepted_support_median": 3.0,
+      "accepted_source_counts": {
+        "0": 0,
+        "1": 91,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "D": {
+      "observations": 9341,
+      "preclusters": 2778,
+      "support_histogram": {
+        "1": 1796,
+        "2": 624,
+        "3": 269,
+        "4": 89
+      },
+      "repeat_ge3": 358,
+      "accepted_before_cap": 338,
+      "accepted": 338,
+      "rejection_reasons": {
+        "single_or_two_view": 2420,
+        "tangent_inconsistent": 20
+      },
+      "accepted_support_median": 3.0,
+      "accepted_source_counts": {
+        "0": 246,
+        "1": 185,
+        "2": 175,
+        "3": 153,
+        "4": 74,
+        "5": 162
+      }
+    },
+    "N1": {
+      "observations": 7884,
+      "preclusters": 3732,
+      "support_histogram": {
+        "1": 3730,
+        "2": 2
+      },
+      "repeat_ge3": 0,
+      "accepted_before_cap": 0,
+      "accepted": 0,
+      "rejection_reasons": {
+        "single_or_two_view": 3732
+      },
+      "accepted_support_median": 0.0,
+      "accepted_source_counts": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "N2": {
+      "observations": 7884,
+      "preclusters": 2340,
+      "support_histogram": {
+        "1": 1962,
+        "2": 351,
+        "3": 27
+      },
+      "repeat_ge3": 27,
+      "accepted_before_cap": 26,
+      "accepted": 26,
+      "rejection_reasons": {
+        "single_or_two_view": 2313,
+        "tangent_inconsistent": 1
+      },
+      "accepted_support_median": 3.0,
+      "accepted_source_counts": {
+        "0": 20,
+        "1": 17,
+        "2": 20,
+        "3": 20,
+        "4": 11,
+        "5": 17
+      }
+    }
+  },
+  "matched": {
+    "B_real": {
+      "observations": 1465,
+      "preclusters": 1070,
+      "support_histogram": {
+        "1": 866,
+        "2": 173,
+        "3": 27,
+        "4": 4
+      },
+      "repeat_ge3": 31,
+      "accepted_before_cap": 31,
+      "accepted": 31,
+      "rejection_reasons": {
+        "single_or_two_view": 1039
+      },
+      "accepted_support_median": 3.0,
+      "accepted_source_counts": {
+        "0": 31,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "B_N1": {
+      "observations": 1465,
+      "preclusters": 1320,
+      "support_histogram": {
+        "1": 1320
+      },
+      "repeat_ge3": 0,
+      "accepted_before_cap": 0,
+      "accepted": 0,
+      "rejection_reasons": {
+        "single_or_two_view": 1320
+      },
+      "accepted_support_median": 0.0,
+      "accepted_source_counts": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "B_N2": {
+      "observations": 1465,
+      "preclusters": 1017,
+      "support_histogram": {
+        "1": 949,
+        "2": 67,
+        "3": 1
+      },
+      "repeat_ge3": 1,
+      "accepted_before_cap": 1,
+      "accepted": 1,
+      "rejection_reasons": {
+        "single_or_two_view": 1016
+      },
+      "accepted_support_median": 3.0,
+      "accepted_source_counts": {
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "C_real": {
+      "observations": 1416,
+      "preclusters": 487,
+      "support_histogram": {
+        "1": 289,
+        "2": 111,
+        "3": 67,
+        "4": 20
+      },
+      "repeat_ge3": 87,
+      "accepted_before_cap": 82,
+      "accepted": 82,
+      "rejection_reasons": {
+        "single_or_two_view": 400,
+        "tangent_inconsistent": 5
+      },
+      "accepted_support_median": 3.0,
+      "accepted_source_counts": {
+        "0": 0,
+        "1": 82,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "C_N1": {
+      "observations": 1416,
+      "preclusters": 777,
+      "support_histogram": {
+        "1": 777
+      },
+      "repeat_ge3": 0,
+      "accepted_before_cap": 0,
+      "accepted": 0,
+      "rejection_reasons": {
+        "single_or_two_view": 777
+      },
+      "accepted_support_median": 0.0,
+      "accepted_source_counts": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "C_N2": {
+      "observations": 1416,
+      "preclusters": 630,
+      "support_histogram": {
+        "1": 596,
+        "2": 33,
+        "3": 1
+      },
+      "repeat_ge3": 1,
+      "accepted_before_cap": 0,
+      "accepted": 0,
+      "rejection_reasons": {
+        "single_or_two_view": 629,
+        "tangent_inconsistent": 1
+      },
+      "accepted_support_median": 0.0,
+      "accepted_source_counts": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "D_real": {
+      "observations": 7884,
+      "preclusters": 2543,
+      "support_histogram": {
+        "1": 1671,
+        "2": 581,
+        "3": 223,
+        "4": 68
+      },
+      "repeat_ge3": 291,
+      "accepted_before_cap": 276,
+      "accepted": 276,
+      "rejection_reasons": {
+        "single_or_two_view": 2252,
+        "tangent_inconsistent": 15
+      },
+      "accepted_support_median": 3.0,
+      "accepted_source_counts": {
+        "0": 188,
+        "1": 162,
+        "2": 152,
+        "3": 109,
+        "4": 65,
+        "5": 147
+      }
+    },
+    "D_N1": {
+      "observations": 7884,
+      "preclusters": 3732,
+      "support_histogram": {
+        "1": 3730,
+        "2": 2
+      },
+      "repeat_ge3": 0,
+      "accepted_before_cap": 0,
+      "accepted": 0,
+      "rejection_reasons": {
+        "single_or_two_view": 3732
+      },
+      "accepted_support_median": 0.0,
+      "accepted_source_counts": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "D_N2": {
+      "observations": 7884,
+      "preclusters": 2340,
+      "support_histogram": {
+        "1": 1962,
+        "2": 351,
+        "3": 27
+      },
+      "repeat_ge3": 27,
+      "accepted_before_cap": 26,
+      "accepted": 26,
+      "rejection_reasons": {
+        "single_or_two_view": 2313,
+        "tangent_inconsistent": 1
+      },
+      "accepted_support_median": 3.0,
+      "accepted_source_counts": {
+        "0": 20,
+        "1": 17,
+        "2": 20,
+        "3": 20,
+        "4": 11,
+        "5": 17
+      }
+    }
+  },
+  "null_comparison": {
+    "B": {
+      "matched_real_clusters": 31,
+      "stronger_null_clusters": 1,
+      "ratio_to_stronger_null": 31.0,
+      "persistence_effect_pass": true,
+      "visual_semantic_value": "not established by counts"
+    },
+    "C": {
+      "matched_real_clusters": 82,
+      "stronger_null_clusters": 0,
+      "ratio_to_stronger_null": 82.0,
+      "persistence_effect_pass": true,
+      "visual_semantic_value": "not established by counts"
+    },
+    "D": {
+      "matched_real_clusters": 276,
+      "stronger_null_clusters": 26,
+      "ratio_to_stronger_null": 10.615384615384615,
+      "persistence_effect_pass": true,
+      "visual_semantic_value": "not established by counts"
+    }
+  },
+  "input_sha256": "709ff721c587c8f8a02f0c623c087cd43b747b1b1aeed371d9e73117097d3db7",
+  "seconds": 3.3115830720053054
+}

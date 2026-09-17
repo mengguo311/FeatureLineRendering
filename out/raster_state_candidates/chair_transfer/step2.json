@@ -1,0 +1,1338 @@
+{
+  "provenance": {
+    "commit": "e67c4749d925c42ba913f5c69af51bbf374988ed",
+    "manifest_sha256": "43bdee970291e302efc453d97b6df0e01b5d737f3d4f38d0be2d7c2e9a092aef",
+    "sources": {
+      "scripts/run_raster_candidates.py": "46c4528fe5742523dbbc708814b501058ad89813058e7a2dba81c3ce1eff5a14",
+      "src/raster_state.py": "cb91863afffc22d4f70180a170e633b007e1e0e8bd54369750fc5cd598875c2e",
+      "src/render.py": "539e4456e6487906195a2e0b6394e228e03032c67fe9438007d2abe2fad12f15",
+      "src/dt_pull.py": "7a1788900a44cd1abd0e6c4eec736c5abdfa3d5db41ab25da11c37cc8bfe37d2",
+      "src/strokes.py": "456ec09e1664b1531309dba2b65df22735d6b353e0579ef876d4b7abdf2ec3d6",
+      "scripts/explore/syn/m1a_seeds.py": "75f9aaa74a80ef4c1fe1fd49366d175f1856665d91d6c10a913ee2d211a0e8fa",
+      "src/id_anchor.py": "73c5b065c8d574e7bedeeaa32b90aa50c8c666e984162ea13bb7dd56446f4ffd",
+      "src/candidate_fusion.py": "583481f06ff5ee559b4ba4696ac909bd5b5ab5ec80d85db7ae9bb389bc135a9e",
+      "scripts/raster_candidate_outputs.py": "0158aab6cdad92ecd9b6ead49f033643a445b13564e3e9048e691471cbde5bdb"
+    }
+  },
+  "spacing": 0.006248915723222208,
+  "views": [
+    {
+      "view": 1,
+      "mode": "real",
+      "channel": "topk",
+      "input_samples": 600,
+      "accepted": 518,
+      "reasons": {
+        "accepted": 518,
+        "cross_depth_layer": 70,
+        "dominant_neighborhood": 4,
+        "reprojection": 8
+      },
+      "reprojection_median": 0.5535748373611115,
+      "accepted_reprojection_median": 0.47867676113949315,
+      "depth_relative_median": 0.00045591502385523516,
+      "backprojection_roundtrip_median": 7.834245632532987e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 1,
+        "3": 3,
+        "4": 5,
+        "5": 27,
+        "6": 39,
+        "7": 91,
+        "8": 352
+      }
+    },
+    {
+      "view": 1,
+      "mode": "real",
+      "channel": "rgb",
+      "input_samples": 600,
+      "accepted": 392,
+      "reasons": {
+        "accepted": 392,
+        "cross_depth_layer": 190,
+        "dominant_neighborhood": 11,
+        "reprojection": 7
+      },
+      "reprojection_median": 0.7686506460732867,
+      "accepted_reprojection_median": 0.5630374497672573,
+      "depth_relative_median": 0.0005802090048328355,
+      "backprojection_roundtrip_median": 6.6157083371156065e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 2,
+        "4": 1,
+        "5": 7,
+        "6": 28,
+        "7": 73,
+        "8": 281
+      }
+    },
+    {
+      "view": 1,
+      "mode": "real",
+      "channel": "entropy",
+      "input_samples": 600,
+      "accepted": 432,
+      "reasons": {
+        "accepted": 432,
+        "cross_depth_layer": 147,
+        "dominant_neighborhood": 6,
+        "reprojection": 15
+      },
+      "reprojection_median": 0.8135177227186654,
+      "accepted_reprojection_median": 0.6511253668310344,
+      "depth_relative_median": 0.0004355990097354783,
+      "backprojection_roundtrip_median": 6.849031314396724e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 1,
+        "3": 4,
+        "4": 7,
+        "5": 24,
+        "6": 31,
+        "7": 71,
+        "8": 294
+      }
+    },
+    {
+      "view": 1,
+      "mode": "real",
+      "channel": "margin",
+      "input_samples": 600,
+      "accepted": 505,
+      "reasons": {
+        "accepted": 505,
+        "cross_depth_layer": 81,
+        "dominant_neighborhood": 3,
+        "reprojection": 11
+      },
+      "reprojection_median": 0.5294610130347409,
+      "accepted_reprojection_median": 0.47743167551589893,
+      "depth_relative_median": 0.00029887762017923584,
+      "backprojection_roundtrip_median": 5.179889562991005e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 3,
+        "3": 17,
+        "4": 17,
+        "5": 54,
+        "6": 55,
+        "7": 97,
+        "8": 262
+      }
+    },
+    {
+      "view": 1,
+      "mode": "real",
+      "channel": "variance",
+      "input_samples": 600,
+      "accepted": 191,
+      "reasons": {
+        "accepted": 191,
+        "cross_depth_layer": 280,
+        "dominant_neighborhood": 21,
+        "reprojection": 108
+      },
+      "reprojection_median": 2.3111516899581694,
+      "accepted_reprojection_median": 1.283755564079385,
+      "depth_relative_median": 0.0007205374742014298,
+      "backprojection_roundtrip_median": 5.85568296950123e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 3,
+        "4": 6,
+        "5": 17,
+        "6": 50,
+        "7": 57,
+        "8": 58
+      }
+    },
+    {
+      "view": 1,
+      "mode": "real",
+      "channel": "dispersion",
+      "input_samples": 600,
+      "accepted": 368,
+      "reasons": {
+        "accepted": 368,
+        "cross_depth_layer": 179,
+        "dominant_neighborhood": 24,
+        "reprojection": 29
+      },
+      "reprojection_median": 0.983406964374519,
+      "accepted_reprojection_median": 0.648811441593997,
+      "depth_relative_median": 0.0005779528712439779,
+      "backprojection_roundtrip_median": 6.531589587038844e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 1,
+        "3": 5,
+        "4": 4,
+        "5": 16,
+        "6": 60,
+        "7": 92,
+        "8": 190
+      }
+    },
+    {
+      "view": 1,
+      "mode": "shifted",
+      "channel": "topk",
+      "input_samples": 600,
+      "accepted": 415,
+      "reasons": {
+        "accepted": 415,
+        "cross_depth_layer": 157,
+        "dominant_neighborhood": 16,
+        "reprojection": 12
+      },
+      "reprojection_median": 0.9402160372206092,
+      "accepted_reprojection_median": 0.8271751956945382,
+      "depth_relative_median": 0.0006356270584901419,
+      "backprojection_roundtrip_median": 7.4110882722090375e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 2,
+        "3": 5,
+        "4": 2,
+        "5": 10,
+        "6": 67,
+        "7": 103,
+        "8": 226
+      }
+    },
+    {
+      "view": 1,
+      "mode": "shifted",
+      "channel": "rgb",
+      "input_samples": 600,
+      "accepted": 392,
+      "reasons": {
+        "accepted": 392,
+        "cross_depth_layer": 161,
+        "dominant_neighborhood": 19,
+        "reprojection": 28
+      },
+      "reprojection_median": 0.9623821552957813,
+      "accepted_reprojection_median": 0.7696503957610976,
+      "depth_relative_median": 0.0005616224826123183,
+      "backprojection_roundtrip_median": 7.230365833481528e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 5,
+        "4": 3,
+        "5": 17,
+        "6": 62,
+        "7": 105,
+        "8": 200
+      }
+    },
+    {
+      "view": 1,
+      "mode": "shifted",
+      "channel": "entropy",
+      "input_samples": 600,
+      "accepted": 386,
+      "reasons": {
+        "accepted": 386,
+        "cross_depth_layer": 187,
+        "dominant_neighborhood": 20,
+        "reprojection": 7
+      },
+      "reprojection_median": 1.0893425789838735,
+      "accepted_reprojection_median": 0.8802427359768754,
+      "depth_relative_median": 0.0005556776134267627,
+      "backprojection_roundtrip_median": 6.4381809584190545e-06,
+      "id_support_histogram": {
+        "1": 2,
+        "2": 0,
+        "3": 2,
+        "4": 3,
+        "5": 9,
+        "6": 48,
+        "7": 97,
+        "8": 225
+      }
+    },
+    {
+      "view": 1,
+      "mode": "shifted",
+      "channel": "margin",
+      "input_samples": 600,
+      "accepted": 404,
+      "reasons": {
+        "accepted": 404,
+        "cross_depth_layer": 152,
+        "dominant_neighborhood": 18,
+        "reprojection": 26
+      },
+      "reprojection_median": 1.1045953490805864,
+      "accepted_reprojection_median": 0.8240051133255313,
+      "depth_relative_median": 0.0005934300216439811,
+      "backprojection_roundtrip_median": 6.133016643924173e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 1,
+        "3": 2,
+        "4": 3,
+        "5": 16,
+        "6": 35,
+        "7": 74,
+        "8": 273
+      }
+    },
+    {
+      "view": 1,
+      "mode": "shifted",
+      "channel": "variance",
+      "input_samples": 600,
+      "accepted": 404,
+      "reasons": {
+        "accepted": 404,
+        "cross_depth_layer": 172,
+        "dominant_neighborhood": 11,
+        "reprojection": 13
+      },
+      "reprojection_median": 1.0225299582748315,
+      "accepted_reprojection_median": 0.7922815184228608,
+      "depth_relative_median": 0.0004983248623447348,
+      "backprojection_roundtrip_median": 6.4280601320866906e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 1,
+        "3": 3,
+        "4": 4,
+        "5": 21,
+        "6": 80,
+        "7": 113,
+        "8": 182
+      }
+    },
+    {
+      "view": 1,
+      "mode": "shifted",
+      "channel": "dispersion",
+      "input_samples": 600,
+      "accepted": 390,
+      "reasons": {
+        "accepted": 390,
+        "cross_depth_layer": 191,
+        "dominant_neighborhood": 10,
+        "reprojection": 9
+      },
+      "reprojection_median": 0.9785021486856518,
+      "accepted_reprojection_median": 0.8557920884883525,
+      "depth_relative_median": 0.0006213999871275881,
+      "backprojection_roundtrip_median": 9.530448436499416e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 1,
+        "3": 2,
+        "4": 7,
+        "5": 10,
+        "6": 70,
+        "7": 118,
+        "8": 182
+      }
+    },
+    {
+      "view": 27,
+      "mode": "real",
+      "channel": "topk",
+      "input_samples": 600,
+      "accepted": 501,
+      "reasons": {
+        "accepted": 501,
+        "cross_depth_layer": 83,
+        "dominant_neighborhood": 10,
+        "reprojection": 6
+      },
+      "reprojection_median": 0.5229736434043877,
+      "accepted_reprojection_median": 0.5050235431390152,
+      "depth_relative_median": 0.0005631714936970388,
+      "backprojection_roundtrip_median": 6.233198720146437e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 5,
+        "5": 6,
+        "6": 39,
+        "7": 98,
+        "8": 353
+      }
+    },
+    {
+      "view": 27,
+      "mode": "real",
+      "channel": "rgb",
+      "input_samples": 600,
+      "accepted": 379,
+      "reasons": {
+        "accepted": 379,
+        "cross_depth_layer": 204,
+        "dominant_neighborhood": 10,
+        "reprojection": 7
+      },
+      "reprojection_median": 0.8474451420826796,
+      "accepted_reprojection_median": 0.666738776115213,
+      "depth_relative_median": 0.0006144233070205649,
+      "backprojection_roundtrip_median": 9.246402920053681e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 1,
+        "5": 9,
+        "6": 21,
+        "7": 60,
+        "8": 288
+      }
+    },
+    {
+      "view": 27,
+      "mode": "real",
+      "channel": "entropy",
+      "input_samples": 600,
+      "accepted": 416,
+      "reasons": {
+        "accepted": 416,
+        "cross_depth_layer": 124,
+        "dominant_neighborhood": 14,
+        "reprojection": 46
+      },
+      "reprojection_median": 1.2994974628232987,
+      "accepted_reprojection_median": 1.0188345388982953,
+      "depth_relative_median": 0.0006596603613181623,
+      "backprojection_roundtrip_median": 6.658830511459973e-06,
+      "id_support_histogram": {
+        "1": 1,
+        "2": 0,
+        "3": 5,
+        "4": 17,
+        "5": 34,
+        "6": 56,
+        "7": 91,
+        "8": 212
+      }
+    },
+    {
+      "view": 27,
+      "mode": "real",
+      "channel": "margin",
+      "input_samples": 600,
+      "accepted": 435,
+      "reasons": {
+        "accepted": 435,
+        "cross_depth_layer": 146,
+        "dominant_neighborhood": 8,
+        "reprojection": 11
+      },
+      "reprojection_median": 1.401976239082161,
+      "accepted_reprojection_median": 1.1952776829290397,
+      "depth_relative_median": 0.0009066271519614533,
+      "backprojection_roundtrip_median": 4.609520209680343e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 5,
+        "3": 12,
+        "4": 42,
+        "5": 64,
+        "6": 69,
+        "7": 102,
+        "8": 141
+      }
+    },
+    {
+      "view": 27,
+      "mode": "real",
+      "channel": "variance",
+      "input_samples": 600,
+      "accepted": 260,
+      "reasons": {
+        "accepted": 260,
+        "cross_depth_layer": 290,
+        "dominant_neighborhood": 10,
+        "reprojection": 40
+      },
+      "reprojection_median": 1.4829514162528192,
+      "accepted_reprojection_median": 1.3298395881760086,
+      "depth_relative_median": 0.0008839444189513357,
+      "backprojection_roundtrip_median": 3.8257920067533205e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "4": 3,
+        "5": 14,
+        "6": 53,
+        "7": 67,
+        "8": 122
+      }
+    },
+    {
+      "view": 27,
+      "mode": "real",
+      "channel": "dispersion",
+      "input_samples": 600,
+      "accepted": 404,
+      "reasons": {
+        "accepted": 404,
+        "cross_depth_layer": 129,
+        "dominant_neighborhood": 14,
+        "reprojection": 53
+      },
+      "reprojection_median": 1.0960159815454897,
+      "accepted_reprojection_median": 0.796692723213531,
+      "depth_relative_median": 0.0006054323827511221,
+      "backprojection_roundtrip_median": 9.249294476068193e-06,
+      "id_support_histogram": {
+        "1": 1,
+        "2": 0,
+        "3": 1,
+        "4": 3,
+        "5": 9,
+        "6": 36,
+        "7": 75,
+        "8": 279
+      }
+    },
+    {
+      "view": 27,
+      "mode": "shifted",
+      "channel": "topk",
+      "input_samples": 600,
+      "accepted": 244,
+      "reasons": {
+        "accepted": 244,
+        "cross_depth_layer": 246,
+        "dominant_neighborhood": 25,
+        "reprojection": 85
+      },
+      "reprojection_median": 2.33038769923597,
+      "accepted_reprojection_median": 1.8754120563078351,
+      "depth_relative_median": 0.0007852767076815048,
+      "backprojection_roundtrip_median": 4.986964741796024e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 4,
+        "5": 16,
+        "6": 32,
+        "7": 67,
+        "8": 125
+      }
+    },
+    {
+      "view": 27,
+      "mode": "shifted",
+      "channel": "rgb",
+      "input_samples": 600,
+      "accepted": 283,
+      "reasons": {
+        "accepted": 283,
+        "cross_depth_layer": 162,
+        "dominant_neighborhood": 31,
+        "reprojection": 124
+      },
+      "reprojection_median": 2.4433335874899544,
+      "accepted_reprojection_median": 2.0060748139621882,
+      "depth_relative_median": 0.0007988010602202202,
+      "backprojection_roundtrip_median": 7.092612284354932e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 4,
+        "5": 19,
+        "6": 37,
+        "7": 79,
+        "8": 144
+      }
+    },
+    {
+      "view": 27,
+      "mode": "shifted",
+      "channel": "entropy",
+      "input_samples": 600,
+      "accepted": 342,
+      "reasons": {
+        "accepted": 342,
+        "cross_depth_layer": 150,
+        "dominant_neighborhood": 37,
+        "reprojection": 71
+      },
+      "reprojection_median": 1.8618193162209093,
+      "accepted_reprojection_median": 1.632360767352076,
+      "depth_relative_median": 0.0007965036444302909,
+      "backprojection_roundtrip_median": 7.574296349882994e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 1,
+        "3": 1,
+        "4": 7,
+        "5": 12,
+        "6": 35,
+        "7": 99,
+        "8": 187
+      }
+    },
+    {
+      "view": 27,
+      "mode": "shifted",
+      "channel": "margin",
+      "input_samples": 600,
+      "accepted": 368,
+      "reasons": {
+        "accepted": 368,
+        "cross_depth_layer": 117,
+        "dominant_neighborhood": 42,
+        "reprojection": 73
+      },
+      "reprojection_median": 1.6554637234805227,
+      "accepted_reprojection_median": 1.4586324496880931,
+      "depth_relative_median": 0.0007394498120967144,
+      "backprojection_roundtrip_median": 8.076839300177465e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 7,
+        "5": 9,
+        "6": 38,
+        "7": 89,
+        "8": 225
+      }
+    },
+    {
+      "view": 27,
+      "mode": "shifted",
+      "channel": "variance",
+      "input_samples": 600,
+      "accepted": 271,
+      "reasons": {
+        "accepted": 271,
+        "cross_depth_layer": 231,
+        "dominant_neighborhood": 23,
+        "reprojection": 75
+      },
+      "reprojection_median": 2.1742290165926903,
+      "accepted_reprojection_median": 1.8933110343047483,
+      "depth_relative_median": 0.0007262262779449401,
+      "backprojection_roundtrip_median": 5.0693700180578485e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "4": 12,
+        "5": 28,
+        "6": 42,
+        "7": 72,
+        "8": 116
+      }
+    },
+    {
+      "view": 27,
+      "mode": "shifted",
+      "channel": "dispersion",
+      "input_samples": 600,
+      "accepted": 310,
+      "reasons": {
+        "accepted": 310,
+        "cross_depth_layer": 150,
+        "dominant_neighborhood": 39,
+        "reprojection": 101
+      },
+      "reprojection_median": 2.3096347252897793,
+      "accepted_reprojection_median": 1.9374344187067214,
+      "depth_relative_median": 0.0008086767118210837,
+      "backprojection_roundtrip_median": 6.882565889319927e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 13,
+        "5": 15,
+        "6": 38,
+        "7": 75,
+        "8": 169
+      }
+    },
+    {
+      "view": 53,
+      "mode": "real",
+      "channel": "topk",
+      "input_samples": 600,
+      "accepted": 480,
+      "reasons": {
+        "accepted": 480,
+        "cross_depth_layer": 106,
+        "dominant_neighborhood": 10,
+        "reprojection": 4
+      },
+      "reprojection_median": 0.4913885481851148,
+      "accepted_reprojection_median": 0.42894061860281407,
+      "depth_relative_median": 0.00042555320926309953,
+      "backprojection_roundtrip_median": 1.4814989857751715e-05,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 2,
+        "3": 5,
+        "4": 5,
+        "5": 13,
+        "6": 35,
+        "7": 75,
+        "8": 345
+      }
+    },
+    {
+      "view": 53,
+      "mode": "real",
+      "channel": "rgb",
+      "input_samples": 600,
+      "accepted": 385,
+      "reasons": {
+        "accepted": 385,
+        "cross_depth_layer": 192,
+        "dominant_neighborhood": 19,
+        "reprojection": 4
+      },
+      "reprojection_median": 0.7578862912923208,
+      "accepted_reprojection_median": 0.61111192159772,
+      "depth_relative_median": 0.0006077887763886694,
+      "backprojection_roundtrip_median": 1.5183871817196614e-05,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 3,
+        "5": 8,
+        "6": 33,
+        "7": 79,
+        "8": 262
+      }
+    },
+    {
+      "view": 53,
+      "mode": "real",
+      "channel": "entropy",
+      "input_samples": 600,
+      "accepted": 366,
+      "reasons": {
+        "accepted": 366,
+        "cross_depth_layer": 202,
+        "dominant_neighborhood": 3,
+        "reprojection": 29
+      },
+      "reprojection_median": 1.0643784335366036,
+      "accepted_reprojection_median": 0.76308213265539,
+      "depth_relative_median": 0.0005288360646694677,
+      "backprojection_roundtrip_median": 1.4903769213244508e-05,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 1,
+        "3": 4,
+        "4": 17,
+        "5": 26,
+        "6": 55,
+        "7": 51,
+        "8": 212
+      }
+    },
+    {
+      "view": 53,
+      "mode": "real",
+      "channel": "margin",
+      "input_samples": 600,
+      "accepted": 441,
+      "reasons": {
+        "accepted": 441,
+        "cross_depth_layer": 148,
+        "dominant_neighborhood": 2,
+        "reprojection": 9
+      },
+      "reprojection_median": 0.8321396080407288,
+      "accepted_reprojection_median": 0.6449230807054325,
+      "depth_relative_median": 0.0004946793799899665,
+      "backprojection_roundtrip_median": 1.3584605116811545e-05,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 6,
+        "3": 17,
+        "4": 43,
+        "5": 52,
+        "6": 65,
+        "7": 81,
+        "8": 177
+      }
+    },
+    {
+      "view": 53,
+      "mode": "real",
+      "channel": "variance",
+      "input_samples": 600,
+      "accepted": 237,
+      "reasons": {
+        "accepted": 237,
+        "cross_depth_layer": 308,
+        "dominant_neighborhood": 7,
+        "reprojection": 48
+      },
+      "reprojection_median": 2.0000331619439002,
+      "accepted_reprojection_median": 0.9758358856132241,
+      "depth_relative_median": 0.0006129529714478631,
+      "backprojection_roundtrip_median": 1.5313894163832902e-05,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 2,
+        "4": 9,
+        "5": 19,
+        "6": 69,
+        "7": 58,
+        "8": 80
+      }
+    },
+    {
+      "view": 53,
+      "mode": "real",
+      "channel": "dispersion",
+      "input_samples": 600,
+      "accepted": 398,
+      "reasons": {
+        "accepted": 398,
+        "cross_depth_layer": 159,
+        "dominant_neighborhood": 13,
+        "reprojection": 30
+      },
+      "reprojection_median": 1.3407678703905872,
+      "accepted_reprojection_median": 0.9596477402637196,
+      "depth_relative_median": 0.000611742365829786,
+      "backprojection_roundtrip_median": 1.571590935247791e-05,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 2,
+        "4": 4,
+        "5": 8,
+        "6": 28,
+        "7": 94,
+        "8": 262
+      }
+    },
+    {
+      "view": 53,
+      "mode": "shifted",
+      "channel": "topk",
+      "input_samples": 600,
+      "accepted": 416,
+      "reasons": {
+        "accepted": 416,
+        "cross_depth_layer": 148,
+        "dominant_neighborhood": 18,
+        "reprojection": 18
+      },
+      "reprojection_median": 0.9428638533966992,
+      "accepted_reprojection_median": 0.7818756309516448,
+      "depth_relative_median": 0.0006176697769970802,
+      "backprojection_roundtrip_median": 1.5085733910916776e-05,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 3,
+        "5": 19,
+        "6": 34,
+        "7": 100,
+        "8": 260
+      }
+    },
+    {
+      "view": 53,
+      "mode": "shifted",
+      "channel": "rgb",
+      "input_samples": 600,
+      "accepted": 403,
+      "reasons": {
+        "accepted": 403,
+        "cross_depth_layer": 146,
+        "dominant_neighborhood": 11,
+        "reprojection": 40
+      },
+      "reprojection_median": 1.3692026644453592,
+      "accepted_reprojection_median": 1.0770489852227885,
+      "depth_relative_median": 0.0007710784031296035,
+      "backprojection_roundtrip_median": 1.7375404313779737e-05,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 1,
+        "5": 11,
+        "6": 27,
+        "7": 103,
+        "8": 261
+      }
+    },
+    {
+      "view": 53,
+      "mode": "shifted",
+      "channel": "entropy",
+      "input_samples": 600,
+      "accepted": 320,
+      "reasons": {
+        "accepted": 320,
+        "cross_depth_layer": 227,
+        "dominant_neighborhood": 15,
+        "reprojection": 38
+      },
+      "reprojection_median": 1.6634220469511452,
+      "accepted_reprojection_median": 1.011440850487051,
+      "depth_relative_median": 0.0007092947810658852,
+      "backprojection_roundtrip_median": 1.5605080065948104e-05,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "4": 15,
+        "5": 21,
+        "6": 32,
+        "7": 65,
+        "8": 186
+      }
+    },
+    {
+      "view": 53,
+      "mode": "shifted",
+      "channel": "margin",
+      "input_samples": 600,
+      "accepted": 296,
+      "reasons": {
+        "accepted": 296,
+        "cross_depth_layer": 243,
+        "dominant_neighborhood": 20,
+        "reprojection": 41
+      },
+      "reprojection_median": 1.7631400744351111,
+      "accepted_reprojection_median": 0.959271725687589,
+      "depth_relative_median": 0.0007253008453497538,
+      "backprojection_roundtrip_median": 1.5579151335553024e-05,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 3,
+        "4": 12,
+        "5": 20,
+        "6": 24,
+        "7": 68,
+        "8": 169
+      }
+    },
+    {
+      "view": 53,
+      "mode": "shifted",
+      "channel": "variance",
+      "input_samples": 600,
+      "accepted": 268,
+      "reasons": {
+        "accepted": 268,
+        "cross_depth_layer": 279,
+        "dominant_neighborhood": 19,
+        "reprojection": 34
+      },
+      "reprojection_median": 1.750890046037199,
+      "accepted_reprojection_median": 0.9897094346920247,
+      "depth_relative_median": 0.0005988009570667977,
+      "backprojection_roundtrip_median": 1.592360414993455e-05,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "4": 8,
+        "5": 17,
+        "6": 26,
+        "7": 53,
+        "8": 163
+      }
+    },
+    {
+      "view": 53,
+      "mode": "shifted",
+      "channel": "dispersion",
+      "input_samples": 600,
+      "accepted": 348,
+      "reasons": {
+        "accepted": 348,
+        "cross_depth_layer": 177,
+        "dominant_neighborhood": 19,
+        "reprojection": 56
+      },
+      "reprojection_median": 1.3906884610895838,
+      "accepted_reprojection_median": 0.9032619397521238,
+      "depth_relative_median": 0.000596201114992125,
+      "backprojection_roundtrip_median": 1.5957490930885777e-05,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 2,
+        "4": 4,
+        "5": 11,
+        "6": 28,
+        "7": 89,
+        "8": 214
+      }
+    },
+    {
+      "view": 79,
+      "mode": "real",
+      "channel": "topk",
+      "input_samples": 600,
+      "accepted": 484,
+      "reasons": {
+        "accepted": 484,
+        "cross_depth_layer": 103,
+        "dominant_neighborhood": 8,
+        "reprojection": 5
+      },
+      "reprojection_median": 0.4873803086955367,
+      "accepted_reprojection_median": 0.40657148780574237,
+      "depth_relative_median": 0.00042747652439172924,
+      "backprojection_roundtrip_median": 3.812080731564057e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 2,
+        "3": 6,
+        "4": 12,
+        "5": 15,
+        "6": 36,
+        "7": 92,
+        "8": 321
+      }
+    },
+    {
+      "view": 79,
+      "mode": "real",
+      "channel": "rgb",
+      "input_samples": 600,
+      "accepted": 388,
+      "reasons": {
+        "accepted": 388,
+        "cross_depth_layer": 185,
+        "dominant_neighborhood": 12,
+        "reprojection": 15
+      },
+      "reprojection_median": 0.8620656777195892,
+      "accepted_reprojection_median": 0.5806765292303114,
+      "depth_relative_median": 0.0005563726014491416,
+      "backprojection_roundtrip_median": 4.051801936056681e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 1,
+        "3": 2,
+        "4": 1,
+        "5": 4,
+        "6": 17,
+        "7": 53,
+        "8": 310
+      }
+    },
+    {
+      "view": 79,
+      "mode": "real",
+      "channel": "entropy",
+      "input_samples": 600,
+      "accepted": 398,
+      "reasons": {
+        "accepted": 398,
+        "cross_depth_layer": 174,
+        "dominant_neighborhood": 6,
+        "reprojection": 22
+      },
+      "reprojection_median": 0.9933040886026294,
+      "accepted_reprojection_median": 0.7446240525144162,
+      "depth_relative_median": 0.0005042363147157341,
+      "backprojection_roundtrip_median": 3.537923742990804e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 2,
+        "3": 6,
+        "4": 9,
+        "5": 21,
+        "6": 39,
+        "7": 82,
+        "8": 239
+      }
+    },
+    {
+      "view": 79,
+      "mode": "real",
+      "channel": "margin",
+      "input_samples": 600,
+      "accepted": 511,
+      "reasons": {
+        "accepted": 511,
+        "cross_depth_layer": 82,
+        "reprojection": 7
+      },
+      "reprojection_median": 0.5096290254806872,
+      "accepted_reprojection_median": 0.4850850181318155,
+      "depth_relative_median": 0.0004027655240151576,
+      "backprojection_roundtrip_median": 2.299547730291542e-06,
+      "id_support_histogram": {
+        "1": 1,
+        "2": 5,
+        "3": 7,
+        "4": 30,
+        "5": 46,
+        "6": 68,
+        "7": 89,
+        "8": 265
+      }
+    },
+    {
+      "view": 79,
+      "mode": "real",
+      "channel": "variance",
+      "input_samples": 600,
+      "accepted": 139,
+      "reasons": {
+        "accepted": 139,
+        "cross_depth_layer": 310,
+        "dominant_neighborhood": 12,
+        "reprojection": 139
+      },
+      "reprojection_median": 3.4048302153314665,
+      "accepted_reprojection_median": 0.6852400495943421,
+      "depth_relative_median": 0.0006883516125415438,
+      "backprojection_roundtrip_median": 4.866451339895394e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 2,
+        "4": 8,
+        "5": 19,
+        "6": 44,
+        "7": 47,
+        "8": 19
+      }
+    },
+    {
+      "view": 79,
+      "mode": "real",
+      "channel": "dispersion",
+      "input_samples": 600,
+      "accepted": 313,
+      "reasons": {
+        "accepted": 313,
+        "cross_depth_layer": 239,
+        "dominant_neighborhood": 10,
+        "reprojection": 38
+      },
+      "reprojection_median": 1.4675875539530097,
+      "accepted_reprojection_median": 0.8893913604382476,
+      "depth_relative_median": 0.0005473580307315501,
+      "backprojection_roundtrip_median": 4.681306192963932e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 3,
+        "5": 7,
+        "6": 44,
+        "7": 75,
+        "8": 184
+      }
+    },
+    {
+      "view": 79,
+      "mode": "shifted",
+      "channel": "topk",
+      "input_samples": 600,
+      "accepted": 390,
+      "reasons": {
+        "accepted": 390,
+        "cross_depth_layer": 147,
+        "dominant_neighborhood": 14,
+        "reprojection": 49
+      },
+      "reprojection_median": 1.0147251248975806,
+      "accepted_reprojection_median": 0.7383904329207563,
+      "depth_relative_median": 0.0006554278841717195,
+      "backprojection_roundtrip_median": 4.553034749582274e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 2,
+        "4": 2,
+        "5": 5,
+        "6": 22,
+        "7": 81,
+        "8": 278
+      }
+    },
+    {
+      "view": 79,
+      "mode": "shifted",
+      "channel": "rgb",
+      "input_samples": 600,
+      "accepted": 356,
+      "reasons": {
+        "accepted": 356,
+        "cross_depth_layer": 178,
+        "dominant_neighborhood": 14,
+        "reprojection": 52
+      },
+      "reprojection_median": 1.3445635636757847,
+      "accepted_reprojection_median": 0.8777373048617696,
+      "depth_relative_median": 0.0006544735866463788,
+      "backprojection_roundtrip_median": 5.4014843098306e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "4": 1,
+        "5": 9,
+        "6": 22,
+        "7": 71,
+        "8": 252
+      }
+    },
+    {
+      "view": 79,
+      "mode": "shifted",
+      "channel": "entropy",
+      "input_samples": 600,
+      "accepted": 368,
+      "reasons": {
+        "accepted": 368,
+        "cross_depth_layer": 159,
+        "dominant_neighborhood": 28,
+        "reprojection": 45
+      },
+      "reprojection_median": 1.0297868246790354,
+      "accepted_reprojection_median": 0.7249397415376857,
+      "depth_relative_median": 0.0005369002325767883,
+      "backprojection_roundtrip_median": 4.6602864649568644e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "4": 3,
+        "5": 11,
+        "6": 23,
+        "7": 104,
+        "8": 226
+      }
+    },
+    {
+      "view": 79,
+      "mode": "shifted",
+      "channel": "margin",
+      "input_samples": 600,
+      "accepted": 353,
+      "reasons": {
+        "accepted": 353,
+        "cross_depth_layer": 191,
+        "dominant_neighborhood": 13,
+        "reprojection": 43
+      },
+      "reprojection_median": 1.0773825502934602,
+      "accepted_reprojection_median": 0.8034171285207021,
+      "depth_relative_median": 0.0006919580898451974,
+      "backprojection_roundtrip_median": 5.410141167216152e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 3,
+        "5": 12,
+        "6": 30,
+        "7": 99,
+        "8": 209
+      }
+    },
+    {
+      "view": 79,
+      "mode": "shifted",
+      "channel": "variance",
+      "input_samples": 600,
+      "accepted": 317,
+      "reasons": {
+        "accepted": 317,
+        "cross_depth_layer": 233,
+        "dominant_neighborhood": 19,
+        "reprojection": 31
+      },
+      "reprojection_median": 1.2860430678467325,
+      "accepted_reprojection_median": 0.8975911784746741,
+      "depth_relative_median": 0.0006754085232230671,
+      "backprojection_roundtrip_median": 3.7583374833675494e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "4": 0,
+        "5": 9,
+        "6": 37,
+        "7": 70,
+        "8": 200
+      }
+    },
+    {
+      "view": 79,
+      "mode": "shifted",
+      "channel": "dispersion",
+      "input_samples": 600,
+      "accepted": 363,
+      "reasons": {
+        "accepted": 363,
+        "cross_depth_layer": 157,
+        "dominant_neighborhood": 15,
+        "reprojection": 65
+      },
+      "reprojection_median": 1.3174764613815224,
+      "accepted_reprojection_median": 0.8708952993204181,
+      "depth_relative_median": 0.0006297864938717053,
+      "backprojection_roundtrip_median": 5.472469368085019e-06,
+      "id_support_histogram": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "4": 1,
+        "5": 7,
+        "6": 32,
+        "7": 97,
+        "8": 225
+      }
+    }
+  ],
+  "step1_inputs_sha256": {
+    "1": {
+      "state": "f624722222ad9a53044c67e260469b26c7e135743e7d207e5a681cf311b924d5",
+      "fields": "92c1b427e9777e5fcd131623858ab75a7b6c8832a9ecd5d4baa9a5fdbb6a8916"
+    },
+    "27": {
+      "state": "c34abbd9d9936a80bc00829e11a67d1198fbc0b5bb68d0cd48c1a88f7cdad317",
+      "fields": "ff7710c50e93b5e146988d1de6a2da6e0a712869d18374caf4fe4105053ae54a"
+    },
+    "53": {
+      "state": "902eb4718b4e232bcd77f8ff64a8a52083e618dbf3bceef533ad757385a5eb0f",
+      "fields": "e911d4f0d32a09b6dc8748cc4420e294d1c6731ca49b343c4ca84a6c61ebdccc"
+    },
+    "79": {
+      "state": "abded40813817cbc3b943d94f67f2cb9ec9397680fc76da0f7ac5d09d5388fd6",
+      "fields": "4ec46bff7cf291bf04a3046913ee80e250ab03da55916ca42ae3ce5f5853778f"
+    }
+  },
+  "arrays_sha256": {
+    "real": "895a3b52885322c42dd962e376c5beb10e29729b024433d1974c7b3a92206cdb",
+    "shifted": "47f30e790fdc349f674620d0f0202c20fec231aa246afc351d101e0da6fb96af"
+  },
+  "seconds": 1.8160413410514593
+}

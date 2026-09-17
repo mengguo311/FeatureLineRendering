@@ -57,4 +57,34 @@ def main():
     dump(folder/'access.json',access)
 
 
-if __name__=='__main__':main()
+def trace_regions():
+    """Locate the failure stage in PREMARKED TRAIN boxes; never select by boxes."""
+    from src.visibility import visible_mask
+    if git('branch','--show-current')!='raster-state-candidates':raise RuntimeError('wrong branch')
+    m=json.loads((OUT/'MANIFEST.json').read_text());dest=OUT/'lego';folder=dest/'diagnostics'
+    access=install_guard(m,'lego',m['train_indices']);cams,_=common.load_cameras('lego');cam=scaled(cams[53],400)
+    state=dict(np.load(dest/'step1/state_053.npz'));depth=torch.from_numpy(state['depth']);obs=np.load(dest/'step2/real_observations.npz')
+    initial=np.load(dest/'step4/raw_D.npz');pulled=np.load(dest/'step4/pulled_D.npz');N=len(np.load(dest/'baseline_initial.npz')['p'])
+    meta=json.loads((dest/'step4/arm_D.json').read_text());used=np.unique(np.concatenate(meta['path_source_indices']))
+    vis0,uv0,_=visible_mask(initial['p'],cam,depth);vis1,uv1,_=visible_mask(pulled['p'],cam,depth);report={}
+    for r in m['regions']:
+        x0,y0,x1,y1=r['box']
+        def inside(p):return (p[:,0]>=x0)&(p[:,0]<x1)&(p[:,1]>=y0)&(p[:,1]<y1)
+        own=(obs['view']==53)&inside(obs['pixel']);by={}
+        for i,name in enumerate(m['fields']['arm_channels']['D']):
+            ix=own&(obs['source']==i);reasons={str(k):int(np.sum(obs['reason'][ix]==k)) for k in np.unique(obs['reason'][ix])}
+            by[name]=dict(evidence_pixels=int(ix.sum()),accepted_anchors=int(np.sum(ix&obs['valid'])),reasons=reasons)
+        a=inside(uv0)&vis0;b=inside(uv1)&vis1;new=np.arange(len(a))>=N
+        report[r['id']]=dict(description=r['description'],single_view_counts=by,
+            A_raw_centers_visible=int(np.sum(a&~new)),D_new_raw_centers_visible=int(np.sum(a&new)),
+            D_new_after_prune_centers_visible=int(np.sum(b&new&pulled['good'])),
+            D_new_chain_vertices_visible=int(np.sum(b[used]&new[used])),
+            note='ROI center counts only; not semantic coverage, not matched lines')
+    dump(folder/'region_trace.json',dict(commit=git('rev-parse','HEAD'),script_sha256=sha(__file__),regions=report))
+    dump(folder/'access_trace.json',access)
+
+
+if __name__=='__main__':
+    if sys.argv[1:]==['--trace']:trace_regions()
+    elif len(sys.argv)==1:main()
+    else:raise SystemExit('usage: audit_raster_candidates.py [--trace]')
