@@ -17,8 +17,11 @@ class RelationTests(unittest.TestCase):
         # Candidates follow the boundaries of a filled region, not the center
         # of a thick stroke whose two blurred edges lie several pixels away.
         cv2.rectangle(gray,(35,35),(125,125),0,-1)
-        paths=[[np.column_stack([np.linspace(35,125,100),np.full(100,35)])],
-               [np.column_stack([np.full(100,35),np.linspace(35,125,100)])]]
+        # Under the frozen Canny/LSD thresholds the bottom-right corner repeats
+        # at both scales; the top-left corner does not. Do not relax the detector
+        # to make an unsupported corner pass this semantic test.
+        paths=[[np.column_stack([np.linspace(35,125,100),np.full(100,125)])],
+               [np.column_stack([np.full(100,125),np.linspace(35,125,100)])]]
         u,l,e,o,s=view_evidence(gray,paths,CFG,0)
         self.assertGreater(s['relations'],0)
         self.assertTrue(any(b['ids']==[0,1] for r in e for b in r['bundles']))
