@@ -1,0 +1,458 @@
+{
+  "provenance": {
+    "commit": "c46faee3d36433f3abe4b8277d2d4ba3c39cd39d",
+    "manifest_sha256": "43bdee970291e302efc453d97b6df0e01b5d737f3d4f38d0be2d7c2e9a092aef",
+    "sources": {
+      "scripts/run_raster_candidates.py": "1a4f35742adb6f44737901d235583c2520fcf2ea77808a6c5d7b624dad57ab40",
+      "src/raster_state.py": "cb91863afffc22d4f70180a170e633b007e1e0e8bd54369750fc5cd598875c2e",
+      "src/render.py": "539e4456e6487906195a2e0b6394e228e03032c67fe9438007d2abe2fad12f15",
+      "src/dt_pull.py": "7a1788900a44cd1abd0e6c4eec736c5abdfa3d5db41ab25da11c37cc8bfe37d2",
+      "src/strokes.py": "456ec09e1664b1531309dba2b65df22735d6b353e0579ef876d4b7abdf2ec3d6",
+      "scripts/explore/syn/m1a_seeds.py": "75f9aaa74a80ef4c1fe1fd49366d175f1856665d91d6c10a913ee2d211a0e8fa",
+      "src/id_anchor.py": "73c5b065c8d574e7bedeeaa32b90aa50c8c666e984162ea13bb7dd56446f4ffd",
+      "src/candidate_fusion.py": "583481f06ff5ee559b4ba4696ac909bd5b5ab5ec80d85db7ae9bb389bc135a9e"
+    }
+  },
+  "arms": {
+    "B": {
+      "observations": 8218,
+      "preclusters": 4388,
+      "support_histogram": {
+        "1": 2668,
+        "2": 960,
+        "3": 408,
+        "4": 202,
+        "5": 88,
+        "6": 37,
+        "7": 12,
+        "8": 7,
+        "9": 4,
+        "12": 1,
+        "13": 1
+      },
+      "repeat_ge3": 760,
+      "accepted_before_cap": 712,
+      "accepted": 712,
+      "rejection_reasons": {
+        "single_or_two_view": 3628,
+        "tangent_inconsistent": 42,
+        "camera_diversity": 6
+      },
+      "accepted_support_median": 3.0,
+      "accepted_source_counts": {
+        "0": 712,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "C": {
+      "observations": 4107,
+      "preclusters": 1599,
+      "support_histogram": {
+        "1": 980,
+        "2": 312,
+        "3": 142,
+        "4": 81,
+        "5": 31,
+        "6": 24,
+        "7": 12,
+        "8": 7,
+        "9": 7,
+        "10": 2,
+        "11": 1
+      },
+      "repeat_ge3": 307,
+      "accepted_before_cap": 293,
+      "accepted": 293,
+      "rejection_reasons": {
+        "single_or_two_view": 1292,
+        "tangent_inconsistent": 12,
+        "camera_diversity": 2
+      },
+      "accepted_support_median": 4.0,
+      "accepted_source_counts": {
+        "0": 0,
+        "1": 293,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "D": {
+      "observations": 41801,
+      "preclusters": 10173,
+      "support_histogram": {
+        "1": 4696,
+        "2": 2339,
+        "3": 1280,
+        "4": 776,
+        "5": 466,
+        "6": 279,
+        "7": 146,
+        "8": 105,
+        "9": 44,
+        "10": 27,
+        "11": 9,
+        "12": 4,
+        "13": 2
+      },
+      "repeat_ge3": 3138,
+      "accepted_before_cap": 2938,
+      "accepted": 2938,
+      "rejection_reasons": {
+        "single_or_two_view": 7035,
+        "tangent_inconsistent": 190,
+        "camera_diversity": 10
+      },
+      "accepted_support_median": 4.0,
+      "accepted_source_counts": {
+        "0": 1627,
+        "1": 818,
+        "2": 1352,
+        "3": 1069,
+        "4": 890,
+        "5": 1524
+      }
+    },
+    "N1": {
+      "observations": 37706,
+      "preclusters": 20557,
+      "support_histogram": {
+        "1": 20552,
+        "2": 5
+      },
+      "repeat_ge3": 0,
+      "accepted_before_cap": 0,
+      "accepted": 0,
+      "rejection_reasons": {
+        "single_or_two_view": 20557
+      },
+      "accepted_support_median": 0.0,
+      "accepted_source_counts": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "N2": {
+      "observations": 37706,
+      "preclusters": 10886,
+      "support_histogram": {
+        "1": 6114,
+        "2": 3032,
+        "3": 1197,
+        "4": 407,
+        "5": 107,
+        "6": 25,
+        "7": 4
+      },
+      "repeat_ge3": 1740,
+      "accepted_before_cap": 1573,
+      "accepted": 1573,
+      "rejection_reasons": {
+        "single_or_two_view": 9146,
+        "tangent_inconsistent": 163,
+        "camera_diversity": 4
+      },
+      "accepted_support_median": 3.0,
+      "accepted_source_counts": {
+        "0": 1099,
+        "1": 618,
+        "2": 973,
+        "3": 918,
+        "4": 630,
+        "5": 932
+      }
+    }
+  },
+  "matched": {
+    "B_real": {
+      "observations": 7119,
+      "preclusters": 4027,
+      "support_histogram": {
+        "1": 2530,
+        "2": 874,
+        "3": 363,
+        "4": 158,
+        "5": 64,
+        "6": 24,
+        "7": 5,
+        "8": 6,
+        "9": 1,
+        "12": 1,
+        "13": 1
+      },
+      "repeat_ge3": 623,
+      "accepted_before_cap": 586,
+      "accepted": 586,
+      "rejection_reasons": {
+        "single_or_two_view": 3404,
+        "tangent_inconsistent": 31,
+        "camera_diversity": 6
+      },
+      "accepted_support_median": 3.0,
+      "accepted_source_counts": {
+        "0": 586,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "B_N1": {
+      "observations": 7119,
+      "preclusters": 6637,
+      "support_histogram": {
+        "1": 6637
+      },
+      "repeat_ge3": 0,
+      "accepted_before_cap": 0,
+      "accepted": 0,
+      "rejection_reasons": {
+        "single_or_two_view": 6637
+      },
+      "accepted_support_median": 0.0,
+      "accepted_source_counts": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "B_N2": {
+      "observations": 7119,
+      "preclusters": 4559,
+      "support_histogram": {
+        "1": 3634,
+        "2": 729,
+        "3": 169,
+        "4": 22,
+        "5": 5
+      },
+      "repeat_ge3": 196,
+      "accepted_before_cap": 184,
+      "accepted": 184,
+      "rejection_reasons": {
+        "single_or_two_view": 4363,
+        "tangent_inconsistent": 12
+      },
+      "accepted_support_median": 3.0,
+      "accepted_source_counts": {
+        "0": 184,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "C_real": {
+      "observations": 4107,
+      "preclusters": 1599,
+      "support_histogram": {
+        "1": 980,
+        "2": 312,
+        "3": 142,
+        "4": 81,
+        "5": 31,
+        "6": 24,
+        "7": 12,
+        "8": 7,
+        "9": 7,
+        "10": 2,
+        "11": 1
+      },
+      "repeat_ge3": 307,
+      "accepted_before_cap": 293,
+      "accepted": 293,
+      "rejection_reasons": {
+        "single_or_two_view": 1292,
+        "tangent_inconsistent": 12,
+        "camera_diversity": 2
+      },
+      "accepted_support_median": 4.0,
+      "accepted_source_counts": {
+        "0": 0,
+        "1": 293,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "C_N1": {
+      "observations": 4107,
+      "preclusters": 2804,
+      "support_histogram": {
+        "1": 2803,
+        "2": 1
+      },
+      "repeat_ge3": 0,
+      "accepted_before_cap": 0,
+      "accepted": 0,
+      "rejection_reasons": {
+        "single_or_two_view": 2804
+      },
+      "accepted_support_median": 0.0,
+      "accepted_source_counts": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "C_N2": {
+      "observations": 4107,
+      "preclusters": 2183,
+      "support_histogram": {
+        "1": 1888,
+        "2": 258,
+        "3": 34,
+        "4": 2,
+        "5": 1
+      },
+      "repeat_ge3": 37,
+      "accepted_before_cap": 34,
+      "accepted": 34,
+      "rejection_reasons": {
+        "single_or_two_view": 2146,
+        "tangent_inconsistent": 3
+      },
+      "accepted_support_median": 3.0,
+      "accepted_source_counts": {
+        "0": 0,
+        "1": 34,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "D_real": {
+      "observations": 37706,
+      "preclusters": 9727,
+      "support_histogram": {
+        "1": 4582,
+        "2": 2244,
+        "3": 1211,
+        "4": 738,
+        "5": 414,
+        "6": 250,
+        "7": 140,
+        "8": 80,
+        "9": 34,
+        "10": 23,
+        "11": 8,
+        "12": 2,
+        "13": 1
+      },
+      "repeat_ge3": 2901,
+      "accepted_before_cap": 2717,
+      "accepted": 2717,
+      "rejection_reasons": {
+        "tangent_inconsistent": 173,
+        "single_or_two_view": 6826,
+        "camera_diversity": 11
+      },
+      "accepted_support_median": 4.0,
+      "accepted_source_counts": {
+        "0": 1438,
+        "1": 797,
+        "2": 1262,
+        "3": 949,
+        "4": 846,
+        "5": 1390
+      }
+    },
+    "D_N1": {
+      "observations": 37706,
+      "preclusters": 20557,
+      "support_histogram": {
+        "1": 20552,
+        "2": 5
+      },
+      "repeat_ge3": 0,
+      "accepted_before_cap": 0,
+      "accepted": 0,
+      "rejection_reasons": {
+        "single_or_two_view": 20557
+      },
+      "accepted_support_median": 0.0,
+      "accepted_source_counts": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      }
+    },
+    "D_N2": {
+      "observations": 37706,
+      "preclusters": 10886,
+      "support_histogram": {
+        "1": 6114,
+        "2": 3032,
+        "3": 1197,
+        "4": 407,
+        "5": 107,
+        "6": 25,
+        "7": 4
+      },
+      "repeat_ge3": 1740,
+      "accepted_before_cap": 1573,
+      "accepted": 1573,
+      "rejection_reasons": {
+        "single_or_two_view": 9146,
+        "tangent_inconsistent": 163,
+        "camera_diversity": 4
+      },
+      "accepted_support_median": 3.0,
+      "accepted_source_counts": {
+        "0": 1099,
+        "1": 618,
+        "2": 973,
+        "3": 918,
+        "4": 630,
+        "5": 932
+      }
+    }
+  },
+  "null_comparison": {
+    "B": {
+      "matched_real_clusters": 586,
+      "stronger_null_clusters": 184,
+      "ratio_to_stronger_null": 3.1847826086956523,
+      "persistence_effect_pass": true,
+      "visual_semantic_value": "not established by counts"
+    },
+    "C": {
+      "matched_real_clusters": 293,
+      "stronger_null_clusters": 34,
+      "ratio_to_stronger_null": 8.617647058823529,
+      "persistence_effect_pass": true,
+      "visual_semantic_value": "not established by counts"
+    },
+    "D": {
+      "matched_real_clusters": 2717,
+      "stronger_null_clusters": 1573,
+      "ratio_to_stronger_null": 1.7272727272727273,
+      "persistence_effect_pass": true,
+      "visual_semantic_value": "not established by counts"
+    }
+  },
+  "input_sha256": "307a3eee7a1609d996660b360de14cc1cc2b03d6cb3093684852330bdf0a3ebf",
+  "seconds": 17.59826034901198
+}

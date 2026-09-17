@@ -209,8 +209,84 @@ def step3(m,scene,cams,photos,dest,cheap):
         input_sha256=sha(dest/'step2.json'),seconds=time.perf_counter()-t))
 
 
+ARMS=['A','B','C','D','N1','N2']
+
+
+def merged_pool(base,extra):
+    """Preserve all original positions, tangents and lengths; rebuild only kNN."""
+    p=np.vstack([base['p0'],extra['p']]);t=np.vstack([base['t'],extra['t']]);l=np.r_[base['l'],extra['l']]
+    _,knn=cKDTree(p).query(p,k=min(9,len(p)))
+    return dict(p0=p,p=p.copy(),t=t,l=l,knn=knn[:,1:].astype(int))
+
+
+def as_segments(L):
+    return [p+np.linspace(-l,l,7)[:,None]*t for p,t,l in zip(L['p'],L['t'],L['l'])]
+
+
+def make_field(m,scene,cams,photos,dest,views):
+    g,keep=geom(scene);cache=dest/'train_cache';cfg=m['downstream']
+    dt=dt_pull.build_dt_cache(scene,photos,views,cfg_name=cfg['edge'],force=True,cache_dir=str(cache))
+    depth,fg=dt_pull.build_geom_cache(scene,g,keep,cams,views,force=True,cache_dir=str(cache))
+    return dt_pull.PullField(cams,views,dt,depth,fg)
+
+
+def step4_smoke(m,scene,cams,photos,dest,cheap):
+    t=time.perf_counter();folder=dest/'step4_smoke';folder.mkdir(exist_ok=True)
+    base=dict(np.load(dest/'baseline_initial.npz'));base={k:v[:512] for k,v in base.items()}
+    extra=dict(np.load(dest/'step3/linelets_D.npz'));extra={k:v[:128] for k,v in extra.items()}
+    L=merged_pool(base,extra);field=make_field(m,scene,cams,photos,folder,m['train_indices'][:2])
+    result=dt_pull.pull(field,L,steps=5,lr=m['downstream']['pull_lr'],delta_max=m['downstream']['delta_max'])
+    assert all(np.isfinite(result[k]).all() for k in ['p','t','l','resid'])
+    dump(dest/'step4_smoke.json',dict(provenance=provenance(),linelets=len(L['p']),steps=5,finite=True,seconds=time.perf_counter()-t))
+
+
+def step4(m,scene,cams,photos,dest,cheap):
+    if cheap:raise RuntimeError('cheap transfer stops at initial linelets; no downstream fit')
+    if not json.loads((dest/'step4_smoke.json').read_text())['finite']:raise RuntimeError('smoke required')
+    t=time.perf_counter();cfg=m['downstream'];folder=dest/'step4';folder.mkdir(exist_ok=True)
+    basepath=dest/'baseline_initial.npz';meta=json.loads((dest/'baseline.json').read_text())
+    if sha(basepath)!=meta['initial_sha256'] or meta['seed_indices']!=m['train_indices'] or meta['legacy_cache_used']:raise RuntimeError('baseline provenance')
+    base=dict(np.load(basepath));pools={};inputs={};newcounts={}
+    for arm in ARMS:
+        p=dest/f'step3/linelets_{arm}.npz'
+        extra=dict(np.load(p)) if arm!='A' else fusion.linelets([])
+        pools[arm]=merged_pool(base,extra);newcounts[arm]=len(extra['p'])
+        inputs[arm]=sha(p) if arm!='A' else sha(basepath)
+        arrays(folder/f'raw_{arm}.npz',**pools[arm])
+    # RAW coverage is examined before any pull/prune, at predeclared TRAIN views.
+    for v in m['audit_indices']:
+        cam=scaled(cams[v],m['resolution']);state=dict(np.load(dest/f'step1/state_{v:03d}.npz'));depth=torch.from_numpy(state['depth'])
+        tiles=[];added=[]
+        for arm in ARMS:
+            segments=as_segments(pools[arm]);projected=draw.project_paths(segments,cam,depth)
+            tiles.append(label(draw.draw_paths(projected,np.ones(len(segments),bool),(400,400)),f'{arm} raw TRAIN{v}'))
+            select=np.arange(len(segments))>=len(base['p0'])
+            added.append(label(draw.draw_paths(projected,select,(400,400)),f'{arm} newly generated only'))
+        cv2.imwrite(str(folder/f'raw_{v:03d}.png'),np.vstack([np.hstack(tiles[:3]),np.hstack(tiles[3:])]))
+        cv2.imwrite(str(folder/f'new_only_{v:03d}.png'),np.vstack([np.hstack(added[:3]),np.hstack(added[3:])]))
+    field=make_field(m,scene,cams,photos,dest,m['train_indices']);reports={}
+    for arm in ARMS:
+        a=time.perf_counter();L=pools[arm]
+        result=dt_pull.pull(field,L,steps=cfg['pull_steps'],lr=cfg['pull_lr'],delta_max=cfg['delta_max'])
+        good,st=linelet_prune.consensus_prune(result['resid'],result['vis'],**cfg['prune'])
+        chains,nms=strokes.chain_linelets_3d(result['p'][good],result['t'][good],result['l'][good],conf=st['inlier_ratio'][good],**cfg['chain'])
+        paths=strokes.chain_vertices(chains,result['p'][good][nms]);origin=np.flatnonzero(good)[nms]
+        path_sources=[origin[c].tolist() for c in chains];used=np.unique(np.concatenate([origin[c] for c in chains])) if chains else np.array([],int)
+        arrays(folder/f'pulled_{arm}.npz',**result,good=good);save_paths(folder/f'paths_{arm}.npz',paths)
+        reports[arm]=dict(raw_linelets=len(L['p']),new_linelets=newcounts[arm],pruned_linelets=int(good.sum()),
+            new_after_prune=int(good[len(base['p0']):].sum()),after_nms=int(nms.sum()),final_chains=len(paths),
+            new_in_chains=int(np.sum(used>=len(base['p0']))),chains_with_new=sum(any(x>=len(base['p0']) for x in c) for c in path_sources),
+            path_source_indices=path_sources,path_sha256=sha(folder/f'paths_{arm}.npz'),
+            raw_sha256=sha(folder/f'raw_{arm}.npz'),seconds=time.perf_counter()-a)
+        dump(folder/f'arm_{arm}.json',reports[arm]);print('step4',arm,{k:v for k,v in reports[arm].items() if k!='path_source_indices'},flush=True)
+        if reports[arm]['seconds']>m['limits']['each_arm_pull_seconds']:raise RuntimeError('per-arm time budget exceeded')
+        torch.cuda.empty_cache()
+    dump(dest/'step4.json',dict(provenance=provenance(),input_sha256=inputs,arms=reports,seconds=time.perf_counter()-t,
+        warning='Added candidates also change common kNN smoothness/NMS/chaining; A paths need not remain identical within augmented arms.'))
+
+
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('stage',choices=['smoke','baseline','step1','step2','step3'])
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('stage',choices=['smoke','baseline','step1','step2','step3','step4_smoke','step4'])
     parser.add_argument('--scene',default='lego',choices=['lego','chair']);parser.add_argument('--cheap',action='store_true');a=parser.parse_args()
     if git('branch','--show-current')!='raster-state-candidates':raise RuntimeError('wrong branch')
     m=json.loads((OUT/'MANIFEST.json').read_text());dest=stage_dir(a.scene,a.cheap);dest.mkdir(parents=True,exist_ok=True)
