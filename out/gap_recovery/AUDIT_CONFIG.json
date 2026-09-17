@@ -1,0 +1,121 @@
+{
+  "schema": 1,
+  "base_commit": "9e643c2408954dffcfa8b298d5204e7314863a91",
+  "seed": 20260918,
+  "extraction_indices": [
+    1,
+    7,
+    14,
+    21,
+    27,
+    33,
+    41,
+    47,
+    53,
+    59,
+    67,
+    73,
+    79,
+    86,
+    93,
+    99
+  ],
+  "audit_indices": [
+    1,
+    27,
+    53,
+    79
+  ],
+  "fit_indices": [
+    1,
+    14,
+    27,
+    41,
+    53,
+    67,
+    79,
+    93
+  ],
+  "validation_indices": [
+    2,
+    22,
+    42,
+    62
+  ],
+  "resolution": 400,
+  "width_px": 1,
+  "candidate_recipe": {
+    "source": "fresh M1a TRAIN-only -> existing linelet/DT pull/prune/chaining recipe",
+    "legacy_cache_allowed": false,
+    "seed_fraction": 0.3,
+    "pull_steps": 100,
+    "pull_lr": 0.35,
+    "delta_max": 5.0,
+    "edge": "sharp",
+    "prune": {
+      "tau_in": 1.5,
+      "min_ratio": 0.5,
+      "max_med": 1.5,
+      "min_views": 3
+    },
+    "chain": {
+      "nms_radius_mult": 1.0,
+      "k": 10,
+      "cos_tan": 0.6,
+      "cos_col": 0.5,
+      "gap_mult": 4.0,
+      "min_nodes": 3
+    }
+  },
+  "bridge": {
+    "max_gap_spacing": 12.0,
+    "max_gap_extent": 0.06,
+    "min_gap_spacing": 0.75,
+    "tangent_cos": 0.7071067811865476,
+    "hermite_tension": 0.7,
+    "samples": 48,
+    "max_arc_ratio": 1.18,
+    "max_total_turn_deg": 90.0,
+    "support_radius": 2.5,
+    "min_supported_fraction": 0.9,
+    "max_support_distance": 4.0
+  },
+  "chair_reuse_sha256": "b7e77d5786cdd9789a7e310834e599569c0119b3c8c2c1289a90d6377096836e",
+  "renderer": {
+    "upstream_commit": "472689c0dc70417448fb451bf529ae532d32c095",
+    "rgb": "verified stock official Python + two-output CUDA kernel; see per-run hashes",
+    "depth": "legacy vanilla GS disc depth; NOT official depth"
+  },
+  "inputs": {
+    "chair": {
+      "gs": {
+        "path": "/home/u00134/cglib/outputs/chair_static/point_cloud.ply",
+        "sha256": "18244c1f692b6eb688a02cf180fe53b89d35144888f1887bbd4ef15c01c39a55"
+      },
+      "cameras": {
+        "path": "/home/u00134/cglib/data/full/chair/transforms_train.json",
+        "sha256": "f096327d91a775c3d3dbc62d03a244839f6b7d8683b9a7b400573c6e0a414f1f"
+      }
+    },
+    "lego": {
+      "gs": {
+        "path": "/home/u00134/cglib/outputs/lego_static/point_cloud.ply",
+        "sha256": "aa3630f69affbf3c23cfe841734e9aebb42597aede28fa4a0e5e72e3a31e2d23"
+      },
+      "cameras": {
+        "path": "/home/u00134/cglib/data/full/lego/transforms_train.json",
+        "sha256": "82d46cfbd405d7da8562b6fa75b6fb0631a3f941adf66f0c023acb8bf9ea273a"
+      }
+    },
+    "cadpartA": {
+      "gs": {
+        "path": "/home/u00134/cglib/outputs/cadpartA_static/point_cloud.ply",
+        "sha256": "355d437116be6ef02eb839b1d45d32087f23cb33b68f5427dc45ed68c2127d9e"
+      },
+      "cameras": {
+        "path": "/home/u00134/cglib/data/full/cadpartA/transforms_train.json",
+        "sha256": "b4a0469c2e1613da1e1c9235e5f857400126500dc327c9c8caa61fec4e0dc31d"
+      }
+    }
+  }
+}
