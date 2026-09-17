@@ -184,6 +184,10 @@ class PullField:
         t = np.stack([cams[v].w2c[:3, 3] for v in views])
         self.R = torch.tensor(R, dtype=torch.float32, device=self.device)
         self.tv = torch.tensor(t, dtype=torch.float32, device=self.device)
+        if any((cams[v].H, cams[v].W) != (self.H, self.W) for v in views):
+            raise ValueError("PullField requires common buffer dimensions")
+        self.K = torch.tensor(np.stack([cams[v].K for v in views]),
+                              dtype=torch.float32, device=self.device)
         self.dt = torch.tensor(np.ascontiguousarray(dt), device=self.device)      # f16
         self.depth = torch.tensor(np.ascontiguousarray(depthmin), device=self.device)
         self.fg = torch.tensor(np.ascontiguousarray(fg), device=self.device)      # u8
@@ -197,10 +201,9 @@ class PullField:
         k1 = self.V if k1 is None else k1
         cam = torch.einsum("vij,mj->vmi", self.R[k0:k1], P) + self.tv[k0:k1, None, :]
         z = cam[..., 2]
-        zc = z.clamp(min=1e-6)
-        u = self.f * cam[..., 0] / zc + self.cx
-        v = self.f * cam[..., 1] / zc + self.cy
-        return torch.stack([u, v], -1), z
+        homogeneous = torch.einsum("vij,vmj->vmi", self.K[k0:k1], cam)
+        uv = homogeneous[..., :2] / homogeneous[..., 2:3].clamp(min=1e-6)
+        return uv, z
 
     def sample(self, buf, uv, k0=0, k1=None):
         """Bilinear sample of buf[V,H,W] at uv[Vc,M,2]; gradients flow to uv."""

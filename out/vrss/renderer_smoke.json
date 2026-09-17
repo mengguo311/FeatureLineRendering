@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "source_train_index": 1,
+  "resolution": [
+    400,
+    400
+  ],
+  "photo_psnr_diagnostic": 28.31216756592083,
+  "rgb_min_max": [
+    0.030482841655611992,
+    1.0
+  ],
+  "rgb_std": 0.22571556270122528,
+  "gaussians": 119121,
+  "defloated": 56884,
+  "gbuffer_foreground_pixels": 26406,
+  "seconds": 1.7180717479786836,
+  "official_commit": "472689c0dc70417448fb451bf529ae532d32c095",
+  "official_source_sha256": "5546f5a642c63432d108c42abab4db0c9242c66b838c45556d1ae229fae34291",
+  "extension_path": "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/diff_gaussian_rasterization/__init__.py",
+  "extension_sha256": "69ce38144c33f5c2fd7d174bd999ea9f917883d1a0317be0219395ea384755db",
+  "official_local_diff": "diff --git a/gaussian_renderer/__init__.py b/gaussian_renderer/__init__.py\nindex f74e336..92dcccf 100644\n--- a/gaussian_renderer/__init__.py\n+++ b/gaussian_renderer/__init__.py\n@@ -82,7 +82,7 @@ def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor,\n         colors_precomp = override_color\n \n     # Rasterize visible Gaussians to image, obtain their radii (on screen). \n-    rendered_image, radii = rasterizer(\n+    rendered_image, radii, _depth, _alpha = rasterizer(\n         means3D = means3D,\n         means2D = means2D,\n         shs = shs,\n",
+  "convention": "adapter uses complete fx/fy/cx/cy with ndc2Pix half-pixel correction; legacy disc buffer for visibility only",
+  "device": "NVIDIA RTX A6000"
+}

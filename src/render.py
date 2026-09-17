@@ -60,8 +60,10 @@ def render_gbuffer(g, keep_mask, cam, device="cuda", r_min=1.0, r_max=15.0,
     campts = mu_t @ w2c[:3, :3].T + w2c[:3, 3]
     z = campts[:, 2]
     f = float(cam.f)
-    u = f * campts[:, 0] / z + Wd / 2
-    v = f * campts[:, 1] / z + H / 2
+    K = torch.as_tensor(cam.K, dtype=torch.float32, device=dev)
+    homogeneous = campts @ K.T
+    uv = homogeneous[:, :2] / homogeneous[:, 2:3].clamp(min=1e-6)
+    u, v = uv[:, 0], uv[:, 1]
 
     r = (torch.tensor(smax, dtype=torch.float32, device=dev) * f / z.clamp(min=1e-6)
          ).clamp(r_min, r_max)
@@ -177,3 +179,45 @@ def render_gbuffer(g, keep_mask, cam, device="cuda", r_min=1.0, r_max=15.0,
         alb_n[hit] = albedo[hit] / wsum[hit][:, None]
         out["albedo"] = alb_n.view(H, Wd, 3)
     return out
+
+
+class OfficialRGBRenderer:
+    """Frozen vanilla RGB through GRAPHDECO's renderer (not the disc G-buffer).
+
+    The external checkout is not modified here. Its local ABI patch only unpacks
+    the depth/alpha outputs supplied by the installed rasterizer extension.
+    No Scene is instantiated and no dataset, mesh, or extra normals are loaded.
+    """
+    def __init__(self, ply_path, repo_path):
+        import sys
+        from types import SimpleNamespace
+        sys.path.insert(0, str(repo_path))
+        from scene.gaussian_model import GaussianModel
+        from gaussian_renderer import render as official_render
+        self.model = GaussianModel(3)
+        self.model.load_ply(str(ply_path))
+        self.fn = official_render
+        self.pipe = SimpleNamespace(convert_SHs_python=False,
+                                    compute_cov3D_python=False, debug=False)
+        self.background = torch.ones(3, device="cuda")
+
+    @torch.no_grad()
+    def __call__(self, cam):
+        from types import SimpleNamespace
+        if not np.allclose(cam.K[2], [0, 0, 1]) or abs(cam.K[0, 1]) > 1e-9:
+            raise ValueError("Official rasterizer adapter supports pinhole K without skew")
+        fx, fy, cx, cy = cam.K[0, 0], cam.K[1, 1], cam.K[0, 2], cam.K[1, 2]
+        near, far = 0.01, 100.0
+        P = np.zeros((4, 4), dtype=np.float32)
+        P[0, 0], P[1, 1] = 2 * fx / cam.W, 2 * fy / cam.H
+        # Rasterizer ndc2Pix = ((ndc + 1) * size - 1) / 2.
+        P[0, 2], P[1, 2] = (2 * cx + 1) / cam.W - 1, (2 * cy + 1) / cam.H - 1
+        P[2, 2], P[2, 3], P[3, 2] = far / (far-near), -far*near/(far-near), 1
+        view = torch.as_tensor(cam.w2c.T.copy(), dtype=torch.float32, device="cuda")
+        proj = torch.as_tensor(P.T.copy(), device="cuda")
+        camera = SimpleNamespace(image_height=cam.H, image_width=cam.W,
+            FoVx=2*np.arctan(cam.W/(2*fx)), FoVy=2*np.arctan(cam.H/(2*fy)),
+            world_view_transform=view, full_proj_transform=view @ proj,
+            camera_center=torch.as_tensor(cam.center, dtype=torch.float32, device="cuda"))
+        rgb = self.fn(camera, self.model, self.pipe, self.background)["render"]
+        return rgb.clamp(0, 1).permute(1, 2, 0).cpu().numpy()

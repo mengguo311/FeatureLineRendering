@@ -164,9 +164,30 @@ def local_rank(X, s, rad_mult=RAD_MULT):
 
 
 # ----------------------------------------------------------------- the recipe
-def extract_seeds(scene, mode="overall", keep_f=None, n_views=N_VIEWS):
-    """Returns (seed_positions[K,3], score[M], keep[M], X[M,3])."""
+def validate_train_indices(train_indices, n_views):
+    """Require explicit canonical TRAIN IDs; no inference from legacy caches."""
+    from src.view_split import split
+    if train_indices is None:
+        raise ValueError("Explicit train_indices required; legacy scores are NOT TRAIN-only")
+    ids = np.asarray(train_indices)
+    if ids.ndim != 1 or not len(ids) or ids.dtype.kind not in "iu":
+        raise ValueError("train_indices must be a nonempty integer vector")
+    if len(np.unique(ids)) != len(ids):
+        raise ValueError("duplicate TRAIN indices")
+    if not set(ids.tolist()).issubset(split(n_views)["train"]):
+        raise ValueError("seed indices contain VAL/TEST/out-of-range indices")
+    return ids.astype(np.int64)
+
+
+def extract_seeds(scene, mode="overall", keep_f=None, n_views=N_VIEWS,
+                  *, train_indices=None):
+    """Return seeds, scores, keep, X. Caller must persist explicit TRAIN provenance.
+
+    n_views is retained for call compatibility but never chooses views anymore.
+    Historical score arrays without index provenance cannot be used as TRAIN-only.
+    """
     cams, rgb_paths = common.load_cameras(scene)
+    views = validate_train_indices(train_indices, len(cams))
     g = common.load_gaussians(scene)
 
     # POOL = ALL de-floatered gaussians.  The C_N structure-tensor pool is deliberately
@@ -177,12 +198,12 @@ def extract_seeds(scene, mode="overall", keep_f=None, n_views=N_VIEWS):
     opa = g["opacity"][keep_g]
     M = len(X)
 
-    views = np.unique(np.round(np.linspace(0, len(cams) - 1, n_views)).astype(int))
     DPh = np.zeros((len(views), M), np.float32)
     DR = np.zeros((len(views), M), np.float32)
     VIS = np.zeros((len(views), M), bool)
     need_photo = mode in ("overall", "shared")
     for vi, v in enumerate(views):
+        print(f"[TRAIN seed] {vi+1}/{len(views)} view={v}", flush=True)
         cam = cams[v]
         gb = render.render_gbuffer(g, keep_g, cam)
         dep = gb["depth"].cpu().numpy().astype(np.float32)
@@ -237,7 +258,8 @@ if __name__ == "__main__":
     mode = sys.argv[2] if len(sys.argv) > 2 else "overall"
     import time
     t0 = time.time()
-    P, s, keep, X = extract_seeds(scene, mode)
+    from src.view_split import TRAIN
+    P, s, keep, X = extract_seeds(scene, mode, train_indices=TRAIN)
     print(f"[{scene}/{mode}] {len(X)} gaussians -> {len(P)} seeds  ({time.time()-t0:.0f}s)")
     # ---- EVAL ONLY below this line ----
     sys.path.insert(0, os.path.expanduser("~/3dgs_line/tier1/scripts"))
