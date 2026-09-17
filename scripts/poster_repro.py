@@ -50,127 +50,13 @@ VIZ = os.path.join(OUT, "featviz")
 # ----------------------------------------------------------------------------------
 def render_state(g, keep_mask, cam, device="cuda", K=8, r_min=1.0, r_max=15.0,
                  frag_alpha_min=0.01):
-    H, Wd = cam.H, cam.W
-    mu = g["mu"][keep_mask]
-    opa = g["opacity"][keep_mask]
-    nrm = g["normal"][keep_mask]
-    smax = g["scale_max"][keep_mask]
-    alb = g["albedo"][keep_mask]
-    gid0 = np.nonzero(keep_mask)[0].astype(np.int64)      # -> ORIGINAL ply row  (trap a)
+    """Compatibility API. Shared full-K implementation; historical files unchanged.
 
-    flip = np.sum(nrm * (cam.center[None] - mu), 1) < 0
-    nrm = nrm.copy(); nrm[flip] *= -1
-
-    dev = torch.device(device)
-    w2c = torch.tensor(cam.w2c, dtype=torch.float32, device=dev)
-    mu_t = torch.tensor(mu, dtype=torch.float32, device=dev)
-    campts = mu_t @ w2c[:3, :3].T + w2c[:3, 3]
-    z = campts[:, 2]
-    f = float(cam.f)
-    u = f * campts[:, 0] / z + Wd / 2
-    v = f * campts[:, 1] / z + H / 2
-    r = (torch.tensor(smax, dtype=torch.float32, device=dev) * f / z.clamp(min=1e-6)
-         ).clamp(r_min, r_max)
-    ok = (z > 0.01) & (u > -r) & (u < Wd - 1 + r) & (v > -r) & (v < H - 1 + r)
-    u, v, z, r = u[ok], v[ok], z[ok], r[ok]
-    a0 = torch.tensor(opa, dtype=torch.float32, device=dev)[ok]
-    n_t = torch.tensor(nrm, dtype=torch.float32, device=dev)[ok]
-    c_t = torch.tensor(alb, dtype=torch.float32, device=dev)[ok]
-    gid_t = torch.tensor(gid0, dtype=torch.int32, device=dev)[ok]          # trap (a)
-
-    Rint = torch.ceil(r).long().clamp(1, int(r_max))
-    frag_pix, frag_z, frag_a, frag_n, frag_c, frag_g = [], [], [], [], [], []
-    for R in torch.unique(Rint).tolist():
-        sel = Rint == R
-        if not sel.any():
-            continue
-        us, vs, zs, rs, as_, ns = u[sel], v[sel], z[sel], r[sel], a0[sel], n_t[sel]
-        cs, gs = c_t[sel], gid_t[sel]
-        off = torch.arange(-R, R + 1, device=dev)
-        du, dv = torch.meshgrid(off, off, indexing="xy")
-        du, dv = du.reshape(-1), dv.reshape(-1)
-        px = torch.round(us)[:, None] + du[None]
-        py = torch.round(vs)[:, None] + dv[None]
-        d2 = (px - us[:, None]) ** 2 + (py - vs[:, None]) ** 2
-        sigma2 = (rs[:, None] / 2.0) ** 2
-        alpha = as_[:, None] * torch.exp(-0.5 * d2 / sigma2.clamp(min=0.25))
-        m = (d2 <= (rs[:, None] + 0.5) ** 2) & (alpha > frag_alpha_min) & \
-            (px >= 0) & (px < Wd) & (py >= 0) & (py < H)
-        if not m.any():
-            continue
-        gi, pi = torch.nonzero(m, as_tuple=True)
-        frag_pix.append((py[gi, pi].long() * Wd + px[gi, pi].long()))
-        frag_z.append(zs[gi]); frag_a.append(alpha[gi, pi])
-        frag_n.append(ns[gi]); frag_c.append(cs[gi]); frag_g.append(gs[gi])
-        del px, py, d2, alpha, m, gi, pi
-
-    pix = torch.cat(frag_pix); fz = torch.cat(frag_z)
-    fa = torch.cat(frag_a).clamp(max=0.999); fn = torch.cat(frag_n)
-    fc = torch.cat(frag_c); fg = torch.cat(frag_g)
-    del frag_pix, frag_z, frag_a, frag_n, frag_c, frag_g
-    n_frag = int(pix.numel())
-
-    # --- shipped lexsort: stable by z, then stable by pixel -> per-pixel front-to-back ---
-    o1 = torch.argsort(fz, stable=True)
-    pix, fz, fa, fn, fc, fg = pix[o1], fz[o1], fa[o1], fn[o1], fc[o1], fg[o1]
-    del o1
-    o2 = torch.argsort(pix, stable=True)
-    pix, fz, fa, fn, fc, fg = pix[o2], fz[o2], fa[o2], fn[o2], fc[o2], fg[o2]
-    del o2
-
-    l = torch.log1p(-fa); c = torch.cumsum(l, 0); excl = c - l
-    del l, c
-    seg_start = torch.ones_like(pix, dtype=torch.bool)
-    seg_start[1:] = pix[1:] != pix[:-1]
-    seg_id = torch.cumsum(seg_start.long(), 0) - 1
-    base = excl[seg_start][seg_id]
-    T = torch.exp(excl - base)
-    w = T * fa
-    del excl, base, T, seg_id, seg_start
-
-    depth = torch.full((H * Wd,), float("inf"), device=dev)
-    normal = torch.zeros((H * Wd, 3), device=dev)
-    albedo = torch.zeros((H * Wd, 3), device=dev)
-    wsum = torch.zeros((H * Wd,), device=dev).index_add_(0, pix, w)
-    wz = torch.zeros((H * Wd,), device=dev).index_add_(0, pix, w * fz)
-    normal.index_add_(0, pix, w[:, None] * fn)
-    albedo.index_add_(0, pix, w[:, None] * fc)
-    hit = wsum > 1e-6
-    depth[hit] = wz[hit] / wsum[hit]
-    nn = torch.linalg.norm(normal, dim=1, keepdim=True)
-    normal = torch.where(nn > 1e-6, normal / nn.clamp(min=1e-6), normal)
-    alb_n = torch.zeros_like(albedo); alb_n[hit] = albedo[hit] / wsum[hit][:, None]
-    del fn, fc, fz, albedo, wz, nn
-
-    # --- per-pixel TOP-K by WEIGHT (trap b: NOT the front-most k) ---
-    o3 = torch.argsort(-w, stable=True)
-    pix2, w2, g2 = pix[o3], w[o3], fg[o3]
-    del o3, pix, w, fa, fg
-    o4 = torch.argsort(pix2, stable=True)
-    pix2, w2, g2 = pix2[o4], w2[o4], g2[o4]
-    del o4
-    ss = torch.ones_like(pix2, dtype=torch.bool)
-    ss[1:] = pix2[1:] != pix2[:-1]
-    sid = torch.cumsum(ss.long(), 0) - 1
-    ar = torch.arange(pix2.numel(), device=dev)
-    rank = ar - ar[ss][sid]
-    del ss, sid, ar
-    keep = rank < K
-    dst = pix2[keep] * K + rank[keep]
-    topk_id = torch.full((H * Wd * K,), -1, dtype=torch.int32, device=dev)
-    topk_w = torch.zeros((H * Wd * K,), device=dev)
-    topk_id[dst] = g2[keep]
-    topk_w[dst] = w2[keep]
-    del pix2, w2, g2, rank, keep, dst
-    topk_id = topk_id.view(H, Wd, K)
-    topk_w = topk_w.view(H, Wd, K)
-    s = topk_w.sum(-1, keepdim=True)
-    topk_w = topk_w / s.clamp(min=1e-12)          # [RECON] normalise WITHIN top-k
-
-    out = {"depth": depth.view(H, Wd), "normal": normal.view(H, Wd, 3),
-           "alpha": wsum.clamp(max=1.0).view(H, Wd), "albedo": alb_n.view(H, Wd, 3),
-           "topk_id": topk_id, "topk_w": topk_w, "n_frag": n_frag}
-    return out
+    Float64 transmittance improves precision; this wrapper is not a claim of
+    bit-identical reproduction of the older copied disc renderer.
+    """
+    from src.raster_state import render_state as shared_render_state
+    return shared_render_state(g, keep_mask, cam, device, K, r_min, r_max, frag_alpha_min)
 
 
 # ----------------------------------------------------------------------------------
