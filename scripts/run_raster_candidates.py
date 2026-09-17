@@ -162,8 +162,55 @@ def step2(m,scene,cams,photos,dest,cheap):
         arrays_sha256={k:sha(folder/f'{k}_observations.npz') for k in allparts},seconds=time.perf_counter()-t))
 
 
+def step3(m,scene,cams,photos,dest,cheap):
+    t=time.perf_counter();prior=json.loads((dest/'step2.json').read_text());g,keep=geom(scene);folder=dest/'step3';folder.mkdir(exist_ok=True)
+    data={}
+    for name in ['real','shifted']:
+        p=dest/f'step2/{name}_observations.npz'
+        if sha(p)!=prior['arrays_sha256'][name]:raise RuntimeError('observation checksum changed')
+        z=dict(np.load(p));data[name]=anchor.subset(z,z['valid'])
+    channel_names=m['fields']['arm_channels']['D'];allclusters={};reports={};matches={}
+    for arm in ['B','C','D']:
+        codes=[channel_names.index(n) for n in m['fields']['arm_channels'][arm]]
+        obs=anchor.subset(data['real'],np.isin(data['real']['source'],codes))
+        shifted=anchor.subset(data['shifted'],np.isin(data['shifted']['source'],codes))
+        clusters,stats=fusion.group(obs,g,keep,cams,prior['spacing'],m['fusion']);allclusters[arm]=clusters;reports[arm]=stats
+        real,n2=fusion.match_counts(obs,shifted,m['seed']);n1=fusion.shuffled_ids(real,len(g['mu']),m['seed'])
+        for tag,o in [('real',real),('N1',n1),('N2',n2)]:
+            cs,st=fusion.group(o,g,keep,cams,prior['spacing'],m['fusion']);matches[arm+'_'+tag]=st
+            dump(folder/f'matched_{arm}_{tag}.json',dict(clusters=cs,statistics=st))
+            if arm=='D' and tag!='real':allclusters[tag]=cs;reports[tag]=st
+        print('step3',scene,arm,'full',stats['accepted'],'matched real/N1/N2',*[matches[arm+'_'+k]['accepted'] for k in ['real','N1','N2']],flush=True)
+    for name,clusters in allclusters.items():
+        dump(folder/f'clusters_{name}.json',dict(clusters=clusters,statistics=reports[name]))
+        arrays(folder/f'linelets_{name}.npz',**fusion.linelets(clusters))
+    # Existing TRAIN cameras only; single observations and every accepted cluster.
+    panels=[]
+    for v in m['audit_indices']:
+        if v not in indices(m,cheap):continue
+        cam=scaled(cams[v],m['resolution']);state=dict(np.load(dest/f'step1/state_{v:03d}.npz'))
+        depth=torch.from_numpy(state['depth']);obs=data['real'];own=obs['view']==v
+        uv,_=common.project(obs['anchor'][own],cam);im=np.full((400,400,3),255,np.uint8)
+        for x,y in np.round(uv).astype(int):
+            if 0<=x<400 and 0<=y<400:im[y,x]=0
+        tiles=[label(im,f'TRAIN{v} single-view anchors')]
+        for name in ['B','C','D','N1','N2']:
+            L=fusion.linelets(allclusters[name]);pp=[np.stack([p-l*t,p+l*t]) for p,t,l in zip(L['p'],L['t'],L['l'])]
+            proj=draw.project_paths(pp,cam,depth) if pp else []
+            tiles.append(label(draw.draw_paths(proj,np.ones(len(pp),bool),(400,400)),f'{name} persistent clusters'))
+        panels.append(np.vstack([np.hstack(tiles[:3]),np.hstack(tiles[3:])]))
+    cv2.imwrite(str(folder/'aggregation_train.png'),np.vstack(panels))
+    diagnosis={}
+    for arm in ['B','C','D']:
+        a=matches[arm+'_real']['accepted'];null=max(matches[arm+'_N1']['accepted'],matches[arm+'_N2']['accepted'])
+        diagnosis[arm]=dict(matched_real_clusters=a,stronger_null_clusters=null,ratio_to_stronger_null=a/max(null,1),
+            persistence_effect_pass=bool(a) and a>=m['null']['real_vs_null_persistence_ratio']*max(null,1),visual_semantic_value='not established by counts')
+    dump(dest/'step3.json',dict(provenance=provenance(),arms=reports,matched=matches,null_comparison=diagnosis,
+        input_sha256=sha(dest/'step2.json'),seconds=time.perf_counter()-t))
+
+
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('stage',choices=['smoke','baseline','step1','step2'])
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('stage',choices=['smoke','baseline','step1','step2','step3'])
     parser.add_argument('--scene',default='lego',choices=['lego','chair']);parser.add_argument('--cheap',action='store_true');a=parser.parse_args()
     if git('branch','--show-current')!='raster-state-candidates':raise RuntimeError('wrong branch')
     m=json.loads((OUT/'MANIFEST.json').read_text());dest=stage_dir(a.scene,a.cheap);dest.mkdir(parents=True,exist_ok=True)
