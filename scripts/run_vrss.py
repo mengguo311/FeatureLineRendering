@@ -2,7 +2,7 @@
 """Mesh-free VRSS entry. Each bounded stage writes only under out/vrss.
 
 Examples (from repository root, vfsdgs Python, CUDA_VISIBLE_DEVICES=1):
-  python scripts/run_vrss.py smoke
+  python scripts/run_vrss.py official-smoke
   python scripts/run_vrss.py candidates
   python scripts/run_vrss.py evidence
   python scripts/run_vrss.py select
@@ -18,7 +18,7 @@ from pathlib import Path
 import subprocess
 import sys
 import time
-from types import SimpleNamespace
+from types import ModuleType
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -137,10 +137,57 @@ def rgb_white(path, resolution):
     return cv2.resize(im[:,:,:3].astype(np.uint8),(resolution,resolution),interpolation=cv2.INTER_AREA)
 
 
+def stock_rgb(m):
+    """Use pinned, unmodified official Python renderer AND official CUDA kernel.
+
+    The environment's SC-GS extension is not trusted as an official baseline.
+    Load the stock Python renderer from its verified Git object, bypassing the
+    local four-return ABI patch, and the separately built stock two-return kernel.
+    """
+    site=OUT/'vendor/official_site'
+    source=OUT/'vendor/official_rasterizer'
+    expected='59f5f77e3ddbac3ed9db93ec2cfe99ed6c5d121d'
+    head=subprocess.check_output(['git','-C',str(source),'rev-parse','HEAD'],text=True).strip()
+    if head!=expected or subprocess.check_output(['git','-C',str(source),'diff','HEAD','--'],text=True):
+        raise RuntimeError('official rasterizer source is not pinned and clean')
+    if not (site/'diff_gaussian_rasterization/__init__.py').exists():
+        raise RuntimeError('official stock extension not built; no RGB fallback allowed')
+    sys.path.insert(0,str(EXT));sys.path.insert(0,str(site))
+    import diff_gaussian_rasterization as dr
+    if not Path(dr.__file__).resolve().is_relative_to(site):
+        raise RuntimeError('unapproved rasterizer already imported')
+    code=subprocess.check_output(['git','-C',str(EXT),'show',m['renderer']['upstream_commit']+':gaussian_renderer/__init__.py'])
+    module=ModuleType('gaussian_renderer')
+    module.__file__=str(EXT/'gaussian_renderer/__init__.py')
+    exec(compile(code,module.__file__,'exec'),module.__dict__)
+    sys.modules['gaussian_renderer']=module
+    renderer=render.OfficialRGBRenderer(m['gs']['path'],EXT)
+    info={'renderer_commit':m['renderer']['upstream_commit'],'renderer_git_source_sha256':hashlib.sha256(code).hexdigest(),
+          'renderer_local_ABI_patch_used':False,'kernel_commit':head,'kernel_repo':'https://github.com/graphdeco-inria/diff-gaussian-rasterization',
+          'kernel_source_diff':'','kernel_binary_path':dr._C.__file__,'kernel_binary_sha256':digest(dr._C.__file__),
+          'kernel_wrapper_sha256':digest(dr.__file__)}
+    return renderer,info
+
+
+def official_smoke(m,cams,paths):
+    t=time.perf_counter();renderer,info=stock_rgb(m)
+    index=m['split']['evidence_indices'][0];cam=scaled(cams[index],400)
+    rgb=renderer(cam);photo=rgb_white(paths[index],400)[:,:,::-1]/255.
+    image=(rgb[:,:,::-1]*255).astype(np.uint8)
+    prior=cv2.imread(str(OUT/'entry_smoke.png'))
+    assert np.isfinite(rgb).all() and rgb.std()>.05
+    cv2.imwrite(str(OUT/'official_rgb_verified.png'),image)
+    dump(OUT/'official_rgb_verification.json',dict(info,status='PASS',source_train_index=index,
+        photo_psnr_diagnostic=float(-10*np.log10(np.mean((rgb-photo)**2))),
+        max_uint8_difference_from_SC_GS_smoke=int(np.max(np.abs(image.astype(int)-prior.astype(int)))),
+        seconds=time.perf_counter()-t,provenance=provenance(m)))
+
+
 def smoke(m,cams,paths):
+    """Stock RGB + legacy G-buffer smoke. Old pre-audit artifacts stay archived."""
     c=scaled(cams[m['split']['evidence_indices'][0]],400)
     t=time.perf_counter()
-    official=render.OfficialRGBRenderer(m['gs']['path'],EXT)
+    official,official_info=stock_rgb(m)
     im=official(c)
     g=common.load_gaussians(m['scene']); keep=render.defloat_mask(g['mu'],g['opacity'])
     gb=render.render_gbuffer(g,keep,c)
@@ -150,14 +197,14 @@ def smoke(m,cams,paths):
     cv2.imwrite(str(OUT/'entry_smoke.png'),(im[:,:,::-1]*255).astype(np.uint8))
     dump(OUT/'entry_smoke.json',{'status':'PASS','seconds':time.perf_counter()-t,
         'photo_psnr_diagnostic':float(-10*np.log10(np.mean((im-photo)**2))),
-        'extension_binary':dr._C.__file__,'extension_binary_sha256':digest(dr._C.__file__),
+        'official_rgb':official_info,'extension_binary':dr._C.__file__,'extension_binary_sha256':digest(dr._C.__file__),
         'provenance':provenance(m)})
 
 
 def candidates(m,cams,paths):
     target=DEV/'candidates.npz'
     if target.exists(): raise FileExistsError(target)
-    if not (OUT/'entry_smoke.json').exists(): raise RuntimeError('run cheap smoke first')
+    if not (OUT/'official_rgb_verification.json').exists(): raise RuntimeError('run official-smoke first')
     sys.path.insert(0,str(ROOT/'scripts/explore/syn'))
     from m1a_seeds import extract_seeds
     t=time.perf_counter(); cfg=m['candidates']; views=m['split']['seed_indices']
@@ -202,7 +249,7 @@ def evidence(m,cams,paths):
     if (DEV/'evidence.json').exists():raise FileExistsError('evidence already frozen')
     t=time.perf_counter(); candidate_paths=relations.densify(load_candidates(m))
     g=common.load_gaussians(m['scene']); keep=render.defloat_mask(g['mu'],g['opacity'])
-    unary=[]; lengths=[]; entries=[]; overlaps=[]; stats=[]
+    unary=[]; lengths=[]; entries=[]; overlaps=[]; stats=[]; debug_panels=[]
     for vi,v in enumerate(m['split']['evidence_indices']):
         cam=scaled(cams[v],m['evidence']['resolution'])
         gb=render.render_gbuffer(g,keep,cam)
@@ -210,10 +257,21 @@ def evidence(m,cams,paths):
         gray=cv2.cvtColor(rgb_white(paths[v],cam.W),cv2.COLOR_BGR2GRAY)
         u,l,e,o,s=relations.view_evidence(gray,projected,m['evidence'],vi)
         unary.append(u);lengths.append(l);entries+=e;overlaps+=o;stats.append(dict(s,source_train_index=v))
+        if vi in (0,4,8,12):
+            debug=cv2.cvtColor(gray,cv2.COLOR_GRAY2BGR)
+            for relation in e:
+                center=np.asarray(relation['center'])
+                color=(0,160,0) if relation['bundles'] else (0,0,220)
+                cv2.circle(debug,tuple(np.round(center).astype(int)),3,color,1)
+                for arm in relation['arms']:
+                    end=center+np.asarray(arm['direction'])*min(arm['length'],20)
+                    cv2.line(debug,tuple(np.round(center).astype(int)),tuple(np.round(end).astype(int)),color,1)
+            debug_panels.append(label(debug,f'TRAIN {v}: green=matched / red=unmatched'))
         print(f'[evidence] {vi+1}/16 view={v} {s}',flush=True)
         del gb;torch.cuda.empty_cache()
     costs=np.mean(lengths,axis=0)/np.hypot(cam.H,cam.W)
     np.savez_compressed(DEV/'evidence.npz',unary=np.asarray(unary),lengths=np.asarray(lengths),costs=costs)
+    cv2.imwrite(str(DEV/'train_evidence_quartiles.png'),np.hstack(debug_panels))
     dump(DEV/'evidence.json',{'provenance':provenance(m),'candidate_sha256':digest(DEV/'candidates.npz'),
         'array_sha256':digest(DEV/'evidence.npz'),'relations':entries,'overlap':overlaps,'views':stats,'seconds':time.perf_counter()-t})
 
@@ -273,11 +331,11 @@ def render_video(m,cams):
             raise RuntimeError('selection provenance mismatch')
         x=np.zeros(len(paths),bool);x[data['selected_ids']]=True;selected[mode]=x;selection_hashes[mode]=digest(path)
     g=common.load_gaussians(m['scene']);keep=render.defloat_mask(g['mu'],g['opacity'])
-    trajectory=orbit(m,cams,g,keep);official=render.OfficialRGBRenderer(m['gs']['path'],EXT)
+    trajectory=orbit(m,cams,g,keep);official,official_info=stock_rgb(m)
     dump(DEV/'dev_cameras.json',{'K':trajectory[0].K.tolist(),'w2c':[c.w2c.tolist() for c in trajectory],'source':'TRAIN-derived synthetic DEV orbit, no TEST cameras'})
     writers={name:imageio_ffmpeg.write_frames(str(DEV/f'{name}.mp4'),(1200,426),fps=m['dev_trajectory']['fps'],codec='libx264',quality=8,macro_block_size=1) for name in ('rgb_A_D','ablation_B_C_D')}
     for writer in writers.values():writer.send(None)
-    fixed=[];ablations=[];thumbs=[];metrics={k:[] for k in 'ABCD'};frame_ids=[0,30,60,90]
+    fixed=[];ablations=[];pool_panels=[];thumbs=[];metrics={k:[] for k in 'ABCD'};frame_ids=[0,30,60,90]
     for j,cam in enumerate(trajectory):
         gb=render.render_gbuffer(g,keep,cam)
         projected=relations.project_paths(paths,cam,gb['depth'])
@@ -288,6 +346,8 @@ def render_video(m,cams):
         writers['rgb_A_D'].send(np.ascontiguousarray(main[:,:,::-1]));writers['ablation_B_C_D'].send(np.ascontiguousarray(ablation[:,:,::-1]))
         if j in frame_ids:
             fixed.append(main);ablations.append(ablation)
+            full_pool=relations.draw_paths(projected,np.ones(len(paths),bool),(cam.H,cam.W),m['brush']['width_px'])
+            pool_panels.append(np.hstack([label(rgb,f'Official RGB | frame {j:03d}'),label(full_pool,'Diagnostic: 100% candidate pool')]))
             cv2.imwrite(str(DEV/f'frame_{j:03d}.png'),main)
         thumbs.append(cv2.resize(main,(360,128),interpolation=cv2.INTER_AREA))
         for mode,x in selected.items():
@@ -297,6 +357,7 @@ def render_video(m,cams):
     for writer in writers.values():writer.close()
     cv2.imwrite(str(DEV/'fixed_quartiles.png'),np.vstack(fixed))
     cv2.imwrite(str(DEV/'ablation_quartiles.png'),np.vstack(ablations))
+    cv2.imwrite(str(DEV/'candidate_pool_quartiles.png'),np.vstack(pool_panels))
     cv2.imwrite(str(DEV/'complete_contact_sheet.png'),np.vstack([np.hstack(thumbs[i:i+4]) for i in range(0,len(thumbs),4)]))
     counts={}
     for name in writers:
@@ -309,7 +370,7 @@ def render_video(m,cams):
         if count!=len(trajectory):raise RuntimeError(f'incomplete video: {name} {count}')
     avg={mode:{key:float(np.mean([row[key] for row in rows])) for key in rows[0] if key!='frame'} for mode,rows in metrics.items()}
     dump(DEV/'render_metrics.json',{'provenance':provenance(m),'candidate_sha256':digest(DEV/'candidates.npz'),
-        'selection_sha256':selection_hashes,'frames':len(trajectory),'decoded_frames':counts,'fixed_frames':frame_ids,
+        'selection_sha256':selection_hashes,'official_rgb':official_info,'frames':len(trajectory),'decoded_frames':counts,'fixed_frames':frame_ids,
         'per_frame':metrics,'mean':avg,'seconds':time.perf_counter()-t,
         'q_scope':'q values in selection_*.json use TRAIN evidence only; no DEV image evidence queried at runtime',
         'videos':{name:{'sha256':digest(DEV/f'{name}.mp4'),'bytes':(DEV/f'{name}.mp4').stat().st_size} for name in writers}})
@@ -317,13 +378,19 @@ def render_video(m,cams):
 
 
 def main():
+    global DEV
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('stage',choices=('smoke','candidates','evidence','select','render'))
-    args=parser.parse_args();m=checked_manifest();np.random.seed(m['seed']);torch.manual_seed(m['seed'])
+    parser.add_argument('stage',choices=('smoke','official-smoke','candidates','evidence','select','render'))
+    parser.add_argument('--run-name',default='chair_dev',help='new output subdirectory for a reproducibility rerun; parameters unchanged')
+    args=parser.parse_args()
+    if not args.run_name or any(c not in 'abcdefghijklmnopqrstuvwxyz0123456789_' for c in args.run_name):
+        raise ValueError('run-name must be a simple lowercase directory name')
+    DEV=OUT/args.run_name
+    m=checked_manifest();np.random.seed(m['seed']);torch.manual_seed(m['seed'])
     torch.set_num_threads(4);cv2.setNumThreads(1)
     cams,paths=common.load_cameras(m['scene']);access=install_read_guard(m,paths)
     DEV.mkdir(parents=True,exist_ok=True)
-    functions={'smoke':lambda:smoke(m,cams,paths),'candidates':lambda:candidates(m,cams,paths),
+    functions={'smoke':lambda:smoke(m,cams,paths),'official-smoke':lambda:official_smoke(m,cams,paths),'candidates':lambda:candidates(m,cams,paths),
         'evidence':lambda:evidence(m,cams,paths),'select':lambda:selection(m),'render':lambda:render_video(m,cams)}
     audit_path=DEV/f'access_{args.stage}.json'
     if audit_path.exists():raise FileExistsError(audit_path)
