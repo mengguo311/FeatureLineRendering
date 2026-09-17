@@ -1,0 +1,93 @@
+{
+  "decision": "NO-GO",
+  "phase_completed": 2,
+  "phase3_started": false,
+  "decision_scope": "frozen chair DEV implementation, not universal impossibility",
+  "manifest_path": "out/vrss/manifest.json",
+  "manifest_sha256": "cbf4edf74e749c50c821dc53acec390c3b0ac6d77194bbe871731749962e77b2",
+  "candidate_sha256": "b7e77d5786cdd9789a7e310834e599569c0119b3c8c2c1289a90d6377096836e",
+  "evidence_sha256": "1de14b153703b679fa0ddfc6d7a9ff1782ef2b1b17d08a2f2f0f96e7d01e83da",
+  "execution_code_commit": "a3acd6f022d5861ff15e3a21645888bad707c2d3",
+  "official_renderer_verified": true,
+  "mesh_free": true,
+  "vanilla_only": true,
+  "test_images_opened_in_this_run": false,
+  "gs_original_training_split_verified": false,
+  "seed_and_evidence_rgb_indices": [
+    1,
+    7,
+    14,
+    21,
+    27,
+    33,
+    41,
+    47,
+    53,
+    59,
+    67,
+    73,
+    79,
+    86,
+    93,
+    99
+  ],
+  "runtime_rgb_file_reads": [],
+  "budget_train_matched": true,
+  "dev_actual_ink_matched": false,
+  "dev_D_over_A_ink_ratio": 1.2355713029491757,
+  "dev_D_over_A_length_ratio": 1.2332897298442114,
+  "visual_relation_gain_with_ablation_confirmed": false,
+  "num_human_study_participants": 0,
+  "artifacts": {
+    "chair_dev/rgb_A_D.mp4": {
+      "sha256": "2db478f3a16dfaf9c8bf6a4c2b3601dee44d4421eeb325c0d9b19522b18a4d11",
+      "bytes": 2008844
+    },
+    "chair_dev/ablation_B_C_D.mp4": {
+      "sha256": "98fde0148ae8377a405896e1c00c1c5e48799d8477d5110cbccdaf8af2b54a50",
+      "bytes": 994450
+    },
+    "chair_dev/fixed_quartiles.png": {
+      "sha256": "c8291b9359da7699e48ce20224bf3034ab0b8ce174f9cbf5cb78dbb516577368",
+      "bytes": 463520
+    },
+    "chair_dev/ablation_quartiles.png": {
+      "sha256": "31bedab210ea20949bf83a5c7ef3cc3c07773316e95d1e98ae8ba88d0532b5b0",
+      "bytes": 199193
+    },
+    "chair_dev/render_metrics.json": {
+      "sha256": "a6560221b31f29cbebb2485c009ef66fa874ab12587fbeb7b59ef0ee5d707f13",
+      "bytes": 175629
+    },
+    "chair_dev/relation_activation.json": {
+      "sha256": "bf604905a8335ed31966e506a5e00d3ece6fe14e38208e8ac69faa16672a331e",
+      "bytes": 18727
+    }
+  },
+  "notes": [
+    "B renormalizes unary after removing relations, as preregistered; not a pure fixed-coefficient removal",
+    "No-occlusion image is a diagnostic only and never used in selection",
+    "Early official wrapper smoke superseded by pinned stock CUDA verification",
+    "One early feature commit preceded processing a failing async fixture test; corrective commit passed all tests before real candidates"
+  ],
+  "shared_camera_metadata_frames_parsed": 100,
+  "method_source_camera_indices_used": [
+    1,
+    7,
+    14,
+    21,
+    27,
+    33,
+    41,
+    47,
+    53,
+    59,
+    67,
+    73,
+    79,
+    86,
+    93,
+    99
+  ],
+  "test_camera_indices_used_for_method": []
+}
