@@ -24,7 +24,7 @@ def arrays(path,**values):
     np.savez_compressed(path,**values)
 def provenance():
     files=['scripts/run_raster_candidates.py','src/raster_state.py','src/render.py','src/dt_pull.py','src/strokes.py','scripts/explore/syn/m1a_seeds.py']
-    files += [p for p in ('src/id_anchor.py','src/candidate_fusion.py') if (ROOT/p).exists()]
+    files += [p for p in ('src/id_anchor.py','src/candidate_fusion.py','scripts/raster_candidate_outputs.py') if (ROOT/p).exists()]
     return dict(commit=git('rev-parse','HEAD'),manifest_sha256=sha(OUT/'MANIFEST.json'),sources={p:sha(ROOT/p) for p in files})
 def stage_dir(scene,cheap=False):return OUT/(scene+'_transfer' if cheap else scene)
 def indices(m,cheap):return m['secondary_cheap_indices'] if cheap else m['train_indices']
@@ -286,7 +286,7 @@ def step4(m,scene,cams,photos,dest,cheap):
 
 
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('stage',choices=['smoke','baseline','step1','step2','step3','step4_smoke','step4'])
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('stage',choices=['smoke','baseline','step1','step2','step3','step4_smoke','step4','render_outputs'])
     parser.add_argument('--scene',default='lego',choices=['lego','chair']);parser.add_argument('--cheap',action='store_true');a=parser.parse_args()
     if git('branch','--show-current')!='raster-state-candidates':raise RuntimeError('wrong branch')
     m=json.loads((OUT/'MANIFEST.json').read_text());dest=stage_dir(a.scene,a.cheap);dest.mkdir(parents=True,exist_ok=True)
@@ -297,8 +297,12 @@ def main():
     np.random.seed(m['seed']);torch.manual_seed(m['seed']);torch.set_num_threads(4);cv2.setNumThreads(1)
     cams,photos=common.load_cameras(a.scene);accessfile=dest/f'access_{a.stage}.json'
     if accessfile.exists():raise FileExistsError(accessfile)
-    access=install_guard(m,a.scene,m['train_indices']);t=time.perf_counter()
-    try:globals()[a.stage](m,a.scene,cams,photos,dest,a.cheap)
+    access=install_guard(m,a.scene,[] if a.stage=='render_outputs' else indices(m,a.cheap));t=time.perf_counter()
+    if a.stage=='render_outputs':
+        from raster_candidate_outputs import render_outputs
+        fn=render_outputs
+    else:fn=globals()[a.stage]
+    try:fn(m,a.scene,cams,photos,dest,a.cheap)
     except Exception as e:access['failure']=repr(e);raise
     finally:access['seconds']=time.perf_counter()-t;dump(accessfile,access)
 
