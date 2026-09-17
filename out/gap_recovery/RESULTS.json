@@ -1,0 +1,158 @@
+{
+  "status": "NO-GO",
+  "scope": "single frozen lego local-bridge feasibility test; no second-scene recovery",
+  "preregistered_ids": [
+    71,
+    152,
+    153
+  ],
+  "preregistered_ids_selected": [
+    71
+  ],
+  "criteria": [
+    {
+      "id": 1,
+      "status": "FAIL",
+      "reason": "Only b71 selected; b152/b153 rejected. b71 improves a TRAIN zoom but no clear overall orbit benefit."
+    },
+    {
+      "id": 2,
+      "status": "NOT_ESTABLISHED",
+      "reason": "16 object-only selected bridges are image-gate rejected, but inspection does not establish a clearly wrong connection veto."
+    },
+    {
+      "id": 3,
+      "status": "LIMITED_OBSERVATION",
+      "reason": "No obvious long-lived penetration in inspected path; near-polar trajectory and five entirely clipped full bridges prevent broad occlusion claims."
+    },
+    {
+      "id": 4,
+      "status": "FAIL",
+      "budget_pass": true,
+      "visual_benefit_pass": false,
+      "reason": "All-frame ink cap passes; no clear overall continuity/readability improvement."
+    },
+    {
+      "id": 5,
+      "status": "PASS",
+      "accepted": 20,
+      "heldout_supported": 12,
+      "rule": ">=2 supporting heldout views, >=.6 support fraction, no geometry veto; strict majority of accepted bridges"
+    }
+  ],
+  "summary": {
+    "object_only": {
+      "n_bridges": 20,
+      "max_added_visible_fraction": 0.002906637546144514,
+      "mean_added_visible_fraction": 0.002502335671970001,
+      "mean_added_ink_area_px": 9.036013071895423
+    },
+    "object_image": {
+      "n_bridges": 20,
+      "max_added_visible_fraction": 0.007298452149845053,
+      "mean_added_visible_fraction": 0.006998531317172398,
+      "mean_added_ink_area_px": 18.77915032679738
+    }
+  },
+  "selected_preregistered_fit_details": {
+    "71": {
+      "accepted": true,
+      "reason": "accepted",
+      "qualified_views": 5,
+      "supported_views": 5,
+      "support_rate": 1.0,
+      "max_camera_angle_deg": 56.024441197541,
+      "geometry_veto_views": [],
+      "image_score": 1.0
+    },
+    "152": {
+      "accepted": false,
+      "reason": "visible_edge_contradiction",
+      "qualified_views": 8,
+      "supported_views": 3,
+      "support_rate": 0.375,
+      "max_camera_angle_deg": 84.58058120873405,
+      "geometry_veto_views": [],
+      "image_score": 0.0
+    },
+    "153": {
+      "accepted": false,
+      "reason": "too_few_supported_views",
+      "qualified_views": 7,
+      "supported_views": 2,
+      "support_rate": 0.2857142857142857,
+      "max_camera_angle_deg": 64.46917130692518,
+      "geometry_veto_views": [],
+      "image_score": 0.0
+    }
+  },
+  "render_frames": 120,
+  "decoded_frames": {
+    "rgb_original_recovered": 120,
+    "ablation_original_object_full": 120,
+    "bridge_debug_all": 120
+  },
+  "trajectory_limit": {
+    "elevation_degrees": 87.47022296270542,
+    "maximum_view_direction_separation_degrees": 5.059554074589158,
+    "assessment": "near-polar orbit; mainly in-plane rotation, inadequate broad occlusion stress test; not replaced post hoc"
+  },
+  "whole_orbit_zero_visible_length": {
+    "object_only": [
+      62,
+      100,
+      172,
+      194,
+      328
+    ],
+    "object_image": [
+      60,
+      102,
+      172,
+      298,
+      299
+    ]
+  },
+  "seconds": {
+    "fit": 11.12390200200025,
+    "validation": 3.3549949200241826,
+    "video": 29.65317761397455
+  },
+  "inspection": {
+    "main_contact_pages": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "all_bridge_crop_pages": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "b71_all_frame_pages": [
+      0,
+      1,
+      2
+    ],
+    "method": "assistant visual inspection of decoded complete contact sheets, fixed panels and every selected bridge crop; NOT a blind human study"
+  },
+  "environment": {
+    "python": "3.9.25",
+    "torch": "2.3.1+cu121",
+    "numpy": "1.23.5",
+    "opencv": "4.5.5",
+    "scipy": "1.10.1"
+  },
+  "artifacts_sha256": {
+    "fit_evidence.json": "be163d4b67bb6a3a58f9dd8d5100a915f9cb25e47577d70d99f43ab03f6cce46",
+    "frozen_bridges.json": "d2af0c8b4adadbf88d2b2b1a02f706802bd7d843243abb3471d66ea382c1f403",
+    "validation.json": "802d09c45c348bf79dcb1c8fbb5d2cc32b306eb7f7136e6b3f03bdb6d6dc2b55",
+    "render_metrics.json": "501b5edf56f932b8b8f8e7af5728b5fa3ebaee29683b943db0b9ad1e7b5001bb"
+  }
+}

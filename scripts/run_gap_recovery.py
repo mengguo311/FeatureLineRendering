@@ -29,6 +29,11 @@ from run_vrss import stock_rgb,scaled,rgb_white,label,orbit
 
 OUT=ROOT/'out/gap_recovery'
 BASE='9e643c2408954dffcfa8b298d5204e7314863a91'
+RUN_NAME=None
+
+
+def result_dir(scene):
+    return OUT/(RUN_NAME or f'{scene}_dev')
 
 
 def git(*args):
@@ -208,7 +213,7 @@ def score_views(m,scene,cams,photos,paths,proposals,indices):
 
 
 def fit(m,scene,cams,photos):
-    dest=OUT/f'{scene}_dev';dest.mkdir(parents=True,exist_ok=True)
+    dest=result_dir(scene);dest.mkdir(parents=True,exist_ok=True)
     if (dest/'frozen_bridges.json').exists():raise FileExistsError('selection already frozen')
     t=time.perf_counter();paths,proposals=frozen_inputs(m)
     rows,cost,original=score_views(m,scene,cams,photos,paths,proposals,m['fit_indices'])
@@ -235,7 +240,7 @@ def fit(m,scene,cams,photos):
 
 
 def checked_selection(m,scene):
-    p=OUT/f'{scene}_dev/frozen_bridges.json'
+    p=result_dir(scene)/'frozen_bridges.json'
     relative=str(p.relative_to(ROOT))
     # Validation/final cameras stay sealed until exact selected paths are in Git.
     committed=subprocess.check_output(['git','-C',str(ROOT),'show','HEAD:'+relative])
@@ -247,7 +252,7 @@ def checked_selection(m,scene):
 
 
 def validate(m,scene,cams,photos):
-    dest=OUT/f'{scene}_dev';t=time.perf_counter();selected=checked_selection(m,scene)
+    dest=result_dir(scene);t=time.perf_counter();selected=checked_selection(m,scene)
     if (dest/'validation.json').exists():raise FileExistsError('validation already completed')
     paths,all_proposals=frozen_inputs(m)
     ids=sorted(set(i for v in selected['variants'].values() for i in v['selected_ids']))
@@ -273,7 +278,7 @@ def validate(m,scene,cams,photos):
 def render_result(m,scene,cams,photos):
     """Runtime: fixed 3D curves, GS geometry, camera only. No image evidence."""
     import imageio_ffmpeg
-    dest=OUT/f'{scene}_dev';t=time.perf_counter();selected=checked_selection(m,scene)
+    dest=result_dir(scene);t=time.perf_counter();selected=checked_selection(m,scene)
     if (dest/'render_metrics.json').exists():raise FileExistsError('render already completed')
     paths,_=frozen_inputs(m);dense=drawing.densify(paths)
     variants=selected['variants'];ids=sorted(set(i for v in variants.values() for i in v['selected_ids']))
@@ -344,24 +349,31 @@ def render_result(m,scene,cams,photos):
 
 
 def main():
+    global RUN_NAME
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('stage',choices=['candidates','audit','fit','validate','render'])
     parser.add_argument('--scene',required=True,choices=['chair','lego','cadpartA'])
+    parser.add_argument('--run-name',help='fresh result subdirectory for an exact frozen-pool rerun; fit/validate/render only')
     args=parser.parse_args()
     if git('branch','--show-current')!='gap-recovery':raise RuntimeError('wrong branch')
     later=args.stage in ('fit','validate','render')
+    if args.run_name:
+        if not later or not args.run_name.startswith(args.scene+'_') or any(c not in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_' for c in args.run_name):
+            raise ValueError('run-name must be a scene-prefixed simple directory for a result stage')
+        RUN_NAME=args.run_name
     m=json.loads((OUT/('MANIFEST.json' if later else 'AUDIT_CONFIG.json')).read_text())
     if later and args.scene!=m['scene']:raise RuntimeError('scene is not preregistered')
     for k in ('extraction_indices','audit_indices','fit_indices','validation_indices'):
         if not set(m[k])<=set(view_split.TRAIN):raise RuntimeError('non-TRAIN indices')
     if set(m['validation_indices'])&set(m['extraction_indices']):raise RuntimeError('validation leaked to extraction')
+    if set(m['validation_indices'])&(set(m['fit_indices'])|set(m['audit_indices'])):raise RuntimeError('validation leaked to selection/audit')
     for record in m['inputs'][args.scene].values():
         if digest(record['path'])!=record['sha256']:raise RuntimeError('source changed')
     np.random.seed(m['seed']);torch.manual_seed(m['seed']);torch.set_num_threads(4);cv2.setNumThreads(1)
     cams,photos=common.load_cameras(args.scene)
     allowed={'candidates':m['extraction_indices'],'audit':m['audit_indices'],'fit':m['fit_indices'],
              'validate':m['validation_indices'],'render':[]}[args.stage]
-    dest=OUT/f'{args.scene}_dev' if later else OUT/'audit'/args.scene
+    dest=result_dir(args.scene) if later else OUT/'audit'/args.scene
     dest.mkdir(parents=True,exist_ok=True)
     log=dest/f'access_{args.stage}.json'
     if log.exists():raise FileExistsError(log)
