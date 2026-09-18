@@ -37,3 +37,11 @@ when performed; failure logs are never replaced by later runs.
 - 08 **RED** 2026-09-18T19:00:12.016560+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene.MultisceneTests.test_quality_renders_compare_both_backgrounds_to_frozen_rgba` → exit 1; [08_RED.txt](tdd/08_RED.txt).
 
 - 08 **GREEN** 2026-09-18T19:01:01.157383+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene` → exit 0; [08_GREEN.txt](tdd/08_GREEN.txt).
+
+- 09 **RED** 2026-09-18T19:05:15.699395+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene_probe` → exit 1; [09_RED.txt](tdd/09_RED.txt).
+
+- 09 **GREEN** 2026-09-18T19:07:39.332895+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene_probe` → exit 0; [09_GREEN.txt](tdd/09_GREEN.txt).
+
+- 10 **RED** 2026-09-18T19:10:48.225951+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene_probe.ProbeTests.test_inference_rejects_global_multimodality_despite_local_hessian` → exit 1; [10_RED.txt](tdd/10_RED.txt).
+
+- 10 **GREEN** 2026-09-18T19:12:27.722552+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene_probe` → exit 0; [10_GREEN.txt](tdd/10_GREEN.txt).

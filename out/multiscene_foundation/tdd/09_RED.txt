@@ -1,0 +1,50 @@
+test_canny_tangents_queries_and_shift_control_are_frozen (test_multiscene_probe.ProbeTests) ... ERROR
+test_full_box_search_retains_separated_modes_and_plateaus (test_multiscene_probe.ProbeTests) ... ERROR
+test_image_hessian_is_axial_and_full_K_covariant (test_multiscene_probe.ProbeTests) ... ERROR
+test_matching_is_bidirectional_sign_invariant_and_empty_is_not_success (test_multiscene_probe.ProbeTests) ... ERROR
+test_native_depth_layers_preserve_transmittance_and_disjoint_support (test_multiscene_probe.ProbeTests) ... ERROR
+
+======================================================================
+ERROR: test_canny_tangents_queries_and_shift_control_are_frozen (test_multiscene_probe.ProbeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_multiscene_probe.py", line 51, in test_canny_tangents_queries_and_shift_control_are_frozen
+    from src.multiscene_probe import edge_field,sample_queries,shift_field
+ModuleNotFoundError: No module named 'src.multiscene_probe'
+
+======================================================================
+ERROR: test_full_box_search_retains_separated_modes_and_plateaus (test_multiscene_probe.ProbeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_multiscene_probe.py", line 14, in test_full_box_search_retains_separated_modes_and_plateaus
+    from src.multiscene_probe import ray_profile
+ModuleNotFoundError: No module named 'src.multiscene_probe'
+
+======================================================================
+ERROR: test_image_hessian_is_axial_and_full_K_covariant (test_multiscene_probe.ProbeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_multiscene_probe.py", line 30, in test_image_hessian_is_axial_and_full_K_covariant
+    from src.multiscene_probe import image_hessian,axial_angle
+ModuleNotFoundError: No module named 'src.multiscene_probe'
+
+======================================================================
+ERROR: test_matching_is_bidirectional_sign_invariant_and_empty_is_not_success (test_multiscene_probe.ProbeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_multiscene_probe.py", line 80, in test_matching_is_bidirectional_sign_invariant_and_empty_is_not_success
+    from src.multiscene_probe import match_outputs
+ModuleNotFoundError: No module named 'src.multiscene_probe'
+
+======================================================================
+ERROR: test_native_depth_layers_preserve_transmittance_and_disjoint_support (test_multiscene_probe.ProbeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_multiscene_probe.py", line 65, in test_native_depth_layers_preserve_transmittance_and_disjoint_support
+    from src.multiscene_probe import NativeLayers
+ModuleNotFoundError: No module named 'src.multiscene_probe'
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+FAILED (errors=5)
