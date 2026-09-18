@@ -1,0 +1,203 @@
+{
+  "schema": 1,
+  "base_commit": "3a10d3908173e35d359d41eec1469f5adaac4e56",
+  "scene": "lego",
+  "seed": 20260920,
+  "inputs": {
+    "pulled_D": {
+      "path": "/home/u00134/3dgs_line/tier1/out/raster_state_candidates/lego/step4/pulled_D.npz",
+      "sha256": "47ca8925cb86a98886f97aa3c88ef58f5c821cfdcfd656a3fb0a0ec19ca1d489"
+    },
+    "clusters": {
+      "path": "/home/u00134/3dgs_line/tier1/out/raster_state_candidates/lego/step3/clusters_D.json",
+      "sha256": "16047da301e117009cce3e22092e54853df56f49c7f50103984a930eff8e1eee"
+    },
+    "gs": {
+      "path": "/home/u00134/cglib/outputs/lego_static/point_cloud.ply",
+      "sha256": "aa3630f69affbf3c23cfe841734e9aebb42597aede28fa4a0e5e72e3a31e2d23"
+    },
+    "cameras": {
+      "path": "/home/u00134/cglib/data/full/lego/transforms_train.json",
+      "sha256": "82d46cfbd405d7da8562b6fa75b6fb0631a3f941adf66f0c023acb8bf9ea273a"
+    }
+  },
+  "train_indices": [
+    1,
+    7,
+    14,
+    21,
+    27,
+    33,
+    41,
+    47,
+    53,
+    59,
+    67,
+    73,
+    79,
+    86,
+    93,
+    99
+  ],
+  "audit_indices": [
+    1,
+    27,
+    53,
+    79
+  ],
+  "test_sealed": [
+    5,
+    15,
+    25,
+    35,
+    45,
+    55,
+    65,
+    75,
+    85,
+    95
+  ],
+  "dev_validation_indices": [
+    2,
+    22,
+    42,
+    62
+  ],
+  "renderer": {
+    "upstream_commit": "472689c0dc70417448fb451bf529ae532d32c095",
+    "rgb": "verified stock official Python + two-output CUDA kernel; see per-run hashes",
+    "depth": "legacy vanilla GS disc depth; NOT official depth"
+  },
+  "brush": {
+    "width_px": 1,
+    "background": "white",
+    "color": "black",
+    "visibility": "existing GS depth / 3x3 minimum / 2% tolerance"
+  },
+  "graph": {
+    "neighbors": 12,
+    "samples": 9,
+    "min_col": 0.4,
+    "endpoint_gap": 2.0,
+    "tube_radius": 1.25,
+    "gap_units": 4.0,
+    "dt_px": 2.0,
+    "min_visible_samples": 4,
+    "layer_px": 2.0,
+    "layer_rel": 0.02,
+    "layer_votes": 2,
+    "min_support_views": 2,
+    "min_evaluated_views": 3,
+    "support_threshold": 0.45
+  },
+  "objective": {
+    "node_weight": 0.3,
+    "link_weight": 0.35,
+    "path_reward": 3.0,
+    "start_cost": 2.0,
+    "short_cost": 1.0,
+    "short_units": 4.0,
+    "length_scale": 8.0,
+    "turn_penalty": 0.4,
+    "max_turn_deg": 110.0,
+    "witness_fraction": 0.3,
+    "witness_threshold": 0.6,
+    "source_weights": {
+      "M1a": 0.8,
+      "topk": 1.0,
+      "rgb": 1.0,
+      "entropy": 0.6,
+      "margin": 0.6,
+      "variance": 0.6,
+      "dispersion": 0.6
+    }
+  },
+  "search": {
+    "seed_cap": 4096,
+    "beam_width": 2,
+    "max_nodes": 36,
+    "checkpoints": [
+      3,
+      6,
+      12,
+      24,
+      36
+    ],
+    "local_swap_rounds": 2,
+    "max_swap_conflicts": 2,
+    "parameter_sets": 1
+  },
+  "simplify": {
+    "epsilon_units": 0.0,
+    "corner_deg": 35.0,
+    "trust_units": 0.25
+  },
+  "trajectory": {
+    "frames": 120,
+    "fps": 24,
+    "resolution": 400,
+    "elevation_deg": 25.0,
+    "elevation_swing_deg": 8.0,
+    "reference_train_index": 1,
+    "azimuth_degrees": 360.0,
+    "target": "median defloated Gaussian centers",
+    "radius": "distance from TRAIN1 camera to target",
+    "phase_offset_deg": 22.5
+  },
+  "ink_matching": {
+    "target_A_native_fraction": 0.6,
+    "tolerance": 0.03,
+    "order": "sha256(vertices rounded 7dp + seed); fixed whole path prefix",
+    "calibration": "mean over all 120 DEV frames; display only"
+  },
+  "regions": [
+    {
+      "id": "R1",
+      "view": 53,
+      "box": [
+        66,
+        99,
+        158,
+        181
+      ],
+      "description": "cab frame and corners"
+    },
+    {
+      "id": "R2",
+      "view": 53,
+      "box": [
+        171,
+        65,
+        277,
+        190
+      ],
+      "description": "lifting arm outer rails and turns"
+    },
+    {
+      "id": "R3",
+      "view": 53,
+      "box": [
+        13,
+        245,
+        368,
+        288
+      ],
+      "description": "front baseplate border"
+    }
+  ],
+  "policy": {
+    "mesh_free": true,
+    "vanilla_only": true,
+    "frozen_centers": true,
+    "train_only": true,
+    "no_2d_runtime_ink": true,
+    "gs_original_training_split": "not independently verified",
+    "development_context": "similar orbit was observed in historical tasks; TEST remains sealed"
+  },
+  "limits": {
+    "smoke_seconds": 180,
+    "graph_seconds": 600,
+    "solve_seconds_per_arm": 900,
+    "render_seconds": 1200
+  }
+}
