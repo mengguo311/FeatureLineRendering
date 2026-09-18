@@ -42,3 +42,15 @@
 - 11 GREEN, 2026-09-18T23:12:03.604911+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', '-v', 'test_corrected_audit']`; [11_GREEN.txt](tdd/11_GREEN.txt).
 
 - 12 REFACTOR, 2026-09-18T23:14:52.430185+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', '-v', 'test_corrected_visuals']`; [12_REFACTOR.txt](tdd/12_REFACTOR.txt).
+
+- 13 RED, 2026-09-18T23:15:34.448243+00:00, exit 1: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', '-v', 'test_corrected_review']`; [13_RED.txt](tdd/13_RED.txt).
+
+- 13 GREEN, 2026-09-18T23:16:24.083492+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', '-v', 'test_corrected_review']`; [13_GREEN.txt](tdd/13_GREEN.txt).
+
+- 14 RED, 2026-09-18T23:20:26.125934+00:00, exit 1: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', '-v', 'test_corrected_audit.CorrectedAuditTests.test_bootstrap_source_exception_requires_exact_pinned_bytes']`; [14_RED.txt](tdd/14_RED.txt).
+
+- 14 GREEN, 2026-09-18T23:20:54.062917+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', '-v', 'test_corrected_audit']`; [14_GREEN.txt](tdd/14_GREEN.txt).
+
+- 15 RED, 2026-09-18T23:22:23.146504+00:00, exit 1: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', '-v', 'test_corrected_layers.QueryOptimizationTests']`; [15_RED.txt](tdd/15_RED.txt).
+
+- 15 GREEN, 2026-09-18T23:22:42.222655+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', '-v', 'test_corrected_layers']`; [15_GREEN.txt](tdd/15_GREEN.txt).

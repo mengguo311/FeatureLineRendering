@@ -56,3 +56,11 @@ class AreaLayers(NativeLayers):
             for k in ['offsets','depth','weight','transmittance']:setattr(result,k,data[k])
             result.height=int(data['height']);result.width=int(data['width'])
         result.bind();return result
+
+
+def bind_fast_query(layer):
+    """Same independent per-query arithmetic; parallelize only large batches."""
+    layer.lib=ctypes.CDLL(str(ROOT/'out/multiscene_foundation_corrected/setup/fast_query.so'))
+    layer.lib.multiscene_layer_query.argtypes=[ctypes.c_int,ctypes.c_int]+[ctypes.c_void_p]*5+[ctypes.c_double]+[ctypes.c_void_p]*2
+    layer.lib.multiscene_layer_query.restype=None
+    return layer

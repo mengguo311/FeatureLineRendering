@@ -23,3 +23,23 @@ those frozen in config.json. This code is not imported by inference for generati
 
 Raw test logs preserve their original bytes, including unittest's whitespace.
 Synthetic fixtures reduce sample counts only inside tests; scene config is unchanged.
+
+The first Chair GS arm completed in374.918s with0 accepted modes; its complete
+output is retained under local/chair/attempt_00_thread_contention/F/gs. The ongoing
+Chair no-GS arm and Lego GS arm were interrupted by the owner, with exit logs and
+all partial artifacts retained. A5000-iteration synthetic geometry/query benchmark
+measured33.174s with4 BLAS/OpenMP threads versus1.019s with1 thread/passive waiting.
+A full synthetic multimodal-inference plus2300 native-query fixture was byte-identical
+(SHA25671ef140f0482850a7386af8a4861705f521a2aca37317d6eeb6832b2947bcdd1).
+Both primary processes were restarted with the same method, queries, inputs and
+thresholds, changing only resource scheduling. Completed Chair outputs will be
+compared array-for-array against the repeat. No posterior was retrained. The
+separately tested conditional-OpenMP query library is not used by the scientific
+runner; the original native query arithmetic remains in use.
+
+The native-open audit's first pass flagged the pinned stock repository directory
+and arguments/__init__.py during interpreter startup, before confinement. The
+source file was checked against the archived pinned source hash; these are explicit
+bootstrap source exceptions, not photograph/data exemptions. The failed audit
+attempt is retained. Administrative audit-module extensions after early launches
+are versioned in Git; no inference formula or gate was changed by this accounting.

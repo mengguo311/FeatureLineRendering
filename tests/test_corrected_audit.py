@@ -11,3 +11,12 @@ class CorrectedAuditTests(unittest.TestCase):
             r=audit_policy(trace,dict(readonly=[str(image)],writable=[str(out)]),out,[config])
             self.assertFalse(r['passed']);self.assertEqual(r['forbidden_successes'],[str(forbidden)])
             self.assertIn(str(config),r['bootstrap_exceptions'])
+
+    def test_bootstrap_source_exception_requires_exact_pinned_bytes(self):
+        from src.corrected_audit import verified_source_exception
+        import hashlib
+        with tempfile.TemporaryDirectory() as td:
+            p=Path(td)/'source.py';p.write_text('x=1\n');digest=hashlib.sha256(p.read_bytes()).hexdigest()
+            self.assertEqual(verified_source_exception(p,digest),str(p))
+            p.write_text('x=2\n')
+            with self.assertRaises(ValueError):verified_source_exception(p,digest)

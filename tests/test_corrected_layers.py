@@ -33,3 +33,18 @@ class AreaLayersTests(unittest.TestCase):
             p=Path(t)/'layers.npz';layer.save(p);again=AreaLayers.load(p)
             np.testing.assert_array_equal(again.quantiles(),layer.quantiles())
             np.testing.assert_array_equal(again.depth,layer.depth)
+
+class QueryOptimizationTests(unittest.TestCase):
+    def test_small_query_optimization_matches_original_bit_for_bit(self):
+        from src.corrected_layers import AreaLayers,bind_fast_query
+        from src.foundation import native_render
+        from test_multiscene import asset_fixture
+        a=asset_fixture();K=np.array([[80.,0,31.5],[0,60.,31.5],[0,0,1]])
+        layer=AreaLayers(native_render(a,K,np.eye(4),64,64,1),64,64)
+        rng=np.random.default_rng(42);uv=rng.uniform(-2,34,(2300,2));z=rng.uniform(1,6,2300)
+        old=layer.query(uv,z,.02);bind_fast_query(layer)
+        new=layer.query(uv,z,.02)
+        np.testing.assert_array_equal(old[0],new[0]);np.testing.assert_array_equal(old[1],new[1])
+        for i in [0,123,500]:
+            one=layer.query(uv[i:i+1],z[i:i+1],.02)
+            np.testing.assert_array_equal(one[0],old[0][i:i+1]);np.testing.assert_array_equal(one[1],old[1][i:i+1])
