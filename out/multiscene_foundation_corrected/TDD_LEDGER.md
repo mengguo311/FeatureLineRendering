@@ -62,3 +62,7 @@
 - slice17 RED, 2026-09-18T23:35:05.778099+00:00, exit 1: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_audit.CorrectedAuditTests.test_archived_attempt_uses_its_own_trace_and_status']`; [slice17_RED.txt](tdd/slice17_RED.txt).
 
 - slice17 GREEN, 2026-09-18T23:35:21.105686+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_audit']`; [slice17_GREEN.txt](tdd/slice17_GREEN.txt).
+
+- slice18 RED, 2026-09-18T23:38:23.948739+00:00, exit 1: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_reporting']`; [slice18_RED.txt](tdd/slice18_RED.txt).
+
+- slice18 GREEN, 2026-09-18T23:39:07.989589+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_reporting']`; [slice18_GREEN.txt](tdd/slice18_GREEN.txt).
