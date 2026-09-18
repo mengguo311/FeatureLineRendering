@@ -170,3 +170,132 @@ def calibration_metrics(white_state,stock_black,replay_white):
         'native_T_max_abs':float(np.max(np.abs(white_state['final_T']-(1-replay_white['alpha'])))),
         'wrapper_max_abs':float(np.max(np.abs(white_state['stock_rgb']-white_state['wrapper_rgb'])))}
     return dict(errors,threshold=1/255,passed=all(np.isfinite(v) and v<=1/255 for v in errors.values()))
+
+
+def load_asset(path):
+    """Full SH3 vanilla asset, without opacity/density/center pruning."""
+    from plyfile import PlyData
+    p=PlyData.read(str(path))['vertex']
+    mu=np.stack([p[k] for k in ['x','y','z']],axis=1).astype('f4')
+    scale=np.exp(np.stack([p[f'scale_{k}'] for k in range(3)],axis=1)).astype('f4')
+    quat=np.stack([p[f'rot_{k}'] for k in range(4)],axis=1).astype('f4')
+    quat/=np.linalg.norm(quat,axis=1,keepdims=True)
+    opacity=(1/(1+np.exp(-np.asarray(p['opacity'],np.float64)))).astype('f4')[:,None]
+    dc=np.stack([p[f'f_dc_{k}'] for k in range(3)],axis=1)[:,None,:]
+    rest=np.stack([p[f'f_rest_{k}'] for k in range(45)],axis=1).reshape(-1,3,15).transpose(0,2,1)
+    asset=dict(mu=mu,scale=scale,quat=quat,opacity=opacity,sh=np.concatenate([dc,rest],axis=1).astype('f4'))
+    if not all(np.isfinite(a).all() for a in asset.values()): raise ValueError('nonfinite GS')
+    return asset
+
+
+def perturb_asset(asset,mode):
+    """Fixed, non-tuned clone/split intervention; parent IDs are provenance only."""
+    if mode not in ('clone','split'): raise ValueError('unknown intervention')
+    n=len(asset['mu'])
+    hashes=[hashlib.sha256(f'20260918:parent:{i}'.encode()).digest() for i in range(n)]
+    chosen=sorted(range(n),key=lambda i:hashes[i])[:n//2]
+    selected=np.zeros(n,bool); selected[chosen]=True
+    parents=np.repeat(np.arange(n),1+selected.astype(int))
+    child={k:v[parents].copy() for k,v in asset.items()}
+    changed=selected[parents]
+    child['opacity'][changed]=1-np.sqrt(1-child['opacity'][changed].astype(np.float64))
+    if mode=='split':
+        q=child['quat'][changed].astype(np.float64); q/=np.linalg.norm(q,axis=1,keepdims=True)
+        w,x,y,z=q.T
+        R=np.stack([1-2*(y*y+z*z),2*(x*y-w*z),2*(x*z+w*y),
+                    2*(x*y+w*z),1-2*(x*x+z*z),2*(y*z-w*x),
+                    2*(x*z-w*y),2*(y*z+w*x),1-2*(x*x+y*y)],axis=1).reshape(-1,3,3)
+        s=child['scale'][changed]; axis=s.argmax(1); rows=np.arange(len(s))
+        offset=.2*s[rows,axis,None]*R[rows,:,axis]
+        sign=np.tile([-1.,1.],len(chosen))
+        child['mu'][changed]+=offset*sign[:,None]
+        s[rows,axis]*=np.sqrt(.96); child['scale'][changed]=s
+    return child,parents,selected
+
+
+def qualification_metrics(base,changed,roi):
+    """Conjunctive stock RGB qualification, on the unchanged baseline ROI."""
+    import cv2
+    roi=np.asarray(roi,bool); n=int(roi.sum())
+    if not n: return dict(valid=False,passed=False,roi_pixels=0,reason='empty foreground')
+    a=np.asarray(base,np.float64); b=np.asarray(changed,np.float64)
+    error=np.abs(a-b); mse=float(np.mean((a[roi]-b[roi])**2))
+    psnr=None if mse==0 else float(-10*np.log10(mse))
+    means=[]
+    for c in range(3):
+        x,y=a[:,:,c],b[:,:,c]
+        ux=cv2.GaussianBlur(x,(11,11),1.5,borderType=cv2.BORDER_REFLECT)
+        uy=cv2.GaussianBlur(y,(11,11),1.5,borderType=cv2.BORDER_REFLECT)
+        vx=cv2.GaussianBlur(x*x,(11,11),1.5,borderType=cv2.BORDER_REFLECT)-ux*ux
+        vy=cv2.GaussianBlur(y*y,(11,11),1.5,borderType=cv2.BORDER_REFLECT)-uy*uy
+        vxy=cv2.GaussianBlur(x*y,(11,11),1.5,borderType=cv2.BORDER_REFLECT)-ux*uy
+        s=((2*ux*uy+.01**2)*(2*vxy+.03**2))/((ux*ux+uy*uy+.01**2)*(vx+vy+.03**2))
+        means.append(float(s[roi].mean()))
+    ssim=min(means); p99=float(np.quantile(error.max(2)[roi],.99))
+    valid=bool(np.isfinite(a).all() and np.isfinite(b).all() and np.isfinite(ssim))
+    passed=valid and (psnr is None or psnr>=40) and ssim>=.995 and p99<=8/255
+    return dict(valid=valid,passed=bool(passed),roi_pixels=n,mse=mse,psnr_db=psnr,
+        psnr_infinite=mse==0,ssim=ssim,ssim_channels=means,p99_max_channel_abs=p99,
+        max_abs=float(error[roi].max()),thresholds=dict(psnr_db=40,ssim=.995,p99_max_channel_abs=8/255))
+
+
+def prerequisite_verdict(calibration,qualifications,coverage,outside,forbidden_reads,gs_unchanged):
+    """Only decide prerequisite validity. Unmeasured scientific gates never pass."""
+    calibrated=bool(calibration) and all(x['passed'] for x in calibration)
+    nontrivial=bool(coverage) and all(np.isfinite(x) and x>=.20 for x in coverage)
+    valid_interventions=[k for k,rows in qualifications.items() if rows and all(x['passed'] for x in rows) and nontrivial]
+    box_ok=bool(outside) and all(np.isfinite(x) and x<=.01 for x in outside)
+    reasons=[]
+    if not calibrated: reasons.append('native renderer calibration not passed')
+    if not valid_interventions: reasons.append('no qualifying nontrivial RGB-near-equivalent intervention')
+    if not box_ok: reasons.append('outside-box contribution prerequisite not passed')
+    if forbidden_reads: reasons.append('forbidden input reads')
+    if not gs_unchanged: reasons.append('original GS hash changed')
+    ready=not reasons
+    gates={
+        'G0':dict(state='PENDING' if ready else 'INVALID',reason='; '.join(reasons) if reasons else 'renderer/intervention/input prerequisites pass; search and accepted-view checks not yet measured'),
+        'G1':dict(state='NOT_EVALUATED',reason='local image evidence stage not reached'),
+        'G2':dict(state='UNCERTIFIED',reason='no frozen local output or independent DEV span annotations; C support not evaluated'),
+        'G3':dict(state='NOT_EVALUATED',reason='no eligible local outputs for repeatability'),
+        'G4':dict(state='NOT_EVALUATED',reason='local controls and independent visible-region comparison not reached'),
+        'G5':dict(state='UNCERTIFIED',reason='three independent evaluators unavailable; glyph stage not reached')}
+    return dict(verdict='ENGINEERING_NOT_READY' if not calibrated else 'UNDETERMINED',
+        experiment_valid=False,may_run_local_probe=ready,valid_interventions=valid_interventions,
+        gates=gates,reasons=reasons,scientific_failure=False)
+
+
+def audit_opens(trace,allowed_files,runtime_roots,write_root):
+    """Audit strace -f -yy open/openat/openat2/creat, including native calls."""
+    import re
+    files={str(Path(p).resolve()) for p in allowed_files}
+    roots=[Path(p).resolve() for p in runtime_roots]+[Path(write_root).resolve()]
+    read=set(); bad=set(); denied=set(); unparsed=[]; opened=set()
+    for line in trace.splitlines():
+        if not re.search(r'\b(open|openat|openat2|creat)\(',line): continue
+        name=re.search(r'"([^"\n]+)"',line)
+        if not name: unparsed.append(line); continue
+        if '= -1' in line:
+            if 'EACCES' in line: denied.add(name.group(1))
+            continue
+        resolved=re.search(r'= \d+<([^>]+)>',line)
+        if not resolved: unparsed.append(line); continue
+        p=Path(resolved.group(1)).resolve(); s=str(p); opened.add(s)
+        if s in files: read.add(s)
+        elif not any(p==r or r in p.parents for r in roots): bad.add(s)
+    return dict(forbidden_successes=sorted(bad),denied=sorted(denied),
+        approved_data_reads=sorted(read),successful_paths=sorted(opened),unparsed_open_lines=unparsed)
+
+
+def save_sheet(path,panels):
+    """Deterministic labeled RGB panels; never fabricate images for an unrun stage."""
+    import cv2
+    tiles=[]
+    for title,rgb in panels:
+        im=np.round(np.clip(rgb,0,1)*255).astype(np.uint8)[:,:,::-1]
+        tile=np.full((im.shape[0]+28,im.shape[1],3),255,np.uint8); tile[28:]=im
+        cv2.putText(tile,title,(4,19),cv2.FONT_HERSHEY_SIMPLEX,.42,(0,0,0),1,cv2.LINE_AA)
+        tiles.append(tile)
+    ok,data=cv2.imencode('.png',np.hstack(tiles),[cv2.IMWRITE_PNG_COMPRESSION,6])
+    if not ok: raise RuntimeError('PNG encoder failed')
+    with Path(path).open('xb') as f: f.write(data.tobytes())
+    return hashlib.sha256(data.tobytes()).hexdigest()

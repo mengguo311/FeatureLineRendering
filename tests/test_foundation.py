@@ -110,3 +110,97 @@ assert fd>=0; lib.close(fd)
         self.assertFalse(calibration_metrics(state,black,replay)['passed'])
         replay['rgb']=white.copy(); replay['alpha'][0,0]+=.005
         self.assertFalse(calibration_metrics(state,black,replay)['passed'])
+
+    def test_08_load_full_SH_asset_without_filtering(self):
+        from src.foundation import load_asset
+        from plyfile import PlyData,PlyElement
+        names=['x','y','z','opacity']+[f'scale_{i}' for i in range(3)]+[f'rot_{i}' for i in range(4)]+[f'f_dc_{i}' for i in range(3)]+[f'f_rest_{i}' for i in range(45)]
+        rows=np.zeros(2,dtype=[(k,'f4') for k in names]); rows['z']=[2,3]; rows['rot_0']=1
+        rows['opacity']=[-10,0]
+        for i in range(45): rows[f'f_rest_{i}']=i
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)/'asset.ply'; PlyData([PlyElement.describe(rows,'vertex')]).write(p)
+            a=load_asset(p)
+        self.assertEqual(len(a['mu']),2) # low opacity must survive
+        np.testing.assert_allclose(a['scale'],1.)
+        self.assertLess(a['opacity'][0,0],.001)
+        np.testing.assert_array_equal(a['sh'][0,1,:],[0,15,30])
+        np.testing.assert_array_equal(a['sh'][0,15,:],[14,29,44])
+
+    def test_09_clone_split_deterministic_parent_mass_and_moments(self):
+        from src.foundation import perturb_asset
+        n=6; a={'mu':np.arange(18,dtype=np.float32).reshape(6,3),'scale':np.tile([.1,.3,.2],(n,1)).astype('f4'),
+            'quat':np.tile([1.,0,0,0],(n,1)).astype('f4'),'opacity':np.full((n,1),.64,np.float32),
+            'sh':np.arange(n*48,dtype=np.float32).reshape(n,16,3)}
+        frozen={k:v.copy() for k,v in a.items()}
+        for mode in ['clone','split']:
+            child,parent,selected=perturb_asset(a,mode)
+            self.assertEqual(len(child['mu']),9); self.assertEqual(selected.sum(),3)
+            for key in a: np.testing.assert_array_equal(a[key],frozen[key])
+            again,par,sel=perturb_asset(a,mode)
+            for key in a: np.testing.assert_array_equal(child[key],again[key])
+            for i in np.flatnonzero(selected):
+                idx=np.flatnonzero(parent==i); self.assertEqual(len(idx),2)
+                np.testing.assert_allclose(child['mu'][idx].mean(0),a['mu'][i],atol=1e-6)
+                np.testing.assert_allclose(1-np.prod(1-child['opacity'][idx]),.64,atol=1e-6)
+                np.testing.assert_array_equal(child['sh'][idx],np.tile(a['sh'][i],(2,1,1)))
+                offsets=child['mu'][idx]-a['mu'][i]
+                np.testing.assert_allclose(np.diag(child['scale'][idx[0]]**2)+offsets.T@offsets/2,np.diag(a['scale'][i]**2),atol=2e-7)
+                self.assertAlmostEqual(float(np.linalg.norm(offsets[0])),0 if mode=='clone' else .06,places=5)
+        with self.assertRaises(ValueError): perturb_asset(a,'tuned')
+
+    def test_10_qualification_uses_frozen_roi_and_all_thresholds(self):
+        from src.foundation import qualification_metrics
+        base=np.full((32,32,3),.5,np.float32); roi=np.zeros((32,32),bool); roi[8:24,8:24]=True
+        same=qualification_metrics(base,base.copy(),roi)
+        self.assertTrue(same['passed']); self.assertEqual(same['ssim'],1.)
+        changed=base.copy(); changed[roi]+=.04
+        fail=qualification_metrics(base,changed,roi)
+        self.assertFalse(fail['passed']); self.assertLess(fail['psnr_db'],40)
+        self.assertGreater(fail['p99_max_channel_abs'],8/255)
+        changed=base.copy(); changed[0:2]=0
+        self.assertEqual(qualification_metrics(base,changed,roi)['psnr_db'],None)
+        self.assertFalse(qualification_metrics(base,base,np.zeros_like(roi))['valid'])
+
+    def test_11_prerequisite_gate_never_calls_invalid_a_scientific_failure(self):
+        from src.foundation import prerequisite_verdict
+        q={'clone':[{'passed':False}],'split':[{'passed':False}]}
+        r=prerequisite_verdict([{'passed':True}],q,[.5],[0.],0,True)
+        self.assertEqual(r['verdict'],'UNDETERMINED'); self.assertEqual(r['gates']['G0']['state'],'INVALID')
+        self.assertEqual(r['gates']['G5']['state'],'UNCERTIFIED')
+        r=prerequisite_verdict([{'passed':False}],q,[.5],[0.],0,True)
+        self.assertEqual(r['verdict'],'ENGINEERING_NOT_READY')
+        q['clone']=[{'passed':True}]
+        r=prerequisite_verdict([{'passed':True}],q,[.19],[0.],0,True)
+        self.assertEqual(r['verdict'],'UNDETERMINED')
+        r=prerequisite_verdict([{'passed':True}],q,[.5],[0.],0,True)
+        self.assertEqual(r['verdict'],'UNDETERMINED'); self.assertTrue(r['may_run_local_probe'])
+        self.assertNotEqual(r['gates']['G0']['state'],'PASS') # search/view gates not yet measured
+        self.assertFalse(prerequisite_verdict([{'passed':True}],q,[.5],[.011],0,True)['may_run_local_probe'])
+        self.assertFalse(prerequisite_verdict([{'passed':True}],q,[.5],[0.],1,True)['may_run_local_probe'])
+        self.assertFalse(prerequisite_verdict([{'passed':True}],q,[.5],[0.],0,False)['may_run_local_probe'])
+
+    def test_12_native_open_audit_separates_denials_and_violations(self):
+        from src.foundation import audit_opens
+        trace='''100 openat(AT_FDCWD, "/allowed/F.png", O_RDONLY) = 3</allowed/F.png>
+100 openat(AT_FDCWD, "/hidden/DEV.png", O_RDONLY) = -1 EACCES (Permission denied)
+100 openat(AT_FDCWD, "/hidden/mesh.ply", O_RDONLY) = 4</hidden/mesh.ply>
+100 openat(AT_FDCWD, "/run/log.json", O_WRONLY|O_CREAT, 0666) = 5</run/log.json>
+100 openat(AT_FDCWD, "/lib/libc.so", O_RDONLY|O_CLOEXEC) = 6</lib/libc.so>
+'''
+        a=audit_opens(trace,['/allowed/F.png'],['/lib'],'/run')
+        self.assertEqual(a['forbidden_successes'],['/hidden/mesh.ply'])
+        self.assertEqual(a['denied'],['/hidden/DEV.png'])
+        self.assertEqual(a['approved_data_reads'],['/allowed/F.png'])
+        self.assertEqual(a['unparsed_open_lines'],[])
+
+    def test_13_deterministic_png_contact_sheet(self):
+        from src.foundation import save_sheet
+        import cv2
+        with tempfile.TemporaryDirectory() as d:
+            d=Path(d); panels=[('dark',np.zeros((20,30,3))),('light',np.ones((20,30,3)))]
+            h1=save_sheet(d/'a.png',panels); h2=save_sheet(d/'b.png',panels)
+            self.assertEqual(h1,h2)
+            im=cv2.imread(str(d/'a.png')); self.assertEqual(im.shape,(48,60,3))
+            self.assertTrue((im[28:,:30]==0).all()); self.assertTrue((im[28:,30:]==255).all())
+            with self.assertRaises(FileExistsError):save_sheet(d/'a.png',panels)
