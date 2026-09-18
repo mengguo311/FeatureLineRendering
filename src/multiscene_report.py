@@ -66,6 +66,47 @@ def _dose_row(r):
         f"{r['passed']} | {r['invariance_eligible']} |")
 
 
+def summarize_diagnostic(scene,seed,diagnostic,views):
+    rows=diagnostic['rows']
+    expected={(split,bg,i) for split in ['train','val'] for bg in [0,1] for i in views}
+    actual=[(r['split'],r['background'],r['view']) for r in rows]
+    if len(actual)!=len(set(actual)) or set(actual)!=expected:
+        raise ValueError('incomplete or duplicate diagnostic views')
+    groups=[]
+    for split in ['train','val']:
+        for bg in [0,1]:
+            subset=[r for r in rows if r['split']==split and r['background']==bg]
+            group=dict(scene=scene,seed=seed,split=split,background=bg,n=len(subset))
+            for size in ['native','downsampled']:
+                for key,label in [('psnr_db','psnr'),('ssim','ssim')]:
+                    values=[r[size+'_metrics'][key] for r in subset]
+                    group[size+'_mean_'+label]=float(np.mean(values))
+                    group[size+'_worst_'+label]=float(np.min(values))
+            groups.append(group)
+    return groups
+
+
+def _diagnostic_row(r):
+    return (f"| {r['scene']} | {r['seed']} | {r['split']} | "
+        f"{r['native_mean_psnr']:.6f} | {r['native_mean_ssim']:.9f} | "
+        f"{r['downsampled_mean_psnr']:.6f} | {r['downsampled_mean_ssim']:.9f} |")
+
+
+def diagnostic_markdown(rows):
+    return '\n'.join(['## Post-hoc sampling diagnosis','',
+        'These are descriptive foreground-ROI white-background means for every seed and split. Native800 uses the canonical stock camera; downsampled400 area-resizes that rendered image. All black-background groups, worst-view metrics and every individual measurement remain in JSON. No diagnostic row changes eligibility.',
+        '', '| Scene | Seed | Split | Native800 PSNR | Native800 SSIM | Downsampled400 PSNR | Downsampled400 SSIM |',
+        '|---|---:|---|---:|---:|---:|---:|',
+        *[_diagnostic_row(r) for r in rows if r['background']==1],''])
+
+
+def check_diagnostic_markdown(rows,text):
+    for r in rows:
+        if r['background']==1:
+            assert text.count(_diagnostic_row(r))==1,'diagnostic row differs'
+    return True
+
+
 def render_prerequisite_report(result):
     lines=['# Multiscene foundation results','',f"**Verdict: {result['verdict']}.**",'',
         'Both routes were executed under the frozen protocol. No local scientific conclusion is inferred from an ineligible posterior.',
@@ -90,6 +131,8 @@ def render_prerequisite_report(result):
         '', '| Scene | Dose name | Dose | Passing RGB pairs | Min PSNR | Min SSIM | Max P99 | Min parent mass | Min child mass | Dose pass | Invariance eligible |',
         '|---|---|---:|---:|---:|---:|---:|---:|---:|---|---|']
     lines.extend(_dose_row(r) for r in result['dose_rows'])
+    if 'diagnostic_rows' in result:
+        lines+=['',diagnostic_markdown(result['diagnostic_rows'])]
     lines+=['','## Scientific scope and manual status','',
         'G2 manual and G5 are UNCERTIFIED. The implementing assistant recorded 16 coarse TRAIN target candidates and 48 challenge rectangles before local outputs. These are not 12 verified cross-view spans per scene, independent annotations, or blind review. DEV and TEST photographs were not used for training, qualification, fitting or visual review.',
         '', 'Unreached: '+', '.join(result['unreached'])+'.', '',
@@ -116,4 +159,5 @@ def check_report(result,text):
         cells=[s.strip() for s in line.split('|')[1:-1]]
         assert cells[4:8]==[f"{r[k]:.6f}" if 'psnr' in k else f"{r[k]:.9f}" for k in ['train_psnr','train_ssim','val_psnr','val_ssim']]
         assert cells[-1]==str(r['eligible'])
+    if 'diagnostic_rows' in result:check_diagnostic_markdown(result['diagnostic_rows'],text)
     return True

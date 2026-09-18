@@ -61,3 +61,17 @@ when performed; failure logs are never replaced by later runs.
 - 14 **RED** 2026-09-18T19:31:03.694552+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene_audit` → exit 1; [14_RED.txt](tdd/14_RED.txt).
 
 - 14 **GREEN** 2026-09-18T19:31:59.460395+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene_audit` → exit 0; [14_GREEN.txt](tdd/14_GREEN.txt).
+
+- 15 **RED** 2026-09-18T19:36:49.167903+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene_audit.AuditTests.test_bootstrap_bytecode_requires_current_header_and_equal_source` → exit 1; [15_RED.txt](tdd/15_RED.txt).
+
+- 15 **GREEN** 2026-09-18T19:36:49.388165+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene_audit` → exit 0; [15_GREEN.txt](tdd/15_GREEN.txt).
+
+- 16 **RED** 2026-09-18T19:38:14.207440+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene_audit.AuditTests.test_stale_timestamp_cache_is_disclosed_and_requires_source_fallback` → exit 1; [16_RED.txt](tdd/16_RED.txt).
+
+- 16 **GREEN** 2026-09-18T19:38:14.444834+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene_audit` → exit 1; [16_GREEN.txt](tdd/16_GREEN.txt).
+
+- 16 **GREEN_FIXED** 2026-09-18T19:38:41.137946+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene_audit` → exit 0; [16_GREEN_FIXED.txt](tdd/16_GREEN_FIXED.txt).
+
+- 17 **RED** 2026-09-18T19:43:03.267760+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene_report.ReportTests.test_diagnostic_summary_keeps_every_group_without_eligibility_override` → exit 1; [17_RED.txt](tdd/17_RED.txt).
+
+- 17 **GREEN** 2026-09-18T19:43:31.923429+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene_report` → exit 0; [17_GREEN.txt](tdd/17_GREEN.txt).

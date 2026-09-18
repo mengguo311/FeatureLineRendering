@@ -77,5 +77,28 @@ class ReportTests(unittest.TestCase):
             np.savez(paths[1]/'train_001.npz',roi=~roi,rgb_0=gt,rgb_1=gt,gt_0=gt,gt_1=gt)
             with self.assertRaisesRegex(ValueError,'ROI'):pair_measurements(paths,cfg)
 
+    def test_diagnostic_summary_keeps_every_group_without_eligibility_override(self):
+        from src.multiscene_report import summarize_diagnostic,diagnostic_markdown,check_diagnostic_markdown
+        rows=[]
+        for split in ['train','val']:
+            for bg in [0,1]:
+                for i in [1,7]:
+                    rows.append(dict(split=split,background=bg,view=i,
+                        native_metrics=dict(psnr_db=20+i,ssim=.8+i/100),
+                        downsampled_metrics=dict(psnr_db=30+i,ssim=.9+i/100)))
+        groups=summarize_diagnostic('lego',1729,dict(rows=rows),[1,7])
+        self.assertEqual(len(groups),4)
+        self.assertEqual(groups[0]['native_mean_psnr'],24)
+        self.assertEqual(groups[0]['native_worst_psnr'],21)
+        self.assertEqual(groups[0]['downsampled_mean_psnr'],34)
+        self.assertTrue(all('eligible' not in g and 'passed' not in g for g in groups))
+        text=diagnostic_markdown(groups)
+        self.assertTrue(check_diagnostic_markdown(groups,text))
+        with self.assertRaises(AssertionError):check_diagnostic_markdown(groups,text.replace('34.000000','35.000000'))
+        with self.assertRaisesRegex(ValueError,'incomplete|duplicate'):
+            summarize_diagnostic('lego',1729,dict(rows=rows+rows[:1]),[1,7])
+        with self.assertRaisesRegex(ValueError,'incomplete'):
+            summarize_diagnostic('lego',1729,dict(rows=rows[:-1]),[1,7])
+
 
 if __name__=='__main__':unittest.main()

@@ -2,6 +2,7 @@
 import tempfile
 from pathlib import Path
 import unittest
+import py_compile
 
 
 class AuditTests(unittest.TestCase):
@@ -22,6 +23,28 @@ class AuditTests(unittest.TestCase):
             self.assertTrue(result['passed'])
             broken=audit_stage('1 openat(AT_FDCWD, "unknown", O_RDONLY) <unfinished ...>',[],[],str(root/'output'),[])
             self.assertFalse(broken['passed'])
+
+    def test_bootstrap_bytecode_requires_current_header_and_equal_source(self):
+        from src.multiscene_audit import bytecode_matches_source
+        with tempfile.TemporaryDirectory() as tmp:
+            source=Path(tmp)/'source.py';cache=Path(tmp)/'source.pyc'
+            source.write_text('value=42\n');py_compile.compile(str(source),cfile=str(cache),doraise=True)
+            self.assertTrue(bytecode_matches_source(cache,source))
+            source.write_text('value=43\n')
+            self.assertFalse(bytecode_matches_source(cache,source))
+            cache.write_bytes(b'WRONG'+cache.read_bytes()[5:])
+            self.assertFalse(bytecode_matches_source(cache,source))
+
+    def test_stale_timestamp_cache_is_disclosed_and_requires_source_fallback(self):
+        from src.multiscene_audit import bytecode_status
+        with tempfile.TemporaryDirectory() as tmp:
+            source=Path(tmp)/'source.py';cache=Path(tmp)/'source.pyc'
+            source.write_text('value=42\n');py_compile.compile(str(source),cfile=str(cache),doraise=True)
+            self.assertEqual(bytecode_status(cache,source)['status'],'SOURCE_EQUIVALENT')
+            source.write_text('value=42123456\n')
+            status=bytecode_status(cache,source)
+            self.assertEqual(status['status'],'STALE_TIMESTAMP_CACHE')
+            self.assertTrue(status['requires_observed_source_fallback'])
 
 
 if __name__=='__main__':unittest.main()

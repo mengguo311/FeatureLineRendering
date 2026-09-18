@@ -16,7 +16,7 @@ from src.multiscene import independent_eligibility,perturbation_specs
 from src.multiscene_training import sha256,utc
 from src.multiscene_qualification import save_grid
 from src.multiscene_report import (pair_measurements,scene_prerequisites,combined_decision,
-    render_prerequisite_report,check_report)
+    render_prerequisite_report,check_report,summarize_diagnostic)
 
 
 def load(path):
@@ -118,6 +118,15 @@ def final_report(root,cfg):
     if any(s['may_run_local_probe'] for s in scenes):
         raise RuntimeError('An eligible route exists: complete its full local probe before final reporting')
     training=[r for s in scenes for r in s['training_rows']];doses=[r for s in scenes for r in s['dose_rows']]
+    diagnostic_rows=[];diagnostic_reports={};quality_count=pair_count=diagnostic_count=0
+    for scene in cfg['scene_order']:
+        pair_count+=len(load(root/'scenes'/scene/'independent_relation.json')['rows'])
+        for seed in cfg['training']['seeds']:
+            quality_count+=len(load(root/'training'/scene/f'seed_{seed}'/'quality/measurements/quality.json')['rows'])
+            path=root/'diagnostics/resolution'/scene/f'seed_{seed}'/'measurements/diagnostic.json'
+            report=load(path);diagnostic_count+=len(report['rows'])
+            diagnostic_rows.extend(summarize_diagnostic(scene,seed,report,cfg['splits']['TRAIN']))
+            diagnostic_reports[str(path)]=sha256(path)
     decision_rows=[dict(engineering_ready=s['engineering_ready'],input_valid=s['may_run_local_probe'],
         route_a=s['route_a']['eligible'],route_b=s['route_b']['eligible'],machine_pass=False,
         seed_stable=False,controlled_stable=False,manual_certified=False,negative_evidence=False,
@@ -125,10 +134,23 @@ def final_report(root,cfg):
     totals=dict(training_expected=8,training_complete=sum(r['complete'] for r in training),
         seeds_eligible=sum(r['eligible'] for r in training),doses_expected=4*len(perturbation_specs(cfg)),
         doses_measured=len(doses),doses_rgb_qualified=sum(r['passed'] for r in doses),
-        doses_invariance_eligible=sum(r['invariance_eligible'] for r in doses))
+        doses_invariance_eligible=sum(r['invariance_eligible'] for r in doses),
+        quality_view_background_rows=quality_count,controlled_view_background_rows=sum(r['total_pairs'] for r in doses),
+        independent_pair_rows=pair_count,posthoc_diagnostic_rows=diagnostic_count,
+        local_probe_scenes=0,certified_manual_scenes=0,generated_mp4s=0)
+    macro_quality={}
+    for split in ['train','val']:
+        for bg in [0,1]:
+            groups=[g for r in training for g in r['quality']['groups'] if g['split']==split and g['background']==bg]
+            macro_quality[f'{split}_background_{bg}']=dict(
+                mean_psnr=float(np.mean([g['mean_psnr'] for g in groups])),
+                mean_ssim=float(np.mean([g['mean_ssim'] for g in groups])),
+                worst_psnr=min(g['worst_psnr'] for g in groups),worst_ssim=min(g['worst_ssim'] for g in groups),
+                scope='equal weight per scene and seed; descriptive only, cannot rescue any failed scene')
     result=dict(verdict=combined_decision(decision_rows),totals=totals,scenes=scenes,training_rows=training,dose_rows=doses,
+        diagnostic_rows=diagnostic_rows,diagnostic_reports=diagnostic_reports,macro_quality=macro_quality,
         config_sha256=sha256(root/'config.json'),prereg_sha256=sha256(root/'PREREG.md'),created_utc=utc(),
-        diagnosis='The frozen 400px parent reconstruction quality prerequisites failed. Controlled RGB equivalence is reported independently but cannot override the registered parent-quality requirement. A separate Lego TRAIN1 diagnostic found official 800px rendering downsampled to400 gives33.779945dB/SSIM0.981650; direct official400 gives24.965185dB/0.875092; the frozen K400 convention gives23.451554dB/0.778988. The official and native renderers agree within4.77e-7 when given the same canonical camera. This identifies resolution dependence and a half-pixel convention mismatch as protocol/evaluation limitations, not evidence against hypothesis B. The diagnostic is one view and cannot certify all scenes at a different resolution.',
+        diagnosis='All eight frozen 400px parent reconstruction quality prerequisites failed. Controlled RGB equivalence is reported independently but cannot override the registered parent-quality requirement. A separate Lego TRAIN1 diagnostic found official 800px rendering downsampled to400 gives33.779945dB/SSIM0.981650; direct official400 gives24.965185dB/0.875092; the frozen K400 convention gives23.451554dB/0.778988. The official and native renderers agree within4.77e-7 when given the same canonical camera. This identifies resolution dependence and a half-pixel convention mismatch as protocol/evaluation limitations, not evidence against hypothesis B. The explicitly post-hoc diagnostic then covered all eight seeds and all frozen views/backgrounds (table below); Drums remains weak even there. No diagnostic metric overrides eligibility. The preregistered validity stop was reached in every scene.',
         unreached=['scene image-evidence ray profiles','H_img/axial scene inference','F/C and LOO scene repeatability',
             'scene no-GS/PCA/shifted/random controls','surface-sample audit','DEV annotations',
             'local glyph comparisons','120-frame videos','independent visual review'],

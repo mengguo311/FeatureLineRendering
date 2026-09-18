@@ -1,0 +1,16 @@
+test_bootstrap_bytecode_requires_current_header_and_equal_source (test_multiscene_audit.AuditTests) ... ok
+test_bootstrap_exceptions_are_separate_from_forbidden_scene_reads (test_multiscene_audit.AuditTests) ... ok
+test_stale_timestamp_cache_is_disclosed_and_requires_source_fallback (test_multiscene_audit.AuditTests) ... ERROR
+
+======================================================================
+ERROR: test_stale_timestamp_cache_is_disclosed_and_requires_source_fallback (test_multiscene_audit.AuditTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_multiscene_audit.py", line 47, in test_stale_timestamp_cache_is_disclosed_and_requires_source_fallback
+    self.assertFalse(bytecode_matches_source(cache,source))
+NameError: name 'bytecode_matches_source' is not defined
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.072s
+
+FAILED (errors=1)
