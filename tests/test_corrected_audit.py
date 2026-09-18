@@ -2,6 +2,17 @@ import tempfile,unittest
 from pathlib import Path
 
 class CorrectedAuditTests(unittest.TestCase):
+    def test_archived_attempt_uses_its_own_trace_and_status(self):
+        from src.corrected_audit import stage_record_paths
+        root=Path('/run')
+        for attempt in ['attempt_00_thread_contention','attempt_01_serial']:
+            policy=root/'local/chair'/attempt/'F/allowlist.json'
+            trace,status=stage_record_paths(root,policy,'local_chair_seed_1729_primary')
+            self.assertEqual(trace,root/'setup'/attempt/'local_chair_seed_1729_primary.strace')
+            self.assertEqual(status,root/'setup'/attempt/'local_chair_seed_1729_primary_exit.json')
+        trace,status=stage_record_paths(root,root/'local/chair/F/allowlist.json','local_chair_seed_1729_primary')
+        self.assertEqual(trace,root/'setup/local_chair_seed_1729_primary.strace')
+
     def test_bootstrap_metadata_does_not_authorize_other_photographs(self):
         from src.corrected_audit import audit_policy
         with tempfile.TemporaryDirectory() as td:

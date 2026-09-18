@@ -58,3 +58,7 @@
 - 16 RED, 2026-09-18T23:29:39.360973+00:00, exit 1: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', '-v', 'test_corrected_execution.ExecutionTests.test_parallel_arms_are_array_identical_to_serial_execution']`; [16_RED.txt](tdd/16_RED.txt).
 
 - 16 GREEN, 2026-09-18T23:30:10.989016+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', '-v', 'test_corrected_execution.ExecutionTests.test_parallel_arms_are_array_identical_to_serial_execution']`; [16_GREEN.txt](tdd/16_GREEN.txt).
+
+- slice17 RED, 2026-09-18T23:35:05.778099+00:00, exit 1: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_audit.CorrectedAuditTests.test_archived_attempt_uses_its_own_trace_and_status']`; [slice17_RED.txt](tdd/slice17_RED.txt).
+
+- slice17 GREEN, 2026-09-18T23:35:21.105686+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_audit']`; [slice17_GREEN.txt](tdd/slice17_GREEN.txt).

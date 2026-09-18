@@ -4,7 +4,7 @@ import argparse,hashlib,json,sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from src.foundation import freeze_json
-from src.corrected_audit import audit_policy,verified_source_exception
+from src.corrected_audit import audit_policy,verified_source_exception,stage_record_paths
 from src.multiscene_audit import bytecode_status
 
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
@@ -20,7 +20,7 @@ for policy_path in sorted(root.rglob('allowlist.json')):
  if stage:key=f"{scene}_{policy['seed']}_{stage}"
  elif task in ['layers','primary','repeat','cross']:key=f"local_{scene}_{policy['asset']}_{task}"
  else:key=f"evaluation_{scene}_{task}"
- status=root/'setup'/f'{key}_exit.json';trace=root/'setup'/f'{key}.strace'
+ trace,status=stage_record_paths(root,policy_path,key)
  if not status.exists():continue
  if not trace.exists():raise FileNotFoundError(trace)
  extra=bootstrap+[root/f'scenes/{scene}/eligibility.json',root/f'scenes/{scene}/eligibility.json.sha256',root/f'local/{scene}/F/frozen.json',root/f'local/{scene}/F/frozen.json.sha256']
@@ -34,7 +34,7 @@ for policy_path in sorted(root.rglob('allowlist.json')):
  for record in cache_records:
   if record['path'] in result['successful_paths'] and record['requires_observed_source_fallback'] and record['source'] not in result['successful_paths']:
    result['forbidden_successes'].append(record['path']);result['passed']=False
- result.update(label=key,trace=str(trace),trace_sha256=sha(trace),policy_sha256=sha(policy_path),bytecode_records=[r for r in cache_records if r['path'] in result['successful_paths']])
+ result.update(label=key,trace=str(trace),trace_sha256=sha(trace),policy_path=str(policy_path),policy_sha256=sha(policy_path),execution_status=json.loads(status.read_text()),bytecode_records=[r for r in cache_records if r['path'] in result['successful_paths']])
  rows.append(result)
  print(key,result['passed'],'forbidden',result['forbidden_successes'],'unparsed',len(result['unparsed_open_lines']),flush=True)
  if result['unparsed_open_lines']:print(result['unparsed_open_lines'][:3])

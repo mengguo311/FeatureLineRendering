@@ -3,6 +3,15 @@ from pathlib import Path
 from .multiscene_audit import audit_stage,bytecode_status
 
 
+def stage_record_paths(root,policy_path,key):
+    root=Path(root);parts=Path(policy_path).relative_to(root).parts
+    attempts=[p for p in parts if p.startswith('attempt_')]
+    if len(attempts)>1:raise ValueError('ambiguous archived attempt')
+    directory=root/'setup'
+    if attempts:directory=directory/attempts[0]
+    return directory/(key+'.strace'),directory/(key+'_exit.json')
+
+
 def audit_policy(trace,policy,output,bootstrap=()):
     readonly=[Path(p) for p in policy['readonly']]
     files=[str(p) for p in readonly if p.is_file()]
