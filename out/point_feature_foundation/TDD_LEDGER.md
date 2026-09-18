@@ -93,3 +93,7 @@ Each slice records its exact command and raw stdout/stderr, exit code and timest
 - 16 **GREEN** 2026-09-18T11:13:23.611787+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_foundation.FoundationTests.test_16_reporting_preserves_stopping_states_and_hashes` → exit 0; [16_GREEN.txt](tdd/16_GREEN.txt).
 
 - 16 **SUITE** 2026-09-18T11:13:25.139319+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_foundation` → exit 0; [16_SUITE.txt](tdd/16_SUITE.txt).
+
+Final verification: `CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest discover -s tests -v` → exit 0, **61 tests PASS**, 5.376 s. Raw output: [full_suite_final.txt](setup/full_suite_final.txt). The targeted 16-test foundation suite also passed after the reporting slice. Slice 15 is explicitly an extra regression CHECK, with no new production behavior and no invented RED.
+
+No refactor was needed after the minimum implementations. Scientific input/parameter choices were not changed in response to results. Downstream slices were not implemented after the preregistered G0 stopping condition; this ledger does not claim their coverage.
