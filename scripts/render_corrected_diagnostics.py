@@ -44,7 +44,8 @@ def main():
     parent=asset('seed_1729');layers={i:AreaLayers.load(local/f'layers/seed_1729/view_{i:03d}.npz') for i in cfg['splits']['F']}
     rgbs={};photo_rgbs={};dev_fields={};dev_base={};dev_calibration=[]
     for i in cfg['splits']['F']:
-        with np.load(root/f'quality/{args.scene}/seed_1729/measurements/native/train_{i:03d}.npz') as archive:rgbs[i]=archive['rgb_1']
+        with np.load(root/f'quality/{args.scene}/seed_1729/measurements/native/train_{i:03d}.npz') as archive:
+            rgbs[i]=archive['rgb_1'];photo_rgbs[i]=archive['gt_1']
     for i in cfg['splits']['DEV']:
         camera=cameras[i];state,rgb,maps,cal=calibrated_view(parent,camera)
         dev_calibration.append(dict(asset='seed_1729',view=i,**cal));layers[i]=AreaLayers(state);layers[i].save(output/f'native/dev_layers_{i:03d}.npz')
@@ -128,7 +129,8 @@ def main():
                 inventory.append(dict(index=len(pairs)-1,style=style,view=i,comparison_status='INCOMPARABLE' if style=='matched_ink' and not(records['F__gs']['ink']['comparable'] and records[control]['ink']['comparable']) else 'COUNTS_INSUFFICIENT' if style=='fixed64' and not(records['F__gs']['fixed64_comparable'] and records[control]['fixed64_comparable']) else 'REVIEWABLE'))
     blind_package(output/'blinded_review',output/'review_identity_key.json',pairs)
     freeze_json(output/'blinded_review/inventory.json',inventory)
-    for i in fixed:write_png(output/f'blinded_review/reference_{i:03d}.png',photo_rgbs.get(i,rgbs[i]))
+    for i in fixed:write_png(output/f'blinded_review/reference_{i:03d}.png',photo_rgbs[i])
+    freeze_json(output/'blinded_review/references.json',[dict(view=i,source='frozen photograph; native RGBA composite on white followed by area400',source_sha256=cameras[i]['sha256']) for i in fixed])
     for p in (root/'annotations').glob(f'{args.scene}*'):shutil.copyfile(p,output/'blinded_review'/p.name)
     video_status=dict(reached=machine['video_trigger'],expected_frames=cfg['visuals']['video_frames'],generated=[])
     if machine['video_trigger']:

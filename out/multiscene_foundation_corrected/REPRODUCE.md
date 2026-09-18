@@ -43,8 +43,9 @@ export OMP_WAIT_POLICY=PASSIVE CUDA_CACHE_DISABLE=1 CUDA_MODULE_LOADING=EAGER
 
 The durable execution records in setup/*_exit.json contain exact argv, environment
 policy, timestamps and status. Each scientific child runs under a native-open
-strace and installs its stage-specific Landlock allowlist before reading approved
-photographs or assets. Use the worker scripts to preserve that confinement and
+strace and installs its stage-specific Landlock allowlist before scientific
+decoding of photographs or assets. Approved input bytes may be hashed while
+constructing that allowlist; those opens are audited too. Use the worker scripts to preserve that confinement and
 logging, rather than invoking an untraced fit as scientific evidence.
 
 1. Run setup/qualification_worker.py with queue0 and queue1. Queue0 covers Lego
@@ -102,8 +103,8 @@ After all worker processes have finished, run these stages once in order:
 
 The archive-hash stage may run earlier because its inputs are immutable; do not
 rerun it over its existing exclusive output. SOURCE_PROVENANCE.json resolves
-every stage's recorded Python source bytes to Git and preserves each exact
-version. Later administrative and scheduling changes are not misrepresented as
+every stage's recorded repository Python source bytes to Git and preserves each exact
+version, plus exact native binaries and the pinned vendor source. Later administrative and scheduling changes are not misrepresented as
 having existed in earlier processes.
 
 The final verifier checks all per-scene labels, complete local arm counts,

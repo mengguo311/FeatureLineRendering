@@ -63,3 +63,10 @@ Future C/repeat stages use eight single-thread arm slots, verified by the same
 serial-versus-eight-fork array/mode test. Existing F work was not interrupted.
 Native layer precomputation runs independently on approved states only; the main
 queue skips already completed layers and still seals C until F is frozen.
+
+Input hashes in local/visual allowlists are computed from approved bytes during
+allowlist construction, before Landlock installation. Photograph/asset decoding
+and scientific computation occur after confinement. All startup opens are included
+in the native audit, so this does not exempt a forbidden read. Qualification hashes
+the posterior after confinement. This distinction is stated explicitly rather than
+claiming that even provenance byte hashing always followed Landlock installation.

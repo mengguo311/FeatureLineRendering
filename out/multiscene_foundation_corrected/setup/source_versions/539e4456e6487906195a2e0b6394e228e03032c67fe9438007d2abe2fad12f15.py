@@ -1,0 +1,223 @@
+"""tier1/src/render.py — lean gaussian G-buffer (METHOD PATH: gaussians only, NO mesh).
+
+Splats each de-floatered gaussian as a small screen-space disc with gaussian falloff,
+then does exact front-to-back alpha compositing per pixel via a fragment sort +
+segmented exclusive cumsum of log(1-alpha) (T_i = prod(1-alpha_prev) within the pixel).
+Outputs {"depth":[H,W], "normal":[H,W,3], "alpha":[H,W]} torch tensors.
+depth is the transmittance-weighted mean sum(T a z)/sum(T a) (inf where alpha==0),
+which is the stable form of the spec's D = sum(T a z) for the visibility z-buffer.
+"""
+import numpy as np
+import torch
+from scipy.spatial import cKDTree
+
+
+def defloat_mask(mu, opacity, k=8, dist_factor=3.0, opa_min=0.1):
+    """De-floater: opacity>0.1 AND kNN-mean-dist < 3x median(kNN-mean-dist)."""
+    keep = opacity > opa_min
+    idx = np.where(keep)[0]
+    tree = cKDTree(mu[idx])
+    d, _ = tree.query(mu[idx], k=k + 1)  # first neighbor is self
+    md = d[:, 1:].mean(1)
+    ok = md < dist_factor * np.median(md)
+    mask = np.zeros(len(mu), bool)
+    mask[idx[ok]] = True
+    return mask
+
+
+def render_gbuffer(g, keep_mask, cam, device="cuda", r_min=1.0, r_max=15.0,
+                   frag_alpha_min=0.01, with_albedo=False, with_median_depth=False):
+    """g: dict from common.load_gaussians; keep_mask: bool [N] (de-floater);
+    cam: common.Camera. Returns dict of torch tensors on `device`.
+
+    with_albedo=True additionally composites the VIEW-INDEPENDENT SH degree-0 albedo
+    (common.load_gaussians["albedo"]) with the same transmittance weights, giving
+    out["albedo"][H,W,3] = sum(T a c) / sum(T a). Off by default so nothing else in the
+    pipeline pays for it.
+
+    with_median_depth=True additionally returns out["depth_median"][H,W]: the depth of the
+    FIRST front-to-back fragment at which the accumulated opacity reaches 0.5, i.e. the
+    standard 2DGS/GOF "median depth". Unlike the transmittance-weighted MEAN depth (which
+    interpolates ACROSS a depth discontinuity and therefore floats a silhouette pixel out
+    into empty space), the median depth snaps to the surface that actually owns the pixel.
+    inf where the pixel never accumulates 0.5 opacity. Off by default; when off this
+    function is bit-identical to before."""
+    H, Wd = cam.H, cam.W
+    mu = g["mu"][keep_mask]
+    opa = g["opacity"][keep_mask]
+    nrm = g["normal"][keep_mask]
+    smax = g["scale_max"][keep_mask]
+    alb = g["albedo"][keep_mask] if with_albedo else None
+
+    # orient normal toward camera: n . (cam_center - mu) > 0
+    flip = np.sum(nrm * (cam.center[None] - mu), 1) < 0
+    nrm = nrm.copy()
+    nrm[flip] *= -1
+
+    dev = torch.device(device)
+    w2c = torch.tensor(cam.w2c, dtype=torch.float32, device=dev)
+    mu_t = torch.tensor(mu, dtype=torch.float32, device=dev)
+    campts = mu_t @ w2c[:3, :3].T + w2c[:3, 3]
+    z = campts[:, 2]
+    f = float(cam.f)
+    K = torch.as_tensor(cam.K, dtype=torch.float32, device=dev)
+    homogeneous = campts @ K.T
+    uv = homogeneous[:, :2] / homogeneous[:, 2:3].clamp(min=1e-6)
+    u, v = uv[:, 0], uv[:, 1]
+
+    r = (torch.tensor(smax, dtype=torch.float32, device=dev) * f / z.clamp(min=1e-6)
+         ).clamp(r_min, r_max)
+    ok = (z > 0.01) & (u > -r) & (u < Wd - 1 + r) & (v > -r) & (v < H - 1 + r)
+    u, v, z, r = u[ok], v[ok], z[ok], r[ok]
+    a0 = torch.tensor(opa, dtype=torch.float32, device=dev)[ok]
+    n_t = torch.tensor(nrm, dtype=torch.float32, device=dev)[ok]
+    c_t = (torch.tensor(alb, dtype=torch.float32, device=dev)[ok]
+           if with_albedo else None)
+
+    # --- build fragments, bucketed by integer radius (variable disc size) ---
+    Rint = torch.ceil(r).long().clamp(1, int(r_max))
+    frag_pix, frag_z, frag_a, frag_n = [], [], [], []
+    frag_c = []
+    for R in torch.unique(Rint).tolist():
+        sel = Rint == R
+        if not sel.any():
+            continue
+        us, vs, zs, rs, as_, ns = u[sel], v[sel], z[sel], r[sel], a0[sel], n_t[sel]
+        cs = c_t[sel] if with_albedo else None
+        off = torch.arange(-R, R + 1, device=dev)
+        du, dv = torch.meshgrid(off, off, indexing="xy")
+        du, dv = du.reshape(-1), dv.reshape(-1)  # [P]
+        px = torch.round(us)[:, None] + du[None]  # [n,P]
+        py = torch.round(vs)[:, None] + dv[None]
+        d2 = (px - us[:, None]) ** 2 + (py - vs[:, None]) ** 2
+        sigma2 = (rs[:, None] / 2.0) ** 2
+        alpha = as_[:, None] * torch.exp(-0.5 * d2 / sigma2.clamp(min=0.25))
+        m = (d2 <= (rs[:, None] + 0.5) ** 2) & (alpha > frag_alpha_min) & \
+            (px >= 0) & (px < Wd) & (py >= 0) & (py < H)
+        if not m.any():
+            continue
+        gi, pi = torch.nonzero(m, as_tuple=True)
+        frag_pix.append((py[gi, pi].long() * Wd + px[gi, pi].long()))
+        frag_z.append(zs[gi])
+        frag_a.append(alpha[gi, pi])
+        frag_n.append(ns[gi])
+        if with_albedo:
+            frag_c.append(cs[gi])
+
+    depth = torch.full((H * Wd,), float("inf"), device=dev)
+    normal = torch.zeros((H * Wd, 3), device=dev)
+    albedo = torch.zeros((H * Wd, 3), device=dev)
+    alpha_buf = torch.zeros((H * Wd,), device=dev)
+    if not frag_pix:
+        out = {"depth": depth.view(H, Wd), "normal": normal.view(H, Wd, 3),
+               "alpha": alpha_buf.view(H, Wd)}
+        if with_albedo:
+            out["albedo"] = albedo.view(H, Wd, 3)
+        if with_median_depth:
+            out["depth_median"] = depth.view(H, Wd).clone()
+        return out
+
+    pix = torch.cat(frag_pix)
+    fz = torch.cat(frag_z)
+    fa = torch.cat(frag_a).clamp(max=0.999)
+    fn = torch.cat(frag_n)
+    fc = torch.cat(frag_c) if with_albedo else None
+
+    # lexsort: stable sort by z, then stable sort by pixel -> per-pixel front-to-back
+    o1 = torch.argsort(fz, stable=True)
+    pix, fz, fa, fn = pix[o1], fz[o1], fa[o1], fn[o1]
+    if with_albedo:
+        fc = fc[o1]
+    o2 = torch.argsort(pix, stable=True)
+    pix, fz, fa, fn = pix[o2], fz[o2], fa[o2], fn[o2]
+    if with_albedo:
+        fc = fc[o2]
+
+    # segmented exclusive cumsum of log(1-a): T_i within each pixel run
+    l = torch.log1p(-fa)
+    c = torch.cumsum(l, 0)
+    excl = c - l
+    seg_start = torch.ones_like(pix, dtype=torch.bool)
+    seg_start[1:] = pix[1:] != pix[:-1]
+    seg_id = torch.cumsum(seg_start.long(), 0) - 1
+    base = excl[seg_start][seg_id]
+    T = torch.exp(excl - base)
+    w = T * fa
+
+    wsum = torch.zeros((H * Wd,), device=dev).index_add_(0, pix, w)
+    wz = torch.zeros((H * Wd,), device=dev).index_add_(0, pix, w * fz)
+    normal.index_add_(0, pix, w[:, None] * fn)
+    if with_albedo:
+        albedo.index_add_(0, pix, w[:, None] * fc)
+
+    hit = wsum > 1e-6
+    depth[hit] = wz[hit] / wsum[hit]
+    nn = torch.linalg.norm(normal, dim=1, keepdim=True)
+    normal = torch.where(nn > 1e-6, normal / nn.clamp(min=1e-6), normal)
+
+    if with_median_depth:
+        # T*(1-a) == the transmittance AFTER this fragment == 1 - accumulated opacity.
+        # It is monotonically decreasing along the (already front-to-back) run, so the
+        # FIRST fragment with T*(1-a) <= 0.5 is also the one with minimum z among those
+        # satisfying it -> an amin scatter picks it exactly.
+        T_after = T * (1.0 - fa)
+        med = torch.full((H * Wd,), float("inf"), device=dev)
+        sel_m = T_after <= 0.5
+        if sel_m.any():
+            med.scatter_reduce_(0, pix[sel_m], fz[sel_m], reduce="amin",
+                                include_self=True)
+        # pixels that never reach 0.5 opacity but do have some coverage keep the mean depth
+        fb = (~torch.isfinite(med)) & hit
+        med[fb] = depth[fb]
+
+    out = {"depth": depth.view(H, Wd), "normal": normal.view(H, Wd, 3),
+           "alpha": wsum.clamp(max=1.0).view(H, Wd)}
+    if with_median_depth:
+        out["depth_median"] = med.view(H, Wd)
+    if with_albedo:
+        alb_n = torch.zeros_like(albedo)
+        alb_n[hit] = albedo[hit] / wsum[hit][:, None]
+        out["albedo"] = alb_n.view(H, Wd, 3)
+    return out
+
+
+class OfficialRGBRenderer:
+    """Frozen vanilla RGB through GRAPHDECO's renderer (not the disc G-buffer).
+
+    The external checkout is not modified here. Its local ABI patch only unpacks
+    the depth/alpha outputs supplied by the installed rasterizer extension.
+    No Scene is instantiated and no dataset, mesh, or extra normals are loaded.
+    """
+    def __init__(self, ply_path, repo_path):
+        import sys
+        from types import SimpleNamespace
+        sys.path.insert(0, str(repo_path))
+        from scene.gaussian_model import GaussianModel
+        from gaussian_renderer import render as official_render
+        self.model = GaussianModel(3)
+        self.model.load_ply(str(ply_path))
+        self.fn = official_render
+        self.pipe = SimpleNamespace(convert_SHs_python=False,
+                                    compute_cov3D_python=False, debug=False)
+        self.background = torch.ones(3, device="cuda")
+
+    @torch.no_grad()
+    def __call__(self, cam):
+        from types import SimpleNamespace
+        if not np.allclose(cam.K[2], [0, 0, 1]) or abs(cam.K[0, 1]) > 1e-9:
+            raise ValueError("Official rasterizer adapter supports pinhole K without skew")
+        fx, fy, cx, cy = cam.K[0, 0], cam.K[1, 1], cam.K[0, 2], cam.K[1, 2]
+        near, far = 0.01, 100.0
+        P = np.zeros((4, 4), dtype=np.float32)
+        P[0, 0], P[1, 1] = 2 * fx / cam.W, 2 * fy / cam.H
+        # Rasterizer ndc2Pix = ((ndc + 1) * size - 1) / 2.
+        P[0, 2], P[1, 2] = (2 * cx + 1) / cam.W - 1, (2 * cy + 1) / cam.H - 1
+        P[2, 2], P[2, 3], P[3, 2] = far / (far-near), -far*near/(far-near), 1
+        view = torch.as_tensor(cam.w2c.T.copy(), dtype=torch.float32, device="cuda")
+        proj = torch.as_tensor(P.T.copy(), device="cuda")
+        camera = SimpleNamespace(image_height=cam.H, image_width=cam.W,
+            FoVx=2*np.arctan(cam.W/(2*fx)), FoVy=2*np.arctan(cam.H/(2*fy)),
+            world_view_transform=view, full_proj_transform=view @ proj,
+            camera_center=torch.as_tensor(cam.center, dtype=torch.float32, device="cuda"))
+        rgb = self.fn(camera, self.model, self.pipe, self.background)["render"]
+        return rgb.clamp(0, 1).permute(1, 2, 0).cpu().numpy()
