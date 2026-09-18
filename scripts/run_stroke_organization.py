@@ -284,7 +284,7 @@ def solve(m,arm):
     dump(folder/f'{arm}.json',summary);print(arm,'DONE',{k:v for k,v in summary.items() if k!='search'},flush=True)
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('stage',choices=['audit','graph','smoke','solve'])
+    parser=argparse.ArgumentParser();parser.add_argument('stage',choices=['audit','graph','smoke','solve','render'])
     parser.add_argument('--arm',choices=ARMS)
     args=parser.parse_args();check_branch();OUT.mkdir(exist_ok=True);access=guard()
     if args.stage=='audit':audit()
@@ -295,6 +295,9 @@ def main():
         elif args.stage=='solve':
             if not args.arm:raise RuntimeError('--arm required')
             solve(m,args.arm)
+        elif args.stage=='render':
+            from stroke_organization_outputs import render_all
+            render_all(m)
     dump(OUT/f'access_{args.stage}{"_"+args.arm if args.arm else ""}.json',access)
 
 if __name__=='__main__':main()
