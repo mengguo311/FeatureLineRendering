@@ -207,11 +207,94 @@ def graph_stage(m):
         manifest_sha256=sha(OUT/'MANIFEST.json'),commit=git('rev-parse','HEAD'),seconds=time.perf_counter()-start))
     print(counts,flush=True)
 
+def load_graph():
+    meta=json.loads((OUT/'graph/audit.json').read_text())
+    if sha(OUT/'graph/graph.npz')!=meta['graph_sha256']:raise RuntimeError('graph changed')
+    if sha(OUT/'MANIFEST.json')!=meta['manifest_sha256']:raise RuntimeError('configuration changed')
+    return dict(np.load(OUT/'graph/graph.npz'))
+
+def smoke(m):
+    from src.path_cover import PathProblem,proposals,pack
+    from src import render
+    start=time.perf_counter();g=load_graph();small={**g,'full':g['full'].copy()}
+    small['full'][2048:]=False;problem=PathProblem(small,m['objective'],'C',m['seed'])
+    search={**m['search'],'seed_cap':64,'max_nodes':12};proposal=proposals(problem,search)
+    rows,audit=pack(proposal,len(g['p']));repeat,_=pack(proposals(problem,search),len(g['p']))
+    assert [x[0] for x in rows]==[x[0] for x in repeat]
+    cams,_=common.load_cameras('lego');cam=scaled(cams[TRAIN[0]],128)
+    official,info=stock_rgb(dict(gs=m['inputs']['gs'],renderer=m['renderer']))
+    rgb=(official(cam)[:,:,::-1]*255).astype('uint8');gs=common.load_gaussians('lego')
+    keep=render.defloat_mask(gs['mu'],gs['opacity']);depth=render.render_gbuffer(gs,keep,cam)['depth']
+    paths=[g['p'][np.array(row[0])] for row in rows]
+    pp=draw.project_paths(draw.densify(paths),cam,depth) if paths else []
+    im=draw.draw_paths(pp,np.ones(len(pp),bool),(128,128))
+    cv2.imwrite(str(OUT/'smoke.png'),np.hstack([label(rgb,'Official TRAIN1'),label(im,'bounded smoke')]))
+    dump(OUT/'smoke.json',dict(commit=git('rev-parse','HEAD'),manifest_sha256=sha(OUT/'MANIFEST.json'),rows=len(rows),
+        audit=audit,deterministic=True,official=info,seconds=time.perf_counter()-start,
+        interpretation='bounded engineering smoke only; not a visual trial or parameter search'))
+    print('smoke PASS',len(rows),'paths',round(time.perf_counter()-start,2),'seconds',flush=True)
+
+def solve(m,arm):
+    from src.path_cover import PathProblem,proposals,pack,local_greedy,junction_audit
+    from src.stroke_simplify import simplify
+    start=time.perf_counter();g=load_graph();folder=OUT/'paths';folder.mkdir(exist_ok=True)
+    if (folder/f'{arm}.json').exists():raise FileExistsError(arm)
+    if arm=='A':
+        d=load_nodes();rows=[(tuple(c),(),0.,{}) for c in d['base_chains']];audit={};problem=None;junctions=[]
+    else:
+        problem=PathProblem(g,m['objective'],arm,m['seed'])
+        if arm=='C-no-global':rows,audit=local_greedy(problem)
+        else:
+            def progress(i,n,count):print(arm,'seeds',i,'/',n,'proposals',count,flush=True)
+            proposed=proposals(problem,m['search'],progress)
+            rows,audit=pack(proposed,len(g['p']),m['search']['local_swap_rounds'],m['search']['max_swap_conflicts'])
+        junctions=junction_audit(problem,rows)
+    sources=json.loads((OUT/'graph/nodes.json').read_text());paths=[];path_records=[];used=set()
+    for k,(nodes,edges,score,terms) in enumerate(rows):
+        nodes=np.asarray(nodes,int);p=g['p'][nodes]
+        simple,si=simplify(p,m['simplify']['epsilon_units']*float(g['unit']),m['simplify']['trust_units']*float(g['unit']),m['simplify']['corner_deg'])
+        assert np.array_equal(simple,p[si])
+        paths.append(simple);used.update(nodes.tolist());tags=[tag for i in nodes for tag in sources['sources'][i]]
+        views=sorted(set(v for i in nodes for v in sources['views'][i]));protected=[]
+        if problem is not None:
+            terms={**terms,'witness_train_indices':[TRAIN[j] for j in terms['witness_views']]}
+            for j in range(1,len(nodes)-1):
+                if problem.turn(nodes[j-1],nodes[j],nodes[j+1],edges[j-1],edges[j])[2]:protected.append(int(nodes[j]))
+        path_records.append(dict(id=f'{arm}:{k:05d}',nodes=nodes.tolist(),original_node_ids=g['original_ids'][nodes].tolist(),
+            retained_vertices=si.tolist(),length_world=float(np.linalg.norm(np.diff(simple,axis=0),axis=1).sum()),
+            sources={tag:tags.count(tag) for tag in sorted(set(tags))},support_views_union=views,
+            protected_corner_nodes=protected,edge_ids=list(edges),
+            link_values=[] if problem is None else np.round(problem.edge_value[list(edges)],6).tolist(),
+            terms=terms,baseline_terms='historical greedy pair rule; complete-path objective not applied' if arm=='A' else None))
+    np.savez_compressed(folder/f'{arm}.npz',vertices=np.concatenate(paths) if paths else np.empty((0,3)),offsets=np.r_[0,np.cumsum([len(p) for p in paths])])
+    with open(folder/f'{arm}_paths.jsonl','x') as f:
+        for record in path_records:f.write(json.dumps(record,separators=(',',':'),allow_nan=False)+'\n')
+    with open(folder/f'{arm}_junctions.jsonl','x') as f:
+        for record in junctions:f.write(json.dumps(record,separators=(',',':'))+'\n')
+    lengths=np.array([r['length_world'] for r in path_records]);source_use={}
+    for i in used:
+        for source in sources['sources'][i]:source_use[source]=source_use.get(source,0)+1
+    summary=dict(arm=arm,alias='C-no-image' if arm=='B' else None,nodes=len(g['p']),edges=int(problem.mask.sum()) if problem else None,
+        selected_edges=sum(len(p)-1 for p in paths),used_nodes=len(used),paths=len(paths),
+        world_length_quantiles=np.quantile(lengths,[0,.1,.5,.9,1]).tolist() if len(lengths) else [],
+        total_world_length=float(lengths.sum()),source_used_nodes=source_use,protected_corners=sum(len(x['protected_corner_nodes']) for x in path_records),
+        unresolved_graph_junctions=len(junctions),search=audit,seconds=time.perf_counter()-start,
+        commit=git('rev-parse','HEAD'),manifest_sha256=sha(OUT/'MANIFEST.json'),graph_sha256=sha(OUT/'graph/graph.npz'),
+        input_geometry_unchanged=True,path_sha256=sha(folder/f'{arm}.npz'),path_audit_sha256=sha(folder/f'{arm}_paths.jsonl'))
+    dump(folder/f'{arm}.json',summary);print(arm,'DONE',{k:v for k,v in summary.items() if k!='search'},flush=True)
+
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('stage',choices=['audit','graph'])
+    parser=argparse.ArgumentParser();parser.add_argument('stage',choices=['audit','graph','smoke','solve'])
+    parser.add_argument('--arm',choices=ARMS)
     args=parser.parse_args();check_branch();OUT.mkdir(exist_ok=True);access=guard()
     if args.stage=='audit':audit()
-    else:graph_stage(json.loads((OUT/'MANIFEST.json').read_text()))
-    dump(OUT/f'access_{args.stage}.json',access)
+    else:
+        m=json.loads((OUT/'MANIFEST.json').read_text())
+        if args.stage=='graph':graph_stage(m)
+        elif args.stage=='smoke':smoke(m)
+        elif args.stage=='solve':
+            if not args.arm:raise RuntimeError('--arm required')
+            solve(m,args.arm)
+    dump(OUT/f'access_{args.stage}{"_"+args.arm if args.arm else ""}.json',access)
 
 if __name__=='__main__':main()
