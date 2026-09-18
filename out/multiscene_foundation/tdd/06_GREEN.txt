@@ -1,0 +1,16 @@
+test_qualification_runner_keeps_all_doses_and_stock_calibration (test_multiscene.MultisceneTests) ... ERROR
+
+======================================================================
+ERROR: test_qualification_runner_keeps_all_doses_and_stock_calibration (test_multiscene.MultisceneTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_multiscene.py", line 78, in test_qualification_runner_keeps_all_doses_and_stock_calibration
+    report=qualify_parent(asset_fixture(),[camera],cfg,Path(tmp),size=64)
+  File "/home/u00134/3dgs_line/tier1/src/multiscene_qualification.py", line 65, in qualify_parent
+    save_sheet(output/f"{spec['name']}.png",small_panels,columns=3)
+TypeError: save_sheet() got an unexpected keyword argument 'columns'
+
+----------------------------------------------------------------------
+Ran 1 test in 1.543s
+
+FAILED (errors=1)

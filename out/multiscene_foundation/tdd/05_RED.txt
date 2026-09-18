@@ -1,0 +1,32 @@
+test_controlled_qualification_rejects_missing_views_and_trivial_children (test_multiscene.MultisceneTests) ... ERROR
+test_independent_eligibility_is_separate_and_requires_every_view (test_multiscene.MultisceneTests) ... ERROR
+test_renderer_aware_redistribution_and_moment_ladder (test_multiscene.MultisceneTests) ... ERROR
+
+======================================================================
+ERROR: test_controlled_qualification_rejects_missing_views_and_trivial_children (test_multiscene.MultisceneTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_multiscene.py", line 62, in test_controlled_qualification_rejects_missing_views_and_trivial_children
+    from src.multiscene import controlled_eligibility
+ModuleNotFoundError: No module named 'src.multiscene'
+
+======================================================================
+ERROR: test_independent_eligibility_is_separate_and_requires_every_view (test_multiscene.MultisceneTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_multiscene.py", line 46, in test_independent_eligibility_is_separate_and_requires_every_view
+    from src.multiscene import seed_eligibility,independent_eligibility
+ModuleNotFoundError: No module named 'src.multiscene'
+
+======================================================================
+ERROR: test_renderer_aware_redistribution_and_moment_ladder (test_multiscene.MultisceneTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_multiscene.py", line 20, in test_renderer_aware_redistribution_and_moment_ladder
+    from src.multiscene import perturbation_specs,controlled_asset
+ModuleNotFoundError: No module named 'src.multiscene'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+FAILED (errors=3)
