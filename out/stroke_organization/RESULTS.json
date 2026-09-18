@@ -1,0 +1,1047 @@
+{
+  "decision": "NO-GO",
+  "method": "Witnessed-View Prize-Collecting Path Cover (WV-PC)",
+  "scene": "lego",
+  "scope": "bounded beam proposals plus whole-path greedy packing; not all global path-cover methods",
+  "base_commit": "3a10d3908173e35d359d41eec1469f5adaac4e56",
+  "freeze_commit": "76680c7d9d948d93a08e75175ba8423a9bab95df",
+  "input_sha256": {
+    "pulled_D": "47ca8925cb86a98886f97aa3c88ef58f5c821cfdcfd656a3fb0a0ec19ca1d489",
+    "clusters": "16047da301e117009cce3e22092e54853df56f49c7f50103984a930eff8e1eee",
+    "gs": "aa3630f69affbf3c23cfe841734e9aebb42597aede28fa4a0e5e72e3a31e2d23",
+    "cameras": "82d46cfbd405d7da8562b6fa75b6fb0631a3f941adf66f0c023acb8bf9ea273a"
+  },
+  "candidate_generation_provenance": {
+    "commit": "993d94f44580d438f34c8d5327ef4a4e7b18606f",
+    "manifest_sha256": "43bdee970291e302efc453d97b6df0e01b5d737f3d4f38d0be2d7c2e9a092aef",
+    "sources": {
+      "scripts/run_raster_candidates.py": "2cbe45d545a5c6ec18c6e268587200819906544f97962f4ccd63c58992a8f994",
+      "src/raster_state.py": "cb91863afffc22d4f70180a170e633b007e1e0e8bd54369750fc5cd598875c2e",
+      "src/render.py": "539e4456e6487906195a2e0b6394e228e03032c67fe9438007d2abe2fad12f15",
+      "src/dt_pull.py": "7a1788900a44cd1abd0e6c4eec736c5abdfa3d5db41ab25da11c37cc8bfe37d2",
+      "src/strokes.py": "456ec09e1664b1531309dba2b65df22735d6b353e0579ef876d4b7abdf2ec3d6",
+      "scripts/explore/syn/m1a_seeds.py": "75f9aaa74a80ef4c1fe1fd49366d175f1856665d91d6c10a913ee2d211a0e8fa",
+      "src/id_anchor.py": "73c5b065c8d574e7bedeeaa32b90aa50c8c666e984162ea13bb7dd56446f4ffd",
+      "src/candidate_fusion.py": "583481f06ff5ee559b4ba4696ac909bd5b5ab5ec80d85db7ae9bb389bc135a9e"
+    }
+  },
+  "manifest_sha256": "8dfc41d55d45a1006b01d5bb65a7441921f73a51345733ca84e6af20b31a4476",
+  "graph": {
+    "nodes": 15869,
+    "potential_links": 116422,
+    "geometry_allowed": 34043,
+    "physical_allowed": 34043,
+    "full_allowed": 32784,
+    "geometry_components": 2120,
+    "full_components": 2377,
+    "geometry_component_size_quantiles": [
+      1.0,
+      1.0,
+      3.0,
+      3506.0
+    ],
+    "full_component_size_quantiles": [
+      1.0,
+      1.0,
+      3.0,
+      3171.0
+    ],
+    "geometry_reject_reasons": {
+      "allowed": 34043,
+      "distance": 17062,
+      "endpoint_gap": 6732,
+      "parallel_or_sideways": 34528,
+      "unsupported_chord": 24057
+    },
+    "cross_depth_rejected": 0,
+    "image_rejected": 1259,
+    "regions": [
+      {
+        "id": "R1",
+        "view": 53,
+        "box": [
+          66,
+          99,
+          158,
+          181
+        ],
+        "description": "cab frame and corners",
+        "visible_nodes": 1799,
+        "baseline_paths_touching": 286,
+        "full_links_inside": 3814
+      },
+      {
+        "id": "R2",
+        "view": 53,
+        "box": [
+          171,
+          65,
+          277,
+          190
+        ],
+        "description": "lifting arm outer rails and turns",
+        "visible_nodes": 1429,
+        "baseline_paths_touching": 252,
+        "full_links_inside": 2667
+      },
+      {
+        "id": "R3",
+        "view": 53,
+        "box": [
+          13,
+          245,
+          368,
+          288
+        ],
+        "description": "front baseplate border",
+        "visible_nodes": 1472,
+        "baseline_paths_touching": 221,
+        "full_links_inside": 3778
+      }
+    ],
+    "input_hashes": {
+      "1": {
+        "state": "670cb2338a49b2f3172b2ba393e1933bad1ba43d4d15858031178a49546ffc66",
+        "rgb": "e019daa781bd4cf618192b09476d136061a323a1bf32f3045efee3328333eb6d"
+      },
+      "7": {
+        "state": "14e93b32feb85cee685902211842d0279088d6302779eb5ebc119884d7a47865",
+        "rgb": "097969f1f334a21c85d664fbbfee675e813b683b30874e07a50dfc8966c55421"
+      },
+      "14": {
+        "state": "cbed0efde6a4ed08e3e902fbeb9a8df1e1d1f7bf738bd170e57e5e65106aac67",
+        "rgb": "2c72fbc81278eaca42b8e3f2417ae481fa366ce29b28b5c613b8a46900955ef7"
+      },
+      "21": {
+        "state": "93cbd1a556deb0a32d34bb4999ee2890538461a2bdc9e8929b0d718f638f82cd",
+        "rgb": "faa82f1b0e2692a5ae2bd27ad30942bb0804cc5fa4d7b8f8a762e9ebb58ee3ff"
+      },
+      "27": {
+        "state": "6d2430d02b851ce07cbca647f3cc33270beb92dd843bb381a3963785bec9bb57",
+        "rgb": "652354fe31e909268b0f6ba9d5823e5f4f2bfd859f484d08f1cacd5a6d5718c9"
+      },
+      "33": {
+        "state": "ac8005b34be24078d3308db779c39800b221b8d3bb3225291c1321075589d8d7",
+        "rgb": "801ab9df4b3cac75806222560390527a580d8bd58a6ab7de09bd671e2f2595b1"
+      },
+      "41": {
+        "state": "e901acbc9a5781bd57c77206a1d1ce6e234eceace3641248cf6da14e32b4bd86",
+        "rgb": "5636a575bdba988af8466acf29ba6fb8a85ac04ec1f54bab5ee7cef6e3907955"
+      },
+      "47": {
+        "state": "5ab0c765614f971636357a24860693d65bb28ead8829f7b341aa558ce23be453",
+        "rgb": "b6b55af7ed813b763c987d4340ca23a88f6e323085ca2d765c2bdd22c8ef3c7a"
+      },
+      "53": {
+        "state": "8d8e749395c95ef00415fdf9334dd95fd2a938829753df5ce34d017ab20941b6",
+        "rgb": "12388f309b0d70e2ad0014a42fd15542ce27e622eb4eb86baee1f135e2052c0c"
+      },
+      "59": {
+        "state": "bd307bcb3f799a7b9dd9314f61634ab2f3ebf005279bed9beec1385e6a607001",
+        "rgb": "68792fe17384f5ceaf293321e156f6da27df73d9b86a28d20f7455d496f35931"
+      },
+      "67": {
+        "state": "74c116d52431cc62a8b3263a5a88d730c6fd226187f463439b1ebace985b8325",
+        "rgb": "153e9aa34b566bf446c41f94ce49e26baf1c795cdd1be9d0482981dc94d38bd7"
+      },
+      "73": {
+        "state": "f646b6cd91b5e1f78393baf79f6cbbfc7c358751ae1a23fb76832e56baa70d1f",
+        "rgb": "8a8ac64d69f9446a199729091ddd3c49123ca859c30265462c0590d569bf1646"
+      },
+      "79": {
+        "state": "1a957da803a5ceb8f064057abc9cac2af1c6ade410fb71c8fec616402f7d1a23",
+        "rgb": "bfaf1be0b1b6a2c4a31eb82c5d0ccd387f9b1865254eb570aa75e22b5ccee6cb"
+      },
+      "86": {
+        "state": "2f962a61404fcf610ea2dcdb724716c6380420b0d577ce0c2ca472ae8ca5182e",
+        "rgb": "15d0455393c73b196adb5d2dff921008c6ddd5ad67d188f4a36e141c02d92bab"
+      },
+      "93": {
+        "state": "bbf4d1b21969f8e2c1556b09ba38d8c790f1fc358a47943cc2e5055bb8acfb9a",
+        "rgb": "4e304cbf3394024772d7ef35ce3b90b5570b0c63a7b35dac42674702f3b929e9"
+      },
+      "99": {
+        "state": "df54d3eebc7f262adc0041009690e1a6fe16d948ceb75949afacc1be16f68563",
+        "rgb": "d5d7e6b6deb39610881d67a6d91767757d92920f5bdfd319e9bec887e59a08d4"
+      }
+    },
+    "graph_sha256": "f44a2ea81ea958601e6c9bb62ac0f4702d4d6f05e04b0b8f93ae74e471c6b0b9",
+    "manifest_sha256": "8dfc41d55d45a1006b01d5bb65a7441921f73a51345733ca84e6af20b31a4476",
+    "commit": "3a10d3908173e35d359d41eec1469f5adaac4e56",
+    "seconds": 10.324365934997331
+  },
+  "arms": {
+    "A": {
+      "arm": "A",
+      "alias": null,
+      "nodes": 15869,
+      "edges": null,
+      "selected_edges": 8334,
+      "used_nodes": 10470,
+      "paths": 2136,
+      "world_length_quantiles": [
+        0.008042577946574862,
+        0.026035667044052396,
+        0.050066671435272894,
+        0.12127391613869881,
+        0.5597164535496416
+      ],
+      "total_world_length": 138.93900644120856,
+      "source_used_nodes": {
+        "M1a": 9748,
+        "rgb": 265,
+        "entropy": 320,
+        "margin": 229,
+        "dispersion": 396,
+        "topk": 412,
+        "variance": 246
+      },
+      "protected_corners": 0,
+      "unresolved_graph_junctions": 0,
+      "search": {},
+      "seconds": 1.8230814100243151,
+      "commit": "86148c5e54ecf2be557f5df38d08579ba334a307",
+      "manifest_sha256": "8dfc41d55d45a1006b01d5bb65a7441921f73a51345733ca84e6af20b31a4476",
+      "graph_sha256": "f44a2ea81ea958601e6c9bb62ac0f4702d4d6f05e04b0b8f93ae74e471c6b0b9",
+      "input_geometry_unchanged": true,
+      "path_sha256": "f7bdf92f142c8f94316a7d0d552265d2f01b03ae3552aaf641bc9d9471b3d534",
+      "path_audit_sha256": "3271d7abebb00ff4aabc33340637b7d2293a08739b2520835cdb195854e93ab9",
+      "new_D_nodes_in_paths": 722,
+      "display": {
+        "native": {
+          "visible_length_px": 7907.10686879382,
+          "ink_area_px": 7432.054803921569,
+          "overlap_rate": 0.2600081593718364,
+          "fragments": 1306.5416666666667,
+          "short_fragment_fraction_lt12px": 0.9037691586662283,
+          "median_visible_fragment_px": 4.613057130643371,
+          "median_visible_path_px": 4.838787328236844,
+          "visible_paths": 1247.1166666666666
+        },
+        "length_matched": {
+          "visible_length_px": 4745.327402524458,
+          "ink_area_px": 4980.973758169935,
+          "overlap_rate": 0.16771782860795276,
+          "fragments": 797.1833333333333,
+          "short_fragment_fraction_lt12px": 0.9070759345101055,
+          "median_visible_fragment_px": 4.511085021777632,
+          "median_visible_path_px": 4.735974489630585,
+          "visible_paths": 760.3
+        },
+        "area_matched": {
+          "visible_length_px": 4177.840205577074,
+          "ink_area_px": 4456.679084967321,
+          "overlap_rate": 0.15370339462438948,
+          "fragments": 700.375,
+          "short_fragment_fraction_lt12px": 0.907638350641638,
+          "median_visible_fragment_px": 4.55824175642635,
+          "median_visible_path_px": 4.769869742838846,
+          "visible_paths": 668.5416666666666
+        }
+      },
+      "matching": {
+        "length_matched": {
+          "under_capacity": false,
+          "evaluations": 13,
+          "selected_paths": 1318,
+          "value": 4745.327402524457,
+          "target": 4744.264121276292,
+          "relative_error": 0.00022411931987448573,
+          "matched": true
+        },
+        "area_matched": {
+          "under_capacity": false,
+          "evaluations": 12,
+          "selected_paths": 1158,
+          "value": 4456.679084967321,
+          "target": 4459.2328823529415,
+          "relative_error": 0.0005726988145712757,
+          "matched": true
+        }
+      }
+    },
+    "B": {
+      "arm": "B",
+      "alias": "C-no-image",
+      "nodes": 15869,
+      "edges": 34043,
+      "selected_edges": 5508,
+      "used_nodes": 6490,
+      "paths": 982,
+      "world_length_quantiles": [
+        0.013035481514755289,
+        0.03071572928674554,
+        0.05620986636807759,
+        0.23619711576867813,
+        0.8721517040458401
+      ],
+      "total_world_length": 106.37540684102223,
+      "source_used_nodes": {
+        "M1a": 6118,
+        "topk": 159,
+        "rgb": 148,
+        "entropy": 167,
+        "margin": 123,
+        "variance": 134,
+        "dispersion": 204
+      },
+      "protected_corners": 0,
+      "unresolved_graph_junctions": 11031,
+      "search": {
+        "proposals": 30564,
+        "initial_objective": 5231.327760808893,
+        "final_objective": 5231.327760808893,
+        "swaps": 0,
+        "swap_gains": []
+      },
+      "seconds": 22.425835852045566,
+      "commit": "86148c5e54ecf2be557f5df38d08579ba334a307",
+      "manifest_sha256": "8dfc41d55d45a1006b01d5bb65a7441921f73a51345733ca84e6af20b31a4476",
+      "graph_sha256": "f44a2ea81ea958601e6c9bb62ac0f4702d4d6f05e04b0b8f93ae74e471c6b0b9",
+      "input_geometry_unchanged": true,
+      "path_sha256": "6105175669d39032a2fe36b45b39e8dc7b0f88885419e218b702b9a3f5f13926",
+      "path_audit_sha256": "881467586e7b929e5291a1e7b6f6fb206042e01e771ff2788759eb1a83861ae4",
+      "new_D_nodes_in_paths": 372,
+      "display": {
+        "native": {
+          "visible_length_px": 5800.893282301208,
+          "ink_area_px": 5832.614869281045,
+          "overlap_rate": 0.17247390275573463,
+          "fragments": 672.0666666666667,
+          "short_fragment_fraction_lt12px": 0.8255167582631192,
+          "median_visible_fragment_px": 5.067738818960207,
+          "median_visible_path_px": 5.436854615782949,
+          "visible_paths": 581.2166666666667
+        },
+        "length_matched": {
+          "visible_length_px": 4743.360613552764,
+          "ink_area_px": 4917.708594771242,
+          "overlap_rate": 0.14010299761146291,
+          "fragments": 534.825,
+          "short_fragment_fraction_lt12px": 0.8183102095546455,
+          "median_visible_fragment_px": 5.134474694918882,
+          "median_visible_path_px": 5.522893122542617,
+          "visible_paths": 459.7916666666667
+        },
+        "area_matched": {
+          "visible_length_px": 4254.262236124032,
+          "ink_area_px": 4459.335392156862,
+          "overlap_rate": 0.12736268713214052,
+          "fragments": 468.35,
+          "short_fragment_fraction_lt12px": 0.8127203628467428,
+          "median_visible_fragment_px": 5.180872949390438,
+          "median_visible_path_px": 5.588712651930409,
+          "visible_paths": 400.68333333333334
+        }
+      },
+      "matching": {
+        "length_matched": {
+          "under_capacity": false,
+          "evaluations": 11,
+          "selected_paths": 777,
+          "value": 4743.360613552763,
+          "target": 4744.264121276292,
+          "relative_error": 0.0001904421213558894,
+          "matched": true
+        },
+        "area_matched": {
+          "under_capacity": false,
+          "evaluations": 10,
+          "selected_paths": 675,
+          "value": 4459.335392156862,
+          "target": 4459.2328823529415,
+          "relative_error": 2.298821492963804e-05,
+          "matched": true
+        }
+      }
+    },
+    "C": {
+      "arm": "C",
+      "alias": null,
+      "nodes": 15869,
+      "edges": 32784,
+      "selected_edges": 4855,
+      "used_nodes": 5619,
+      "paths": 764,
+      "world_length_quantiles": [
+        0.023099457077409836,
+        0.035723399096797524,
+        0.060286576910075156,
+        0.26234379578263534,
+        0.8273533143602428
+      ],
+      "total_world_length": 90.74147447625451,
+      "source_used_nodes": {
+        "M1a": 5289,
+        "topk": 139,
+        "rgb": 143,
+        "variance": 127,
+        "dispersion": 173,
+        "entropy": 146,
+        "margin": 103
+      },
+      "protected_corners": 1643,
+      "unresolved_graph_junctions": 10657,
+      "search": {
+        "proposals": 28032,
+        "initial_objective": 3120.694570158072,
+        "final_objective": 3120.694570158072,
+        "swaps": 0,
+        "swap_gains": []
+      },
+      "seconds": 23.529407149995677,
+      "commit": "86148c5e54ecf2be557f5df38d08579ba334a307",
+      "manifest_sha256": "8dfc41d55d45a1006b01d5bb65a7441921f73a51345733ca84e6af20b31a4476",
+      "graph_sha256": "f44a2ea81ea958601e6c9bb62ac0f4702d4d6f05e04b0b8f93ae74e471c6b0b9",
+      "input_geometry_unchanged": true,
+      "path_sha256": "7a194bdd42519ac341e69fc3874882ef428b5c7f3a9bb76522af2b29f45475ae",
+      "path_audit_sha256": "49a7a7bb29f28f997796bcb89be76c2abcc0efed60d74bf10371a9b9a4183d95",
+      "new_D_nodes_in_paths": 330,
+      "display": {
+        "native": {
+          "visible_length_px": 4991.753638401605,
+          "ink_area_px": 5174.941143790848,
+          "overlap_rate": 0.1393425713776466,
+          "fragments": 528.9333333333333,
+          "short_fragment_fraction_lt12px": 0.8072416830863365,
+          "median_visible_fragment_px": 5.477231131608587,
+          "median_visible_path_px": 6.018461192321016,
+          "visible_paths": 447.45
+        },
+        "length_matched": {
+          "visible_length_px": 4744.3521093155705,
+          "ink_area_px": 4954.956176470589,
+          "overlap_rate": 0.1325240642643866,
+          "fragments": 501.55,
+          "short_fragment_fraction_lt12px": 0.8072873970189007,
+          "median_visible_fragment_px": 5.476716083362208,
+          "median_visible_path_px": 5.995563566630875,
+          "visible_paths": 425.6666666666667
+        },
+        "area_matched": {
+          "visible_length_px": 4233.808080201212,
+          "ink_area_px": 4459.857156862746,
+          "overlap_rate": 0.12680636509857332,
+          "fragments": 462.31666666666666,
+          "short_fragment_fraction_lt12px": 0.8123573842725489,
+          "median_visible_fragment_px": 5.419437549657513,
+          "median_visible_path_px": 5.906817204978405,
+          "visible_paths": 394.73333333333335
+        }
+      },
+      "matching": {
+        "length_matched": {
+          "under_capacity": false,
+          "evaluations": 11,
+          "selected_paths": 727,
+          "value": 4744.3521093155705,
+          "target": 4744.264121276292,
+          "relative_error": 1.8546193261875234e-05,
+          "matched": true
+        },
+        "area_matched": {
+          "under_capacity": false,
+          "evaluations": 10,
+          "selected_paths": 678,
+          "value": 4459.857156862746,
+          "target": 4459.2328823529415,
+          "relative_error": 0.00013999594241306064,
+          "matched": true
+        }
+      },
+      "witness_audit": {
+        "mean_score": 0.6785091406809945,
+        "fewer_than_three_views": 34,
+        "zero_views": 1
+      }
+    },
+    "C-no-global": {
+      "arm": "C-no-global",
+      "alias": null,
+      "nodes": 15869,
+      "edges": 32784,
+      "selected_edges": 8774,
+      "used_nodes": 10726,
+      "paths": 1952,
+      "world_length_quantiles": [
+        0.008498150457163234,
+        0.024671503427535043,
+        0.0558855712454373,
+        0.14730838944759939,
+        0.6833078017272435
+      ],
+      "total_world_length": 149.75463442920213,
+      "source_used_nodes": {
+        "M1a": 10054,
+        "rgb": 254,
+        "topk": 339,
+        "entropy": 294,
+        "margin": 205,
+        "variance": 216,
+        "dispersion": 357
+      },
+      "protected_corners": 2490,
+      "unresolved_graph_junctions": 10657,
+      "search": {
+        "selected_edges": 9805,
+        "rejected": {
+          "cycle": 375,
+          "degree": 15473,
+          "turn": 6418,
+          "nonpositive": 713
+        },
+        "proposals": 0
+      },
+      "seconds": 2.2881783840130083,
+      "commit": "86148c5e54ecf2be557f5df38d08579ba334a307",
+      "manifest_sha256": "8dfc41d55d45a1006b01d5bb65a7441921f73a51345733ca84e6af20b31a4476",
+      "graph_sha256": "f44a2ea81ea958601e6c9bb62ac0f4702d4d6f05e04b0b8f93ae74e471c6b0b9",
+      "input_geometry_unchanged": true,
+      "path_sha256": "f45eb6ccc01f63f0fd504b1f2e2faad9823c5ddee54b676bed734ed3d2b5838b",
+      "path_audit_sha256": "3f87892bc2daeed0d42fdd7ce72e46928768a869744187a8102601a885604c18",
+      "new_D_nodes_in_paths": 672,
+      "display": {
+        "native": {
+          "visible_length_px": 8461.263871158026,
+          "ink_area_px": 7360.99702614379,
+          "overlap_rate": 0.3092053327475205,
+          "fragments": 1242.5166666666667,
+          "short_fragment_fraction_lt12px": 0.8642844960262069,
+          "median_visible_fragment_px": 4.774013599856533,
+          "median_visible_path_px": 5.178823039202464,
+          "visible_paths": 1153.5416666666667
+        },
+        "length_matched": {
+          "visible_length_px": 4744.671933290264,
+          "ink_area_px": 4766.96839869281,
+          "overlap_rate": 0.1922713922845876,
+          "fragments": 696.9,
+          "short_fragment_fraction_lt12px": 0.8682124969759435,
+          "median_visible_fragment_px": 4.640898372928744,
+          "median_visible_path_px": 5.00420924305739,
+          "visible_paths": 647.325
+        },
+        "area_matched": {
+          "visible_length_px": 4344.241830712763,
+          "ink_area_px": 4455.381339869282,
+          "overlap_rate": 0.1767769126742314,
+          "fragments": 644.45,
+          "short_fragment_fraction_lt12px": 0.8695755598868333,
+          "median_visible_fragment_px": 4.6326149695416445,
+          "median_visible_path_px": 4.988517344072631,
+          "visible_paths": 600.3833333333333
+        }
+      },
+      "matching": {
+        "length_matched": {
+          "under_capacity": false,
+          "evaluations": 12,
+          "selected_paths": 1085,
+          "value": 4744.671933290264,
+          "target": 4744.264121276292,
+          "relative_error": 8.595896087301423e-05,
+          "matched": true
+        },
+        "area_matched": {
+          "under_capacity": false,
+          "evaluations": 12,
+          "selected_paths": 1007,
+          "value": 4455.381339869282,
+          "target": 4459.2328823529415,
+          "relative_error": 0.0008637231078246185,
+          "matched": true
+        }
+      },
+      "witness_audit": {
+        "mean_score": 0.6433884673703584,
+        "fewer_than_three_views": 192,
+        "zero_views": 14
+      }
+    },
+    "C-no-corner": {
+      "arm": "C-no-corner",
+      "alias": null,
+      "nodes": 15869,
+      "edges": 10018,
+      "selected_edges": 3041,
+      "used_nodes": 3801,
+      "paths": 760,
+      "world_length_quantiles": [
+        0.02064310063790499,
+        0.03481799474370345,
+        0.05624219078580372,
+        0.13613839448886242,
+        0.7620009625896884
+      ],
+      "total_world_length": 57.68995688405393,
+      "source_used_nodes": {
+        "M1a": 3609,
+        "rgb": 83,
+        "topk": 79,
+        "entropy": 82,
+        "margin": 58,
+        "dispersion": 101,
+        "variance": 67
+      },
+      "protected_corners": 0,
+      "unresolved_graph_junctions": 2744,
+      "search": {
+        "proposals": 7348,
+        "initial_objective": 1925.5704373866754,
+        "final_objective": 1925.5704373866754,
+        "swaps": 0,
+        "swap_gains": []
+      },
+      "seconds": 3.0565233179950155,
+      "commit": "86148c5e54ecf2be557f5df38d08579ba334a307",
+      "manifest_sha256": "8dfc41d55d45a1006b01d5bb65a7441921f73a51345733ca84e6af20b31a4476",
+      "graph_sha256": "f44a2ea81ea958601e6c9bb62ac0f4702d4d6f05e04b0b8f93ae74e471c6b0b9",
+      "input_geometry_unchanged": true,
+      "path_sha256": "3b00678cbb992b8fdd3b2538fab9f8e7759dca4fa7dadb1104e0fda0e0d25a9c",
+      "path_audit_sha256": "9397f10686e12af7faedbae11ebbabb739545bc5ec2b04d476bc59d5c8804f35",
+      "new_D_nodes_in_paths": 192,
+      "display": {
+        "native": {
+          "visible_length_px": 3340.8933235320746,
+          "ink_area_px": 3607.553006535948,
+          "overlap_rate": 0.1338917026843213,
+          "fragments": 474.71666666666664,
+          "short_fragment_fraction_lt12px": 0.8731426229037259,
+          "median_visible_fragment_px": 5.242714001902045,
+          "median_visible_path_px": 5.547020669972236,
+          "visible_paths": 447.18333333333334
+        },
+        "length_matched": {
+          "visible_length_px": 3340.8933235320746,
+          "ink_area_px": 3607.553006535948,
+          "overlap_rate": 0.1338917026843213,
+          "fragments": 474.71666666666664,
+          "short_fragment_fraction_lt12px": 0.8731426229037259,
+          "median_visible_fragment_px": 5.242714001902045,
+          "median_visible_path_px": 5.547020669972236,
+          "visible_paths": 447.18333333333334
+        },
+        "area_matched": {
+          "visible_length_px": 3340.8933235320746,
+          "ink_area_px": 3607.553006535948,
+          "overlap_rate": 0.1338917026843213,
+          "fragments": 474.71666666666664,
+          "short_fragment_fraction_lt12px": 0.8731426229037259,
+          "median_visible_fragment_px": 5.242714001902045,
+          "median_visible_path_px": 5.547020669972236,
+          "visible_paths": 447.18333333333334
+        }
+      },
+      "matching": {
+        "length_matched": {
+          "under_capacity": true,
+          "evaluations": 1,
+          "selected_paths": 760,
+          "value": 3340.893323532074,
+          "target": 4744.264121276292,
+          "relative_error": 0.2958036824827295,
+          "matched": false
+        },
+        "area_matched": {
+          "under_capacity": true,
+          "evaluations": 1,
+          "selected_paths": 760,
+          "value": 3607.553006535948,
+          "target": 4459.2328823529415,
+          "relative_error": 0.1909924640149315,
+          "matched": false
+        }
+      },
+      "witness_audit": {
+        "mean_score": 0.6829336256135722,
+        "fewer_than_three_views": 38,
+        "zero_views": 1
+      }
+    },
+    "N": {
+      "arm": "N",
+      "alias": null,
+      "nodes": 15869,
+      "edges": 32784,
+      "selected_edges": 4591,
+      "used_nodes": 5227,
+      "paths": 636,
+      "world_length_quantiles": [
+        0.023802325491394532,
+        0.03920306884975083,
+        0.07526487874126447,
+        0.33905088380907267,
+        0.8853051283440906
+      ],
+      "total_world_length": 88.80566504744456,
+      "source_used_nodes": {
+        "M1a": 4952,
+        "rgb": 125,
+        "topk": 124,
+        "variance": 90,
+        "dispersion": 141,
+        "entropy": 121,
+        "margin": 88
+      },
+      "protected_corners": 967,
+      "unresolved_graph_junctions": 10657,
+      "search": {
+        "proposals": 27302,
+        "initial_objective": 2209.954919995232,
+        "final_objective": 2209.954919995232,
+        "swaps": 0,
+        "swap_gains": []
+      },
+      "seconds": 24.173232357017696,
+      "commit": "86148c5e54ecf2be557f5df38d08579ba334a307",
+      "manifest_sha256": "8dfc41d55d45a1006b01d5bb65a7441921f73a51345733ca84e6af20b31a4476",
+      "graph_sha256": "f44a2ea81ea958601e6c9bb62ac0f4702d4d6f05e04b0b8f93ae74e471c6b0b9",
+      "input_geometry_unchanged": true,
+      "path_sha256": "aae8e971c5e42daf726cfe19f6fafc0385b7b8fec1550949511e31c829234109",
+      "path_audit_sha256": "8b6d4588178301eea44e597ad0618c7a018272783462b410c4fa40badae6f1dd",
+      "new_D_nodes_in_paths": 275,
+      "display": {
+        "native": {
+          "visible_length_px": 4880.997348289995,
+          "ink_area_px": 4985.075261437908,
+          "overlap_rate": 0.1383688778487483,
+          "fragments": 461.3,
+          "short_fragment_fraction_lt12px": 0.7731166451028791,
+          "median_visible_fragment_px": 6.148264749744664,
+          "median_visible_path_px": 6.994732800994929,
+          "visible_paths": 378.18333333333334
+        },
+        "length_matched": {
+          "visible_length_px": 4745.068204306076,
+          "ink_area_px": 4864.665718954248,
+          "overlap_rate": 0.135567581902253,
+          "fragments": 447.5416666666667,
+          "short_fragment_fraction_lt12px": 0.7740213743370911,
+          "median_visible_fragment_px": 6.149439449112177,
+          "median_visible_path_px": 7.00727757383934,
+          "visible_paths": 366.5
+        },
+        "area_matched": {
+          "visible_length_px": 4315.119541110822,
+          "ink_area_px": 4460.406699346406,
+          "overlap_rate": 0.1259037505733428,
+          "fragments": 401.18333333333334,
+          "short_fragment_fraction_lt12px": 0.7647405872304283,
+          "median_visible_fragment_px": 6.24478016790769,
+          "median_visible_path_px": 7.176102841921376,
+          "visible_paths": 327.56666666666666
+        }
+      },
+      "matching": {
+        "length_matched": {
+          "under_capacity": false,
+          "evaluations": 11,
+          "selected_paths": 616,
+          "value": 4745.068204306075,
+          "target": 4744.264121276292,
+          "relative_error": 0.0001694853004024788,
+          "matched": true
+        },
+        "area_matched": {
+          "under_capacity": false,
+          "evaluations": 11,
+          "selected_paths": 550,
+          "value": 4460.406699346406,
+          "target": 4459.2328823529415,
+          "relative_error": 0.0002632329426232772,
+          "matched": true
+        }
+      },
+      "witness_audit": {
+        "mean_score": 0.43453421983908824,
+        "fewer_than_three_views": 218,
+        "zero_views": 41
+      }
+    }
+  },
+  "gates": {
+    "G1": {
+      "status": "FAIL",
+      "short_relative_reduction": 0.10497679643189606,
+      "required_reduction": 0.4,
+      "visible_fragment_median_ratio": 1.1889315747715712,
+      "required_ratio": 1.8
+    },
+    "G2": {
+      "status": "FAIL",
+      "clearly_improved_regions": 0,
+      "required": 2
+    },
+    "G3": {
+      "status": "NOT_CERTIFIED",
+      "reason": "no obvious large shortcut seen; small persistent contour errors cannot be ruled out"
+    },
+    "G4": {
+      "status": "FAIL",
+      "reason": "full not clearly better visually than geometry-only and local organization; null comparable"
+    },
+    "G5": {
+      "status": "FAIL",
+      "A_C_area_matching_pass": true,
+      "reason": "matched ink does not yield clear readability gain"
+    },
+    "G6": {
+      "status": "PASS_CARRIER_CONSTRAINT",
+      "temporal_advantage_claim": false
+    }
+  },
+  "integrity": {
+    "input_hashes_pass": true,
+    "freeze_sources_unchanged": true,
+    "paths": {
+      "A": {
+        "paths": 2136,
+        "used_nodes": 10470,
+        "exact_frozen_vertices": true,
+        "node_disjoint": true,
+        "simple_paths": true
+      },
+      "B": {
+        "paths": 982,
+        "used_nodes": 6490,
+        "exact_frozen_vertices": true,
+        "node_disjoint": true,
+        "simple_paths": true
+      },
+      "C": {
+        "paths": 764,
+        "used_nodes": 5619,
+        "exact_frozen_vertices": true,
+        "node_disjoint": true,
+        "simple_paths": true
+      },
+      "C-no-global": {
+        "paths": 1952,
+        "used_nodes": 10726,
+        "exact_frozen_vertices": true,
+        "node_disjoint": true,
+        "simple_paths": true
+      },
+      "C-no-corner": {
+        "paths": 760,
+        "used_nodes": 3801,
+        "exact_frozen_vertices": true,
+        "node_disjoint": true,
+        "simple_paths": true
+      },
+      "N": {
+        "paths": 636,
+        "used_nodes": 5227,
+        "exact_frozen_vertices": true,
+        "node_disjoint": true,
+        "simple_paths": true
+      }
+    },
+    "original_A_identical": true,
+    "access": {
+      "access_audit.json": {
+        "photo_indices": [],
+        "data_reads": 14
+      },
+      "access_graph.json": {
+        "photo_indices": [
+          1,
+          7,
+          14,
+          21,
+          27,
+          33,
+          41,
+          47,
+          53,
+          59,
+          67,
+          73,
+          79,
+          86,
+          93,
+          99
+        ],
+        "data_reads": 43
+      },
+      "access_render.json": {
+        "photo_indices": [],
+        "data_reads": 23
+      },
+      "access_smoke.json": {
+        "photo_indices": [],
+        "data_reads": 6
+      },
+      "access_solve_A.json": {
+        "photo_indices": [],
+        "data_reads": 9
+      },
+      "access_solve_B.json": {
+        "photo_indices": [],
+        "data_reads": 7
+      },
+      "access_solve_C-no-corner.json": {
+        "photo_indices": [],
+        "data_reads": 7
+      },
+      "access_solve_C-no-global.json": {
+        "photo_indices": [],
+        "data_reads": 7
+      },
+      "access_solve_C.json": {
+        "photo_indices": [],
+        "data_reads": 7
+      },
+      "access_solve_N.json": {
+        "photo_indices": [],
+        "data_reads": 7
+      }
+    },
+    "final_test_images_opened": false,
+    "original_GS_training_split_verified": false
+  },
+  "official_rgb": {
+    "renderer_commit": "472689c0dc70417448fb451bf529ae532d32c095",
+    "renderer_git_source_sha256": "75fcc86a57d27d9ea55b2904a4faaf075e7f73dba8c54bcb6cbd4c02c4884084",
+    "renderer_local_ABI_patch_used": false,
+    "kernel_commit": "59f5f77e3ddbac3ed9db93ec2cfe99ed6c5d121d",
+    "kernel_repo": "https://github.com/graphdeco-inria/diff-gaussian-rasterization",
+    "kernel_source_diff": "",
+    "kernel_binary_path": "/home/u00134/3dgs_line/tier1/out/vrss/vendor/official_site/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so",
+    "kernel_binary_sha256": "583e896f3aaa1c2dece9c67eaaa26d919f98aae0597591bf6693b9a19530e9e9",
+    "kernel_wrapper_sha256": "eafa9c3f670258b34535b7ee2832e6d8410d6a68762037216f04935ccdafba34"
+  },
+  "depth": "common vanilla Gaussian disc proxy, not official anisotropic raster depth",
+  "runtimes_seconds": {
+    "audit": 5.008783818979282,
+    "graph": 10.324365934997331,
+    "smoke": 1.8476294560241513,
+    "solve": {
+      "A": 1.8230814100243151,
+      "B": 22.425835852045566,
+      "C": 23.529407149995677,
+      "C-no-global": 2.2881783840130083,
+      "C-no-corner": 3.0565233179950155,
+      "N": 24.173232357017696
+    },
+    "render": 252.08213298697956
+  },
+  "videos": {
+    "native": {
+      "path": "out/stroke_organization/render/official_A_C_native.mp4",
+      "frames": 120,
+      "sha256": "e369662ee6bd7c96b58ffa1c35fe7686d625269809164bfb7fbdf467974f8ede",
+      "bytes": 4731238
+    },
+    "length_matched": {
+      "path": "out/stroke_organization/render/official_A_C_length_matched.mp4",
+      "frames": 120,
+      "sha256": "ec67e930ae40cf320a502f24acf23c79be8f8b416a055b36da703fa7c69c9dd5",
+      "bytes": 4462988
+    },
+    "area_matched": {
+      "path": "out/stroke_organization/render/official_A_C_area_matched.mp4",
+      "frames": 120,
+      "sha256": "0f1a2177532282ab5dade0b7c31e8b78074fb369bf6295407710becc9bbee893",
+      "bytes": 4300628
+    }
+  },
+  "fixed_frames": [
+    0,
+    30,
+    60,
+    90
+  ],
+  "visual_review": {
+    "internal_only": true,
+    "blind_participants": 0,
+    "realtime_playback": false,
+    "complete_decoded_frame_review": true,
+    "frames_per_mode": 120,
+    "contact_sheets": [
+      "render/all_contact_area_matched_00.png",
+      "render/all_contact_area_matched_01.png",
+      "render/all_contact_area_matched_02.png",
+      "render/all_contact_area_matched_03.png",
+      "render/all_contact_area_matched_04.png",
+      "render/all_contact_area_matched_05.png",
+      "render/all_contact_area_matched_06.png",
+      "render/all_contact_area_matched_07.png",
+      "render/all_contact_area_matched_08.png",
+      "render/all_contact_area_matched_09.png",
+      "render/all_contact_area_matched_10.png",
+      "render/all_contact_area_matched_11.png",
+      "render/all_contact_length_matched_00.png",
+      "render/all_contact_length_matched_01.png",
+      "render/all_contact_length_matched_02.png",
+      "render/all_contact_length_matched_03.png",
+      "render/all_contact_length_matched_04.png",
+      "render/all_contact_length_matched_05.png",
+      "render/all_contact_length_matched_06.png",
+      "render/all_contact_length_matched_07.png",
+      "render/all_contact_length_matched_08.png",
+      "render/all_contact_length_matched_09.png",
+      "render/all_contact_length_matched_10.png",
+      "render/all_contact_length_matched_11.png",
+      "render/all_contact_native_00.png",
+      "render/all_contact_native_01.png",
+      "render/all_contact_native_02.png",
+      "render/all_contact_native_03.png",
+      "render/all_contact_native_04.png",
+      "render/all_contact_native_05.png",
+      "render/all_contact_native_06.png",
+      "render/all_contact_native_07.png",
+      "render/all_contact_native_08.png",
+      "render/all_contact_native_09.png",
+      "render/all_contact_native_10.png",
+      "render/all_contact_native_11.png",
+      "render/video_contact_area_matched_00.png",
+      "render/video_contact_area_matched_01.png",
+      "render/video_contact_area_matched_02.png",
+      "render/video_contact_area_matched_03.png",
+      "render/video_contact_area_matched_04.png",
+      "render/video_contact_area_matched_05.png",
+      "render/video_contact_length_matched_00.png",
+      "render/video_contact_length_matched_01.png",
+      "render/video_contact_length_matched_02.png",
+      "render/video_contact_length_matched_03.png",
+      "render/video_contact_length_matched_04.png",
+      "render/video_contact_length_matched_05.png",
+      "render/video_contact_native_00.png",
+      "render/video_contact_native_01.png",
+      "render/video_contact_native_02.png",
+      "render/video_contact_native_03.png",
+      "render/video_contact_native_04.png",
+      "render/video_contact_native_05.png"
+    ],
+    "regions": [
+      {
+        "id": "R1",
+        "pass_g2": false,
+        "observation": "cab frame remains broken/noisy; roof edge can be lost"
+      },
+      {
+        "id": "R2",
+        "pass_g2": false,
+        "observation": "local diagonal continuity; no clear mechanical-turn organization"
+      },
+      {
+        "id": "R3",
+        "pass_g2": false,
+        "observation": "longer border portions retain loops and zigzags"
+      }
+    ]
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tests -v",
+    "passed": 45,
+    "failed": 0,
+    "seconds": 0.497,
+    "evidence": "TESTS.md; actual execution before final report commit"
+  },
+  "stopped": {
+    "chair_not_run": true,
+    "no_post_DEV_weight_tuning": true,
+    "no_new_candidates": true
+  }
+}
