@@ -1,0 +1,32 @@
+test_cell_grouping_blocks_clone_leakage_and_rejects_filaments (test_corrected_surface.SurfaceAuditTests) ... ERROR
+test_native_contribution_weights_sum_to_replayed_mass (test_corrected_surface.SurfaceAuditTests) ... ERROR
+test_two_parallel_layers_are_never_crease_and_curved_sheet_has_quadratic (test_corrected_surface.SurfaceAuditTests) ... ERROR
+
+======================================================================
+ERROR: test_cell_grouping_blocks_clone_leakage_and_rejects_filaments (test_corrected_surface.SurfaceAuditTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_corrected_surface.py", line 7, in test_cell_grouping_blocks_clone_leakage_and_rejects_filaments
+    from src.corrected_surface import fit_neighborhood
+ModuleNotFoundError: No module named 'src.corrected_surface'
+
+======================================================================
+ERROR: test_native_contribution_weights_sum_to_replayed_mass (test_corrected_surface.SurfaceAuditTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_corrected_surface.py", line 30, in test_native_contribution_weights_sum_to_replayed_mass
+    from src.corrected_surface import contribution_weights
+ModuleNotFoundError: No module named 'src.corrected_surface'
+
+======================================================================
+ERROR: test_two_parallel_layers_are_never_crease_and_curved_sheet_has_quadratic (test_corrected_surface.SurfaceAuditTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_corrected_surface.py", line 19, in test_two_parallel_layers_are_never_crease_and_curved_sheet_has_quadratic
+    from src.corrected_surface import fit_neighborhood
+ModuleNotFoundError: No module named 'src.corrected_surface'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+FAILED (errors=3)

@@ -1,0 +1,52 @@
+test_pca_null_stays_at_original_centers_and_uses_F_views (test_corrected_probe.CorrectedProbeTests) ... ERROR
+test_prediction_denominators_and_empty_controls_do_not_pass (test_corrected_probe.CorrectedProbeTests) ... ERROR
+test_saved_profile_retains_all_queries_modes_and_nonfinite_masks (test_corrected_probe.CorrectedProbeTests) ... ERROR
+test_shifted_association_moves_nearest_edge_coordinates_with_maps (test_corrected_probe.CorrectedProbeTests) ... FAIL
+
+======================================================================
+ERROR: test_pca_null_stays_at_original_centers_and_uses_F_views (test_corrected_probe.CorrectedProbeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_corrected_probe.py", line 43, in test_pca_null_stays_at_original_centers_and_uses_F_views
+    from src.corrected_probe import pca_control,random_control,glyph_coverage
+ModuleNotFoundError: No module named 'src.corrected_probe'
+
+======================================================================
+ERROR: test_prediction_denominators_and_empty_controls_do_not_pass (test_corrected_probe.CorrectedProbeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_corrected_probe.py", line 21, in test_prediction_denominators_and_empty_controls_do_not_pass
+    from src.corrected_probe import prediction_summary,machine_decision
+ModuleNotFoundError: No module named 'src.corrected_probe'
+
+======================================================================
+ERROR: test_saved_profile_retains_all_queries_modes_and_nonfinite_masks (test_corrected_probe.CorrectedProbeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_corrected_probe.py", line 32, in test_saved_profile_retains_all_queries_modes_and_nonfinite_masks
+    from src.corrected_probe import save_probe,load_probe
+ModuleNotFoundError: No module named 'src.corrected_probe'
+
+======================================================================
+FAIL: test_shifted_association_moves_nearest_edge_coordinates_with_maps (test_corrected_probe.CorrectedProbeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_corrected_probe.py", line 18, in test_shifted_association_moves_nearest_edge_coordinates_with_maps
+    np.testing.assert_allclose(shifted['nearest_uv'][y,x],[x,y])
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/numpy/testing/_private/utils.py", line 1527, in assert_allclose
+    assert_array_compare(compare, actual, desired, err_msg=str(err_msg),
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/numpy/testing/_private/utils.py", line 844, in assert_array_compare
+    raise AssertionError(msg)
+AssertionError: 
+Not equal to tolerance rtol=1e-07, atol=0
+
+Mismatched elements: 1 / 2 (50%)
+Max absolute difference: 32.
+Max relative difference: 0.19161677
+ x: array([199., 200.])
+ y: array([167, 200])
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.071s
+
+FAILED (failures=1, errors=3)

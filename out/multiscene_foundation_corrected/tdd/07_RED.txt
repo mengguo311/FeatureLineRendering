@@ -1,0 +1,23 @@
+test_orbit_and_video_have_exact_frozen_120_frames (test_corrected_visuals.VisualTests) ... ERROR
+test_real_glyph_pixels_are_deterministic_sign_invariant_and_empty_is_white (test_corrected_visuals.VisualTests) ... ERROR
+
+======================================================================
+ERROR: test_orbit_and_video_have_exact_frozen_120_frames (test_corrected_visuals.VisualTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_corrected_visuals.py", line 20, in test_orbit_and_video_have_exact_frozen_120_frames
+    from src.corrected_visuals import orbit_cameras,write_video
+ModuleNotFoundError: No module named 'src.corrected_visuals'
+
+======================================================================
+ERROR: test_real_glyph_pixels_are_deterministic_sign_invariant_and_empty_is_white (test_corrected_visuals.VisualTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_corrected_visuals.py", line 8, in test_real_glyph_pixels_are_deterministic_sign_invariant_and_empty_is_white
+    from src.corrected_visuals import glyph_image,spatial_order,ink_prefix
+ModuleNotFoundError: No module named 'src.corrected_visuals'
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+FAILED (errors=2)
