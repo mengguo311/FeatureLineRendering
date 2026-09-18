@@ -79,3 +79,7 @@ when performed; failure logs are never replaced by later runs.
 - 18 **RED** 2026-09-18T19:45:25.643519+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene_verify` → exit 1; [18_RED.txt](tdd/18_RED.txt).
 
 - 18 **GREEN** 2026-09-18T19:45:44.224230+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene_verify` → exit 0; [18_GREEN.txt](tdd/18_GREEN.txt).
+
+- 19 **REGRESSION** 2026-09-18T19:46:31.073046+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene_training test_multiscene test_multiscene_probe test_multiscene_report test_multiscene_audit test_multiscene_verify` → exit 0; [19_REGRESSION.txt](tdd/19_REGRESSION.txt).
+
+- Final full repository suite: `CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 MKL_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest discover -s tests -v` → exit 0; [full_suite_final.txt](setup/full_suite_final.txt). Exact environment and times: [final_test_runs.json](setup/final_test_runs.json).
