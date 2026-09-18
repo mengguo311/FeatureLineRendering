@@ -1,0 +1,16 @@
+test_14_prerequisite_runner_end_to_end_native_synthetic (test_foundation.FoundationTests) ... FAIL
+
+======================================================================
+FAIL: test_14_prerequisite_runner_end_to_end_native_synthetic (test_foundation.FoundationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_foundation.py", line 224, in test_14_prerequisite_runner_end_to_end_native_synthetic
+    self.assertEqual(p.returncode,0,p.stdout+'\n'+p.stderr)
+AssertionError: 2 != 0 : 
+/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python: can't open file '/home/u00134/3dgs_line/tier1/scripts/run_foundation_prerequisites.py': [Errno 2] No such file or directory
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.027s
+
+FAILED (failures=1)

@@ -204,3 +204,47 @@ assert fd>=0; lib.close(fd)
             im=cv2.imread(str(d/'a.png')); self.assertEqual(im.shape,(48,60,3))
             self.assertTrue((im[28:,:30]==0).all()); self.assertTrue((im[28:,30:]==255).all())
             with self.assertRaises(FileExistsError):save_sheet(d/'a.png',panels)
+
+    def test_14_prerequisite_runner_end_to_end_native_synthetic(self):
+        from src.foundation import freeze_json
+        from plyfile import PlyData,PlyElement
+        root=Path(__file__).resolve().parents[1]
+        with tempfile.TemporaryDirectory() as d:
+            d=Path(d)
+            names=['x','y','z','opacity']+[f'scale_{i}' for i in range(3)]+[f'rot_{i}' for i in range(4)]+[f'f_dc_{i}' for i in range(3)]+[f'f_rest_{i}' for i in range(45)]
+            rows=np.zeros(6,dtype=[(k,'f4') for k in names]); rows['z']=2; rows['rot_0']=1
+            rows['x']=np.linspace(-.2,.2,6); rows['y']=np.linspace(-.1,.1,6)
+            for i in range(3): rows[f'scale_{i}']=np.log(.09 if i==0 else .04)
+            ply=d/'asset.ply'; PlyData([PlyElement.describe(rows,'vertex')]).write(ply)
+            config={'scene':'synthetic','asset_path':str(ply),'asset_sha256':hashlib.sha256(ply.read_bytes()).hexdigest(),
+                'height':32,'width':32,'views':[{'index':1,'K':[[60,0,16],[0,60,16],[0,0,1]],'w2c':np.eye(4).tolist()}]}
+            sha=freeze_json(d/'config.json',config)
+            cmd=[os.sys.executable,str(root/'scripts/run_foundation_prerequisites.py'),'--config',str(d/'config.json'),'--sha256',sha,'--output',str(d/'run')]
+            p=subprocess.run(cmd,capture_output=True,text=True,timeout=120)
+            self.assertEqual(p.returncode,0,p.stdout+'\n'+p.stderr)
+            r=json.loads((d/'run/prerequisites.json').read_text())
+            self.assertTrue(r['calibration'][0]['passed'])
+            self.assertEqual(r['input_photo_reads'],0)
+            self.assertEqual(set(r['qualification']),{'clone','split'})
+            self.assertEqual(len(r['qualification']['clone']),2)
+            self.assertTrue((d/'run/calibration_001.png').exists())
+            self.assertTrue((d/'run/white_001.png').exists())
+            self.assertTrue((d/'run/black_001.png').exists())
+            self.assertGreater(r['timing']['calibration_seconds'],0)
+            # Kernel sandbox did not modify the approved asset.
+            self.assertEqual(hashlib.sha256(ply.read_bytes()).hexdigest(),config['asset_sha256'])
+
+    def test_15_native_calibration_multilayer_rotation_and_row_shuffle(self):
+        from src.foundation import native_render,replay_native,calibration_metrics,perturb_asset
+        a={'mu':np.array([[0,0,2],[.05,0,2.3],[-.1,.1,3]],np.float32),
+           'scale':np.array([[.12,.03,.04],[.06,.2,.04],[.1,.1,.1]],np.float32),
+           'quat':np.array([[.9238795,0,0,.3826834],[1,0,0,0],[1,0,0,0]],np.float32),
+           'opacity':np.array([[.7],[.6],[.9]],np.float32),'sh':np.zeros((3,16,3),np.float32)}
+        a['sh'][:,0,:]=np.array([[1,-1,-1],[-1,1,-1],[-1,-1,1]])
+        K=np.array([[70.,0,15],[0,55.,12],[0,0,1]])
+        white=native_render(a,K,np.eye(4),32,32,1.); black=native_render(a,K,np.eye(4),32,32,0.)
+        out=replay_native(white,32,32,np.array([1,0,1],np.uint8),np.zeros(3,np.uint8),1.)
+        self.assertTrue(calibration_metrics(white,black['stock_rgb'],out)['passed'])
+        shuffled=native_render({k:v[[2,0,1]] for k,v in a.items()},K,np.eye(4),32,32,1.)
+        np.testing.assert_allclose(shuffled['stock_rgb'],white['stock_rgb'],atol=1e-7)
+        self.assertGreater(float(np.nanmax(out['depth_quantiles'][:,:,2]-out['depth_quantiles'][:,:,0])),.9)

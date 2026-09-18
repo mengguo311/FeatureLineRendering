@@ -79,3 +79,11 @@ Each slice records its exact command and raw stdout/stderr, exit code and timest
 - 13 **GREEN** 2026-09-18T11:04:29.639779+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_foundation.FoundationTests.test_13_deterministic_png_contact_sheet` → exit 0; [13_GREEN.txt](tdd/13_GREEN.txt).
 
 - 13 **SUITE** 2026-09-18T11:04:29.882158+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_foundation` → exit 0; [13_SUITE.txt](tdd/13_SUITE.txt).
+
+- 14 **RED** 2026-09-18T11:05:18.380831+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_foundation.FoundationTests.test_14_prerequisite_runner_end_to_end_native_synthetic` → exit 1; [14_RED.txt](tdd/14_RED.txt).
+
+- 14 **GREEN** 2026-09-18T11:06:56.568704+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_foundation.FoundationTests.test_14_prerequisite_runner_end_to_end_native_synthetic` → exit 0; [14_GREEN.txt](tdd/14_GREEN.txt).
+
+- 14 **SUITE** 2026-09-18T11:07:34.398237+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_foundation` → exit 0; [14_SUITE.txt](tdd/14_SUITE.txt).
+
+- 15 **CHECK** 2026-09-18T11:07:40.889976+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_foundation.FoundationTests.test_15_native_calibration_multilayer_rotation_and_row_shuffle` → exit 0; [15_CHECK.txt](tdd/15_CHECK.txt).
