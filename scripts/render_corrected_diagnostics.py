@@ -34,7 +34,7 @@ def main():
     sources=[Path(__file__).resolve(),*list((ROOT/'src').glob('*.py'))]
     binaries=[ROOT/'out/point_feature_foundation/setup/composite.so',ROOT/'out/multiscene_foundation/setup/layers.so',root/'setup/area_layers.so']
     for b in binaries:ctypes.CDLL(str(b))
-    runtime=[Path(sys.prefix),Path('/usr'),Path('/lib'),Path('/lib64'),Path('/etc'),Path('/proc'),Path('/sys'),STOCK_SITE,*[upstream/k for k in ['gaussian_renderer','utils','scene']]]
+    runtime=[Path(sys.prefix),Path('/home/u00134/bin/miniconda3/envs/ts_diffusion'),Path('/usr'),Path('/lib'),Path('/lib64'),Path('/etc'),Path('/proc'),Path('/sys'),STOCK_SITE,*[upstream/k for k in ['gaussian_renderer','utils','scene']]]
     readonly=[local,*parameters.values(),*photos,*quality,*sources,*binaries,root/'annotations',*[r.resolve() for r in runtime if r.exists()]]
     freeze_json(output/'allowlist.json',dict(scene=args.scene,task='visual',readonly=[str(x) for x in readonly],writable=[str(output),'/dev'],photo_inputs=photos,source_hashes={str(x):sha(x) for x in sources},input_hashes={str(x):sha(x) for x in [*photos,*parameters.values()]},config_sha256=sha(root/'config.json')))
     restrict_filesystem(readonly,[output,'/dev']);start=time.monotonic()
