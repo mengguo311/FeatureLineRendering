@@ -30,3 +30,15 @@
 - 08 RED, 2026-09-18T23:05:03.740111+00:00, exit 1: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', '-v', 'test_corrected_execution']`; [08_RED.txt](tdd/08_RED.txt).
 
 - 08 GREEN, 2026-09-18T23:06:07.429442+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', '-v', 'test_corrected_execution', 'test_corrected_visuals']`; [08_GREEN.txt](tdd/08_GREEN.txt).
+
+- 09 REGRESSION, 2026-09-18T23:09:22.529495+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', '-v', 'test_corrected_probe.VisibilityFreezeTests']`; [09_REGRESSION.txt](tdd/09_REGRESSION.txt).
+
+- 10 RED, 2026-09-18T23:10:03.605698+00:00, exit 1: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', '-v', 'test_corrected_evaluation']`; [10_RED.txt](tdd/10_RED.txt).
+
+- 10 GREEN, 2026-09-18T23:10:36.811475+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', '-v', 'test_corrected_evaluation']`; [10_GREEN.txt](tdd/10_GREEN.txt).
+
+- 11 RED, 2026-09-18T23:11:52.171558+00:00, exit 1: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', '-v', 'test_corrected_audit']`; [11_RED.txt](tdd/11_RED.txt).
+
+- 11 GREEN, 2026-09-18T23:12:03.604911+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', '-v', 'test_corrected_audit']`; [11_GREEN.txt](tdd/11_GREEN.txt).
+
+- 12 REFACTOR, 2026-09-18T23:14:52.430185+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', '-v', 'test_corrected_visuals']`; [12_REFACTOR.txt](tdd/12_REFACTOR.txt).

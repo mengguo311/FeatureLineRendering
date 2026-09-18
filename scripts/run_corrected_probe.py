@@ -83,7 +83,7 @@ def main():
     if args.task=='primary':
         negatives=[q for i in cfg['queries']['primary'] for q in sample_queries(fields[i],i,cfg,negative=True,foreground=foreground[i])]
         freeze_json(output/'background_queries.json',negatives)
-        shifted={i:shift_field(fields[i],j,cfg) for j,i in enumerate(views)};run('shifted',selected_fields=shifted)
+        shifted={i:shift_field(fields[i],j,cfg) for j,i in enumerate(views)};run('shifted',selected_fields=shifted);run('shifted_no_gs',selected_fields=shifted,selected_layers=None)
         for arm,use_layers in [('gs',layers),('no_gs',None)]:
             for omitted in views:
                 selected={i:fields[i] for i in views if i!=omitted}

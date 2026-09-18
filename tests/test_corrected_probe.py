@@ -56,3 +56,19 @@ class CorrectedProbeTests(unittest.TestCase):
         self.assertEqual(rand,random_control(result['accepted'],CFG))
         cov=glyph_coverage(result['accepted'],result['accepted'],.01,CFG)
         self.assertEqual(cov['forward'],1.);self.assertEqual(cov['backward'],1.)
+
+class VisibilityFreezeTests(unittest.TestCase):
+    def test_local_correction_cannot_hide_an_opposing_view(self):
+        from src.multiscene_probe import ImageEvidence
+        K=np.array([[200.,0,199.5],[0,200.,199.5],[0,0,1]])
+        y,x=np.indices((400,400));cameras={};fields={}
+        for i,cy in enumerate([0,1,-1,.5]):
+            w=np.eye(4);w[1,3]=-cy;cameras[i]=dict(K=K,w2c=w)
+            ey=199.5-200*cy/3;t=np.zeros((400,400,2));t[:,:,0]=1
+            fields[i]=dict(dt=abs(y-ey),nearest_uv=np.stack([x,np.full_like(y,ey,dtype=float)],axis=2),nearest_tangent=t,domain=np.ones((400,400),bool))
+        class ChangingLayer:
+            def query(self,uv,z,delta):return np.where(z<2.93,1.,.05),np.ones(len(z),bool)
+        evidence=ImageEvidence(cameras,fields,{i:ChangingLayer() for i in cameras},.1,CFG)
+        result=evidence.mode([0,0,2.9])
+        self.assertFalse(result['accepted']);self.assertIn('visibility_changed',result['reasons'])
+        self.assertLess(result['point'][2],2.93)

@@ -40,7 +40,9 @@ def ink_prefix(rows,cameras,delta,budget,cfg,layers=None):
     ordered=spatial_order(rows,delta)
     def ink(n):return float(np.mean([glyph_image(ordered[:n],c,delta,None if layers is None else layers[c['index']])[1]['ink_area'] for c in cameras]))
     if budget<=0:return [],dict(comparable=False,reason='zero PCA ink budget',relative_error=None,count=0)
-    lo,hi=0,len(ordered)
+    lo,hi=0,min(1,len(ordered))
+    while hi<len(ordered) and ink(hi)<budget:
+        lo=hi;hi=min(len(ordered),max(hi+1,hi*2))
     while lo<hi:
         mid=(lo+hi)//2
         if ink(mid)<budget:lo=mid+1
