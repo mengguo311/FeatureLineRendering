@@ -53,3 +53,7 @@ when performed; failure logs are never replaced by later runs.
 - 12 **RED** 2026-09-18T19:19:42.790931+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene_report.ReportTests.test_pair_measurements_use_the_identical_photo_roi_and_keep_each_view` → exit 1; [12_RED.txt](tdd/12_RED.txt).
 
 - 12 **GREEN** 2026-09-18T19:20:07.167391+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene_report` → exit 0; [12_GREEN.txt](tdd/12_GREEN.txt).
+
+- 13 **RED** 2026-09-18T19:25:50.399392+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene.MultisceneTests.test_resolution_diagnosis_has_no_eligibility_override` → exit 1; [13_RED.txt](tdd/13_RED.txt).
+
+- 13 **GREEN** 2026-09-18T19:27:48.153499+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene.MultisceneTests.test_resolution_diagnosis_has_no_eligibility_override` → exit 0; [13_GREEN.txt](tdd/13_GREEN.txt).

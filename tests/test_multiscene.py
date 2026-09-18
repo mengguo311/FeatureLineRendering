@@ -114,5 +114,23 @@ class MultisceneTests(unittest.TestCase):
             self.assertTrue(report['calibration'][0]['passed'])
             self.assertTrue((tmp/'quality/quality.json').exists())
 
+    def test_resolution_diagnosis_has_no_eligibility_override(self):
+        from src.multiscene_diagnostic import resolution_diagnostic
+        from src.foundation import native_render
+        import cv2,hashlib
+        a=asset_fixture();K=np.array([[60.,0,32],[0,60.,32],[0,0,1]])
+        high=K.copy();high[:2]*=2;high[:2,2]=63.5
+        rendered=native_render(a,high,np.eye(4),128,128,1)
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp=Path(tmp);p=tmp/'photo.png'
+            rgba=np.concatenate([np.full((128,128,3),.5),(1-rendered['final_T'])[:,:,None]],axis=2)
+            cv2.imwrite(str(p),np.round(rgba*255).astype('u1'))
+            cam=dict(index=0,split='train',K=K.tolist(),w2c=np.eye(4).tolist(),path=str(p),sha256=hashlib.sha256(p.read_bytes()).hexdigest())
+            result=resolution_diagnostic(a,[cam],tmp/'result',base_size=64,source_size=128)
+            self.assertEqual(len(result['rows']),2)
+            self.assertNotIn('eligibility',result)
+            self.assertNotIn('passed',result['rows'][0]['native_metrics'])
+            self.assertGreater(result['rows'][0]['native_metrics']['psnr_db'],45)
+
 
 if __name__=='__main__':unittest.main()
