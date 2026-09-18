@@ -1,0 +1,76 @@
+test_area_filter_exact_blocks_deterministic_and_no_uint8_rounding (test_corrected_sampling.SamplingTests) ... ok
+test_full_K_jacobian_matches_resized_pixel_mapping (test_corrected_sampling.SamplingTests) ... FAIL
+test_native800_then_area400_is_not_direct400_splatting (test_corrected_sampling.SamplingTests) ... FAIL
+test_source_pixel_centers_map_to_destination_centers (test_corrected_sampling.SamplingTests) ... FAIL
+
+======================================================================
+FAIL: test_full_K_jacobian_matches_resized_pixel_mapping (test_corrected_sampling.SamplingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_corrected_sampling.py", line 36, in test_full_K_jacobian_matches_resized_pixel_mapping
+    np.testing.assert_allclose(uvs,(uv+.5)*[.25,.5]-.5,atol=1e-12)
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/numpy/testing/_private/utils.py", line 1527, in assert_allclose
+    assert_array_compare(compare, actual, desired, err_msg=str(err_msg),
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/numpy/testing/_private/utils.py", line 844, in assert_array_compare
+    raise AssertionError(msg)
+AssertionError: 
+Not equal to tolerance rtol=1e-07, atol=1e-12
+
+Mismatched elements: 4 / 4 (100%)
+Max absolute difference: 0.375
+Max relative difference: 0.00305857
+ x: array([[122.98125, 196.85   ],
+       [156.415  , 150.85   ]])
+ y: array([[122.60625, 196.6    ],
+       [156.04   , 150.6    ]])
+
+======================================================================
+FAIL: test_native800_then_area400_is_not_direct400_splatting (test_corrected_sampling.SamplingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_corrected_sampling.py", line 59, in test_native800_then_area400_is_not_direct400_splatting
+    np.testing.assert_array_equal(render_measurement(a,K,np.eye(4),1),expected)
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/numpy/testing/_private/utils.py", line 934, in assert_array_equal
+    assert_array_compare(operator.__eq__, x, y, err_msg=err_msg,
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/numpy/testing/_private/utils.py", line 844, in assert_array_compare
+    raise AssertionError(msg)
+AssertionError: 
+Arrays are not equal
+
+Mismatched elements: 99 / 480000 (0.0206%)
+Max absolute difference: 0.25462663
+Max relative difference: 0.28274393
+ x: array([[[1., 1., 1.],
+        [1., 1., 1.],
+        [1., 1., 1.],...
+ y: array([[[1., 1., 1.],
+        [1., 1., 1.],
+        [1., 1., 1.],...
+
+======================================================================
+FAIL: test_source_pixel_centers_map_to_destination_centers (test_corrected_sampling.SamplingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_corrected_sampling.py", line 27, in test_source_pixel_centers_map_to_destination_centers
+    np.testing.assert_allclose(mapped[:,:2],[[0,0],[399,399],[199.5,199.5]],atol=1e-12)
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/numpy/testing/_private/utils.py", line 1527, in assert_allclose
+    assert_array_compare(compare, actual, desired, err_msg=str(err_msg),
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/numpy/testing/_private/utils.py", line 844, in assert_array_compare
+    raise AssertionError(msg)
+AssertionError: 
+Not equal to tolerance rtol=1e-07, atol=1e-12
+
+Mismatched elements: 6 / 6 (100%)
+Max absolute difference: 0.25
+Max relative difference: 0.00125313
+ x: array([[2.5000e-01, 2.5000e-01],
+       [3.9925e+02, 3.9925e+02],
+       [1.9975e+02, 1.9975e+02]])
+ y: array([[  0. ,   0. ],
+       [399. , 399. ],
+       [199.5, 199.5]])
+
+----------------------------------------------------------------------
+Ran 4 tests in 1.948s
+
+FAILED (failures=3)
