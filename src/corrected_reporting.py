@@ -27,6 +27,28 @@ def check_inventory(root,rows):
     return True
 
 
+def verify_probe_integrity(directory):
+    import json,numpy as np
+    from collections import Counter
+    directory=Path(directory)
+    def read(name):return json.loads((directory/name).read_text())
+    summary=read('summary.json');queries=read('queries.json');modes=read('modes.json');accepted=read('accepted.json');meta=read('profiles_metadata.json')
+    expected=dict(query_count=len(queries),mode_count=len(modes),accepted_count=len(accepted),raw_accepted_count=sum(m['accepted'] for m in modes),rejected_count=sum(not m['accepted'] for m in modes),ambiguous_count=sum('multimodal' in m['reasons'] or 'wide_plateau' in m['reasons'] for m in modes),rejection_reasons=dict(Counter(r for m in modes for r in m['reasons'])))
+    for key,value in expected.items():
+        if summary[key]!=value:raise ValueError('local denominator/count mismatch '+str(directory)+' '+key)
+    if len(meta)!=len(queries) or sum(len(p['modes']) for p in meta)!=len(modes):raise ValueError('dropped query profile or depth mode')
+    if [p['query'] for p in meta]!=[q['query'] for q in queries]:raise ValueError('profile/query association changed')
+    if any(not m['accepted'] or m['reasons'] for m in accepted):raise ValueError('rejected mode in accepted output')
+    with np.load(directory/'profiles.npz') as arrays:
+        offsets=arrays['offsets'];depths=arrays['depths'];cost=arrays['cost']
+        if len(offsets)!=len(queries)+1 or offsets[0]!=0 or offsets[-1]!=len(depths) or len(cost)!=len(depths):raise ValueError('profile array boundaries lost')
+        if np.isnan(depths).any() or np.isnan(cost).any() or (np.diff(offsets)<0).any():raise ValueError('invalid profile archive')
+        for lo,hi in zip(offsets[:-1],offsets[1:]):
+            if (np.diff(depths[lo:hi])<0).any():raise ValueError('nonmonotone ray sampling')
+        samples=len(depths)
+    return dict(passed=True,**expected,profile_samples=samples)
+
+
 def render_results(result):
     lines=['# Corrected multiscene foundation results','',
         f"Core synthetic scope: **{result['scope']['core']['verdict']}**. Lego and Chair are evaluated separately; no averaging rescues either.",

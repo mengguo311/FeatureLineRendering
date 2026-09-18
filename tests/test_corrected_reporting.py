@@ -2,6 +2,20 @@ import copy,unittest
 
 
 class ReportingTests(unittest.TestCase):
+    def test_local_integrity_rejects_dropped_modes_and_wrong_denominators(self):
+        from src.corrected_reporting import verify_probe_integrity
+        from src.corrected_probe import save_probe
+        import json,tempfile,numpy as np
+        from pathlib import Path
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td);(root/'queries.json').write_text(json.dumps([dict(query='q')]))
+            profile=dict(query='q',depths=np.array([1.,2.,3.]),cost=np.array([3.,0.,3.]),origin=np.zeros(3),direction=np.array([0.,0.,1.]),modes=[dict(depth=2.,cost=0.)],resolution_ok=True)
+            mode=dict(query='q',accepted=False,reasons=['multimodal'])
+            save_probe(root,dict(profiles=[profile],modes=[mode],accepted=[],query_count=1,resolution_ok=True))
+            self.assertTrue(verify_probe_integrity(root)['passed'])
+            (root/'modes.json').write_text('[]')
+            with self.assertRaises(ValueError):verify_probe_integrity(root)
+
     def test_markdown_is_checked_against_every_scene_gate_and_total(self):
         from src.corrected_reporting import render_results,check_markdown
         scene=dict(scene='lego',eligible=True,route_a=False,route_b=True,verdict='STOP_B',invariance_scope='CONTROLLED_ONLY',query_count=256,mode_count=18,accepted_count=0,qualified_doses=9,machine=dict(G0=True,G1=False,G2_machine=False,G3=False,G4_machine=False),manual='PENDING_INDEPENDENT_REVIEW')

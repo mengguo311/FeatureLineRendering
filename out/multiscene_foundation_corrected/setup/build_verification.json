@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "binaries": [
+    {
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-shared",
+        "-fPIC",
+        "-fopenmp",
+        "src/corrected_layers.cpp",
+        "-o",
+        "out/multiscene_foundation_corrected/setup/build_verification/area_layers.so"
+      ],
+      "live_sha256": "0bbb8169432c5ca463b2a570f9c417c77d740696fbac829163c251832563c30c",
+      "rebuild_sha256": "0bbb8169432c5ca463b2a570f9c417c77d740696fbac829163c251832563c30c",
+      "identical": true
+    },
+    {
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-shared",
+        "-fPIC",
+        "src/corrected_surface.cpp",
+        "-o",
+        "out/multiscene_foundation_corrected/setup/build_verification/surface.so"
+      ],
+      "live_sha256": "ac92254f90695db1a95e73e77dfe0fd5a6cbd7cb238176596f086d87d6c0a3fb",
+      "rebuild_sha256": "ac92254f90695db1a95e73e77dfe0fd5a6cbd7cb238176596f086d87d6c0a3fb",
+      "identical": true
+    },
+    {
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "-shared",
+        "-fPIC",
+        "-fopenmp",
+        "src/corrected_query.cpp",
+        "-o",
+        "out/multiscene_foundation_corrected/setup/build_verification/fast_query.so"
+      ],
+      "live_sha256": "c1f2a517bde97a39954bae73c41db4f9dbac53457a704907fff53e7639a1bf28",
+      "rebuild_sha256": "c1f2a517bde97a39954bae73c41db4f9dbac53457a704907fff53e7639a1bf28",
+      "identical": true
+    }
+  ]
+}
