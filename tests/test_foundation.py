@@ -248,3 +248,25 @@ assert fd>=0; lib.close(fd)
         shuffled=native_render({k:v[[2,0,1]] for k,v in a.items()},K,np.eye(4),32,32,1.)
         np.testing.assert_allclose(shuffled['stock_rgb'],white['stock_rgb'],atol=1e-7)
         self.assertGreater(float(np.nanmax(out['depth_quantiles'][:,:,2]-out['depth_quantiles'][:,:,0])),.9)
+
+    def test_16_reporting_preserves_stopping_states_and_hashes(self):
+        from src.foundation import freeze_json,prerequisite_verdict
+        root=Path(__file__).resolve().parents[1]
+        with tempfile.TemporaryDirectory() as d:
+            d=Path(d); (d/'lego').mkdir()
+            q={k:[dict(view=1,background=b,passed=False,psnr_db=35.,ssim=.99,p99_max_channel_abs=.05) for b in ['white','black']] for k in ['clone','split']}
+            r=prerequisite_verdict([{'passed':True}],q,[.5],[0.],0,True)
+            r.update(scene='synthetic',calibration=[dict(view=1,passed=True,rgb_max_abs=0.,black_rgb_max_abs=0.,alpha_max_abs=0.)],
+                qualification=q,per_view=[dict(view=1,coverage=.5,outside_contribution=0.,roi_pixels=10)],
+                original_count=6,selected_parent_count=3,perturbed_count=9,delta=.01,delta_foreground_rays=10,
+                timing=dict(setup_seconds=1.,calibration_seconds=2.,scientific_prerequisite_seconds=3.,local_scientific_probe_seconds=0.),
+                unreached=['glyphs'],source_sha256={})
+            freeze_json(d/'lego/prerequisites.json',r)
+            freeze_json(d/'access_audit.json',dict(forbidden_successful_input_reads=[],unresolved_paths=[],bootstrap_exceptions=[]))
+            p=subprocess.run([os.sys.executable,str(root/'scripts/report_foundation_prerequisites.py'),'--root',str(d)],capture_output=True,text=True,timeout=120)
+            self.assertEqual(p.returncode,0,p.stdout+p.stderr)
+            final=json.loads((d/'results.json').read_text()); text=(d/'RESULTS.md').read_text()
+            self.assertEqual(final['verdict'],'UNDETERMINED')
+            for g,v in final['gates'].items(): self.assertIn('| '+g+' | '+v['state']+' |',text)
+            self.assertIn('0/2',text)
+            self.assertTrue((d/'qualification_metrics.png').exists())

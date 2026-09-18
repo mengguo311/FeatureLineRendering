@@ -87,3 +87,9 @@ Each slice records its exact command and raw stdout/stderr, exit code and timest
 - 14 **SUITE** 2026-09-18T11:07:34.398237+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_foundation` → exit 0; [14_SUITE.txt](tdd/14_SUITE.txt).
 
 - 15 **CHECK** 2026-09-18T11:07:40.889976+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_foundation.FoundationTests.test_15_native_calibration_multilayer_rotation_and_row_shuffle` → exit 0; [15_CHECK.txt](tdd/15_CHECK.txt).
+
+- 16 **RED** 2026-09-18T11:11:27.026103+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_foundation.FoundationTests.test_16_reporting_preserves_stopping_states_and_hashes` → exit 1; [16_RED.txt](tdd/16_RED.txt).
+
+- 16 **GREEN** 2026-09-18T11:13:23.611787+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_foundation.FoundationTests.test_16_reporting_preserves_stopping_states_and_hashes` → exit 0; [16_GREEN.txt](tdd/16_GREEN.txt).
+
+- 16 **SUITE** 2026-09-18T11:13:25.139319+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_foundation` → exit 0; [16_SUITE.txt](tdd/16_SUITE.txt).
