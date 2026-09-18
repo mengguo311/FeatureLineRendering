@@ -17,3 +17,7 @@ when performed; failure logs are never replaced by later runs.
 - 03 **RED** 2026-09-18T18:51:08.893385+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene_training.TrainingTests.test_job_manifests_enumerate_eight_fixed_runs_without_recipe_drift` → exit 1; [03_RED.txt](tdd/03_RED.txt).
 
 - 03 **GREEN** 2026-09-18T18:51:46.850983+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene_training` → exit 0; [03_GREEN.txt](tdd/03_GREEN.txt).
+
+- 04 **RED** 2026-09-18T18:53:32.144352+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene_training.TrainingTests.test_training_entry_preserves_arguments_and_blocks_unstaged_reads` → exit 1; [04_RED.txt](tdd/04_RED.txt).
+
+- 04 **GREEN** 2026-09-18T18:53:47.401647+00:00: `PYTHONPATH=.:tests CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=4 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest -v test_multiscene_training` → exit 0; [04_GREEN.txt](tdd/04_GREEN.txt).

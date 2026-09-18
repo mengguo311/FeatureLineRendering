@@ -90,9 +90,10 @@ assert all(x!=y for x,y in zip(a,b)), (a,b)
             tmp=Path(tmp); clean=tmp/'clean'; clean.mkdir(); data=tmp/'data'; data.mkdir()
             output=tmp/'output'; output.mkdir(); forbidden=tmp/'DEV.png'; forbidden.write_text('sealed')
             (clean/'train.py').write_text('''
-import sys,json
+import sys,json,torch
 from pathlib import Path
 assert sys.argv[1:]==['--seed','1729']
+assert torch.zeros(1,device='cuda').item()==0
 try:
  Path(%r).read_bytes()
 except PermissionError: pass

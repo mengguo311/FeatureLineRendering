@@ -17,8 +17,12 @@ def main():
     args = parser.parse_args()
     spec = json.loads(args.spec.read_text())
     source = Path(spec['source']).resolve()
+    # The driver initializes OS resources before confinement; no scene input has
+    # been read. Upstream safe_state subsequently resets all RNG streams.
+    import torch
+    torch.cuda.init()
     runtime = [sys.prefix, '/usr', '/lib', '/lib64', '/etc', '/proc', '/sys']
-    readonly = [str(source), *spec['site'], *runtime]
+    readonly = [str(source), str(Path(__file__).resolve()), *spec['site'], *runtime]
     writable = [spec['data'], spec['output'], '/dev']
     readonly = [p for p in readonly if Path(p).exists()]
     restrict_filesystem(readonly, writable)

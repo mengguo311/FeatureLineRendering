@@ -1,0 +1,28 @@
+test_training_entry_preserves_arguments_and_blocks_unstaged_reads (test_multiscene_training.TrainingTests) ... FAIL
+
+======================================================================
+FAIL: test_training_entry_preserves_arguments_and_blocks_unstaged_reads (test_multiscene_training.TrainingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_multiscene_training.py", line 107, in test_training_entry_preserves_arguments_and_blocks_unstaged_reads
+    self.assertEqual(p.returncode,0,p.stderr)
+AssertionError: 1 != 0 : Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/scripts/multiscene_train_entry.py", line 32, in <module>
+  File "/home/u00134/3dgs_line/tier1/scripts/multiscene_train_entry.py", line 28, in main
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/runpy.py", line 288, in run_path
+    return _run_module_code(code, init_globals, run_name,
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/runpy.py", line 97, in _run_module_code
+    _run_code(code, mod_globals, init_globals,
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/tmp/tmpcc49r6hb/clean/train.py", line 5, in <module>
+    assert torch.zeros(1,device='cuda').item()==0
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/torch/cuda/__init__.py", line 293, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 304: OS call failed or operation not supported on this OS
+
+
+----------------------------------------------------------------------
+Ran 1 test in 1.851s
+
+FAILED (failures=1)
