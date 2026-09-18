@@ -45,3 +45,28 @@ def prepare_eligibility(root,scene,cfg):
     result=dict(scene=scene,eligible=a or b,route_a=a,route_b=b,qualified_doses=doses,posterior_eligible=[q['eligibility']['passed'] for q in quality],valid_parent_geometry=geometry,delta=controlled['delta'],box=controlled['box'],quality=[q['eligibility'] for q in quality],pair=pair)
     freeze_json(directory/'pair.json',dict(rows=pair_rows,eligibility=pair));freeze_json(directory/'eligibility.json',result)
     return result
+
+
+def run_parallel_arms(directory,jobs,cameras,box,delta,cfg,split,workers=4):
+    """Independent frozen arms in forked, already-confined single-thread workers.
+
+    Each arm calls exactly run_inference_arm. Children inherit Landlock and read-only
+    camera/evidence arrays; no cross-arm initialization or result selection exists.
+    """
+    import multiprocessing as mp
+    directory=Path(directory);directory.mkdir(parents=True,exist_ok=True)
+    context=mp.get_context('fork');pending=list(jobs);active=[];failed=[];start=time.monotonic()
+    def child(job):
+        run_inference_arm(directory/job['name'],job['queries'],cameras,job['fields'],job['layers'],box,delta,cfg,job['name'],split)
+    while pending or active:
+        while pending and len(active)<workers:
+            job=pending.pop(0);process=context.Process(target=child,args=(job,));process.start();active.append((job['name'],process))
+        for name,process in list(active):
+            if not process.is_alive():
+                process.join();active.remove((name,process))
+                if process.exitcode:failed.append(dict(arm=name,exit_code=process.exitcode))
+        if time.monotonic()-start>cfg['budget']['probe_seconds_per_scene']:
+            for name,process in active:process.terminate();process.join()
+            raise TimeoutError('registered local stage budget exceeded')
+        if active:time.sleep(.1)
+    if failed:raise RuntimeError('arm failures: '+str(failed))

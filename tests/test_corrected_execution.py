@@ -30,3 +30,23 @@ class ExecutionTests(unittest.TestCase):
         self.assertEqual(result['expanded']['verdict'],'INSUFFICIENT_POSTERIOR_QUALITY')
         self.assertEqual(result['core']['verdict'],'STOP_B')
         self.assertEqual(result['core']['per_scene']['chair'],'MACHINE_FOUNDATION_GO_MANUAL_PENDING')
+
+    def test_parallel_arms_are_array_identical_to_serial_execution(self):
+        from src.corrected_execution import run_parallel_arms,run_inference_arm
+        from src.corrected_probe import load_probe
+        cameras={};fields={};K=np.array([[100.,0,99.5],[0,100.,99.5],[0,0,1]])
+        y,x=np.indices((200,200))
+        for i,cy in enumerate([0.,1.,-1.,.5]):
+            w=np.eye(4);w[1,3]=-cy;cameras[i]=dict(K=K,w2c=w)
+            ey=99.5-100*cy/3;t=np.zeros((200,200,2));t[:,:,0]=1
+            fields[i]=dict(dt=abs(y-ey),nearest_uv=np.stack([x,np.full_like(y,ey,dtype=float)],axis=2),nearest_tangent=t,domain=np.ones((200,200),bool))
+        queries=[dict(query='q',view=0,pixel=[99.5,99.5])];box=[[-1,-1.5,1],[1,1.5,5]]
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td);run_inference_arm(root/'serial',queries,cameras,fields,None,box,.1,CFG,'serial','F')
+            jobs=[dict(name=name,queries=queries,fields=fields,layers=None) for name in ['first','second']]
+            run_parallel_arms(root/'parallel',jobs,cameras,box,.1,CFG,'F',workers=2)
+            for name in ['first','second']:
+                a=load_probe(root/'serial');b=load_probe(root/'parallel'/name)
+                self.assertEqual(a['accepted'],b['accepted']);self.assertEqual(a['modes'],b['modes'])
+                with np.load(root/'serial/profiles.npz') as x,np.load(root/'parallel'/name/'profiles.npz') as y:
+                    for k in x.files:np.testing.assert_array_equal(x[k],y[k])

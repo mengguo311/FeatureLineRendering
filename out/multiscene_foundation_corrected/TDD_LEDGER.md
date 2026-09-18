@@ -54,3 +54,7 @@
 - 15 RED, 2026-09-18T23:22:23.146504+00:00, exit 1: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', '-v', 'test_corrected_layers.QueryOptimizationTests']`; [15_RED.txt](tdd/15_RED.txt).
 
 - 15 GREEN, 2026-09-18T23:22:42.222655+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', '-v', 'test_corrected_layers']`; [15_GREEN.txt](tdd/15_GREEN.txt).
+
+- 16 RED, 2026-09-18T23:29:39.360973+00:00, exit 1: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', '-v', 'test_corrected_execution.ExecutionTests.test_parallel_arms_are_array_identical_to_serial_execution']`; [16_RED.txt](tdd/16_RED.txt).
+
+- 16 GREEN, 2026-09-18T23:30:10.989016+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', '-v', 'test_corrected_execution.ExecutionTests.test_parallel_arms_are_array_identical_to_serial_execution']`; [16_GREEN.txt](tdd/16_GREEN.txt).

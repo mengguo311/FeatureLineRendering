@@ -7,8 +7,8 @@ ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from src.foundation import freeze_json,verified_json,restrict_filesystem,load_asset
 from src.corrected_qualification import reference
 from src.corrected_layers import AreaLayers
-from src.corrected_probe import (ImageEvidence,edge_field,sample_queries,shift_field,pca_control,random_control,evaluate_positions,_json)
-from src.corrected_execution import run_inference_arm
+from src.corrected_probe import (ImageEvidence,edge_field,sample_queries,shift_field,pca_control,random_control,evaluate_positions,_json,load_probe)
+from src.corrected_execution import run_inference_arm,run_parallel_arms
 from src.corrected_surface import contribution_weights
 
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
@@ -75,31 +75,35 @@ def main():
     native_queries=[q for i in cfg['queries']['exchange' if split=='C' else 'primary'] for q in sample_queries(fields[i],i,cfg)]
     queries=query_data if query_data is not None else native_queries
     freeze_json(output/'queries.json',queries)
-    def run(name,selected_fields=fields,selected_layers=layers,q=queries):
-        if time.monotonic()-start>cfg['budget']['probe_seconds_per_scene']:raise TimeoutError('local budget exceeded')
-        return run_inference_arm(output/name,q,cameras,selected_fields,selected_layers,box,delta,cfg,name,split)
-    main_result=run('gs');no_gs=None
-    if args.task in ['primary','cross']:no_gs=run('no_gs',selected_layers=None)
+    jobs=[]
+    def add(name,selected_fields=fields,selected_layers=layers,q=queries):
+        jobs.append(dict(name=name,queries=q,fields=selected_fields,layers=selected_layers))
+    add('gs')
+    if args.task in ['primary','cross']:add('no_gs',selected_layers=None)
     if args.task=='primary':
         negatives=[q for i in cfg['queries']['primary'] for q in sample_queries(fields[i],i,cfg,negative=True,foreground=foreground[i])]
         freeze_json(output/'background_queries.json',negatives)
-        shifted={i:shift_field(fields[i],j,cfg) for j,i in enumerate(views)};run('shifted',selected_fields=shifted);run('shifted_no_gs',selected_fields=shifted,selected_layers=None)
+        shifted={i:shift_field(fields[i],j,cfg) for j,i in enumerate(views)}
+        add('shifted',selected_fields=shifted);add('shifted_no_gs',selected_fields=shifted,selected_layers=None)
         for arm,use_layers in [('gs',layers),('no_gs',None)]:
             for omitted in views:
                 selected={i:fields[i] for i in views if i!=omitted}
                 selected_depth={i:layers[i] for i in selected} if use_layers is not None else None
-                run(f'{arm}_loo_{omitted:03d}',selected,selected_depth)
+                add(f'{arm}_loo_{omitted:03d}',selected,selected_depth)
+    if args.task=='cross':
+        freeze_json(output/'native_queries.json',native_queries)
+        add('gs_native_queries',q=native_queries);add('no_gs_native_queries',selected_layers=None,q=native_queries)
+    for dx,dy in cfg['probe']['detector_offsets'][1:]:
+        offset_queries=[dict(q,pixel=[q['pixel'][0]+dx,q['pixel'][1]+dy]) for q in queries]
+        add(f'gs_offset_{dx}_{dy}',q=offset_queries)
+        if args.task in ['primary','cross']:add(f'no_gs_offset_{dx}_{dy}',selected_layers=None,q=offset_queries)
+    run_parallel_arms(output,jobs,cameras,box,delta,cfg,split,workers=4)
+    if args.task=='primary':
+        main_result=load_probe(output/'gs');no_gs=load_probe(output/'no_gs')
         evidence=ImageEvidence(cameras,fields,layers,delta,cfg)
         pca=pca_control(asset,evidence,cfg);freeze_json(output/'pca.json',_json(pca))
         random=random_control(main_result['accepted'],cfg);freeze_json(output/'random.json',random)
         freeze_json(output/'F_predictions.json',_json({name:evaluate_positions(rows,evidence) for name,rows in [('gs',main_result['accepted']),('random',random),('no_gs',no_gs['accepted'])]}))
-    if args.task=='cross':
-        freeze_json(output/'native_queries.json',native_queries)
-        run('gs_native_queries',q=native_queries);run('no_gs_native_queries',selected_layers=None,q=native_queries)
-    for dx,dy in cfg['probe']['detector_offsets'][1:]:
-        offset_queries=[dict(q,pixel=[q['pixel'][0]+dx,q['pixel'][1]+dy]) for q in queries]
-        run(f'gs_offset_{dx}_{dy}',q=offset_queries)
-        if args.task in ['primary','cross']:run(f'no_gs_offset_{dx}_{dy}',selected_layers=None,q=offset_queries)
     frozen=dict(queries_sha256=sha(output/'queries.json'),artifacts={str(f.relative_to(output)):sha(f) for f in sorted(output.rglob('*')) if f.is_file()},elapsed_seconds=time.monotonic()-start,asset=args.asset,split=split)
     freeze_json(output/'frozen.json',frozen)
 

@@ -43,3 +43,13 @@ source file was checked against the archived pinned source hash; these are expli
 bootstrap source exceptions, not photograph/data exemptions. The failed audit
 attempt is retained. Administrative audit-module extensions after early launches
 are versioned in Git; no inference formula or gate was changed by this accounting.
+
+The single-thread geometry benchmark isolates scheduling overhead; it does not
+promise the same speedup for a full scene. Full scene profiles retain thousands of
+modes and remained expensive. Independent arms are therefore dispatched to four
+single-thread forked workers per scene, inheriting the same Landlock restrictions
+and read-only evidence. A RED/GREEN fixture compares every accepted/mode record
+and every profile array to serial execution exactly. This changes only scheduling;
+each child calls the identical run_inference_arm and writes its own exclusive arm
+directory. No C worker starts until every F arm is frozen. Partial serial attempts
+are retained, and their completed outputs are checked against final repetitions.
