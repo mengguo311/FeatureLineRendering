@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[3];sys.path.insert(0,str(ROOT))
 from src.corrected_execution import prepare_eligibility
 out=ROOT/'out/multiscene_foundation_corrected';queue=int(sys.argv[1]);cfg=json.loads((out/'config.json').read_text())
 scenes=['lego','drums'] if queue==0 else ['chair','ficus']
-cpus=sorted(os.sched_getaffinity(0));os.sched_setaffinity(0,cpus[queue*4:queue*4+4])
+cpus=sorted(os.sched_getaffinity(0));os.sched_setaffinity(0,cpus[16+queue*8:24+queue*8])
 for scene in scenes:
  waiting=time.monotonic()
  required=[out/f'quality/{scene}/seed_{seed}/stage_complete.json' for seed in [1729,2718]]+[out/f'controlled/{scene}/stage_complete.json']

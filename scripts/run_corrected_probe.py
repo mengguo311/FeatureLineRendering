@@ -97,7 +97,7 @@ def main():
         offset_queries=[dict(q,pixel=[q['pixel'][0]+dx,q['pixel'][1]+dy]) for q in queries]
         add(f'gs_offset_{dx}_{dy}',q=offset_queries)
         if args.task in ['primary','cross']:add(f'no_gs_offset_{dx}_{dy}',selected_layers=None,q=offset_queries)
-    run_parallel_arms(output,jobs,cameras,box,delta,cfg,split,workers=4)
+    run_parallel_arms(output,jobs,cameras,box,delta,cfg,split,workers=8)
     if args.task=='primary':
         main_result=load_probe(output/'gs');no_gs=load_probe(output/'no_gs')
         evidence=ImageEvidence(cameras,fields,layers,delta,cfg)

@@ -53,3 +53,13 @@ and every profile array to serial execution exactly. This changes only schedulin
 each child calls the identical run_inference_arm and writes its own exclusive arm
 directory. No C worker starts until every F arm is frozen. Partial serial attempts
 are retained, and their completed outputs are checked against final repetitions.
+
+The completed serial/forked scene profiles and modes are exactly identical. The
+earlier four-thread Chair GS attempt differs in29,518 eigen-derived scalar values;
+maximum absolute difference3.372e-10 (degrees for the largest difference). Query
+profiles, accepted outputs and every rejection reason agree. The exact-byte check
+retains its false result; no tolerance was substituted to call it byte-identical.
+Future C/repeat stages use eight single-thread arm slots, verified by the same
+serial-versus-eight-fork array/mode test. Existing F work was not interrupted.
+Native layer precomputation runs independently on approved states only; the main
+queue skips already completed layers and still seals C until F is frozen.

@@ -43,9 +43,10 @@ class ExecutionTests(unittest.TestCase):
         queries=[dict(query='q',view=0,pixel=[99.5,99.5])];box=[[-1,-1.5,1],[1,1.5,5]]
         with tempfile.TemporaryDirectory() as td:
             root=Path(td);run_inference_arm(root/'serial',queries,cameras,fields,None,box,.1,CFG,'serial','F')
-            jobs=[dict(name=name,queries=queries,fields=fields,layers=None) for name in ['first','second']]
-            run_parallel_arms(root/'parallel',jobs,cameras,box,.1,CFG,'F',workers=2)
-            for name in ['first','second']:
+            names=['arm_'+str(i) for i in range(8)]
+            jobs=[dict(name=name,queries=queries,fields=fields,layers=None) for name in names]
+            run_parallel_arms(root/'parallel',jobs,cameras,box,.1,CFG,'F',workers=8)
+            for name in names:
                 a=load_probe(root/'serial');b=load_probe(root/'parallel'/name)
                 self.assertEqual(a['accepted'],b['accepted']);self.assertEqual(a['modes'],b['modes'])
                 with np.load(root/'serial/profiles.npz') as x,np.load(root/'parallel'/name/'profiles.npz') as y:
