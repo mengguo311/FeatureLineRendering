@@ -133,7 +133,8 @@ def final_report(root,cfg):
         image_only_certified=False,gs_benefit=False) for s in scenes]
     totals=dict(training_expected=8,training_complete=sum(r['complete'] for r in training),
         seeds_eligible=sum(r['eligible'] for r in training),doses_expected=4*len(perturbation_specs(cfg)),
-        doses_measured=len(doses),doses_rgb_qualified=sum(r['passed'] for r in doses),
+        doses_measured=len(doses),doses_rgb_passed=sum(r['qualified_pairs']==r['total_pairs'] for r in doses),
+        doses_qualified=sum(r['passed'] for r in doses),
         doses_invariance_eligible=sum(r['invariance_eligible'] for r in doses),
         quality_view_background_rows=quality_count,controlled_view_background_rows=sum(r['total_pairs'] for r in doses),
         independent_pair_rows=pair_count,posthoc_diagnostic_rows=diagnostic_count,
