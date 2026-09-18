@@ -1,0 +1,32 @@
+test_seed_patch_changes_all_streams_and_only_seed_semantics (test_multiscene_training.TrainingTests) ... ERROR
+test_staged_data_is_identical_but_has_independent_initialization (test_multiscene_training.TrainingTests) ... ERROR
+test_worker_resource_wait_and_failure_are_durable (test_multiscene_training.TrainingTests) ... ERROR
+
+======================================================================
+ERROR: test_seed_patch_changes_all_streams_and_only_seed_semantics (test_multiscene_training.TrainingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_multiscene_training.py", line 18, in test_seed_patch_changes_all_streams_and_only_seed_semantics
+    from src.multiscene_training import seed_sources
+ModuleNotFoundError: No module named 'src.multiscene_training'
+
+======================================================================
+ERROR: test_staged_data_is_identical_but_has_independent_initialization (test_multiscene_training.TrainingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_multiscene_training.py", line 46, in test_staged_data_is_identical_but_has_independent_initialization
+    from src.multiscene_training import stage_training_data, training_command
+ModuleNotFoundError: No module named 'src.multiscene_training'
+
+======================================================================
+ERROR: test_worker_resource_wait_and_failure_are_durable (test_multiscene_training.TrainingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_multiscene_training.py", line 74, in test_worker_resource_wait_and_failure_are_durable
+    from src.multiscene_training import run_job
+ModuleNotFoundError: No module named 'src.multiscene_training'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+FAILED (errors=3)
