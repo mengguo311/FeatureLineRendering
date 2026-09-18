@@ -185,6 +185,14 @@ PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python \
   scripts/verify_multiscene.py --check-manifest
 ```
 
+The successful pass verified 472 original input files, 1,594 tracked upstream
+source files, 3,466 PNGs, all eleven existing repository MP4s (240 decoded frames
+each), and 936 native NPZ archives. All 36 access traces passed. The first
+administrative verification attempt stopped because ffprobe was not on PATH;
+the second used the existing executable at
+`/home/u00134/bin/miniconda3/envs/ts_diffusion/bin/ffprobe`, with its hash recorded
+in VERIFICATION. Both attempt logs are retained. No scientific output changed.
+
 MANIFEST excludes its own two files, Git object stores and transient __pycache__.
 It includes exact paths, sizes and SHA256 for ignored checkpoints, arrays,
 full-resolution PNGs, staged inputs, binaries and access traces. Small reports,

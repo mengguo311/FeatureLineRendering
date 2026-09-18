@@ -7,6 +7,7 @@ from pathlib import Path
 import subprocess
 import sys
 import zipfile
+from datetime import datetime
 
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from src.foundation import freeze_json
@@ -42,6 +43,12 @@ if args.manifest:
     for p in [ROOT/'out/point_feature_foundation/setup/composite.so',
               ROOT/'out/vrss/vendor/official_site/diff_gaussian_rasterization/__init__.py']:
         external.append(dict(path=str(p),bytes=p.stat().st_size,sha256=sha256(p)))
+    method_sources=[ROOT/'src/foundation.py',ROOT/'src/common.py',
+        *sorted((ROOT/'src').glob('multiscene*.*')),
+        *sorted((ROOT/'scripts').glob('*multiscene*.py')),
+        *sorted((ROOT/'tests').glob('test_multiscene*.py'))]
+    for p in method_sources:
+        external.append(dict(path=str(p),bytes=p.stat().st_size,sha256=sha256(p)))
     external={r['path']:r for r in external if not Path(r['path']).is_relative_to(root)}
     tracked=set(git('ls-files').splitlines())
     for row in files:
@@ -58,6 +65,7 @@ assert sha256(root/'config.json')=='199f5a65bd8d3cd2a82fc31fc92c03f6508f98be1258
 assert git('branch','--show-current')=='multiscene-foundation'
 assert git('rev-parse','ab40ec9^')==cfg['start_head']
 assert subprocess.check_output(['git','show','ab40ec9:out/multiscene_foundation/config.json'])==(root/'config.json').read_bytes()
+prereg_time=git('show','-s','--format=%cI','ab40ec9')
 for row in inputs['files']+inputs['prior_reports']:verify_record(row)
 dirty=Path('/home/u00134/3dgs_line/ext/gaussian-splatting');before=inputs['external_dirty_source']
 assert git('rev-parse','HEAD',cwd=dirty)==before['head']
@@ -82,6 +90,9 @@ for scene in cfg['scene_order']:
         points=Path(manifest['data'])/'points3d.ply';init.append(dict(scene=scene,seed=seed,sha256=sha256(points)))
         complete=load(d/'completion.json');verify_record(complete)
         status=load(d/'exit_status.json');assert status['exit_code']==0 and complete['complete']
+        assert datetime.fromisoformat(prereg_time)<datetime.fromisoformat(status['started_utc'])
+        failed=load(d/'attempt_00_runtime_init/exit_status.json')
+        assert datetime.fromisoformat(prereg_time)<datetime.fromisoformat(failed['started_utc'])
         assert '30000/30000' in (d/'train.log').read_text()
         resources=[json.loads(s) for s in (d/'resources.jsonl').read_text().splitlines()]
         assert resources[-1]['free_mib']>=cfg['training']['min_free_mib']
@@ -131,8 +142,9 @@ tracked_media=[ROOT/p for p in git('ls-files','*.png','*.mp4').splitlines()]
 new_png=[p for p in root.rglob('*.png') if not {'vendor','inputs'}.intersection(p.relative_to(root).parts)]
 pngs=sorted(set(new_png+[p for p in tracked_media if p.suffix=='.png']))
 png_rows=[verify_png(p) for p in pngs];mp4_rows=[]
+ffprobe=Path('/home/u00134/bin/miniconda3/envs/ts_diffusion/bin/ffprobe')
 for p in sorted(p for p in tracked_media if p.suffix=='.mp4'):
-    command=['ffprobe','-v','error','-count_frames','-select_streams','v:0','-show_entries',
+    command=[str(ffprobe),'-v','error','-threads','1','-count_frames','-select_streams','v:0','-show_entries',
         'stream=nb_frames,nb_read_frames,width,height,r_frame_rate','-of','json',str(p)]
     stream=json.loads(subprocess.check_output(command))['streams'][0]
     assert int(stream['nb_read_frames'])>0
@@ -147,6 +159,7 @@ for p in npz:
 print('Images, video frame counts, JSON sidecars and native-array CRCs verified',flush=True)
 tests=load(root/'setup/final_test_runs.json');assert all(r['exit_code']==0 for r in tests['runs'])
 freeze_json(root/'VERIFICATION.json',dict(created_utc=utc(),passed=True,
+    prereg_commit=git('rev-parse','ab40ec9'),prereg_committed_utc=prereg_time,
     config_sha256=sha256(root/'config.json'),input_files=len(inputs['files']),prior_reports=len(inputs['prior_reports']),
     upstream_tracked_source_files=len(source['files']),isolated_source_commit=cfg['training']['source_commit'],
     isolated_source_diff_sha256=source['diff_sha256'],external_dirty_source_unchanged=True,
@@ -157,6 +170,7 @@ freeze_json(root/'VERIFICATION.json',dict(created_utc=utc(),passed=True,
     quality_rows=quality_count,controlled_rows=controlled_count,pair_rows=pair_count,
     json_files_parsed=json_count,sidecar_hashes_verified=sidecars,results_markdown_consistent=True,
     png_files_decoded=len(png_rows),mp4_frame_counts_verified=len(mp4_rows),new_mp4s=0,
+    ffprobe=dict(path=str(ffprobe),sha256=sha256(ffprobe)),
     native_archives_crc_checked=len(npz),tests=tests,
     git_final_equality='Recorded after final commit/push in external report to avoid recursive commit hashes',
     manifest='Generated after this verification and final documentation; then independently rehashed after commit'))

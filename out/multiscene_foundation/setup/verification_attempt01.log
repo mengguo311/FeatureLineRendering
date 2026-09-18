@@ -1,0 +1,14 @@
+Frozen inputs, dirty source, isolated source and binaries verified
+Training, source allowlists and all frozen gate computations verified
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/scripts/verify_multiscene.py", line 148, in <module>
+    stream=json.loads(subprocess.check_output(command))['streams'][0]
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/subprocess.py", line 424, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/subprocess.py", line 505, in run
+    with Popen(*popenargs, **kwargs) as process:
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/subprocess.py", line 951, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/subprocess.py", line 1837, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'ffprobe'
