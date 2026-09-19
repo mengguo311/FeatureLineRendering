@@ -157,3 +157,14 @@ Slice25 enforces the preregistered P90 rule and treats missing adjacent evidence
 as unknown. setup/surface_repair_worker.py reruns this diagnosis. All21 per-asset
 fit files remained byte-identical; SURFACE_REPAIR_VERIFICATION.json records the
 comparison and changed summary buckets. No feature fit or machine verdict changed.
+
+The final audit retains its initial failed output as
+`setup/access_audit_before_runtime_accounting.json`. Run
+`scripts/verify_corrected_fontcache.py` to validate the observed exact system-font
+cache files before `scripts/audit_corrected.py`; it refuses different ownership,
+timestamps, font directories or post-policy reads. Cache hashes are specific to
+this runtime and must never be copied as permission for scientific files on
+another machine. Slice26 covers interleaved strace records and fail-closed
+incomplete records. End suites use the same recorded commands as the initial
+final suites, with labels `final_targeted_after_audit` and
+`final_complete_after_audit`; the verifier selects the latest separate runs.

@@ -4,7 +4,7 @@ import argparse,hashlib,json,sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from src.foundation import freeze_json
-from src.corrected_audit import audit_policy,verified_source_exception,stage_record_paths
+from src.corrected_audit import audit_policy,verified_source_exception,stage_record_paths,bootstrap_reads_before_policy
 from src.multiscene_audit import bytecode_status
 
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
@@ -24,13 +24,21 @@ for policy_path in sorted(root.rglob('allowlist.json')):
  if not status.exists():continue
  if not trace.exists():raise FileNotFoundError(trace)
  extra=bootstrap+[root/f'scenes/{scene}/eligibility.json',root/f'scenes/{scene}/eligibility.json.sha256',root/f'local/{scene}/F/frozen.json',root/f'local/{scene}/F/frozen.json.sha256']
+ trace_text=trace.read_text();font_exceptions=[]
+ if task=='visual':
+  font_record=json.loads((root/'setup/font_cache_bootstrap.json').read_text())
+  if not font_record['passed']:raise ValueError('invalid system-font inventory')
+  font_exceptions=[verified_source_exception(r['path'],r['sha256']) for r in font_record['files']]
+  if not bootstrap_reads_before_policy(trace_text,policy_path,font_exceptions):raise ValueError('font read after bootstrap')
+  extra.extend(font_exceptions)
  cache_records=[]
  for cache in (ROOT/'src/__pycache__').glob('*.cpython-39.pyc'):
   source=cache.with_name(cache.name.split('.')[0]+'.py').parent.parent/(cache.name.split('.')[0]+'.py')
   if not source.exists():continue
   record=bytecode_status(cache,source)
   if record['status']!='UNVERIFIED':extra.append(cache);cache_records.append(dict(path=str(cache),source=str(source),**record))
- result=audit_policy(trace.read_text(),policy,policy_path.parent,extra)
+ result=audit_policy(trace_text,policy,policy_path.parent,extra)
+ result['verified_font_cache_bootstrap']=font_exceptions
  for record in cache_records:
   if record['path'] in result['successful_paths'] and record['requires_observed_source_fallback'] and record['source'] not in result['successful_paths']:
    result['forbidden_successes'].append(record['path']);result['passed']=False

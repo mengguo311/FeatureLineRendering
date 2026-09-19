@@ -100,3 +100,26 @@ initial surface attempts and their native-open traces are retained under
 attempt_02_surface_aggregation. The diagnostic stages are rerun with that
 aggregation repair; original local fits, glyphs and machine verdicts are untouched.
 Raw per-asset surface fits are compared byte-for-byte across these attempts.
+
+All175 local arms and both scenes' machine, surface and visual diagnostics
+completed. The first final native-open audit flagged52 font-cache paths (the
+same26 files in each visual startup) and9 interleaved unfinished/resumed openat
+calls. Its exact failed JSON and hash remain in
+setup/access_audit_before_runtime_accounting.json. Slice26 first reproduces
+the parser's failure, including an orphan resume previously ignored, then tests
+PID/syscall joining, device metadata, retained forbidden reads and fail-closed
+incomplete traces. No old audit implementation was modified.
+
+scripts/verify_corrected_fontcache.py decodes all26 exact root-owned cache files
+with fc-cat, checks that they reference system font directories and predate the
+run, and proves each successful read preceded visual policy creation. The
+resulting exact hashes are the only added runtime exceptions, limited to visual
+startup. Frozen scientific allowlists and inputs are unchanged. The repaired
+ACCESS_AUDIT.json passes all70 traces with0 forbidden successful opens and0
+unparsed open calls;9 resumed calls are accounted for. This is an audit
+accounting repair, not a new scientific-input exception.
+
+Final targeted and full suites are separate processes. The initial35/124-test
+passes are retained; after slice26 the final suites include38/127 tests. Every
+eligible scene remains STOP_B, with Lego limited to CONTROLLED_ONLY and Chair
+eligible for both invariance routes. No review is counted as independent.

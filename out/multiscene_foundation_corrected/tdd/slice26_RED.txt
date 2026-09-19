@@ -1,0 +1,44 @@
+test_archived_attempt_uses_its_own_trace_and_status (test_corrected_audit.CorrectedAuditTests) ... ok
+test_bootstrap_metadata_does_not_authorize_other_photographs (test_corrected_audit.CorrectedAuditTests) ... ok
+test_bootstrap_source_exception_requires_exact_pinned_bytes (test_corrected_audit.CorrectedAuditTests) ... ok
+test_incomplete_trace_is_fail_closed (test_corrected_audit.CorrectedAuditTests) ... FAIL
+test_interleaved_opens_preserve_allowed_and_forbidden_access (test_corrected_audit.CorrectedAuditTests) ... FAIL
+test_runtime_bootstrap_must_precede_policy_creation (test_corrected_audit.CorrectedAuditTests) ... ERROR
+
+======================================================================
+ERROR: test_runtime_bootstrap_must_precede_policy_creation (test_corrected_audit.CorrectedAuditTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_corrected_audit.py", line 30, in test_runtime_bootstrap_must_precede_policy_creation
+    from src.corrected_audit import bootstrap_reads_before_policy
+ImportError: cannot import name 'bootstrap_reads_before_policy' from 'src.corrected_audit' (/home/u00134/3dgs_line/tier1/src/corrected_audit.py)
+
+======================================================================
+FAIL: test_incomplete_trace_is_fail_closed (test_corrected_audit.CorrectedAuditTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_corrected_audit.py", line 26, in test_incomplete_trace_is_fail_closed
+    self.assertFalse(result['passed'])
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_interleaved_opens_preserve_allowed_and_forbidden_access (test_corrected_audit.CorrectedAuditTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_corrected_audit.py", line 15, in test_interleaved_opens_preserve_allowed_and_forbidden_access
+    self.assertEqual(result['unparsed_open_lines'],[])
+AssertionError: Lists differ: ['11 openat(AT_FDCWD, "/run/ok", O_RDONLY [141 chars]..>'] != []
+
+First list contains 3 additional elements.
+First extra element 0:
+'11 openat(AT_FDCWD, "/run/ok", O_RDONLY <unfinished ...>'
+
++ []
+- ['11 openat(AT_FDCWD, "/run/ok", O_RDONLY <unfinished ...>',
+-  '12 openat(AT_FDCWD, "/secret/photo", O_RDONLY <unfinished ...>',
+-  '13 openat(AT_FDCWD, "/dev/null", O_RDONLY <unfinished ...>']
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.071s
+
+FAILED (failures=2, errors=1)
