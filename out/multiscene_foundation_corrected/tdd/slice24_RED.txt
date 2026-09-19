@@ -1,0 +1,15 @@
+E
+======================================================================
+ERROR: test_empty_neighborhood_is_retained_as_sparse (test_corrected_surface.SurfaceAuditTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_corrected_surface.py", line 8, in test_empty_neighborhood_is_retained_as_sparse
+    result=fit_neighborhood(np.empty((0,3)),np.empty(0),np.zeros(3),.1,.2,CFG)
+  File "/home/u00134/3dgs_line/tier1/src/corrected_surface.py", line 70, in fit_neighborhood
+    train=np.array([int(s[:8],16)%2==0 for s in ids]);held=~train
+TypeError: ufunc 'invert' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''
+
+----------------------------------------------------------------------
+Ran 1 test in 0.134s
+
+FAILED (errors=1)

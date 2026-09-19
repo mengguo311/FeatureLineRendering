@@ -3,6 +3,13 @@ import numpy as np
 from test_multiscene import CFG,asset_fixture
 
 class SurfaceAuditTests(unittest.TestCase):
+    def test_empty_neighborhood_is_retained_as_sparse(self):
+        from src.corrected_surface import fit_neighborhood
+        result=fit_neighborhood(np.empty((0,3)),np.empty(0),np.zeros(3),.1,.2,CFG)
+        self.assertEqual(result['bucket'],'sparse');self.assertEqual(result['occupied_cells'],0)
+        self.assertEqual(result['fit_cells'],0);self.assertEqual(result['heldout_cells'],0)
+        self.assertFalse(result['sheet_local']);self.assertFalse(result['crease_local'])
+
     def test_cell_grouping_blocks_clone_leakage_and_rejects_filaments(self):
         from src.corrected_surface import fit_neighborhood
         x,y=np.meshgrid(np.linspace(-.9,.9,16),np.linspace(-.9,.9,16));plane=np.c_[x.ravel(),y.ravel(),np.zeros(x.size)]

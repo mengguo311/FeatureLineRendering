@@ -67,7 +67,7 @@ def fit_neighborhood(points,weights,location,delta,h,cfg):
     cells=np.floor(points/(delta*cfg['surface']['cell_delta'])).astype('i8')
     unique,inverse=np.unique(cells,axis=0,return_inverse=True);n=len(unique)
     ids=[hashlib.sha256((':'.join(map(str,c))).encode()).hexdigest() for c in unique]
-    train=np.array([int(s[:8],16)%2==0 for s in ids]);held=~train
+    train=np.array([int(s[:8],16)%2==0 for s in ids],dtype=bool);held=~train
     result=dict(gaussians=len(points),occupied_cells=n,fit_cells=int(train.sum()),heldout_cells=int(held.sum()),fit_cell_ids=[s for s,t in zip(ids,train) if t],heldout_cell_ids=[s for s,t in zip(ids,train) if not t],radius=h,location=np.asarray(location).tolist(),sheet_local=False,crease_local=False,bucket='sparse')
     if min(train.sum(),held.sum())<6:return result
     count=np.bincount(inverse);representatives=np.stack([np.bincount(inverse,weights=points[:,j])/count for j in range(3)],axis=1)
