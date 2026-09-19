@@ -63,8 +63,8 @@ def evaluate_positions(accepted,evidence):
     return rows
 
 
-def prediction_summary(rows,cfg):
-    g=cfg['gates'];n=len(rows);evaluable=joint=0;views={}
+def prediction_summary(rows,cfg,views=None):
+    g=cfg['gates'];n=len(rows);evaluable=joint=0;views={str(i):dict(total=n,evaluable=0,joint=0) for i in (views or [])}
     for row in rows:
         good=[v for v in row['views'] if v['direction_evaluable']]
         supported=[v for v in good if v['dt']<=g['G2_dt_max'] and v['angle']<=g['G2_angle_max']]

@@ -9,6 +9,12 @@ except ImportError:
     shift_field=old_shift
 
 class CorrectedProbeTests(unittest.TestCase):
+    def test_empty_output_retains_every_declared_view_denominator(self):
+        from src.corrected_probe import prediction_summary
+        result=prediction_summary([],CFG,views=[7,21,33])
+        self.assertFalse(result['passed']);self.assertEqual(result['denominator'],0)
+        self.assertEqual(result['per_view'],{str(i):dict(total=0,evaluable=0,joint=0) for i in [7,21,33]})
+
     def test_shifted_association_moves_nearest_edge_coordinates_with_maps(self):
         im=np.ones((400,400,3));im[:,200:]=0
         field=edge_field(im,CFG);shifted=shift_field(field,0,CFG)

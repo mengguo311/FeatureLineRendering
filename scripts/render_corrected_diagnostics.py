@@ -89,7 +89,7 @@ def main():
         dev_actual=float(np.mean([v['ink_area'] for v in record['views'] if v['style']=='matched_ink' and v['view'] in cfg['splits']['DEV']]))
         record['DEV_matched_ink_area']=dev_actual;records[name]=record
         if name in ['F__gs','F__no_gs','pca','random','F__shifted'] or name.endswith('__gs') and name.startswith('repeats'):
-            rows_dev=evaluate_positions(rows,dev_evidence);dev_summary[name]=prediction_summary(rows_dev,cfg)
+            rows_dev=evaluate_positions(rows,dev_evidence);dev_summary[name]=prediction_summary(rows_dev,cfg,views=cfg['splits']['DEV'])
             freeze_json(output/f'prediction_rows/{name}_DEV.json',_json(rows_dev))
         print('glyphs',args.scene,name,len(rows),flush=True)
     pca_dev_budget=records['pca']['DEV_matched_ink_area']

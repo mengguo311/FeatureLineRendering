@@ -84,3 +84,7 @@
 - slice22 RED, 2026-09-19T00:04:38.767209+00:00, exit 1: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_execution.ExecutionTests.test_control_completion_never_changes_existing_fits']`; [slice22_RED.txt](tdd/slice22_RED.txt).
 
 - slice22 GREEN, 2026-09-19T00:04:55.395509+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_execution.ExecutionTests.test_control_completion_never_changes_existing_fits']`; [slice22_GREEN.txt](tdd/slice22_GREEN.txt).
+
+- slice23 RED, 2026-09-19T00:11:52.878374+00:00, exit 1: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_probe.CorrectedProbeTests.test_empty_output_retains_every_declared_view_denominator']`; [slice23_RED.txt](tdd/slice23_RED.txt).
+
+- slice23 GREEN, 2026-09-19T00:12:10.980987+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_probe', 'test_corrected_evaluation']`; [slice23_GREEN.txt](tdd/slice23_GREEN.txt).

@@ -22,13 +22,13 @@ def machine(output,local,cfg,elig,cameras,delta):
     layers={i:AreaLayers.load(local/f'layers/seed_1729/view_{i:03d}.npz') for i in cfg['splits']['C']}
     evidence=ImageEvidence(cameras,fields,layers,delta,cfg)
     base=load_probe(local/'F/gs');nogs=load_probe(local/'F/no_gs');shifted=load_probe(local/'F/shifted')
-    rows=evaluate_positions(base['accepted'],evidence);prediction=prediction_summary(rows,cfg)
+    rows=evaluate_positions(base['accepted'],evidence);prediction=prediction_summary(rows,cfg,views=cfg['splits']['C'])
     (output/'prediction_rows').mkdir();freeze_json(output/'prediction_rows/gs_C.json',_json(rows))
     no_evidence=ImageEvidence(cameras,fields,None,delta,cfg)
-    no_rows=evaluate_positions(nogs['accepted'],no_evidence);no_pred=prediction_summary(no_rows,cfg)
+    no_rows=evaluate_positions(nogs['accepted'],no_evidence);no_pred=prediction_summary(no_rows,cfg,views=cfg['splits']['C'])
     freeze_json(output/'prediction_rows/no_gs_C.json',_json(no_rows))
     for name,accepted in [('pca',read(local/'F/pca.json')['accepted']),('random',read(local/'F/random.json'))]:
-        values=evaluate_positions(accepted,evidence);freeze_json(output/f'prediction_rows/{name}_C.json',_json(values));freeze_json(output/f'{name}_C_summary.json',prediction_summary(values,cfg))
+        values=evaluate_positions(accepted,evidence);freeze_json(output/f'prediction_rows/{name}_C.json',_json(values));freeze_json(output/f'{name}_C_summary.json',prediction_summary(values,cfg,views=cfg['splits']['C']))
     repeats={};no_repeats={};offsets={}
     items=[('C_same_query',local/'C/gs')]+[(f'LOO_{i}',local/f'F/gs_loo_{i:03d}') for i in cfg['splits']['F']]
     items += [(p.name,p/'gs') for p in sorted((local/'repeats').glob('*')) if p.is_dir()]
