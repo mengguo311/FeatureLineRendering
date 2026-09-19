@@ -6,6 +6,10 @@ for name in ['src','tests','scripts']:
 (S/'out').mkdir()
 for p in (R/'out').iterdir():
  if p.name in ['curve_correspondence_foundation','point_feature_foundation']:continue
+ if p.name=='vrss':
+  vendor=S/'out/vrss/vendor';vendor.mkdir(parents=True)
+  shutil.copytree(p/'vendor/official_site',vendor/'official_site',ignore=shutil.ignore_patterns('__pycache__','*.pyc'))
+  continue
  (S/'out'/p.name).symlink_to(p,target_is_directory=p.is_dir())
 fp=S/'out/point_feature_foundation';fp.mkdir()
 for p in (R/'out/point_feature_foundation').iterdir():

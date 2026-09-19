@@ -52,3 +52,11 @@ empty-denominator handling. It reads only frozen projections and the inherited,
 hash-verified seed1729 F/C/DEV contribution layers. It cannot modify the generation,
 all-in-frame scores, thresholds or decisions. Supplemental outputs live in
 visibility/SCENE with separate native traces and seals.
+
+The initial combined native audit lacked explicit bootstrap entries for the
+supplemental worker's own setup directory and nine inherited Python caches. All
+nine caches were verified by unmarshalling and comparing their code objects to a
+fresh compilation of the unchanged source; each is SOURCE_EQUIVALENT. Their exact
+hashes and source hashes are recorded, and every exception must occur before
+policy creation. The initial failed accounting report remains in setup. No new
+photograph, mesh, TEST file, or unverified source is excused by this correction.
