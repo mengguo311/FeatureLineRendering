@@ -1,0 +1,21 @@
+{
+  "command": [
+    "strace",
+    "-f",
+    "-qq",
+    "-yy",
+    "-e",
+    "trace=open,openat,openat2,creat",
+    "-o",
+    "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/setup/chair_visibility.strace",
+    "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+    "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/setup/visibility_worker.py",
+    "chair",
+    "--scene",
+    "chair"
+  ],
+  "start_utc": "2026-09-19T03:31:44.594233+00:00",
+  "exit_code": 0,
+  "elapsed_seconds": 18.320854524034075,
+  "end_utc": "2026-09-19T03:32:02.915098+00:00"
+}

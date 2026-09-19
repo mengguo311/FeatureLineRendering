@@ -1,0 +1,20 @@
+test_noncontiguous_reference_storage_is_drawable_and_rgb8_contiguous (test_visuals.ReferenceLayout) ... ERROR
+
+======================================================================
+ERROR: test_noncontiguous_reference_storage_is_drawable_and_rgb8_contiguous (test_visuals.ReferenceLayout)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_visuals.py", line 41, in test_noncontiguous_reference_storage_is_drawable_and_rgb8_contiguous
+    cc_visual.draw_polyline(image,[[5,5],[50,50]])
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/code/cc_visual.py", line 24, in draw_polyline
+    if len(run)>=2:cv2.polylines(image,[(p[run]*16).round().astype('i4')],False,color,width,cv2.LINE_AA,shift=4)
+cv2.error: OpenCV(4.5.5) :-1: error: (-5:Bad argument) in function 'polylines'
+> Overload resolution failed:
+>  - Layout of the output array img is incompatible with cv::Mat
+>  - Expected Ptr<cv::UMat> for argument 'img'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.006s
+
+FAILED (errors=1)

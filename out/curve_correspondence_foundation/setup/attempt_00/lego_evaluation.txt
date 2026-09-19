@@ -1,0 +1,17 @@
+lego MACHINE STOP_CORRESPONDENCE {'image_only': {'G1': False, 'G2': False, 'G3': False, 'G4': False}, 'gs': {'G1': False, 'G2': False, 'G3': False, 'G4': False}}
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/code/cc_evaluate.py", line 199, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--scene',required=True);run(p.parse_args().scene)
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/code/cc_evaluate.py", line 195, in run
+    media=generate_visuals(scene,cfg,output,photos,arms,curves,candidates,repeats,result);write_json(output/'media.json',media)
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/code/cc_evaluate.py", line 164, in generate_visuals
+    annotation=read_json(P/f'annotations/{scene}_internal.json');extraction_and_candidates(visual,scene,cfg,photos,curves,candidates,arms,annotation)
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/code/cc_evaluate.py", line 88, in extraction_and_candidates
+    for r in ex['rejected']:vis.draw_polyline(im,r['pixels'],(180,180,180))
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/code/cc_visual.py", line 24, in draw_polyline
+    if len(run)>=2:cv2.polylines(image,[(p[run]*16).round().astype('i4')],False,color,width,cv2.LINE_AA,shift=4)
+cv2.error: OpenCV(4.5.5) :-1: error: (-5:Bad argument) in function 'polylines'
+> Overload resolution failed:
+>  - Layout of the output array img is incompatible with cv::Mat
+>  - Expected Ptr<cv::UMat> for argument 'img'
+

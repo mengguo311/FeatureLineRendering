@@ -84,7 +84,7 @@ def extraction_and_candidates(output,scene,cfg,photos,curves,candidates,arms,ann
     panels=[];labels=[];base=O/'scenes'/scene
     for split in ['F','C']:
         for view in cfg['splits'][split]:
-            ex=read_json(base/f'{split}/extraction_{view:03d}.json.gz');im=np.round(photos[view]*255).astype('u1')
+            ex=read_json(base/f'{split}/extraction_{view:03d}.json.gz');im=vis.rgb8(photos[view])
             for r in ex['rejected']:vis.draw_polyline(im,r['pixels'],(180,180,180))
             for c in ex['curves']:vis.draw_polyline(im,c['pixels'],vis.color_for(c['id']))
             for x,y in ex['graph']['junctions']:cv2.circle(im,(x,y),2,(255,0,0),1)
@@ -98,7 +98,7 @@ def extraction_and_candidates(output,scene,cfg,photos,curves,candidates,arms,ann
         panels=[];labels=[]
         chosen=sorted(rows,key=lambda x:hashlib.sha256((x['a']+'|'+x['b']).encode()).hexdigest())[:12]
         for index,e in enumerate(chosen):
-            a=curves[e['a']];b=curves[e['b']];left=np.round(photos[a['view']]*255).astype('u1');right=np.round(photos[b['view']]*255).astype('u1')
+            a=curves[e['a']];b=curves[e['b']];left=vis.rgb8(photos[a['view']]);right=vis.rgb8(photos[b['view']])
             vis.draw_polyline(left,a['pixels'],(255,0,0),2);vis.draw_polyline(right,b['pixels'],(255,0,0),2)
             # Show competing identities in the destination view, not only the chosen pair.
             for alt in candidates:
@@ -115,7 +115,7 @@ def extraction_and_candidates(output,scene,cfg,photos,curves,candidates,arms,ann
     for index,(label,t) in enumerate(entries):
         nodes=t['nodes'];thumbs=[]
         for node in nodes:
-            c=curves[node];im=np.round(photos[c['view']]*255).astype('u1');vis.draw_polyline(im,c['pixels'],vis.color_for('|'.join(nodes)),2);thumbs.append(cv2.resize(im,(200,200)))
+            c=curves[node];im=vis.rgb8(photos[c['view']]);vis.draw_polyline(im,c['pixels'],vis.color_for('|'.join(nodes)),2);thumbs.append(cv2.resize(im,(200,200)))
         sheet=vis.contact_sheet(thumbs,[f'view {curves[n]["view"]}' for n in nodes],min(4,len(nodes)))
         vis.write_png(output/f'track_identity_{index:03d}.png',sheet)
         panels.append(cv2.resize(sheet,(400,200)));labels.append(label)

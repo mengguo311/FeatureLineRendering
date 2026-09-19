@@ -32,3 +32,13 @@ class Visuals(unittest.TestCase):
    cc_visual.write_video(p,frames,24);count,_=imageio_ffmpeg.count_frames_and_secs(str(p));self.assertEqual(count,120)
    sheet=cc_visual.contact_sheet(frames[:4],['0','1','2','3'],2);self.assertEqual(sheet.shape[1],64)
 if __name__=='__main__':unittest.main()
+
+class ReferenceLayout(unittest.TestCase):
+ def test_noncontiguous_reference_storage_is_drawable_and_rgb8_contiguous(self):
+  import cc_visual
+  image=np.full((60,60,3),255,'u1').transpose(1,0,2)
+  self.assertFalse(image.flags.c_contiguous)
+  cc_visual.draw_polyline(image,[[5,5],[50,50]])
+  self.assertLess(image[20,20].mean(),250)
+  converted=cc_visual.rgb8(image.astype(float)/255)
+  self.assertTrue(converted.flags.c_contiguous)

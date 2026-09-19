@@ -9,6 +9,9 @@ from cc_io import write_json
 def color_for(identity):
     b=hashlib.sha256(str(identity).encode()).digest();return tuple(int(40+x%170) for x in b[:3])
 
+def rgb8(image):
+    return np.ascontiguousarray(np.round(np.clip(image,0,1)*255).astype('u1'))
+
 def write_png(path,image):
     path=pathlib.Path(path);a=np.asarray(image)
     if a.dtype!=np.uint8:a=np.round(np.clip(a,0,1)*255).astype('u1')
@@ -20,8 +23,10 @@ def draw_polyline(image,points,color=(0,0,0),width=1):
     if len(p)<2:return
     valid=np.isfinite(p).all(1)&np.all(abs(p)<1e5,axis=1)
     indices=np.flatnonzero(valid)
+    canvas=np.ascontiguousarray(image)
     for run in np.split(indices,np.flatnonzero(np.diff(indices)>1)+1):
-        if len(run)>=2:cv2.polylines(image,[(p[run]*16).round().astype('i4')],False,color,width,cv2.LINE_AA,shift=4)
+        if len(run)>=2:cv2.polylines(canvas,[(p[run]*16).round().astype('i4')],False,color,width,cv2.LINE_AA,shift=4)
+    if canvas is not image:image[:]=canvas
 
 def curve_image(records,camera,size=400,color=False,background=None):
     image=np.full((size,size,3),255,'u1') if background is None else np.round(np.clip(background,0,1)*255).astype('u1').copy()
