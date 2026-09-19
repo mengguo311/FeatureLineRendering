@@ -149,3 +149,11 @@ per scene use24 CPUs per scene; each scientific arm remains single-threaded.
 Every job retains the same confined runner and exact argv/status log. The original
 local worker is retained as the sequential recipe; on a fresh checkout the fixed
 preload avoids the historical error. Neither continuation reuses C evidence in F.
+
+The first surface aggregation accidentally used the smallest adjacent-scale
+normal angle. Its completed attempts are preserved under
+`evaluation/SCENE/attempt_02_surface_aggregation/` and the matching setup archive.
+Slice25 enforces the preregistered P90 rule and treats missing adjacent evidence
+as unknown. setup/surface_repair_worker.py reruns this diagnosis. All21 per-asset
+fit files remained byte-identical; SURFACE_REPAIR_VERIFICATION.json records the
+comparison and changed summary buckets. No feature fit or machine verdict changed.

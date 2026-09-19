@@ -63,6 +63,7 @@ def main():
     require('every_attempt_audited',audited=={str(p) for p in policies})
     require('source_provenance',read(root/'SOURCE_PROVENANCE.json')['passed'])
     require('native_build_reproducible',read(root/'setup/build_verification.json')['passed'])
+    require('surface_raw_fits_preserved',read(root/'SURFACE_REPAIR_VERIFICATION.json')['passed'])
     for row in read(root/'SOURCE_PROVENANCE.json')['records']:require('source_'+row['sha256'],sha256(root/row['snapshot'])==row['sha256'])
     arms=[];freezes=[];timeline=[]
     for row in result['local_arms']:
