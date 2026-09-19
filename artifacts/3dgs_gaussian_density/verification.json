@@ -1,0 +1,251 @@
+{
+  "tests": {
+    "targeted_new": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/scgs/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_gaussian_density.py",
+        "-v"
+      ],
+      "count": 9,
+      "result": "OK"
+    },
+    "targeted_legacy": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/scgs/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_field_visualization.py",
+        "-v"
+      ],
+      "count": 5,
+      "result": "OK"
+    },
+    "full": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/scgs/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test*.py",
+        "-v"
+      ],
+      "count": 141,
+      "result": "OK"
+    }
+  },
+  "determinism": {
+    "command": [
+      "/home/u00134/bin/miniconda3/envs/scgs/bin/python",
+      "-m",
+      "scripts.render_3dgs_gaussian_density",
+      "--output",
+      "out/3dgs_gaussian_density/determinism_rerun",
+      "--artifacts",
+      "out/3dgs_gaussian_density/determinism_rerun/curated"
+    ],
+    "all_match": true,
+    "sha256": {
+      "REPORT.md": "be807a858420e54633e06b959de9ea510a2a132f013f6b355cb3710e018b0566",
+      "density_statistics.json": "84af3f5b796760e5c471d97799eae8ab65dd57b2b9ff3246a369dc9365ac5ee6",
+      "all_scenes_density_comparison.png": "073b2732be6da1d5896da2d4f4cb38dad643890ac19e4f0f7ffe40b522a8f4e6",
+      "lego_density_atlas.png": "c6cc19589a86f47657bf8eabbda6ca12289de810d8de6ee21a73896611772a17",
+      "chair_density_atlas.png": "3616511f769fac89ff46b9dc909851e7b482f092733f982d97cb218e6def8d20",
+      "drums_density_atlas.png": "ecc030355a4ab3a0e5e9f37465264a52ff5cf68abcffa3a69c0e58f390538c2f",
+      "ficus_density_atlas.png": "ee8efd3b536e4c10571c62f3db6b8f062aaf184374c8be6ba00dc5228d759c09",
+      "lego_density_grids.npz": "ceb4ecb0eecfa5d7a2fcd0a6e4c91cdaca259a61186267c3bf51738f527f2b6d",
+      "chair_density_grids.npz": "f5c55ec788345a59f19ec6f47e99dc11ff6ad01f99f5410d0a503cd565fd8a1c",
+      "drums_density_grids.npz": "cd6785333cc55b1ff4d150d497f547d3e8959f3a8c95cd5c8227148548f0986c",
+      "ficus_density_grids.npz": "a1f0c69f51ba86b491abb3f2bda807553c9c3796cde9ca66b83840154bb97a68"
+    },
+    "scope": "same interpreter, dependencies and CPU environment; all 11 generated files"
+  },
+  "png_decode": {
+    "out/3dgs_gaussian_density/all_scenes_density_comparison.png": {
+      "size": [
+        5280,
+        3740
+      ],
+      "mode": "RGBA",
+      "decoded": true
+    },
+    "out/3dgs_gaussian_density/chair_density_atlas.png": {
+      "size": [
+        4320,
+        3600
+      ],
+      "mode": "RGBA",
+      "decoded": true
+    },
+    "out/3dgs_gaussian_density/drums_density_atlas.png": {
+      "size": [
+        4320,
+        3600
+      ],
+      "mode": "RGBA",
+      "decoded": true
+    },
+    "out/3dgs_gaussian_density/ficus_density_atlas.png": {
+      "size": [
+        4320,
+        3600
+      ],
+      "mode": "RGBA",
+      "decoded": true
+    },
+    "out/3dgs_gaussian_density/lego_density_atlas.png": {
+      "size": [
+        4320,
+        3600
+      ],
+      "mode": "RGBA",
+      "decoded": true
+    },
+    "artifacts/3dgs_gaussian_density/all_scenes_density_comparison.png": {
+      "size": [
+        5280,
+        3740
+      ],
+      "mode": "RGBA",
+      "decoded": true
+    },
+    "artifacts/3dgs_gaussian_density/chair_density_atlas.png": {
+      "size": [
+        4320,
+        3600
+      ],
+      "mode": "RGBA",
+      "decoded": true
+    },
+    "artifacts/3dgs_gaussian_density/drums_density_atlas.png": {
+      "size": [
+        4320,
+        3600
+      ],
+      "mode": "RGBA",
+      "decoded": true
+    },
+    "artifacts/3dgs_gaussian_density/ficus_density_atlas.png": {
+      "size": [
+        4320,
+        3600
+      ],
+      "mode": "RGBA",
+      "decoded": true
+    },
+    "artifacts/3dgs_gaussian_density/lego_density_atlas.png": {
+      "size": [
+        4320,
+        3600
+      ],
+      "mode": "RGBA",
+      "decoded": true
+    },
+    "out/3dgs_gaussian_density/determinism_rerun/all_scenes_density_comparison.png": {
+      "size": [
+        5280,
+        3740
+      ],
+      "mode": "RGBA",
+      "decoded": true
+    },
+    "out/3dgs_gaussian_density/determinism_rerun/chair_density_atlas.png": {
+      "size": [
+        4320,
+        3600
+      ],
+      "mode": "RGBA",
+      "decoded": true
+    },
+    "out/3dgs_gaussian_density/determinism_rerun/drums_density_atlas.png": {
+      "size": [
+        4320,
+        3600
+      ],
+      "mode": "RGBA",
+      "decoded": true
+    },
+    "out/3dgs_gaussian_density/determinism_rerun/ficus_density_atlas.png": {
+      "size": [
+        4320,
+        3600
+      ],
+      "mode": "RGBA",
+      "decoded": true
+    },
+    "out/3dgs_gaussian_density/determinism_rerun/lego_density_atlas.png": {
+      "size": [
+        4320,
+        3600
+      ],
+      "mode": "RGBA",
+      "decoded": true
+    },
+    "out/3dgs_gaussian_density/determinism_rerun/curated/all_scenes_density_comparison.png": {
+      "size": [
+        5280,
+        3740
+      ],
+      "mode": "RGBA",
+      "decoded": true
+    },
+    "out/3dgs_gaussian_density/determinism_rerun/curated/chair_density_atlas.png": {
+      "size": [
+        4320,
+        3600
+      ],
+      "mode": "RGBA",
+      "decoded": true
+    },
+    "out/3dgs_gaussian_density/determinism_rerun/curated/drums_density_atlas.png": {
+      "size": [
+        4320,
+        3600
+      ],
+      "mode": "RGBA",
+      "decoded": true
+    },
+    "out/3dgs_gaussian_density/determinism_rerun/curated/ficus_density_atlas.png": {
+      "size": [
+        4320,
+        3600
+      ],
+      "mode": "RGBA",
+      "decoded": true
+    },
+    "out/3dgs_gaussian_density/determinism_rerun/curated/lego_density_atlas.png": {
+      "size": [
+        4320,
+        3600
+      ],
+      "mode": "RGBA",
+      "decoded": true
+    }
+  },
+  "grid_checks": {
+    "lego": "finite nonnegative float64; shape, maxima, kernel sums, sorted candidate IDs, frame, shared limits verified",
+    "chair": "finite nonnegative float64; shape, maxima, kernel sums, sorted candidate IDs, frame, shared limits verified",
+    "drums": "finite nonnegative float64; shape, maxima, kernel sums, sorted candidate IDs, frame, shared limits verified",
+    "ficus": "finite nonnegative float64; shape, maxima, kernel sums, sorted candidate IDs, frame, shared limits verified"
+  },
+  "source_hash_checks": {
+    "lego": "fa9bea3fa4f8d349fa873a66d892c53cd1263499caec6421c286350a5bb7cbbc",
+    "chair": "13e4ecc9ffe9c5ae2a0656e2e5c56a737cfdc90a62ad04799db3c46b0b442f5d",
+    "drums": "d4b67123927613ade6b7e2f38ed6bf724fc5e348dbcca84a2be1352ec5113a8b",
+    "ficus": "9afacac137474a50c5db52e41d2f1656b1e5f22ee5b6804e7e819697679cebac"
+  },
+  "curated_copies_match": true,
+  "visual_review": "PNG decoding is automated; human/model layout inspection is documented in the completion report."
+}
