@@ -1,0 +1,59 @@
+test_frozen_detector_extraction_keeps_topology (test_extraction.Detector) ... ERROR
+test_axial_and_directed_angles (test_extraction.Extraction) ... ERROR
+test_corner_split_arclength_and_no_pixel_cloud (test_extraction.Extraction) ... ERROR
+test_loop_topology_and_diagonal_staircase (test_extraction.Extraction) ... ERROR
+test_ordered_graph_junction_and_determinism (test_extraction.Extraction) ... ERROR
+test_resample_descriptor_reversal (test_extraction.Extraction) ... ERROR
+
+======================================================================
+ERROR: test_frozen_detector_extraction_keeps_topology (test_extraction.Detector)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_extraction.py", line 46, in test_frozen_detector_extraction_keeps_topology
+    a=cc.extract(rgb,7,cfg)
+AttributeError: module 'cc' has no attribute 'extract'
+
+======================================================================
+ERROR: test_axial_and_directed_angles (test_extraction.Extraction)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_extraction.py", line 34, in test_axial_and_directed_angles
+    self.assertAlmostEqual(float(cc.axial_angle([1,0],[-1,0])),0)
+AttributeError: module 'cc' has no attribute 'axial_angle'
+
+======================================================================
+ERROR: test_corner_split_arclength_and_no_pixel_cloud (test_extraction.Extraction)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_extraction.py", line 23, in test_corner_split_arclength_and_no_pixel_cloud
+    a=cc.split_path(p,min_length=12,max_length=96,corner_window=4,corner_degrees=45,corner_suppression=6)
+AttributeError: module 'cc' has no attribute 'split_path'
+
+======================================================================
+ERROR: test_loop_topology_and_diagonal_staircase (test_extraction.Extraction)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_extraction.py", line 19, in test_loop_topology_and_diagonal_staircase
+    a=cc.trace_edges(e);self.assertEqual(len(a['paths']),1);self.assertEqual(a['paths'][0][0],a['paths'][0][-1])
+AttributeError: module 'cc' has no attribute 'trace_edges'
+
+======================================================================
+ERROR: test_ordered_graph_junction_and_determinism (test_extraction.Extraction)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_extraction.py", line 8, in test_ordered_graph_junction_and_determinism
+    a=cc.trace_edges(e);b=cc.trace_edges(e)
+AttributeError: module 'cc' has no attribute 'trace_edges'
+
+======================================================================
+ERROR: test_resample_descriptor_reversal (test_extraction.Extraction)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_extraction.py", line 29, in test_resample_descriptor_reversal
+    q,s=cc.resample(p,2);self.assertEqual(len(q),6);np.testing.assert_allclose(s,[0,2,4,6,8,10])
+AttributeError: module 'cc' has no attribute 'resample'
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.139s
+
+FAILED (errors=6)

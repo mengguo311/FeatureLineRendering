@@ -1,0 +1,41 @@
+test_confinement_split_allowlist_has_no_other_photo (test_pipeline.Pipeline) ... ERROR
+test_gs_evaluation_tracks_all_classifications (test_pipeline.Pipeline) ... ERROR
+test_serialization_freeze_detects_mutation_and_nonfinite (test_pipeline.Pipeline) ... ERROR
+test_three_view_pipeline_positive_and_null_records (test_pipeline.Pipeline) ... ERROR
+
+======================================================================
+ERROR: test_confinement_split_allowlist_has_no_other_photo (test_pipeline.Pipeline)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_pipeline.py", line 31, in test_confinement_split_allowlist_has_no_other_photo
+    import cc_io
+ModuleNotFoundError: No module named 'cc_io'
+
+======================================================================
+ERROR: test_gs_evaluation_tracks_all_classifications (test_pipeline.Pipeline)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_pipeline.py", line 21, in test_gs_evaluation_tracks_all_classifications
+    accepted,detail=cc.apply_gs([record],{1:c,2:c,3:c},{1:Layers(),2:Layers(),3:Layers()},.01,CFG['fit'])
+AttributeError: module 'cc' has no attribute 'apply_gs'
+
+======================================================================
+ERROR: test_serialization_freeze_detects_mutation_and_nonfinite (test_pipeline.Pipeline)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_pipeline.py", line 25, in test_serialization_freeze_detects_mutation_and_nonfinite
+    import cc_io
+ModuleNotFoundError: No module named 'cc_io'
+
+======================================================================
+ERROR: test_three_view_pipeline_positive_and_null_records (test_pipeline.Pipeline)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_pipeline.py", line 9, in test_three_view_pipeline_positive_and_null_records
+    edges,stats=cc.match_all(cs,cams,[[-2,-2,1],[2,2,5]],CFG['matching'])
+AttributeError: module 'cc' has no attribute 'match_all'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.002s
+
+FAILED (errors=4)

@@ -1,0 +1,68 @@
+test_epipolar_intersections_tangency_multiple_and_reversal (test_matching.Matching) ... ERROR
+test_full_K_epipolar_geometry (test_matching.Matching) ... ERROR
+test_monotone_run_rejects_crossing_many_to_one_accepts_reverse (test_matching.Matching) ... ERROR
+test_mutual_ambiguity_rejects_ties_and_many_to_one (test_matching.Matching) ... ERROR
+test_pair_candidate_recovers_true_curve_full_K (test_matching.Matching) ... ERROR
+test_track_identity_before_geometry_no_two_view_truth (test_matching.Matching) ... ERROR
+test_triangle_cycle_parity_and_arc_closure (test_matching.Matching) ... ERROR
+
+======================================================================
+ERROR: test_epipolar_intersections_tangency_multiple_and_reversal (test_matching.Matching)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_matching.py", line 25, in test_epipolar_intersections_tangency_multiple_and_reversal
+    s,why=cc.intersections(lines,c,CFG['matching']);np.testing.assert_allclose(s,[5,8])
+AttributeError: module 'cc' has no attribute 'intersections'
+
+======================================================================
+ERROR: test_full_K_epipolar_geometry (test_matching.Matching)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_matching.py", line 19, in test_full_K_epipolar_geometry
+    F=cc.fundamental(ca,cb)
+AttributeError: module 'cc' has no attribute 'fundamental'
+
+======================================================================
+ERROR: test_monotone_run_rejects_crossing_many_to_one_accepts_reverse (test_matching.Matching)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_matching.py", line 31, in test_monotone_run_rejects_crossing_many_to_one_accepts_reverse
+    r=cc.align_arcs(s,20-s,20,20,CFG['matching']);self.assertTrue(r['passed']);self.assertTrue(r['reverse'])
+AttributeError: module 'cc' has no attribute 'align_arcs'
+
+======================================================================
+ERROR: test_mutual_ambiguity_rejects_ties_and_many_to_one (test_matching.Matching)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_matching.py", line 41, in test_mutual_ambiguity_rejects_ties_and_many_to_one
+    out=cc.select_mutual(rows,CFG['matching']);self.assertFalse(any(r['selected'] for r in out))
+AttributeError: module 'cc' has no attribute 'select_mutual'
+
+======================================================================
+ERROR: test_pair_candidate_recovers_true_curve_full_K (test_matching.Matching)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_matching.py", line 38, in test_pair_candidate_recovers_true_curve_full_K
+    r=cc.pair_candidate(ca,cb,a,b,CFG['matching']);self.assertFalse(r['reasons']);self.assertLess(r['score'],.01)
+AttributeError: module 'cc' has no attribute 'pair_candidate'
+
+======================================================================
+ERROR: test_track_identity_before_geometry_no_two_view_truth (test_matching.Matching)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_matching.py", line 51, in test_track_identity_before_geometry_no_two_view_truth
+    tracks,rejected=cc.build_tracks(curves,[edge(1,2),edge(2,3),edge(1,3)],CFG['matching'])
+AttributeError: module 'cc' has no attribute 'build_tracks'
+
+======================================================================
+ERROR: test_triangle_cycle_parity_and_arc_closure (test_matching.Matching)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_matching.py", line 46, in test_triangle_cycle_parity_and_arc_closure
+    self.assertTrue(cc.cycle_certificate(e,CFG['matching'])['passed'])
+AttributeError: module 'cc' has no attribute 'cycle_certificate'
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.003s
+
+FAILED (errors=7)

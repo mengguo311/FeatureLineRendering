@@ -1,0 +1,20 @@
+test_epipolar_intersections_tangency_multiple_and_reversal (test_matching.Matching) ... ok
+test_full_K_epipolar_geometry (test_matching.Matching) ... ok
+test_monotone_run_rejects_crossing_many_to_one_accepts_reverse (test_matching.Matching) ... ok
+test_mutual_ambiguity_rejects_ties_and_many_to_one (test_matching.Matching) ... FAIL
+test_pair_candidate_recovers_true_curve_full_K (test_matching.Matching) ... ok
+test_track_identity_before_geometry_no_two_view_truth (test_matching.Matching) ... ok
+test_triangle_cycle_parity_and_arc_closure (test_matching.Matching) ... ok
+
+======================================================================
+FAIL: test_mutual_ambiguity_rejects_ties_and_many_to_one (test_matching.Matching)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_matching.py", line 41, in test_mutual_ambiguity_rejects_ties_and_many_to_one
+    out=cc.select_mutual(rows,CFG['matching']);self.assertFalse(any(r['selected'] for r in out))
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.009s
+
+FAILED (failures=1)

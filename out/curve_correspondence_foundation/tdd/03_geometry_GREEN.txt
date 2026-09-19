@@ -1,0 +1,18 @@
+test_bundle_adjustment_shared_curve_reduces_error_bounded (test_geometry.Geometry) ... ok
+test_gs_veto_never_fills_gaps (test_geometry.Geometry) ... ok
+test_robust_triangulation_and_degenerate_rejection (test_geometry.Geometry) ... FAIL
+test_support_visibility_has_unknown_not_success (test_geometry.Geometry) ... ok
+test_track_fit_joint_geometry_and_identity (test_geometry.Geometry) ... ok
+
+======================================================================
+FAIL: test_robust_triangulation_and_degenerate_rejection (test_geometry.Geometry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_geometry.py", line 9, in test_robust_triangulation_and_degenerate_rejection
+    fit=cc.triangulate(uv,cams,CFG['fit']);self.assertTrue(fit['passed']);self.assertEqual(fit['inliers'],3);self.assertLess(np.linalg.norm(fit['xyz']-X),.04)
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.100s
+
+FAILED (failures=1)

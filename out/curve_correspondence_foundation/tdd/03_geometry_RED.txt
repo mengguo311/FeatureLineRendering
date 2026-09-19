@@ -1,0 +1,50 @@
+test_bundle_adjustment_shared_curve_reduces_error_bounded (test_geometry.Geometry) ... ERROR
+test_gs_veto_never_fills_gaps (test_geometry.Geometry) ... ERROR
+test_robust_triangulation_and_degenerate_rejection (test_geometry.Geometry) ... ERROR
+test_support_visibility_has_unknown_not_success (test_geometry.Geometry) ... ERROR
+test_track_fit_joint_geometry_and_identity (test_geometry.Geometry) ... ERROR
+
+======================================================================
+ERROR: test_bundle_adjustment_shared_curve_reduces_error_bounded (test_geometry.Geometry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_geometry.py", line 16, in test_bundle_adjustment_shared_curve_reduces_error_bounded
+    fit=cc.bundle_adjust(initial,cams,obs,arcs,.01,CFG['fit'])
+AttributeError: module 'cc' has no attribute 'bundle_adjust'
+
+======================================================================
+ERROR: test_gs_veto_never_fills_gaps (test_geometry.Geometry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_geometry.py", line 26, in test_gs_veto_never_fills_gaps
+    out=cc.support_spans(record,flags,CFG['fit']);self.assertEqual(len(out),2)
+AttributeError: module 'cc' has no attribute 'support_spans'
+
+======================================================================
+ERROR: test_robust_triangulation_and_degenerate_rejection (test_geometry.Geometry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_geometry.py", line 9, in test_robust_triangulation_and_degenerate_rejection
+    fit=cc.triangulate(uv,cams,CFG['fit']);self.assertTrue(fit['passed']);self.assertEqual(fit['inliers'],3);self.assertLess(np.linalg.norm(fit['xyz']-X),.04)
+AttributeError: module 'cc' has no attribute 'triangulate'
+
+======================================================================
+ERROR: test_support_visibility_has_unknown_not_success (test_geometry.Geometry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_geometry.py", line 20, in test_support_visibility_has_unknown_not_success
+    c=cc.classify_support([.9,.05,.5,.9],[True,True,True,False],[True,True,True,False])
+AttributeError: module 'cc' has no attribute 'classify_support'
+
+======================================================================
+ERROR: test_track_fit_joint_geometry_and_identity (test_geometry.Geometry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_geometry.py", line 33, in test_track_fit_joint_geometry_and_identity
+    accepted,rejected=cc.fit_track(track,cs,cams,[[-2,-2,1],[2,2,5]],.01,CFG['fit'])
+AttributeError: module 'cc' has no attribute 'fit_track'
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.003s
+
+FAILED (errors=5)

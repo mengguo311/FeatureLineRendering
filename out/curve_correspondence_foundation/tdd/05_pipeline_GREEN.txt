@@ -1,0 +1,23 @@
+test_confinement_split_allowlist_has_no_other_photo (test_pipeline.Pipeline) ... ok
+test_gs_evaluation_tracks_all_classifications (test_pipeline.Pipeline) ... ok
+test_serialization_freeze_detects_mutation_and_nonfinite (test_pipeline.Pipeline) ... ok
+test_three_view_pipeline_positive_and_null_records (test_pipeline.Pipeline) ... ERROR
+
+======================================================================
+ERROR: test_three_view_pipeline_positive_and_null_records (test_pipeline.Pipeline)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_pipeline.py", line 14, in test_three_view_pipeline_positive_and_null_records
+    control=cc.reconstruct(cs,cams,edges,[[-2,-2,1],[2,2,5]],.01,CFG,pairwise=True)
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/code/cc.py", line 599, in reconstruct
+    a,r=fit_track(t,curves,cameras,box,delta,cfg['fit'],cfg['controls']['pairwise_min_views'] if pairwise else None,enforce_order)
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/code/cc.py", line 392, in fit_track
+    rejected=[dict(stage='triangulation',nodes=nodes,root_arc=float(s[i]),**v,reasons=v['reasons']+([] if inside[i] else ['outside_box'])) for i,v in enumerate(fits) if not valid[i]]
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/code/cc.py", line 392, in <listcomp>
+    rejected=[dict(stage='triangulation',nodes=nodes,root_arc=float(s[i]),**v,reasons=v['reasons']+([] if inside[i] else ['outside_box'])) for i,v in enumerate(fits) if not valid[i]]
+TypeError: dict() got multiple values for keyword argument 'reasons'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.420s
+
+FAILED (errors=1)

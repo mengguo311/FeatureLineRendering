@@ -1,0 +1,59 @@
+test_competing_parallel_tubes_are_ambiguous (test_evaluation.Evaluation) ... ERROR
+test_controls_preserve_counts_and_no_identity_reuse (test_evaluation.Evaluation) ... ERROR
+test_gates_zero_denominator_no_null_success_and_gs_benefit (test_evaluation.Evaluation) ... ERROR
+test_prediction_counts_empty_and_true_frozen_curve (test_evaluation.Evaluation) ... ERROR
+test_repeatability_without_ids_or_alignment_rejects_shift_and_empty (test_evaluation.Evaluation) ... ERROR
+test_yield_counts_tracks_not_knots_and_spatial_diversity (test_evaluation.Evaluation) ... ERROR
+
+======================================================================
+ERROR: test_competing_parallel_tubes_are_ambiguous (test_evaluation.Evaluation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_evaluation.py", line 15, in test_competing_parallel_tubes_are_ambiguous
+    r=cc.match_geometry(a,b,.01,CFG['gates']);self.assertEqual(r['forward'],0)
+AttributeError: module 'cc' has no attribute 'match_geometry'
+
+======================================================================
+ERROR: test_controls_preserve_counts_and_no_identity_reuse (test_evaluation.Evaluation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_evaluation.py", line 18, in test_controls_preserve_counts_and_no_identity_reuse
+    out=cc.shift_curves(cs,[1,2,3],CFG['controls']);self.assertEqual(len(cs),len(out));self.assertTrue(all(np.array_equal(cs[k]['descriptor'],out[k]['descriptor']) for k in cs))
+AttributeError: module 'cc' has no attribute 'shift_curves'
+
+======================================================================
+ERROR: test_gates_zero_denominator_no_null_success_and_gs_benefit (test_evaluation.Evaluation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_evaluation.py", line 31, in test_gates_zero_denominator_no_null_success_and_gs_benefit
+    empty=cc.predict([],{}, {},.01,CFG['gates']);self.assertFalse(cc.null_gate(empty,{'shifted':empty,'random_graph':empty,'pairwise':empty,'no_order':empty},CFG['gates']))
+AttributeError: module 'cc' has no attribute 'predict'
+
+======================================================================
+ERROR: test_prediction_counts_empty_and_true_frozen_curve (test_evaluation.Evaluation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_evaluation.py", line 27, in test_prediction_counts_empty_and_true_frozen_curve
+    r=cc.predict([dict(id='x',xyz=x)],cams,fields,.01,CFG['gates']);self.assertGreater(r['joint_fraction'],.95);self.assertLess(r['distance_median'],1)
+AttributeError: module 'cc' has no attribute 'predict'
+
+======================================================================
+ERROR: test_repeatability_without_ids_or_alignment_rejects_shift_and_empty (test_evaluation.Evaluation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_evaluation.py", line 9, in test_repeatability_without_ids_or_alignment_rejects_shift_and_empty
+    r=cc.match_geometry(a,b,.01,CFG['gates']);self.assertTrue(r['passed']);self.assertGreater(r['forward'],.95)
+AttributeError: module 'cc' has no attribute 'match_geometry'
+
+======================================================================
+ERROR: test_yield_counts_tracks_not_knots_and_spatial_diversity (test_evaluation.Evaluation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/tests/test_evaluation.py", line 44, in test_yield_counts_tracks_not_knots_and_spatial_diversity
+    r=cc.yield_metrics(records,cams,.01,CFG['gates']);self.assertEqual(r['separated_tracks'],1);self.assertFalse(r['passed'])
+AttributeError: module 'cc' has no attribute 'yield_metrics'
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.013s
+
+FAILED (errors=6)
