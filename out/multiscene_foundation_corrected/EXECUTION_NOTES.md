@@ -81,3 +81,13 @@ fix passed. The old PCA source is unchanged. A separately confined completion
 process checks all28 completed arms, adds only the missing controls, hashes every
 preexisting F artifact before/after and freezes F before C. No inference arm is
 rerun or selected. Original error logs and nonzero exit records remain intact.
+
+After both primary processes exited with the preserved PCA-import error, the
+control-completion processes passed, preserved every existing fit byte and froze
+F. setup/repeat_worker.py then schedules C plus every eligible posterior repeat
+in four independent process jobs per scene, with24 assigned CPUs per scene and
+one BLAS/OpenMP thread per arm. Each job receives its own allowlist and output
+root; no scientific formula, query, input or threshold changes. C and posterior
+repeats depend only on the F seal, so their relative scheduling is immaterial.
+The final scene wall-time record includes earlier attempts, rather than resetting
+the eight-hour budget during this continuation. No AI sub-agents were used.

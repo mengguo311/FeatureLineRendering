@@ -132,3 +132,20 @@ failures remain determinate without those reviews.
 
 The final external report records the final clean worktree and exact equality of
 local HEAD, upstream and the remote branch after the last commit and push.
+
+## Preserved continuation after the import repair
+
+The original F fits all completed before a late old-PCA import failed. The exact
+failed stage logs remain. setup/finish_controls_worker.py runs the separately
+confined finish_corrected_F.py: it verifies all28 original arms, computes only
+missing controls and checks every prior F artifact hash before/after. The final
+F seal follows that completion, before C or DEV. The fix preloads the unchanged
+PCA module; slice21 reproduces the directory-cache invalidation failure under
+Landlock and then passes. Its first unsuccessful reproduction attempt is retained.
+
+For the actual continuation, setup/repeat_worker.py queues C and all posterior
+repeat jobs after the successful control-completion exit. Four independent jobs
+per scene use24 CPUs per scene; each scientific arm remains single-threaded.
+Every job retains the same confined runner and exact argv/status log. The original
+local worker is retained as the sequential recipe; on a fresh checkout the fixed
+preload avoids the historical error. Neither continuation reuses C evidence in F.
