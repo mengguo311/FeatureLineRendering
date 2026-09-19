@@ -91,3 +91,12 @@ root; no scientific formula, query, input or threshold changes. C and posterior
 repeats depend only on the F seal, so their relative scheduling is immaterial.
 The final scene wall-time record includes earlier attempts, rather than resetting
 the eight-hour budget during this continuation. No AI sub-agents were used.
+
+The first completed surface diagnostic used the smallest available adjacent-scale
+normal angle during final aggregation. The frozen protocol requires normalP90
+<=15degrees and unknown missing evidence. Slice25 adds a synthetic5/40degree
+case and a missing-neighbor case before enforcing the unchanged P90 rule. Both
+initial surface attempts and their native-open traces are retained under
+attempt_02_surface_aggregation. The diagnostic stages are rerun with that
+aggregation repair; original local fits, glyphs and machine verdicts are untouched.
+Raw per-asset surface fits are compared byte-for-byte across these attempts.

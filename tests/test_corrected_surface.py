@@ -3,6 +3,13 @@ import numpy as np
 from test_multiscene import CFG,asset_fixture
 
 class SurfaceAuditTests(unittest.TestCase):
+    def test_adjacent_scale_uses_registered_p90_and_missing_is_unknown(self):
+        from src.corrected_surface import adjacent_scale_stable
+        self.assertFalse(adjacent_scale_stable([5.,40.],CFG))
+        self.assertFalse(adjacent_scale_stable([5.,None],CFG))
+        self.assertFalse(adjacent_scale_stable([],CFG))
+        self.assertTrue(adjacent_scale_stable([8.,10.],CFG))
+
     def test_empty_neighborhood_is_retained_as_sparse(self):
         from src.corrected_surface import fit_neighborhood
         result=fit_neighborhood(np.empty((0,3)),np.empty(0),np.zeros(3),.1,.2,CFG)

@@ -9,7 +9,7 @@ from src.corrected_layers import AreaLayers
 from src.corrected_probe import (ImageEvidence,edge_field,evaluate_positions,prediction_summary,load_probe,match_outputs,glyph_coverage,machine_decision,_json)
 from src.corrected_evaluation import compute_machine_gates
 from src.corrected_qualification import reference,calibrated_view
-from src.corrected_surface import audit_asset
+from src.corrected_surface import audit_asset,adjacent_scale_stable
 from src.corrected_visuals import glyph_image,spatial_order,ink_prefix,write_png,write_video,orbit_cameras
 from src.multiscene_qualification import save_grid
 from src.multiscene_probe import axial_angle
@@ -86,10 +86,10 @@ def surface(output,local,root,cfg,elig,cameras,delta):
                 aa,bb=a['equal_cell'],b['equal_cell'];x=np.array(record['location']['point']);na=np.array(aa['normal']);nb=np.array(bb['normal']);nb*=1 if np.dot(na,nb)>=0 else -1
                 offset=abs(np.dot(x-np.array(aa['center']),na)-np.dot(x-np.array(bb['center']),nb))
                 comparisons.append(dict(asset=name,available=True,normal_angle=float(axial_angle(na,nb)),plane_offset_h=float(offset/a['radius']),other_sheet_local=b['sheet_local'],other_crease_local=b['crease_local']))
-            adjacent=[v for k,v in enumerate(record['adjacent_scale_angles']) if k in [j-1,j] and v is not None]
-            stable=bool(comparisons and all(r['available'] and r['normal_angle']<=cfg['surface']['normal_p90_max'] and r['plane_offset_h']<=cfg['surface']['p90_h_max'] for r in comparisons) and adjacent and min(adjacent)<=cfg['surface']['normal_p90_max'])
+            adjacent=[v for k,v in enumerate(record['adjacent_scale_angles']) if k in [j-1,j]]
+            stable=bool(comparisons and all(r['available'] and r['normal_angle']<=cfg['surface']['normal_p90_max'] and r['plane_offset_h']<=cfg['surface']['p90_h_max'] for r in comparisons) and adjacent_scale_stable(adjacent,cfg))
             bucket=('sheet' if a['sheet_local'] and stable and all(r.get('other_sheet_local') for r in comparisons) else 'plausible_crease' if a['crease_local'] and stable and all(r.get('other_crease_local') for r in comparisons) else 'unstable' if a['sheet_local'] or a['crease_local'] else a['bucket'])
-            buckets[bucket]+=1;per_scale.append(dict(radius=a['radius'],bucket=bucket,repeatability=comparisons))
+            buckets[bucket]+=1;per_scale.append(dict(radius=a['radius'],bucket=bucket,repeatability=comparisons,adjacent_scale_angles=adjacent,adjacent_normal_p90=float(np.quantile(adjacent,.9)) if adjacent and all(v is not None for v in adjacent) else None,adjacent_scale_consistent=adjacent_scale_stable(adjacent,cfg)))
         repeat_rows.append(dict(key=record['location']['key'],scales=per_scale))
     freeze_json(output/'surface_summary.json',dict(diagnostic_only=True,locations=len(locations),neighborhoods=len(locations)*3,buckets=dict(buckets),repeats=repeat_rows,never_generator=True))
 

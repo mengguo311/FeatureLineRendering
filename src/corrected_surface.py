@@ -6,6 +6,11 @@ from scipy.spatial import cKDTree
 from .multiscene_probe import axial_angle
 
 
+def adjacent_scale_stable(angles,cfg):
+    return bool(angles and all(v is not None and np.isfinite(v) for v in angles)
+                and np.quantile(angles,.9)<=cfg['surface']['normal_p90_max'])
+
+
 def contribution_weights(state,height=800,width=800):
     library=Path(__file__).resolve().parents[1]/'out/multiscene_foundation_corrected/setup/surface.so'
     lib=ctypes.CDLL(str(library));fn=lib.contribution_weights
