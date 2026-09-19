@@ -66,7 +66,11 @@ def main():
             for name,digest in frozen['artifacts'].items():
                 if sha256(group/name)!=digest:raise ValueError('frozen local output changed '+str(group/name))
             freezes.append(dict(path=str(group.relative_to(root)),artifacts=len(frozen['artifacts'])))
-        F=read(root/f'setup/local_{scene}_seed_1729_primary_exit.json');C=read(root/f'setup/local_{scene}_seed_1729_cross_exit.json');V=read(root/f'setup/evaluation_{scene}_visual_exit.json')
+        F=read(root/f'setup/local_{scene}_seed_1729_primary_exit.json')
+        if F['exit_code']:
+            require('control_completion_preserves_fits_'+scene,read(local/'F/control_completion/complete.json')['existing_artifacts_unchanged'])
+            F=read(root/f'setup/local_{scene}_seed_1729_controls_exit.json')
+        C=read(root/f'setup/local_{scene}_seed_1729_cross_exit.json');V=read(root/f'setup/evaluation_{scene}_visual_exit.json')
         require('F_before_C_and_DEV_'+scene,F['finished_utc']<=C['started_utc'] and F['finished_utc']<=V['started_utc'])
         timeline.append(dict(scene=scene,F_finished=F['finished_utc'],C_started=C['started_utc'],DEV_started=V['started_utc']))
         vis=root/f'evaluation/{scene}/visual';video=read(vis/'video_status.json');require('video_stage_'+scene,video['reached']==bool(s['machine']['G1'] and s['machine']['G2_machine']))

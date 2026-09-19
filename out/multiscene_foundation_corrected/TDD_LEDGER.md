@@ -72,3 +72,15 @@
 - slice20 RED, 2026-09-18T23:48:17.487597+00:00, exit 1: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_reporting.ReportingTests.test_local_integrity_rejects_dropped_modes_and_wrong_denominators']`; [slice20_RED.txt](tdd/slice20_RED.txt).
 
 - slice20 GREEN, 2026-09-18T23:48:40.051510+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_reporting']`; [slice20_GREEN.txt](tdd/slice20_GREEN.txt).
+
+- slice21 RED, 2026-09-19T00:03:21.891971+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_confinement']`; [slice21_RED.txt](tdd/slice21_RED.txt).
+
+- slice21 RED_RETRY, 2026-09-19T00:03:47.659781+00:00, exit 1: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_confinement']`; [slice21_RED_RETRY.txt](tdd/slice21_RED_RETRY.txt).
+
+- slice21 RED_FINAL, 2026-09-19T00:03:58.536289+00:00, exit 1: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_confinement']`; [slice21_RED_FINAL.txt](tdd/slice21_RED_FINAL.txt).
+
+- slice21 GREEN, 2026-09-19T00:04:05.695870+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_confinement', 'test_corrected_probe']`; [slice21_GREEN.txt](tdd/slice21_GREEN.txt).
+
+- slice22 RED, 2026-09-19T00:04:38.767209+00:00, exit 1: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_execution.ExecutionTests.test_control_completion_never_changes_existing_fits']`; [slice22_RED.txt](tdd/slice22_RED.txt).
+
+- slice22 GREEN, 2026-09-19T00:04:55.395509+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_execution.ExecutionTests.test_control_completion_never_changes_existing_fits']`; [slice22_GREEN.txt](tdd/slice22_GREEN.txt).

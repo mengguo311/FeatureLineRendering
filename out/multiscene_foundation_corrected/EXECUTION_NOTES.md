@@ -70,3 +70,14 @@ and scientific computation occur after confinement. All startup opens are includ
 in the native audit, so this does not exempt a forbidden read. Qualification hashes
 the posterior after confinement. This distinction is stated explicitly rather than
 claiming that even provenance byte hashing always followed Landlock installation.
+
+Both complete F inference stages reached a late Python module-discovery failure
+when importing the old PCA control after confinement. Adding a new source module
+during the long fit invalidated Python's directory cache; directory enumeration
+was denied although individual source files were approved. Slice21's first test
+did not reproduce the stale-cache condition (exit0, retained honestly); explicit
+cache invalidation then reproduced the failure twice before the import-preload
+fix passed. The old PCA source is unchanged. A separately confined completion
+process checks all28 completed arms, adds only the missing controls, hashes every
+preexisting F artifact before/after and freezes F before C. No inference arm is
+rerun or selected. Original error logs and nonzero exit records remain intact.

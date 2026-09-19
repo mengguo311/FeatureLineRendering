@@ -4,6 +4,25 @@ import numpy as np
 from test_multiscene import CFG
 
 class ExecutionTests(unittest.TestCase):
+    def test_control_completion_never_changes_existing_fits(self):
+        from src.corrected_execution import finish_primary_controls
+        import json,hashlib
+        class Evidence:
+            def observations(self,points):return [dict(visible=np.ones(len(points),bool),dt=np.zeros(len(points))) for _ in range(4)]
+        x,y=np.meshgrid(np.linspace(-.2,.2,12),np.linspace(-.2,.2,12));mu=np.c_[x.ravel(),y.ravel(),np.ones(x.size)];asset=dict(mu=mu,scale=np.full_like(mu,.03))
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td)
+            for arm in ['gs','no_gs']:
+                (root/arm).mkdir()
+                for name,value in [('summary.json',dict(accepted_count=0)),('accepted.json',[]),('modes.json',[])]:
+                    (root/arm/name).write_text(json.dumps(value))
+            before={str(p):p.read_bytes() for p in root.rglob('*') if p.is_file()}
+            report=finish_primary_controls(root,asset,Evidence(),CFG)
+            self.assertTrue(report['existing_artifacts_unchanged'])
+            self.assertGreater(len(json.loads((root/'pca.json').read_text())['accepted']),0)
+            self.assertTrue(all(Path(p).read_bytes()==data for p,data in before.items()))
+            with self.assertRaises(FileExistsError):finish_primary_controls(root,asset,Evidence(),CFG)
+
     def test_F_primary_exchange_and_LOO_synthetic_straight_line(self):
         from src.corrected_execution import run_inference_arm
         cameras={};fields={};K=np.array([[200.,0,199.5],[0,200.,199.5],[0,0,1]])

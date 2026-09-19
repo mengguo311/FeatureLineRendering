@@ -18,7 +18,7 @@ bootstrap += [upstream,Path(verified_source_exception(upstream/'arguments/__init
 for policy_path in sorted(root.rglob('allowlist.json')):
  policy=json.loads(policy_path.read_text());scene=policy['scene'];task=policy.get('task');stage=policy.get('stage')
  if stage:key=f"{scene}_{policy['seed']}_{stage}"
- elif task in ['layers','primary','repeat','cross']:key=f"local_{scene}_{policy['asset']}_{task}"
+ elif task in ['layers','primary','repeat','cross','controls']:key=f"local_{scene}_{policy['asset']}_{task}"
  else:key=f"evaluation_{scene}_{task}"
  trace,status=stage_record_paths(root,policy_path,key)
  if not status.exists():continue

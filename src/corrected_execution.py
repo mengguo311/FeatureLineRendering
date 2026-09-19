@@ -3,7 +3,7 @@ import json,time,hashlib
 from pathlib import Path
 import numpy as np
 from .foundation import freeze_json
-from .corrected_probe import infer_queries,save_probe,_json
+from .corrected_probe import infer_queries,save_probe,_json,load_probe,pca_control,random_control,evaluate_positions
 from .multiscene import independent_eligibility
 from .multiscene_report import pair_measurements
 
@@ -16,6 +16,20 @@ def run_inference_arm(directory,queries,cameras,fields,layers,box,delta,cfg,arm,
     summary=save_probe(directory,result)
     print(arm,split,summary,flush=True)
     return result
+
+
+def finish_primary_controls(directory,asset,evidence,cfg):
+    from .corrected_reporting import sha256
+    directory=Path(directory)
+    names=['pca.json','random.json','F_predictions.json']
+    if any((directory/name).exists() for name in names):raise FileExistsError('primary controls already exist')
+    before={str(p.relative_to(directory)):sha256(p) for p in directory.rglob('*') if p.is_file()}
+    main=load_probe(directory/'gs');no_gs=load_probe(directory/'no_gs')
+    pca=pca_control(asset,evidence,cfg);freeze_json(directory/'pca.json',_json(pca))
+    random=random_control(main['accepted'],cfg);freeze_json(directory/'random.json',random)
+    freeze_json(directory/'F_predictions.json',_json({name:evaluate_positions(rows,evidence) for name,rows in [('gs',main['accepted']),('random',random),('no_gs',no_gs['accepted'])]}))
+    if any(sha256(directory/p)!=digest for p,digest in before.items()):raise RuntimeError('existing fit changed during control completion')
+    return dict(existing_artifacts_unchanged=True,prior_hashes=before,controls=names)
 
 
 def scope_decisions(scenes):

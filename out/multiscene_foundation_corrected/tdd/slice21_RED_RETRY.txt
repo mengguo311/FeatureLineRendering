@@ -1,0 +1,18 @@
+F
+======================================================================
+FAIL: test_old_pca_control_is_available_after_file_only_confinement (test_corrected_confinement.ConfinementTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_corrected_confinement.py", line 30, in test_old_pca_control_is_available_after_file_only_confinement
+    self.assertEqual(result.returncode,0,result.stdout)
+AssertionError: 1 != 0 : Traceback (most recent call last):
+  File "<string>", line 18, in <module>
+  File "/home/u00134/3dgs_line/tier1/src/corrected_probe.py", line 80, in pca_control
+    from .linelet import init_linelets
+ModuleNotFoundError: No module named 'src.linelet'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.297s
+
+FAILED (failures=1)

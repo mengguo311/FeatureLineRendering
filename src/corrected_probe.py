@@ -2,6 +2,7 @@
 from collections import Counter
 import hashlib,json
 from pathlib import Path
+from .linelet import init_linelets
 import numpy as np
 from scipy.spatial import cKDTree
 from .foundation import freeze_json
@@ -77,7 +78,6 @@ def prediction_summary(rows,cfg):
 
 
 def pca_control(asset,evidence,cfg):
-    from .linelet import init_linelets
     mu=asset['mu'];scores=np.zeros(len(mu));counts=np.zeros(len(mu),int)
     for start in range(0,len(mu),16384):
         end=min(start+16384,len(mu));sumscore=np.zeros(end-start);count=np.zeros(end-start,int)
