@@ -1,0 +1,32 @@
+{
+  "command": [
+    "strace",
+    "-f",
+    "-qq",
+    "-yy",
+    "-e",
+    "trace=open,openat,openat2,creat",
+    "-o",
+    "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/setup/lego_repeat_redistribute_04.strace",
+    "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+    "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/code/cc_runner.py",
+    "--scene",
+    "lego",
+    "--task",
+    "repeat",
+    "--asset",
+    "redistribute_04"
+  ],
+  "start_utc": "2026-09-19T03:16:09.507053+00:00",
+  "env": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPYCACHEPREFIX": "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/setup/unused_pycache",
+    "PYTHONPATH": "/home/u00134/3dgs_line/tier1/out/curve_correspondence_foundation/code:/home/u00134/3dgs_line/tier1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1"
+  },
+  "exit_code": 0,
+  "elapsed_seconds": 10.57657469296828,
+  "end_utc": "2026-09-19T03:16:20.083644+00:00"
+}
