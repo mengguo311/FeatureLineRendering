@@ -20,6 +20,11 @@ def main():
         checks[name]=bool(condition)
         if not condition:raise ValueError('verification failed: '+name)
     check_markdown(result,(root/'RESULTS.md').read_text());checks['json_markdown_exact']=True
+    qualification_text=(root/'QUALIFICATION.md').read_text()
+    for s in result['scenes']:
+        e=s['eligibility']
+        expected=f"| {s['scene']} | {e['posterior_eligible'][0]} | {e['posterior_eligible'][1]} | {e['route_a']} | {e['route_b']} | {len(e['qualified_doses'])}/9 |"
+        require('qualification_markdown_'+s['scene'],expected in qualification_text)
     require('branch',git('branch','--show-current')=='multiscene-foundation-corrected')
     prior=read(ROOT/'out/multiscene_foundation/config.json')
     scientific=['budget','controls','detector','eligibility','gates','native','perturbations','probe','queries','scene_order','splits','surface','training','visuals']
@@ -99,9 +104,11 @@ def main():
     freeze_json(root/'VERIFICATION.json',verification)
     exclude=['MANIFEST.json','MANIFEST.json.sha256','FINAL_SEAL.json','FINAL_SEAL.json.sha256']
     inventory=file_inventory(root,exclude=exclude)
-    for row in inventory:
-        ignored=subprocess.run(['git','check-ignore','-q',str(root/row['path'])],cwd=ROOT).returncode==0
-        row['storage']='server_only' if ignored else 'git'
+    paths=[str(root/row['path']) for row in inventory]
+    ignored_process=subprocess.run(['git','check-ignore','--stdin','-z'],cwd=ROOT,input=('\0'.join(paths)+'\0').encode(),stdout=subprocess.PIPE)
+    if ignored_process.returncode not in [0,1]:raise RuntimeError('storage classification failed')
+    ignored=set(ignored_process.stdout.decode().strip('\0').split('\0'))
+    for row,path in zip(inventory,paths):row['storage']='server_only' if path in ignored else 'git'
     freeze_json(root/'MANIFEST.json',dict(root=str(root),files=inventory,file_count=len(inventory),bytes=sum(r['bytes'] for r in inventory),excluded_self_references=exclude,external_dependencies=dict(checkpoints=cfg['frozen_posteriors'],preserved_input_inventory='PRESERVED_INPUT_VERIFICATION.json')))
     check_inventory(root,inventory)
     freeze_json(root/'FINAL_SEAL.json',dict(passed=True,manifest_sha256=sha256(root/'MANIFEST.json'),verification_sha256=sha256(root/'VERIFICATION.json'),results_sha256=sha256(root/'results.json'),markdown_sha256=sha256(root/'RESULTS.md')))

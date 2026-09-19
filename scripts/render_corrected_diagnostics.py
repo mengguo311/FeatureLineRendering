@@ -18,7 +18,8 @@ def read(p):return json.loads(Path(p).read_text())
 def main():
     p=argparse.ArgumentParser();p.add_argument('--scene',required=True);args=p.parse_args()
     root=ROOT/'out/multiscene_foundation_corrected';local=root/'local'/args.scene;cfg=verified_json(root/'config.json',(root/'config.json.sha256').read_text().strip())
-    complete=read(local/'execution_complete.json');elig=read(root/f'scenes/{args.scene}/eligibility.json');machine=read(root/f'evaluation/{args.scene}/machine/machine.json');delta=elig['delta']
+    machine_path=root/f'evaluation/{args.scene}/machine/machine.json'
+    complete=read(local/'execution_complete.json');elig=read(root/f'scenes/{args.scene}/eligibility.json');machine=read(machine_path);delta=elig['delta']
     output=root/f'evaluation/{args.scene}/visual';output.mkdir(parents=True,exist_ok=False)
     (output/'native').mkdir();(output/'full_resolution').mkdir();(output/'profiles').mkdir();(output/'prediction_rows').mkdir()
     os.environ['MPLCONFIGDIR']=str(output/'.mplconfig')
@@ -35,7 +36,7 @@ def main():
     binaries=[ROOT/'out/point_feature_foundation/setup/composite.so',ROOT/'out/multiscene_foundation/setup/layers.so',root/'setup/area_layers.so']
     for b in binaries:ctypes.CDLL(str(b))
     runtime=[Path(sys.prefix),Path('/home/u00134/bin/miniconda3/envs/ts_diffusion'),Path('/usr'),Path('/lib'),Path('/lib64'),Path('/etc'),Path('/proc'),Path('/sys'),STOCK_SITE,*[upstream/k for k in ['gaussian_renderer','utils','scene']]]
-    readonly=[local,*parameters.values(),*photos,*quality,*sources,*binaries,root/'annotations',*[r.resolve() for r in runtime if r.exists()]]
+    readonly=[local,machine_path,*parameters.values(),*photos,*quality,*sources,*binaries,root/'annotations',*[r.resolve() for r in runtime if r.exists()]]
     freeze_json(output/'allowlist.json',dict(scene=args.scene,task='visual',readonly=[str(x) for x in readonly],writable=[str(output),'/dev'],photo_inputs=photos,source_hashes={str(x):sha(x) for x in sources},input_hashes={str(x):sha(x) for x in [*photos,*parameters.values()]},config_sha256=sha(root/'config.json')))
     restrict_filesystem(readonly,[output,'/dev']);start=time.monotonic()
     def asset(name):
