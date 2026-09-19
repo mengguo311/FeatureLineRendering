@@ -69,7 +69,7 @@ def render_results(result):
     lines+=['','G1 requires at least 64 spatially separated accepted positions. Empty outputs cannot pass repeatability or non-null controls through a 0/0 statistic. Manual gates are pending independent review; this does not defer a valid necessary machine-gate failure. No independent reviewer is claimed.','',
         '## Exact totals','', '| Quantity | Count |','|---|---:|']
     lines += [f'| {key} | {value} |' for key,value in result['totals'].items()]
-    lines += ['', '## Scope and limitations','']+[f'- {v}' for v in result['limitations']]
+    lines += ['', 'Rejected counts include ambiguous modes; ambiguity and rejection-reason counts overlap other rejection reasons. Raw accepted modes precede delta separation; accepted positions follow it.', '', '## Scope and limitations','']+[f'- {v}' for v in result['limitations']]
     lines += ['', '## Artifacts and verification','',
         'The full per-view quality, dose, calibration and eligibility records are in `quality/`, `controlled/`, and `scenes/`. Every completed local arm retains queries, all depth profiles and modes, accepted records, rejection reasons and coverage denominators under `local/`. Large arrays are server-side and inventoried in MANIFEST.json.',
         'Per-scene `evaluation/SCENE/visual/` contains actual glyph contact sheets, fixed views, rejection/profile diagnostics and the blinded review package. The identity key is outside each package. Video status records whether the frozen per-scene G1/G2 trigger was reached. Empty output is displayed as empty output.',
