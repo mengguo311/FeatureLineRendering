@@ -1,0 +1,64 @@
+test_archived_attempt_uses_its_own_trace_and_status (test_corrected_audit.CorrectedAuditTests) ... ok
+test_bootstrap_metadata_does_not_authorize_other_photographs (test_corrected_audit.CorrectedAuditTests) ... ok
+test_bootstrap_source_exception_requires_exact_pinned_bytes (test_corrected_audit.CorrectedAuditTests) ... ok
+test_old_pca_control_is_available_after_file_only_confinement (test_corrected_confinement.ConfinementTests) ... ok
+test_gate_failure_is_determinate_and_keeps_manual_pending (test_corrected_evaluation.EvaluationTests) ... ok
+test_F_primary_exchange_and_LOO_synthetic_straight_line (test_corrected_execution.ExecutionTests) ... no_gs F {'query_count': 1, 'mode_count': 1, 'raw_accepted_count': 1, 'accepted_count': 1, 'rejected_count': 0, 'ambiguous_count': 0, 'resolution_ok': True, 'rejection_reasons': {}, 'elapsed_seconds': 0.01342425897018984, 'arm': 'no_gs', 'split': 'F'}
+no_gs C {'query_count': 1, 'mode_count': 1, 'raw_accepted_count': 1, 'accepted_count': 1, 'rejected_count': 0, 'ambiguous_count': 0, 'resolution_ok': True, 'rejection_reasons': {}, 'elapsed_seconds': 0.011558264028280973, 'arm': 'no_gs', 'split': 'C'}
+loo F {'query_count': 1, 'mode_count': 1, 'raw_accepted_count': 1, 'accepted_count': 1, 'rejected_count': 0, 'ambiguous_count': 0, 'resolution_ok': True, 'rejection_reasons': {}, 'elapsed_seconds': 0.009138158988207579, 'arm': 'loo', 'split': 'F'}
+ok
+test_control_completion_never_changes_existing_fits (test_corrected_execution.ExecutionTests) ... ok
+test_parallel_arms_are_array_identical_to_serial_execution (test_corrected_execution.ExecutionTests) ... serial F {'query_count': 1, 'mode_count': 1, 'raw_accepted_count': 0, 'accepted_count': 0, 'rejected_count': 1, 'ambiguous_count': 0, 'resolution_ok': True, 'rejection_reasons': {'degenerate_H_img': 1}, 'elapsed_seconds': 0.01236170798074454, 'arm': 'serial', 'split': 'F'}
+arm_1 F {'query_count': 1, 'mode_count': 1, 'raw_accepted_count': 0, 'accepted_count': 0, 'rejected_count': 1, 'ambiguous_count': 0, 'resolution_ok': True, 'rejection_reasons': {'degenerate_H_img': 1}, 'elapsed_seconds': 0.01710434799315408, 'arm': 'arm_1', 'split': 'F'}
+arm_0 F {'query_count': 1, 'mode_count': 1, 'raw_accepted_count': 0, 'accepted_count': 0, 'rejected_count': 1, 'ambiguous_count': 0, 'resolution_ok': True, 'rejection_reasons': {'degenerate_H_img': 1}, 'elapsed_seconds': 0.019714304013177752, 'arm': 'arm_0', 'split': 'F'}
+arm_4 F {'query_count': 1, 'mode_count': 1, 'raw_accepted_count': 0, 'accepted_count': 0, 'rejected_count': 1, 'ambiguous_count': 0, 'resolution_ok': True, 'rejection_reasons': {'degenerate_H_img': 1}, 'elapsed_seconds': 0.018102656002156436, 'arm': 'arm_4', 'split': 'F'}
+arm_3 F {'query_count': 1, 'mode_count': 1, 'raw_accepted_count': 0, 'accepted_count': 0, 'rejected_count': 1, 'ambiguous_count': 0, 'resolution_ok': True, 'rejection_reasons': {'degenerate_H_img': 1}, 'elapsed_seconds': 0.023160230019129813, 'arm': 'arm_3', 'split': 'F'}
+arm_5 F {'query_count': 1, 'mode_count': 1, 'raw_accepted_count': 0, 'accepted_count': 0, 'rejected_count': 1, 'ambiguous_count': 0, 'resolution_ok': True, 'rejection_reasons': {'degenerate_H_img': 1}, 'elapsed_seconds': 0.01870758197037503, 'arm': 'arm_5', 'split': 'F'}
+arm_6 F {'query_count': 1, 'mode_count': 1, 'raw_accepted_count': 0, 'accepted_count': 0, 'rejected_count': 1, 'ambiguous_count': 0, 'resolution_ok': True, 'rejection_reasons': {'degenerate_H_img': 1}, 'elapsed_seconds': 0.017970310989767313, 'arm': 'arm_6', 'split': 'F'}
+arm_7 F {'query_count': 1, 'mode_count': 1, 'raw_accepted_count': 0, 'accepted_count': 0, 'rejected_count': 1, 'ambiguous_count': 0, 'resolution_ok': True, 'rejection_reasons': {'degenerate_H_img': 1}, 'elapsed_seconds': 0.017341787985060364, 'arm': 'arm_7', 'split': 'F'}
+arm_2 F {'query_count': 1, 'mode_count': 1, 'raw_accepted_count': 0, 'accepted_count': 0, 'rejected_count': 1, 'ambiguous_count': 0, 'resolution_ok': True, 'rejection_reasons': {'degenerate_H_img': 1}, 'elapsed_seconds': 0.036877150007057935, 'arm': 'arm_2', 'split': 'F'}
+ok
+test_route_status_has_per_scene_quality_without_global_blocking (test_corrected_execution.ExecutionTests) ... ok
+test_area_mixture_keeps_disjoint_depths_and_averages_transmittance (test_corrected_layers.AreaLayersTests) ... ok
+test_native800_area_layers_calibrate_alpha_and_serialization (test_corrected_layers.AreaLayersTests) ... ok
+test_small_query_optimization_matches_original_bit_for_bit (test_corrected_layers.QueryOptimizationTests) ... ok
+test_empty_output_retains_every_declared_view_denominator (test_corrected_probe.CorrectedProbeTests) ... ok
+test_pca_null_stays_at_original_centers_and_uses_F_views (test_corrected_probe.CorrectedProbeTests) ... ok
+test_prediction_denominators_and_empty_controls_do_not_pass (test_corrected_probe.CorrectedProbeTests) ... ok
+test_saved_profile_retains_all_queries_modes_and_nonfinite_masks (test_corrected_probe.CorrectedProbeTests) ... ok
+test_shifted_association_moves_nearest_edge_coordinates_with_maps (test_corrected_probe.CorrectedProbeTests) ... ok
+test_local_correction_cannot_hide_an_opposing_view (test_corrected_probe.VisibilityFreezeTests) ... ok
+test_quality_and_all_doses_use_native_area_and_preserve_thresholds (test_corrected_qualification.CorrectedQualificationTests) ... quality train 1 True
+quality val 1 True
+parent 1 True
+dose redistribute_00 {'passed': True, 'complete': True, 'coverage_pass': True, 'rgb_pass': True, 'calibration_pass': True}
+dose redistribute_01 {'passed': True, 'complete': True, 'coverage_pass': True, 'rgb_pass': True, 'calibration_pass': True}
+dose redistribute_02 {'passed': True, 'complete': True, 'coverage_pass': True, 'rgb_pass': True, 'calibration_pass': True}
+dose redistribute_03 {'passed': True, 'complete': True, 'coverage_pass': True, 'rgb_pass': True, 'calibration_pass': True}
+dose redistribute_04 {'passed': True, 'complete': True, 'coverage_pass': True, 'rgb_pass': True, 'calibration_pass': True}
+dose moment_split_00 {'passed': True, 'complete': True, 'coverage_pass': True, 'rgb_pass': True, 'calibration_pass': True}
+dose moment_split_01 {'passed': True, 'complete': True, 'coverage_pass': True, 'rgb_pass': True, 'calibration_pass': True}
+dose moment_split_02 {'passed': True, 'complete': True, 'coverage_pass': True, 'rgb_pass': True, 'calibration_pass': True}
+dose moment_split_03 {'passed': True, 'complete': True, 'coverage_pass': True, 'rgb_pass': True, 'calibration_pass': True}
+ok
+test_local_integrity_rejects_dropped_modes_and_wrong_denominators (test_corrected_reporting.ReportingTests) ... ok
+test_manifest_checks_content_and_exposes_missing_server_artifacts (test_corrected_reporting.ReportingTests) ... ok
+test_markdown_is_checked_against_every_scene_gate_and_total (test_corrected_reporting.ReportingTests) ... ok
+test_blind_package_has_random_identities_and_separate_key (test_corrected_review.ReviewTests) ... ok
+test_stock_native800_equality_and_alpha_replay (test_corrected_sampling.NativeStockTests) ... ok
+test_area_filter_exact_blocks_deterministic_and_no_uint8_rounding (test_corrected_sampling.SamplingTests) ... ok
+test_full_K_jacobian_matches_resized_pixel_mapping (test_corrected_sampling.SamplingTests) ... ok
+test_native800_then_area400_is_not_direct400_splatting (test_corrected_sampling.SamplingTests) ... ok
+test_source_pixel_centers_map_to_destination_centers (test_corrected_sampling.SamplingTests) ... ok
+test_adjacent_scale_uses_registered_p90_and_missing_is_unknown (test_corrected_surface.SurfaceAuditTests) ... ok
+test_cell_grouping_blocks_clone_leakage_and_rejects_filaments (test_corrected_surface.SurfaceAuditTests) ... ok
+test_empty_neighborhood_is_retained_as_sparse (test_corrected_surface.SurfaceAuditTests) ... ok
+test_native_contribution_weights_sum_to_replayed_mass (test_corrected_surface.SurfaceAuditTests) ... ok
+test_two_parallel_layers_are_never_crease_and_curved_sheet_has_quadratic (test_corrected_surface.SurfaceAuditTests) ... ok
+test_orbit_and_video_have_exact_frozen_120_frames (test_corrected_visuals.VisualTests) ... ok
+test_real_glyph_pixels_are_deterministic_sign_invariant_and_empty_is_white (test_corrected_visuals.VisualTests) ... ok
+
+----------------------------------------------------------------------
+Ran 35 tests in 10.984s
+
+OK

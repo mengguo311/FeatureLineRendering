@@ -96,3 +96,23 @@
 - slice25 RED, 2026-09-19T00:39:00.771169+00:00, exit 1: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_surface.SurfaceAuditTests.test_adjacent_scale_uses_registered_p90_and_missing_is_unknown']`; [slice25_RED.txt](tdd/slice25_RED.txt).
 
 - slice25 GREEN, 2026-09-19T00:39:16.906928+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_surface.SurfaceAuditTests.test_adjacent_scale_uses_registered_p90_and_missing_is_unknown']`; [slice25_GREEN.txt](tdd/slice25_GREEN.txt).
+
+- final_targeted VERIFY, 2026-09-19T00:45:41.022919+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_corrected*.py', '-v']`; [final_targeted_VERIFY.txt](tdd/final_targeted_VERIFY.txt).
+
+- final_complete VERIFY, 2026-09-19T00:46:35.650797+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'discover', '-s', 'tests', '-v']`; [final_complete_VERIFY.txt](tdd/final_complete_VERIFY.txt).
+
+- slice26 RED, 2026-09-19T00:52:22.730498+00:00, exit 1: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_audit', '-v']`; [slice26_RED.txt](tdd/slice26_RED.txt).
+
+- slice26 GREEN, 2026-09-19T00:52:55.284267+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_audit', '-v']`; [slice26_GREEN.txt](tdd/slice26_GREEN.txt).
+
+- final_targeted_after_audit VERIFY, 2026-09-19T00:54:30.428099+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_corrected*.py', '-v']`; [final_targeted_after_audit_VERIFY.txt](tdd/final_targeted_after_audit_VERIFY.txt).
+
+- final_complete_after_audit VERIFY, 2026-09-19T00:55:18.249816+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'discover', '-s', 'tests', '-v']`; [final_complete_after_audit_VERIFY.txt](tdd/final_complete_after_audit_VERIFY.txt).
+
+- slice27 RED, 2026-09-19T00:56:43.605896+00:00, exit 1: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_reporting', '-v']`; [slice27_RED.txt](tdd/slice27_RED.txt).
+
+- slice27 GREEN, 2026-09-19T00:56:44.019926+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'test_corrected_reporting', '-v']`; [slice27_GREEN.txt](tdd/slice27_GREEN.txt).
+
+- final_targeted_after_report VERIFY, 2026-09-19T00:57:22.442141+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_corrected*.py', '-v']`; [final_targeted_after_report_VERIFY.txt](tdd/final_targeted_after_report_VERIFY.txt).
+
+- final_complete_after_report VERIFY, 2026-09-19T00:57:41.219359+00:00, exit 0: `['/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python', '-m', 'unittest', 'discover', '-s', 'tests', '-v']`; [final_complete_after_report_VERIFY.txt](tdd/final_complete_after_report_VERIFY.txt).
