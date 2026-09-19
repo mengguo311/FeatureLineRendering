@@ -1,0 +1,218 @@
+{
+  "lego": {
+    "scene": "lego",
+    "gaussian_count": 310475,
+    "sample_count": 24000,
+    "slice_gaussian_count": 1500,
+    "opacity": {
+      "p5": 0.014455488025824767,
+      "p25": 0.110557840930339,
+      "p50": 0.523386067685262,
+      "p75": 0.9836739755210175,
+      "p95": 0.9999529751137715
+    },
+    "scales": {
+      "min_median": 2.418479354388834e-05,
+      "mid_median": 0.00108402890424936,
+      "max_median": 0.011206607667551594
+    },
+    "flattening": {
+      "p5": 0.25013324568130074,
+      "p25": 0.7584585339855885,
+      "p50": 0.955659619305544,
+      "p75": 0.9944594230778736,
+      "p95": 0.9996611488244848
+    },
+    "local_planarity": {
+      "p5": 0.0746616004368535,
+      "p25": 0.1823653635134504,
+      "p50": 0.2888766596292577,
+      "p75": 0.41122744946709033,
+      "p95": 0.5936494398516338
+    },
+    "axis_agreement": {
+      "p5": 0.10024587615244271,
+      "p25": 0.4760789547312528,
+      "p50": 0.7893337611672959,
+      "p75": 0.9392775151767926,
+      "p95": 0.9931466950792236
+    },
+    "surface_proxy": {
+      "p5": 0.2035201212000256,
+      "p25": 0.39067919766231707,
+      "p50": 0.5277845417146935,
+      "p75": 0.6525758823953466,
+      "p95": 0.7892562501297331
+    },
+    "definitions": {
+      "candidate_normal": "smallest covariance axis; signless",
+      "flattening": "1 - s_min/s_mid",
+      "local_planarity": "(lambda_2-lambda_3)/lambda_1 of 24-NN center covariance",
+      "axis_agreement": "absolute dot product of candidate and local PCA normals",
+      "surface_proxy": "cube root(flattening * local_planarity * axis_agreement)",
+      "slice": "sum alpha_i exp(-0.5 Mahalanobis_i^2), evaluated on PCA mid-plane"
+    }
+  },
+  "chair": {
+    "scene": "chair",
+    "gaussian_count": 256690,
+    "sample_count": 24000,
+    "slice_gaussian_count": 1500,
+    "opacity": {
+      "p5": 0.009112382130133899,
+      "p25": 0.04065078154846111,
+      "p50": 0.2479013127396985,
+      "p75": 0.8033123284336525,
+      "p95": 0.9998620793084046
+    },
+    "scales": {
+      "min_median": 3.7910222689732414e-06,
+      "mid_median": 6.348991654499443e-05,
+      "max_median": 0.006221091508040653
+    },
+    "flattening": {
+      "p5": 0.1526365487068967,
+      "p25": 0.5698454168325618,
+      "p50": 0.8559692723040118,
+      "p75": 0.9747656254393662,
+      "p95": 0.9988173000328681
+    },
+    "local_planarity": {
+      "p5": 0.06710536351936972,
+      "p25": 0.18443206076490626,
+      "p50": 0.30310205635377074,
+      "p75": 0.4423302206475628,
+      "p95": 0.6528526801067596
+    },
+    "axis_agreement": {
+      "p5": 0.08502261789252057,
+      "p25": 0.4203224307936046,
+      "p50": 0.7477777174755588,
+      "p75": 0.9271089579490502,
+      "p95": 0.9912559908599722
+    },
+    "surface_proxy": {
+      "p5": 0.17192131282990303,
+      "p25": 0.3492095341485766,
+      "p50": 0.4957355502850722,
+      "p75": 0.6366077923862508,
+      "p95": 0.8016874148197866
+    },
+    "definitions": {
+      "candidate_normal": "smallest covariance axis; signless",
+      "flattening": "1 - s_min/s_mid",
+      "local_planarity": "(lambda_2-lambda_3)/lambda_1 of 24-NN center covariance",
+      "axis_agreement": "absolute dot product of candidate and local PCA normals",
+      "surface_proxy": "cube root(flattening * local_planarity * axis_agreement)",
+      "slice": "sum alpha_i exp(-0.5 Mahalanobis_i^2), evaluated on PCA mid-plane"
+    }
+  },
+  "drums": {
+    "scene": "drums",
+    "gaussian_count": 360012,
+    "sample_count": 24000,
+    "slice_gaussian_count": 1500,
+    "opacity": {
+      "p5": 0.003908770171274622,
+      "p25": 0.02655143586196265,
+      "p50": 0.20555927932985185,
+      "p75": 0.9638545576409386,
+      "p95": 0.9999397916471319
+    },
+    "scales": {
+      "min_median": 1.668672748550513e-05,
+      "mid_median": 0.000462717390991463,
+      "max_median": 0.008130381928091596
+    },
+    "flattening": {
+      "p5": 0.19256779105235894,
+      "p25": 0.6773258656734055,
+      "p50": 0.9186623834463774,
+      "p75": 0.9890869560873666,
+      "p95": 0.9994703128341352
+    },
+    "local_planarity": {
+      "p5": 0.07606545918895931,
+      "p25": 0.1895762191566422,
+      "p50": 0.3026672844031854,
+      "p75": 0.439349883280136,
+      "p95": 0.6408797225166337
+    },
+    "axis_agreement": {
+      "p5": 0.10036948716203524,
+      "p25": 0.4924918513131425,
+      "p50": 0.817108416146727,
+      "p75": 0.955582884206381,
+      "p95": 0.9957037211397994
+    },
+    "surface_proxy": {
+      "p5": 0.19325606331670384,
+      "p25": 0.38101076218080043,
+      "p50": 0.5308917785036344,
+      "p75": 0.6721850025273495,
+      "p95": 0.8209609212278797
+    },
+    "definitions": {
+      "candidate_normal": "smallest covariance axis; signless",
+      "flattening": "1 - s_min/s_mid",
+      "local_planarity": "(lambda_2-lambda_3)/lambda_1 of 24-NN center covariance",
+      "axis_agreement": "absolute dot product of candidate and local PCA normals",
+      "surface_proxy": "cube root(flattening * local_planarity * axis_agreement)",
+      "slice": "sum alpha_i exp(-0.5 Mahalanobis_i^2), evaluated on PCA mid-plane"
+    }
+  },
+  "ficus": {
+    "scene": "ficus",
+    "gaussian_count": 284835,
+    "sample_count": 24000,
+    "slice_gaussian_count": 1500,
+    "opacity": {
+      "p5": 0.003919548640436814,
+      "p25": 0.02049631941574908,
+      "p50": 0.048823875514343806,
+      "p75": 0.1664450512671201,
+      "p95": 0.893099443656012
+    },
+    "scales": {
+      "min_median": 1.638404212947404e-06,
+      "mid_median": 0.0021255125339569047,
+      "max_median": 0.00866348138324683
+    },
+    "flattening": {
+      "p5": 0.5605831408842304,
+      "p25": 0.9864911560796675,
+      "p50": 0.9988302777569977,
+      "p75": 0.9997571359012504,
+      "p95": 0.9999471406632933
+    },
+    "local_planarity": {
+      "p5": 0.09358481328069529,
+      "p25": 0.2504897512315358,
+      "p50": 0.38602696677382553,
+      "p75": 0.5334239416317876,
+      "p95": 0.7337688362411953
+    },
+    "axis_agreement": {
+      "p5": 0.2767909980856214,
+      "p25": 0.8753950964399049,
+      "p50": 0.9731070473736104,
+      "p75": 0.9927549592672793,
+      "p95": 0.9989760938512503
+    },
+    "surface_proxy": {
+      "p5": 0.2763283419387753,
+      "p25": 0.5647540194509879,
+      "p50": 0.700016917676098,
+      "p75": 0.795733301088581,
+      "p95": 0.8925218865084489
+    },
+    "definitions": {
+      "candidate_normal": "smallest covariance axis; signless",
+      "flattening": "1 - s_min/s_mid",
+      "local_planarity": "(lambda_2-lambda_3)/lambda_1 of 24-NN center covariance",
+      "axis_agreement": "absolute dot product of candidate and local PCA normals",
+      "surface_proxy": "cube root(flattening * local_planarity * axis_agreement)",
+      "slice": "sum alpha_i exp(-0.5 Mahalanobis_i^2), evaluated on PCA mid-plane"
+    }
+  }
+}
