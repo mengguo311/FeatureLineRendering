@@ -123,3 +123,11 @@ Final targeted and full suites are separate processes. The initial35/124-test
 passes are retained; after slice26 the final suites include38/127 tests. Every
 eligible scene remains STOP_B, with Lego limited to CONTROLLED_ONLY and Chair
 eligible for both invariance routes. No review is counted as independent.
+
+The independent report verifier first stopped on a Markdown ordering mismatch:
+canonical JSON sorts keys, whereas the totals table used dictionary insertion
+order before serialization. Slice27 reproduces the real JSON round trip and
+then fixes totals ordering. The original Markdown remains at
+setup/RESULTS_before_order_repair.md; results.json bytes, counts and all scientific
+gates are unchanged. The final separate suites are rerun after this reporting
+change, with the previous passing logs retained.

@@ -68,7 +68,7 @@ def render_results(result):
         lines.append('| '+' | '.join([s['scene'],*values,s.get('manual','NOT_REACHED')])+' |')
     lines+=['','G1 requires at least 64 spatially separated accepted positions. Empty outputs cannot pass repeatability or non-null controls through a 0/0 statistic. Manual gates are pending independent review; this does not defer a valid necessary machine-gate failure. No independent reviewer is claimed.','',
         '## Exact totals','', '| Quantity | Count |','|---|---:|']
-    lines += [f'| {key} | {value} |' for key,value in result['totals'].items()]
+    lines += [f'| {key} | {result["totals"][key]} |' for key in sorted(result['totals'])]
     lines += ['', 'Rejected counts include ambiguous modes; ambiguity and rejection-reason counts overlap other rejection reasons. Raw accepted modes precede delta separation; accepted positions follow it.', '', '## Scope and limitations','']+[f'- {v}' for v in result['limitations']]
     lines += ['', '## Artifacts and verification','',
         'The full per-view quality, dose, calibration and eligibility records are in `quality/`, `controlled/`, and `scenes/`. Every completed local arm retains queries, all depth profiles and modes, accepted records, rejection reasons and coverage denominators under `local/`. Large arrays are server-side and inventoried in MANIFEST.json.',

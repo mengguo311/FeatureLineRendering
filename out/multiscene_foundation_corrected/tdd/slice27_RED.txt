@@ -1,0 +1,18 @@
+test_local_integrity_rejects_dropped_modes_and_wrong_denominators (test_corrected_reporting.ReportingTests) ... ok
+test_manifest_checks_content_and_exposes_missing_server_artifacts (test_corrected_reporting.ReportingTests) ... ok
+test_markdown_is_checked_against_every_scene_gate_and_total (test_corrected_reporting.ReportingTests) ... ERROR
+
+======================================================================
+ERROR: test_markdown_is_checked_against_every_scene_gate_and_total (test_corrected_reporting.ReportingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_corrected_reporting.py", line 25, in test_markdown_is_checked_against_every_scene_gate_and_total
+    self.assertTrue(check_markdown(json.loads(json.dumps(result,sort_keys=True)),text))
+  File "/home/u00134/3dgs_line/tier1/src/corrected_reporting.py", line 82, in check_markdown
+    if render_results(result)!=text:raise ValueError('JSON/Markdown scene, gate, or total mismatch')
+ValueError: JSON/Markdown scene, gate, or total mismatch
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.226s
+
+FAILED (errors=1)

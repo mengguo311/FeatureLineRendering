@@ -168,3 +168,7 @@ another machine. Slice26 covers interleaved strace records and fail-closed
 incomplete records. End suites use the same recorded commands as the initial
 final suites, with labels `final_targeted_after_audit` and
 `final_complete_after_audit`; the verifier selects the latest separate runs.
+Slice27 then tests canonical JSON round-trip ordering of the Markdown totals.
+The last separate suites use `final_targeted_after_report` and
+`final_complete_after_report`; scientific result bytes are unchanged by the
+report table ordering repair.
