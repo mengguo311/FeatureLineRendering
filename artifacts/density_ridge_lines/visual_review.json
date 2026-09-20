@@ -1,0 +1,290 @@
+{
+  "reviewer": "Codex model visual inspection, unblinded; not an independent human or ground-truth evaluation",
+  "scope": "2D orthographic PCA projection diagnostic; cannot establish multi-view/3D persistence",
+  "scientific_parameters_changed_after_viewing": false,
+  "figures": {
+    "all_scenes_ridge_summary.png": {
+      "sha256": "d1516f5184b379465f074475320e1cf3d42944ec7377ce4536bde2edaeeaef3e",
+      "inspected": true,
+      "layout": "Readable rows/columns, native raster crop, no clipping or label overlap observed"
+    },
+    "chair_raw_audit.png": {
+      "sha256": "05db2ea52d058adfd2f97aeeaebec6536934126cc716beab098bcff62d231859",
+      "inspected": true,
+      "layout": "Readable rows/columns, native raster crop, no clipping or label overlap observed"
+    },
+    "chair_ridge_atlas.png": {
+      "sha256": "517bc1b1f382f2a9e875d576dcf855fd85ad9963f77c51388ea05587ab9dc677",
+      "inspected": true,
+      "layout": "Readable rows/columns, native raster crop, no clipping or label overlap observed"
+    },
+    "drums_raw_audit.png": {
+      "sha256": "82771e36e0436ffabea849509527fd95f725f48d5097a79185aaeefd802d4e90",
+      "inspected": true,
+      "layout": "Readable rows/columns, native raster crop, no clipping or label overlap observed"
+    },
+    "drums_ridge_atlas.png": {
+      "sha256": "b277ffd8a32976ec82fb2b734e712f50f079536cfc25a8cc54747dced2021d1a",
+      "inspected": true,
+      "layout": "Readable rows/columns, native raster crop, no clipping or label overlap observed"
+    },
+    "ficus_raw_audit.png": {
+      "sha256": "d58a03f43ff218259be37e4521b36995e2afd28e56e82c5b0604f4dc6fb312f8",
+      "inspected": true,
+      "layout": "Readable rows/columns, native raster crop, no clipping or label overlap observed"
+    },
+    "ficus_ridge_atlas.png": {
+      "sha256": "4ca09a298ca4df043d7aa3f1dcc94821c3e0bdbfd809a31ff7674fde2634df3c",
+      "inspected": true,
+      "layout": "Readable rows/columns, native raster crop, no clipping or label overlap observed"
+    },
+    "lego_raw_audit.png": {
+      "sha256": "15908591ca5e7eda751d4f213b4c436bf64285afae16e27dc1ec4a8bf62edc99",
+      "inspected": true,
+      "layout": "Readable rows/columns, native raster crop, no clipping or label overlap observed"
+    },
+    "lego_ridge_atlas.png": {
+      "sha256": "e122b05ee06a676d92b759a6987d6b1e24339ecd7684ccc08890057b52183103",
+      "inspected": true,
+      "layout": "Readable rows/columns, native raster crop, no clipping or label overlap observed"
+    }
+  },
+  "scenes": {
+    "lego": {
+      "color": {
+        "verdict": "PASS",
+        "earliest_limitation_stage": "field construction",
+        "observation": "Cab, bucket, tread and base yield recognizable bands with less chunky texture than the gradient baseline. Repeated base strips remain; projected color/material changes are not necessarily geometry."
+      },
+      "axis": {
+        "verdict": "PARTIAL",
+        "earliest_limitation_stage": "field construction",
+        "observation": "Cab and bucket carry useful axis boundaries, but patchy covariance orientation gives short segments and loses the tread. Tensor averaging is sign-safe but does not remove mixed-depth orientations."
+      },
+      "opacity": {
+        "verdict": "PASS",
+        "earliest_limitation_stage": "ridge response",
+        "observation": "Cab, arm/bucket and upper tread arcs form several clear bands, more coherent than the gradient patches. Some doubled tread arcs and internal holes survive; these may be density ridges rather than separate structures."
+      },
+      "flattening": {
+        "verdict": "PASS",
+        "earliest_limitation_stage": "field construction",
+        "observation": "A clean cab, bucket edge and long upper tread arc give a useful simplified drawing. The nearly saturated flattening attribute makes the detector largely a density tracer; several joins and base details are absent."
+      },
+      "planarity": {
+        "verdict": "PARTIAL",
+        "earliest_limitation_stage": "selection",
+        "observation": "The response contains object curves, but pooled selection leaves mostly cab/bucket pieces and isolated tread fragments. Only 42% of retained ink belongs to long components."
+      },
+      "agreement": {
+        "verdict": "PARTIAL",
+        "earliest_limitation_stage": "selection",
+        "observation": "Cab and bucket boundaries survive, but the tread arc is materially more interrupted than in flattening; sparse interior dashes remain. The normalized field is strongly density-correlated after coupling."
+      },
+      "surface": {
+        "verdict": "PARTIAL",
+        "earliest_limitation_stage": "selection",
+        "observation": "Cab and bucket fragments are meaningful, but much of the tread and body is missing. The conservative selection has not produced a comparably complete simplification to opacity or flattening."
+      }
+    },
+    "chair": {
+      "color": {
+        "verdict": "PARTIAL",
+        "earliest_limitation_stage": "field construction",
+        "observation": "The outer seat curve is clear, but upholstery/color texture produces interior wiggles and a busy lower border. Baseline advantage is modest and the left/back structure remains incomplete."
+      },
+      "axis": {
+        "verdict": "FAIL",
+        "earliest_limitation_stage": "field construction",
+        "observation": "Interior tensor/coherence variation yields many little curls and flecks with only partial outer structure. Most ink is in short components; the axis field is not a useful broad-line drawing under this recipe."
+      },
+      "opacity": {
+        "verdict": "PASS",
+        "earliest_limitation_stage": "selection",
+        "observation": "Long seat outline, lower rail and central gap bands simplify the texture substantially. Some left/back frame is missing and the interior gap is not fully connected; the scene receives more ink than its baseline."
+      },
+      "flattening": {
+        "verdict": "PASS",
+        "earliest_limitation_stage": "field construction",
+        "observation": "Clean seat rim, upper/lower frame pieces and central separator remain with little stipple. Strong density domination and low pooled allocation leave the left structure incomplete; this is a partial drawing, not a full contour recovery."
+      },
+      "planarity": {
+        "verdict": "PASS",
+        "earliest_limitation_stage": "selection",
+        "observation": "Seat and central-gap bands are coherent with few fragments and less speckling than the baseline. Remaining frame portions are omitted by pooled selection; no surface correctness can be inferred."
+      },
+      "agreement": {
+        "verdict": "PARTIAL",
+        "earliest_limitation_stage": "selection",
+        "observation": "The seat arc is useful, but central-gap and back regions are broken into isolated dashes. Improvement over the baseline is too limited for a visual GO in this scene."
+      },
+      "surface": {
+        "verdict": "PASS",
+        "earliest_limitation_stage": "selection",
+        "observation": "Seat rim and central separator are clean and relatively connected. The left structure and most interior organization are absent, and the per-scene baseline has less ink despite exact pooled matching."
+      }
+    },
+    "drums": {
+      "color": {
+        "verdict": "PARTIAL",
+        "earliest_limitation_stage": "field construction",
+        "observation": "Red drum rims and several stands are recognizable, but textured central drums and the pedal produce busy loops. Broad uniform cymbals contribute little color discontinuity; baseline long-component fraction is better."
+      },
+      "axis": {
+        "verdict": "PARTIAL",
+        "earliest_limitation_stage": "field construction",
+        "observation": "Some drum rings and supports appear, but uniform cymbal orientation supplies little discontinuity while mixed central axes create fragments. The large clean cymbal rims seen in scalar channels are mostly missing."
+      },
+      "opacity": {
+        "verdict": "PASS",
+        "earliest_limitation_stage": "ridge response",
+        "observation": "Several round drum/cymbal rims and stand segments form a readable set of bands. Some incomplete/doubled rings and interior spots remain; flattening is visually cleaner on the largest cymbals."
+      },
+      "flattening": {
+        "verdict": "PASS",
+        "earliest_limitation_stage": "field construction",
+        "observation": "The clearest collection of cymbal/drum ellipses and stand branches, with much less stipple than gradient selection. Overlapping drums remain ambiguous and high flattening makes density the dominant driver."
+      },
+      "planarity": {
+        "verdict": "PASS",
+        "earliest_limitation_stage": "field construction",
+        "observation": "Large rims and long support segments are coherent; the gradient baseline breaks many of these into pieces. Overlap mixes different depths, and the strong similarity to other scalar channels limits attribute-specific interpretation."
+      },
+      "agreement": {
+        "verdict": "PASS",
+        "earliest_limitation_stage": "field construction",
+        "observation": "Cymbal ellipses, drum rings and several stands are clearly organized and cleaner than the baseline. Some inner rings and thin junctions are missing; the field remains strongly correlated with density."
+      },
+      "surface": {
+        "verdict": "PASS",
+        "earliest_limitation_stage": "field construction",
+        "observation": "Major cymbal/drum rims and supporting rods are recognizable broad bands. Central overlapping instruments and short rim gaps remain unresolved, and the method cannot assign a depth to any crossing."
+      }
+    },
+    "ficus": {
+      "color": {
+        "verdict": "FAIL",
+        "earliest_limitation_stage": "field construction",
+        "observation": "Mostly isolated leaf flecks with a few tiny pot/stem segments. Similar projected leaf colors and depth averaging give weak discontinuity energy; neither detector produces a meaningful plant drawing."
+      },
+      "axis": {
+        "verdict": "PARTIAL",
+        "earliest_limitation_stage": "field construction",
+        "observation": "Numerous leaf-related arcs and some stem segments appear, but the canopy is crowded with short disconnected curves. Mixed projected axes and coherence changes dominate; baseline connectivity is actually higher."
+      },
+      "opacity": {
+        "verdict": "PARTIAL",
+        "earliest_limitation_stage": "field construction",
+        "observation": "Two pot-side bands and several stem branches are meaningful and cleaner than baseline specks, but almost all foliage disappears because its actual opacity is low. A machine pass therefore does not mean plant-wide coverage."
+      },
+      "flattening": {
+        "verdict": "PARTIAL",
+        "earliest_limitation_stage": "field construction",
+        "observation": "Some stems and leaf arcs are recognizable, but nearly saturated flattening reduces this to a density-driven canopy of short lobes. The baseline has a higher long-component fraction and receives substantially more scene ink."
+      },
+      "planarity": {
+        "verdict": "PARTIAL",
+        "earliest_limitation_stage": "field construction",
+        "observation": "Stems and many short leaf arcs survive, but superposed foliage forms a fragmented web with no reliable long leaf organization. Pooled allocation reaches 12.2% support ink, above the fixed machine gate."
+      },
+      "agreement": {
+        "verdict": "PARTIAL",
+        "earliest_limitation_stage": "field construction",
+        "observation": "Stem fragments and leaf-shaped curves are visible, yet the canopy remains cluttered and disconnected despite high source agreement. Density and projected layer mixing appear before ridge selection."
+      },
+      "surface": {
+        "verdict": "PARTIAL",
+        "earliest_limitation_stage": "field construction",
+        "observation": "Several stem bands and many leaf arcs are meaningful, but the dense canopy remains fragmented and the pot boundary is incomplete. The baseline is at least as connected; the geometric mean does not resolve projected overlap."
+      }
+    }
+  },
+  "channels": {
+    "color": {
+      "visual_labels": {
+        "lego": "PASS",
+        "chair": "PARTIAL",
+        "drums": "PARTIAL",
+        "ficus": "FAIL"
+      },
+      "visual_decision": "PIVOT",
+      "machine_decision": "PIVOT",
+      "final_decision": "PIVOT",
+      "later_3d_feasibility_candidate": false
+    },
+    "axis": {
+      "visual_labels": {
+        "lego": "PARTIAL",
+        "chair": "FAIL",
+        "drums": "PARTIAL",
+        "ficus": "PARTIAL"
+      },
+      "visual_decision": "PIVOT",
+      "machine_decision": "STOP",
+      "final_decision": "PIVOT",
+      "later_3d_feasibility_candidate": false
+    },
+    "opacity": {
+      "visual_labels": {
+        "lego": "PASS",
+        "chair": "PASS",
+        "drums": "PASS",
+        "ficus": "PARTIAL"
+      },
+      "visual_decision": "GO",
+      "machine_decision": "GO",
+      "final_decision": "GO",
+      "later_3d_feasibility_candidate": true
+    },
+    "flattening": {
+      "visual_labels": {
+        "lego": "PASS",
+        "chair": "PASS",
+        "drums": "PASS",
+        "ficus": "PARTIAL"
+      },
+      "visual_decision": "GO",
+      "machine_decision": "GO",
+      "final_decision": "GO",
+      "later_3d_feasibility_candidate": true
+    },
+    "planarity": {
+      "visual_labels": {
+        "lego": "PARTIAL",
+        "chair": "PASS",
+        "drums": "PASS",
+        "ficus": "PARTIAL"
+      },
+      "visual_decision": "PIVOT",
+      "machine_decision": "PIVOT",
+      "final_decision": "PIVOT",
+      "later_3d_feasibility_candidate": false
+    },
+    "agreement": {
+      "visual_labels": {
+        "lego": "PARTIAL",
+        "chair": "PARTIAL",
+        "drums": "PASS",
+        "ficus": "PARTIAL"
+      },
+      "visual_decision": "PIVOT",
+      "machine_decision": "GO",
+      "final_decision": "PIVOT",
+      "later_3d_feasibility_candidate": false
+    },
+    "surface": {
+      "visual_labels": {
+        "lego": "PARTIAL",
+        "chair": "PASS",
+        "drums": "PASS",
+        "ficus": "PARTIAL"
+      },
+      "visual_decision": "PIVOT",
+      "machine_decision": "GO",
+      "final_decision": "PIVOT",
+      "later_3d_feasibility_candidate": false
+    }
+  },
+  "global_decision": "GO",
+  "meaning_of_go": "Limited go for a later 3D feasibility experiment on opacity and flattening, with explicit density-only and view/depth controls; no established 3D persistence."
+}

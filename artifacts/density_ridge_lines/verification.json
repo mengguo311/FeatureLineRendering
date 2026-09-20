@@ -1,0 +1,1522 @@
+{
+  "tests": {
+    "targeted": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/scgs/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_density_ridge_lines.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "count": 5
+    },
+    "field": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/scgs/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_field_visualization.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "count": 5
+    },
+    "density": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/scgs/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_gaussian_density.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "count": 9
+    },
+    "full": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/scgs/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test*.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "count": 146
+    }
+  },
+  "npz": {
+    "lego": {
+      "source_sha256": "fa9bea3fa4f8d349fa873a66d892c53cd1263499caec6421c286350a5bb7cbbc",
+      "arrays": {
+        "density": {
+          "shape": [
+            395,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "numerator": {
+          "shape": [
+            395,
+            640,
+            17
+          ],
+          "dtype": "float64"
+        },
+        "normalized": {
+          "shape": [
+            395,
+            640,
+            17
+          ],
+          "dtype": "float64"
+        },
+        "pilot": {
+          "shape": [
+            395,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "center": {
+          "shape": [
+            3
+          ],
+          "dtype": "float64"
+        },
+        "basis": {
+          "shape": [
+            3,
+            3
+          ],
+          "dtype": "float64"
+        },
+        "crop": {
+          "shape": [
+            2,
+            2
+          ],
+          "dtype": "float64"
+        },
+        "pixel_pitch": {
+          "shape": [
+            2
+          ],
+          "dtype": "float64"
+        },
+        "crop_sample_indices": {
+          "shape": [
+            24000
+          ],
+          "dtype": "int64"
+        },
+        "kde_indices": {
+          "shape": [
+            310475
+          ],
+          "dtype": "int64"
+        },
+        "kde_bandwidths": {
+          "shape": [
+            310475
+          ],
+          "dtype": "float64"
+        },
+        "all_center_count": {
+          "shape": [],
+          "dtype": "int64"
+        },
+        "x": {
+          "shape": [
+            640
+          ],
+          "dtype": "float64"
+        },
+        "y": {
+          "shape": [
+            395
+          ],
+          "dtype": "float64"
+        },
+        "confidence": {
+          "shape": [
+            395,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "support": {
+          "shape": [
+            395,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "tensor": {
+          "shape": [
+            395,
+            640,
+            3,
+            3
+          ],
+          "dtype": "float64"
+        },
+        "coherence": {
+          "shape": [
+            395,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "color": {
+          "shape": [
+            395,
+            640,
+            3
+          ],
+          "dtype": "float64"
+        },
+        "axis_rgb": {
+          "shape": [
+            395,
+            640,
+            3
+          ],
+          "dtype": "float64"
+        },
+        "scalar_attributes": {
+          "shape": [
+            395,
+            640,
+            5
+          ],
+          "dtype": "float64"
+        },
+        "density_factor": {
+          "shape": [
+            395,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "coupling": {
+          "shape": [
+            395,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "color_energy": {
+          "shape": [
+            395,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "axis_energy": {
+          "shape": [
+            395,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "detector_fields": {
+          "shape": [
+            7,
+            395,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "ridge_responses": {
+          "shape": [
+            7,
+            395,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "ridge_seeds": {
+          "shape": [
+            7,
+            395,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "ridge_scores": {
+          "shape": [
+            7,
+            395,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "winning_scales": {
+          "shape": [
+            7,
+            395,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "baseline_scores": {
+          "shape": [
+            7,
+            395,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "ridge_raw": {
+          "shape": [
+            7,
+            395,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "baseline_raw": {
+          "shape": [
+            7,
+            395,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "ridge_cleaned_unmatched": {
+          "shape": [
+            7,
+            395,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "baseline_cleaned_unmatched": {
+          "shape": [
+            7,
+            395,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "ridge_clean": {
+          "shape": [
+            7,
+            395,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "baseline_clean": {
+          "shape": [
+            7,
+            395,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "channel_order": {
+          "shape": [
+            7
+          ],
+          "dtype": "<U10"
+        }
+      },
+      "checks": "finite, shape, float64, normalized KDE denominator, orthogonal frame, prior crop sample, masks subset/support, all recomputed mask metrics"
+    },
+    "chair": {
+      "source_sha256": "13e4ecc9ffe9c5ae2a0656e2e5c56a737cfdc90a62ad04799db3c46b0b442f5d",
+      "arrays": {
+        "density": {
+          "shape": [
+            378,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "numerator": {
+          "shape": [
+            378,
+            640,
+            17
+          ],
+          "dtype": "float64"
+        },
+        "normalized": {
+          "shape": [
+            378,
+            640,
+            17
+          ],
+          "dtype": "float64"
+        },
+        "pilot": {
+          "shape": [
+            378,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "center": {
+          "shape": [
+            3
+          ],
+          "dtype": "float64"
+        },
+        "basis": {
+          "shape": [
+            3,
+            3
+          ],
+          "dtype": "float64"
+        },
+        "crop": {
+          "shape": [
+            2,
+            2
+          ],
+          "dtype": "float64"
+        },
+        "pixel_pitch": {
+          "shape": [
+            2
+          ],
+          "dtype": "float64"
+        },
+        "crop_sample_indices": {
+          "shape": [
+            24000
+          ],
+          "dtype": "int64"
+        },
+        "kde_indices": {
+          "shape": [
+            256690
+          ],
+          "dtype": "int64"
+        },
+        "kde_bandwidths": {
+          "shape": [
+            256690
+          ],
+          "dtype": "float64"
+        },
+        "all_center_count": {
+          "shape": [],
+          "dtype": "int64"
+        },
+        "x": {
+          "shape": [
+            640
+          ],
+          "dtype": "float64"
+        },
+        "y": {
+          "shape": [
+            378
+          ],
+          "dtype": "float64"
+        },
+        "confidence": {
+          "shape": [
+            378,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "support": {
+          "shape": [
+            378,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "tensor": {
+          "shape": [
+            378,
+            640,
+            3,
+            3
+          ],
+          "dtype": "float64"
+        },
+        "coherence": {
+          "shape": [
+            378,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "color": {
+          "shape": [
+            378,
+            640,
+            3
+          ],
+          "dtype": "float64"
+        },
+        "axis_rgb": {
+          "shape": [
+            378,
+            640,
+            3
+          ],
+          "dtype": "float64"
+        },
+        "scalar_attributes": {
+          "shape": [
+            378,
+            640,
+            5
+          ],
+          "dtype": "float64"
+        },
+        "density_factor": {
+          "shape": [
+            378,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "coupling": {
+          "shape": [
+            378,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "color_energy": {
+          "shape": [
+            378,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "axis_energy": {
+          "shape": [
+            378,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "detector_fields": {
+          "shape": [
+            7,
+            378,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "ridge_responses": {
+          "shape": [
+            7,
+            378,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "ridge_seeds": {
+          "shape": [
+            7,
+            378,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "ridge_scores": {
+          "shape": [
+            7,
+            378,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "winning_scales": {
+          "shape": [
+            7,
+            378,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "baseline_scores": {
+          "shape": [
+            7,
+            378,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "ridge_raw": {
+          "shape": [
+            7,
+            378,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "baseline_raw": {
+          "shape": [
+            7,
+            378,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "ridge_cleaned_unmatched": {
+          "shape": [
+            7,
+            378,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "baseline_cleaned_unmatched": {
+          "shape": [
+            7,
+            378,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "ridge_clean": {
+          "shape": [
+            7,
+            378,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "baseline_clean": {
+          "shape": [
+            7,
+            378,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "channel_order": {
+          "shape": [
+            7
+          ],
+          "dtype": "<U10"
+        }
+      },
+      "checks": "finite, shape, float64, normalized KDE denominator, orthogonal frame, prior crop sample, masks subset/support, all recomputed mask metrics"
+    },
+    "drums": {
+      "source_sha256": "d4b67123927613ade6b7e2f38ed6bf724fc5e348dbcca84a2be1352ec5113a8b",
+      "arrays": {
+        "density": {
+          "shape": [
+            542,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "numerator": {
+          "shape": [
+            542,
+            640,
+            17
+          ],
+          "dtype": "float64"
+        },
+        "normalized": {
+          "shape": [
+            542,
+            640,
+            17
+          ],
+          "dtype": "float64"
+        },
+        "pilot": {
+          "shape": [
+            542,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "center": {
+          "shape": [
+            3
+          ],
+          "dtype": "float64"
+        },
+        "basis": {
+          "shape": [
+            3,
+            3
+          ],
+          "dtype": "float64"
+        },
+        "crop": {
+          "shape": [
+            2,
+            2
+          ],
+          "dtype": "float64"
+        },
+        "pixel_pitch": {
+          "shape": [
+            2
+          ],
+          "dtype": "float64"
+        },
+        "crop_sample_indices": {
+          "shape": [
+            24000
+          ],
+          "dtype": "int64"
+        },
+        "kde_indices": {
+          "shape": [
+            360012
+          ],
+          "dtype": "int64"
+        },
+        "kde_bandwidths": {
+          "shape": [
+            360012
+          ],
+          "dtype": "float64"
+        },
+        "all_center_count": {
+          "shape": [],
+          "dtype": "int64"
+        },
+        "x": {
+          "shape": [
+            640
+          ],
+          "dtype": "float64"
+        },
+        "y": {
+          "shape": [
+            542
+          ],
+          "dtype": "float64"
+        },
+        "confidence": {
+          "shape": [
+            542,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "support": {
+          "shape": [
+            542,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "tensor": {
+          "shape": [
+            542,
+            640,
+            3,
+            3
+          ],
+          "dtype": "float64"
+        },
+        "coherence": {
+          "shape": [
+            542,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "color": {
+          "shape": [
+            542,
+            640,
+            3
+          ],
+          "dtype": "float64"
+        },
+        "axis_rgb": {
+          "shape": [
+            542,
+            640,
+            3
+          ],
+          "dtype": "float64"
+        },
+        "scalar_attributes": {
+          "shape": [
+            542,
+            640,
+            5
+          ],
+          "dtype": "float64"
+        },
+        "density_factor": {
+          "shape": [
+            542,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "coupling": {
+          "shape": [
+            542,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "color_energy": {
+          "shape": [
+            542,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "axis_energy": {
+          "shape": [
+            542,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "detector_fields": {
+          "shape": [
+            7,
+            542,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "ridge_responses": {
+          "shape": [
+            7,
+            542,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "ridge_seeds": {
+          "shape": [
+            7,
+            542,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "ridge_scores": {
+          "shape": [
+            7,
+            542,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "winning_scales": {
+          "shape": [
+            7,
+            542,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "baseline_scores": {
+          "shape": [
+            7,
+            542,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "ridge_raw": {
+          "shape": [
+            7,
+            542,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "baseline_raw": {
+          "shape": [
+            7,
+            542,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "ridge_cleaned_unmatched": {
+          "shape": [
+            7,
+            542,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "baseline_cleaned_unmatched": {
+          "shape": [
+            7,
+            542,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "ridge_clean": {
+          "shape": [
+            7,
+            542,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "baseline_clean": {
+          "shape": [
+            7,
+            542,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "channel_order": {
+          "shape": [
+            7
+          ],
+          "dtype": "<U10"
+        }
+      },
+      "checks": "finite, shape, float64, normalized KDE denominator, orthogonal frame, prior crop sample, masks subset/support, all recomputed mask metrics"
+    },
+    "ficus": {
+      "source_sha256": "9afacac137474a50c5db52e41d2f1656b1e5f22ee5b6804e7e819697679cebac",
+      "arrays": {
+        "density": {
+          "shape": [
+            414,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "numerator": {
+          "shape": [
+            414,
+            640,
+            17
+          ],
+          "dtype": "float64"
+        },
+        "normalized": {
+          "shape": [
+            414,
+            640,
+            17
+          ],
+          "dtype": "float64"
+        },
+        "pilot": {
+          "shape": [
+            414,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "center": {
+          "shape": [
+            3
+          ],
+          "dtype": "float64"
+        },
+        "basis": {
+          "shape": [
+            3,
+            3
+          ],
+          "dtype": "float64"
+        },
+        "crop": {
+          "shape": [
+            2,
+            2
+          ],
+          "dtype": "float64"
+        },
+        "pixel_pitch": {
+          "shape": [
+            2
+          ],
+          "dtype": "float64"
+        },
+        "crop_sample_indices": {
+          "shape": [
+            24000
+          ],
+          "dtype": "int64"
+        },
+        "kde_indices": {
+          "shape": [
+            284835
+          ],
+          "dtype": "int64"
+        },
+        "kde_bandwidths": {
+          "shape": [
+            284835
+          ],
+          "dtype": "float64"
+        },
+        "all_center_count": {
+          "shape": [],
+          "dtype": "int64"
+        },
+        "x": {
+          "shape": [
+            640
+          ],
+          "dtype": "float64"
+        },
+        "y": {
+          "shape": [
+            414
+          ],
+          "dtype": "float64"
+        },
+        "confidence": {
+          "shape": [
+            414,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "support": {
+          "shape": [
+            414,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "tensor": {
+          "shape": [
+            414,
+            640,
+            3,
+            3
+          ],
+          "dtype": "float64"
+        },
+        "coherence": {
+          "shape": [
+            414,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "color": {
+          "shape": [
+            414,
+            640,
+            3
+          ],
+          "dtype": "float64"
+        },
+        "axis_rgb": {
+          "shape": [
+            414,
+            640,
+            3
+          ],
+          "dtype": "float64"
+        },
+        "scalar_attributes": {
+          "shape": [
+            414,
+            640,
+            5
+          ],
+          "dtype": "float64"
+        },
+        "density_factor": {
+          "shape": [
+            414,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "coupling": {
+          "shape": [
+            414,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "color_energy": {
+          "shape": [
+            414,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "axis_energy": {
+          "shape": [
+            414,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "detector_fields": {
+          "shape": [
+            7,
+            414,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "ridge_responses": {
+          "shape": [
+            7,
+            414,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "ridge_seeds": {
+          "shape": [
+            7,
+            414,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "ridge_scores": {
+          "shape": [
+            7,
+            414,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "winning_scales": {
+          "shape": [
+            7,
+            414,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "baseline_scores": {
+          "shape": [
+            7,
+            414,
+            640
+          ],
+          "dtype": "float64"
+        },
+        "ridge_raw": {
+          "shape": [
+            7,
+            414,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "baseline_raw": {
+          "shape": [
+            7,
+            414,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "ridge_cleaned_unmatched": {
+          "shape": [
+            7,
+            414,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "baseline_cleaned_unmatched": {
+          "shape": [
+            7,
+            414,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "ridge_clean": {
+          "shape": [
+            7,
+            414,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "baseline_clean": {
+          "shape": [
+            7,
+            414,
+            640
+          ],
+          "dtype": "bool"
+        },
+        "channel_order": {
+          "shape": [
+            7
+          ],
+          "dtype": "<U10"
+        }
+      },
+      "checks": "finite, shape, float64, normalized KDE denominator, orthogonal frame, prior crop sample, masks subset/support, all recomputed mask metrics"
+    }
+  },
+  "png_decode": {
+    "out/density_ridge_lines/all_scenes_ridge_summary.png": {
+      "size": [
+        4803,
+        2200
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/chair_raw_audit.png": {
+      "size": [
+        4848,
+        1107
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/chair_ridge_atlas.png": {
+      "size": [
+        4848,
+        2475
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/drums_raw_audit.png": {
+      "size": [
+        4848,
+        1435
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/drums_ridge_atlas.png": {
+      "size": [
+        4848,
+        3295
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/ficus_raw_audit.png": {
+      "size": [
+        4848,
+        1179
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/ficus_ridge_atlas.png": {
+      "size": [
+        4848,
+        2655
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/lego_raw_audit.png": {
+      "size": [
+        4848,
+        1141
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/lego_ridge_atlas.png": {
+      "size": [
+        4848,
+        2560
+      ],
+      "mode": "RGB"
+    },
+    "artifacts/density_ridge_lines/all_scenes_ridge_summary.png": {
+      "size": [
+        4803,
+        2200
+      ],
+      "mode": "RGB"
+    },
+    "artifacts/density_ridge_lines/chair_raw_audit.png": {
+      "size": [
+        4848,
+        1107
+      ],
+      "mode": "RGB"
+    },
+    "artifacts/density_ridge_lines/chair_ridge_atlas.png": {
+      "size": [
+        4848,
+        2475
+      ],
+      "mode": "RGB"
+    },
+    "artifacts/density_ridge_lines/drums_raw_audit.png": {
+      "size": [
+        4848,
+        1435
+      ],
+      "mode": "RGB"
+    },
+    "artifacts/density_ridge_lines/drums_ridge_atlas.png": {
+      "size": [
+        4848,
+        3295
+      ],
+      "mode": "RGB"
+    },
+    "artifacts/density_ridge_lines/ficus_raw_audit.png": {
+      "size": [
+        4848,
+        1179
+      ],
+      "mode": "RGB"
+    },
+    "artifacts/density_ridge_lines/ficus_ridge_atlas.png": {
+      "size": [
+        4848,
+        2655
+      ],
+      "mode": "RGB"
+    },
+    "artifacts/density_ridge_lines/lego_raw_audit.png": {
+      "size": [
+        4848,
+        1141
+      ],
+      "mode": "RGB"
+    },
+    "artifacts/density_ridge_lines/lego_ridge_atlas.png": {
+      "size": [
+        4848,
+        2560
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/determinism_rerun/all_scenes_ridge_summary.png": {
+      "size": [
+        4803,
+        2200
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/determinism_rerun/chair_raw_audit.png": {
+      "size": [
+        4848,
+        1107
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/determinism_rerun/chair_ridge_atlas.png": {
+      "size": [
+        4848,
+        2475
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/determinism_rerun/drums_raw_audit.png": {
+      "size": [
+        4848,
+        1435
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/determinism_rerun/drums_ridge_atlas.png": {
+      "size": [
+        4848,
+        3295
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/determinism_rerun/ficus_raw_audit.png": {
+      "size": [
+        4848,
+        1179
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/determinism_rerun/ficus_ridge_atlas.png": {
+      "size": [
+        4848,
+        2655
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/determinism_rerun/lego_raw_audit.png": {
+      "size": [
+        4848,
+        1141
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/determinism_rerun/lego_ridge_atlas.png": {
+      "size": [
+        4848,
+        2560
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/determinism_rerun/curated/all_scenes_ridge_summary.png": {
+      "size": [
+        4803,
+        2200
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/determinism_rerun/curated/chair_raw_audit.png": {
+      "size": [
+        4848,
+        1107
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/determinism_rerun/curated/chair_ridge_atlas.png": {
+      "size": [
+        4848,
+        2475
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/determinism_rerun/curated/drums_raw_audit.png": {
+      "size": [
+        4848,
+        1435
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/determinism_rerun/curated/drums_ridge_atlas.png": {
+      "size": [
+        4848,
+        3295
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/determinism_rerun/curated/ficus_raw_audit.png": {
+      "size": [
+        4848,
+        1179
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/determinism_rerun/curated/ficus_ridge_atlas.png": {
+      "size": [
+        4848,
+        2655
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/determinism_rerun/curated/lego_raw_audit.png": {
+      "size": [
+        4848,
+        1141
+      ],
+      "mode": "RGB"
+    },
+    "out/density_ridge_lines/determinism_rerun/curated/lego_ridge_atlas.png": {
+      "size": [
+        4848,
+        2560
+      ],
+      "mode": "RGB"
+    }
+  },
+  "preservation": {
+    "prior_files_unchanged": 61,
+    "protocol_unchanged": true,
+    "preregistered_tests_unchanged": true,
+    "layout_only_scientific_files_unchanged": 5
+  },
+  "determinism": {
+    "command": [
+      "/home/u00134/bin/miniconda3/envs/scgs/bin/python",
+      "-m",
+      "scripts.render_density_ridge_lines",
+      "--output",
+      "out/density_ridge_lines/determinism_rerun",
+      "--artifacts",
+      "out/density_ridge_lines/determinism_rerun/curated"
+    ],
+    "all_match": true,
+    "file_count": 15,
+    "sha256": {
+      "metrics.json": "8cbfd24ede064e830addbcfaa8d7bf73317ee8a1c39cecaeddbfa19dccfb795f",
+      "PROTOCOL.md": "000376de83a6fa9fe9f193d50f289b9346e09dcdb53301e205573544deb08e30",
+      "all_scenes_ridge_summary.png": "d1516f5184b379465f074475320e1cf3d42944ec7377ce4536bde2edaeeaef3e",
+      "lego_ridge_grids.npz": "3078e1bfe27d72e660dfc9d99d6334d425a74ec7ad1544ac92b74d7c0657626a",
+      "lego_ridge_atlas.png": "e122b05ee06a676d92b759a6987d6b1e24339ecd7684ccc08890057b52183103",
+      "lego_raw_audit.png": "15908591ca5e7eda751d4f213b4c436bf64285afae16e27dc1ec4a8bf62edc99",
+      "chair_ridge_grids.npz": "087d1ac9fd224a8e3661528c7da88a4c554968843652f510ea1270c985f10d39",
+      "chair_ridge_atlas.png": "517bc1b1f382f2a9e875d576dcf855fd85ad9963f77c51388ea05587ab9dc677",
+      "chair_raw_audit.png": "05db2ea52d058adfd2f97aeeaebec6536934126cc716beab098bcff62d231859",
+      "drums_ridge_grids.npz": "9271567ec6a1e369b69a27cb92cfccfa1b1e161783ffbba748b85f31db4d0a44",
+      "drums_ridge_atlas.png": "b277ffd8a32976ec82fb2b734e712f50f079536cfc25a8cc54747dced2021d1a",
+      "drums_raw_audit.png": "82771e36e0436ffabea849509527fd95f725f48d5097a79185aaeefd802d4e90",
+      "ficus_ridge_grids.npz": "45fb5405e2e27610669f7d6e8fd92785906248054031c83a6d45dc1a8161a098",
+      "ficus_ridge_atlas.png": "4ca09a298ca4df043d7aa3f1dcc94821c3e0bdbfd809a31ff7674fde2634df3c",
+      "ficus_raw_audit.png": "d58a03f43ff218259be37e4521b36995e2afd28e56e82c5b0604f4dc6fb312f8"
+    },
+    "scope": "bytewise, same CPU/interpreter/dependencies; PLY reload, all-center PCA/KDE, selection and rendering"
+  },
+  "pooled_ink": {
+    "ridge_raw": [
+      32671,
+      32671,
+      32671,
+      32671,
+      32671,
+      32671,
+      32671
+    ],
+    "baseline_raw": [
+      32671,
+      32671,
+      32671,
+      32671,
+      32671,
+      32671,
+      32671
+    ],
+    "ridge_clean": [
+      31820,
+      31656,
+      31784,
+      31888,
+      31863,
+      32000,
+      32046
+    ],
+    "baseline_clean": [
+      31820,
+      31656,
+      31784,
+      31888,
+      31863,
+      32000,
+      32046
+    ]
+  },
+  "code_sha256": {
+    "src/density_ridge_lines.py": "939223434e5b25978e4757698618f141bea7304925fac31d7e5cd3a079b1e77e",
+    "scripts/render_density_ridge_lines.py": "40b7a22cd6d9cb47b5552971ee513892586c63edd482d45459498a497b29c499",
+    "scripts/verify_density_ridge_lines.py": "0d88ba2a3ea9e54249ffbede69b5619faf1417e709f52cd07e7c73324f7f5014",
+    "tests/test_density_ridge_lines.py": "63896029d20164eedd8c04aec02c50ee21034cae0e626d9a8c37a4bd105a9dd0"
+  },
+  "visual_inspection": "Separately recorded in visual_review.json and REPORT.md; PNG decoding alone is not visual verification."
+}
