@@ -1,0 +1,89 @@
+{
+  "reviewer": "Codex unblinded model inspection; not independent human review or ground truth",
+  "scientific_pass": null,
+  "selected_threshold": null,
+  "scientific_parameters_changed_after_viewing": false,
+  "layout_changes_after_viewing": false,
+  "interpretation": "Budget sensitivity only. Local visual preferences are descriptive, post hoc observations, not protocol decisions.",
+  "figures": {
+    "all_scenes_threshold_summary.png": {
+      "sha256": "b07aac67bad489c55b65e472a0a481fc4615824733807cf8707044f202f459ed",
+      "inspected": true,
+      "layout": "Full figure overview inspected; labels separated from images; all requested levels retained. Zoom required for cell text at these full-sheet dimensions."
+    },
+    "chair_threshold_atlas.png": {
+      "sha256": "efe85d298ba39c5df7506545da8c437bf0863a299cbf061a9210df60bc7393e8",
+      "inspected": true,
+      "layout": "Full figure overview inspected; labels separated from images; all requested levels retained. Zoom required for cell text at these full-sheet dimensions."
+    },
+    "drums_threshold_atlas.png": {
+      "sha256": "f1df1d3d9b95adad9ede55e56768edb52aafcc0dbff13ac028c85a9650fca4be",
+      "inspected": true,
+      "layout": "Full figure overview inspected; labels separated from images; all requested levels retained. Zoom required for cell text at these full-sheet dimensions."
+    },
+    "ficus_threshold_atlas.png": {
+      "sha256": "c26f9ae08b6d52db7537559970e03b0a8d42f584205fe5fbdebd9564a7271579",
+      "inspected": true,
+      "layout": "Full figure overview inspected; labels separated from images; all requested levels retained. Zoom required for cell text at these full-sheet dimensions."
+    },
+    "flattening_all_scenes_focus.png": {
+      "sha256": "2a7ee6597859a01ef6cfaed29ed86a0ebf4a15f95ffb3a22de6124c7ba5579f2",
+      "inspected": true,
+      "layout": "Full figure overview inspected; labels separated from images; all requested levels retained. Zoom required for cell text at these full-sheet dimensions."
+    },
+    "lego_threshold_atlas.png": {
+      "sha256": "01588a1001f18c3e172a5f6cac8d8686e5b060b864f83abfcc6680ae2991219b",
+      "inspected": true,
+      "layout": "Full figure overview inspected; labels separated from images; all requested levels retained. Zoom required for cell text at these full-sheet dimensions."
+    },
+    "opacity_all_scenes_focus.png": {
+      "sha256": "ae94cd51c8d0c6b35ad140d6abbce4697e90b981948a58a54b851d18950bfc0b",
+      "inspected": true,
+      "layout": "Full figure overview inspected; labels separated from images; all requested levels retained. Zoom required for cell text at these full-sheet dimensions."
+    }
+  },
+  "additional_detail_inspection": [
+    "out/density_ridge_threshold_sweep/inspection/lego_focus_details.png",
+    "out/density_ridge_threshold_sweep/inspection/chair_focus_details.png",
+    "out/density_ridge_threshold_sweep/inspection/drums_focus_details.png",
+    "out/density_ridge_threshold_sweep/inspection/ficus_focus_details.png"
+  ],
+  "observations": {
+    "lego": {
+      "color": "12% extends cab, arm and base bands; 20% adds repeated studs and small rim loops; 35% crowds the body/base. Some coherent return, with texture increasing faster at the high budget.",
+      "axis": "The sparse 6% mask misses much of the body. 12-20% restores cab/arm outlines but also short irregular base and track responses; 35% is a dense network. More coverage does not make the axis response a clean contour map.",
+      "opacity": "12% substantially closes the track outline and extends the cab/arm; 20% adds detail but roughens the roof, base and joints. 35% fills the track interior and base with short loops. A visual balance around 12% is descriptive only.",
+      "flattening": "12-20% recovers long cab, arm, track and base bands that are broken at 6%. At 20% major arcs remain readable; 35% adds base texture and doubled/branched rims. The 12-20% range looks useful without establishing correctness.",
+      "planarity": "6% is severely incomplete on the track and cab. 12-20% restores recognizable bands; 35% mainly thickens and branches them and adds internal/base texture. Return is partly coherent, not solely fill.",
+      "agreement": "12-20% restores the lower track, cab and arm structure; 35% adds loops and busy base bands. Its progression closely resembles the other geometric scalar channels.",
+      "surface": "12-20% supplies missing track/cab/arm segments; 35% retains these but adds many short internal and base responses. The increase is useful initially and increasingly cluttered later."
+    },
+    "chair": {
+      "color": "12% strengthens the outer frame and central division, alongside seat texture already present at 6%. 20-35% increasingly fills the seat with a connected mesh; the high budget is not a cleaner outline.",
+      "axis": "12% adds scattered interior arcs and partial rim continuity; 20% increases rim coverage and texture together. At 35% the seat becomes a dense cyan mesh. A large connectivity gain is visually confounded by merging.",
+      "opacity": "6% already captures much of the outer right rim. 12% restores more outer frame and the central slot, but also interior arcs; 20% adds mostly seat texture, and 35% crowds both seat and back. 6-12% is a descriptive simplicity/coverage tradeoff.",
+      "flattening": "12% extends the frame and central slot with relatively sparse interior ink; 20% adds many short seat marks; 35% produces heavy textured fill. Around 12% looks cleaner than the denser alternatives, with incomplete left frame still visible.",
+      "planarity": "12% improves frame/slot coverage. 20% introduces substantial seat fragmentation and 35% fills both surfaces with a connected network. More response is not all useful geometric structure.",
+      "agreement": "12% adds frame/slot segments; 20% and especially 35% spend much of their added ink inside the seat. Outer structure persists but internal clutter dominates the late increments.",
+      "surface": "12% improves the frame and division with limited clutter; 20% adds short interior marks and 35% is dense. Similarity to the other geometric scalar channels remains strong."
+    },
+    "drums": {
+      "color": "12-20% recovers some drum/support arcs but cymbal rims remain incomplete, especially compared with geometric scalars. 35% eventually adds more outer rims along with very busy drum interiors and hardware.",
+      "axis": "12-20% adds drums and stand segments, but the upper cymbals remain poorly outlined until the high budget. 35% brings much texture and branching. Threshold relaxation cannot isolate clean rims uniformly.",
+      "opacity": "12% improves cymbal and drum arcs and several stand segments; 20% adds continuity with rougher, doubled rims and more hardware detail. 35% adds internal cymbal marks, loops and dense central clutter. The 12-20% range has a visible tradeoff, not a pass.",
+      "flattening": "12-20% gives the clearest added coherent return: cymbal ellipses, drum arcs and long stand bands. Some missing and doubled arcs remain. At 35% internal cymbal/drum marks and thick hardware clutter increase substantially.",
+      "planarity": "12-20% restores rim and stand continuity while preserving relatively empty cymbal interiors. 35% adds extensive drum/hardware texture and some interior marks. Initial added information is visibly line-like.",
+      "agreement": "12-20% makes cymbal, drum and tripod bands more continuous. 35% adds dense short branches on the central drums and hardware; long-component fraction alone overstates the benefit.",
+      "surface": "12-20% restores useful rim/stand segments much like flattening and planarity. At 35% the central assembly is much busier and band merging increases."
+    },
+    "ficus": {
+      "color": "6% is sparse and strongly fragmented. 12-20% recovers pot/stem pieces and more short canopy arcs; 35% turns the canopy and pot texture into a dense connected network. Some structure returns but clean leaf recovery is not demonstrated.",
+      "axis": "Canopy ink is already busy at 6%. Higher budgets strengthen pot/stem bands while making canopy arcs merge into a thicket. 35% adds pot interior texture; increased long-component fraction does not resolve leaf identity.",
+      "opacity": "12-20% returns several coherent stems and more pot outline, but canopy additions remain sparse disconnected arcs. At 35% canopy coverage rises sharply and the pot outline closes, accompanied by heavy leaf/pot clutter. No budget gives clean full-plant line recovery.",
+      "flattening": "12% strengthens stems and adds canopy arcs; 20% closes the pot outline and connects many canopy branches. 35% mostly thickens/joins an already crowded canopy and adds pot texture. Pot/stem recovery is coherent; leaf-level structure remains ambiguous.",
+      "planarity": "12-20% returns pot/stem outlines, but already dense canopy responses merge and thicken. 35% adds pot texture and crowded leaf arcs. This is not evidence that more connected canopy ink is more correct.",
+      "agreement": "12-20% recovers pot/stem bands while connecting many short canopy arcs. 35% adds further fill/branching and pot texture; leaf separation is not recovered.",
+      "surface": "12-20% strengthens pot/stem bands and makes canopy ink highly connected; 35% adds limited clean structure beyond those bands, with more canopy and pot texture. No clean canopy sweet spot is established."
+    }
+  }
+}
