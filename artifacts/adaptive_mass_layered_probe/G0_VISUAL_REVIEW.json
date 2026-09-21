@@ -1,0 +1,22 @@
+{
+  "detail_sheet": "tau .95 Kmax128; all six distributions are saved at native resolution in NPZ",
+  "empty_target_note": "Target-reached diagnostic is vacuously true at zero native alpha; gates use only native alpha>=.5",
+  "figures": {
+    "chair_coverage.png": "067d03e34108307ff84322202ba1fbbd1be16467fde79bf9d82e4413a82dbba4",
+    "chair_diagnostics.png": "47c608884934989903fad62f10aa4c37831d4fdddd836d83240953ae1e06bc0d",
+    "drums_coverage.png": "16bea97413e8b545df4f2b390d6f0ef0ecb0c27734b8079cc2ec2621ffdb104a",
+    "drums_diagnostics.png": "177674de3219a649aec5d9f42c112ead7cc87c73406783716677d4f75c1d1d44",
+    "ficus_coverage.png": "8bf20f51e959fa79a1d4e177858426c722d6757d6233076fd22b200ed2710ac2",
+    "ficus_diagnostics.png": "139839980b38445cd981776c17bc7f3cb8790d9190cbe34c3ab13510f6ebda9d",
+    "lego_coverage.png": "2b4b2efffc9cacf85179e5b4a85e7434f862f0cb3cf5436a00060ddecde299b6",
+    "lego_diagnostics.png": "2ed1da0f32aad9eb4c930ae291bda20b35a804886549271fc2e5bfa72e2d6687"
+  },
+  "panels_per_scene": 42,
+  "review": {
+    "chair": "All six coverage rows and twelve detail panels inspected. Cap32 remains mottled across upholstery and frame.64/128 reduce missing mass substantially; depth fields remain smooth with central overlap variance. ID hash colors are tessellated and are not interpreted as lines.",
+    "drums": "All six coverage rows and twelve detail panels inspected.32 omits mass on drum/cymbal interiors and rims;64/128 reconstruct coverage more consistently. Variance localizes overlaps and rims; ID/entropy retain splat texture. No line claim from G0.",
+    "ficus": "All six coverage rows and twelve detail panels inspected separately.32 has broad foliage and pot incompleteness;64 remains deficient in foliage.128 improves coverage while requiring many more contributors, and .95 still misses its target at some pixels. Depth variance shows extensive projected leaf overlap; geometry remains an ordering proxy.",
+    "lego": "All six coverage rows and twelve detail panels inspected. Cap32 leaves visible mottling and missing mass;64/128 restore consistent coverage and truncated RGB. K and entropy retain strong splat-scale variation. Variance marks some occlusion transitions; this is not line-quality evidence."
+  },
+  "reviewer": "model visual inspection; not an independent human study"
+}

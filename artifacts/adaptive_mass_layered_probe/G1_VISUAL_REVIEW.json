@@ -1,0 +1,521 @@
+{
+  "criteria_source": "INHERITED_PROTOCOL.md:120-129",
+  "decision": "NO_GO",
+  "decision_reason": "No scene establishes the required visual and uncapped-soft advantage over both front-depth and no-ID depth distribution in three fixed views. E_occ meets the numeric ID-null proxy in all views, but that cannot replace the failed visual criterion. E_layer and shape have no qualifying three-view joint numeric ID criterion at the primary grid.",
+  "figures": {
+    "diagnostics/chair_mechanisms_0.png": {
+      "findings": "High capture and small residual. K and first-ID texture follow upholstery/frame; expected/front depths retain smooth chair form.",
+      "sha256": "1b030ec498a6e533c627623ae637e3a41c4de3744e1e1b942628ccf0e61ccd67",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "diagnostics/chair_mechanisms_1.png": {
+      "findings": "Variance/layer count and overflow show localized upholstery/back patches; entropy/turnover contain texture; W1 clipped display dense.",
+      "sha256": "4df52442bd1f6d8bc019fba06dae06a652967c0b74d2bb7abb4ced97f9febe41",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "diagnostics/chair_mechanisms_2.png": {
+      "findings": "First mass layer dominant, rear layers localized to seat/back/frame patches; depth maps separate these supports.",
+      "sha256": "0bfa1669774646a2fa6ce9be531a6a2d088be37adebf3ee912f785b7cc82f3f1",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "diagnostics/chair_mechanisms_3.png": {
+      "findings": "Stable split support follows upholstery/back patches, not a clean line family. Near-complete target map; retained-alpha loss localized.",
+      "sha256": "7a6a796f2e932bbb1d472914c01bbd1a06c8406e19ba9ecce0f75ea35dce33a0",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "diagnostics/drums_mechanisms_0.png": {
+      "findings": "High capture with small diffuse tail. K increases on rims/stands; first-ID tessellation dense. Depth maps distinguish cymbals and drum bodies.",
+      "sha256": "7ecea0c07268a0b3b9693ece99c456e0f93f553de3dc60e5064de49ae7f52247",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "diagnostics/drums_mechanisms_1.png": {
+      "findings": "Variance and layer count strong in localized drum/cymbal patches; overflow sparse. W1/turnover include many internal structures.",
+      "sha256": "83b0735893a8eca10b5bf1460a3994d58bc7dc2ca5693f19d5f6b93f8e99e109",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "diagnostics/drums_mechanisms_2.png": {
+      "findings": "First layer dominates kit; rear layer masses localized inside selected drums/cymbals and along supports.",
+      "sha256": "6130528420c3fcd072c3590b57520bb86a0ea8f6e72fd45a1ffcdc83ecb98bee",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "diagnostics/drums_mechanisms_3.png": {
+      "findings": "Mass transitions trace many rims plus internal patches; stable split concentrated in a few drum/cymbal areas. Target nearly reached everywhere, retained-alpha holes local.",
+      "sha256": "5fe13c63d10c964de81f37a0f22371b59502036d4ef93d7444e6916665a0b22a",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "diagnostics/ficus_mechanisms_0.png": {
+      "findings": "High overall capture, small diffuse residual. Larger K on foliage; fine ID tessellation diagnostic only. Depth maps retain leaf/pot/stem geometry.",
+      "sha256": "d465da6765a0a036d22166b8b271e1a8ae7f4daae82e1f4bec33745e72282993",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "diagnostics/ficus_mechanisms_1.png": {
+      "findings": "Variance/split complexity concentrated in foliage; entropy/turnover textured, W1 display saturated. Overflow very sparse.",
+      "sha256": "f39565b98d07475b04db10ee3c1f4c5d4e1e2e311c9c7ff012e87dd16ed472d2",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "diagnostics/ficus_mechanisms_2.png": {
+      "findings": "First layer dominant; second/rear layers scattered through foliage and small pot regions.",
+      "sha256": "0c20e9d0b8dff6ac101839047538c56519a26b83a973d3f768b2c1556f11a0ab",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "diagnostics/ficus_mechanisms_3.png": {
+      "findings": "Stable splits scattered in foliage/pot. Target misses sparse foliage pixels, not broad areas. Retained/native alpha predominantly high.",
+      "sha256": "af92306d63690211c80be3969f60f3acc1f9696eff01d5fcff9460a9d6166008",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "diagnostics/lego_mechanisms_0.png": {
+      "findings": "High alpha capture; residual diffuse and small. K highlights studs and edges. First-ID tessellation is not line evidence; front/expected depths broadly agree.",
+      "sha256": "e3fd00596ace54c1c709ccd2d006d4df6c65400eaf074fec02a7f4a599f7dd36",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "diagnostics/lego_mechanisms_1.png": {
+      "findings": "Variance concentrates at some model boundaries; entropy and ID turnover carry substantial interior structure. W1 display saturates. Overflow localized at base/wheels.",
+      "sha256": "1bde57988bdb3dd05f413e6d36c05bf926b093d9628e3b095215bed2cb5dc94c",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "diagnostics/lego_mechanisms_2.png": {
+      "findings": "First layer dominates; rear layers concentrate around wheels/base and structural transitions. All four mass/depth maps inspected.",
+      "sha256": "5a43cb3c8b6a6c2e61658a02df9f10978e395aef1df6fedfd61c05ca98571f54",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "diagnostics/lego_mechanisms_3.png": {
+      "findings": "Front-mass transitions outline model and studs; stable split support sparse and localized. Target almost everywhere reached; retained mass holes coincide with overflow.",
+      "sha256": "934ed90fab9ec88c8b42ffc7def295e0ab5f9935f3e460f18ad17cb204866b2b",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/chair_E_layer_group0.png": {
+      "findings": "Sparse isolated patches, nearly blank common-scale soft maps; no coherent layer-boundary family across fixed views. All control and sensitivity panels inspected.",
+      "sha256": "97d9c63a5ef083cb6be4a4b8d39e0a324cecc2ed47692e24dfdd958d82a4868d",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/chair_E_layer_group1.png": {
+      "findings": "Sparse isolated patches, nearly blank common-scale soft maps; no coherent layer-boundary family across fixed views. All control and sensitivity panels inspected.",
+      "sha256": "5a659832d820626f3af2dcf7aed15f7e600d55cbf27d3221d2f6502de6b0e482",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/chair_E_layer_group2.png": {
+      "findings": "Sparse isolated patches, nearly blank common-scale soft maps; no coherent layer-boundary family across fixed views. All control and sensitivity panels inspected.",
+      "sha256": "53fd45a942e5525e2e2b6b72ba891cd8f32809b2a1083539ab52df10b3f67ebd",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/chair_E_occ_group0.png": {
+      "findings": "Full/no-ID show interior upholstery patches and broken boundaries. Depth-only matched masks give cleaner chair contours. Shuffled depth fills the silhouette with noise; k4/k8 remove most support. Larger mass prefixes retain the same fragmented character.",
+      "sha256": "4ca0a64d9282844305b5bd1e08b044ab6e237534a8407c4a6f7b18a90a1ab0f2",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/chair_E_occ_group1.png": {
+      "findings": "Full/no-ID show interior upholstery patches and broken boundaries. Depth-only matched masks give cleaner chair contours. Shuffled depth fills the silhouette with noise; k4/k8 remove most support. Larger mass prefixes retain the same fragmented character.",
+      "sha256": "564d5cbf4fd08a8f2dbb4d1d124543f0ec96972cf53f3f35e6ba9268064744a7",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/chair_E_occ_group2.png": {
+      "findings": "Full/no-ID show interior upholstery patches and broken boundaries. Depth-only matched masks give cleaner chair contours. Shuffled depth fills the silhouette with noise; k4/k8 remove most support. Larger mass prefixes retain the same fragmented character.",
+      "sha256": "662cbdec945e595d19119aa3ff51eb41cfd98cef08f27118166297cd20404c98",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/chair_E_shape_ridge_group0.png": {
+      "findings": "Short broken texture/interior fragments. No-ID remains similar; shuffled IDs suppress fields, shuffled depths give unstructured noise. Depth-only retains more recognizable connected contours.",
+      "sha256": "a4e7b8800346376ddd21581dff3581781ae0f107c7fd21ddbed6abc2d74a917d",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/chair_E_shape_ridge_group1.png": {
+      "findings": "Short broken texture/interior fragments. No-ID remains similar; shuffled IDs suppress fields, shuffled depths give unstructured noise. Depth-only retains more recognizable connected contours.",
+      "sha256": "20e8fbe8105e7d09762a40062c5a33ae45b1b9d38f1c321d133b345bb817326b",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/chair_E_shape_ridge_group2.png": {
+      "findings": "Short broken texture/interior fragments. No-ID remains similar; shuffled IDs suppress fields, shuffled depths give unstructured noise. Depth-only retains more recognizable connected contours.",
+      "sha256": "d4737109a8ef50329df1e120292fcda22e8911b7ea7ccd322417fbfba8dea0c4",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/chair_E_shape_valley_group0.png": {
+      "findings": "Seat/front-rail and arm/back fragments are recognizable, but incomplete, and no-ID/uniform look similar. Front/median depth recover more complete outer chair outlines. Nulls and all mass/k sensitivities reviewed.",
+      "sha256": "0c536dc4223fdc47f7ab15748caceabce53175dd80d428e75c592bca0531345e",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/chair_E_shape_valley_group1.png": {
+      "findings": "Seat/front-rail and arm/back fragments are recognizable, but incomplete, and no-ID/uniform look similar. Front/median depth recover more complete outer chair outlines. Nulls and all mass/k sensitivities reviewed.",
+      "sha256": "3ff327e57265840fd855252a62cac0600ccd406b38c6ea5a8ac054040162127b",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/chair_E_shape_valley_group2.png": {
+      "findings": "Seat/front-rail and arm/back fragments are recognizable, but incomplete, and no-ID/uniform look similar. Front/median depth recover more complete outer chair outlines. Nulls and all mass/k sensitivities reviewed.",
+      "sha256": "a81d095db6782b6b379c362abd56e291a560c4e37b6418a8d8c3c3235ce6ad43",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/chair_RGB.png": {
+      "findings": "Four fixed RGB views of ornate green upholstered chair, including reverse and overhead angles; complete.",
+      "sha256": "d37b180e0625f0d2f4188252311d45e0a0ded5a51049dba027102d4b79a45ee8",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/drums_E_layer_group0.png": {
+      "findings": "Near-blank common-scale soft response and a few isolated/short band pieces. No coherent layered boundary family in four views; all null and sensitivity panels inspected.",
+      "sha256": "2567fb434cf98e8c308771f83f3554bb3ffb904a28c4b50391dab7bdc7f11af4",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/drums_E_layer_group1.png": {
+      "findings": "Near-blank common-scale soft response and a few isolated/short band pieces. No coherent layered boundary family in four views; all null and sensitivity panels inspected.",
+      "sha256": "416ee354179c13634f0b9ea1d8e3f93930aa3f06ce8ebb6f4746ce7aad9e136a",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/drums_E_layer_group2.png": {
+      "findings": "Near-blank common-scale soft response and a few isolated/short band pieces. No coherent layered boundary family in four views; all null and sensitivity panels inspected.",
+      "sha256": "8b32733f1e5dcb5a14018abb4e3aa310b5b7f89785701edce33c883166e92ab3",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/drums_E_occ_group0.png": {
+      "findings": "Partial drum rim arcs with disconnected stands and interior fragments. Front/median depth produce more complete matched circles/kit contours; no-ID similar. Shuffled depth loses organization; fixed k loses support, mass sensitivities retain fragmentation.",
+      "sha256": "3db184ea9a849803986ce321f0869a4e8d51abb53ef7384e53039d7866cdb18e",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/drums_E_occ_group1.png": {
+      "findings": "Partial drum rim arcs with disconnected stands and interior fragments. Front/median depth produce more complete matched circles/kit contours; no-ID similar. Shuffled depth loses organization; fixed k loses support, mass sensitivities retain fragmentation.",
+      "sha256": "e7e35540ccfdf53ad8b7f3c44bf74d8217b48afb1f69026fabc91a864f74c2d7",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/drums_E_occ_group2.png": {
+      "findings": "Partial drum rim arcs with disconnected stands and interior fragments. Front/median depth produce more complete matched circles/kit contours; no-ID similar. Shuffled depth loses organization; fixed k loses support, mass sensitivities retain fragmentation.",
+      "sha256": "ac6b77ab5d8b0abc356e8379ccf0c316a42e574fc6d307e66bcdce78956194b5",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/drums_E_shape_ridge_group0.png": {
+      "findings": "Broken short responses, including spots on cymbal interiors. Full/no-ID similar; shuffled IDs suppress response, depth shuffle produces widespread noise. Depth-only contours more recognizable at matched ink.",
+      "sha256": "e2ba3312f12e6a40ae7a63b6384bcdb3aa04bac433e1ef3b19f9c82d35953b4c",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/drums_E_shape_ridge_group1.png": {
+      "findings": "Broken short responses, including spots on cymbal interiors. Full/no-ID similar; shuffled IDs suppress response, depth shuffle produces widespread noise. Depth-only contours more recognizable at matched ink.",
+      "sha256": "c73a300127e04a41d02570efa79b6b29f422b33d380b6e8a95e23336f8226316",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/drums_E_shape_ridge_group2.png": {
+      "findings": "Broken short responses, including spots on cymbal interiors. Full/no-ID similar; shuffled IDs suppress response, depth shuffle produces widespread noise. Depth-only contours more recognizable at matched ink.",
+      "sha256": "49c82a26b0264dd066ac439230994f17678a9defaa4d11d00f9535f9d4fecaf0",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/drums_E_shape_valley_group0.png": {
+      "findings": "Useful partial circular rims and stand pieces. Full/no-ID/uniform largely similar. Depth-only better completes cymbal/drum/stool boundaries; null depth destroys curves and low k weakens them. Mass sensitivities do not establish an ID advantage.",
+      "sha256": "6a3cf6179b17bd671ce895e1004ac08caeec0643bfb666974a0fa35c8dfb1ec7",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/drums_E_shape_valley_group1.png": {
+      "findings": "Useful partial circular rims and stand pieces. Full/no-ID/uniform largely similar. Depth-only better completes cymbal/drum/stool boundaries; null depth destroys curves and low k weakens them. Mass sensitivities do not establish an ID advantage.",
+      "sha256": "0c7a2bf6b977b9c792c6ba30c982608173d9a1748d8445c956a783f3cfaf3a75",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/drums_E_shape_valley_group2.png": {
+      "findings": "Useful partial circular rims and stand pieces. Full/no-ID/uniform largely similar. Depth-only better completes cymbal/drum/stool boundaries; null depth destroys curves and low k weakens them. Mass sensitivities do not establish an ID advantage.",
+      "sha256": "3eca156bed20faf658a20ac0c6e792680397a39d75df359ce75b3d69ef4ada31",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/drums_RGB.png": {
+      "findings": "Four complete fixed RGB views of drum kit, cymbals, stool and stands.",
+      "sha256": "2c5e92a1d8dc7cec0a42bd7b56079295c5c88472ebdabf19a68ee4c28adbdf10",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/ficus_E_layer_group0.png": {
+      "findings": "All four fixed views and displayed controls inspected. Fragmented foliage response, sparse stem/pot structure; no clear full/no-ID separation. Layer response sparse. Depth controls retain more complete scene contours; low-k weak.",
+      "sha256": "fea6b382b385c9208a2567250c378213fcc40347ac3ac6999a4dba7592fc5829",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/ficus_E_layer_group1.png": {
+      "findings": "All four fixed views and displayed controls inspected. Fragmented foliage response, sparse stem/pot structure; no clear full/no-ID separation. Layer response sparse. Depth controls retain more complete scene contours; low-k weak.",
+      "sha256": "4c10e5143366bc1aeb48721b0ea764f972aca8074a252219d6ffe4842a0f338d",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/ficus_E_layer_group2.png": {
+      "findings": "All four fixed views and displayed controls inspected. Fragmented foliage response, sparse stem/pot structure; no clear full/no-ID separation. Layer response sparse. Depth controls retain more complete scene contours; low-k weak.",
+      "sha256": "d0fc66bcbab02fcdeeb51a94ef9d8ea546540e401c773cc65b5b6b71cc2fb2c0",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/ficus_E_occ_group0.png": {
+      "findings": "All four fixed views and displayed controls inspected. Fragmented foliage response, sparse stem/pot structure; no clear full/no-ID separation. Layer response sparse. Depth controls retain more complete scene contours; low-k weak.",
+      "sha256": "6ccdff72bcdb82329afcc0e2bad49f6c2038f25ebc0e53a16a9c5a69f9266715",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/ficus_E_occ_group1.png": {
+      "findings": "All four fixed views and displayed controls inspected. Fragmented foliage response, sparse stem/pot structure; no clear full/no-ID separation. Layer response sparse. Depth controls retain more complete scene contours; low-k weak.",
+      "sha256": "c6aa74ce25d43b562ae6274505e6f748ff707d354ef37c0deb7b4975dd449f13",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/ficus_E_occ_group2.png": {
+      "findings": "All four fixed views and displayed controls inspected. Fragmented foliage response, sparse stem/pot structure; no clear full/no-ID separation. Layer response sparse. Depth controls retain more complete scene contours; low-k weak.",
+      "sha256": "50aa316440fcdcce5be84bc6d350f6d95076f52368d883c118559fa6e674b2c8",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/ficus_E_shape_ridge_group0.png": {
+      "findings": "All four fixed views and displayed controls inspected. Fragmented foliage response, sparse stem/pot structure; no clear full/no-ID separation. Layer response sparse. Depth controls retain more complete scene contours; low-k weak.",
+      "sha256": "1a78c9bda1c1e9a82528cbc6f5c63cfe2e8af47cc553f18cf5ece4246933e57e",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/ficus_E_shape_ridge_group1.png": {
+      "findings": "All four fixed views and displayed controls inspected. Fragmented foliage response, sparse stem/pot structure; no clear full/no-ID separation. Layer response sparse. Depth controls retain more complete scene contours; low-k weak.",
+      "sha256": "3662e25911cfaf4f24429e8b0532c9267627da33618b06cc3cb925b88401921f",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/ficus_E_shape_ridge_group2.png": {
+      "findings": "All four fixed views and displayed controls inspected. Fragmented foliage response, sparse stem/pot structure; no clear full/no-ID separation. Layer response sparse. Depth controls retain more complete scene contours; low-k weak.",
+      "sha256": "67d85e022cbfc32d3942c8dcc6035a4d0aba83b785eb37344af1682a56f35ef1",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/ficus_E_shape_valley_group0.png": {
+      "findings": "All four fixed views and displayed controls inspected. Fragmented foliage response, sparse stem/pot structure; no clear full/no-ID separation. Layer response sparse. Depth controls retain more complete scene contours; low-k weak.",
+      "sha256": "3adec04d21764a9101e9a8ac4920a59489bc88a8f64c76f0ba46483c23fef6f1",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/ficus_E_shape_valley_group1.png": {
+      "findings": "All four fixed views and displayed controls inspected. Fragmented foliage response, sparse stem/pot structure; no clear full/no-ID separation. Layer response sparse. Depth controls retain more complete scene contours; low-k weak.",
+      "sha256": "bd3d0a4f0c23127e33c9e9b0d4cce5beb65f858c82a733087e73541a6b96f8dc",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/ficus_E_shape_valley_group2.png": {
+      "findings": "All four fixed views and displayed controls inspected. Fragmented foliage response, sparse stem/pot structure; no clear full/no-ID separation. Layer response sparse. Depth controls retain more complete scene contours; low-k weak.",
+      "sha256": "5fce86160efb25fa8cda68f33c066dd9fe3cbb0f48cbed0cc37258eee7025477",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/ficus_RGB.png": {
+      "findings": "All four fixed views and displayed controls inspected. Fragmented foliage response, sparse stem/pot structure; no clear full/no-ID separation. Layer response sparse. Depth controls retain more complete scene contours; low-k weak.",
+      "sha256": "5e04d7feb9cf25daa84421ba81e76f2961545a2ec064e7d523d557879fadeac3",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/lego_E_layer_group0.png": {
+      "findings": "Nearly blank at frozen shared display scale; scattered weak band pixels across all views. No recognizable coherent layer-boundary family. Nulls and mass sensitivities do not establish an advantage.",
+      "sha256": "e4a5d26aedb9e2c8b1679ab51a6ed5138f0241e30d7a1372ab49218a13582c0b",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/lego_E_layer_group1.png": {
+      "findings": "Nearly blank at frozen shared display scale; scattered weak band pixels across all views. No recognizable coherent layer-boundary family. Nulls and mass sensitivities do not establish an advantage.",
+      "sha256": "135dd323d7ccb3263c44cc7f14fe690229f2b2a6054e22f66ffa4e090c527d85",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/lego_E_layer_group2.png": {
+      "findings": "Nearly blank at frozen shared display scale; scattered weak band pixels across all views. No recognizable coherent layer-boundary family. Nulls and mass sensitivities do not establish an advantage.",
+      "sha256": "ba159a9858caeeefaccfc11fbed900330ac9a99c2cf71794cc4373877243c282",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/lego_E_occ_group0.png": {
+      "findings": "Full/no-ID soft fields both outline a faint cluttered model; raw/matched full bands are fragmented. Front/expected/median matched contours are visibly more connected. Shuffled depths produce silhouette-filling noise; k4/k8 lose most response. Mass sensitivities retain fragmentation.",
+      "sha256": "6e6dfaa4b88671a727f5b2bcb9f99188bcbf5fa4c484c6d7d3836bed48d604b4",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/lego_E_occ_group1.png": {
+      "findings": "Full/no-ID soft fields both outline a faint cluttered model; raw/matched full bands are fragmented. Front/expected/median matched contours are visibly more connected. Shuffled depths produce silhouette-filling noise; k4/k8 lose most response. Mass sensitivities retain fragmentation.",
+      "sha256": "6ca06022fcb27697cf3ce57145bb738d2ef5514d5721e45f8f625af82f59d26b",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/lego_E_occ_group2.png": {
+      "findings": "Full/no-ID soft fields both outline a faint cluttered model; raw/matched full bands are fragmented. Front/expected/median matched contours are visibly more connected. Shuffled depths produce silhouette-filling noise; k4/k8 lose most response. Mass sensitivities retain fragmentation.",
+      "sha256": "af2ed7c67a87916825a20d0bd4601282265a80e6cf6d7026a296e8d3390a8cea",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/lego_E_shape_ridge_group0.png": {
+      "findings": "Dense short interior fragments, including base/stud texture. No-ID visually similar. Shuffled IDs suppress response and shuffled depths make noisy silhouettes, but front-depth has cleaner matched contours. Fixed k controls lose support; mass sensitivities remain fragmented.",
+      "sha256": "e28f3d2043d923f5211fc250e9889ce3c9f62ad773d5d21d179986b313d81709",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/lego_E_shape_ridge_group1.png": {
+      "findings": "Dense short interior fragments, including base/stud texture. No-ID visually similar. Shuffled IDs suppress response and shuffled depths make noisy silhouettes, but front-depth has cleaner matched contours. Fixed k controls lose support; mass sensitivities remain fragmented.",
+      "sha256": "65fb331e72ed02da9b02f2ef322fb01a519cdde64cb078e81cf2e7356e86c56a",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/lego_E_shape_ridge_group2.png": {
+      "findings": "Dense short interior fragments, including base/stud texture. No-ID visually similar. Shuffled IDs suppress response and shuffled depths make noisy silhouettes, but front-depth has cleaner matched contours. Fixed k controls lose support; mass sensitivities remain fragmented.",
+      "sha256": "208d8177724fdb2151851186376900a5bf3f6a14942e5e6eecc00669adfa5de8",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/lego_E_shape_valley_group0.png": {
+      "findings": "Recognizable wheel arcs and upright/frame fragments appear, especially views27/79, but curves break and resemble no-ID/uniform outputs. Shuffled IDs/depths deteriorate; this alone does not show advantage over no-ID or front-depth. Sensitivities preserve the same incomplete structures.",
+      "sha256": "d989b7cd6e28762271ccf49fb9f6d65be79bfa2cc38257f3edd21683b67aac5f",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/lego_E_shape_valley_group1.png": {
+      "findings": "Recognizable wheel arcs and upright/frame fragments appear, especially views27/79, but curves break and resemble no-ID/uniform outputs. Shuffled IDs/depths deteriorate; this alone does not show advantage over no-ID or front-depth. Sensitivities preserve the same incomplete structures.",
+      "sha256": "41c5c7303fc56b7ac863a13741deb3ab5b12c0511d2d577c3b0c18e1fc89d230",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/lego_E_shape_valley_group2.png": {
+      "findings": "Recognizable wheel arcs and upright/frame fragments appear, especially views27/79, but curves break and resemble no-ID/uniform outputs. Shuffled IDs/depths deteriorate; this alone does not show advantage over no-ID or front-depth. Sensitivities preserve the same incomplete structures.",
+      "sha256": "8c935150729bc10cf3821964fb7fc03f72a461825f30b191220ebf3849e4f515",
+      "status": "INSPECTED_OVERVIEW"
+    },
+    "figures/lego_RGB.png": {
+      "findings": "All four fixed official RGB views intact and recognizable.",
+      "sha256": "5cd761cd8f97dcfae620fd77a224319299e9b6a004c1fc47c059150d37434f86",
+      "status": "INSPECTED_OVERVIEW"
+    }
+  },
+  "no_id_mechanism_claim": true,
+  "numeric_control_summary": "G1_CONTROL_SUMMARY.json",
+  "review_completed_utc": "2026-09-21T13:46:20.426216+00:00",
+  "reviewer": "Model visual/mechanistic review; not independent human study",
+  "scene_go_count": 0,
+  "scenes": {
+    "chair": {
+      "scene_go": false,
+      "views": {
+        "1": {
+          "better_than_front_depth": false,
+          "better_than_no_ids": false,
+          "better_than_shuffled_depth": null,
+          "coherent_bands": null,
+          "findings": "Enlarged E_occ/E_shape_valley: upholstery-like interior patchiness in occlusion; some coherent seat/arm/back fragments in valley but incomplete. Depth controls give more complete outline, with some interior clutter; full does not clearly beat them and is similar to no-ID. Count not used for rejection because comparative criteria fail.",
+          "id_mechanism": null,
+          "status": "INSPECTED_DETAIL"
+        },
+        "27": {
+          "better_than_front_depth": false,
+          "better_than_no_ids": false,
+          "better_than_shuffled_depth": null,
+          "coherent_bands": null,
+          "findings": "Enlarged E_occ/E_shape_valley: upholstery-like interior patchiness in occlusion; some coherent seat/arm/back fragments in valley but incomplete. Depth controls give more complete outline, with some interior clutter; full does not clearly beat them and is similar to no-ID. Count not used for rejection because comparative criteria fail.",
+          "id_mechanism": null,
+          "status": "INSPECTED_DETAIL"
+        },
+        "53": {
+          "better_than_front_depth": false,
+          "better_than_no_ids": false,
+          "better_than_shuffled_depth": null,
+          "coherent_bands": null,
+          "findings": "Enlarged E_occ/E_shape_valley: upholstery-like interior patchiness in occlusion; some coherent seat/arm/back fragments in valley but incomplete. Depth controls give more complete outline, with some interior clutter; full does not clearly beat them and is similar to no-ID. Count not used for rejection because comparative criteria fail.",
+          "id_mechanism": null,
+          "status": "INSPECTED_DETAIL"
+        },
+        "79": {
+          "better_than_front_depth": null,
+          "better_than_no_ids": null,
+          "better_than_shuffled_depth": null,
+          "coherent_bands": null,
+          "findings": "Included in every full-scene control/channel sheet overview. No separate enlarged-detail rating; rejection already follows from comparison failures in the other three fixed views.",
+          "id_mechanism": null,
+          "status": "INSPECTED_OVERVIEW"
+        }
+      }
+    },
+    "drums": {
+      "scene_go": false,
+      "views": {
+        "1": {
+          "better_than_front_depth": false,
+          "better_than_no_ids": false,
+          "better_than_shuffled_depth": null,
+          "coherent_bands": null,
+          "findings": "Enlarged E_occ and E_shape_valley: recognizable partial cymbal/drum rim arcs and stand fragments, but depth controls complete more of the kit. Full and no-ID retain similar curves. Comparative criteria fail; exact coherent-band count not needed for rejection.",
+          "id_mechanism": null,
+          "status": "INSPECTED_DETAIL"
+        },
+        "27": {
+          "better_than_front_depth": false,
+          "better_than_no_ids": false,
+          "better_than_shuffled_depth": null,
+          "coherent_bands": null,
+          "findings": "Enlarged E_occ and E_shape_valley: recognizable partial cymbal/drum rim arcs and stand fragments, but depth controls complete more of the kit. Full and no-ID retain similar curves. Comparative criteria fail; exact coherent-band count not needed for rejection.",
+          "id_mechanism": null,
+          "status": "INSPECTED_DETAIL"
+        },
+        "53": {
+          "better_than_front_depth": false,
+          "better_than_no_ids": false,
+          "better_than_shuffled_depth": null,
+          "coherent_bands": null,
+          "findings": "Enlarged E_occ and E_shape_valley: recognizable partial cymbal/drum rim arcs and stand fragments, but depth controls complete more of the kit. Full and no-ID retain similar curves. Comparative criteria fail; exact coherent-band count not needed for rejection.",
+          "id_mechanism": null,
+          "status": "INSPECTED_DETAIL"
+        },
+        "79": {
+          "better_than_front_depth": null,
+          "better_than_no_ids": null,
+          "better_than_shuffled_depth": null,
+          "coherent_bands": null,
+          "findings": "Included in every full-scene control/channel sheet overview. No separate enlarged-detail rating; rejection already follows from comparison failures in the other three fixed views.",
+          "id_mechanism": null,
+          "status": "INSPECTED_OVERVIEW"
+        }
+      }
+    },
+    "ficus": {
+      "scene_go": false,
+      "views": {
+        "1": {
+          "better_than_front_depth": false,
+          "better_than_no_ids": false,
+          "better_than_shuffled_depth": null,
+          "coherent_bands": null,
+          "findings": "Enlarged E_occ and E_shape_valley: occlusion retains short leaf and pot fragments; valley emphasizes leaf patches and loses much stem/pot structure. Depth controls give more complete outlines; no-ID and uniform closely resemble full. Both soft response and matched-ink comparisons fail to establish the required advantage. Exact coherent-band count not used for rejection.",
+          "id_mechanism": null,
+          "status": "INSPECTED_DETAIL"
+        },
+        "27": {
+          "better_than_front_depth": false,
+          "better_than_no_ids": false,
+          "better_than_shuffled_depth": null,
+          "coherent_bands": null,
+          "findings": "Enlarged E_occ and E_shape_valley: occlusion retains short leaf and pot fragments; valley emphasizes leaf patches and loses much stem/pot structure. Depth controls give more complete outlines; no-ID and uniform closely resemble full. Both soft response and matched-ink comparisons fail to establish the required advantage. Exact coherent-band count not used for rejection.",
+          "id_mechanism": null,
+          "status": "INSPECTED_DETAIL"
+        },
+        "53": {
+          "better_than_front_depth": false,
+          "better_than_no_ids": false,
+          "better_than_shuffled_depth": null,
+          "coherent_bands": null,
+          "findings": "Enlarged E_occ and E_shape_valley: occlusion retains short leaf and pot fragments; valley emphasizes leaf patches and loses much stem/pot structure. Depth controls give more complete outlines; no-ID and uniform closely resemble full. Both soft response and matched-ink comparisons fail to establish the required advantage. Exact coherent-band count not used for rejection.",
+          "id_mechanism": null,
+          "status": "INSPECTED_DETAIL"
+        },
+        "79": {
+          "better_than_front_depth": null,
+          "better_than_no_ids": null,
+          "better_than_shuffled_depth": null,
+          "coherent_bands": null,
+          "findings": "Included in every full-scene control/channel sheet overview. No separate enlarged-detail rating; rejection already follows from comparison failures in the other three fixed views.",
+          "id_mechanism": null,
+          "status": "INSPECTED_OVERVIEW"
+        }
+      }
+    },
+    "lego": {
+      "scene_go": false,
+      "views": {
+        "1": {
+          "better_than_front_depth": false,
+          "better_than_no_ids": false,
+          "better_than_shuffled_depth": null,
+          "coherent_bands": null,
+          "findings": "Enlarged E_occ and E_shape_valley comparisons: full fragmented; depth-only more complete connected contours; no-ID similar. Some recognizable valley wheel/frame/arm fragments, insufficient comparative advantage. Coherent-band count is not used to infer failure because both comparison criteria fail.",
+          "id_mechanism": null,
+          "status": "INSPECTED_DETAIL"
+        },
+        "27": {
+          "better_than_front_depth": false,
+          "better_than_no_ids": false,
+          "better_than_shuffled_depth": null,
+          "coherent_bands": null,
+          "findings": "Enlarged E_occ and E_shape_valley comparisons: full fragmented; depth-only more complete connected contours; no-ID similar. Some recognizable valley wheel/frame/arm fragments, insufficient comparative advantage. Coherent-band count is not used to infer failure because both comparison criteria fail.",
+          "id_mechanism": null,
+          "status": "INSPECTED_DETAIL"
+        },
+        "53": {
+          "better_than_front_depth": false,
+          "better_than_no_ids": false,
+          "better_than_shuffled_depth": null,
+          "coherent_bands": null,
+          "findings": "Enlarged E_occ and E_shape_valley comparisons: full fragmented; depth-only more complete connected contours; no-ID similar. Some recognizable valley wheel/frame/arm fragments, insufficient comparative advantage. Coherent-band count is not used to infer failure because both comparison criteria fail.",
+          "id_mechanism": null,
+          "status": "INSPECTED_DETAIL"
+        },
+        "79": {
+          "better_than_front_depth": null,
+          "better_than_no_ids": null,
+          "better_than_shuffled_depth": null,
+          "coherent_bands": null,
+          "findings": "Included in every full-scene control/channel sheet overview. No separate enlarged-detail rating; rejection already follows from comparison failures in the other three fixed views.",
+          "id_mechanism": null,
+          "status": "INSPECTED_OVERVIEW"
+        }
+      }
+    }
+  },
+  "scientific_threshold_changes": false,
+  "scope": "All 68 official sheets inspected as complete overviews; E_occ and E_shape_valley group0 additionally inspected in 24 exact-pixel single-view crops for views1/27/53 across all four scenes. No claim of native-resolution study of every panel.",
+  "status": "COMPLETE"
+}
