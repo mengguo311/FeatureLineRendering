@@ -1,0 +1,27 @@
+test_gpu_sampler_deterministic_gradient (test_direct_curve.DirectCurveTests) ... FAIL
+
+======================================================================
+FAIL: test_gpu_sampler_deterministic_gradient (test_direct_curve.DirectCurveTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_direct_curve.py", line 182, in test_gpu_sampler_deterministic_gradient
+    np.testing.assert_array_equal(values[0][0],values[1][0]);np.testing.assert_array_equal(values[0][1],values[1][1]);np.testing.assert_allclose(values[0][1],[[1,10],[1,10]])
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/numpy/testing/_private/utils.py", line 1527, in assert_allclose
+    assert_array_compare(compare, actual, desired, err_msg=str(err_msg),
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/numpy/testing/_private/utils.py", line 844, in assert_array_compare
+    raise AssertionError(msg)
+AssertionError: 
+Not equal to tolerance rtol=1e-07, atol=0
+
+Mismatched elements: 1 / 4 (25%)
+Max absolute difference: 2.86102295e-06
+Max relative difference: 2.86102295e-06
+ x: array([[ 1.      , 10.      ],
+       [ 0.999997, 10.      ]], dtype=float32)
+ y: array([[ 1, 10],
+       [ 1, 10]])
+
+----------------------------------------------------------------------
+Ran 1 test in 0.575s
+
+FAILED (failures=1)

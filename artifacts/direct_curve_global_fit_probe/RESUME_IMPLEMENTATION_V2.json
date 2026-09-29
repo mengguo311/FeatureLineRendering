@@ -1,0 +1,26 @@
+{
+  "build": "nvcc -arch=sm_86 -O3 -shared -Xcompiler -fPIC; no fast math",
+  "changes": "native_quantiles wrapper + CUDA replay; scheduling/calibration only. Scientific fit functions unchanged.",
+  "files": {
+    "artifacts/direct_curve_global_fit_probe/INPUTS.json": "5c8cc2ac0a984b02343f48d71beb46818a572f161447a56e701d2b76bfc4ab7d",
+    "artifacts/direct_curve_global_fit_probe/PROTOCOL.md": "26f6ff55213077457fc6370a417a28d4c74b25beaee0dae5c018a1d36a0f0461",
+    "out/direct_curve_global_fit_probe/setup/quantiles.so": "ca98e80c77b7947ce3b54838dd9be1684551c54c5cb3fe44cafd8a6b92692c8d",
+    "out/direct_curve_global_fit_probe/setup/quantiles_cuda_v1.so": "efda198352f7b2593815cdf1e7c7a60b6fbeb706ee863c92153495a6dd0dff23",
+    "out/direct_curve_global_fit_probe/setup/stock_oracle_v1.so": "c411777e2df0d1ba5f28bcb5e499b28768a1288e279e05862a86a8161cdac352",
+    "out/vrss/vendor/official_rasterizer/cuda_rasterizer/forward.cu": "83c182561b9f75e93b7b72a24aaf1fce507388a0198aa4a56137d25deabcd6c8",
+    "scripts/calibrate_direct_curve_replay.py": "29b101ac3093573439ef0cf7e0086465b821e615c2fa2a489ee59655322735cf",
+    "scripts/evaluate_direct_curve_probe.py": "e37b01d4c5e537b67c8072de55a15dc929ad82132f4348a9400e4bc85c973303",
+    "scripts/run_direct_curve_probe.py": "dfcb4a99e80b0ac1810f6835f67d20b5d7d87ab99e9d16af4355c3d90b0821fd",
+    "scripts/schedule_direct_curve_probe.py": "53cdcc1142fb5a03d95099d45074dd10c7cd10f8d708c2ad3105b37039817230",
+    "scripts/verify_direct_curve_probe.py": "70ff18b1c3536be808cb7c1e397d8e8dc0750eca77fd5bcd22c2b3b9ca135945",
+    "src/direct_curve.py": "a1cd5c202ae71327a6df088f05bc10ce971288d7a5d6c86c6ca3088d246a218d",
+    "src/direct_curve_eval.py": "cf9fc48e9dcfcf09897381d106993ebee187a78b192130c2c90388784f90b8ed",
+    "src/direct_curve_quantiles.cpp": "61f80abfcdb4431cde321cbb3e88dbb81447673c096910ad15277ba6edb194f0",
+    "src/direct_curve_quantiles.cu": "4dee38e77166875f27a85f91106c3a0cbdff5d09fc2cacc14236bbe9529d43fa",
+    "tests/direct_curve_stock_oracle.cu": "a2a3de1c76c0a4010414be81b12bd092703dc239aed2d390221781d40d7bec73",
+    "tests/test_direct_curve.py": "cdd1a53b130b5c7bf167518b4775a22986f57a129874961d7b6cae66af8fb2f6",
+    "tests/test_direct_curve_replay.py": "d4c3d9e73e7cc79b9c0de4ea33314a51ecfb3c44da6f75974d448e4f68929e2c",
+    "tests/test_direct_curve_scheduler.py": "17e9f51014c2674de8d40449526fc7f3c0b4ff6e1b21c66aff251dd5f35d9547"
+  },
+  "revision": "V2: allow exact upstream source read for end-of-calibration provenance; no replay or scientific changes."
+}

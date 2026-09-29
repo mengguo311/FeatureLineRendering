@@ -1,0 +1,28 @@
+test_evaluation_requires_seal_and_keeps_every_frame_and_cell (test_direct_curve.DirectCurveTests) ... /home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+  prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+  parse = parser.parseString(pattern)
+/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+  parser.resetCache()
+EVALUATED toy F_1
+EVALUATED toy C_7
+ARC_FRAME toy arc0_000
+ARC_FRAME toy arc0_001
+/home/u00134/3dgs_line/tier1/scripts/evaluate_direct_curve_probe.py:113: ResourceWarning: unclosed file <_io.BufferedReader name=5>
+  video(output/'videos'/f'arc{arc_index}_complete.mp4',frames)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+EVALUATION_COMPLETE toy
+FAIL
+
+======================================================================
+FAIL: test_evaluation_requires_seal_and_keeps_every_frame_and_cell (test_direct_curve.DirectCurveTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_direct_curve.py", line 232, in test_evaluation_requires_seal_and_keeps_every_frame_and_cell
+    result=json.loads((out/'RESULTS.json').read_text());self.assertEqual(result['census_cells_per_arm'],128);self.assertEqual(result['arcs'][0]['frames'],2);self.assertEqual(len(list((out/'figures').glob('C_*.png'))),1)
+AssertionError: 2 != 1
+
+----------------------------------------------------------------------
+Ran 1 test in 4.891s
+
+FAILED (failures=1)

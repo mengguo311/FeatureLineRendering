@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/scripts/run_direct_curve_probe.py", line 103, in <module>
+    if __name__=='__main__':main()
+  File "/home/u00134/3dgs_line/tier1/scripts/run_direct_curve_probe.py", line 93, in main
+    freeze_json(output/'allowlist.json',policy);restrict_filesystem(policy['readonly'],policy['writable'])
+  File "/home/u00134/3dgs_line/tier1/src/foundation.py", line 13, in freeze_json
+    with path.open('xb') as f:
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/pathlib.py", line 1180, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/pathlib.py", line 1038, in _opener
+    return self._accessor.open(self, flags, mode)
+FileExistsError: [Errno 17] File exists: '/home/u00134/3dgs_line/tier1/out/direct_curve_global_fit_probe/run/lego/fit/allowlist.json'

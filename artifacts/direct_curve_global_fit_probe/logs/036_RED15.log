@@ -1,0 +1,20 @@
+test_evaluation_requires_seal_and_keeps_every_frame_and_cell (test_direct_curve.DirectCurveTests) ... /home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+  prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+  parse = parser.parseString(pattern)
+/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+  parser.resetCache()
+ERROR
+
+======================================================================
+ERROR: test_evaluation_requires_seal_and_keeps_every_frame_and_cell (test_direct_curve.DirectCurveTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_direct_curve.py", line 216, in test_evaluation_requires_seal_and_keeps_every_frame_and_cell
+    from scripts.evaluate_direct_curve_probe import run_evaluation
+ImportError: cannot import name 'run_evaluation' from 'scripts.evaluate_direct_curve_probe' (/home/u00134/3dgs_line/tier1/scripts/evaluate_direct_curve_probe.py)
+
+----------------------------------------------------------------------
+Ran 1 test in 0.499s
+
+FAILED (errors=1)

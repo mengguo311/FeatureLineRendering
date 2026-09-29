@@ -1,0 +1,522 @@
+{
+  "sample_rows": 1480,
+  "scenes": {
+    "chair": {
+      "cpu_seconds_observed": 11518.050000000001,
+      "worker_gpu_MiB_observed_peak": 11586,
+      "worker_host_HWM_KiB_observed": 3080428
+    },
+    "drums": {
+      "cpu_seconds_observed": 15815.230000000001,
+      "worker_gpu_MiB_observed_peak": 7308,
+      "worker_host_HWM_KiB_observed": 3120812
+    },
+    "ficus": {
+      "cpu_seconds_observed": 12729.28,
+      "worker_gpu_MiB_observed_peak": 6178,
+      "worker_host_HWM_KiB_observed": 3133216
+    },
+    "lego": {
+      "cpu_seconds_observed": 6023.64,
+      "worker_gpu_MiB_observed_peak": 852,
+      "worker_host_HWM_KiB_observed": 3137068
+    }
+  },
+  "scope": "15-second sampling from resume monitor startup. CPU seconds are lower bounds; GPU/host maxima are per-worker observed peaks, not aggregate or complete lifetime peaks. Historical jobs and short unsampled jobs are absent. strace processes excluded.",
+  "source": "/home/u00134/3dgs_line/tier1/out/direct_curve_global_fit_probe/scheduler/resume_20260929_v2/RESOURCES.jsonl",
+  "source_sha256": "b4cfbeebd19fac153f7175404c1d918b4e1efc24d21925d837997512a5edbe88",
+  "workers": {
+    "1766810": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/run_direct_curve_probe.py",
+        "--scene",
+        "chair",
+        "--run",
+        "run",
+        "--stage",
+        "fit"
+      ],
+      "cpu_seconds_observed": 2947.4,
+      "gpu_MiB_observed_peak": 11586,
+      "host_HWM_KiB_observed": 1839652,
+      "run": "run",
+      "samples": 187,
+      "scene": "chair"
+    },
+    "1766820": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/run_direct_curve_probe.py",
+        "--scene",
+        "chair",
+        "--run",
+        "rerun",
+        "--stage",
+        "fit"
+      ],
+      "cpu_seconds_observed": 2977.04,
+      "gpu_MiB_observed_peak": 11586,
+      "host_HWM_KiB_observed": 1849668,
+      "run": "rerun",
+      "samples": 189,
+      "scene": "chair"
+    },
+    "1773043": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/calibrate_direct_curve_replay.py",
+        "--scene",
+        "drums",
+        "--run",
+        "run",
+        "--domain",
+        "F",
+        "--output",
+        "/home/u00134/3dgs_line/tier1/out/direct_curve_global_fit_probe/scheduler/resume_20260929_v2/run/calibration/drums_F"
+      ],
+      "cpu_seconds_observed": 45.66,
+      "gpu_MiB_observed_peak": 836,
+      "host_HWM_KiB_observed": 1015916,
+      "run": "run",
+      "samples": 4,
+      "scene": "drums"
+    },
+    "1773181": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/calibrate_direct_curve_replay.py",
+        "--scene",
+        "drums",
+        "--run",
+        "rerun",
+        "--domain",
+        "F",
+        "--output",
+        "/home/u00134/3dgs_line/tier1/out/direct_curve_global_fit_probe/scheduler/resume_20260929_v2/rerun/calibration/drums_F"
+      ],
+      "cpu_seconds_observed": 30.71,
+      "gpu_MiB_observed_peak": 700,
+      "host_HWM_KiB_observed": 989284,
+      "run": "rerun",
+      "samples": 3,
+      "scene": "drums"
+    },
+    "1773325": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/run_direct_curve_probe.py",
+        "--scene",
+        "drums",
+        "--run",
+        "run",
+        "--stage",
+        "fit"
+      ],
+      "cpu_seconds_observed": 3965.55,
+      "gpu_MiB_observed_peak": 7308,
+      "host_HWM_KiB_observed": 1864024,
+      "run": "run",
+      "samples": 263,
+      "scene": "drums"
+    },
+    "1773554": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/run_direct_curve_probe.py",
+        "--scene",
+        "drums",
+        "--run",
+        "rerun",
+        "--stage",
+        "fit"
+      ],
+      "cpu_seconds_observed": 3981.52,
+      "gpu_MiB_observed_peak": 7308,
+      "host_HWM_KiB_observed": 1862004,
+      "run": "rerun",
+      "samples": 264,
+      "scene": "drums"
+    },
+    "1781790": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/calibrate_direct_curve_replay.py",
+        "--scene",
+        "ficus",
+        "--run",
+        "run",
+        "--domain",
+        "F",
+        "--output",
+        "/home/u00134/3dgs_line/tier1/out/direct_curve_global_fit_probe/scheduler/resume_20260929_v2/run/calibration/ficus_F"
+      ],
+      "cpu_seconds_observed": 24.27,
+      "gpu_MiB_observed_peak": 626,
+      "host_HWM_KiB_observed": 926952,
+      "run": "run",
+      "samples": 2,
+      "scene": "ficus"
+    },
+    "1781997": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/calibrate_direct_curve_replay.py",
+        "--scene",
+        "ficus",
+        "--run",
+        "rerun",
+        "--domain",
+        "F",
+        "--output",
+        "/home/u00134/3dgs_line/tier1/out/direct_curve_global_fit_probe/scheduler/resume_20260929_v2/rerun/calibration/ficus_F"
+      ],
+      "cpu_seconds_observed": 24.99,
+      "gpu_MiB_observed_peak": 626,
+      "host_HWM_KiB_observed": 925608,
+      "run": "rerun",
+      "samples": 2,
+      "scene": "ficus"
+    },
+    "1782087": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/run_direct_curve_probe.py",
+        "--scene",
+        "ficus",
+        "--run",
+        "run",
+        "--stage",
+        "fit"
+      ],
+      "cpu_seconds_observed": 3326.23,
+      "gpu_MiB_observed_peak": 6178,
+      "host_HWM_KiB_observed": 1840456,
+      "run": "run",
+      "samples": 220,
+      "scene": "ficus"
+    },
+    "1782290": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/run_direct_curve_probe.py",
+        "--scene",
+        "ficus",
+        "--run",
+        "rerun",
+        "--stage",
+        "fit"
+      ],
+      "cpu_seconds_observed": 3355.81,
+      "gpu_MiB_observed_peak": 6178,
+      "host_HWM_KiB_observed": 1844456,
+      "run": "rerun",
+      "samples": 222,
+      "scene": "ficus"
+    },
+    "1787309": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/calibrate_direct_curve_replay.py",
+        "--scene",
+        "lego",
+        "--run",
+        "run",
+        "--domain",
+        "all",
+        "--output",
+        "/home/u00134/3dgs_line/tier1/out/direct_curve_global_fit_probe/scheduler/resume_20260929_v2/run/calibration/lego_all"
+      ],
+      "cpu_seconds_observed": 408.88,
+      "gpu_MiB_observed_peak": 852,
+      "host_HWM_KiB_observed": 1032896,
+      "run": "run",
+      "samples": 28,
+      "scene": "lego"
+    },
+    "1787441": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/calibrate_direct_curve_replay.py",
+        "--scene",
+        "lego",
+        "--run",
+        "rerun",
+        "--domain",
+        "all",
+        "--output",
+        "/home/u00134/3dgs_line/tier1/out/direct_curve_global_fit_probe/scheduler/resume_20260929_v2/rerun/calibration/lego_all"
+      ],
+      "cpu_seconds_observed": 408.96,
+      "gpu_MiB_observed_peak": 852,
+      "host_HWM_KiB_observed": 1028688,
+      "run": "rerun",
+      "samples": 28,
+      "scene": "lego"
+    },
+    "1788584": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/run_direct_curve_probe.py",
+        "--scene",
+        "lego",
+        "--run",
+        "run",
+        "--stage",
+        "evaluate"
+      ],
+      "cpu_seconds_observed": 2583.75,
+      "gpu_MiB_observed_peak": 736,
+      "host_HWM_KiB_observed": 3109192,
+      "run": "run",
+      "samples": 157,
+      "scene": "lego"
+    },
+    "1788772": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/run_direct_curve_probe.py",
+        "--scene",
+        "lego",
+        "--run",
+        "rerun",
+        "--stage",
+        "evaluate"
+      ],
+      "cpu_seconds_observed": 2622.05,
+      "gpu_MiB_observed_peak": 712,
+      "host_HWM_KiB_observed": 3137068,
+      "run": "rerun",
+      "samples": 160,
+      "scene": "lego"
+    },
+    "1793878": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/calibrate_direct_curve_replay.py",
+        "--scene",
+        "chair",
+        "--run",
+        "run",
+        "--domain",
+        "all",
+        "--output",
+        "/home/u00134/3dgs_line/tier1/out/direct_curve_global_fit_probe/scheduler/resume_20260929_v2/run/calibration/chair_all"
+      ],
+      "cpu_seconds_observed": 205.79,
+      "gpu_MiB_observed_peak": 670,
+      "host_HWM_KiB_observed": 963836,
+      "run": "run",
+      "samples": 14,
+      "scene": "chair"
+    },
+    "1794693": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/calibrate_direct_curve_replay.py",
+        "--scene",
+        "chair",
+        "--run",
+        "rerun",
+        "--domain",
+        "all",
+        "--output",
+        "/home/u00134/3dgs_line/tier1/out/direct_curve_global_fit_probe/scheduler/resume_20260929_v2/rerun/calibration/chair_all"
+      ],
+      "cpu_seconds_observed": 206.42,
+      "gpu_MiB_observed_peak": 670,
+      "host_HWM_KiB_observed": 959848,
+      "run": "rerun",
+      "samples": 14,
+      "scene": "chair"
+    },
+    "1795087": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/run_direct_curve_probe.py",
+        "--scene",
+        "chair",
+        "--run",
+        "run",
+        "--stage",
+        "evaluate"
+      ],
+      "cpu_seconds_observed": 2585.56,
+      "gpu_MiB_observed_peak": 670,
+      "host_HWM_KiB_observed": 3074432,
+      "run": "run",
+      "samples": 158,
+      "scene": "chair"
+    },
+    "1795569": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/run_direct_curve_probe.py",
+        "--scene",
+        "chair",
+        "--run",
+        "rerun",
+        "--stage",
+        "evaluate"
+      ],
+      "cpu_seconds_observed": 2595.84,
+      "gpu_MiB_observed_peak": 670,
+      "host_HWM_KiB_observed": 3080428,
+      "run": "rerun",
+      "samples": 158,
+      "scene": "chair"
+    },
+    "1802744": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/calibrate_direct_curve_replay.py",
+        "--scene",
+        "drums",
+        "--run",
+        "run",
+        "--domain",
+        "all",
+        "--output",
+        "/home/u00134/3dgs_line/tier1/out/direct_curve_global_fit_probe/scheduler/resume_20260929_v2/run/calibration/drums_all"
+      ],
+      "cpu_seconds_observed": 396.18,
+      "gpu_MiB_observed_peak": 836,
+      "host_HWM_KiB_observed": 1033252,
+      "run": "run",
+      "samples": 27,
+      "scene": "drums"
+    },
+    "1803402": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/calibrate_direct_curve_replay.py",
+        "--scene",
+        "drums",
+        "--run",
+        "rerun",
+        "--domain",
+        "all",
+        "--output",
+        "/home/u00134/3dgs_line/tier1/out/direct_curve_global_fit_probe/scheduler/resume_20260929_v2/rerun/calibration/drums_all"
+      ],
+      "cpu_seconds_observed": 395.65,
+      "gpu_MiB_observed_peak": 836,
+      "host_HWM_KiB_observed": 1032280,
+      "run": "rerun",
+      "samples": 27,
+      "scene": "drums"
+    },
+    "1804318": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/run_direct_curve_probe.py",
+        "--scene",
+        "drums",
+        "--run",
+        "run",
+        "--stage",
+        "evaluate"
+      ],
+      "cpu_seconds_observed": 3575.35,
+      "gpu_MiB_observed_peak": 826,
+      "host_HWM_KiB_observed": 3120812,
+      "run": "run",
+      "samples": 223,
+      "scene": "drums"
+    },
+    "1805141": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/run_direct_curve_probe.py",
+        "--scene",
+        "drums",
+        "--run",
+        "rerun",
+        "--stage",
+        "evaluate"
+      ],
+      "cpu_seconds_observed": 3424.61,
+      "gpu_MiB_observed_peak": 826,
+      "host_HWM_KiB_observed": 3113376,
+      "run": "rerun",
+      "samples": 214,
+      "scene": "drums"
+    },
+    "1814784": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/calibrate_direct_curve_replay.py",
+        "--scene",
+        "ficus",
+        "--run",
+        "rerun",
+        "--domain",
+        "all",
+        "--output",
+        "/home/u00134/3dgs_line/tier1/out/direct_curve_global_fit_probe/scheduler/resume_20260929_v2/rerun/calibration/ficus_all"
+      ],
+      "cpu_seconds_observed": 298.44,
+      "gpu_MiB_observed_peak": 672,
+      "host_HWM_KiB_observed": 966896,
+      "run": "rerun",
+      "samples": 20,
+      "scene": "ficus"
+    },
+    "1815217": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/calibrate_direct_curve_replay.py",
+        "--scene",
+        "ficus",
+        "--run",
+        "run",
+        "--domain",
+        "all",
+        "--output",
+        "/home/u00134/3dgs_line/tier1/out/direct_curve_global_fit_probe/scheduler/resume_20260929_v2/run/calibration/ficus_all"
+      ],
+      "cpu_seconds_observed": 300.48,
+      "gpu_MiB_observed_peak": 626,
+      "host_HWM_KiB_observed": 970088,
+      "run": "run",
+      "samples": 20,
+      "scene": "ficus"
+    },
+    "1816290": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/run_direct_curve_probe.py",
+        "--scene",
+        "ficus",
+        "--run",
+        "rerun",
+        "--stage",
+        "evaluate"
+      ],
+      "cpu_seconds_observed": 2706.3,
+      "gpu_MiB_observed_peak": 622,
+      "host_HWM_KiB_observed": 3133216,
+      "run": "rerun",
+      "samples": 165,
+      "scene": "ficus"
+    },
+    "1816485": {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "scripts/run_direct_curve_probe.py",
+        "--scene",
+        "ficus",
+        "--run",
+        "run",
+        "--stage",
+        "evaluate"
+      ],
+      "cpu_seconds_observed": 2692.76,
+      "gpu_MiB_observed_peak": 622,
+      "host_HWM_KiB_observed": 3103452,
+      "run": "run",
+      "samples": 164,
+      "scene": "ficus"
+    }
+  }
+}

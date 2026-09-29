@@ -1,0 +1,31 @@
+EVALUATED lego F_1
+EVALUATED lego F_14
+EVALUATED lego F_27
+EVALUATED lego F_41
+EVALUATED lego F_53
+EVALUATED lego F_67
+EVALUATED lego F_79
+EVALUATED lego F_93
+EVALUATED lego C_7
+EVALUATED lego C_21
+EVALUATED lego C_33
+EVALUATED lego C_47
+EVALUATED lego C_59
+EVALUATED lego C_73
+EVALUATED lego C_86
+EVALUATED lego C_99
+ARC_FRAME lego arc0_000
+ARC_FRAME lego arc0_001
+ARC_FRAME lego arc0_002
+ARC_FRAME lego arc0_003
+ARC_FRAME lego arc0_004
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/scripts/run_direct_curve_probe.py", line 103, in <module>
+    if __name__=='__main__':main()
+  File "/home/u00134/3dgs_line/tier1/scripts/run_direct_curve_probe.py", line 100, in main
+    run_evaluation(cfg,args.scene,output.parent/'fit',output)
+  File "/home/u00134/3dgs_line/tier1/scripts/evaluate_direct_curve_probe.py", line 111, in run_evaluation
+    name=f'arc{arc_index}_{index:03d}';v=prepare_view(gs,camera,name,None);save_view(output/'native',v)
+  File "/home/u00134/3dgs_line/tier1/scripts/run_direct_curve_probe.py", line 23, in prepare_view
+    if max(errors.values())>1/255:raise ValueError('ENGINEERING_INVALID native calibration '+str(errors))
+ValueError: ENGINEERING_INVALID native calibration {'rgb_max': 0.0009172558784484863, 'alpha_max': 0.003921806812286377, 'wrapper_max': 0.0}

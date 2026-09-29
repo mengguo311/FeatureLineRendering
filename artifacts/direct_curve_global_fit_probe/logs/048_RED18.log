@@ -1,0 +1,20 @@
+test_final_native_stroke_width_is_one_point_five (test_direct_curve.DirectCurveTests) ... /home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+  prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+  parse = parser.parseString(pattern)
+/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+  parser.resetCache()
+FAIL
+
+======================================================================
+FAIL: test_final_native_stroke_width_is_one_point_five (test_direct_curve.DirectCurveTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_direct_curve.py", line 258, in test_final_native_stroke_width_is_one_point_five
+    self.assertAlmostEqual(float(ink[:,400].sum()),1.5,places=5)
+AssertionError: 1.917647123336792 != 1.5 within 5 places (0.417647123336792 difference)
+
+----------------------------------------------------------------------
+Ran 1 test in 0.237s
+
+FAILED (failures=1)

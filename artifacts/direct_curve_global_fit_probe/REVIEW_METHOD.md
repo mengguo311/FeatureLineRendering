@@ -1,0 +1,9 @@
+# Internal media inspection
+
+The implementing model records observations using the randomized A/B/C/D labels before inspecting the method key or numerical scientific results. It knows the implementation and can infer likely methods from appearance, so this is neither independent validation nor a fully blinded study. The `method_key_opened` and `numeric_results_opened` fields describe information presented to the reviewer; the separate deterministic comparer may parse those files without displaying their contents.
+
+Every primary F and C comparison is inspected as a complete frame. Each arc is inspected through its fixed source quartiles and all 33 decoded video frames in temporal order, presented on six consecutive-frame contact pages. Those decoded pages use the same uniform half-size resize for every frame and method. The reviewer does not crop successful regions or choose successful frames. Lego arc 0 additionally received full source-contact inspection. Individual review records specify the exact scope and file hashes.
+
+This is framewise video inspection, not a timed playback or human perceptual experiment. Statements about changing fragments and contour gaps are qualitative observations, not measured human popping rates. The frozen quantitative proxies, framewise metrics and ink-comparability rule are reported separately. The full-resolution originals, complete playable videos and every-frame source contacts remain available. Run/rerun image and video equality is verified separately; the primary media are used for the visual observations.
+
+The initial observations are immutable records. After all scene observations are complete, the final review can map labels to methods and combine them with the frozen metrics. No independent visual GO is claimed. Numerical failures of necessary preregistered gates can deny continuation without independent visual approval.

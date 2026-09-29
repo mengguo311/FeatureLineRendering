@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/artifacts/direct_curve_global_fit_probe/verify_resume_delivery.py", line 107, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+  File "/home/u00134/3dgs_line/tier1/artifacts/direct_curve_global_fit_probe/verify_resume_delivery.py", line 34, in main
+    suite=json.loads((ART/'SUITE_ACCESS_AUDIT_RESUME_226.json').read_text());checks['suite_access']=suite['passed']
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/pathlib.py", line 1194, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/pathlib.py", line 1180, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/pathlib.py", line 1038, in _opener
+    return self._accessor.open(self, flags, mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/u00134/3dgs_line/tier1/artifacts/direct_curve_global_fit_probe/SUITE_ACCESS_AUDIT_RESUME_226.json'

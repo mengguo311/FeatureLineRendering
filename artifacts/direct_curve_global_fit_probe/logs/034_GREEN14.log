@@ -1,0 +1,26 @@
+test_playable_complete_media_and_drawing_disagreement (test_direct_curve.DirectCurveTests) ... /home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+  prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+  parse = parser.parseString(pattern)
+/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/matplotlib/_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+  parser.resetCache()
+ERROR
+
+======================================================================
+ERROR: test_playable_complete_media_and_drawing_disagreement (test_direct_curve.DirectCurveTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_direct_curve.py", line 203, in test_playable_complete_media_and_drawing_disagreement
+    video(p/'movie.mp4',frames);cap=cv2.VideoCapture(str(p/'movie.mp4'));count=0
+  File "/home/u00134/3dgs_line/tier1/scripts/evaluate_direct_curve_probe.py", line 29, in video
+    proc=subprocess.Popen(cmd,stdin=subprocess.PIPE,stderr=subprocess.PIPE)
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/subprocess.py", line 951, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/subprocess.py", line 1837, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.490s
+
+FAILED (errors=1)

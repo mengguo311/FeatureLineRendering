@@ -1,0 +1,32 @@
+test_atomic_seal_is_exclusive_and_complete (test_direct_curve_scheduler.SchedulerTests) ... ERROR
+test_evaluation_failure_does_not_block_other_scene_fits (test_direct_curve_scheduler.SchedulerTests) ... ERROR
+test_partial_fit_is_blocked_and_existing_seal_verified (test_direct_curve_scheduler.SchedulerTests) ... ERROR
+
+======================================================================
+ERROR: test_atomic_seal_is_exclusive_and_complete (test_direct_curve_scheduler.SchedulerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_direct_curve_scheduler.py", line 17, in test_atomic_seal_is_exclusive_and_complete
+    from scripts.schedule_direct_curve_probe import atomic_json
+ModuleNotFoundError: No module named 'scripts.schedule_direct_curve_probe'
+
+======================================================================
+ERROR: test_evaluation_failure_does_not_block_other_scene_fits (test_direct_curve_scheduler.SchedulerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_direct_curve_scheduler.py", line 6, in test_evaluation_failure_does_not_block_other_scene_fits
+    from scripts.schedule_direct_curve_probe import schedule
+ModuleNotFoundError: No module named 'scripts.schedule_direct_curve_probe'
+
+======================================================================
+ERROR: test_partial_fit_is_blocked_and_existing_seal_verified (test_direct_curve_scheduler.SchedulerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/tier1/tests/test_direct_curve_scheduler.py", line 25, in test_partial_fit_is_blocked_and_existing_seal_verified
+    from scripts.schedule_direct_curve_probe import fit_state
+ModuleNotFoundError: No module named 'scripts.schedule_direct_curve_probe'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+FAILED (errors=3)
