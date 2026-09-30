@@ -87,6 +87,12 @@ class TemporalBehavior(unittest.TestCase):
         self.assertEqual(info['deleted_components'],0)
         self.assertEqual(actual_ink(result),float(np.round(result*255).sum()/255))
 
+    def test_unknown_depth_cannot_create_motion_identity(self):
+        from src.temporal_depth2d import Tracker
+        a=frame();a['alpha'][:]=0
+        t=Tracker();t.update(a)
+        self.assertEqual(len(t.anchors),0)
+
     def test_reject_abnormal_poses(self):
         from src.temporal_depth2d import validate_camera
         validate_camera(camera())
