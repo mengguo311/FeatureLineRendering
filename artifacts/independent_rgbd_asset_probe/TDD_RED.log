@@ -1,0 +1,85 @@
+test_association_unique_bounded (test_core.CoreTests) ... ERROR
+test_backproject_pose_and_units (test_core.CoreTests) ... ERROR
+test_edit_identity_topology_serialize (test_core.CoreTests) ... ERROR
+test_native_boundary (test_core.CoreTests) ... FAIL
+test_occlusion_unknown_contradiction (test_core.CoreTests) ... ERROR
+test_projection_nonidentity_and_behind (test_core.CoreTests) ... ERROR
+test_role_boundary (test_core.CoreTests) ... ERROR
+
+======================================================================
+ERROR: test_association_unique_bounded (test_core.CoreTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/independent_rgbd_asset_probe/tests/independent_rgbd/test_core.py", line 23, in test_association_unique_bounded
+    self.assertEqual(associate([1.,1.01,2.],[1.005,2.1],.02),[(0,0)])
+  File "/home/u00134/3dgs_line/independent_rgbd_asset_probe/src/independent_rgbd/core.py", line 4, in associate
+    def associate(*a): raise NotImplementedError
+NotImplementedError
+
+======================================================================
+ERROR: test_backproject_pose_and_units (test_core.CoreTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/independent_rgbd_asset_probe/tests/independent_rgbd/test_core.py", line 15, in test_backproject_pose_and_units
+    p=unproject(np.array([[100,160.]]),np.array([2.]),K,c)
+  File "/home/u00134/3dgs_line/independent_rgbd_asset_probe/src/independent_rgbd/core.py", line 2, in unproject
+    def unproject(*a): raise NotImplementedError
+NotImplementedError
+
+======================================================================
+ERROR: test_edit_identity_topology_serialize (test_core.CoreTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/independent_rgbd_asset_probe/tests/independent_rgbd/test_core.py", line 32, in test_edit_identity_topology_serialize
+    before=json.dumps(a,sort_keys=True); b=edit_asset(a,'x',[.02,0,0],2)
+  File "/home/u00134/3dgs_line/independent_rgbd_asset_probe/src/independent_rgbd/core.py", line 5, in edit_asset
+    def edit_asset(*a): raise NotImplementedError
+NotImplementedError
+
+======================================================================
+ERROR: test_occlusion_unknown_contradiction (test_core.CoreTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/independent_rgbd_asset_probe/tests/independent_rgbd/test_core.py", line 20, in test_occlusion_unknown_contradiction
+    label=visibility(np.array([[1,1],[1,1],[1,1],[0,0],[9,9]]),np.array([1,2,.5,1,1]),d)
+  File "/home/u00134/3dgs_line/independent_rgbd_asset_probe/src/independent_rgbd/core.py", line 3, in visibility
+    def visibility(*a): raise NotImplementedError
+NotImplementedError
+
+======================================================================
+ERROR: test_projection_nonidentity_and_behind (test_core.CoreTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/independent_rgbd_asset_probe/tests/independent_rgbd/test_core.py", line 10, in test_projection_nonidentity_and_behind
+    uv,z=project(np.array([[2,4,5],[1,2,2]]),K,c)
+  File "/home/u00134/3dgs_line/independent_rgbd_asset_probe/src/independent_rgbd/core.py", line 1, in project
+    def project(*a): raise NotImplementedError
+NotImplementedError
+
+======================================================================
+ERROR: test_role_boundary (test_core.CoreTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/independent_rgbd_asset_probe/tests/independent_rgbd/test_core.py", line 26, in test_role_boundary
+    self.assertEqual(allowed_raw([f,c],'train'),{'rgb/a.png'})
+  File "/home/u00134/3dgs_line/independent_rgbd_asset_probe/src/independent_rgbd/core.py", line 8, in allowed_raw
+    def allowed_raw(*a): raise NotImplementedError
+NotImplementedError
+
+======================================================================
+FAIL: test_native_boundary (test_core.CoreTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/independent_rgbd_asset_probe/tests/independent_rgbd/test_core.py", line 45, in test_native_boundary
+    self.assertEqual(r.returncode,0,r.stderr)
+AssertionError: 1 != 0 : Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/u00134/3dgs_line/independent_rgbd_asset_probe/src/independent_rgbd/core.py", line 9, in restrict_filesystem
+    def restrict_filesystem(*a): raise NotImplementedError
+NotImplementedError
+
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.021s
+
+FAILED (failures=1, errors=6)
