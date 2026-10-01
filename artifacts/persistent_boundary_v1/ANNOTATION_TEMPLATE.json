@@ -1,0 +1,36 @@
+{
+  "status": "AWAITING_HUMAN_INTENT",
+  "role": "diagnostic_human_input_only_not_automatic_training",
+  "coordinate_convention": "pixel centers in original 800x800 per-frame TRAIN RGB; not 400px contact-sheet coordinates",
+  "allowed_F_frame_indices": [1, 14, 27, 41, 53, 67, 79, 93],
+  "scene_annotations": {
+    "lego": {
+      "annotator_identity": null,
+      "annotator_time_minutes": null,
+      "required_structures": [],
+      "optional_structures": [],
+      "excluded_rolling_contours": [],
+      "uncertain_correspondences": [],
+      "tracks": []
+    },
+    "chair": {
+      "annotator_identity": null,
+      "annotator_time_minutes": null,
+      "required_structures": [],
+      "optional_structures": [],
+      "excluded_rolling_contours": [],
+      "uncertain_correspondences": [],
+      "tracks": []
+    }
+  },
+  "track_fields_documentation": {
+    "id": "stable intended line identity across F views, not Gaussian ID",
+    "category": "fixed_structural_candidate | rolling_contour | appearance_only | uncertain",
+    "importance": "required | optional | reject",
+    "observations": "list of {F_train_index, pixels_uv: [[u,v], ...], visibility: visible|occluded|unknown}; omit a view if genuinely unobserved",
+    "ambiguity": "describe alternative identity or support hypotheses without forcing a match"
+  },
+  "three_dimensional_truth_provided": false,
+  "mesh_used": false,
+  "observed_annotations_are_not_provided_by_this_template": true
+}
