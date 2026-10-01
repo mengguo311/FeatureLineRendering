@@ -1,0 +1,40 @@
+{
+  "stage": "S0_source_inventory_no_scientific_verdict",
+  "branch": "persistent-boundary-feasibility-v1",
+  "base_commit": "8dd29e1c68feae723e6d17417eea381251bf1e5f",
+  "source_root": "/home/u00134/cglib",
+  "scenes": {
+    "lego": {
+      "train_camera_json": "/home/u00134/cglib/data/full/lego/transforms_train.json",
+      "train_camera_json_sha256": "82d46cfbd405d7da8562b6fa75b6fb0631a3f941adf66f0c023acb8bf9ea273a",
+      "train_camera_count": 100,
+      "frozen_ply": "/home/u00134/cglib/outputs/lego_static/point_cloud.ply",
+      "frozen_ply_sha256": "aa3630f69affbf3c23cfe841734e9aebb42597aede28fa4a0e5e72e3a31e2d23"
+    },
+    "chair": {
+      "train_camera_json": "/home/u00134/cglib/data/full/chair/transforms_train.json",
+      "train_camera_json_sha256": "f096327d91a775c3d3dbc62d03a244839f6b7b400573c6e0a414f1f",
+      "train_camera_count": 100,
+      "frozen_ply": "/home/u00134/cglib/outputs/chair_static/point_cloud.ply",
+      "frozen_ply_sha256": "18244c1f692b6eb688a02cf180fe53b89d35144888f1887bbd4ef15c01c39a55"
+    }
+  },
+  "construction_F_train_indices": [1, 14, 27, 41, 53, 67, 79, 93],
+  "reserved_C_train_indices": [7, 21, 33, 47, 59, 73, 86, 99],
+  "historically_consumed_DEV_train_indices": [2, 22, 42, 62],
+  "sealed_TEST_indices_metadata_only": [5, 15, 25, 35, 45, 55, 65, 75, 85, 95],
+  "original_GS_training_split_provenance": "UNVERIFIED; do not claim GS-unseen validation",
+  "this_stage_allowed_image_decoding": "F TRAIN only after protocol commit",
+  "this_stage_forbidden_image_decoding": "C, historical DEV, TEST, evaluation mesh/derived arrays",
+  "historical_evidence": [
+    "out/point_feature_foundation/RESULTS.md (UNDETERMINED qualification)",
+    "out/multiscene_foundation_corrected/RESULTS.md (Lego/Chair STOP_B scope)",
+    "out/curve_correspondence_foundation/RESULTS.md (minimal formulation STOP_CORRESPONDENCE)",
+    "artifacts/adaptive_mass_layered_probe/README.md (G0 PASS, G1 0/4 NO_GO)",
+    "artifacts/direct_curve_global_fit_probe/REPORT.md (fixed D/I/L four-scene NO_GO)",
+    "artifacts/hao_mukai_rade_native_f1/REPORT.md (independent per-view F1, not asset)"
+  ],
+  "scientific_thresholds_sealed": false,
+  "human_intent_annotations_available": false,
+  "independent_visual_review_available": false
+}
