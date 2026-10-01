@@ -1,0 +1,11 @@
+# Author-method reproduction protocol (Hao & Mukai, SA 2026)
+
+**Ownership:** The paper's raster-state line formulation, Equations 1–5 and constants belong to **Weiren Hao and Tomohiko Mukai**, *Feature Line Rendering from Rasterization States in 3D Gaussian Splatting*, SIGGRAPH Asia 2026 Posters, https://mukai-lab.org/publications/sa2026poster-3dgs/ . This branch is an **independent reconstruction, not our novel method nor their official implementation**. Do not redistribute the author's preprint PDF; link it.
+
+## Frozen scope, before running
+- Source equations 1–5, K=4, all printed lambdas and smoothstep pairs, no per-scene tuning. Compare to the old unsourced `scripts/poster_repro.py` rank-max **only as a previous proxy**, never call it their method.
+- Run TRAIN camera index 0 in Lego and Chair. Neither TEST nor any evaluation mesh enters the algorithm; no selection by favorable result.
+- Input is the existing frozen vanilla GS PLY. Raster state is our **disc approximation** (`src/raster_state.py`), *not* author's **RaDe-GS**. Covariance-derived unoriented axis is **not** their calibrated rasterized surface normal. Fragment cutoff, projection, RGB, depths, normal geometry and alpha may differ; this prevents a bit-exact or scientifically faithful performance replication.
+- Approximate underspecified operators explicitly: delta-D = relative mean-depth difference using max depth, delta-N = 1−dot, delta-C = Euclidean difference of internal SH0/albedo RGB; four-neighbor maximum assigned symmetrically. The paper does not fully spell out these definitions. The base renderer includes prior defloater filter. No learned mask, no GT mesh.
+- Report continuous L, S_L, E_T and typed fields unchanged. A black-on-white `1−S_L` preview and ink-budget mask are **our display mapping**, not the authors' final NPR compositor; source does not give full final line/brush or compositing code. Never describe this display as pixel-exact Figure 1 reproduction.
+- Success criterion for this *implementation*: unit tests + finite output + no absent top-k attribute; capture full images for both scenes. Qualitative closeness to author Figure 1 is only a subjective visual check, not a source-author certification. No scientific NO-GO can be inferred if proxy renderer fails visually. No TEST unsealing.
