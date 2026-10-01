@@ -30,7 +30,29 @@ def fragment_topk(pix, weights, ids, n_pixels, k):
     return outid.reshape(n_pixels,k),outw/mass[:,None].clamp(min=1e-12),mass
 
 
-def render_state(g,keep_mask,cam,device='cuda',K=8,r_min=1.,r_max=15.,frag_alpha_min=.01):
+def fragment_topk_attributes(pix, weights, ids, depths, normals, n_pixels, k):
+    """Top-k original Gaussian IDs by contribution, carrying each splat's depth/normal."""
+    order=torch.argsort(ids,stable=True)
+    order=order[torch.argsort(-weights[order],stable=True)]
+    order=order[torch.argsort(pix[order],stable=True)]
+    p,w,g=pix[order],weights[order],ids[order]
+    outid=torch.full((n_pixels*k,),-1,device=p.device,dtype=torch.int64)
+    outw=torch.zeros(n_pixels*k,device=p.device,dtype=weights.dtype)
+    outz=torch.zeros(n_pixels*k,device=p.device,dtype=depths.dtype)
+    outn=torch.zeros((n_pixels*k,3),device=p.device,dtype=normals.dtype)
+    if len(p):
+        start=torch.ones_like(p,dtype=torch.bool);start[1:]=p[1:]!=p[:-1]
+        sid=start.long().cumsum(0)-1;ar=torch.arange(len(p),device=p.device)
+        rank=ar-ar[start][sid];ok=(rank<k)&(w>1e-12)
+        dst=p[ok]*k+rank[ok];outid[dst]=g[ok];outw[dst]=w[ok]
+        outz[dst]=depths[order][ok];outn[dst]=normals[order][ok]
+    outw=outw.reshape(n_pixels,k);mass=outw.sum(-1)
+    return (outid.reshape(n_pixels,k),outw/mass[:,None].clamp(min=1e-12),mass,
+            outz.reshape(n_pixels,k),outn.reshape(n_pixels,k,3))
+
+
+def render_state(g,keep_mask,cam,device='cuda',K=8,r_min=1.,r_max=15.,frag_alpha_min=.01,
+                 include_topk_attributes=False):
     dev=torch.device(device);H,W=cam.H,cam.W;P=H*W
     gids=np.flatnonzero(keep_mask);mu=g['mu'][gids];n=g['normal'][gids].copy()
     n[np.sum(n*(cam.center-mu),axis=1)<0]*=-1
@@ -58,9 +80,12 @@ def render_state(g,keep_mask,cam,device='cuda',K=8,r_min=1.,r_max=15.,frag_alpha
         if len(gi):pieces.append(((py[gi,pi].long()*W+px[gi,pi].long()),z[b][gi],alpha[gi,pi],ids[b][gi],normals[b][gi],color[b][gi]))
     zero=lambda *shape:torch.zeros(shape,device=dev)
     if not pieces:
-        return dict(depth= torch.full((H,W),float('inf'),device=dev),depth_median=torch.full((H,W),float('inf'),device=dev),
+        empty=dict(depth=torch.full((H,W),float('inf'),device=dev),depth_median=torch.full((H,W),float('inf'),device=dev),
             normal=zero(H,W,3),alpha=zero(H,W),albedo=zero(H,W,3),topk_id=torch.full((H,W,K),-1,device=dev,dtype=torch.int64),
             topk_w=zero(H,W,K),topk_mass=zero(H,W),entropy=zero(H,W),margin=zero(H,W),depth_variance=zero(H,W),normal_dispersion=zero(H,W),coverage=zero(H,W).bool(),n_frag=0)
+        if include_topk_attributes:
+            empty.update(topk_depth=zero(H,W,K),topk_normal=zero(H,W,K,3),normal_coherence=zero(H,W))
+        return empty
     pix,fz,fa,fg,fn,fc=[torch.cat([p[j] for p in pieces]) for j in range(6)];del pieces
     order=torch.argsort(fz,stable=True);order=order[torch.argsort(pix[order],stable=True)]
     pix,fz,fa,fg,fn,fc=[a[order] for a in (pix,fz,fa,fg,fn,fc)]
@@ -82,12 +107,17 @@ def render_state(g,keep_mask,cam,device='cuda',K=8,r_min=1.,r_max=15.,frag_alpha
     eligible=within>=.5*mass[pix]
     median=torch.full((P,),float('inf'),device=dev)
     median.scatter_reduce_(0,pix[eligible],fz[eligible],reduce='amin',include_self=True)
-    topid,topw,topmass=fragment_topk(pix,w,fg,P,K)
+    if include_topk_attributes:
+        topid,topw,topmass,topdepth,topnormal=fragment_topk_attributes(pix,w,fg,fz,fn,P,K)
+    else:
+        topid,topw,topmass=fragment_topk(pix,w,fg,P,K)
     margin=(topw[:,0]-(topw[:,1] if K>1 else 0))*topmass/den
     mean[~hit]=float('inf');median[~hit]=float('inf')
     result=dict(depth=mean,depth_median=median,normal=normal,alpha=mass.clamp(max=1),albedo=alb,
         topk_id=topid,topk_w=topw,topk_mass=topmass/den,entropy=entropy,
         margin=margin,depth_variance=var,normal_dispersion=(1-norm).clamp(0,1))
+    if include_topk_attributes:
+        result.update(topk_depth=topdepth,topk_normal=topnormal,normal_coherence=norm)
     for name,a in result.items():
         if name not in ('depth','depth_median','topk_id'):a[~hit]=0
         result[name]=a.reshape((H,W)+a.shape[1:]) if name=='topk_id' else a.float().reshape((H,W)+a.shape[1:])
