@@ -1,0 +1,889 @@
+{
+  "status": "PASS",
+  "source_hash": "6925e61350a93610e839b284adb95d7bd72941c36513d4cc83d5ba677a84491c",
+  "build_hash": "54acc2fe19d2665f171014c134a50c1fe286aed66dc37ee86a8ee3af132aed8c",
+  "source": {
+    "build_hash": "54acc2fe19d2665f171014c134a50c1fe286aed66dc37ee86a8ee3af132aed8c",
+    "source_hash": "6925e61350a93610e839b284adb95d7bd72941c36513d4cc83d5ba677a84491c",
+    "wrapper_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+    "source_manifest_sha256": "67a4d8a2c232a6df64cc19db3e6aba7ad703e993c5e632bdb3beb1188ea65630",
+    "variants": {
+      "patched": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/native/patched/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so",
+        "sha256": "77ae2500aa02e7ee994ca6ad40ff4f9ebe80717d1d004df20fb352fed63a31e4"
+      },
+      "unpatched": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/native/unpatched/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so",
+        "sha256": "0c99d1de90070a85922cd81252d9c8324150691261b1af4a86a606156e45db18"
+      }
+    },
+    "render_settings": {
+      "sh_degree": 0,
+      "background": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "kernel_size": 0.0,
+      "scale_modifier": 1.0,
+      "filter_3D": false,
+      "prefiltered": false,
+      "require_depth": true,
+      "topk": 4,
+      "camera_principal_point": "(W-1)/2, (H-1)/2"
+    }
+  },
+  "inputs_sha256": "5c8cc2ac0a984b02343f48d71beb46818a572f161447a56e701d2b76bfc4ab7d",
+  "frames": [
+    {
+      "scene": "lego",
+      "index": 1,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/calibration/lego_F1.npz",
+      "sha256": "11372aee41ddd7ff1c7db4249275da55b9991cc592e71e4a002c04a8e4790fd5",
+      "camera_hash": "97b92a222178a4cea3f96f77474b975c5b773954845f61468625b3cea7b88ce1",
+      "camera": {
+        "native_height": 800,
+        "native_width": 800,
+        "native_K": [
+          [
+            1111.1110311937682,
+            0.0,
+            399.5
+          ],
+          [
+            0.0,
+            1111.1110311937682,
+            399.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "w2c": [
+          [
+            -0.93054224873443,
+            -0.3661845799677077,
+            1.0460740714037742e-08,
+            4.976467275260123e-08
+          ],
+          [
+            -0.11707552976929711,
+            0.29751040522863337,
+            -0.9475129452780043,
+            -2.731658896745382e-08
+          ],
+          [
+            0.34696467623376553,
+            -0.881700976116199,
+            -0.319717287713915,
+            4.031129292275722
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "exact_input_camera": {
+        "FoVx": 0.6911112070083618,
+        "FoVy": 0.6911112070083618,
+        "K": [
+          [
+            555.5555155968841,
+            0.0,
+            199.5
+          ],
+          [
+            0.0,
+            555.5555155968841,
+            199.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "index": 1,
+        "native_K": [
+          [
+            1111.1110311937682,
+            0.0,
+            399.5
+          ],
+          [
+            0.0,
+            1111.1110311937682,
+            399.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "native_height": 800,
+        "native_width": 800,
+        "path": "/home/u00134/cglib/data/full/lego/train/r_1.png",
+        "sha256": "e019daa781bd4cf618192b09476d136061a323a1bf32f3045efee3328333eb6d",
+        "split": "train",
+        "w2c": [
+          [
+            -0.93054224873443,
+            -0.3661845799677077,
+            1.0460740714037742e-08,
+            4.976467275260123e-08
+          ],
+          [
+            -0.11707552976929711,
+            0.29751040522863337,
+            -0.9475129452780043,
+            -2.731658896745382e-08
+          ],
+          [
+            0.34696467623376553,
+            -0.881700976116199,
+            -0.319717287713915,
+            4.031129292275722
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "exact_input_camera_sha256": "97f840c555e4bf3139b7cf862009e1819a6de5a5e8daeec5cea6b7c3f2d6a9af",
+      "checkpoint_sha256": "fa9bea3fa4f8d349fa873a66d892c53cd1263499caec6421c286350a5bb7cbbc",
+      "checkpoint": {
+        "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+        "sha256": "fa9bea3fa4f8d349fa873a66d892c53cd1263499caec6421c286350a5bb7cbbc",
+        "gaussians": 310475,
+        "color": "SH0 clipped 0.5 + C0*f_dc",
+        "ignored_full_sh_coefficients": 45,
+        "filter_3D_present": false,
+        "filter_3D_applied": false,
+        "native_degenerate_inverse_covariance_count": 1993,
+        "proxy_axis_normals_computed": false,
+        "row_id_mapping": "identity / original PLY row"
+      },
+      "calibration": {
+        "status": "PASS",
+        "errors": {
+          "rgb": {
+            "max_abs": 0.0,
+            "mean_abs": 0.0,
+            "max_rel": 0.0,
+            "passed": true
+          },
+          "alpha": {
+            "max_abs": 0.0,
+            "mean_abs": 0.0,
+            "max_rel": 0.0,
+            "passed": true
+          },
+          "depth": {
+            "max_abs": 0.0,
+            "mean_abs": 0.0,
+            "max_rel": 0.0,
+            "passed": true
+          },
+          "normal": {
+            "max_abs": 0.0,
+            "mean_abs": 0.0,
+            "max_rel": 0.0,
+            "passed": true
+          },
+          "median_depth": {
+            "max_abs": 0.0,
+            "mean_abs": 0.0,
+            "max_rel": 0.0,
+            "passed": true
+          }
+        }
+      },
+      "source": {
+        "build_hash": "54acc2fe19d2665f171014c134a50c1fe286aed66dc37ee86a8ee3af132aed8c",
+        "source_hash": "6925e61350a93610e839b284adb95d7bd72941c36513d4cc83d5ba677a84491c",
+        "wrapper_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "source_manifest_sha256": "67a4d8a2c232a6df64cc19db3e6aba7ad703e993c5e632bdb3beb1188ea65630",
+        "variants": {
+          "patched": {
+            "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/native/patched/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so",
+            "sha256": "77ae2500aa02e7ee994ca6ad40ff4f9ebe80717d1d004df20fb352fed63a31e4"
+          },
+          "unpatched": {
+            "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/native/unpatched/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so",
+            "sha256": "0c99d1de90070a85922cd81252d9c8324150691261b1af4a86a606156e45db18"
+          }
+        },
+        "render_settings": {
+          "sh_degree": 0,
+          "background": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "kernel_size": 0.0,
+          "scale_modifier": 1.0,
+          "filter_3D": false,
+          "prefiltered": false,
+          "require_depth": true,
+          "topk": 4,
+          "camera_principal_point": "(W-1)/2, (H-1)/2"
+        }
+      },
+      "diagnostics": {
+        "foreground_pixels": 169028,
+        "top4_alpha_coverage_mean": 0.6995224356651306,
+        "top4_alpha_coverage_p05": 0.43688992559909823,
+        "max_excess_top4_alpha": 1.3969838619232178e-07,
+        "bytes": 15425248
+      }
+    },
+    {
+      "scene": "lego",
+      "index": 41,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/calibration/lego_F41.npz",
+      "sha256": "9581c5855cd7480475eeba35dfd65b3475cfc2fc5e14fc3c84608907744d048b",
+      "camera_hash": "bf6ff6765e4424ef7aa01dfd3407afd57d8319920eef57eeca0874ee0b2d5fd7",
+      "camera": {
+        "native_height": 800,
+        "native_width": 800,
+        "native_K": [
+          [
+            1111.1110311937682,
+            0.0,
+            399.5
+          ],
+          [
+            0.0,
+            1111.1110311937682,
+            399.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "w2c": [
+          [
+            -0.9944141805716256,
+            -0.10554813293394305,
+            2.5049570420242467e-09,
+            -3.6078862519842773e-09
+          ],
+          [
+            -0.020834489803513122,
+            0.19629063414600714,
+            -0.9803243296058445,
+            2.787410920544398e-08
+          ],
+          [
+            0.10347140633848834,
+            -0.9748485267935871,
+            -0.19739325335492097,
+            4.031129106316805
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "exact_input_camera": {
+        "FoVx": 0.6911112070083618,
+        "FoVy": 0.6911112070083618,
+        "K": [
+          [
+            555.5555155968841,
+            0.0,
+            199.5
+          ],
+          [
+            0.0,
+            555.5555155968841,
+            199.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "index": 41,
+        "native_K": [
+          [
+            1111.1110311937682,
+            0.0,
+            399.5
+          ],
+          [
+            0.0,
+            1111.1110311937682,
+            399.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "native_height": 800,
+        "native_width": 800,
+        "path": "/home/u00134/cglib/data/full/lego/train/r_41.png",
+        "sha256": "5636a575bdba988af8466acf29ba6fb8a85ac04ec1f54bab5ee7cef6e3907955",
+        "split": "train",
+        "w2c": [
+          [
+            -0.9944141805716256,
+            -0.10554813293394305,
+            2.5049570420242467e-09,
+            -3.6078862519842773e-09
+          ],
+          [
+            -0.020834489803513122,
+            0.19629063414600714,
+            -0.9803243296058445,
+            2.787410920544398e-08
+          ],
+          [
+            0.10347140633848834,
+            -0.9748485267935871,
+            -0.19739325335492097,
+            4.031129106316805
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "exact_input_camera_sha256": "27d68573f2051f56eb598880547c8c77716fbbed8cb00045bce9d8980a740fad",
+      "checkpoint_sha256": "fa9bea3fa4f8d349fa873a66d892c53cd1263499caec6421c286350a5bb7cbbc",
+      "checkpoint": {
+        "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+        "sha256": "fa9bea3fa4f8d349fa873a66d892c53cd1263499caec6421c286350a5bb7cbbc",
+        "gaussians": 310475,
+        "color": "SH0 clipped 0.5 + C0*f_dc",
+        "ignored_full_sh_coefficients": 45,
+        "filter_3D_present": false,
+        "filter_3D_applied": false,
+        "native_degenerate_inverse_covariance_count": 1993,
+        "proxy_axis_normals_computed": false,
+        "row_id_mapping": "identity / original PLY row"
+      },
+      "calibration": {
+        "status": "PASS",
+        "errors": {
+          "rgb": {
+            "max_abs": 0.0,
+            "mean_abs": 0.0,
+            "max_rel": 0.0,
+            "passed": true
+          },
+          "alpha": {
+            "max_abs": 0.0,
+            "mean_abs": 0.0,
+            "max_rel": 0.0,
+            "passed": true
+          },
+          "depth": {
+            "max_abs": 0.0,
+            "mean_abs": 0.0,
+            "max_rel": 0.0,
+            "passed": true
+          },
+          "normal": {
+            "max_abs": 0.0,
+            "mean_abs": 0.0,
+            "max_rel": 0.0,
+            "passed": true
+          },
+          "median_depth": {
+            "max_abs": 0.0,
+            "mean_abs": 0.0,
+            "max_rel": 0.0,
+            "passed": true
+          }
+        }
+      },
+      "source": {
+        "build_hash": "54acc2fe19d2665f171014c134a50c1fe286aed66dc37ee86a8ee3af132aed8c",
+        "source_hash": "6925e61350a93610e839b284adb95d7bd72941c36513d4cc83d5ba677a84491c",
+        "wrapper_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "source_manifest_sha256": "67a4d8a2c232a6df64cc19db3e6aba7ad703e993c5e632bdb3beb1188ea65630",
+        "variants": {
+          "patched": {
+            "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/native/patched/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so",
+            "sha256": "77ae2500aa02e7ee994ca6ad40ff4f9ebe80717d1d004df20fb352fed63a31e4"
+          },
+          "unpatched": {
+            "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/native/unpatched/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so",
+            "sha256": "0c99d1de90070a85922cd81252d9c8324150691261b1af4a86a606156e45db18"
+          }
+        },
+        "render_settings": {
+          "sh_degree": 0,
+          "background": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "kernel_size": 0.0,
+          "scale_modifier": 1.0,
+          "filter_3D": false,
+          "prefiltered": false,
+          "require_depth": true,
+          "topk": 4,
+          "camera_principal_point": "(W-1)/2, (H-1)/2"
+        }
+      },
+      "diagnostics": {
+        "foreground_pixels": 135902,
+        "top4_alpha_coverage_mean": 0.7003390789031982,
+        "top4_alpha_coverage_p05": 0.43190473318099976,
+        "max_excess_top4_alpha": 1.1920928955078125e-07,
+        "bytes": 12234659
+      }
+    },
+    {
+      "scene": "chair",
+      "index": 1,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/calibration/chair_F1.npz",
+      "sha256": "55d6d5ad50f10c1fbee6601376174203b96a11d7001616717330f6a8b74fd5a2",
+      "camera_hash": "ba1116e794239488bccc9bd6833e4f95cc6481e820a81f5732f46e962bb8ce1d",
+      "camera": {
+        "native_height": 800,
+        "native_width": 800,
+        "native_K": [
+          [
+            1111.1110311937682,
+            0.0,
+            399.5
+          ],
+          [
+            0.0,
+            1111.1110311937682,
+            399.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "w2c": [
+          [
+            0.6858149464926122,
+            0.7277759159864173,
+            3.6490876595688422e-09,
+            -5.0587127426816695e-09
+          ],
+          [
+            0.7249027440079984,
+            -0.6831073906373843,
+            -0.08877095704847392,
+            -1.947162605182502e-09
+          ],
+          [
+            -0.06460526413020715,
+            0.06088035600845806,
+            -0.9960521169767121,
+            4.031129233767258
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "exact_input_camera": {
+        "FoVx": 0.6911112070083618,
+        "FoVy": 0.6911112070083618,
+        "K": [
+          [
+            555.5555155968841,
+            0.0,
+            199.5
+          ],
+          [
+            0.0,
+            555.5555155968841,
+            199.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "index": 1,
+        "native_K": [
+          [
+            1111.1110311937682,
+            0.0,
+            399.5
+          ],
+          [
+            0.0,
+            1111.1110311937682,
+            399.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "native_height": 800,
+        "native_width": 800,
+        "path": "/home/u00134/cglib/data/full/chair/train/r_1.png",
+        "sha256": "a3a5a400dd5df5a917ae40ed6da2f86d0a3e597d074b6ad2f03997418d72d45a",
+        "split": "train",
+        "w2c": [
+          [
+            0.6858149464926122,
+            0.7277759159864173,
+            3.6490876595688422e-09,
+            -5.0587127426816695e-09
+          ],
+          [
+            0.7249027440079984,
+            -0.6831073906373843,
+            -0.08877095704847392,
+            -1.947162605182502e-09
+          ],
+          [
+            -0.06460526413020715,
+            0.06088035600845806,
+            -0.9960521169767121,
+            4.031129233767258
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "exact_input_camera_sha256": "ad0391c84bba5b970ac9bc33890fb4ee2641c65598458a81dd9cc90d92f16e0c",
+      "checkpoint_sha256": "13e4ecc9ffe9c5ae2a0656e2e5c56a737cfdc90a62ad04799db3c46b0b442f5d",
+      "checkpoint": {
+        "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+        "sha256": "13e4ecc9ffe9c5ae2a0656e2e5c56a737cfdc90a62ad04799db3c46b0b442f5d",
+        "gaussians": 256690,
+        "color": "SH0 clipped 0.5 + C0*f_dc",
+        "ignored_full_sh_coefficients": 45,
+        "filter_3D_present": false,
+        "filter_3D_applied": false,
+        "native_degenerate_inverse_covariance_count": 4716,
+        "proxy_axis_normals_computed": false,
+        "row_id_mapping": "identity / original PLY row"
+      },
+      "calibration": {
+        "status": "PASS",
+        "errors": {
+          "rgb": {
+            "max_abs": 0.0,
+            "mean_abs": 0.0,
+            "max_rel": 0.0,
+            "passed": true
+          },
+          "alpha": {
+            "max_abs": 0.0,
+            "mean_abs": 0.0,
+            "max_rel": 0.0,
+            "passed": true
+          },
+          "depth": {
+            "max_abs": 0.0,
+            "mean_abs": 0.0,
+            "max_rel": 0.0,
+            "passed": true
+          },
+          "normal": {
+            "max_abs": 0.0,
+            "mean_abs": 0.0,
+            "max_rel": 0.0,
+            "passed": true
+          },
+          "median_depth": {
+            "max_abs": 0.0,
+            "mean_abs": 0.0,
+            "max_rel": 0.0,
+            "passed": true
+          }
+        }
+      },
+      "source": {
+        "build_hash": "54acc2fe19d2665f171014c134a50c1fe286aed66dc37ee86a8ee3af132aed8c",
+        "source_hash": "6925e61350a93610e839b284adb95d7bd72941c36513d4cc83d5ba677a84491c",
+        "wrapper_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "source_manifest_sha256": "67a4d8a2c232a6df64cc19db3e6aba7ad703e993c5e632bdb3beb1188ea65630",
+        "variants": {
+          "patched": {
+            "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/native/patched/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so",
+            "sha256": "77ae2500aa02e7ee994ca6ad40ff4f9ebe80717d1d004df20fb352fed63a31e4"
+          },
+          "unpatched": {
+            "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/native/unpatched/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so",
+            "sha256": "0c99d1de90070a85922cd81252d9c8324150691261b1af4a86a606156e45db18"
+          }
+        },
+        "render_settings": {
+          "sh_degree": 0,
+          "background": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "kernel_size": 0.0,
+          "scale_modifier": 1.0,
+          "filter_3D": false,
+          "prefiltered": false,
+          "require_depth": true,
+          "topk": 4,
+          "camera_principal_point": "(W-1)/2, (H-1)/2"
+        }
+      },
+      "diagnostics": {
+        "foreground_pixels": 138835,
+        "top4_alpha_coverage_mean": 0.6204032897949219,
+        "top4_alpha_coverage_p05": 0.3854408323764801,
+        "max_excess_top4_alpha": 1.1920928955078125e-07,
+        "bytes": 12442856
+      }
+    },
+    {
+      "scene": "chair",
+      "index": 41,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/calibration/chair_F41.npz",
+      "sha256": "6372490dabbbbbebb3404985f140b1ad03a5239e1928db6a2626200fe1d29d85",
+      "camera_hash": "d7980b283e89620a90c450d1e88f25a4d8da2cd5618ea109bcfdce2f1107f4a3",
+      "camera": {
+        "native_height": 800,
+        "native_width": 800,
+        "native_K": [
+          [
+            1111.1110311937682,
+            0.0,
+            399.5
+          ],
+          [
+            0.0,
+            1111.1110311937682,
+            399.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "w2c": [
+          [
+            0.9869681659798178,
+            0.16091565173833625,
+            -5.195492956776018e-09,
+            4.178762992639055e-09
+          ],
+          [
+            0.1310148865325974,
+            -0.8035733447608902,
+            -0.5806073440865798,
+            -1.0411181334890265e-07
+          ],
+          [
+            -0.09342879662943548,
+            0.573040916123839,
+            -0.814183800567403,
+            4.031128935821265
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "exact_input_camera": {
+        "FoVx": 0.6911112070083618,
+        "FoVy": 0.6911112070083618,
+        "K": [
+          [
+            555.5555155968841,
+            0.0,
+            199.5
+          ],
+          [
+            0.0,
+            555.5555155968841,
+            199.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "index": 41,
+        "native_K": [
+          [
+            1111.1110311937682,
+            0.0,
+            399.5
+          ],
+          [
+            0.0,
+            1111.1110311937682,
+            399.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "native_height": 800,
+        "native_width": 800,
+        "path": "/home/u00134/cglib/data/full/chair/train/r_41.png",
+        "sha256": "a64c2555594c208c98e055d5f885def67257048505b209d7b11fb2701c5ae90c",
+        "split": "train",
+        "w2c": [
+          [
+            0.9869681659798178,
+            0.16091565173833625,
+            -5.195492956776018e-09,
+            4.178762992639055e-09
+          ],
+          [
+            0.1310148865325974,
+            -0.8035733447608902,
+            -0.5806073440865798,
+            -1.0411181334890265e-07
+          ],
+          [
+            -0.09342879662943548,
+            0.573040916123839,
+            -0.814183800567403,
+            4.031128935821265
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "exact_input_camera_sha256": "443487387320e0194c2b054c88abbc0ed8319d2f326c24da42734a8468d9ff10",
+      "checkpoint_sha256": "13e4ecc9ffe9c5ae2a0656e2e5c56a737cfdc90a62ad04799db3c46b0b442f5d",
+      "checkpoint": {
+        "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+        "sha256": "13e4ecc9ffe9c5ae2a0656e2e5c56a737cfdc90a62ad04799db3c46b0b442f5d",
+        "gaussians": 256690,
+        "color": "SH0 clipped 0.5 + C0*f_dc",
+        "ignored_full_sh_coefficients": 45,
+        "filter_3D_present": false,
+        "filter_3D_applied": false,
+        "native_degenerate_inverse_covariance_count": 4716,
+        "proxy_axis_normals_computed": false,
+        "row_id_mapping": "identity / original PLY row"
+      },
+      "calibration": {
+        "status": "PASS",
+        "errors": {
+          "rgb": {
+            "max_abs": 0.0,
+            "mean_abs": 0.0,
+            "max_rel": 0.0,
+            "passed": true
+          },
+          "alpha": {
+            "max_abs": 0.0,
+            "mean_abs": 0.0,
+            "max_rel": 0.0,
+            "passed": true
+          },
+          "depth": {
+            "max_abs": 0.0,
+            "mean_abs": 0.0,
+            "max_rel": 0.0,
+            "passed": true
+          },
+          "normal": {
+            "max_abs": 0.0,
+            "mean_abs": 0.0,
+            "max_rel": 0.0,
+            "passed": true
+          },
+          "median_depth": {
+            "max_abs": 0.0,
+            "mean_abs": 0.0,
+            "max_rel": 0.0,
+            "passed": true
+          }
+        }
+      },
+      "source": {
+        "build_hash": "54acc2fe19d2665f171014c134a50c1fe286aed66dc37ee86a8ee3af132aed8c",
+        "source_hash": "6925e61350a93610e839b284adb95d7bd72941c36513d4cc83d5ba677a84491c",
+        "wrapper_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "source_manifest_sha256": "67a4d8a2c232a6df64cc19db3e6aba7ad703e993c5e632bdb3beb1188ea65630",
+        "variants": {
+          "patched": {
+            "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/native/patched/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so",
+            "sha256": "77ae2500aa02e7ee994ca6ad40ff4f9ebe80717d1d004df20fb352fed63a31e4"
+          },
+          "unpatched": {
+            "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/native/unpatched/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so",
+            "sha256": "0c99d1de90070a85922cd81252d9c8324150691261b1af4a86a606156e45db18"
+          }
+        },
+        "render_settings": {
+          "sh_degree": 0,
+          "background": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "kernel_size": 0.0,
+          "scale_modifier": 1.0,
+          "filter_3D": false,
+          "prefiltered": false,
+          "require_depth": true,
+          "topk": 4,
+          "camera_principal_point": "(W-1)/2, (H-1)/2"
+        }
+      },
+      "diagnostics": {
+        "foreground_pixels": 172187,
+        "top4_alpha_coverage_mean": 0.6460021734237671,
+        "top4_alpha_coverage_p05": 0.39090947806835175,
+        "max_excess_top4_alpha": 1.341104507446289e-07,
+        "bytes": 15388176
+      }
+    }
+  ],
+  "qualifications": [
+    "SH0 only",
+    "frozen vanilla GS; no filter_3D or RaDe training",
+    "native splat normals unverified as physical surface normals",
+    "top4 may omit substantial alpha; full moments use every accepted contribution"
+  ]
+}
