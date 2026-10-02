@@ -8,6 +8,11 @@ import cv2
 import numpy as np
 from hybrid_dense_v1 import ROOT, image_edges, compose
 
+def validate_scene(scene):
+    if scene not in ('lego','chair','drums','ficus'):
+        raise ValueError('unsupported scene')
+    return scene
+
 
 def overlay_ink(rgb, object_mask, image_mask):
     if rgb.ndim != 3 or rgb.shape[2] != 3 or object_mask.shape != rgb.shape[:2] or image_mask.shape != rgb.shape[:2]:
@@ -34,7 +39,8 @@ def arc_frame(scene, arc, frame):
 
 
 def run(scene,arc,output):
-    if scene not in ('lego','chair') or arc not in (0,1):raise ValueError('supported scenes/arcs only')
+    validate_scene(scene)
+    if arc not in (0,1):raise ValueError('supported arcs only')
     root=ROOT/scene/'evaluate'
     frames=sorted(int(p.stem.split('_')[1]) for p in (root/'native').glob(f'arc{arc}_*.npz'))
     if not frames or frames != list(range(len(frames))):raise RuntimeError('arc frame list not complete and contiguous')
@@ -80,5 +86,5 @@ def run(scene,arc,output):
     print(json.dumps(dict(scene=scene,arc=arc,frames=len(frames),main=str(main_path),comparison=str(compare_path))),flush=True)
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--arc',type=int,default=0);args=p.parse_args()
-    for scene in ('lego','chair'):run(scene,args.arc,args.output)
+    p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--arc',type=int,default=0);p.add_argument('--scenes',nargs='+',default=['lego','chair']);args=p.parse_args()
+    for scene in args.scenes:run(scene,args.arc,args.output)
