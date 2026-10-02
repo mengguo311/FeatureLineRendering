@@ -1,0 +1,77 @@
+{
+  "parameter_lock": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+  "review_status": "IN_PROGRESS",
+  "reviewer": "gpt-6-astra implementing model; not independent human review",
+  "scenes": {
+    "chair": {
+      "images": [
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/C_007/line_panel.png",
+          "sha256": "e84f9d60dff2bf26b5e7d367f28d122f8adfffc4a88ddaa4ed92e0aba48a0cde"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/C_047/matched_panel.png",
+          "sha256": "ddd86432012f6a8faedc998abad02e97a090464c0fcb157b7a2f77b7898a4840"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_000/overlay_panel.png",
+          "sha256": "bcc99f6981212d02b20ffdc630ed8846ccc9a90312081f4c0b17ae584b2c5ae9"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_016/line_panel.png",
+          "sha256": "33a9aa1370f386fe53788e74d8af9c8cc27957c47cc3289932999dd92ff80298"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_032/line_panel.png",
+          "sha256": "2b5250cf0ddc53279009643ab96fcd78bb24b6a832f1f6c2b335954813af32f3"
+        },
+        {
+          "coverage": "all eight C frames, full-frame contact sheet",
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/media/chair/C_C_contact.png",
+          "sha256": "83f2dbe7ae35d777c4d27e8e6d93c8393caa2ecebb1f16318a176e79d344e4e3"
+        }
+      ],
+      "observations_zh": [
+        "共同相机的对象对齐；A保留椅背轮廓、边框和座面纹样。",
+        "在背面C7及arc首帧，B/C在颜色较平滑的椅背内添加浅裂纹式细线，边框变成粗密纹；这些新增像素的有用性没有得到验证。",
+        "C47等墨量图中，B/C比A更像灰密纹理填充，局部形状仍可认但纹样与几何线的区别不清楚。",
+        "arc首中末均保留完整对象，姿态按预定义相机变化；B/C新增椅背浅纹和密边框在代表帧中持续出现，未据此声称temporal stability。",
+        "完整8个C中，正面装饰区域高度密集，背面较平滑面上的细裂纹式响应也出现在多个视角；没有据此改参数。"
+      ],
+      "verdict": "useful-detail gain unestablished; await user review"
+    },
+    "lego": {
+      "images": [
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/C_007/line_panel.png",
+          "sha256": "fe89e6ec87ed4e16758c12f468ab6b3b73ea83a659f2449b3931d8784223e059"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_000/line_panel.png",
+          "sha256": "b186f9b5498a079420a99b0ad3e1d0a773a8998a5e947446023565042631a229"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_016/matched_panel.png",
+          "sha256": "2fceaa33190a8d4200cb956cb1c131608f117588a65ddc0edcff3f74438ce17e"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_032/line_panel.png",
+          "sha256": "d295086d56cb7d3be19d627814fec77c83657442755f750033a2bd47a55a5226"
+        },
+        {
+          "coverage": "all eight C frames, full-frame contact sheet",
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/media/lego/C_C_contact.png",
+          "sha256": "7ed9240e713393a18af95b319a83347e42729a618feb930d87baa8743ac63681"
+        }
+      ],
+      "observations_zh": [
+        "RGB、线图、叠加对象视角一致；白背景未见整片伪填充。",
+        "C中的若干凸点圆环和底板小结构比单看A显得更连续，但原密度下也明显更黑。",
+        "B与C在支架、履带和底板上形成大量灰密纹；等墨量B/C仍呈密纹灰图，并没有建立整体有用线条优于A的证据。",
+        "首中末对象位置和姿态随预定义相机变化；仅凭这些代表图和帧数不能判断优越时序稳定性。",
+        "完整8个C的C-arm contact sheet均可辨车辆结构，但履带/支架普遍拥挤发黑，偶有孤立边缘小点；这不是只挑了正面成功视角。"
+      ],
+      "verdict": "useful-detail gain unestablished; await user review"
+    }
+  }
+}
