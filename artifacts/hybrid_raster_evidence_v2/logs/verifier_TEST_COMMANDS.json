@@ -1,0 +1,15 @@
+{
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=.:scripts:tests /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest discover -s tests -p test_hybrid_raster_verifier.py -v",
+  "red": {
+    "exit_code": 1,
+    "expected": "ModuleNotFoundError for missing scripts.verify_hybrid_raster_evidence_v2 before implementation",
+    "log": "artifacts/hybrid_raster_evidence_v2/logs/verifier_RED.log"
+  },
+  "green": {
+    "exit_code": 0,
+    "tests_run": 4,
+    "log": "artifacts/hybrid_raster_evidence_v2/logs/verifier_GREEN.log"
+  },
+  "inputs": "synthetic tests only; pilot smoke verification additionally read already sealed Lego/Chair F1/F41 rendered arrays, with no source photograph decoding or GPU",
+  "frozen_implementation_files_modified": false
+}

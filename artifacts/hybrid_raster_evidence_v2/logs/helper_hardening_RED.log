@@ -1,0 +1,119 @@
+test_checkpoint_mesh_cache_and_runtime_device_have_distinct_classes (tests.test_hybrid_raster_access.AccessAuditTests) ... ok
+test_empty_and_no_production_trace_never_pass (tests.test_hybrid_raster_access.AccessAuditTests) ... test_failed_image_open_does_not_claim_a_successful_decode (tests.test_hybrid_raster_access.AccessAuditTests) ... ok
+test_interleaved_unfinished_openat_and_openat2_are_paired_by_pid (tests.test_hybrid_raster_access.AccessAuditTests) ... ok
+test_known_directory_fd_and_escaped_path_are_resolved (tests.test_hybrid_raster_access.AccessAuditTests) ... ok
+test_production_access_evidence_requires_complete_exit (tests.test_hybrid_raster_access.AccessAuditTests) ... ok
+test_unresolved_dirfd_and_unfinished_calls_cannot_silently_pass (tests.test_hybrid_raster_access.AccessAuditTests) ... ok
+test_native_geometry_nonfinite_requires_explicit_full_mode (tests.test_hybrid_raster_verifier.VerifierTests) ... ok
+test_native_headers_ids_mass_and_nonfinite_weights (tests.test_hybrid_raster_verifier.VerifierTests) ... ok
+test_provenance_background_and_matched_ink_tampering_rejected (tests.test_hybrid_raster_verifier.VerifierTests) ... ok
+test_scalar_diagnostic_mutations_do_not_pass (tests.test_hybrid_raster_verifier.VerifierTests) ... test_valid_arrays_then_corrupted_complement_are_distinguished (tests.test_hybrid_raster_verifier.VerifierTests) ... ok
+
+======================================================================
+FAIL: test_empty_and_no_production_trace_never_pass (tests.test_hybrid_raster_access.AccessAuditTests) (name='empty')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/tests/test_hybrid_raster_access.py", line 28, in test_empty_and_no_production_trace_never_pass
+    self.assertFalse(result['passed'])
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_empty_and_no_production_trace_never_pass (tests.test_hybrid_raster_access.AccessAuditTests) (name='exit_only')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/tests/test_hybrid_raster_access.py", line 28, in test_empty_and_no_production_trace_never_pass
+    self.assertFalse(result['passed'])
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_empty_and_no_production_trace_never_pass (tests.test_hybrid_raster_access.AccessAuditTests) (name='no_success')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/tests/test_hybrid_raster_access.py", line 28, in test_empty_and_no_production_trace_never_pass
+    self.assertFalse(result['passed'])
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_empty_and_no_production_trace_never_pass (tests.test_hybrid_raster_access.AccessAuditTests) (name='no_production')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/tests/test_hybrid_raster_access.py", line 28, in test_empty_and_no_production_trace_never_pass
+    self.assertFalse(result['passed'])
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_empty_and_no_production_trace_never_pass (tests.test_hybrid_raster_access.AccessAuditTests) (name='no_inputs')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/tests/test_hybrid_raster_access.py", line 28, in test_empty_and_no_production_trace_never_pass
+    self.assertFalse(result['passed'])
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_scalar_diagnostic_mutations_do_not_pass (tests.test_hybrid_raster_verifier.VerifierTests) (name='overlap')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/tests/test_hybrid_raster_verifier.py", line 39, in test_scalar_diagnostic_mutations_do_not_pass
+    with self.assertRaises(ValueError): self.verify(corrupt)
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_scalar_diagnostic_mutations_do_not_pass (tests.test_hybrid_raster_verifier.VerifierTests) (name='threshold')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/tests/test_hybrid_raster_verifier.py", line 39, in test_scalar_diagnostic_mutations_do_not_pass
+    with self.assertRaises(ValueError): self.verify(corrupt)
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_scalar_diagnostic_mutations_do_not_pass (tests.test_hybrid_raster_verifier.VerifierTests) (name='gain')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/tests/test_hybrid_raster_verifier.py", line 39, in test_scalar_diagnostic_mutations_do_not_pass
+    with self.assertRaises(ValueError): self.verify(corrupt)
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_scalar_diagnostic_mutations_do_not_pass (tests.test_hybrid_raster_verifier.VerifierTests) (name='original_mass')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/tests/test_hybrid_raster_verifier.py", line 39, in test_scalar_diagnostic_mutations_do_not_pass
+    with self.assertRaises(ValueError): self.verify(corrupt)
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_scalar_diagnostic_mutations_do_not_pass (tests.test_hybrid_raster_verifier.VerifierTests) (name='coverage_mean')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/tests/test_hybrid_raster_verifier.py", line 39, in test_scalar_diagnostic_mutations_do_not_pass
+    with self.assertRaises(ValueError): self.verify(corrupt)
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_scalar_diagnostic_mutations_do_not_pass (tests.test_hybrid_raster_verifier.VerifierTests) (name='coverage_quantile')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/tests/test_hybrid_raster_verifier.py", line 39, in test_scalar_diagnostic_mutations_do_not_pass
+    with self.assertRaises(ValueError): self.verify(corrupt)
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_scalar_diagnostic_mutations_do_not_pass (tests.test_hybrid_raster_verifier.VerifierTests) (name='strata_mass')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/tests/test_hybrid_raster_verifier.py", line 39, in test_scalar_diagnostic_mutations_do_not_pass
+    with self.assertRaises(ValueError): self.verify(corrupt)
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_scalar_diagnostic_mutations_do_not_pass (tests.test_hybrid_raster_verifier.VerifierTests) (name='strata_pixels')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/tests/test_hybrid_raster_verifier.py", line 39, in test_scalar_diagnostic_mutations_do_not_pass
+    with self.assertRaises(ValueError): self.verify(corrupt)
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.235s
+
+FAILED (failures=13)

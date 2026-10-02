@@ -1,6 +1,6 @@
 {
   "parameter_lock": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
-  "review_status": "IN_PROGRESS",
+  "review_status": "COMPLETE_IMPLEMENTING_MODEL_ONLY",
   "reviewer": "gpt-6-astra implementing model; not independent human review",
   "scenes": {
     "chair": {
@@ -29,6 +29,11 @@
           "coverage": "all eight C frames, full-frame contact sheet",
           "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/media/chair/C_C_contact.png",
           "sha256": "83f2dbe7ae35d777c4d27e8e6d93c8393caa2ecebb1f16318a176e79d344e4e3"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/C_007/B_ink.png",
+          "sha256": "69a62d68c823cc0e3cc3153b5fd86ba6b73d65ebc655836196ad561e9652a0a5",
+          "inspection": "native 800x800 individual B ink"
         }
       ],
       "observations_zh": [
@@ -62,6 +67,11 @@
           "coverage": "all eight C frames, full-frame contact sheet",
           "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/media/lego/C_C_contact.png",
           "sha256": "7ed9240e713393a18af95b319a83347e42729a618feb930d87baa8743ac63681"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/C_007/B_ink.png",
+          "sha256": "7342ed5d02dd39d3ef62251d5e3837a69ede3108adb9dd0df5da710813f87eea",
+          "inspection": "native 800x800 individual B ink"
         }
       ],
       "observations_zh": [
@@ -72,6 +82,102 @@
         "完整8个C的C-arm contact sheet均可辨车辆结构，但履带/支架普遍拥挤发黑，偶有孤立边缘小点；这不是只挑了正面成功视角。"
       ],
       "verdict": "useful-detail gain unestablished; await user review"
+    },
+    "drums": {
+      "images": [
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/drums/F_001/line_panel.png",
+          "sha256": "4e6ce6c87d1eab50c3532402b1bec5d0650b90d9179a7cb13004de3b54a127a6"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/drums/F_041/overlay_panel.png",
+          "sha256": "57fee4ec50794d0763a894f2be6931c6786e32831f091f7a134db922867f9bfa"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/drums/C_007/line_panel.png",
+          "sha256": "4186a2cfc1069ea04bf5182b8b3ea92822cf3b142d4f9bfb5f73cd02b4d43d52"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/drums/C_047/matched_panel.png",
+          "sha256": "1fd44f8afcdfba659ba5663a6acabfb19e432846483e485863a6e0bafd435f43"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/drums/arc0_000/line_panel.png",
+          "sha256": "fb1a4605b0d8ac69d536beeabd96f1ba79b9a83237f015feb09deeec837fa5e8"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/drums/arc0_016/matched_panel.png",
+          "sha256": "1cf6353c47772e783700a22e44b062bdaa2c8836ee598c8954ae02634e38d362"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/drums/arc0_032/line_panel.png",
+          "sha256": "19e068bd9635840cad41e5097e6101dc3abbc6302393540d70dca7a319130b5a"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/media/drums/C_C_contact.png",
+          "sha256": "2ce8e62e48c1d29e57dc7ffb991fdc0d770ef77db3b0cffa19aca1c3a92c4bbe",
+          "coverage": "all eight C frames, full-frame contact sheet"
+        }
+      ],
+      "observations_zh": [
+        "F1与C7共同RGB/白底线图视角吻合；B/C在镲片与鼓面上增加大量内部纹理，并非仅增加对象外轮廓。",
+        "F41模型叠加图中支架、踏板与鼓框在B/C下明显更黑、更拥挤，镲片表面呈杂乱细纹。",
+        "C47等连续墨量时B/C仍像灰色密纹明暗图，镲片/鼓面的新增响应不能直接解释为有用几何线。",
+        "arc首中末相机变化幅度小，完整对象均在图内；B/C的镲片杂纹、踏板发黑贯穿代表帧，未据此作时序稳定性结论。",
+        "全部八个C完整画幅图都保留；不同俯仰视角下镲片/鼓面的杂纹和支架拥挤均存在，没有删去难看视角。"
+      ],
+      "verdict": "useful-detail gain unestablished; await user review"
+    },
+    "ficus": {
+      "images": [
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/ficus/F_001/line_panel.png",
+          "sha256": "430f668d97fe0911cea3343c87e03527d03d9378859f178266cf81460a99b9fe"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/ficus/F_041/overlay_panel.png",
+          "sha256": "4fe5d31cbbea341a020e58686030ec844bdbc0b1dc75b921ad3eab1e0bb45000"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/ficus/C_007/line_panel.png",
+          "sha256": "e1e2647181783b7e9b11697bb58304e7d67de233bd9630909e7a6f2c3db151b2"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/ficus/C_047/matched_panel.png",
+          "sha256": "b2821622a1371518ca6db7dccdc76306fe7ac0f59ee40f9fe0c3f412c6119b43"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/ficus/C_007/B_ink.png",
+          "sha256": "72ae5859dda976cc1c1065c669b52a720ec089146cada35c70658baa5c08823d"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/ficus/arc0_000/line_panel.png",
+          "sha256": "b26c0a3fcbdbdfc96ee69342304e69a9a4daa70831051f15049f6f75396fbffe"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/ficus/arc0_016/matched_panel.png",
+          "sha256": "f08e60d38dd610cbb9368185cd4b3981e97d20c400782bd557b8b75d97a9cdcb"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/ficus/arc0_032/line_panel.png",
+          "sha256": "813179a1406b009b69170c1cd871228cf2c2c1c1a98846a6b520488f1defd5e4"
+        },
+        {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/media/ficus/C_C_contact.png",
+          "sha256": "d986798bfefb83e9db29ba0a5499996f706ad98bce9c32b6409b64dfc76fc723",
+          "coverage": "all eight C frames, full-frame contact sheet"
+        }
+      ],
+      "observations_zh": [
+        "F1与C7的B呈现叶面/枝干/盆体灰密纹；C保留A叶缘并整体加深，叶片叠区明显拥挤。",
+        "F41共同模型overlay对齐；盆体在B/C中更黑，不能仅由此称新增线更有用。",
+        "C47为既定真实相机的盆底视角，A保留圆形边界和环纹，B另有盆底斑驳响应；等墨量C仍含大面积灰响应，没有把该视角删除或调整。",
+        "800x800单独B中叶片形态可辨，盆身主要表现为水平斑纹和灰色填充；未验证这些细纹的几何真实性。",
+        "arc首中末完整对象保持可辨，C加深叶缘/枝干与盆体横纹，同时存在底部面内杂纹；没有据此声称时序优越。",
+        "全部八个C中，常规植株视角叶片重叠区发黑；盆底C47和低仰C99照常包含在完整画幅contact sheet中。"
+      ],
+      "verdict": "useful-detail gain unestablished; await user review"
     }
-  }
+  },
+  "independent_human_GO": false
 }

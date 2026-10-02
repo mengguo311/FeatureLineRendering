@@ -1,14 +1,42 @@
 """Synthetic syscall traces: attribution and forbidden source-asset detection."""
 import unittest
+import tempfile
 from pathlib import Path
 
-from scripts.audit_hybrid_raster_access import parse_trace_text, audit_calls
+from scripts.audit_hybrid_raster_access import parse_trace_text, audit_calls, audit_trace
 
 ROOT = Path('/home/u00134/3dgs_line/hybrid_raster_evidence_v2')
 CHECKPOINT = '/home/u00134/3dgs_line/tier1/out/lego/point_cloud.ply'
 
 
 class AccessAuditTests(unittest.TestCase):
+    def test_empty_and_no_production_trace_never_pass(self):
+        base=ROOT/'out/hybrid_raster_evidence_v2/test_tmp'; base.mkdir(parents=True,exist_ok=True)
+        cases={
+            'empty': '',
+            'exit_only': '41 +++ exited with 0 +++',
+            'no_success': '41 openat(AT_FDCWD, "/does-not-exist", O_RDONLY) = -1 ENOENT (No such file or directory)\n41 +++ exited with 0 +++',
+            'no_production': '41 openat(AT_FDCWD, "/usr/lib/libc.so", O_RDONLY) = 3\n41 +++ exited with 0 +++',
+            'no_inputs': f'41 openat(AT_FDCWD, "{CHECKPOINT}", O_RDONLY) = 3\n41 +++ exited with 0 +++',
+        }
+        with tempfile.TemporaryDirectory(dir=base) as tmp:
+            path=Path(tmp)/'fixture.trace'
+            for name,text in cases.items():
+                with self.subTest(name=name):
+                    path.write_text(text)
+                    result=audit_trace(path,{CHECKPOINT})
+                    self.assertFalse(result['passed'])
+                    self.assertEqual(result['status'],'UNDETERMINED')
+
+    def test_production_access_evidence_requires_complete_exit(self):
+        base=ROOT/'out/hybrid_raster_evidence_v2/test_tmp'; base.mkdir(parents=True,exist_ok=True)
+        trace=f'41 openat(AT_FDCWD, "{CHECKPOINT}", O_RDONLY) = 3\n41 openat(AT_FDCWD, "{ROOT}/artifacts/direct_curve_global_fit_probe/INPUTS.json", O_RDONLY) = 4\n'
+        with tempfile.TemporaryDirectory(dir=base) as tmp:
+            path=Path(tmp)/'fixture.trace'; path.write_text(trace)
+            self.assertFalse(audit_trace(path,{CHECKPOINT})['passed'])
+            path.write_text(trace+'41 +++ exited with 0 +++')
+            self.assertTrue(audit_trace(path,{CHECKPOINT})['passed'])
+
     def test_interleaved_unfinished_openat_and_openat2_are_paired_by_pid(self):
         trace = '\n'.join([
             '101 openat(AT_FDCWD, "/home/u00134/cglib/data/full/lego/train/r_1.png", O_RDONLY <unfinished ...>',

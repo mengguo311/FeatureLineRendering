@@ -1,0 +1,42 @@
+{
+  "runs": [
+    {
+      "phase": "vertical RED",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -W error -m unittest tests.test_hybrid_raster_evidence -v",
+      "exit": 1,
+      "log": "evidence_red.log",
+      "reason": "Missing implementation module, genuine vertical synthetic test",
+      "sha256": "ac58f566e95a4be801bf93ec5c008b01159df8d1782161f16bf281977777ee5d"
+    },
+    {
+      "phase": "vertical GREEN",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -W error -m unittest tests.test_hybrid_raster_evidence -v",
+      "exit": 0,
+      "log": "evidence_green_initial.log",
+      "tests": 1,
+      "sha256": "edad6d3d5b4ba525997a0dd1c5c860f7b9c4c110ffd48d0aaf2b5375880c9952"
+    },
+    {
+      "phase": "regression invocation error preserved",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -W error -m unittest tests.test_hybrid_raster_evidence tests.test_hao_mukai_source tests.test_hybrid_dense_v1 tests.test_hybrid_overlay_video tests.test_hybrid_extra_scenes -v",
+      "exit": 1,
+      "log": "evidence_green.log",
+      "reason": "Old tests require scripts on PYTHONPATH; 14 tests passed, 3 imports failed; no production change made",
+      "sha256": "3a6f611c089484ecab6bed2a08cf90461123e24a8070b5eafcafe33bb084f73a"
+    },
+    {
+      "phase": "expanded GREEN + regressions",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=.:scripts /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -W error -m unittest tests.test_hybrid_raster_evidence tests.test_hao_mukai_source tests.test_hybrid_dense_v1 tests.test_hybrid_overlay_video tests.test_hybrid_extra_scenes -v",
+      "exit": 0,
+      "log": "evidence_green_regression.log",
+      "tests": 20,
+      "sha256": "a439035b9dd15ccfced56fab3263993c589df75644e1a40547c13ce37f5c0856"
+    }
+  ],
+  "source_sha256": {
+    "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+    "tests/test_hybrid_raster_evidence.py": "d7b0391ebb6f717a254b6613ac6be8652e98edb01f7af8c179b700138db678f4"
+  },
+  "gpu_used": false,
+  "real_scene_images_read": false
+}

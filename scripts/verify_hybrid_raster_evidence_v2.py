@@ -22,6 +22,7 @@ sys.dont_write_bytecode = True
 import cv2
 import numpy as np
 from PIL import Image
+from scipy import ndimage as ndi
 
 from src.hybrid_raster_io import atomic_json, canonical_hash, hash_file, valid_seal, validate_video
 from src.hybrid_raster_stage import F, SCENES, frame_specs, read_inputs, require_evaluation_lock
@@ -98,8 +99,31 @@ def verify_native(path, shape, count, full_native=False):
                 top4_coverage_mean=float(coverage.mean(dtype=np.float64)) if coverage.size else None)
 
 
-def verify_arrays(arrays, provenance, diagnostics, shape):
+def _check_scalar(value, expected, label):
+    if expected is None:
+        ensure(value is None, 'diagnostic empty statistic differs: '+label)
+    elif isinstance(expected, (int,np.integer)):
+        ensure(value == expected, 'diagnostic integer differs: '+label)
+    else:
+        ensure(isinstance(value,(int,float)) and np.isfinite(value) and
+               np.isclose(value,expected,rtol=1e-10,atol=1e-12), 'diagnostic scalar differs: '+label)
+
+
+def _distribution(value,mask):
+    data=np.asarray(value)[mask]
+    if data.size==0:
+        return dict(count=0,mean=None,min=None,max=None,p05=None,p50=None,p95=None)
+    return dict(count=int(data.size),mean=float(data.mean(dtype=np.float64)),min=float(data.min()),max=float(data.max()),
+                p05=float(np.percentile(data,5)),p50=float(np.percentile(data,50)),p95=float(np.percentile(data,95)))
+
+
+def verify_arrays(arrays, provenance, diagnostics, shape, *, native_raw=None):
     """Check cross-artifact equations and provenance; do not rerun evidence extraction."""
+    ensure(native_raw is not None, 'native diagnostic buffers required; payload-only checks cannot verify scalar summaries')
+    for key in ('alpha','topk_w','normal_len','moment2','depth'):
+        expected_shape=(*shape,4) if key=='topk_w' else tuple(shape)
+        ensure(key in native_raw and native_raw[key].shape==expected_shape and np.isfinite(native_raw[key]).all(),
+               'invalid native diagnostic buffer: '+key)
     for group, values in (('response', arrays), ('provenance', provenance)):
         for key, value in values.items():
             ensure(value.shape == tuple(shape), f'{group} grid mismatch: {key}')
@@ -142,7 +166,42 @@ def verify_arrays(arrays, provenance, diagnostics, shape):
         stats = diagnostics['arms'][key]
         ensure(np.isclose(stats['mass'],mass[key],rtol=1e-12,atol=1e-7), 'diagnostic opacity mass differs')
         ensure(stats['support'] == int(np.count_nonzero(arrays[key])), 'diagnostic support differs')
+        ensure(set(stats['threshold_area'])=={'0.1','0.3','0.5'}, 'diagnostic threshold set differs')
+        for threshold in (.1,.3,.5):
+            _check_scalar(stats['threshold_area'][str(threshold)],int(np.count_nonzero(arrays[key]>=threshold)),key+'/threshold/'+str(threshold))
+        _check_scalar(diagnostics['ink_matching']['gains'][key],gain,'matching/gains/'+key)
+        _check_scalar(diagnostics['ink_matching']['original_mass'][key],mass[key],'matching/original_mass/'+key)
     ensure(np.isclose(diagnostics['ink_matching']['target_mass'],target,rtol=1e-12,atol=1e-7), 'diagnostic target mass differs')
+    ensure(set(diagnostics['overlap'])=={'A_only','B_only','shared','mass'}, 'diagnostic overlap keys differ')
+    for key in ('A_only','B_only','shared'):
+        _check_scalar(diagnostics['overlap'][key],int(expected[key].sum()),'overlap/'+key)
+    _check_scalar(diagnostics['overlap']['mass'],float((a*b).sum(dtype=np.float64)),'overlap/mass')
+    alpha=np.asarray(native_raw['alpha'],np.float32)
+    core=alpha>=.5
+    outline=ndi.binary_dilation(core,iterations=4)&~ndi.binary_erosion(core,iterations=4,border_value=0)
+    strata=dict(background=~(outline|core),outline=outline,interior=core&~outline)
+    for arm in ARMS:
+        ensure(set(diagnostics['arms'][arm]['strata'])==set(strata), 'diagnostic strata set differs')
+        for name,mask in strata.items():
+            stored=diagnostics['arms'][arm]['strata'][name]
+            _check_scalar(stored['pixels'],int(mask.sum()),arm+'/'+name+'/pixels')
+            _check_scalar(stored['mass'],float(arrays[arm][mask].sum(dtype=np.float64)),arm+'/'+name+'/mass')
+            _check_scalar(stored['support'],int(np.count_nonzero(arrays[arm][mask])),arm+'/'+name+'/support')
+    denom=np.maximum(alpha,1e-8)
+    coverage=np.clip(np.asarray(native_raw['topk_w'],np.float32).sum(-1)/denom,0,1).astype(np.float32)
+    coherence=np.clip(np.asarray(native_raw['normal_len'])/denom,0,1).astype(np.float32)
+    variance=np.maximum(np.asarray(native_raw['moment2'])/denom-np.asarray(native_raw['depth'])**2,0).astype(np.float32)
+    raw_statistics={
+        'alpha':_distribution(alpha,np.ones(shape,bool)),
+        'top4_coverage':_distribution(coverage,alpha>.05),
+        'normal_coherence':_distribution(coherence,alpha>.05),
+        'depth_variance':_distribution(variance,alpha>.05),
+    }
+    ensure(set(diagnostics['raw'])==set(raw_statistics),'raw diagnostic field set differs')
+    for field,summary in raw_statistics.items():
+        ensure(set(diagnostics['raw'][field])==set(summary),'raw statistic keys differ: '+field)
+        for statistic,value in summary.items():
+            _check_scalar(diagnostics['raw'][field][statistic],value,'raw/'+field+'/'+statistic)
     channel_counts = {}
     b_only = provenance['B_only']
     for index, name in enumerate(CHANNELS):
@@ -156,6 +215,8 @@ def verify_arrays(arrays, provenance, diagnostics, shape):
                 support={key:int(np.count_nonzero(arrays[key])) for key in ARMS},
                 overlap_pixels={key:int(provenance[key].sum()) for key in ('A_only','B_only','shared')},
                 B_source_diagnostics=channel_counts,
+                native_raw_statistics_checked=raw_statistics,
+                scalar_diagnostics_checked=['arm mass/support/threshold areas','overlap count/mass','matching target/gains/original mass','native-alpha strata pixels/mass/support','raw distribution count/mean/min/max/p05/p50/p95'],
                 qualification='Support and argmax distributions describe saved responses, not physical line truth or visual quality.')
 
 
@@ -215,9 +276,10 @@ def verify_frame(spec, inputs, lock, full_native=False):
     diagnostics = read_json(frame/'diagnostics.json')
     ensure(diagnostics['parameter_hash'] == lock['parameter_hash'] and diagnostics['camera_hash'] == context['camera_hash'], 'diagnostic configuration differs')
     ensure(diagnostics['native_sha256'] == seal['files']['native.npz'], 'diagnostic native buffer differs')
-    response = verify_arrays(arrays,provenance,diagnostics,(h,w))
     with np.load(frame/'native.npz',allow_pickle=False) as data:
-        foreground = cv2.dilate((data['alpha']>=.08).astype(np.uint8),np.ones((3,3),np.uint8))>0
+        diagnostic_native={key:data[key] for key in ('alpha','topk_w','normal_len','moment2','depth')}
+    response = verify_arrays(arrays,provenance,diagnostics,(h,w),native_raw=diagnostic_native)
+    foreground = cv2.dilate((diagnostic_native['alpha']>=.08).astype(np.uint8),np.ones((3,3),np.uint8))>0
     ensure(np.array_equal(foreground,provenance['foreground']), 'common foreground differs from native alpha')
     with np.load(frame/'typed.npz',allow_pickle=False) as data:
         original = data['S_L']
@@ -308,7 +370,7 @@ def run(scenes, output, full_native=False):
     report=dict(schema='hybrid-raster-verification-v1',started_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
                 scenes=list(scenes),full_native=full_native,frames={},media={},missing=[],errors=[],passed=False,
                 source_image_access='NONE; only INPUTS metadata and this stage sealed rendered outputs',
-                finite_check_scope=('all native fields redecoded' if full_native else 'native alpha/IDs/alpha*T redecoded; other native/typed bytes hash-checked against producer-validation seals'),
+                finite_check_scope=('all native fields redecoded' if full_native else 'native alpha/IDs/alpha*T plus depth/moment2/normal_len diagnostic buffers redecoded; other native/typed bytes hash-checked against producer-validation seals'),
                 scientific_qualification='Engineering/artifact integrity and pixel diagnostics only; no useful-line metric, scientific GO, or independent human review.')
     if not (OUT/'LOCK.json').is_file():
         report['missing'].append('LOCK.json: primary F is not yet sealed')

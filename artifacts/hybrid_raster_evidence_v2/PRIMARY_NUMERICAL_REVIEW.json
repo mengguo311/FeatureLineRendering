@@ -1,0 +1,1419 @@
+{
+  "status": "PRIMARY_98_DIAGNOSTICS_INDEPENDENT_AGGREGATION_PASS",
+  "scope": "Lego+Chair; F8/C8/arc0 33 each; JSON only, no NPZ/image/video payloads opened",
+  "interpretation": "仅像素量、浓度、support、来源重叠及原生字段诊断，不是可用线质量/precision/recall，不给视觉判优。",
+  "coverage_denominator": "全部800×800像素；support为浮点ink>0，不是8-bit最终视觉可见像素。",
+  "raw_denominator": "alpha>.05像素；top4 coverage为真实alpha*T前4质量/完整alpha；normal coherence为原生加权splat normals一致性，非正确表面法线概率。",
+  "quantile_note": "per_frame_p05_*是逐帧P05的范围，不是跨帧pooled P05。",
+  "summary_field_validation": "独立直接聚合与summary helper的mass/support mean及raw像素加权mean完全一致；逐帧strata/support/union/mass恒等式通过。",
+  "rows": [
+    {
+      "scene": "lego",
+      "split": "F",
+      "frames": 8,
+      "pixels_per_frame": 640000,
+      "arms": {
+        "A": {
+          "mean_ink_mass": 49239.625,
+          "mean_support_pixels": 49239.625,
+          "support_fraction_full_frame": 0.0769369140625,
+          "mass_fraction_full_frame": 0.0769369140625,
+          "mean_area_ge_0_1": 49239.625,
+          "mean_area_ge_0_3": 49239.625,
+          "mean_area_ge_0_5": 49239.625,
+          "mean_strata": {
+            "background": {
+              "pixels": 446562.25,
+              "mass": 2.25,
+              "support": 2.25
+            },
+            "outline": {
+              "pixels": 24410.75,
+              "mass": 6989.375,
+              "support": 6989.375
+            },
+            "interior": {
+              "pixels": 169027.0,
+              "mass": 42248.0,
+              "support": 42248.0
+            }
+          }
+        },
+        "B": {
+          "mean_ink_mass": 96139.40690413449,
+          "mean_support_pixels": 185276.375,
+          "support_fraction_full_frame": 0.2894943359375,
+          "mass_fraction_full_frame": 0.15021782328771013,
+          "mean_area_ge_0_1": 171873.125,
+          "mean_area_ge_0_3": 151966.125,
+          "mean_area_ge_0_5": 126531.875,
+          "mean_strata": {
+            "background": {
+              "pixels": 446562.25,
+              "mass": 0.054396032603108324,
+              "support": 3.25
+            },
+            "outline": {
+              "pixels": 24410.75,
+              "mass": 9535.432057960517,
+              "support": 17685.0
+            },
+            "interior": {
+              "pixels": 169027.0,
+              "mass": 86603.92045014135,
+              "support": 167588.125
+            }
+          }
+        },
+        "C": {
+          "mean_ink_mass": 116555.48663549809,
+          "mean_support_pixels": 185293.625,
+          "support_fraction_full_frame": 0.2895212890625,
+          "mass_fraction_full_frame": 0.18211794786796576,
+          "mean_area_ge_0_1": 172517.875,
+          "mean_area_ge_0_3": 154521.5,
+          "mean_area_ge_0_5": 134992.75,
+          "mean_strata": {
+            "background": {
+              "pixels": 446562.25,
+              "mass": 2.269625590677606,
+              "support": 4.375
+            },
+            "outline": {
+              "pixels": 24410.75,
+              "mass": 12569.538075023826,
+              "support": 17688.875
+            },
+            "interior": {
+              "pixels": 169027.0,
+              "mass": 103983.67893488357,
+              "support": 167600.375
+            }
+          }
+        }
+      },
+      "overlap": {
+        "mean_A_only": 17.25,
+        "mean_B_only": 136054.0,
+        "mean_shared": 49222.375,
+        "mean_mass": 28823.545268636386,
+        "shared_fraction_of_A_support": 0.9996496723929152,
+        "B_only_fraction_of_C_support": 0.7342616347432352
+      },
+      "raw": {
+        "top4_coverage": {
+          "count": 1472032,
+          "pixel_weighted_mean": 0.6969160450830434,
+          "per_frame_p05_min": 0.43198804259300233,
+          "per_frame_p05_max": 0.44413069188594817,
+          "per_frame_mean_min": 0.6916377525062153,
+          "per_frame_mean_max": 0.7114398026663781
+        },
+        "normal_coherence": {
+          "count": 1472032,
+          "pixel_weighted_mean": 0.8767428815683849,
+          "per_frame_p05_min": 0.6346418708562851,
+          "per_frame_p05_max": 0.7169270366430283,
+          "per_frame_mean_min": 0.8542398455155141,
+          "per_frame_mean_max": 0.894799779123946
+        },
+        "depth_variance": {
+          "count": 1472032,
+          "pixel_weighted_mean": 0.003424601104243372,
+          "per_frame_p05_min": 2.86102294921875e-06,
+          "per_frame_p05_max": 7.62939453125e-06,
+          "per_frame_mean_min": 0.0023757807024654258,
+          "per_frame_mean_max": 0.004940204336551344
+        }
+      }
+    },
+    {
+      "scene": "lego",
+      "split": "C",
+      "frames": 8,
+      "pixels_per_frame": 640000,
+      "arms": {
+        "A": {
+          "mean_ink_mass": 63981.0,
+          "mean_support_pixels": 63981.0,
+          "support_fraction_full_frame": 0.0999703125,
+          "mass_fraction_full_frame": 0.0999703125,
+          "mean_area_ge_0_1": 63981.0,
+          "mean_area_ge_0_3": 63981.0,
+          "mean_area_ge_0_5": 63981.0,
+          "mean_strata": {
+            "background": {
+              "pixels": 419439.125,
+              "mass": 9.375,
+              "support": 9.375
+            },
+            "outline": {
+              "pixels": 21548.625,
+              "mass": 7037.25,
+              "support": 7037.25
+            },
+            "interior": {
+              "pixels": 199012.25,
+              "mass": 56934.375,
+              "support": 56934.375
+            }
+          }
+        },
+        "B": {
+          "mean_ink_mass": 111591.81298784848,
+          "mean_support_pixels": 213497.125,
+          "support_fraction_full_frame": 0.3335892578125,
+          "mass_fraction_full_frame": 0.17436220779351325,
+          "mean_area_ge_0_1": 198237.75,
+          "mean_area_ge_0_3": 174982.625,
+          "mean_area_ge_0_5": 146832.875,
+          "mean_strata": {
+            "background": {
+              "pixels": 419439.125,
+              "mass": 0.6232041393232066,
+              "support": 9.125
+            },
+            "outline": {
+              "pixels": 21548.625,
+              "mass": 8444.47125125368,
+              "support": 15639.625
+            },
+            "interior": {
+              "pixels": 199012.25,
+              "mass": 103146.71853245549,
+              "support": 197848.375
+            }
+          }
+        },
+        "C": {
+          "mean_ink_mass": 138276.8833424669,
+          "mean_support_pixels": 213536.25,
+          "support_fraction_full_frame": 0.333650390625,
+          "mass_fraction_full_frame": 0.21605763022260452,
+          "mean_area_ge_0_1": 199505.0,
+          "mean_area_ge_0_3": 179268.0,
+          "mean_area_ge_0_5": 158437.5,
+          "mean_strata": {
+            "background": {
+              "pixels": 419439.125,
+              "mass": 9.552256695904362,
+              "support": 13.625
+            },
+            "outline": {
+              "pixels": 21548.625,
+              "mass": 11551.415551969023,
+              "support": 15642.25
+            },
+            "interior": {
+              "pixels": 199012.25,
+              "mass": 126715.91553380198,
+              "support": 197880.375
+            }
+          }
+        }
+      },
+      "overlap": {
+        "mean_A_only": 39.125,
+        "mean_B_only": 149555.25,
+        "mean_shared": 63941.875,
+        "mean_mass": 37295.929645381584,
+        "shared_fraction_of_A_support": 0.9993884903330676,
+        "B_only_fraction_of_C_support": 0.7003740582687951
+      },
+      "raw": {
+        "top4_coverage": {
+          "count": 1698639,
+          "pixel_weighted_mean": 0.6979236365799628,
+          "per_frame_p05_min": 0.42560641914606095,
+          "per_frame_p05_max": 0.4537718236446381,
+          "per_frame_mean_min": 0.6852759644310898,
+          "per_frame_mean_max": 0.7120215892516911
+        },
+        "normal_coherence": {
+          "count": 1698639,
+          "pixel_weighted_mean": 0.8934370381433273,
+          "per_frame_p05_min": 0.6896533250808716,
+          "per_frame_p05_max": 0.7285578966140747,
+          "per_frame_mean_min": 0.8757519255172352,
+          "per_frame_mean_max": 0.9013575743342017
+        },
+        "depth_variance": {
+          "count": 1698639,
+          "pixel_weighted_mean": 0.0035183331996154763,
+          "per_frame_p05_min": 3.814697265625e-06,
+          "per_frame_p05_max": 5.7220458984375e-06,
+          "per_frame_mean_min": 0.0017106143978747306,
+          "per_frame_mean_max": 0.006137943469694824
+        }
+      }
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frames": 33,
+      "pixels_per_frame": 640000,
+      "arms": {
+        "A": {
+          "mean_ink_mass": 69907.0303030303,
+          "mean_support_pixels": 69907.0303030303,
+          "support_fraction_full_frame": 0.10922973484848485,
+          "mass_fraction_full_frame": 0.10922973484848485,
+          "mean_area_ge_0_1": 69907.0303030303,
+          "mean_area_ge_0_3": 69907.0303030303,
+          "mean_area_ge_0_5": 69907.0303030303,
+          "mean_strata": {
+            "background": {
+              "pixels": 414328.2121212121,
+              "mass": 19.727272727272727,
+              "support": 19.727272727272727
+            },
+            "outline": {
+              "pixels": 19239.454545454544,
+              "mass": 6900.727272727273,
+              "support": 6900.727272727273
+            },
+            "interior": {
+              "pixels": 206432.33333333334,
+              "mass": 62986.57575757576,
+              "support": 62986.57575757576
+            }
+          }
+        },
+        "B": {
+          "mean_ink_mass": 111134.34398864293,
+          "mean_support_pixels": 218687.0909090909,
+          "support_fraction_full_frame": 0.3416985795454546,
+          "mass_fraction_full_frame": 0.17364741248225457,
+          "mean_area_ge_0_1": 199957.18181818182,
+          "mean_area_ge_0_3": 174145.9090909091,
+          "mean_area_ge_0_5": 144555.87878787878,
+          "mean_strata": {
+            "background": {
+              "pixels": 414328.2121212121,
+              "mass": 1.5633787348205532,
+              "support": 25.90909090909091
+            },
+            "outline": {
+              "pixels": 19239.454545454544,
+              "mass": 7425.635094706894,
+              "support": 13992.272727272728
+            },
+            "interior": {
+              "pixels": 206432.33333333334,
+              "mass": 103707.14551520126,
+              "support": 204668.9090909091
+            }
+          }
+        },
+        "C": {
+          "mean_ink_mass": 141043.31367569746,
+          "mean_support_pixels": 218770.45454545456,
+          "support_fraction_full_frame": 0.34182883522727275,
+          "mass_fraction_full_frame": 0.2203801776182773,
+          "mean_area_ge_0_1": 202001.66666666666,
+          "mean_area_ge_0_3": 180246.0909090909,
+          "mean_area_ge_0_5": 159130.48484848486,
+          "mean_strata": {
+            "background": {
+              "pixels": 414328.2121212121,
+              "mass": 20.234674621570967,
+              "support": 35.60606060606061
+            },
+            "outline": {
+              "pixels": 19239.454545454544,
+              "mass": 10503.832986343914,
+              "support": 13997.515151515152
+            },
+            "interior": {
+              "pixels": 206432.33333333334,
+              "mass": 130519.24601473194,
+              "support": 204737.33333333334
+            }
+          }
+        }
+      },
+      "overlap": {
+        "mean_A_only": 83.36363636363636,
+        "mean_B_only": 148863.42424242425,
+        "mean_shared": 69823.66666666667,
+        "mean_mass": 39998.06061597581,
+        "shared_fraction_of_A_support": 0.9988075071133437,
+        "B_only_fraction_of_C_support": 0.6804548838723306
+      },
+      "raw": {
+        "top4_coverage": {
+          "count": 7205168,
+          "pixel_weighted_mean": 0.6954256394838693,
+          "per_frame_p05_min": 0.4336745262145996,
+          "per_frame_p05_max": 0.43946797847747804,
+          "per_frame_mean_min": 0.6941945718339357,
+          "per_frame_mean_max": 0.6966582605963857
+        },
+        "normal_coherence": {
+          "count": 7205168,
+          "pixel_weighted_mean": 0.9001181257739137,
+          "per_frame_p05_min": 0.7281939178705216,
+          "per_frame_p05_max": 0.7307035326957703,
+          "per_frame_mean_min": 0.8981713557276118,
+          "per_frame_mean_max": 0.9014663496191515
+        },
+        "depth_variance": {
+          "count": 7205168,
+          "pixel_weighted_mean": 0.0034078060654801428,
+          "per_frame_p05_min": 4.76837158203125e-06,
+          "per_frame_p05_max": 5.7220458984375e-06,
+          "per_frame_mean_min": 0.002905587299202001,
+          "per_frame_mean_max": 0.003996218184920162
+        }
+      }
+    },
+    {
+      "scene": "chair",
+      "split": "F",
+      "frames": 8,
+      "pixels_per_frame": 640000,
+      "arms": {
+        "A": {
+          "mean_ink_mass": 42951.75,
+          "mean_support_pixels": 42951.75,
+          "support_fraction_full_frame": 0.067112109375,
+          "mass_fraction_full_frame": 0.067112109375,
+          "mean_area_ge_0_1": 42951.75,
+          "mean_area_ge_0_3": 42951.75,
+          "mean_area_ge_0_5": 42951.75,
+          "mean_strata": {
+            "background": {
+              "pixels": 504019.5,
+              "mass": 74.5,
+              "support": 74.5
+            },
+            "outline": {
+              "pixels": 18526.75,
+              "mass": 7322.25,
+              "support": 7322.25
+            },
+            "interior": {
+              "pixels": 117453.75,
+              "mass": 35555.0,
+              "support": 35555.0
+            }
+          }
+        },
+        "B": {
+          "mean_ink_mass": 63812.82652025347,
+          "mean_support_pixels": 129521.75,
+          "support_fraction_full_frame": 0.202377734375,
+          "mass_fraction_full_frame": 0.09970754143789605,
+          "mean_area_ge_0_1": 117155.0,
+          "mean_area_ge_0_3": 103099.25,
+          "mean_area_ge_0_5": 83195.625,
+          "mean_strata": {
+            "background": {
+              "pixels": 504019.5,
+              "mass": 10.96665183960389,
+              "support": 126.0
+            },
+            "outline": {
+              "pixels": 18526.75,
+              "mass": 7421.26387957101,
+              "support": 14418.875
+            },
+            "interior": {
+              "pixels": 117453.75,
+              "mass": 56380.59598884285,
+              "support": 114976.875
+            }
+          }
+        },
+        "C": {
+          "mean_ink_mass": 82647.88864331326,
+          "mean_support_pixels": 129631.25,
+          "support_fraction_full_frame": 0.202548828125,
+          "mass_fraction_full_frame": 0.12913732600517697,
+          "mean_area_ge_0_1": 118185.5,
+          "mean_area_ge_0_3": 106248.125,
+          "mean_area_ge_0_5": 92789.25,
+          "mean_strata": {
+            "background": {
+              "pixels": 504019.5,
+              "mass": 82.73083283985136,
+              "support": 157.25
+            },
+            "outline": {
+              "pixels": 18526.75,
+              "mass": 10696.700240107206,
+              "support": 14443.0
+            },
+            "interior": {
+              "pixels": 117453.75,
+              "mass": 71868.45757036618,
+              "support": 115031.0
+            }
+          }
+        }
+      },
+      "overlap": {
+        "mean_A_only": 109.5,
+        "mean_B_only": 86679.5,
+        "mean_shared": 42842.25,
+        "mean_mass": 24116.68787694022,
+        "shared_fraction_of_A_support": 0.9974506277392655,
+        "B_only_fraction_of_C_support": 0.6686620702955499
+      },
+      "raw": {
+        "top4_coverage": {
+          "count": 1044153,
+          "pixel_weighted_mean": 0.6457624974903658,
+          "per_frame_p05_min": 0.3722644239664078,
+          "per_frame_p05_max": 0.4286744832992554,
+          "per_frame_mean_min": 0.6122011980975243,
+          "per_frame_mean_max": 0.6842228657952125
+        },
+        "normal_coherence": {
+          "count": 1044153,
+          "pixel_weighted_mean": 0.8584587373760441,
+          "per_frame_p05_min": 0.6240460008382798,
+          "per_frame_p05_max": 0.7006084084510803,
+          "per_frame_mean_min": 0.8292533853950127,
+          "per_frame_mean_max": 0.8936259816365959
+        },
+        "depth_variance": {
+          "count": 1044153,
+          "pixel_weighted_mean": 0.005528854997703687,
+          "per_frame_p05_min": 1.621246337890625e-05,
+          "per_frame_p05_max": 6.103515625e-05,
+          "per_frame_mean_min": 0.003593270055124318,
+          "per_frame_mean_max": 0.008347843970930526
+        }
+      }
+    },
+    {
+      "scene": "chair",
+      "split": "C",
+      "frames": 8,
+      "pixels_per_frame": 640000,
+      "arms": {
+        "A": {
+          "mean_ink_mass": 31731.5,
+          "mean_support_pixels": 31731.5,
+          "support_fraction_full_frame": 0.04958046875,
+          "mass_fraction_full_frame": 0.04958046875,
+          "mean_area_ge_0_1": 31731.5,
+          "mean_area_ge_0_3": 31731.5,
+          "mean_area_ge_0_5": 31731.5,
+          "mean_strata": {
+            "background": {
+              "pixels": 507523.25,
+              "mass": 85.5,
+              "support": 85.5
+            },
+            "outline": {
+              "pixels": 18252.75,
+              "mass": 7005.75,
+              "support": 7005.75
+            },
+            "interior": {
+              "pixels": 114224.0,
+              "mass": 24640.25,
+              "support": 24640.25
+            }
+          }
+        },
+        "B": {
+          "mean_ink_mass": 50895.72538261325,
+          "mean_support_pixels": 116226.125,
+          "support_fraction_full_frame": 0.1816033203125,
+          "mass_fraction_full_frame": 0.0795245709103332,
+          "mean_area_ge_0_1": 95442.75,
+          "mean_area_ge_0_3": 81202.875,
+          "mean_area_ge_0_5": 63990.625,
+          "mean_strata": {
+            "background": {
+              "pixels": 507523.25,
+              "mass": 13.250634302120435,
+              "support": 163.125
+            },
+            "outline": {
+              "pixels": 18252.75,
+              "mass": 7195.83331113153,
+              "support": 14153.625
+            },
+            "interior": {
+              "pixels": 114224.0,
+              "mass": 43686.64143717959,
+              "support": 101909.375
+            }
+          }
+        },
+        "C": {
+          "mean_ink_mass": 64702.08641959009,
+          "mean_support_pixels": 116304.875,
+          "support_fraction_full_frame": 0.1817263671875,
+          "mass_fraction_full_frame": 0.10109701003060952,
+          "mean_area_ge_0_1": 96139.625,
+          "mean_area_ge_0_3": 83329.875,
+          "mean_area_ge_0_5": 71065.875,
+          "mean_strata": {
+            "background": {
+              "pixels": 507523.25,
+              "mass": 95.38158566817432,
+              "support": 191.5
+            },
+            "outline": {
+              "pixels": 18252.75,
+              "mass": 10343.172558459988,
+              "support": 14178.625
+            },
+            "interior": {
+              "pixels": 114224.0,
+              "mass": 54263.532275461934,
+              "support": 101934.75
+            }
+          }
+        }
+      },
+      "overlap": {
+        "mean_A_only": 78.75,
+        "mean_B_only": 84573.375,
+        "mean_shared": 31652.75,
+        "mean_mass": 17925.13896302315,
+        "shared_fraction_of_A_support": 0.9975182389738902,
+        "B_only_fraction_of_C_support": 0.7271696478758951
+      },
+      "raw": {
+        "top4_coverage": {
+          "count": 1017275,
+          "pixel_weighted_mean": 0.678048763398469,
+          "per_frame_p05_min": 0.3852394908666611,
+          "per_frame_p05_max": 0.4712117090821266,
+          "per_frame_mean_min": 0.6365260638012049,
+          "per_frame_mean_max": 0.7096805533879895
+        },
+        "normal_coherence": {
+          "count": 1017275,
+          "pixel_weighted_mean": 0.8887942388870328,
+          "per_frame_p05_min": 0.6426294684410095,
+          "per_frame_p05_max": 0.724643349647522,
+          "per_frame_mean_min": 0.8549903563035387,
+          "per_frame_mean_max": 0.9285224961102415
+        },
+        "depth_variance": {
+          "count": 1017275,
+          "pixel_weighted_mean": 0.0037307908997825504,
+          "per_frame_p05_min": 7.62939453125e-06,
+          "per_frame_p05_max": 4.00543212890625e-05,
+          "per_frame_mean_min": 0.0008507511602568984,
+          "per_frame_mean_max": 0.008388781222983987
+        }
+      }
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frames": 33,
+      "pixels_per_frame": 640000,
+      "arms": {
+        "A": {
+          "mean_ink_mass": 18289.242424242424,
+          "mean_support_pixels": 18289.242424242424,
+          "support_fraction_full_frame": 0.02857694128787879,
+          "mass_fraction_full_frame": 0.02857694128787879,
+          "mean_area_ge_0_1": 18289.242424242424,
+          "mean_area_ge_0_3": 18289.242424242424,
+          "mean_area_ge_0_5": 18289.242424242424,
+          "mean_strata": {
+            "background": {
+              "pixels": 529843.3333333334,
+              "mass": 76.36363636363636,
+              "support": 76.36363636363636
+            },
+            "outline": {
+              "pixels": 14559.666666666666,
+              "mass": 5769.181818181818,
+              "support": 5769.181818181818
+            },
+            "interior": {
+              "pixels": 95597.0,
+              "mass": 12443.69696969697,
+              "support": 12443.69696969697
+            }
+          }
+        },
+        "B": {
+          "mean_ink_mass": 33026.58726815612,
+          "mean_support_pixels": 88586.12121212122,
+          "support_fraction_full_frame": 0.1384158143939394,
+          "mass_fraction_full_frame": 0.05160404260649395,
+          "mean_area_ge_0_1": 63802.181818181816,
+          "mean_area_ge_0_3": 51607.90909090909,
+          "mean_area_ge_0_5": 39658.15151515151,
+          "mean_strata": {
+            "background": {
+              "pixels": 529843.3333333334,
+              "mass": 9.27909587576236,
+              "support": 127.0
+            },
+            "outline": {
+              "pixels": 14559.666666666666,
+              "mass": 5719.564627486841,
+              "support": 11229.242424242424
+            },
+            "interior": {
+              "pixels": 95597.0,
+              "mass": 27297.74354479352,
+              "support": 77229.87878787878
+            }
+          }
+        },
+        "C": {
+          "mean_ink_mass": 40892.835284072135,
+          "mean_support_pixels": 88629.90909090909,
+          "support_fraction_full_frame": 0.13848423295454546,
+          "mass_fraction_full_frame": 0.06389505513136272,
+          "mean_area_ge_0_1": 64205.121212121216,
+          "mean_area_ge_0_3": 52681.0,
+          "mean_area_ge_0_5": 43631.969696969696,
+          "mean_strata": {
+            "background": {
+              "pixels": 529843.3333333334,
+              "mass": 82.28198105639763,
+              "support": 145.66666666666666
+            },
+            "outline": {
+              "pixels": 14559.666666666666,
+              "mass": 8295.172885041928,
+              "support": 11249.242424242424
+            },
+            "interior": {
+              "pixels": 95597.0,
+              "mass": 32515.380417973818,
+              "support": 77235.0
+            }
+          }
+        }
+      },
+      "overlap": {
+        "mean_A_only": 43.78787878787879,
+        "mean_B_only": 70340.66666666667,
+        "mean_shared": 18245.454545454544,
+        "mean_mass": 10422.994408326409,
+        "shared_fraction_of_A_support": 0.9976058123255102,
+        "B_only_fraction_of_C_support": 0.7936448021684998
+      },
+      "raw": {
+        "top4_coverage": {
+          "count": 3493333,
+          "pixel_weighted_mean": 0.7002828810200032,
+          "per_frame_p05_min": 0.4575452357530594,
+          "per_frame_p05_max": 0.46743448078632355,
+          "per_frame_mean_min": 0.6979693668204018,
+          "per_frame_mean_max": 0.7021129704488751
+        },
+        "normal_coherence": {
+          "count": 3493333,
+          "pixel_weighted_mean": 0.9185187912169569,
+          "per_frame_p05_min": 0.7034059166908264,
+          "per_frame_p05_max": 0.7174310088157654,
+          "per_frame_mean_min": 0.9139678589882281,
+          "per_frame_mean_max": 0.922270335005293
+        },
+        "depth_variance": {
+          "count": 3493333,
+          "pixel_weighted_mean": 0.0012994518880238117,
+          "per_frame_p05_min": 1.049041748046875e-05,
+          "per_frame_p05_max": 1.239776611328125e-05,
+          "per_frame_mean_min": 0.0008332438066694822,
+          "per_frame_mean_max": 0.002286212444373107
+        }
+      }
+    }
+  ],
+  "frame_manifest": [
+    {
+      "scene": "lego",
+      "split": "F",
+      "frame": "F_001",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/F_001/diagnostics.json",
+      "sha256": "0980e8cc7f04602c802248ae73b27f368eaff55ae2038b530e653f2270b728cb"
+    },
+    {
+      "scene": "lego",
+      "split": "F",
+      "frame": "F_014",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/F_014/diagnostics.json",
+      "sha256": "78e03f801fc1c0bb595b8f05e5617b3cccb6125e936dd8ecd25abec986896af7"
+    },
+    {
+      "scene": "lego",
+      "split": "F",
+      "frame": "F_027",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/F_027/diagnostics.json",
+      "sha256": "880a1049fce1fcc0da7116e37d5b941194d25450b614d38b2b81fcf9c4a61051"
+    },
+    {
+      "scene": "lego",
+      "split": "F",
+      "frame": "F_041",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/F_041/diagnostics.json",
+      "sha256": "f8566500fd8e15fc8f29cbb8fbe96cfcf88cd7dc750e20f4b3e2c14ae81e5e60"
+    },
+    {
+      "scene": "lego",
+      "split": "F",
+      "frame": "F_053",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/F_053/diagnostics.json",
+      "sha256": "4707147f551a8e9bbb862e02d8cbc65e3386b4972200942eeca905e47558046a"
+    },
+    {
+      "scene": "lego",
+      "split": "F",
+      "frame": "F_067",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/F_067/diagnostics.json",
+      "sha256": "875d60b2f71cf645d9e3ace7b94ae254b83bc697e8de752f1e63d18dbb6fae82"
+    },
+    {
+      "scene": "lego",
+      "split": "F",
+      "frame": "F_079",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/F_079/diagnostics.json",
+      "sha256": "96fc8fa604b0294e468249a7a4b14de1f286b9bb982b20a0ef5a90122f72676f"
+    },
+    {
+      "scene": "lego",
+      "split": "F",
+      "frame": "F_093",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/F_093/diagnostics.json",
+      "sha256": "b298abe156b286a4519c369dc388c091233eaa0f41a3b6648cab3cd945a7c69e"
+    },
+    {
+      "scene": "lego",
+      "split": "C",
+      "frame": "C_007",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/C_007/diagnostics.json",
+      "sha256": "648ee1435425d47a580de6f19bb04356db73a93601fa7fc11b74f476375c78c1"
+    },
+    {
+      "scene": "lego",
+      "split": "C",
+      "frame": "C_021",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/C_021/diagnostics.json",
+      "sha256": "089dc047b856a240ed60a7fe5a79219b0c0d5c1d1197a4a0a9fe6ceb625032dd"
+    },
+    {
+      "scene": "lego",
+      "split": "C",
+      "frame": "C_033",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/C_033/diagnostics.json",
+      "sha256": "dbab9ad217daaaee6063f259b60379bf2f0cd497a0cef93bcf4e0247e0cb505f"
+    },
+    {
+      "scene": "lego",
+      "split": "C",
+      "frame": "C_047",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/C_047/diagnostics.json",
+      "sha256": "2b16188c57167c051d91d86004273635c22f4faef227bf1a40384a2ad6df1350"
+    },
+    {
+      "scene": "lego",
+      "split": "C",
+      "frame": "C_059",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/C_059/diagnostics.json",
+      "sha256": "0e6b802dfc6952dda97e63a45aa8b45002c32d4e830f3fa00a87572b0cffd192"
+    },
+    {
+      "scene": "lego",
+      "split": "C",
+      "frame": "C_073",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/C_073/diagnostics.json",
+      "sha256": "f146a98ea4e744286aec4d8cca81e79b3e11a16c78c5aeafdad60faa923bfa4a"
+    },
+    {
+      "scene": "lego",
+      "split": "C",
+      "frame": "C_086",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/C_086/diagnostics.json",
+      "sha256": "b9370ab72c79a63289bd4e72b17897f09a7d86a738b7c63f3ccd110aa8f071eb"
+    },
+    {
+      "scene": "lego",
+      "split": "C",
+      "frame": "C_099",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/C_099/diagnostics.json",
+      "sha256": "eecddf1c87d8e043b3e4fca02d938b45c74c66e13e6e40c94691ff4d77f080bc"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_000",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_000/diagnostics.json",
+      "sha256": "ce2d648b7f5c871741109d2de578e22a40ca628ff24b032f8dd7c76c9caf025c"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_001",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_001/diagnostics.json",
+      "sha256": "8ca1ea20c3ea7f1d22ddec48c3917b998b12a5bc95374babf9d9ca7a7501b034"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_002",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_002/diagnostics.json",
+      "sha256": "7b91eb4cd433a1d6a9eae32fa61ed8dd4480496396ebf159d2c1cc9dfd5dcc9f"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_003",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_003/diagnostics.json",
+      "sha256": "76e2ff9dd0d39e3bceaea2ff5661b8e3ec4e234d68b2a41140d15ecc8fe072b3"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_004",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_004/diagnostics.json",
+      "sha256": "a3e1615e220a44f1c208d0e13fb342bb4d7d8e96a9f4ae90341cafe4b0a65028"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_005",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_005/diagnostics.json",
+      "sha256": "ce3715b6c6d0c940bf4fee2502b78356359366064b99d67b50a1881227348432"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_006",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_006/diagnostics.json",
+      "sha256": "245ef6c732cd370f0f6d0a4f794fc682486b786f3326b0489a620d02a3313bf5"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_007",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_007/diagnostics.json",
+      "sha256": "0c3f2c011e9b7fcfb5dd441145e26790a3b7fdc362ec98dd4dfc1eda40699a9b"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_008",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_008/diagnostics.json",
+      "sha256": "790b50af9f5ab07027eefe6c989b3eaa94e8d98284b4948c5ac6467da12eb1d8"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_009",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_009/diagnostics.json",
+      "sha256": "49a6579895dfdb93bca7f6c4cc14776171a7d6d815cb7fd9d6cc332e3a3f7f67"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_010",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_010/diagnostics.json",
+      "sha256": "c1104c81dddf5fe443cb5d70ee3b40ac4d045f61ea2b4543162a4889f6a6ef05"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_011",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_011/diagnostics.json",
+      "sha256": "9481ea439a27b1fdb68a52f434740114a5c172f39be92f7e117a0cb6ba7207cb"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_012",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_012/diagnostics.json",
+      "sha256": "530575b2bb402073283c5aac02e1017ccbf3897d3ed7bc84032546dbc7f61d78"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_013",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_013/diagnostics.json",
+      "sha256": "264b2d779fc25d3ef673e46fb0635eb966a313b436a00b6a66dab31a9e057ef4"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_014",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_014/diagnostics.json",
+      "sha256": "4b9529a12e0de2401f9d34a8145add462183f5ba1b82fca5008ea02c03091ad9"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_015",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_015/diagnostics.json",
+      "sha256": "796a7894f82527c85cffe93e76b9bdd0d2a3a9da79b84a113071eabd895d9aff"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_016",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_016/diagnostics.json",
+      "sha256": "a335aee9004ca2a8031b0084edbb6d205f3c42a7f1658135a542bc9581517c3e"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_017",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_017/diagnostics.json",
+      "sha256": "44fd188f90661ebf552e980cef1d75b52b3f3f6f79cae08c4f456fec19f05f75"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_018",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_018/diagnostics.json",
+      "sha256": "632efe42ec415b7b1aa9747a7f6e9618c644ea6e944114c24e5a3a0be17ec437"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_019",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_019/diagnostics.json",
+      "sha256": "2dc968fa2ea3dc265d41b6081bd63000e652c86b2d3a7d2dfb5a55c5e16146bf"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_020",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_020/diagnostics.json",
+      "sha256": "cc15b3914e1531b5e6cf864b633d9525400c73b87384b6dda43efd9d6a8d5df7"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_021",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_021/diagnostics.json",
+      "sha256": "5f78c246add3228bed2bfe3d6365947437d3aead914fb6ebc8a6ae7171cdaaba"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_022",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_022/diagnostics.json",
+      "sha256": "7d79a1695a56e32bd740edde39a8ad96e0b763543ffd1b5666cd6434b1f17e1a"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_023",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_023/diagnostics.json",
+      "sha256": "97c0ab0b5f7142f14014ca5494cdd6d1dd458d24f5d94d946875dba1108c286b"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_024",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_024/diagnostics.json",
+      "sha256": "512af0114f6af519baa39f8b792b48faf3dbddeb29108f6fecd2850b3b25dd0d"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_025",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_025/diagnostics.json",
+      "sha256": "aba018a34fd0d03531f030ba17229543dcafe777d6936b3282dbda23fa5fbb7b"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_026",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_026/diagnostics.json",
+      "sha256": "249c2a3990563d949b383c8fa00d508873b85c4b2fb0aef0b99cc24be0adb0f8"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_027",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_027/diagnostics.json",
+      "sha256": "d3f64a4cb7f0cd5035d4e99606bb967296741400ce635048558af140d1d20c07"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_028",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_028/diagnostics.json",
+      "sha256": "df660a18b68e3b78a74c6cc1d076087d08efcb01e551d237a6343d2d1fc9bd28"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_029",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_029/diagnostics.json",
+      "sha256": "9c92d9204618171e8f3656a1012e17749226eb1dcc1390e289c3be0ada347939"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_030",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_030/diagnostics.json",
+      "sha256": "ad1e485dbe53084d4607c8b1d9e1bd5a6a515d8732479c38c2c88dde6a7048b4"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_031",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_031/diagnostics.json",
+      "sha256": "2c8e93c9cd64acf1c443b793b9f7c627959a633e8e9081bc9a7fba6119364d86"
+    },
+    {
+      "scene": "lego",
+      "split": "arc0",
+      "frame": "arc0_032",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/lego/arc0_032/diagnostics.json",
+      "sha256": "2033bcfc45cd43d865fff4c218073a9608750a4631bb943c89c4228cf001bc90"
+    },
+    {
+      "scene": "chair",
+      "split": "F",
+      "frame": "F_001",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/F_001/diagnostics.json",
+      "sha256": "96fe7154072e815bbacb5e6e16ba8cd628703115ba0bdcc1cd4391ea17643c1f"
+    },
+    {
+      "scene": "chair",
+      "split": "F",
+      "frame": "F_014",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/F_014/diagnostics.json",
+      "sha256": "85e55c0c544d7ca1358ce5dfa938b5544fa519a99c9691da1c7b1d665a734c6f"
+    },
+    {
+      "scene": "chair",
+      "split": "F",
+      "frame": "F_027",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/F_027/diagnostics.json",
+      "sha256": "ecdf0e69d2083f4007cd3bfabdb4ed46966a8b22d69de8750fddadd43388e947"
+    },
+    {
+      "scene": "chair",
+      "split": "F",
+      "frame": "F_041",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/F_041/diagnostics.json",
+      "sha256": "584152d0f295610d4667aefba891d6f7ea992389c50bdb76267ac91a840933ff"
+    },
+    {
+      "scene": "chair",
+      "split": "F",
+      "frame": "F_053",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/F_053/diagnostics.json",
+      "sha256": "9acf27d43a87a6029dc3c1a9155effcee27e44d8c872ae315b8546db8353ffa7"
+    },
+    {
+      "scene": "chair",
+      "split": "F",
+      "frame": "F_067",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/F_067/diagnostics.json",
+      "sha256": "19dd51ee57e92ea40583736803adcec8d84a55e74018c48d36c5c25603849657"
+    },
+    {
+      "scene": "chair",
+      "split": "F",
+      "frame": "F_079",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/F_079/diagnostics.json",
+      "sha256": "82eb5c292d01d1f2229433caba13b7eb5e17158454402206cf4e078a3667f8ad"
+    },
+    {
+      "scene": "chair",
+      "split": "F",
+      "frame": "F_093",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/F_093/diagnostics.json",
+      "sha256": "c120b7e8594114defc2f84ed66915de902a34ebc4e4db90ed4f62a93dcba7828"
+    },
+    {
+      "scene": "chair",
+      "split": "C",
+      "frame": "C_007",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/C_007/diagnostics.json",
+      "sha256": "72abfeee0d110ae6e487d70655ff273224ed0ab9a1fad2a8e782fa73950a02eb"
+    },
+    {
+      "scene": "chair",
+      "split": "C",
+      "frame": "C_021",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/C_021/diagnostics.json",
+      "sha256": "3a85d8005909aef89629c67d97759ece199fcac11ec9bcac89e4e60f7cd5fefc"
+    },
+    {
+      "scene": "chair",
+      "split": "C",
+      "frame": "C_033",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/C_033/diagnostics.json",
+      "sha256": "88a0e6f7eccfa6c0489c1f7eea4d062236defbe5e09047873384ea39a544a5f4"
+    },
+    {
+      "scene": "chair",
+      "split": "C",
+      "frame": "C_047",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/C_047/diagnostics.json",
+      "sha256": "e28d08f14ec5cf2d386375114c783a94a8a671886ed8a16d23792af0dd191ebb"
+    },
+    {
+      "scene": "chair",
+      "split": "C",
+      "frame": "C_059",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/C_059/diagnostics.json",
+      "sha256": "4af0eb588330504bd8cf0151207ca5d3871bb4331c351fd2086d3a0825ab3c82"
+    },
+    {
+      "scene": "chair",
+      "split": "C",
+      "frame": "C_073",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/C_073/diagnostics.json",
+      "sha256": "24e23ed5633db3923e276c3e0f0a1bf322d576881ceb58169a3b0965f558a8ed"
+    },
+    {
+      "scene": "chair",
+      "split": "C",
+      "frame": "C_086",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/C_086/diagnostics.json",
+      "sha256": "e7872620bb96f50dc1192ad57f30b4fe5ad28c325b6102b52ce2cbb81c0dbde2"
+    },
+    {
+      "scene": "chair",
+      "split": "C",
+      "frame": "C_099",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/C_099/diagnostics.json",
+      "sha256": "62b964b41d649afc29a0fead4b6f5aee2d7a9d078757cce04f6b1f7a75196eb6"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_000",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_000/diagnostics.json",
+      "sha256": "e2ec8e53fd2d81821303de59bb548ce58940cbf0bac6d5438d275f23eb4bf866"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_001",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_001/diagnostics.json",
+      "sha256": "ccda44aedfc6e90ffdc9e7820cad2b5456ebf99a213a4c2f8464793c2b9e7a16"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_002",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_002/diagnostics.json",
+      "sha256": "f94e8aba2b7477137793b0559a3d70db4fb4b3c1798b2621627e6ee24958d62d"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_003",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_003/diagnostics.json",
+      "sha256": "3ad10eecd0c812630493ee6e770a7e28f418916c22eee142bcf07901b910acca"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_004",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_004/diagnostics.json",
+      "sha256": "fa07b7f9c59ba66605ad36d4248845e4133a78b71b64f76219e26b6dbe38bb5e"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_005",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_005/diagnostics.json",
+      "sha256": "1cb04c29510e8a683d993d1cd87207582b22c74d34816ac2c581f0140a009a8a"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_006",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_006/diagnostics.json",
+      "sha256": "d76a26d9e909db63cd39807e503c6f8d3db3672ef4b67a1d1fbfdc1f294f53b1"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_007",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_007/diagnostics.json",
+      "sha256": "589bdb441628f8425f7aec4ff65d14c71067ee3b912e7831be2dcc7b2545f3d2"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_008",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_008/diagnostics.json",
+      "sha256": "ed2016472c858ebcd3bed62e1f301dcd65656d9a53048da96374c7156c62def0"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_009",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_009/diagnostics.json",
+      "sha256": "c94d2d867e109e53e8db3e35db77505d7d14837e527bd929f1c731c1549ff1a1"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_010",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_010/diagnostics.json",
+      "sha256": "b6aa347105bf10268ab37fccfcd9e6320465fba365dbf9ddf7f8df21574ef807"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_011",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_011/diagnostics.json",
+      "sha256": "8986505229594cc418fd5a1a0d36146bc9b5324821f244d60df84cb91c28b0fc"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_012",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_012/diagnostics.json",
+      "sha256": "d04ca56af2de72ee31ac3638e6d61f6b056eadbdeb61d0093f8ad49032084cc8"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_013",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_013/diagnostics.json",
+      "sha256": "ebc34ce50305b6a1049a082210c897aabc6684d9edae79be7107f00467aac34a"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_014",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_014/diagnostics.json",
+      "sha256": "8b66b1ca24d7376a7461ce74ac7a96fe108c66dfa1955ff60d96573131143c1e"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_015",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_015/diagnostics.json",
+      "sha256": "2c7f398ebfbc08867e3fa1fa3f3e4ca96e344ee2aeb76d1b48a2dbab344af5ba"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_016",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_016/diagnostics.json",
+      "sha256": "d39a2579a5f07df11262bd01568bb62ea923e66a2cbdbbd2b25f794c0444946d"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_017",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_017/diagnostics.json",
+      "sha256": "dfd08de8e9708a4fa243890037ef12e541c931d3dade7ebb9d0e0365c8cee75a"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_018",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_018/diagnostics.json",
+      "sha256": "e53cd92c7ffaf573f371c07fd0d8d6f0f8661e306c48ca8167ee640b8d62f3f8"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_019",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_019/diagnostics.json",
+      "sha256": "24f0d2650a89f441a64ee838d0262a1adfc38118dfc847dc342c6da23961b981"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_020",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_020/diagnostics.json",
+      "sha256": "35e3020043cd5a56c4f571c9a87b0424718cd2d70915f21dc7b12a5a08423d79"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_021",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_021/diagnostics.json",
+      "sha256": "8e925877cc534f10d15f48b1b8910212988d9fb705d39757584d92355be5b837"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_022",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_022/diagnostics.json",
+      "sha256": "99ecc80611aadf323d81fd96fbe4f6ab55cf55bfe6ea1ea3a10be0762480048b"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_023",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_023/diagnostics.json",
+      "sha256": "e63c97f0e6790ba4371f87edca43248d633a05a0ced6b5c90566a1f2c587c613"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_024",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_024/diagnostics.json",
+      "sha256": "40a584d89c49669057112732faf5b4a9ecc6c6d3255f5985213307fd724073f5"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_025",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_025/diagnostics.json",
+      "sha256": "be765b1619fb95de9bb9011432e193aa15d6388dfb0dcca14ccff29ab2466c36"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_026",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_026/diagnostics.json",
+      "sha256": "b6a1b312617c6cb5d4bcc50b807edcb658eb84f2cc34a42d511035bb2d6b76c1"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_027",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_027/diagnostics.json",
+      "sha256": "4c7fb1d02e7afd9c0aa8645f25986fbc231267266f25dcb1ca2114d84d2e8100"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_028",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_028/diagnostics.json",
+      "sha256": "9729555d7f64e321fa1ceb13be314ba64be05b8a9118b5788d6efd457ef55bc5"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_029",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_029/diagnostics.json",
+      "sha256": "1c509bfb2afc87008651a3549c48d973f49d18533e7981be3142b424f8b8a180"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_030",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_030/diagnostics.json",
+      "sha256": "7780f7fc308f9e97c16f172a72bfa1c31ff0953ec64f737c5a4b02cdfad1e24b"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_031",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_031/diagnostics.json",
+      "sha256": "1d0b0995d6b18929c01406e36bcac0c63b6d85733f53cb3f9161e49d0581096a"
+    },
+    {
+      "scene": "chair",
+      "split": "arc0",
+      "frame": "arc0_032",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/frames/chair/arc0_032/diagnostics.json",
+      "sha256": "88c63de32c2f6f426655075f335a1d7b5db3dfdba0548f00db5c2c285ac3ae18"
+    }
+  ]
+}

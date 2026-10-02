@@ -16,5 +16,28 @@
   },
   "read_utc": "2026-10-02",
   "runtime_launch_record": "existing launch.sh invokes codex exec -m gpt-6-astra -c model_reasoning_effort=ultra; no global config modified",
-  "upstream_url": "https://github.com/HKUST-SAIL/RaDe-GS"
+  "upstream_url": "https://github.com/HKUST-SAIL/RaDe-GS",
+  "inherited_extra_input_qualification": {
+    "scenes": [
+      "drums",
+      "ficus"
+    ],
+    "status": "INSUFFICIENT_POSTERIOR_QUALITY; later gates NOT_ELIGIBLE",
+    "source": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation_corrected/RESULTS.md",
+    "source_sha256": "14163cc43b8d638cdf1aeaa69c4f56e0491ec641231857681e437bd3187b8bf0",
+    "status_lines": [
+      15,
+      16,
+      24,
+      25
+    ],
+    "qualification_lines": [
+      6,
+      56,
+      57,
+      58
+    ],
+    "scope_zh": "继承已知native800→area400事后校正后的输入资格失败；本阶段不重训、不重新认证几何后验，不将输入限制解释为本方法科学失败。未读取图像或DEV/TEST文件。"
+  },
+  "formula_color_qualification_zh": "论文C称为composite color；本独立状态约定采用去白背景visible SH0 mean，故delta_C/E_C/E_T并非官方composite-C缓冲精确复现；原始S_L不依赖颜色分支。"
 }

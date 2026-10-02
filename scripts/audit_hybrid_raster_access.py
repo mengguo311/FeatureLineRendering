@@ -147,6 +147,8 @@ def audit_calls(calls,worktree,allowed_checkpoints):
     allowed |= {_current_realpath(path) for path in allowed}
     checkpoints={}; forbidden=[]; meshes=[]; writes=[]; runtime=[]; unresolved=[]
     successful=failed=relative=0
+    input_manifest_opens=0
+    input_manifest=str(worktree/'artifacts/direct_curve_global_fit_probe/INPUTS.json')
     realpaths={}
     for original in calls:
         if not original['successful']: failed+=1; continue
@@ -159,6 +161,7 @@ def audit_calls(calls,worktree,allowed_checkpoints):
         record={**original,'current_realpath':real}
         if original['path_resolution']!='absolute': relative+=1
         candidates={path,real}
+        if input_manifest in candidates: input_manifest_opens+=1
         if candidates & allowed:
             key=next((p for p in (path,real) if p in allowed),path)
             checkpoints[key]=checkpoints.get(key,0)+1
@@ -186,6 +189,7 @@ def audit_calls(calls,worktree,allowed_checkpoints):
             else:
                 writes.append({**record,'kind':('regular_file' if mode is not None and stat.S_ISREG(mode) else 'ordinary_path_or_no_longer_present')})
     return dict(successful_open_count=successful,failed_open_count=failed,
+                input_manifest_successful_opens=input_manifest_opens,
                 relative_path_resolution_count=relative,checkpoints=checkpoints,
                 forbidden_images=forbidden,mesh_assets=meshes,outside_worktree_writes=writes,
                 runtime_device_writes=runtime,unresolved_successful_opens=unresolved)
@@ -200,11 +204,17 @@ def audit_trace(path,allowed_checkpoints,provisional=False):
     violations=findings['forbidden_images']+findings['mesh_assets']+findings['outside_worktree_writes']
     incomplete=(provisional or not snapshot_stable or bool(parsed['active_pids']) or bool(parsed['pending']))
     uncertain=bool(parsed['unparsed'] or findings['unresolved_successful_opens'])
+    production_evidence=dict(successful_opens=findings['successful_open_count']>0,
+                             completed_traced_processes=bool(parsed['process_exits']) and not parsed['active_pids'],
+                             frozen_checkpoint_opened=bool(findings['checkpoints']),
+                             input_manifest_opened=findings['input_manifest_successful_opens']>0)
+    missing_evidence=[key for key,value in production_evidence.items() if not value]
     return dict(path=str(path),snapshot_sha256=hashlib.sha256(blob).hexdigest(),snapshot_bytes=len(blob),
                 snapshot_stable_during_read=snapshot_stable,provisional_requested=provisional,
                 trace_processes_complete=not parsed['active_pids'],
-                status=('NONCOMPLIANT' if violations else 'INCOMPLETE' if incomplete else 'UNDETERMINED' if uncertain else 'PASS'),
-                passed=not violations and not incomplete and not uncertain,
+                status=('NONCOMPLIANT' if violations else 'UNDETERMINED' if missing_evidence else 'INCOMPLETE' if incomplete else 'UNDETERMINED' if uncertain else 'PASS'),
+                passed=not violations and not incomplete and not uncertain and not missing_evidence,
+                production_evidence=production_evidence,missing_production_evidence=missing_evidence,
                 counts=dict(lines=parsed['line_count'],parsed_open_calls=len(parsed['calls']),
                             successful_opens=findings['successful_open_count'],failed_opens=findings['failed_open_count'],
                             resumed_pairs=parsed['resumed_call_count'],unparsed=len(parsed['unparsed']),
@@ -245,6 +255,7 @@ def main():
                     'Filesystem symlink resolution is checked at audit time and may differ from execution-time state. Runtime /dev,/proc,/sys paths are classified separately, not treated as ordinary output artifacts.',
                     'The deny policy recognizes source dataset images, TEST/DEV image paths, and common mesh/geometry extensions; extensionless or opaque archive-embedded assets cannot be identified by path alone.',
                     'File snapshots still growing, unmatched unfinished calls, active traced PIDs, missing traces, or unparsed calls cannot support a final PASS.',
+                    'A final trace PASS also requires successful opens, complete traced-process exits, and observed opens of an allowlisted frozen checkpoint and INPUTS.json; empty or unrelated traces are UNDETERMINED.',
                     'A PASS is limited to captured calls and these assumptions; it is not a scientific or human visual GO.',
                 ])
     atomic_json(args.output,report,replace=True)

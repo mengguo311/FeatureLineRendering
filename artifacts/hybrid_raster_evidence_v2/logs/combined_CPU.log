@@ -1,0 +1,85 @@
+test_A_preserves_inherited_rgb_and_alpha_detector (test_hybrid_raster_evidence.HybridRasterEvidenceTests) ... ok
+test_complement_nulls_overlap_and_tiny_weak_structure (test_hybrid_raster_evidence.HybridRasterEvidenceTests) ... ok
+test_depth_response_detects_native_step_and_masks_empty_rays (test_hybrid_raster_evidence.HybridRasterEvidenceTests) ... ok
+test_empty_rays_produce_no_ink_and_keep_sentinels (test_hybrid_raster_evidence.HybridRasterEvidenceTests) ... ok
+test_f_normalization_frozen_recipe_and_channel_provenance (test_hybrid_raster_evidence.HybridRasterEvidenceTests) ... ok
+test_ink_matching_scales_whole_support_without_topk_deletion (test_hybrid_raster_evidence.HybridRasterEvidenceTests) ... ok
+test_original_id_global_bijection_does_not_change_typed_evidence (test_hybrid_raster_evidence.HybridRasterEvidenceTests) ... ok
+test_overlap_is_invariant_to_support_slot_permutation (test_hybrid_raster_evidence.HybridRasterEvidenceTests) ... ok
+test_rejects_nonfinite_raw_before_author_sanitization (test_hybrid_raster_evidence.HybridRasterEvidenceTests) ... ok
+test_rejects_shapes_source_mixing_and_nonphysical_weights (test_hybrid_raster_evidence.HybridRasterEvidenceTests) ... ok
+test_vertical_export_typed_evidence_provenance_and_background (test_hybrid_raster_evidence.HybridRasterEvidenceTests) ... ok
+test_atomic_json_default_is_immutable_and_status_can_replace (test_hybrid_raster_io.ProductionIOTests) ... ok
+test_contact_sheet_preserves_entire_native_tiles (test_hybrid_raster_io.ProductionIOTests) ... ok
+test_overlay_shape_and_invalid_values_rejected (test_hybrid_raster_io.ProductionIOTests) ... ok
+test_repeated_corrupt_and_changed_dimension_video_are_not_promoted (test_hybrid_raster_io.ProductionIOTests) ... [mov,mp4,m4a,3gp,3g2,mj2 @ 0x3c624c40] moov atom not found
+ok
+test_restart_rejects_partial_corrupt_context_extra_and_existing_output (test_hybrid_raster_io.ProductionIOTests) ... ok
+test_vertical_frame_white_overlay_panel_atomic_seal (test_hybrid_raster_io.ProductionIOTests) ... ok
+test_video_promotes_only_after_complete_distinct_decode (test_hybrid_raster_io.ProductionIOTests) ... ok
+test_01_vertical_export_and_unpatched_calibration (test_hybrid_raster_native.NativeContractTest) ... ERROR
+test_02_more_than_four_contributors_keeps_full_moment (test_hybrid_raster_native.NativeContractTest) ... ERROR
+test_03_empty_rays_and_dimensions (test_hybrid_raster_native.NativeContractTest) ... ERROR
+test_04_exact_native_principal_point (test_hybrid_raster_native.NativeContractTest) ... ok
+test_c_gate_requires_all_primary_f_seals_and_matching_lock (test_hybrid_raster_stage.StageContractTest) ... ok
+test_complete_f_lock_releases_gate_then_detects_tamper (test_hybrid_raster_stage.StageContractTest) ... ok
+test_exact_predeclared_domain_and_camera (test_hybrid_raster_stage.StageContractTest) ... ok
+
+======================================================================
+ERROR: test_01_vertical_export_and_unpatched_calibration (test_hybrid_raster_native.NativeContractTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/tests/test_hybrid_raster_native.py", line 29, in test_01_vertical_export_and_unpatched_calibration
+    raw = render_native(g, cam)
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/src/hybrid_raster_native.py", line 197, in render_native
+    native = _extension(patched)
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/src/hybrid_raster_native.py", line 159, in _extension
+    metadata = json.loads((NATIVE / 'BUILD.json').read_text())['variants'][variant]
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/pathlib.py", line 1194, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/pathlib.py", line 1180, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/pathlib.py", line 1038, in _opener
+    return self._accessor.open(self, flags, mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/native/BUILD.json'
+
+======================================================================
+ERROR: test_02_more_than_four_contributors_keeps_full_moment (test_hybrid_raster_native.NativeContractTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/tests/test_hybrid_raster_native.py", line 49, in test_02_more_than_four_contributors_keeps_full_moment
+    raw = render_native(g, cam)
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/src/hybrid_raster_native.py", line 197, in render_native
+    native = _extension(patched)
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/src/hybrid_raster_native.py", line 159, in _extension
+    metadata = json.loads((NATIVE / 'BUILD.json').read_text())['variants'][variant]
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/pathlib.py", line 1194, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/pathlib.py", line 1180, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/pathlib.py", line 1038, in _opener
+    return self._accessor.open(self, flags, mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/native/BUILD.json'
+
+======================================================================
+ERROR: test_03_empty_rays_and_dimensions (test_hybrid_raster_native.NativeContractTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/tests/test_hybrid_raster_native.py", line 60, in test_03_empty_rays_and_dimensions
+    raw = render_native(g, camera(31, 47))
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/src/hybrid_raster_native.py", line 197, in render_native
+    native = _extension(patched)
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/src/hybrid_raster_native.py", line 159, in _extension
+    metadata = json.loads((NATIVE / 'BUILD.json').read_text())['variants'][variant]
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/pathlib.py", line 1194, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/pathlib.py", line 1180, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/pathlib.py", line 1038, in _opener
+    return self._accessor.open(self, flags, mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/native/BUILD.json'
+
+----------------------------------------------------------------------
+Ran 25 tests in 3.813s
+
+FAILED (errors=3)

@@ -1,0 +1,8 @@
+{
+  "phase": "RED before implementation",
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=.:scripts /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest discover -s tests -p test_hybrid_raster_io.py -v",
+  "exit_code": 1,
+  "expected_failure": "ModuleNotFoundError: No module named 'src.hybrid_raster_io'",
+  "log": "artifacts/hybrid_raster_evidence_v2/logs/io_RED.log",
+  "inputs": "synthetic only; no CUDA, scene images, C, DEV, or TEST"
+}

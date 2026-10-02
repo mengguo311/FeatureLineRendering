@@ -1,0 +1,18 @@
+{
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=.:scripts:tests /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest tests.test_hybrid_raster_access tests.test_hybrid_raster_verifier -v",
+  "red": {
+    "exit_code": 1,
+    "tests_run": 12,
+    "failing_subtests": 13,
+    "expected": "5 empty/unrelated production trace false PASS cases and 8 unchecked scalar diagnostic mutations",
+    "log": "artifacts/hybrid_raster_evidence_v2/logs/helper_hardening_RED.log"
+  },
+  "green": {
+    "exit_code": 0,
+    "tests_run": 12,
+    "log": "artifacts/hybrid_raster_evidence_v2/logs/helper_hardening_GREEN.log"
+  },
+  "scope": "Auxiliary verification only: source producer, frozen parameters, and produced scientific artifacts are unchanged. No GPU or original photographs accessed.",
+  "verifier_api": "verify_arrays(..., native_raw=raw) now requires native alpha, topk_w, depth, moment2, normal_len buffers to verify raw and stratum diagnostics; missing native buffers are refused.",
+  "production_smoke_log": "artifacts/hybrid_raster_evidence_v2/logs/helper_hardening_REAL_F1_SMOKE.log"
+}

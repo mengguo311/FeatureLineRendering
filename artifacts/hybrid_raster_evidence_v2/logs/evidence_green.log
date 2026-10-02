@@ -1,0 +1,58 @@
+test_A_preserves_inherited_rgb_and_alpha_detector (tests.test_hybrid_raster_evidence.HybridRasterEvidenceTests) ... ok
+test_complement_nulls_overlap_and_tiny_weak_structure (tests.test_hybrid_raster_evidence.HybridRasterEvidenceTests) ... ok
+test_depth_response_detects_native_step_and_masks_empty_rays (tests.test_hybrid_raster_evidence.HybridRasterEvidenceTests) ... ok
+test_empty_rays_produce_no_ink_and_keep_sentinels (tests.test_hybrid_raster_evidence.HybridRasterEvidenceTests) ... ok
+test_f_normalization_frozen_recipe_and_channel_provenance (tests.test_hybrid_raster_evidence.HybridRasterEvidenceTests) ... ok
+test_ink_matching_scales_whole_support_without_topk_deletion (tests.test_hybrid_raster_evidence.HybridRasterEvidenceTests) ... ok
+test_original_id_global_bijection_does_not_change_typed_evidence (tests.test_hybrid_raster_evidence.HybridRasterEvidenceTests) ... ok
+test_overlap_is_invariant_to_support_slot_permutation (tests.test_hybrid_raster_evidence.HybridRasterEvidenceTests) ... ok
+test_rejects_nonfinite_raw_before_author_sanitization (tests.test_hybrid_raster_evidence.HybridRasterEvidenceTests) ... ok
+test_rejects_shapes_source_mixing_and_nonphysical_weights (tests.test_hybrid_raster_evidence.HybridRasterEvidenceTests) ... ok
+test_vertical_export_typed_evidence_provenance_and_background (tests.test_hybrid_raster_evidence.HybridRasterEvidenceTests) ... ok
+test_competing_layers_activate_visibility_term (tests.test_hao_mukai_source.PosterSourceTests) ... ok
+test_smoothstep_and_support_change_gate (tests.test_hao_mukai_source.PosterSourceTests) ... ok
+test_topk_attributes_follow_weight_rank_not_depth_order (tests.test_hao_mukai_source.PosterSourceTests) ... ok
+test_hybrid_dense_v1 (unittest.loader._FailedTest) ... ERROR
+test_hybrid_overlay_video (unittest.loader._FailedTest) ... ERROR
+test_hybrid_extra_scenes (unittest.loader._FailedTest) ... ERROR
+
+======================================================================
+ERROR: test_hybrid_dense_v1 (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_hybrid_dense_v1
+Traceback (most recent call last):
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/unittest/loader.py", line 154, in loadTestsFromName
+    module = __import__(module_name)
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/tests/test_hybrid_dense_v1.py", line 3, in <module>
+    from hybrid_dense_v1 import compose
+ModuleNotFoundError: No module named 'hybrid_dense_v1'
+
+
+======================================================================
+ERROR: test_hybrid_overlay_video (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_hybrid_overlay_video
+Traceback (most recent call last):
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/unittest/loader.py", line 154, in loadTestsFromName
+    module = __import__(module_name)
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/tests/test_hybrid_overlay_video.py", line 3, in <module>
+    from hybrid_overlay_video import overlay_ink
+ModuleNotFoundError: No module named 'hybrid_overlay_video'
+
+
+======================================================================
+ERROR: test_hybrid_extra_scenes (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_hybrid_extra_scenes
+Traceback (most recent call last):
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/unittest/loader.py", line 154, in loadTestsFromName
+    module = __import__(module_name)
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/tests/test_hybrid_extra_scenes.py", line 2, in <module>
+    from hybrid_overlay_video import validate_scene
+ModuleNotFoundError: No module named 'hybrid_overlay_video'
+
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.408s
+
+FAILED (errors=3)

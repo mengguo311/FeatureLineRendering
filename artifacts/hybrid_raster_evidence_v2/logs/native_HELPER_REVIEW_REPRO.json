@@ -1,0 +1,33 @@
+[
+  {
+    "case": "original empty trace",
+    "status": "UNDETERMINED",
+    "passed": false,
+    "missing": [
+      "successful_opens",
+      "completed_traced_processes",
+      "frozen_checkpoint_opened",
+      "input_manifest_opened"
+    ]
+  },
+  {
+    "case": "overlap/B_only",
+    "status": "REJECTED",
+    "message": "diagnostic integer differs: overlap/B_only"
+  },
+  {
+    "case": "arms/A/threshold_area/0.1",
+    "status": "REJECTED",
+    "message": "diagnostic integer differs: A/threshold/0.1"
+  },
+  {
+    "case": "ink_matching/gains/A",
+    "status": "REJECTED",
+    "message": "diagnostic scalar differs: matching/gains/A"
+  },
+  {
+    "case": "raw/top4_coverage/mean",
+    "status": "REJECTED",
+    "message": "diagnostic scalar differs: raw/top4_coverage/mean"
+  }
+]

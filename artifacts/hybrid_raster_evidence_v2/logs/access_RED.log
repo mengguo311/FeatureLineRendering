@@ -1,0 +1,20 @@
+test_hybrid_raster_access (unittest.loader._FailedTest) ... ERROR
+
+======================================================================
+ERROR: test_hybrid_raster_access (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_hybrid_raster_access
+Traceback (most recent call last):
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/unittest/loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/unittest/loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/tests/test_hybrid_raster_access.py", line 5, in <module>
+    from scripts.audit_hybrid_raster_access import parse_trace_text, audit_calls
+ModuleNotFoundError: No module named 'scripts.audit_hybrid_raster_access'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

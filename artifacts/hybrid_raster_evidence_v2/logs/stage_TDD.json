@@ -1,0 +1,25 @@
+{
+  "cpu_regression_pass": {
+    "exit_code": 0,
+    "log": "artifacts/hybrid_raster_evidence_v2/logs/combined_CPU_GREEN.log",
+    "tests": 30
+  },
+  "green": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=.:scripts TMPDIR=$PWD/out/hybrid_raster_evidence_v2/tmp /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest discover -s tests -p test_hybrid_raster_stage.py -v",
+    "exit_code": 0,
+    "log": "artifacts/hybrid_raster_evidence_v2/logs/stage_GREEN.log",
+    "sha256": "fd61eb2944d64dae4021436d037632c096364f407fd3ff74732480f664b3b309"
+  },
+  "preserved_integration_failure": {
+    "log": "artifacts/hybrid_raster_evidence_v2/logs/combined_CPU.log",
+    "reason": "Premature wildcard included native GPU suite before isolated BUILD.json existed; three import/build-not-ready errors; not interpreted as native calibration or science failure"
+  },
+  "python": "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+  "red": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=.:scripts /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -m unittest discover -s tests -p test_hybrid_raster_stage.py -v",
+    "exit_code": 1,
+    "log": "artifacts/hybrid_raster_evidence_v2/logs/stage_RED.log",
+    "reason": "ModuleNotFoundError before implementation",
+    "sha256": "19fb90dd084f38ccd286cef3baaf972b927c617831b9c7f6fb25961201e9d510"
+  }
+}

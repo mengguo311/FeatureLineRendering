@@ -1,0 +1,35 @@
+{
+  "red": {
+    "command": "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -B -m unittest tests.test_hybrid_raster_native",
+    "exit_code": 1,
+    "expected": true,
+    "reason": "ModuleNotFoundError: src.hybrid_raster_native before implementation",
+    "log": "out/hybrid_raster_evidence_v2/native_logs/TDD_RED.log"
+  },
+  "green": {
+    "command": "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -B -m unittest tests.test_hybrid_raster_native -v",
+    "exit_code": 0,
+    "tests_at_execution": 4,
+    "log": "out/hybrid_raster_evidence_v2/native_logs/TDD_GREEN.log"
+  },
+  "cpu_negative_controls": {
+    "command": "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -B -m unittest tests.test_hybrid_raster_native.NativeContractTest.test_05_calibration_rejects_changed_or_nonfinite_buffers tests.test_hybrid_raster_native.NativeContractTest.test_06_export_validation_rejects_wrong_id_shape_and_mass -v",
+    "exit_code": 0,
+    "tests": 2,
+    "log": "out/hybrid_raster_evidence_v2/native_logs/CPU_NEGATIVE_CONTROLS.log"
+  },
+  "build": {
+    "command": "scripts/build_hybrid_raster_native.sh",
+    "exit_code": 0,
+    "logs": [
+      "out/hybrid_raster_evidence_v2/native_logs/build_patched.log",
+      "out/hybrid_raster_evidence_v2/native_logs/build_unpatched.log"
+    ],
+    "engineering_failure_rounds": 0
+  },
+  "calibration": {
+    "command": "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -B -m src.hybrid_raster_native --calibrate-primary",
+    "exit_code": 0,
+    "log": "out/hybrid_raster_evidence_v2/native_logs/CALIBRATION.log"
+  }
+}

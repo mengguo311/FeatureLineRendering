@@ -1,0 +1,84 @@
+{
+  "status": "PASS",
+  "groups": [
+    {
+      "name": "final_NEW_AND_REGRESSION",
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "tests.test_hybrid_raster_native",
+        "tests.test_hybrid_raster_evidence",
+        "tests.test_hybrid_raster_io",
+        "tests.test_hybrid_raster_stage",
+        "tests.test_hybrid_raster_verifier",
+        "tests.test_hybrid_raster_access",
+        "tests.test_hybrid_dense_v1",
+        "tests.test_hybrid_overlay_video",
+        "tests.test_hybrid_extra_scenes",
+        "tests.test_hao_mukai_source",
+        "-v"
+      ],
+      "PYTHONPATH": ".:scripts",
+      "exit_code": 0,
+      "tests": 48,
+      "elapsed_seconds": 5.266563664888963,
+      "log": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/artifacts/hybrid_raster_evidence_v2/logs/final_NEW_AND_REGRESSION.log",
+      "gpu_guard": {
+        "utc": "2026-10-02T14:27:08.451386+00:00",
+        "pid": 2321588,
+        "uid": 1026,
+        "gpu": "0, NVIDIA RTX A6000, 4 MiB, 0 %\n1, NVIDIA RTX A6000, 4 MiB, 0 %",
+        "processes": []
+      }
+    },
+    {
+      "name": "final_LEGACY_NATIVE",
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "tests.test_rade_native_f1",
+        "-v"
+      ],
+      "PYTHONPATH": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/native/patched:/home/u00134/3dgs_line/hybrid_raster_evidence_v2",
+      "exit_code": 0,
+      "tests": 2,
+      "elapsed_seconds": 3.7190706038381904,
+      "log": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/artifacts/hybrid_raster_evidence_v2/logs/final_LEGACY_NATIVE.log",
+      "gpu_guard": {
+        "utc": "2026-10-02T14:27:13.826720+00:00",
+        "pid": 2321588,
+        "uid": 1026,
+        "gpu": "0, NVIDIA RTX A6000, 4 MiB, 0 %\n1, NVIDIA RTX A6000, 4 MiB, 0 %",
+        "processes": []
+      }
+    },
+    {
+      "name": "final_LEGACY_FOUNDATION",
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "tests.test_rade_state_calibration",
+        "-v"
+      ],
+      "PYTHONPATH": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/native/unpatched:/home/u00134/3dgs_line/hybrid_raster_evidence_v2",
+      "exit_code": 0,
+      "tests": 2,
+      "elapsed_seconds": 3.6095676319673657,
+      "log": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/artifacts/hybrid_raster_evidence_v2/logs/final_LEGACY_FOUNDATION.log",
+      "gpu_guard": {
+        "utc": "2026-10-02T14:27:17.655411+00:00",
+        "pid": 2321588,
+        "uid": 1026,
+        "gpu": "0, NVIDIA RTX A6000, 4 MiB, 0 %\n1, NVIDIA RTX A6000, 4 MiB, 0 %",
+        "processes": []
+      }
+    }
+  ],
+  "total_tests": 52
+}

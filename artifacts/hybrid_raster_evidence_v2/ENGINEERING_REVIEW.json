@@ -81,5 +81,104 @@
     "全部预定义帧/媒体及最终seal verifier完成",
     "实施模型逐场景代表帧视觉审阅",
     "用户独立视觉评审；方向2/3仍关闭"
-  ]
+  ],
+  "auxiliary_scripts_review": {
+    "status": "RESOLVED_CPU_RECHECK_PASS",
+    "reviewed_utc": "2026-10-02T14:08:39.460512+00:00",
+    "scope": "只读辅助脚本工程审阅；仅CPU synthetic fixture复现，无GPU/图像/场景结果读取，不修改冻结producer。",
+    "reviewed_source_hashes": {
+      "scripts/verify_hybrid_raster_evidence_v2.py": "6f67de0bc41c6626d06dcde09197210014fb3bea27816d4bfe9100e25edfdb5a",
+      "scripts/audit_hybrid_raster_access.py": "fa72ab41a8479839834519534c41c9195d932f2e7c4da076a0941935db1a1242",
+      "scripts/summarize_hybrid_raster_evidence_v2.py": "de87a6ce3605a2c060706b688512bc29d4ce2e60a81414367368216e003400aa"
+    },
+    "findings": [
+      {
+        "id": "ACCESS_EMPTY_TRACE_PASS",
+        "severity": "verification_false_pass",
+        "location": "scripts/audit_hybrid_raster_access.py::audit_trace",
+        "reproduction": "空trace文件传audit_trace(path,set())，返回status PASS、passed true、lines/parsed_open_calls/successful_opens全部0。",
+        "impact": "空或完全丢失的trace可被误作成功访问审计；这不证明现有非空生产trace有问题。",
+        "requested_fix": "零captured successful opens或没有已完成被审计进程证据时拒绝final PASS；补负控制。",
+        "resolution": "FIXED_AND_REPRODUCTION_REJECTED"
+      },
+      {
+        "id": "DIAGNOSTIC_FIELDS_NOT_CROSSCHECKED",
+        "severity": "verification_false_pass_and_summary_risk",
+        "location": "scripts/verify_hybrid_raster_evidence_v2.py::verify_arrays / verify_frame",
+        "reproduction": "由synthetic_raw构造合法result，只把diagnostics.overlap.B_only及A.threshold_area[0.1]改987654321，把ink_matching.gains.A及raw.top4_coverage.mean改123；verify_arrays仍passed true。",
+        "impact": "汇总脚本直接聚合这些封存diagnostics，独立verifier当前未证实这些数值与payload一致；未发现producer计算本身错误。",
+        "requested_fix": "从arrays/provenance重算overlap、threshold_area、matching gain并比较；最终full-native模式增加raw分布均值/计数/分位数与native/typed的独立一致性核查。",
+        "resolution": "FIXED_AND_REPRODUCTION_REJECTED"
+      }
+    ],
+    "other_checks": [
+      "summarize统计以已验证diagnostics为输入，像素weighted mean与逐帧quantiles分开，无将frame quantile冒充pooled quantile；缺帧计数、partial scope明确。",
+      "verifier核验所有frame seal/source/camera/hash、原ID/aT、arm union/complement及provenance、匹配后浓度；full-native明确重新解码native finite范围。",
+      "access脚本处理unfinished/resumed、dirfd和C-escaped路径，未知/运行中trace阻final PASS；chdir/close/dup与非openat访问等盲区在limitations中有明确限定。"
+    ],
+    "note": "原冻结方法工程审阅结论不因辅助验证覆盖缺口自动改为科学NO_GO；修复辅助脚本不应改变已锁参数或生产图像。",
+    "rechecked_utc": "2026-10-02T14:24:37.098723+00:00",
+    "fixed_source_hashes": {
+      "scripts/verify_hybrid_raster_evidence_v2.py": "6377f4839236267887bf4cd07af541d57468e74891fa76e362e3f17a81777b05",
+      "scripts/audit_hybrid_raster_access.py": "3c43fe15fbfb5a59fa6b0a0f6f3f7ae789766c314a37839ae95f327ded347ff5",
+      "scripts/summarize_hybrid_raster_evidence_v2.py": "de87a6ce3605a2c060706b688512bc29d4ce2e60a81414367368216e003400aa"
+    },
+    "resolution_checks": {
+      "command": "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -B -m unittest tests.test_hybrid_raster_access tests.test_hybrid_raster_verifier -v",
+      "tests": 12,
+      "exit_code": 0,
+      "log": "out/hybrid_raster_evidence_v2/native_logs/HELPER_REVIEW_TESTS.log",
+      "independent_original_mutation_replay": "out/hybrid_raster_evidence_v2/native_logs/HELPER_REVIEW_REPRO.json",
+      "mutation_results": [
+        {
+          "case": "original empty trace",
+          "status": "UNDETERMINED",
+          "passed": false,
+          "missing": [
+            "successful_opens",
+            "completed_traced_processes",
+            "frozen_checkpoint_opened",
+            "input_manifest_opened"
+          ]
+        },
+        {
+          "case": "overlap/B_only",
+          "status": "REJECTED",
+          "message": "diagnostic integer differs: overlap/B_only"
+        },
+        {
+          "case": "arms/A/threshold_area/0.1",
+          "status": "REJECTED",
+          "message": "diagnostic integer differs: A/threshold/0.1"
+        },
+        {
+          "case": "ink_matching/gains/A",
+          "status": "REJECTED",
+          "message": "diagnostic scalar differs: matching/gains/A"
+        },
+        {
+          "case": "raw/top4_coverage/mean",
+          "status": "REJECTED",
+          "message": "diagnostic scalar differs: raw/top4_coverage/mean"
+        }
+      ],
+      "frozen_producer_source_hashes_unchanged": true,
+      "gpu_used": false,
+      "scene_images_read": false,
+      "fix_scope": "辅助verifier/access checker及mutation tests；producer、render设置、normalization、已产出结果均未修改",
+      "current_behavior": "access空/无production证据trace拒绝PASS；scalar diagnostics从stored native/response/provenance独立重算，含overlap/阈值面积/matching/strata及raw分布。"
+    },
+    "remaining_validation": "root最后运行全量 --full-native verifier与最终access审计；本复核只运行CPU合成测试。"
+  },
+  "legacy_native_regression_plan": {
+    "execution_status": "NOT_RUN_BY_THIS_REVIEWER; root will run serially after production GPU exits",
+    "reason": "historical direct _C wrapper expects six instrumentation output arguments; foundation high-level API should exercise genuinely unpatched module in another process",
+    "cpu_import_resolution_verified": true,
+    "commands": [
+      "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=$PWD/out/hybrid_raster_evidence_v2/native/patched:$PWD /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -B -m unittest tests.test_rade_native_f1 -v",
+      "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=$PWD/out/hybrid_raster_evidence_v2/native/unpatched:$PWD /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -B -m unittest tests.test_rade_state_calibration -v"
+    ],
+    "precondition": "each old-wrapper GPU launch preceded by nvidia-smi and process ownership audit; those historical wrappers have no gpu_guard; all temporary/cache paths remain inside stage",
+    "camera_qualification": "legacy synthetic tests retain historical W/2 wrapper convention; they are regressions only, not a replacement for the new exact399.5 stage calibration"
+  }
 }

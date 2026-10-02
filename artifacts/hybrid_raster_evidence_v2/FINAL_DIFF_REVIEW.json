@@ -1,0 +1,562 @@
+{
+  "checks": [
+    {
+      "evidence": ".codex/config.toml preserved as gpt-6-astra/ultra; no global Codex-config write found in reviewed code",
+      "name": "model_config",
+      "status": "PASS"
+    },
+    {
+      "evidence": "Production exports same-traversal state, computes view-dependent 2D A/B/C and provenance; no 3D/2D routing, cross-frame identity propagation, tracking, curve optimization or capacity change.",
+      "name": "direction_1_only",
+      "status": "PASS"
+    },
+    {
+      "evidence": "primary_f calls fit_normalization only after exact two-primary-scene 16 F list; lock JSON contains those exact 16 sources. evaluate/extra use lock scales and never fit. Pilot scales are F1/F41-only and separate. C per-frame hysteresis/ink-matching are preregistered deterministic readout rules, not fitted C parameters.",
+      "name": "F_only_normalization_and_C_gate",
+      "status": "PASS"
+    },
+    {
+      "evidence": "Build destination/cache/native/logs/frame/media/status all anchored beneath this worktree; sibling native source used only as copyfile source; PLY loaded read-only; no source asset writer or other-worktree target found. Tests with foreign paths use synthetic trace strings.",
+      "name": "workspace_writes",
+      "status": "PASS_STATIC_PATHS"
+    },
+    {
+      "evidence": "Historical old dense/overlay/direct_curve modules, author formula, native patch and INPUTS bytes unchanged from initial HEAD; protocol precedes production implementation in git history.",
+      "name": "old_assets_and_protocol",
+      "status": "PASS"
+    },
+    {
+      "evidence": "One native call returns RGB/alpha/depth/median/normal plus original IDs/alpha*T/contributor attributes/full moments. Raw validation precedes formula sanitization; all arms share raw. SH0/no filter_3D/unverified splat normal/top4 mass/visible color qualification explicit.",
+      "name": "same_source_and_qualifications",
+      "status": "PASS_STATIC_CONTRACT"
+    },
+    {
+      "evidence": "Exact predefined F/C/33 arc0 cameras, complete seal inventory and context; corrupt restart rejected. MP4 temporary encoding fully decoded for expected/distinct frame counts before promotion. No animation of stills or selective successful-frame list.",
+      "name": "atomic_media_and_no_hidden_frames",
+      "status": "PASS_STATIC_CONTRACT"
+    },
+    {
+      "evidence": "Pixel diagnostics distinguished from quality, implementation-model review distinguished from human GO, original fixed-3D goal/NO_GO not reversed; author independent reconstruction and OUR additions attributed.",
+      "name": "artifact_review_qualifications",
+      "status": "PASS"
+    }
+  ],
+  "findings": [],
+  "frozen_production_source_hashes": {
+    "scripts/run_hybrid_raster_evidence_v2.py": {
+      "actual_sha256": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+      "expected_sha256": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+      "matches": true
+    },
+    "src/hao_mukai_source_2026.py": {
+      "actual_sha256": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+      "expected_sha256": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+      "matches": true
+    },
+    "src/hybrid_raster_evidence.py": {
+      "actual_sha256": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+      "expected_sha256": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+      "matches": true
+    },
+    "src/hybrid_raster_io.py": {
+      "actual_sha256": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+      "expected_sha256": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+      "matches": true
+    },
+    "src/hybrid_raster_native.py": {
+      "actual_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+      "expected_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+      "matches": true
+    },
+    "src/hybrid_raster_stage.py": {
+      "actual_sha256": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7",
+      "expected_sha256": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7",
+      "matches": true
+    }
+  },
+  "git_diff_check": {
+    "command": "git diff --check e9b7e59ab109097aca46c374a3544c0eea3b93ab 21f3092466d1a608e38746f93f48afd241f8061e",
+    "exit_code": 0,
+    "output": ""
+  },
+  "initial_HEAD": "e9b7e59ab109097aca46c374a3544c0eea3b93ab",
+  "limitations": [
+    "本审阅仅静态代码/配置/协议与git差异，不是本次会话所有系统调用或其他worktree文件完整性的证明；实际访问边界以另行ACCESS报告及其范围为准。",
+    "GPU guard在每次render前检查其他计算PID，但不提供与未知外部作业协调的原子GPU占用锁；本审阅未重新运行GPU或生产。",
+    "F-only约束由plain runner与锁实现；独立公开fit_normalization函数本身不识别场景split，不能单凭函数签名证明外部调用者合规。",
+    "作者历史formula模块的旧proxy docstring保留历史字节；本阶段caller及ATTRIBUTION明确此处输入来自native state。颜色分支采用visible SH0 mean而非声明官方composite-C缓冲精确复现。",
+    "报告/状态/审阅产物仍可能由主agent更新；本文件所列SHA只对应记录时刻和reviewed_HEAD，后续提交不是自动纳入本审阅。",
+    "此处未打开任何图像、视频、NPZ、DEV/TEST文件；未重跑测试或生产，未给视觉质量、时序稳定性或独立人类GO。"
+  ],
+  "normalization_source_count": 16,
+  "parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+  "reviewed_HEAD": "21f3092466d1a608e38746f93f48afd241f8061e",
+  "reviewed_branch": "hybrid-raster-evidence-v2",
+  "reviewed_files": [
+    {
+      "lines": 2,
+      "path": ".codex/config.toml",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "7d6dae0206ff64f3efd8b1082d859719621fc9f0e70100c0e90cbe4ca0d1ef01",
+      "working_tree_matches_reviewed_HEAD": true
+    },
+    {
+      "lines": 130,
+      "path": ".gitignore",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "364e912eef189a9c1341312ef6d6a34e5bf3408ced926dbbc0d8d02193149075",
+      "working_tree_matches_reviewed_HEAD": true
+    },
+    {
+      "lines": 5,
+      "path": "artifacts/hybrid_raster_evidence_v2/.gitignore",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "c1bb0b9912a4ce6a54e2ba7d177d8fa97402ad5a74cc09553358b9b5eb3a1236",
+      "working_tree_matches_reviewed_HEAD": true
+    },
+    {
+      "lines": 55,
+      "path": "artifacts/hybrid_raster_evidence_v2/PROTOCOL.md",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "04cb9dd9ac11f8d2b9b6f85af249fb9eda258ef1239c0920d4bd6ce6f9ea02a2",
+      "working_tree_matches_reviewed_HEAD": true
+    },
+    {
+      "lines": 43,
+      "path": "artifacts/hybrid_raster_evidence_v2/ATTRIBUTION.json",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "4291e91838f195e4b3edfafd7e28237740adc9bb0298efe2373d4337cd76b466",
+      "working_tree_matches_reviewed_HEAD": false
+    },
+    {
+      "lines": 71,
+      "path": "artifacts/hybrid_raster_evidence_v2/REPORT.md",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "adf169b6d623a95283b7d70cbe0799d32e79ce3e0b5412852e7cd9e670a48ceb",
+      "working_tree_matches_reviewed_HEAD": false
+    },
+    {
+      "lines": 56,
+      "path": "artifacts/hybrid_raster_evidence_v2/REPRODUCE.md",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "34a806df5409639d01b70cb29b773ecfbb12bc2deabd913442999705ef17aba8",
+      "working_tree_matches_reviewed_HEAD": true
+    },
+    {
+      "lines": 66,
+      "path": "scripts/build_hybrid_raster_native.sh",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "46f5d68f8156e1aa95b68c9fd809b840c8b17005efe786e9f0f13d9e0d2c3553",
+      "working_tree_matches_reviewed_HEAD": true
+    },
+    {
+      "lines": 376,
+      "path": "scripts/run_hybrid_raster_evidence_v2.py",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+      "working_tree_matches_reviewed_HEAD": true
+    },
+    {
+      "lines": 288,
+      "path": "scripts/summarize_hybrid_raster_evidence_v2.py",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "de87a6ce3605a2c060706b688512bc29d4ce2e60a81414367368216e003400aa",
+      "working_tree_matches_reviewed_HEAD": true
+    },
+    {
+      "lines": 256,
+      "path": "scripts/audit_hybrid_raster_access.py",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "fa72ab41a8479839834519534c41c9195d932f2e7c4da076a0941935db1a1242",
+      "working_tree_matches_reviewed_HEAD": true
+    },
+    {
+      "lines": 364,
+      "path": "scripts/verify_hybrid_raster_evidence_v2.py",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "6f67de0bc41c6626d06dcde09197210014fb3bea27816d4bfe9100e25edfdb5a",
+      "working_tree_matches_reviewed_HEAD": true
+    },
+    {
+      "lines": 335,
+      "path": "src/hybrid_raster_native.py",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+      "working_tree_matches_reviewed_HEAD": true
+    },
+    {
+      "lines": 293,
+      "path": "src/hybrid_raster_evidence.py",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+      "working_tree_matches_reviewed_HEAD": true
+    },
+    {
+      "lines": 260,
+      "path": "src/hybrid_raster_io.py",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+      "working_tree_matches_reviewed_HEAD": true
+    },
+    {
+      "lines": 56,
+      "path": "src/hybrid_raster_stage.py",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7",
+      "working_tree_matches_reviewed_HEAD": true
+    },
+    {
+      "lines": 95,
+      "path": "src/hao_mukai_source_2026.py",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+      "working_tree_matches_reviewed_HEAD": true
+    },
+    {
+      "lines": 174,
+      "path": "native_patches/rade_f1.patch",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "64147104a29de1ee69c5b3088d7efb419329959552c1cfd4f5e5423fe5c51a19",
+      "working_tree_matches_reviewed_HEAD": true
+    },
+    {
+      "lines": 108,
+      "path": "tests/test_hybrid_raster_native.py",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "dad68b445bfff693077824a325ad1e2c14985c19c29b25842121c3fb54464099",
+      "working_tree_matches_reviewed_HEAD": true
+    },
+    {
+      "lines": 219,
+      "path": "tests/test_hybrid_raster_evidence.py",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "d7b0391ebb6f717a254b6613ac6be8652e98edb01f7af8c179b700138db678f4",
+      "working_tree_matches_reviewed_HEAD": true
+    },
+    {
+      "lines": 122,
+      "path": "tests/test_hybrid_raster_io.py",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "9a248d5876ace446a7d332dc9e572a9cbcf988f6fd3f374b991b2bfeb4f00316",
+      "working_tree_matches_reviewed_HEAD": true
+    },
+    {
+      "lines": 56,
+      "path": "tests/test_hybrid_raster_stage.py",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "f4737672141b2c527dc8e575115d408987a191b2ed4bed6679ea0cd6daa7358d",
+      "working_tree_matches_reviewed_HEAD": true
+    },
+    {
+      "lines": 100,
+      "path": "tests/test_hybrid_raster_access.py",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "5954fe49dd753b22596ba309a3384b678f3607ea39818bcd6cd1e1e35a49dc84",
+      "working_tree_matches_reviewed_HEAD": false
+    },
+    {
+      "lines": 84,
+      "path": "tests/test_hybrid_raster_verifier.py",
+      "review": "文本/控制流/作用域静态审阅；非执行证明",
+      "sha256": "c4e0602a3da872bf1c5be51d27e5692cf2fd3689f7d46d6d6b736dd0ae4a77dd",
+      "working_tree_matches_reviewed_HEAD": false
+    }
+  ],
+  "reviewed_utc": "2026-10-02T14:22:30.942971+00:00",
+  "schema": "hybrid-raster-final-diff-review-v1",
+  "source_hashes": {
+    ".codex/config.toml": "7d6dae0206ff64f3efd8b1082d859719621fc9f0e70100c0e90cbe4ca0d1ef01",
+    ".gitignore": "364e912eef189a9c1341312ef6d6a34e5bf3408ced926dbbc0d8d02193149075",
+    "artifacts/hybrid_raster_evidence_v2/.gitignore": "c1bb0b9912a4ce6a54e2ba7d177d8fa97402ad5a74cc09553358b9b5eb3a1236",
+    "artifacts/hybrid_raster_evidence_v2/ATTRIBUTION.json": "4291e91838f195e4b3edfafd7e28237740adc9bb0298efe2373d4337cd76b466",
+    "artifacts/hybrid_raster_evidence_v2/PROTOCOL.md": "04cb9dd9ac11f8d2b9b6f85af249fb9eda258ef1239c0920d4bd6ce6f9ea02a2",
+    "artifacts/hybrid_raster_evidence_v2/REPORT.md": "adf169b6d623a95283b7d70cbe0799d32e79ce3e0b5412852e7cd9e670a48ceb",
+    "artifacts/hybrid_raster_evidence_v2/REPRODUCE.md": "34a806df5409639d01b70cb29b773ecfbb12bc2deabd913442999705ef17aba8",
+    "native_patches/rade_f1.patch": "64147104a29de1ee69c5b3088d7efb419329959552c1cfd4f5e5423fe5c51a19",
+    "scripts/audit_hybrid_raster_access.py": "fa72ab41a8479839834519534c41c9195d932f2e7c4da076a0941935db1a1242",
+    "scripts/build_hybrid_raster_native.sh": "46f5d68f8156e1aa95b68c9fd809b840c8b17005efe786e9f0f13d9e0d2c3553",
+    "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+    "scripts/summarize_hybrid_raster_evidence_v2.py": "de87a6ce3605a2c060706b688512bc29d4ce2e60a81414367368216e003400aa",
+    "scripts/verify_hybrid_raster_evidence_v2.py": "6f67de0bc41c6626d06dcde09197210014fb3bea27816d4bfe9100e25edfdb5a",
+    "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+    "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+    "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+    "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+    "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7",
+    "tests/test_hybrid_raster_access.py": "5954fe49dd753b22596ba309a3384b678f3607ea39818bcd6cd1e1e35a49dc84",
+    "tests/test_hybrid_raster_evidence.py": "d7b0391ebb6f717a254b6613ac6be8652e98edb01f7af8c179b700138db678f4",
+    "tests/test_hybrid_raster_io.py": "9a248d5876ace446a7d332dc9e572a9cbcf988f6fd3f374b991b2bfeb4f00316",
+    "tests/test_hybrid_raster_native.py": "dad68b445bfff693077824a325ad1e2c14985c19c29b25842121c3fb54464099",
+    "tests/test_hybrid_raster_stage.py": "f4737672141b2c527dc8e575115d408987a191b2ed4bed6679ea0cd6daa7358d",
+    "tests/test_hybrid_raster_verifier.py": "c4e0602a3da872bf1c5be51d27e5692cf2fd3689f7d46d6d6b736dd0ae4a77dd"
+  },
+  "status": "PASS_STATIC_SCOPE_REVIEW",
+  "tracked_diff_from_initial": [
+    {
+      "change": "A",
+      "path": ".codex/config.toml"
+    },
+    {
+      "change": "M",
+      "path": ".gitignore"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/.gitignore"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/ACCESS_PROVISIONAL.json"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/ATTRIBUTION.json"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/CALIBRATION.json"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/ENGINEERING_REVIEW.json"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/NATIVE_BUILD.json"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/PARAMETER_LOCK.json"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/PILOT_REVIEW.json"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/PILOT_SOURCE_DIAGNOSTICS.json"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/PRIMARY_GATE.json"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/PROTOCOL.md"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/REPORT.md"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/REPRODUCE.md"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/STATUS.json"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/SUMMARY_PILOT.json"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/SUMMARY_PRIMARY_SNAPSHOT.json"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/VERIFICATION_PRIMARY.json"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/VISUAL_REVIEW.json"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/chair_MEDIA.json"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/lego_MEDIA.json"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/review/chair_C_007_line.jpg"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/review/chair_C_047_matched.jpg"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/review/chair_arc0_000_line.jpg"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/review/chair_arc0_016_matched.jpg"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/review/chair_arc0_032_line.jpg"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/review/lego_C_007_line.jpg"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/review/lego_C_047_matched.jpg"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/review/lego_arc0_000_line.jpg"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/review/lego_arc0_016_matched.jpg"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/review/lego_arc0_032_line.jpg"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/videos/chair_arc0_comparison.mp4"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/videos/chair_arc0_matched.mp4"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/videos/chair_arc0_overlay.mp4"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/videos/lego_arc0_comparison.mp4"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/videos/lego_arc0_matched.mp4"
+    },
+    {
+      "change": "A",
+      "path": "artifacts/hybrid_raster_evidence_v2/videos/lego_arc0_overlay.mp4"
+    },
+    {
+      "change": "A",
+      "path": "scripts/audit_hybrid_raster_access.py"
+    },
+    {
+      "change": "A",
+      "path": "scripts/build_hybrid_raster_native.sh"
+    },
+    {
+      "change": "A",
+      "path": "scripts/run_hybrid_raster_evidence_v2.py"
+    },
+    {
+      "change": "A",
+      "path": "scripts/summarize_hybrid_raster_evidence_v2.py"
+    },
+    {
+      "change": "A",
+      "path": "scripts/verify_hybrid_raster_evidence_v2.py"
+    },
+    {
+      "change": "A",
+      "path": "src/hybrid_raster_evidence.py"
+    },
+    {
+      "change": "A",
+      "path": "src/hybrid_raster_io.py"
+    },
+    {
+      "change": "A",
+      "path": "src/hybrid_raster_native.py"
+    },
+    {
+      "change": "A",
+      "path": "src/hybrid_raster_stage.py"
+    },
+    {
+      "change": "A",
+      "path": "tests/test_hybrid_raster_access.py"
+    },
+    {
+      "change": "A",
+      "path": "tests/test_hybrid_raster_evidence.py"
+    },
+    {
+      "change": "A",
+      "path": "tests/test_hybrid_raster_io.py"
+    },
+    {
+      "change": "A",
+      "path": "tests/test_hybrid_raster_native.py"
+    },
+    {
+      "change": "A",
+      "path": "tests/test_hybrid_raster_stage.py"
+    },
+    {
+      "change": "A",
+      "path": "tests/test_hybrid_raster_verifier.py"
+    }
+  ],
+  "unchanged_historical_code_and_inputs": [
+    {
+      "path": "scripts/hybrid_dense_v1.py",
+      "sha256": "02a4a38ca35acb6e77a63c5138cd56f83ee3c108649f39f0c585a742cf16a43b",
+      "unchanged_from_initial": true
+    },
+    {
+      "path": "scripts/hybrid_overlay_video.py",
+      "sha256": "0ef294527fb2d033edb2024d19ef02b86936e3eaec1154948045263acc4f83ed",
+      "unchanged_from_initial": true
+    },
+    {
+      "path": "src/direct_curve.py",
+      "sha256": "a1cd5c202ae71327a6df088f05bc10ce971288d7a5d6c86c6ca3088d246a218d",
+      "unchanged_from_initial": true
+    },
+    {
+      "path": "src/direct_curve_eval.py",
+      "sha256": "cf9fc48e9dcfcf09897381d106993ebee187a78b192130c2c90388784f90b8ed",
+      "unchanged_from_initial": true
+    },
+    {
+      "path": "src/hao_mukai_source_2026.py",
+      "sha256": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+      "unchanged_from_initial": true
+    },
+    {
+      "path": "native_patches/rade_f1.patch",
+      "sha256": "64147104a29de1ee69c5b3088d7efb419329959552c1cfd4f5e5423fe5c51a19",
+      "unchanged_from_initial": true
+    },
+    {
+      "path": "artifacts/direct_curve_global_fit_probe/INPUTS.json",
+      "sha256": "5c8cc2ac0a984b02343f48d71beb46818a572f161447a56e701d2b76bfc4ab7d",
+      "unchanged_from_initial": true
+    }
+  ],
+  "writes_by_this_review": [
+    "artifacts/hybrid_raster_evidence_v2/FINAL_DIFF_REVIEW.json"
+  ],
+  "root_final_check": {
+    "utc": "2026-10-02T14:41:00.486754+00:00",
+    "diff_check": "PASS",
+    "base_tracked_modified_files": [
+      ".gitignore"
+    ],
+    "frozen_producer_hashes": "ALL_6_MATCH_LOCK",
+    "config": "model = \"gpt-6-astra\"\nmodel_reasoning_effort = \"ultra\"\n",
+    "config_sha256": "7d6dae0206ff64f3efd8b1082d859719621fc9f0e70100c0e90cbe4ca0d1ef01",
+    "final_tests": "52/52 PASS",
+    "helper_patch_review": "reviewed final mutation changes; independent CPU review recorded in ENGINEERING_REVIEW",
+    "source_image_and_other_worktree_static_scope": "No new writing target or forbidden source-image decoder found; syscall claim limited to ACCESS captured production phases",
+    "report_review": "REPORT_NUMERICAL_REVIEW.json"
+  }
+}

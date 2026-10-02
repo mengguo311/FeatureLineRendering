@@ -25,9 +25,11 @@ scripts/build_hybrid_raster_native.sh
 ```bash
 scripts/run_hybrid_raster_evidence_v2.py --phase pilot
 scripts/run_hybrid_raster_evidence_v2.py --phase primary-f
-scripts/run_hybrid_raster_evidence_v2.py --phase primary-eval
-scripts/run_hybrid_raster_evidence_v2.py --phase extra
-scripts/run_hybrid_raster_evidence_v2.py --phase media
+strace -f -e trace=openat,openat2 -o out/hybrid_raster_evidence_v2/primary_eval_open.trace scripts/run_hybrid_raster_evidence_v2.py --phase primary-eval
+scripts/run_hybrid_raster_evidence_v2.py --phase media --scenes lego chair
+scripts/verify_hybrid_raster_evidence_v2.py --scenes lego chair --full-native --output artifacts/hybrid_raster_evidence_v2/VERIFICATION_PRIMARY.json
+strace -f -e trace=openat,openat2 -o out/hybrid_raster_evidence_v2/extra_open.trace scripts/run_hybrid_raster_evidence_v2.py --phase extra
+scripts/run_hybrid_raster_evidence_v2.py --phase media --scenes drums ficus
 ```
 
 原生状态与最终 frame 都有 seal；同样的命令重启只跳过完整且哈希正确的结果。残缺/损坏/参数不匹配结果明确报错并保留，不会被静默覆盖。未完成的 staging 留在输出目录。科学参数冻结后，不能为改善 C 图像修改任何源或阈值。
@@ -36,6 +38,7 @@ scripts/run_hybrid_raster_evidence_v2.py --phase media
 
 ```bash
 scripts/verify_hybrid_raster_evidence_v2.py --full-native
+scripts/audit_hybrid_raster_access.py
 scripts/summarize_hybrid_raster_evidence_v2.py --output artifacts/hybrid_raster_evidence_v2/SUMMARY.json
 ```
 
@@ -46,11 +49,17 @@ summarizer 的输出为一次性快照；若该文件已存在，应使用另一
 ```bash
 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -B -m unittest \
   tests.test_hybrid_raster_native tests.test_hybrid_raster_evidence \
-  tests.test_hybrid_raster_io tests.test_hybrid_raster_stage tests.test_hybrid_raster_verifier \
+  tests.test_hybrid_raster_io tests.test_hybrid_raster_stage \
+  tests.test_hybrid_raster_verifier tests.test_hybrid_raster_access \
   tests.test_hybrid_dense_v1 tests.test_hybrid_overlay_video \
   tests.test_hybrid_extra_scenes tests.test_hao_mukai_source -v
+
+# 旧包装器接口不同，必须用两个进程、对应隔离构建执行。
+# 启动前检查 nvidia-smi 和 PID ownership；旧包装器自身不含新 gpu_guard。
+PYTHONPATH=$PWD/out/hybrid_raster_evidence_v2/native/patched:$PWD /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -B -m unittest tests.test_rade_native_f1 -v
+PYTHONPATH=$PWD/out/hybrid_raster_evidence_v2/native/unpatched:$PWD /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -B -m unittest tests.test_rade_state_calibration -v
 ```
 
-测试 RED/GREEN、构建、原生校准、生产与视频日志均保存；报告注明早期两次测试启动问题，未把它们当成科学失败。C/arc 生产另用 `strace -f -e trace=openat,openat2` 保存输入访问记录。方法仅打开 checkpoint PLY 与 INPUTS 相机元数据，不解码原始 C/DEV/TEST 图像；C/arc 展示来自 frozen GS 的真实重渲染。
+测试 RED/GREEN、构建、原生校准、生产与视频日志均保存；早期测试启动中的 import/PYTHONPATH/构建尚未就绪错误保留原日志，未把它们当成科学失败。C/arc 与扩展生产用上述 strace 命令保存输入访问记录。访问审计只证明所记录生产进程的有限范围，不覆盖更早 pilot/F 的全部系统调用。方法仅打开 checkpoint PLY 与 INPUTS 相机元数据，不解码原始 C/DEV/TEST 图像；C/arc 展示来自 frozen GS 的真实重渲染。
 
 输出根目录为 `out/hybrid_raster_evidence_v2`，包含 `raw/`、`frames/`、`media/`、`native/`、`calibration/`、`LOCK.json`、运行时间与 GPU ownership 日志。每帧的 `native.npz` 保留原始 alpha*T，`typed.npz` 另存归一化 top4 weights；`responses.npz` 与 `provenance.npz` 保存全部臂及来源。所有 main A/B/C 都是逐视角 2D 字段，没有旧橙线或固定三维线资产。

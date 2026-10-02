@@ -17,7 +17,26 @@ class VerifierTests(unittest.TestCase):
         self.result = compute_evidence(self.raw, fit_normalization([raw_fields(self.raw)]))
 
     def verify(self, result):
-        return verify_arrays(result['arrays'], result['provenance'], result['diagnostics'], (16, 20))
+        return verify_arrays(result['arrays'], result['provenance'], result['diagnostics'], (16, 20), native_raw=self.raw)
+
+    def test_scalar_diagnostic_mutations_do_not_pass(self):
+        changes = [
+            ('overlap', ('overlap','B_only'), 987654321),
+            ('threshold', ('arms','A','threshold_area','0.1'), 987654321),
+            ('gain', ('ink_matching','gains','A'), 123.),
+            ('original_mass', ('ink_matching','original_mass','B'), 123.),
+            ('coverage_mean', ('raw','top4_coverage','mean'), 123.),
+            ('coverage_quantile', ('raw','top4_coverage','p05'), 123.),
+            ('strata_mass', ('arms','C','strata','interior','mass'), 123.),
+            ('strata_pixels', ('arms','B','strata','background','pixels'), 123),
+        ]
+        for name, path, value in changes:
+            with self.subTest(name=name):
+                corrupt=copy.deepcopy(self.result)
+                target=corrupt['diagnostics']
+                for key in path[:-1]: target=target[key]
+                target[path[-1]]=value
+                with self.assertRaises(ValueError): self.verify(corrupt)
 
     def test_valid_arrays_then_corrupted_complement_are_distinguished(self):
         self.assertTrue(self.verify(self.result)['passed'])
