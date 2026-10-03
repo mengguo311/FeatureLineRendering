@@ -1,0 +1,26 @@
+{
+  "gpu_seconds": 0,
+  "limit_rounds": 3,
+  "limit_seconds": 5400,
+  "round_details": [
+    {
+      "correction": "Added strict hash/path links, six-root exact bounded filename-set replay and canonical path absence checks; new candidates reject before content reads",
+      "defects": [
+        "manifest inventory SHA and inherited-lock copy links were not verified",
+        "initial checker validated listed candidates without replaying bounded filename discovery or canonical missing paths"
+      ],
+      "final_cases": 12,
+      "green": "independent_review/logs/GREEN_LINKS.log",
+      "green_exit_code": 0,
+      "red": "independent_review/logs/RED_LINKS.log",
+      "red_exit_code": 1,
+      "round": 1,
+      "trigger": "Root code review of the independent blocker checker"
+    }
+  ],
+  "rounds": 1,
+  "scientific_sources_modified": false,
+  "status": "RESOLVED_WITHIN_LIMIT",
+  "upper_bound_definition": "Entire task wall time since 2026-10-03 07:49:00 UTC through this record; conservatively includes inventory and reporting, not just the repair",
+  "wall_seconds_upper_bound": 1099.997552
+}

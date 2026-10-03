@@ -1,0 +1,655 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-03T08:01:14.782087+00:00",
+  "original_inventory": {
+    "path": "/home/u00134/3dgs_line/hybrid_raster_extra_models_v1/artifacts/hybrid_raster_extra_models_v1/inventory/INVENTORY_DISCOVERY.json",
+    "sha256": "aabd4e1452742b932f717aedd8b9bd3209b22acf251d51af074490319224891d",
+    "modified": false
+  },
+  "purpose": "One supplementary filename-only enumeration within exactly the six frozen roots/depth/prune boundaries. No checkpoint contents read.",
+  "original_matcher": {
+    "case_sensitive_exact_names": [
+      "point_cloud.ply",
+      "cfg_args"
+    ],
+    "case_insensitive_suffixes": [
+      ".pth",
+      ".ckpt"
+    ],
+    "case_insensitive_name_substring": [
+      "asset"
+    ],
+    "case_insensitive_filename_exclusions": [
+      "test",
+      "mesh"
+    ],
+    "python_expression": "n in ('point_cloud.ply','cfg_args') or n.lower().endswith(('.pth','.ckpt')) or 'asset' in n.lower()",
+    "previously_included_chkpnt_pth": true,
+    "previously_included_pt_suffix": false
+  },
+  "supplemental_matcher": {
+    "case_sensitive_globs": [
+      "point_cloud.ply",
+      "cfg_args",
+      "*.pth",
+      "*.pt",
+      "*.ckpt",
+      "chkpnt*.pth"
+    ],
+    "case_insensitive_filename_exclusions": [
+      "test",
+      "mesh"
+    ]
+  },
+  "searches": [
+    {
+      "root": "/home/u00134/cglib/outputs",
+      "max_directory_depth": 6,
+      "pruned_directory_names": [
+        ".git",
+        "test",
+        "TEST",
+        "mesh",
+        "meshes",
+        "__pycache__",
+        "train",
+        "val",
+        "frames",
+        "media",
+        "raw",
+        "cache",
+        "annotations",
+        "vendor"
+      ],
+      "pruned_directory_prefixes": [
+        "epi_edges",
+        "teed_edges",
+        "dexined_edges",
+        "pidinet_edges",
+        "prop_edges"
+      ],
+      "follow_symlinks": false,
+      "visited_directory_count": 24,
+      "matched_files": [
+        {
+          "path": "/home/u00134/cglib/outputs/cadpartA_static/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/cglib/outputs/cadpartB_static/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/cglib/outputs/cadpartH_static/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/cglib/outputs/cadpart_static/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/cglib/outputs/chair_static/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/cglib/outputs/ficus_static/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/cglib/outputs/gcube_static/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/cglib/outputs/gicosa_static/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/cglib/outputs/gprism_static/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/cglib/outputs/gstep_static/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/cglib/outputs/lego_static/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        }
+      ]
+    },
+    {
+      "root": "/home/u00134/cglib/logs",
+      "max_directory_depth": 5,
+      "pruned_directory_names": [
+        ".git",
+        "test",
+        "TEST",
+        "mesh",
+        "meshes",
+        "__pycache__",
+        "train",
+        "val",
+        "frames",
+        "media",
+        "raw",
+        "cache",
+        "annotations",
+        "vendor"
+      ],
+      "pruned_directory_prefixes": [
+        "epi_edges",
+        "teed_edges",
+        "dexined_edges",
+        "pidinet_edges",
+        "prop_edges"
+      ],
+      "follow_symlinks": false,
+      "visited_directory_count": 2,
+      "matched_files": [
+        {
+          "path": "/home/u00134/cglib/logs/gs_smoke_lego/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        }
+      ]
+    },
+    {
+      "root": "/home/u00134/cglib/data/full",
+      "max_directory_depth": 2,
+      "pruned_directory_names": [
+        ".git",
+        "test",
+        "TEST",
+        "mesh",
+        "meshes",
+        "__pycache__",
+        "train",
+        "val",
+        "frames",
+        "media",
+        "raw",
+        "cache",
+        "annotations",
+        "vendor"
+      ],
+      "pruned_directory_prefixes": [
+        "epi_edges",
+        "teed_edges",
+        "dexined_edges",
+        "pidinet_edges",
+        "prop_edges"
+      ],
+      "follow_symlinks": false,
+      "visited_directory_count": 19,
+      "matched_files": []
+    },
+    {
+      "root": "/home/u00134/3dgs_line/tier1/out",
+      "max_directory_depth": 7,
+      "pruned_directory_names": [
+        ".git",
+        "test",
+        "TEST",
+        "mesh",
+        "meshes",
+        "__pycache__",
+        "train",
+        "val",
+        "frames",
+        "media",
+        "raw",
+        "cache",
+        "annotations",
+        "vendor"
+      ],
+      "pruned_directory_prefixes": [
+        "epi_edges",
+        "teed_edges",
+        "dexined_edges",
+        "pidinet_edges",
+        "prop_edges"
+      ],
+      "follow_symlinks": false,
+      "visited_directory_count": 1058,
+      "matched_files": [
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_cadpartA/cfg_args",
+          "filename_patterns_matched": [
+            "cfg_args"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_cadpartA/point_cloud/iteration_15000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_cadpartA/point_cloud/iteration_30000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_cadpartA/point_cloud/iteration_7000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_chair/cfg_args",
+          "filename_patterns_matched": [
+            "cfg_args"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_chair/point_cloud/iteration_15000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_chair/point_cloud/iteration_30000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_chair/point_cloud/iteration_7000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_chair_dist/cfg_args",
+          "filename_patterns_matched": [
+            "cfg_args"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_chair_dist/point_cloud/iteration_15000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_chair_dist/point_cloud/iteration_30000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_chair_dist/point_cloud/iteration_7000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_chair_reporecipe/cfg_args",
+          "filename_patterns_matched": [
+            "cfg_args"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_chair_reporecipe/point_cloud/iteration_30000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_gicosa/cfg_args",
+          "filename_patterns_matched": [
+            "cfg_args"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_gicosa/point_cloud/iteration_15000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_gicosa/point_cloud/iteration_30000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_gicosa/point_cloud/iteration_7000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_lego/cfg_args",
+          "filename_patterns_matched": [
+            "cfg_args"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_lego/point_cloud/iteration_15000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_lego/point_cloud/iteration_30000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_lego/point_cloud/iteration_7000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_ship/cfg_args",
+          "filename_patterns_matched": [
+            "cfg_args"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_ship/point_cloud/iteration_15000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_ship/point_cloud/iteration_30000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_ship/point_cloud/iteration_7000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_truck/cfg_args",
+          "filename_patterns_matched": [
+            "cfg_args"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_truck/point_cloud/iteration_15000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_truck/point_cloud/iteration_30000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_truck/point_cloud/iteration_7000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/3dgs_truck/cfg_args",
+          "filename_patterns_matched": [
+            "cfg_args"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/3dgs_truck/point_cloud/iteration_30000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/3dgs_truck/point_cloud/iteration_7000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_1729/checkpoints/cfg_args",
+          "filename_patterns_matched": [
+            "cfg_args"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_1729/checkpoints/point_cloud/iteration_7000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_2718/checkpoints/cfg_args",
+          "filename_patterns_matched": [
+            "cfg_args"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_2718/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_2718/checkpoints/point_cloud/iteration_7000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/drums/seed_1729/checkpoints/cfg_args",
+          "filename_patterns_matched": [
+            "cfg_args"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/drums/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/drums/seed_1729/checkpoints/point_cloud/iteration_7000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/drums/seed_2718/checkpoints/cfg_args",
+          "filename_patterns_matched": [
+            "cfg_args"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/drums/seed_2718/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/drums/seed_2718/checkpoints/point_cloud/iteration_7000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/ficus/seed_1729/checkpoints/cfg_args",
+          "filename_patterns_matched": [
+            "cfg_args"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/ficus/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/ficus/seed_1729/checkpoints/point_cloud/iteration_7000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/ficus/seed_2718/checkpoints/cfg_args",
+          "filename_patterns_matched": [
+            "cfg_args"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/ficus/seed_2718/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/ficus/seed_2718/checkpoints/point_cloud/iteration_7000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_1729/checkpoints/cfg_args",
+          "filename_patterns_matched": [
+            "cfg_args"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_1729/checkpoints/point_cloud/iteration_7000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_2718/checkpoints/cfg_args",
+          "filename_patterns_matched": [
+            "cfg_args"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_2718/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_2718/checkpoints/point_cloud/iteration_7000/point_cloud.ply",
+          "filename_patterns_matched": [
+            "point_cloud.ply"
+          ]
+        }
+      ]
+    },
+    {
+      "root": "/home/u00134/3dgs_line/FeatureLineRendering/real_3dgs/outputs",
+      "max_directory_depth": 6,
+      "pruned_directory_names": [
+        ".git",
+        "test",
+        "TEST",
+        "mesh",
+        "meshes",
+        "__pycache__",
+        "train",
+        "val",
+        "frames",
+        "media",
+        "raw",
+        "cache",
+        "annotations",
+        "vendor"
+      ],
+      "pruned_directory_prefixes": [
+        "epi_edges",
+        "teed_edges",
+        "dexined_edges",
+        "pidinet_edges",
+        "prop_edges"
+      ],
+      "follow_symlinks": false,
+      "visited_directory_count": 5,
+      "matched_files": []
+    },
+    {
+      "root": "/home/u00134/3dgs_line/FeatureLineRendering/tier1/out",
+      "max_directory_depth": 6,
+      "pruned_directory_names": [
+        ".git",
+        "test",
+        "TEST",
+        "mesh",
+        "meshes",
+        "__pycache__",
+        "train",
+        "val",
+        "frames",
+        "media",
+        "raw",
+        "cache",
+        "annotations",
+        "vendor"
+      ],
+      "pruned_directory_prefixes": [
+        "epi_edges",
+        "teed_edges",
+        "dexined_edges",
+        "pidinet_edges",
+        "prop_edges"
+      ],
+      "follow_symlinks": false,
+      "visited_directory_count": 1,
+      "matched_files": []
+    }
+  ],
+  "counts": {
+    "point_cloud.ply": 52,
+    "cfg_args": 17,
+    "*.pth": 0,
+    "*.pt": 0,
+    "*.ckpt": 0,
+    "chkpnt*.pth": 0
+  },
+  "new_paths_relative_to_frozen_inventory": [],
+  "checkpoint_contents_read": false,
+  "new_usable_scene_candidates_found": false,
+  "assets_manifest_resolution": "No exact assets manifest filename located in the recorded discovery. Prior assets-related records are out/point_feature_foundation/input_manifest.json and out/multiscene_foundation/{config,input_hashes,MANIFEST}.json, previously reported to root."
+}

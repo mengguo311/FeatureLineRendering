@@ -1,0 +1,37 @@
+{
+  "created_utc": "2026-10-03T07:58:44.192547+00:00",
+  "elapsed_seconds": 4.256882316898555,
+  "errors": 0,
+  "excluded_gpu_cases": "3 inherited native GPU fixtures and 4 old wrapper GPU tests not launched: no eligible new scene, production stopped at input inventory",
+  "failures": 0,
+  "interpreter": "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+  "log_path": "/home/u00134/3dgs_line/hybrid_raster_extra_models_v1/artifacts/hybrid_raster_extra_models_v1/logs/PRIOR_CPU_TESTS.log",
+  "modules": [
+    "tests.test_hybrid_raster_evidence",
+    "tests.test_hybrid_raster_io",
+    "tests.test_hybrid_raster_stage",
+    "tests.test_hybrid_raster_verifier",
+    "tests.test_hybrid_raster_access",
+    "tests.test_hybrid_dense_v1",
+    "tests.test_hybrid_overlay_video",
+    "tests.test_hybrid_extra_scenes",
+    "tests.test_hao_mukai_source"
+  ],
+  "native_cpu_cases": [
+    "tests.test_hybrid_raster_native.NativeContractTest.test_04_exact_native_principal_point",
+    "tests.test_hybrid_raster_native.NativeContractTest.test_05_calibration_rejects_changed_or_nonfinite_buffers",
+    "tests.test_hybrid_raster_native.NativeContractTest.test_06_export_validation_rejects_wrong_id_shape_and_mass"
+  ],
+  "qualification": "CPU regression only; synthetic fixtures are not new scene outputs, calibration or scientific transport evidence",
+  "skipped": 0,
+  "source_files_modified": false,
+  "status": "PASS",
+  "stdin": "explicit Python test orchestration heredoc; reproduced in REPRODUCE.md",
+  "temporary_path_overrides": {
+    "audit_hybrid_raster_access.ROOT": "/home/u00134/3dgs_line/hybrid_raster_extra_models_v1/out/hybrid_raster_extra_models_v1/regression_sandbox",
+    "cwd": "/home/u00134/3dgs_line/hybrid_raster_extra_models_v1/out/hybrid_raster_extra_models_v1/regression_sandbox",
+    "test_hybrid_raster_access.ROOT": "/home/u00134/3dgs_line/hybrid_raster_extra_models_v1/out/hybrid_raster_extra_models_v1/regression_sandbox",
+    "test_hybrid_raster_io.TMP": "/home/u00134/3dgs_line/hybrid_raster_extra_models_v1/out/hybrid_raster_extra_models_v1/regression_sandbox/out/hybrid_raster_evidence_v2/test_tmp"
+  },
+  "tests_run": 45
+}

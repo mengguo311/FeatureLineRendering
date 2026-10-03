@@ -1,0 +1,20 @@
+E
+======================================================================
+ERROR: test_verify_blocker (unittest.loader._FailedTest.test_verify_blocker)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_verify_blocker
+Traceback (most recent call last):
+  File "/home/u00134/bin/miniconda3/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/home/u00134/bin/miniconda3/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/home/u00134/3dgs_line/hybrid_raster_extra_models_v1/artifacts/hybrid_raster_extra_models_v1/independent_review/test_verify_blocker.py", line 4, in <module>
+    from verify_blocker import assess
+ModuleNotFoundError: No module named 'verify_blocker'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

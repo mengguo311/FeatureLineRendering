@@ -1,0 +1,428 @@
+{
+  "status": "BLOCKER_CONFIRMED",
+  "science_executed": false,
+  "scientific_verdict": null,
+  "completed_frames": 0,
+  "scope": "bounded inventory and unchanged inheritance only; rendering/media/field validation not executed",
+  "human_review": "PENDING_NO_NEW_OUTPUTS",
+  "inventory_path": "artifacts/hybrid_raster_extra_models_v1/inventory/INVENTORY_DISCOVERY.json",
+  "inventory_sha256": "aabd4e1452742b932f717aedd8b9bd3209b22acf251d51af074490319224891d",
+  "manifest_path": "artifacts/hybrid_raster_extra_models_v1/INPUTS.json",
+  "manifest_sha256": "95420d381769e27368d101d857a93c7920c50256dce5cedc4e29fde5b416826b",
+  "source_checks": {
+    "scientific_sources_unchanged": true,
+    "locked_recipe_hash_valid": true,
+    "locked_parameter_hash_valid": true,
+    "locked_lock_hash_valid": true,
+    "lock_path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/LOCK.json",
+    "lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+    "sources": [
+      {
+        "path": "scripts/run_hybrid_raster_evidence_v2.py",
+        "locked_sha256": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+        "prior_sha256": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+        "current_sha256": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+        "unchanged": true
+      },
+      {
+        "path": "src/hao_mukai_source_2026.py",
+        "locked_sha256": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+        "prior_sha256": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+        "current_sha256": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+        "unchanged": true
+      },
+      {
+        "path": "src/hybrid_raster_evidence.py",
+        "locked_sha256": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+        "prior_sha256": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+        "current_sha256": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+        "unchanged": true
+      },
+      {
+        "path": "src/hybrid_raster_io.py",
+        "locked_sha256": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+        "prior_sha256": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+        "current_sha256": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+        "unchanged": true
+      },
+      {
+        "path": "src/hybrid_raster_native.py",
+        "locked_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "prior_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "current_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "unchanged": true
+      },
+      {
+        "path": "src/hybrid_raster_stage.py",
+        "locked_sha256": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7",
+        "prior_sha256": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7",
+        "current_sha256": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7",
+        "unchanged": true
+      }
+    ],
+    "inherited_normalization": {
+      "author_scale": 0.7533644223213196,
+      "frame_count": 16,
+      "normalization_scope": "primary F only; caller-enforced",
+      "positive_counts": {
+        "S_L": 513552,
+        "delta_A": 2606087,
+        "delta_C": 2515918,
+        "delta_D": 2515992,
+        "delta_G": 2515564,
+        "delta_N": 2515657,
+        "visibility_raw": 1610642
+      },
+      "recipe": {
+        "alpha_canny": [
+          25,
+          65
+        ],
+        "author_params": {
+          "beta_u": 32.0,
+          "lambda_C": 0.7,
+          "lambda_GV": 0.45,
+          "lambda_LN": 0.72,
+          "lambda_SN": 0.52,
+          "lambda_TC": 0.58,
+          "lambda_TL": 0.34,
+          "lambda_VN": 0.7,
+          "lambda_q": 0.35,
+          "lambda_u": 0.72
+        },
+        "author_thresholds": {
+          "A": [
+            0.04,
+            0.28
+          ],
+          "C": [
+            0.16,
+            0.52
+          ],
+          "D": [
+            0.006,
+            0.055
+          ],
+          "G": [
+            0.1,
+            0.45
+          ],
+          "L": [
+            0.08,
+            0.38
+          ],
+          "N": [
+            0.11,
+            0.58
+          ],
+          "VD": [
+            0.003,
+            0.045
+          ],
+          "VN": [
+            0.08,
+            0.45
+          ],
+          "rho": [
+            0.16,
+            0.55
+          ]
+        },
+        "brush_pixels": 1,
+        "channels": [
+          "delta_D",
+          "delta_A",
+          "delta_N",
+          "delta_C",
+          "delta_G",
+          "visibility_raw"
+        ],
+        "dense_smoothstep": [
+          0.1,
+          0.7
+        ],
+        "depth_foreground_alpha": 0.5,
+        "depth_hysteresis_percentiles": [
+          95,
+          70
+        ],
+        "depth_local_window": 5,
+        "depth_relative_floor": 0.002,
+        "depth_sigma": 1.5,
+        "foreground_alpha": 0.08,
+        "foreground_dilation": 3,
+        "mask_thresholds_diagnostic": [
+          0.1,
+          0.3,
+          0.5
+        ],
+        "positive_percentile": 99,
+        "reliability_strength": [
+          0.35,
+          0.65
+        ],
+        "rgb_coarse": {
+          "L2gradient": true,
+          "canny": [
+            25,
+            65
+          ],
+          "kernel": 5,
+          "sigma": 1.4
+        },
+        "rgb_fine": {
+          "L2gradient": true,
+          "canny": [
+            18,
+            48
+          ],
+          "kernel": 3,
+          "sigma": 0.65
+        },
+        "version": "hybrid-raster-evidence-v2-frozen-1"
+      },
+      "recipe_hash": "ae6d386d2c7f123859c7b364af4fb9d3754ae2e02f432056d2e69433189ff368",
+      "scales": {
+        "delta_A": 0.7444546544551854,
+        "delta_C": 0.6385581493377686,
+        "delta_D": 0.08261344276368612,
+        "delta_G": 1.0,
+        "delta_N": 0.9862916707992548,
+        "visibility_raw": 1.0
+      }
+    },
+    "parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9"
+  },
+  "independent_inventory_checks": {
+    "hotdog": {
+      "train_sha256_verified": "ecd11f13bd0072a1ae256896ddef35306ef4a4b7340b760aa52acd3d7734b124",
+      "frame_count": 100,
+      "F_C_indices_available": true,
+      "images_decoded": 0,
+      "candidate_checkpoint_rejections": []
+    },
+    "materials": {
+      "train_sha256_verified": "c8dda15a3c76fff929eab5ff029d37515232e0a9b55b9068e287a82b9c77bd39",
+      "frame_count": 100,
+      "F_C_indices_available": true,
+      "images_decoded": 0,
+      "candidate_checkpoint_rejections": []
+    },
+    "mic": {
+      "train_sha256_verified": "2e3dd0c6a1f9c34fe0cdad9f423c56eaa794c102789ff31058ae396e9f882403",
+      "frame_count": 100,
+      "F_C_indices_available": true,
+      "images_decoded": 0,
+      "candidate_checkpoint_rejections": []
+    },
+    "ship": {
+      "train_sha256_verified": "7d7851ae58ec19b45ff23d1216022c6247d7c131483c64e7eab8c82b6ccc9dfb",
+      "frame_count": 100,
+      "F_C_indices_available": true,
+      "images_decoded": 0,
+      "candidate_checkpoint_rejections": [
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_ship/point_cloud/iteration_15000/point_cloud.ply",
+          "sha256": "294c2b0c378136029a87ef500b9f72c05af1e5d8395abb41fbe23ed46828ded8",
+          "missing_vanilla_properties_independent": [
+            "scale_2"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_ship/point_cloud/iteration_30000/point_cloud.ply",
+          "sha256": "e6a639ca1d490467c4dc94dbc7bf8640212c606939a5c680cf4f997f1fd839dd",
+          "missing_vanilla_properties_independent": [
+            "scale_2"
+          ]
+        },
+        {
+          "path": "/home/u00134/3dgs_line/tier1/out/2dgs_ship/point_cloud/iteration_7000/point_cloud.ply",
+          "sha256": "e4c4a070d54b54c3023a43013c9c110ea2be7e5a3f5f161001de8707d45f1800",
+          "missing_vanilla_properties_independent": [
+            "scale_2"
+          ]
+        }
+      ]
+    }
+  },
+  "manifest_link_checks": {
+    "inventory_link_verified": true,
+    "inventory_sha256": "aabd4e1452742b932f717aedd8b9bd3209b22acf251d51af074490319224891d",
+    "inherited_lock_copy_verified": true,
+    "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926"
+  },
+  "bounded_filename_rechecks": [
+    {
+      "root": "/home/u00134/cglib/outputs",
+      "max_directory_depth": 6,
+      "matched_files_identical": true,
+      "matched_file_count": 11,
+      "visited_directory_count": 24,
+      "frozen_visited_directory_count": 24,
+      "matched_files": [
+        "/home/u00134/cglib/outputs/cadpartA_static/point_cloud.ply",
+        "/home/u00134/cglib/outputs/cadpartB_static/point_cloud.ply",
+        "/home/u00134/cglib/outputs/cadpartH_static/point_cloud.ply",
+        "/home/u00134/cglib/outputs/cadpart_static/point_cloud.ply",
+        "/home/u00134/cglib/outputs/chair_static/point_cloud.ply",
+        "/home/u00134/cglib/outputs/ficus_static/point_cloud.ply",
+        "/home/u00134/cglib/outputs/gcube_static/point_cloud.ply",
+        "/home/u00134/cglib/outputs/gicosa_static/point_cloud.ply",
+        "/home/u00134/cglib/outputs/gprism_static/point_cloud.ply",
+        "/home/u00134/cglib/outputs/gstep_static/point_cloud.ply",
+        "/home/u00134/cglib/outputs/lego_static/point_cloud.ply"
+      ],
+      "candidate_contents_opened": 0
+    },
+    {
+      "root": "/home/u00134/cglib/logs",
+      "max_directory_depth": 5,
+      "matched_files_identical": true,
+      "matched_file_count": 1,
+      "visited_directory_count": 2,
+      "frozen_visited_directory_count": 2,
+      "matched_files": [
+        "/home/u00134/cglib/logs/gs_smoke_lego/point_cloud.ply"
+      ],
+      "candidate_contents_opened": 0
+    },
+    {
+      "root": "/home/u00134/cglib/data/full",
+      "max_directory_depth": 2,
+      "matched_files_identical": true,
+      "matched_file_count": 0,
+      "visited_directory_count": 19,
+      "frozen_visited_directory_count": 19,
+      "matched_files": [],
+      "candidate_contents_opened": 0
+    },
+    {
+      "root": "/home/u00134/3dgs_line/tier1/out",
+      "max_directory_depth": 7,
+      "matched_files_identical": true,
+      "matched_file_count": 57,
+      "visited_directory_count": 1058,
+      "frozen_visited_directory_count": 1058,
+      "matched_files": [
+        "/home/u00134/3dgs_line/tier1/out/2dgs_cadpartA/cfg_args",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_cadpartA/point_cloud/iteration_15000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_cadpartA/point_cloud/iteration_30000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_cadpartA/point_cloud/iteration_7000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_chair/cfg_args",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_chair/point_cloud/iteration_15000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_chair/point_cloud/iteration_30000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_chair/point_cloud/iteration_7000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_chair_dist/cfg_args",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_chair_dist/point_cloud/iteration_15000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_chair_dist/point_cloud/iteration_30000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_chair_dist/point_cloud/iteration_7000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_chair_reporecipe/cfg_args",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_chair_reporecipe/point_cloud/iteration_30000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_gicosa/cfg_args",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_gicosa/point_cloud/iteration_15000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_gicosa/point_cloud/iteration_30000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_gicosa/point_cloud/iteration_7000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_lego/cfg_args",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_lego/point_cloud/iteration_15000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_lego/point_cloud/iteration_30000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_lego/point_cloud/iteration_7000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_ship/cfg_args",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_ship/point_cloud/iteration_15000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_ship/point_cloud/iteration_30000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_ship/point_cloud/iteration_7000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_truck/cfg_args",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_truck/point_cloud/iteration_15000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_truck/point_cloud/iteration_30000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/2dgs_truck/point_cloud/iteration_7000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/3dgs_truck/cfg_args",
+        "/home/u00134/3dgs_line/tier1/out/3dgs_truck/point_cloud/iteration_30000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/3dgs_truck/point_cloud/iteration_7000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_1729/checkpoints/cfg_args",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_1729/checkpoints/point_cloud/iteration_7000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_2718/checkpoints/cfg_args",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_2718/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_2718/checkpoints/point_cloud/iteration_7000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/drums/seed_1729/checkpoints/cfg_args",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/drums/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/drums/seed_1729/checkpoints/point_cloud/iteration_7000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/drums/seed_2718/checkpoints/cfg_args",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/drums/seed_2718/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/drums/seed_2718/checkpoints/point_cloud/iteration_7000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/ficus/seed_1729/checkpoints/cfg_args",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/ficus/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/ficus/seed_1729/checkpoints/point_cloud/iteration_7000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/ficus/seed_2718/checkpoints/cfg_args",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/ficus/seed_2718/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/ficus/seed_2718/checkpoints/point_cloud/iteration_7000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_1729/checkpoints/cfg_args",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_1729/checkpoints/point_cloud/iteration_7000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_2718/checkpoints/cfg_args",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_2718/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+        "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_2718/checkpoints/point_cloud/iteration_7000/point_cloud.ply"
+      ],
+      "candidate_contents_opened": 0
+    },
+    {
+      "root": "/home/u00134/3dgs_line/FeatureLineRendering/real_3dgs/outputs",
+      "max_directory_depth": 6,
+      "matched_files_identical": true,
+      "matched_file_count": 0,
+      "visited_directory_count": 5,
+      "frozen_visited_directory_count": 5,
+      "matched_files": [],
+      "candidate_contents_opened": 0
+    },
+    {
+      "root": "/home/u00134/3dgs_line/FeatureLineRendering/tier1/out",
+      "max_directory_depth": 6,
+      "matched_files_identical": true,
+      "matched_file_count": 0,
+      "visited_directory_count": 1,
+      "frozen_visited_directory_count": 1,
+      "matched_files": [],
+      "candidate_contents_opened": 0
+    }
+  ],
+  "canonical_checkpoint_absence_checks": {
+    "hotdog": {
+      "path": "/home/u00134/cglib/outputs/hotdog_static/point_cloud.ply",
+      "exists": false,
+      "content_opened": false
+    },
+    "materials": {
+      "path": "/home/u00134/cglib/outputs/materials_static/point_cloud.ply",
+      "exists": false,
+      "content_opened": false
+    },
+    "mic": {
+      "path": "/home/u00134/cglib/outputs/mic_static/point_cloud.ply",
+      "exists": false,
+      "content_opened": false
+    },
+    "ship": {
+      "path": "/home/u00134/cglib/outputs/ship_static/point_cloud.ply",
+      "exists": false,
+      "content_opened": false
+    }
+  },
+  "production_artifacts": [],
+  "counts": {
+    "frames": 0,
+    "frame_seals": 0,
+    "raw_fields": 0,
+    "images": 0,
+    "videos": 0,
+    "native_calibrations": 0,
+    "unique_arc_poses_rendered": 0
+  },
+  "not_applicable": [
+    "same-state A/B/C",
+    "finite contributor exports",
+    "raw alpha*T original IDs",
+    "camera/render calibration",
+    "video full decode and distinct frames"
+  ],
+  "access_scope": "This verifier independently re-enumerates the six frozen roots at identical depth/pruning/matching, stats canonical missing checkpoint paths, and reads TRAIN metadata, declared Gaussian checkpoints and source/lock JSON only. Unregistered filename matches reject before candidate content is read."
+}

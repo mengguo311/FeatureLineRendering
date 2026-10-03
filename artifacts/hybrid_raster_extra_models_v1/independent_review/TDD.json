@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "test_runner": "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s artifacts/hybrid_raster_extra_models_v1/independent_review -p test_verify_blocker.py",
+  "initial_import_failure": "logs/RED.log",
+  "behavioral_RED": {
+    "path": "logs/RED_BEHAVIORAL.log",
+    "tests": 8,
+    "failures_including_subtests": 10,
+    "exit_code": 1,
+    "cause": "unchecked initial implementation accepted eligible checkpoints, phantom selected scenes, missing inventory entries, changed sources/cameras/hash and phantom artifacts"
+  },
+  "GREEN": {
+    "path": "logs/GREEN.log",
+    "tests": 8,
+    "exit_code": 0
+  },
+  "files": {
+    "GREEN.log": {
+      "sha256": "698d16d7b93c4bd9707d3cfacda6fb1e0fea99ed0cda6e69bedc42772940540a",
+      "bytes": 106
+    },
+    "GREEN_LINKS.log": {
+      "sha256": "a9a62c93b51eee640410bdd1924c2eb7632ed5f8a5eac2ea425b405c1a8a196c",
+      "bytes": 111
+    },
+    "RED.log": {
+      "sha256": "35f0f7d76384736c3484734dc35dc2ea6464e5d53cc070696faa61597bc056ba",
+      "bytes": 985
+    },
+    "RED_BEHAVIORAL.log": {
+      "sha256": "f4967a414d784ea6c3d51913cbd0671d1c0535f53143187cbed6a59bd05453ba",
+      "bytes": 7045
+    },
+    "RED_LINKS.log": {
+      "sha256": "b9e0a5dfdd8c8878ac390ab209703bfeb05e335c2d3c54a0141806cee10a83c6",
+      "bytes": 2945
+    },
+    "RED_LINKS_SOURCE.sha256": {
+      "sha256": "ac8192be08621c1e43aa3b06bcbc67b666fafd6750939dc534a9250f79516169",
+      "bytes": 143
+    },
+    "RED_SOURCE.sha256": {
+      "sha256": "f131e440cc5bf2e474b3029e5cee30c345dec14207f1e48b61f5eaa61abdec17",
+      "bytes": 143
+    },
+    "VERIFIER.log": {
+      "sha256": "a850a85918feae0d6f5c21f4eb464c58ae76a3e937c52212f7a56f70a08fd32a",
+      "bytes": 149
+    },
+    "VERIFIER_FINAL.log": {
+      "sha256": "a850a85918feae0d6f5c21f4eb464c58ae76a3e937c52212f7a56f70a08fd32a",
+      "bytes": 149
+    },
+    "VERIFIER_FINAL_OPEN.trace": {
+      "sha256": "21170db9b0d702ef6574c12eb3cc180a6281b8715042a0e83d42926583296719",
+      "bytes": 210303
+    },
+    "VERIFIER_OPEN.trace": {
+      "sha256": "291e6c789a86690a7d0f0481ad77736f88310c1caa4d1f013f7be3e5f716aac8",
+      "bytes": 18322
+    }
+  },
+  "science_executed": false,
+  "hardening_RED": {
+    "path": "logs/RED_LINKS.log",
+    "tests": 12,
+    "failures": 4,
+    "exit_code": 1,
+    "scope": "Manifest inventory hash link, inherited-lock byte equality, unregistered filename candidate, canonical expected checkpoint appearance"
+  },
+  "hardening_GREEN": {
+    "path": "logs/GREEN_LINKS.log",
+    "tests": 12,
+    "exit_code": 0
+  },
+  "final_tests": 12
+}

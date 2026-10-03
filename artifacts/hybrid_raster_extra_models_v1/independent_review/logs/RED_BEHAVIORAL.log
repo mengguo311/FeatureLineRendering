@@ -1,0 +1,95 @@
+FFFFFFFFFF.
+======================================================================
+FAIL: test_eligible_checkpoint_contradicts_zero_inventory (test_verify_blocker.BlockerTests.test_eligible_checkpoint_contradicts_zero_inventory)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_extra_models_v1/artifacts/hybrid_raster_extra_models_v1/independent_review/test_verify_blocker.py", line 31, in test_eligible_checkpoint_contradicts_zero_inventory
+    with self.assertRaisesRegex(ValueError, 'eligible'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_lock_hash_corruption_is_rejected (test_verify_blocker.BlockerTests.test_lock_hash_corruption_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_extra_models_v1/artifacts/hybrid_raster_extra_models_v1/independent_review/test_verify_blocker.py", line 62, in test_lock_hash_corruption_is_rejected
+    with self.assertRaisesRegex(ValueError, 'parameter'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_scene_inventory_is_rejected (test_verify_blocker.BlockerTests.test_missing_scene_inventory_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_extra_models_v1/artifacts/hybrid_raster_extra_models_v1/independent_review/test_verify_blocker.py", line 36, in test_missing_scene_inventory_is_rejected
+    with self.assertRaisesRegex(ValueError, 'inventory scene'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_modified_scientific_source_is_rejected (test_verify_blocker.BlockerTests.test_modified_scientific_source_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_extra_models_v1/artifacts/hybrid_raster_extra_models_v1/independent_review/test_verify_blocker.py", line 52, in test_modified_scientific_source_is_rejected
+    with self.assertRaisesRegex(ValueError, 'source'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_phantom_selected_scene_is_rejected (test_verify_blocker.BlockerTests.test_phantom_selected_scene_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_extra_models_v1/artifacts/hybrid_raster_extra_models_v1/independent_review/test_verify_blocker.py", line 41, in test_phantom_selected_scene_is_rejected
+    with self.assertRaisesRegex(ValueError, 'selected'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_wrong_camera_split_is_rejected (test_verify_blocker.BlockerTests.test_wrong_camera_split_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_extra_models_v1/artifacts/hybrid_raster_extra_models_v1/independent_review/test_verify_blocker.py", line 57, in test_wrong_camera_split_is_rejected
+    with self.assertRaisesRegex(ValueError, 'camera'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_zero_manifest_cannot_hide_output_or_seal (test_verify_blocker.BlockerTests.test_zero_manifest_cannot_hide_output_or_seal) (name='frames/ship/F1/RGB.png')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_extra_models_v1/artifacts/hybrid_raster_extra_models_v1/independent_review/test_verify_blocker.py", line 47, in test_zero_manifest_cannot_hide_output_or_seal
+    with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'production'):
+                                  ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_zero_manifest_cannot_hide_output_or_seal (test_verify_blocker.BlockerTests.test_zero_manifest_cannot_hide_output_or_seal) (name='raw/ship/F1.npz')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_extra_models_v1/artifacts/hybrid_raster_extra_models_v1/independent_review/test_verify_blocker.py", line 47, in test_zero_manifest_cannot_hide_output_or_seal
+    with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'production'):
+                                  ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_zero_manifest_cannot_hide_output_or_seal (test_verify_blocker.BlockerTests.test_zero_manifest_cannot_hide_output_or_seal) (name='media/ship/arc.mp4')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_extra_models_v1/artifacts/hybrid_raster_extra_models_v1/independent_review/test_verify_blocker.py", line 47, in test_zero_manifest_cannot_hide_output_or_seal
+    with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'production'):
+                                  ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_zero_manifest_cannot_hide_output_or_seal (test_verify_blocker.BlockerTests.test_zero_manifest_cannot_hide_output_or_seal) (name='frames/ship/F1/SEAL.json')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_extra_models_v1/artifacts/hybrid_raster_extra_models_v1/independent_review/test_verify_blocker.py", line 47, in test_zero_manifest_cannot_hide_output_or_seal
+    with self.subTest(name=name), self.assertRaisesRegex(ValueError, 'production'):
+                                  ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.005s
+
+FAILED (failures=10)
