@@ -1,3 +1,16 @@
+--- upstream/scene/dataset_readers.py
++++ isolated/scene/dataset_readers.py
+@@ -221,8 +221,8 @@
+ def readNerfSyntheticInfo(path, white_background, eval, extension=".png"):
+     print("Reading Training Transforms")
+     train_cam_infos = readCamerasFromTransforms(path, "transforms_train.json", white_background, extension)
+-    print("Reading Test Transforms")
+-    test_cam_infos = readCamerasFromTransforms(path, "transforms_test.json", white_background, extension)
++    # Strict TRAIN-only acquisition: do not open any TEST/VAL metadata.
++    test_cam_infos = []
+     
+     if not eval:
+         train_cam_infos.extend(test_cam_infos)
 --- upstream/train.py
 +++ isolated/train.py
 @@ -10,6 +10,7 @@
@@ -52,19 +65,6 @@
  
      # Start GUI server, configure and run training
      network_gui.init(args.ip, args.port)
---- upstream/scene/dataset_readers.py
-+++ isolated/scene/dataset_readers.py
-@@ -221,8 +221,8 @@
- def readNerfSyntheticInfo(path, white_background, eval, extension=".png"):
-     print("Reading Training Transforms")
-     train_cam_infos = readCamerasFromTransforms(path, "transforms_train.json", white_background, extension)
--    print("Reading Test Transforms")
--    test_cam_infos = readCamerasFromTransforms(path, "transforms_test.json", white_background, extension)
-+    # Strict TRAIN-only acquisition: do not open any TEST/VAL metadata.
-+    test_cam_infos = []
-     
-     if not eval:
-         train_cam_infos.extend(test_cam_infos)
 --- upstream/utils/general_utils.py
 +++ isolated/utils/general_utils.py
 @@ -109,7 +109,7 @@

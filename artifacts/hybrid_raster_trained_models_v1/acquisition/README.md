@@ -13,3 +13,5 @@
 TDD_RED.log为模块不存在时的真实失败；TDD_GREEN.log包括严格TRAIN loader/path、seed实际CPU RNG、checkpoint实际保存恢复+camera/RNG、manifest mismatch、atomic status、GPU foreign拒绝等10项。LOADER_CPU.log和newout/training/LOADER_CPU.strace实际运行patched upstream reader的合成4×4输入，无GPU初始化，确认2TRAIN/0TEST/100000初始化点。此fixture不是新scene实验，也不替代实际训练trace。
 
 全局工程修复轮2：第一次2步GPUfixture使用4×4合成图，触发上游camera_utils现有的height==4 alpha分支，未开始任何真实场景训练。保留该失败全部输出，改用独立round2目录中的8×8合成fixture，并在第2步运行合成TRAIN0/1诊断，以覆盖PIL/font和实际snapshot保存；四场景仍为800且配方不改。审计仅补允许Landlock对精确TRAIN目录的O_PATH/O_DIRECTORY句柄，不放宽TEST或VAL访问。补充RED→GREEN后共11项CPU测试。
+
+全局最后工程修复轮3：8×8 fixture已通过TRAIN访问审计，但初次renderer调用发现ext工作树有未提交的四返回值unpack，而现用官方rasterizer仅返回RGB/radii两个值。初版物化错误地读工作树而非commit blob；此前pin表示HEAD，不能证明工作树洁净。现已对全部17个文件使用git ls-tree枚举和git show `472689…:path`物化，再施加明确的seed/TRAIN/I/O补丁。SOURCE_MANIFEST分别记录git blob与外部工作树SHA，EXTERNAL_WORKTREE_READONLY.diff保存差异，未修改外部源。逐文件独立比较显示：旧实际LEGO vendor与pin只差train/general_utils的seed补丁；官方renderer完全相同。SOURCE_LINEAGE_REVIEW.json保存逐项证据。新round3 fixture目录保留先前两次失败；真实场景仍0次启动。TDD追加实际pin核对RED→GREEN，共12项；此后不再有工程修复预算。

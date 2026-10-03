@@ -2,6 +2,8 @@
 """Read-only lineage verifier. Preflight readiness is not a trained checkpoint."""
 import argparse
 import datetime
+import difflib
+import hashlib
 import json
 import math
 from pathlib import Path
@@ -12,6 +14,21 @@ import numpy as np
 from verify_experiment import ROOT,ART,STAGE,SCENES,F,C,read,write,sha,canonical,require,audit_access
 
 AART=ROOT/'artifacts'/STAGE/'acquisition'
+
+
+def verify_source_bytes(relative,pinned,staged):
+    """Independently reconstruct the exact predeclared acquisition-only patch."""
+    allowed={
+        'utils/general_utils.py': [('def safe_state(silent):','def safe_state(silent, seed=0):'),('    random.seed(0)','    random.seed(seed)'),('    np.random.seed(0)','    np.random.seed(seed)'),('    torch.manual_seed(0)','    torch.manual_seed(seed)')],
+        'scene/dataset_readers.py': [('    print("Reading Test Transforms")\n    test_cam_infos = readCamerasFromTransforms(path, "transforms_test.json", white_background, extension)','    # Strict TRAIN-only acquisition: do not open any TEST/VAL metadata.\n    test_cam_infos = []')],
+        'train.py': [('    args = parser.parse_args(sys.argv[1:])','    parser.add_argument("--seed", type=int, default=0)\n    args = parser.parse_args(sys.argv[1:])'),('safe_state(args.quiet)','safe_state(args.quiet, args.seed)'),('        (model_params, first_iter) = torch.load(checkpoint)','        (model_params, first_iter) = acquisition_runtime.load_checkpoint(checkpoint)'),('    viewpoint_stack = None\n    ema_loss_for_log = 0.0','    viewpoint_stack, ema_loss_for_log = acquisition_runtime.restore_loop(checkpoint, scene)'),('                torch.save((gaussians.capture(), iteration), scene.model_path + "/chkpnt" + str(iteration) + ".pth")','                acquisition_runtime.save_checkpoint(gaussians, iteration, scene, viewpoint_stack, ema_loss_for_log)'),('import os\n','import os\nimport acquisition_runtime\n')]
+    }
+    expected=pinned
+    for old,new in allowed.get(relative,[]):
+        require(expected.count(old)==1,'pinned patch context differs: '+relative)
+        expected=expected.replace(old,new)
+    require(expected==staged,'staged source differs from Git pin + exact approved patch: '+relative)
+    return True
 
 
 def inspect_checkpoint(path,expected_sha256):
@@ -38,15 +55,29 @@ def preflight():
     acquisition=read(AART/'ACQUISITION.json');sources=read(AART/'SOURCE_MANIFEST.json')
     require(acquisition['source_manifest_sha256']==sha(AART/'SOURCE_MANIFEST.json'),'acquisition source manifest digest differs')
     require(acquisition['upstream_commit']==sources['commit']=='472689c0dc70417448fb451bf529ae532d32c095','upstream pin differs')
-    changed=set();checked=[]
+    changed=set();checked=[];diff=[];provenance=[]
+    prior_vendor=Path('/home/u00134/3dgs_line/tier1/out/multiscene_foundation/vendor/gaussian-splatting')
     for row in sources['files']:
         require(sha(row['path'])==row['sha256'],'isolated training source changed: '+row['relative_path'])
-        require(sha(Path(sources['upstream'])/row['relative_path'])==row['upstream_sha256'],'upstream source changed')
+        pinned=subprocess.check_output(['git','show',sources['commit']+':'+row['relative_path']],cwd=sources['upstream'])
+        pinned_sha=hashlib.sha256(pinned).hexdigest()
+        require(pinned_sha==row['upstream_sha256'],'declared upstream digest differs from actual Git blob')
+        staged=Path(row['path']).read_text();original=pinned.decode()
+        verify_source_bytes(row['relative_path'],original,staged)
+        working_sha=sha(Path(sources['upstream'])/row['relative_path'])
+        if 'upstream_worktree_sha256' in row:require(working_sha==row['upstream_worktree_sha256'],'disclosed upstream working tree changed')
         require(row['modified']==(row['sha256']!=row['upstream_sha256']),'source modification flag differs')
-        if row['modified']:changed.add(row['relative_path'])
+        if row['modified']:
+            changed.add(row['relative_path'])
+            diff.extend(difflib.unified_diff(original.splitlines(True),staged.splitlines(True),fromfile='upstream/'+row['relative_path'],tofile='isolated/'+row['relative_path']))
+        prior_sha=sha(prior_vendor/row['relative_path'])
+        if row['relative_path'] not in ('train.py','utils/general_utils.py'):
+            require(prior_sha==pinned_sha,'prior actual Lego vendor differs from pin outside known seed patch: '+row['relative_path'])
+        provenance.append(dict(path=row['relative_path'],git_blob_sha256=pinned_sha,upstream_working_tree_sha256=working_sha,working_tree_matches_pin=working_sha==pinned_sha,prior_lego_vendor_sha256=prior_sha,prior_vendor_matches_pin=prior_sha==pinned_sha))
         checked.append(row['relative_path'])
     require(changed=={'train.py','scene/dataset_readers.py','utils/general_utils.py'},'unreviewed vanilla source modifications')
     require('LICENSE.md' in checked and sources['patch_sha256']==sha(AART/'UPSTREAM_PATCH.diff'),'license/patch pin missing')
+    require(''.join(diff)==(AART/'UPSTREAM_PATCH.diff').read_text(),'recorded training patch differs from independently reconstructed Git-pin diff')
     for row in acquisition['binaries']+acquisition['prior_files']+acquisition['support_files']:
         require(sha(row['path'])==row['sha256'],'acquisition dependency hash changed: '+row['path'])
     central=read(ROOT/'artifacts'/STAGE/'INPUTS.json');scenes={}
@@ -74,6 +105,7 @@ def preflight():
         for row in manifest['verified_files']:require(sha(row['path'])==row['sha256'],'verified file changed: '+row['path'])
         scenes[scene]=dict(passed=True,seed=1729,iterations=30000,train_cameras=100,C_used_photometrically=list(C),manifest_sha256=sha(item['path']),checkpoint_destination=item['checkpoint_destination'])
     return dict(passed=True,mode='PREFLIGHT_ONLY',source_files=checked,modified_files=sorted(changed),scenes=scenes,
+                independent_git_pin_provenance=provenance,upstream_working_tree_is_not_trusted_as_git_pin=True,
                 necessary_differences=acquisition['necessary_differences'],source_image_bytes_rehashed=False,
                 input_hash_scope='TRAIN metadata rehashed; image digests crosschecked with root frozen bytehash manifest, no image decode',
                 production_claim='No checkpoint/training/calibration claim from preflight')

@@ -4,14 +4,25 @@ test_audit_allows_exact_train_landlock_handle_only (test_acquisition.Acquisition
 test_checkpoint_sidecar_requires_hash (test_acquisition.AcquisitionContract) ... ok
 test_gpu_guard_other_device_own_jobs_allowed_foreign_denied (test_acquisition.AcquisitionContract) ... ok
 test_gpu_guard_rejects_selected_device_any_job (test_acquisition.AcquisitionContract) ... ok
-test_materialized_source_uses_git_pin_not_dirty_worktree (test_acquisition.AcquisitionContract) ... ok
+test_materialized_source_uses_git_pin_not_dirty_worktree (test_acquisition.AcquisitionContract) ... FAIL
 test_resume_identity_rejects_changed_manifest (test_acquisition.AcquisitionContract) ... ok
 test_seed_patch_and_no_test_read (test_acquisition.AcquisitionContract) ... ok
 test_seed_rng_actual_cpu_determinism (test_acquisition.AcquisitionContract) ... ok
 test_train_loader_rejects_traversal_and_nontrain (test_acquisition.AcquisitionContract) ... ok
 test_train_only_loader_ignores_forbidden_metadata (test_acquisition.AcquisitionContract) ... ok
 
+======================================================================
+FAIL: test_materialized_source_uses_git_pin_not_dirty_worktree (test_acquisition.AcquisitionContract)
 ----------------------------------------------------------------------
-Ran 12 tests in 2.495s
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/tests/test_acquisition.py", line 45, in test_materialized_source_uses_git_pin_not_dirty_worktree
+    self.assertEqual(row['upstream_sha256'],hashlib.sha256(blob).hexdigest(),row['relative_path'])
+AssertionError: '5546f5a642c63432d108c42abab4db0c9242c66b838c45556d1ae229fae34291' != '75fcc86a57d27d9ea55b2904a4faaf075e7f73dba8c54bcb6cbd4c02c4884084'
+- 5546f5a642c63432d108c42abab4db0c9242c66b838c45556d1ae229fae34291
++ 75fcc86a57d27d9ea55b2904a4faaf075e7f73dba8c54bcb6cbd4c02c4884084
+ : gaussian_renderer/__init__.py
 
-OK
+----------------------------------------------------------------------
+Ran 12 tests in 2.391s
+
+FAILED (failures=1)

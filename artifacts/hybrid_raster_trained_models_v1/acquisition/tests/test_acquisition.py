@@ -35,6 +35,18 @@ class AcquisitionContract(unittest.TestCase):
         self.assertIn('test_cam_infos = []',patched['scene/dataset_readers.py'])
         for expression in ['loss = (1.0 - opt.lambda_dssim) * Ll1 + opt.lambda_dssim * (1.0 - ssim(image, gt_image))','gaussians.densify_and_prune(opt.densify_grad_threshold, 0.005, scene.cameras_extent, size_threshold)']:
             self.assertIn(expression,patched['train.py'])
+    def test_materialized_source_uses_git_pin_not_dirty_worktree(self):
+        import hashlib
+        import subprocess
+        source=Path('/home/u00134/3dgs_line/ext/gaussian-splatting')
+        manifest=json.loads((HERE/'SOURCE_MANIFEST.json').read_text())
+        for row in manifest['files']:
+            blob=subprocess.check_output(['git','show',manifest['commit']+':'+row['relative_path']],cwd=source)
+            self.assertEqual(row['upstream_sha256'],hashlib.sha256(blob).hexdigest(),row['relative_path'])
+        renderer=Path(next(row['path'] for row in manifest['files'] if row['relative_path']=='gaussian_renderer/__init__.py')).read_text()
+        self.assertIn('rendered_image, radii = rasterizer(',renderer)
+        self.assertNotIn('rendered_image, radii, _depth, _alpha = rasterizer(',renderer)
+
     def test_seed_rng_actual_cpu_determinism(self):
         import contextlib
         import io

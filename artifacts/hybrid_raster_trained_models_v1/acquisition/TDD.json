@@ -2,8 +2,8 @@
   "cpu_loader_audit": "artifacts/hybrid_raster_trained_models_v1/acquisition/LOADER_CPU_AUDIT.json",
   "green": {
     "exit_code": 0,
-    "log_sha256": "c7de56e7c61ccd7b7ba05a709e7354bd110f70e68c7d8c77d4aaacdcb6bac780",
-    "tests": 11
+    "log_sha256": "67483b00aa6d43607a63edb97d6587fb061cc09fab30fde1c52f22e6c8386230",
+    "tests": 12
   },
   "production_training_has_not_launched": true,
   "red": {
@@ -17,5 +17,11 @@
     "red_exit_code": 1,
     "red_log_sha256": "ac4602cf7b754189790e492900a79ae174161433d31ca6464a6357e491932df9",
     "scope": "allow exact TRAINdirectory O_PATH/O_DIRECTORY; reject plainread andTESTdirectory"
+  },
+  "repair_round3": {
+    "green_exit_code": 0,
+    "red_exit_code": 1,
+    "red_log_sha256": "fd36569db7ccf5834672966eed859a0a87be653c829d4d3592a6d36960421f80",
+    "scope": "all17 upstream hashes gitpin; officialtwo-return renderer; no dirtyworktree copy"
   }
 }

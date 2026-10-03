@@ -3,6 +3,7 @@
 import argparse
 import difflib
 import json
+import hashlib
 from pathlib import Path
 import shutil
 import subprocess
@@ -20,19 +21,20 @@ SITES=['/home/u00134/3dgs_line/tier1/out/multiscene_foundation/vendor/training_s
 def main():
     source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=UPSTREAM,text=True).strip()
     if source_commit!='472689c0dc70417448fb451bf529ae532d32c095':raise RuntimeError('upstream pin mismatch')
-    files=['LICENSE.md','train.py']
-    for name in ['arguments','gaussian_renderer','scene','utils']:
-        files.extend(str(p.relative_to(UPSTREAM)) for p in sorted((UPSTREAM/name).glob('*.py')))
-    originals={p:(UPSTREAM/p).read_text() for p in files}
+    tracked=subprocess.check_output(['git','ls-tree','-r','--name-only',source_commit],cwd=UPSTREAM,text=True).splitlines()
+    files=sorted(p for p in tracked if p in ['LICENSE.md','train.py'] or (len(Path(p).parts)==2 and Path(p).parts[0] in ['arguments','gaussian_renderer','scene','utils'] and p.endswith('.py')))
+    blobs={p:subprocess.check_output(['git','show',source_commit+':'+p],cwd=UPSTREAM) for p in files}
+    originals={p:blob.decode() for p,blob in blobs.items()}
+    (HERE/'EXTERNAL_WORKTREE_READONLY.diff').write_bytes(subprocess.check_output(['git','diff','--',*files],cwd=UPSTREAM))
     patches=patch_sources({p:originals[p] for p in ['train.py','utils/general_utils.py','scene/dataset_readers.py']})
     records=[];diff=[]
     SOURCE.mkdir(parents=True,exist_ok=True)
     for name in files:
         target=SOURCE/name;target.parent.mkdir(parents=True,exist_ok=True);target.write_text(patches.get(name,originals[name]))
-        records.append(dict(relative_path=name,path=str(target),upstream_sha256=sha256(UPSTREAM/name),sha256=sha256(target),modified=name in patches))
+        records.append(dict(relative_path=name,path=str(target),upstream_sha256=hashlib.sha256(blobs[name]).hexdigest(),upstream_worktree_sha256=sha256(UPSTREAM/name),sha256=sha256(target),modified=name in patches))
         if name in patches:diff.extend(difflib.unified_diff(originals[name].splitlines(True),patches[name].splitlines(True),fromfile='upstream/'+name,tofile='isolated/'+name))
     (HERE/'UPSTREAM_PATCH.diff').write_text(''.join(diff))
-    source_manifest=dict(upstream=str(UPSTREAM),commit=source_commit,license='LICENSE.md',files=records,patch_sha256=sha256(HERE/'UPSTREAM_PATCH.diff'))
+    source_manifest=dict(upstream=str(UPSTREAM),commit=source_commit,materialization='git show immutable commit blobs; never working-tree content',license='LICENSE.md',files=records,patch_sha256=sha256(HERE/'UPSTREAM_PATCH.diff'),external_worktree_diff_sha256=sha256(HERE/'EXTERNAL_WORKTREE_READONLY.diff'))
     atomic_json(HERE/'SOURCE_MANIFEST.json',source_manifest)
     binaries=[]
     for site in SITES:
@@ -64,11 +66,11 @@ def main():
     # Freeze a separate two-step synthetic infrastructure fixture before any GPU.
     # It never counts as a requested scene acquisition or NPR output.
     from PIL import Image
-    toy=OUT/'training/synthetic_gpu_input_round2';(toy/'train').mkdir(parents=True,exist_ok=True)
+    toy=OUT/'training/synthetic_gpu_input_round3';(toy/'train').mkdir(parents=True,exist_ok=True)
     for index,color in [(0,(100,80,40,128)),(1,(40,80,100,255))]: Image.new('RGBA',(8,8),color).save(toy/'train'/f'r_{index}.png')
     toy_metadata={'camera_angle_x':.69,'frames':[{'file_path':'./train/r_0','transform_matrix':[[1,0,0,0],[0,1,0,0],[0,0,1,4],[0,0,0,1]]},{'file_path':'./train/r_1','transform_matrix':[[1,0,0,1],[0,1,0,0],[0,0,1,4],[0,0,0,1]]}]}
     atomic_json(toy/'transforms_train.json',toy_metadata)
-    toy_directory=OUT/'training/synthetic_gpu_preflight_round2';toy_output=toy_directory/'checkpoints'
+    toy_directory=OUT/'training/synthetic_gpu_preflight_round3';toy_output=toy_directory/'checkpoints'
     toy_manifest=dict(manifest,scene='SYNTHETIC_INFRASTRUCTURE_ONLY',iterations=2,directory=str(toy_directory),output=str(toy_output),original_data=str(toy),
         arguments=['-s',str(toy_directory/'data'),'-m',str(toy_output),'--white_background','--iterations','2'],
         input_files=[{'path':str(p),'sha256':sha256(p)} for p in [toy/'transforms_train.json',toy/'train/r_0.png',toy/'train/r_1.png']],

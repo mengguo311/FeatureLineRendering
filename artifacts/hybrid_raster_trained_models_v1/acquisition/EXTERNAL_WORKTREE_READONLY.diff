@@ -1,0 +1,13 @@
+diff --git a/gaussian_renderer/__init__.py b/gaussian_renderer/__init__.py
+index f74e336..92dcccf 100644
+--- a/gaussian_renderer/__init__.py
++++ b/gaussian_renderer/__init__.py
+@@ -82,7 +82,7 @@ def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor,
+         colors_precomp = override_color
+ 
+     # Rasterize visible Gaussians to image, obtain their radii (on screen). 
+-    rendered_image, radii = rasterizer(
++    rendered_image, radii, _depth, _alpha = rasterizer(
+         means3D = means3D,
+         means2D = means2D,
+         shs = shs,
