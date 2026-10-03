@@ -1,0 +1,48 @@
+{
+  "scene": "ship",
+  "action": "CPU_ONLY_RESOLVE_EXACT_CAMERAS",
+  "exit_code": 0,
+  "utc_recorded": "2026-10-03T10:04:06.753990+00:00",
+  "independent_acquisition_pass": {
+    "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/SHIP_ACQUISITION.json",
+    "sha256": "7e7a7ea04f97e51b22cb57ecfe30a9328ca603c6d2186e06ee2aff11255039eb"
+  },
+  "command": [
+    "strace",
+    "-f",
+    "-q",
+    "-yy",
+    "-s",
+    "4096",
+    "-e",
+    "trace=open,openat,openat2,creat",
+    "-o",
+    "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/logs/resolve_ship.strace",
+    "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+    "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/adapters.py",
+    "--resolve",
+    "ship"
+  ],
+  "camera_manifest": {
+    "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/ship/CAMERAS.json",
+    "sha256": "61895c4d059daaee95ce84a084dbc376a24914ef55b37ceb100baa5ffd175923"
+  },
+  "trace": {
+    "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/logs/resolve_ship.strace",
+    "sha256": "cd3c95d39b5b90cc9e5aa5ceaed27a6205594a0d0c96b2be58790e879f38afb4"
+  },
+  "source_sha256": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+  "GPU_launched": false,
+  "images_viewed": false,
+  "audit_status": "PASS_CAPTURED_RESOLVE_PROCESS_ONLY",
+  "independent_resolve_reviews": [
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/SHIP_EXACT_CAMERAS.json",
+      "sha256": "11cd50cfcd8a812c209574996ffe6f518fe2f48f971638a3f9737cca15290236"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/SHIP_RESOLVE_ACCESS.json",
+      "sha256": "660d833ec6f777adb46a6823bb519260dc68a7cc308b9585f5dbf8b6fdd662f0"
+    }
+  ]
+}

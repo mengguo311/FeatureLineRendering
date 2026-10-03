@@ -1,0 +1,480 @@
+diff --git a/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/storage_paths.py b/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/storage_paths.py
+new file mode 100644
+index 0000000..eced8d3
+--- /dev/null
++++ b/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/storage_paths.py
+@@ -0,0 +1,148 @@
++"""Explicit two-root storage mapping. No rendering or scientific computation."""
++import os
++from pathlib import Path
++import re
++import shutil
++
++ROOT = Path(__file__).resolve().parents[3]
++ART = ROOT/'artifacts/hybrid_raster_trained_models_v1/transport'
++CONT = ART.parent/'continuation'
++EXTERNAL_ROOT = Path('/mnt/hdd1/u00134/hybrid_raster_trained_models_v1')
++OUT = EXTERNAL_ROOT/'transport'
++LEGACY_OUT = ROOT/'out/hybrid_raster_trained_models_v1/transport'
++NEW_SCENES = ('materials', 'mic', 'ship')
++SCENES = ('hotdog',) + NEW_SCENES
++RESERVE_BYTES = 1024**3
++MAP_PATH = CONT/'STORAGE_MAP.json'
++_KINDS = ('raw', 'frames', 'calibration', 'media')
++_JSON_NAMES = ('CALIBRATION.json', 'CALIBRATION_FAILURE.json', 'FRAMES.json', 'MEDIA.json')
++
++
++def require_new_scene(scene):
++    if scene not in NEW_SCENES:
++        raise ValueError('Storage continuation may launch only materials, mic or ship: '+str(scene))
++    return scene
++
++
++def scene_root(scene):
++    if scene not in SCENES: raise ValueError('Unknown frozen scene: '+str(scene))
++    return LEGACY_OUT if scene == 'hotdog' else OUT
++
++
++def output_path(scene, kind, key=None):
++    if kind not in _KINDS: raise ValueError('Unknown output kind')
++    path = scene_root(scene)/kind/scene
++    if key is not None:
++        if not re.fullmatch(r'(?:F|C)_\d{3}|arc0_\d{3}', key): raise ValueError('Invalid frame key')
++        path /= key
++    return path
++
++
++def storage_map():
++    return {
++        'schema': 'storage-continuation-map-v1',
++        'repo_root': str(ROOT),
++        'external_root': str(EXTERNAL_ROOT),
++        'legacy_transport_root': str(LEGACY_OUT),
++        'new_transport_root': str(OUT),
++        'scene_roots': {scene: str(scene_root(scene)) for scene in SCENES},
++        'new_scenes': list(NEW_SCENES),
++        'minimum_free_bytes_each_root': RESERVE_BYTES,
++        'read_only_legacy_scene': 'hotdog',
++        'binding_only': ['run_transport.OUT', 'adapters.OUT', 'hybrid_raster_native.STAGE'],
++        'retained_real_paths': ['run_transport.ROOT', 'run_transport.ART', 'hybrid_raster_native.NATIVE'],
++        'seal_context': 'Original producer and adapter byte hashes stay unchanged; new storage glue identity is recorded separately per launch.',
++        'no_symlinks': True,
++    }
++
++
++def _absolute_no_symlinks(path):
++    path = Path(os.path.abspath(os.fspath(path)))
++    for node in (path, *path.parents):
++        if node.is_symlink(): raise ValueError('Symlink path is not authorized: '+str(node))
++    return path
++
++
++def require_safe_output(path):
++    path = _absolute_no_symlinks(path)
++    if not path.is_relative_to(EXTERNAL_ROOT):
++        raise PermissionError('New output must stay in approved external root: '+str(path))
++    for node in (path, *path.parents):
++        if node.is_relative_to(EXTERNAL_ROOT) and node.exists() and node.stat().st_uid != os.getuid():
++            raise PermissionError('External output owner differs: '+str(node))
++    return path
++
++
++def assert_roots():
++    """Check real paths, owner, writeability and both hard free-space reserves."""
++    _absolute_no_symlinks(ROOT)
++    require_safe_output(EXTERNAL_ROOT)
++    result = {}
++    for label, path in [('repo', ROOT), ('external', EXTERNAL_ROOT)]:
++        if not path.is_dir(): raise RuntimeError('Storage root is missing: '+str(path))
++        stat = path.stat()
++        if stat.st_uid != os.getuid() or not os.access(path, os.W_OK):
++            raise PermissionError('Storage root ownership/writeability mismatch: '+str(path))
++        free = shutil.disk_usage(path).free
++        result[label] = {'path':str(path), 'free_bytes':free, 'minimum_free_bytes':RESERVE_BYTES,
++                         'device':stat.st_dev, 'uid':stat.st_uid, 'real_path':str(path.resolve()), 'symlink':False}
++        if free < RESERVE_BYTES: raise RuntimeError('Less than 1GiB reserve at '+str(path))
++    return result
++
++
++def require_storage_release():
++    # Lazy import keeps the resolver available to independent CPU readers.
++    from run_storage_transport import require_storage_release as verify
++    return verify()
++
++
++def _metadata_path_allowed(path, scene):
++    allowed = [ART/'STATUS.json', ART.parent/'STATUS.json']
++    allowed += [ART/scene/name for name in _JSON_NAMES]
++    for target in allowed:
++        if path == target: return True
++        if path.parent == target.parent and path.name.startswith('.'+target.name+'.'): return True
++    return False
++
++
++def require_write_path(path, scene):
++    """Permit large writes externally and only exact producer JSON destinations in repo."""
++    require_new_scene(scene)
++    path = _absolute_no_symlinks(path)
++    if path.is_relative_to(EXTERNAL_ROOT):
++        require_safe_output(path)
++        for kind in _KINDS:
++            if path.is_relative_to(OUT/kind/'hotdog'):
++                raise PermissionError('Hotdog remains read-only, including duplicate destinations')
++        return path
++    if _metadata_path_allowed(path, scene): return path
++    raise PermissionError('Producer write outside authorized storage/metadata: '+str(path))
++
++
++def write_audit_hook(scene):
++    """Python write guard; actual child and native I/O remain independently traced."""
++    require_new_scene(scene)
++    def check_path(value, dir_fd=None):
++        if isinstance(value, int): return  # fd opened through the guarded path operation
++        if dir_fd not in (None, -1) and not os.path.isabs(value):
++            value = Path(os.readlink('/proc/self/fd/'+str(dir_fd)))/os.fsdecode(value)
++        require_write_path(os.fsdecode(value), scene)
++    def hook(event, args):
++        if event == 'open':
++            path, mode, flags = args
++            if isinstance(path, int): return
++            if (flags or 0) & (os.O_WRONLY|os.O_RDWR|os.O_CREAT|os.O_TRUNC|os.O_APPEND): check_path(path)
++        elif event == 'os.mkdir':
++            path, _, dir_fd = args
++            # pathlib.mkdir(exist_ok=True) attempts existing ancestor directories; no mutation occurs.
++            candidate = _absolute_no_symlinks(os.fsdecode(path))
++            if candidate.is_dir(): return
++            check_path(path, dir_fd)
++        elif event in ('os.remove', 'os.rmdir', 'os.chmod', 'os.chown', 'os.truncate', 'os.utime'):
++            check_path(args[0], args[-1] if event in ('os.remove','os.rmdir') else None)
++        elif event in ('os.rename', 'os.link'):
++            check_path(args[0], args[2] if len(args)>2 else None)
++            check_path(args[1], args[3] if len(args)>3 else None)
++        elif event == 'os.symlink':
++            raise PermissionError('Producer may not create symlinks')
++    return hook
+diff --git a/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/run_storage_transport.py b/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/run_storage_transport.py
+new file mode 100644
+index 0000000..6dce7c3
+--- /dev/null
++++ b/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/run_storage_transport.py
+@@ -0,0 +1,125 @@
++"""Storage-only launcher for the byte-identical frozen NPR producer.
++
++ROOT/ART/__file__ retain their truthful repository identities. Only destination
++globals change; the original functions, scientific parameters and native builds
++are neither copied nor edited. A separate binding receipt records this glue.
++"""
++import argparse
++import datetime
++import hashlib
++import importlib
++import json
++import os
++from pathlib import Path
++import subprocess
++import sys
++
++sys.dont_write_bytecode = True
++from storage_paths import (ROOT, ART, CONT, EXTERNAL_ROOT, OUT, LEGACY_OUT,
++    NEW_SCENES, MAP_PATH, assert_roots, require_new_scene, require_safe_output,
++    storage_map, write_audit_hook)
++
++
++def import_runner():
++    sys.path.insert(0, str(ART))
++    return importlib.import_module('run_transport')
++
++
++def verify_original_sources(runner):
++    manifest_path = ART/'SOURCE_MANIFEST.json'
++    manifest = json.loads(manifest_path.read_text())
++    actual = {name: runner.hash_file(ART/name) for name in manifest['files']}
++    if actual != manifest['files']: raise RuntimeError('Original transport SOURCE_MANIFEST changed')
++    return {'path':str(manifest_path), 'sha256':runner.hash_file(manifest_path), 'files':actual}
++
++
++def require_storage_release(runner=None):
++    if runner is None: runner = import_runner()
++    receipt_path = CONT/'STORAGE_FREEZE.json'
++    receipt = json.loads(receipt_path.read_text())
++    required = [CONT/name for name in ('PROTOCOL.md','PROTOCOL.json','STORAGE_MAP.json',
++        'storage_paths.py','run_storage_transport.py','test_storage_adapter.py',
++        'launch_storage.py','test_launch_storage.py','independent_review/verify_multiroot.py',
++        'independent_review/test_verify_multiroot.py')]
++    if not {p.relative_to(ROOT).as_posix() for p in required} <= set(receipt['files']):
++        raise RuntimeError('Storage release lacks required frozen protocol/path/source files')
++    commit = receipt['commit']
++    for relative, expected in receipt['files'].items():
++        path = ROOT/relative
++        if path.resolve() != path or not path.is_relative_to(ROOT): raise RuntimeError('Invalid frozen source path')
++        if runner.hash_file(path) != expected: raise RuntimeError('Storage release file changed: '+relative)
++        committed = subprocess.check_output(['git','show',commit+':'+relative], cwd=ROOT)
++        if hashlib.sha256(committed).hexdigest() != expected: raise RuntimeError('Storage file is not committed: '+relative)
++    remote = subprocess.check_output(['git','ls-remote','origin','refs/heads/hybrid-raster-trained-models-v1'], cwd=ROOT, text=True).split()[0]
++    subprocess.run(['git','merge-base','--is-ancestor',commit,remote], cwd=ROOT, check=True)
++    if json.loads(MAP_PATH.read_text()) != storage_map(): raise RuntimeError('Frozen storage mapping differs')
++    return {'path':str(receipt_path), 'sha256':runner.hash_file(receipt_path), 'commit':commit, 'verified_remote':remote}
++
++
++def bind_paths(runner):
++    runner.OUT = OUT
++    sys.modules['adapters'].OUT = OUT
++    runner.native.STAGE = OUT
++    if runner.ROOT != ROOT or runner.ART != ART:
++        raise RuntimeError('Original source/camera context root changed')
++    if runner.native.NATIVE != runner.OLD/'out/hybrid_raster_evidence_v2/native':
++        raise RuntimeError('Original native build root changed')
++    return {'runner_OUT':str(runner.OUT), 'adapters_OUT':str(sys.modules['adapters'].OUT),
++            'native_STAGE':str(runner.native.STAGE), 'ROOT':str(runner.ROOT),
++            'ART':str(runner.ART), 'native_NATIVE':str(runner.native.NATIVE)}
++
++
++def process_environment():
++    destinations = {
++        'TMPDIR': EXTERNAL_ROOT/'tmp', 'TMP': EXTERNAL_ROOT/'tmp', 'TEMP': EXTERNAL_ROOT/'tmp',
++        'XDG_CACHE_HOME': EXTERNAL_ROOT/'cache', 'TORCH_HOME':EXTERNAL_ROOT/'cache/torch',
++        'TORCH_EXTENSIONS_DIR':EXTERNAL_ROOT/'cache/torch_extensions',
++        'CUDA_CACHE_PATH':EXTERNAL_ROOT/'cache/cuda', 'MPLCONFIGDIR':EXTERNAL_ROOT/'cache/matplotlib',
++    }
++    for name, path in destinations.items():
++        require_safe_output(path).mkdir(parents=True, exist_ok=True)
++        os.environ[name] = str(path)
++    os.environ['PYTHONDONTWRITEBYTECODE'] = '1'
++    import tempfile
++    tempfile.tempdir = str(destinations['TMPDIR'])
++    return {name:str(path) for name,path in destinations.items()}
++
++
++def main():
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument('--phase', required=True, choices=('render','media'))
++    parser.add_argument('--scene', required=True, choices=NEW_SCENES)
++    args = parser.parse_args()
++    require_new_scene(args.scene)
++    checks = assert_roots()
++    environment = process_environment()
++    sys.addaudithook(write_audit_hook(args.scene))
++    runner = import_runner()
++    sources = verify_original_sources(runner)
++    release = require_storage_release(runner)
++    binding = bind_paths(runner)
++    # Qualify the unchanged six source hashes, parameters and both native builds before any GPU work.
++    _, heritage = runner.inherited()
++    receipt = {
++        'scene':args.scene, 'phase':args.phase, 'pid':os.getpid(),
++        'utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
++        **storage_map(), 'schema':'storage-binding-v1',
++        'original_source_manifest':sources,
++        'storage_glue_sources':{name:runner.hash_file(CONT/name) for name in ('storage_paths.py','run_storage_transport.py')},
++        'storage_map':{'path':str(MAP_PATH),'sha256':runner.hash_file(MAP_PATH)},
++        'storage_release':release, 'storage_checks':checks, 'binding':binding,
++        'process_environment':environment, 'scientific_heritage':heritage,
++        'write_guard':'Python audit write restriction plus independent syscall trace for actual native/child processes',
++        'unchanged_functions':{name:{'co_filename':getattr(runner,name).__code__.co_filename,
++                              'source_sha256':runner.hash_file(getattr(runner,name).__code__.co_filename)}
++                              for name in ('make_frame','run_scene','calibrate','context_for','media','require_release')},
++    }
++    path = OUT/'bindings'/f'{args.scene}_{args.phase}_{os.getpid()}.json'
++    require_safe_output(path)
++    runner.atomic_json(path, receipt)
++    print(json.dumps({'storage_binding_receipt':str(path),'sha256':runner.hash_file(path)}), flush=True)
++    # Main's parser sees the same phase and scene; all original calibration/seal/resume checks run.
++    runner.main()
++
++
++if __name__ == '__main__': main()
+diff --git a/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/test_storage_adapter.py b/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/test_storage_adapter.py
+new file mode 100644
+index 0000000..cb69152
+--- /dev/null
++++ b/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/test_storage_adapter.py
+@@ -0,0 +1,151 @@
++"""CPU-only storage binding checks; all fixtures live in the approved external root."""
++import json
++import os
++from pathlib import Path
++import sys
++import subprocess
++import tempfile
++import types
++import unittest
++from unittest.mock import patch
++
++sys.dont_write_bytecode = True
++HERE = Path(__file__).resolve().parent
++sys.path.insert(0, str(HERE))
++import storage_paths as s
++import run_storage_transport as r
++
++
++class StorageAdapter(unittest.TestCase):
++    def test_explicit_four_scene_resolver(self):
++        self.assertEqual(s.scene_root('hotdog'), s.LEGACY_OUT)
++        for scene in s.NEW_SCENES:
++            self.assertEqual(s.scene_root(scene), s.OUT)
++            self.assertEqual(s.output_path(scene, 'frames', 'F_001'), s.OUT/'frames'/scene/'F_001')
++        with self.assertRaises(ValueError): s.scene_root('lego')
++        with self.assertRaises(ValueError): s.output_path('mic', '../out')
++        with self.assertRaises(ValueError): s.output_path('mic', 'frames', '../hotdog')
++
++    def test_hotdog_cannot_be_launched_again(self):
++        with self.assertRaises(ValueError): s.require_new_scene('hotdog')
++        self.assertEqual(s.require_new_scene('mic'), 'mic')
++
++    def test_storage_map_is_exact_and_frozen(self):
++        self.assertEqual(json.loads((s.CONT/'STORAGE_MAP.json').read_text()), s.storage_map())
++        self.assertEqual(s.storage_map()['scene_roots']['hotdog'], str(s.LEGACY_OUT))
++        self.assertEqual(s.storage_map()['minimum_free_bytes_each_root'], 1024**3)
++
++    def test_external_path_ownership_and_symlink_rejection(self):
++        with tempfile.TemporaryDirectory(dir=s.EXTERNAL_ROOT/'tests/storage_adapter') as d:
++            base = Path(d)
++            self.assertEqual(s.require_safe_output(base/'future'), base/'future')
++            (base/'link').symlink_to(base, target_is_directory=True)
++            with self.assertRaises(ValueError): s.require_safe_output(base/'link'/'escape')
++            with self.assertRaises(PermissionError): s.require_safe_output(s.LEGACY_OUT/'new')
++            with patch.object(s.os, 'getuid', return_value=os.getuid()+1):
++                with self.assertRaises(PermissionError): s.require_safe_output(base/'future')
++
++    def test_both_storage_reserves_are_mandatory(self):
++        low = types.SimpleNamespace(free=1024**3-1)
++        high = types.SimpleNamespace(free=3*1024**3)
++        for results in [(low, high), (high, low)]:
++            with patch.object(s.shutil, 'disk_usage', side_effect=results):
++                with self.assertRaises(RuntimeError): s.assert_roots()
++
++    def test_write_policy_protects_old_results_sources_and_hotdog(self):
++        for path in [s.LEGACY_OUT/'new.json', s.ART/'adapters.py',
++                     s.ART/'hotdog'/'FRAMES.json', s.ROOT/'README.md',
++                     s.OUT/'frames'/'hotdog'/'F_001'/'rgb.png']:
++            with self.assertRaises(PermissionError): s.require_write_path(path, 'mic')
++        for path in [s.OUT/'frames'/'mic'/'F_001'/'rgb.png',
++                     s.ART/'mic'/'FRAMES.json', s.ART/'mic'/'.FRAMES.json.fixture',
++                     s.ART/'STATUS.json', s.ART.parent/'STATUS.json']:
++            s.require_write_path(path, 'mic')
++        with self.assertRaises(PermissionError): s.require_write_path(s.ART/'ship'/'FRAMES.json', 'mic')
++
++    def test_write_policy_checks_both_rename_paths(self):
++        callback = s.write_audit_hook('mic')
++        callback('open', (str(s.OUT/'cache'/'safe'), 'w', os.O_WRONLY|os.O_CREAT))
++        callback('open', (str(s.LEGACY_OUT/'read_only.json'), 'r', os.O_RDONLY))
++        with self.assertRaises(PermissionError):
++            callback('os.rename', (str(s.ART/'hotdog'/'FRAMES.json'), str(s.OUT/'stolen.json'), -1, -1))
++        with self.assertRaises(PermissionError):
++            callback('open', (str(s.ART/'adapters.py'), 'w', os.O_WRONLY))
++
++    def test_original_source_manifest_is_enforced(self):
++        runner = r.import_runner()
++        record = r.verify_original_sources(runner)
++        self.assertEqual(set(record['files']), {'adapters.py','run_transport.py','test_adapters.py','test_runner.py'})
++        with patch.object(runner, 'hash_file', return_value='0'*64):
++            with self.assertRaises(RuntimeError): r.verify_original_sources(runner)
++
++    def test_path_binding_changes_no_scientific_or_producer_functions(self):
++        runner = r.import_runner()
++        names = ('make_frame','run_scene','calibrate','context_for','media','require_release')
++        funcs = {name: getattr(runner, name) for name in names}
++        native_fn, gpu_fn, binaries = runner.native.render_native, runner.native.gpu_guard, runner.native.NATIVE
++        r.bind_paths(runner)
++        self.assertEqual(runner.OUT, s.OUT)
++        self.assertEqual(runner.native.STAGE, s.OUT)
++        self.assertEqual(sys.modules['adapters'].OUT, s.OUT)
++        self.assertEqual(runner.ROOT, s.ROOT)
++        self.assertEqual(runner.ART, s.ART)
++        self.assertEqual(runner.native.NATIVE, binaries)
++        self.assertIs(runner.native.render_native, native_fn)
++        self.assertIs(runner.native.gpu_guard, gpu_fn)
++        for name in names: self.assertIs(getattr(runner, name), funcs[name])
++
++    def test_context_keeps_truthful_original_source_identity(self):
++        runner = r.import_runner(); r.bind_paths(runner)
++        spec = {'scene':'mic','key':'F_001','camera':{'fixed':'camera'}}
++        manifest = {'checkpoint':{'sha256':'checkpoint'}}
++        heritage = {'sources':{'src/hybrid_raster_native.py':'native'}}
++        with patch.object(runner, 'hash_file', side_effect=lambda path: str(path)):
++            context = runner.context_for(spec, manifest, heritage, {})
++        self.assertEqual(context['adapter_source_hashes']['run_transport.py'], str(s.ART/'run_transport.py'))
++        self.assertEqual(context['adapter_source_hashes']['adapters.py'], str(s.ART/'adapters.py'))
++        self.assertEqual(context['calibration_sha256'], str(s.OUT/'calibration/mic/CALIBRATION.json'))
++        self.assertEqual(context['scientific_parameter_hash'], '6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9')
++
++    def test_external_seal_resume_rejects_partial_and_changed_context(self):
++        runner = r.import_runner()
++        with tempfile.TemporaryDirectory(dir=s.EXTERNAL_ROOT/'tests/storage_adapter') as d:
++            base = Path(d); stage = base/'staging'; stage.mkdir(); dest = base/'frame'
++            (stage/'payload.json').write_text('{"fixed":true}\n')
++            context = {'scientific_parameter_hash':runner.PARAMETER_HASH, 'original_source':'unchanged'}
++            self.assertFalse(runner.valid_seal(dest, context))
++            runner.seal_frame(stage, dest, context)
++            self.assertTrue(runner.valid_seal(dest, context))
++            with self.assertRaises(ValueError): runner.valid_seal(dest, {**context, 'original_source':'changed'})
++            partial = base/'partial'; partial.mkdir(); (partial/'payload').write_text('interrupted')
++            with self.assertRaises(ValueError): runner.valid_seal(partial, context)
++            (dest/'payload.json').write_text('{}')
++            with self.assertRaises(ValueError): runner.valid_seal(dest, context)
++
++    def test_inherited_parameters_sources_and_build_still_verified(self):
++        runner = r.import_runner(); lock, heritage = runner.inherited()
++        self.assertEqual(lock['parameter_hash'], runner.PARAMETER_HASH)
++        self.assertEqual(len(heritage['sources']), 6)
++        self.assertEqual(heritage['sources'], lock['config']['sources'])
++        self.assertEqual(heritage['native_build'], runner.native.source_hashes())
++
++    def test_real_cpu_native_import_under_process_write_guard(self):
++        code = '''import sys
++sys.path.insert(0, sys.argv[1])
++import run_storage_transport as r
++from storage_paths import write_audit_hook
++r.process_environment()
++sys.addaudithook(write_audit_hook('mic'))
++runner = r.import_runner()
++r.verify_original_sources(runner)
++r.bind_paths(runner)
++runner.inherited()
++import torch
++print('CPU_IMPORT_GUARD_PASS')
++'''
++        result = subprocess.run([sys.executable,'-B','-c',code,str(HERE)], capture_output=True, text=True)
++        self.assertEqual(result.returncode, 0, result.stdout+result.stderr)
++        self.assertIn('CPU_IMPORT_GUARD_PASS', result.stdout)
++
++
++if __name__ == '__main__': unittest.main(verbosity=2)
+diff --git a/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/STORAGE_MAP.json b/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/STORAGE_MAP.json
+new file mode 100644
+index 0000000..6ab0da1
+--- /dev/null
++++ b/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/STORAGE_MAP.json
+@@ -0,0 +1,32 @@
++{
++  "binding_only": [
++    "run_transport.OUT",
++    "adapters.OUT",
++    "hybrid_raster_native.STAGE"
++  ],
++  "external_root": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1",
++  "legacy_transport_root": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport",
++  "minimum_free_bytes_each_root": 1073741824,
++  "new_scenes": [
++    "materials",
++    "mic",
++    "ship"
++  ],
++  "new_transport_root": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport",
++  "no_symlinks": true,
++  "read_only_legacy_scene": "hotdog",
++  "repo_root": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1",
++  "retained_real_paths": [
++    "run_transport.ROOT",
++    "run_transport.ART",
++    "hybrid_raster_native.NATIVE"
++  ],
++  "scene_roots": {
++    "hotdog": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport",
++    "materials": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport",
++    "mic": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport",
++    "ship": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport"
++  },
++  "schema": "storage-continuation-map-v1",
++  "seal_context": "Original producer and adapter byte hashes stay unchanged; new storage glue identity is recorded separately per launch."
++}

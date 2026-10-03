@@ -1,0 +1,89 @@
+--- upstream/scene/dataset_readers.py
++++ isolated/scene/dataset_readers.py
+@@ -221,8 +221,8 @@
+ def readNerfSyntheticInfo(path, white_background, eval, extension=".png"):
+     print("Reading Training Transforms")
+     train_cam_infos = readCamerasFromTransforms(path, "transforms_train.json", white_background, extension)
+-    print("Reading Test Transforms")
+-    test_cam_infos = readCamerasFromTransforms(path, "transforms_test.json", white_background, extension)
++    # Strict TRAIN-only acquisition: do not open any TEST/VAL metadata.
++    test_cam_infos = []
+     
+     if not eval:
+         train_cam_infos.extend(test_cam_infos)
+--- upstream/train.py
++++ isolated/train.py
+@@ -10,6 +10,7 @@
+ #
+ 
+ import os
++import acquisition_runtime
+ import torch
+ from random import randint
+ from utils.loss_utils import l1_loss, ssim
+@@ -35,7 +36,7 @@
+     scene = Scene(dataset, gaussians)
+     gaussians.training_setup(opt)
+     if checkpoint:
+-        (model_params, first_iter) = torch.load(checkpoint)
++        (model_params, first_iter) = acquisition_runtime.load_checkpoint(checkpoint)
+         gaussians.restore(model_params, opt)
+ 
+     bg_color = [1, 1, 1] if dataset.white_background else [0, 0, 0]
+@@ -44,8 +45,7 @@
+     iter_start = torch.cuda.Event(enable_timing = True)
+     iter_end = torch.cuda.Event(enable_timing = True)
+ 
+-    viewpoint_stack = None
+-    ema_loss_for_log = 0.0
++    viewpoint_stack, ema_loss_for_log = acquisition_runtime.restore_loop(checkpoint, scene)
+     progress_bar = tqdm(range(first_iter, opt.iterations), desc="Training progress")
+     first_iter += 1
+     for iteration in range(first_iter, opt.iterations + 1):        
+@@ -129,7 +129,7 @@
+ 
+             if (iteration in checkpoint_iterations):
+                 print("\n[ITER {}] Saving Checkpoint".format(iteration))
+-                torch.save((gaussians.capture(), iteration), scene.model_path + "/chkpnt" + str(iteration) + ".pth")
++                acquisition_runtime.save_checkpoint(gaussians, iteration, scene, viewpoint_stack, ema_loss_for_log)
+ 
+ def prepare_output_and_logger(args):    
+     if not args.model_path:
+@@ -205,13 +205,14 @@
+     parser.add_argument("--quiet", action="store_true")
+     parser.add_argument("--checkpoint_iterations", nargs="+", type=int, default=[])
+     parser.add_argument("--start_checkpoint", type=str, default = None)
++    parser.add_argument("--seed", type=int, default=0)
+     args = parser.parse_args(sys.argv[1:])
+     args.save_iterations.append(args.iterations)
+     
+     print("Optimizing " + args.model_path)
+ 
+     # Initialize system state (RNG)
+-    safe_state(args.quiet)
++    safe_state(args.quiet, args.seed)
+ 
+     # Start GUI server, configure and run training
+     network_gui.init(args.ip, args.port)
+--- upstream/utils/general_utils.py
++++ isolated/utils/general_utils.py
+@@ -109,7 +109,7 @@
+     L = R @ L
+     return L
+ 
+-def safe_state(silent):
++def safe_state(silent, seed=0):
+     old_f = sys.stdout
+     class F:
+         def __init__(self, silent):
+@@ -127,7 +127,7 @@
+ 
+     sys.stdout = F(silent)
+ 
+-    random.seed(0)
+-    np.random.seed(0)
+-    torch.manual_seed(0)
++    random.seed(seed)
++    np.random.seed(seed)
++    torch.manual_seed(seed)
+     torch.cuda.set_device(torch.device("cuda:0"))

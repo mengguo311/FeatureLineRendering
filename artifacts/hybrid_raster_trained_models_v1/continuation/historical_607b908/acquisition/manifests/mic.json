@@ -1,0 +1,585 @@
+{
+  "arguments": [
+    "-s",
+    "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/mic/seed_1729/data",
+    "-m",
+    "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/mic/seed_1729/checkpoints",
+    "--white_background",
+    "--iterations",
+    "30000"
+  ],
+  "checkpoint_iterations": [
+    7000,
+    30000
+  ],
+  "defaults": {
+    "compute_cov3D_python": false,
+    "convert_SHs_python": false,
+    "data_device": "cuda",
+    "debug": false,
+    "densification_interval": 100,
+    "densify_from_iter": 500,
+    "densify_grad_threshold": 0.0002,
+    "densify_until_iter": 15000,
+    "eval": false,
+    "feature_lr": 0.0025,
+    "images": "images",
+    "iterations": 30000,
+    "lambda_dssim": 0.2,
+    "model_path": "",
+    "opacity_lr": 0.05,
+    "opacity_reset_interval": 3000,
+    "percent_dense": 0.01,
+    "position_lr_delay_mult": 0.01,
+    "position_lr_final": 1.6e-06,
+    "position_lr_init": 0.00016,
+    "position_lr_max_steps": 30000,
+    "random_background": false,
+    "resolution": -1,
+    "rotation_lr": 0.001,
+    "scaling_lr": 0.005,
+    "sh_degree": 3,
+    "source_path": "",
+    "white_background": false
+  },
+  "diagnostic_train_indices": [
+    1,
+    41,
+    79
+  ],
+  "directory": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/mic/seed_1729",
+  "evaluation": "all100TRAIN incl C used photometrically; diagnostics in-sample; no TEST/VAL or mesh",
+  "initialization": "official per-seed random100000 xyz=random*2.6-1.3; SH2RGB(random/255); local points3d.ply",
+  "input_files": [
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_0.png",
+      "sha256": "d1f1b31d22f8d09871f711e0790914b5b06270a205e3f6aef80da011e9ac2ff9"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_1.png",
+      "sha256": "29e9789a0b178bce725872d7deb44639983019322c0977fe16df8c7ebe1ff537"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_2.png",
+      "sha256": "ae1d6916a099bba3e79daeb95d88558bd20dd245be908af307016c19ca4c0637"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_3.png",
+      "sha256": "bf31092199906a8a0c58d07d766ec1375fac0f5d9aee4a1305613f246046c1e3"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_4.png",
+      "sha256": "ea0fa94195ab10230c40b1698c7718b74425808e8d3ff4d622e86eacee628d45"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_5.png",
+      "sha256": "60b751e53dede0e6a9a7306c7f55cb9a3b9afe7dc3e4cb4dd4b55b91c84db535"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_6.png",
+      "sha256": "26935a3dd366f2cd3fdd554521858d981ae24d68a85f305b6d3f32bc1f8dd97d"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_7.png",
+      "sha256": "ec146d12aad95028f205ca33ba264cbce32f8f5ba3d0f16ad6b8492acc9e9e87"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_8.png",
+      "sha256": "02b454b86a7df426c53a0f9be1aa5e81571c9e22fd4702cdd0c6799f37203c8a"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_9.png",
+      "sha256": "e37c656067c192e1ec7e66bf1e48577ade9207b495dd1706fef5bb3503cd1a02"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_10.png",
+      "sha256": "1d404aa27370045aafca0a017a4d09d87046c647ad720e812c111ad98da783f8"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_11.png",
+      "sha256": "57d4cd9327e220c33365ca6d044daf25328f4c0d8ccf1fb67a80e9964f9de5cd"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_12.png",
+      "sha256": "32d6857145a802ff0f92f33f0222580be01e633a72557cd0586ccd09acc19fd3"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_13.png",
+      "sha256": "3b935367055a6c1e5d9465b6cbe648719a2ca92df1a59e2468e277bdf6347e02"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_14.png",
+      "sha256": "aac00280d7d6abb1c1907db2209c09b00229216196e7bb97b1fb58c183c9383d"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_15.png",
+      "sha256": "fc1fc479a68b0668f22814175cc9a7bd4e3903cd7d9cc1a38cfebe7c532e4901"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_16.png",
+      "sha256": "1ee0fac3d66b294ddcb540abc834911d21ffda8502d6514187dbc419930a79ed"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_17.png",
+      "sha256": "c3f3be6edb94978942de054b0e3f60c666e61ba6f900200b80e74e6fc2bb26ab"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_18.png",
+      "sha256": "b28e8971ddbba09d80fa061b4f769da1a39fcf482014e6c16e5f5899045b0e9b"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_19.png",
+      "sha256": "1d6f8a92a45e1b42f25ea9fad363a84c9218cfee9f25742730e6822ab251777e"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_20.png",
+      "sha256": "37c4ee1cb0348bc41b264fa8c65ab10264931cdbfbf678fe8830a177d4469a9c"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_21.png",
+      "sha256": "d60756385ca6aba15ce1c75654443213319b9e05ee5aebdc93652ccf07669d19"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_22.png",
+      "sha256": "4be135ff3e6dc09c00ad49b20b4e1762caee73fc116d96d13591e046116cca97"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_23.png",
+      "sha256": "9fd3ba2f2724ddfd7ab40d37423e22799a75908fcaf822638a4ccafa6b47adf3"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_24.png",
+      "sha256": "bcab0bd1849453903156fc13560604f000b2b904040d58b504c53ac4a6461ec6"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_25.png",
+      "sha256": "b46d181b2feb26b274617ce30eb5f2b5793a8ae3181515d28e806547c06c0a8a"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_26.png",
+      "sha256": "5a45e0e43bc4e3fd086a5e3daff88ee85cc8479f6709d29095c6164787381a65"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_27.png",
+      "sha256": "25429d6df83eb2b1724e0f4d7e77a4844a1a88f3abd6804ba55ee4674c4afc07"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_28.png",
+      "sha256": "e33ffc7b4d116eaf126b4832db256ff5517b7c7aed68986e8988e0a5fa7900b4"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_29.png",
+      "sha256": "79bc0c7144323952dc94227df62c5099812c1ec4126c14c1dacea76f20c877c4"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_30.png",
+      "sha256": "197017078c866b9445a845cd2475d04e0f6078356c31d00be0b8a0e012ee413f"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_31.png",
+      "sha256": "9b43f50d2c968e0bd85ff7165b23234aa38bd7d3c3390626d21ec76b737e1191"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_32.png",
+      "sha256": "3396518c5dc110207a241c01c828450a74e4c56c419586f852ec5e14ff0b744c"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_33.png",
+      "sha256": "666d430169353ebb46d422ae0f79ce8f5adb81c7a90d2826a57bb5685fa39d7e"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_34.png",
+      "sha256": "db8b00e6eb1145f874fe07f3e61549eaae2aa53046b1d0bfd9d0ed0f2186cfb7"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_35.png",
+      "sha256": "d36ae15d243b901a1d6ba31ac85ee34665146d874de968e09d7785d0d7ecbc67"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_36.png",
+      "sha256": "2a1a0a47b2cf64618734f06787640266458e6e5b0a0598cab153fe8f5341ce52"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_37.png",
+      "sha256": "0c03404a215163f12cbf566eee0b34e57114441c9c317b832f23db8227709653"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_38.png",
+      "sha256": "61aca247b87d7bffe2589d82d0e2dd9d91aa398e4ffa80c704092e0a86313c01"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_39.png",
+      "sha256": "e34a91f561cf563dfa284328cee44d678a027243b43ce3f05b129c002b22eac2"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_40.png",
+      "sha256": "b94bd1f916f5b0b5a5c56be13e29be621f79b75f7c84e8ac83d99478ebdb6f47"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_41.png",
+      "sha256": "f60abe861dc84628c60ac7a4201a54113f42e9c1910d9008d621711b4680cb84"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_42.png",
+      "sha256": "0ac4ff1bf59f6d4b8f07d55945a054c13ad55d09279be783e28a9a94cd0ec80f"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_43.png",
+      "sha256": "fafa24c51ab39652d034f5eba6484242edb78ef71a2b0938475ed763b481faca"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_44.png",
+      "sha256": "e324683a9b793d0719913fada2c60c328496c46579827dd8c27965d10c6a8b68"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_45.png",
+      "sha256": "88298ab1e1ebf960cc5fbc0f200f74e6a7505996ba2f3dd8b313941acdba4038"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_46.png",
+      "sha256": "6148e6afbf297172271134cdae0af3257f4b73037a4d191e0bd4deaddfdc6542"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_47.png",
+      "sha256": "744def2b3e1cd01d60ca359aa52b024a237ebf490d8d166db562f727f96a0326"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_48.png",
+      "sha256": "b7d450684e3ce35555b6df9383a15203687fbff836f486ebd9a0fa0cb09242f2"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_49.png",
+      "sha256": "e416c1503087d92e4aa3cf1e262cd669539dfd492edd55ddb069edf9b8d6c130"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_50.png",
+      "sha256": "0755d8cdd3bcc3eedc7c132d50110aabe053410c49b1e7b7c8fefbabf032bd41"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_51.png",
+      "sha256": "c3791e79efe26f728325d13f85b65969bf97e8939cac8dd6a888f13081c67a34"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_52.png",
+      "sha256": "63f2c5f33da807a6b3f6efcb75e1b011b1e5eff53523bff4d8c4b8b85fa0e28e"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_53.png",
+      "sha256": "5a0edc973286704c5df398851bb5b8d6c2c13c9dd03499a5164d19567ea3835c"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_54.png",
+      "sha256": "206be8d5d2793e22645ef67342f215596392cb28fadd4fa869d41af27781d98c"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_55.png",
+      "sha256": "c8a87145734a1e5cea7cc97997c656a5906964e14da857740b64203eca04b14b"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_56.png",
+      "sha256": "58dbe0e1db5ce293c1a68807bfb7f638797738212a4e4cee05f19b375a1ce1c6"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_57.png",
+      "sha256": "ed6ac04e2c90ee5f6161ed72ca33cdc2584d02fa67e64c7743b416a302b979c2"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_58.png",
+      "sha256": "0b4b2c341748ff2a420d556eccb5b6543cd999c93c736416985ff03bf20b936e"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_59.png",
+      "sha256": "3af13cb9227cbd335d66c92188679bb98bdf7d5a21c0072ae9ea065489fd52ac"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_60.png",
+      "sha256": "949268ebad9a0d8451d4a5739122c82134e693c893f0dc4470cc720e13baf861"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_61.png",
+      "sha256": "6c1c127e31972f0b775597d6e43d930739d22fe2f1145b217eddaaa1c6cab7c2"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_62.png",
+      "sha256": "6bdd4663b80764c66d60a4495acbf91b8f1b18418b877e2f96845806eeb8ac9a"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_63.png",
+      "sha256": "befbcf0d8773d6f48e478efd04bea0bec9fcf5a918c91902ec249591ea8cb652"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_64.png",
+      "sha256": "9596b1260c00b4151cd26e32c4fa2e2f0f02456b223810aec6c24b57ad3ec284"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_65.png",
+      "sha256": "ed1cae1399b06276d65e2c05985bd4a1a89dc8119a44b21258669100183d898c"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_66.png",
+      "sha256": "d6fd86336d050e4650b85dcd86c9f6dce0a0b3e309a815ac7d84863422eddae1"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_67.png",
+      "sha256": "3b1786b26f57f45a0917f4813c584c1e10b186f9c93ec2aa3a83e06ce4f5ba80"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_68.png",
+      "sha256": "78a19a89764133ac0a5c987baf0f46706b5ff9d0316a5e64064f3fa8e276e6c2"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_69.png",
+      "sha256": "de77a98124aef1a2edc07f56bf0cacd06d49ed920b6180d3e032016cf9289afc"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_70.png",
+      "sha256": "6b10437296e4d55fbb086bc7d147bcaaa1a663b99eebecbaf9c1ecd9f3d47301"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_71.png",
+      "sha256": "7cebb1a04a3e09afcf378b382c270befc84775eb3d40ae81fcd93d3e1c55cbb7"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_72.png",
+      "sha256": "269df1dc5cae82536e65567d1113564a65f1113974c61f99234f5dd797af3945"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_73.png",
+      "sha256": "23d98c9894be034740008f906608383b13d710126ada330df67701ac35045866"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_74.png",
+      "sha256": "d4e695dd7db309ad78f9b3756493de225aff81915ee06c9fe063cb16831e3601"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_75.png",
+      "sha256": "92bf4a3f0ec2c4a0f5c6562e595283b4568acd603ff2215f3521c04eb05c04c0"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_76.png",
+      "sha256": "a8e5908933a82835beb6ecdea6792818a9e12fd0fd2b737a595aa8caf6bf8aef"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_77.png",
+      "sha256": "970e121bfe6ea4489f7e222d8ae6cc9fd01dcc2dfc7c4f58f5610461efd18fa7"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_78.png",
+      "sha256": "616ce51bf30d708ae910f8f2a8b06e085f339af75e447a7b1fd6317b31803278"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_79.png",
+      "sha256": "f3ee308b78a210c74afa963498f96c97679d1439fc3dba4644f67c4a0ab5c2b3"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_80.png",
+      "sha256": "38308fa90b9476e959f4e7c3b205e01894d743fa8d799f7b5f686c0024cf4821"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_81.png",
+      "sha256": "db198650ae0e8f6578b0f8868e5a106ea1980e4fd16c62bf7d5d9e8873c19f7f"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_82.png",
+      "sha256": "f53c81c59a28773bd8fecc9711fc95e978995cbcfa06357d2d136027e8b79abd"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_83.png",
+      "sha256": "dae2a71f9e2cf86300511538c1304a7c3f2abc3a864adcbb74220f7ed954353b"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_84.png",
+      "sha256": "74bb6000f29db5d30fb62eef0cb938a06923726c5d47e7a1fbf070efd7025af3"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_85.png",
+      "sha256": "d6e542f58841e2e9cbdfcb38b5edaf7b95adb9c82f4d7cde1e4f944c404e16db"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_86.png",
+      "sha256": "8982a5b102d38d55ae68cad65ccb4393de2d263993189fec66d3bf6365017af8"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_87.png",
+      "sha256": "90e83edd66424aa0c24872f77f2264a354506d3fac23e50f49e6f4fd42ca3e1f"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_88.png",
+      "sha256": "aec8e111ee567cf34bbcb7cdf6c2577844b4e043ffeaa9e9e44fe7e6704a5fb4"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_89.png",
+      "sha256": "a16fc767af179ce2ce681a73af284cc831c8f0d302265080d9213cba1c11316c"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_90.png",
+      "sha256": "d9a4b048f6a38bf42a716760a7968f3639eb2e438887766a20de1291b3ea3f55"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_91.png",
+      "sha256": "35e7c491eb2cdccf17b857aadce22fea6386bdcb7ae033b1a1e07cab356723c8"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_92.png",
+      "sha256": "fcc995508daff68e379818c5b98c64c6611eee07a2c9fb457d24e2c546ace702"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_93.png",
+      "sha256": "3e10ebe222203174df5ea6fbdd32deb86e47ed70bd849cd64e455f84e150a78d"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_94.png",
+      "sha256": "17952d490cb9cad00214a6dbda0f815cdb549104b79b9db7c00aa743828340c9"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_95.png",
+      "sha256": "43bf7b6d73f88e8c94f75ce877ba9d50b947196a1be7e4f056421279a14e27ff"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_96.png",
+      "sha256": "64273e071e84acedab4b391a132f75592a3ff26670596588e9a2aea6b6d2bcbe"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_97.png",
+      "sha256": "295820dfc8cb9996802dbd8951e4244278f6808c2cf301b60fba02ea43984ef4"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_98.png",
+      "sha256": "d42ae0e109e38f0c94dcd7a84b2660bdb2e60765c985660e68ce81c096cee4c0"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/train/r_99.png",
+      "sha256": "d7e1f97de017f67008efbe0f427fe8e573815285edf9ffbdbbd249d6b6fa359e"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/mic/transforms_train.json",
+      "sha256": "2e3dd0c6a1f9c34fe0cdad9f423c56eaa794c102789ff31058ae396e9f882403"
+    }
+  ],
+  "iterations": 30000,
+  "original_data": "/home/u00134/cglib/data/full/mic",
+  "output": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/mic/seed_1729/checkpoints",
+  "python": "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+  "resume": "only matching manifest+snapshot SHA; model/optimizer+python/numpy/torch/CUDA RNG+remaining viewpoint stack restored",
+  "save_iterations": [
+    7000,
+    30000
+  ],
+  "scene": "mic",
+  "schema": 1,
+  "seed": 1729,
+  "site": [
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/vendor/training_site",
+    "/home/u00134/3dgs_line/tier1/out/vrss/vendor/official_site"
+  ],
+  "source": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla",
+  "source_commit": "472689c0dc70417448fb451bf529ae532d32c095",
+  "source_manifest_sha256": "a09e55db1d7a65f01d8c3f60cf4bd5e14eb1c986d7c2ad837822387b3eba80d9",
+  "timeout_seconds": 7200,
+  "verified_files": [
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/LICENSE.md",
+      "sha256": "c5ba70a2194af2aefe85dfe3da68608dcb3abd21a3aa53b55aa297c2f0b60eb3"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/arguments/__init__.py",
+      "sha256": "657b3a799166329281347a40002384b8c6952db1c9c0f908444c505a9fa9df83"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/gaussian_renderer/__init__.py",
+      "sha256": "75fcc86a57d27d9ea55b2904a4faaf075e7f73dba8c54bcb6cbd4c02c4884084"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/gaussian_renderer/network_gui.py",
+      "sha256": "7e392b8122a8e1359b4550769eac06190806a8c2eeb7f5aa7cbd025738dedf89"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/scene/__init__.py",
+      "sha256": "65352a8e54e271a88f6f063268d58aef7c9dff2bd78ed57bf8023dce0d5996a8"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/scene/cameras.py",
+      "sha256": "f5ff25ba0f3a56485cf77c3d396cd2ff66daf18be981b16ba3bbfb887e9f12c0"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/scene/colmap_loader.py",
+      "sha256": "6948ce06366e1f727ddffc39a445bf4b6873824f02abc39df63eb0c8f0fb3f36"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/scene/dataset_readers.py",
+      "sha256": "5b8c6264fde850bd9db07793a04e3f3ed2021f0f1f7510168191a16dfacabf0d"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/scene/gaussian_model.py",
+      "sha256": "fb31f5a087733194985a82192746c36dc627596fd084600b29cfefb5c92fdeb5"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/train.py",
+      "sha256": "83f006ba619812c44fee711816ea219f7e93768c24f0a571fa2f3a06a8f214ab"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/utils/camera_utils.py",
+      "sha256": "a450a6bcd3630a183f0a6be1b75a89e91444471b12f460613b8beb23a9c3bcef"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/utils/general_utils.py",
+      "sha256": "7f39f1575a379db59f772c0daf967a1b6b27f29e6b4038f1e6e49e052310ec13"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/utils/graphics_utils.py",
+      "sha256": "d6e75de8161e98b72c2691e8a944a842e1b6625d2306035d079c868ac632edfc"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/utils/image_utils.py",
+      "sha256": "872a4507773b9378db9e0fefc90104dc474b27551af18ada73f000a7a00a4ba0"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/utils/loss_utils.py",
+      "sha256": "53e4824dd41f847bd9c1ce146162886d1d63460acafbfed9db1f3d84dfe63f5f"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/utils/sh_utils.py",
+      "sha256": "7d1ff267546390635e6d1f68c4f88c4a8b052482d5c9be1d32f06bc69e9a96e7"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/utils/system_utils.py",
+      "sha256": "be01c02d3118c5d53808bc04efccd00c35a705a43a87c3583ea2f4752bc48553"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/vendor/training_site/simple_knn/_C.cpython-39-x86_64-linux-gnu.so",
+      "sha256": "89765277e0b1acbd283799e9163e523025abe599faf069041d03797a4064393e"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/tier1/out/vrss/vendor/official_site/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so",
+      "sha256": "583e896f3aaa1c2dece9c67eaaa26d919f98aae0597591bf6693b9a19530e9e9"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/tier1/out/vrss/vendor/official_site/diff_gaussian_rasterization/__init__.py",
+      "sha256": "eafa9c3f670258b34535b7ee2832e6d8410d6a68762037216f04935ccdafba34"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/acquisition_runtime.py",
+      "sha256": "0098e4b2f754c05691f345ae358233ad15b70e6c7c79819b15df00cc0b9002f4"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/acquisition_support.py",
+      "sha256": "3ba8a416f74002aaacf84143580dec38a63ffb71b5ccfc247c817e85873324b7"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/loader_audit_fixture.py",
+      "sha256": "afa1969a29bf4827c858d1d9fb17d5371d04a2c8183df8950415eaaa522edd36"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/prepare.py",
+      "sha256": "1f7ca37351e03cd5b4859ea3835612327dc315ebd56f90801d810f226b68af99"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/run_training.py",
+      "sha256": "f1ad9092627d29c25e684a6197d5f252702e9f91cf825313f0feaa3dd25b2145"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/train_entry.py",
+      "sha256": "b1d120b513546fbd18110c5f1ac3a6e423bbbdd0557d3d12e8d17369840e0466"
+    }
+  ]
+}

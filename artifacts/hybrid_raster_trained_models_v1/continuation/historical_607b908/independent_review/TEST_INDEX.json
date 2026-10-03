@@ -1,0 +1,363 @@
+{
+  "access_scope": "Referenced straces cover named processes and descendants only, not entire session. GPU regressions and final synthetic integration independently audited. Integration TRAIN images are synthetic8x8 fixtures, not requested scenes.",
+  "actual_CUDA_integration_separate": {
+    "command": [
+      "strace",
+      "-f",
+      "-q",
+      "-yy",
+      "-s",
+      "4096",
+      "-e",
+      "trace=open,openat,openat2,creat",
+      "-o",
+      "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/synthetic_gpu_preflight_round3/training.strace",
+      "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+      "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/train_entry.py",
+      "--manifest",
+      "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/SYNTHETIC_PREFLIGHT.json"
+    ],
+    "cwd": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/synthetic_gpu_preflight_round3",
+    "exit_code": 0,
+    "failed_attempts_preserved": [
+      {
+        "included_in_pass_count": false,
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/synthetic_gpu_preflight",
+        "status": {
+          "audit": {
+            "allowed_dataset_opens": 14,
+            "distinct_train_image_paths": 2,
+            "lines": 1776,
+            "passed": false,
+            "scope": "actual strace descendant open/openat/openat2/creat syscalls only; not whole-session audit",
+            "violations": [
+              "2471813 openat(AT_FDCWD</home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/synthetic_gpu_preflight>, \"/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/synthetic_gpu_input/train\", O_RDONLY|O_CLOEXEC|O_PATH) = 27</home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/synthetic_gpu_input/train>",
+              "2471813 openat(AT_FDCWD</home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/synthetic_gpu_preflight>, \"/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/synthetic_gpu_input/train\", O_RDONLY|O_CLOEXEC|O_PATH) = 27</home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/synthetic_gpu_input/train>"
+            ]
+          },
+          "exit_code": 1,
+          "finished_utc": "2026-10-03T09:10:40.998625+00:00",
+          "scope": "synthetic infrastructure2steps; not actualscene experiment",
+          "state": "SYNTHETIC_FAILED"
+        },
+        "status_sha256": "5bc0e27a6694ae9335b14fed83b7d49b681519ab8390b65ed1a8f7b0977214b5"
+      },
+      {
+        "included_in_pass_count": false,
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/synthetic_gpu_preflight_round2",
+        "status": {
+          "audit": {
+            "allowed_dataset_opens": 16,
+            "distinct_train_image_paths": 2,
+            "lines": 2619,
+            "passed": true,
+            "scope": "actual strace descendant open/openat/openat2/creat syscalls only; not whole-session audit",
+            "violations": []
+          },
+          "exit_code": 1,
+          "finished_utc": "2026-10-03T09:17:00.961158+00:00",
+          "scope": "synthetic infrastructure2steps; not actualscene experiment",
+          "state": "SYNTHETIC_FAILED"
+        },
+        "status_sha256": "f873ffdcf56cffc1baeb076599352f06a6b5e39bf81515555783dc8dfcba3d0c"
+      }
+    ],
+    "freeze_commit": "206b9ebf3e90d4766fb1b3e32ebfba491e390f4e",
+    "included_in_unit_test_total": false,
+    "independent_access_audit": {
+      "passed": true,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/SYNTHETIC_INTEGRATION_ACCESS.json",
+      "sha256": "0f4f2f6eb81b37e7067cae7e7bbc7cfc5d4ac6d8fd4e2771c961aab4bbf9675f",
+      "source_images_are_synthetic_fixture_only": true
+    },
+    "iterations": [
+      1,
+      2
+    ],
+    "log": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/synthetic_gpu_preflight_round3/train.log",
+    "log_sha256": "278d337785fdbaa9b8405c8951c7c283add6764e68343e299633ac83e6069ced",
+    "name": "actual_standard_vanilla_CUDA_two_step_integration",
+    "producer_access_audit": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/synthetic_gpu_preflight_round3/ACCESS_AUDIT.json",
+    "scope": "Actual synthetic8x8 forward/backward, standard random initialization, fullSH snapshot/PLY save and in-sample synthetic RGB diagnostics; not requested scene acquisition or NPR frames",
+    "status_path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/synthetic_gpu_preflight_round3/STATUS.json",
+    "status_sha256": "1983d7442cca245d42d02149da08d4fcf5ebbc518695db4bea5a773a527d11b9",
+    "trace": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/synthetic_gpu_preflight_round3/training.strace",
+    "trace_sha256": "8380be2b94d7091bc37dd3ece30ad79ff9f4557ded3a87be9a3a5a03164df36f"
+  },
+  "counting_policy": "Count each final selected suite once. Initial RED, failed engineering fixtures, intermediate GREEN and repeated preflight runs do not inflate92. Integration separate. Actual scene training/NPR validations separate.",
+  "created_utc": "2026-10-03T09:55:24.843773+00:00",
+  "groups": [
+    {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "artifacts/hybrid_raster_trained_models_v1/independent_review",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "cwd": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1",
+      "explicit_env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "logs": [
+        {
+          "complete_unittest_OK": true,
+          "exit_code": 0,
+          "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/logs/FIX3_GREEN.log",
+          "sha256": "d54b001d01d4819604880a36091553713241d0ce767f81b645c8b8a6ca0ffbd9",
+          "tests": 13
+        }
+      ],
+      "name": "independent_verifier_final",
+      "scope": "CPU synthetic mutation fixtures, including final round3 pinned-source rejection; not production outputs",
+      "tests": 13
+    },
+    {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "artifacts/hybrid_raster_trained_models_v1/acquisition/tests",
+        "-v"
+      ],
+      "command_evidence": "Actual complete invocation confirmed by training agent; TDD.json stores abbreviated RED command only",
+      "cwd": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1",
+      "explicit_env": {
+        "CUDA_VISIBLE_DEVICES": "",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "logs": [
+        {
+          "complete_unittest_OK": true,
+          "exit_code": 0,
+          "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/TDD_GREEN.log",
+          "sha256": "67483b00aa6d43607a63edb97d6587fb061cc09fab30fde1c52f22e6c8386230",
+          "tests": 12
+        }
+      ],
+      "name": "acquisition_final",
+      "scope": "CPU fixtures; CUDA calls mocked/disabled where present",
+      "tests": 12
+    },
+    {
+      "name": "transport_adapters_and_runner_final",
+      "runs": [
+        {
+          "command": [
+            "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+            "artifacts/hybrid_raster_trained_models_v1/transport/test_adapters.py"
+          ],
+          "cwd": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1",
+          "exit_code": 0,
+          "log": {
+            "complete_unittest_OK": true,
+            "exit_code": 0,
+            "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/tests/test_adapters.py.log",
+            "sha256": "df298efbe96fa362ce3dd00f3725573bf08bf6487c43abe9ab021e1afcc1e2c8",
+            "tests": 6
+          }
+        },
+        {
+          "command": [
+            "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+            "artifacts/hybrid_raster_trained_models_v1/transport/test_runner.py"
+          ],
+          "cwd": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1",
+          "exit_code": 0,
+          "log": {
+            "complete_unittest_OK": true,
+            "exit_code": 0,
+            "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/tests/test_runner.py.log",
+            "sha256": "bca925e5cb6735b5dd09bbf1db876fa05680c3356a67071b6de96e40d6108603",
+            "tests": 4
+          }
+        }
+      ],
+      "scope": "CPU synthetic adapter and transport tests; no dataset image decode, no GPU launch",
+      "tests": 10
+    },
+    {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "artifacts/hybrid_raster_trained_models_v1/transport/test_summarize_results.py"
+      ],
+      "cwd": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1",
+      "logs": [
+        {
+          "complete_unittest_OK": true,
+          "exit_code": 0,
+          "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/tests/REPORT_SUPPORT.log",
+          "sha256": "09a1b7d9d594fde48c529ca352a69c43a1574023669b728cfbf8047b3693b143",
+          "tests": 5
+        }
+      ],
+      "name": "offline_summary_final",
+      "scope": "CPU synthetic summary/count/seal rejection tests; no producer changes",
+      "tests": 5
+    },
+    {
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "-B",
+        "artifacts/hybrid_raster_trained_models_v1/independent_review/run_prior_cpu.py"
+      ],
+      "cwd": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1",
+      "explicit_env": {
+        "OMP_NUM_THREADS": "1",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "fixture_sandbox": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/independent_review/regression_sandbox",
+      "logs": [
+        {
+          "complete_unittest_OK": true,
+          "exit_code": 0,
+          "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/logs/PRIOR_CPU_TESTS.log",
+          "sha256": "ae14f93c4fa4f455e59b4f66f21ba5cfac891d6a3bdb9dc52934b78786a5ddbe",
+          "tests": 45
+        }
+      ],
+      "modules": [
+        "tests.test_hybrid_raster_evidence",
+        "tests.test_hybrid_raster_io",
+        "tests.test_hybrid_raster_stage",
+        "tests.test_hybrid_raster_verifier",
+        "tests.test_hybrid_raster_access",
+        "tests.test_hybrid_dense_v1",
+        "tests.test_hybrid_overlay_video",
+        "tests.test_hybrid_extra_scenes",
+        "tests.test_hao_mukai_source"
+      ],
+      "name": "inherited_CPU_final",
+      "scope": "Unchanged inherited CPU fixtures only; no GPU launch or new-scene experiment evidence",
+      "selected_cases": [
+        "tests.test_hybrid_raster_native.NativeContractTest.test_04_exact_native_principal_point",
+        "tests.test_hybrid_raster_native.NativeContractTest.test_05_calibration_rejects_changed_or_nonfinite_buffers",
+        "tests.test_hybrid_raster_native.NativeContractTest.test_06_export_validation_rejects_wrong_id_shape_and_mass"
+      ],
+      "tests": 45
+    },
+    {
+      "actual_access_reports": [
+        "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/GPU_ACCESS_native_v2.json",
+        "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/GPU_ACCESS_legacy_patched.json",
+        "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/GPU_ACCESS_legacy_unpatched.json"
+      ],
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "-B",
+        "artifacts/hybrid_raster_trained_models_v1/independent_review/run_prior_gpu.py",
+        "--freeze-commit",
+        "8b3915b5e3211530beefd8606dbdcdd5cdf25e2d"
+      ],
+      "cwd": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1",
+      "name": "inherited_GPU_wrapper_final",
+      "runs": [
+        {
+          "command": [
+            "strace",
+            "-f",
+            "-q",
+            "-yy",
+            "-s",
+            "4096",
+            "-e",
+            "trace=open,openat,openat2,creat",
+            "-o",
+            "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/independent_review/gpu_regression/native_v2.strace",
+            "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+            "-B",
+            "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/run_prior_gpu.py",
+            "--worker",
+            "native_v2"
+          ],
+          "cwd": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1",
+          "exit_code": 0,
+          "group": "native_v2",
+          "log": {
+            "complete_unittest_OK": true,
+            "exit_code": 0,
+            "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/logs/GPU_native_v2.log",
+            "sha256": "09aaa70d5aa4815bf931b6fa2156d071aea863bc1d574422f470637c9be2446e",
+            "tests": 3
+          },
+          "trace": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/independent_review/gpu_regression/native_v2.strace",
+          "trace_sha256": "cf2be70a873f5433fbea8b22a3280e60132391d50a06459a72a7bf47df0bf5e5"
+        },
+        {
+          "command": [
+            "strace",
+            "-f",
+            "-q",
+            "-yy",
+            "-s",
+            "4096",
+            "-e",
+            "trace=open,openat,openat2,creat",
+            "-o",
+            "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/independent_review/gpu_regression/legacy_patched.strace",
+            "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+            "-B",
+            "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/run_prior_gpu.py",
+            "--worker",
+            "legacy_patched"
+          ],
+          "cwd": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1",
+          "exit_code": 0,
+          "group": "legacy_patched",
+          "log": {
+            "complete_unittest_OK": true,
+            "exit_code": 0,
+            "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/logs/GPU_legacy_patched.log",
+            "sha256": "49aef9d1ce4f1c068053c89d879fd9a67ab72b2d0ffa5fc4811c9cb23542b7ea",
+            "tests": 2
+          },
+          "trace": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/independent_review/gpu_regression/legacy_patched.strace",
+          "trace_sha256": "f73928919d2cc759b6bb77689c70db8743c8ac854fc9580efaeedc966696b111"
+        },
+        {
+          "command": [
+            "strace",
+            "-f",
+            "-q",
+            "-yy",
+            "-s",
+            "4096",
+            "-e",
+            "trace=open,openat,openat2,creat",
+            "-o",
+            "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/independent_review/gpu_regression/legacy_unpatched.strace",
+            "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+            "-B",
+            "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/run_prior_gpu.py",
+            "--worker",
+            "legacy_unpatched"
+          ],
+          "cwd": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1",
+          "exit_code": 0,
+          "group": "legacy_unpatched",
+          "log": {
+            "complete_unittest_OK": true,
+            "exit_code": 0,
+            "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/logs/GPU_legacy_unpatched.log",
+            "sha256": "890a1325b1d2b4bbb214dceff4619ab5c03d375c02b67baad8cb11fd13bfebf9",
+            "tests": 2
+          },
+          "trace": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/independent_review/gpu_regression/legacy_unpatched.strace",
+          "trace_sha256": "0d54830f3446f1d3bb3f2b1ee900ebfc88021be3ccb9062e88d9c7cdc8c6c129"
+        }
+      ],
+      "scope": "Seven inherited tests in3 isolated processes; six exercise CUDA and one is legacy camera CPU test; no scene assets",
+      "tests": 7
+    }
+  ],
+  "schema": "final-selected-test-index-v1",
+  "status": "PASS",
+  "unit_tests_passed": 92
+}

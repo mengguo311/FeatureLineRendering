@@ -1,0 +1,99 @@
+{
+  "schema": 1,
+  "status": "PASS",
+  "tests_passed": 85,
+  "groups": [
+    {
+      "group": "transport",
+      "result": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/tests/regression_transport/RESULT.json",
+        "sha256": "3eac821ee4af26c70d715a4ede125d9c25eb8e44743cc319a29cbedf67468ede"
+      },
+      "log": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/tests/transport_regressions.log",
+        "sha256": "d55991587f46b63aabe1d18e5fa20687e6676b1e17970d6552e7c7e1926adc14"
+      },
+      "tests": 15,
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "-B",
+        "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/run_regressions.py",
+        "--group",
+        "transport"
+      ]
+    },
+    {
+      "group": "independent",
+      "result": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/tests/regression_independent/RESULT.json",
+        "sha256": "613eb3ab1dd88cc12671adced10134d74e7b25f02e73840ddd3c7e19ac9737ec"
+      },
+      "log": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/tests/independent_regressions.log",
+        "sha256": "dc619cf5738c79820999039d5a0ceedcf89cca59081b77d3431abb0ecaccbb2c"
+      },
+      "tests": 13,
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "-B",
+        "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/run_regressions.py",
+        "--group",
+        "independent"
+      ]
+    },
+    {
+      "group": "acquisition",
+      "result": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/tests/regression_acquisition/RESULT.json",
+        "sha256": "df08a116ab1b60900c5e6cb84782c78726650f3d21d9954c76883f771135c879"
+      },
+      "log": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/tests/acquisition_regressions_repair1.log",
+        "sha256": "2adf189d5ce71cd21929f810d7b55c15a8276c9b9d234167e3ad21a9dbf7f21c"
+      },
+      "tests": 12,
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "-B",
+        "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/run_regressions.py",
+        "--group",
+        "acquisition"
+      ]
+    },
+    {
+      "group": "inherited",
+      "result": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/tests/regression_inherited/RESULT.json",
+        "sha256": "b5718c5c301a530fbe2b9d11032e161ad25759e58aed65c2f62ee8d66545814c"
+      },
+      "log": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/tests/inherited_regressions.log",
+        "sha256": "8abbf34e9114e24bbba21f1830854c924173b9d49d9541dfee5144aa86a502b3"
+      },
+      "tests": 45,
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "-B",
+        "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/run_regressions.py",
+        "--group",
+        "inherited"
+      ]
+    }
+  ],
+  "counting_policy": "Each final selected test once; no RED/failed/repeat inflation; historical92 not counted as rerun here; no new training/GPU regression run, actual8F calibration qualifies each native scene.",
+  "failed_fixture_attempts": [
+    {
+      "reason": "acquisition fixture HERE was moved externally, needed byte-exact source manifest copy for source-pin test; test/protected source unchanged; fixed wrapper only",
+      "log": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/tests/acquisition_regressions.log",
+        "sha256": "ca0f86152e6f4c0512e8581aff665ceb0aafe9db7c62f20c027d0e8f553c4525"
+      },
+      "result": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/tests/acquisition_initial_RESULT.json",
+        "sha256": "a41275ebfaeec88c3394ba70b04051c1a0bbe303ce25839f7e02087f6c9f7045"
+      },
+      "repair_round": 1
+    }
+  ],
+  "utc": "2026-10-03T11:09:34.136274+00:00"
+}

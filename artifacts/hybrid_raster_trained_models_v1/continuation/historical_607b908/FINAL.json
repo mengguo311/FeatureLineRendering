@@ -1,0 +1,736 @@
+{
+  "NPR": {
+    "AUTHOR": "Independent Hao-Mukai Eq1-5 reconstruction,NOT official,fixed inherited gain",
+    "C": [
+      7,
+      21,
+      33,
+      47,
+      59,
+      73,
+      86,
+      99
+    ],
+    "F": [
+      1,
+      14,
+      27,
+      41,
+      53,
+      67,
+      79,
+      93
+    ],
+    "arc": "Inherited exact33poses C7->C33; checkpoint-derived center frozen before NPR",
+    "calibration": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/hotdog/CALIBRATION.json",
+      "sha256": "b1aae19404572142c8208bda2f06791ab4441e902e551a0b9f20747b327c05c2"
+    },
+    "camera_freeze": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/CHECKPOINT_CAMERA_FREEZE.json",
+      "sha256": "7797ba8116ad8fbdd49faab41217a73c0387808ddb270e2e6f846a7ba2fa582b"
+    },
+    "diagnostic_summary": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/DIAGNOSTIC_SUMMARY.json",
+      "sha256": "6c7febe35f4be35447c2e08746b335d47a79c70387f87683ccc87547a6a8c851"
+    },
+    "disclosures": [
+      "missing filter3D",
+      "raster/splat/ray-plane normals are not GT surface normals",
+      "raw originalIDs and alpha*T from native traversal",
+      "no fixed3D or temporal-gain claims",
+      "more ink is not established superiority",
+      "Hotdog arc mid plate bottom outside frame; no post-hoc camera change"
+    ],
+    "inherited_lock": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/INHERITED_LOCK.json",
+      "sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926"
+    },
+    "media_manifest": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/hotdog/MEDIA.json",
+      "sha256": "c7f5cd53aeb48c6c2adca24ecef469f4cad0331a29ec6b0a47c61a8abb4cf058"
+    },
+    "native_pixels": [
+      800,
+      800
+    ],
+    "normalization": {
+      "author_scale": 0.7533644223213196,
+      "frame_count": 16,
+      "normalization_scope": "primary F only; caller-enforced",
+      "positive_counts": {
+        "S_L": 513552,
+        "delta_A": 2606087,
+        "delta_C": 2515918,
+        "delta_D": 2515992,
+        "delta_G": 2515564,
+        "delta_N": 2515657,
+        "visibility_raw": 1610642
+      },
+      "recipe": {
+        "alpha_canny": [
+          25,
+          65
+        ],
+        "author_params": {
+          "beta_u": 32.0,
+          "lambda_C": 0.7,
+          "lambda_GV": 0.45,
+          "lambda_LN": 0.72,
+          "lambda_SN": 0.52,
+          "lambda_TC": 0.58,
+          "lambda_TL": 0.34,
+          "lambda_VN": 0.7,
+          "lambda_q": 0.35,
+          "lambda_u": 0.72
+        },
+        "author_thresholds": {
+          "A": [
+            0.04,
+            0.28
+          ],
+          "C": [
+            0.16,
+            0.52
+          ],
+          "D": [
+            0.006,
+            0.055
+          ],
+          "G": [
+            0.1,
+            0.45
+          ],
+          "L": [
+            0.08,
+            0.38
+          ],
+          "N": [
+            0.11,
+            0.58
+          ],
+          "VD": [
+            0.003,
+            0.045
+          ],
+          "VN": [
+            0.08,
+            0.45
+          ],
+          "rho": [
+            0.16,
+            0.55
+          ]
+        },
+        "brush_pixels": 1,
+        "channels": [
+          "delta_D",
+          "delta_A",
+          "delta_N",
+          "delta_C",
+          "delta_G",
+          "visibility_raw"
+        ],
+        "dense_smoothstep": [
+          0.1,
+          0.7
+        ],
+        "depth_foreground_alpha": 0.5,
+        "depth_hysteresis_percentiles": [
+          95,
+          70
+        ],
+        "depth_local_window": 5,
+        "depth_relative_floor": 0.002,
+        "depth_sigma": 1.5,
+        "foreground_alpha": 0.08,
+        "foreground_dilation": 3,
+        "mask_thresholds_diagnostic": [
+          0.1,
+          0.3,
+          0.5
+        ],
+        "positive_percentile": 99,
+        "reliability_strength": [
+          0.35,
+          0.65
+        ],
+        "rgb_coarse": {
+          "L2gradient": true,
+          "canny": [
+            25,
+            65
+          ],
+          "kernel": 5,
+          "sigma": 1.4
+        },
+        "rgb_fine": {
+          "L2gradient": true,
+          "canny": [
+            18,
+            48
+          ],
+          "kernel": 3,
+          "sigma": 0.65
+        },
+        "version": "hybrid-raster-evidence-v2-frozen-1"
+      },
+      "recipe_hash": "ae6d386d2c7f123859c7b364af4fb9d3754ae2e02f432056d2e69433189ff368",
+      "scales": {
+        "delta_A": 0.7444546544551854,
+        "delta_C": 0.6385581493377686,
+        "delta_D": 0.08261344276368612,
+        "delta_G": 1.0,
+        "delta_N": 0.9862916707992548,
+        "visibility_raw": 1.0
+      }
+    },
+    "normalization_scope": "Verbatim inherited old LOCK normalization record, including old frame_count16 and positive_counts; not a new-scene fitting record. All scales and author gain unchanged.",
+    "panel_pixels": [
+      4000,
+      832
+    ],
+    "parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+    "payload_manifest": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/hotdog/FRAMES.json",
+      "sha256": "244c4914cfd894577680d3ab355fbe31f2070aa25f98b437b6398b9718b7eb91"
+    },
+    "render_release": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/RENDER_FREEZE.json",
+      "sha256": "8bfcb6692376e9f9b69dd1dacd7a0730bdc4c1949313c8be52a9ce396127112c"
+    },
+    "source_and_binary_equality": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/INHERITANCE_FINAL.json",
+      "sha256": "18f1140ade55c2b4f0cb80a323738e4f43b36d0034cdf1414f34f731c1e0f9df"
+    },
+    "transport_source_manifest": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/SOURCE_MANIFEST.json",
+      "sha256": "7261ed123d4e8e3fa55112f901bd7879972463d8bc9eaeabf70e47b611f1a906"
+    },
+    "video_full_decode": {
+      "comparison": {
+        "distinct_frames": 33,
+        "frames": 33,
+        "sha256": "c7af1027ca0252d543a7dcfdace0611822921af330ddbd8284b92f2641a0c657",
+        "size": [
+          4000,
+          832
+        ]
+      },
+      "comparison_telegram1600": {
+        "distinct_frames": 33,
+        "frames": 33,
+        "sha256": "af511efb992135f66b5b30fc602ba62b59d59fd8a988e3beb632db4d85198f4a",
+        "size": [
+          1600,
+          368
+        ]
+      },
+      "matched": {
+        "distinct_frames": 33,
+        "frames": 33,
+        "sha256": "e23df2f9e1e250b5f829f6c99ea91f837125a9ea338ac753138e92099f85e996",
+        "size": [
+          4000,
+          832
+        ]
+      },
+      "matched_telegram1600": {
+        "distinct_frames": 33,
+        "frames": 33,
+        "sha256": "948037adc406fa1233573c7b7499023936cd80f5b81abd70ef22847de40a2141",
+        "size": [
+          1600,
+          368
+        ]
+      },
+      "overlay": {
+        "distinct_frames": 33,
+        "frames": 33,
+        "sha256": "399340f4d95d521f414a1a5642cc2887d258a39071c707d8b992f7dcdda9a502",
+        "size": [
+          4000,
+          832
+        ]
+      },
+      "overlay_telegram1600": {
+        "distinct_frames": 33,
+        "frames": 33,
+        "sha256": "fc1f0372d522f3ac71677c97012d81f4ce707e33dcfc62acb0fae958ec4217fb",
+        "size": [
+          1600,
+          368
+        ]
+      }
+    },
+    "white_SH0_RGB_shared_all_arms": true
+  },
+  "access_audit": {
+    "actual_acquisition_all4": "PASS captured process trees",
+    "camera_resolve_all4": "PASS captured process trees",
+    "hotdog_media": "PASS captured process tree",
+    "hotdog_render_attempt000": "INVALID missing child exits; unknown143 interruption, never promoted to PASS",
+    "hotdog_render_attempt003": "PASS captured process tree",
+    "independent_verifier_attempt001": "INVALID missing child exits; unknown143 interruption, preserved",
+    "independent_verifier_attempt002": "PASS captured process tree",
+    "scope": "Named captured open/openat/openat2/creat streams and child exits only, not whole-session audit; no claim about missing tail of interrupted streams or unannotated dynamic symlink changes"
+  },
+  "audit_gaps": {
+    "first_independent_CPU_verifier": "Unknown143 termination; original incomplete trace/log preserved INVALID; unchanged detached rerun completed",
+    "first_render_evidence": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/hotdog/ABNORMAL_TERMINATION.json",
+      "sha256": "146e87d774e032881aeb155c10646478b2a9e31dd88d6147404ee96588070db0"
+    },
+    "initial_hotdog_render": "Unknown143 termination; captured stream has missing child exit tail, INVALID, not retroactively repaired",
+    "resume_evidence": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/hotdog/RESUME_EXECUTION.json",
+      "sha256": "a2e471e042e746b11da08f8cd253425c12b45abea4c6b4a6f0ab40082348e831"
+    }
+  },
+  "branch": "hybrid-raster-trained-models-v1",
+  "budgets": {
+    "elapsed_wall_to_final_record_seconds": 7359.020219,
+    "engineering_evidence": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/ENGINEERING_BUDGET.json",
+      "sha256": "3ed6b10922b5c7587f6f2bafb989eb6ff240f66fd11199f196819ecf03093b96"
+    },
+    "engineering_limit_seconds": 5400,
+    "engineering_repair_round_limit": 3,
+    "engineering_repair_rounds": 3,
+    "initial_implementation_and_repairs_wall_seconds": 2078,
+    "no_fourth_producer_repair": true,
+    "runtime_ledger": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/RUNTIME.json",
+      "sha256": "4679bd8499185d0a5ec0bb4c51f84f121b9bb0fd8f2fc85801c69a2c52532e78"
+    },
+    "started_utc": "2026-10-03T08:49:00+00:00",
+    "training_limit_seconds_per_scene": 7200,
+    "training_wall_seconds_total": 2115.059570548823,
+    "transport_GPU_charged_seconds": 1014.5224114719313,
+    "transport_GPU_limit_seconds": 14400,
+    "transport_first_attempt_budget": "622seconds conservative START-to-confirmed-quiescence upper bound,not measured renderer wall",
+    "wall_limit_seconds": 43200
+  },
+  "commit_reference_policy": "Only existing predecessor commits are embedded; the containing result commit and remote verification are given by Git and the final user message, avoiding self-reference.",
+  "commits": {
+    "actual_training_source_freeze": "206b9ebf3e90d4766fb1b3e32ebfba491e390f4e",
+    "all_checkpoints_and_exact_cameras_before_NPR": "26636535ab39c1996493d0088a7a53bb358dbb9a",
+    "base": "fef9b8566b9fc3aa42a8639b336987b302041c99",
+    "initial_protocol_before_GPU": "8b3915b5e3211530beefd8606dbdcdd5cdf25e2d",
+    "support_repair_freeze": "9fb46557958e5ec4b3e13df0894b9be747c43e6b"
+  },
+  "counts": {
+    "PLY_checkpoints": 8,
+    "TRAIN_in_sample_diagnostic_images": 24,
+    "acquired_models": 4,
+    "actual_frames": 49,
+    "contacts": 15,
+    "expected_contacts": 60,
+    "expected_first_mid_last_panels": 36,
+    "expected_five_column_line_overlay_matched_panels": 588,
+    "expected_frames": 196,
+    "expected_videos": 24,
+    "finite_training_loss_rows": 120000,
+    "first_mid_last_panels": 9,
+    "five_column_line_overlay_matched_panels": 147,
+    "frame_seals": 49,
+    "media_seals": 1,
+    "missing_frames": 147,
+    "raw_seals": 49,
+    "response_panels": 49,
+    "resume_snapshots": 8,
+    "videos": 6
+  },
+  "created_utc": "2026-10-03T10:51:39.020219+00:00",
+  "experiment_complete": false,
+  "independent_verification": {
+    "acquisition": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/ACQUISITION_FINAL.json",
+      "sha256": "3be3b3e21f089873904caf10021ee15041b315cc5206b6c453ba52295daa059b"
+    },
+    "conclusion": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/CONCLUSION.json",
+      "sha256": "451a6af99780efe62a7f670309d75957ffc131a6d542d8aa4c3c5940b5566106"
+    },
+    "freeze_order": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/FREEZE_ORDER.json",
+      "sha256": "a1eef1516ac5f04923cbb38540aec21012a5468f752e69e30af3416944e3becf"
+    },
+    "overall_exit_code": 1,
+    "overall_exit_reason": "Missing3scene calibration/output; no Hotdog artifact errors",
+    "production": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/PRODUCTION.json",
+      "sha256": "818cf801c78488efc19a5c496a83e285cde5c49558d77e83eb06364aa4ba9b3a"
+    }
+  },
+  "paths": {
+    "Hotdog_frames": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/frames/hotdog",
+    "Hotdog_media": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/media/hotdog",
+    "Hotdog_raw": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/raw/hotdog",
+    "artifact_root": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1",
+    "large_local_output_root": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1",
+    "models": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training",
+    "report": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/REPORT.md"
+  },
+  "publication": "Git tracks code,small reports and evidence; checkpoints/raw fields/videos remain local at exact indexed paths and hashes,not uploaded as Git payloads.",
+  "remaining": [
+    "Provide sufficient authorized storage before any remaining scene launch; keep frozen models, cameras and recipe",
+    "Run Materials/Mic/Ship8Fqualification then49frames each and required media if qualified",
+    "Human review of all five-column/native/ink-matched/overlay outputs and usefulness; current agent visual reviews are not human approval",
+    "First renderer syscall audit gap remains explicitly unresolved"
+  ],
+  "scenes": {
+    "hotdog": {
+      "NPR_calibration": "PASS:all8 patched/unpatched F",
+      "NPR_payload_media_integrity": "PASS",
+      "acquisition_evidence": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/results/hotdog/INDEX.json",
+        "sha256": "3451eef3f1311d6575ccffe46f01e56ddfec9d72c5f25477673fabf3288c24c8"
+      },
+      "acquisition_qualification": "PASS",
+      "actual_NPR_frames": 49,
+      "camera_manifest": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/hotdog/CAMERAS.json",
+        "sha256": "aaad5449db388065596cec296ffb7bdd8bc5717772c6f8d80c75f85a5cf78f43"
+      },
+      "camera_verification": "PASS:49 poses,33 distinct arc poses,exact inherited algorithm",
+      "checkpoint_lineage": {
+        "audit": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/hotdog/seed_1729/attempt_000/ACCESS_AUDIT.json",
+        "checkpoints": {
+          "30000": {
+            "bytes": 36856811,
+            "iteration": 30000,
+            "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/hotdog/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+            "sha256": "950a77982449056390a709c097b920c1121da5680fd5602a262a8fc1b6e58765",
+            "snapshot": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/hotdog/seed_1729/checkpoints/chkpnt30000.pth",
+            "snapshot_sha256": "3ef7499f8d5b9e2c9e489845c735ecc5c0bff23babe841bd462de1d26cc4df6d",
+            "snapshot_sidecar": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/hotdog/seed_1729/checkpoints/chkpnt30000.json"
+          },
+          "7000": {
+            "bytes": 32380411,
+            "iteration": 7000,
+            "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/hotdog/seed_1729/checkpoints/point_cloud/iteration_7000/point_cloud.ply",
+            "sha256": "dd9d4a74a4dd07d12c216c2cfb69b4bb09e27274c370c0796a934bb827b9ec7a",
+            "snapshot": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/hotdog/seed_1729/checkpoints/chkpnt7000.pth",
+            "snapshot_sha256": "1df64c6ce04b9b0bad60fa6cf791187d2a29039c59fe6bd99be55e2c2fe21d77",
+            "snapshot_sidecar": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/hotdog/seed_1729/checkpoints/chkpnt7000.json"
+          }
+        },
+        "freeze_commit": "206b9ebf3e90d4766fb1b3e32ebfba491e390f4e",
+        "frozen_utc": "2026-10-03T09:32:06.450414+00:00",
+        "iterations": 30000,
+        "manifest_path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/manifests/hotdog.json",
+        "manifest_sha256": "bba0b2e14c8241e9af4a07cdb394b8b253f9ce88c2c3b2d78207e1dc23d402d7",
+        "scene": "hotdog",
+        "schema": 1,
+        "seed": 1729,
+        "source_commit": "472689c0dc70417448fb451bf529ae532d32c095",
+        "source_manifest_sha256": "a09e55db1d7a65f01d8c3f60cf4bd5e14eb1c986d7c2ad837822387b3eba80d9",
+        "state": "COMPLETE",
+        "training_access": "all100 TRAIN cameras including NPR C; in-sample, not blind evaluation"
+      },
+      "expected_NPR_frames": 49,
+      "fresh_training_launches": 1,
+      "gaussians_30000": 148610,
+      "input_and_config_manifest": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/manifests/hotdog.json",
+        "sha256": "29d965503e12583990abaa19cf311da764a3fbc1db9f16e596158d3dfa8e5a9a"
+      },
+      "iterations": 30000,
+      "native_fov": 0.6911112070083618,
+      "native_principal": 399.5,
+      "output_training": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/hotdog/seed_1729",
+      "scientific_qualification": "REQUIRES_HUMAN_REVIEW; initial renderer access trace incomplete",
+      "seed": 1729,
+      "training_finished_utc": "2026-10-03T09:32:06.447406+00:00",
+      "training_resumes": 0,
+      "training_started_utc": "2026-10-03T09:24:11.762527+00:00",
+      "training_wall_seconds": 474.68488322314806
+    },
+    "materials": {
+      "NPR_calibration": "NOT_RUN_STORAGE_BLOCKED",
+      "NPR_payload_media_integrity": "NOT_RUN_STORAGE_BLOCKED",
+      "acquisition_evidence": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/results/materials/INDEX.json",
+        "sha256": "d8f7d4373c482ca7d664e30b9651c779a3e0a8acb46e471f8fbb964922978e68"
+      },
+      "acquisition_qualification": "PASS",
+      "actual_NPR_frames": 0,
+      "camera_manifest": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/materials/CAMERAS.json",
+        "sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d"
+      },
+      "camera_verification": "PASS:49 poses,33 distinct arc poses,exact inherited algorithm",
+      "checkpoint_lineage": {
+        "audit": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/materials/seed_1729/attempt_000/ACCESS_AUDIT.json",
+        "checkpoints": {
+          "30000": {
+            "bytes": 70070707,
+            "iteration": 30000,
+            "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/materials/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+            "sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+            "snapshot": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/materials/seed_1729/checkpoints/chkpnt30000.pth",
+            "snapshot_sha256": "25122685446e177d4b72297c75cd813d32499efb57229e828cc56d8fcb470e91",
+            "snapshot_sidecar": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/materials/seed_1729/checkpoints/chkpnt30000.json"
+          },
+          "7000": {
+            "bytes": 51525267,
+            "iteration": 7000,
+            "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/materials/seed_1729/checkpoints/point_cloud/iteration_7000/point_cloud.ply",
+            "sha256": "ed9e929c96a95204e43b72f46e6ce64287ee567aea9b0d3f767cace0cfe7a91b",
+            "snapshot": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/materials/seed_1729/checkpoints/chkpnt7000.pth",
+            "snapshot_sha256": "6f5ea7ad38f3bfe58849d22a3016c719b19c37bc0fdcbb4139ff83fddc496263",
+            "snapshot_sidecar": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/materials/seed_1729/checkpoints/chkpnt7000.json"
+          }
+        },
+        "freeze_commit": "206b9ebf3e90d4766fb1b3e32ebfba491e390f4e",
+        "frozen_utc": "2026-10-03T09:40:57.194371+00:00",
+        "iterations": 30000,
+        "manifest_path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/manifests/materials.json",
+        "manifest_sha256": "42327f81247b7eff8637b9ad739e222a01ae01d9bc02c185c9b7dbd910524a45",
+        "scene": "materials",
+        "schema": 1,
+        "seed": 1729,
+        "source_commit": "472689c0dc70417448fb451bf529ae532d32c095",
+        "source_manifest_sha256": "a09e55db1d7a65f01d8c3f60cf4bd5e14eb1c986d7c2ad837822387b3eba80d9",
+        "state": "COMPLETE",
+        "training_access": "all100 TRAIN cameras including NPR C; in-sample, not blind evaluation"
+      },
+      "expected_NPR_frames": 49,
+      "fresh_training_launches": 1,
+      "gaussians_30000": 282537,
+      "input_and_config_manifest": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/manifests/materials.json",
+        "sha256": "268b0432ab64c8bfa29ec2ac07992313d151fa18ce8fd5b78f2f29127292bf8f"
+      },
+      "iterations": 30000,
+      "native_fov": 0.6194058656692505,
+      "native_principal": 399.5,
+      "output_training": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/materials/seed_1729",
+      "scientific_qualification": "UNASSESSED; not a scientific negative",
+      "seed": 1729,
+      "training_finished_utc": "2026-10-03T09:40:57.190180+00:00",
+      "training_resumes": 0,
+      "training_started_utc": "2026-10-03T09:32:50.923648+00:00",
+      "training_wall_seconds": 486.2666058028117
+    },
+    "mic": {
+      "NPR_calibration": "NOT_RUN_STORAGE_BLOCKED",
+      "NPR_payload_media_integrity": "NOT_RUN_STORAGE_BLOCKED",
+      "acquisition_evidence": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/results/mic/INDEX.json",
+        "sha256": "506f85defba0fb6ca8a7c1f1a14a97ae6955a6bbbc90ffdc9982973e98deb51d"
+      },
+      "acquisition_qualification": "PASS",
+      "actual_NPR_frames": 0,
+      "camera_manifest": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/mic/CAMERAS.json",
+        "sha256": "afa6240bfdada724876ce5ae0a885f6875bb427463f9da85ce1013cd955b2c3c"
+      },
+      "camera_verification": "PASS:49 poses,33 distinct arc poses,exact inherited algorithm",
+      "checkpoint_lineage": {
+        "audit": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/mic/seed_1729/attempt_000/ACCESS_AUDIT.json",
+        "checkpoints": {
+          "30000": {
+            "bytes": 77268907,
+            "iteration": 30000,
+            "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/mic/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+            "sha256": "13255fd1207c031c5542e25cbbdf9596dbe88a0212fd7e383a9010852d6501ca",
+            "snapshot": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/mic/seed_1729/checkpoints/chkpnt30000.pth",
+            "snapshot_sha256": "4cd1c913b7eed3bfed5e120ed2c2b272112983a7b67cd967e9e298065457a174",
+            "snapshot_sidecar": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/mic/seed_1729/checkpoints/chkpnt30000.json"
+          },
+          "7000": {
+            "bytes": 48470155,
+            "iteration": 7000,
+            "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/mic/seed_1729/checkpoints/point_cloud/iteration_7000/point_cloud.ply",
+            "sha256": "b316c07bd2face07deca665bab27fecb824493e1ad7721a7edce7acb12c124c3",
+            "snapshot": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/mic/seed_1729/checkpoints/chkpnt7000.pth",
+            "snapshot_sha256": "7bffcf10baf5242b600171f8a9712feb24fe07d575c64c0d73b8023b786c35df",
+            "snapshot_sidecar": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/mic/seed_1729/checkpoints/chkpnt7000.json"
+          }
+        },
+        "freeze_commit": "206b9ebf3e90d4766fb1b3e32ebfba491e390f4e",
+        "frozen_utc": "2026-10-03T09:50:06.989746+00:00",
+        "iterations": 30000,
+        "manifest_path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/manifests/mic.json",
+        "manifest_sha256": "030027d0700fc46171a36c9940d195e822f728fe27533c8bf6fc39da698ed30b",
+        "scene": "mic",
+        "schema": 1,
+        "seed": 1729,
+        "source_commit": "472689c0dc70417448fb451bf529ae532d32c095",
+        "source_manifest_sha256": "a09e55db1d7a65f01d8c3f60cf4bd5e14eb1c986d7c2ad837822387b3eba80d9",
+        "state": "COMPLETE",
+        "training_access": "all100 TRAIN cameras including NPR C; in-sample, not blind evaluation"
+      },
+      "expected_NPR_frames": 49,
+      "fresh_training_launches": 1,
+      "gaussians_30000": 311562,
+      "input_and_config_manifest": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/manifests/mic.json",
+        "sha256": "1ffea6b195703fed9d28d96c458f340f116c9e1379edf5cb33829032d40861ba"
+      },
+      "iterations": 30000,
+      "native_fov": 0.6911112070083618,
+      "native_principal": 399.5,
+      "output_training": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/mic/seed_1729",
+      "scientific_qualification": "UNASSESSED; not a scientific negative",
+      "seed": 1729,
+      "training_finished_utc": "2026-10-03T09:50:06.986976+00:00",
+      "training_resumes": 0,
+      "training_started_utc": "2026-10-03T09:41:50.511271+00:00",
+      "training_wall_seconds": 496.4757005989086
+    },
+    "ship": {
+      "NPR_calibration": "NOT_RUN_STORAGE_BLOCKED",
+      "NPR_payload_media_integrity": "NOT_RUN_STORAGE_BLOCKED",
+      "acquisition_evidence": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/results/ship/INDEX.json",
+        "sha256": "b4b39c52b958eb7c949275526469d12a4a7753a44e35999167c1093296ac345c"
+      },
+      "acquisition_qualification": "PASS",
+      "actual_NPR_frames": 0,
+      "camera_manifest": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/ship/CAMERAS.json",
+        "sha256": "61895c4d059daaee95ce84a084dbc376a24914ef55b37ceb100baa5ffd175923"
+      },
+      "camera_verification": "PASS:49 poses,33 distinct arc poses,exact inherited algorithm",
+      "checkpoint_lineage": {
+        "audit": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/ship/seed_1729/attempt_000/ACCESS_AUDIT.json",
+        "checkpoints": {
+          "30000": {
+            "bytes": 79431963,
+            "iteration": 30000,
+            "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/ship/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+            "sha256": "8bbcc880fbe5c57c5d65cc7834caf1e285e87616fb7b3c09dcccae12b45fba8b",
+            "snapshot": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/ship/seed_1729/checkpoints/chkpnt30000.pth",
+            "snapshot_sha256": "5127afa930921318becb7a53cd26c01af9ab57912af843a5034cf3968e663a9d",
+            "snapshot_sidecar": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/ship/seed_1729/checkpoints/chkpnt30000.json"
+          },
+          "7000": {
+            "bytes": 55047363,
+            "iteration": 7000,
+            "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/ship/seed_1729/checkpoints/point_cloud/iteration_7000/point_cloud.ply",
+            "sha256": "5f8fb14fd180b2b9e0726880ab1d58ee6dbc898327dec0ba50f865051032984c",
+            "snapshot": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/ship/seed_1729/checkpoints/chkpnt7000.pth",
+            "snapshot_sha256": "1429c9b6da2980dae7a1821b226c40eb0c49dcde5d67c467426a3432c8aa2aa1",
+            "snapshot_sidecar": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/ship/seed_1729/checkpoints/chkpnt7000.json"
+          }
+        },
+        "freeze_commit": "206b9ebf3e90d4766fb1b3e32ebfba491e390f4e",
+        "frozen_utc": "2026-10-03T10:01:43.603407+00:00",
+        "iterations": 30000,
+        "manifest_path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/manifests/ship.json",
+        "manifest_sha256": "66f57fc346ed95a4d290eb9141897e72eef8a672df10e655e2577cdd0c0287e2",
+        "scene": "ship",
+        "schema": 1,
+        "seed": 1729,
+        "source_commit": "472689c0dc70417448fb451bf529ae532d32c095",
+        "source_manifest_sha256": "a09e55db1d7a65f01d8c3f60cf4bd5e14eb1c986d7c2ad837822387b3eba80d9",
+        "state": "COMPLETE",
+        "training_access": "all100 TRAIN cameras including NPR C; in-sample, not blind evaluation"
+      },
+      "expected_NPR_frames": 49,
+      "fresh_training_launches": 1,
+      "gaussians_30000": 320284,
+      "input_and_config_manifest": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/manifests/ship.json",
+        "sha256": "2251189cbdcf871b8a151b1974da2ccde311018072c49d7024d18b01ba6340ca"
+      },
+      "iterations": 30000,
+      "native_fov": 0.6911112070083618,
+      "native_principal": 399.5,
+      "output_training": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/ship/seed_1729",
+      "scientific_qualification": "UNASSESSED; not a scientific negative",
+      "seed": 1729,
+      "training_finished_utc": "2026-10-03T10:01:43.599693+00:00",
+      "training_resumes": 0,
+      "training_started_utc": "2026-10-03T09:50:45.967363+00:00",
+      "training_wall_seconds": 657.6323809239548
+    }
+  },
+  "schema": "trained-vanilla-frozen-npr-final-v1",
+  "scientific_GO": false,
+  "status": "PARTIAL_BLOCKED_STORAGE",
+  "storage_blocker": {
+    "GPU_GUARD": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/materials_render_000/GPU_GUARD.json",
+    "GPU_GUARD_sha256": "a95913a3127710d1afb114c81f1feb57abe61c2651aad138fa23ce93582ad043",
+    "all_four_vanilla_checkpoints_acquired": true,
+    "allowance_disclosure": "1GiB phase allowance is the unchanged original supervisor heuristic for unknown calibration+first-frame write size; 1GiB hard reserve is distinct. Prior hotdog actual16 calibration buffers are measured separately below.",
+    "completed_frames": 49,
+    "completed_scene": "hotdog",
+    "execution_phase_allowance_bytes": 1073741824,
+    "external_storage_authorized": false,
+    "free_above_hard_reserve_bytes": 193155072,
+    "free_bytes": 1266896896,
+    "hard_reserve_bytes": 1073741824,
+    "hotdog_calibration_npz_bytes": 206130333,
+    "no_evidence_deleted": true,
+    "no_producer_modified": true,
+    "original_blocker": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/materials_render_000/EXIT.json",
+      "sha256": "11727344255b91c6f009b535c67c52606423f3aaf9e7473004452cddff8550f2"
+    },
+    "phase": "render",
+    "reason": "STORAGE_PHASE_ALLOWANCE",
+    "requested_frames": 196,
+    "required_bytes": 2147483648,
+    "scene": "materials",
+    "schema": "trained-transport-storage-blocker-v1",
+    "scope": "next scene production not launched; no calibration or scientific negative claim",
+    "state": "BLOCKED_BEFORE_LAUNCH",
+    "unrun_frames": 147,
+    "unrun_scenes": [
+      "materials",
+      "mic",
+      "ship"
+    ],
+    "utc": "2026-10-03T10:34:34.384535+00:00"
+  },
+  "tests": {
+    "counting": "RED,failed fixtures and reruns excluded from92",
+    "index": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/TEST_INDEX.json",
+      "sha256": "183e8abd36f96a26d0014d51692a0ca53c2b0e7de9f0fd16eff21c6f16b385a3"
+    },
+    "two_step_real_CUDA_integration_separate": "PASS",
+    "unique_selected_final_passed": 92
+  },
+  "training": {
+    "NPR_reads": "SH0 intentionally,as inherited",
+    "access_disclosure": "All100 TRAIN cameras including NPR C used in vanilla photometric training; C held out only from NPR fitting. TRAIN RGB diagnostics in-sample, not generalization. No NPR refitting occurred.",
+    "acquisition_recipe": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/ACQUISITION.json",
+      "sha256": "569a5305d0335689108590385641cb8bc3a6e59584c84662116e5e3b59a0026f"
+    },
+    "manifest_hash_scopes": "checkpoint_lineage.manifest_sha256 is the training identity canonical JSON hash used by the frozen loader; input_and_config_manifest.sha256 hashes exact manifest file bytes. These distinct hash scopes are intentional.",
+    "necessary_differences": [
+      "all100 TRAIN versus prior86 TRAIN",
+      "no VAL/TEST metadata or pixels; eval=False and strict TRAIN-only reader",
+      "in-sample fixed TRAIN diagnostic only",
+      "I/O hooks for atomic PLY/snapshot/status+exact RNG resume; GUI off; TensorBoard replaced by explicit scalar log"
+    ],
+    "objective": "Standard0.8 L1+0.2(1-SSIM),default densification; no line/normal/depth/mesh/NPR supervision",
+    "output_SH_degree": 3,
+    "source_manifest": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/SOURCE_MANIFEST.json",
+      "sha256": "a09e55db1d7a65f01d8c3f60cf4bd5e14eb1c986d7c2ad837822387b3eba80d9"
+    },
+    "upstream_pin": "472689c0dc70417448fb451bf529ae532d32c095"
+  },
+  "visual_reviews": [
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/TRAIN_RGB_VISUAL_REVIEW.json",
+      "sha256": "99e128c418bf8787845f5b85b53a1aee21b15b8796b07bb35d64a76e4770d4b9"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/NPR_VISUAL_REVIEW.json",
+      "sha256": "d5a3c5f2895ab472d45d5b30d265c6051e4e8e1b6840ff3eff172e4a3ff1024b"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/SECOND_VISUAL_REVIEW.json",
+      "sha256": "70435ba74bc929c9caaaff5bcf461a30646724928ce1a2a8601bbc84e105eaf6"
+    }
+  ],
+  "workspace": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1"
+}

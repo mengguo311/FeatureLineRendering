@@ -1,0 +1,25 @@
+{
+  "command": [
+    "strace",
+    "-f",
+    "-q",
+    "-yy",
+    "-s",
+    "4096",
+    "-e",
+    "trace=open,openat,openat2,creat",
+    "-o",
+    "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/ship/seed_1729/attempt_000/training.strace",
+    "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+    "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/train_entry.py",
+    "--manifest",
+    "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/manifests/ship.json"
+  ],
+  "freeze_commit": "206b9ebf3e90d4766fb1b3e32ebfba491e390f4e",
+  "gpu": 0,
+  "manifest_sha256": "66f57fc346ed95a4d290eb9141897e72eef8a672df10e655e2577cdd0c0287e2",
+  "resume": null,
+  "utc": "2026-10-03T09:50:45.967363+00:00",
+  "verified_remote_sha": "206b9ebf3e90d4766fb1b3e32ebfba491e390f4e",
+  "worker_pid": 2477952
+}

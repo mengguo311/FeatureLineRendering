@@ -1,0 +1,39 @@
+{
+  "started_utc": "2026-10-03T08:49:00+00:00",
+  "wall_limit_seconds": 43200,
+  "engineering_limit_seconds": 5400,
+  "training_runtime_excluded": true,
+  "explicit_fix_round_limit": 3,
+  "explicit_fix_rounds": [
+    {
+      "round": 1,
+      "started_utc": "2026-10-03T09:10:26.669368+00:00",
+      "scope": "independent syscall audit parser only",
+      "trigger": "Actual strace -yy CUDA character-device fd annotation has nested <char 195:255>; initial parser conservatively rejected line",
+      "action": "Synthetic RED/GREEN parser support with malformed/forbidden-path rejection; preserve raw traces and initial INVALID reports",
+      "scientific_source_or_parameters_changed": false
+    },
+    {
+      "round": 2,
+      "started_utc": "2026-10-03T09:11:40.829483+00:00",
+      "scope": "synthetic training fixture dimensions and precise TRAIN-directory audit allowlist",
+      "trigger": "Upstream camera_utils shape[1]==4 treats 4px fixture height as alpha dimension; 800px actual scenes unaffected. Landlock O_PATH TRAIN-directory audit false-positive.",
+      "action": "8x8 synthetic fixture; permit exact TRAIN directory open for confinement; freeze amended support hashes and push before any actual scene acquisition",
+      "scientific_source_or_parameters_changed": false,
+      "real_scene_acquisitions_before_fix": 0
+    },
+    {
+      "round": 3,
+      "started_utc": "2026-10-03T09:19:14.300807+00:00",
+      "scope": "acquisition source materialization and independent pin provenance",
+      "trigger": "Read-only ext workingtree renderer has uncommitted4-return unpacking, while official installed rasterizer and actual prior LEGO pinned source return2. Prior preflight proved workingtree identity, not pin content.",
+      "action": "Extract every minimal source from git show472689c0dc70417448fb451bf529ae532d32c095:path; apply only predeclared seed/TRAIN/I/O patches; compare prior actualvendor; preserve dirtydiff andboth failedsynthetic traces. Freeze/push again before actual scenes.",
+      "scientific_npr_source_or_parameters_changed": false,
+      "real_scene_acquisitions_before_fix": 0,
+      "last_allowed_repair": true
+    }
+  ],
+  "note": "All3 permitted engineering repair rounds closed before actual scene acquisition; no further producer repairs authorized. Training runtime ledger is separate; post-acquisition verification/reporting are recorded separately.",
+  "initial_implementation_and_repairs_closed_utc": "2026-10-03T09:23:38+00:00",
+  "initial_implementation_and_repairs_wall_seconds": 2078
+}

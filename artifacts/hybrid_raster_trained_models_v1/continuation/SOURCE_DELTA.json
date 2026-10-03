@@ -1,0 +1,78 @@
+{
+  "base_commit": "607b908a5dd0f195a55dd97fc4161cbd7a839d6c",
+  "binding_changes_only": [
+    "run_transport.OUT: legacy transport -> approved external/transport",
+    "adapters.OUT: legacy transport -> approved external/transport",
+    "native.STAGE: legacy transport -> approved external/transport"
+  ],
+  "exact_diff": {
+    "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/tests/logs/storage_only_glue_additions.diff",
+    "sha256": "1fe82c5cffe1c32ce28fe289b8cb8fff0fec8ab9e05c89b624b0ef4bcbb916cc",
+    "tracked_path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/STORAGE_GLUE.diff"
+  },
+  "original_transport_changed_files": [],
+  "original_transport_source_manifest": {
+    "files": {
+      "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+      "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f",
+      "test_adapters.py": "4a742f72306d63844444e1ca1b8e80ece99d60a94f804eb306786125f6574819",
+      "test_runner.py": "19811c43e28797487502466efe7fcddc89a965f3eea2a912c43d53585e1aed38"
+    },
+    "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/SOURCE_MANIFEST.json",
+    "sha256": "7261ed123d4e8e3fa55112f901bd7879972463d8bc9eaeabf70e47b611f1a906"
+  },
+  "schema": "storage-only-source-delta-v1",
+  "scientific_heritage": {
+    "arc_source_sha256": "c853e9023e753af66008fc161a96f2e8ba155a16b04c545904c606bcecde232b",
+    "lock_path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/LOCK.json",
+    "lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+    "native_build": {
+      "build_hash": "54acc2fe19d2665f171014c134a50c1fe286aed66dc37ee86a8ee3af132aed8c",
+      "render_settings": {
+        "background": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "camera_principal_point": "(W-1)/2, (H-1)/2",
+        "filter_3D": false,
+        "kernel_size": 0.0,
+        "prefiltered": false,
+        "require_depth": true,
+        "scale_modifier": 1.0,
+        "sh_degree": 0,
+        "topk": 4
+      },
+      "source_hash": "6925e61350a93610e839b284adb95d7bd72941c36513d4cc83d5ba677a84491c",
+      "source_manifest_sha256": "67a4d8a2c232a6df64cc19db3e6aba7ad703e993c5e632bdb3beb1188ea65630",
+      "variants": {
+        "patched": {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/native/patched/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so",
+          "sha256": "77ae2500aa02e7ee994ca6ad40ff4f9ebe80717d1d004df20fb352fed63a31e4"
+        },
+        "unpatched": {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/native/unpatched/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so",
+          "sha256": "0c99d1de90070a85922cd81252d9c8324150691261b1af4a86a606156e45db18"
+        }
+      },
+      "wrapper_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6"
+    },
+    "parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+    "sources": {
+      "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+      "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+      "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+      "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+      "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+      "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+    }
+  },
+  "six_scientific_sources_changed_files": [],
+  "source_context_policy": "Never falsify original source hash; original functions keep original __file__. Separate binding receipt seals operational glue hash and both roots. No modifications to scientific/producer code.",
+  "storage_glue_added_sources": {
+    "STORAGE_MAP.json": "534cf6e75fbc36467f32516d4bfc0b0ce14bba1f4e677a1e044d2e6bb6b648b1",
+    "run_storage_transport.py": "0831ca05bf8535a00761ec1f1fd7c005ce119a33c43a5774c5ec10f47f608eca",
+    "storage_paths.py": "e580e194ffedcf9fe0db1a49395e1874dd5db7effedc6ffaab3dd97447f4368b",
+    "test_storage_adapter.py": "d2abd00fc3597188ab04e53666c866349b93201ce5e1378c39698ce12bb0323c"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "access": {
+    "attempted_opens": 924,
+    "external_completion_receipt": {
+      "command": [
+        "strace",
+        "-f",
+        "-qq",
+        "-yy",
+        "-s",
+        "4096",
+        "-e",
+        "trace=open,openat,openat2,creat",
+        "-o",
+        "out/hybrid_raster_trained_models_v1/audit/input_freeze.strace",
+        "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+        "artifacts/hybrid_raster_trained_models_v1/freeze_inputs.py"
+      ],
+      "completed": true,
+      "exit_code": 0,
+      "source_pixels_decoded": false,
+      "trace_scope": "completed input-freeze process and descendants; -qq suppresses explicit exit markers; external exec exit receipt recorded",
+      "trace_sha256": "acbedc35d19f0f5bd7232cfd006cc60351588d33ba9db20754bb4aaccb7fa0d2",
+      "train_files": 400
+    },
+    "failed_opens": 15,
+    "forbidden": [],
+    "missing_exit_sentinels": [
+      2465477
+    ],
+    "passed": true,
+    "phase": "acquisition",
+    "scope": "Only captured attempted openat/openat2 syscalls and child exits; lexical absolute/dirfd resolution; no whole-session or dynamic symlink claim",
+    "successful_opens": 909,
+    "train_source_image_opens": 800
+  },
+  "human_review": "PENDING",
+  "passed": true,
+  "scientific_GO": false,
+  "status": "PASS",
+  "trace_sha256": "acbedc35d19f0f5bd7232cfd006cc60351588d33ba9db20754bb4aaccb7fa0d2"
+}

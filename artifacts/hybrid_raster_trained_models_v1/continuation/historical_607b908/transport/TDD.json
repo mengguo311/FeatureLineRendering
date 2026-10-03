@@ -1,0 +1,26 @@
+{
+  "RED": {
+    "exit_code": 1,
+    "expected_failure": "missing adapters.py",
+    "log": "out/hybrid_raster_trained_models_v1/transport/tests/RED.log"
+  },
+  "GREEN": {
+    "command": [
+      "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+      "artifacts/hybrid_raster_trained_models_v1/transport/test_adapters.py"
+    ],
+    "exit_code": 0,
+    "test_count": 5,
+    "log": "out/hybrid_raster_trained_models_v1/transport/tests/GREEN.log"
+  },
+  "runner_cpu": {
+    "command": [
+      "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+      "artifacts/hybrid_raster_trained_models_v1/transport/test_runner.py"
+    ],
+    "exit_code": 0,
+    "test_count": 3,
+    "log": "out/hybrid_raster_trained_models_v1/transport/tests/RUNNER_GREEN.log",
+    "scope": "synthetic raw->unchanged frozen compute->sealed panel/provenance; strict resume corruption rejection; actual FFmpeg H264 encode/full33decode/faststart"
+  }
+}

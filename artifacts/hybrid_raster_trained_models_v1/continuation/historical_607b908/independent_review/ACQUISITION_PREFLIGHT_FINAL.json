@@ -1,0 +1,117 @@
+{
+  "errors": [],
+  "passed": true,
+  "preflight": {
+    "input_hash_scope": "TRAIN metadata rehashed; image digests crosschecked with root frozen bytehash manifest, no image decode",
+    "mode": "PREFLIGHT_ONLY",
+    "modified_files": [
+      "scene/dataset_readers.py",
+      "train.py",
+      "utils/general_utils.py"
+    ],
+    "necessary_differences": [
+      "all100 TRAIN versus prior86 TRAIN",
+      "no VAL/TEST metadata or pixels; eval=False and strict TRAIN-only reader",
+      "in-sample fixed TRAIN diagnostic only",
+      "I/O hooks for atomic PLY/snapshot/status+exact RNG resume; GUI off; TensorBoard replaced by explicit scalar log"
+    ],
+    "passed": true,
+    "production_claim": "No checkpoint/training/calibration claim from preflight",
+    "scenes": {
+      "hotdog": {
+        "C_used_photometrically": [
+          7,
+          21,
+          33,
+          47,
+          59,
+          73,
+          86,
+          99
+        ],
+        "checkpoint_destination": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/hotdog/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+        "iterations": 30000,
+        "manifest_sha256": "392967ee5959cd4d6c1251a734db4d37600bad762b5e370c0325bc9ed93d9d15",
+        "passed": true,
+        "seed": 1729,
+        "train_cameras": 100
+      },
+      "materials": {
+        "C_used_photometrically": [
+          7,
+          21,
+          33,
+          47,
+          59,
+          73,
+          86,
+          99
+        ],
+        "checkpoint_destination": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/materials/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+        "iterations": 30000,
+        "manifest_sha256": "4eac448bc1fda89eacca332e1c6647a5e1bb6be47744db49368dcc1551f0e8ab",
+        "passed": true,
+        "seed": 1729,
+        "train_cameras": 100
+      },
+      "mic": {
+        "C_used_photometrically": [
+          7,
+          21,
+          33,
+          47,
+          59,
+          73,
+          86,
+          99
+        ],
+        "checkpoint_destination": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/mic/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+        "iterations": 30000,
+        "manifest_sha256": "d9b2181b0d660226a246c80335adb6a0e29504b4c0e22b37bb92c19353217dec",
+        "passed": true,
+        "seed": 1729,
+        "train_cameras": 100
+      },
+      "ship": {
+        "C_used_photometrically": [
+          7,
+          21,
+          33,
+          47,
+          59,
+          73,
+          86,
+          99
+        ],
+        "checkpoint_destination": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/ship/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+        "iterations": 30000,
+        "manifest_sha256": "7b0d89770f255447d284cbb37bfa2521e5970b142d208364039ccc8828c56177",
+        "passed": true,
+        "seed": 1729,
+        "train_cameras": 100
+      }
+    },
+    "source_files": [
+      "LICENSE.md",
+      "train.py",
+      "arguments/__init__.py",
+      "gaussian_renderer/__init__.py",
+      "gaussian_renderer/network_gui.py",
+      "scene/__init__.py",
+      "scene/cameras.py",
+      "scene/colmap_loader.py",
+      "scene/dataset_readers.py",
+      "scene/gaussian_model.py",
+      "utils/camera_utils.py",
+      "utils/general_utils.py",
+      "utils/graphics_utils.py",
+      "utils/image_utils.py",
+      "utils/loss_utils.py",
+      "utils/sh_utils.py",
+      "utils/system_utils.py"
+    ],
+    "source_image_bytes_rehashed": false
+  },
+  "scientific_GO": false,
+  "status": "PREFLIGHT_ONLY_PASS"
+}

@@ -1,0 +1,48 @@
+{
+  "scene": "mic",
+  "action": "CPU_ONLY_RESOLVE_EXACT_CAMERAS",
+  "exit_code": 0,
+  "utc_recorded": "2026-10-03T09:51:52.175049+00:00",
+  "independent_acquisition_pass": {
+    "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/MIC_ACQUISITION.json",
+    "sha256": "526a768f2293d5d78b93dd37d1d4f276cfd31b34f28f55d50ce57034d69d05e2"
+  },
+  "command": [
+    "strace",
+    "-f",
+    "-q",
+    "-yy",
+    "-s",
+    "4096",
+    "-e",
+    "trace=open,openat,openat2,creat",
+    "-o",
+    "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/logs/resolve_mic.strace",
+    "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+    "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/adapters.py",
+    "--resolve",
+    "mic"
+  ],
+  "camera_manifest": {
+    "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/mic/CAMERAS.json",
+    "sha256": "afa6240bfdada724876ce5ae0a885f6875bb427463f9da85ce1013cd955b2c3c"
+  },
+  "trace": {
+    "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/logs/resolve_mic.strace",
+    "sha256": "3f52972c21581f1dcbd1df12cca8c7da7e7c4371adb1a5b5f5880ae3f16c88a7"
+  },
+  "source_sha256": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+  "GPU_launched": false,
+  "images_viewed": false,
+  "audit_status": "PASS_CAPTURED_RESOLVE_PROCESS_ONLY",
+  "independent_resolve_reviews": [
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/MIC_EXACT_CAMERAS.json",
+      "sha256": "b4721ca8efd9e8a2007a87c9a867163b1a10cea71daf15a270efa2f80a82ba65"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/MIC_RESOLVE_ACCESS.json",
+      "sha256": "32551021941f637b86f86bbc0769b5f7d11bbec2fb89f69490483a8005f665b3"
+    }
+  ]
+}

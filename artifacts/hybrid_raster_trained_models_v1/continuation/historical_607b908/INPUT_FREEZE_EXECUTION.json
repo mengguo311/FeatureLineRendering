@@ -1,0 +1,22 @@
+{
+  "command": [
+    "strace",
+    "-f",
+    "-qq",
+    "-yy",
+    "-s",
+    "4096",
+    "-e",
+    "trace=open,openat,openat2,creat",
+    "-o",
+    "out/hybrid_raster_trained_models_v1/audit/input_freeze.strace",
+    "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+    "artifacts/hybrid_raster_trained_models_v1/freeze_inputs.py"
+  ],
+  "exit_code": 0,
+  "trace_scope": "completed input-freeze process and descendants; -qq suppresses explicit exit markers; external exec exit receipt recorded",
+  "train_files": 400,
+  "source_pixels_decoded": false,
+  "completed": true,
+  "trace_sha256": "acbedc35d19f0f5bd7232cfd006cc60351588d33ba9db20754bb4aaccb7fa0d2"
+}
