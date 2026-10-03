@@ -1,0 +1,43 @@
+--- a/cuda_rasterizer/render_forward.cu
++++ b/cuda_rasterizer/render_forward.cu
+@@ -453,10 +453,12 @@
+     [[maybe_unused]] float last_depth  = 0;
+     [[maybe_unused]] float last_weight = 0;
+ 
+-    int top_ids[4] = {-1, -1, -1, -1};
+-    float top_w[4] = {0, 0, 0, 0};
+-    float top_d[4] = {0, 0, 0, 0};
+-    float3 top_n[4] = {};
++    constexpr int ATTR_TOPK = 32;
++    int top_ids[ATTR_TOPK];
++    for (int q=0; q<ATTR_TOPK; ++q) top_ids[q] = -1;
++    float top_w[ATTR_TOPK] = {};
++    float top_d[ATTR_TOPK] = {};
++    float3 top_n[ATTR_TOPK] = {};
+     float moment2 = 0.f;
+     // Iterate over batches until all done or range is complete
+     for (int i = 0; i < rounds; i++, toDo -= BLOCK_SIZE) {
+@@ -523,9 +525,9 @@
+                 moment2 += t * t * rln * rln * aT;
+                 if (out_ids != nullptr) {
+                     int rank = 0;
+-                    while (rank < 4 && top_w[rank] >= aT) ++rank;
+-                    if (rank < 4) {
+-                        for (int k = 3; k > rank; --k) {
++                    while (rank < ATTR_TOPK && top_w[rank] >= aT) ++rank;
++                    if (rank < ATTR_TOPK) {
++                        for (int k = ATTR_TOPK-1; k > rank; --k) {
+                             top_ids[k] = top_ids[k-1]; top_w[k] = top_w[k-1];
+                             top_d[k] = top_d[k-1]; top_n[k] = top_n[k-1];
+                         }
+@@ -571,8 +573,8 @@
+             if (out_ids != nullptr) {
+                 out_moment2[pix_id] = moment2;
+                 out_normal_len[pix_id] = len_normal;
+-                for (int k = 0; k < 4; ++k) {
+-                    int off = pix_id * 4 + k;
++                for (int k = 0; k < ATTR_TOPK; ++k) {
++                    int off = pix_id * ATTR_TOPK + k;
+                     out_ids[off] = top_ids[k];
+                     out_weights[off] = top_w[k];
+                     out_layer_depth[off] = top_d[k];
