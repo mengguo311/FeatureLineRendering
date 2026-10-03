@@ -1,0 +1,27 @@
+{
+  "command": [
+    "strace",
+    "-f",
+    "-q",
+    "-yy",
+    "-s",
+    "4096",
+    "-e",
+    "trace=open,openat,openat2,creat",
+    "-o",
+    "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/logs/summarize_results.strace",
+    "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+    "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/summarize_results.py"
+  ],
+  "exit_code": 2,
+  "meaning": "expected explicit incomplete whole experiment: 49/196; hotdog complete diagnostics only, three scenes missing production",
+  "summary": {
+    "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/DIAGNOSTIC_SUMMARY.json",
+    "sha256": "6c7febe35f4be35447c2e08746b335d47a79c70387f87683ccc87547a6a8c851"
+  },
+  "trace": {
+    "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/logs/summarize_results.strace",
+    "sha256": "4f1227b8491e91f25c4fed9859c13c4bfcb0b4586a1362ba3049a9332ea06503"
+  },
+  "source_sha256": "48f24b79bca7267e586b5b9e7532ef38dbee39709303a06e7e5e0ede11c105fb"
+}

@@ -1,0 +1,832 @@
+{
+  "context": {
+    "calibration_indices": [
+      1,
+      14,
+      27,
+      41,
+      53,
+      67,
+      79,
+      93
+    ],
+    "camera_manifest_sha256": "aaad5449db388065596cec296ffb7bdd8bc5717772c6f8d80c75f85a5cf78f43",
+    "checkpoint_sha256": "950a77982449056390a709c097b920c1121da5680fd5602a262a8fc1b6e58765",
+    "native_build": {
+      "build_hash": "54acc2fe19d2665f171014c134a50c1fe286aed66dc37ee86a8ee3af132aed8c",
+      "render_settings": {
+        "background": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "camera_principal_point": "(W-1)/2, (H-1)/2",
+        "filter_3D": false,
+        "kernel_size": 0.0,
+        "prefiltered": false,
+        "require_depth": true,
+        "scale_modifier": 1.0,
+        "sh_degree": 0,
+        "topk": 4
+      },
+      "source_hash": "6925e61350a93610e839b284adb95d7bd72941c36513d4cc83d5ba677a84491c",
+      "source_manifest_sha256": "67a4d8a2c232a6df64cc19db3e6aba7ad703e993c5e632bdb3beb1188ea65630",
+      "variants": {
+        "patched": {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/native/patched/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so",
+          "sha256": "77ae2500aa02e7ee994ca6ad40ff4f9ebe80717d1d004df20fb352fed63a31e4"
+        },
+        "unpatched": {
+          "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/native/unpatched/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so",
+          "sha256": "0c99d1de90070a85922cd81252d9c8324150691261b1af4a86a606156e45db18"
+        }
+      },
+      "wrapper_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6"
+    },
+    "tolerances": {
+      "depth_and_max_rel": 3e-06,
+      "depth_or_max_abs": 1e-05,
+      "general_max_abs": 3e-06
+    }
+  },
+  "frames": [
+    {
+      "calibration": {
+        "errors": {
+          "alpha": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "depth": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "median_depth": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "normal": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "rgb": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          }
+        },
+        "status": "PASS"
+      },
+      "camera": {
+        "FoVx": 0.6911112070083618,
+        "FoVy": 0.6911112070083618,
+        "index": 1,
+        "native_K": [
+          [
+            1111.1110311937682,
+            0.0,
+            399.5
+          ],
+          [
+            0.0,
+            1111.1110311937682,
+            399.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "native_height": 800,
+        "native_width": 800,
+        "split": "train",
+        "w2c": [
+          [
+            0.6489901931960583,
+            0.7607967421257145,
+            6.654528046612325e-09,
+            1.0668002152974257e-08
+          ],
+          [
+            0.586528898485037,
+            -0.5003326947566431,
+            -0.6369074626890506,
+            -8.293548506361009e-08
+          ],
+          [
+            -0.48455707582762714,
+            0.4133466620990108,
+            -0.7709403772359825,
+            4.03112893887621
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "camera_hash": "aeb7127be937c35aff30ecfa8a01f509a122cd41b287925bd9ad495eddcf6e96",
+      "checkpoint_sha256": "950a77982449056390a709c097b920c1121da5680fd5602a262a8fc1b6e58765",
+      "gaussian_count": 148610,
+      "index": 1,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/calibration/hotdog/F_001.npz",
+      "scene": "hotdog",
+      "sha256": "b3f5d37d5b291bbde90e54bfed3f78bbfc76427ec6dfc8de84a51cc5d9404ad3",
+      "unpatched_path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/calibration/hotdog/F_001_unpatched.npz",
+      "unpatched_sha256": "10e6b6e4abc058c293c6edb021cffa20386d7857f98f0f82563661824fd605d9"
+    },
+    {
+      "calibration": {
+        "errors": {
+          "alpha": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "depth": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "median_depth": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "normal": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "rgb": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          }
+        },
+        "status": "PASS"
+      },
+      "camera": {
+        "FoVx": 0.6911112070083618,
+        "FoVy": 0.6911112070083618,
+        "index": 14,
+        "native_K": [
+          [
+            1111.1110311937682,
+            0.0,
+            399.5
+          ],
+          [
+            0.0,
+            1111.1110311937682,
+            399.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "native_height": 800,
+        "native_width": 800,
+        "split": "train",
+        "w2c": [
+          [
+            0.6632052138792887,
+            -0.7484375150263356,
+            -1.3706505697295536e-08,
+            -2.5960751488148992e-08
+          ],
+          [
+            -0.5419075267577085,
+            -0.4801948679210794,
+            -0.6897455754294454,
+            2.6268531432528187e-08
+          ],
+          [
+            0.5162315333877162,
+            0.45744289505652896,
+            -0.7240517858327379,
+            4.031128826805177
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "camera_hash": "5b05098280d689c720a09eca267e2bd96f9f24e1dafb3234f68a0bd5da4a3471",
+      "checkpoint_sha256": "950a77982449056390a709c097b920c1121da5680fd5602a262a8fc1b6e58765",
+      "gaussian_count": 148610,
+      "index": 14,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/calibration/hotdog/F_014.npz",
+      "scene": "hotdog",
+      "sha256": "6fc2d6cd7eed74415c9178b451d99a0c69e23479fff2d01e6493491f5c892cbf",
+      "unpatched_path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/calibration/hotdog/F_014_unpatched.npz",
+      "unpatched_sha256": "7109199536476c57e080adbf25ad4cddc6f98122437b7b44f7add87a7a30cae5"
+    },
+    {
+      "calibration": {
+        "errors": {
+          "alpha": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "depth": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "median_depth": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "normal": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "rgb": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          }
+        },
+        "status": "PASS"
+      },
+      "camera": {
+        "FoVx": 0.6911112070083618,
+        "FoVy": 0.6911112070083618,
+        "index": 27,
+        "native_K": [
+          [
+            1111.1110311937682,
+            0.0,
+            399.5
+          ],
+          [
+            0.0,
+            1111.1110311937682,
+            399.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "native_height": 800,
+        "native_width": 800,
+        "split": "train",
+        "w2c": [
+          [
+            0.9870885101192889,
+            -0.160175593853991,
+            3.3536620979450923e-09,
+            3.483357414589253e-08
+          ],
+          [
+            -0.06175916217956201,
+            -0.3805933203940478,
+            -0.9226780442112922,
+            5.826007340904238e-08
+          ],
+          [
+            0.1477904934962198,
+            0.9107647988094687,
+            -0.3855715777019129,
+            4.031128888415248
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "camera_hash": "33a97b5eb0f37f9c3cc43e411d67113067165354e5c0404b8c8a4aa268997af5",
+      "checkpoint_sha256": "950a77982449056390a709c097b920c1121da5680fd5602a262a8fc1b6e58765",
+      "gaussian_count": 148610,
+      "index": 27,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/calibration/hotdog/F_027.npz",
+      "scene": "hotdog",
+      "sha256": "b97a16e7356a203c0d08aa173fadbec7d508e5294732e2f901969410925da58b",
+      "unpatched_path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/calibration/hotdog/F_027_unpatched.npz",
+      "unpatched_sha256": "96285ea0ff75a8353cfc8149c44476cd5267a9cf20081bdf653ef89a3fb308ca"
+    },
+    {
+      "calibration": {
+        "errors": {
+          "alpha": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "depth": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "median_depth": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "normal": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "rgb": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          }
+        },
+        "status": "PASS"
+      },
+      "camera": {
+        "FoVx": 0.6911112070083618,
+        "FoVy": 0.6911112070083618,
+        "index": 41,
+        "native_K": [
+          [
+            1111.1110311937682,
+            0.0,
+            399.5
+          ],
+          [
+            0.0,
+            1111.1110311937682,
+            399.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "native_height": 800,
+        "native_width": 800,
+        "split": "train",
+        "w2c": [
+          [
+            0.8673840745875512,
+            0.4976393614212477,
+            8.975748180480466e-09,
+            -2.359782302064446e-08
+          ],
+          [
+            0.46883388388508895,
+            -0.8171762041379502,
+            -0.3352877750326767,
+            4.757301474101812e-08
+          ],
+          [
+            -0.16685238758208049,
+            0.2908232647474289,
+            -0.9421158077423921,
+            4.031129018929522
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "camera_hash": "41555423ed51984cba1c8ae1a86f68e53a727dd728dece4a2f8a8bbb149da4cb",
+      "checkpoint_sha256": "950a77982449056390a709c097b920c1121da5680fd5602a262a8fc1b6e58765",
+      "gaussian_count": 148610,
+      "index": 41,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/calibration/hotdog/F_041.npz",
+      "scene": "hotdog",
+      "sha256": "6cf144624e2a30f6c4b5dcd5ae1ea1d32df1bdc148eacc4a25d9515b397e98c3",
+      "unpatched_path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/calibration/hotdog/F_041_unpatched.npz",
+      "unpatched_sha256": "d8cee2bc8383cad99f9446bb6b43efbbb1abda2c48d8a45495acc67aca7376bb"
+    },
+    {
+      "calibration": {
+        "errors": {
+          "alpha": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "depth": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "median_depth": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "normal": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "rgb": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          }
+        },
+        "status": "PASS"
+      },
+      "camera": {
+        "FoVx": 0.6911112070083618,
+        "FoVy": 0.6911112070083618,
+        "index": 53,
+        "native_K": [
+          [
+            1111.1110311937682,
+            0.0,
+            399.5
+          ],
+          [
+            0.0,
+            1111.1110311937682,
+            399.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "native_height": 800,
+        "native_width": 800,
+        "split": "train",
+        "w2c": [
+          [
+            0.8296871888808363,
+            0.55822860178448,
+            1.6678378949868567e-08,
+            -1.0038915253132415e-07
+          ],
+          [
+            0.280466103024181,
+            -0.41685272255305356,
+            -0.8646228009269857,
+            -3.482936229980174e-08
+          ],
+          [
+            -0.482657169458576,
+            0.7173664406510211,
+            -0.5024215887677561,
+            4.031128863441749
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "camera_hash": "90f1163ff4bdc4e1a6ba7a2da3fafd72123f96301816d6ee338ce0fa5fc7eecb",
+      "checkpoint_sha256": "950a77982449056390a709c097b920c1121da5680fd5602a262a8fc1b6e58765",
+      "gaussian_count": 148610,
+      "index": 53,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/calibration/hotdog/F_053.npz",
+      "scene": "hotdog",
+      "sha256": "0eaee2c5e14181df9632d345e65b39714d2f9abee95698d9d619592a5247ea49",
+      "unpatched_path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/calibration/hotdog/F_053_unpatched.npz",
+      "unpatched_sha256": "7e3549548c1e1ab5ef7c13e9cc6dbe2150fd6908721c1184570c3ca4c7e9f55f"
+    },
+    {
+      "calibration": {
+        "errors": {
+          "alpha": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "depth": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "median_depth": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "normal": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "rgb": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          }
+        },
+        "status": "PASS"
+      },
+      "camera": {
+        "FoVx": 0.6911112070083618,
+        "FoVy": 0.6911112070083618,
+        "index": 67,
+        "native_K": [
+          [
+            1111.1110311937682,
+            0.0,
+            399.5
+          ],
+          [
+            0.0,
+            1111.1110311937682,
+            399.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "native_height": 800,
+        "native_width": 800,
+        "split": "train",
+        "w2c": [
+          [
+            0.15218917806853224,
+            0.9883512945776386,
+            6.270410997317113e-09,
+            9.73090126123382e-09
+          ],
+          [
+            0.8447159410269971,
+            -0.13007179385757917,
+            -0.5191686136576739,
+            1.0591615382047128e-07
+          ],
+          [
+            -0.5131211390575693,
+            0.07901187989053048,
+            -0.8546717899717808,
+            4.031128995939148
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "camera_hash": "b4bcff4d656658c73de5e507b8f29d23e4e60bc46c49ba3c3f9aa7215882058c",
+      "checkpoint_sha256": "950a77982449056390a709c097b920c1121da5680fd5602a262a8fc1b6e58765",
+      "gaussian_count": 148610,
+      "index": 67,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/calibration/hotdog/F_067.npz",
+      "scene": "hotdog",
+      "sha256": "5835949614273bd31e47d1086b24a96e1aa9e6222183bae895142fdd546bb0e9",
+      "unpatched_path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/calibration/hotdog/F_067_unpatched.npz",
+      "unpatched_sha256": "21b95ecbde332e0b3e1a6215ff89990d39a8c3b90b675b2146c1d4b02131c6f6"
+    },
+    {
+      "calibration": {
+        "errors": {
+          "alpha": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "depth": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "median_depth": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "normal": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "rgb": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          }
+        },
+        "status": "PASS"
+      },
+      "camera": {
+        "FoVx": 0.6911112070083618,
+        "FoVy": 0.6911112070083618,
+        "index": 79,
+        "native_K": [
+          [
+            1111.1110311937682,
+            0.0,
+            399.5
+          ],
+          [
+            0.0,
+            1111.1110311937682,
+            399.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "native_height": 800,
+        "native_width": 800,
+        "split": "train",
+        "w2c": [
+          [
+            -0.9615903828866884,
+            -0.2744883350655794,
+            1.997940858529227e-09,
+            5.16755615861361e-08
+          ],
+          [
+            -0.0377550040672347,
+            0.13226370843145616,
+            -0.9904952671372754,
+            1.4995604211604643e-08
+          ],
+          [
+            0.2718794116679395,
+            -0.952450776978242,
+            -0.13754682243406774,
+            4.031128925617928
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "camera_hash": "f2bed1aee454a6a006f0d4e1639a9821b574eeff7ed3bb7fd05f2870b0237f5f",
+      "checkpoint_sha256": "950a77982449056390a709c097b920c1121da5680fd5602a262a8fc1b6e58765",
+      "gaussian_count": 148610,
+      "index": 79,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/calibration/hotdog/F_079.npz",
+      "scene": "hotdog",
+      "sha256": "a67a3dd6857579b45917799eda4160ab485833f9062550c43ab956c1453a06dc",
+      "unpatched_path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/calibration/hotdog/F_079_unpatched.npz",
+      "unpatched_sha256": "1fac7fbb536323b4922c209ec7f67da256ac6584a7d1c93312e327c3a58903e4"
+    },
+    {
+      "calibration": {
+        "errors": {
+          "alpha": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "depth": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "median_depth": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "normal": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          },
+          "rgb": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "mean_abs": 0.0,
+            "passed": true
+          }
+        },
+        "status": "PASS"
+      },
+      "camera": {
+        "FoVx": 0.6911112070083618,
+        "FoVy": 0.6911112070083618,
+        "index": 93,
+        "native_K": [
+          [
+            1111.1110311937682,
+            0.0,
+            399.5
+          ],
+          [
+            0.0,
+            1111.1110311937682,
+            399.5
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "native_height": 800,
+        "native_width": 800,
+        "split": "train",
+        "w2c": [
+          [
+            -0.6645686898877063,
+            -0.7472271364707689,
+            -2.1321892389733037e-08,
+            -5.528108658811406e-08
+          ],
+          [
+            -0.3979202036140064,
+            0.35390218228500675,
+            -0.8464117130431292,
+            -4.308915948755707e-08
+          ],
+          [
+            0.6324618091095793,
+            -0.5624987058253621,
+            -0.5325290401375908,
+            4.031128892992925
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "camera_hash": "d2e6271484aecb5d74d0fd8d86c986aa50ac117c1ebf2ba04190beafeeb76621",
+      "checkpoint_sha256": "950a77982449056390a709c097b920c1121da5680fd5602a262a8fc1b6e58765",
+      "gaussian_count": 148610,
+      "index": 93,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/calibration/hotdog/F_093.npz",
+      "scene": "hotdog",
+      "sha256": "14cc2e2f8a934b968f033df0ffc57c76734fdd17a4ef47b63000b1fda3ffb9f7",
+      "unpatched_path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/calibration/hotdog/F_093_unpatched.npz",
+      "unpatched_sha256": "9b0ba4c31a675896c52ae948d7787bb600b8c8e61e218dceb6e4830075796073"
+    }
+  ],
+  "scene": "hotdog",
+  "status": "PASS"
+}

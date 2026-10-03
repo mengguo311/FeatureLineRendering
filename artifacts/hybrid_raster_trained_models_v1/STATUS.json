@@ -1,9 +1,27 @@
 {
-  "phase": "ACQUIRED_WAITING_CHECKPOINT_AND_CAMERA_FREEZE",
-  "updated_utc": "2026-10-03T10:02:28.191195+00:00",
-  "expected_scenes": 4,
+  "actual_npr_frames": 49,
+  "actual_scene_training_started": true,
+  "blocker": {
+    "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/STORAGE_BLOCKER.json",
+    "sha256": "0647c9e6d3c5100b7ad518ad18d42ac34a5763a76b127d0d70a031d01bc5b224"
+  },
+  "completed_acquisitions": 4,
   "expected_npr_frames": 196,
-  "actual_npr_frames": 0,
+  "expected_scenes": 4,
+  "independent_verification": "HOTDOG_ARTIFACTS_PASS; OVERALL_INCOMPLETE",
+  "missing_npr_frames": 147,
+  "phase": "NPR_BLOCKED_STORAGE_PARTIAL_EXPERIMENT",
+  "render_freeze_commit": "26636535ab39c1996493d0088a7a53bb358dbb9a",
+  "scientific_GO": false,
+  "storage": {
+    "external_write_authorized": false,
+    "hard_reserve_bytes": 1073741824,
+    "launch_blocker_free_bytes": 1266896896,
+    "observed_utc": "2026-10-03T10:51:39.020219+00:00",
+    "permission_pending": true,
+    "root_free_bytes": 1179308032
+  },
+  "storage_free_bytes": 1179308032,
   "training": {
     "hotdog": {
       "aggregate_seconds": 474.6848891649861,
@@ -150,12 +168,28 @@
       "wall_seconds": 657.6323809239548
     }
   },
-  "storage": {
-    "root_free_bytes": 7093878784,
-    "external_write_authorized": false,
-    "permission_pending": true
+  "transport": {
+    "contacts": 15,
+    "phase": "MEDIA_COMPLETE",
+    "scene": "hotdog",
+    "utc": "2026-10-03T10:33:39.705238+00:00",
+    "videos": 6
   },
-  "actual_scene_training_started": true,
-  "storage_free_bytes": 5101019136,
-  "completed_acquisitions": 4
+  "transport_interruption": {
+    "attempt": "out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000",
+    "captured_access_audit": "INCOMPLETE_MISSING_EXIT_SENTINELS",
+    "cause": "UNKNOWN",
+    "reported_tool_exit_code": 143,
+    "resume_execution_directory": "out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_003",
+    "resume_not_yet_launched": false,
+    "resume_state": "COMPLETE_AND_INDEPENDENTLY_VERIFIED",
+    "sealed_frames": 27,
+    "sealed_raw_frames": 28
+  },
+  "unrun_NPR_scenes": [
+    "materials",
+    "mic",
+    "ship"
+  ],
+  "updated_utc": "2026-10-03T10:51:39.020219+00:00"
 }

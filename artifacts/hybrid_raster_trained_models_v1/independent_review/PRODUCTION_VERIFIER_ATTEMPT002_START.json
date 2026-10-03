@@ -1,0 +1,24 @@
+{
+  "command": [
+    "strace",
+    "-f",
+    "-q",
+    "-yy",
+    "-s",
+    "4096",
+    "-e",
+    "trace=open,openat,openat2,creat",
+    "-o",
+    "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/independent_review/production_verifier_attempt002.strace",
+    "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+    "-B",
+    "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/verify_production.py",
+    "--output",
+    "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/PRODUCTION.json"
+  ],
+  "cwd": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1",
+  "started_utc": "2026-10-03T10:38:47.130540+00:00",
+  "supervisor_pid": 2486635,
+  "GPU": false,
+  "source_modified": false
+}
