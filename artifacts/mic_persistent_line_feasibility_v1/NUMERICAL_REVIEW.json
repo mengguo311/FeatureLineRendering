@@ -1,0 +1,252 @@
+{
+  "asset": {
+    "accepted_path_count": 0,
+    "empty": true,
+    "geometry_sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc",
+    "json_sha256": "bcf1fc1367ffa907f92c5c34e99f85409e2ad259bf969811b77c53ea2333296f",
+    "qualification": "An identical empty geometry hash across poses is an integrity check only, not nonempty fixed-line tracking evidence.",
+    "real_style_edit_demonstration": "not applicable; empty asset"
+  },
+  "claim_limits_zh": [
+    "真实数据没有执行射线三角化，也没有候选进入深度支持及验证接受门；这些功能的证据来自合成测试。",
+    "純3D应为空白，hybrid应等于完整C二维残差；不得称固定三维增强或丰富度提升。",
+    "49为4构建+4验证+8C+33arc的相机记录/帧数；arc端点重复C7/C33姿态，不是49个独立新视点。",
+    "所有F/C为历史已见GS TRAIN，arc为冻结插值；仅验证及C/arc未参与本轮LINE构建，不称盲测或GS holdout。",
+    "固定几何本身不保证视觉时序优越性；本轮空资产更不提供非空时序一致性证据。",
+    "用户/父级人工视觉评审仍待完成；自动核验不能代签。"
+  ],
+  "construction": {
+    "closed_path_identity_candidates_entering_cycle_gate": 1,
+    "cycle_rejection": {
+      "distinct_common_reference_samples": 32,
+      "fraction": 0.3125,
+      "maximum_cycle_error_px": 9.568804177200256,
+      "path_ids": [
+        "F_027_path037",
+        "F_053_path037",
+        "F_079_path031"
+      ],
+      "reason": "cycle_or_sample_count",
+      "required_fraction": 0.7,
+      "samples_with_cycle_error_le_3px": 10,
+      "views": [
+        "F_027",
+        "F_053",
+        "F_079"
+      ]
+    },
+    "formed_3d_proposals": 0,
+    "legacy_counter_interpretation": {
+      "actual_meaning": "Number of _construct_triplet entries recorded in attempts, including rejection at the point-cycle gate before _ray_triangulation. Here 1 is a cycle-gate attempt, not 1 executed ray triangulation.",
+      "evidence": "geometry.py _construct_triplet returns cycle_or_sample_count before calling _ray_triangulation; the sole attempt has no triangulation diagnostic.",
+      "field": "CONSTRUCTION.matching.triangulation_attempts / MATCH_DIAGNOSTICS.triangulation_attempts",
+      "value": 1
+    },
+    "mutual_unique_pairs_total": 34,
+    "ordered_paths_by_view": {
+      "F_001": 61,
+      "F_027": 57,
+      "F_053": 57,
+      "F_079": 46
+    },
+    "ordered_paths_total": 221,
+    "pair_candidates_evaluated": 18253,
+    "pair_rejection_and_compatibility_counts": {
+      "compatible": 75,
+      "epipolar_or_coverage": 12608,
+      "length_incompatible": 5570
+    },
+    "pairs": [
+      {
+        "counts": {
+          "compatible": 21,
+          "epipolar_or_coverage": 2403,
+          "length_incompatible": 1053
+        },
+        "mutual_unique_count": 6,
+        "separation_deg": 48.123187647311205,
+        "views": [
+          "F_001",
+          "F_027"
+        ]
+      },
+      {
+        "counts": {
+          "compatible": 23,
+          "epipolar_or_coverage": 2382,
+          "length_incompatible": 1072
+        },
+        "mutual_unique_count": 6,
+        "separation_deg": 146.236600219025,
+        "views": [
+          "F_001",
+          "F_053"
+        ]
+      },
+      {
+        "counts": {
+          "compatible": 7,
+          "epipolar_or_coverage": 1938,
+          "length_incompatible": 861
+        },
+        "mutual_unique_count": 4,
+        "separation_deg": 76.02230634238221,
+        "views": [
+          "F_001",
+          "F_079"
+        ]
+      },
+      {
+        "counts": {
+          "compatible": 10,
+          "epipolar_or_coverage": 2280,
+          "length_incompatible": 959
+        },
+        "mutual_unique_count": 9,
+        "separation_deg": 107.02326510356153,
+        "views": [
+          "F_027",
+          "F_053"
+        ]
+      },
+      {
+        "counts": {
+          "compatible": 9,
+          "epipolar_or_coverage": 1782,
+          "length_incompatible": 831
+        },
+        "mutual_unique_count": 5,
+        "separation_deg": 31.985318695611557,
+        "views": [
+          "F_027",
+          "F_079"
+        ]
+      },
+      {
+        "counts": {
+          "compatible": 5,
+          "epipolar_or_coverage": 1823,
+          "length_incompatible": 794
+        },
+        "mutual_unique_count": 4,
+        "separation_deg": 75.32124383804396,
+        "views": [
+          "F_053",
+          "F_079"
+        ]
+      }
+    ],
+    "ray_triangulations_executed_on_real_data": 0,
+    "triplet_enumeration_slots": 27,
+    "world_controls": 0
+  },
+  "null_control": {
+    "accepted": 0,
+    "cycle_gate_entries": 0,
+    "derangements": {
+      "F_027": {
+        "bijection": true,
+        "fixed_points": 0,
+        "identities": 13
+      },
+      "F_053": {
+        "bijection": true,
+        "fixed_points": 0,
+        "identities": 18
+      },
+      "F_079": {
+        "bijection": true,
+        "fixed_points": 0,
+        "identities": 14
+      }
+    },
+    "formed_proposals": 0,
+    "qualification": "The one frozen wrong-association control was rejected upstream by matching; it does not measure general false-positive rate or validate rejection of credible triangulated false geometry.",
+    "recorded_status": "PASS_REJECTED",
+    "rematched": false,
+    "repetitions": 1,
+    "seed": 1730,
+    "triplet_enumeration_slots_after_forced_wrong_association": 0
+  },
+  "passed": true,
+  "schema": "mic-fixed3d-independent-numerical-review-v1",
+  "scope": "Independent metadata-only recomputation and source control-flow inspection. No source pixels or scientific array payloads decoded in this review; no refit, threshold change, or rerun.",
+  "scope_checks": {
+    "accepted_asset_sealed_utc": "2026-10-03T14:03:10.665882+00:00",
+    "construction_reads_exact": true,
+    "evaluation_read_order_pass": true,
+    "evaluation_reads_seen_so_far": 41,
+    "render_completion_and_media_verification": "owned by independent verifier; this review does not certify incomplete media",
+    "validation_reads_exact": true
+  },
+  "sources": [
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/CONSTRUCTION.json",
+      "sha256": "a12839cc002d631e21b64b3271e1f3f167aa09347346fb1eb87cf8c81ac9e22e"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/VALIDATION.json",
+      "sha256": "1eb5b8619b212f3304f9e8bd34aa8b2039a33afcf8cd407813462f6a4f5d4815"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/PROPOSALS.json",
+      "sha256": "25201dd95528d956a1bee3707a3719da66cd264c523f3f3797df891b0bbc6421"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/ASSET.json",
+      "sha256": "bcf1fc1367ffa907f92c5c34e99f85409e2ad259bf969811b77c53ea2333296f"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/CONFIG.json",
+      "sha256": "41a3d20a50c28c387da851fa43a3e9372f128d6f7f01ea7aa39918cd5699d69c"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/PROTOCOL.md",
+      "sha256": "973b985ed7bd0c0cc0ade04e2366db47053a0fc3f47c10f0031a941640e86c7e"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/out/mic_persistent_line_feasibility_v1/MATCH_DIAGNOSTICS.json",
+      "sha256": "1c5c13b1e00cd313ce87dec95dd5068622c93316f0c6320d11843b451616438c"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/out/mic_persistent_line_feasibility_v1/CONSTRUCTION_PATHS.json",
+      "sha256": "f9eea8abc8d41b96bdb79a835c8c31ca6ba2315dbede24f40b1bc600b9da472c"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/code/geometry.py",
+      "sha256": "440217a469f9dcc32ab2f13a58ae06972b0c2b96ef51eb1d1e0b92a6b9fc9616"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/code/fields.py",
+      "sha256": "abf99b5cdb194db3afbc7bc432b67e30b1ebd4055b9f35d0e5f9c8e0ea609f41"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/code/render_result.py",
+      "sha256": "9496a10b576a863a018bb732ce0a9d4f986f8d0d1361f12c378e09b7d7c2dc39"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/code/run_experiment.py",
+      "sha256": "c4f69d77ed0194f91eb8bc440e99d51d564233a2c6ebc069274fa24593f7798f"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/SYNTHETIC_TESTS.json",
+      "sha256": "eec29d0998b3a31605dcfa305b9867d14b95ab1c1c370d3f86983638a2c71cde"
+    }
+  ],
+  "supported_conclusion_zh": "本冻结、小预算路径对应方案在 Mic 四个构建视图上未得到通过逐点循环一致性的三视图对应，因此形成三维提案0条、接受0条。这是该单次方案的上游匹配负结果；合成测试通过，不能把它解释为 Mic 固定三维线普遍不可能。",
+  "utc": "2026-10-03T14:06:43.639684+00:00",
+  "validation": {
+    "accepted": 0,
+    "candidate_paths_presented": 0,
+    "candidate_view_tests_executed": 0,
+    "geometry_refit": false,
+    "qualification": "All four validation evidence views were loaded, but no geometry survived construction; therefore zero real candidate-level depth, visibility or held-out line-support decisions occurred.",
+    "rejected_at_validation": 0,
+    "views_loaded": [
+      "F_014",
+      "F_041",
+      "F_067",
+      "F_093"
+    ]
+  }
+}

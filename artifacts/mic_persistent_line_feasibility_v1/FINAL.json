@@ -1,6 +1,339 @@
 {
-  "status": "IN_PROGRESS_PREFREEZE",
+  "schema": "mic-fixed-line-final-v2",
+  "updated_utc": "2026-10-03T14:18:14.645165+00:00",
+  "status": "SCIENTIFIC_NEGATIVE_MATCHING_STAGE",
+  "scientific_outcome": "NO_ACCEPTED_PATHS_UPSTREAM_CYCLE_FAILURE",
+  "scientific_negative": true,
+  "engineering_blocker": null,
   "workspace": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone",
-  "scientific_outcome": "NOT_RUN",
-  "historical": "historical_blocker/FINAL.json"
+  "branch": "mic-persistent-line-feasibility-v1",
+  "base_commit": "59b6b3e49e14f758032a5e0079fe9405511bc148",
+  "protocol_commit": "e69a70f7a71412a3848fbf8fc52db5da29c2c78d",
+  "protocol_remote_sha": "e69a70f7a71412a3848fbf8fc52db5da29c2c78d",
+  "protocol_frozen": true,
+  "asset_frozen": true,
+  "config_sha256": "41a3d20a50c28c387da851fa43a3e9372f128d6f7f01ea7aa39918cd5699d69c",
+  "protocol_sha256": "973b985ed7bd0c0cc0ade04e2366db47053a0fc3f47c10f0031a941640e86c7e",
+  "inputs_sha256": "a463ca7fed2db947c68eed8cc2ab25e2a558c1408bfe40f6195da894f7828df3",
+  "asset_sha256": "bcf1fc1367ffa907f92c5c34e99f85409e2ad259bf969811b77c53ea2333296f",
+  "geometry_sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc",
+  "freeze_chronology": {
+    "passed": true,
+    "event_log_sha256": "fe972ad165c77fffbb4e5491e9a968b363629f488af73a76c48810d2f0afdb06",
+    "decode_event_count": 57,
+    "protocol_remote_verified_utc": "2026-10-03T13:45:32.834534+00:00",
+    "proposal_sealed_utc": "2026-10-03T14:02:02.136398+00:00",
+    "accepted_sealed_utc": "2026-10-03T14:03:10.663921+00:00",
+    "member_scope_basis": "Recorded member names plus reviewed pipeline_io selective np.load member access; strace sees archives, not individual NPZ members",
+    "pipeline_io_sha256": "fb54e32820527c470766010f54168b94a1451260101cc5468f402ad65ee04ac1"
+  },
+  "counters": {
+    "source_camera_records": 49,
+    "construction_views": 4,
+    "validation_views_loaded": 4,
+    "evaluation_C_records": 8,
+    "arc_records": 33,
+    "construction_paths": 221,
+    "length_eligible_original_traces": 192,
+    "pair_combinations": 18253,
+    "compatible_pairs": 75,
+    "mutual_unique_pairs": 34,
+    "triplet_enumeration_slots": 27,
+    "triplet_cycle_attempts": 1,
+    "cycle_good_samples": 10,
+    "cycle_common_samples": 32,
+    "actual_ray_triangulation_attempts": 0,
+    "formed_3d_proposals": 0,
+    "proposed": 0,
+    "construction_pass": 0,
+    "real_validation_candidate_view_tests": 0,
+    "accepted": 0,
+    "rejected_3d_proposals": 0,
+    "rendered_camera_records": 49,
+    "produced_videos": 2,
+    "frames_per_video": 33,
+    "distinct_frames_per_video": 33,
+    "independently_checked_field_arrays": 3577,
+    "actual_asset_projection_control_instances": 0,
+    "gpu_seconds": 0
+  },
+  "counter_qualification": "Legacy CONSTRUCTION.matching.triangulation_attempts counts triplet-cycle entry; actual ray triangulation count is independently recomputed from diagnostics and equals zero. 49 is camera records, not independent poses.",
+  "null_control": {
+    "accepted": 0,
+    "construction_pass": 0,
+    "proposed": 0,
+    "repetition": 1,
+    "results": [],
+    "scientific_go_valid": true,
+    "seed": 1730,
+    "status": "PASS_REJECTED",
+    "sufficient": true,
+    "rejection_stage": "forced_pair_matching_before_cycles_or_ray_triangulation",
+    "eligible_deranged_target_identities": {
+      "F_027": 13,
+      "F_053": 18,
+      "F_079": 14
+    },
+    "rematched": false
+  },
+  "testresults": {
+    "prefreeze_metadata_and_hashes": "PASS",
+    "actual_red_exitcode": 1,
+    "actual_red_tests": 12,
+    "preconstruction_green_tests": 25,
+    "preconstruction_green_exitcode": 0,
+    "final_regression_tests": 25,
+    "final_regression_exitcode": 0,
+    "source_fields_and_pixels": "PASS_49_RECORDS_3577_ARRAYS",
+    "sealed_asset_json_npz": "PASS_EMPTY_ASSET",
+    "real_control_reprojection": "EMPTY_NO_INSTANCES; synthetic positive independent projection passed",
+    "native_video": "PASS_33_DISTINCT_IN_ORDER",
+    "telegram_video": "PASS_33_DISTINCT_IN_ORDER",
+    "scope": "PASS_6_EXITED_TRACED_TREES_8464_OPEN_CALLS_ZERO_VIOLATIONS",
+    "diff_review": "PASS_WITH_LIMITATIONS",
+    "report_review_file": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/REPORT_REVIEW.json",
+    "report_review": "PASS"
+  },
+  "claimstatus": {
+    "real_experiment_completed": true,
+    "scientific_GO": false,
+    "scientific_NO_GO": true,
+    "negative_scope": "This frozen small-budget automatic matching method and split only; not universal infeasibility",
+    "zero_accepted_result": true,
+    "new_fixed3d_identity_demonstrated": false,
+    "real_triangulation_quality_tested": false,
+    "real_nonempty_validation_tested": false,
+    "temporal_superiority": false,
+    "novelty": false,
+    "real_edit_demo_performed": false,
+    "human_review": "PENDING",
+    "parent_review": "PENDING"
+  },
+  "source_qualification": "Mic vanilla30000 seed1729; all static views historical GS TRAIN, unused only for LINE construction. GS fields and cached RGB are not surface/visual GT. No TEST/mesh/retraining/manual annotation/old curve reuse.",
+  "engineering_budget": {
+    "schema": "mic-fixed3d-engineering-budget-v1",
+    "engineering_start_utc": "2026-10-03T13:46:32.914679+00:00",
+    "repair_rounds_used": 1,
+    "repair_seconds_charged": 827.17391,
+    "charging_policy": "Conservatively charge all initial implementation and synthetic repair elapsed time before final GREEN as one round; no real data used for repairs.",
+    "rounds": [
+      {
+        "round": 1,
+        "start": "2026-10-03T13:46:32.914679+00:00",
+        "end": "2026-10-03T14:00:20.088589+00:00",
+        "seconds": 827.17391,
+        "scope": "Initial implementation plus synthetic-discovered finite-NMS, forced-null no-rematch, directional coverage, depth-supported coverage, descriptor orientation and edit-audit repairs. No scientific setting changes."
+      }
+    ],
+    "limits": {
+      "rounds": 3,
+      "seconds": 5400
+    },
+    "gpu_seconds": 0
+  },
+  "wall_elapsed_seconds_to_local_completion": 2466.316598,
+  "wall_start_basis": "First recorded timestamp in current session: historical snapshot creation; earlier read-only probes preceded this by under two minutes.",
+  "paths": {
+    "REPORT.md": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/REPORT.md",
+      "bytes": 10032,
+      "sha256": "3882139edc62c38cdb44468f7635f4092646d259e9a327d008cef522fa72506a"
+    },
+    "TASK.txt": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/TASK.txt",
+      "bytes": 8060,
+      "sha256": "125d3a94e4351209a977277759f6dd7bb5f7a3490a5d09170dc57e2c05d09f00"
+    },
+    "PROTOCOL.md": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/PROTOCOL.md",
+      "bytes": 17703,
+      "sha256": "973b985ed7bd0c0cc0ade04e2366db47053a0fc3f47c10f0031a941640e86c7e"
+    },
+    "CONFIG.json": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/CONFIG.json",
+      "bytes": 14904,
+      "sha256": "41a3d20a50c28c387da851fa43a3e9372f128d6f7f01ea7aa39918cd5699d69c"
+    },
+    "INPUTS.json": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/INPUTS.json",
+      "bytes": 492942,
+      "sha256": "a463ca7fed2db947c68eed8cc2ab25e2a558c1408bfe40f6195da894f7828df3"
+    },
+    "ASSET.json": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/ASSET.json",
+      "bytes": 791,
+      "sha256": "bcf1fc1367ffa907f92c5c34e99f85409e2ad259bf969811b77c53ea2333296f"
+    },
+    "ASSET.npz": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/ASSET.npz",
+      "bytes": 524,
+      "sha256": "906baa5520919f7c37d2f2904aba62350f576b675003e8c5079194aba831c69b"
+    },
+    "ASSET_SEAL.json": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/ASSET_SEAL.json",
+      "bytes": 325,
+      "sha256": "e7c175a3563eaeae8774e5a02fec4066ec682b4e9c19bf9fcdeb07f639554900"
+    },
+    "PROPOSALS.json": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/PROPOSALS.json",
+      "bytes": 541,
+      "sha256": "25201dd95528d956a1bee3707a3719da66cd264c523f3f3797df891b0bbc6421"
+    },
+    "PROPOSALS.npz": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/PROPOSALS.npz",
+      "bytes": 524,
+      "sha256": "906baa5520919f7c37d2f2904aba62350f576b675003e8c5079194aba831c69b"
+    },
+    "PROPOSALS_SEAL.json": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/PROPOSALS_SEAL.json",
+      "bytes": 333,
+      "sha256": "3e1efd079bf8deef50ab50de759658f7672ab315848700829a9b8349313fca75"
+    },
+    "NULL_PROPOSALS.json": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/NULL_PROPOSALS.json",
+      "bytes": 1824,
+      "sha256": "cc289db7c99d794332f4f0035977539956b0d82d9f2e78b3ec7ec4e86474350d"
+    },
+    "CONSTRUCTION.json": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/CONSTRUCTION.json",
+      "bytes": 110165,
+      "sha256": "a12839cc002d631e21b64b3271e1f3f167aa09347346fb1eb87cf8c81ac9e22e"
+    },
+    "VALIDATION.json": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/VALIDATION.json",
+      "bytes": 1517,
+      "sha256": "1eb5b8619b212f3304f9e8bd34aa8b2039a33afcf8cd407813462f6a4f5d4815"
+    },
+    "FRAME_AUDIT.json": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/FRAME_AUDIT.json",
+      "bytes": 139617,
+      "sha256": "7d433d3c1e76df1a7dea093356c942da8ce1e0aa70269395b19a2bc48997efa2"
+    },
+    "INDEPENDENT_VERIFICATION.json": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/INDEPENDENT_VERIFICATION.json",
+      "bytes": 1075676,
+      "sha256": "f34ee5f082b029cbb9da1a0dd3741fcc0f48968bbdcdb5d53444c966dd072ead"
+    },
+    "NUMERICAL_REVIEW.json": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/NUMERICAL_REVIEW.json",
+      "bytes": 10172,
+      "sha256": "08e99e63824f803a76ceaf1ead32e0291b376283047b22cf8a012ac644c1d4c0"
+    },
+    "ADDITIONAL_SCOPE_AUDIT.json": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/ADDITIONAL_SCOPE_AUDIT.json",
+      "bytes": 78416,
+      "sha256": "7fafc31a035df01157cdd4367ebb1c9e88ec23a16af5966446bd46e0879bc92b"
+    },
+    "FINAL_DIFF_REVIEW.json": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/FINAL_DIFF_REVIEW.json",
+      "bytes": 19545,
+      "sha256": "35433f1361e3ebaa2d863545d8e7cb8358abf1bfc3e375f22ba6ec990271a3f6"
+    },
+    "SYNTHETIC_TESTS.json": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/SYNTHETIC_TESTS.json",
+      "bytes": 3022,
+      "sha256": "eec29d0998b3a31605dcfa305b9867d14b95ab1c1c370d3f86983638a2c71cde"
+    },
+    "FINAL_TESTS.json": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/FINAL_TESTS.json",
+      "bytes": 2196,
+      "sha256": "c6890cc40781a29380f0e0cf691ff86b96b6ed5746962803f6ddfa2a3b7c9bbe"
+    },
+    "REPORT_REVIEW.json": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/REPORT_REVIEW.json",
+      "bytes": 3892,
+      "sha256": "614baf74b561c485ea73e4742eb342bd057da127bbf148dfc5f1c0391b84bdad"
+    }
+  },
+  "media": [
+    {
+      "bytes": 2206148,
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/scgs/lib/python3.9/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2",
+        "-y",
+        "-f",
+        "rawvideo",
+        "-vcodec",
+        "rawvideo",
+        "-pix_fmt",
+        "rgb24",
+        "-s",
+        "3200x832",
+        "-r",
+        "6",
+        "-i",
+        "-",
+        "-an",
+        "-vf",
+        "scale=3200:832",
+        "-c:v",
+        "libx264",
+        "-crf",
+        "23",
+        "-pix_fmt",
+        "yuv420p",
+        "-movflags",
+        "+faststart",
+        "-threads",
+        "2",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/out/mic_persistent_line_feasibility_v1/arc33_native3200.mp4"
+      ],
+      "encoding_log": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/out/mic_persistent_line_feasibility_v1/logs/arc33_native3200_encode.log",
+      "expected_frames": 33,
+      "fps": 6,
+      "height": 832,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/out/mic_persistent_line_feasibility_v1/arc33_native3200.mp4",
+      "sha256": "781e8e3fbdaef881f35ea53e0d47f1658fc4c37d3c5839995ea1ba730dfe99c6",
+      "width": 3200
+    },
+    {
+      "bytes": 511230,
+      "command": [
+        "/home/u00134/bin/miniconda3/envs/scgs/lib/python3.9/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2",
+        "-y",
+        "-f",
+        "rawvideo",
+        "-vcodec",
+        "rawvideo",
+        "-pix_fmt",
+        "rgb24",
+        "-s",
+        "3200x832",
+        "-r",
+        "6",
+        "-i",
+        "-",
+        "-an",
+        "-vf",
+        "scale=1600:416",
+        "-c:v",
+        "libx264",
+        "-crf",
+        "23",
+        "-pix_fmt",
+        "yuv420p",
+        "-movflags",
+        "+faststart",
+        "-threads",
+        "2",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/media/arc33_telegram1600.mp4"
+      ],
+      "encoding_log": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/out/mic_persistent_line_feasibility_v1/logs/arc33_telegram1600_encode.log",
+      "expected_frames": 33,
+      "fps": 6,
+      "height": 416,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/media/arc33_telegram1600.mp4",
+      "sha256": "4e54122f583dfcc34e117e01b2c7af5711bc88b1cf90d53fbdf36d5f7687c803",
+      "width": 1600
+    }
+  ],
+  "raw_output_root": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/out/mic_persistent_line_feasibility_v1",
+  "file_index": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/artifacts/mic_persistent_line_feasibility_v1/FILE_INDEX.json",
+  "delivery": {
+    "origin": "https://github.com/mengguo311/FeatureLineRendering.git",
+    "normal_push_no_force": true,
+    "final_remote_sha_and_clean_tree_record": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/out/mic_persistent_line_feasibility_v1/DELIVERY_VERIFY.json",
+    "record_location_reason": "Post-commit readback kept ignored to avoid tracked self-reference to own commit SHA",
+    "github_report": "https://github.com/mengguo311/FeatureLineRendering/blob/mic-persistent-line-feasibility-v1/artifacts/mic_persistent_line_feasibility_v1/REPORT.md"
+  }
 }
