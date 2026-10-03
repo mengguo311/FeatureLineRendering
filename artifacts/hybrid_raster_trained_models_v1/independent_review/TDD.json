@@ -1,0 +1,29 @@
+{
+  "FINAL": {
+    "command": "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -B -m unittest discover -s artifacts/hybrid_raster_trained_models_v1/independent_review -p test_verify_experiment.py -v",
+    "exit_code": 0,
+    "log": "artifacts/hybrid_raster_trained_models_v1/independent_review/logs/TDD_FINAL.log",
+    "log_sha256": "45754ac64557eb5b77833f926340246a3fe0115cacf4fc9fb723e212e7f4a024",
+    "tests_run": 10
+  },
+  "GREEN": {
+    "command": "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -B -m unittest discover -s artifacts/hybrid_raster_trained_models_v1/independent_review -p test_verify_experiment.py -v",
+    "exit_code": 0,
+    "log": "artifacts/hybrid_raster_trained_models_v1/independent_review/logs/TDD_GREEN.log",
+    "log_sha256": "436734fe242a7f8195f6d62cd8f06a943dc614fe2426252c42f4dc68d9c7dd07"
+  },
+  "RED": {
+    "command": "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -B -m unittest discover -s artifacts/hybrid_raster_trained_models_v1/independent_review -p test_verify_experiment.py -v",
+    "exit_code": 1,
+    "log": "artifacts/hybrid_raster_trained_models_v1/independent_review/logs/TDD_RED.log",
+    "log_sha256": "9c74b5011402e7bc7c105778562c3d6fae9b1c90c9e779f86e02e5a7690df4a3"
+  },
+  "independent_complete_suite": {
+    "command": "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python -B -m unittest discover -s artifacts/hybrid_raster_trained_models_v1/independent_review -p 'test_*.py' -v",
+    "exit_code": 0,
+    "log": "artifacts/hybrid_raster_trained_models_v1/independent_review/logs/INDEPENDENT_TESTS.log",
+    "log_sha256": "2f1051de9518dbc61ff1a9bb5ac48dcba2cbd1502d7041b9f8551b8875b08f3e",
+    "tests_run": 11
+  },
+  "qualification": "Actual RED ModuleNotFoundError preceded verifier implementation; initial GREEN8 tests; strengthened10 core mutation tests and1 checkpoint numeric test pass. Fixture-only, not production evidence. Quiet-strace receipt support is a reporting compatibility clarification, not a production fix."
+}

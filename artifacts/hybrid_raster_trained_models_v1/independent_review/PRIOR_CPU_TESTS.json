@@ -1,0 +1,30 @@
+{
+  "created_utc": "2026-10-03T08:57:37.234944+00:00",
+  "elapsed_seconds": 4.755733840866014,
+  "errors": 0,
+  "excluded_gpu_cases": "3 native CUDA fixtures and 4 old wrapper GPU tests not launched in CPU audit",
+  "failures": 0,
+  "fixture_sandbox": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/independent_review/regression_sandbox",
+  "interpreter": "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+  "modules": [
+    "tests.test_hybrid_raster_evidence",
+    "tests.test_hybrid_raster_io",
+    "tests.test_hybrid_raster_stage",
+    "tests.test_hybrid_raster_verifier",
+    "tests.test_hybrid_raster_access",
+    "tests.test_hybrid_dense_v1",
+    "tests.test_hybrid_overlay_video",
+    "tests.test_hybrid_extra_scenes",
+    "tests.test_hao_mukai_source"
+  ],
+  "native_cpu_cases": [
+    "tests.test_hybrid_raster_native.NativeContractTest.test_04_exact_native_principal_point",
+    "tests.test_hybrid_raster_native.NativeContractTest.test_05_calibration_rejects_changed_or_nonfinite_buffers",
+    "tests.test_hybrid_raster_native.NativeContractTest.test_06_export_validation_rejects_wrong_id_shape_and_mass"
+  ],
+  "qualification": "Unchanged inherited CPU fixtures only; no GPU launch or new-scene experiment evidence",
+  "skipped": 0,
+  "source_files_modified": false,
+  "status": "PASS",
+  "tests_run": 45
+}

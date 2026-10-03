@@ -1,0 +1,188 @@
+{
+  "arguments": [
+    "-s",
+    "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/synthetic_gpu_preflight/data",
+    "-m",
+    "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/synthetic_gpu_preflight/checkpoints",
+    "--white_background",
+    "--iterations",
+    "2"
+  ],
+  "checkpoint_iterations": [
+    2
+  ],
+  "defaults": {
+    "compute_cov3D_python": false,
+    "convert_SHs_python": false,
+    "data_device": "cuda",
+    "debug": false,
+    "densification_interval": 100,
+    "densify_from_iter": 500,
+    "densify_grad_threshold": 0.0002,
+    "densify_until_iter": 15000,
+    "eval": false,
+    "feature_lr": 0.0025,
+    "images": "images",
+    "iterations": 30000,
+    "lambda_dssim": 0.2,
+    "model_path": "",
+    "opacity_lr": 0.05,
+    "opacity_reset_interval": 3000,
+    "percent_dense": 0.01,
+    "position_lr_delay_mult": 0.01,
+    "position_lr_final": 1.6e-06,
+    "position_lr_init": 0.00016,
+    "position_lr_max_steps": 30000,
+    "random_background": false,
+    "resolution": -1,
+    "rotation_lr": 0.001,
+    "scaling_lr": 0.005,
+    "sh_degree": 3,
+    "source_path": "",
+    "white_background": false
+  },
+  "diagnostic_train_indices": [],
+  "directory": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/synthetic_gpu_preflight",
+  "evaluation": "synthetic infrastructure only; not requested-scene evidence",
+  "initialization": "official per-seed random100000 xyz=random*2.6-1.3; SH2RGB(random/255); local points3d.ply",
+  "input_files": [
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/synthetic_gpu_input/transforms_train.json",
+      "sha256": "186df7c0e5722122e2dd92da9d90b34e4ef3c1ac1591744552c4b4833a30f6d1"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/synthetic_gpu_input/train/r_0.png",
+      "sha256": "6e3557ea0fda6e31873a8c288fa9e6f545f0f60430be71c48cfdce767f679fbe"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/synthetic_gpu_input/train/r_1.png",
+      "sha256": "316b2123504cb2492f472fd3cbfc3185d014125806b5081e8921793629c06cff"
+    }
+  ],
+  "iterations": 2,
+  "original_data": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/synthetic_gpu_input",
+  "output": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/synthetic_gpu_preflight/checkpoints",
+  "python": "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+  "resume": "only matching manifest+snapshot SHA; model/optimizer+python/numpy/torch/CUDA RNG+remaining viewpoint stack restored",
+  "save_iterations": [
+    2
+  ],
+  "scene": "SYNTHETIC_INFRASTRUCTURE_ONLY",
+  "schema": 1,
+  "seed": 1729,
+  "site": [
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/vendor/training_site",
+    "/home/u00134/3dgs_line/tier1/out/vrss/vendor/official_site"
+  ],
+  "source": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla",
+  "source_commit": "472689c0dc70417448fb451bf529ae532d32c095",
+  "source_manifest_sha256": "ffe88655e60bbb30f0e54a1dad8bbe195f75b3888875b7bbfb2bc460e44e0da1",
+  "testing_iterations": [],
+  "timeout_seconds": 7200,
+  "verified_files": [
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/LICENSE.md",
+      "sha256": "c5ba70a2194af2aefe85dfe3da68608dcb3abd21a3aa53b55aa297c2f0b60eb3"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/train.py",
+      "sha256": "83f006ba619812c44fee711816ea219f7e93768c24f0a571fa2f3a06a8f214ab"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/arguments/__init__.py",
+      "sha256": "657b3a799166329281347a40002384b8c6952db1c9c0f908444c505a9fa9df83"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/gaussian_renderer/__init__.py",
+      "sha256": "5546f5a642c63432d108c42abab4db0c9242c66b838c45556d1ae229fae34291"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/gaussian_renderer/network_gui.py",
+      "sha256": "7e392b8122a8e1359b4550769eac06190806a8c2eeb7f5aa7cbd025738dedf89"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/scene/__init__.py",
+      "sha256": "65352a8e54e271a88f6f063268d58aef7c9dff2bd78ed57bf8023dce0d5996a8"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/scene/cameras.py",
+      "sha256": "f5ff25ba0f3a56485cf77c3d396cd2ff66daf18be981b16ba3bbfb887e9f12c0"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/scene/colmap_loader.py",
+      "sha256": "6948ce06366e1f727ddffc39a445bf4b6873824f02abc39df63eb0c8f0fb3f36"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/scene/dataset_readers.py",
+      "sha256": "5b8c6264fde850bd9db07793a04e3f3ed2021f0f1f7510168191a16dfacabf0d"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/scene/gaussian_model.py",
+      "sha256": "fb31f5a087733194985a82192746c36dc627596fd084600b29cfefb5c92fdeb5"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/utils/camera_utils.py",
+      "sha256": "a450a6bcd3630a183f0a6be1b75a89e91444471b12f460613b8beb23a9c3bcef"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/utils/general_utils.py",
+      "sha256": "7f39f1575a379db59f772c0daf967a1b6b27f29e6b4038f1e6e49e052310ec13"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/utils/graphics_utils.py",
+      "sha256": "d6e75de8161e98b72c2691e8a944a842e1b6625d2306035d079c868ac632edfc"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/utils/image_utils.py",
+      "sha256": "872a4507773b9378db9e0fefc90104dc474b27551af18ada73f000a7a00a4ba0"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/utils/loss_utils.py",
+      "sha256": "53e4824dd41f847bd9c1ce146162886d1d63460acafbfed9db1f3d84dfe63f5f"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/utils/sh_utils.py",
+      "sha256": "7d1ff267546390635e6d1f68c4f88c4a8b052482d5c9be1d32f06bc69e9a96e7"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/utils/system_utils.py",
+      "sha256": "be01c02d3118c5d53808bc04efccd00c35a705a43a87c3583ea2f4752bc48553"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/vendor/training_site/simple_knn/_C.cpython-39-x86_64-linux-gnu.so",
+      "sha256": "89765277e0b1acbd283799e9163e523025abe599faf069041d03797a4064393e"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/tier1/out/vrss/vendor/official_site/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so",
+      "sha256": "583e896f3aaa1c2dece9c67eaaa26d919f98aae0597591bf6693b9a19530e9e9"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/tier1/out/vrss/vendor/official_site/diff_gaussian_rasterization/__init__.py",
+      "sha256": "eafa9c3f670258b34535b7ee2832e6d8410d6a68762037216f04935ccdafba34"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/acquisition_runtime.py",
+      "sha256": "0098e4b2f754c05691f345ae358233ad15b70e6c7c79819b15df00cc0b9002f4"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/acquisition_support.py",
+      "sha256": "1c059f50fa4032f74bf4bc9422b732fd90181977f91c738177c3c1c81b83c6d4"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/loader_audit_fixture.py",
+      "sha256": "afa1969a29bf4827c858d1d9fb17d5371d04a2c8183df8950415eaaa522edd36"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/prepare.py",
+      "sha256": "7b7ea1c91e57d31a0ef095ae61a4f3ff657f33c84f9c3048bc5cdc6cae2562d9"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/run_training.py",
+      "sha256": "f1ad9092627d29c25e684a6197d5f252702e9f91cf825313f0feaa3dd25b2145"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/train_entry.py",
+      "sha256": "b1d120b513546fbd18110c5f1ac3a6e423bbbdd0557d3d12e8d17369840e0466"
+    }
+  ]
+}

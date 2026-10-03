@@ -1,0 +1,15 @@
+{
+  "cpu_loader_audit": "artifacts/hybrid_raster_trained_models_v1/acquisition/LOADER_CPU_AUDIT.json",
+  "green": {
+    "exit_code": 0,
+    "log_sha256": "a888c32e8f4a322bb066208f246c5f1fdbbfa10883c47f97ddfac7c0f28ede7c",
+    "tests": 10
+  },
+  "production_training_has_not_launched": true,
+  "red": {
+    "command": "python -m unittest discover -s acquisition/tests -v",
+    "exit_code": 1,
+    "log_sha256": "58dfc6094442ede285c003909f2212b55153cfad16874bce097bff8113d6ed96",
+    "observed": "ModuleNotFoundError: acquisition_support"
+  }
+}

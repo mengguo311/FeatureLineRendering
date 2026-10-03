@@ -1,0 +1,585 @@
+{
+  "arguments": [
+    "-s",
+    "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/hotdog/seed_1729/data",
+    "-m",
+    "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/hotdog/seed_1729/checkpoints",
+    "--white_background",
+    "--iterations",
+    "30000"
+  ],
+  "checkpoint_iterations": [
+    7000,
+    30000
+  ],
+  "defaults": {
+    "compute_cov3D_python": false,
+    "convert_SHs_python": false,
+    "data_device": "cuda",
+    "debug": false,
+    "densification_interval": 100,
+    "densify_from_iter": 500,
+    "densify_grad_threshold": 0.0002,
+    "densify_until_iter": 15000,
+    "eval": false,
+    "feature_lr": 0.0025,
+    "images": "images",
+    "iterations": 30000,
+    "lambda_dssim": 0.2,
+    "model_path": "",
+    "opacity_lr": 0.05,
+    "opacity_reset_interval": 3000,
+    "percent_dense": 0.01,
+    "position_lr_delay_mult": 0.01,
+    "position_lr_final": 1.6e-06,
+    "position_lr_init": 0.00016,
+    "position_lr_max_steps": 30000,
+    "random_background": false,
+    "resolution": -1,
+    "rotation_lr": 0.001,
+    "scaling_lr": 0.005,
+    "sh_degree": 3,
+    "source_path": "",
+    "white_background": false
+  },
+  "diagnostic_train_indices": [
+    1,
+    41,
+    79
+  ],
+  "directory": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/hotdog/seed_1729",
+  "evaluation": "all100TRAIN incl C used photometrically; diagnostics in-sample; no TEST/VAL or mesh",
+  "initialization": "official per-seed random100000 xyz=random*2.6-1.3; SH2RGB(random/255); local points3d.ply",
+  "input_files": [
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_0.png",
+      "sha256": "d4c9e18769778d49c3905e43753b09f44ab9fb362ed68eef629ac67442d2fb69"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_1.png",
+      "sha256": "1656108d08883e95835119cf707036991008e437a1afb6c3ca80d806c9af4933"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_2.png",
+      "sha256": "f4a667947da48501079bac95a2f8bdb85dcabd8a1563412b2309adf8a3bfabd5"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_3.png",
+      "sha256": "ba5e59e122e4df9d4af394399b3d8f05967c8ebb5c5b0fe3418a6b5e052b7b82"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_4.png",
+      "sha256": "0deccbf354b9a37a6989a1e1a290ea0585be1a1147a67dae6ed75794962c5c71"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_5.png",
+      "sha256": "4dd6115e41c0cc65348b7fb4351abf603f6f859f2288be7b878653d491c66ba6"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_6.png",
+      "sha256": "4cd5f07cf84739cf3aca73e40bbd06100b09fcccd15bcd35606f0a12d36fb966"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_7.png",
+      "sha256": "411b8b6a29fd797d3acf2259938643e0ea55a55259be94f749a934e750004efd"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_8.png",
+      "sha256": "f6ad51f8f3e035d5b8b282a3645368892c88b5b835f4c9b8a2595a9250ec5fd6"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_9.png",
+      "sha256": "fa1b3a0b3a8d7ce8ccbf3fd9df51f98c507b3ad404dd9ec71a3ddf3a18b7509f"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_10.png",
+      "sha256": "81aa8998cbf0422b97c62febcff3f19704c9cd654dda786cf28112b50568dc4c"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_11.png",
+      "sha256": "51829501b309216f52ed1b47a5cd1713e8465dc1a5d91e8ce5a9ab22fbd1e226"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_12.png",
+      "sha256": "ae6a4f0a7b2eec4b12ab167f93b722d009ff68058d514bbfd835a863f83f5940"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_13.png",
+      "sha256": "53cfbc2a1893ecdc6298f0e8990c0b0da1aeff72148a4d6bfbfd9ef0fce24f8f"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_14.png",
+      "sha256": "0c317087c69035a343915890e2308d17b369d275419287de6828cc9b9b763814"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_15.png",
+      "sha256": "a804de68e4ead7f4616419d88095af3ff4edfb9efb8ca9930ca017f28cfd16f9"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_16.png",
+      "sha256": "323a2872dbc0d33a41ae6c7d0d4ca257b39968fe90a93c5bb012f7e848718e50"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_17.png",
+      "sha256": "a7d139abb951913bdfc279e659a0b27aafe6e122bde782a8ed14563d6100e16c"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_18.png",
+      "sha256": "04a5cc2643066fc3fce1be73d9d518f0dec856e39152e2803f2e358a007e2f7f"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_19.png",
+      "sha256": "50d44cc94bd03e3cd3a89d7e9fb9a4d0b5eafd31e7d5516dd7266fdc3ded0d93"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_20.png",
+      "sha256": "726f49fa174d89729e4f12fd86ae3b49c77891112994fd2a6c05dd6d4eccf875"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_21.png",
+      "sha256": "aeddeea843477313b5110f60819a167b1a59083c7b596c2a03fb771aeca203f1"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_22.png",
+      "sha256": "ba78cffc6011d73e549c15300776ccf4fedd5a6dec3356de957d1064ff435b4d"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_23.png",
+      "sha256": "00a91d0599782328e919ae197c55b5cea4db497b5501fa7d77a90deba295e611"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_24.png",
+      "sha256": "91107f11188c5ca69e58bb6e3321e507a2feff174f8adaa4cf6f309260173443"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_25.png",
+      "sha256": "35b42362fc8d370b1f5ac992c19b7e044e5a5f454c5c40d10a486a9f1cb90507"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_26.png",
+      "sha256": "dfed4d089d95c98f2001ca7f391d7416fc2fd2f046bddaa4de314c68df452288"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_27.png",
+      "sha256": "7cbbe555d779fb7519b0b231d0b9d1dba348c862dcfabdb05a06aac19b94a2f5"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_28.png",
+      "sha256": "295bc49f6b219f2ff2b8bcc181fb2b3f2d6247ca23c3b819e97b7e64345023fd"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_29.png",
+      "sha256": "df18df95b5f36a851465183c47da6b5809f9e215a6ced87f482c66c0cf2d1e4b"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_30.png",
+      "sha256": "412b98132152a259967fca205293eb6a138fcc0af04f25a111c04bc7c75de436"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_31.png",
+      "sha256": "8215d8d776e6c86eab9eae211f3895030f61d00ce3d5787d450afe018273103b"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_32.png",
+      "sha256": "2997f1d9581c2ef931627a7ac73dc14e76e51d6a161c4c167a9f2dbf17c7dc5e"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_33.png",
+      "sha256": "1123786018cefab2159e2adce2ff1f6c3ed816f70bb01d34fba3da997a221e44"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_34.png",
+      "sha256": "51b5fe40dcd19c2eb8bedab16fe5ed1343df785c12a8e459cb2f5cd8a5ef57c1"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_35.png",
+      "sha256": "696e92035a29da691775c9066bb092bc553bf0b44b3c948caca64b7c940d1d41"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_36.png",
+      "sha256": "bc209cf2f71033e2cfd6cee0d55c1448076d76a4239fec7408f1bed67c7d8d20"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_37.png",
+      "sha256": "c567cedd8bdb3acbe6f6e38bb1e996125e4f88daea332a6ae5e965bd56d7f1c2"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_38.png",
+      "sha256": "d10bdff162d0ff0942e50e243d8263d252ccfbb975c050ee377625470affe66e"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_39.png",
+      "sha256": "b43a9357b81437deb6a1c56fdbe8d75ce3a834ababe00d3ca19bef8429f5f15c"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_40.png",
+      "sha256": "71c47844cc1965d66ebf1bc8635eeaccce931e00f922ac975bfadb130fc2c9d4"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_41.png",
+      "sha256": "b2921177e5a96b6291408a94a39df3cbce3450174d2af9830af997d118dda685"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_42.png",
+      "sha256": "dfdd47b7a75e5c3f642e128f978e7212f08c06371b407676cdbb20d43cdf3b59"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_43.png",
+      "sha256": "98e962e7bebbb13bfd14566ce9aa0dbc20f41e6cd103aeb39593cd8d3b905efe"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_44.png",
+      "sha256": "b3808ec71d1c03f8ca91bb23281acfe40bdc89def7f21212c23691cfeee1457b"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_45.png",
+      "sha256": "061c0173e8cf9cc404c1ec2e0bb3e4950f23e0efc7731f980df3b8eb191db429"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_46.png",
+      "sha256": "ca55d914f2715456e61a99f83ca2d8208515a7764daa6b54037f2eeb4bbe7969"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_47.png",
+      "sha256": "75bdf3966350edb021c90c02937ac7755e43365fd4224831f09133018e577ba5"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_48.png",
+      "sha256": "52322c2248b44fbce26a6e1ee228f654513a8cae3e9c6a1805689d2371fbc0a1"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_49.png",
+      "sha256": "b492d171859901ab9245f3f9ad8a1f4946fae73c8647dab98abf9fbe860271db"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_50.png",
+      "sha256": "92ad4b19ff70e7508b447c52b58f7da3bbd2b0d8a0e3b45641954feaad73d1aa"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_51.png",
+      "sha256": "db99f590f3614114bf57ce0da4b8f10b4617839ab1b4130a4bde814882a10bef"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_52.png",
+      "sha256": "19b51c41fd6a77dfbbd24ed970ffeee5278b9581f303ab8b3ac00f9b252f1990"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_53.png",
+      "sha256": "33c397dda8657b69533b26f4379651b1f2ab5e3d00d54fb5e5cd38b23b1edd55"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_54.png",
+      "sha256": "892674c12690363c66bce42ba40a6755cfca0e5bd419ef1d757011a72ab81312"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_55.png",
+      "sha256": "557480ce29a4d3b9c99ba21eeb01458afe46a9f9b914a17398478dd0ed5d40c3"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_56.png",
+      "sha256": "f550f7ddd9d9faf995a7d837c6b276ae534c0458f7111c5ff3f54593f7664109"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_57.png",
+      "sha256": "96902bbf6d56dfec1b3edc8492de88f0610272c3ae3f9a7abd41b28dc7f2e218"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_58.png",
+      "sha256": "e316642e80d7d866c0cd22f415a7a8eba4c7789d34e46fde53a82d3dcaf2457c"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_59.png",
+      "sha256": "62fa620e510bd4c286411898097c89dc15bf388982c3ce3a76c941b9f47fbe31"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_60.png",
+      "sha256": "960e9c7d8decb89ca3988ae6a8bedd2b3187a65a8eba7553a8e5f138289747bb"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_61.png",
+      "sha256": "e0fdeafc06bc3e1fc8554ea0eaf6c41b9d0bfc23e5f0dd3b46018f514c14d7f0"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_62.png",
+      "sha256": "07018ef4bb98916051a6fb3c7a2aac2d37becc2bc63c9c6b0af6a7d9b2441072"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_63.png",
+      "sha256": "4a57d086a14bd7847a8eefd7480fb803d0fe0205d62c44e886186580ffe746ab"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_64.png",
+      "sha256": "d449968d43b7ff6ce24b2eb638bfef4cc3a20362e2b08909ef79ae1e0029cf19"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_65.png",
+      "sha256": "438e919800715710dca7941d07c2b46c1b8f1f0f7a6a838740f1e765e23a7c64"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_66.png",
+      "sha256": "157d796dd1f104d875d4f7926f025ee4494e11ccdbf8e681b1e3e9c64b1df99b"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_67.png",
+      "sha256": "84aea2a80f3a98c378d47188e0d3bf785dd67270acabc68086d1fcee28e3d4b5"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_68.png",
+      "sha256": "fdc4e91d185a69170e7b266ec97bf9098dd1ba48bf2f5fd6b94de88f0e82b935"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_69.png",
+      "sha256": "20682b0bc2e15970bf029b146539db34bd12e2d4cbe2aa818b6596f7af7ede52"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_70.png",
+      "sha256": "a5623321db8abae35a951d39cbb3abc723cf74ce8b8bb4ab024a3264f213c1a7"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_71.png",
+      "sha256": "f8179d4cfadfaff9515f76c68df7564544b2986c8cb470f54399148b7ae3d8c0"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_72.png",
+      "sha256": "5873efb155581873696df73215a0d6a69f258bc350ec0eb3954c2c12eea2e70d"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_73.png",
+      "sha256": "a6806f259f9dee4b5a3e3f1cdbd1f800c8f78d6f8e663c19b829749ef610a822"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_74.png",
+      "sha256": "ed40fe403d695cba09f430665d49bd255632e46881dcb5c434665a96519651d3"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_75.png",
+      "sha256": "a26df083376589444e49b94a0f6b50bf60fbf89ae1539cd02f179c3ed2bf3cfa"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_76.png",
+      "sha256": "2a087472c8b163ba18f15bd36afa660f8042f7b6357a06e0b02e1f35fbca97fd"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_77.png",
+      "sha256": "8721610888d7df5a756a6e15c56abccceb1b0d8edca2d4ffbb5306559c9b4320"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_78.png",
+      "sha256": "13595a598a2df1f5e479f09b5380acf7ba0904b2118d5609e9b76fcb81ef6827"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_79.png",
+      "sha256": "a892d0f0493cc7dc793caeb586abe7378c375f685b7b3816f83b01c4e55a7687"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_80.png",
+      "sha256": "37f7492485d7f02646d47d180fd50c5d9813fba91058f103db530e98c93b5b72"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_81.png",
+      "sha256": "c4e2314f478893bd1858e1d2714648da0aa42895fcd144786694c6a14b358045"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_82.png",
+      "sha256": "1c52e61903905e008ff1a72743f409d6831b27ff9b7ff811bdd006fed1ccea6b"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_83.png",
+      "sha256": "881617b179866cf8b2973cc21e252003dbe7a1ee6d346b4c044e6b3dc9135b47"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_84.png",
+      "sha256": "901293cea7f249d7943e9c08e68235169a2b64166251feee5e972b1ea3b94e8e"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_85.png",
+      "sha256": "c1347602e126b3f2664751453c3ab0fbec0b85be452dbef6d3b5320f28d20b33"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_86.png",
+      "sha256": "249bd56422e66b5afd1dda59849820a0f1c14667b1e542622fd948995e7197ee"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_87.png",
+      "sha256": "b9f548f27bbe2fd47f0594169ad29d5c0e92ee290103af1da638a683309f175b"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_88.png",
+      "sha256": "7e1daf32ea6dae57bda19a9edf00573ed84f4df82952d44915d2dca25737e0a7"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_89.png",
+      "sha256": "9e81569208e201571d5e7872243fd756e5470702bd7b461c71e90fa80d8655c2"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_90.png",
+      "sha256": "dd28d42c70ffa825c3e256942335b0165001517ad66c7329c4009d4575d73ec5"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_91.png",
+      "sha256": "170e963b31a799d6f9840323fe170f95f2141cfffd5c7d58ef76325d5f0a418d"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_92.png",
+      "sha256": "dd5b11fe6b55d9a9ba5cddfe65fc5273cb762675836dac887ce3236563b24687"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_93.png",
+      "sha256": "bfbfdea3496dee365909d00cef936bcdd465e94d2d4f80fe722daad0dc3ff464"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_94.png",
+      "sha256": "97943665c082876524e02c2b033ada019c95dd7995e80f2d85ba3a5fd3662e1b"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_95.png",
+      "sha256": "13e0e8b4500572c22a10593a240b324a6aaac075b1b949011380fdcb5b60d72c"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_96.png",
+      "sha256": "20764c77863228e71f994d7c5ff48c665aa37d768df7be47556080d3427e5a13"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_97.png",
+      "sha256": "c1c9617f9dca6f8d22f1f5c2b12867e706334be837ece9496f9c4d1ece9866c8"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_98.png",
+      "sha256": "ae2d9900be279c5eda4bd1f0ebc5b25746f4c9df937fafce714bd5e0edfbc7a4"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/train/r_99.png",
+      "sha256": "5905cb0f66ad926e959db34c6c88a2229a92fcd86f9639cf88b64c4b31f107b9"
+    },
+    {
+      "path": "/home/u00134/cglib/data/full/hotdog/transforms_train.json",
+      "sha256": "ecd11f13bd0072a1ae256896ddef35306ef4a4b7340b760aa52acd3d7734b124"
+    }
+  ],
+  "iterations": 30000,
+  "original_data": "/home/u00134/cglib/data/full/hotdog",
+  "output": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/hotdog/seed_1729/checkpoints",
+  "python": "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+  "resume": "only matching manifest+snapshot SHA; model/optimizer+python/numpy/torch/CUDA RNG+remaining viewpoint stack restored",
+  "save_iterations": [
+    7000,
+    30000
+  ],
+  "scene": "hotdog",
+  "schema": 1,
+  "seed": 1729,
+  "site": [
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/vendor/training_site",
+    "/home/u00134/3dgs_line/tier1/out/vrss/vendor/official_site"
+  ],
+  "source": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla",
+  "source_commit": "472689c0dc70417448fb451bf529ae532d32c095",
+  "source_manifest_sha256": "ffe88655e60bbb30f0e54a1dad8bbe195f75b3888875b7bbfb2bc460e44e0da1",
+  "timeout_seconds": 7200,
+  "verified_files": [
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/LICENSE.md",
+      "sha256": "c5ba70a2194af2aefe85dfe3da68608dcb3abd21a3aa53b55aa297c2f0b60eb3"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/train.py",
+      "sha256": "83f006ba619812c44fee711816ea219f7e93768c24f0a571fa2f3a06a8f214ab"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/arguments/__init__.py",
+      "sha256": "657b3a799166329281347a40002384b8c6952db1c9c0f908444c505a9fa9df83"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/gaussian_renderer/__init__.py",
+      "sha256": "5546f5a642c63432d108c42abab4db0c9242c66b838c45556d1ae229fae34291"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/gaussian_renderer/network_gui.py",
+      "sha256": "7e392b8122a8e1359b4550769eac06190806a8c2eeb7f5aa7cbd025738dedf89"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/scene/__init__.py",
+      "sha256": "65352a8e54e271a88f6f063268d58aef7c9dff2bd78ed57bf8023dce0d5996a8"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/scene/cameras.py",
+      "sha256": "f5ff25ba0f3a56485cf77c3d396cd2ff66daf18be981b16ba3bbfb887e9f12c0"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/scene/colmap_loader.py",
+      "sha256": "6948ce06366e1f727ddffc39a445bf4b6873824f02abc39df63eb0c8f0fb3f36"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/scene/dataset_readers.py",
+      "sha256": "5b8c6264fde850bd9db07793a04e3f3ed2021f0f1f7510168191a16dfacabf0d"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/scene/gaussian_model.py",
+      "sha256": "fb31f5a087733194985a82192746c36dc627596fd084600b29cfefb5c92fdeb5"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/utils/camera_utils.py",
+      "sha256": "a450a6bcd3630a183f0a6be1b75a89e91444471b12f460613b8beb23a9c3bcef"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/utils/general_utils.py",
+      "sha256": "7f39f1575a379db59f772c0daf967a1b6b27f29e6b4038f1e6e49e052310ec13"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/utils/graphics_utils.py",
+      "sha256": "d6e75de8161e98b72c2691e8a944a842e1b6625d2306035d079c868ac632edfc"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/utils/image_utils.py",
+      "sha256": "872a4507773b9378db9e0fefc90104dc474b27551af18ada73f000a7a00a4ba0"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/utils/loss_utils.py",
+      "sha256": "53e4824dd41f847bd9c1ce146162886d1d63460acafbfed9db1f3d84dfe63f5f"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/utils/sh_utils.py",
+      "sha256": "7d1ff267546390635e6d1f68c4f88c4a8b052482d5c9be1d32f06bc69e9a96e7"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/vendor/vanilla/utils/system_utils.py",
+      "sha256": "be01c02d3118c5d53808bc04efccd00c35a705a43a87c3583ea2f4752bc48553"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/vendor/training_site/simple_knn/_C.cpython-39-x86_64-linux-gnu.so",
+      "sha256": "89765277e0b1acbd283799e9163e523025abe599faf069041d03797a4064393e"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/tier1/out/vrss/vendor/official_site/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so",
+      "sha256": "583e896f3aaa1c2dece9c67eaaa26d919f98aae0597591bf6693b9a19530e9e9"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/tier1/out/vrss/vendor/official_site/diff_gaussian_rasterization/__init__.py",
+      "sha256": "eafa9c3f670258b34535b7ee2832e6d8410d6a68762037216f04935ccdafba34"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/acquisition_runtime.py",
+      "sha256": "0098e4b2f754c05691f345ae358233ad15b70e6c7c79819b15df00cc0b9002f4"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/acquisition_support.py",
+      "sha256": "1c059f50fa4032f74bf4bc9422b732fd90181977f91c738177c3c1c81b83c6d4"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/loader_audit_fixture.py",
+      "sha256": "afa1969a29bf4827c858d1d9fb17d5371d04a2c8183df8950415eaaa522edd36"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/prepare.py",
+      "sha256": "7b7ea1c91e57d31a0ef095ae61a4f3ff657f33c84f9c3048bc5cdc6cae2562d9"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/run_training.py",
+      "sha256": "f1ad9092627d29c25e684a6197d5f252702e9f91cf825313f0feaa3dd25b2145"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/train_entry.py",
+      "sha256": "b1d120b513546fbd18110c5f1ac3a6e423bbbdd0557d3d12e8d17369840e0466"
+    }
+  ]
+}

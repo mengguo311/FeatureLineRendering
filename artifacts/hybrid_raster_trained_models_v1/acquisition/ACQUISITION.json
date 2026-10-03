@@ -1,0 +1,111 @@
+{
+  "binaries": [
+    {
+      "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/vendor/training_site/simple_knn/_C.cpython-39-x86_64-linux-gnu.so",
+      "sha256": "89765277e0b1acbd283799e9163e523025abe599faf069041d03797a4064393e"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/tier1/out/vrss/vendor/official_site/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so",
+      "sha256": "583e896f3aaa1c2dece9c67eaaa26d919f98aae0597591bf6693b9a19530e9e9"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/tier1/out/vrss/vendor/official_site/diff_gaussian_rasterization/__init__.py",
+      "sha256": "eafa9c3f670258b34535b7ee2832e6d8410d6a68762037216f04935ccdafba34"
+    }
+  ],
+  "necessary_differences": [
+    "all100 TRAIN versus prior86 TRAIN",
+    "no VAL/TEST metadata or pixels; eval=False and strict TRAIN-only reader",
+    "in-sample fixed TRAIN diagnostic only",
+    "I/O hooks for atomic PLY/snapshot/status+exact RNG resume; GUI off; TensorBoard replaced by explicit scalar log"
+  ],
+  "prior_files": [
+    {
+      "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_1729/entry.json",
+      "sha256": "c3ee7ea7252c2aced126379aa2842c5bf60c94195662bf8d8c303fce3848f6e1"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_1729/manifest.json",
+      "sha256": "85d3430abf6269dee653a8afb2f6bdccd9246444c270b30bbd9a5eb877fa6209"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_1729/checkpoints/cfg_args",
+      "sha256": "27452177cc42e29defade114987632fbd6bf00b6c294ea89df25dce209a18046"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/tier1/scripts/multiscene_train_entry.py",
+      "sha256": "3576c84a2bbd4ad9096c1726fba5a0fd920c2713c2e2301f8eec780af5138b1a"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/tier1/scripts/run_multiscene_training.py",
+      "sha256": "64e2278b5ac3c9c97d10bf1d5a69141e4161b59114abae0179d03f53329b8e15"
+    }
+  ],
+  "prior_train_count": 86,
+  "prior_val_diagnostic_count": 16,
+  "same_recipe": {
+    "SH_degree": 3,
+    "default_densification": true,
+    "initialization": "official random100k",
+    "iterations": 30000,
+    "loss": "0.8L1+0.2(1-SSIM)",
+    "resolution": -1,
+    "seed": 1729,
+    "white_background": true
+  },
+  "scenes": {
+    "hotdog": {
+      "canonical_sha256": "7998f465b5a1d84b9d60c95b0d5d3208877879680282fee10e62d1b8916f404d",
+      "checkpoint_destination": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/hotdog/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/manifests/hotdog.json",
+      "sha256": "392967ee5959cd4d6c1251a734db4d37600bad762b5e370c0325bc9ed93d9d15"
+    },
+    "materials": {
+      "canonical_sha256": "5e7919aaa0906a63735b5b75993fc2b0c6cf0142fb8df80a1db4c2cd1b2a29f2",
+      "checkpoint_destination": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/materials/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/manifests/materials.json",
+      "sha256": "4eac448bc1fda89eacca332e1c6647a5e1bb6be47744db49368dcc1551f0e8ab"
+    },
+    "mic": {
+      "canonical_sha256": "9e40aaa5034589722674f8a0881dbba368d1cc7fac66d1c355293440f4dca2ff",
+      "checkpoint_destination": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/mic/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/manifests/mic.json",
+      "sha256": "d9b2181b0d660226a246c80335adb6a0e29504b4c0e22b37bb92c19353217dec"
+    },
+    "ship": {
+      "canonical_sha256": "50ad5fe9d14d038e3bf9cd09e42c7703d1771b7594a64e8a58a83411ec158949",
+      "checkpoint_destination": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/ship/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/manifests/ship.json",
+      "sha256": "7b0d89770f255447d284cbb37bfa2521e5970b142d208364039ccc8828c56177"
+    }
+  },
+  "schema": 1,
+  "source_manifest_sha256": "ffe88655e60bbb30f0e54a1dad8bbe195f75b3888875b7bbfb2bc460e44e0da1",
+  "support_files": [
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/acquisition_runtime.py",
+      "sha256": "0098e4b2f754c05691f345ae358233ad15b70e6c7c79819b15df00cc0b9002f4"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/acquisition_support.py",
+      "sha256": "1c059f50fa4032f74bf4bc9422b732fd90181977f91c738177c3c1c81b83c6d4"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/loader_audit_fixture.py",
+      "sha256": "afa1969a29bf4827c858d1d9fb17d5371d04a2c8183df8950415eaaa522edd36"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/prepare.py",
+      "sha256": "7b7ea1c91e57d31a0ef095ae61a4f3ff657f33c84f9c3048bc5cdc6cae2562d9"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/run_training.py",
+      "sha256": "f1ad9092627d29c25e684a6197d5f252702e9f91cf825313f0feaa3dd25b2145"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/train_entry.py",
+      "sha256": "b1d120b513546fbd18110c5f1ac3a6e423bbbdd0557d3d12e8d17369840e0466"
+    }
+  ],
+  "upstream_commit": "472689c0dc70417448fb451bf529ae532d32c095"
+}
