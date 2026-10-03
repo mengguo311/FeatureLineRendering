@@ -1,0 +1,212 @@
+{
+  "status": "PASS",
+  "created_utc": "2026-10-03T07:53:29.173144+00:00",
+  "lock_path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/LOCK.json",
+  "lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+  "lock_hash": "543666726d9fe38adcf85bcc8c56ace57bb0121e4598e7fb0a312302af2c3dbf",
+  "lock_hash_valid": true,
+  "parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+  "parameter_hash_valid": true,
+  "sources": {
+    "scripts/run_hybrid_raster_evidence_v2.py": {
+      "locked": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+      "previous": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+      "current": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+      "match": true
+    },
+    "src/hao_mukai_source_2026.py": {
+      "locked": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+      "previous": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+      "current": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+      "match": true
+    },
+    "src/hybrid_raster_evidence.py": {
+      "locked": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+      "previous": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+      "current": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+      "match": true
+    },
+    "src/hybrid_raster_io.py": {
+      "locked": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+      "previous": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+      "current": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+      "match": true
+    },
+    "src/hybrid_raster_native.py": {
+      "locked": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+      "previous": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+      "current": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+      "match": true
+    },
+    "src/hybrid_raster_stage.py": {
+      "locked": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7",
+      "previous": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7",
+      "current": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7",
+      "match": true
+    }
+  },
+  "normalization": {
+    "author_scale": 0.7533644223213196,
+    "frame_count": 16,
+    "normalization_scope": "primary F only; caller-enforced",
+    "positive_counts": {
+      "S_L": 513552,
+      "delta_A": 2606087,
+      "delta_C": 2515918,
+      "delta_D": 2515992,
+      "delta_G": 2515564,
+      "delta_N": 2515657,
+      "visibility_raw": 1610642
+    },
+    "recipe": {
+      "alpha_canny": [
+        25,
+        65
+      ],
+      "author_params": {
+        "beta_u": 32.0,
+        "lambda_C": 0.7,
+        "lambda_GV": 0.45,
+        "lambda_LN": 0.72,
+        "lambda_SN": 0.52,
+        "lambda_TC": 0.58,
+        "lambda_TL": 0.34,
+        "lambda_VN": 0.7,
+        "lambda_q": 0.35,
+        "lambda_u": 0.72
+      },
+      "author_thresholds": {
+        "A": [
+          0.04,
+          0.28
+        ],
+        "C": [
+          0.16,
+          0.52
+        ],
+        "D": [
+          0.006,
+          0.055
+        ],
+        "G": [
+          0.1,
+          0.45
+        ],
+        "L": [
+          0.08,
+          0.38
+        ],
+        "N": [
+          0.11,
+          0.58
+        ],
+        "VD": [
+          0.003,
+          0.045
+        ],
+        "VN": [
+          0.08,
+          0.45
+        ],
+        "rho": [
+          0.16,
+          0.55
+        ]
+      },
+      "brush_pixels": 1,
+      "channels": [
+        "delta_D",
+        "delta_A",
+        "delta_N",
+        "delta_C",
+        "delta_G",
+        "visibility_raw"
+      ],
+      "dense_smoothstep": [
+        0.1,
+        0.7
+      ],
+      "depth_foreground_alpha": 0.5,
+      "depth_hysteresis_percentiles": [
+        95,
+        70
+      ],
+      "depth_local_window": 5,
+      "depth_relative_floor": 0.002,
+      "depth_sigma": 1.5,
+      "foreground_alpha": 0.08,
+      "foreground_dilation": 3,
+      "mask_thresholds_diagnostic": [
+        0.1,
+        0.3,
+        0.5
+      ],
+      "positive_percentile": 99,
+      "reliability_strength": [
+        0.35,
+        0.65
+      ],
+      "rgb_coarse": {
+        "L2gradient": true,
+        "canny": [
+          25,
+          65
+        ],
+        "kernel": 5,
+        "sigma": 1.4
+      },
+      "rgb_fine": {
+        "L2gradient": true,
+        "canny": [
+          18,
+          48
+        ],
+        "kernel": 3,
+        "sigma": 0.65
+      },
+      "version": "hybrid-raster-evidence-v2-frozen-1"
+    },
+    "recipe_hash": "ae6d386d2c7f123859c7b364af4fb9d3754ae2e02f432056d2e69433189ff368",
+    "scales": {
+      "delta_A": 0.7444546544551854,
+      "delta_C": 0.6385581493377686,
+      "delta_D": 0.08261344276368612,
+      "delta_G": 1.0,
+      "delta_N": 0.9862916707992548,
+      "visibility_raw": 1.0
+    }
+  },
+  "build_path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/native/BUILD.json",
+  "build_json_sha256": "814f719d6ca998b81a5932807d43506e8dec66860df3f3a9894cb5daec0e4684",
+  "build_hash": "54acc2fe19d2665f171014c134a50c1fe286aed66dc37ee86a8ee3af132aed8c",
+  "build_hash_valid": true,
+  "binary_records": {
+    "patched": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/native/patched/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so",
+      "sha256": "77ae2500aa02e7ee994ca6ad40ff4f9ebe80717d1d004df20fb352fed63a31e4",
+      "actual": "77ae2500aa02e7ee994ca6ad40ff4f9ebe80717d1d004df20fb352fed63a31e4",
+      "match": true
+    },
+    "unpatched": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/native/unpatched/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so",
+      "sha256": "0c99d1de90070a85922cd81252d9c8324150691261b1af4a86a606156e45db18",
+      "actual": "0c99d1de90070a85922cd81252d9c8324150691261b1af4a86a606156e45db18",
+      "match": true
+    }
+  },
+  "build_python": "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+  "current_python": "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+  "source_manifest_path": "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/out/hybrid_raster_evidence_v2/native/SOURCE_MANIFEST.json",
+  "source_manifest_sha256": "67a4d8a2c232a6df64cc19db3e6aba7ad703e993c5e632bdb3beb1188ea65630",
+  "source_hash": "6925e61350a93610e839b284adb95d7bd72941c36513d4cc83d5ba677a84491c",
+  "source_hash_valid": true,
+  "native_source_file_counts": {
+    "patched": 449,
+    "unpatched": 449
+  },
+  "native_sources_all_match": true,
+  "lock_native_build_matches": true,
+  "readonly_build_reuse": "binary/static-source integrity and CPython3.9 interpreter match established; runtime compatibility still requires new-scene patched/unpatched calibration",
+  "no_gpu_executed": true,
+  "no_test_assets_or_mesh_opened": true
+}
