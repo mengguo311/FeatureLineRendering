@@ -1,0 +1,244 @@
+{
+  "schema": "mic-fixed-line-feasibility-config-v1",
+  "seed": 1729,
+  "construction": [
+    "F_001",
+    "F_027",
+    "F_053",
+    "F_079"
+  ],
+  "validation": [
+    "F_014",
+    "F_041",
+    "F_067",
+    "F_093"
+  ],
+  "evaluation": [
+    "C_007",
+    "C_021",
+    "C_033",
+    "C_047",
+    "C_059",
+    "C_073",
+    "C_086",
+    "C_099"
+  ],
+  "arc": {
+    "prefix": "arc0_",
+    "frames": 33,
+    "first": 0,
+    "last": 32,
+    "reverse": false
+  },
+  "budget": {
+    "wall_seconds": 21600,
+    "gpu_seconds": 14400,
+    "planned_gpu_seconds": 0,
+    "repair_rounds": 3,
+    "repair_total_seconds": 5400,
+    "max_paths_per_view": 96,
+    "max_proposals": 32,
+    "max_controls_per_path": 16,
+    "max_total_controls": 512,
+    "max_pair_alternatives_recorded": 3,
+    "max_triplet_hypotheses": 4096
+  },
+  "extraction": {
+    "a_threshold": 0.5,
+    "typed_b": [
+      "B_delta_D",
+      "B_delta_A"
+    ],
+    "typed_b_threshold": 0.65,
+    "typed_b_nms_radius": 1,
+    "alpha_min": 0.08,
+    "path_min_length_px": 24.0,
+    "path_max_length_px": 320.0,
+    "sample_count": 32,
+    "max_junction_degree": 8,
+    "skeleton": "skimage.morphology.skeletonize",
+    "no_gap_bridging": true,
+    "rank": "descending geometric arclength then lexicographic first pixel; fixed 96 cap",
+    "b_gray_texture_eligible": false,
+    "closed_loops": "Lexicographic start and forward/reverse only; no cyclic-shift search; seam mismatch is a disclosed recall limitation",
+    "duplicate_sources": "Union A and admitted typed-B pixel supports before skeleton graph tracing; each geometric path has one identity and records all source bits",
+    "typed_b_nms_definition": "For each raw responses B_delta_D/B_delta_A field independently, admit values >=0.65 that equal the finite maximum in the clipped 3x3 neighborhood (radius1); plateaus retain all maxima before skeletonization. Require native alpha>=0.08 for B. A>=0.5 is admitted without an additional alpha mask. No normalized_B or gray-texture substitution."
+  },
+  "matching": {
+    "min_views": 3,
+    "min_camera_separation_deg": 8.0,
+    "epipolar_median_px": 1.5,
+    "epipolar_p90_px": 4.0,
+    "length_ratio_max": 4.0,
+    "curvature_descriptor_difference_max": 0.65,
+    "orientation_degrees_max": 25.0,
+    "path_order": "monotone dynamic programming, both orientations; diagonal/horizontal/vertical steps, at most 3 repeated horizontal or vertical",
+    "min_matched_fraction": 0.7,
+    "cycle_error_px_max": 3.0,
+    "unique_margin_absolute_px": 0.75,
+    "unique_margin_ratio": 0.25,
+    "cost": "symmetric epipolar median plus 0.25*p90; incompatible length/curvature/type excluded; best and alternative recorded before uniqueness",
+    "mutual_best": true,
+    "unique_margin_ratio_definition": "(second-best - best) / max(second-best,1e-12); sole finite compatible candidate has second-best=+infinity and passes margin; equal-score alternatives included",
+    "orientation_definition": "undirected angle modulo180 between observed 2D tangent and projection of the triangulated candidate local3D tangent in that same camera; never compare raw image angles across cameras",
+    "coverage_definition": "Count distinct sample indices with epipolar distance<=4px on each side, divide each count by32, take minimum; DP visitation count is not coverage",
+    "cycle_definition": "Compose actual point-index correspondences through3 paths, require returning reference pixel distance<=3px on at least70% distinct common reference samples",
+    "camera_separation_definition": "Minimum pairwise angle between calibrated world-space camera forward (+camera-Z) axes in a selected triplet, acos clipped dot product; every pair >=8deg. This is a view-separation prerequisite, not triangulation parallax.",
+    "type_compatibility_definition": "Nonempty intersection of source bits {A,B_delta_D,B_delta_A}; each path records the union of contributing pixel source bits.",
+    "curvature_descriptor_definition": "32 equal-arclength samples give 30 interior absolute turning angles divided by pi; descriptor difference is mean absolute elementwise difference under the tested forward/reverse order.",
+    "orientation_aggregation": "After triangulation/refinement, median undirected projected-tangent disagreement over retained nondegenerate corresponding samples in each participating construction view <=25deg; missing/zero tangents do not supply support and are counted in coverage denominator."
+  },
+  "triangulation": {
+    "min_parallax_deg": 3.0,
+    "max_ray_system_condition": 1000.0,
+    "min_rank": 3,
+    "min_samples": 8,
+    "max_reprojection_median_px": 2.0,
+    "max_reprojection_p90_px": 4.0,
+    "robust_loss": "soft_l1",
+    "robust_scale_px": 1.5,
+    "max_optimizer_evaluations": 60,
+    "world_length_min": 0.02,
+    "projected_length_min_px": 20.0,
+    "projected_extent_min_px": 12.0,
+    "construction_required_coverage": 0.7,
+    "depth_relative_tolerance": 0.03,
+    "depth_absolute_tolerance": 0.02,
+    "depth_min_support_fraction": 0.7,
+    "layer_min_weight": 0.05,
+    "layer_ambiguity_separation_relative": 0.03,
+    "fit": "actual multiview corresponding samples only; at most16 evenly arclength-selected XYZ controls; reprojection refinement only, no camera shifts, no bridges",
+    "parallax_definition": "At each corresponding sample, minimum acute ray intersection angle among all participating camera pairs >=3deg; use acos(abs(dot(unit_rays))) so parallel and antiparallel systems both fail.",
+    "depth_sampling": "Sample native fields at the observed corresponding pixel, nearest integer via floor(coord+0.5), clipped only after continuous coordinates pass image bounds; no neighborhood search to improve construction support.",
+    "layer_weight_definition": "Use native.npz topk_w = absolute transmittance*opacity contribution, never typed.npz normalized_topk_w or topk_mass. Admit finite topk_depth>near_plane with topk_id>=0 and finite topk_w>=0.05.",
+    "layer_conflict_definition": "A native sample has layer_conflict iff any two admitted topk layers have abs(z_i-z_j)>max(0.02,0.03*min(z_i,z_j)). Do not average layers or choose the layer that helps reprojection. Any retained construction correspondence with layer_conflict in any participating view rejects the whole path; retain all conflicting layer IDs/depths/weights as diagnostics.",
+    "depth_support_definition": "With no layer_conflict, candidate camera-Z z is supported if abs(z-d)<=max(0.02,0.03*z) for at least one eligible depth d: admitted native topk layer, or finite native mean depth/median_depth > near_plane when native total alpha>=0.05 (absolute alpha). Summaries are support proposals, not individual weighted layers. Nonfinite or depths <= near_plane and missing support fail; summary fallback cannot override layer_conflict.",
+    "depth_support_denominator": "For each participating construction view, count supported retained corresponding samples / all retained corresponding samples, including unsupported and low-alpha samples; every view >=0.7, zero denominator fails. Conflicted samples may not be dropped to rescue a path.",
+    "construction_coverage_definition": "For each participating construction path, distinct original 32 sample indices retained with finite nondegenerate correspondence, orientation and reprojection support /32 >=0.7. No denominator shrinking after failed samples."
+  },
+  "visibility": {
+    "reliable_alpha_min": 0.8,
+    "reliable_variance_relative_max": 0.0004,
+    "median_mean_relative_max": 0.03,
+    "depth_absolute_tolerance": 0.02,
+    "depth_relative_tolerance": 0.03,
+    "near_plane": 0.001,
+    "uncertain_policy": "render visible with uncertainty count; never suppress by 2D proximity",
+    "outside_policy": "separate out_of_frame label; never count as successful occlusion",
+    "field_sampling": "Nearest native pixel floor(coord+0.5), clipped only for coordinates already continuously in-frame. No image-edge or path-neighbor query is permitted in visibility classification.",
+    "reliability_definition": "At the projected pixel: finite alpha>=0.8; finite mean depth d>near_plane and median m>near_plane; variance=max(moment2/alpha-d*d,0); variance/(d*d)<=0.0004; abs(m-d)/d<=0.03; no native layer_conflict. Otherwise uncertain. A reliable sample is occluded iff candidate camera-Z z>m+max(0.02,0.03*z); all other positive-depth in-frame samples remain predicted-visible."
+  },
+  "validation_rules": {
+    "whole_path_only": true,
+    "min_eligible_views": 2,
+    "samples_per_path": 64,
+    "min_visible_samples_per_view": 16,
+    "min_projected_length_per_view_px": 20.0,
+    "min_projected_extent_per_view_px": 12.0,
+    "position_tolerance_px": 3.0,
+    "direction_tolerance_deg": 25.0,
+    "min_position_direction_support_fraction": 0.8,
+    "min_depth_support_fraction": 0.7,
+    "max_uncertain_fraction": 0.4,
+    "max_unjustified_absence_fraction": 0.1,
+    "max_contradiction_fraction": 0.2,
+    "all_eligible_views_must_pass": true,
+    "reject_predicted_missing": true,
+    "unjustified_absence": "Audit every O sample using the A_absence definition. Such evidence never changes O, V, visibility, geometry or the rendering mask; it only contributes whole-path rejection diagnostics.",
+    "geometry_refit": false,
+    "denominator": "For each view independently: I=all 64 arclength samples with finite projection, camera-Z>0.001 and 0<=x<800,0<=y<800; O=depth-only reliably occluded subset; V=I\\O, including low-alpha and uncertain. Never remove an element using 2D evidence.",
+    "noneligible_views": "All4 views run contradiction and unjustified-absence gates, including ineligible views. Any applicable gate failure rejects whole path. Separately require >=2 eligible views and all eligible views pass support/depth/uncertainty gates. Empty I, empty V or empty O never supplies a positive validation vote.",
+    "sample_sets": {
+      "I": "positive-depth in-frame samples",
+      "O": "reliably occluded samples using only frozen native-depth visibility",
+      "V": "I minus O; all geometrically predicted-visible samples",
+      "U": "V samples with unreliable native visibility evidence",
+      "J": "V samples with position<=3px AND undirected direction<=25deg to the same uncapped validation A/typed-B skeleton evidence",
+      "D": "V samples with nonconflicting native depth support at the projected pixel using the construction support rule",
+      "A_absence": "O samples having same-tangent admitted line evidence within3px whose native depth at that evidence pixel supports candidate camera-Z and has no layer_conflict",
+      "K": "Union of V samples lacking J, all I samples with layer_conflict, all I samples with reliable depth disagreement abs(z-m)>max(0.02,0.03*z) except justified O, and A_absence; count each sample once"
+    },
+    "ratios": {
+      "position_direction_support": {
+        "numerator": "|J|",
+        "denominator": "|V|",
+        "zero_denominator": "null; cannot satisfy eligibility or support gate",
+        "gate": ">=0.8 in every eligible view"
+      },
+      "depth_support": {
+        "numerator": "|D|",
+        "denominator": "|V|",
+        "zero_denominator": "null; cannot satisfy eligibility or support gate",
+        "gate": ">=0.7 in every eligible view"
+      },
+      "uncertain": {
+        "numerator": "|U|",
+        "denominator": "|V|",
+        "zero_denominator": "null; not tested; view is ineligible",
+        "gate": "<=0.4 in every eligible view"
+      },
+      "unjustified_absence": {
+        "numerator": "|A_absence|",
+        "denominator": "|O|",
+        "zero_denominator": "null, not applicable; numerator must be0 and gate is nonfailing, never an eligible-view success",
+        "gate": "<=0.1 in each of all4 validation views with |O|>0"
+      },
+      "contradiction": {
+        "numerator": "|K|",
+        "denominator": "|I|",
+        "zero_denominator": "null, not applicable; numerator must be0 and gate is nonfailing, never an eligible-view success",
+        "gate": "<=0.2 in each of all4 validation views with |I|>0"
+      }
+    },
+    "eligibility_definition": "Geometric only: |V|>=16; sum Euclidean projected lengths of consecutive original 64 sample pairs whose two endpoints are in V >=20px (do not connect across occluded/out-of-frame gaps); maximum pairwise distance among V projected points >=12px. No 2D evidence enters eligibility.",
+    "line_evidence_definition": "Use full uncapped union of frozen A and admitted typed-B support with the same skeletonization; no construction 96-path cap or 24px minimum in validation. An evidence tangent is the vector between its two ordered neighbors on an unbranched skeleton path; endpoints use their incident segment. Junctions with no unique tangent and zero tangents cannot support J or A_absence. Find any same-tangent evidence within3px; this query is diagnostic only and cannot hide samples.",
+    "nonfinite_policy": "Nonfinite asset or projection arithmetic rejects path as invalid_geometry, not out_of_frame. Finite camera-Z<=near_plane and finite outside-frame projections have separate labels and do not count as successful occlusion."
+  },
+  "render": {
+    "width": 800,
+    "height": 800,
+    "fixed_color_rgb": [
+      0,
+      96,
+      220
+    ],
+    "fixed_width_px": 2,
+    "width_source": "constant display brush; no world thickness claim",
+    "residual": "complete frozen original C; no duplicate subtraction",
+    "residual_color": "original grayscale",
+    "proposal_diagnostic_rgb": [
+      120,
+      120,
+      120
+    ],
+    "proposal_diagnostic_occlusion": false,
+    "pure3d_background": "white",
+    "panel": [
+      "RGB",
+      "pure_fixed3D",
+      "residual2D_full_C",
+      "hybrid"
+    ],
+    "fps": 6,
+    "telegram_width": 1600,
+    "codec": "libx264",
+    "pixel_format": "yuv420p",
+    "faststart": true,
+    "crf": 23,
+    "edit_demo": "first accepted persistentID: width2->4 and blue->magenta; XYZ byte hash unchanged, same edit in first/mid/last arc"
+  },
+  "null": {
+    "association_shuffle_seed": 1730,
+    "repetitions": 1,
+    "tune_after_null": false,
+    "pass_condition": "no accepted credible fixed paths; any surviving geometry is disclosed and invalidates scientific GO",
+    "operation": "Freeze candidate pair association slots, seed1730 derange complete target-path records among target identities (no fixed points when at least2); do not rematch. Recompute same compatibility, uniqueness, triangulation and validation gates on forced wrong associations. With fewer than2 eligible target identities report null insufficient, not passed."
+  },
+  "storage": {
+    "shared_git_min_free_bytes": 1073741824,
+    "commit_payload_max_bytes": 12582912,
+    "raw_location": "out/mic_persistent_line_feasibility_v1",
+    "tracked_location": "artifacts/mic_persistent_line_feasibility_v1"
+  },
+  "workspace": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone"
+}

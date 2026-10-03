@@ -1,0 +1,156 @@
+{
+  "schema": "mic-fixed-line-final-v1",
+  "updated_utc": "2026-10-03T13:32:22Z",
+  "status": "ENGINEERING_BLOCKER",
+  "scientific_outcome": "NOT_RUN",
+  "scientific_negative": false,
+  "engineering_blocker": {
+    "type": "SHARED_GIT_ROOT_SPACE_BELOW_HARD_RESERVE",
+    "guard": {
+      "action": "read_only_preflight_no_git_mutation",
+      "estimated_write_allowance_bytes": 3297152,
+      "free_bytes": 1054392320,
+      "git_common_dir": "/home/u00134/3dgs_line/tier1/.git",
+      "git_write_permitted": false,
+      "payload_bytes": 600000,
+      "required_before_write_bytes": 1077038976,
+      "required_reserve_bytes": 1073741824,
+      "shortfall_bytes": 22646656,
+      "utc": "2026-10-03T13:30:48Z"
+    },
+    "guard_exit_code": 75,
+    "user_notified_async": true,
+    "release_recommendation_bytes": 104857600
+  },
+  "workspace": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_persistent_line_feasibility_v1",
+  "branch": "mic-persistent-line-feasibility-v1",
+  "base_commit": "59b6b3e49e14f758032a5e0079fe9405511bc148",
+  "head_commit": "59b6b3e49e14f758032a5e0079fe9405511bc148",
+  "protocol_commit": null,
+  "remote_commit": null,
+  "clean_tree": false,
+  "git_write_performed": false,
+  "config_sha256": "b92eec38092b3bd3f977ecfda5d82d55403ce86be703bb12c99eb992bfe9fe43",
+  "protocol_sha256": "a1f6107e8d5a629f5533a3e6ea6c5711ba98e69f518009f703a6ed8c072dbe10",
+  "inputs_sha256": "a463ca7fed2db947c68eed8cc2ab25e2a558c1408bfe40f6195da894f7828df3",
+  "asset_sha256": null,
+  "geometry_sha256": null,
+  "protocol_frozen": false,
+  "asset_frozen": false,
+  "freeze_chronology": {
+    "source_audit_finished": "2026-10-03T13:27:53.382716+00:00",
+    "protocol_freeze": null,
+    "construction_start": null,
+    "proposal_seal": null,
+    "validation_start": null,
+    "accepted_asset_seal": null,
+    "evaluation_first_pixel_read": null
+  },
+  "counters": {
+    "source_cameras_verified": 49,
+    "source_raw_sets_verified": 49,
+    "source_frame_sets_verified": 49,
+    "source_payload_hashes_verified": 1501,
+    "construction_paths": null,
+    "proposed": null,
+    "accepted": null,
+    "rejected": null,
+    "expected_render_cameras": 49,
+    "produced_render_cameras": 0,
+    "produced_videos": 0,
+    "produced_assets": 0,
+    "gpu_seconds": 0,
+    "scientific_repair_rounds_used": 0
+  },
+  "testresults": {
+    "source_metadata_and_seals": "PASS",
+    "json_parse": "PASS",
+    "guard_ast_parse": "PASS",
+    "storage_guard": "BLOCKED_EXIT_75",
+    "synthetic_RED": "NOT_RUN",
+    "synthetic_GREEN": "NOT_RUN",
+    "null_control": "NOT_RUN",
+    "real_validation": "NOT_RUN",
+    "independent_asset_projection": "NOT_RUN",
+    "native_field_values": "NOT_RUN",
+    "media_full_decode": "NOT_RUN",
+    "49_output_camera_check": "NOT_RUN",
+    "strace_scientific_access_audit": "NOT_RUN",
+    "final_scientific_regressions": "NOT_RUN"
+  },
+  "claimstatus": {
+    "real_experiment_completed": false,
+    "scientific_GO": false,
+    "scientific_NO_GO": false,
+    "zero_accepted_result": false,
+    "new_fixed3d_identity_demonstrated": false,
+    "temporal_superiority": false,
+    "novelty": false,
+    "human_review": "PENDING",
+    "parent_review": "PENDING",
+    "reason": "No scientific algorithm or pixel decoding before required protocol commitpush"
+  },
+  "source_qualification": "Frozen Mic vanilla30000; historical GS TRAIN views; unused only in planned LINE construction, not novelblind or GS holdout",
+  "paths": {
+    "REPORT.md": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_persistent_line_feasibility_v1/artifacts/mic_persistent_line_feasibility_v1/REPORT.md",
+      "bytes": 3457,
+      "sha256": "70b4952df8d9f77a7f6fa4baaa5fb8830d5ac36ce34aca2bb61c8e1dd0b54c9b"
+    },
+    "PROTOCOL.md": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_persistent_line_feasibility_v1/artifacts/mic_persistent_line_feasibility_v1/PROTOCOL.md",
+      "bytes": 11575,
+      "sha256": "a1f6107e8d5a629f5533a3e6ea6c5711ba98e69f518009f703a6ed8c072dbe10"
+    },
+    "CONFIG.json": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_persistent_line_feasibility_v1/artifacts/mic_persistent_line_feasibility_v1/CONFIG.json",
+      "bytes": 7396,
+      "sha256": "b92eec38092b3bd3f977ecfda5d82d55403ce86be703bb12c99eb992bfe9fe43"
+    },
+    "INPUTS.json": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_persistent_line_feasibility_v1/artifacts/mic_persistent_line_feasibility_v1/INPUTS.json",
+      "bytes": 492942,
+      "sha256": "a463ca7fed2db947c68eed8cc2ab25e2a558c1408bfe40f6195da894f7828df3"
+    },
+    "SOURCE_AUDIT_PREFREEZE.json": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_persistent_line_feasibility_v1/artifacts/mic_persistent_line_feasibility_v1/SOURCE_AUDIT_PREFREEZE.json",
+      "bytes": 3125,
+      "sha256": "e3eff69440135d17b68e2de5a81cea7da25e831ad86582c48673e9bc432ac12a"
+    },
+    "PROTOCOL_REVIEW.json": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_persistent_line_feasibility_v1/artifacts/mic_persistent_line_feasibility_v1/PROTOCOL_REVIEW.json",
+      "bytes": 920,
+      "sha256": "2566072fc06597d483d676eac4fee5b5a3b1ab5a3bfbbc6c6888e3d076aee97e"
+    },
+    "PREFLIGHT_REVIEW.json": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_persistent_line_feasibility_v1/artifacts/mic_persistent_line_feasibility_v1/PREFLIGHT_REVIEW.json",
+      "bytes": 561,
+      "sha256": "e0975275d990fcc616b488baeb7c29d20db60a73af51762a0e6f6b6b97b0402a"
+    },
+    "STATUS.json": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_persistent_line_feasibility_v1/artifacts/mic_persistent_line_feasibility_v1/STATUS.json",
+      "bytes": 1018,
+      "sha256": "9300c6c1d78f63c73e20afbd0309d683d01b830bfb5feffe522700f2e3a375bd"
+    },
+    "code/storage_preflight.py": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_persistent_line_feasibility_v1/artifacts/mic_persistent_line_feasibility_v1/code/storage_preflight.py",
+      "bytes": 1321,
+      "sha256": "4ac36f5b12d950b0999ce96221c7ed134060b1051c64cfe3877c83fd52173914"
+    }
+  },
+  "logs": {
+    "storage_preflight": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_persistent_line_feasibility_v1/out/mic_persistent_line_feasibility_v1/logs/storage_preflight.json",
+      "bytes": 393,
+      "sha256": "e79e442ec850598ed0f53279298a54279273bc6ebe5fbe3ddda3a31f590425a0"
+    },
+    "source_audit_program": {
+      "bytes": 9386,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_persistent_line_feasibility_v1/out/mic_persistent_line_feasibility_v1/source_audit/prefreeze_audit.py",
+      "sha256": "7cfcebaf75286cbeff29719db76672a0fed9da1355a8f774eae54a59d0453399"
+    }
+  },
+  "asset_paths": null,
+  "media_paths": null,
+  "next_required_action": "Restore shared Git root headroom, finish documented draft clarifications, commitpush protocol and INPUTS before any scientific code or decoded image access."
+}

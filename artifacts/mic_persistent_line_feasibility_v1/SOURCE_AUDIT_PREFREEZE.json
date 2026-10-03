@@ -1,0 +1,53 @@
+{
+  "audit_program": {
+    "bytes": 9386,
+    "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_persistent_line_feasibility_v1/out/mic_persistent_line_feasibility_v1/source_audit/prefreeze_audit.py",
+    "sha256": "7cfcebaf75286cbeff29719db76672a0fed9da1355a8f774eae54a59d0453399"
+  },
+  "development_notes": "Pre-freeze metadata checker hash-scope assertions were corrected to match producer canonical_hash(full_camera); no scientific recipe or decoded-data inspection occurred.",
+  "errors": [],
+  "finished_utc": "2026-10-03T13:27:53.382716+00:00",
+  "inputs": {
+    "bytes": 492942,
+    "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_persistent_line_feasibility_v1/artifacts/mic_persistent_line_feasibility_v1/INPUTS.json",
+    "sha256": "a463ca7fed2db947c68eed8cc2ab25e2a558c1408bfe40f6195da894f7828df3"
+  },
+  "interpretation_limits": [
+    "Vanilla splats are not verified surfaces. Native expected/median and per-contributor ray-plane depths are proposal/support, not GT.",
+    "topk_w stores raw alpha*T sorted descending; topk IDs preserve original PLY row identities; four contributors are truncated evidence.",
+    "Raster and ray-plane normals are not GT surface normals; no covariance-axis normals are computed.",
+    "Source reports historical Mic B/C dense grille/interior texture and arc crops; no new pixels viewed here.",
+    "Previous source production integrity and TRAIN qualification do not imply new fixed3D scientific success.",
+    "No old curve asset was loaded or used."
+  ],
+  "method": "Independent Python standard-library JSON/ZIP/NPY-header inspection and chunked SHA256; no numpy array loading, PIL/OpenCV decoding or image tool.",
+  "native_camera_convention": {
+    "depth": "Camera-Z: native ray-plane t is multiplied by rln = 1/sqrt(x_normalized^2+y_normalized^2+1) for depth, median_depth and topk_depth. Expected depth is alpha*T weighted mean; moment2 is unnormalized weighted second camera-Z moment. No GT surface claim.",
+    "focal": 1111.1110311937682,
+    "height": 800,
+    "principal": 399.5,
+    "transform": "camera_xyz = world_xyz @ w2c[:3,:3].T + w2c[:3,3]; positive camera Z projects via native_K; integer pixel centers, principal (W-1)/2.",
+    "width": 800
+  },
+  "schema": "mic-prefreeze-source-audit-v1",
+  "source_read_scope": "Required original REPORT/FINAL/CAMERAS/STORAGE_MAP, Mic seals/source metadata, inherited raster I/O/adapter/camera convention source; NPZ values and PNG/MP4 pixels not decoded.",
+  "started_utc": "2026-10-03T13:27:45.908808+00:00",
+  "status": "PASS_METADATA_AND_SEALS_ONLY",
+  "verification": {
+    "all_49_raw_frame_native_hashes_match": true,
+    "all_cameras_match_frozen_manifest": true,
+    "all_context_hashes_match": true,
+    "all_payload_sha256_match": true,
+    "all_seal_sha256_match": true,
+    "arc_camera_count": 33,
+    "array_values_inspected": false,
+    "camera_count": 49,
+    "checkpoint_sha256_match": true,
+    "frame_sets": 49,
+    "media_sets": 1,
+    "pixels_decoded": false,
+    "raw_sets": 49,
+    "sealed_payload_bytes_hashed": 1454748830,
+    "sealed_payload_file_count": 1501
+  }
+}

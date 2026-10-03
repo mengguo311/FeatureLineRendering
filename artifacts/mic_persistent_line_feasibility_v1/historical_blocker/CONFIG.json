@@ -1,0 +1,184 @@
+{
+  "schema": "mic-fixed-line-feasibility-config-v1",
+  "seed": 1729,
+  "construction": [
+    "F_001",
+    "F_027",
+    "F_053",
+    "F_079"
+  ],
+  "validation": [
+    "F_014",
+    "F_041",
+    "F_067",
+    "F_093"
+  ],
+  "evaluation": [
+    "C_007",
+    "C_021",
+    "C_033",
+    "C_047",
+    "C_059",
+    "C_073",
+    "C_086",
+    "C_099"
+  ],
+  "arc": {
+    "prefix": "arc0_",
+    "frames": 33,
+    "first": 0,
+    "last": 32,
+    "reverse": false
+  },
+  "budget": {
+    "wall_seconds": 21600,
+    "gpu_seconds": 14400,
+    "planned_gpu_seconds": 0,
+    "repair_rounds": 3,
+    "repair_total_seconds": 5400,
+    "max_paths_per_view": 96,
+    "max_proposals": 32,
+    "max_controls_per_path": 16,
+    "max_total_controls": 512,
+    "max_pair_alternatives_recorded": 3,
+    "max_triplet_hypotheses": 4096
+  },
+  "extraction": {
+    "a_threshold": 0.5,
+    "typed_b": [
+      "B_delta_D",
+      "B_delta_A"
+    ],
+    "typed_b_threshold": 0.65,
+    "typed_b_nms_radius": 1,
+    "alpha_min": 0.08,
+    "path_min_length_px": 24.0,
+    "path_max_length_px": 320.0,
+    "sample_count": 32,
+    "max_junction_degree": 8,
+    "skeleton": "skimage.morphology.skeletonize",
+    "no_gap_bridging": true,
+    "rank": "descending geometric arclength then lexicographic first pixel; fixed 96 cap",
+    "b_gray_texture_eligible": false,
+    "closed_loops": "Lexicographic start and forward/reverse only; no cyclic-shift search; seam mismatch is a disclosed recall limitation",
+    "duplicate_sources": "Union A and admitted typed-B pixel supports before skeleton graph tracing; each geometric path has one identity and records all source bits"
+  },
+  "matching": {
+    "min_views": 3,
+    "min_camera_separation_deg": 8.0,
+    "epipolar_median_px": 1.5,
+    "epipolar_p90_px": 4.0,
+    "length_ratio_max": 4.0,
+    "curvature_descriptor_difference_max": 0.65,
+    "orientation_degrees_max": 25.0,
+    "path_order": "monotone dynamic programming, both orientations; diagonal/horizontal/vertical steps, at most 3 repeated horizontal or vertical",
+    "min_matched_fraction": 0.7,
+    "cycle_error_px_max": 3.0,
+    "unique_margin_absolute_px": 0.75,
+    "unique_margin_ratio": 0.25,
+    "cost": "symmetric epipolar median plus 0.25*p90; incompatible length/curvature/type excluded; best and alternative recorded before uniqueness",
+    "mutual_best": true,
+    "unique_margin_ratio_definition": "(second-best - best) / max(second-best,1e-12); sole finite compatible candidate has second-best=+infinity and passes margin; equal-score alternatives included",
+    "orientation_definition": "undirected angle modulo180 between observed 2D tangent and projection of the triangulated candidate local3D tangent in that same camera; never compare raw image angles across cameras",
+    "coverage_definition": "Count distinct sample indices with epipolar distance<=4px on each side, divide each count by32, take minimum; DP visitation count is not coverage",
+    "cycle_definition": "Compose actual point-index correspondences through3 paths, require returning reference pixel distance<=3px on at least70% distinct common reference samples"
+  },
+  "triangulation": {
+    "min_parallax_deg": 3.0,
+    "max_ray_system_condition": 1000.0,
+    "min_rank": 3,
+    "min_samples": 8,
+    "max_reprojection_median_px": 2.0,
+    "max_reprojection_p90_px": 4.0,
+    "robust_loss": "soft_l1",
+    "robust_scale_px": 1.5,
+    "max_optimizer_evaluations": 60,
+    "world_length_min": 0.02,
+    "projected_length_min_px": 20.0,
+    "projected_extent_min_px": 12.0,
+    "construction_required_coverage": 0.7,
+    "depth_relative_tolerance": 0.03,
+    "depth_absolute_tolerance": 0.02,
+    "depth_min_support_fraction": 0.7,
+    "layer_min_weight": 0.05,
+    "layer_ambiguity_separation_relative": 0.03,
+    "fit": "actual multiview corresponding samples only; at most16 evenly arclength-selected XYZ controls; reprojection refinement only, no camera shifts, no bridges"
+  },
+  "visibility": {
+    "reliable_alpha_min": 0.8,
+    "reliable_variance_relative_max": 0.0004,
+    "median_mean_relative_max": 0.03,
+    "depth_absolute_tolerance": 0.02,
+    "depth_relative_tolerance": 0.03,
+    "near_plane": 0.001,
+    "uncertain_policy": "render visible with uncertainty count; never suppress by 2D proximity",
+    "outside_policy": "separate out_of_frame label; never count as successful occlusion"
+  },
+  "validation_rules": {
+    "whole_path_only": true,
+    "min_eligible_views": 2,
+    "samples_per_path": 64,
+    "min_visible_samples_per_view": 16,
+    "min_projected_length_per_view_px": 20.0,
+    "min_projected_extent_per_view_px": 12.0,
+    "position_tolerance_px": 3.0,
+    "direction_tolerance_deg": 25.0,
+    "min_position_direction_support_fraction": 0.8,
+    "min_depth_support_fraction": 0.7,
+    "max_uncertain_fraction": 0.4,
+    "max_unjustified_absence_fraction": 0.1,
+    "max_contradiction_fraction": 0.2,
+    "all_eligible_views_must_pass": true,
+    "reject_predicted_missing": true,
+    "unjustified_absence": "At depth-occluded samples, nearby same-tangent typed/A evidence plus depth compatible with candidate is contradiction. All geometrically in-frame samples audited. Low alpha with predicted visible path is missing evidence, not hidden.",
+    "geometry_refit": false,
+    "denominator": "All positive-depth in-frame geometrically predicted-visible samples, including low-alpha/uncertain. Missing evidence fails joint support; not an automatic one-sample rejection.",
+    "noneligible_views": "All positive-depth in-frame samples of all4 validation views still enter contradiction and unjustified-absence gates even if view fails visible-count/length/extent eligibility. Any such gate failure rejects whole path."
+  },
+  "render": {
+    "width": 800,
+    "height": 800,
+    "fixed_color_rgb": [
+      0,
+      96,
+      220
+    ],
+    "fixed_width_px": 2,
+    "width_source": "constant display brush; no world thickness claim",
+    "residual": "complete frozen original C; no duplicate subtraction",
+    "residual_color": "original grayscale",
+    "proposal_diagnostic_rgb": [
+      120,
+      120,
+      120
+    ],
+    "proposal_diagnostic_occlusion": false,
+    "pure3d_background": "white",
+    "panel": [
+      "RGB",
+      "pure_fixed3D",
+      "residual2D_full_C",
+      "hybrid"
+    ],
+    "fps": 6,
+    "telegram_width": 1600,
+    "codec": "libx264",
+    "pixel_format": "yuv420p",
+    "faststart": true,
+    "crf": 23,
+    "edit_demo": "first accepted persistentID: width2->4 and blue->magenta; XYZ byte hash unchanged, same edit in first/mid/last arc"
+  },
+  "null": {
+    "association_shuffle_seed": 1730,
+    "repetitions": 1,
+    "tune_after_null": false,
+    "pass_condition": "no accepted credible fixed paths; any surviving geometry is disclosed and invalidates scientific GO",
+    "operation": "Freeze candidate pair association slots, seed1730 derange complete target-path records among target identities (no fixed points when at least2); do not rematch. Recompute same compatibility, uniqueness, triangulation and validation gates on forced wrong associations. With fewer than2 eligible target identities report null insufficient, not passed."
+  },
+  "storage": {
+    "shared_git_min_free_bytes": 1073741824,
+    "commit_payload_max_bytes": 12582912,
+    "raw_location": "out/mic_persistent_line_feasibility_v1",
+    "tracked_location": "artifacts/mic_persistent_line_feasibility_v1"
+  }
+}
