@@ -1,10 +1,16 @@
 # 独立工程复核
 
-当前已完成的是运行前检查，**不是四个训练模型或196帧实验的完成证明**。最终实际产物以 `ACQUISITION_FINAL.json`、`PRODUCTION.json` 与逐阶段访问审计为准；文件未生成时对应验证尚未执行。
+本目录分别记录运行前检查、实际训练及相机/渲染产物验证，**单项 PASS 不是四模型196帧实验的完成证明**。实际训练证据见各场景 `*_ACQUISITION.json`，精确相机见 `*_EXACT_CAMERAS.json`；总体产物以 `ACQUISITION_FINAL.json`、`PRODUCTION.json` 与逐阶段访问审计为准，文件未生成时对应验证尚未执行。
+
+Hotdog 与 Materials 的实际30000步 acquisition 已分别通过独立复核：每场景有完整30000条有限loss、单次fresh launch、7k和30k checkpoint/snapshot/sidecar；所有62个PLY数值字段含45个full-SH系数均有限。实际训练trace各3156次打开尝试、200次TRAIN源图打开，未发现 TEST/VAL/mesh/越界写入。两场景 checkpoint 中心和全部 arc 的独立重算误差均为0，33 poses各自distinct；Materials 独立FoV为0.6194058656692505、native fx为1250.0000504168488，不能沿用其他场景焦距。这些仍不替代之后的 NPR 校准和196帧完整交付检查。
 
 `INHERITANCE.json` 逐字节核对旧 LOCK、六个科学源码、patched/unpatched 两个隔离 CUDA 二进制；当前工作区与旧源码均相同。科学参数 hash 保持 `6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9`，包括原尺度、A/B/C 定义和作者增益，无新 F 拟合。正常法线仍是 raster/splat 语义，缺少 filter3D；作者列为独立重建、非官方。
 
 `ACQUISITION_PREFLIGHT.json` 核对 upstream pin、许可证、隔离副本与三处受控补丁、既有二进制、manifest、默认训练 schedule 和 TRAIN 元数据。训练保持 seed1729、30000步、原生分辨率、白底、SH3、原 photometric loss 和默认 densification。必要差异明确为全部100 TRAIN 相机（旧 Lego 是86）、禁止 TEST/VAL、仅 TRAIN 内样本诊断、I/O 封存及精确 RNG/camera-stack resume。C 将参与 photometric 训练，只对 NPR 拟合留出，不是 blind evaluation。
+
+**第3轮发现并纠正了前述来源证明的缺口。** 早期 preflight 确认的是“外部工作文件→隔离副本”的 SHA 相同以及 Git HEAD 的提交名，没有独立证明每个工作文件都等于该提交的 blob。外部 `gaussian_renderer/__init__.py` 实际带有未提交改动，将标准 rasterizer 的两个返回值解包改为四个；这使第二个合成训练fixture失败。早期 PASS 报告全部保留，只能按工作文件身份一致理解，不能用来证明 pristine upstream。失败发生在任何真实场景训练之前；没有把它计为场景负结果。
+
+最终第3轮的 `ACQUISITION_ROUND3_PREFLIGHT.json` 对全部17个文件独立执行 `git show 472689c0dc70417448fb451bf529ae532d32c095:path`，重建唯一已声明的 seed/TRAIN-only/I/O 补丁，逐字节比较隔离文件和记录的 patch。旧 Lego 实际 vendor 也逐文件对照：除已知 train/general_utils 的 seed 补丁外均与 Git pin 相同，标准 renderer 的正确 hash 为 `75fcc86a57d27d9ea55b2904a4faaf075e7f73dba8c54bcb6cbd4c02c4884084`。外部脏工作文件和 diff 只读保留，没有回写修复。新增 dirty-renderer 拒绝测试实际RED→GREEN；独立测试合计13项通过。该轮独立preflight的实际trace共1055次打开尝试，源图像0次，无 TEST/VAL/mesh/越界写入。NPR 科学源码、尺度和二进制均未改变。
 
 相机阶段有不可消除的依赖：旧 arc 中心由最终 checkpoint 的 float64 位置 .001/.999 分位框计算，不能在模型尚不存在时伪造精确 arc。因此训练前冻结 F/C 精确矩阵、checkpoint 目的地与唯一 arc 算法；训练完成后先冻结 checkpoint hash，再封存并推送精确33 poses，之后才允许 NPR。独立 checker 重算整个轨道并检查33 distinct、Materials 独立 FoV、399.5主点及每场景49帧；0/0或缺帧均不能 PASS。
 

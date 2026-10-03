@@ -19,7 +19,7 @@ F=`[1,14,27,41,53,67,79,93]`，C=`[7,21,33,47,59,73,86,99]`。`PREDECLARED_CAMER
 1. GPU 前：`adapters.py --predeclare` 只读 TRAIN 元数据及 F1 PNG 24字节尺寸头；不解码数据集图像。协议、训练输入清单和相机声明先 commit/push。
 2. 完成 vanilla acquisition 后：对每个场景运行 `adapters.py --resolve SCENE`。它要求 `CHECKPOINT_LOCK.json` 状态 COMPLETE、seed1729、30000次、7000和30000两套 checkpoint 记录，核对最终 PLY 路径与 SHA、训练 manifest 和 TRAIN syscall audit。
 3. commit/push 四个 `transport/SCENE/CAMERAS.json`。写入 `transport/RENDER_FREEZE.json`：`{"commit":"已推送冻结SHA","camera_manifest_sha256":{"hotdog":"...","materials":"...","mic":"...","ship":"..."}}`。producer 会逐文件核对该提交内容，并检查冻结提交位于当前远端分支历史中。
-4. 全部 acquisition 停止后串行运行四场景 `run_transport.py --phase render --scene SCENE`。通过 `strace -f -qq -yy -s 4096 -e trace=open,openat,openat2,creat` 包裹实际进程，将 trace/标准输出写本轮日志。保留旧 native GPU guard：每次 render 查询 nvidia-smi 和 PID 归属，任何其他 GPU compute PID 均拒绝启动，不修改 guard、不重叠外来作业。
+4. 全部 acquisition 停止后串行运行四场景 `run_transport.py --phase render --scene SCENE`。通过 `strace -f -q -yy -s 4096 -e trace=open,openat,openat2,creat` 包裹实际进程，将 trace/标准输出写本轮日志。保留旧 native GPU guard：每次 render 查询 nvidia-smi 和 PID 归属，任何其他 GPU compute PID 均拒绝启动，不修改 guard、不重叠外来作业。
 5. 每场景运行 `run_transport.py --phase media --scene SCENE`。此阶段仅编码已有输出，不启动 renderer。
 6. 执行独立 verifier 的实际产物、完整视频解码与访问审计。最后运行 `summarize_results.py` 生成 `transport/DIAGNOSTIC_SUMMARY.json`，按 `REVIEW_PLAN.json` 检查固定代表帧和完整 contact sheets。
 

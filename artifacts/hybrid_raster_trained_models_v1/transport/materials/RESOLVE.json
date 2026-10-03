@@ -1,0 +1,48 @@
+{
+  "scene": "materials",
+  "action": "CPU_ONLY_RESOLVE_EXACT_CAMERAS",
+  "exit_code": 0,
+  "utc_recorded": "2026-10-03T09:43:01.886583+00:00",
+  "independent_acquisition_pass": {
+    "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/MATERIALS_ACQUISITION.json",
+    "sha256": "95350605a0043cea5b488ee042aca7e3cb1d404250aeed487bf90de54a7131f6"
+  },
+  "command": [
+    "strace",
+    "-f",
+    "-q",
+    "-yy",
+    "-s",
+    "4096",
+    "-e",
+    "trace=open,openat,openat2,creat",
+    "-o",
+    "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/logs/resolve_materials.strace",
+    "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+    "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/adapters.py",
+    "--resolve",
+    "materials"
+  ],
+  "camera_manifest": {
+    "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/materials/CAMERAS.json",
+    "sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d"
+  },
+  "trace": {
+    "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/logs/resolve_materials.strace",
+    "sha256": "e7daa3dde5e2d828b470ae01d602fbe114e8d7c04ad4def619f5084754f60d70"
+  },
+  "source_sha256": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+  "GPU_launched": false,
+  "images_viewed": false,
+  "audit_status": "PASS_CAPTURED_RESOLVE_PROCESS_ONLY",
+  "independent_resolve_reviews": [
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/MATERIALS_EXACT_CAMERAS.json",
+      "sha256": "e9bff0de1bb9d83d281336f42b0a6ffac37fec5bcf8a18d0f3e28d550f3269bc"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/MATERIALS_RESOLVE_ACCESS.json",
+      "sha256": "3947eb15198c37f32d4aaab276eef6308a37931f0e87cb4019d4f3f1000b17ba"
+    }
+  ]
+}
