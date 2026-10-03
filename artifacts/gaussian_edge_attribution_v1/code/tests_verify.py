@@ -7,6 +7,7 @@ import unittest
 import numpy as np
 from verify import reference_projection, reference_id_statistics, verify_seal, validate_camera, audit_workspace
 from media import mask_image, write_panel
+from audit_access import trace_summary
 
 TEMP_ROOT=pathlib.Path(__file__).resolve().parents[3]/'out/gaussian_edge_attribution_v1/validation/tmp'
 TEMP_ROOT.mkdir(parents=True,exist_ok=True)
@@ -53,6 +54,25 @@ class VerificationTests(unittest.TestCase):
         self.assertTrue(validate_camera(c))
         c['w2c'][3][3]=0
         with self.assertRaises(ValueError): validate_camera(c)
+
+    def test_trace_reassembles_resumed_and_reports_external_write(self):
+        with tempfile.TemporaryDirectory(dir=TEMP_ROOT) as td:
+            p=pathlib.Path(td)/'trace.log'
+            p.write_text('42 openat(AT_FDCWD, "/readonly/model.ply", O_RDONLY <unfinished ...>\n42 <... openat resumed>) = 3\n43 openat(AT_FDCWD, "/outside/artifact.bin", O_WRONLY|O_CREAT, 0666) = 4\n')
+            r=trace_summary(p)
+            self.assertEqual(r['unfinished_open_records_not_reconstructed'],0)
+            self.assertEqual(r['successful_open_records'],2)
+            self.assertEqual(r['external_regular_or_unresolved_file_write_opens'],['/outside/artifact.bin'])
+            self.assertFalse(r['ok'])
+
+    def test_trace_thread_name_pseudofile_is_explicit(self):
+        with tempfile.TemporaryDirectory(dir=TEMP_ROOT) as td:
+            p=pathlib.Path(td)/'trace.log'
+            p.write_text('42 openat(AT_FDCWD, "/proc/self/task/43/comm", O_WRONLY|O_CREAT|O_TRUNC, 0666) = 4\n42 openat(AT_FDCWD, "/dev/null", O_WRONLY) = 5</dev/null<char 1:3>>\n')
+            r=trace_summary(p)
+            self.assertTrue(r['ok'])
+            self.assertEqual(r['thread_name_pseudofile_write_opens'],['/proc/42/task/43/comm'])
+            self.assertEqual(r['device_write_open_paths'],['/dev/null'])
 
     def test_white_mask_and_full_uncropped_panel(self):
         self.assertEqual(np.asarray(mask_image(np.zeros((2,2))))[0,0,0],255)

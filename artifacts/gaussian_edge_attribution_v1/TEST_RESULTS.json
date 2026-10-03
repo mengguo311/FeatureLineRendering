@@ -1,0 +1,48 @@
+{
+  "count_scope": "unittest methods plus separate actual native/independent data checks; no inflation by per-pixel assertion count",
+  "created_utc": "2026-10-03T16:48:32.570654+00:00",
+  "native_calibration": "research/NATIVE_CALIBRATION.json",
+  "native_helper_cpu_checks": {
+    "count": 7,
+    "cpu_checks": [
+      "camera accepted",
+      "camera principal point rejected",
+      "external output path rejected",
+      "subset model field rejected before GPU",
+      "nan field rejected before GPU",
+      "negative field rejected before GPU",
+      "unbounded field rejected before GPU"
+    ],
+    "note": "Native blending checks are actual F1/F41 calibration, not synthetic substitutes.",
+    "status": "PASS"
+  },
+  "red_before_green_logs": [
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/logs/access_parser_RED.log",
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/logs/access_yydevice_RED.log",
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/logs/core_null_fix_red.txt",
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/logs/core_tdd_red.txt",
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/logs/independent_tests_RED.log"
+  ],
+  "suites": [
+    {
+      "count": 13,
+      "pass": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/logs/core_tdd_green.txt",
+      "sha256": "c101d2bc2cbf8b9069628082f3273c3784645d98f54b00d7a52ad667c2891f87"
+    },
+    {
+      "count": 9,
+      "pass": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/logs/independent_tests_GREEN.log",
+      "sha256": "0816065fe0d5a82ace2cd6e57c13acf798ab7e69d339f516b2e112daecf68ee0"
+    },
+    {
+      "count": 16,
+      "pass": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/logs/core_relevant_regressions.txt",
+      "sha256": "79fa631908b8ce95beebb053640296a9936eba11b04c8a5135ad8f4c218c0d16"
+    }
+  ],
+  "unittest_failures": 0,
+  "unittest_passed": 38
+}

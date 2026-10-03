@@ -1,0 +1,19 @@
+E
+======================================================================
+ERROR: tests_verify (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: tests_verify
+Traceback (most recent call last):
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/unittest/loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/unittest/loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/code/tests_verify.py", line 8, in <module>
+    from verify import reference_projection, reference_id_statistics, verify_seal, validate_camera, audit_workspace
+ModuleNotFoundError: No module named 'verify'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

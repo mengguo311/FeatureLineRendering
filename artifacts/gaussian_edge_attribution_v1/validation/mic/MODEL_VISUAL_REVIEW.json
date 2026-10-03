@@ -1,0 +1,44 @@
+{
+  "scene": "mic",
+  "reviewer": "model visual inspection; not human approval",
+  "viewed": [
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/F_001.jpg",
+      "sha256": "7f02fd7543b385014cb18691c40553e72e703e7521575e757e1516a174bbb632"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/C_007.jpg",
+      "sha256": "61281203412611094bb81a5d896d5e8bc01ba753abc24a407ce4affe347dfc44"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_000.jpg",
+      "sha256": "9f20f145647c27b7bc9838ed9277313b746f33e2d400479c7ded4b19c6a19866"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_016.jpg",
+      "sha256": "1784c1e1e9d2a51e473f822160680d0cfe060a6bcf472fcd8af16410dfea068b"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_032.jpg",
+      "sha256": "b9df0bbbadb9ba43dafac2c31adaf5ae3ce6b3202e913cbe0b5ff21422cf11cb"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/media/contact_all49.jpg",
+      "sha256": "ea503aaac8d30022883f52211c52a748e76493386947de6e546e07e9a63fea11"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/classes_tiers/C_007.jpg",
+      "sha256": "397357c920fb7a52e4f77ac92a28d0c1e95bcd8f401097a2b7e2cc0af5282651"
+    }
+  ],
+  "observations_zh": [
+    "F/C/arc 代表图显示连续 P 为整核的可见贡献，覆盖网罩、线缆、支架的较宽区域，不是细几何线。",
+    "固定双侧 P 在同一 Mic F 显示增益下通常比贡献基线更浅；不能由此声称双侧更优。",
+    "C_007 类别图中 color 支持集中网罩，outline 支持覆盖投影轮廓/线缆，geometry 为渲染深度证据，不能当作真实表面边。",
+    "预声明 top1/3/10/30% 显示逐级更丰富的支持质量；没有因 top1/3 稀疏而将其设成成功门槛。",
+    "完整 49 张 contact 中 arc 中间帧原始 RGB 已有底部/边缘视场截断（如 arc0_016），面板保持原始800×800，无额外裁剪。",
+    "arc 首中末的固定资产贡献足迹和强度随原始可见性/视角明显变化；本检查不证明几何线位置或时间稳定性。"
+  ],
+  "layout_checks": "五列完整800×800，白底灰度贡献含清晰图例；F/C/arc 不以当前二维证据筛选固定ID。",
+  "limitations": "模型查看图像不是人类 GO；缩略 contact 只用于全序列概览，代表图另以完整画面检查。"
+}

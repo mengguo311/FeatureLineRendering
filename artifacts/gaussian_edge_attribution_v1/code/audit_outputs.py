@@ -37,6 +37,25 @@ def audit_scene(scene,f_only=False):
     known=np.flatnonzero(score['eligible']);unknown=np.flatnonzero(score['unknown'])
     sample=np.concatenate([rng.choice(known,min(32,len(known)),replace=False),rng.choice(unknown,min(16,len(unknown)),replace=False)])
     checks={}; f_details={}; f_num=[]; f_den=[]; f_mass=[]
+    checks['all_original_IDs_preserved']=np.array_equal(score['original_ids'],np.arange(n))
+    checks['unknown_is_zero_F_cached_visibility']=np.array_equal(score['unknown'],score['raw_denominator']==0)
+    checks['eligibility_matches_fixed_rule']=np.array_equal(score['eligible'],(score['raw_denominator']>=1.)&(score['support_view_count']>=2))
+    eligible_ids=np.flatnonzero(score['eligible']);bins=np.full(n,-1,dtype=np.int32)
+    for count in np.unique(score['support_view_count'][eligible_ids]):
+        subset=eligible_ids[score['support_view_count'][eligible_ids]==count]
+        order=subset[np.lexsort((subset,score['raw_denominator'][subset]))]
+        bins[order]=int(count)*10+np.minimum(np.arange(len(order))*10//max(len(order),1),9)
+    for key,ids in selection.items():
+        ids=np.asarray(ids);checks['selection_valid/'+key]=bool(ids.dtype.kind in 'iu' and len(np.unique(ids))==len(ids) and np.all(ids>=0) and np.all(ids<n))
+        arm,cls,pct=key.rsplit('_',2);pct=int(pct)
+        if arm in ('baseline','enhanced'):
+            order=eligible_ids[np.lexsort((eligible_ids,-score[arm+'_'+cls][eligible_ids]))]
+            expected=order[:int(np.ceil(len(order)*pct/100))]
+            checks['selection_fixed_ranking/'+key]=np.array_equal(ids,expected)
+        elif arm=='random':
+            selected=selection[f'enhanced_union_{pct:02d}']
+            checks['random_count_and_visibility_strata/'+key]=len(ids)==len(selected) and np.array_equal(np.bincount(bins[ids],minlength=90),np.bincount(bins[selected],minlength=90))
+
     for frame in inputs['frames']:
         key=frame['key']
         if not key.startswith('F_'):continue

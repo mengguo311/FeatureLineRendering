@@ -16,7 +16,7 @@ def sha(path):
 
 def atomic(path,value):
     path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
-    tmp=path.with_name(path.name+'.partial')
+    tmp=path.with_name(path.name+f'.{os.getpid()}.partial')
     tmp.write_text(json.dumps(value,ensure_ascii=False,sort_keys=True,indent=2,allow_nan=False)+'\n')
     os.replace(tmp,path)
 
