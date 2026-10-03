@@ -17,6 +17,7 @@ def main():
     media={s:read(OUT/s/'media/MEDIA.json') for s in summaries}
     assert all(a['ok'] for a in audits.values())
     access=read(ART/'ACCESS_AUDIT.json')
+    assert access['ok']
     review=read(ART/'VISUAL_REVIEW.json')
     counts={s:dict(gaussians=summaries[s]['asset']['gaussian_count'],eligible=summaries[s]['asset']['eligible_count'],
        unknown_top4_F=summaries[s]['asset']['never_seen_count'],unreliable_seen=summaries[s]['asset']['unreliable_seen_count'],
@@ -31,9 +32,14 @@ def main():
                      OUT/s/'media/arc33_native.mp4',ART/'media'/s/'arc33_telegram1600.mp4',ART/f'SUMMARY_{s}.json']:
             files[str(path)]=dict(sha256=sha(path),bytes=path.stat().st_size)
     test_records=read(ART/'TEST_RESULTS.json')
-    native_calls=[]
+    native_calls=[];gpu_process_intervals={}
     for path in [OUT/s/'native_logs/RENDER_TIMES.jsonl' for s in summaries]+[ROOT/'native_extension/calibration_logs/RENDER_TIMES.jsonl']:
-        if path.exists():native_calls.extend(json.loads(x) for x in path.read_text().splitlines())
+        if path.exists():
+            calls=[json.loads(x) for x in path.read_text().splitlines()];native_calls.extend(calls)
+            if calls:
+                times=[datetime.datetime.fromisoformat(x['utc']) for x in calls]
+                gpu_process_intervals[str(path)]=dict(first_utc=min(times).isoformat(),last_utc=max(times).isoformat(),
+                    first_to_last_render_seconds=(max(times)-min(times)).total_seconds())
     checks_count={s:len(audits[s]['checks']) for s in summaries}
     unknowns=[
        'TOP4 training attribution is incomplete; fixed F1/F41 top32 audit still leaves omitted mass. Complete attribution UNDETERMINED.',
@@ -56,14 +62,20 @@ def main():
        unit_tests=test_records,independent_check_counts=checks_count,independent_all_pass=all(a['ok'] for a in audits.values()),
        media={s:{k:media[s][k] for k in ('video_native','video_telegram1600')} for s in media},
        checkpoints={s:inputs['scenes'][s]['checkpoint'] for s in summaries},files=files,
-       source_code_sha256={str(p.relative_to(ROOT)):sha(p) for p in sorted((ART/'code').glob('*.py'))},
+       source_code_sha256={str(p.relative_to(ROOT)):sha(p) for p in sorted((ART/'code').rglob('*.py'))},
        dependencies_unknowns=unknowns,
        success_claims={'fixed_original_ID_assets':True,'all49_per_scene_full_visibility_attribute_projections':True,
           'F_only_selection_and_normalization':True,'all33_arc_decoded_distinct':True,'geometry_line_reconstructed':False,
           'full_contributor_attribution_identified':False,'two_sided_superiority_established':False,
           'novel_method_claim':False,'temporal_superiority_claim':False,'human_GO':False},
        scientific_completeness='UNDETERMINED',access_audit_path=str(ART/'ACCESS_AUDIT.json'),visual_review_path=str(ART/'VISUAL_REVIEW.json'),
+       engineering_deviations=access.get('engineering_deviations',[]),
        resource=dict(native_render_calls=len(native_calls),cuda_synchronized_render_wall_seconds=sum(x['cuda_synchronized_wall_seconds'] for x in native_calls),
+           recorded_GPU_activity_wall_upper_bound_seconds=access['gpu']['total']['tracked_activity_wall_upper_bound_seconds'],
+           synchronized_seconds_caveat='Not total GPU occupation; conservative recorded-activity wall upper bound used for budget.',
+           gpu_process_first_to_last_render_intervals=gpu_process_intervals,
+           elapsed_since_input_freeze_seconds=(datetime.datetime.now(datetime.timezone.utc)-datetime.datetime.fromisoformat(inputs['created_utc'])).total_seconds(),
+           configured_limits=dict(gpu_hours=4,wall_hours=6),
            disk_free_bytes=shutil.disk_usage(ROOT).free,reserve_bytes=1<<30,estimated_payload_bytes=20<<30),
        post_push_verification=str(OUT/'DELIVERY_VERIFICATION.json'))
     assert final['actual_total_pose_panels']==98
@@ -108,15 +120,18 @@ def main():
       f"工作基点 `{inputs['base_sha']}`；协议封条 `{sha(ART/'PROTOCOL_SEAL.json')}`。逐来源源码、相机和checkpoint散列均在FINAL/INPUTS中。",'',
       '## 检查、媒体与交付','',
       f"CPU 单元/回归测试 {test_records.get('unittest_passed',36)} 项通过，另有 native helper 的7项CPU输入检查、实际F1/F41校准及98帧逐视图校准。独立审计每场景从原始F缓存重算32个eligible+16个未知ID，并在全部8C重算512随机+128强选中像素；不复用主归因求和实现。未知/反证、原始权重、封条不变和相机/全帧媒体检查通过。审计范围见 [访问审计](ACCESS_AUDIT.json)，不作超出所跟踪进程的全系统无访问声明。",'',
-      '每场景49张五列native800图、49张类别/层级图、49张匹配控制图；两段完整33帧arc各有native与Telegram1600 H264/yuv420p/faststart。全部视频逐帧解码并散列，还检验去除标题后的RGB内容33帧互异。模型检查F/C、arc首中末和完整contacts，详见 [模型视觉复核](VISUAL_REVIEW.json)，不冒充人工GO。','']
+      '访问范围偏差：早期独立合成测试曾使用默认 `/tmp` 创建自动清理的临时面板/封条文件；已改到本工作区并重新通过测试，已知临时路径已不存在，其他匿名临时路径的全局清理无法追溯证明。因此只对被跟踪的主 fit/project/calibration 进程报告工作区内持久写入，并明确记录这一偏差，不声称全会话所有临时写入都满足范围约束。','',
+      '每场景49张五列native800图、49张类别/层级图、49张匹配控制图；两段完整33帧arc各有native与Telegram1600 H264/yuv420p/faststart。全部视频逐帧解码并散列，还检验去除标题后的RGB内容33帧互异。模型检查F/C、arc首中末和完整contacts，详见 [模型视觉复核](VISUAL_REVIEW.json)，不冒充人工GO。Mic预声明arc中段原始相机已有下方支架/电缆出画，未更改相机或后期裁图；完整帧序列不意味着每帧整个物体均入镜。','',
+      '全C四档对比和可见质量诊断见 [逐C层级图](research/diagnostic_figures/C_lift_all_tiers.png)、[质量/覆盖/分数诊断](research/diagnostic_figures/visibility_mass_score_diagnostics.png)、[定量复核](research/METRIC_REVIEW_ZH.md)。','']
     for s in summaries:
         lines += [f"- **{s}**：[完整49视图](media/{s}/contact_all49.jpg) · [arc首中末](media/{s}/contact_arc_first_mid_last.jpg) · [Telegram视频](media/{s}/arc33_telegram1600.mp4) · [可编辑全ID分数](assets/{s}/scores.npz) · [各类各档ID](assets/{s}/selection.npz)。"]
     lines+=['','完整逐视图分母/反证/方向/侧/层来源、raw属性、native视频和完整properties的选中PLY保留于：','']
     for s in summaries:lines.append(f"- `{OUT/s}`：`assets/scores.npz`、`F/*/statistics.npz`、`frames/*/projection.npz`、`media/arc33_native.mp4`、`ply/*.ply` 与同名 `.original_ids.txt`。")
     lines+=['','PLY子集保留原模型每个vertex属性和原始ID映射；单独渲染子集会改变遮挡，不能代替本报告的完整模型属性投影。[复现步骤](REPRODUCE.md)、[机器可读FINAL](FINAL.json)包含精确散列、实际计数、资格和未知项。','']
     (ART/'REPORT_ZH.md').write_text('\n'.join(lines))
-    atomic(ART/'STATUS.json',dict(state='COMPLETE_LOCAL_VERIFIED_READY_FOR_FINAL_PUSH',utc=utc(),actual_pose_count=98,requested_pose_count=98,
-      complete_attribution='UNDETERMINED',independent_all_pass=True,final_json_sha256=sha(ART/'FINAL.json')))
+    atomic(ART/'STATUS.json',dict(state='EXPERIMENT_COMPLETE',utc=utc(),actual_pose_count=98,requested_pose_count=98,
+      complete_attribution='UNDETERMINED',independent_all_pass=True,final_json_sha256=sha(ART/'FINAL.json'),
+      publication_verification_path=str(OUT/'DELIVERY_VERIFICATION.json')))
     print(json.dumps({'report':str(ART/'REPORT_ZH.md'),'actual_panels':98,'counts':counts},ensure_ascii=False))
 
 if __name__=='__main__':main()

@@ -1,0 +1,1616 @@
+{
+  "access_audit_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/ACCESS_AUDIT.json",
+  "actual_total_pose_panels": 98,
+  "base_source_sha": "d5c6d4d114b6b80ec5edb9c1717111e89a191eda",
+  "branch": "gaussian-edge-attribution-v1",
+  "checkpoints": {
+    "materials": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/materials/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+      "qualification": {
+        "color": "SH0 clipped 0.5 + C0*f_dc",
+        "filter_3D_applied": false,
+        "filter_3D_present": false,
+        "gaussians": 282537,
+        "ignored_full_sh_coefficients": 45,
+        "native_degenerate_inverse_covariance_count": 152,
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/materials/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+        "proxy_axis_normals_computed": false,
+        "row_id_mapping": "identity / original PLY row",
+        "sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945"
+      },
+      "sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945"
+    },
+    "mic": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/mic/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+      "qualification": {
+        "color": "SH0 clipped 0.5 + C0*f_dc",
+        "filter_3D_applied": false,
+        "filter_3D_present": false,
+        "gaussians": 311562,
+        "ignored_full_sh_coefficients": 45,
+        "native_degenerate_inverse_covariance_count": 7576,
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/mic/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+        "proxy_axis_normals_computed": false,
+        "row_id_mapping": "identity / original PLY row",
+        "sha256": "13255fd1207c031c5542e25cbbdf9596dbe88a0212fd7e383a9010852d6501ca"
+      },
+      "sha256": "13255fd1207c031c5542e25cbbdf9596dbe88a0212fd7e383a9010852d6501ca"
+    }
+  },
+  "counts": {
+    "materials": {
+      "actual_pose_panels": 49,
+      "eligible": 72124,
+      "gaussians": 282537,
+      "matched_controls_panels": 49,
+      "native_class_tier_panels": 49,
+      "requested_pose_panels": 49,
+      "selected": {
+        "1": 722,
+        "10": 7213,
+        "3": 2164,
+        "30": 21638
+      },
+      "unknown_top4_F": 134802,
+      "unreliable_seen": 75611
+    },
+    "mic": {
+      "actual_pose_panels": 49,
+      "eligible": 33551,
+      "gaussians": 311562,
+      "matched_controls_panels": 49,
+      "native_class_tier_panels": 49,
+      "requested_pose_panels": 49,
+      "selected": {
+        "1": 336,
+        "10": 3356,
+        "3": 1007,
+        "30": 10066
+      },
+      "unknown_top4_F": 228418,
+      "unreliable_seen": 49593
+    }
+  },
+  "created_utc": "2026-10-03T17:02:52.779585+00:00",
+  "dependencies_unknowns": [
+    "TOP4 training attribution is incomplete; fixed F1/F41 top32 audit still leaves omitted mass. Complete attribution UNDETERMINED.",
+    "No Gaussian-level edge ground truth or geometric line-location ground truth. No geometric precision/recall claims.",
+    "C belongs to all100TRAIN used by frozen3DGS; only attribution construction excludes C. Not a blind test.",
+    "Renderer uses SH0 clipped DC; 45 higher SH coefficients are ignored. Materials is not full view-dependent reflection validation.",
+    "Cached-front is nearest retained topK contribution, not guaranteed full-ray front or physical surface.",
+    "Visibility-matched random uses F top4 visibility strata; full projected mass need not match. Separate mass controls are displays/diagnostics.",
+    "Single-F top30% control can exhaust its eligible IDs; exact actual counts are reported, never padded with unknown IDs.",
+    "Independent CPU audit recomputes contribution arithmetic; does not independently implement evidence extraction or native CUDA traversal.",
+    "Visual review is by model, not human GO; temporal superiority has not been established."
+  ],
+  "engineering_deviations": [
+    {
+      "detail": "tempfile default briefly created synthetic seal/panel fixtures under /tmp; context managers removed them. Test fixture root was corrected to workspace out/gaussian_edge_attribution_v1/validation/tmp and all tests rerun. No retained artifact or protected input was written outside workspace.",
+      "evidence_limit": "The known panel path appeared in initial tool output. Other temporary fixture directory names were not retained; their TemporaryDirectory context managers completed. Current tests use workspace-only fixture roots.",
+      "known_fixture_and_directory_absent_now": true,
+      "known_fixture_path": "/tmp/tmp88mccpp5/panel.png",
+      "scope": "This deviation is outside the primary-stage strace proof; no universal workspace-only write claim is made.",
+      "stage": "initial independent synthetic unit-test GREEN run"
+    }
+  ],
+  "files": {
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/SUMMARY_materials.json": {
+      "bytes": 62041,
+      "sha256": "dc0bab19b057a31a4b4a39e8821894071b75980c208a2b590e8c468e80c5d014"
+    },
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/SUMMARY_mic.json": {
+      "bytes": 61989,
+      "sha256": "f01c2ab58bbe6cd45a18d0a53d46f64ad5daec8ebf7d0154060daeea5860b9c0"
+    },
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/assets/materials/scores.npz": {
+      "bytes": 34505268,
+      "sha256": "8963b5a134cd139f535dafeceba4a0b201c5277c6cbcb7dcb6837017cbd5df69"
+    },
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/assets/materials/selection.npz": {
+      "bytes": 967180,
+      "sha256": "91ceac40c3ce1695d789b1c4079adcebc076c908cb29b6fe79a57e621e9a3149"
+    },
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/assets/mic/scores.npz": {
+      "bytes": 18666524,
+      "sha256": "b5693bef0d6801f6c759fcf94140d6076c7c9e6ac47e3b16555a5e493db92184"
+    },
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/assets/mic/selection.npz": {
+      "bytes": 461805,
+      "sha256": "d0f0e00a8fa28abf1340191902733b6693c4a0ef586e2a389ae3c287349e7484"
+    },
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/media/materials/arc33_telegram1600.mp4": {
+      "bytes": 792696,
+      "sha256": "9be8f2705f6a227fc3b8cbb12f4a6e6f683dbdf95879ddf28af8c49be68a1668"
+    },
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/media/mic/arc33_telegram1600.mp4": {
+      "bytes": 621229,
+      "sha256": "d7a8f321287aee7e20283a6b8349129d792b71a9830d583be195495caeeb7981"
+    },
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/INDEPENDENT_VALIDATION.json": {
+      "bytes": 331406,
+      "sha256": "ac04bc7643427f1d58d2c640f28abc029bc466ad91ebf83ee9b5f8e011413207"
+    },
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/assets/ASSET_SEAL.json": {
+      "bytes": 941,
+      "sha256": "d58aced57f69ebb8d822d35972351ff6184225d1f73319494db7a4aecc0636e9"
+    },
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/assets/scores.npz": {
+      "bytes": 73292113,
+      "sha256": "97ded3a033fec5f59cb1158c290e4cd4adcb694f477d7dbeed00a86cb27ca44c"
+    },
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/assets/selection.npz": {
+      "bytes": 967180,
+      "sha256": "91ceac40c3ce1695d789b1c4079adcebc076c908cb29b6fe79a57e621e9a3149"
+    },
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/media/arc33_native.mp4": {
+      "bytes": 4831812,
+      "sha256": "638d3ad0f60671620ac1b6e233062ee5983dced06f0149dc47f530b939f86d39"
+    },
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/INDEPENDENT_VALIDATION.json": {
+      "bytes": 331219,
+      "sha256": "0de0a69ca8f8ca3d170df1cad9fce0e573275a9b1a03eacea8e06dd26af74196"
+    },
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/assets/ASSET_SEAL.json": {
+      "bytes": 935,
+      "sha256": "e14f7cb9a688796c3606ff7b4fd14dc94fb21962d7f8471c70189f04c3c69150"
+    },
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/assets/scores.npz": {
+      "bytes": 43016113,
+      "sha256": "b731877e10e3838aeca7a5c1096d53b11998080351e40e4f78df2d36ab30b540"
+    },
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/assets/selection.npz": {
+      "bytes": 461805,
+      "sha256": "d0f0e00a8fa28abf1340191902733b6693c4a0ef586e2a389ae3c287349e7484"
+    },
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/media/arc33_native.mp4": {
+      "bytes": 3588985,
+      "sha256": "fe0b974bff745b1d9cb389b4ec2403334727e4ff7b01e6fd52411b07eda98420"
+    }
+  },
+  "git_common_dir": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/mic_fixed3d_standalone/.git",
+  "independent_all_pass": true,
+  "independent_check_counts": {
+    "materials": 586,
+    "mic": 586
+  },
+  "input_sha256": "760df0ac2fb854a734cc1a0494fd322c633a6bfc49151ba74eedc6b98c54c8de",
+  "media": {
+    "materials": {
+      "video_native": {
+        "bytes": 4831812,
+        "checks": {
+          "all_RGB_content_frames_distinct_without_labels": true,
+          "all_frames_distinct": true,
+          "consistent_dimensions": true,
+          "decoded_count": true,
+          "faststart": true,
+          "h264": true,
+          "yuv420p": true
+        },
+        "decoded_RGB_content_sha256": [
+          "f8fffe76fa54730c0fc36368ee8790af7dbe2ae671251f93b166695343d74954",
+          "8b6250899aeb7e56da0d80c301e161eea0a0d8d3e647b056c0319a99fb1e6ddf",
+          "77b16d2aae42527bbe6083d1a4e76527ed923bc142059b12779d66de38553f64",
+          "bc385b66112c2a13765ffc8ed21615e2b334da6ffd4a98ccd2cec74b496cbb11",
+          "11a57c4d6bb73e35a118ce0017289e65a8c101a51a97a1dc25af564227876166",
+          "bb79ed65763cc0b39c8d660e46b2d45fea3d8142459e794cdbf523616fdcde15",
+          "de618366e611e3b41e4271292fcff1309331d633037083aa7cbff7fc8e34b746",
+          "7fccbd7bdf4791b70e531bb14e3423801a74cd3c22c71d03e18c8cc5d8ff58bd",
+          "e8eb09eb1581849627796a40f6dfa020513eb3e82d27d27e98b752ed45641c36",
+          "065f4f01037fdd9badb5324da678e6201ced8763dd2c9830d4d22576d076e8ae",
+          "a1e682e64e682ea38e24f7163e7e79714877a5584fb2e5803525410f38762503",
+          "1cc6db0c3c401b76f18b5833ab80d74861365d3b777650f1396efa56e76d00f4",
+          "12c677fce691365f5e43111dce21837a9fafa9e1c1d27aafd4256a61d7862eda",
+          "7d2213e2624c5998946e57a34daad4f2487b6512131a0e57881a17742034e9c2",
+          "3bc4e818f9670157d8fa3ea7124c64960e43fb4f28bd61676639fc617590e278",
+          "1d6d6dd06b588dae1ea29bee846c8da1984ce9c783701f40d4acf33c9db6f5bd",
+          "5bbc6bcbe9589dc610300e534df7f82866238d46c79dbbe764074e1e475a0dbd",
+          "7c78ea085624964ed69b3776463c6557590ce2ca10d70d9a526885884c9252ed",
+          "e34522bfe97253b9a0490d1a7f9dc05882714bfb5e2fe6743e8d6d439a6c2bbb",
+          "9d0114466b827dcbe443fcf0dec9042e5eb9656066af2af414e5e89dd08a80c0",
+          "a9aabae47fa8f22f4d103da1254d5ea81a6c4f1bf646eff7737b2e408f4c6578",
+          "75af2344f96e67ed0bd54869cd4fc8ac940e2d77f0cb41b19b885b4cb4865d27",
+          "47ec269cd591783c477e6cc7802370f75cddd1e52e809c924e16ed8cff1f951f",
+          "9708417d7bfd4a30728cb49b4988f9c7d0168bad22513d906ea7723854078b3a",
+          "1474b9d86722e436a27919e75dcd97b47c4b06304790c4d77902f99b61c5ef45",
+          "f3d3e533900a47fbb6d51e40bcffaa5d66964d21340e2562a5ed69b3cf33ff1e",
+          "af03be7aac68b707f3128402c01c0ea28ebc06c7dda280b9965d1d4eaef7ee2f",
+          "60a2a2144945ed21d5074b32f3db9c4e19e0bbe3eca1a26aaf74327bfa5b2f85",
+          "d496e5564486e24a5c3600ebb146def5d03fd62c06886efb3d9276d0d9fa5d9c",
+          "6af75af4025e81e8881acd3974c5c6412424972ecd6c14582cf5bd95a3b089c0",
+          "c4060234a544937c0c7e039fd5ab912fbd57fceca67ee91329a95b8f26318335",
+          "bc10b3621c40ce0a839a60d33360b11bb99bfc11de50c4553e57f094afd1b0ad",
+          "214d3c847aeaaf21c73fab99a9bb7d701cd5c1e9e45ccc4e27a120e42d225639"
+        ],
+        "decoded_attribution_content_sha256": [
+          "08339d1657eef1943d15e960921dddc427a8575d8e224abe7762d27924d55538",
+          "376c740041c32f6ef6aa720c146004f22aed68bd473d851b0832c8eaafab38bd",
+          "f58b49c33a118b8eb0f205504cf55afbc5e6a5b92a20d7474fb09f09275aa591",
+          "3d48bb17962fc7b632152d41830ea40793df2321e7f85dde68f1b8fc697e0e0c",
+          "3df6e32ee6db668951f1d02b7b45e22b0b0ed2788d48838d03c45f0faba4bba1",
+          "717a7b56745d614550059975141b3fb0570b2b49a501d0313efd6964a1ad127e",
+          "51617ac249ce0bd3a00d5d1c78094b77c403858fc6dd6ac1df19f4722b4d3a69",
+          "e629111fe173ed445c1db1c58f5be76e16ad4fd904601de57fdd284e5c1ea303",
+          "102eccc0bc023c858f713e2e81fab3921fb1cbbfd8c868e88f5e173c54322c3b",
+          "c91861c2637aa8b64234162a825743d51e9e822331181537eded5cf2e3500265",
+          "aae978005eac98cdadf9633ba99cd4c6e19ff93b9bc4ad747fc25f781dc883cf",
+          "0c85722074473c7fbfe0be98b6fb71deef1a961672140fdd9f8df8f1d340522e",
+          "c3d65dc983a2688164ed299420a0737760cde3cf9443bfb5c127d6fb21860185",
+          "08ea125a30fd2499cfee59f8a408bcb8713c45a4b59fab443b95c16aa2698987",
+          "3301b461f72ce7e116a4d3b00a17a1eecb0db1ab6c187f0d379184acc74d28fd",
+          "533f06e3f333637cd0f83b3f8654f2a83ed0bf7a9589edec2a0aad310960c94b",
+          "9a11aa32cf4cc0b5956301ee9e62aad1266e38520e90afd1aededd1c98c19ba0",
+          "261fc0fb73574a83e4a1c175763f75c9538b1e73773635c2f098e77ad75918cb",
+          "592e50cb4a75d5829423e0e41d8bd0b1480123f0b4d2476ecb9b949b4442b8a9",
+          "e27d7858669a04fd6b720f84032d7986ea4404265fc9322e2f2af9ccca9f4d74",
+          "294f921a0822517d68eee7c6e8428fc1e635c8cc7e18b36f2a678c46f0925830",
+          "1873f9836dc31c856f3945e8b759a6a9fe497fd7e6d19ca4d8ac0dc85bb3b515",
+          "58b9312c4c103541ce6b43bc947f35f6a645105c8c44c5ab99f6e7bc181282d2",
+          "6f0b115914cbdb4ad6ac8346c678903345bb27e9eab3ef33011789513325be4a",
+          "28685565623e4a42d91060e80d0cc65dc466274c65d7ef02631a097a13f61356",
+          "2725d15895bb950f47a8ba32cc1eb74f90ded874376a486718bf36473589ad83",
+          "38a4401322794bface3debfade1578366f774773cc5b8d800a71bc5dc431910b",
+          "b6699236ecc92ff63299a095be70b5b457fcfa7a0c9840c4c15750cd2047dabf",
+          "2bf591f28ad1434049b12731ab744733733e1c1ebf8b46a979767ec2704570c7",
+          "1acee6f4ea9171c71ffe9e96bc8bfa68bcd8e62bddafea8acd8b0302b81e4c50",
+          "53ef69169e272d4a65e825a423d8d83b4f063a1bb98d706f1ff4cd2b034fd2e1",
+          "82ae58c4b9625ea361c8f836315a9a15730d7c4a84ea097fef1dd35ddf1e825f",
+          "06b44aa67e28050c129fe612fc946b47ea3415e11e9dcf9f1381d80737741e4d"
+        ],
+        "decoded_frame_count": 33,
+        "decoded_frame_sha256": [
+          "6ca8d5960dc90267d5d2787e41c1bad1cebb26c8e096635db496fc934d77f637",
+          "d30ab51ffc6e6fe91ed7b1e6f4404cac4750ff452be27ef80fa6ba0c60901f00",
+          "448b07f0ff4af2a914b69f6ef5b44ff57369169021018a762546156df6b7fa78",
+          "59e614a89041318720c1f48e0681cddbe6924bf97f5efedf31cf7911e8710184",
+          "0b4da3bc61b1196e0d50ba61a6d3b4b54589580f32729320c50f5910e6cdd071",
+          "4d41579ebd2e3a6d2db8225ff1c2dcb5e919f59baf855d2698c7b6be0d2da443",
+          "da973df47df24e5cb92ed2877f5672c995ab349ff9efd02311baa6bdd171b5e1",
+          "0d1d34dc2559f17310421d52a2e7c56ba7670bec290dba99264e390b2fe711e8",
+          "3b4678a2dba4abd4c64075c18d573f7b4d487a986f70a91eee4b58f6d89c68ae",
+          "e1dd00c0b537347d110dca6f8e13f7fd38d960fbe43860994319abd4568c058d",
+          "08068ed2e30c7d8b94fdeca9bb9b113fad76048e40380a4060768624764d828c",
+          "72fafd8c7d3f51bd8610492ef88ef8fb2bdd7d1fb2b1edb61aa0cc28376d6359",
+          "7e97e2137890516e92a37d700e16a42a9c2b38e2390fcd00487a269425fe6071",
+          "d91937d11c1f1db9a2afb0c48aacad0d68a167c01f2d237f2a1f25e8db9157fd",
+          "7e011056d5e0132eb21efe3d3569f5307b9788050d4cce6b2f3d4aab96db59ed",
+          "e6ebfd063a8d125e76542d29a5665047528159a8f927bddee7e31753e59500e8",
+          "cb373c07c8a54012725a1dd3b5a694216f85f9081fcf1815d393e2625c31e0f0",
+          "149143f7fea23936c892513901401a0b72eab3410b11decf2d64906e1070ecf2",
+          "7737f890cec2a0554128531e12f62bd5e46ab98c5b63f492ef5f7220e78b6d03",
+          "05f9f26b9ef5792f7ba0f1a8fcdf687b7ebef1e0b88118c46f8dc6494ff01c4c",
+          "7dafb169ac6c3c9e99006b8ea974defde809db1580f2dba05fa02df7c93fd872",
+          "ea13308b42a8b24d3a96b9312cd9698a02a3746eabdef7bcb73f2ad50f169f63",
+          "795f2a3646382caa2fa4563e714cff7a189759e9d2c8a7177b9ee6af58768764",
+          "ecb35ffae14b63d6e717883c020283840ef793314c47b1554e64cf4b8a25e63d",
+          "1c548a0031a99cffbe98a8d46ac87b3f100097edaeec51d4c0778e9d933de4b7",
+          "493c62e445d025c9ca896bfd15c1de1815311a632b27a74993a3dd21931d65d6",
+          "b00fa0a48deac5adfc878bd4151c0058d812f5348645137d03faa5d00e45cea5",
+          "764de709c3a7af66a93c1a5bbad8818258405c4f19310d48262f5a493571a084",
+          "14f8a8eb8c6af9fc3497a41f2826d1207dcaf78a31333c4ad90daab2b0a9ef04",
+          "4dd1c87c72c8b4e9ad0419280e8baecb2a95b01b0f2655e635556d3064a036c0",
+          "dd409c53754dcc9b20315a6fa3f06c36c3f1f7c8bcb54832666803d22bec39d6",
+          "9091c914f0e1463402ddf728677601795a8d508f4a6c9ac29ad617ca5eee3c17",
+          "a6ae8307fbf6760fa503c9b373c9d946e2b49e68c2685c0f5077628cee2cbe9e"
+        ],
+        "decoder": "OpenCV BGR bytes SHA256; ffmpeg codec/pixel-format metadata",
+        "dimensions": [
+          4000,
+          936
+        ],
+        "distinct_RGB_content_frames": 33,
+        "distinct_attribution_content_frames": 33,
+        "distinct_decoded_frames": 33,
+        "encoder_command": [
+          "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2",
+          "-hide_banner",
+          "-loglevel",
+          "error",
+          "-nostdin",
+          "-y",
+          "-f",
+          "rawvideo",
+          "-pix_fmt",
+          "rgb24",
+          "-s",
+          "4000x936",
+          "-r",
+          "8",
+          "-i",
+          "pipe:0",
+          "-an",
+          "-c:v",
+          "libx264",
+          "-threads",
+          "2",
+          "-preset",
+          "medium",
+          "-crf",
+          "18",
+          "-pix_fmt",
+          "yuv420p",
+          "-movflags",
+          "+faststart",
+          "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/media/arc33_native.partial.mp4"
+        ],
+        "encoder_path": "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2",
+        "encoder_sha256": "e7e7fb30477f717e6f55f9180a70386c62677ef8a4d4d1a5d948f4098aa3eb99",
+        "fps": 8.0,
+        "mp4_top_level_boxes": [
+          [
+            "ftyp",
+            0,
+            32
+          ],
+          [
+            "moov",
+            32,
+            1259
+          ],
+          [
+            "free",
+            1291,
+            8
+          ],
+          [
+            "mdat",
+            1299,
+            4830513
+          ]
+        ],
+        "ok": true,
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/media/arc33_native.mp4",
+        "sha256": "638d3ad0f60671620ac1b6e233062ee5983dced06f0149dc47f530b939f86d39",
+        "source_frames": [
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_000.jpg",
+            "sha256": "94b9345e40089edc129898304a6f036b3b2fb652b6e57ff7812caae0ed0b7084"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_001.jpg",
+            "sha256": "816f5503b0a34a983e5c41b9171b67478d9da976fcf2ffe7ff70508380fae990"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_002.jpg",
+            "sha256": "b1592ae50b0049685825c3cf87992a3498c9089b17091394d73df15c5b757326"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_003.jpg",
+            "sha256": "827c620f70ea14e34b943dcab2c1e8773ad6ac5f21172674e64d7b4f03753e65"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_004.jpg",
+            "sha256": "2264f08d29d3d2def38d4118a5b9c4048e8c02c6a83a30cd802895af713c3f55"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_005.jpg",
+            "sha256": "1c570dee39408d2cf0777d20a7f62a536d23241726c9b7cb7aaab74262a8c43f"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_006.jpg",
+            "sha256": "8ba666ddfd59dc18d59c714611a068151e440a492e7f43022e3fed63fb9f6875"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_007.jpg",
+            "sha256": "f1a0d281a221fe7d88b69f4511fb0065cd2de622d48ca11509cfe2d6d3fe432d"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_008.jpg",
+            "sha256": "b29ed8928067b7d3768f2dfe2f62b6a9df3d6adebf813d6a66951bcffc59c382"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_009.jpg",
+            "sha256": "07dd11b74f124b06612753d7fc539682449b1f792991d752e66d17c98d1b24c4"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_010.jpg",
+            "sha256": "cc4bb2dfd51db9e48eb22b20cf6b036a153d3bec6995175c75d4d7fa3271a9d6"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_011.jpg",
+            "sha256": "c72a30c1af95c57fbc6ae143cb413adf6eb95fe9f9bcc37e4979003ae87548ff"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_012.jpg",
+            "sha256": "69773568c4466799d6ac55d7f35958f3e7074c61312a94f0d221f383564c2343"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_013.jpg",
+            "sha256": "fa932d2b30dd567b8b41723f01bf5b21c0d2961da323ec9a276e5c34369dd9a7"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_014.jpg",
+            "sha256": "30941cdb651c5e8c868c8706a3e90cb8b20973f56c12fdfe711e6d1b73b17a9e"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_015.jpg",
+            "sha256": "fa23aba728f5504dc28d9a73a619cf6bc2b48be899400824fc2ccf1bb53149d4"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_016.jpg",
+            "sha256": "5c6beec719e4f0620784e44d11188b74d7cafa4fe4593fee9fb8f0374f7cc98d"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_017.jpg",
+            "sha256": "e8e417ae4dab2b3a905729a0f319c7517573feb46d655544eaf691ecfeba1443"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_018.jpg",
+            "sha256": "f219707bdc7186b68bc4dce98f8e417a7418ebf06600dceb64b56bdc2e70267e"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_019.jpg",
+            "sha256": "3bbfb26c438442bb146fd8325fed8000f166a5f57c6ccd946f9199ddba4ae0b7"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_020.jpg",
+            "sha256": "7e59181142160647b593cbef1e8918ea206c2be001d8b4baea134b29f85bf7c9"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_021.jpg",
+            "sha256": "9d6be5151e3cb9da46d4dbb013f99e474ace34317e9993c422d81ec90a0e5833"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_022.jpg",
+            "sha256": "9ba958e8925ce17c9c77aa288e06d3ae6164159c35233fd89ae4d612a00fedd6"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_023.jpg",
+            "sha256": "14155297f9c5763be384e3665c84d7a7e1fdcb6010da1e252cad9dfdf906c51c"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_024.jpg",
+            "sha256": "96db2d2efa9fc20c601d65945e61decf906ad3001753fc5a39ccde7a8dfe0b09"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_025.jpg",
+            "sha256": "dfc657cea38c2522c20fb742c42afd335515bf742c91512766c119466dea1661"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_026.jpg",
+            "sha256": "8739550315c8cec203921785d7a74b6a6146107549ec0953336c185b1a85c6f4"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_027.jpg",
+            "sha256": "419b2cc647cf4f31e88b84c5a9664eff4cc14ea05c85a8c6af0d74b7764c0f7c"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_028.jpg",
+            "sha256": "f85457b53c510f7be1f8df416ce23c6c54be8159fe9c0ffe78091c28649122b3"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_029.jpg",
+            "sha256": "7025024ecc80a7ad357270f44c8490682fb67b094abedbe8570f390cf9ad115c"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_030.jpg",
+            "sha256": "da10d5a9951f65b120bcecc36dcb54450432ee304bc8546895118ae1d6098b9b"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_031.jpg",
+            "sha256": "fecfdc6fb021960644715df499a13f63c74fa76d25a9e21bb850d2bc4d79903b"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_032.jpg",
+            "sha256": "78abf28a7e30a27c7c632c4b772ed5244c7462d6f344502a6a7dcd641e64f303"
+          }
+        ],
+        "uncut": true
+      },
+      "video_telegram1600": {
+        "bytes": 792696,
+        "checks": {
+          "all_RGB_content_frames_distinct_without_labels": true,
+          "all_frames_distinct": true,
+          "consistent_dimensions": true,
+          "decoded_count": true,
+          "faststart": true,
+          "h264": true,
+          "yuv420p": true
+        },
+        "decoded_RGB_content_sha256": [
+          "654fca45c1d495a0a0b2be09dbb8ec91d8bc857bd3c183c8404821b7b9e0abe9",
+          "9f1ccf276d5e76d5d3de873f8d95231ae2b9361f72d8d6a187b20bb9edbc07a8",
+          "4f9012889aecda2e41a14fc615680cbc45e758c9786f537f5d56252aee4f08fb",
+          "ff5c2639ee7e18fb43c5a8fdf1c20a98f9fcf0b6ea7066e6a5bfc539f3a0c480",
+          "272835577873ede2e278b5b12b33c299f1d9df33654603081a0bfe05d9f1ad90",
+          "ba27dcc3bcce08abcfb7c83e96635a25e2eed127241b3e398a75cf5a28668bc4",
+          "0f074607253567b72482c081e6d8584c658ba2273f9a1eaf308a29df4fa096b6",
+          "596d1f6a50854da301af7c0547c6ca3476843a0a10a3c0a7524af5cb9bfb299b",
+          "d1e064029e684bdefa8d3c8c2fb60b59c22b81ebe0e97bfb4431b0eed7e0283e",
+          "b27c0d7e03fa7b5793c84bdb993513e9fcced6d80655d3a8388f8784a77396fb",
+          "752f0ab620f4afb39decba7c26ff40e6aa05e6e0da661544676f2bed2985c80d",
+          "d5e5a1534658d2b730b61647d91cb140b9f25e9b4d16d7bce4125d5acec62160",
+          "549b156d9d81407733d2cbca0bccb5dc3b0611ea956ab252ab48afe632fe15ca",
+          "27108c1654a56a810835303e02c24a4de0fc353e17ab4e6244e0cb506ed6fd99",
+          "ab05135bdefb8a665b9bd0cc9d020993111c4f33e9697a385cd473fd431ac647",
+          "5932024626661cffc91d98a7c79d05ede4c3deead427cd79124e30d6e8a302b1",
+          "55a394f87ae955536b67793614b0f25ff53d6a58739adc711577a9ef8955a691",
+          "9280116d624482bff4192d12b49ad30fe42ec7015556bfb7a692d65753619891",
+          "f230e6f2903dc44d96f92b24d8ba047765bfd66197600f3ea019744b0bec6b9b",
+          "5eda5bc731400e22ec7dce84c2761cd679307f9ddf83a1b0047f676dc557777b",
+          "45bd8cc64866ae015caee02a3d6541f364c71c8f4e9aa816624cc4fb00f917b8",
+          "caf222eec78f3a5434c029416a2742ad0030d56fbb2c9bed52ec398496c801e2",
+          "1e6116d774baa988a2f50d16367769b9df9b79708116d49a4cff11620e0ead5c",
+          "6dfdfa4a9a99c2fedadc2285a0241fada42648aaaed8b0bf0c1277d3650d0712",
+          "ddfee656eceb075fcdfe88c4600eb3e4ae4ad32998ac69a4e3f62bdbedfb4355",
+          "b9433d62b843c2781d2938c5b72d53f59d336af47e606886684836f590261418",
+          "03dc5f3851e6ee7fb2b68e9cb173cae3f96c171a89ae965f91182573975f0f2c",
+          "1f822441cc4059549bd80bb24ece37637251084204745ed97ed294627940d679",
+          "cb8bc5106535868c38a04880c8f5f9c8facf1343fdb5b15401d87249ac4315a6",
+          "7c075d2d90ba6f88be6b2a38e74d42604b2f244e70f162fa4d1701ed9f8fd0e1",
+          "8903f73102ddba78dca1e492c514f68b68eaec59e721ed28df04245da9a0747b",
+          "81dfba12786266e37418c9a56139cb487ff1809c64c1f856f17f95ca60f66d7c",
+          "69e4af8f36071171fb7a4b14afe1e1ad2910f320fc5fbc6be2d029ec55b18cc3"
+        ],
+        "decoded_attribution_content_sha256": [
+          "868e93e6597a9247168d62bee7f794a5f68cbf14f443cff31983663662c00044",
+          "294cd4864c003791dbf98d37e66e65c699b30380a2a234c180a001b67a11061d",
+          "c7dcba73cf340a79fb0e19c87963f3f5699366e1275440fe150ee3e2d6f4631e",
+          "1622883d79742d0734b113a26406ae4abaa623a5c518c9fe752d9baaf3634d54",
+          "13a0b62a1b05f49575da30024983a718502ac5b6b69e639be5e5571f87c8f875",
+          "c59b5b31be1fc53c887cf0ea6cfbba9788e52ac28fde3e726b12795a4f051458",
+          "5a29f137d2d895ded7e50bd1a02cbd4a239c68e2a03b68e97a8b8c2c3267ad7b",
+          "fcbc0c2b868e34bcaffed46994d5faac6ba821fc25eee2c90aa984a67e11f05c",
+          "21fca0b0cbccc7f57ce7a1214fc467f8ffa7f7f044c42c9f89811250654aa9a7",
+          "52a0ab4b0c1878b09b40efbc44ebcaf294847a0519aabc029aea7fb1f4351825",
+          "09c766dce042da68f9a14c241305ec6b9e235818dae658b2c1482dfb47a56a98",
+          "5c7f08c5623d009742b2532c36c95a96872e97ce54fc0bde7f91699b129eb2ed",
+          "7de37c8d7008ef3dfd3d7b6a5473158db237553fce2bc9f7dfc8ff903c5efde0",
+          "843230694c3aef32b90ff85f2be45f06d55f34136e2daaa68338301f668a6b89",
+          "00a657f4fea7536766a5e8a74bd52f5d511b83b0a0f5c9848132396dbf198522",
+          "f57976e638c4342c21313b6de643c2c4e1b671c3d06829a45ef78446fff8dfb4",
+          "7c3d54b4ac956fe19216c61d5c8733d396b0b2bbdd8ab2bfa5d822b9d7b9c51c",
+          "f544c3c5cbf998da0e5853d0bddd75d7133deaccbb681a9c28914da679300a58",
+          "b8c0104e9e72bf4cb4e80d1e83d9408be4676944790d134b6eeee950de80ec10",
+          "b43e71e53e6dc5912148c9b7dea8e78880c94869753ce5f2f3a57efd541c2314",
+          "8709180b937b4a0bf314f2bacdbe1f3f2e47e559a1237f997a72600bab57146b",
+          "9b95378e4433a9f0afe359d55f1019762a76578050483d68b29665ea81b85c99",
+          "44320a10dec2f4393b46c7ce3096e3e8b3bd5aaf12a3bd5e431925220ce2916f",
+          "0f56779919375b1614222e315a2c46d046759ab1e625d465642396d4df999777",
+          "41b0a2931438f6d8344f77522a467a326dc6da44261b82ba09603b721c4feb24",
+          "429cf8c2385bc8f13f69c4ed189b74de2328e8a9b0201278603d1b5434549876",
+          "98bc062d3cb2dcdc1b6734cc930bee6de5add4a8f62d1fec4ea0db89568b1185",
+          "56ae7560a059174c82435b25068b7ba002da7d1b6fc70090c972484572499dec",
+          "187408ee01836917089475b7068c6d3ae4047c91dc1c848c4f88c07e92372dc0",
+          "fd103136b67bfcadb982603f967d43e198516b4e66e45b9c143f717777902934",
+          "f018b8a0e415bf36813e19a6b6b9e765f77591467d39306eb90d3085c4d2e682",
+          "ba75c78c4f8e3149d216bd67c38cd2e5db48b43bc94c4353d8f1098e9c85919d",
+          "ca7e5fe688c8e08b2393c228417e5ee60dae17d751594b4c4981bdb8e1039db4"
+        ],
+        "decoded_frame_count": 33,
+        "decoded_frame_sha256": [
+          "797b96fa7a3c58bf74d05857d2d5964bf9b30e8069b7b9ebc78c6154f3e46720",
+          "d74dcbe429b5188564a42f3db7438ab4e432c5840f522be2a416d5ec4dd2108c",
+          "bb792d2af0c24794e2b161608af439616010de8b0e37bf7a0a7c3a663710eba0",
+          "1d0ce6cd9eb99575f9d50b499a261cc080f8a03b83ca33e456ab7669b5d5ac58",
+          "0b8d5bf89743b08f11dd718e2f1e79f8e3176f426d89655d9baee1dcd36b0a54",
+          "7460217ee940507a1cf31fcd32fcf43f449b2af340f786312fa8ff6c67deb8de",
+          "0938f9c17a5687c3a13e45e6098a52e4d9a53fccdea3d6d417434bfd450fe0e9",
+          "7aa647ad53248d5c782d71310935461d89edfcf3160770884ae270e7cef93696",
+          "c50e5d0b2700f45bf357caa9b83cc530b7d041ad6c47f2c5cceae39761c7d8b7",
+          "0e4378bf02bdf260d4d93a5b268b367a994302053f768b83c6cf9066c381621d",
+          "90d316d4368a073b444ad02e0f59b80d82d4716835e5e4b16c8bbb9213147dec",
+          "1bba2bd61acd67739ae3e74389e87c034f7bed45c791e8bd6f656cbd0719d951",
+          "0a4d7921684bf039775c15b3a4763cc56404c456d14400104ceea36773a54620",
+          "3f7f14a0a40f76c89239042373553c21f40c32c7e45443cd3d04cbd8ac4b4507",
+          "ea84e8f679e84ff31f079af042f52b426d8c76f8f643d8e638ebcb79eedf4834",
+          "783d9a1c536202ed288cffbfb259f32c33869cafd2979ddd90dfcb9ec5441e87",
+          "3eda1e655bc74b6690a0c102cb1ddc448b6e68b10aaf78ba2f4831c0887b2680",
+          "ae96e4189a7c35133cf966cc71f2616a2a091e53f71622c51ba4783f91027432",
+          "48419210d261f9ebe18a471ba328d1d4d3e38eddf1ad942422e08b6466e09763",
+          "4640aa0690d18a063c8ee1076c3a492f1e57f440d3e191c84ebda205c36e8bba",
+          "50de86df9dbb97a7c843f2974a83b16b3b71a0965d7783c63d0318a956c174ee",
+          "2d7151e737d05761bf39b3f95f01798a45e1dd56638da972cf5aaf867dd6301f",
+          "1d80d36c797a1cd3630692a30d3d404723a1a7bf7dfaa127ceff43ab8580ec97",
+          "83adb64b839859a4225ae725d2bcd5277ea0d0452826ad8561e73ea5ad9ce30a",
+          "c8d6b0730149e6999314cdf446a00236fc10b8edd9d42c74295bc7890750ee83",
+          "64a0d770cfdbd1a860a1d019af170200bc4e73f2fa8864d9c5984f1173ee8d02",
+          "a1431a68997e4dd04bbd2cd213d170a28e24583745d409d298209f88798a8697",
+          "c054ce683bf5e02b7f959050bbb85e691936b2f4a11252d68e5c9450823965f1",
+          "3eed5b26362d372b0c5722d1ebc5e3213345c810c421fd53a31ab21a4469203e",
+          "47cb546868a8f0052027ce76228ab8bd02106059348e659565a84d49b09ea760",
+          "ea29ace6a74d24beea7c0a6a8750d108a4c77ebe43d321967aae628e4a2e9b21",
+          "557e394b1f3075a631382e191361af4decbe5ef9807984605fd07b32d7598e5c",
+          "3ce05df29440194ab76c85ab978df31def3c14f3f0bc9132e3f7c8145dfedf90"
+        ],
+        "decoder": "OpenCV BGR bytes SHA256; ffmpeg codec/pixel-format metadata",
+        "dimensions": [
+          1600,
+          374
+        ],
+        "distinct_RGB_content_frames": 33,
+        "distinct_attribution_content_frames": 33,
+        "distinct_decoded_frames": 33,
+        "encoder_command": [
+          "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2",
+          "-hide_banner",
+          "-loglevel",
+          "error",
+          "-nostdin",
+          "-y",
+          "-f",
+          "rawvideo",
+          "-pix_fmt",
+          "rgb24",
+          "-s",
+          "1600x374",
+          "-r",
+          "8",
+          "-i",
+          "pipe:0",
+          "-an",
+          "-c:v",
+          "libx264",
+          "-threads",
+          "2",
+          "-preset",
+          "medium",
+          "-crf",
+          "18",
+          "-pix_fmt",
+          "yuv420p",
+          "-movflags",
+          "+faststart",
+          "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/media/arc33_telegram1600.partial.mp4"
+        ],
+        "encoder_path": "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2",
+        "encoder_sha256": "e7e7fb30477f717e6f55f9180a70386c62677ef8a4d4d1a5d948f4098aa3eb99",
+        "fps": 8.0,
+        "mp4_top_level_boxes": [
+          [
+            "ftyp",
+            0,
+            32
+          ],
+          [
+            "moov",
+            32,
+            1198
+          ],
+          [
+            "free",
+            1230,
+            8
+          ],
+          [
+            "mdat",
+            1238,
+            791458
+          ]
+        ],
+        "ok": true,
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/media/arc33_telegram1600.mp4",
+        "sha256": "9be8f2705f6a227fc3b8cbb12f4a6e6f683dbdf95879ddf28af8c49be68a1668",
+        "source_frames": [
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_000.jpg",
+            "sha256": "94b9345e40089edc129898304a6f036b3b2fb652b6e57ff7812caae0ed0b7084"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_001.jpg",
+            "sha256": "816f5503b0a34a983e5c41b9171b67478d9da976fcf2ffe7ff70508380fae990"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_002.jpg",
+            "sha256": "b1592ae50b0049685825c3cf87992a3498c9089b17091394d73df15c5b757326"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_003.jpg",
+            "sha256": "827c620f70ea14e34b943dcab2c1e8773ad6ac5f21172674e64d7b4f03753e65"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_004.jpg",
+            "sha256": "2264f08d29d3d2def38d4118a5b9c4048e8c02c6a83a30cd802895af713c3f55"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_005.jpg",
+            "sha256": "1c570dee39408d2cf0777d20a7f62a536d23241726c9b7cb7aaab74262a8c43f"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_006.jpg",
+            "sha256": "8ba666ddfd59dc18d59c714611a068151e440a492e7f43022e3fed63fb9f6875"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_007.jpg",
+            "sha256": "f1a0d281a221fe7d88b69f4511fb0065cd2de622d48ca11509cfe2d6d3fe432d"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_008.jpg",
+            "sha256": "b29ed8928067b7d3768f2dfe2f62b6a9df3d6adebf813d6a66951bcffc59c382"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_009.jpg",
+            "sha256": "07dd11b74f124b06612753d7fc539682449b1f792991d752e66d17c98d1b24c4"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_010.jpg",
+            "sha256": "cc4bb2dfd51db9e48eb22b20cf6b036a153d3bec6995175c75d4d7fa3271a9d6"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_011.jpg",
+            "sha256": "c72a30c1af95c57fbc6ae143cb413adf6eb95fe9f9bcc37e4979003ae87548ff"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_012.jpg",
+            "sha256": "69773568c4466799d6ac55d7f35958f3e7074c61312a94f0d221f383564c2343"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_013.jpg",
+            "sha256": "fa932d2b30dd567b8b41723f01bf5b21c0d2961da323ec9a276e5c34369dd9a7"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_014.jpg",
+            "sha256": "30941cdb651c5e8c868c8706a3e90cb8b20973f56c12fdfe711e6d1b73b17a9e"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_015.jpg",
+            "sha256": "fa23aba728f5504dc28d9a73a619cf6bc2b48be899400824fc2ccf1bb53149d4"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_016.jpg",
+            "sha256": "5c6beec719e4f0620784e44d11188b74d7cafa4fe4593fee9fb8f0374f7cc98d"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_017.jpg",
+            "sha256": "e8e417ae4dab2b3a905729a0f319c7517573feb46d655544eaf691ecfeba1443"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_018.jpg",
+            "sha256": "f219707bdc7186b68bc4dce98f8e417a7418ebf06600dceb64b56bdc2e70267e"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_019.jpg",
+            "sha256": "3bbfb26c438442bb146fd8325fed8000f166a5f57c6ccd946f9199ddba4ae0b7"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_020.jpg",
+            "sha256": "7e59181142160647b593cbef1e8918ea206c2be001d8b4baea134b29f85bf7c9"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_021.jpg",
+            "sha256": "9d6be5151e3cb9da46d4dbb013f99e474ace34317e9993c422d81ec90a0e5833"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_022.jpg",
+            "sha256": "9ba958e8925ce17c9c77aa288e06d3ae6164159c35233fd89ae4d612a00fedd6"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_023.jpg",
+            "sha256": "14155297f9c5763be384e3665c84d7a7e1fdcb6010da1e252cad9dfdf906c51c"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_024.jpg",
+            "sha256": "96db2d2efa9fc20c601d65945e61decf906ad3001753fc5a39ccde7a8dfe0b09"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_025.jpg",
+            "sha256": "dfc657cea38c2522c20fb742c42afd335515bf742c91512766c119466dea1661"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_026.jpg",
+            "sha256": "8739550315c8cec203921785d7a74b6a6146107549ec0953336c185b1a85c6f4"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_027.jpg",
+            "sha256": "419b2cc647cf4f31e88b84c5a9664eff4cc14ea05c85a8c6af0d74b7764c0f7c"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_028.jpg",
+            "sha256": "f85457b53c510f7be1f8df416ce23c6c54be8159fe9c0ffe78091c28649122b3"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_029.jpg",
+            "sha256": "7025024ecc80a7ad357270f44c8490682fb67b094abedbe8570f390cf9ad115c"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_030.jpg",
+            "sha256": "da10d5a9951f65b120bcecc36dcb54450432ee304bc8546895118ae1d6098b9b"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_031.jpg",
+            "sha256": "fecfdc6fb021960644715df499a13f63c74fa76d25a9e21bb850d2bc4d79903b"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_032.jpg",
+            "sha256": "78abf28a7e30a27c7c632c4b772ed5244c7462d6f344502a6a7dcd641e64f303"
+          }
+        ],
+        "uncut": true
+      }
+    },
+    "mic": {
+      "video_native": {
+        "bytes": 3588985,
+        "checks": {
+          "all_RGB_content_frames_distinct_without_labels": true,
+          "all_frames_distinct": true,
+          "consistent_dimensions": true,
+          "decoded_count": true,
+          "faststart": true,
+          "h264": true,
+          "yuv420p": true
+        },
+        "decoded_RGB_content_sha256": [
+          "c2ca956ea44369588bb03aa4e27d42f8244c49421823b2b5c828e60f536c820e",
+          "c6cf87ce6eff17bdb40c4071ea5826b0eba882a48e3db4dcc3556c2d67a266fc",
+          "6f75ce13dd2d2c4574248f5f888ef513b90461d1aafc1e0d1b7003829fffff9e",
+          "14899247699462f75692fde021c1bf9f912eb093544e0e3385f876076d4742bb",
+          "52db51f3bee97d269207c5cd775cfe04a434133e43ad6b0c6d2e53f826256285",
+          "898bdd0572be338a73eecf6ad3987cbb2603b0b0f1a16553015c71e495a7eadd",
+          "2c9a744dc27d97c539c1d091e7a5318592647fa90b961d382c82fd80c5015f16",
+          "e5af8779c8674b908b82f446241788029777f9f10adc31c73bea58ead2e7fda9",
+          "09e802eddfaa53c6a10e7cf09c9462016e6a120b343366b042d93f5f219955dd",
+          "990941581466be2eeba6be870b4a71a0c790bd8dd9e7648f53b6f6183b60e575",
+          "debf19e6988e4f20cdf6aa6a776516d59f28a4ce3c844b82c2e2e5d72b6b5854",
+          "08c1c7fb4084a60c8f890ab9fd26c133a9aba5326e68b5a69f85168e1384092d",
+          "90fe3dd092fad3ce7e1e4ff6199518ac810633d0c9f99c76b58c2de57257c103",
+          "88a98b2bd204c5be81072881db164f9d1fe42b3bfbdb9674a68f53c6a4d03f78",
+          "ac802e746ca268318bbba4c05b3f4e5711916a2c409a6cabfcd26adfc1f2635c",
+          "41112cdb59a49e0f9a3c7305109c9cb26bc38de6839d9508e73931219d11a9ea",
+          "1f1a34d7b6508b0d52c239b771d64fec6b79ef19f91cbfa6cc29705f0e9e87a7",
+          "59245e2a096f8787537ee82fd7afdba9cfc8f94b99ccdb319cdfa8f1b85a8253",
+          "e7e092a743aa5273b683af44ecfd6595948c29c9be8eaa58557503d5019e5e31",
+          "5c1b1da6b64ec0d58d54648728221c9a6ade0ba8840ba2065bf53e2820bd7089",
+          "7ccb06e47c692d66377d4855db848feb734b1c3317eaa6c3456279805948e343",
+          "27f5b8fecdf013230f0c3dce3f4f8644d2b87f61b3667cbfdffe93d9f8ec8a4a",
+          "20d349e906aec661bcd323eafa1b96c0e3adf69e3ae6a013a1851bb323702e50",
+          "1a62eaeb87174c369967a24893732760894ab591bcfea416213f9dc66c12a8ff",
+          "689d9d086e087f26405b0692ff0cd31f96f952075973b8edd0a548e3830eb006",
+          "6c31f5ab5c28f13e5f72cb4d48e5f77daf9d61bb7686774235ef346e435823c5",
+          "c91faec2d35e8ce419028f2ce167e0d594d24d72cec6df87900096abf198fdcc",
+          "205ad77873302f80274bc4947aaec0be96def74b4aad09857714789ea762e834",
+          "df7e2b42f8427a2e5bf4890ea03ce2423e52d2859fb9d47bb43e18c1b26b77b5",
+          "bba7b244cb91214df9a282bbe74abb5bd48769546b5a8e2ed8b52b82d1bfa1dd",
+          "ed8946e28d94b6ba6198280430aa0dd91ab2ef28115ecc178e28724ad6d391ea",
+          "d6bdcaf0aef26e1da1a3ee59501eaa477fe9688c800b53d18bb54ec62696c162",
+          "9518d606233b88112b909d2c538a16cda448a9843e8de7e66aa6e389084c8957"
+        ],
+        "decoded_attribution_content_sha256": [
+          "24360f0e643d7880b00345fd8f37eefe9a422aca3e5209ecd743cd3187dc498d",
+          "45ee7932b34ff9f3bb0dc7128923308c5cad447b8e96c2e10cd9fecde1423647",
+          "8793c30c3d71d6076f720d189b1bfe395f1ae39aaf8e9e7f22e5a20ba294dd74",
+          "b83d781b086804593b93d496629abe3d2bedd394287fdb8c19f5255868e09212",
+          "591835719e09ab3a6fc11700c1f7f6a7f7a74276f68c559cb4ff3c133c544dcf",
+          "cf9c402430af8cafc935b8f714eb999066f8242277b3f634bbfb3bb1c8906475",
+          "cceda82562daaf64e6df0f98702f27597909f77e0cdedb12bdbc3dbf1bfcde51",
+          "0be5d7915da12f6a29fc5fd6d5013e7736bbb3f5989e44f03a15f41023e46b61",
+          "cabbd787eabf09606b176ff983ee0bad402866e2bbc3d53e294330d129aa1a34",
+          "54048f68834f51a1254599158aceb7959fdd7bd17c48ab49c529bc9bf42b95fc",
+          "3f661ea4d0e339eb6f85c81757eb409575122b8c03ffd7834c0596fb937935e4",
+          "b9fbbf634b1ae94380e6943cda8a006d8cce4d283ee1ebfe287ea34b02c1b62a",
+          "0b9d36f35bf04d408cb3dbac4f352f5d4412adf95bcc3306277bbca9e98231a5",
+          "33dd84b045900f960c338374266845f9fbe37ea2a2ef40a2942fab8750486dbc",
+          "15056676056c2ab114a3d37463cb7c8f29394e70588d3bc911b9a212dd46f6d3",
+          "877b8378ba96ff4d3e4a2af85f880baeffc4ef6010cc810c19f5d628a687a3b7",
+          "e76757f745d3ae087414aefc6a8daa590c8aec298c47a748136e2cfcc2fd3b7f",
+          "0f37f4039f51bdddba631c2efb0a8272ba271bc904b2f0c95b140515fa413cfb",
+          "fe0ba5ef3be015296e6b71678b4b241d32614b245dc1ecd95f24cae786b6ba36",
+          "a86a411d69dd39f0d6484a82291d84e1770048ebab1f64d03cb5da6a5c9218dc",
+          "0b0fb2217aee685f11ef068402ff056c9a1b5d104a53a47271bcd987a667df8b",
+          "f1153c7d99f7811101c3c8aca1f55b1928827dfcf8d4f8e60ffae6e6001b3abc",
+          "4078301a39952ed93419b3eba1a76f40110f265554bcff977c386b0a63f8cb4b",
+          "ede64274bac8fbdb613534644e8d5e979d6be3d2613c5b728a366d9704221203",
+          "e19fae8d757134da4d573e184f87a5bb415ba6c17cd14b41e02b0f63d1db0b03",
+          "9175f5914210865df165fda9336f018b2decc27d71cf215c670b87bdc9c0a107",
+          "9ec99fada165bc703c96a905eae609b85ab0e39e2643f44d272dc84d62d5486c",
+          "6453b86a6651b84c56dd24be6dc3b8ed945c6d8fdfa16365fd5083085f103cbe",
+          "3e9dc67425aad1d9006d4053fef416386af79617e2187cb6cf375101a78074e2",
+          "98e261e0415d13b0d29fe7ce7fb0816756af0e09865878a09f75791d776b3d65",
+          "5d89e7af7b36df8054570ea32dd9f99fbbeb53caf1417b0f4aca88e182e24e16",
+          "ca9c99b013b32b64ac2b4f4b3f06dfdff7c82306f26c0d006cd224fe7adc989f",
+          "085ff61b5589de03dfd8611faed8c361885f872f15b9fb46e49e0efc39c0b388"
+        ],
+        "decoded_frame_count": 33,
+        "decoded_frame_sha256": [
+          "aac40dc1bb830f18ecae552efb0ae33ae08678571e5f609ec8a53efbbc468747",
+          "6de8d0b0f54f4995f9ae0ae66952fa7933c724ad9707ab80191f4953cdcff9e1",
+          "241615e8cb74dffd87549235aac24cc580e758d0816da6d0e2ec8bb95492d289",
+          "dc2fb8f3fd6e38811d1bd60931c100c597ac3ea9187e39db605f85c2cc1f4599",
+          "4648b19ccf89e342f7764b6a763843ea66add4d1ffcfb9f834a33a30980f2273",
+          "5989eba097fbdc5e1b3cc53a8eb08dc2d4244fe15fd65b80d8ce8c5d95b62ba1",
+          "17e29ff34aeda3f931a5fc2da688c987a989f27c257b152c2d650dd7b444b35d",
+          "0062610da2952fedaf55f1809db776ba34f5cedf1af7eb26169a9468ad9fdfeb",
+          "8f1b566705751dc0bf35c61c62bc3f2f1bcc95de7e34e51386be6dba5b15459c",
+          "1a3ab77ed1de566dfa6e6a4638bbb9268e5c203c66e63d8132c4365835aec0eb",
+          "6b76ab369a630d7e0bc2d1c23f42b63a5bdcce9421f5917f304a1334840c59dd",
+          "6bf5f3e67ab4ed380c241c974dd11884a060a1a91bac5adf80161d37bb26e8ab",
+          "0055cfe086a7de74b4190cbdeed21849b0810d761accbd98b2c8604e8b2c9bf2",
+          "b067154114a5a43f82679e27b298d4a6f9247adffb61702b04e912dba32936b7",
+          "ffa04a4550aa39d781669bd341d70da92f84a37fbe135f75e4d20215e40bc9f3",
+          "5fde07d0c3c2d336288cc7ba42f313ceb71e8a61b9cc34ff2df0c6f6858a3b3d",
+          "a3ef3795499eafcc54fb1ad0cbb15f7b77f581b5af22acde2ea66be0e3e7955d",
+          "bf84289d5fb1e9478ebf6c74c49cd51ee8d336fbad1495933f88ce470b210094",
+          "179a6cf915b74a878cb71b264c832e25cb64d6a8c5279943646fa2216b1cb9e2",
+          "50aeefae96c8daed1e70d0b0c367b22581dec0af351f3c4a7df9a813d273976b",
+          "d569cc1381e43ecac9f16db58227f0640d71a8626a14f28c1d5c488c7611e8e8",
+          "fab2d14e30286cf9cfd8476d246a5e8fd7a5fa4a0742fa004f93016184cadd6c",
+          "8c784b8ab344e1778ce645b02bf61cf76f200a1de10df4c507d719883c82408f",
+          "6e564abaa34ddb0cfac930c91d5c9b8161f1a31bf0e4ff22ae927446d2d0aa81",
+          "a24d3b15309aa7054bf9e743f6bec0bdeb2e25dc8feca56b4c5b74d32f102be4",
+          "4c8589da3dda537f669c2caa9cf2316e989f9f7c3be95e3c25bdc62a00488c78",
+          "a41bd58498b18328fd0cbfbccdd0834a07d7977a32c25566aafc984a9c271fd4",
+          "20ffcc991f921d62c4965bf696f63e9362ad614218e5c52abf53d033beda0b9d",
+          "22d6868bcde5e924317702e2d8554b177b489507435e672e21f77b5fb0c8c925",
+          "36d2f7b77ae9f8a19df9c8bd45c27e2a2f9c47f9c97bea22ed31ced82e02772f",
+          "da6d5d776731e48b1f8288584d483a9e878fb7b60a18faeff33debe66d432b18",
+          "3b162d5f833c9aaf21b9cba4028116d38c86def6f426d27a4342a26e507b9996",
+          "f8aed1d9c391c3e46e9c8ccaf399d1eb73277d530995b9d1b9eb791c7bba4c54"
+        ],
+        "decoder": "OpenCV BGR bytes SHA256; ffmpeg codec/pixel-format metadata",
+        "dimensions": [
+          4000,
+          936
+        ],
+        "distinct_RGB_content_frames": 33,
+        "distinct_attribution_content_frames": 33,
+        "distinct_decoded_frames": 33,
+        "encoder_command": [
+          "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2",
+          "-hide_banner",
+          "-loglevel",
+          "error",
+          "-nostdin",
+          "-y",
+          "-f",
+          "rawvideo",
+          "-pix_fmt",
+          "rgb24",
+          "-s",
+          "4000x936",
+          "-r",
+          "8",
+          "-i",
+          "pipe:0",
+          "-an",
+          "-c:v",
+          "libx264",
+          "-threads",
+          "2",
+          "-preset",
+          "medium",
+          "-crf",
+          "18",
+          "-pix_fmt",
+          "yuv420p",
+          "-movflags",
+          "+faststart",
+          "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/media/arc33_native.partial.mp4"
+        ],
+        "encoder_path": "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2",
+        "encoder_sha256": "e7e7fb30477f717e6f55f9180a70386c62677ef8a4d4d1a5d948f4098aa3eb99",
+        "fps": 8.0,
+        "mp4_top_level_boxes": [
+          [
+            "ftyp",
+            0,
+            32
+          ],
+          [
+            "moov",
+            32,
+            1159
+          ],
+          [
+            "free",
+            1191,
+            8
+          ],
+          [
+            "mdat",
+            1199,
+            3587786
+          ]
+        ],
+        "ok": true,
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/media/arc33_native.mp4",
+        "sha256": "fe0b974bff745b1d9cb389b4ec2403334727e4ff7b01e6fd52411b07eda98420",
+        "source_frames": [
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_000.jpg",
+            "sha256": "9f20f145647c27b7bc9838ed9277313b746f33e2d400479c7ded4b19c6a19866"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_001.jpg",
+            "sha256": "25bdb6c9c664842143ba8e46425c7cbc8d41a972168d425bf859a9f25330a7c6"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_002.jpg",
+            "sha256": "476145f3fb292afbe89129329f2cd1aeede70c016fb4fd4b7ee405287329bd58"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_003.jpg",
+            "sha256": "094f309a79a6158b57bc68cdd9560ae17eabdcdfacae43f2d2c6bf5445301266"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_004.jpg",
+            "sha256": "01e835dfce473427e4af7c9b5a4ce62dc3a15cf73ec1550cc703d9bc48081ab8"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_005.jpg",
+            "sha256": "3021ecfe58e50172287159500f79500084e7e8c5ac5f645564aad37e06e4baab"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_006.jpg",
+            "sha256": "ad36248c1da5a56f5d8abf647d2fd2420f0dab26026d6815725e92855e025eca"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_007.jpg",
+            "sha256": "56f58c84e18149174469a48c4b149f5e45035ad76ce0a5f5f4656a5c1012a95d"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_008.jpg",
+            "sha256": "3afa7bf621fb3fa3bc277330d02edf21035f098dcf940d517303831511df10a3"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_009.jpg",
+            "sha256": "14b370334416783cb82b97f2a4a9d81ee8807ada432f06dd0cfaf70e76b6cd00"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_010.jpg",
+            "sha256": "e742bf2c618714911aa14fac00e4993a2e80e11155c4591230179f72cbaec3e9"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_011.jpg",
+            "sha256": "e1163db5eb649407a8bd0e02f82d347ce8b651fb6e0c35c56de12035218f7f25"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_012.jpg",
+            "sha256": "f087372bc3a6fde8fab4ebe1d185aaa054f22ecc5ea29194a82159a10eb03a15"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_013.jpg",
+            "sha256": "f11ba2419b850574236e4c50ea38cfbef53dc66abe63e8f1a333013619838133"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_014.jpg",
+            "sha256": "c2dfcbd5f055196f6ec78cb40df8465b6251bf8470cb252db00523ea6fb3a3a1"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_015.jpg",
+            "sha256": "95806968d9835826cb63d4464b5ba481fcda20da5e2172f36e842bcdb18ac664"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_016.jpg",
+            "sha256": "1784c1e1e9d2a51e473f822160680d0cfe060a6bcf472fcd8af16410dfea068b"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_017.jpg",
+            "sha256": "5e8228b0cf8d2a621d406a419aa26ff2a21d9ae88a42a6478bd601165ef854ca"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_018.jpg",
+            "sha256": "3660857c9390886a12bd2ce220286d248353ac0e79a41c0a1c733b1e2fe0f477"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_019.jpg",
+            "sha256": "a1f41a376682dc227b27f201c8d6c64510a12decc92f5cdef037678d2c78fb62"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_020.jpg",
+            "sha256": "6a8b6337d2eaa2d5afb3aaa0154832872a712e481b5ff2661c54cbeffdce9448"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_021.jpg",
+            "sha256": "a6d3af66e96bb03a1144933195353752c90ca8f0e5aa1709b72c9698e09e8434"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_022.jpg",
+            "sha256": "f540db88881da658c388e6c192c08c86a96f12ce0199cc63399b3113c652351b"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_023.jpg",
+            "sha256": "bc22e153cb4742df095d68aa5879e8d0603249c79a593ad5506f6dbd4dd03c94"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_024.jpg",
+            "sha256": "59d6eb88cd4f148ec632e1edba4c12be4426fc7c99e5e759436891f1607d8c72"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_025.jpg",
+            "sha256": "249c31816a987db9f53ffc7cecf9d2cf0ec8444bcff34eb3a54bf5c6f18a8d9a"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_026.jpg",
+            "sha256": "40ae6b22fdfc3f57718d9bce911abb6dae8910cec173a28577d157e2b2d44334"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_027.jpg",
+            "sha256": "337acffaddc355063e3891b9b34a6595adb0334396a86a68ea43945fd0d06b41"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_028.jpg",
+            "sha256": "d4734c9af3edb807f1795bb8ac48043dcc17b28a2d27519a394464a0078b418c"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_029.jpg",
+            "sha256": "fc630062b1a2914a2dfd91ce8c45329113f47e4ecce2c43f6ae403ab6127d2ff"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_030.jpg",
+            "sha256": "a1e959c02909ce7b218c073ce237f3b8dca813230fcc94414875c7a0fe1390ee"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_031.jpg",
+            "sha256": "8806a23e6a546b744272e22041b717c379c1368d6d6dfb58ad311ce70f1ec23c"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_032.jpg",
+            "sha256": "b9df0bbbadb9ba43dafac2c31adaf5ae3ce6b3202e913cbe0b5ff21422cf11cb"
+          }
+        ],
+        "uncut": true
+      },
+      "video_telegram1600": {
+        "bytes": 621229,
+        "checks": {
+          "all_RGB_content_frames_distinct_without_labels": true,
+          "all_frames_distinct": true,
+          "consistent_dimensions": true,
+          "decoded_count": true,
+          "faststart": true,
+          "h264": true,
+          "yuv420p": true
+        },
+        "decoded_RGB_content_sha256": [
+          "e50bdf57f0c627e98fe4f9c17f7e3b681e5341093679c5654a94ffd833bdb092",
+          "022928f96496c22644589337ea85cae22ea074102b9aa13f4cf7403ce5771340",
+          "44cf5d7af0b1501e72da3dcc64291e2336709bd30220131b8f1236d6d63fc9af",
+          "93f0c8f879776ea1e11d6307bb74f99ccd880220fa4927abfffa0761b89de50e",
+          "d4a1d0aaff17d03150d0e350a30f3c12a3e61c2bcb1c1fad093393bd1e252da3",
+          "f9f4f9439b3a9ddb388354eca0e0a5fa22fb607d2511d3364ea08e89972cb5ec",
+          "b1c18405fc97e929b06b42ac233ef5474a59e2f79ae6d540696d0a54d7ec713f",
+          "749536429256e9c24bea9b469783c3b59482136f90f2566590370d8cd6cec22d",
+          "6320d00f1060f0a2af4386709b0c380026150d9e3e15922756958bf0447f6fde",
+          "3bc56c0c2b66e36c3b6f064f3ea95bb28656975a6ead25bf45e77c1d9412a8d1",
+          "af8dd5c5cda476ff4636da4f4c6215935e08f3529b05d7354cb78d78af78decb",
+          "2807dec3c72c6d805c572195284141621955e783569b03d568feedcc02c8f60d",
+          "9e48a8069adb92b2bc843c2c3f73921e629a37724153bb8ca80fd11d07de68c3",
+          "3c77a793f71c89d2c8a1ae9afa2034a1252f9d9b8012925de5a52bdf193e6398",
+          "cc5e2a99ba1e17f13d332df3e05f6ee02d354dbcaedadc7fb8ee55f5c51c1907",
+          "b7f09945be081565169cb7559893647133682ae387ec36b102ee9da3fc5ca38e",
+          "4c05f3e7034db5a853747055f8844a410203b90cc3bbcb53ff3f19aa9372e97f",
+          "25393601bb14e5f47bccc8b21ab4d80154920505220458e7197c3cf7898b0726",
+          "aca5c77e90e4678cebd87a717d8191cd30e7eeb89f5bac60fca64c9a4aa97c4d",
+          "ad852502b0d7c561473d4b232ea4066b82bdff16d170fdcfc1c5a2c10669d058",
+          "62bbac848d1366bdca0080ce187fc4bbc405c31ac873a25ca82dd7fc1107dcf2",
+          "dfea5c2482d682774fd76e5daa2d813559873494115a45aad00cfe279ac1be25",
+          "4045e39aa88e652e4b712b47bbc0371bb76b635759585fcd89c018a3320ba0d0",
+          "b3dd957c8f0e672714d9b4f41f2a1ebe97b1e6d78e298744028d87da7575dc64",
+          "e82e9fca3359fa1d837cc1295d52d13ef47b2317a08e949e1e96037e36e7553e",
+          "2c7bdf2161daff20c6cf44c600cf2cef9a63291cb08a07217ad9fc82b9b6a61b",
+          "bbe8e0d8f816d2b5562e4ad5a47cdb402dc0c63a0d6938cfb73a5e9b1d29ecf4",
+          "e6f18245a88b2b81cf7c8d49a0e782a792ed41588622639798a068ac0d38e311",
+          "10519b12dfcbb0417ef5723065bebfbc9327bb20f93cfca642d480e60cb9c68c",
+          "0ae69b325196a5f83e9e87b639d4df889f483b30d048377783e0261637031d8d",
+          "1c1cbdc0cdd78e921a3f981431787088db5563d984ebfaae0b356748faa18986",
+          "1a068a713ad7025e2d6bcd72b8f2c02e7101fc3a6d37157396e3766a3fb72f81",
+          "8e20b9896b81335e01a5158bba614614333d737481412088f67792c2b804df61"
+        ],
+        "decoded_attribution_content_sha256": [
+          "669e2fa6d77a5bf347e198a57070c5626fb676aa0a404edd06b88b3574170a4d",
+          "d8b977ebf9bb288c15356e21d85fe40cceebc55d03bf82508cf3b0e2240e4355",
+          "60f6a6d1138b2f8e25052aa3f6402f70d9256f39af4b1b355d71d7d5c98fa20e",
+          "70498f6addc61153392cb7ff8c7a9ba6ed1cf9731ba6bc10d9c8c66ab6747dcf",
+          "f620f7b7fa1aa27d71775f7198829cda1f505c9094f3444e38cba8990ee93321",
+          "13f0231fa68603111a827e6bb94a04bfe30d6f987a12d4625450afc3fc56fd27",
+          "4d238c6aa65400b0f200f25705a3cb1ba5e569f108f92edb7d080405ff4fc5ad",
+          "7682080589f00d71a6b09bbfa02b98f58a66ce5aecf6e457b77556c43d2bd7d4",
+          "24a4b6a1028aaaf80bc1769a83e314b01a7b1282369714f85c0bba9bf851f021",
+          "449d9b14fc25e29e80e321f14330af8334289a663ac6037a4e9b64c9eff9f7a2",
+          "9c0797df7e27943537e421c3e6d21e0371ee2cf632628ba88b9f842bf0a95d2a",
+          "fe23089b431ccf1353283df737a384709828fd36d84b4d65200a719939d06740",
+          "38fef206206a25ef6556acd618ea4b7c7c264844ebfb5ccfffaf510ec13bcec6",
+          "3e5dfa5c09c9400b93a19d3baa32cace76f33c025fe882a5eab2a115bfbdd422",
+          "338cced157c59d98189d27c0ee4a346e6ccae9ce8dc9f9d4c4d7caa88611a9d3",
+          "c20edadbb55325cbc9a6e1d4023069e889170ba033493e2de14282224435705b",
+          "517872e5358565a58c5c2438bf8485017521eb6589142fc6d9d6ccd3b2d52b47",
+          "40d84dff906b2afc86cabc3faf279efd8119acb516296a5ab2245c7402e64b2d",
+          "72ce31931575d5f399619b11abb6208fff9a4d93bcbc3cd1c710b7c490a66b63",
+          "2ffe60e1d26b840f7d52088cf895eb1910c688a0c077143b0d946bda986aa544",
+          "eeca6c14333a1f2bd86dad794ad6e57a3aec20c7e0adf08b49fda02028f5743c",
+          "e6e0c98189b31b016dbcf079585dd5234702266c02cd2f5cc29f0f994c942526",
+          "cf4bf202f7d4e2bba8f31a6436a1fca7ef88dbd5c6ad04b899a8056dc55f5ae5",
+          "473e9bfea458dbe3d4fbb0bb1dffa7fb2f60a01fd20badf0dfb949e4be29c4fd",
+          "318fdb1d67ae1706d7d869de46c2b2f123c2162dd609b6bf2a82e59e33b8e18a",
+          "f3eeec0ca21c7f0121a093a6437adb503b8b122ee5d16e7ac9e525550721964b",
+          "a0e17e6dd5a952fdc4eb9378cc27c92357619b8b8edcb4e6ff59483fe11aee22",
+          "0a16f9b503523a164c4d3492367708a8b68ce6d2506dc979960ad94ea2f26c9b",
+          "b9ba55c0e7fcc19282beab954f35ef139e397512f32c3643ad07de590e9b6e28",
+          "845ca0d91a0d2a85055eab25673ec3f2feb6f545516d348b25929913ba6b3d6a",
+          "1e941f8bc00b671480f9fe8f89862692a53ede6e964edbac024bc2c0e8d52f35",
+          "1cb2cf06fd34baa9ebb20034c803b1591e0e884b520695c843f9da8ea61bec9e",
+          "9d890a26b6c23c747a209a7240032d84514a5cd9ee9ead19049846f5d352e3bb"
+        ],
+        "decoded_frame_count": 33,
+        "decoded_frame_sha256": [
+          "7e40268446141f8a58dd3e6fbbad7eba0b946ee1eec35dfb49708780f8bd3758",
+          "cdf2673ceb00aad557bfc3c63f6422ef36614af11616f3da8370d1de6df48514",
+          "9d4d9bdec0a9685c99b0ec37114990eea6e0b512ee2259171125bbf12b909615",
+          "d673e268a1fd28fd622250251da07c4bde49a968c3c1cb4c2571a028a84535e6",
+          "e129e0a7225ea621324c3fa1db98ef67616a5abab64f4c6a7e903eb6ee034109",
+          "cb4dcee1cf876c7bef574fe9e812b4ed0b7e3d375f15a4e6a84bedf0956032ab",
+          "fa56d90d1c5118a93fb7a744e9924eb10c1fb91b5c5e52bde710a1ad5a71219c",
+          "b075c5489b6396d1dab6b57989ffd71c4d6214fb6d18b0ea4e74de045cf5b1ed",
+          "34f3279b1c3158bb043995fc8cd0568c9cf43e6be9a001da37eefb9306467bef",
+          "d82824c65571fe209706a5fa9da8a6cd7ccab0baae86e140cae2d5a869e5b90b",
+          "155b2fed6459fc9baa847ec8da8a2242f18c07dc6eb82d6698d5cea1253b62d5",
+          "389fc4a09c4af3df6b597b9c14fc01dc688a1ad4d93b27ea202c71c8ad68578f",
+          "9ef819a1567f9f76d55e9e783e98619bb0216aef529ad70f5e531479be662c50",
+          "07eb34d8fee07d57890d7a362ceb529fd979e439d2ab5d10085c7c4d4d9c1cdc",
+          "d001ade889515784a97444a57ea8c3e13fff8eac2bdf3c9b65041f105e4ab673",
+          "9018ab3e2aea3260c7b2f780f6055d84d7d030817569a69c37e4dbc561430187",
+          "1955910bab5f203f736802e18f89419d00130862733f3807d4832809523ca505",
+          "b2b98ef623e27a3179de3120dabcfb6590bae431ba117418dabd1136a24e38f7",
+          "6dcd70376d464293aa669613931acca4b4deb96d1c97c5b7a36f92f09c64245c",
+          "4fd8817f105bb213670c993ef76ca39bd6fc346d4a04f35e83a7489da2079c74",
+          "1e8667911409f1baaf68b962ce371b65f9892161c325f150a0a0cee3a039b26d",
+          "8865c5f0897ad54acefb964d6b36544377b3b5a1fa0a3d5029ffe3beaf12a5e9",
+          "a897349f52a9376b17df47136d5c9de936997813be2f0fc1b8890d9c17955a36",
+          "16c865e1e6d8112aa7bb8c24a78fbe08878c382ab2db7b68c4ec6bc73e0e06e3",
+          "b138b9405e4793cd6d9ae8820382150a3cc287dc0ebb602d6c3bdab04624f1bf",
+          "bc8be99babfa181888816249a52617b8a4d96e030e2ed258e4bec4a2fa93c773",
+          "d0ae4fa98b01657e4b69f9153f83e77282d982547968c694d73bab9dcd48576e",
+          "a2e9ac837451039673678c066924c080bfe6192ebc36e1d3867978f5d10bc892",
+          "6a3e8ae38c2ec559ad669dd969561ad824e6e7a70b77248c5a57d682e36d437b",
+          "24a0ea1e8782df23c5cff5716965df40a424c7f43f32b512a8af23030657f377",
+          "0560cdf6953e4e83414a65f1c2abe713ced80ddcc78d6f559e3c2242e60abbd0",
+          "b69ff666fcf741b7411062786a2a3e30df3f14df5699c1057aba538e92fb818f",
+          "e042abeac4f811b5c0dd0abebe61a1045089ff7cb6802870816b995768d67aa9"
+        ],
+        "decoder": "OpenCV BGR bytes SHA256; ffmpeg codec/pixel-format metadata",
+        "dimensions": [
+          1600,
+          374
+        ],
+        "distinct_RGB_content_frames": 33,
+        "distinct_attribution_content_frames": 33,
+        "distinct_decoded_frames": 33,
+        "encoder_command": [
+          "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2",
+          "-hide_banner",
+          "-loglevel",
+          "error",
+          "-nostdin",
+          "-y",
+          "-f",
+          "rawvideo",
+          "-pix_fmt",
+          "rgb24",
+          "-s",
+          "1600x374",
+          "-r",
+          "8",
+          "-i",
+          "pipe:0",
+          "-an",
+          "-c:v",
+          "libx264",
+          "-threads",
+          "2",
+          "-preset",
+          "medium",
+          "-crf",
+          "18",
+          "-pix_fmt",
+          "yuv420p",
+          "-movflags",
+          "+faststart",
+          "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/media/arc33_telegram1600.partial.mp4"
+        ],
+        "encoder_path": "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2",
+        "encoder_sha256": "e7e7fb30477f717e6f55f9180a70386c62677ef8a4d4d1a5d948f4098aa3eb99",
+        "fps": 8.0,
+        "mp4_top_level_boxes": [
+          [
+            "ftyp",
+            0,
+            32
+          ],
+          [
+            "moov",
+            32,
+            1158
+          ],
+          [
+            "free",
+            1190,
+            8
+          ],
+          [
+            "mdat",
+            1198,
+            620031
+          ]
+        ],
+        "ok": true,
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/media/arc33_telegram1600.mp4",
+        "sha256": "d7a8f321287aee7e20283a6b8349129d792b71a9830d583be195495caeeb7981",
+        "source_frames": [
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_000.jpg",
+            "sha256": "9f20f145647c27b7bc9838ed9277313b746f33e2d400479c7ded4b19c6a19866"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_001.jpg",
+            "sha256": "25bdb6c9c664842143ba8e46425c7cbc8d41a972168d425bf859a9f25330a7c6"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_002.jpg",
+            "sha256": "476145f3fb292afbe89129329f2cd1aeede70c016fb4fd4b7ee405287329bd58"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_003.jpg",
+            "sha256": "094f309a79a6158b57bc68cdd9560ae17eabdcdfacae43f2d2c6bf5445301266"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_004.jpg",
+            "sha256": "01e835dfce473427e4af7c9b5a4ce62dc3a15cf73ec1550cc703d9bc48081ab8"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_005.jpg",
+            "sha256": "3021ecfe58e50172287159500f79500084e7e8c5ac5f645564aad37e06e4baab"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_006.jpg",
+            "sha256": "ad36248c1da5a56f5d8abf647d2fd2420f0dab26026d6815725e92855e025eca"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_007.jpg",
+            "sha256": "56f58c84e18149174469a48c4b149f5e45035ad76ce0a5f5f4656a5c1012a95d"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_008.jpg",
+            "sha256": "3afa7bf621fb3fa3bc277330d02edf21035f098dcf940d517303831511df10a3"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_009.jpg",
+            "sha256": "14b370334416783cb82b97f2a4a9d81ee8807ada432f06dd0cfaf70e76b6cd00"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_010.jpg",
+            "sha256": "e742bf2c618714911aa14fac00e4993a2e80e11155c4591230179f72cbaec3e9"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_011.jpg",
+            "sha256": "e1163db5eb649407a8bd0e02f82d347ce8b651fb6e0c35c56de12035218f7f25"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_012.jpg",
+            "sha256": "f087372bc3a6fde8fab4ebe1d185aaa054f22ecc5ea29194a82159a10eb03a15"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_013.jpg",
+            "sha256": "f11ba2419b850574236e4c50ea38cfbef53dc66abe63e8f1a333013619838133"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_014.jpg",
+            "sha256": "c2dfcbd5f055196f6ec78cb40df8465b6251bf8470cb252db00523ea6fb3a3a1"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_015.jpg",
+            "sha256": "95806968d9835826cb63d4464b5ba481fcda20da5e2172f36e842bcdb18ac664"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_016.jpg",
+            "sha256": "1784c1e1e9d2a51e473f822160680d0cfe060a6bcf472fcd8af16410dfea068b"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_017.jpg",
+            "sha256": "5e8228b0cf8d2a621d406a419aa26ff2a21d9ae88a42a6478bd601165ef854ca"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_018.jpg",
+            "sha256": "3660857c9390886a12bd2ce220286d248353ac0e79a41c0a1c733b1e2fe0f477"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_019.jpg",
+            "sha256": "a1f41a376682dc227b27f201c8d6c64510a12decc92f5cdef037678d2c78fb62"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_020.jpg",
+            "sha256": "6a8b6337d2eaa2d5afb3aaa0154832872a712e481b5ff2661c54cbeffdce9448"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_021.jpg",
+            "sha256": "a6d3af66e96bb03a1144933195353752c90ca8f0e5aa1709b72c9698e09e8434"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_022.jpg",
+            "sha256": "f540db88881da658c388e6c192c08c86a96f12ce0199cc63399b3113c652351b"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_023.jpg",
+            "sha256": "bc22e153cb4742df095d68aa5879e8d0603249c79a593ad5506f6dbd4dd03c94"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_024.jpg",
+            "sha256": "59d6eb88cd4f148ec632e1edba4c12be4426fc7c99e5e759436891f1607d8c72"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_025.jpg",
+            "sha256": "249c31816a987db9f53ffc7cecf9d2cf0ec8444bcff34eb3a54bf5c6f18a8d9a"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_026.jpg",
+            "sha256": "40ae6b22fdfc3f57718d9bce911abb6dae8910cec173a28577d157e2b2d44334"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_027.jpg",
+            "sha256": "337acffaddc355063e3891b9b34a6595adb0334396a86a68ea43945fd0d06b41"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_028.jpg",
+            "sha256": "d4734c9af3edb807f1795bb8ac48043dcc17b28a2d27519a394464a0078b418c"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_029.jpg",
+            "sha256": "fc630062b1a2914a2dfd91ce8c45329113f47e4ecce2c43f6ae403ab6127d2ff"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_030.jpg",
+            "sha256": "a1e959c02909ce7b218c073ce237f3b8dca813230fcc94414875c7a0fe1390ee"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_031.jpg",
+            "sha256": "8806a23e6a546b744272e22041b717c379c1368d6d6dfb58ad311ce70f1ec23c"
+          },
+          {
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/panels/arc0_032.jpg",
+            "sha256": "b9df0bbbadb9ba43dafac2c31adaf5ae3ce6b3202e913cbe0b5ff21422cf11cb"
+          }
+        ],
+        "uncut": true
+      }
+    }
+  },
+  "post_push_verification": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/DELIVERY_VERIFICATION.json",
+  "protocol_seal_sha256": "171c0b88f4eb8276bbbb97a2e025c68e4f40df81f9535bd722ef86107c000edf",
+  "recipe": {
+    "C": [
+      7,
+      21,
+      33,
+      47,
+      59,
+      73,
+      86,
+      99
+    ],
+    "F": [
+      1,
+      14,
+      27,
+      41,
+      53,
+      67,
+      79,
+      93
+    ],
+    "arc33": "predefined C7→C33, original spherical+Slerp camera manifest",
+    "background_attributes": "black",
+    "background_rgb": "white",
+    "frozen_iterations": 30000,
+    "kernel_size": 0,
+    "native_size": [
+      800,
+      800
+    ],
+    "projection": "all accepted contributors of full original native traversal",
+    "render_color": "SH0 clipped DC",
+    "seed": 1729,
+    "training_estimator": "TOP4-TRUNCATED"
+  },
+  "requested_total_pose_panels": 98,
+  "resource": {
+    "configured_limits": {
+      "gpu_hours": 4,
+      "wall_hours": 6
+    },
+    "cuda_synchronized_render_wall_seconds": 2.916625297628343,
+    "disk_free_bytes": 222857334784,
+    "elapsed_since_input_freeze_seconds": 2376.37144,
+    "estimated_payload_bytes": 21474836480,
+    "gpu_process_first_to_last_render_intervals": {
+      "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/native_extension/calibration_logs/RENDER_TIMES.jsonl": {
+        "first_to_last_render_seconds": 10.62492,
+        "first_utc": "2026-10-03T16:26:29.376124+00:00",
+        "last_utc": "2026-10-03T16:26:40.001044+00:00"
+      },
+      "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/native_logs/RENDER_TIMES.jsonl": {
+        "first_to_last_render_seconds": 488.258831,
+        "first_utc": "2026-10-03T16:46:28.098325+00:00",
+        "last_utc": "2026-10-03T16:54:36.357156+00:00"
+      },
+      "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/mic/native_logs/RENDER_TIMES.jsonl": {
+        "first_to_last_render_seconds": 472.55213,
+        "first_utc": "2026-10-03T16:34:21.689279+00:00",
+        "last_utc": "2026-10-03T16:42:14.241409+00:00"
+      }
+    },
+    "native_render_calls": 986,
+    "recorded_GPU_activity_wall_upper_bound_seconds": 1759.147854,
+    "reserve_bytes": 1073741824,
+    "synchronized_seconds_caveat": "Not total GPU occupation; conservative recorded-activity wall upper bound used for budget."
+  },
+  "schema": "gaussian-edge-attribution-final-v1",
+  "scientific_completeness": "UNDETERMINED",
+  "source_code_sha256": {
+    "artifacts/gaussian_edge_attribution_v1/code/audit_access.py": "57a47f81ac1537fb5d28e08d325d15c74f943ec6e7e182d3ddde2869203d3e4a",
+    "artifacts/gaussian_edge_attribution_v1/code/audit_outputs.py": "c661e9c5ebb7d0d7241cb150074b1ee36f4ba70a56937f9943a8d8b03b0549f8",
+    "artifacts/gaussian_edge_attribution_v1/code/core.py": "d797810107f2222b911e368a5960294c57724247bffae587a041e9eb14a96d64",
+    "artifacts/gaussian_edge_attribution_v1/code/finalize_report.py": "dde49bf40c8f5d44c0c9774240df4e394b284955435dc013120ef26bd697732f",
+    "artifacts/gaussian_edge_attribution_v1/code/freeze.py": "c693a49ada7c84951b89db782f0f93ef7aed8a6a54efc98e497b67152c629434",
+    "artifacts/gaussian_edge_attribution_v1/code/history/materials_fit_and_projection_runner.py": "2fa9043fa71f25859c8cfe7b922d5f152ca4f7baec6a528125a18b81cff20bb5",
+    "artifacts/gaussian_edge_attribution_v1/code/history/mic_fit_runner.py": "eb8cd59d9ab19965c75c691e40f0489636702724b921787d0f91a3349e18e21c",
+    "artifacts/gaussian_edge_attribution_v1/code/media.py": "4aff4e6ff2bc5b37cd38711fdd8421a7c88b9cbf8f8f4fcce9c39b8dc9e42916",
+    "artifacts/gaussian_edge_attribution_v1/code/native_attributes.py": "616220c6401bc34c64fae2806392eecb47c2b1e5dd6f9d607a8a5b4de53d5abb",
+    "artifacts/gaussian_edge_attribution_v1/code/plot_diagnostics.py": "30f5cb0d85433fe26511fbc5200c6104c721bbff9e54553e4143ddacd53ff533",
+    "artifacts/gaussian_edge_attribution_v1/code/run_experiment.py": "dd8501de754b0880d4cb439e842c39fde4f1522dfef6a1d005dcedc645bbc96e",
+    "artifacts/gaussian_edge_attribution_v1/code/tests_verify.py": "6fbab93ebae01beb2484b452d725a2f1eae73f392c55a65cf21049ede7b24e63",
+    "artifacts/gaussian_edge_attribution_v1/code/verify.py": "67b3b266718b38abe9fd7a54ee655a5c5e605dc704f70c168b59d8b239777598"
+  },
+  "state": "BOUNDED_EXPERIMENT_COMPLETE",
+  "success_claims": {
+    "F_only_selection_and_normalization": true,
+    "all33_arc_decoded_distinct": true,
+    "all49_per_scene_full_visibility_attribute_projections": true,
+    "fixed_original_ID_assets": true,
+    "full_contributor_attribution_identified": false,
+    "geometry_line_reconstructed": false,
+    "human_GO": false,
+    "novel_method_claim": false,
+    "temporal_superiority_claim": false,
+    "two_sided_superiority_established": false
+  },
+  "unit_tests": {
+    "count_scope": "unittest methods plus separate actual native/independent data checks; no inflation by per-pixel assertion count",
+    "created_utc": "2026-10-03T16:48:32.570654+00:00",
+    "native_calibration": "research/NATIVE_CALIBRATION.json",
+    "native_helper_cpu_checks": {
+      "count": 7,
+      "cpu_checks": [
+        "camera accepted",
+        "camera principal point rejected",
+        "external output path rejected",
+        "subset model field rejected before GPU",
+        "nan field rejected before GPU",
+        "negative field rejected before GPU",
+        "unbounded field rejected before GPU"
+      ],
+      "note": "Native blending checks are actual F1/F41 calibration, not synthetic substitutes.",
+      "status": "PASS"
+    },
+    "red_before_green_logs": [
+      "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/logs/access_parser_RED.log",
+      "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/logs/access_yydevice_RED.log",
+      "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/logs/core_null_fix_red.txt",
+      "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/logs/core_tdd_red.txt",
+      "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/logs/independent_tests_RED.log"
+    ],
+    "suites": [
+      {
+        "count": 13,
+        "pass": true,
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/logs/core_tdd_green.txt",
+        "sha256": "c101d2bc2cbf8b9069628082f3273c3784645d98f54b00d7a52ad667c2891f87"
+      },
+      {
+        "count": 9,
+        "pass": true,
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/logs/independent_tests_GREEN.log",
+        "sha256": "0816065fe0d5a82ace2cd6e57c13acf798ab7e69d339f516b2e112daecf68ee0"
+      },
+      {
+        "count": 16,
+        "pass": true,
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/logs/core_relevant_regressions.txt",
+        "sha256": "79fa631908b8ce95beebb053640296a9936eba11b04c8a5135ad8f4c218c0d16"
+      }
+    ],
+    "unittest_failures": 0,
+    "unittest_passed": 38
+  },
+  "visual_review_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/artifacts/gaussian_edge_attribution_v1/VISUAL_REVIEW.json",
+  "workspace": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1"
+}

@@ -1,0 +1,45 @@
+{
+  "scene": "materials",
+  "reviewer": "model visual inspection; not human approval",
+  "viewed": [
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/F_001.jpg",
+      "sha256": "360dff8f5d68beb4235fd3d56c56a7fc3d3147755e75592cf9bed4b8bb4fdeb5"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/C_007.jpg",
+      "sha256": "6e2530d9753f0232559bb5d3aa47f7349895896e7ca4ad9f779195f86bb480c0"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_000.jpg",
+      "sha256": "94b9345e40089edc129898304a6f036b3b2fb652b6e57ff7812caae0ed0b7084"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_016.jpg",
+      "sha256": "5c6beec719e4f0620784e44d11188b74d7cafa4fe4593fee9fb8f0374f7cc98d"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/panels/arc0_032.jpg",
+      "sha256": "78abf28a7e30a27c7c632c4b772ed5244c7462d6f344502a6a7dcd641e64f303"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/media/contact_all49.jpg",
+      "sha256": "6058dd1b1f2066b91e1f6efda81f85fed9d054faf89c916215ee525f418486a7"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1/out/gaussian_edge_attribution_v1/materials/classes_tiers/C_007.jpg",
+      "sha256": "922f87725392073304a597e08270e9c0a1421eb0613f99e343e54339f5098b6a"
+    }
+  ],
+  "observations_zh": [
+    "相同算法与 Mic F 的显示增益用于 Materials；五列图保持原始800×800，球体和底座的可见性随相机改变。",
+    "color/union 支持明显覆盖反光球的内部复杂颜色变化；这些外观边缘不等于几何硬边。",
+    "连续 P 在光滑球上表现为较宽、较淡的贡献区域；不能把这一灰度归因误称为表面着色或细几何线。",
+    "固定 top10% Q 常集中底座边缘、相邻可见层及反光球局部；top30% 呈现更丰富的支持，top1/3% 很弱，全部档位仍保留。",
+    "C_007 分类图中 outline 与 color 的分布明显不同；geometry 为渲染深度/遮挡证据，不是表面 GT。",
+    "F/C/arc 代表图及全49 contact 表明部分球体在原始视野左右或底部被截断；保持历史相机和完整图像，不重新构图。",
+    "固定 ID 资产在 arc 中的投影贡献范围、遮挡和强度改变；此次模型检查不证明物体上的固定几何边线或时间稳定性。"
+  ],
+  "layout_checks": "F1、C7、arc首中末完整画面、完整49 contact、C7类别与四档图均经模型查看；灰度贡献图例明确。",
+  "limitations": "模型查看不是人工 GO；contact 用于概览，代表图用于单帧检查；视觉结果不作为挑选档位或调参依据。"
+}

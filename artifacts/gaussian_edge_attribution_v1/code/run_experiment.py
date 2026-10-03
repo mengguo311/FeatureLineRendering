@@ -328,7 +328,8 @@ def export_scene(scene):
             scale_quantiles=np.quantile(scales[ids],[.1,.5,.9],axis=0).tolist() if len(ids) else None,
             anisotropy_quantiles=np.quantile(scales[ids].max(1)/scales[ids].min(1),[.1,.5,.9]).tolist() if len(ids) else None,
             view_support_histogram=np.bincount(scores['support_view_count'][ids].astype(int),minlength=9).tolist(),
-            foreground_visibility_mass=float(scores['raw_denominator'][ids].sum()))
+            raw_visibility_mass=float(scores['raw_denominator'][ids].sum()),
+            foreground_visibility_mass=float(scores['foreground_mass'][ids].sum()))
         if len(ids)>1:
             distances=cKDTree(xyz[ids]).query(xyz[ids],k=2)[0][:,1]
             diagnostics[name]['nearest_selected_center_distance_quantiles']=np.quantile(distances,[.1,.5,.9]).tolist()

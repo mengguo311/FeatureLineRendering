@@ -81,7 +81,7 @@ def audit_access():
     frozen=json.loads((ART/'INPUTS_FROZEN.json').read_text());protocol=json.loads((ART/'PROTOCOL_SEAL.json').read_text())
     result={'scope':'Primary stage strace file-open records and explicit read-event/seal logs only. No claim about all untraced agents, interactive shell calls, or unrelated processes. No mesh/TEST ground truth used by the traced stages.',
             'checks':{},'traces':{},'source_files':{},'checkpoints':{},'root_git_controls':{},'scene_chronology':{},'gpu':{}}
-    result['known_untraced_engineering_deviations']=[{'stage':'initial independent synthetic unit-test GREEN run','detail':'tempfile default briefly created synthetic seal/panel fixtures under /tmp; context managers removed them. Test fixture root was corrected to workspace out/gaussian_edge_attribution_v1/validation/tmp and all tests rerun. No retained artifact or protected input was written outside workspace.','scope':'This deviation is outside the primary-stage strace proof; no universal workspace-only write claim is made.'}]
+    result['engineering_deviations']=[{'stage':'initial independent synthetic unit-test GREEN run','detail':'tempfile default briefly created synthetic seal/panel fixtures under /tmp; context managers removed them. Test fixture root was corrected to workspace out/gaussian_edge_attribution_v1/validation/tmp and all tests rerun. No retained artifact or protected input was written outside workspace.','scope':'This deviation is outside the primary-stage strace proof; no universal workspace-only write claim is made.','known_fixture_path':'/tmp/tmp88mccpp5/panel.png','known_fixture_and_directory_absent_now':not Path('/tmp/tmp88mccpp5/panel.png').exists() and not Path('/tmp/tmp88mccpp5').exists(),'evidence_limit':'The known panel path appeared in initial tool output. Other temporary fixture directory names were not retained; their TemporaryDirectory context managers completed. Current tests use workspace-only fixture roots.'}]
     checks=result['checks']
     for trace in sorted(OUT.glob('*.strace')):
         r=trace_summary(trace);result['traces'][trace.name]=r;checks['trace/'+trace.name]=r['ok']
@@ -103,6 +103,11 @@ def audit_access():
         if not (base/'assets/ASSET_SEAL.json').exists():
             result['scene_chronology'][scene]={'state':'not executed','requested_pose_count':49,'actual_pose_count':0};checks[scene+'/all49frames']=False;continue
         asset_seal=base/'assets/ASSET_SEAL.json';verify_seal(asset_seal);asset_sha=sha256(asset_seal);asset_created=json.loads(asset_seal.read_text())['created_utc']
+        asset_metadata=json.loads((base/'assets/ASSET.json').read_text())
+        runner_candidates=list((ART/'code/history').glob('*.py'))+[ART/'code/run_experiment.py']
+        matched_runners=[{'path':str(p),'sha256':sha256(p)} for p in runner_candidates if sha256(p)==asset_metadata['runner_source_sha256']][:1]
+        checks[scene+'/exact_fit_runner_source_available']=bool(matched_runners)
+        checks[scene+'/same_core_source_available']=sha256(ART/'code/core.py')==asset_metadata['core_source_sha256']
         eval_events=[e for e in events if e['scene']==scene and not e['key'].startswith('F_')]
         f_events=[e for e in events if e['scene']==scene and e['key'].startswith('F_')]
         first_c=min((e['utc'] for e in eval_events),default=None)
@@ -115,7 +120,7 @@ def audit_access():
             s=json.loads(p.read_text());frame_seals[p.parent.name]=s['context']['asset_seal_sha256']
         checks[scene+'/all49frames']=len(frame_seals)==49
         checks[scene+'/all49same_F_asset']=len(frame_seals)==49 and all(v==asset_sha for v in frame_seals.values())
-        result['scene_chronology'][scene]={'asset_sealed_utc':asset_created,'Mic_F_display_sealed_utc':display_created,'first_C_arc_read_utc':first_c,
+        result['scene_chronology'][scene]={'exact_fit_runner_sources':matched_runners,'core_source_sha256':asset_metadata['core_source_sha256'],'asset_sealed_utc':asset_created,'Mic_F_display_sealed_utc':display_created,'first_C_arc_read_utc':first_c,
             'asset_seal_sha256':asset_sha,'recorded_F_reads':len(f_events),'recorded_C_arc_reads':len(eval_events),'frame_asset_seals':frame_seals,
             'requested_pose_count':49,'actual_pose_count':len(frame_seals)}
         times=base/'native_logs/RENDER_TIMES.jsonl';guardlog=base/'native_logs/GPU_GUARD.jsonl'
@@ -136,9 +141,16 @@ def audit_access():
         result['gpu']['bounded_top32_calibration']={'launches':len(cal_rows),'cuda_synchronized_wall_seconds':calibration_seconds}
     result['gpu']['total']={'primary_native_launches':launches,'guard_records':guards,'cuda_synchronized_wall_seconds':gpu_seconds,'including_bounded_calibration_seconds':gpu_seconds+calibration_seconds,
                             'scope':'Native-render synchronized wall time, not exclusive device profiler time; compilation/CPU/media excluded. Top32 calibration recorded separately.'}
-    checks['GPU_render_budget_4h']=gpu_seconds+calibration_seconds<4*3600
     result['protocol_sealed_utc']=protocol['created_utc'];result['created_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat()
     result['wall_seconds_since_protocol_seal']=(datetime.datetime.fromisoformat(result['created_utc'])-datetime.datetime.fromisoformat(protocol['created_utc'])).total_seconds()
+    guard_files=[ROOT/'native_extension/calibration_logs/GPU_GUARD.jsonl']+list(OUT.glob('*/native_logs/GPU_GUARD.jsonl'))
+    all_guards=[json.loads(line) for path in guard_files if path.exists() for line in path.read_text().splitlines()]
+    first_guard=min(g['utc'] for g in all_guards)
+    upper_bound=(datetime.datetime.fromisoformat(result['created_utc'])-datetime.datetime.fromisoformat(first_guard)).total_seconds()
+    result['gpu']['total']['first_recorded_guard_utc']=first_guard
+    result['gpu']['total']['tracked_activity_wall_upper_bound_seconds']=upper_bound
+    result['gpu']['total']['budget_basis']='Conservative elapsed wall time from first recorded GPU guard through final completed-stage audit; includes CPU/IO idle time, excludes no recorded GPU launch.'
+    checks['tracked_GPU_activity_wall_upper_bound_4h']=0<=upper_bound<4*3600
     checks['wall_budget_6h']=result['wall_seconds_since_protocol_seal']<6*3600
     result['ok']=all(checks.values());result['failed']=[k for k,v in checks.items() if not v]
     atomic_json(ART/'ACCESS_AUDIT.json',result)

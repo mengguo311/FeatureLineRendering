@@ -140,6 +140,8 @@ def audit_scene(scene,f_only=False):
     for control_path,record in frozen_inputs.get('root_git_control_snapshot',{}).items():
         checks['protected_root_git_unchanged/'+control_path]=sha256(control_path)==record['sha256'] and Path(control_path).stat().st_mtime_ns==record['mtime_ns']
     checks['arc_camera_count_33_distinct']=len({f['camera_hash'] for f in inputs['frames'] if f['key'].startswith('arc0_')})==33
+    arc_w2c_hashes={f['key']:hashlib.sha256(np.asarray(f['camera']['w2c'],dtype=np.float64).tobytes()).hexdigest() for f in inputs['frames'] if f['key'].startswith('arc0_')}
+    checks['arc_w2c_matrices_33_distinct']=len(set(arc_w2c_hashes.values()))==33
     read_events=[json.loads(line) for line in (OUT/'READ_EVENTS.jsonl').read_text().splitlines()]
     eval_events=[e for e in read_events if e['scene']==scene and not e['key'].startswith('F_')]
     seal_created=json.loads((assets/'ASSET_SEAL.json').read_text())['created_utc']
@@ -154,7 +156,7 @@ def audit_scene(scene,f_only=False):
             'asset_hashes_before':asset_files_before,'asset_hashes_after':asset_files_after,
             'asset_sealed_utc':seal_created,'first_C_arc_read_utc':min(e['utc'] for e in eval_events) if eval_events else None,
             'scope':'Independent CPU summation from source F raw weights and sealed evidence; independent C top4 arithmetic plus full>=top4 bounds. Evidence extraction and full CUDA traversal not independently reimplemented. No TEST or mesh read.',
-            'actual_pose_count':len(panels),'requested_pose_count':49}
+            'actual_pose_count':len(panels),'requested_pose_count':49,'arc_camera_w2c_sha256':arc_w2c_hashes}
     atomic_json(base/'INDEPENDENT_VALIDATION.json',result)
     return result
 
