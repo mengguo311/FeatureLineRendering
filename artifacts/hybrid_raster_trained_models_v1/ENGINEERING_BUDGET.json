@@ -4,6 +4,24 @@
   "engineering_limit_seconds": 5400,
   "training_runtime_excluded": true,
   "explicit_fix_round_limit": 3,
-  "explicit_fix_rounds": [],
+  "explicit_fix_rounds": [
+    {
+      "round": 1,
+      "started_utc": "2026-10-03T09:10:26.669368+00:00",
+      "scope": "independent syscall audit parser only",
+      "trigger": "Actual strace -yy CUDA character-device fd annotation has nested <char 195:255>; initial parser conservatively rejected line",
+      "action": "Synthetic RED/GREEN parser support with malformed/forbidden-path rejection; preserve raw traces and initial INVALID reports",
+      "scientific_source_or_parameters_changed": false
+    },
+    {
+      "round": 2,
+      "started_utc": "2026-10-03T09:11:40.829483+00:00",
+      "scope": "synthetic training fixture dimensions and precise TRAIN-directory audit allowlist",
+      "trigger": "Upstream camera_utils shape[1]==4 treats 4px fixture height as alpha dimension; 800px actual scenes unaffected. Landlock O_PATH TRAIN-directory audit false-positive.",
+      "action": "8x8 synthetic fixture; permit exact TRAIN directory open for confinement; freeze amended support hashes and push before any actual scene acquisition",
+      "scientific_source_or_parameters_changed": false,
+      "real_scene_acquisitions_before_fix": 0
+    }
+  ],
   "note": "initial implementation and CPU TDD ongoing; runtime measured separately"
 }

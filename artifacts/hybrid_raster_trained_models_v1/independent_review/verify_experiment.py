@@ -154,6 +154,12 @@ def audit_access(text,root,phase,*,allowed_geometry=(),allowed_output_roots=(),c
         elif '<unfinished ...>' in body:
             require(pid not in pending and re.match(r'^openat2?\(',body),'invalid unfinished open')
             pending[pid]=body.split('<unfinished ...>',1)[0]; seen.add(pid); continue
+        # strace -yy adds a *nested* device descriptor, e.g.
+        # 3</dev/nvidiactl<char 195:255>>. Normalize only this exact terminal
+        # /dev annotation; do not relax quoted paths or ordinary-file syntax.
+        body=re.sub(r'(\)\s*=\s*\d+</dev/[^<>]+)<(?:char|block) \d+:\d+>>(\s.*)?$',
+                    lambda m:m.group(1)+'>'+(m.group(2) or ''),body)
+        require(re.search(r'\)\s*=\s*\d+<[^>]*<',body) is None,'malformed/unhandled nested fd annotation')
         match=OPEN.match(body); require(match is not None,'unparsed syscall line '+str(number))
         syscall,dirfd,literal,args,result=match.groups(); seen.add(pid)
         path=decode_c_string(literal)

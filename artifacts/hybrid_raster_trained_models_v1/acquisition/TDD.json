@@ -2,8 +2,8 @@
   "cpu_loader_audit": "artifacts/hybrid_raster_trained_models_v1/acquisition/LOADER_CPU_AUDIT.json",
   "green": {
     "exit_code": 0,
-    "log_sha256": "a888c32e8f4a322bb066208f246c5f1fdbbfa10883c47f97ddfac7c0f28ede7c",
-    "tests": 10
+    "log_sha256": "c7de56e7c61ccd7b7ba05a709e7354bd110f70e68c7d8c77d4aaacdcb6bac780",
+    "tests": 11
   },
   "production_training_has_not_launched": true,
   "red": {
@@ -11,5 +11,11 @@
     "exit_code": 1,
     "log_sha256": "58dfc6094442ede285c003909f2212b55153cfad16874bce097bff8113d6ed96",
     "observed": "ModuleNotFoundError: acquisition_support"
+  },
+  "repair_round2": {
+    "green_exit_code": 0,
+    "red_exit_code": 1,
+    "red_log_sha256": "ac4602cf7b754189790e492900a79ae174161433d31ca6464a6357e491932df9",
+    "scope": "allow exact TRAINdirectory O_PATH/O_DIRECTORY; reject plainread andTESTdirectory"
   }
 }

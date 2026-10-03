@@ -8,7 +8,7 @@ import sys
 HERE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HERE))
 from acquisition_support import (read_train_metadata, patch_sources, check_resume, canonical_hash,
-                                 atomic_json, gpu_guard_rows, validate_checkpoint_sidecar)
+                                 atomic_json, gpu_guard_rows, validate_checkpoint_sidecar, audit_trace)
 
 class AcquisitionContract(unittest.TestCase):
     def test_train_only_loader_ignores_forbidden_metadata(self):
@@ -99,6 +99,16 @@ class AcquisitionContract(unittest.TestCase):
             path=Path(tmp)/'STATUS.json'; atomic_json(path,{'state':'RUNNING'}); atomic_json(path,{'state':'FAILED'})
             self.assertEqual(json.loads(path.read_text())['state'],'FAILED')
             self.assertEqual(len(list(Path(tmp).iterdir())),1)
+    def test_audit_allows_exact_train_landlock_handle_only(self):
+        with tempfile.TemporaryDirectory(dir=HERE.parents[2] / 'out/hybrid_raster_trained_models_v1/training') as tmp:
+            root=Path(tmp);trace=root/'trace.txt';data=root/'source'
+            trace.write_text(f'1 openat(AT_FDCWD, "{data}/train", O_RDONLY|O_CLOEXEC|O_PATH) = 7<{data}/train>\n')
+            self.assertTrue(audit_trace(trace,data)['passed'])
+            trace.write_text(f'1 openat(AT_FDCWD, "{data}/test", O_RDONLY|O_CLOEXEC|O_PATH) = 7<{data}/test>\n')
+            self.assertFalse(audit_trace(trace,data)['passed'])
+            trace.write_text(f'1 openat(AT_FDCWD, "{data}/train", O_RDONLY) = 7<{data}/train>\n')
+            self.assertFalse(audit_trace(trace,data)['passed'])
+
     def test_gpu_guard_rejects_selected_device_any_job(self):
         rows=[{'gpu_uuid':'GPU-A','pid':111},{'gpu_uuid':'GPU-B','pid':222}]
         with self.assertRaises(RuntimeError): gpu_guard_rows('GPU-A',rows,{222})

@@ -1,0 +1,16 @@
+{
+  "acquisition_sha256": "98bbce32a3a5def25fcaa99e605fdc76d4df987f383288bf171ce6d45dcec1fd",
+  "changes": [
+    "synthetic fixture only to8x8 in distinct newdirectories preserving failed4x4 data/log/trace",
+    "audit permits exactTRAINdirectory only withO_PATH/O_DIRECTORY; TEST andplainTRAINdirectory read remain rejected",
+    "synthetic step2diagnostic onTRAIN0/1 exercises actualPIL/font path andsnapshot before real acquisition"
+  ],
+  "failed_fixture": "out/hybrid_raster_trained_models_v1/training/synthetic_gpu_preflight",
+  "global_round": 2,
+  "new_fixture": "out/hybrid_raster_trained_models_v1/training/synthetic_gpu_preflight_round2",
+  "real_acquisitions_before_repair": 0,
+  "reason": "4x4 synthetic fixture triggers pinned camera_utils upstream height==4 alpha branch; real800 unaffected; TRAINdirectory Landlock O_PATH overrejected byaudit",
+  "source_manifest_sha256": "ffe88655e60bbb30f0e54a1dad8bbe195f75b3888875b7bbfb2bc460e44e0da1",
+  "tdd_tests": 11,
+  "upstream_scientific_source_changed": false
+}

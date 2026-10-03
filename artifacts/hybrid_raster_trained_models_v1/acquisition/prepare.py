@@ -64,15 +64,15 @@ def main():
     # Freeze a separate two-step synthetic infrastructure fixture before any GPU.
     # It never counts as a requested scene acquisition or NPR output.
     from PIL import Image
-    toy=OUT/'training/synthetic_gpu_input';(toy/'train').mkdir(parents=True,exist_ok=True)
-    for index,color in [(0,(100,80,40,128)),(1,(40,80,100,255))]: Image.new('RGBA',(4,4),color).save(toy/'train'/f'r_{index}.png')
+    toy=OUT/'training/synthetic_gpu_input_round2';(toy/'train').mkdir(parents=True,exist_ok=True)
+    for index,color in [(0,(100,80,40,128)),(1,(40,80,100,255))]: Image.new('RGBA',(8,8),color).save(toy/'train'/f'r_{index}.png')
     toy_metadata={'camera_angle_x':.69,'frames':[{'file_path':'./train/r_0','transform_matrix':[[1,0,0,0],[0,1,0,0],[0,0,1,4],[0,0,0,1]]},{'file_path':'./train/r_1','transform_matrix':[[1,0,0,1],[0,1,0,0],[0,0,1,4],[0,0,0,1]]}]}
     atomic_json(toy/'transforms_train.json',toy_metadata)
-    toy_directory=OUT/'training/synthetic_gpu_preflight';toy_output=toy_directory/'checkpoints'
+    toy_directory=OUT/'training/synthetic_gpu_preflight_round2';toy_output=toy_directory/'checkpoints'
     toy_manifest=dict(manifest,scene='SYNTHETIC_INFRASTRUCTURE_ONLY',iterations=2,directory=str(toy_directory),output=str(toy_output),original_data=str(toy),
         arguments=['-s',str(toy_directory/'data'),'-m',str(toy_output),'--white_background','--iterations','2'],
         input_files=[{'path':str(p),'sha256':sha256(p)} for p in [toy/'transforms_train.json',toy/'train/r_0.png',toy/'train/r_1.png']],
-        diagnostic_train_indices=[],testing_iterations=[],save_iterations=[2],checkpoint_iterations=[2],evaluation='synthetic infrastructure only; not requested-scene evidence')
+        diagnostic_train_indices=[0,1],testing_iterations=[2],save_iterations=[2],checkpoint_iterations=[2],evaluation='synthetic infrastructure only; not requested-scene evidence')
     atomic_json(HERE/'SYNTHETIC_PREFLIGHT.json',toy_manifest)
     prior=Path('/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_1729')
     old=json.loads((prior/'manifest.json').read_text())

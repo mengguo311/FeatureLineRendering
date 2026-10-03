@@ -1,6 +1,6 @@
 test_actual_checkpoint_resume_restores_rng_and_camera_permutation (test_acquisition.AcquisitionContract) ... ok
 test_atomic_status_no_temp_left (test_acquisition.AcquisitionContract) ... ok
-test_audit_allows_exact_train_landlock_handle_only (test_acquisition.AcquisitionContract) ... ok
+test_audit_allows_exact_train_landlock_handle_only (test_acquisition.AcquisitionContract) ... FAIL
 test_checkpoint_sidecar_requires_hash (test_acquisition.AcquisitionContract) ... ok
 test_gpu_guard_other_device_own_jobs_allowed_foreign_denied (test_acquisition.AcquisitionContract) ... ok
 test_gpu_guard_rejects_selected_device_any_job (test_acquisition.AcquisitionContract) ... ok
@@ -10,7 +10,15 @@ test_seed_rng_actual_cpu_determinism (test_acquisition.AcquisitionContract) ... 
 test_train_loader_rejects_traversal_and_nontrain (test_acquisition.AcquisitionContract) ... ok
 test_train_only_loader_ignores_forbidden_metadata (test_acquisition.AcquisitionContract) ... ok
 
+======================================================================
+FAIL: test_audit_allows_exact_train_landlock_handle_only (test_acquisition.AcquisitionContract)
 ----------------------------------------------------------------------
-Ran 11 tests in 2.267s
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/tests/test_acquisition.py", line 106, in test_audit_allows_exact_train_landlock_handle_only
+    self.assertTrue(audit_trace(trace,data)['passed'])
+AssertionError: False is not true
 
-OK
+----------------------------------------------------------------------
+Ran 11 tests in 2.210s
+
+FAILED (failures=1)

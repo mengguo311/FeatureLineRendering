@@ -11,3 +11,5 @@
 启动使用run_training.py --manifest acquisition/manifests/{scene}.json --gpu 0|1 --freeze-commit SHA。wrapper核对manifest与已提交且远端一致的freeze SHA，检查所有source/module/input hash，逐GPU flock及nvidia-smi/PID guard。目标GPU必须空闲；其他GPU只允许当前run目录内、同UID且精确entry/manifest命令可验证的自己的训练，任何foreign job拒绝启动。strace -f -q记录真实训练后代open/openat/openat2/creat及退出；Landlock只允许TRAIN inputs/运行库读取和本场景目录、/dev写入。审计覆盖该子进程树，不宣称整会话系统调用全覆盖。
 
 TDD_RED.log为模块不存在时的真实失败；TDD_GREEN.log包括严格TRAIN loader/path、seed实际CPU RNG、checkpoint实际保存恢复+camera/RNG、manifest mismatch、atomic status、GPU foreign拒绝等10项。LOADER_CPU.log和newout/training/LOADER_CPU.strace实际运行patched upstream reader的合成4×4输入，无GPU初始化，确认2TRAIN/0TEST/100000初始化点。此fixture不是新scene实验，也不替代实际训练trace。
+
+全局工程修复轮2：第一次2步GPUfixture使用4×4合成图，触发上游camera_utils现有的height==4 alpha分支，未开始任何真实场景训练。保留该失败全部输出，改用独立round2目录中的8×8合成fixture，并在第2步运行合成TRAIN0/1诊断，以覆盖PIL/font和实际snapshot保存；四场景仍为800且配方不改。审计仅补允许Landlock对精确TRAIN目录的O_PATH/O_DIRECTORY句柄，不放宽TEST或VAL访问。补充RED→GREEN后共11项CPU测试。

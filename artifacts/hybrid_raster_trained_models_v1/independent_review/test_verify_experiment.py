@@ -87,6 +87,12 @@ class VerificationTests(unittest.TestCase):
         self.assertTrue(audit_access(trace,ROOT,'acquisition')['passed'])
         with self.assertRaises(ValueError):audit_access(trace,ROOT,'transport')
 
+    def test_actual_strace_nested_device_annotation_and_malformed_rejected(self):
+        trace='1 openat(AT_FDCWD, "/dev/nvidiactl", O_RDWR) = 3</dev/nvidiactl<char 195:255>>\n1 +++ exited with 0 +++\n'
+        self.assertTrue(audit_access(trace,ROOT,'verification')['passed'])
+        for broken in (trace.replace('195:255','bad'),trace.replace('>>','>'),trace.replace('/dev/nvidiactl','/home/u00134/cglib/data/full/hotdog/transforms_test.json')):
+            with self.assertRaises(ValueError):audit_access(broken,ROOT,'verification')
+
     def test_camera_principal_fov_and_duplicate_arc_mutations_rejected(self):
         fov=.6194058656692505; fx=400/np.tan(fov/2)
         base=dict(native_width=800,native_height=800,FoVx=fov,native_K=[[fx,0,399.5],[0,fx,399.5],[0,0,1]])

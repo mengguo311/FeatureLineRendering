@@ -10,6 +10,8 @@
 
 实际 RED 为缺少 checker 模块的导入失败，随后 GREEN。11个独立合成测试覆盖：源/参数改动、seal 缺失/额外/损坏、launch冻结顺序、相机 FoV/主点/重复、未完成trace、失败的禁读尝试、-yy显示的 TRAIN symlink目标，以及 NPR 忽略的 full-SH f_rest 字段中的 NaN。45项旧 CPU 回归通过，旧fixture写入新工作区 sandbox；这些都不计为新增scene产物。
 
+协议首次推送 `8b3915b5e3211530beefd8606dbdcdd5cdf25e2d` 后，7项相关旧 GPU/包装器回归通过，三个隔离子进程均退出。每次启动前 nvidia-smi/PID 检查为空，旧构建只读；数据是合成 splat fixture，不是新scene校准。三个实际trace首次因 `-yy` 的 `/dev/nvidiactl<char 195:255>>` 嵌套设备注释而保守拒绝。明确工程修复第1轮只修改独立parser：实际RED→GREEN，并额外拒绝缺角括号、坏设备号及普通文件伪注释。最终12项独立测试通过；原INVALID报告和trace保留。修复后3个trace分别审计7926、1768、1766次尝试，无源图像/TEST/VAL/mesh/越界写入；详见 `FIX_ROUND_1.json`、`PRIOR_GPU_TESTS.json` 和 `GPU_ACCESS_*.json`。
+
 `INPUT_FREEZE_ACCESS.json` 检查实际输入hash进程的924次 openat/openat2尝试：909次成功、15次失败、800次TRAIN PNG打开（400文件各进行hash及头检查），没有 TEST/VAL/mesh/越界写入。原 `-qq` 隐去exit行，首次检查保留为 `INPUT_FREEZE_ACCESS_INITIAL.json` 的不完整记录；最终采用 exact trace SHA 绑定、exit_code=0 的执行回执，不篡改trace。系统调用本身不能证明是否decode；无decode由执行的freeze源代码支持。
 
 `ACQUISITION_PREFLIGHT_ACCESS.json` 另外覆盖独立preflight进程及子进程：446次打开尝试，源图像打开0次，没有禁读或越界写入。访问审计只覆盖所记录进程的 open/openat/openat2/creat 范围；当前实际出现的调用均为 openat/openat2。-yy返回fd目标用于识别 staged TRAIN symlink，未记录的会话操作和无注释动态symlink不在证明范围内。

@@ -105,6 +105,8 @@ def audit_trace(path,original_data,local_initialization=None):
             if str(data) in raw:
                 target=Path(raw)
                 if local_initialization and target==Path(local_initialization): continue
+                if target==data/'train' and ('O_PATH' in line or 'O_DIRECTORY' in line):
+                    allowed.append(raw);continue
                 if target==data/'transforms_train.json' or (data/'train') in target.parents:
                     allowed.append(raw)
                     if target.suffix=='.png': image_paths.add(str(target))
