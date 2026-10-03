@@ -1,27 +1,37 @@
 {
-  "actual_npr_frames": 49,
+  "active_NPR_scene": null,
+  "actual_npr_frames": 196,
   "actual_scene_training_started": true,
-  "blocker": {
+  "completed_acquisitions": 4,
+  "count_scope": "Independent actual full196/24 validation",
+  "expected_npr_frames": 196,
+  "expected_scenes": 4,
+  "historical_storage_blocker": {
     "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/STORAGE_BLOCKER.json",
     "sha256": "0647c9e6d3c5100b7ad518ad18d42ac34a5763a76b127d0d70a031d01bc5b224"
   },
-  "completed_acquisitions": 4,
-  "expected_npr_frames": 196,
-  "expected_scenes": 4,
-  "independent_verification": "HOTDOG_ARTIFACTS_PASS; OVERALL_INCOMPLETE",
-  "missing_npr_frames": 147,
-  "phase": "NPR_BLOCKED_STORAGE_PARTIAL_EXPERIMENT",
+  "independent_verification": "PASS_ARTIFACT_INTEGRITY; HISTORICAL_EXECUTION_GAP_RETAINED",
+  "missing_npr_frames": 0,
+  "phase": "ARTIFACTS_COMPLETE_HISTORICAL_AUDIT_GAP_RETAINED",
+  "producer_complete_frame_counts": {
+    "hotdog": 49,
+    "materials": 49,
+    "mic": 49,
+    "ship": 49
+  },
   "render_freeze_commit": "26636535ab39c1996493d0088a7a53bb358dbb9a",
   "scientific_GO": false,
   "storage": {
-    "external_write_authorized": false,
+    "external_free_bytes": 444791013376,
+    "external_root": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1",
+    "external_write_authorized": true,
     "hard_reserve_bytes": 1073741824,
-    "launch_blocker_free_bytes": 1266896896,
-    "observed_utc": "2026-10-03T10:51:39.020219+00:00",
-    "permission_pending": true,
-    "root_free_bytes": 1179308032
+    "legacy_transport_root": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport",
+    "observed_utc": "2026-10-03T12:19:01.419751+00:00",
+    "permission_pending": false,
+    "repo_free_bytes": 1094791168
   },
-  "storage_free_bytes": 1179308032,
+  "storage_free_bytes": 1094791168,
   "training": {
     "hotdog": {
       "aggregate_seconds": 474.6848891649861,
@@ -169,11 +179,38 @@
     }
   },
   "transport": {
-    "contacts": 15,
-    "phase": "MEDIA_COMPLETE",
-    "scene": "hotdog",
-    "utc": "2026-10-03T10:33:39.705238+00:00",
-    "videos": 6
+    "actual_frames": 196,
+    "complete_scenes": [
+      "hotdog",
+      "materials",
+      "mic",
+      "ship"
+    ],
+    "expected_contacts": 60,
+    "expected_first_mid_last": 36,
+    "expected_frames": 196,
+    "expected_videos": 24,
+    "first_checker_access": "INCOMPLETE_INVALID",
+    "human_review": "PENDING",
+    "independent_production": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/independent_review/PRODUCTION.json",
+      "sha256": "9f6aeb4170218911052da1d2598028236254fc269a2a0b40d9bdb149ccd1275f"
+    },
+    "initial_render_access": "INCOMPLETE_INVALID",
+    "missing_frames": 0,
+    "new_frames": 147,
+    "phase": "ARTIFACTS_COMPLETE_HISTORICAL_AUDIT_GAP_RETAINED",
+    "scene_roots": {
+      "hotdog": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport",
+      "materials": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport",
+      "mic": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport",
+      "ship": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport"
+    },
+    "scientific_GO": false,
+    "utc": "2026-10-03T12:19:01.419751+00:00",
+    "verified_contacts": 60,
+    "verified_first_mid_last": 36,
+    "verified_videos": 24
   },
   "transport_interruption": {
     "attempt": "out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000",
@@ -186,10 +223,6 @@
     "sealed_frames": 27,
     "sealed_raw_frames": 28
   },
-  "unrun_NPR_scenes": [
-    "materials",
-    "mic",
-    "ship"
-  ],
-  "updated_utc": "2026-10-03T10:51:39.020219+00:00"
+  "unrun_NPR_scenes": [],
+  "updated_utc": "2026-10-03T12:19:01.419751+00:00"
 }

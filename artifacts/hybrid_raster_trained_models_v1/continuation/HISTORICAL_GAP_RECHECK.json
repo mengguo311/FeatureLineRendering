@@ -1,0 +1,318 @@
+{
+  "all_historical_snapshot_files": {
+    "checked": 251,
+    "matching": 251,
+    "unchanged": true
+  },
+  "errors": [],
+  "first_independent_checker": {
+    "cause": "UNKNOWN",
+    "completed": false,
+    "last_verified_frame": "hotdog arc0_018",
+    "status": "INVALID_INCOMPLETE",
+    "tool_exit_code": 143,
+    "trace_completeness": {
+      "audit_status": "INVALID_INCOMPLETE",
+      "last_line": "2485988 openat(AT_FDCWD</home/u00134/3dgs_line/hybrid_raster_trained_models_v1>, \"/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/frames/hotdog/arc0_019/typed.npz\", O_RDONLY|O_CLOEXEC) = 3</home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/frames/hotdog/arc0_019/typed.npz>",
+      "lines": 4040,
+      "missing_exit_pids": [
+        2485988
+      ],
+      "normal_exit_tail": false,
+      "opening_pids": 1,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/independent_review/production_verifier.strace",
+      "scope": "Independent completeness-only inspection; does not assert forbidden-access clearance for the missing portion.",
+      "sha256": "efe4f12fb65ebd19501c093d37ef2576ef9774aae2a407ac26f84bbd2156d2bc"
+    }
+  },
+  "human_review": "PENDING",
+  "initial_hotdog_render": {
+    "cause": "UNKNOWN",
+    "interruption_complete_frames": 27,
+    "interruption_complete_raw": 28,
+    "normal_EXIT_json_absent": true,
+    "reported_tool_exit_code": 143,
+    "status": "INVALID_INCOMPLETE",
+    "trace_completeness": {
+      "audit_status": "INVALID_INCOMPLETE",
+      "last_line": "2481216 openat(AT_FDCWD</home/u00134/3dgs_line/hybrid_raster_trained_models_v1>, \"/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/staging/frame_hotdog_arc0_011_2481216/provenance.npz\", O_RDWR|O_CREAT|O_TRUNC|O_CLOEXEC, 0666) = 44</home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/staging/frame_hotdog_arc0_011_2481216/provenance.npz>",
+      "lines": 81353,
+      "missing_exit_pids": [
+        2481216,
+        2481464
+      ],
+      "normal_exit_tail": false,
+      "opening_pids": 259,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/production.strace",
+      "scope": "Independent completeness-only inspection; does not assert forbidden-access clearance for the missing portion.",
+      "sha256": "5a7d10f83117e22a63a38ba55fc8c7f9bc6d6ea09274d2db556deb2302c3382a"
+    },
+    "unsealed_staging_retained": [
+      {
+        "exists": true,
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/staging/frame_hotdog_arc0_011_2481216",
+        "retained_payloads": [
+          {
+            "bytes": 25639606,
+            "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/staging/frame_hotdog_arc0_011_2481216/native.npz",
+            "sha256": "6c3ba673622e7314a40a2972ca6d12c785e0544cceca9cbcc6b04330029a55b1"
+          },
+          {
+            "bytes": 115045,
+            "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/staging/frame_hotdog_arc0_011_2481216/provenance.npz",
+            "sha256": "a3157b20581fe78db38f888a57619cab1f6918078c3667013ca26a3e4079f3e5"
+          },
+          {
+            "bytes": 13003649,
+            "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/staging/frame_hotdog_arc0_011_2481216/responses.npz",
+            "sha256": "b6c6e7a5fca2ccee852f566535a806692c3ce9bacb3f9b188d491a44274f2964"
+          },
+          {
+            "bytes": 23536575,
+            "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/staging/frame_hotdog_arc0_011_2481216/typed.npz",
+            "sha256": "b40c20b547a24e4016e9d7e893a9e5fa3debd0243bbe2d4acb12ea551df2c8c4"
+          }
+        ],
+        "scope": "Existence and present bytes only; no historical payload SHA was asserted by the interruption observation.",
+        "sealed": false
+      }
+    ]
+  },
+  "no_newtrace_fix": "New continuation traces, successful old resume, aggregate artifact verification, and media completeness cannot retroactively repair either missing historical syscall tail. The first Hotdog execution and first checker remain INVALID/INCOMPLETE, with unknown interruption cause; neither is promoted to PASS.",
+  "original_evidence_references": [
+    {
+      "bytes": 17974,
+      "expected_from": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/hotdog/ABNORMAL_TERMINATION.json#observation_sha256",
+      "expected_sha256": "7fe32b8054c812f4bc6dcb06c5af025ffb57a7d47fd6dd5ebbdd6e1a6e21ea40",
+      "matches": true,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/ABNORMAL_EXIT_OBSERVATION.json",
+      "sha256": "7fe32b8054c812f4bc6dcb06c5af025ffb57a7d47fd6dd5ebbdd6e1a6e21ea40"
+    },
+    {
+      "bytes": 672,
+      "expected_from": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/hotdog/ABNORMAL_TERMINATION.json#termination_receipt_sha256",
+      "expected_sha256": "f8630f43301bc34e83daf9c5bce2f05d223f570e661a11a509d27a1d7f76ca6e",
+      "matches": true,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/TOOL_TERMINATION.json",
+      "sha256": "f8630f43301bc34e83daf9c5bce2f05d223f570e661a11a509d27a1d7f76ca6e"
+    },
+    {
+      "bytes": 3184,
+      "expected_from": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/ABNORMAL_EXIT_OBSERVATION.json#original_files_preserved//home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/START.json",
+      "expected_sha256": "02304f3e01b979a596abc13f23c61eebca7385908aad3ea3fadd88e4f6d5d39d",
+      "matches": true,
+      "original_observed_path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/START.json",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/START.json",
+      "sha256": "02304f3e01b979a596abc13f23c61eebca7385908aad3ea3fadd88e4f6d5d39d",
+      "snapshot_note": null
+    },
+    {
+      "bytes": 303,
+      "expected_from": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/ABNORMAL_EXIT_OBSERVATION.json#original_files_preserved//home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/GPU_GUARD.json",
+      "expected_sha256": "fc504402c253905c5a0481b0916e09def748dc2e63d720daf66478f844486f61",
+      "matches": true,
+      "original_observed_path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/GPU_GUARD.json",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/GPU_GUARD.json",
+      "sha256": "fc504402c253905c5a0481b0916e09def748dc2e63d720daf66478f844486f61",
+      "snapshot_note": null
+    },
+    {
+      "bytes": 4850,
+      "expected_from": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/ABNORMAL_EXIT_OBSERVATION.json#original_files_preserved//home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/stdout.log",
+      "expected_sha256": "d50eb510ccdce43250824704e3a9d1b3f95fae9f233c0aaba706ae62e04cad0f",
+      "matches": true,
+      "original_observed_path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/stdout.log",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/stdout.log",
+      "sha256": "d50eb510ccdce43250824704e3a9d1b3f95fae9f233c0aaba706ae62e04cad0f",
+      "snapshot_note": null
+    },
+    {
+      "bytes": 8172,
+      "expected_from": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/ABNORMAL_EXIT_OBSERVATION.json#original_files_preserved//home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/resources.jsonl",
+      "expected_sha256": "59e69ba788cc60e8ddae029351a974d5f15e33a9551d66cc3486900cdd6016e3",
+      "matches": true,
+      "original_observed_path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/resources.jsonl",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/resources.jsonl",
+      "sha256": "59e69ba788cc60e8ddae029351a974d5f15e33a9551d66cc3486900cdd6016e3",
+      "snapshot_note": null
+    },
+    {
+      "bytes": 12708103,
+      "expected_from": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/ABNORMAL_EXIT_OBSERVATION.json#original_files_preserved//home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/production.strace",
+      "expected_sha256": "5a7d10f83117e22a63a38ba55fc8c7f9bc6d6ea09274d2db556deb2302c3382a",
+      "matches": true,
+      "original_observed_path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/production.strace",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/production.strace",
+      "sha256": "5a7d10f83117e22a63a38ba55fc8c7f9bc6d6ea09274d2db556deb2302c3382a",
+      "snapshot_note": null
+    },
+    {
+      "bytes": 186,
+      "expected_from": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/ABNORMAL_EXIT_OBSERVATION.json#original_files_preserved//home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/RUNTIME.json",
+      "expected_sha256": "0f52eb46117e93ca865194cb332e8780cb68284c1e5e5d499905339f219a0101",
+      "matches": true,
+      "original_observed_path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/RUNTIME.json",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/RUNTIME_AT_INTERRUPTION.json",
+      "sha256": "0f52eb46117e93ca865194cb332e8780cb68284c1e5e5d499905339f219a0101",
+      "snapshot_note": "Historical runtime later advanced during old resume; the exact interruption snapshot is compared."
+    },
+    {
+      "bytes": 151,
+      "expected_from": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/ABNORMAL_EXIT_OBSERVATION.json#original_files_preserved//home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/STATUS.json",
+      "expected_sha256": "d6d10614b98881f366673fad531f88a44b63d0bdc1f33d946339fc110de57c72",
+      "matches": true,
+      "original_observed_path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/STATUS.json",
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/STATUS_AT_INTERRUPTION.json",
+      "sha256": "d6d10614b98881f366673fad531f88a44b63d0bdc1f33d946339fc110de57c72",
+      "snapshot_note": "Live status advanced historically and in continuation; the exact interruption snapshot is compared."
+    },
+    {
+      "bytes": 5282,
+      "expected_from": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/TOOL_TERMINATION.json#outer_command_sha256",
+      "expected_sha256": "6b736a10cb149789bc09f93f9b5e71175c764a1695072bae71fee96e6c9785ac",
+      "matches": true,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/hotdog_render_000/OUTER_EXEC_COMMAND.txt",
+      "sha256": "6b736a10cb149789bc09f93f9b5e71175c764a1695072bae71fee96e6c9785ac"
+    },
+    {
+      "bytes": 827,
+      "expected_from": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/PRODUCTION_VERIFIER_ATTEMPT001_EXIT.json#log_sha256",
+      "expected_sha256": "228ffb80da3f4678a4322423b299f4439960051e5e467f9b1b98b40c0fda46b0",
+      "matches": true,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/logs/PRODUCTION.log",
+      "sha256": "228ffb80da3f4678a4322423b299f4439960051e5e467f9b1b98b40c0fda46b0"
+    },
+    {
+      "bytes": 1505549,
+      "expected_from": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/PRODUCTION_VERIFIER_ATTEMPT001_EXIT.json#trace_sha256",
+      "expected_sha256": "efe4f12fb65ebd19501c093d37ef2576ef9774aae2a407ac26f84bbd2156d2bc",
+      "matches": true,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/independent_review/production_verifier.strace",
+      "sha256": "efe4f12fb65ebd19501c093d37ef2576ef9774aae2a407ac26f84bbd2156d2bc"
+    }
+  ],
+  "preservation_status": "PASS_PRESERVED",
+  "schema": "historical-gap-preservation-recheck-v1",
+  "scientific_GO": false,
+  "scope": "Read-only recheck of immutable historical metadata snapshots plus the original interrupted Hotdog producer/checker traces and logs. No renderer/training/GPU call, no dataset image/TEST/mesh read. Only this small report is newly written.",
+  "selected_metadata": [
+    {
+      "baseline_git_matches": true,
+      "baseline_git_sha256": "146e87d774e032881aeb155c10646478b2a9e31dd88d6147404ee96588070db0",
+      "bytes": 1367,
+      "expected_from": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/historical_607b908/SNAPSHOT_MANIFEST.json",
+      "expected_sha256": "146e87d774e032881aeb155c10646478b2a9e31dd88d6147404ee96588070db0",
+      "matches": true,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/hotdog/ABNORMAL_TERMINATION.json",
+      "sha256": "146e87d774e032881aeb155c10646478b2a9e31dd88d6147404ee96588070db0",
+      "snapshot": {
+        "bytes": 1367,
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/historical_607b908/transport/hotdog/ABNORMAL_TERMINATION.json",
+        "sha256": "146e87d774e032881aeb155c10646478b2a9e31dd88d6147404ee96588070db0"
+      }
+    },
+    {
+      "baseline_git_matches": true,
+      "baseline_git_sha256": "a2e471e042e746b11da08f8cd253425c12b45abea4c6b4a6f0ab40082348e831",
+      "bytes": 999,
+      "expected_from": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/historical_607b908/SNAPSHOT_MANIFEST.json",
+      "expected_sha256": "a2e471e042e746b11da08f8cd253425c12b45abea4c6b4a6f0ab40082348e831",
+      "matches": true,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/hotdog/RESUME_EXECUTION.json",
+      "sha256": "a2e471e042e746b11da08f8cd253425c12b45abea4c6b4a6f0ab40082348e831",
+      "snapshot": {
+        "bytes": 999,
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/historical_607b908/transport/hotdog/RESUME_EXECUTION.json",
+        "sha256": "a2e471e042e746b11da08f8cd253425c12b45abea4c6b4a6f0ab40082348e831"
+      }
+    },
+    {
+      "baseline_git_matches": true,
+      "baseline_git_sha256": "d7de338f6e9e6e44e13b99f0f5aea2a35e20db592b9e5280874e3280e002a38e",
+      "bytes": 167,
+      "expected_from": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/historical_607b908/SNAPSHOT_MANIFEST.json",
+      "expected_sha256": "d7de338f6e9e6e44e13b99f0f5aea2a35e20db592b9e5280874e3280e002a38e",
+      "matches": true,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/HOTDOG_RENDER_ATTEMPT000_ACCESS.json",
+      "sha256": "d7de338f6e9e6e44e13b99f0f5aea2a35e20db592b9e5280874e3280e002a38e",
+      "snapshot": {
+        "bytes": 167,
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/historical_607b908/independent_review/HOTDOG_RENDER_ATTEMPT000_ACCESS.json",
+        "sha256": "d7de338f6e9e6e44e13b99f0f5aea2a35e20db592b9e5280874e3280e002a38e"
+      }
+    },
+    {
+      "baseline_git_matches": true,
+      "baseline_git_sha256": "d7de338f6e9e6e44e13b99f0f5aea2a35e20db592b9e5280874e3280e002a38e",
+      "bytes": 167,
+      "expected_from": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/historical_607b908/SNAPSHOT_MANIFEST.json",
+      "expected_sha256": "d7de338f6e9e6e44e13b99f0f5aea2a35e20db592b9e5280874e3280e002a38e",
+      "matches": true,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/PRODUCTION_ATTEMPT001_ACCESS.json",
+      "sha256": "d7de338f6e9e6e44e13b99f0f5aea2a35e20db592b9e5280874e3280e002a38e",
+      "snapshot": {
+        "bytes": 167,
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/historical_607b908/independent_review/PRODUCTION_ATTEMPT001_ACCESS.json",
+        "sha256": "d7de338f6e9e6e44e13b99f0f5aea2a35e20db592b9e5280874e3280e002a38e"
+      }
+    },
+    {
+      "baseline_git_matches": true,
+      "baseline_git_sha256": "39f4259f0d196cdc5eac8f3e0ad3bd0bc4d1cfd04a710645dccc8b1cb4376d7e",
+      "bytes": 821,
+      "expected_from": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/historical_607b908/SNAPSHOT_MANIFEST.json",
+      "expected_sha256": "39f4259f0d196cdc5eac8f3e0ad3bd0bc4d1cfd04a710645dccc8b1cb4376d7e",
+      "matches": true,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/PRODUCTION_VERIFIER_ATTEMPT001_EXIT.json",
+      "sha256": "39f4259f0d196cdc5eac8f3e0ad3bd0bc4d1cfd04a710645dccc8b1cb4376d7e",
+      "snapshot": {
+        "bytes": 821,
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/historical_607b908/independent_review/PRODUCTION_VERIFIER_ATTEMPT001_EXIT.json",
+        "sha256": "39f4259f0d196cdc5eac8f3e0ad3bd0bc4d1cfd04a710645dccc8b1cb4376d7e"
+      }
+    },
+    {
+      "baseline_git_matches": true,
+      "baseline_git_sha256": "228ffb80da3f4678a4322423b299f4439960051e5e467f9b1b98b40c0fda46b0",
+      "bytes": 827,
+      "expected_from": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/historical_607b908/SNAPSHOT_MANIFEST.json",
+      "expected_sha256": "228ffb80da3f4678a4322423b299f4439960051e5e467f9b1b98b40c0fda46b0",
+      "matches": true,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/logs/PRODUCTION.log",
+      "sha256": "228ffb80da3f4678a4322423b299f4439960051e5e467f9b1b98b40c0fda46b0",
+      "snapshot": {
+        "bytes": 827,
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/historical_607b908/independent_review/logs/PRODUCTION.log",
+        "sha256": "228ffb80da3f4678a4322423b299f4439960051e5e467f9b1b98b40c0fda46b0"
+      }
+    }
+  ],
+  "snapshot_manifest": {
+    "bytes": 119793,
+    "expected_from": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/PROTOCOL.json#historical_snapshot_manifest_sha256",
+    "expected_sha256": "7142b79a4a5ce790be879734a3aed1351ce7a28f8efa1ef73e129616a5d47fee",
+    "matches": true,
+    "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/historical_607b908/SNAPSHOT_MANIFEST.json",
+    "sha256": "7142b79a4a5ce790be879734a3aed1351ce7a28f8efa1ef73e129616a5d47fee"
+  },
+  "source_commit": "607b908a5dd0f195a55dd97fc4161cbd7a839d6c",
+  "unchanged_invalid_access_reports": [
+    {
+      "bytes": 167,
+      "error": "ValueError: trace still active or missing child exit",
+      "passed": false,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/HOTDOG_RENDER_ATTEMPT000_ACCESS.json",
+      "sha256": "d7de338f6e9e6e44e13b99f0f5aea2a35e20db592b9e5280874e3280e002a38e",
+      "status": "INVALID"
+    },
+    {
+      "bytes": 167,
+      "error": "ValueError: trace still active or missing child exit",
+      "passed": false,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/PRODUCTION_ATTEMPT001_ACCESS.json",
+      "sha256": "d7de338f6e9e6e44e13b99f0f5aea2a35e20db592b9e5280874e3280e002a38e",
+      "status": "INVALID"
+    }
+  ],
+  "utc": "2026-10-03T11:17:20.756748+00:00"
+}

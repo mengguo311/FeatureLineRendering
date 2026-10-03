@@ -1,0 +1,1019 @@
+{
+  "schema": "mic-model-visual-review-v1",
+  "utc": "2026-10-03T11:50:44.712298+00:00",
+  "scene": "mic",
+  "reviewer": "GPT-6-astra model review via actual view_image calls",
+  "review_status": "MODEL_REVIEW_COMPLETE",
+  "human_review": "PENDING",
+  "human_GO": false,
+  "scientific_GO": false,
+  "scope": "只打开本轮外部已封存生成图像：7个预声明代表帧×line/overlay/matched=21张，以及F8/C8/arc33×RGB/A/B/C/AUTHOR=15张完整联系表，共36张原始PNG。没有打开源数据集图像、TEST、mesh、训练输入图像或staging。所有原始PNG只读；唯一新增图像是外部评审缩略JPEG。",
+  "columns": [
+    "RGB: common native SH0",
+    "A: RGB/depth/alpha",
+    "B: OUR dense six channels",
+    "C: automatic complement",
+    "AUTHOR: independent Eq1-5, NOT official"
+  ],
+  "parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+  "camera_manifest": {
+    "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/mic/CAMERAS.json",
+    "sha256": "afa6240bfdada724876ce5ae0a885f6875bb427463f9da85ce1013cd955b2c3c",
+    "bytes": 53009
+  },
+  "frame_manifest": {
+    "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/mic/FRAMES.json",
+    "sha256": "0d0d56f562aad770f30df7c36709a950ea01de9777dcc7e710689b9ee53afa5a",
+    "bytes": 152801
+  },
+  "media_manifest": {
+    "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/mic/MEDIA.json",
+    "sha256": "f786f3f5b2c0f69cdd61e0e81710536d03d0229fae2e68e7ad4f95aca163a4a9",
+    "bytes": 31926
+  },
+  "review_counts": {
+    "representative_frames": 7,
+    "line_panels": 7,
+    "same_camera_overlay_panels": 7,
+    "ink_matched_panels": 7,
+    "complete_F_contacts": 5,
+    "complete_C_contacts": 5,
+    "complete_arc33_contacts": 5,
+    "original_images_actually_viewed": 36,
+    "additional_delivery_jpegs_actually_viewed": 1
+  },
+  "observations_zh": {
+    "dense_interior_noise": "在F/C多种方向和arc代表图中，B/C在金属筒身、底座及线缆内部产生大片刮痕状、斑驳状密纹，带有明显碎线噪声感；尤其F041/C047的RGB筒身相对平滑，B/C读出并不呈现同样的简洁表面。A网罩本身也有密集点线，不能把A描述成无噪声基准。此处仅描述图像表现，未据此判定真实表面结构。",
+    "silhouette_and_detail": "A在多数查看角度保留较干净的麦体外轮廓、支架细腿和线缆双边。B/C的外形仍可辨，C可把边缘加深，但它同时压黑网罩及内部部件，使圆形振膜/支撑细节与密纹混在一起；C007前端尤其明显。少量轮廓外散点仍存在。",
+    "same_camera_overlay": "7个同相机overlay均已查看；方法臂和RGB的构图相应。B/C将麦体、网罩、支架及线缆显著压暗，筒身覆盖碎纹；AUTHOR对原RGB颜色的视觉改变较轻。颜色变暗、边缘加黑并不构成质量或几何正确性证据。",
+    "ink_matched_controls": "7张matched图中A/B/C按继承设置进行连续墨量匹配；B/C明显变浅，但大片内部碎纹仍保留，外边界也随整体缩放而变淡。匹配后没有看到可据此宣称的普遍细节优势。AUTHOR列保持原固定增益，不参与A/B/C墨量匹配。",
+    "author_independent_reconstruction": "AUTHOR为Hao–Mukai Eq1–5独立重建，NOT official；固定增益下多数筒身、支架与线缆仅有较淡细轮廓，部分轮廓近乎不可见，网罩保留局部稀疏点纹。没有额外增益调整，也不把偏淡结果宣称为作者官方方法的性能。",
+    "F_complete_contacts": "已查看全部5张F联系表，每张完整8视角。麦体与支架可辨、背景大体保持白色；A的网罩密点线、B/C的筒身密纹和AUTHOR偏淡在多角度存在，不能由少数代表图概括为所有细结构都恢复。",
+    "C_complete_contacts": "已查看全部5张C联系表，每张完整8视角。C033原图中下部线缆出画；其余不同角度仍可见B/C筒身碎纹和网罩压黑。C相机参加过GS TRAIN，只对NPR参数拟合留出，绝非盲测或训练外泛化证据。",
+    "arc_complete_contacts_and_framing": "已查看全部5张完整33帧arc联系表，所有格子保留。冻结轨迹中段麦克风落向画面下部，多个中间视角的支架/线缆越出下边界，部分中后段的麦头接近或越出右边界；此限制在RGB与各方法臂同时可见。末端C033相应视角仍有线缆在下边界出画。没有挑帧、裁掉空白或重新设置相机来隐藏该限制。",
+    "claim_limits": "这是模型视觉评审，不是独立人类GO。更多墨量、更多内部纹理或更深轮廓不能解释为更高质量；不作fixed3D、时间身份、时序一致性或时序收益声明。这里只查看静态代表图与完整联系表；视频全解码及帧数/唯一性由独立产物checker另行记录。训练/科学成功状态不因这些图像而升级。"
+  },
+  "per_representative_frame_zh": {
+    "F_001": "侧视中A较清楚地保留筒身外轮廓、线缆双边和支架；网罩仍有密集点线。B/C在RGB较平滑的筒身和底座铺出刮痕状碎纹，C的网罩和线缆更黑；overlay压暗筒身和底座。AUTHOR壳体/支架主要为很淡的细轮廓。",
+    "F_041": "斜俯视可见网罩内部圆形部件，但A也有大量网罩密点线；B/C的筒身斑驳碎纹明显多于RGB可见表面纹理，C压黑网罩使内部圆形部件与周围区域更难分离。线缆和细腿总体可辨。",
+    "C_007": "前端圆形网罩在A中呈高密度点线，在B/C中近似灰/黑填充，C overlay尤其压暗端面。A保留支架、脚端和线缆细边；AUTHOR端面较淡，轮廓局部很弱。",
+    "C_047": "倾斜筒身上B/C出现宽片刮擦状明暗碎纹，旋钮周围与网罩内均有密纹；C网罩接近黑块，细节分离度不足。A主要保持轮廓和旋钮线条；头部周边仍可见少量离散小点。",
+    "arc0_000": "起点与C007端面朝向相应：A网罩密点，B/C端面密集填充，AUTHOR较淡；模型检视不把端点作为独立额外样本。",
+    "arc0_016": "原始4000×832五列图中，每列的800×800相机画面上方有大片白区，麦克风位于下部，三脚架底座和线缆越出下边界；RGB及四个方法臂都如此。可见部分中B/C继续带有筒身刮痕状密纹、较暗端面。这是冻结相机画面内的真实构图限制，原图未被评审裁切或重新居中。",
+    "arc0_032": "末端回到侧视，麦体与支架可辨，但最下方线缆在原图底边出画；B/C筒身密纹和网罩压黑仍可见。A保留较稀疏的筒身轮廓；AUTHOR保持很淡的支架/筒身轮廓。"
+  },
+  "original_images": [
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/F_001/line_panel.png",
+      "sha256": "7f25c8e91cb4434f1092b8379b8daddf4e2fe79b48773294b3073f3d391399d7",
+      "bytes": 578175,
+      "kind": "representative_panel",
+      "key": "F_001",
+      "panel": "line",
+      "size": [
+        4000,
+        832
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/F_001/SEAL.json",
+        "sha256": "53cf74f88141215dcee99eaa6009b78b94e38e1be911dd7ce4ea5364e22ced39",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/F_001/line_panel.png",
+        "sha256": "7f25c8e91cb4434f1092b8379b8daddf4e2fe79b48773294b3073f3d391399d7",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/F_001/overlay_panel.png",
+      "sha256": "fdef080c5edcdcc7960d585cfd4f2142945543ae7fdb20ed2fe33d1cc7332e5f",
+      "bytes": 609599,
+      "kind": "representative_panel",
+      "key": "F_001",
+      "panel": "overlay",
+      "size": [
+        4000,
+        832
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/F_001/SEAL.json",
+        "sha256": "53cf74f88141215dcee99eaa6009b78b94e38e1be911dd7ce4ea5364e22ced39",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/F_001/overlay_panel.png",
+        "sha256": "fdef080c5edcdcc7960d585cfd4f2142945543ae7fdb20ed2fe33d1cc7332e5f",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/F_001/matched_panel.png",
+      "sha256": "e2bf666efc8d0d7ea3020cecec10a5ebb780d9dd7d71ffad4f45d406de9d6141",
+      "bytes": 607370,
+      "kind": "representative_panel",
+      "key": "F_001",
+      "panel": "matched",
+      "size": [
+        4000,
+        832
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/F_001/SEAL.json",
+        "sha256": "53cf74f88141215dcee99eaa6009b78b94e38e1be911dd7ce4ea5364e22ced39",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/F_001/matched_panel.png",
+        "sha256": "e2bf666efc8d0d7ea3020cecec10a5ebb780d9dd7d71ffad4f45d406de9d6141",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/F_041/line_panel.png",
+      "sha256": "481fda736ff4a0732a2847339e286f6bf05adec80207139fbcdc1b9dc4dd4238",
+      "bytes": 578492,
+      "kind": "representative_panel",
+      "key": "F_041",
+      "panel": "line",
+      "size": [
+        4000,
+        832
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/F_041/SEAL.json",
+        "sha256": "9f4794d3eb0d5278769cf937dfca38f2c068923f5318d92195a7ff32572696c5",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/F_041/line_panel.png",
+        "sha256": "481fda736ff4a0732a2847339e286f6bf05adec80207139fbcdc1b9dc4dd4238",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/F_041/overlay_panel.png",
+      "sha256": "4a9df64aa7cdb452c10803bda41b2333acf7979d8fafb6aafeb40388776e2b2f",
+      "bytes": 642926,
+      "kind": "representative_panel",
+      "key": "F_041",
+      "panel": "overlay",
+      "size": [
+        4000,
+        832
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/F_041/SEAL.json",
+        "sha256": "9f4794d3eb0d5278769cf937dfca38f2c068923f5318d92195a7ff32572696c5",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/F_041/overlay_panel.png",
+        "sha256": "4a9df64aa7cdb452c10803bda41b2333acf7979d8fafb6aafeb40388776e2b2f",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/F_041/matched_panel.png",
+      "sha256": "e1dffa6dd2c1dc47be29502690ab5ab941d8847dbea1fca9d74ab13aa65899b5",
+      "bytes": 592074,
+      "kind": "representative_panel",
+      "key": "F_041",
+      "panel": "matched",
+      "size": [
+        4000,
+        832
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/F_041/SEAL.json",
+        "sha256": "9f4794d3eb0d5278769cf937dfca38f2c068923f5318d92195a7ff32572696c5",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/F_041/matched_panel.png",
+        "sha256": "e1dffa6dd2c1dc47be29502690ab5ab941d8847dbea1fca9d74ab13aa65899b5",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/C_007/line_panel.png",
+      "sha256": "4d77192bb845b361de505e76b67c636958d6efa45ca79641382b96cbcd090be6",
+      "bytes": 469041,
+      "kind": "representative_panel",
+      "key": "C_007",
+      "panel": "line",
+      "size": [
+        4000,
+        832
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/C_007/SEAL.json",
+        "sha256": "a06c775306e2a2cabb245d79210b129d55f919d7efe774fdf3d96d551e5db337",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/C_007/line_panel.png",
+        "sha256": "4d77192bb845b361de505e76b67c636958d6efa45ca79641382b96cbcd090be6",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/C_007/overlay_panel.png",
+      "sha256": "a2ae6a919fa2d85ff3362bd81aeaed573ec90c621e66da51641a1ce20fa69e4b",
+      "bytes": 522035,
+      "kind": "representative_panel",
+      "key": "C_007",
+      "panel": "overlay",
+      "size": [
+        4000,
+        832
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/C_007/SEAL.json",
+        "sha256": "a06c775306e2a2cabb245d79210b129d55f919d7efe774fdf3d96d551e5db337",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/C_007/overlay_panel.png",
+        "sha256": "a2ae6a919fa2d85ff3362bd81aeaed573ec90c621e66da51641a1ce20fa69e4b",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/C_007/matched_panel.png",
+      "sha256": "7eb8e5fd8b56e3c3cff8b02b0b98a2a4bbaa2c8c823fbd2d8408b906fc923f43",
+      "bytes": 477114,
+      "kind": "representative_panel",
+      "key": "C_007",
+      "panel": "matched",
+      "size": [
+        4000,
+        832
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/C_007/SEAL.json",
+        "sha256": "a06c775306e2a2cabb245d79210b129d55f919d7efe774fdf3d96d551e5db337",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/C_007/matched_panel.png",
+        "sha256": "7eb8e5fd8b56e3c3cff8b02b0b98a2a4bbaa2c8c823fbd2d8408b906fc923f43",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/C_047/line_panel.png",
+      "sha256": "326483554f082f1a3b42067edbe8007de88a4d4dc896178be30b8a6e89dcb399",
+      "bytes": 589139,
+      "kind": "representative_panel",
+      "key": "C_047",
+      "panel": "line",
+      "size": [
+        4000,
+        832
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/C_047/SEAL.json",
+        "sha256": "ecbeb81e00efd2be84aa27f87df656e34451e31a4b0b8c59d8d8d0bb2f247a98",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/C_047/line_panel.png",
+        "sha256": "326483554f082f1a3b42067edbe8007de88a4d4dc896178be30b8a6e89dcb399",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/C_047/overlay_panel.png",
+      "sha256": "942b885e86ba03543a9c987903a3a4cfd537dee6d115bd4c7c98319bcb02ad45",
+      "bytes": 632695,
+      "kind": "representative_panel",
+      "key": "C_047",
+      "panel": "overlay",
+      "size": [
+        4000,
+        832
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/C_047/SEAL.json",
+        "sha256": "ecbeb81e00efd2be84aa27f87df656e34451e31a4b0b8c59d8d8d0bb2f247a98",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/C_047/overlay_panel.png",
+        "sha256": "942b885e86ba03543a9c987903a3a4cfd537dee6d115bd4c7c98319bcb02ad45",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/C_047/matched_panel.png",
+      "sha256": "15975152c04f242c0ce1b856d0b5a2c080b18ccf972a4c78fd2cc117c57ee649",
+      "bytes": 617086,
+      "kind": "representative_panel",
+      "key": "C_047",
+      "panel": "matched",
+      "size": [
+        4000,
+        832
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/C_047/SEAL.json",
+        "sha256": "ecbeb81e00efd2be84aa27f87df656e34451e31a4b0b8c59d8d8d0bb2f247a98",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/C_047/matched_panel.png",
+        "sha256": "15975152c04f242c0ce1b856d0b5a2c080b18ccf972a4c78fd2cc117c57ee649",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_000/line_panel.png",
+      "sha256": "10b0516edf52347efefd85db96b388b53e307f75e38275247c6eac3ed9e7ee93",
+      "bytes": 469457,
+      "kind": "representative_panel",
+      "key": "arc0_000",
+      "panel": "line",
+      "size": [
+        4000,
+        832
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_000/SEAL.json",
+        "sha256": "cfd2ec0f87118f0e9a407bfdf1bffb03818f365f38fb6e7ea1375f778675fe6a",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_000/line_panel.png",
+        "sha256": "10b0516edf52347efefd85db96b388b53e307f75e38275247c6eac3ed9e7ee93",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_000/overlay_panel.png",
+      "sha256": "f3e5c83fa7f7f571056ba5d77a7deb733f285d1eee104a14e7e5a42aa048037e",
+      "bytes": 522404,
+      "kind": "representative_panel",
+      "key": "arc0_000",
+      "panel": "overlay",
+      "size": [
+        4000,
+        832
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_000/SEAL.json",
+        "sha256": "cfd2ec0f87118f0e9a407bfdf1bffb03818f365f38fb6e7ea1375f778675fe6a",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_000/overlay_panel.png",
+        "sha256": "f3e5c83fa7f7f571056ba5d77a7deb733f285d1eee104a14e7e5a42aa048037e",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_000/matched_panel.png",
+      "sha256": "7feea1b807fa6f2502cf0495022a1c2a42b3c5b49fc3e3bbcf7edeff41f25efb",
+      "bytes": 477180,
+      "kind": "representative_panel",
+      "key": "arc0_000",
+      "panel": "matched",
+      "size": [
+        4000,
+        832
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_000/SEAL.json",
+        "sha256": "cfd2ec0f87118f0e9a407bfdf1bffb03818f365f38fb6e7ea1375f778675fe6a",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_000/matched_panel.png",
+        "sha256": "7feea1b807fa6f2502cf0495022a1c2a42b3c5b49fc3e3bbcf7edeff41f25efb",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_016/line_panel.png",
+      "sha256": "44398a24571b4c627d46e4f4cedc7e62a82aa3d1a9c8ad3b3a1ff2742a3e736e",
+      "bytes": 516278,
+      "kind": "representative_panel",
+      "key": "arc0_016",
+      "panel": "line",
+      "size": [
+        4000,
+        832
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_016/SEAL.json",
+        "sha256": "6106541df4c3d0abae2385b7481be1020e022a4118fee848acd084f38b8642d0",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_016/line_panel.png",
+        "sha256": "44398a24571b4c627d46e4f4cedc7e62a82aa3d1a9c8ad3b3a1ff2742a3e736e",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_016/overlay_panel.png",
+      "sha256": "118a8e7344754d7275a704981e716f1dae872b6fa4f8bc356d8fb105686e09ef",
+      "bytes": 568207,
+      "kind": "representative_panel",
+      "key": "arc0_016",
+      "panel": "overlay",
+      "size": [
+        4000,
+        832
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_016/SEAL.json",
+        "sha256": "6106541df4c3d0abae2385b7481be1020e022a4118fee848acd084f38b8642d0",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_016/overlay_panel.png",
+        "sha256": "118a8e7344754d7275a704981e716f1dae872b6fa4f8bc356d8fb105686e09ef",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_016/matched_panel.png",
+      "sha256": "2292425180648b38794e44a03c2a17a2f2b9da5f97768b792642bf48a69bbf50",
+      "bytes": 530048,
+      "kind": "representative_panel",
+      "key": "arc0_016",
+      "panel": "matched",
+      "size": [
+        4000,
+        832
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_016/SEAL.json",
+        "sha256": "6106541df4c3d0abae2385b7481be1020e022a4118fee848acd084f38b8642d0",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_016/matched_panel.png",
+        "sha256": "2292425180648b38794e44a03c2a17a2f2b9da5f97768b792642bf48a69bbf50",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_032/line_panel.png",
+      "sha256": "a7ea16d0bc30fe91951baf0abba5c9794ba83a65c1549860572ad6ca26dbd3cf",
+      "bytes": 591362,
+      "kind": "representative_panel",
+      "key": "arc0_032",
+      "panel": "line",
+      "size": [
+        4000,
+        832
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_032/SEAL.json",
+        "sha256": "79b71b8bcdbaa37931d6fd48489f5da451ac96b16ea2a8f669426bb515d056e7",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_032/line_panel.png",
+        "sha256": "a7ea16d0bc30fe91951baf0abba5c9794ba83a65c1549860572ad6ca26dbd3cf",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_032/overlay_panel.png",
+      "sha256": "e178c147b2e4a8f430540f443bba874cf63469b40d88d83a534e2927dc4815ab",
+      "bytes": 625201,
+      "kind": "representative_panel",
+      "key": "arc0_032",
+      "panel": "overlay",
+      "size": [
+        4000,
+        832
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_032/SEAL.json",
+        "sha256": "79b71b8bcdbaa37931d6fd48489f5da451ac96b16ea2a8f669426bb515d056e7",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_032/overlay_panel.png",
+        "sha256": "e178c147b2e4a8f430540f443bba874cf63469b40d88d83a534e2927dc4815ab",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_032/matched_panel.png",
+      "sha256": "2126c2fdd47ff26d6d9a81cdc93d776540a36332bd43b06bc842c45c31797c7a",
+      "bytes": 619484,
+      "kind": "representative_panel",
+      "key": "arc0_032",
+      "panel": "matched",
+      "size": [
+        4000,
+        832
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_032/SEAL.json",
+        "sha256": "79b71b8bcdbaa37931d6fd48489f5da451ac96b16ea2a8f669426bb515d056e7",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_032/matched_panel.png",
+        "sha256": "2126c2fdd47ff26d6d9a81cdc93d776540a36332bd43b06bc842c45c31797c7a",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/F_rgb_contact.png",
+      "sha256": "6d8770655685fd2dcdc3adbea9ef99428547e69edcd2b9c76c28da15b87e1810",
+      "bytes": 1318845,
+      "kind": "complete_contact",
+      "split": "F",
+      "arm": "rgb",
+      "all_frames_on_contact": 8,
+      "size": [
+        3200,
+        1664
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/SEAL.json",
+        "sha256": "4837458e9ea1c2dafcc443609cfba94eb728addaf0c8b5c174503786a9de4b4a",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/F_rgb_contact.png",
+        "sha256": "6d8770655685fd2dcdc3adbea9ef99428547e69edcd2b9c76c28da15b87e1810",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/F_A_contact.png",
+      "sha256": "58319125317185947b098cfa792ff78a378f74fcdc1dd01a816758323b461726",
+      "bytes": 168388,
+      "kind": "complete_contact",
+      "split": "F",
+      "arm": "A",
+      "all_frames_on_contact": 8,
+      "size": [
+        3200,
+        1664
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/SEAL.json",
+        "sha256": "4837458e9ea1c2dafcc443609cfba94eb728addaf0c8b5c174503786a9de4b4a",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/F_A_contact.png",
+        "sha256": "58319125317185947b098cfa792ff78a378f74fcdc1dd01a816758323b461726",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/F_B_contact.png",
+      "sha256": "638c6e145b019538631ea22e5825bd1fd7274279feff6e2d469c63123b037582",
+      "bytes": 1513946,
+      "kind": "complete_contact",
+      "split": "F",
+      "arm": "B",
+      "all_frames_on_contact": 8,
+      "size": [
+        3200,
+        1664
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/SEAL.json",
+        "sha256": "4837458e9ea1c2dafcc443609cfba94eb728addaf0c8b5c174503786a9de4b4a",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/F_B_contact.png",
+        "sha256": "638c6e145b019538631ea22e5825bd1fd7274279feff6e2d469c63123b037582",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/F_C_contact.png",
+      "sha256": "0b792c6d512515d9b0c6c867bcdc5c4d8f9d37c9a7d266774f94510bc516673e",
+      "bytes": 1442953,
+      "kind": "complete_contact",
+      "split": "F",
+      "arm": "C",
+      "all_frames_on_contact": 8,
+      "size": [
+        3200,
+        1664
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/SEAL.json",
+        "sha256": "4837458e9ea1c2dafcc443609cfba94eb728addaf0c8b5c174503786a9de4b4a",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/F_C_contact.png",
+        "sha256": "0b792c6d512515d9b0c6c867bcdc5c4d8f9d37c9a7d266774f94510bc516673e",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/F_author_gain_contact.png",
+      "sha256": "82605c3dc38ff879aeb3481ceb23e1f5768845d927a4842bdf59fd6dcbf40afe",
+      "bytes": 655927,
+      "kind": "complete_contact",
+      "split": "F",
+      "arm": "author_gain",
+      "all_frames_on_contact": 8,
+      "size": [
+        3200,
+        1664
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/SEAL.json",
+        "sha256": "4837458e9ea1c2dafcc443609cfba94eb728addaf0c8b5c174503786a9de4b4a",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/F_author_gain_contact.png",
+        "sha256": "82605c3dc38ff879aeb3481ceb23e1f5768845d927a4842bdf59fd6dcbf40afe",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/C_rgb_contact.png",
+      "sha256": "54a3cc33c4b41e06e8faa2ad16befe3e7e18f5589e939f1c10f49123644c4f65",
+      "bytes": 1308796,
+      "kind": "complete_contact",
+      "split": "C",
+      "arm": "rgb",
+      "all_frames_on_contact": 8,
+      "size": [
+        3200,
+        1664
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/SEAL.json",
+        "sha256": "4837458e9ea1c2dafcc443609cfba94eb728addaf0c8b5c174503786a9de4b4a",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/C_rgb_contact.png",
+        "sha256": "54a3cc33c4b41e06e8faa2ad16befe3e7e18f5589e939f1c10f49123644c4f65",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/C_A_contact.png",
+      "sha256": "aeed311a2094e21ef2d39e2091b56c8f7fe0b21e1dfd92d70305ad8b4a21c6a3",
+      "bytes": 166129,
+      "kind": "complete_contact",
+      "split": "C",
+      "arm": "A",
+      "all_frames_on_contact": 8,
+      "size": [
+        3200,
+        1664
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/SEAL.json",
+        "sha256": "4837458e9ea1c2dafcc443609cfba94eb728addaf0c8b5c174503786a9de4b4a",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/C_A_contact.png",
+        "sha256": "aeed311a2094e21ef2d39e2091b56c8f7fe0b21e1dfd92d70305ad8b4a21c6a3",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/C_B_contact.png",
+      "sha256": "6f271fbd6ebd83b2fcf1e0d1f547c30a6368dadfa181a7191043ee8a3debc551",
+      "bytes": 1485981,
+      "kind": "complete_contact",
+      "split": "C",
+      "arm": "B",
+      "all_frames_on_contact": 8,
+      "size": [
+        3200,
+        1664
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/SEAL.json",
+        "sha256": "4837458e9ea1c2dafcc443609cfba94eb728addaf0c8b5c174503786a9de4b4a",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/C_B_contact.png",
+        "sha256": "6f271fbd6ebd83b2fcf1e0d1f547c30a6368dadfa181a7191043ee8a3debc551",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/C_C_contact.png",
+      "sha256": "e6c2ae63af7ecf702f9cc233ed0847fd6fbb5e68900a9871f9b2633802da3d11",
+      "bytes": 1423719,
+      "kind": "complete_contact",
+      "split": "C",
+      "arm": "C",
+      "all_frames_on_contact": 8,
+      "size": [
+        3200,
+        1664
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/SEAL.json",
+        "sha256": "4837458e9ea1c2dafcc443609cfba94eb728addaf0c8b5c174503786a9de4b4a",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/C_C_contact.png",
+        "sha256": "e6c2ae63af7ecf702f9cc233ed0847fd6fbb5e68900a9871f9b2633802da3d11",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/C_author_gain_contact.png",
+      "sha256": "4d3611626420b331f46600b455d4a18b97f6300f0b0d2f8455faa25d8a9507bd",
+      "bytes": 650239,
+      "kind": "complete_contact",
+      "split": "C",
+      "arm": "author_gain",
+      "all_frames_on_contact": 8,
+      "size": [
+        3200,
+        1664
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/SEAL.json",
+        "sha256": "4837458e9ea1c2dafcc443609cfba94eb728addaf0c8b5c174503786a9de4b4a",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/C_author_gain_contact.png",
+        "sha256": "4d3611626420b331f46600b455d4a18b97f6300f0b0d2f8455faa25d8a9507bd",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/arc0_rgb_contact.png",
+      "sha256": "f4f3552271a7677068ee40de9eab83f0f3a694f65cdd8c9734fe71c8b67072a3",
+      "bytes": 4775255,
+      "kind": "complete_contact",
+      "split": "arc0",
+      "arm": "rgb",
+      "all_frames_on_contact": 33,
+      "size": [
+        2400,
+        9152
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/SEAL.json",
+        "sha256": "4837458e9ea1c2dafcc443609cfba94eb728addaf0c8b5c174503786a9de4b4a",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/arc0_rgb_contact.png",
+        "sha256": "f4f3552271a7677068ee40de9eab83f0f3a694f65cdd8c9734fe71c8b67072a3",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/arc0_A_contact.png",
+      "sha256": "b6dbe9f3a98e4328c29d02adae6810d31f51d3ea5f2c340bf1c21bffac3de523",
+      "bytes": 629055,
+      "kind": "complete_contact",
+      "split": "arc0",
+      "arm": "A",
+      "all_frames_on_contact": 33,
+      "size": [
+        2400,
+        9152
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/SEAL.json",
+        "sha256": "4837458e9ea1c2dafcc443609cfba94eb728addaf0c8b5c174503786a9de4b4a",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/arc0_A_contact.png",
+        "sha256": "b6dbe9f3a98e4328c29d02adae6810d31f51d3ea5f2c340bf1c21bffac3de523",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/arc0_B_contact.png",
+      "sha256": "a4805007e82105ada924a1615c81397089e6536a8a09085f9acbe63525b9d310",
+      "bytes": 5145715,
+      "kind": "complete_contact",
+      "split": "arc0",
+      "arm": "B",
+      "all_frames_on_contact": 33,
+      "size": [
+        2400,
+        9152
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/SEAL.json",
+        "sha256": "4837458e9ea1c2dafcc443609cfba94eb728addaf0c8b5c174503786a9de4b4a",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/arc0_B_contact.png",
+        "sha256": "a4805007e82105ada924a1615c81397089e6536a8a09085f9acbe63525b9d310",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/arc0_C_contact.png",
+      "sha256": "dab25623c96dbf158c242e1d516d6e2c656c37b47848660cbd604844b54567bf",
+      "bytes": 4957733,
+      "kind": "complete_contact",
+      "split": "arc0",
+      "arm": "C",
+      "all_frames_on_contact": 33,
+      "size": [
+        2400,
+        9152
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/SEAL.json",
+        "sha256": "4837458e9ea1c2dafcc443609cfba94eb728addaf0c8b5c174503786a9de4b4a",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/arc0_C_contact.png",
+        "sha256": "dab25623c96dbf158c242e1d516d6e2c656c37b47848660cbd604844b54567bf",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    },
+    {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/arc0_author_gain_contact.png",
+      "sha256": "348111ba9e5116a32aaa59119680621a855a3d52a69a4e988589b865d8fab271",
+      "bytes": 2325873,
+      "kind": "complete_contact",
+      "split": "arc0",
+      "arm": "author_gain",
+      "all_frames_on_contact": 33,
+      "size": [
+        2400,
+        9152
+      ],
+      "seal": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/SEAL.json",
+        "sha256": "4837458e9ea1c2dafcc443609cfba94eb728addaf0c8b5c174503786a9de4b4a",
+        "payload_hash_matches": true
+      },
+      "actually_viewed": true,
+      "viewing_asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/arc0_author_gain_contact.png",
+        "sha256": "348111ba9e5116a32aaa59119680621a855a3d52a69a4e988589b865d8fab271",
+        "tool": "tools.view_image",
+        "detail": "high",
+        "original_viewed_directly": true
+      }
+    }
+  ],
+  "viewing_assets": [
+    {
+      "asset": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/mic/mic_review_panels.jpg",
+        "sha256": "27ff5122e3b6f941ea8e50964e79b0fb8b82e0dcc72da44f4a6c9420a7ddba14",
+        "bytes": 627272
+      },
+      "size": [
+        2000,
+        3136
+      ],
+      "actually_viewed_with": "tools.view_image high",
+      "kind": "delivery thumbnail only",
+      "construction": "7个预声明line_panel原图各由4000×832等比例缩小为2000×416，再加32px行标题垂直排列；JPEG quality90/subsampling0；每行完整原图，无对象裁切、重居中、重着色或响应重计算。",
+      "source_keys": [
+        "F_001",
+        "F_041",
+        "C_007",
+        "C_047",
+        "arc0_000",
+        "arc0_016",
+        "arc0_032"
+      ],
+      "source_paths": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/F_001/line_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/F_041/line_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/C_007/line_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/C_047/line_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_000/line_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_016/line_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/mic/arc0_032/line_panel.png"
+      ]
+    }
+  ],
+  "original_files_unchanged": true,
+  "review_does_not_repair_historical_hotdog_trace": true,
+  "remaining_human_review": "仍需人类按完整comparison/overlay/matched视频及原始800px列评估噪声、轮廓、细节可读性与构图可用性；本报告不代替human GO。"
+}

@@ -22,17 +22,26 @@
       93
     ],
     "arc": "Inherited exact33poses C7->C33; checkpoint-derived center frozen before NPR",
-    "calibration": {
-      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/hotdog/CALIBRATION.json",
-      "sha256": "b1aae19404572142c8208bda2f06791ab4441e902e551a0b9f20747b327c05c2"
-    },
     "camera_freeze": {
       "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/CHECKPOINT_CAMERA_FREEZE.json",
       "sha256": "7797ba8116ad8fbdd49faab41217a73c0387808ddb270e2e6f846a7ba2fa582b"
     },
+    "continuation_visual_limitations": {
+      "claims_not_established": [
+        "More ink means better lines",
+        "Fixed 3D line identity",
+        "Temporal stability or improvement",
+        "Blind C generalization",
+        "Human GO"
+      ],
+      "materials": "B/C granular gray fill can obscure sphere/base details; A also fragments on reflective spheres; crop and common RGB irregularities retained.",
+      "mic": "Arc middle/late crops stand/cable and sometimes microphone head; B/C dense interior/grille texture persists under ink matching.",
+      "reviewer": "model; human scientific GO pending",
+      "ship": "Frozen arc middle severely crops the ship/display below the image; arc016 native RGB confirms this. No camera rescue. B/C have dense water/hull texture; matched ink does not remove its spatial pattern."
+    },
     "diagnostic_summary": {
-      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/DIAGNOSTIC_SUMMARY.json",
-      "sha256": "6c7febe35f4be35447c2e08746b335d47a79c70387f87683ccc87547a6a8c851"
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/DIAGNOSTIC_SUMMARY.json",
+      "sha256": "445bad117ea722b12d926ebcbbdf2ba9fedddffd5d0878b69522e6b1c35f9eb7"
     },
     "disclosures": [
       "missing filter3D",
@@ -42,13 +51,77 @@
       "more ink is not established superiority",
       "Hotdog arc mid plate bottom outside frame; no post-hoc camera change"
     ],
+    "historical_hotdog_only_calibration": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/hotdog/CALIBRATION.json",
+      "sha256": "b1aae19404572142c8208bda2f06791ab4441e902e551a0b9f20747b327c05c2"
+    },
+    "historical_hotdog_only_media_manifest": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/hotdog/MEDIA.json",
+      "sha256": "c7f5cd53aeb48c6c2adca24ecef469f4cad0331a29ec6b0a47c61a8abb4cf058"
+    },
+    "historical_hotdog_only_payload_manifest": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/hotdog/FRAMES.json",
+      "sha256": "244c4914cfd894577680d3ab355fbe31f2070aa25f98b437b6398b9718b7eb91"
+    },
+    "historical_hotdog_only_video_full_decode": {
+      "comparison": {
+        "distinct_frames": 33,
+        "frames": 33,
+        "sha256": "c7af1027ca0252d543a7dcfdace0611822921af330ddbd8284b92f2641a0c657",
+        "size": [
+          4000,
+          832
+        ]
+      },
+      "comparison_telegram1600": {
+        "distinct_frames": 33,
+        "frames": 33,
+        "sha256": "af511efb992135f66b5b30fc602ba62b59d59fd8a988e3beb632db4d85198f4a",
+        "size": [
+          1600,
+          368
+        ]
+      },
+      "matched": {
+        "distinct_frames": 33,
+        "frames": 33,
+        "sha256": "e23df2f9e1e250b5f829f6c99ea91f837125a9ea338ac753138e92099f85e996",
+        "size": [
+          4000,
+          832
+        ]
+      },
+      "matched_telegram1600": {
+        "distinct_frames": 33,
+        "frames": 33,
+        "sha256": "948037adc406fa1233573c7b7499023936cd80f5b81abd70ef22847de40a2141",
+        "size": [
+          1600,
+          368
+        ]
+      },
+      "overlay": {
+        "distinct_frames": 33,
+        "frames": 33,
+        "sha256": "399340f4d95d521f414a1a5642cc2887d258a39071c707d8b992f7dcdda9a502",
+        "size": [
+          4000,
+          832
+        ]
+      },
+      "overlay_telegram1600": {
+        "distinct_frames": 33,
+        "frames": 33,
+        "sha256": "fc1f0372d522f3ac71677c97012d81f4ce707e33dcfc62acb0fae958ec4217fb",
+        "size": [
+          1600,
+          368
+        ]
+      }
+    },
     "inherited_lock": {
       "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/INHERITED_LOCK.json",
       "sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926"
-    },
-    "media_manifest": {
-      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/hotdog/MEDIA.json",
-      "sha256": "c7f5cd53aeb48c6c2adca24ecef469f4cad0331a29ec6b0a47c61a8abb4cf058"
     },
     "native_pixels": [
       800,
@@ -191,9 +264,1159 @@
       832
     ],
     "parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
-    "payload_manifest": {
-      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/hotdog/FRAMES.json",
-      "sha256": "244c4914cfd894577680d3ab355fbe31f2070aa25f98b437b6398b9718b7eb91"
+    "per_scene": {
+      "hotdog": {
+        "calibration": {
+          "frames": 8,
+          "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/calibration/hotdog/CALIBRATION.json",
+          "sha256": "b1aae19404572142c8208bda2f06791ab4441e902e551a0b9f20747b327c05c2",
+          "status": "PASS"
+        },
+        "frames": 49,
+        "root": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport",
+        "video_full_decode": {
+          "comparison": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "fd8321ab0b79d64348600d08256be572aa546b09af8a5fcb4105e1d2345376ea",
+              "3e766b6065ae6b2d5db3be8ca84d970f8c6069331c6b7417a985624cc5f52e30",
+              "eb6f9e85a948ef3b7b0fd5353af7ef97fe1411d746b16bdc75a1bc5253a60b2b",
+              "ba2418f5fc21e4d39f3b2fae376793372166da42169b15e9c3decdb84d6bac5f",
+              "3fc9d285b25fb30c64a2b1d412d0af862db80020459e9e84b62be0bf061181ff",
+              "8c3a4f4b65411be7c3b7dde84e11106f5b1b64e2e2b29a91951260dfdbb52508",
+              "ac6c41b1679a931318935615cae8831b73fcb4a2ffd75e68bc2d32603c558ba7",
+              "1b30fd293c080ea0e82e8691e212b9fc0e11262e14d9d0335caca02fff277701",
+              "8264cf4ab130cfa33f2ddd88f08b7dd0f1af7d34c693d95e07676f69c3e2be2e",
+              "7b9ac6a991d7a9bb5e98b9b15e6ea907e6bf631346328493c1adce612776ee34",
+              "47003f5775f363b4fffdf70240df794b7f3bbd18eb474d2c618c0df6521c7274",
+              "f9519b8afc25b580907746b4261716160038270c7e81c30be9214898453c6b3b",
+              "1a158173162fbc95124f74d50e28e17f0fc715d41ca2f8f1fc993dde5307cc3d",
+              "da03e5fab3b91c66a9e230f810565b219bcd6410d2febfea3397eb7177575f21",
+              "c0b430f8c4947358994b0f6f5ae8885065b0f4a4c483ecd71b6c8576b9e55858",
+              "de80f63e2f4b0a63b5a0fdefa7b878e6fafa11ac19e58e031efe8fdad8e5421f",
+              "89e574a72d378b1e073c26fe7c96af37ff19ca35e5168d8f51cb90ef182053e4",
+              "f8659c80cc86a4a5457cda03d0adcea2af2365e02639791e5dd81fe4b26b7b85",
+              "d53187e8ace08cc71e135dff4ffc87152d9d7c8557a7ab806b422e6b20c9ea86",
+              "b4afa2aa8817b2a86bdb63ef5f0e511d408e0efa7e1d9e5d5a1bf77ecab91aa1",
+              "8938a2d81a2958dc32ce266bcb9076c9ac8cf7fe673d4a2e600a63c488cec8a8",
+              "16ac386f0720f157fd0624a1bdaf5d876672741ddebb41fed6d6c24e4dd03796",
+              "68e03afcb0124bdb9e94aabe10f0e5f12d0fca74fc3fb95556145a1fa44632cd",
+              "8f6794e77f647b419f13ff40fc1e7d3d3434b6b52074b9d91aebca6e038c6fce",
+              "71c1cb9f46884965b17fa02ff4e7c2cb7e9de4b8eed8c3722bf693ee07588a4a",
+              "d1cdf174a7a8d1d5a6123403ebc1c34418e885bfcd41f8d0ef1126ec907d48cd",
+              "c974102112e404eb3cfc5c5d8eb00b9a46d3c0bab0a602c7b3a6fd9e300f0926",
+              "774784fa7e61417fbdb050ccbed8fdc79215189ce3119ab0ce04567357a39906",
+              "28095ab1c52f807a31b6aa2ce0102c7464875e76e4979adf3a636afbb1bbb609",
+              "c9d974aa715b8c6189b766648de634a618c7df09ee7b4fc0e41cc575ae73e69f",
+              "679a53e79c1513258ae13e59835530847549df8d4c22d5b1e4f78d25f2bc9d4f",
+              "349de35ff06c3291a08328e499711500f12eb824b5b9ba93a73dc694fcf59160",
+              "412005ee923f86d0d92b17cb593b6a35fa2c1e0c39479f85aac7b59ea49f5055"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/media/hotdog/arc0_comparison.mp4",
+            "sha256": "c7af1027ca0252d543a7dcfdace0611822921af330ddbd8284b92f2641a0c657",
+            "size": [
+              4000,
+              832
+            ]
+          },
+          "comparison_telegram1600": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "1b18827b5c3e0825f91352352fb5e6e24942f696a9d6866e4464f598b534141a",
+              "93ff229867ce3822c198ba21bb6a340eb0a30bd4a7d8fd05f9a30a7cf7426761",
+              "c598869e21fbcf771cd7b16d1af3a3ce0d8553bbc0adc5c900d0e4096bb6c6b6",
+              "8f5925da942dfab8791cffc6f27855f146dcef765a2a9b4c9f2361bccfd6ed60",
+              "d9a10d2095f1b64811c069c484ec1851ef9fa8d507d1270bd777559a80e0d78d",
+              "f46bbdf59613052032780032d4547ecc3331435b88b47e1d2d4ff9cf51538395",
+              "81d39e13bcf700348db4987a7732a6bd702037a52bd895e18f225ae57bbff940",
+              "cd55d3f0c314cbfcd3fc74c2ac6153139f2df9e809ff2e7d71cf9dd214d604b1",
+              "bd4c9558eb8e2366d3c3528fbc6ea48c65300445bb512f650e9a156942fdc80a",
+              "bcb1e9de9d5c3edb0eb66c90a21edd3c3178910b0936c62b790c7c2232cd7a4f",
+              "cbc7a582f9b271a43925d64398a8f9cae9e56cddf0d318569bc4dc67deecf8c6",
+              "43f59d23424ee4458e8ab736d96a5b277dd9b3450f1fc2504da676b14d25ef4f",
+              "2a904629a41991619e313e2af262b4d8824ee83379730213205f825353594212",
+              "6319224352282ddf3628c9f616e5bea1523798f633f65d48b2655d987aa13f89",
+              "1ab378e861f3e9a1a7c0ff9ecfb7d28527822609c22e23cc01b1957dfde98d4a",
+              "14936756a6381ca8d88ee39345dcc287f3eea9dc641f828ce62e790aff41f202",
+              "09691281cf0ede2082f022c6d0aa8ac63040a74f04b2e717fceac958d68f7c97",
+              "3abd6b536c989dacc4db6f6f8e20e9d42b60764e54f101b943cd409fb122d159",
+              "fcfd42a7fcfd7bc96d99d979beeb101518635affb0cbf16f5030e290c7f85711",
+              "3e023b4bd24dc40fe337a6b21702b3a8f505c28a3048a19b4567e44b6cc1b51e",
+              "89e49fcd632b86b8db7664a59e25c00f9ea044186f837ebc8d7a5597db250f35",
+              "dd81aa4d56aff6c741727b2c8c1fe8b8f9452ea0883778c2ff9e01ee7c467105",
+              "2877cfbdea80c28ffe551586697dbd944d0e4760aac1141a4a2bc0b0ec828a5e",
+              "ce5e4c2b6ba6f98e4fe9e5b47b3e93b79e73a1ff309a454c69fd7757ff38a253",
+              "7a828c99c96cedd7539bd41c788b1bd02041dbdc0ca6f16e737da12d278c1c55",
+              "8b11ba54e0a93dbd358b07a891b74d788e22bc5146abac83d6bb828b9c59c230",
+              "2f636ac6008ff1b05bc9f755d4bd22c41399c795b8ca74671ea60d57d4f9dc51",
+              "fbe89456548dca8f7d1d117ab8fc382eaa66eeb36574fe2e805e1e4ea3a51a69",
+              "59a9b254fb3477f107b1e68b843fa926120d7355ab7b3ec83bd165b0b040f177",
+              "00cbe8e9850ba54412474308226c82c45124c12c52d0dff5541f6f8269e02608",
+              "5098daf41118bae6ef13577849c1d8175e7cadb573f5cda3926d3998982ad20b",
+              "ac85f75d04a930b6d0ba4af7aa139de08d63f05408c3b2a4e60527638a07a065",
+              "eed07ed98f00cff1dcd493dbe8a243c6484ccbecd026bf0d7b0f6f0c8ae4cc47"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/media/hotdog/arc0_comparison_telegram1600.mp4",
+            "sha256": "af511efb992135f66b5b30fc602ba62b59d59fd8a988e3beb632db4d85198f4a",
+            "size": [
+              1600,
+              368
+            ]
+          },
+          "matched": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "b7cb694cafd9cbc0a3b6d8d86b515424e74e105a2071c46d9571818c52a6ad7e",
+              "f10750da2ad2c203a1ccdcd8eaaeb47eb6459511e5665cbd7bd2e61ab04e3702",
+              "787f962c769ea6ec11de43a29534093c6ce33669202cf36ef4acb8accebd42da",
+              "f30cc86efda3cce75d74bc727743b274ba3d39bc571fb51305b3852ab65b91d2",
+              "080472dd5d44fcf0e1c372943a7aa160433771a92f65b11f9787f37d88989504",
+              "fc58ccd5de94e7b8576169d664de4939ec80067b0c7624c92065220b4d9e3abf",
+              "99e7d93a340dbee4bc43fe912d5c717df14dd3d376a5da1b2b306f20c69b9abd",
+              "fcfbd1c26b5e44b02244ac37189a4c8491d54247dd4bb558e8686c924c7a88cb",
+              "6723149b60f2e53915014aac9435f6fe4ec419af6adbcb759e6fa46533eb72cd",
+              "ba3e88f9e6406143b79bdd248fac4f5e1c2a377a743ce23886080397053f7cd8",
+              "6180c15ce719d0a0ad3221d50f20c79c0af2bc71d33db980add8f3648262f7d1",
+              "104fecc5a373df2162f1b2c18acfd08807c3a46ec4bb8f5c6e18d019d544eb73",
+              "4e30e06a72fa426ab5d451818acc2f30f7a814d553233086d9a0ea37f9183292",
+              "05f74c3feb3814385e403bc5ad8baeefaa7e29ee1022afc6c40a9c191c482d93",
+              "545ea00155be09258bcb96f6552ee8fc39be3e43b34f9789ad2921d6a56a9229",
+              "adb82947548ff132991f1c25445e4502af920eb0b5a2895789d07cb3d20c00b8",
+              "502da5bd6f24bdcf85b29ddec1b8f33f81dfe69a2aecacbc43dfc299f2756861",
+              "1cc5ec8a58c057a197f1c689876e1cb2db77f51dc09c0e0ed4244c2f5346a2c8",
+              "216715e41e8a9405af07e96efdf6219a2ecd8026e247b19b6f3a9a4e4c4ca30d",
+              "ffd3a7d59149e6c2c396ed5879bbde2a392cf302cc697992cdcd003cf9538ce7",
+              "16cd68c9718a44cb845298f8d154ff82685fe6081fb8cbe7f5c584aa0fdae6c5",
+              "29fa2c088027bcd8760e5afab07ca76bd56da221dba50c89513eaa1bd7ef9d16",
+              "adb1cad35ee8136404ae92244fa975c31bb3cfeddaad581ba86792f15eb4ba83",
+              "bf004b84aea4695b8c0820c62b392d45b58bb3429d48f94d29020ccddb570784",
+              "cadd8724b135a1af39d644dac187443782d5eb2f5cb5da5d4442973a753c174f",
+              "c7b52b72673c762d2896fc21ba1d2a264eea9904172acca54e66e3c9560843ab",
+              "6130f151f766ec9052b5798b865fc7ab1dc56f351064c85b2130077bfcef18e3",
+              "c666d73206c1d4770f35ba8c4e1181b3f659aebb4a57ca95ba0b9afebab94d80",
+              "adad67ae082bcf555d8de321ad7559761712d06a4cd523a60e176ff0a046e7b5",
+              "2be833fdb5a797258d92815c97d04ea60a451633bb2df430b9bc23141e7f9430",
+              "32382677d16da5931baf90feff6ad480d9a76555581dd5aca9129f2c7e8254d7",
+              "07a590d389f29b91b184e5ccca3e6372948c0d931bc5ca1c939684b85305d852",
+              "36a4f1add771aa01d19ad0e68d961cd8c4d9b3a671f05222315efb51f2ae1a06"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/media/hotdog/arc0_matched.mp4",
+            "sha256": "e23df2f9e1e250b5f829f6c99ea91f837125a9ea338ac753138e92099f85e996",
+            "size": [
+              4000,
+              832
+            ]
+          },
+          "matched_telegram1600": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "6dc0bdec832209c9823ad3a59ab3fad4ccbc1d90aee1a10fe9b2a4433c756196",
+              "fe343a4df9dd23c2a9d87b45c4a3d2d37ac3aade6c5e00896f36d73bfc84d4e2",
+              "39d88a30fa408228732165704fa50bfcd3d8ff1e726eb14162cd59e192980b47",
+              "9118fe7a7ffc475b666c687e698eca8b940fb2258ceb692042d019043c13fee2",
+              "94b975ec6659b00248e9908625be4863b6e570d645745f932ec9643746668879",
+              "bd3626216ab2fda3c715587333d03721399acda25039883c9a0efc003d4fab71",
+              "8fa27cd4776976991abfc0a24f962da2b51fc734425f10dd3a0b0a50b526d09f",
+              "a51895aaee866ceb745b2ef22e094cd93ebc63c3b13c7ffca0d970dd0d2cfd7d",
+              "da3080bcb561e6c682aad4db25bfa28f4777e5e17846dac02192d3bd208166bd",
+              "7dd7695868980e3a5856abfa1c49cf2ac50853a729fa66a524e5e176d8bbe4f7",
+              "6f31ddb1b18c3f7f8a1a716741823c250c4b00df2dcc1a162fb86986d034d90b",
+              "cbbb6e36a2c3d26e646b3a61b4e4b7e3470c3f760c8d2816e7dad771961328d8",
+              "74753a9f0b630e67db39f31422c8dfdf8cf86d9cc34eaf92e64032e1b1958d7c",
+              "d2494185f0a28593cd4c1c94c1cdb02ca871209fb8f471ec6ce4ba9bc3bcc23f",
+              "a25a16f9d5edd077ed23382cda4ca4b1f0c91dbba2e9d6a41d158bc27d5cef07",
+              "da5b0781e6a64c806004f6dbceedeb916290039cd228f0e3a289c3726ced5bac",
+              "c524b3a805768ee88aa8cf8a03794214a5ed5ef10c3e47636eb2ad4b2d78966c",
+              "c00944feb592b71aefe6d975dc1bc30b5c89a4aac7d233accf0129e71413366b",
+              "9b6c737b03f1b1134f1b929bc7a7e76bae04be4c31bfa34dfd7d1c2448c86093",
+              "9806ba397e97849b37ff3b5aff0cd4dc7fd3c9839f3594430045709006368111",
+              "efc97f3d05406b74b801d7c449458416ffcd4e03f405b467136c627f9fc75e99",
+              "5a05b0a736eb4a0585060329942c1accb1e9c69afee7675c5196c6881b5fc795",
+              "13479351b685a8ed92d8ef75ef156945c844b2c756354529f8a59f37803ffbe1",
+              "aae60069daa5fb622af091f34991e23817965778d8e69cc769e3fe521c5386db",
+              "f98d7ee206a824a46b4747e21ba357af566398796d4965d795a77c61adedef2b",
+              "83ff02d9cda6985ee5f2ce21a058a1314d7b4dc3bf0d2ec86906c7ffbd51dcb9",
+              "72d24362d99675fc5f85478907f86dbb8cea888dc2724e67c8e85c34645464ce",
+              "47e672ec5df0799d689fbfafa2fc1e6c2d151c164a1949118c8a0eb1ebe3b0a1",
+              "fb9244b95f97c3fb29a306d3c20f431f3fd059bd4d8786ff5ef33a9d18972ac0",
+              "a529db107d7ff33ff42c8e53b421f850c5dc2f15ca1669ade8572bb4643d18b9",
+              "bad4a3b9e5638d6a82568850ae005593ecfeb3aa74511042eb0f42196fe0db60",
+              "367a017ab540f3a18c29a0bb4736e105f91fa1532b1c676e991a70a6e49fe565",
+              "ed54056c1edba992838f786754db899e6ce0a1a92cb252846f5be31e280e12d2"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/media/hotdog/arc0_matched_telegram1600.mp4",
+            "sha256": "948037adc406fa1233573c7b7499023936cd80f5b81abd70ef22847de40a2141",
+            "size": [
+              1600,
+              368
+            ]
+          },
+          "overlay": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "250845ca8c29183f1bec7325cf52661a060295d7c3d9959cbf00d80727e272cf",
+              "f28878657f872c0c9c9192ef5a1bff49a3fc69ec926db85edde3987cce4ac5df",
+              "1eba27a104b2a4915b6b8549da074d32c086fc7e53f9900579bf25a22c42fb38",
+              "6b734cd573c1aff4174f45e0d2576eb27e5929475d8ac760542e1d0da35620f2",
+              "089dcc6dc593b9b36a2340362b42f747b8ccdd64f3d24d6e9f72e25571320afe",
+              "5d0a1fcb923e6463d4890ae662921e156852a6075f8f03f51a4ca0a60e53084c",
+              "44384680d1ee5ec086537b24ee976918ecf37d4f043a85f0c23edca3c68cb4e0",
+              "8fa2405db7f24eb9dba2acc21ec97e32ed3aad5073a9348a226ecda82f00146d",
+              "5e3d4e8c5e1a4d511d87067f1370ed3a5cfb5b4ad51eb8ca9b097d9528faa7c5",
+              "20f4b8bfbe56666c1a0c13a6fd6e23bac6f221da8388aada4d45d29815994b8d",
+              "50ec4e07ee2c0a710d5bb521bbdadcc8399973b311e51d6a60e95f58b7fad782",
+              "e09d01cc5590ff670933c1c440b154e1bfbff2d72e16adb633417e22dd69b579",
+              "9e8b4175911c28cf104c060a85a7427ac9c19e52503ff3251bc9d338367117c7",
+              "3a885d8efd60514de0269969780cedec39158738e609298547eb7ed3a1980b03",
+              "81940f2c63246620c2ebd82eb3936b70d61592a16e721a462e4cf8e2158f1a48",
+              "8d604c5058316228fcc657a75bc53970eabfe46e33db6e3ef2793ff9b5c61faa",
+              "05621f0bc261093c7005efcf67c123a8bbb502851a4ca1ad9e207b09ef3093ba",
+              "6615745f92381b90a116e2cb70810bcd2388f0c2bb98806de3dc186edd926155",
+              "cb014f65fb9d836b43707b50b9517abd5fde3b18adfe980fe486e998593f4398",
+              "879855f26186dbaf99ff5473dfdb9ba7d8e2392f6c5cd63a3ff10329a06f7bc3",
+              "e7d17f0fb027fdbfccfbe56303330824a964ccf558b885ea3bc2fe0b6b18f90c",
+              "3d6eb0135c623ac0333a06e197c2b695dfd33074421a75ca808dcad48de8be57",
+              "29fffce56d2afc8ea6cadee0f4e7705fd7d19cd64214792e0f4a426d7291e216",
+              "1c6c72308458eff7f1535b92a799812fc0035431648b3d94e2fe6f7ae63ddd01",
+              "0842dd241cdad09c20ec404c5142d8af1e691cb20ba6485326fdfa96a5a5da64",
+              "d5023817d19979abd98b26ac3df0ab4a38cd1c0e17e7a9c758a0411b38c36c5c",
+              "a392936f0c3673e016d04233db76b3be7dd8914eaa3ffc9abff935a94d5b40f6",
+              "2d4dc56e42e8ca6172c6f5b4275bcdb949e99093f8429e92bd24ddd88c66f197",
+              "109c725987fa1aa2288b475b71c1a1ea25b040752a5537fb832064f212bd3e76",
+              "a1a2a9a80dd8cce22e4d0c350572e36aec9d35e4662722b9510f26cdfe735965",
+              "57416fd297f3d69926afcdad1f50c052b59f3011e7050125d6d6e806066d9435",
+              "668f8b1200b39a9d93dd181e7f3d106dcf6f3613eb86073a09831f6026ff218b",
+              "0ba928def0f3636933c7064bd5a4514ebe4aace136e02ea1a588ca65f2212b98"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/media/hotdog/arc0_overlay.mp4",
+            "sha256": "399340f4d95d521f414a1a5642cc2887d258a39071c707d8b992f7dcdda9a502",
+            "size": [
+              4000,
+              832
+            ]
+          },
+          "overlay_telegram1600": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "c1c6066115bf90eb4a79cf4a41b205c26130282c56d1959d935bda0c7608d582",
+              "08b48d41a1af9cb60faea971e2a19f4eea624a37c57ff0f42a099821207a1283",
+              "5e362db3803ac417ab3d56eb56ebcee59825863859beb58551a93d2c8da6c2bf",
+              "63f53be01aace40f72f1cdffd4470de75ff416f15ea4645c41889d7e2db2c856",
+              "3a68acc1ff6c85a15432465a9355bb4913fc9e7d14a318b2ed01b345e0f76c27",
+              "8ec0d2febd9700c1a65fdd4eaabe587f42b4787314e3e520978e145f0120bb4a",
+              "7c1aa2574f53bf16c5ca49d16747288a6fb20ffee6ef6b0d5ac5904e5d878d47",
+              "dd0c8552d3e1de03cdeb78504cb05823df40bf3f2ae802364832c733bffca49f",
+              "308f06d9e8566620688a3430e6874d3ac42f37e2e4ff284beab090b2a0ca216d",
+              "0cbb518d109e894c9960b6599e08835b72165e3e2e09e1a3f63e17a77c454023",
+              "ef248d9ea02b1590f1b16afceda75e1a7fa8bfd453491734f6cca1d7f299a456",
+              "3cfa5dac1075fc56e0c391e6e82f4727c7b80f5a4f7b5239a9a0766fc8e80509",
+              "adb3cd0bd115d70182572f32a3bfb41757a49c82b49157ebc6a9f1648f564b91",
+              "3f0655ab049328fc8e2c22cd2903af3dfb9fa441a2fb9203ed6f5977d666e500",
+              "6207457d64675e830584443bca23590f3d5a226e029cb138f0215d5580c791d8",
+              "70819e96c8a4864ed8a08ca70677752a692934640f7a4237d458b55c52a7d7f3",
+              "85d09d1eb2618aa142a0761f8406bebf104bd024660a5b643cc0fe864990a2d4",
+              "ba084369d7976e2aa3f622e15228d7072960612bc391c5120ab3f5c92265deaa",
+              "d39f852ab48b8c023fba04e265681f33ad3ff5d1b2fcd4fb0af09fd328eecc95",
+              "cfad625a208997823cccb4952244e1929d7627445483bedde1185b66e7aaec25",
+              "0566f6874fc1e62902cb75a8889cb2b113d9d761b662228757c5c6ef3eb77472",
+              "c33a8a5a40a1c0c3425b7010096193c359abb3b4f446c0107c840988121f2c90",
+              "934db3faaf95e765674d750eb4141b408f6d0bcf0ae6f05071520f449fde38b7",
+              "aaaefbc8340e8ffa42678953dae49efdc923a3b50456cea5cdf9538368c0b437",
+              "52c419ca1d870c07e7ad6607033c91c97b4bcc24c75bd675355b92190475aed7",
+              "b7a50239550465873f8c443cae9c1f9b438ec46b748ea356a86ed0cb39e9908a",
+              "575d706d6ca1472b706950986a5e754cba4713f1cb6d357c297d2da711facc0d",
+              "965b00ec7bcdc2b8297b486da5908268adab31ac2bdd0bc51def6c4946b77e10",
+              "5e06cb0bf1e1b8c72b2c9ce8dcec3315f6234d32457e9a1238d0119539d37871",
+              "95a0dd601bcfbf75651a4b3c9c1692c0a04dbd7416b3ef2304fdf39247e58287",
+              "458ebfb8280927a6a2c0af969e6c188086cf2df6ce785684247fc369b7748532",
+              "81602dcdff3f2905397c77101239ec4103e7932191c46bd9edd0dc29bb739585",
+              "ab146ea89f1abf9a14bdcfa769b57131d8fa3d77489dfbe31bc98d76cecdd437"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/media/hotdog/arc0_overlay_telegram1600.mp4",
+            "sha256": "fc1f0372d522f3ac71677c97012d81f4ce707e33dcfc62acb0fae958ec4217fb",
+            "size": [
+              1600,
+              368
+            ]
+          }
+        }
+      },
+      "materials": {
+        "calibration": {
+          "frames": 8,
+          "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/calibration/materials/CALIBRATION.json",
+          "sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+          "status": "PASS"
+        },
+        "frames": 49,
+        "root": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport",
+        "video_full_decode": {
+          "comparison": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "26abbd144d8cb54185cd306f8a00f8a0e75fa541b556cec2fae0f754d20d46ee",
+              "8deb1100f41bc458c3c082920bd753545bb19310cc2b14447f321f0e5fbe6ee4",
+              "80a8f52acfb8233f160d3ffe8c457be126b1b8443de0172f8b0da475c7dbf895",
+              "fec489955616312c601fc23338810e435b670ab47105b2595d404a21d272da26",
+              "27218675922bb632cb72be7446158c9193e1b0c726234585e9e73c0c73c56800",
+              "5de0f031a625fc6a9491a4b0396c113f5e593aad292ad473328b0d300281afdc",
+              "3793f271b51a2458cd3113b0702091ea08c70d29520024b65ee209fc8b7ba88e",
+              "63a60be52aa62db135254b32d6d4c180a3020b4a9b6a1cf04e424088884781c9",
+              "ab7c4d70cb6ec99799d03600bebd6ffd89441c528c068209be30dfb15792d0e6",
+              "14d18a3b6494350f29157a12ce2755af5454b4889e97186c6321e7386f46635f",
+              "7e542ddba254070be6584abad8ae9c830e107406686349893691bbbfb9db758b",
+              "dcaedd505349326abdb5d20c66190cbbf954f0cda6788308addc09b386623ab1",
+              "111fba1ded73175c387f5344676882fd4b31c95cb33606f5f2f6f7b5836a0d7b",
+              "86b779f9c955c9fe78220f4d8ddd7f07c4ba779d53d7948901d67fd4cd68b434",
+              "fe727b39392a23f80cae30aa8b4d07f95eafceca47a8af503c55597ec22d139f",
+              "e44dd346fb72bf30dcd17fa3a340c4320e4c5419690062df6db62c4e3faf1cb0",
+              "18667a39ffd6ee06e34ff3b28ea0c8d45819828696a17c5df31c2539b8cc37f6",
+              "a7325dd3d2b5f58af9ad41000d69c9f5f2c7920e86a9e5e9ba99f7ff83884bd5",
+              "e735e436a74e2fc50a503b527bba0d0a1fb5d0434be0d8368aaba9c191e33956",
+              "a3d907743966307fc9c6d2a0284a67ffd6aea618df0bcd2f26418774e069ff94",
+              "44ac0201f632b2b81bf3692f9afde28b15f267c09dab6439fc3d0505f63a8b41",
+              "9780d2d1e1073bfd95963342433c65cdb88795802adc471733bfac4d8554746e",
+              "5c3d18527c3dd12c397dab2ca58f0a2dd25f759082903c6df9c2d4214adc2cae",
+              "84ee8118b1237adfa5ea2f90e5ac9c605bf5ff3209607c3c32d3a902b383d07c",
+              "11a40965f3cdd70be55abf095bb569ff78287f80a582c06a14e9e85bdb0b5112",
+              "7fa05626f423504baace6692c86a8f90f2d3993680649fad150645ddcbcae308",
+              "b4d4b2d7165af5b897f6b90284b2d44f579b53b4ae0efcca8861b63105df9705",
+              "31e5817da793d146c8ac33ff59f0061aaaca29fea353fc7e253520781f48a2e7",
+              "9edfb88b995ceb94ab3435768508abfd0d8c82ade385ec52eec026871a3a9286",
+              "aba81783d59bac39b25709266546f966b89b31b3ac1f8d5aa327921ed24470d1",
+              "f60f6b1bf0cbd6f7ec1874296349f16367dbd25f3f68e340abb6ee45fb9b7cce",
+              "86e562ce52c51e7be515bebea66b5afc7c41a6999d5d6e84bbee95c41f4cb331",
+              "5cbb67346fe156c02ae48a464e57c630840e95e49f53b95760cb5226afcc73c2"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_comparison.mp4",
+            "sha256": "a3bf2918bd82c31078be0170b32587fcaa57283bab9a1397d4e2299e6de9935e",
+            "size": [
+              4000,
+              832
+            ]
+          },
+          "comparison_telegram1600": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "0e5a616dcb539a7aa57e669e7ed898f87d10f7dc735cd14a30492121b161e1c5",
+              "e4d105f8df51917091d7b9dec976e69dcab19eabe8d14d8be73fd83205d78639",
+              "7ca4be20ec735e9afe46f3367dfaf3065004e4741a014f4203985e350923b81c",
+              "f72bc7d8bf3556be8fbabd9debc0cc4229085cac1589298808d034b4ae4c27b3",
+              "6b35bb6916b4d1c9ee18fe60a189ea4fd29ba3626918b917e2c2932d6b9f113d",
+              "8456738c9d2fd4d1fd11c971857e58ffe4e0ef50c06d66e8eb6bb834a7c302b2",
+              "33643d5f058d93f38986148ff76352f1003533b1981542b22bebe6e8117557e1",
+              "5d4d02c2d5dc636f05b7f62107f11866b75190958863fa3f9a75da8af760b644",
+              "14ab24de8f8e7d4956c3819da791359b198ef17c58aaf514c5fdde81df934580",
+              "bd0ca3ea0e0bab5d904c6b3f52fd0e2e132e0f6120f03012c7896162266e4f12",
+              "f927fe8abaec34036433a3b8acadf628afcfec672114c1892d671701599a3b89",
+              "9f596456cc72fa28259ce45814f209ebca445080af2c59de2636a87aa71a5696",
+              "d4a4e5b14ded2b860b52f4e07f2963f3b3400517c48696eb87e216301aa3a29b",
+              "d1974cc3c5b5a66ff01e8b2d235bcd0845b3d5c3566ac824568cb0e1e6322edf",
+              "f9899c31a5baac12d2854cf09c02f11f0a2e18fa59c09a131c458625dc374f10",
+              "30f943590a754f2184e78abec1f675cf7345515c6fc16186deeaa70e26721d57",
+              "f05e84400f80e4ddb40d12203cb8ef17ac28443bc19374764991b3aa8b724970",
+              "b377d7b11e91fc0dd170e0852be0a46c6f371ad502be411ff3b3a1e5306be1bc",
+              "f9928727f877f3a467f0a3937fccd8a4b951de147038b64a6f3b64976c559ab4",
+              "18ff72664936f079a76de243a139cdc8a3cd65c9b0888e6372a27d7c205262fe",
+              "2096cad09ad4207d56367208836b3e3f8f27e222ffe391c332c162afa5c12d12",
+              "f7626abae826e6f512f68f2edeb68b9ce432524cdc530ef0856471fdc342d094",
+              "b159eb78c0377a21732de213142febd939ab5f68077401787e45bb4f4776bfdf",
+              "5b42198dcc8e397e981f5f353dd3cbec40c787cab259501ecaa4b66a0218fe5e",
+              "64f5f9b36d752b123a54e5e4c637a81afb622279b676b566ea5d666e44eb66fe",
+              "c54990ebd7807af9b108d048de7840d5185b5a7fac7df18480da8a2c2e10fc8b",
+              "078e85ae7f64f218ea3eed7a1220648db09cb2de4b4c4fad9ef9419eeb1cd415",
+              "b08e1a65422f7c237c1b8301c8fb2b6c246279967b8ec6c36129c912a1d73048",
+              "e45fd9c396922bc40fb67db2376d39099af73749cc84464c8623d16591059b51",
+              "71a9e89a6a04932562eb084d66720319d1665840940c7908c63999db84dd8fa5",
+              "4203f06765da83722472233c3c4a939d5eeae37dc9cf6e612965cf4465467625",
+              "488500f462b23c78a93e4c1b73831a59a79055b2507a1f5d37bd83077203c6fd",
+              "7f0278b137b6ae90c3caf8b1d241565d2d206905598e0fb9f6ba2f11674dadf9"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_comparison_telegram1600.mp4",
+            "sha256": "d3a5c83ca244c595f62c5f5a3cdbf7e815292c28ec2fd3e6c4b607de45d0aea0",
+            "size": [
+              1600,
+              368
+            ]
+          },
+          "matched": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "c33f118292e5b004337db083f3022d2dc22cece9983710d638ba6c75dbb167f3",
+              "8b076ae007948bab662250364f93fb8e459ba5244cd3d454215decba944abc86",
+              "bfd8a0add75c51e9aab249fcc2756fc27a9f047b3c8c4514e42f458e36a05fdc",
+              "c138c0390c74ea9d91cd8740b1384151217d08c37e6b5ab54a3c24721791f35d",
+              "95941b7c1016097bcae1359b42d447a93f64c0434a807b0decc92d8ba2934d07",
+              "b14e4f60ca3f2142efced87d9591816396c231ceae98a6c99553c9ba6a107020",
+              "62fab6083aa875aba75e8c529e256cc645c6b639b499ff0c769a5e11cc158fb8",
+              "2e9fcae78091c57fb4df7d535cf3abde7db53a9eeb71752d0fe7b8a1e1bc2cf2",
+              "46eae2970d31f5139a326bf9a81345008aac05686a24cf06189631d10a8f862a",
+              "16f6d409b47868abab8848f0bb309e2d446d2a1370ec673727ef022fe3bbf829",
+              "dc7b7e810a275e0ba9b340ae533e114eeab6646db8d35af24aedc1d3c91454fe",
+              "a831d9ff4280ada42f48c323b3e2eb216882e68fc38cb974677332b32239efe5",
+              "879e3821c9589aad7fd494538728b6b7b879854d2ae842cf4e8c6573e94c506e",
+              "84c080feaca2037bf3eba63056675b122f4b1b0303e936679155ef3d9a421ec6",
+              "94cf9b831d4f6cfc79bd5e7a84c97ab7ab36cbd85f24bee140e3427c72da5e5c",
+              "8f923ecbb616ff325ef2cd621acc6849191fff653a1611c340cdfb5491e50a70",
+              "e08769167ebbda787f4d03649e3efdd50edd4a6bb08f47196cc4b3ac026fed78",
+              "e741ba8c430e37255a7233b0b9d3b4682fc7270a8e52a4c0ee2f7d5df2d565f1",
+              "685e192bb4c061737e2f4e6a2ae96fabbe36a055f371a89d8f06577683229009",
+              "43c1736bfdaeb878d3bf5f4cd1e453053d1f500a36ed1a6450d41fc87847ba3c",
+              "51bbedfb70dea708b1bb56d7297e2cdeaf8c887ba04cee9e2e747d4effd71d13",
+              "c4985b516488ab39daaeb6c923d775811334899d50776c0a1bff7265f63b30c4",
+              "276f60b8e07d430025f71888207d24f1201be9c9cd059597a3858615f79e7e82",
+              "bc878087c03655702d922a24a890da4fc43bcd2185200018ad7cde9c89f6a6a2",
+              "ebed6914cf7052be9afa44a0477e049a19d4026945743871f4400cabd949613b",
+              "cc6ed02c25afc8e0cf5e18477fd332e59003e3f5eff057d0e20ab9329071a42e",
+              "31b95c78520d7315fda67aa506ae5e2f50f8f5cce1a9bcddecb54fc00784daa4",
+              "f9a8bab67114381739814ce8305f43a4d8e765fde5ba053ff6abb09aed62ab58",
+              "0a511f9eef22632cda61e10f3dd4329f1cc47bc19d0272faf989b9220074d7e3",
+              "42a84fd79e4772852ee2f238643497f840f6a2613d2c01016eee33cac3597e7d",
+              "0109ac9bde31b259a375669fe2e1b545aea687ed1f53fd66220a1ffb56ecf1ab",
+              "3a39a01af3fac6a7b7bf9fc7c899c6a8d65533b69e9c10c4d77ad52119a00e71",
+              "c392ab2ac3c3e7c31d5c6d9beca695e7018cfde49d201149d2fb2a3122c85da3"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_matched.mp4",
+            "sha256": "3950389625018670ea31e7d20b0b715549697e8da0796c247976e98ee5e59ad9",
+            "size": [
+              4000,
+              832
+            ]
+          },
+          "matched_telegram1600": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "e1cc0fd118ad3a3e6622b387b421eeeb7459b79293c29413da680fd9ed62a4b6",
+              "c7b766c94e5636863780847269b79a89e620c673795658ab697f810a37adc1de",
+              "9b5cac9ab64316eece7d2c2ba497a5c96cab1519b5bd8c51a72d534eb0679708",
+              "6c72af1c0bc34758bb2f1ee125ea51f112d68f716e924f58b1d234f6d9bda289",
+              "db65eb66ec1b7a26e7692b8df3e8ceedd3f2b342ad549fc26831a0b1306d454c",
+              "90e88d0ba9267ade0cbb7be83e76b7a6cdec9332e37c9b4b07d0fa0ade9a4ac9",
+              "c26de3e83b98b50a643a3ca3665ea3d36ad672396d7d8bbc7e13f64340fad978",
+              "fb2bf7aa93aa3450205df4d44cc74bbcbd4e5e646b37557ba211e7e3a2afa946",
+              "ac6879b272c57ab18a02cc664018c34b1f14d88be17345c10620e189d7abf775",
+              "db90a464777881e04d4ce2224d782d57ce04e5769ba976bac3eb3456ba1144d0",
+              "54297e47f4cff6ed30be89048221319e858559d64dce22b7d9017dbefd277b38",
+              "01bdbc7174dc9d2e24da94bc5bc3c0f69ac8db2556f63e67f3c8b399a921b70f",
+              "5770d623ac4dcb8f3cba8dc2de251a7e46af897b348921b6bf7e86256ee5f921",
+              "efcf0b4d916a3dcf682c5de9eb2bf73866f0255d7a3c37a5835d5b9df44a7ea8",
+              "9ca3a1fa038d7d28ae3ab600a16d656ad5e03d50f4549ccf0be7b27ae0ba768a",
+              "532c20fa4dc80f1e63167947271a657ad82d517e188e322ea31c661508d66b43",
+              "d38458ecccdcb799d037c722aa0e9e81d3b01c6eac8a7ad6fc7261b90dd3a630",
+              "53fdd5f026baffe26c1f022685207d6522dbdc35ae5c79fd21ce02d5f6e72384",
+              "2313a84417a9cecb28f746d0901874b664d9093be6a2ddf867f6c3c3551365e0",
+              "a29ed6ddf18535f17e911adc801b0122ac34c5210cc05b96f651dcaaa6f0749b",
+              "fe201b3df1558b5e1217e9cffcd09e03b057aaac4f5884cc0bae6e302d5c050d",
+              "e1bd906a95bba435c093f93a3d76ad63d41fa5729d689406cdbfb1229c5d1555",
+              "31aec96819e0e545fd20a2c4696332c6de23223e8f21b98ae5fc450cbdcb679f",
+              "dc08461206e368bbb7e364b69311e69431e49318ea45baa7a38992d2fccb93d7",
+              "51932758222c66710cab07f690d621bdaf338266647a94f08b99af01fdea887e",
+              "f060b821f52243d7271d8ce65f866fc2620d8bafaf23c1a34daf529e5331042e",
+              "59fd001700a81a278bd513d293072b3db4680e209b8980298113486dc8309d93",
+              "761f8c5532290289dd8e4644cbb8c7615c7ebb99190fc37ccb04489ffba09f2c",
+              "8b91b1abd9111557112ab1b19b47326be57b5af041d5005214306c806c982a89",
+              "1a90a39eb1c66c2bd5a7335196e886c35d47f043f931a1614d809035d68633d9",
+              "91f636be2a8dc6fab86c5116ba8e8db62370a214540bc7907d039fd3263c436d",
+              "ada7e3c1f7f7d6f06a65bc01746932bd54c461ebea87fb313f65fae527ef8880",
+              "223362b80fc2565fb86dda201c92b5d65c91b2067f9283b3df8697467675ddf0"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_matched_telegram1600.mp4",
+            "sha256": "14c2e70a2d8c0d75546998c6340be0049562b04827c4fbcbf2bc8b718d546978",
+            "size": [
+              1600,
+              368
+            ]
+          },
+          "overlay": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "a24e9aa11cef997327b7cac4e8e6709a689613feb9d43d0cd89a5ee71a716ffe",
+              "0be7480169ae21a5b26aa8a70667962104310f0c78dbbda6557526433ac56eab",
+              "3ae8b480e55d09117bed91f950e4709d728bce0beb82ac5e5ac50ebab5e85e55",
+              "a86942845d3c5903a764b80782ec6840f20d8328abe7b732c8ce52d17064bbad",
+              "97ba9e139fbc45c2fb60fa53688243d740b4af270140168c3f49476c628d8de3",
+              "4a4d77a34c1f7c3ad9a8a5fdcd588aeb213dab8119928b5e144714271c39e815",
+              "48d77ad6ff6b559d6b270bb09972004fc5389c81897fd77266759a4c54fc00ff",
+              "edb6be957a91f9443ed6f794f8a07e693567a25f248b51ef9dad58107578f63e",
+              "86d3448983b0ef900d821e173443ccc43e2e87702ab6a657431efb758b7f316a",
+              "8d85adbd0a06422ddfdf7f2b0c54862f414aa0818f3ec1f5c1ac78334a37ed09",
+              "d94ac4f0567271c4d0d003c6736709c810b387e7877648d015a896dae7a0dfc1",
+              "daebdfc93db73259a8b72e1caab079298a529adb5e61dca6bdaac8af3dc56a94",
+              "0b83712adf1b7fe4a0f5e16de85eb15fbf77c5ada65b2a774b84adc0f728946c",
+              "39dc8d17ecec2fa05ec4340993885442ff140f1f49713b86857d940b495c1425",
+              "6bf5fb13b069bd63d63b5cb7b1f540c0877bc82262c4ba6b5bdbcc1aabd471ae",
+              "9d4e9211fd97abe68ab53785482d05d1871dfaeedbaa37a900438fe20b66074d",
+              "288c1cb2b7e450afff75599ddfaa06aa417856310c9769bd478a06c65089c51d",
+              "447b74c135bee471441f234c244b451210dd7d16c24aac7ea7d56f7f3c7a75a1",
+              "9d4d6274ee99083d2ff68576e8d07311300cbf768f0770723fd0c00c1139a02e",
+              "98cb97654a2abac03bfd59bf8bd77e64094fec8485a86bf5f0ad4f00af02c3e4",
+              "896c1d26b54f394a7cccecb971ae4811af353bd38843a49f69d60de9af6be1eb",
+              "ea54ecb0b578a387b6b1b4ff9fee1ca46dbbe919b07b86b57ea9cf223471a271",
+              "8a0881421c7cd232c01f2a592d63461e59bee4163ca30bf4b0ef3ebfea5cb77b",
+              "462d1cdf8acfa74addf5c4c0085e61eada28f67ecc8f22876d8616d1733d0326",
+              "8e5a4cdd4f4e03996a323dbc67df70d6107ab6dc40ac3e151a67955414c32f08",
+              "72a19a923402f9641e545e470d24bc8ab0cb034545d55f51166ee3f651dda2fb",
+              "3df995dd7f8ea123887f0054abf62676c73482d94b9787157c746cbef649013a",
+              "7a4c0b563ad748834d206e714765c3ed42919a694d5bc46aba8f802a44e70b52",
+              "b3356444437b062b5b69e411c908b5c446c69ca86005ba6f1aaeadfd9d294b5e",
+              "d550733244c551b6268ae806f98d659e1a45e63613c7506368c7f2ca2428fedd",
+              "1a5c0df06f36ab9afa160cd55a5dfd41ba86179d9bcf16b9e7f045cb174413d3",
+              "ea0223e298656fdea0cbbd2ea0e699ec516078ef81c8bd5928e116e55e6304c4",
+              "346c4ec4f845faa206592b2573ece15ab30cd5aa058c37ab298d378d0286f6c4"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_overlay.mp4",
+            "sha256": "ad733b3c06d9c2a26d9138be187bb744f13b9be57e7be1b9387539b1e8b15707",
+            "size": [
+              4000,
+              832
+            ]
+          },
+          "overlay_telegram1600": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "8e227aa69fe85d7e4f47f117bb00d59f8235c8d9db88b9dcece1ba5111c621c4",
+              "e2908612d0d9a9c1fe3a22456bc7a771ec129fcb5aab0461364f2ab1b354916b",
+              "f18eaf357dde8170b04ed629609041b0a76ba6759ba324c5997e77557c90cf62",
+              "bef9ba66e37e7a5cde198475ee7dc5a45e3c897586a1d095d0572cf3cee0db86",
+              "679ede94dfd057902919caf6ca9a893007d1750b6202dbacf2f3fb7696821bcf",
+              "848d87fdf5ae17c1e931f0dd52efcca240dd926901bffcbc52eb7cb2dc2eb97f",
+              "7ac3e743bdab21b2423375762715282a2b4561166388f8a8e77c2c46bddb3d0e",
+              "b8cfe53432b7d785c5177555482b57100978a6800edf8f2702a7b27cd894b52b",
+              "767a4003ab719b87d64c16acb7360fdc4f6f7a3a4c9bff30c56de4505aca2c4b",
+              "7d0a0865f52d0a5837dbf5298fcc49ed65906d87f4b7f171a1aa02c36b74aca7",
+              "4c6a1f429e8f21e42f1bdc0994d70e69f4b7d8fd25e995f420586a98a9637b8c",
+              "13d4d2f0411d94e491796ca1f9f01bc1b4f7d77e4c6447e9ac353d8ce315115f",
+              "e35e803976aa3debc76d1c5b76b37f48b06f28c2bf9032f9bb01f5f4a6219a98",
+              "9766a728e54dad256f41c248308114c84c5014ab4e8d9edac2b91c9c09ad72cc",
+              "50aad242bb501902d50a5e9faaf7d9c3928246b92e3bb87af9e52b8bfec1a6e1",
+              "ba6551feda3c4a8035f951fc9d2e210b558ec171ead217a81789fc6239317d4f",
+              "3a17901b6e78330704dc48400d86c19ebd72ec97da0eb29747bd4f759b71eaab",
+              "852c023e267eafda0bd19b3c9554b95574bc5f1284217332fb5c9305d353e796",
+              "1c694f7271ae9c1ff178b5d8f676c48847fca2c5b0e28b4768b17f9895daf14e",
+              "0b8b1f3843e9d1d008d3169e6b1e5403c7d3cc73fdb492095cc68dc366be4552",
+              "76d00b398348b69c7c88db9293ba964decc5a9bd19526e9e7d14341784941a11",
+              "c95c0dc1b58b49ae665d88b8de1597adf903a37280ba04fdecfd3a668b9b00c7",
+              "a8c686cce298cea892294a459636e1f5b613a42dd2a6e8a80b1eefca6ebf8418",
+              "c69dec67ab65955adf1471b7b4786205c5e39975713f02e2490661a6c1f376c4",
+              "e0a115f8dc6349fb3c1ad8b9fa79ac1e1cb9a3a4acdf794209caaada9116e5b7",
+              "ded1872b4d4238e0812ec4b44c72b0365eb420818e081b349b5bc537d990901e",
+              "0c692b6f04c0226aceb07d062ea6a41a512be74667bb14c7a93751a3c729beda",
+              "4f4b8593d604d001a17ae79f06eebdfb319dfe4cf4eba7edb2ca1c513026a6c5",
+              "9a4e91658ac9043d05e5c274dc9f8736b8987803d888a4ad52082ec01c9d898a",
+              "a24c5c5eb7b87cbccbe7308d1d357597703c71785edf74938cfa68a1c56fcc67",
+              "2180d2de11f5c5dce0d67d3ece26b087c03c9009a8906182048673977069c0eb",
+              "bc5f685c8a9e7842a410c964dc7cdfa66181a8f99cc0719866ea204336256c36",
+              "54174bed033fc7f27307d50205679b324a77385c9534079852d54f28eedda78c"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_overlay_telegram1600.mp4",
+            "sha256": "d05b833f652d165127a17c8b6508aa5b5653b4ff54b519f38aa733210be87ace",
+            "size": [
+              1600,
+              368
+            ]
+          }
+        }
+      },
+      "mic": {
+        "calibration": {
+          "frames": 8,
+          "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/calibration/mic/CALIBRATION.json",
+          "sha256": "f7bc1cf1abdace01e8e50b2864b66aefe5a4829cd9f8810962140503aae0d18a",
+          "status": "PASS"
+        },
+        "frames": 49,
+        "root": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport",
+        "video_full_decode": {
+          "comparison": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "d4725ac4eed3979401c234b1e415b0aa045c688b0f4f914ba6f397ce88ba16f7",
+              "286409d9e40d708e1070e3272cf7a024e0a8fd3a63801c1e069e715d9797b56f",
+              "51a43eff51be1971f9b08383702aa897ee4a91e518ae354d25c33cdbaf7b7446",
+              "da81d823e8c22a13f5d878be3674c7594e313435b4cf973b8d8ad3a8feb14477",
+              "b1abc8a2775efc744d38835b751ff73eae88a4f31edc40ae0b72762e34f0ae7f",
+              "70f31a082802a1e9dba2caec7b30f3c51e181acfa01ec0c676921b9ac6b62877",
+              "43264fb2f9258560a40221fdc94cb28bf00af88becfd0bb7d7041a14ba7fcdb9",
+              "9776af48ed3e6d8f0013923ec9f70046521236afa0b9520cf2a64429f28296af",
+              "98459dabc7b36468afc4d5f9c1cbb58180e7a513c53378fe4341217c9084377e",
+              "1eac8305469c62a5ed845a89a0a11ced188381658dc2063a4718401ea1f9fea3",
+              "9415f178b17065f4c9fb7248eae4573cfcd5d76bf8b4c8c5cb6f98bce6f508d4",
+              "306266525038d67ff82e3582fbd67da54089069a1241406fbbd8d719a7bf6757",
+              "aad8406839e2b1a28194dc551184fff5ad67e11035684a30fe1187c850cd70f4",
+              "85a920af797d17234683d92244b7a1cb26394ec5b56b6d1108de2110b7cc8bdf",
+              "335bad044efe414b5e40f591d00155509c347060870c47b51792a4ed151a128f",
+              "52e20bc0e621f94ad79a86c7637de5c9df320182c3dd57d8b4004f9ce53c4143",
+              "11763f69795e3288a735e7778aa32014d19b939a8817eccb299082ff9a1fc8f1",
+              "6a9c1f9ba416aeb841db20b3ecd154c7148dbbcc25455d141a05e8019810c435",
+              "3191df4a35b4390781a436b04332679809a478caae4de67774c9dfaffd94dc78",
+              "c42451b60003ca03897fe2756af804ca53ffd618fc6c5b11c0d838891bfedd69",
+              "c6d6195d91cdf97121de0f150c62d1240385d3d5a7b169e6551375281af8b50c",
+              "6276b27e5df61d741ccaac087e48e56b9dc434b1f1eb8d326410bfa48d091957",
+              "c578cd2c44b857e4032f46e386c1c8ec33ea3a1e7995481641271929eaf98a99",
+              "48e56ff5f8eac60e62fdf93517914140f47b4437a5b7f06291ab04df35c73439",
+              "25904573ae8f33fee624a113047533abe9a575d94b3527e5a3bcb2bb56fa01f3",
+              "3fdc8fb9e2deef438b56163071c2a4bf9a0aa28a002b8e3e5515adfe7a324993",
+              "98596f3ef8688345efe21f7976a17026afa95275deadad579ee7accae4d8db6b",
+              "6eb868ecbee0216ba477544d1824663b8edc459cab6e8c81be5fda8c341a8321",
+              "cefdca7d04d34118c7ec772bd83b2af99f749c0a5fd75853c161e4fed9de72a1",
+              "033c645e098a2405a8c5477b7bdce2ed58fb92a2be40fbed2017b401557a6a03",
+              "492711186226b3d6b74cf6dd499b2e53645b47b72917df16a66a8ee979b25af6",
+              "d7943d1069b9bfefc6881629cccd45d66862d69616c147a6575a334362960057",
+              "623b9fd9efc204a5085a363bff6c1b113db5cb7f968ccc9365ee556a6713bec8"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/arc0_comparison.mp4",
+            "sha256": "28a77231c8f8eb424f5c8c9564760bb3d82d5977ada98d0599582c54480b38d7",
+            "size": [
+              4000,
+              832
+            ]
+          },
+          "comparison_telegram1600": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "014924e45bd12e509827d5d70272fd38b9bd6fb870ef4e7e3a27b4cff4ffa85f",
+              "05b54c96ec2bb060c359f90cf1fa541a8ad568dd3f60c8012ac31235926a82db",
+              "e23a428fa6cc52ba33a3c6c7fff0f0b6810c197f99fe5536fb717bc5b1265bf6",
+              "56ac398cc83ea376df372aee334e41ffd92a5f0c4114422e8c7336bd7af91c25",
+              "8290450204ce03355df9dc0a5fbe33531ce869eed65e3609ff28f648fedadbe0",
+              "19a764382d0191ac72aa3e834f8dda9949e5a2ce5a2c8d42b5fc6bc19858a269",
+              "8213fb32ae52464ebb430900159d8f97214e281a637f14518e6315a0665e218e",
+              "6a2340c8a09c5350046fe1e1701a76e30eac1163463d85f2113a236f5e2a2861",
+              "6f30340a6bb16e5c8bf8c65a599437ae9e8416cb47e39511e9856bf1f667fddb",
+              "a9271c1c029a90347a8489bf3ad04d0a3825823be899fec649f82d1b72772739",
+              "8883309f49d4e8db1a95fec782a20c42346b60a76424ee414d038427a9caf4d8",
+              "d0bcd965f9c8aa2d5b473d565b22d481f3af9315da911da403d0b2bc37db4066",
+              "ba699604337971274b0ebc5e122bae8ce1e2aee77fa23c3bef5ebae4e58e3155",
+              "d432bdf5ec766069ddae66730ae06a759c1e5b697523609b4e783c89cbd20722",
+              "66b3a08b1179d8f34586c7813ffecb03b9c487c007e4522803fa137bed12e627",
+              "2245ffd6f71ba7227ef630e3155cbb4bb8184b872ae39d2acabcbd10c02aba75",
+              "1c94479a7518ee7eebb6b2db8bd622e745d25c736f19166ecd3fe315ea004cd7",
+              "2bdb805375fcab78566096b0fb0e5990ae5ed4bc287f580d6dec3438f8385c57",
+              "5db3e8c0e99a8abfe591faa549ac2c23fb0a9a5b5f209d0bd487b91397fe6eda",
+              "ea483dd39d55376882254590076d7d9250bdc20db0639192fb5b7e100a9f9ddb",
+              "5dc55ddc38106b6dd3fd07ef3485db0a33efec16268c9d3b4d1f9f3ee8485613",
+              "4fbce730c10ee9928997db484fbfcc4d4d97908df96e4eb99a5f2754fe59aa2e",
+              "661992b45c039644c753b66ea1718d67c4830fd081ead9bbde3fe9592750c0e5",
+              "345805c6f17d5ac8f1afb864a075818fda526f811bfc30bb75eeafbbe964a515",
+              "5459b376e33dc73f7d4a777a625f076f6a0844727941ebb188ebac58e412a7ab",
+              "5062e34da30c9401697be7503f16a3642b318cf3636fa0cd6b5954d3152ba28d",
+              "fe02c31a7daf6f77746deb1055aa10c4a461534e9382253b472a26a064d16ba4",
+              "10de35d287a758ad3f4ffcc5cd5411d81dbbb65990a42d4c2be31f061738e854",
+              "2d2fd32af7e0bffa8a75fdbd17651c449f544f5aaca9c31ced62f683ec265436",
+              "4b664c2a97b87de072e4aac231db655fe70ffb084ea70c0bfd583b2a49f6cb33",
+              "8ec54e1d076dba3efcf96b1d728f9c6b37a0ceaf4b37354fddbbceb4897127a4",
+              "15cee8763cf804de57dbe4b23f9fbd590b0e34db6f3ffdb2d1c774c208da8f17",
+              "9b2be98403cf460d8b601b06007d422dd85de3200b143fce3c1db404fa13d0a9"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/arc0_comparison_telegram1600.mp4",
+            "sha256": "ce587444e950db44ec18367b356dc9a02501cf8879af176e7162d712ed70eee5",
+            "size": [
+              1600,
+              368
+            ]
+          },
+          "matched": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "cbea2e7f5f170488315cf0a641c35da69b985510660c6e099b469bae4714c310",
+              "4fe631ba68afe064e90796a3f6513c21a4c3fca02c1f7289d9eb377d547e7729",
+              "0a28de763d5e63da7ee502afa0750a757419917f3c8c9d61d494d2ae50fadd6f",
+              "c9b7084f9d0974bb481d90a41af348e6bad93bfdd2103499db1e94d2ed57a652",
+              "b3e385a934d21784d446a9b4786433621d166f9de240301dfe0f55cccaceb22d",
+              "11f0eb458f1d41a06d2b0596b26dca306e5b411dc82b402d8f722bd6454aa76d",
+              "3497452fce598b523fb32fc731b7f485c0bb13555f49e6381c730bfd41b546ed",
+              "1df75328d9a8648da5a351565037e2fd04b53e11ac134ab1cae7eda12275e041",
+              "63650753f42f0ff4df5a6a00a610b17ad1a44a0ec4b51f66db5d1591dcefdd03",
+              "17d08ffad013aa5f5edbb3ff95d678ba25b5cde802f453d1a37330f6ba2d1425",
+              "f165355722a4eb7b4dd583934520c7a4e0b1460cb8c8bb8137fabbd93a98e4c4",
+              "ea34a79be68d880bd6db82233c009f821c38ec6ff90f6791bc8870d875c35b97",
+              "aa35353724773c6f833a73845e6fafb2eb480998fa78b4b0d23f39e817a25095",
+              "78c5c4099b2fd19949a1b03ef6497349613b9615c8b2d0454a0174233be1bc43",
+              "18163b68904dcc258e9eba3eea34b54db7546f052c6ed75da88c4a52af95b20c",
+              "742a5c664de723c615203f0fd8ffdd82e5514e355d679317e80d922f57470bec",
+              "28b5757e4b0acd73cf9ba1d7a003b58d65fdbc2cc75410ba747cfb2637ad2990",
+              "2ee7853965c7b6f659cf043a550c09753f509f913e178e8ce03468784bfa3c6b",
+              "13d5498610daf7a337c1217e9fd7f6eb19b102eac8e0e52dc2e339b6e69d76b8",
+              "a13c499034df05147ac0efea1af991a7ab44e1820df9c002543cf5168574f95e",
+              "0c00c0da4167febebc19a8156247aac740fcc0a878e5b3d7d0851c92c22a877e",
+              "30e86f196e0f7b6d712913fdc35a2512f7eb1f61d31117f9413f78749962b8e5",
+              "f2c20f69fc74e20eab0069172c76a5426f799d288c3f1db99e9755012ebd6903",
+              "96abde48130be311441b3b0fe8034c65f71693cc603d4a538cb166e379e162f8",
+              "9b238f4d5a34a3b32e1213aea3a5bc33b09f0b6d70cbdf4d03bb81180e4d769a",
+              "57a498e57f865b26a82302bce61d0568cfd98caa1821bc75f5d2e46c357cc8d5",
+              "8be0965c54685c0c95a0df44539473c08fe68cc4cdd089e0943f316c03bfb3e0",
+              "543907be4adea1aa708bc8bacc8f9c86b78cec0b19ae0d9c7cdec19857ce7374",
+              "3339c8c1ffe3da9ae26d4b64d8b90f3a382d1e146a645b1f8622c08432b30a3a",
+              "0c2e0928519e354bf5033911a16059b45aa0007767813bdd033e62bf5214c68d",
+              "c90828c310c32ee3fd6bd0b9482079bb53257963aa7ea98f5bcff5a0aabdd4c9",
+              "6345b138a61c244b60b1632d8fc999058ff839d6eed3f1314a8b6ee9dff0e11c",
+              "e3512014f803607bcf9d7a9ac32ad0625ea03b423c6ed89186e357afe2f9aa62"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/arc0_matched.mp4",
+            "sha256": "89d7166a6ad8f366e25978084969c2d59fe830c34c4b5e5523785c653d8fd27f",
+            "size": [
+              4000,
+              832
+            ]
+          },
+          "matched_telegram1600": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "6ac5d57b0d971fcc412ca597eb3d4141c0f5d5e21567c9eafefea631ef3d102a",
+              "fe4c0d98fc95fcf6157bad0d8a0b9dab2ee261708137cc35ad64e49da038b89d",
+              "3152d99054edbceca23c615519044e0108e58cb99de089677d5e8fb4a12095e7",
+              "345e733ce0f219d63e22ea924d36c91cc35b43bc3274acdbe4568ac4b1125ccf",
+              "662187544526906d2c437d3b8e34699c8507d39b2acf9e8f03fb53b5e4f4b0fb",
+              "2ee7fc84724fad1af589afba156caa073f01489364604d040ddb425760aafe94",
+              "f3bcf2bb1ef4ed835a7d1be60e96ea222cf3279b08b46375f580bc2807ea6c34",
+              "b150ce3cdc65133aa4dc9e65914fb136efb1136330b2c9c43940f6dc456b73ed",
+              "1aa42c6a26ed78361fec803b62b537a52fe1935dc3f5d4c088f29b95a15f2a15",
+              "0026edb6d9a204e57e32ae52e395c0b07d5a046bfeaab1c1257d5319d02f8737",
+              "43b7d53938720885dd9d7d0bdf7c8a89cb6128edae984bc7958da8f772216661",
+              "3a5247faadc18e61da01b823c689075ff6f66e0f151cd66346d0459aa5d82c22",
+              "476dcf3867e0e88d046a734e8ecb8d13f9a2c92011276410576bd468184877fe",
+              "44b5391d5a7cefa7a9ea58061fb5b1049a27f45c2150ac2a354b143960d0cb45",
+              "2e43ceb56a2ee69a6f13cb947f0ea4d0eb0de0dddb80deaa33eeb784c7754fad",
+              "d25c89e238c606f8d3548728a73e00b369d8463db7ca784b07634e369b975439",
+              "8a22659aa84ca128047d1934f98e95c55c9677321800a01328c6e8c901c7d0c5",
+              "7956c41e05a7b904ce590e5a0550638944251f7137fa6798fabac4ec3ba977d5",
+              "f3ff33521d3b561a543f75f25a388033190f1bc531a628a11ab936cff14f9f21",
+              "a7ad1885e15b87b0ede58f0c46fd0399e9d80333a7fdb62d59538c3fbd0c3198",
+              "916feb1df7c4c29680d3e97cea94b1eb23932df514395f21e825f387f59789b4",
+              "d908aa128d2d083ab4a72beb423d9364712af2d521711a64317802a7a0579b5e",
+              "20a8c2ebcf04abf84f2fc869c812c41b3c191d2e2549d18d5bebb35265f18e38",
+              "ad9ec1caaec4ee46d97f49a88c7b65d852c4191b21ec4da9b4a6421f6d45cd11",
+              "ab5a1d8448f2c9468db34705d57b4b75bb1d2a218b37e314c7c27580ba858667",
+              "0274db63267f31d1aab36ca6457d7f9316564e86f9cfc1f76c095b2282452339",
+              "423ac16d84018a0dc99714511ba9da8325405911781298d078ed662cf5954145",
+              "947503a165024619f49a80b3d75861f5f5b3b1ea5c07388aa9d58e3c9eef6a13",
+              "37d962ad2670f6849e8643ae89a0e276a12cb968b15a1c45743c92b8693838ff",
+              "8135a9e1ad965b2234987020bf4602f098dd37b882ed5e1708f6e2b659faf3d0",
+              "01cfc7e9418ef6c593f42b2408ce1e17245f7c40e1aa557e9b6da05ffac04c70",
+              "63080d2ae9f716c2cbec931f43f237b29a6d91fff9f4f31982b0457d485c3245",
+              "e5ae12dfb6014dc657a2879633e5f15c47084e17c047df4b0a9ee53d552ee4f4"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/arc0_matched_telegram1600.mp4",
+            "sha256": "e3ea51d1bb47bd8ad4d3bd271ea248b870479bd906dce8c88d50b757baad6d2b",
+            "size": [
+              1600,
+              368
+            ]
+          },
+          "overlay": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "ec3e2a149528630df2a8905f49e03b6bc212fb6856695853ee79a282de1c9723",
+              "a53c875aebfc50c060a53d26957f3f7dd6aeb8be9fbc0c4ee7dad5bef3db3a57",
+              "8b2bf84c5b23a8e87cfe449ca4306b9d2b0d6a679a04f5ab84e16f2b2cc87397",
+              "d30f929e61e17bd442b283ddfb8ec61ced39b7d0b91b036d47166a872ac87a32",
+              "665185553ff881b81a758c7f5c9f136fee3139b06db5f56de9b612bdc444b0bb",
+              "86bc655124d2ae48b66025321bd3c06e916a535370a5fec3cced926c60b4c8ab",
+              "7f5c775707e1a7c197fb6cf59803ea2fceb5dd57509d9385d516371e3f985cdf",
+              "23c0ca534c45b24a40d032e0cd6f4475207f3aade2e8a200964b40b293615ccb",
+              "986d5c30e2e8e5dbf35795a5ec00a317e7fb24c22ad7741974bf6b154781175e",
+              "1f3bf6f80f25aa088e1a239410adc878e53e13219f0aade25d93397c27b4c467",
+              "4f833986ab5d4647e37d825a961e9928af1aec0948fb4959f8fc733b8a078588",
+              "a2413dc2681d08dfbc96c7fb4b4dcd1bf7ca66d35d8cb309492923a07a7b7921",
+              "bbc5ca965897c4db7f25e52b8fee130c655c95434f44c1650db4e5315fd2e722",
+              "9d3b70f03f0dd16c84eb1a8b99fe283ec8ceed524231209715fb7946578a067e",
+              "77129480ae724e7b7eceac0529dace578c8340ef964bbfc6a0dee90460b66b3d",
+              "8b571a8cdc347e07b540e08ffb3ee0475b1b887804e056597334d77be7944285",
+              "56217e163be4144f6d43d8cf0a5b514ad63264764924d342efa9b97701e9f802",
+              "66609e8fcc5c86736d515ed23a577157451771a9b0591aa325b7993e654fc925",
+              "9e2b8d1eb7fa3126d25d081501ca13cd1d3bba2d41825f003397e94ce5de15f4",
+              "598502e23f8127350edefd8d8ed02adda0ab2914b7192d4bfeb13fcc3554edaa",
+              "0743e6a9f09d5693ef44b8eae3ea11057ee4a27e50d792f429a27459858d940e",
+              "22dac19f7386090ab033f77638926e05d30a36a522b544ec64c9b9d375a1d217",
+              "ce1ae3e44a3b979ccfae35df01f9b63efd0e406c26945652c80aac6e4e5f5909",
+              "ecfb2b45880e30800db23ffc84bacc6930440abf249163cb2373ec4ec12bdb91",
+              "0ea7bfd48009c87f5ef6a6f7b0e9606e1cebe7cb4fe7004a46f7fa73316b1ec8",
+              "ed403544345e7f405a6ba78cf4a789e61befaeca6c1a8f16059f37e9e55daede",
+              "5f7383e3ced591bb6af180fd1f4afe59b7496e138de4df6e4a547ea69c534e44",
+              "620f05fd22436f01ae16256d112bcf3ea8bd83bca3fc8790ba418e9ebc8fd5e1",
+              "9e36af0f95a05709ed3283d6a192f900ffb78e5c93ec8fded0e2d733638fa104",
+              "b03aec79b87c55b45d9bd80bb79515a7809c827535d7efbdee0a25c1db44201b",
+              "f8ee60bdb3dc245d1bbb849835c9a02eee493ad5ad30118050f9b137f1d08f32",
+              "6a92b862e04f48bb5e28bc4b790ebf20d98aaf0016f2bfc4f0ccd1777863c43a",
+              "50a4f936fcbd5e885b3ec568fd625e1776acb778b6c1dc6416ed6a54357fb33c"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/arc0_overlay.mp4",
+            "sha256": "59216be31fe76c8c11c3d74a8f7920eec4849bb884c55d1f618eae008c2975b9",
+            "size": [
+              4000,
+              832
+            ]
+          },
+          "overlay_telegram1600": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "f9957c315037e8e74c61b24d81a11491d92fd2c5613b2992b51c218afa1a62c6",
+              "ebeb105b376231050fc15bad24f18be2cfad69cc559342911e5a15d97d8dc6e4",
+              "967b354e81e2fe046b381480a54a53ce05529cd340b36ea88776e846b290c829",
+              "55aa5064ec36db4f4748f29a11aa17445eeaf6b6a455976a8735985372f58441",
+              "1f3f00b10cfff741f44b4700381f99589b69223ef4b03315d31890ba0d041b15",
+              "d5ea639eef5b3b7f9275e10ec30f980f33181f6d72e2b9eb81cb2a594557481f",
+              "4a6970957c948fafdcd3cfe69474c38e826f119bea238813f536edeba3147a04",
+              "c040a0ba979e0f22395cbf14a5fb37c131a11a403f6e45b59d493ef71bc8839d",
+              "ddd4a885130ddddaad9244147d4f64201e010b7a5971ebdd70899a57c2d0acaf",
+              "4d4d097e6e10cf918827dd45716223869c633d2d3b677f742d0e1c42a4c09052",
+              "738ee22590476d2942e2546ea3a66c78f6767383546ec4e2cd0adae9029f1c7b",
+              "416e49241026c89ca4146607f12e8aad9eb62b333aacf7b872da111d8938fc3d",
+              "92c9ff05f2dcdf22caafd1750d598bcd3d74265122ec29f957a02e50413b2b35",
+              "96b06c35d5d371e4e2af37a142bc301fdd970a3e193028f50f2bff17e7e02a19",
+              "3ca2acdba83c5326fd21d72fa0022bffc6bdf1b48c2fb97d946c9fb958ebf833",
+              "27be3b05606eb371a214bb46173ce12cd1da16640016c7910968f15a9db99289",
+              "ee12b8dda5a6ff6d83bf3b6274d8e4e939c1f89d139831d9d443c4378b7180b9",
+              "53aea6a6c823fa00b3b4d01167babbdc4d66aa2e6f805ea97056e89b85c5ba14",
+              "cc8cafe636926e9f672bd6d0be3656c39ffcb56d45d9fe9aa23b3716034ff968",
+              "108dfed6e381f854121b7326055416e7746812643cd9cc0b65d1203c5d60a927",
+              "9873e6caa7747f1c881c7ac3d29da0b51aaf42c56dfe318451c0f4c0954abdda",
+              "2a1f927e6cca172349fa09495bbebe384407c8888d96ae859f06ae30c6c577db",
+              "5abebde2c88b8fe5c461eee65838abc08e0607de1becedcc8bd4731d8a3ebbd9",
+              "dbea988d256e3627a8b6f8b445875ebf12605f0cc1966c2e30e83b2a1181a2ba",
+              "6792d9a9140b5509caab7d18ea261e34a9ae46784e813c34e408e39a9ab47ced",
+              "15c9688c5ead31b8afba07484a92db468d75d9b1ec75d1d8d3073f41d7a27e72",
+              "9710e600b6b3530ced3dc2ef6eae98e07b1bc4010eb087439fe0bcb01a0a130f",
+              "e58d9d68cb19b2b66fdf4a68d2a5e940ff9851eeeaada7b2a6048e1914e03cd6",
+              "3332758e7358047351ffbd4d7db689c6e0a78716ed6d283996f81170be4f6be0",
+              "446e790cf9a01a4ed0574843fda5cb3969ca9a2f09a390b0cd0ed138897b4224",
+              "cab778103a94aa0fd36e7b184a4f539d83bc8cc4abb63a54b4f82a6c82e8a954",
+              "8427e5753c587cb31213553212889bf65cc2af81be897cae24a692e9903a61b8",
+              "831d7971f89b727fe050eed03d7f50aa3d824af1a21f17ce77c3c5e68adea210"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/mic/arc0_overlay_telegram1600.mp4",
+            "sha256": "df13449885fd3402981f0bbcdddfa88b0124ab6e6cf72370844c79206fd4b579",
+            "size": [
+              1600,
+              368
+            ]
+          }
+        }
+      },
+      "ship": {
+        "calibration": {
+          "frames": 8,
+          "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/calibration/ship/CALIBRATION.json",
+          "sha256": "2c861d4bf219a06272a23a11c415cba925886416960c1719e05cf9389297cde5",
+          "status": "PASS"
+        },
+        "frames": 49,
+        "root": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport",
+        "video_full_decode": {
+          "comparison": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "c00a80da90a40174b4961d6879a0e4ed4d1fd91df6b1abff62fd28cac81873ea",
+              "69a3b0192264226a31d944ffa1919a8d255ad85ecbb1997c9325ea9f4dfdacd2",
+              "eda7b6d99257add97f8ea9e3768979d4c85cdc7efeda7925a38a8f458b6c9052",
+              "95996978decc9283379a35efb4a9992d5be600838d68cecdc43798614ac253e5",
+              "5dfe0974d86165bc73096bd71cd885d9faf618fcd6668bb2cb4f43179b4df978",
+              "6057cc11a3b455f8a398c0f8f491a6782c0a833c08b5f7c4453c8c1a34832847",
+              "4375ace9dc09e85cc528243403814572b82b8bd0b757688c84c7e7ca39760ec2",
+              "52aff724bfe6c2da4bd4c8847ed882b13ea764353b86b9d45a3c7b3dec710660",
+              "674ac279fd38f63554f53860ea78272f4b60b526344068974249ff150684b410",
+              "8f188e3fc56d660540889a044e1f19615821f4e752bd235a2ba90e2d6455d0ad",
+              "360dc0ffdca4c6022980cbe98e28fab2d092118e66df3acf6088ad24d7aaa0b4",
+              "2a84d756c133712672b7df58216c440e9ef7d4fc23636ff7fce075458011c4d2",
+              "a093551ba4cc450a7fdcd183ebdfeadf8fd829c5bb790aa0775eba63ea82ecaa",
+              "44f56c5ef596729bef4cd7550197f494b8fffb3f8ed5467b98419cef20d82272",
+              "b21695f75d96cad10a451c077b9f081ec160970da17d1dff6cd2e51f5cdc6b48",
+              "d93252223a4f4cfbcbaadadd6ba2b4d9588223f356c2f8506fb6d87aef40c67d",
+              "475b362a7d86dbfa64155c9a6555236cba96e953d024e90d1f74e298c5e49b7b",
+              "706b495a1da8442764e4150a082aa89125c5880b93c88b075bc19104274c2ca3",
+              "4cd291692a8b71efa618e196c948c75774ad73a5240347653ed59a03a043c7f2",
+              "9758e32b966ec07678ab8253c9e1afc0e962dae5bb72a0a8f6b6aa8eb877d1d8",
+              "b28c0fe40870c9d8dad85d38202f8e79c284e6e8019f070acfc2c701fbb3b2a3",
+              "90c087950351cf34e68601a8b90ff418c9cc9f8070c6aec350320ca36a3f87a5",
+              "2cf80066bb23d435d69c66c23f7abbd487c3f7c52819d03fd76b03d0b94b5237",
+              "e4d34bb498eb5e77456a5b7a0a1d86bfcaa962eae66e55e3a16b12c58cef1370",
+              "84bd622649a00595b9bca7efb4e1e5e3dd551e2bc46f50dc792ba24c3c661896",
+              "d7bebce1fbe809a981ffd2c05ef80230d2458a9d6cbb555f3976e9ae6245eaaa",
+              "d0ec807b9e0c7a6268cef79545b594f98b04124c83289e1cc65ff220706b03db",
+              "52fb2c5317a186e092e528790f4fc292a8713de72357e9b26254b7739526c83d",
+              "0c3170e7d639c2c0cd0066a6c63a3e99c3c8bab8902b9351ac432bdf7e8b30c7",
+              "1151631ffd13e6af271f953ab9b6842812f8ae5a4c40113e68ec281772e6d55d",
+              "fbf9081a66da245ba97edccaf5ab5dc5c3ea81ceb0d4d53c8631938422781e40",
+              "41e6063e392acd3a5faf5893843589bc53c8daad56f650bb85d97467294d52bf",
+              "0c641176cbd5c43d6f5ba081dcfc67e65df2449a06acca2a7ae2be7f5720b9ff"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_comparison.mp4",
+            "sha256": "cdbfd8f81de7c162206dbff25362b7bf0501389a8399ec44935e85e940e247de",
+            "size": [
+              4000,
+              832
+            ]
+          },
+          "comparison_telegram1600": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "b7bc5083800b1f3eb51b67322ef33bb448fca066a23c2b2f8570e89045119524",
+              "b8ad9e08bbcf2e1e4378eff01d58bdbd763c0c1ad363d2d5050ff06742b499b0",
+              "09cf3159ccd43241c15d4d95d2200b839185781d83b5cd0052a05273a710bc70",
+              "0de5af7a4cfdf0b57d096ae0287251740eccb0949a7caebc868b786782c16462",
+              "2de8fa3190d6cc9d08098b6e5b66e2396a0ab74090849c8580d8ef8ae2bea736",
+              "ed9489c03bc2cdd93c3747c100e97d8f182d1adbd0eedd214c6d6567c821373e",
+              "4a2580c81eb973e9b823151f8eff799630ac83d61baa478a39cbaa0385879f55",
+              "5135001afa5b263ed399acfc7060c1ddf4d90e70a1595ee4534858db627caa27",
+              "662f54183fab03819b1a290d6d9f76e4e76fc12dfb90f1667965e910b6d8afb8",
+              "d27107d855a553112305eb730dd1e0ad6ddd648115dc2d8ed5e10bc1f5210414",
+              "03bb1bd088c39293afcdb4ce862895837eccf4868cb86fa7ff737e5ce401d7d2",
+              "8061748ad024c7c954ff3a874bc9132bda498401668ae839ebe75bd5b5181c40",
+              "e311a1112933a87caf4b88e8996b34d9772c547f5f31f748f10ebb707d517238",
+              "d8948be50670b53f2f765709f0352c800b43cab02fa262ed9c4d1c2a387d45da",
+              "2205492a1f28d32319c1060ab55fe34c0339901e11a95a2b6bb7a2d0868f3736",
+              "0d9c53c9e271259f598171687003e25f108c9477626741314eda447d6150c77e",
+              "b9a055e46805b8854b2fd50e8ef78ebbc3a35695aebf07cef7a8ab31926e99e1",
+              "d87d25c0d4fb873a0d7688e17bcbb9feba68ef9ebc6b3b34d1dda99a607b3ba8",
+              "76e463c5a643821ebd04d91d052120a03429f775e79aced960b2b4c8133b30bb",
+              "c5195ae950550f92fa2ba6b8633554fbfcd1261451dbe8307556cc20f94b620f",
+              "c4c4682874541f09b6a9e030d73704154e7bc3429fba654a7d124a046e14a2c3",
+              "8e456979a794fa22f81649924b79f16ed05e17fee29e237cc03d34e3e34f00fe",
+              "70dc9fe5c0dcabe0af9fe10e58848382621de369b662da9530035b95ec425895",
+              "19aed4748b440b242a1016eedfecba2629c69ff2079ea29d53802afba94bf9da",
+              "484cad6846bb2e51c9658cc0a465c7552fb4017a132a83bfc96664e3b9cfe5b2",
+              "c6f73f0ed4e66e9f6f96299040c016fa8f769065cb884d35cced4e1bfada8241",
+              "ee472797f2175371b159328dc033452d6a1f7533bdbe8124f77e849dc4da11a2",
+              "79a9224ca08fcf3848dad2e945bc0463b0d051278b46a123e01017155719e2da",
+              "9a78d85201b57e1f023ea4d17ee22c3b9593972c4ca1dde729842c55084fab74",
+              "2c7a7bef92817afe745c03b1e8f406d5bc52857513a4f6a253686e9ee457c632",
+              "dd73e44a23c0c271cc9c93f4b666d67def7fafd4eb9693991e1b2fc28295120b",
+              "7b4c33792f8a538e80266e1b158d223c6e1a66d8b81f56f9d3ad75681dd92a54",
+              "99b689cc3ff96e17eb656d9b19ed288523916b07a703531661fb2244dd4dc350"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_comparison_telegram1600.mp4",
+            "sha256": "14f8ccf004e83b5263c2a5f1565b8ad3576eb9227b1549204d9d277f939910f3",
+            "size": [
+              1600,
+              368
+            ]
+          },
+          "matched": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "06581fb964bb1b473be92372760c6d83d5c20cc778e64d92d320079cca0e0479",
+              "9ada8960d8ae732b479c12e0a01ced6e05635cc8fe099b56c123d8351f0c6c88",
+              "4b0d3aa32a2693e2ea40932185f311bfbabf64acb2c9e4f330d29b01e9695fe1",
+              "e3c674a8de2f6a04bb2466d5442c7aa13187b4dec50943f966b1386b95267f15",
+              "33562749d282e5f1a6d59741f542db14fff870965ec80f31ec59fa4fa8a77d95",
+              "8bde9f705011af51d004b9c249f95153dce8a05b1991ed9d2361dad822857ae6",
+              "944d2e55e3ae2af14f62765dd17617436bd537d7d6dd42b207927013e64f42f3",
+              "c4d9fca764a4a88edfefa0113d4fd0de098171f18713e8ac053d3865bb464719",
+              "d52591431ae332005d9d85f0248196d6adfc46f065349ff13c4611dc7ad0563d",
+              "a69e49997d724dad8ff139a2efe60616a140f963b3e2741495b628fd2d07b837",
+              "bf4bcb2ba0e711d327b31018ea26d9c8bcb06c1a4e7d2fb4fd5b5990cca792f3",
+              "5f98dc70395feaa53e9254f662b1f79928a3798f27f4599c3b75e320e1d93530",
+              "16e1222070632dc4527cb850b5ae1c407537ac0ce536681ea7be63606f71e57b",
+              "ece32ffec2cfd4b08b546664d0daa6213906124e9227a65ac33f98ce2233bbe6",
+              "eb5cb96c830df8867a92c19cc86c75b45adab802425e1df1a0151e10c7f31035",
+              "28da9d75a497439e0a28c267c87ff9d2b8b41bd20b263dd5564de71ec02188a6",
+              "ede40e647078019a98e9885744d9abecfe43b696e5e8b87a78eb2fa557385f81",
+              "1fe387da434670d41c1f14468199904785ed6a0611e0b826b9a941704340c0b7",
+              "6d5db522f0ed587dc1869daffeb3bcf39e690be4f224203ff4e58a5157251602",
+              "71a559eacd544e4560ff306a5e4aa85ae37ef3d8352f99beea921214da53259f",
+              "4b8e1bba5112450c41424ce7f794e86889f5dbb918a186a05cbebe6a336834f5",
+              "a75aeb6ea945ca93d80f07538d0e0ee005052eafc4c4fcf6c8ac4fc662abfa6f",
+              "189d25b3186df83ff7e99a513f5f8fb1fae1a41910c5b9a82457cf4f4186b527",
+              "cffde9d87f200819bcdd97f0fd0880142f56e29a844f83eaa6154a06e52cfc72",
+              "f7578c440841dcd00976db6e389f254f6d39afee93124afafb436c9024b2d371",
+              "6fd5025d51313dbc0ff61a7808d7ed06bfec0a9e1266709fa3cd1893aec15fb4",
+              "35954dafa2214a2cc17bbf778982dec35e61bae462c71e3a8bacfb507b4d73f6",
+              "4cd651f75c7343de0fed538c44ffb817507ac1ece3626ccf0e20abaa4d554b5a",
+              "8516ba32b665d573b9ffc7de3d2def94273232043ad9427e5e57c7ff548988d0",
+              "55e5078dde986099ff8c6ad4bdd9f8a24bf714d0b736f2b0a48cd656c7ffdf8d",
+              "e3435e89f3929e8c26564e3fbc4c1ed18ee5ae09318c53e32e78a13ffa3d436e",
+              "46ec08d09d192ff5bf53e0567a32501f21034fcade78a0682437fdd930996a7e",
+              "04f3f586fc59ca9e8f5b526ed4bd0ced4b5319c18872245371b7654c14aed13c"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_matched.mp4",
+            "sha256": "a68b91681ad4cf3f157d211786da75a8625c84b047ba252471480f95059a3d4d",
+            "size": [
+              4000,
+              832
+            ]
+          },
+          "matched_telegram1600": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "b3ce99c962dad0d60d26cf42cf1bc3f81d50a76163b9d5068ec98a9fda394c54",
+              "a08bb2d1524e1b48bc76821077a13176f05db970377998db89cfc95fa4cd5eec",
+              "7fe206560eeae590cc5a04c5edd2c74a7c6dbe81ff4591aae37dfb5fa4ae5491",
+              "b97dc314871a432382b196db8fb0c84205af4e7fe55dbfa9e192f5153615723c",
+              "3dcac075436e0cf0fbbe05bc92c7ab58625514b32f7a428bc0ff27890038035f",
+              "325c3048977c7d465d35f7bc8e629d1475a0465eaffaf4fe85bd27a323f4794d",
+              "a1e757920318e733b29b5522b3c3184313e15f7c6cbc880dc9ec4f499d5be76f",
+              "00c0075ee5453f8ca54c344dfa45acd453e733ec38ecd98e5f7290f76218f293",
+              "9cf8d76a9cc0346058033010e705918eccc15a48568e3215a03abaa851095ea2",
+              "dd35edd4484b8861dc87390b246e732c668f950e77048c33a96b3557316a6be3",
+              "0984eedf40c2e9eacf6f27c65a8b4a43bb54e4349547ad85dd8b60837ce63245",
+              "3b87241bc9e8504f7a0a4bb70596bcec86c81b95d02b9e3b1e6e9c6d91d0cb9b",
+              "13560dddd3a207d37a17ceaf00f72b3580ed5246ccede8bc5f21aa20b7141698",
+              "8df7fcefb7cab53a1f3e32dd0469f71841d60e9a62ea9739bba2e0e10205c549",
+              "89de6f49d77d9c01dd6c3efe4d69557484f148cb8ec37879d76f57595ccdfbab",
+              "9f0c6dcaa34916e7e6c5bbdb082bd190a2f9893105466fcb57a1d2c80009b907",
+              "f23d05ae603e4923750fe6818baee69fa5b25c3af0b7fe2a155821a931c84f78",
+              "d89d86ca34864a2a0a8a961fc28e41517fbed0c04c08e7ebb80e12c4458741c8",
+              "227b6101ca9debf08152e600d6ab7c48c430cb85607beef396dc67f4352deacd",
+              "36faa1b7e75af211d273774b9dd08c6369ec6c6045f345db725e92202645280e",
+              "05317bfdac31f05e9ef775a6d4b45364763a35f79253e63cae65871cae38c19b",
+              "05c4ea1bbaa42960168d0e0b3e86eaf073f8d7eab7a2aba566f7d2cbe6655c89",
+              "6668eeb82ad384e9b2ff144f4ff50508d2565415de9cdd209c7e0ca7eb1c50d1",
+              "f40d425c192d8383cdac90f49387b29b02e803c6c9869c2d12525ac89cac8632",
+              "74b14f1ade94d4c2e16c52d52497a7a7d2927b576963002a37e67962a0391bab",
+              "35099dc4348bde3e4b95c3a51b1f3e30564c0e9c203edfd8057729d7a19f9d2a",
+              "caee68d3cac48fe5b2447393ba419b0c949d6f4b4022f53cfdf91f42186ed363",
+              "377e2acb5dbb71cfb20179a11cce0a25b91001babd10ee93ebb7a0a3c7d53910",
+              "1dc33a1b6cf3913df6811aacf1e579991f5a37aa161e4ac1a8407f1b5656499e",
+              "804fbd5e982b331539e1d1c9dc17a075b32c83fd71ff10305c5ae1bea50644f2",
+              "b5324150e6947082f4f322fcd8525c2b471d7b8236e00544af6a5a5cd38cc3f8",
+              "7e6922df404965188f18ef09b94acf56b5f8b6140af0c17145339bf913fbf17c",
+              "a4bbeddbe7c94216f48e7ca64e10542fab268b46698b092d7526124532a2adc4"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_matched_telegram1600.mp4",
+            "sha256": "340c1e3a3ffc01f8be8c8f65a7dfedefcdfcb23501d8384de1721b75138d4009",
+            "size": [
+              1600,
+              368
+            ]
+          },
+          "overlay": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "032b280a41fb4cf669bcd0a47e85bfe5f98b0afc75d69346c41a1dd4204c15b7",
+              "42ede1def2e4e8efbb57e5ff7bae52c9c0f1e7fb43df740d0bb91890010794b1",
+              "5d50d8612c7dbaf68eeecba25b72248e4fa8cf1ebabbbde941b73600764fc1cf",
+              "aa5b57879fae29c9e65e017fbd1dc8f415dcb79d6ffa2634117d875cc6ffe069",
+              "5d26343dc52c66a3fbda2f1603787de21f7c1393e899824e329ff600c78c0f1b",
+              "0b02fa820e90dd0d012d3a9534422189b61bbe42b27cf0bb25763a9ffc03c7d9",
+              "9f3a1089cddd0f02572fbc92d30b4caaaf7c3c272a6825a56e6fabea0afc0fec",
+              "ac87d23abd7a3fa7fcb102caf60bbbb6d98b4380b9f7f157b837e4c7bd6bb3eb",
+              "ca2c2de5cb81ed7ca4a3a8f1033296a40897cb22d86c6cff717e76a2fab545c2",
+              "0a29c4449d33857e63eca1fc3f29dbc85cc2235efe9e25be6ade4cb4c6843fdb",
+              "b9324d4305d29a11c0b7e6c489c8ed74017697e259a67c8a6fa8f17d909c6bbf",
+              "ccd9f2f0e16e84be3c2a882b0d591559cc6037be5a82d804457a5f30e03b2568",
+              "89c1f1278171115adcdf06cf68d6dad93aa77d680788f43903d6581b445d9146",
+              "f891097cb61f3d204e0427fe9c7d6423eaf5702650c270f7820e3b3ca329875c",
+              "b99d462f2baa70ba12b50f8eb7da7f81e7142ef699d119fff14da67e6a5a5157",
+              "20c39979b7b9c59b7b2ab59f5a9d3afb5fd8e415c32639e8978cf18564494ede",
+              "ea4a4ba140c7c707d053fd7e8fcf8787ab6d2cfd59f4d658c45a57d6f61288d1",
+              "dfe35f5a1ff0ac53ed7e04f31e7fc44ce7b7ba0d68f53c7672b8817b0b63c05d",
+              "926824544bef5b3fccc88ae5c63deb9a29102395930e791b4b36cc84a3b844bc",
+              "b545c5207d89431e290d86d137a5e7a497aa3c085cae6ba3c5e756d7b9b2367d",
+              "2aca9d7d6df14b4b89ca24a6c5bd556a41085d9cc3118c82bfe31ab527bbc9da",
+              "62d7fe4e7b44d4c6bf485abea7b2537f24f5cc49dbd89469ddf90137e1ea16ef",
+              "0f4c46dd96f0bc20631d87c80f2afc27f3b6b4c72a21b3ea3e9fc2e938547bdd",
+              "fe6cb08b707f2ddf23145cc3bd2fe7092cf27647562433302965d962373e6be2",
+              "99384e3656a6b0e8ba313f2fb0109c615f596e0ec0a557e104d89f9ff7008069",
+              "9e88cc52c528f33f9748169e20c21d82bba1d23a547f5e4ccf3ea5dce058e799",
+              "6af9e2f1a11ca8e5a4ffa1952a6627ad32f942e318a029fcbb2d21d2ac29cd63",
+              "f42ee175cc1d1633da7dfc2965c119c8ed86cd942a554765f83ad91c68647674",
+              "5ae225150fb908f75e48412ed44372bafc52a047eece26ed5351f1babc6dee41",
+              "0b6f32f9073c7f6328b50497af90e502499cb5bde6e3e4d978318a43eb54f07f",
+              "d37c75f7ca5099aefabb234bf1765f4710efddfc790ffcbbaa7afd706da8e352",
+              "3a17e9f218361d6bd7c2f5d5e623e939c206adc9f773cc0b0a586ea8bb6399fe",
+              "25f803cdebec01201b6116667371b828388f16684a5256143e9fe39eaab1b87c"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_overlay.mp4",
+            "sha256": "78231cd0053eace7e03a6e64a2a9a4884aadbeed915604428cd1d9647ced70e4",
+            "size": [
+              4000,
+              832
+            ]
+          },
+          "overlay_telegram1600": {
+            "distinct_frames": 33,
+            "frame_sha256": [
+              "a131ab188419caa2888962ddce068dba04047e74c76c265958d6f8d0c0000c50",
+              "eca1d982310d2f39e4584fb1d8eabcc2830f3b3afd789451ca05040320e7833b",
+              "e49788937e07700047af1c1899af1cfa6df449526c5d9f915bbb964bbb4849ca",
+              "50c32ccb601b40586d09fc8df71369ac91f11acf21eabce31af4791841caabb8",
+              "81b14d34607a8b5af8e5795ee88faf97a9af5dea8e033ee9f7c7a4c9a9bea85f",
+              "dbd7aa15ff2e0d58fec4b31341aad62be8843bb91f318fcc664bdc50ffce92dc",
+              "45136d912fe1576be4d64d1d16e785e492f595db8c09260a8cc358ad91fe0469",
+              "6b3c474d4e1fe8c9336ca9dc1160300ef53b8f6f605c1218a291d29e30b115b6",
+              "7a978ece2aee0adaef3678f4c399e0fca9ed3fdcf695186afcea44a60212215f",
+              "4e992868a4790e13aaefc4c57bea73d051c9cf91484c42f137246ce24be18ace",
+              "4a240b491cdcd72e66f8e315b430e81a67503555ea3c51750113b3ec5f4a6605",
+              "c071d4663bd7fe75293c1e9d131de804f347dc110ab38761f2f362aad6b34aae",
+              "d8e56774e4d63a0e513a1a8e3b5c35aa593faef61e0e9f8a97c024b094d41b1a",
+              "892fb9544d3f9c2fba659e695b4848c4e2f647c1590edbc92a68045443c05614",
+              "62f356dfc793ad08318c547a1e8616104feaaaace36182b57f3a30c27ab38be1",
+              "af660f4a8e901ebaa716b38da5791bde4ac615f4d9ad00d62c31042a5a47a6d0",
+              "6e40fa5063bd245498b3027db56cfc339837ff2769a3249602a2dd9ee7f1d583",
+              "2d6309d6f83be2ced0747d424d454c702cb2df86c0c2b0a1f2a0c6d4243387a5",
+              "13c1546cba34f8dda4dc6571f095d282b858f130f87edb5f82dfad262af0a6c9",
+              "5d135137de358a17b7f8acf349bc04c3f1c88bf8ee56bd56196e66ca59bda82f",
+              "88fa725fb0ca3c2a4a15127424f3e99dd8b06325487b4271ede36208253fbf91",
+              "9970488846000f7c7e86723fef1b3928ea8d3f86513b9625e93d9a0647182afb",
+              "897566094d768946c614db533c52dc5876f84d3c4c58f544eff23e5c9e603f13",
+              "c4ee369b081fc77ab7a2b84499872c9a0b8c968cb4345c2bba94c7472f8a02f4",
+              "1e6e6b80557e01658ee172e2921b53233829c8a1976f3826837bfbb1eb8de646",
+              "f120e552a79358b62bf61cd668e8b8fb3f774771474521532c3f37786425dad7",
+              "34f29d4a191ce8f42bf1eef773c6eafcd480c2699ad7bef703fa253220e20599",
+              "dbe248868802dc55e89f70b4fb80de064cbba20d3db604af3a4e5aac065d6cbf",
+              "6d26c1fb84ecaa81979aed71801a0d1c75ce0d0ed654fe4b94ddda33e5ad71ed",
+              "8335b9c1f2d64380f62f740a9c1634aa96e84ae4e320237ec3059090eb1e1b0f",
+              "e45c748a391ec9637c0e08fb8997b44bb76806345f210acf0efa38a6183f09c8",
+              "70533d21b26e03b82f74f3d8968560372d7c034b3bb570fb56407d223bc1693e",
+              "b57e7c9466b86a270e5315e75f904eecf764e56e050a9089353ffabaa090a3c1"
+            ],
+            "frames": 33,
+            "passed": true,
+            "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_overlay_telegram1600.mp4",
+            "sha256": "2fa2970b5d607a8f85fdf94b038a8328ec08425c8fca66f513dd4171f235a2fa",
+            "size": [
+              1600,
+              368
+            ]
+          }
+        }
+      }
     },
     "render_release": {
       "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/RENDER_FREEZE.json",
@@ -203,76 +1426,58 @@
       "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/INHERITANCE_FINAL.json",
       "sha256": "18f1140ade55c2b4f0cb80a323738e4f43b36d0034cdf1414f34f731c1e0f9df"
     },
+    "storage_source_delta": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/SOURCE_DELTA.json",
+      "sha256": "6ec729ad612849d593f666b7ac58832a2ce5c52ecb8b9e6c631bdfd8cb0eae86"
+    },
     "transport_source_manifest": {
       "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/SOURCE_MANIFEST.json",
       "sha256": "7261ed123d4e8e3fa55112f901bd7879972463d8bc9eaeabf70e47b611f1a906"
-    },
-    "video_full_decode": {
-      "comparison": {
-        "distinct_frames": 33,
-        "frames": 33,
-        "sha256": "c7af1027ca0252d543a7dcfdace0611822921af330ddbd8284b92f2641a0c657",
-        "size": [
-          4000,
-          832
-        ]
-      },
-      "comparison_telegram1600": {
-        "distinct_frames": 33,
-        "frames": 33,
-        "sha256": "af511efb992135f66b5b30fc602ba62b59d59fd8a988e3beb632db4d85198f4a",
-        "size": [
-          1600,
-          368
-        ]
-      },
-      "matched": {
-        "distinct_frames": 33,
-        "frames": 33,
-        "sha256": "e23df2f9e1e250b5f829f6c99ea91f837125a9ea338ac753138e92099f85e996",
-        "size": [
-          4000,
-          832
-        ]
-      },
-      "matched_telegram1600": {
-        "distinct_frames": 33,
-        "frames": 33,
-        "sha256": "948037adc406fa1233573c7b7499023936cd80f5b81abd70ef22847de40a2141",
-        "size": [
-          1600,
-          368
-        ]
-      },
-      "overlay": {
-        "distinct_frames": 33,
-        "frames": 33,
-        "sha256": "399340f4d95d521f414a1a5642cc2887d258a39071c707d8b992f7dcdda9a502",
-        "size": [
-          4000,
-          832
-        ]
-      },
-      "overlay_telegram1600": {
-        "distinct_frames": 33,
-        "frames": 33,
-        "sha256": "fc1f0372d522f3ac71677c97012d81f4ce707e33dcfc62acb0fae958ec4217fb",
-        "size": [
-          1600,
-          368
-        ]
-      }
     },
     "white_SH0_RGB_shared_all_arms": true
   },
   "access_audit": {
     "actual_acquisition_all4": "PASS captured process trees",
     "camera_resolve_all4": "PASS captured process trees",
+    "failed_materials_media_attempt": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/independent_review/MATERIALS_MEDIA_ATTEMPT001_ACCESS.json",
+      "sha256": "38ef829edb58398c64f251588cfa6e2da8fae2b739295d1276951c66e245ef3d"
+    },
+    "historical_gap_recheck": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/HISTORICAL_GAP_RECHECK.json",
+      "sha256": "61b61d333b7059b62fabe321c30e7be08a1abe0038ee8577d56bdfd9c3326236"
+    },
     "hotdog_media": "PASS captured process tree",
     "hotdog_render_attempt000": "INVALID missing child exits; unknown143 interruption, never promoted to PASS",
     "hotdog_render_attempt003": "PASS captured process tree",
     "independent_verifier_attempt001": "INVALID missing child exits; unknown143 interruption, preserved",
     "independent_verifier_attempt002": "PASS captured process tree",
+    "new_successful_phases": {
+      "materials_media": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/independent_review/MATERIALS_MEDIA_ACCESS.json",
+        "sha256": "55d107c69ff6b32a2b1dff40d1bf74f6b8a183881437011a83798d253405cce3"
+      },
+      "materials_render": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/independent_review/MATERIALS_RENDER_ACCESS.json",
+        "sha256": "6b6c4ba1a0c2060d56f4e203206535dded6dc10e5758a3e7aa961fa59ee4b108"
+      },
+      "mic_media": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/independent_review/MIC_MEDIA_ACCESS.json",
+        "sha256": "e1e8e9de766687f2d2236c71593213588a9d0735c2b39fcd5135a941830e9a3c"
+      },
+      "mic_render": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/independent_review/MIC_RENDER_ACCESS.json",
+        "sha256": "974ac1d3f6036f4aaf2a3144c4552b61f112a4d595f05ad555159f7cec46c228"
+      },
+      "ship_media": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/independent_review/SHIP_MEDIA_ACCESS.json",
+        "sha256": "16506da5362736eaf99378569127f2d02445ad7a89e3c259aeae88e30c72f536"
+      },
+      "ship_render": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/independent_review/SHIP_RENDER_ACCESS.json",
+        "sha256": "3c5312a13d06b1b0ddd60fc7033fba37a234d9fd652bdc0a8bb51d710231a0fe"
+      }
+    },
     "scope": "Named captured open/openat/openat2/creat streams and child exits only, not whole-session audit; no claim about missing tail of interrupted streams or unannotated dynamic symlink changes"
   },
   "audit_gaps": {
@@ -289,6 +1494,61 @@
   },
   "branch": "hybrid-raster-trained-models-v1",
   "budgets": {
+    "clock": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/CONTINUATION_CLOCK.json",
+      "sha256": "92948cfdbe11a3f9399d29e7e630ba148b3ee21b4c4fc1dd381ddcf2f3ab7ea1"
+    },
+    "continuation_all_launch_seconds": 2410.162229451118,
+    "continuation_gpu_phase_seconds": 2087.729006114183,
+    "engineering": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/REPAIR_LOG.json",
+      "sha256": "a845eb90cd0328891ca120129b831316f8e05759a857af17b6c6a8aec6b2b7a7"
+    },
+    "gpu_limit_seconds": 14400,
+    "runtime": {
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/SUPERVISOR_RUNTIME.json",
+      "sha256": "f035949852545c6d291a76bfdfffe7c2054fe682ed3a347cb47eabdad41b3728"
+    },
+    "wall_limit_seconds": 28800,
+    "wall_seconds_to_record": 4524.214061021805
+  },
+  "commit_reference_policy": "Only existing predecessor commits are embedded; the containing result commit and remote verification are given by Git and the final user message, avoiding self-reference.",
+  "commits": {
+    "actual_training_source_freeze": "206b9ebf3e90d4766fb1b3e32ebfba491e390f4e",
+    "all_checkpoints_and_exact_cameras_before_NPR": "26636535ab39c1996493d0088a7a53bb358dbb9a",
+    "base": "fef9b8566b9fc3aa42a8639b336987b302041c99",
+    "encoder_binding_freeze": "c3f6d25bac9c07da22b517880e1dd566d2c95679",
+    "initial_protocol_before_GPU": "8b3915b5e3211530beefd8606dbdcdd5cdf25e2d",
+    "storage_code_freeze": "baadea14f7dfe74722dfb9b896135882d3f1a614",
+    "support_repair_freeze": "9fb46557958e5ec4b3e13df0894b9be747c43e6b"
+  },
+  "counts": {
+    "PLY_checkpoints": 8,
+    "TRAIN_in_sample_diagnostic_images": 24,
+    "acquired_models": 4,
+    "actual_frames": 196,
+    "contacts": 60,
+    "expected_contacts": 60,
+    "expected_first_mid_last_panels": 36,
+    "expected_five_column_line_overlay_matched_panels": 588,
+    "expected_frames": 196,
+    "expected_videos": 24,
+    "finite_training_loss_rows": 120000,
+    "first_mid_last_panels": 36,
+    "five_column_line_overlay_matched_panels": 588,
+    "frame_seals": 196,
+    "media_seals": 4,
+    "missing_frames": 0,
+    "new_frames": 147,
+    "new_videos": 18,
+    "raw_seals": 196,
+    "response_panels": 196,
+    "resume_snapshots": 8,
+    "videos": 24
+  },
+  "created_utc": "2026-10-03T12:19:01.419751+00:00",
+  "execution_audit_complete": false,
+  "historical_budgets": {
     "elapsed_wall_to_final_record_seconds": 7359.020219,
     "engineering_evidence": {
       "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/ENGINEERING_BUDGET.json",
@@ -311,77 +1571,125 @@
     "transport_first_attempt_budget": "622seconds conservative START-to-confirmed-quiescence upper bound,not measured renderer wall",
     "wall_limit_seconds": 43200
   },
-  "commit_reference_policy": "Only existing predecessor commits are embedded; the containing result commit and remote verification are given by Git and the final user message, avoiding self-reference.",
-  "commits": {
-    "actual_training_source_freeze": "206b9ebf3e90d4766fb1b3e32ebfba491e390f4e",
-    "all_checkpoints_and_exact_cameras_before_NPR": "26636535ab39c1996493d0088a7a53bb358dbb9a",
-    "base": "fef9b8566b9fc3aa42a8639b336987b302041c99",
-    "initial_protocol_before_GPU": "8b3915b5e3211530beefd8606dbdcdd5cdf25e2d",
-    "support_repair_freeze": "9fb46557958e5ec4b3e13df0894b9be747c43e6b"
+  "historical_final": {
+    "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/historical_607b908/FINAL.json",
+    "sha256": "8eface48a19757c800e2f36c02d7804435e487fe64391b5017f2f3ed848fbb46"
   },
-  "counts": {
-    "PLY_checkpoints": 8,
-    "TRAIN_in_sample_diagnostic_images": 24,
-    "acquired_models": 4,
-    "actual_frames": 49,
-    "contacts": 15,
-    "expected_contacts": 60,
-    "expected_first_mid_last_panels": 36,
-    "expected_five_column_line_overlay_matched_panels": 588,
-    "expected_frames": 196,
-    "expected_videos": 24,
-    "finite_training_loss_rows": 120000,
-    "first_mid_last_panels": 9,
-    "five_column_line_overlay_matched_panels": 147,
-    "frame_seals": 49,
-    "media_seals": 1,
-    "missing_frames": 147,
-    "raw_seals": 49,
-    "response_panels": 49,
-    "resume_snapshots": 8,
-    "videos": 6
+  "historical_storage_blocker": {
+    "GPU_GUARD": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/materials_render_000/GPU_GUARD.json",
+    "GPU_GUARD_sha256": "a95913a3127710d1afb114c81f1feb57abe61c2651aad138fa23ce93582ad043",
+    "all_four_vanilla_checkpoints_acquired": true,
+    "allowance_disclosure": "1GiB phase allowance is the unchanged original supervisor heuristic for unknown calibration+first-frame write size; 1GiB hard reserve is distinct. Prior hotdog actual16 calibration buffers are measured separately below.",
+    "completed_frames": 49,
+    "completed_scene": "hotdog",
+    "execution_phase_allowance_bytes": 1073741824,
+    "external_storage_authorized": false,
+    "free_above_hard_reserve_bytes": 193155072,
+    "free_bytes": 1266896896,
+    "hard_reserve_bytes": 1073741824,
+    "hotdog_calibration_npz_bytes": 206130333,
+    "no_evidence_deleted": true,
+    "no_producer_modified": true,
+    "original_blocker": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/materials_render_000/EXIT.json",
+      "sha256": "11727344255b91c6f009b535c67c52606423f3aaf9e7473004452cddff8550f2"
+    },
+    "phase": "render",
+    "reason": "STORAGE_PHASE_ALLOWANCE",
+    "requested_frames": 196,
+    "required_bytes": 2147483648,
+    "scene": "materials",
+    "schema": "trained-transport-storage-blocker-v1",
+    "scope": "next scene production not launched; no calibration or scientific negative claim",
+    "state": "BLOCKED_BEFORE_LAUNCH",
+    "unrun_frames": 147,
+    "unrun_scenes": [
+      "materials",
+      "mic",
+      "ship"
+    ],
+    "utc": "2026-10-03T10:34:34.384535+00:00"
   },
-  "created_utc": "2026-10-03T10:51:39.020219+00:00",
-  "experiment_complete": false,
+  "human_review": "PENDING",
+  "independent_artifact_integrity": true,
   "independent_verification": {
     "acquisition": {
       "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/ACQUISITION_FINAL.json",
       "sha256": "3be3b3e21f089873904caf10021ee15041b315cc5206b6c453ba52295daa059b"
     },
-    "conclusion": {
-      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/CONCLUSION.json",
-      "sha256": "451a6af99780efe62a7f670309d75957ffc131a6d542d8aa4c3c5940b5566106"
+    "continuation_checker_access": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/independent_review/FULL_VERIFIER_ACCESS.json",
+      "sha256": "de35c2c14bfcf0624d6ff85a85c8b77db758c2ba459366201da6389446b8c324"
     },
     "freeze_order": {
       "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/FREEZE_ORDER.json",
       "sha256": "a1eef1516ac5f04923cbb38540aec21012a5468f752e69e30af3416944e3becf"
     },
-    "overall_exit_code": 1,
-    "overall_exit_reason": "Missing3scene calibration/output; no Hotdog artifact errors",
-    "production": {
+    "historical_conclusion": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/CONCLUSION.json",
+      "sha256": "451a6af99780efe62a7f670309d75957ffc131a6d542d8aa4c3c5940b5566106"
+    },
+    "historical_production": {
       "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/PRODUCTION.json",
       "sha256": "818cf801c78488efc19a5c496a83e285cde5c49558d77e83eb06364aa4ba9b3a"
+    },
+    "overall_exit_code": 0,
+    "overall_exit_reason": "196frames24videos60contacts36representatives verified across both roots; historical execution gap retained",
+    "production": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/independent_review/PRODUCTION.json",
+      "sha256": "9f6aeb4170218911052da1d2598028236254fc269a2a0b40d9bdb149ccd1275f"
     }
   },
   "paths": {
     "Hotdog_frames": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/frames/hotdog",
     "Hotdog_media": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/media/hotdog",
     "Hotdog_raw": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/raw/hotdog",
+    "artifact_path_sha_manifest": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/ARTIFACT_PATH_SHA256.json",
+      "sha256": "d58915165bc74aa4b51d26a342164769ca2bbbf7953926c9f408aa06f179ee08"
+    },
     "artifact_root": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1",
-    "large_local_output_root": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1",
+    "authorized_external_root": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1",
     "models": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training",
-    "report": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/REPORT.md"
+    "report": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/REPORT.md",
+    "scene_transport_roots": {
+      "hotdog": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport",
+      "materials": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport",
+      "mic": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport",
+      "ship": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport"
+    },
+    "storage_mapping": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/STORAGE_MAP.json",
+      "sha256": "534cf6e75fbc36467f32516d4bfc0b0ce14bba1f4e677a1e044d2e6bb6b648b1"
+    }
   },
-  "publication": "Git tracks code,small reports and evidence; checkpoints/raw fields/videos remain local at exact indexed paths and hashes,not uploaded as Git payloads.",
+  "production_complete": true,
+  "publication": {
+    "delivery": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/DELIVERY.json",
+      "sha256": "1c0b92dfe0710863ee473990109e15ea5fdacf0fca646e6d00764995c72286d3"
+    },
+    "remote_readback": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/GITHUB_READBACK.json",
+      "sha256": "ebff5c255ed10ace87b4c8c778a75eb607ca776e890f8ff2a393be5d692b7154"
+    },
+    "scope": "Only explicitly listed tracked small review assets uploaded; huge raw/native artifacts remain at indexed roots"
+  },
   "remaining": [
-    "Provide sufficient authorized storage before any remaining scene launch; keep frozen models, cameras and recipe",
-    "Run Materials/Mic/Ship8Fqualification then49frames each and required media if qualified",
-    "Human review of all five-column/native/ink-matched/overlay outputs and usefulness; current agent visual reviews are not human approval",
-    "First renderer syscall audit gap remains explicitly unresolved"
+    "Human scientific review/GO pending across five columns, matched controls, overlays and raw fields",
+    "Historical firstHotdog143 execution trace gap and firstchecker143 invalid evidence remain unresolved; new traces do not repair them"
   ],
   "scenes": {
     "hotdog": {
-      "NPR_calibration": "PASS:all8 patched/unpatched F",
+      "NPR_calibration": "PASS: all8 patched/unpatchedF independently recomputed",
+      "NPR_frames_manifest": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/hotdog/FRAMES.json",
+        "sha256": "244c4914cfd894577680d3ab355fbe31f2070aa25f98b437b6398b9718b7eb91"
+      },
+      "NPR_media_manifest": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/hotdog/MEDIA.json",
+        "sha256": "c7f5cd53aeb48c6c2adca24ecef469f4cad0331a29ec6b0a47c61a8abb4cf058"
+      },
       "NPR_payload_media_integrity": "PASS",
       "acquisition_evidence": {
         "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/results/hotdog/INDEX.json",
@@ -440,22 +1748,31 @@
       "native_fov": 0.6911112070083618,
       "native_principal": 399.5,
       "output_training": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/hotdog/seed_1729",
-      "scientific_qualification": "REQUIRES_HUMAN_REVIEW; initial renderer access trace incomplete",
+      "scientific_qualification": "REQUIRES_HUMAN_REVIEW; no visual upgrade to training/scientific success",
       "seed": 1729,
       "training_finished_utc": "2026-10-03T09:32:06.447406+00:00",
       "training_resumes": 0,
       "training_started_utc": "2026-10-03T09:24:11.762527+00:00",
-      "training_wall_seconds": 474.68488322314806
+      "training_wall_seconds": 474.68488322314806,
+      "transport_root": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport"
     },
     "materials": {
-      "NPR_calibration": "NOT_RUN_STORAGE_BLOCKED",
-      "NPR_payload_media_integrity": "NOT_RUN_STORAGE_BLOCKED",
+      "NPR_calibration": "PASS: all8 patched/unpatchedF independently recomputed",
+      "NPR_frames_manifest": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/materials/FRAMES.json",
+        "sha256": "b0a4be370140456d55f65f91030a91d7bba7affb03ae852b956a1fa441315116"
+      },
+      "NPR_media_manifest": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/materials/MEDIA.json",
+        "sha256": "b17c7e9e70d94b6eb93d14e9e88cb0bc80907c8443efc5efa82d96b9827dcc0d"
+      },
+      "NPR_payload_media_integrity": "PASS",
       "acquisition_evidence": {
         "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/results/materials/INDEX.json",
         "sha256": "d8f7d4373c482ca7d664e30b9651c779a3e0a8acb46e471f8fbb964922978e68"
       },
       "acquisition_qualification": "PASS",
-      "actual_NPR_frames": 0,
+      "actual_NPR_frames": 49,
       "camera_manifest": {
         "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/materials/CAMERAS.json",
         "sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d"
@@ -507,22 +1824,31 @@
       "native_fov": 0.6194058656692505,
       "native_principal": 399.5,
       "output_training": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/materials/seed_1729",
-      "scientific_qualification": "UNASSESSED; not a scientific negative",
+      "scientific_qualification": "REQUIRES_HUMAN_REVIEW; no visual upgrade to training/scientific success",
       "seed": 1729,
       "training_finished_utc": "2026-10-03T09:40:57.190180+00:00",
       "training_resumes": 0,
       "training_started_utc": "2026-10-03T09:32:50.923648+00:00",
-      "training_wall_seconds": 486.2666058028117
+      "training_wall_seconds": 486.2666058028117,
+      "transport_root": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport"
     },
     "mic": {
-      "NPR_calibration": "NOT_RUN_STORAGE_BLOCKED",
-      "NPR_payload_media_integrity": "NOT_RUN_STORAGE_BLOCKED",
+      "NPR_calibration": "PASS: all8 patched/unpatchedF independently recomputed",
+      "NPR_frames_manifest": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/mic/FRAMES.json",
+        "sha256": "0d0d56f562aad770f30df7c36709a950ea01de9777dcc7e710689b9ee53afa5a"
+      },
+      "NPR_media_manifest": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/mic/MEDIA.json",
+        "sha256": "f786f3f5b2c0f69cdd61e0e81710536d03d0229fae2e68e7ad4f95aca163a4a9"
+      },
+      "NPR_payload_media_integrity": "PASS",
       "acquisition_evidence": {
         "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/results/mic/INDEX.json",
         "sha256": "506f85defba0fb6ca8a7c1f1a14a97ae6955a6bbbc90ffdc9982973e98deb51d"
       },
       "acquisition_qualification": "PASS",
-      "actual_NPR_frames": 0,
+      "actual_NPR_frames": 49,
       "camera_manifest": {
         "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/mic/CAMERAS.json",
         "sha256": "afa6240bfdada724876ce5ae0a885f6875bb427463f9da85ce1013cd955b2c3c"
@@ -574,22 +1900,31 @@
       "native_fov": 0.6911112070083618,
       "native_principal": 399.5,
       "output_training": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/mic/seed_1729",
-      "scientific_qualification": "UNASSESSED; not a scientific negative",
+      "scientific_qualification": "REQUIRES_HUMAN_REVIEW; no visual upgrade to training/scientific success",
       "seed": 1729,
       "training_finished_utc": "2026-10-03T09:50:06.986976+00:00",
       "training_resumes": 0,
       "training_started_utc": "2026-10-03T09:41:50.511271+00:00",
-      "training_wall_seconds": 496.4757005989086
+      "training_wall_seconds": 496.4757005989086,
+      "transport_root": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport"
     },
     "ship": {
-      "NPR_calibration": "NOT_RUN_STORAGE_BLOCKED",
-      "NPR_payload_media_integrity": "NOT_RUN_STORAGE_BLOCKED",
+      "NPR_calibration": "PASS: all8 patched/unpatchedF independently recomputed",
+      "NPR_frames_manifest": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/ship/FRAMES.json",
+        "sha256": "631d5f3a6d7ff8065d2dabaf044de068963474bdb5d6e5236dbd810e7d544e20"
+      },
+      "NPR_media_manifest": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/ship/MEDIA.json",
+        "sha256": "0ed67d528c5565f3aba878b5cb2de09667327ad1e6928c21012b460ed54bbb51"
+      },
+      "NPR_payload_media_integrity": "PASS",
       "acquisition_evidence": {
         "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/acquisition/results/ship/INDEX.json",
         "sha256": "b4b39c52b958eb7c949275526469d12a4a7753a44e35999167c1093296ac345c"
       },
       "acquisition_qualification": "PASS",
-      "actual_NPR_frames": 0,
+      "actual_NPR_frames": 49,
       "camera_manifest": {
         "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/ship/CAMERAS.json",
         "sha256": "61895c4d059daaee95ce84a084dbc376a24914ef55b37ceb100baa5ffd175923"
@@ -641,60 +1976,36 @@
       "native_fov": 0.6911112070083618,
       "native_principal": 399.5,
       "output_training": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/ship/seed_1729",
-      "scientific_qualification": "UNASSESSED; not a scientific negative",
+      "scientific_qualification": "REQUIRES_HUMAN_REVIEW; no visual upgrade to training/scientific success",
       "seed": 1729,
       "training_finished_utc": "2026-10-03T10:01:43.599693+00:00",
       "training_resumes": 0,
       "training_started_utc": "2026-10-03T09:50:45.967363+00:00",
-      "training_wall_seconds": 657.6323809239548
+      "training_wall_seconds": 657.6323809239548,
+      "transport_root": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport"
     }
   },
-  "schema": "trained-vanilla-frozen-npr-final-v1",
+  "schema": "trained-vanilla-frozen-npr-storage-continuation-final-v2",
   "scientific_GO": false,
-  "status": "PARTIAL_BLOCKED_STORAGE",
-  "storage_blocker": {
-    "GPU_GUARD": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/materials_render_000/GPU_GUARD.json",
-    "GPU_GUARD_sha256": "a95913a3127710d1afb114c81f1feb57abe61c2651aad138fa23ce93582ad043",
-    "all_four_vanilla_checkpoints_acquired": true,
-    "allowance_disclosure": "1GiB phase allowance is the unchanged original supervisor heuristic for unknown calibration+first-frame write size; 1GiB hard reserve is distinct. Prior hotdog actual16 calibration buffers are measured separately below.",
-    "completed_frames": 49,
-    "completed_scene": "hotdog",
-    "execution_phase_allowance_bytes": 1073741824,
-    "external_storage_authorized": false,
-    "free_above_hard_reserve_bytes": 193155072,
-    "free_bytes": 1266896896,
-    "hard_reserve_bytes": 1073741824,
-    "hotdog_calibration_npz_bytes": 206130333,
-    "no_evidence_deleted": true,
-    "no_producer_modified": true,
-    "original_blocker": {
-      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport/launches/materials_render_000/EXIT.json",
-      "sha256": "11727344255b91c6f009b535c67c52606423f3aaf9e7473004452cddff8550f2"
-    },
-    "phase": "render",
-    "reason": "STORAGE_PHASE_ALLOWANCE",
-    "requested_frames": 196,
-    "required_bytes": 2147483648,
-    "scene": "materials",
-    "schema": "trained-transport-storage-blocker-v1",
-    "scope": "next scene production not launched; no calibration or scientific negative claim",
-    "state": "BLOCKED_BEFORE_LAUNCH",
-    "unrun_frames": 147,
-    "unrun_scenes": [
-      "materials",
-      "mic",
-      "ship"
-    ],
-    "utc": "2026-10-03T10:34:34.384535+00:00"
-  },
+  "scope": "Complete planned artifact production and posthoc integrity only; historical Hotdog execution audit remains incomplete; training/scientific success never upgraded by images.",
+  "status": "ARTIFACTS_COMPLETE_HISTORICAL_AUDIT_GAP_RETAINED",
   "tests": {
-    "counting": "RED,failed fixtures and reruns excluded from92",
-    "index": {
-      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/TEST_INDEX.json",
-      "sha256": "183e8abd36f96a26d0014d51692a0ca53c2b0e7de9f0fd16eff21c6f16b385a3"
+    "counting": "124 selected unique unit tests +1 real media integration separately; RED/failed/repeat runs excluded; historical92 not added",
+    "historical_tests_unchanged": {
+      "counting": "RED,failed fixtures and reruns excluded from92",
+      "index": {
+        "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/independent_review/TEST_INDEX.json",
+        "sha256": "183e8abd36f96a26d0014d51692a0ca53c2b0e7de9f0fd16eff21c6f16b385a3"
+      },
+      "two_step_real_CUDA_integration_separate": "PASS",
+      "unique_selected_final_passed": 92
     },
-    "two_step_real_CUDA_integration_separate": "PASS",
-    "unique_selected_final_passed": 92
+    "index": {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/TEST_INDEX.json",
+      "sha256": "e6718c18e7e4d93284dcfe9726407a5e69564683d0a284de7af4bc52b4c807d9"
+    },
+    "real_media_integration_cases_passed": 1,
+    "unit_tests_passed": 124
   },
   "training": {
     "NPR_reads": "SH0 intentionally,as inherited",
@@ -730,6 +2041,18 @@
     {
       "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/SECOND_VISUAL_REVIEW.json",
       "sha256": "70435ba74bc929c9caaaff5bcf461a30646724928ce1a2a8601bbc84e105eaf6"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/MATERIALS_MODEL_REVIEW.json",
+      "sha256": "826ee85e03524c113a9be327fc033b3c17afbd6aab07ed4afc9d2b71e58c1931"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/MIC_MODEL_REVIEW.json",
+      "sha256": "e05fa5273d80b5ce8b4f38c603ad42ff83276124ffced767077bb25562314e4b"
+    },
+    {
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/continuation/SHIP_MODEL_REVIEW.json",
+      "sha256": "aa354ba73541caa2c7336f3e66ddcda54a260f3e7c7c8c21fe59d76278dda229"
     }
   ],
   "workspace": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1"

@@ -1,0 +1,1238 @@
+{
+  "contact_view_assets_manifest": {
+    "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/CONTACT_VIEW_ASSETS.json",
+    "sha256": "21f331073472ae944daf3c313eef32760b374f0883438d5c8c709ca6532d410e"
+  },
+  "counts": {
+    "complete_contacts": 15,
+    "contact_tiles_inspected": 245,
+    "original_images": 36,
+    "representative_frames": 7,
+    "representative_panels": 21,
+    "view_assets_actually_inspected": 37
+  },
+  "human_GO": false,
+  "human_review": "PENDING",
+  "limitations": [
+    "C参加GS TRAIN，只对NPR参数拟合留出；不是盲测。",
+    "未读取TEST、mesh或数据集源RGB。只阅生产PNG和相应seal。",
+    "缩小JPEG仅供查看，原生800及4000x832面板未改；没有逐像素放大审阅全部原件。",
+    "静态contact与首中末观察不建立时序稳定性或fixed3D收益。",
+    "AUTHOR是固定增益的独立Eq.1–5重建，NOT official；matched中AUTHOR不参与A/B/C墨量匹配。",
+    "本记录不取代独立数值、完整解码或访问审计，也不改变训练/科学成功状态。"
+  ],
+  "media_seal": {
+    "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/SEAL.json",
+    "sha256": "506a912a4dbed67b08af079d4a230dd736b01ed42299fb370e455b8d5f73929a"
+  },
+  "observations_zh": [
+    {
+      "finding": "F001、C007、arc016/032及完整contact中，B在原生RGB相对平滑的灰/绿球面上也铺有颗粒、云絮状灰块和密纹；部分反射/金属球形成近满球灰填充。C保留A的轮廓后整体更黑，overlay让球体和底座的原RGB细节更难分辨。把这些额外响应当作有用几何线条缺少依据。",
+      "topic": "内部密纹与细节遮蔽"
+    },
+    {
+      "finding": "A对球缘、底座环边通常给出较清楚且较稀疏的线；C047、F079与C073能看到Blender标志内圈和凸起轮廓。B/C也能显出这些边缘，但内表面密纹降低图形层次。A本身在强反射球上已有大量碎线与纹理轮廓，不是所有复杂线条都由B新增。",
+      "topic": "轮廓与细结构"
+    },
+    {
+      "finding": "F041后排球体和部分标志附近的非圆轮廓、暗楔/缺口形状在共同SH0 RGB列已存在；F/Ccontact还显示反射球的复杂颜色纹理。此处仅描述训练后原生读出外观，不能凭无mesh/源RGB对照的NPR图确认真实表面误差或材质因果。",
+      "topic": "原生RGB已有的外观问题"
+    },
+    {
+      "finding": "F001左侧球体被边界截到；C007/arc000的右侧绿球被画幅截到；arc032前排黑球底座贴底并截断，C099也有明显边界截断。RGB及各臂共享这些边界位置，属于记录的固定相机画幅；没有为评审重新裁剪或救场。",
+      "topic": "固定画幅裁切"
+    },
+    {
+      "finding": "7个代表帧的matched panel中，B/C整体转淡后，内表面的密纹与灰块分布仍然可见；A主要保留球缘/底座/局部纹理线。默认C更黑并不能单独支持质量提升，等墨量图也没有消除这些可见差异。",
+      "topic": "等墨量对照"
+    },
+    {
+      "finding": "AUTHOR列在F/C/完整arc中普遍很淡，部分球缘、底座线和标志细节显得断续，反射球仍有少量斑点。其overlay变化较小；这是本固定增益独立重建的观察，不代表官方方法结论，亦未重新调增益。",
+      "topic": "AUTHOR固定增益"
+    },
+    {
+      "finding": "RGB/A/B/C/AUTHOR的33帧contact均按000至032完整查看。密纹、灰填充、局部边界起伏在多个相机位置可见；后段接近俯视时物体逐渐分开，画幅边界问题仍可见。少量孤立小点也可见，例如arc031球旁白区。此观察不宣称时间一致性、闪烁减少或固定3D线对应。",
+      "topic": "完整arc覆盖"
+    }
+  ],
+  "originals": [
+    {
+      "frame": "F_001",
+      "kind": "representative_line",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/F_001/line_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/F_001/SEAL.json",
+      "seal_sha256": "34c9ff300b31fabc074f2441932caa77483b6dab496dc25cb29d41540bd7af1b",
+      "sha256": "c517079e7b11720f91f511734d6cb55e2164cc66edddd0a5cd2dbac01d908707",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/F_001_review.jpg"
+    },
+    {
+      "frame": "F_001",
+      "kind": "representative_overlay",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/F_001/overlay_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/F_001/SEAL.json",
+      "seal_sha256": "34c9ff300b31fabc074f2441932caa77483b6dab496dc25cb29d41540bd7af1b",
+      "sha256": "7f04399b431a5dea3ccc75cebc7cbd7afdbd8e2f6fa76ad9e70b65158213c96f",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/F_001_review.jpg"
+    },
+    {
+      "frame": "F_001",
+      "kind": "representative_matched",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/F_001/matched_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/F_001/SEAL.json",
+      "seal_sha256": "34c9ff300b31fabc074f2441932caa77483b6dab496dc25cb29d41540bd7af1b",
+      "sha256": "a9f8c9088896a1509e54379910f228415154df0010c3edddcb0c660e0dbf8afb",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/F_001_review.jpg"
+    },
+    {
+      "frame": "F_041",
+      "kind": "representative_line",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/F_041/line_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/F_041/SEAL.json",
+      "seal_sha256": "57297c2f811de750645c4e75657cf0ad3f6f38093a29111d23829bbdadaf3832",
+      "sha256": "22cdff7c9c3690125cf46bec083c8f2c999bbaffd84183aaf0a2641dcde52db9",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/F_041_review.jpg"
+    },
+    {
+      "frame": "F_041",
+      "kind": "representative_overlay",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/F_041/overlay_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/F_041/SEAL.json",
+      "seal_sha256": "57297c2f811de750645c4e75657cf0ad3f6f38093a29111d23829bbdadaf3832",
+      "sha256": "74d51a6b4323e9f2e3a7e16ebdf8d076cfa119c2d8a4d3d74060a978d82b5343",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/F_041_review.jpg"
+    },
+    {
+      "frame": "F_041",
+      "kind": "representative_matched",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/F_041/matched_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/F_041/SEAL.json",
+      "seal_sha256": "57297c2f811de750645c4e75657cf0ad3f6f38093a29111d23829bbdadaf3832",
+      "sha256": "ae995448a5491e1f76dc3720b3498ef87ded01f6091ed83a47e5f44c267fb71e",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/F_041_review.jpg"
+    },
+    {
+      "frame": "C_007",
+      "kind": "representative_line",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/C_007/line_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/C_007/SEAL.json",
+      "seal_sha256": "aba319b60cef265329a80f7af9503a8bcced2533c72c9128dea61a9764625888",
+      "sha256": "4f497c28f67e4bb19c6e0406a0cb3f05b93f7e848d42930ca5b6d79fe1ffe0e3",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/C_007_review.jpg"
+    },
+    {
+      "frame": "C_007",
+      "kind": "representative_overlay",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/C_007/overlay_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/C_007/SEAL.json",
+      "seal_sha256": "aba319b60cef265329a80f7af9503a8bcced2533c72c9128dea61a9764625888",
+      "sha256": "89cae043a3b8ad8aaf034b03caab12e636f617f2cecc7e190bdf101d637a2f5f",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/C_007_review.jpg"
+    },
+    {
+      "frame": "C_007",
+      "kind": "representative_matched",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/C_007/matched_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/C_007/SEAL.json",
+      "seal_sha256": "aba319b60cef265329a80f7af9503a8bcced2533c72c9128dea61a9764625888",
+      "sha256": "aded7b4e7858c252bfe871cec1df1f36f2a222a165cee7ef06c30dfd573b4fe5",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/C_007_review.jpg"
+    },
+    {
+      "frame": "C_047",
+      "kind": "representative_line",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/C_047/line_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/C_047/SEAL.json",
+      "seal_sha256": "61fc48a5e73e4a42c7e6397d75b355500c19e258d0c39412b012df9bc85b8b95",
+      "sha256": "9baccc90dac735304ec353f4382b892e7a1f43cd915d15702e0767e020bbf824",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/C_047_review.jpg"
+    },
+    {
+      "frame": "C_047",
+      "kind": "representative_overlay",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/C_047/overlay_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/C_047/SEAL.json",
+      "seal_sha256": "61fc48a5e73e4a42c7e6397d75b355500c19e258d0c39412b012df9bc85b8b95",
+      "sha256": "2eed7b34020805cb6eda6878f40dc99f583af153c383752cdf3bc8a7ddbdefb0",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/C_047_review.jpg"
+    },
+    {
+      "frame": "C_047",
+      "kind": "representative_matched",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/C_047/matched_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/C_047/SEAL.json",
+      "seal_sha256": "61fc48a5e73e4a42c7e6397d75b355500c19e258d0c39412b012df9bc85b8b95",
+      "sha256": "7ecaafb8305bee1bd27c7b6b686008086f2e6563855ec1db0e2f0eb0d419aaaa",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/C_047_review.jpg"
+    },
+    {
+      "frame": "arc0_000",
+      "kind": "representative_line",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_000/line_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_000/SEAL.json",
+      "seal_sha256": "e394de19ed4f734a0a6c717de1042d0423c3e97bf270a3a2cc735501aa490e2d",
+      "sha256": "ddd3e97145ffbec7c64939e7d6293146c89f350b59f984002ed6d22882541f68",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_000_review.jpg"
+    },
+    {
+      "frame": "arc0_000",
+      "kind": "representative_overlay",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_000/overlay_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_000/SEAL.json",
+      "seal_sha256": "e394de19ed4f734a0a6c717de1042d0423c3e97bf270a3a2cc735501aa490e2d",
+      "sha256": "ddca0876644af2f35a7950467d1107ec460a3dafa7023b7ea9468dc1a97e3296",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_000_review.jpg"
+    },
+    {
+      "frame": "arc0_000",
+      "kind": "representative_matched",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_000/matched_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_000/SEAL.json",
+      "seal_sha256": "e394de19ed4f734a0a6c717de1042d0423c3e97bf270a3a2cc735501aa490e2d",
+      "sha256": "d1379a2f6cfb2e642b479f0f5f87865ea676a57f5796e71556cdb029c5940e75",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_000_review.jpg"
+    },
+    {
+      "frame": "arc0_016",
+      "kind": "representative_line",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_016/line_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_016/SEAL.json",
+      "seal_sha256": "6f1a845ed2c7eb3f1fc7c508dddd86955d2f71500b585553068fd09a2b2304bf",
+      "sha256": "fa3fca7efa68155f9232147310e1f4d64cd46bceeb545a4ca7c5f4e761c14b52",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_016_review.jpg"
+    },
+    {
+      "frame": "arc0_016",
+      "kind": "representative_overlay",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_016/overlay_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_016/SEAL.json",
+      "seal_sha256": "6f1a845ed2c7eb3f1fc7c508dddd86955d2f71500b585553068fd09a2b2304bf",
+      "sha256": "a0fd4b2e2ec0e5b02ca41cabff30b9a51e3135f150a8d06046e6f0336e29f9e7",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_016_review.jpg"
+    },
+    {
+      "frame": "arc0_016",
+      "kind": "representative_matched",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_016/matched_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_016/SEAL.json",
+      "seal_sha256": "6f1a845ed2c7eb3f1fc7c508dddd86955d2f71500b585553068fd09a2b2304bf",
+      "sha256": "5cc2afe912ee65705f85cc8b8a04350a46188e7136b7d63e37baab543b3e4ea1",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_016_review.jpg"
+    },
+    {
+      "frame": "arc0_032",
+      "kind": "representative_line",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_032/line_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_032/SEAL.json",
+      "seal_sha256": "501d87ae8de98b1e93ece22e653e513f970fef5b364cbccc3e0dd5d4e25534a5",
+      "sha256": "a069d35fd0646fca17c3e87d51d4aea55f40b805413b3f9be5022f26ba52fd96",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_032_review.jpg"
+    },
+    {
+      "frame": "arc0_032",
+      "kind": "representative_overlay",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_032/overlay_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_032/SEAL.json",
+      "seal_sha256": "501d87ae8de98b1e93ece22e653e513f970fef5b364cbccc3e0dd5d4e25534a5",
+      "sha256": "34595bfb7587f8d4f970337b6ce17e5383bc6870ada50a80f33a58f8f04a0a47",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_032_review.jpg"
+    },
+    {
+      "frame": "arc0_032",
+      "kind": "representative_matched",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_032/matched_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_032/SEAL.json",
+      "seal_sha256": "501d87ae8de98b1e93ece22e653e513f970fef5b364cbccc3e0dd5d4e25534a5",
+      "sha256": "7fd1080e082a3f6465b81bd2f0865b18b2fa4cf5e4c853eaee2ff41783271e1e",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_032_review.jpg"
+    },
+    {
+      "arm": "rgb",
+      "frames": 8,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/F_rgb_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/SEAL.json",
+      "seal_sha256": "506a912a4dbed67b08af079d4a230dd736b01ed42299fb370e455b8d5f73929a",
+      "sha256": "06010de3e35f55269978bbef179687bb4960c795346177b91972fc415a3d9a08",
+      "size": [
+        3200,
+        1664
+      ],
+      "split": "F",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/F_rgb_contact.jpg"
+      ]
+    },
+    {
+      "arm": "A",
+      "frames": 8,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/F_A_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/SEAL.json",
+      "seal_sha256": "506a912a4dbed67b08af079d4a230dd736b01ed42299fb370e455b8d5f73929a",
+      "sha256": "2f5ad09de52cd59152bd77257a89f93f5e11dcd88d568b44c1fcddff40c093f8",
+      "size": [
+        3200,
+        1664
+      ],
+      "split": "F",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/F_A_contact.jpg"
+      ]
+    },
+    {
+      "arm": "B",
+      "frames": 8,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/F_B_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/SEAL.json",
+      "seal_sha256": "506a912a4dbed67b08af079d4a230dd736b01ed42299fb370e455b8d5f73929a",
+      "sha256": "f67b6e92b022a906d4c72ebc1c74501047b8429f8da016cd0a73dcd814485240",
+      "size": [
+        3200,
+        1664
+      ],
+      "split": "F",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/F_B_contact.jpg"
+      ]
+    },
+    {
+      "arm": "C",
+      "frames": 8,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/F_C_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/SEAL.json",
+      "seal_sha256": "506a912a4dbed67b08af079d4a230dd736b01ed42299fb370e455b8d5f73929a",
+      "sha256": "29e3fd58a4e856183ffbdf4af3ff1b8121318d0e27398ab161ce2f42d562e99f",
+      "size": [
+        3200,
+        1664
+      ],
+      "split": "F",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/F_C_contact.jpg"
+      ]
+    },
+    {
+      "arm": "author_gain",
+      "frames": 8,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/F_author_gain_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/SEAL.json",
+      "seal_sha256": "506a912a4dbed67b08af079d4a230dd736b01ed42299fb370e455b8d5f73929a",
+      "sha256": "98fd59e9d86f30b55f500027860cab1daadac62f022689902f2a3bda93fdb809",
+      "size": [
+        3200,
+        1664
+      ],
+      "split": "F",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/F_author_gain_contact.jpg"
+      ]
+    },
+    {
+      "arm": "rgb",
+      "frames": 8,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/C_rgb_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/SEAL.json",
+      "seal_sha256": "506a912a4dbed67b08af079d4a230dd736b01ed42299fb370e455b8d5f73929a",
+      "sha256": "ea3854f6709be4cea9a7c8c119e65c5400e66cc9d0faf8f3d37237a910a5ed31",
+      "size": [
+        3200,
+        1664
+      ],
+      "split": "C",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/C_rgb_contact.jpg"
+      ]
+    },
+    {
+      "arm": "A",
+      "frames": 8,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/C_A_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/SEAL.json",
+      "seal_sha256": "506a912a4dbed67b08af079d4a230dd736b01ed42299fb370e455b8d5f73929a",
+      "sha256": "620527951cae3741f676a77fe56bb192288d78cb69c2eba47ac460fbbef33fc6",
+      "size": [
+        3200,
+        1664
+      ],
+      "split": "C",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/C_A_contact.jpg"
+      ]
+    },
+    {
+      "arm": "B",
+      "frames": 8,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/C_B_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/SEAL.json",
+      "seal_sha256": "506a912a4dbed67b08af079d4a230dd736b01ed42299fb370e455b8d5f73929a",
+      "sha256": "897b846448928da18c03e7235dc275445aa4f5a37dfc1d8f2171b8f032a46fc8",
+      "size": [
+        3200,
+        1664
+      ],
+      "split": "C",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/C_B_contact.jpg"
+      ]
+    },
+    {
+      "arm": "C",
+      "frames": 8,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/C_C_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/SEAL.json",
+      "seal_sha256": "506a912a4dbed67b08af079d4a230dd736b01ed42299fb370e455b8d5f73929a",
+      "sha256": "d6cccabcaa2e52ffe76c188b769154a4cb04fbc5b30f749ef3c9149a9a0259ac",
+      "size": [
+        3200,
+        1664
+      ],
+      "split": "C",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/C_C_contact.jpg"
+      ]
+    },
+    {
+      "arm": "author_gain",
+      "frames": 8,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/C_author_gain_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/SEAL.json",
+      "seal_sha256": "506a912a4dbed67b08af079d4a230dd736b01ed42299fb370e455b8d5f73929a",
+      "sha256": "b0fa2f8b406276f62a94a0ca1dddcaf5e5ce880addcc51e7dc3dc8cb90c541fc",
+      "size": [
+        3200,
+        1664
+      ],
+      "split": "C",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/C_author_gain_contact.jpg"
+      ]
+    },
+    {
+      "arm": "rgb",
+      "frames": 33,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_rgb_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/SEAL.json",
+      "seal_sha256": "506a912a4dbed67b08af079d4a230dd736b01ed42299fb370e455b8d5f73929a",
+      "sha256": "713ea926ea091e2d924ff421f869fe28f21d91c770b0fef27fbe5e382de46ff2",
+      "size": [
+        2400,
+        9152
+      ],
+      "split": "arc0",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_rgb_contact_rows_00_02.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_rgb_contact_rows_03_05.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_rgb_contact_rows_06_08.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_rgb_contact_rows_09_10.jpg"
+      ]
+    },
+    {
+      "arm": "A",
+      "frames": 33,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_A_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/SEAL.json",
+      "seal_sha256": "506a912a4dbed67b08af079d4a230dd736b01ed42299fb370e455b8d5f73929a",
+      "sha256": "002d13a8ae4eff0b1a1f53559bc057c745f0a834fa83312f405f53b554ceefbc",
+      "size": [
+        2400,
+        9152
+      ],
+      "split": "arc0",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_A_contact_rows_00_02.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_A_contact_rows_03_05.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_A_contact_rows_06_08.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_A_contact_rows_09_10.jpg"
+      ]
+    },
+    {
+      "arm": "B",
+      "frames": 33,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_B_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/SEAL.json",
+      "seal_sha256": "506a912a4dbed67b08af079d4a230dd736b01ed42299fb370e455b8d5f73929a",
+      "sha256": "c324087788a01b89cd102197a50085054b1d3170850ba4165513b2a1aca4c244",
+      "size": [
+        2400,
+        9152
+      ],
+      "split": "arc0",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_B_contact_rows_00_02.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_B_contact_rows_03_05.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_B_contact_rows_06_08.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_B_contact_rows_09_10.jpg"
+      ]
+    },
+    {
+      "arm": "C",
+      "frames": 33,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_C_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/SEAL.json",
+      "seal_sha256": "506a912a4dbed67b08af079d4a230dd736b01ed42299fb370e455b8d5f73929a",
+      "sha256": "29112dd74b86c424a4ed7f3ebd1da363b0b5541e954f16493d5e2ff531c22e77",
+      "size": [
+        2400,
+        9152
+      ],
+      "split": "arc0",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_C_contact_rows_00_02.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_C_contact_rows_03_05.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_C_contact_rows_06_08.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_C_contact_rows_09_10.jpg"
+      ]
+    },
+    {
+      "arm": "author_gain",
+      "frames": 33,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_author_gain_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/SEAL.json",
+      "seal_sha256": "506a912a4dbed67b08af079d4a230dd736b01ed42299fb370e455b8d5f73929a",
+      "sha256": "db0902b585a195dc701195fea290f848b3ff40419875831a726276588d572161",
+      "size": [
+        2400,
+        9152
+      ],
+      "split": "arc0",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_author_gain_contact_rows_00_02.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_author_gain_contact_rows_03_05.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_author_gain_contact_rows_06_08.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_author_gain_contact_rows_09_10.jpg"
+      ]
+    }
+  ],
+  "originals_preserved": true,
+  "review_scope": "7 fixed representative frames x line/overlay/matched; all15 complete F/C/arc contact sheets RGB/A/B/C/AUTHOR; visual review at recorded resized display scales.",
+  "reviewer": "gpt-6-astra model review via actual view_image calls; not human review",
+  "scene": "materials",
+  "schema": "frozen-npr-model-visual-review-v1",
+  "scientific_GO": false,
+  "source_payload_hashes_checked_against_seal": true,
+  "training_success_upgraded": false,
+  "utc": "2026-10-03T11:35:52.661721+00:00",
+  "view_assets": [
+    {
+      "display_transform": "Each entire 4000x832 panel resized to2000x416, three rows with20px label; no original pixel region omitted. JPEG92.",
+      "model_inspected": true,
+      "originals": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/F_001/line_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/F_001/overlay_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/F_001/matched_panel.png"
+      ],
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/F_001_review.jpg",
+      "sha256": "ad44c1bb5966c6959ac39db0c53affecdcca716e606cd8bae46fce345945331f",
+      "viewed_with": "view_image"
+    },
+    {
+      "display_transform": "Each entire 4000x832 panel resized to2000x416, three rows with20px label; no original pixel region omitted. JPEG92.",
+      "model_inspected": true,
+      "originals": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/F_041/line_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/F_041/overlay_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/F_041/matched_panel.png"
+      ],
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/F_041_review.jpg",
+      "sha256": "6e01aadab8376f9fab74123dd1f6f31ebcb1f4f2b123f91b7c337525b145b43b",
+      "viewed_with": "view_image"
+    },
+    {
+      "display_transform": "Each entire 4000x832 panel resized to2000x416, three rows with20px label; no original pixel region omitted. JPEG92.",
+      "model_inspected": true,
+      "originals": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/C_007/line_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/C_007/overlay_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/C_007/matched_panel.png"
+      ],
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/C_007_review.jpg",
+      "sha256": "311120cb717c671122c7960e1b1bd3cda3d5c0daf316f28ebf5e5351a132c0b3",
+      "viewed_with": "view_image"
+    },
+    {
+      "display_transform": "Each entire 4000x832 panel resized to2000x416, three rows with20px label; no original pixel region omitted. JPEG92.",
+      "model_inspected": true,
+      "originals": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/C_047/line_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/C_047/overlay_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/C_047/matched_panel.png"
+      ],
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/C_047_review.jpg",
+      "sha256": "7c0a3f74be9649a3bc9144661e4c5e5775c59210fcd4133108a04ca3f12c3cae",
+      "viewed_with": "view_image"
+    },
+    {
+      "display_transform": "Each entire 4000x832 panel resized to2000x416, three rows with20px label; no original pixel region omitted. JPEG92.",
+      "model_inspected": true,
+      "originals": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_000/line_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_000/overlay_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_000/matched_panel.png"
+      ],
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_000_review.jpg",
+      "sha256": "a3886f2f8aa6d3ed643a085d9bb5053bf6e63689eae84951b569bba87877fdba",
+      "viewed_with": "view_image"
+    },
+    {
+      "display_transform": "Each entire 4000x832 panel resized to2000x416, three rows with20px label; no original pixel region omitted. JPEG92.",
+      "model_inspected": true,
+      "originals": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_016/line_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_016/overlay_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_016/matched_panel.png"
+      ],
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_016_review.jpg",
+      "sha256": "419c1ea5496bc85566b0c3b51722a8af4f11c51e1a04bd38e173669ef898a9f6",
+      "viewed_with": "view_image"
+    },
+    {
+      "display_transform": "Each entire 4000x832 panel resized to2000x416, three rows with20px label; no original pixel region omitted. JPEG92.",
+      "model_inspected": true,
+      "originals": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_032/line_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_032/overlay_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/materials/arc0_032/matched_panel.png"
+      ],
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_032_review.jpg",
+      "sha256": "2bc12518b3784116b025df3a3fb927a4ef34fbfd42a2795e58a982b2da12bec9",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        3200,
+        1664
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/F_rgb_contact.jpg",
+      "resize": [
+        2000,
+        1040
+      ],
+      "sha256": "f4239cb732e32116298d1898047f8d8386499188e36eef39545ad587aa75c563",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/F_rgb_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        3200,
+        1664
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/F_A_contact.jpg",
+      "resize": [
+        2000,
+        1040
+      ],
+      "sha256": "53bb0346f93fffc63c3f23bf31eb5880a6d4cb042ee444f9a8348d3616c6b9e4",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/F_A_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        3200,
+        1664
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/F_B_contact.jpg",
+      "resize": [
+        2000,
+        1040
+      ],
+      "sha256": "7d7677aa0915d3f3d8f9f52e41cf1d958035cd14514c5dad2e006e4825bc2a96",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/F_B_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        3200,
+        1664
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/F_C_contact.jpg",
+      "resize": [
+        2000,
+        1040
+      ],
+      "sha256": "92b627901767015d459c7f266c4c6652123f70c43667e60ff439914bd7da4d59",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/F_C_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        3200,
+        1664
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/F_author_gain_contact.jpg",
+      "resize": [
+        2000,
+        1040
+      ],
+      "sha256": "9bf1db3eb75b93f0383a3d983b26c95b372961619ebabe59b874639950a5d044",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/F_author_gain_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        3200,
+        1664
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/C_rgb_contact.jpg",
+      "resize": [
+        2000,
+        1040
+      ],
+      "sha256": "090930570c553ab99a98f00cc4102c925a61cf365619273194e9b4f92a3d2886",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/C_rgb_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        3200,
+        1664
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/C_A_contact.jpg",
+      "resize": [
+        2000,
+        1040
+      ],
+      "sha256": "04ee4ddd5532eb5ca9b89a182ff70a834c527f282364c5d8cdfc18b5a9bbfba9",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/C_A_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        3200,
+        1664
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/C_B_contact.jpg",
+      "resize": [
+        2000,
+        1040
+      ],
+      "sha256": "bc2bfaf92e045b8cb803dcbf532a18928408ce5ec2388339e7086d39fcf29ec0",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/C_B_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        3200,
+        1664
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/C_C_contact.jpg",
+      "resize": [
+        2000,
+        1040
+      ],
+      "sha256": "22b36b90ea3c3bfe7cfdef5d0d4a9bdafb752d9541ab529fcb6f3dd6e19a098c",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/C_C_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        3200,
+        1664
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/C_author_gain_contact.jpg",
+      "resize": [
+        2000,
+        1040
+      ],
+      "sha256": "9647c8aeed3c8aad30dd689d520e11efb988090de62887b312d37eb958100538",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/C_author_gain_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        2400,
+        2496
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_rgb_contact_rows_00_02.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "f76d2615b92172b3df01cb4d1d255a7ca9c29f7ce3f53933a481970a1c4341b7",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_rgb_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        2496,
+        2400,
+        4992
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_rgb_contact_rows_03_05.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "160c538df7bd9fed8b0c774e96038982198ea05ae2da73baa2594a4842fe1251",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_rgb_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        4992,
+        2400,
+        7488
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_rgb_contact_rows_06_08.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "b4711116c9fce528aa4ba45a467d71f8e9d729a764d94ebc2ded9e965699c134",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_rgb_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        7488,
+        2400,
+        9152
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_rgb_contact_rows_09_10.jpg",
+      "resize": [
+        1600,
+        1109
+      ],
+      "sha256": "b1608179293086afb310fd1ed7d3ce7dccf2682eb7810aa1762e347513c7be2e",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_rgb_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        2400,
+        2496
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_A_contact_rows_00_02.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "acc6f68b4bf72ac24d78475eedea3e7435722477b9cb73dab843ffbdbc21b903",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_A_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        2496,
+        2400,
+        4992
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_A_contact_rows_03_05.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "f9bfe893301a88f7d85952c0b7209945f3ff8d4d5e328e49057d5b4657e5d245",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_A_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        4992,
+        2400,
+        7488
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_A_contact_rows_06_08.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "5ad59e9a9273c170b0f4ab157da507dfbcbd856328d46355407b7c2573d10140",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_A_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        7488,
+        2400,
+        9152
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_A_contact_rows_09_10.jpg",
+      "resize": [
+        1600,
+        1109
+      ],
+      "sha256": "39fb38a37ab62040803217fb19c0c3b358f5b444ae1932d5d5b9d8abd163388c",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_A_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        2400,
+        2496
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_B_contact_rows_00_02.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "e07a262616ceb003ff142d0d44dd6433aac453a34b4719662b87344daa45e2c7",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_B_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        2496,
+        2400,
+        4992
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_B_contact_rows_03_05.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "120081bebc0643adb232977ad0c5a03de3f94ff693385363aaa30bba105f7677",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_B_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        4992,
+        2400,
+        7488
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_B_contact_rows_06_08.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "7ffb96cc2abe2a2afe0200fd6f652ebc8c014c0f0f3a505d16abdb7c7ae52d82",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_B_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        7488,
+        2400,
+        9152
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_B_contact_rows_09_10.jpg",
+      "resize": [
+        1600,
+        1109
+      ],
+      "sha256": "4b33b55d261b4aee0b3d98b71c40ef443f82e527316472bf036f943fa7f1449b",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_B_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        2400,
+        2496
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_C_contact_rows_00_02.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "ede9b2e18db805f2910a2d05f6ceda015ac461137f32aa18f90d9d93d9dfeda5",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_C_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        2496,
+        2400,
+        4992
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_C_contact_rows_03_05.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "1aecffa40dbbba79e52a19939de7e5080cc76be4dd58a5f4ed8c9924bbf9ddd1",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_C_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        4992,
+        2400,
+        7488
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_C_contact_rows_06_08.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "d0b8515285c9790e8dd6b504382bbd57b31b8deb5bc9b1d219a96da0a30ba4ce",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_C_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        7488,
+        2400,
+        9152
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_C_contact_rows_09_10.jpg",
+      "resize": [
+        1600,
+        1109
+      ],
+      "sha256": "0c6f634d94f4d155a69156e9083c99488109a10364d9121b95aebee4012c0a43",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_C_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        2400,
+        2496
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_author_gain_contact_rows_00_02.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "2c07469e4fdf3575f31f57409900b46479fcc30e7b2d8bd7404fb5a6e017d4b9",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_author_gain_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        2496,
+        2400,
+        4992
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_author_gain_contact_rows_03_05.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "4c936968a85aa496144d409a61699b9ee159ef61b10643de35c81ddb4a6f4839",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_author_gain_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        4992,
+        2400,
+        7488
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_author_gain_contact_rows_06_08.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "b05b6f4653f2c099326db5b0e985cb23594234040113085fe38b6b2576dac82f",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_author_gain_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        7488,
+        2400,
+        9152
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/materials/arc0_author_gain_contact_rows_09_10.jpg",
+      "resize": [
+        1600,
+        1109
+      ],
+      "sha256": "6500916f2f9edd6574e19bef03a7cf8f0407a0404a7528802f402ab622b3dd90",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/materials/arc0_author_gain_contact.png",
+      "viewed_with": "view_image"
+    }
+  ]
+}

@@ -1,0 +1,1256 @@
+{
+  "contact_view_assets_manifest": {
+    "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/CONTACT_VIEW_ASSETS.json",
+    "sha256": "975fdaa10cced1ebb2c5bf1ed29decfc40c7be76e8974008a94a6be5b30fd97e"
+  },
+  "counts": {
+    "complete_contacts": 15,
+    "contact_tiles_inspected": 245,
+    "direct_native_image_views": 1,
+    "original_images": 37,
+    "representative_frames": 7,
+    "representative_panels": 21,
+    "total_view_image_views": 38,
+    "view_assets_actually_inspected": 37
+  },
+  "human_GO": false,
+  "human_review": "PENDING",
+  "limitations": [
+    "C参加GS TRAIN，只对NPR参数拟合留出；不是盲测。",
+    "未读取TEST、mesh或数据集源RGB。只阅生产PNG和相应seal。",
+    "缩小JPEG仅供查看，原生800及4000x832面板未改；除额外arc0_016 RGB原生查看外，没有逐像素放大审阅全部原件。",
+    "Ship冻结arc中段存在明显取景失败；保存全部帧不等于构图合格或科学成功。",
+    "静态contact与首中末观察不建立时序稳定性或fixed3D收益。",
+    "AUTHOR是固定增益的独立Eq.1–5重建，NOT official；matched中AUTHOR不参与A/B/C墨量匹配。",
+    "本记录不取代独立数值、完整解码或访问审计；未声称视频播放评审，不改变训练/科学成功状态。"
+  ],
+  "media_seal": {
+    "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/SEAL.json",
+    "sha256": "2a1d4a9f7a3b7713c38ccc8691c39917d8f9e08ce4cd51f82b317eae54685ac5"
+  },
+  "observations_zh": [
+    {
+      "finding": "arc0_016原生800×800 RGB直接查看时，上方约三分之二为白区，圆盘远侧弧缘与部分船体挤在底部，船体/圆盘的大部分已越出下边界。完整RGB contact显示中段多帧明显下移并截断，arc009–023是可见示例，000与032比中段完整得多。A/B/C/AUTHOR共享该画幅。此处是已保留的冻结相机取景失败，不是review JPEG裁切；输出齐全与seal有效不消除该质量限制。未改相机、重定向look-at或补救重渲染。",
+      "topic": "严重固定画幅截断"
+    },
+    {
+      "finding": "F001、F041、C007、C047与完整F/C/arc contact中，B在圆盘水面铺有密集卷曲细纹、灰填充和碎片状响应；F041前侧棕色圆盘外壁也出现较强碎纹。C叠加A后轮廓更黑，但默认overlay令水面、船身和甲板细节明显变暗。C047俯视时，水面密纹与船体内部响应相互竞争，船身与背景水面的层次较弱。额外墨量不能直接解释为有用几何或质量提升。",
+      "topic": "水面内部密纹及遮蔽"
+    },
+    {
+      "finding": "A对圆盘外缘、船身边界、舷侧孔列及桅杆通常给出局部较稀疏、较易分辨的线；A自身仍包含碎线和水面纹理，并非纯几何真值。F041、C007、arc000及contact中的部分桅杆顶端、细索具附近可见断续线与白区小点；某些碎点在共同SH0 RGB中也存在。没有源RGB或mesh对照，不能将这些响应认定为恢复了真实绳索细节，或判定全部属于几何错误。",
+      "topic": "轮廓与细索具"
+    },
+    {
+      "finding": "F001、C007的前侧圆盘靠近并被下边界截到；F041侧视构图相对完整。该局部边界问题与arc中段的大面积离开画幅同时保留，未通过二次裁剪掩盖。",
+      "topic": "普通F/C画幅边界"
+    },
+    {
+      "finding": "7个代表帧的matched panel中，B/C显著转淡，分散的水面灰纹仍在；船体内部与细索具并未因等墨量自动恢复清晰层次。默认C较黑不能单独支持质量优越，matched图也不足以支持固定3D对应或时序收益。",
+      "topic": "等墨量对照"
+    },
+    {
+      "finding": "AUTHOR在F/C与全部33个arc位置普遍较淡，主要留下圆盘外缘、局部桅杆/横桁和零散船身片段，水面与船体内部细节很弱；overlay改变量较小。它是固定增益的独立Eq.1–5重建，NOT official，未重新拟合增益，也不参与A/B/C的等墨量匹配。",
+      "topic": "AUTHOR固定增益"
+    },
+    {
+      "finding": "RGB/A/B/C/AUTHOR的33帧contact均按000至032完整查看，覆盖每张原始contact的全部像素区域（以记录的缩放显示）。五臂均显示同一中段取景问题；水面密纹、船身暗化和细线断续在多个位置出现。本记录是模型静态视觉评审，不宣称无闪烁、时间一致性或固定3D改善。",
+      "topic": "完整arc静态覆盖"
+    }
+  ],
+  "originals": [
+    {
+      "frame": "F_001",
+      "kind": "representative_line",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/F_001/line_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/F_001/SEAL.json",
+      "seal_sha256": "5b3ffbac2ff36e4171538774af2d9cb9d1668b8fae5fd1ac5939a08c080d07a1",
+      "sha256": "9fde505dee24558d36697f2c8b59c3680b27b683eef451bf377a58ee96b0f1f9",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/F_001_review.jpg"
+    },
+    {
+      "frame": "F_001",
+      "kind": "representative_overlay",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/F_001/overlay_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/F_001/SEAL.json",
+      "seal_sha256": "5b3ffbac2ff36e4171538774af2d9cb9d1668b8fae5fd1ac5939a08c080d07a1",
+      "sha256": "2ee9dac13a3df2f98c4f752938f715602b23e7454f3f4c12cdec528c1be5a625",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/F_001_review.jpg"
+    },
+    {
+      "frame": "F_001",
+      "kind": "representative_matched",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/F_001/matched_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/F_001/SEAL.json",
+      "seal_sha256": "5b3ffbac2ff36e4171538774af2d9cb9d1668b8fae5fd1ac5939a08c080d07a1",
+      "sha256": "50289a1bdb7e61e141507ac6f32fb906b815771dcc7e5e78d78f9e52ada2c0b9",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/F_001_review.jpg"
+    },
+    {
+      "frame": "F_041",
+      "kind": "representative_line",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/F_041/line_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/F_041/SEAL.json",
+      "seal_sha256": "96aca5670c8b430cde03aef5319989b11fe4ec2c297ca7f323af56976e451e61",
+      "sha256": "bf2a9d52036f7a2440fa3e82dd56271695afcd8b2b1264116c3c6e76869992bf",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/F_041_review.jpg"
+    },
+    {
+      "frame": "F_041",
+      "kind": "representative_overlay",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/F_041/overlay_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/F_041/SEAL.json",
+      "seal_sha256": "96aca5670c8b430cde03aef5319989b11fe4ec2c297ca7f323af56976e451e61",
+      "sha256": "80a1912b669488b922290a9173525c52ca8fa9524b1ea23fc8640a3df157a350",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/F_041_review.jpg"
+    },
+    {
+      "frame": "F_041",
+      "kind": "representative_matched",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/F_041/matched_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/F_041/SEAL.json",
+      "seal_sha256": "96aca5670c8b430cde03aef5319989b11fe4ec2c297ca7f323af56976e451e61",
+      "sha256": "6798e5c9a5d80ae29e88161718ef6d19718c5dd18dc866b3204e61347f8c1e55",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/F_041_review.jpg"
+    },
+    {
+      "frame": "C_007",
+      "kind": "representative_line",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/C_007/line_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/C_007/SEAL.json",
+      "seal_sha256": "5d2b26a3cd67cf6a6115a112a3bf5948a2a61d195f51ad347b27334f3a877f50",
+      "sha256": "de12ab62d8232fe3aa4be662a669b85124267b1797614c83393ed4d5687f2bce",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/C_007_review.jpg"
+    },
+    {
+      "frame": "C_007",
+      "kind": "representative_overlay",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/C_007/overlay_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/C_007/SEAL.json",
+      "seal_sha256": "5d2b26a3cd67cf6a6115a112a3bf5948a2a61d195f51ad347b27334f3a877f50",
+      "sha256": "bdad803d340aff53fad0307ad7618342da8ac0cfdffc4869e10bcc7a5cf42297",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/C_007_review.jpg"
+    },
+    {
+      "frame": "C_007",
+      "kind": "representative_matched",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/C_007/matched_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/C_007/SEAL.json",
+      "seal_sha256": "5d2b26a3cd67cf6a6115a112a3bf5948a2a61d195f51ad347b27334f3a877f50",
+      "sha256": "a1e6c3ddbde5e7124634bc45e1f861088f5fbbf3c2f58ca68fce826d5535491a",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/C_007_review.jpg"
+    },
+    {
+      "frame": "C_047",
+      "kind": "representative_line",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/C_047/line_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/C_047/SEAL.json",
+      "seal_sha256": "7b9136e6a76cff8de4b412e6417f975c05e966eb3dc3abe4687095d46f8485f7",
+      "sha256": "7f105cc71b77fd246f495c94395e89c96e3d4be6c564e771898abe56c0a1939c",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/C_047_review.jpg"
+    },
+    {
+      "frame": "C_047",
+      "kind": "representative_overlay",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/C_047/overlay_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/C_047/SEAL.json",
+      "seal_sha256": "7b9136e6a76cff8de4b412e6417f975c05e966eb3dc3abe4687095d46f8485f7",
+      "sha256": "bf6742dd8f0070143111aa50f3534bfa28bc2c24ab0f27f71c1e239a61f227a0",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/C_047_review.jpg"
+    },
+    {
+      "frame": "C_047",
+      "kind": "representative_matched",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/C_047/matched_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/C_047/SEAL.json",
+      "seal_sha256": "7b9136e6a76cff8de4b412e6417f975c05e966eb3dc3abe4687095d46f8485f7",
+      "sha256": "808cc17a024fb219502d9f1947e3871d982e0758b5de2955d2fa1a7284e3d456",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/C_047_review.jpg"
+    },
+    {
+      "frame": "arc0_000",
+      "kind": "representative_line",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_000/line_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_000/SEAL.json",
+      "seal_sha256": "21208b1b762d000b0de0fcb6adcc79ed72cae1571fb7d49786e6e0ceb8ffb54b",
+      "sha256": "e99d575e2379e83e9d0907fa121aae57db8fdbbacb138ff5aba130577674c34a",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_000_review.jpg"
+    },
+    {
+      "frame": "arc0_000",
+      "kind": "representative_overlay",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_000/overlay_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_000/SEAL.json",
+      "seal_sha256": "21208b1b762d000b0de0fcb6adcc79ed72cae1571fb7d49786e6e0ceb8ffb54b",
+      "sha256": "d79ddcd495a87449c14df9a36be3a0bd1cd60ce671ba6fc0abd61dfc08b72af5",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_000_review.jpg"
+    },
+    {
+      "frame": "arc0_000",
+      "kind": "representative_matched",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_000/matched_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_000/SEAL.json",
+      "seal_sha256": "21208b1b762d000b0de0fcb6adcc79ed72cae1571fb7d49786e6e0ceb8ffb54b",
+      "sha256": "c469b7a6d65ff84ed048dd2ae30cb110595ed73849eb8c31d6403462b3f1a994",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_000_review.jpg"
+    },
+    {
+      "frame": "arc0_016",
+      "kind": "representative_line",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_016/line_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_016/SEAL.json",
+      "seal_sha256": "47c2d7f6d5900df697da5c134dd2e45405e44ca67cbcdfd49ea364eb5fc7df8a",
+      "sha256": "daa7dda0b2e3852403ee5c0249863bbb6dca4b29feaee3ddb79da8da599bb077",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_016_review.jpg"
+    },
+    {
+      "frame": "arc0_016",
+      "kind": "representative_overlay",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_016/overlay_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_016/SEAL.json",
+      "seal_sha256": "47c2d7f6d5900df697da5c134dd2e45405e44ca67cbcdfd49ea364eb5fc7df8a",
+      "sha256": "93634c0ac8fe67a8409203a587a702e0ef15d7b13edee1a6d32122c21c8ad730",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_016_review.jpg"
+    },
+    {
+      "frame": "arc0_016",
+      "kind": "representative_matched",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_016/matched_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_016/SEAL.json",
+      "seal_sha256": "47c2d7f6d5900df697da5c134dd2e45405e44ca67cbcdfd49ea364eb5fc7df8a",
+      "sha256": "a5591098c37480c619271ebd615e02dba0e26947e35575f4f25635c9ea955406",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_016_review.jpg"
+    },
+    {
+      "frame": "arc0_032",
+      "kind": "representative_line",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_032/line_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_032/SEAL.json",
+      "seal_sha256": "81341b8350909a6fc6505389939997bab8151d1b42be7d07e92c5d17feadfa2b",
+      "sha256": "9abdde074145c3f201cf43dc631b3ab83c61d6da8688705632cd658777f19292",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_032_review.jpg"
+    },
+    {
+      "frame": "arc0_032",
+      "kind": "representative_overlay",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_032/overlay_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_032/SEAL.json",
+      "seal_sha256": "81341b8350909a6fc6505389939997bab8151d1b42be7d07e92c5d17feadfa2b",
+      "sha256": "9ff45c79cc93d54110599226e0827e4c2c9beede73e353b5939238668e839d1c",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_032_review.jpg"
+    },
+    {
+      "frame": "arc0_032",
+      "kind": "representative_matched",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_032/matched_panel.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_032/SEAL.json",
+      "seal_sha256": "81341b8350909a6fc6505389939997bab8151d1b42be7d07e92c5d17feadfa2b",
+      "sha256": "893959a8e8c88d1f9134a94b1c3e9c062c5b6d67e1e748e32f496ddc9bbce2f2",
+      "size": [
+        4000,
+        832
+      ],
+      "viewed_in": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_032_review.jpg"
+    },
+    {
+      "arm": "rgb",
+      "frames": 8,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/F_rgb_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/SEAL.json",
+      "seal_sha256": "2a1d4a9f7a3b7713c38ccc8691c39917d8f9e08ce4cd51f82b317eae54685ac5",
+      "sha256": "fe140e223ab13145cd71e5faed52c0a3792711ae48bc39ba5a0a528f6721a0a1",
+      "size": [
+        3200,
+        1664
+      ],
+      "split": "F",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/F_rgb_contact.jpg"
+      ]
+    },
+    {
+      "arm": "A",
+      "frames": 8,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/F_A_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/SEAL.json",
+      "seal_sha256": "2a1d4a9f7a3b7713c38ccc8691c39917d8f9e08ce4cd51f82b317eae54685ac5",
+      "sha256": "528f4fe8f67939c7c9de6d95344e16ff0df75997437aaffca5fad2da7de53ac6",
+      "size": [
+        3200,
+        1664
+      ],
+      "split": "F",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/F_A_contact.jpg"
+      ]
+    },
+    {
+      "arm": "B",
+      "frames": 8,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/F_B_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/SEAL.json",
+      "seal_sha256": "2a1d4a9f7a3b7713c38ccc8691c39917d8f9e08ce4cd51f82b317eae54685ac5",
+      "sha256": "001b09d5f96d263bc5d5473ceb998b9db6d595d342fe4280ca1f95dd3199ff99",
+      "size": [
+        3200,
+        1664
+      ],
+      "split": "F",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/F_B_contact.jpg"
+      ]
+    },
+    {
+      "arm": "C",
+      "frames": 8,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/F_C_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/SEAL.json",
+      "seal_sha256": "2a1d4a9f7a3b7713c38ccc8691c39917d8f9e08ce4cd51f82b317eae54685ac5",
+      "sha256": "58e7038f86689beefca95b6793e390960124f97654c5724abc0befa1975fd68e",
+      "size": [
+        3200,
+        1664
+      ],
+      "split": "F",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/F_C_contact.jpg"
+      ]
+    },
+    {
+      "arm": "author_gain",
+      "frames": 8,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/F_author_gain_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/SEAL.json",
+      "seal_sha256": "2a1d4a9f7a3b7713c38ccc8691c39917d8f9e08ce4cd51f82b317eae54685ac5",
+      "sha256": "ce3232a2f598de6e70b6233df62fea32ba9a7fb467da0c5f511f7ff22be6fbf9",
+      "size": [
+        3200,
+        1664
+      ],
+      "split": "F",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/F_author_gain_contact.jpg"
+      ]
+    },
+    {
+      "arm": "rgb",
+      "frames": 8,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/C_rgb_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/SEAL.json",
+      "seal_sha256": "2a1d4a9f7a3b7713c38ccc8691c39917d8f9e08ce4cd51f82b317eae54685ac5",
+      "sha256": "b8100baacbc7f1d04bdf3b0ae83b3bd46839ab9984d85de5fff407982a72fd1a",
+      "size": [
+        3200,
+        1664
+      ],
+      "split": "C",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/C_rgb_contact.jpg"
+      ]
+    },
+    {
+      "arm": "A",
+      "frames": 8,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/C_A_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/SEAL.json",
+      "seal_sha256": "2a1d4a9f7a3b7713c38ccc8691c39917d8f9e08ce4cd51f82b317eae54685ac5",
+      "sha256": "3d55552962b4bee3a4366e4038384a8f38548e72143f81b6a710de4a90fa03bd",
+      "size": [
+        3200,
+        1664
+      ],
+      "split": "C",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/C_A_contact.jpg"
+      ]
+    },
+    {
+      "arm": "B",
+      "frames": 8,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/C_B_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/SEAL.json",
+      "seal_sha256": "2a1d4a9f7a3b7713c38ccc8691c39917d8f9e08ce4cd51f82b317eae54685ac5",
+      "sha256": "c4e057ad48de311b6d83ed961f37d924f466c96b08ae3f8d34c253d88b483e38",
+      "size": [
+        3200,
+        1664
+      ],
+      "split": "C",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/C_B_contact.jpg"
+      ]
+    },
+    {
+      "arm": "C",
+      "frames": 8,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/C_C_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/SEAL.json",
+      "seal_sha256": "2a1d4a9f7a3b7713c38ccc8691c39917d8f9e08ce4cd51f82b317eae54685ac5",
+      "sha256": "7e948e0a0cf208a25b5955a45a466bc18260ed21ce09627b47f076068c9e3018",
+      "size": [
+        3200,
+        1664
+      ],
+      "split": "C",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/C_C_contact.jpg"
+      ]
+    },
+    {
+      "arm": "author_gain",
+      "frames": 8,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/C_author_gain_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/SEAL.json",
+      "seal_sha256": "2a1d4a9f7a3b7713c38ccc8691c39917d8f9e08ce4cd51f82b317eae54685ac5",
+      "sha256": "f469f287dd3382c88a2bac18b2185007036ccddb18838321988e67fc2b0ce595",
+      "size": [
+        3200,
+        1664
+      ],
+      "split": "C",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/C_author_gain_contact.jpg"
+      ]
+    },
+    {
+      "arm": "rgb",
+      "frames": 33,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_rgb_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/SEAL.json",
+      "seal_sha256": "2a1d4a9f7a3b7713c38ccc8691c39917d8f9e08ce4cd51f82b317eae54685ac5",
+      "sha256": "277896830f9f38bca86202b681cb896af4a2c39669042b4189858ab8618cb43a",
+      "size": [
+        2400,
+        9152
+      ],
+      "split": "arc0",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_rgb_contact_rows_00_02.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_rgb_contact_rows_03_05.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_rgb_contact_rows_06_08.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_rgb_contact_rows_09_10.jpg"
+      ]
+    },
+    {
+      "arm": "A",
+      "frames": 33,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_A_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/SEAL.json",
+      "seal_sha256": "2a1d4a9f7a3b7713c38ccc8691c39917d8f9e08ce4cd51f82b317eae54685ac5",
+      "sha256": "63f91760a3b784a2413437d919fa21f03936962f43f38ef34bd237c9f84d0213",
+      "size": [
+        2400,
+        9152
+      ],
+      "split": "arc0",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_A_contact_rows_00_02.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_A_contact_rows_03_05.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_A_contact_rows_06_08.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_A_contact_rows_09_10.jpg"
+      ]
+    },
+    {
+      "arm": "B",
+      "frames": 33,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_B_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/SEAL.json",
+      "seal_sha256": "2a1d4a9f7a3b7713c38ccc8691c39917d8f9e08ce4cd51f82b317eae54685ac5",
+      "sha256": "d8df5e275c79147184ffdaccdd93343dd2fd0960f2bed5d31dfbe66ea3bad25d",
+      "size": [
+        2400,
+        9152
+      ],
+      "split": "arc0",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_B_contact_rows_00_02.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_B_contact_rows_03_05.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_B_contact_rows_06_08.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_B_contact_rows_09_10.jpg"
+      ]
+    },
+    {
+      "arm": "C",
+      "frames": 33,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_C_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/SEAL.json",
+      "seal_sha256": "2a1d4a9f7a3b7713c38ccc8691c39917d8f9e08ce4cd51f82b317eae54685ac5",
+      "sha256": "e084548a8f915bb100f9021feb35c169af4bf8d0a2055a068bdf531200f97c96",
+      "size": [
+        2400,
+        9152
+      ],
+      "split": "arc0",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_C_contact_rows_00_02.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_C_contact_rows_03_05.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_C_contact_rows_06_08.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_C_contact_rows_09_10.jpg"
+      ]
+    },
+    {
+      "arm": "author_gain",
+      "frames": 33,
+      "kind": "complete_contact",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_author_gain_contact.png",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/SEAL.json",
+      "seal_sha256": "2a1d4a9f7a3b7713c38ccc8691c39917d8f9e08ce4cd51f82b317eae54685ac5",
+      "sha256": "9ae20c14a37fa87fe750bd13481406567ec747fa3aea1b5e65bf49b43f2e0d5e",
+      "size": [
+        2400,
+        9152
+      ],
+      "split": "arc0",
+      "viewed_in": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_author_gain_contact_rows_00_02.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_author_gain_contact_rows_03_05.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_author_gain_contact_rows_06_08.jpg",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_author_gain_contact_rows_09_10.jpg"
+      ]
+    },
+    {
+      "frame": "arc0_016",
+      "kind": "direct_native_detail",
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_016/rgb.png",
+      "purpose": "确认严重画幅下边界截断已存在于原生RGB，不由review拼图或缩放造成。",
+      "seal_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_016/SEAL.json",
+      "seal_sha256": "47c2d7f6d5900df697da5c134dd2e45405e44ca67cbcdfd49ea364eb5fc7df8a",
+      "sha256": "c6368067be9cec58ce778f23b27acfd621e8da20e236dd0f83668811449da82e",
+      "size": [
+        800,
+        800
+      ],
+      "view_detail": "original",
+      "viewed_directly_with": "view_image"
+    }
+  ],
+  "originals_preserved": true,
+  "review_scope": "7 fixed representative frames x line/overlay/matched; all15 complete F/C/arc contact sheets RGB/A/B/C/AUTHOR; one additional direct native800 arc0_016 RGB inspection. Visual review at recorded display scales.",
+  "reviewer": "gpt-6-astra model review via actual view_image calls; not human review",
+  "scene": "ship",
+  "schema": "frozen-npr-model-visual-review-v1",
+  "scientific_GO": false,
+  "source_payload_hashes_checked_against_seal": true,
+  "training_success_upgraded": false,
+  "utc": "2026-10-03T12:13:52.986523+00:00",
+  "view_assets": [
+    {
+      "display_transform": "Each entire 4000x832 panel resized to2000x416, three rows with20px label; no original pixel region omitted. JPEG92.",
+      "model_inspected": true,
+      "originals": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/F_001/line_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/F_001/overlay_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/F_001/matched_panel.png"
+      ],
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/F_001_review.jpg",
+      "sha256": "06a726cbc8fddcd78dd34fde96656abea93f26979f1d9a072c97b66f77bba9b0",
+      "viewed_with": "view_image"
+    },
+    {
+      "display_transform": "Each entire 4000x832 panel resized to2000x416, three rows with20px label; no original pixel region omitted. JPEG92.",
+      "model_inspected": true,
+      "originals": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/F_041/line_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/F_041/overlay_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/F_041/matched_panel.png"
+      ],
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/F_041_review.jpg",
+      "sha256": "c4f68343b5a6e8be4e413e40a32d507b8c426b4916ed8be018c47a3a41c661ff",
+      "viewed_with": "view_image"
+    },
+    {
+      "display_transform": "Each entire 4000x832 panel resized to2000x416, three rows with20px label; no original pixel region omitted. JPEG92.",
+      "model_inspected": true,
+      "originals": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/C_007/line_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/C_007/overlay_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/C_007/matched_panel.png"
+      ],
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/C_007_review.jpg",
+      "sha256": "b995ac9c0d4741d5bf275c73b669e577a8c367355d337ae152448fe4752738ec",
+      "viewed_with": "view_image"
+    },
+    {
+      "display_transform": "Each entire 4000x832 panel resized to2000x416, three rows with20px label; no original pixel region omitted. JPEG92.",
+      "model_inspected": true,
+      "originals": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/C_047/line_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/C_047/overlay_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/C_047/matched_panel.png"
+      ],
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/C_047_review.jpg",
+      "sha256": "d75c17efaf37c8e8c1bb47ca6c951846728f307404bfc613c1881188eb9fe39f",
+      "viewed_with": "view_image"
+    },
+    {
+      "display_transform": "Each entire 4000x832 panel resized to2000x416, three rows with20px label; no original pixel region omitted. JPEG92.",
+      "model_inspected": true,
+      "originals": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_000/line_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_000/overlay_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_000/matched_panel.png"
+      ],
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_000_review.jpg",
+      "sha256": "3fa559231fb019ff6708da0e3cbdfe0665e4d1fb008727b739562f5f8f6023d3",
+      "viewed_with": "view_image"
+    },
+    {
+      "display_transform": "Each entire 4000x832 panel resized to2000x416, three rows with20px label; no original pixel region omitted. JPEG92.",
+      "model_inspected": true,
+      "originals": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_016/line_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_016/overlay_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_016/matched_panel.png"
+      ],
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_016_review.jpg",
+      "sha256": "d99f6ac19ddc3615add394bbb022a86a4ac21c6841980a8a402b9d2f011c5b31",
+      "viewed_with": "view_image"
+    },
+    {
+      "display_transform": "Each entire 4000x832 panel resized to2000x416, three rows with20px label; no original pixel region omitted. JPEG92.",
+      "model_inspected": true,
+      "originals": [
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_032/line_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_032/overlay_panel.png",
+        "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/frames/ship/arc0_032/matched_panel.png"
+      ],
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_032_review.jpg",
+      "sha256": "8e8cd2b4ff8a22829cb9714507d34257b43cc3947b833d29d8ef927caf0c3cf0",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        3200,
+        1664
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/F_rgb_contact.jpg",
+      "resize": [
+        2000,
+        1040
+      ],
+      "sha256": "e933638f0bb7763804b927105377e9f7cb7921a58c6f0815a76388dea5785152",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/F_rgb_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        3200,
+        1664
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/F_A_contact.jpg",
+      "resize": [
+        2000,
+        1040
+      ],
+      "sha256": "15a776c9464cbb029a9fff9f7f5573c3ad8032b64551117417cb0a702b85b993",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/F_A_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        3200,
+        1664
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/F_B_contact.jpg",
+      "resize": [
+        2000,
+        1040
+      ],
+      "sha256": "09620eecd41e726afc123f35adba596fcf3be031e4ad32e2a048ef4ce353692f",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/F_B_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        3200,
+        1664
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/F_C_contact.jpg",
+      "resize": [
+        2000,
+        1040
+      ],
+      "sha256": "ddea6ac459b4031943ee0bc301c3abad402a543822e271415b42de853c2ddd86",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/F_C_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        3200,
+        1664
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/F_author_gain_contact.jpg",
+      "resize": [
+        2000,
+        1040
+      ],
+      "sha256": "f44ec1f531e9d8913cd1443f46245a92d1f78811224f42d14d844b0df1ae0ff5",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/F_author_gain_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        3200,
+        1664
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/C_rgb_contact.jpg",
+      "resize": [
+        2000,
+        1040
+      ],
+      "sha256": "1c475d184298efaab35eed147eb63d60b218721f2951f9b6ec5303f06cde9dcd",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/C_rgb_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        3200,
+        1664
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/C_A_contact.jpg",
+      "resize": [
+        2000,
+        1040
+      ],
+      "sha256": "2d0c10c6170ec7518bc1464abb669e56700d17318c7033e449b158c0154fdb3a",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/C_A_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        3200,
+        1664
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/C_B_contact.jpg",
+      "resize": [
+        2000,
+        1040
+      ],
+      "sha256": "05801d139c443c00865a48c90ffc97e3e70658330ec2c56c9d235445375323e0",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/C_B_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        3200,
+        1664
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/C_C_contact.jpg",
+      "resize": [
+        2000,
+        1040
+      ],
+      "sha256": "e9d241b85840db5fefa9c0ab1bede33dc863a852f9fb09ae20f4a9fed05649b9",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/C_C_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        3200,
+        1664
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/C_author_gain_contact.jpg",
+      "resize": [
+        2000,
+        1040
+      ],
+      "sha256": "bd725b115a3696a7b5aa991dd29e165db6b15823e73c1c2b7321edb4c323b72b",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/C_author_gain_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        2400,
+        2496
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_rgb_contact_rows_00_02.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "b1e3a68f438d7e0576ab6dad338318493204fb19e90f4a867b97beb58134e6bf",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_rgb_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        2496,
+        2400,
+        4992
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_rgb_contact_rows_03_05.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "7da365f26adf183d56860183fe76c7a65d850c526d434de0ef11ca224326ac23",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_rgb_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        4992,
+        2400,
+        7488
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_rgb_contact_rows_06_08.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "2e35883138e861547fc4f16203d3a4ba36043ad74ac90cf35d197c47e4be6914",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_rgb_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        7488,
+        2400,
+        9152
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_rgb_contact_rows_09_10.jpg",
+      "resize": [
+        1600,
+        1109
+      ],
+      "sha256": "cb7279d251f32ed487d22b75afa5e2bff64c3e84f3b08786d19cfc9a58c1939e",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_rgb_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        2400,
+        2496
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_A_contact_rows_00_02.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "ab80f05cabbb9e6c1688d68cc4be20f8b5a7e66563aba02d5b9b46606b4b8ba5",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_A_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        2496,
+        2400,
+        4992
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_A_contact_rows_03_05.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "9535960d8fa11892af256626841d9081ca33026925693de74719f36f726407d7",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_A_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        4992,
+        2400,
+        7488
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_A_contact_rows_06_08.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "c549b1aef5bc7180a2f4f35f6478956182b089d99107bacb28e55279649c20f3",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_A_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        7488,
+        2400,
+        9152
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_A_contact_rows_09_10.jpg",
+      "resize": [
+        1600,
+        1109
+      ],
+      "sha256": "6bfd448ed79596deae6344f6034defa6a7bd53182ce4ef698a1982b2e770c5ae",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_A_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        2400,
+        2496
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_B_contact_rows_00_02.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "17e5e4549048b1cfe648a5ea8d8d4a851a81f22b0715ae4a2525af3048e61ab4",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_B_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        2496,
+        2400,
+        4992
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_B_contact_rows_03_05.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "529c7ee48df3b5727db0a3ce5ae57b892f9e7d69eeba565cf7f58a6bf05e559b",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_B_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        4992,
+        2400,
+        7488
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_B_contact_rows_06_08.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "3a9237c454475dc3f9e93ff7485645298138f91af46c93d25372622fcdc8648d",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_B_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        7488,
+        2400,
+        9152
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_B_contact_rows_09_10.jpg",
+      "resize": [
+        1600,
+        1109
+      ],
+      "sha256": "490e5c882c8797a9b54239d58e95bf6dacd38a8daa94c586a45ce325251ba13c",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_B_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        2400,
+        2496
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_C_contact_rows_00_02.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "57fc4dafc7baaf88fb7ede398773055b75027fec53c315deb6b4ea031a877d3b",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_C_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        2496,
+        2400,
+        4992
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_C_contact_rows_03_05.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "9efa55cec7f65f78262065c13dbed057222952404500e0cd731804f0b04484d1",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_C_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        4992,
+        2400,
+        7488
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_C_contact_rows_06_08.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "45ca8b6b081ffea24c506dd5e8f5baa00f8d9351f69851561ab9685f4ec25b0f",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_C_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        7488,
+        2400,
+        9152
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_C_contact_rows_09_10.jpg",
+      "resize": [
+        1600,
+        1109
+      ],
+      "sha256": "62986792486ccdaa54ed50860ede2106efa0d59dccb91264a14a0ec6861f822a",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_C_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        0,
+        2400,
+        2496
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_author_gain_contact_rows_00_02.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "6d5ef01025dae4e774f601494d53c15b98e31d6fc627f4635c19032cb24fb61e",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_author_gain_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        2496,
+        2400,
+        4992
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_author_gain_contact_rows_03_05.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "68fafe5fe127d691c7451639c5a5dd7333259e71f60e9a0ca69ea822f33795e3",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_author_gain_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        4992,
+        2400,
+        7488
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_author_gain_contact_rows_06_08.jpg",
+      "resize": [
+        1600,
+        1664
+      ],
+      "sha256": "8ac9d8c86bcfe7287814f65b72caff04a9bd46ae741bd24e461d61957531ee79",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_author_gain_contact.png",
+      "viewed_with": "view_image"
+    },
+    {
+      "all_pixels_of_crop_kept": true,
+      "crop_box": [
+        0,
+        7488,
+        2400,
+        9152
+      ],
+      "model_inspected": true,
+      "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/review/ship/arc0_author_gain_contact_rows_09_10.jpg",
+      "resize": [
+        1600,
+        1109
+      ],
+      "sha256": "67704bb28d1c2a57105501cae128f026e26350aae730141e4d1d79dbb3ce95d3",
+      "source_path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/media/ship/arc0_author_gain_contact.png",
+      "viewed_with": "view_image"
+    }
+  ]
+}

@@ -1,0 +1,4048 @@
+{
+  "actual_frames": 49,
+  "calibration": {
+    "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/calibration/materials/CALIBRATION.json",
+    "sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08"
+  },
+  "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+  "checkpoint": {
+    "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/materials/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+    "qualification": {
+      "color": "SH0 clipped 0.5 + C0*f_dc",
+      "filter_3D_applied": false,
+      "filter_3D_present": false,
+      "gaussians": 282537,
+      "ignored_full_sh_coefficients": 45,
+      "native_degenerate_inverse_covariance_count": 152,
+      "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/training/materials/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+      "proxy_axis_normals_computed": false,
+      "row_id_mapping": "identity / original PLY row",
+      "sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945"
+    },
+    "sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945"
+  },
+  "expected_frames": 49,
+  "missing": [],
+  "parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+  "records": [
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "FoVx": 0.6194058656692505,
+          "FoVy": 0.6194058656692506,
+          "index": 1,
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "split": "train",
+          "w2c": [
+            [
+              -0.9601328222475536,
+              -0.27954395693065065,
+              -2.682401752492579e-10,
+              -6.360337923999926e-08
+            ],
+            [
+              -0.06956246716688368,
+              0.2389220239121802,
+              -0.9685440992888126,
+              -1.3883648985009224e-08
+            ],
+            [
+              0.27075066287246946,
+              -0.9299310243534705,
+              -0.24884265444093165,
+              4.031129289131304
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "7265aaffc2560cb286b22991e7c83e69e6a4755ef7d907096234fc5a5b8163f1",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "F_001",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "F_001",
+      "seal_sha256": "34c9ff300b31fabc074f2441932caa77483b6dab496dc25cb29d41540bd7af1b"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "FoVx": 0.6194058656692505,
+          "FoVy": 0.6194058656692506,
+          "index": 14,
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "split": "train",
+          "w2c": [
+            [
+              -0.9997803162656642,
+              -0.02095612890089405,
+              1.9154537558313014e-11,
+              -1.3507467248570368e-09
+            ],
+            [
+              0.004428271923476098,
+              -0.2112651176949276,
+              -0.9774187448559394,
+              -5.383699322856204e-10
+            ],
+            [
+              0.02048291621721678,
+              -0.9772041509973006,
+              0.21131154001817348,
+              4.031128963026434
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "30dfb51696a60fb75ae5806b9453a8696d5e36fc900f9bdb251aca29c42ec979",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "F_014",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "F_014",
+      "seal_sha256": "674a1ab92ff5b156a1dfab93a0686cb8fb60023c5219ffde4b63c930e910a3fe"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "FoVx": 0.6194058656692505,
+          "FoVy": 0.6194058656692506,
+          "index": 27,
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "split": "train",
+          "w2c": [
+            [
+              0.8229384094713642,
+              -0.5681305919655781,
+              -3.859988608347968e-09,
+              -5.3243279728802244e-08
+            ],
+            [
+              0.2628916135417762,
+              0.3807990974244788,
+              -0.8864989658855974,
+              6.941531604285757e-12
+            ],
+            [
+              0.503647045773663,
+              0.7295339427851496,
+              0.4627309054846775,
+              4.0311288858427945
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "fad6f8ab47ab68f4dd50d913c8a0b888288c7c5581ba2972c6116bb925fa7f95",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "F_027",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "F_027",
+      "seal_sha256": "be21909e8b9bd51c80f9cfc2aed13b4b12409fa67b9438b284c5689388b2669d"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "FoVx": 0.6194058656692505,
+          "FoVy": 0.6194058656692506,
+          "index": 41,
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "split": "train",
+          "w2c": [
+            [
+              0.05534284674579336,
+              -0.9984674347762845,
+              3.2206089283486413e-10,
+              -3.414043491918444e-09
+            ],
+            [
+              -0.15032671857531582,
+              -0.00833227946928207,
+              -0.9886013170519207,
+              2.442259243691823e-08
+            ],
+            [
+              0.9870861076447628,
+              0.054712006327063994,
+              -0.1505574299451311,
+              4.031128906692954
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "a8850750ca8a4e99976dfc4c8a057fec63b4023e7eb68ac7bd762a243284c7a3",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "F_041",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "F_041",
+      "seal_sha256": "57297c2f811de750645c4e75657cf0ad3f6f38093a29111d23829bbdadaf3832"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "FoVx": 0.6194058656692505,
+          "FoVy": 0.6194058656692506,
+          "index": 53,
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "split": "train",
+          "w2c": [
+            [
+              -0.0535183555168055,
+              0.9985668658617826,
+              1.6190197047845526e-09,
+              1.2328412823005859e-08
+            ],
+            [
+              0.6232048809756009,
+              0.03340076922694621,
+              -0.7813450450776263,
+              -8.058287414328266e-08
+            ],
+            [
+              -0.7802253527557225,
+              -0.041816304533695337,
+              -0.6240992897298848,
+              4.031129024330144
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "b90ad40a76d49377ef835fac1c08623eb6afb90c0a49d2da9d1e63ee46915702",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "F_053",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "F_053",
+      "seal_sha256": "b1dbc686a632baa699a288a86f18a11b848b75ff1df774e78ebe7a64bc905315"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "FoVx": 0.6194058656692505,
+          "FoVy": 0.6194058656692506,
+          "index": 67,
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "split": "train",
+          "w2c": [
+            [
+              -0.5627926846531087,
+              0.8265979985893886,
+              2.016825854106933e-10,
+              -1.0610056412121415e-07
+            ],
+            [
+              0.0037503285669783877,
+              0.002553427167994937,
+              -0.9999896073295681,
+              -3.464057284937497e-10
+            ],
+            [
+              -0.8265894468756595,
+              -0.562786881177238,
+              -0.004537064475142629,
+              4.0311284219137224
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "fb79555f428af8cf45d8760ce8dbee698eed4848443de11f012458ce2d2dc3ae",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "F_067",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "F_067",
+      "seal_sha256": "552f9dd191954c0111ac7491087c49695ca54e39635d401953380ad94cb40b74"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "FoVx": 0.6194058656692505,
+          "FoVy": 0.6194058656692506,
+          "index": 79,
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "split": "train",
+          "w2c": [
+            [
+              0.9308264179063311,
+              0.36546149672658734,
+              -1.1644360230945277e-08,
+              3.9173147475667174e-08
+            ],
+            [
+              0.2903623435047287,
+              -0.7395496890815786,
+              -0.6072528006165469,
+              -9.921718460891503e-08
+            ],
+            [
+              -0.22192750842986653,
+              0.5652469183053149,
+              -0.7945087797768188,
+              4.031129191593928
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "4666947baa355453f8092a69c3c0be48f17951c0220de945ee6ee3652a46fbde",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "F_079",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "F_079",
+      "seal_sha256": "211cf9c7a0a1b3ab36711861a544527b62b3e4946360d1904fb94366950aaa33"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "FoVx": 0.6194058656692505,
+          "FoVy": 0.6194058656692506,
+          "index": 93,
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "split": "train",
+          "w2c": [
+            [
+              0.6210367157038045,
+              -0.7837814361471288,
+              -4.013691706891167e-09,
+              -1.0140691518557703e-08
+            ],
+            [
+              0.18304429918024728,
+              0.14503691617642578,
+              -0.9723472016831208,
+              -6.042955610584558e-09
+            ],
+            [
+              0.7621077341251783,
+              0.6038633740365428,
+              0.2335399862955706,
+              4.031128947553081
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "69f3798ae2cdb5d618af3d2b6636ae2009d3eb73a48bd17176580471112ec106",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "F_093",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "F_093",
+      "seal_sha256": "4985bc67313c7702b1b4b66960d798b78ec790bad9d36749379fe542eb2269be"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "FoVx": 0.6194058656692505,
+          "FoVy": 0.6194058656692506,
+          "index": 7,
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "split": "train",
+          "w2c": [
+            [
+              -0.7939922658647246,
+              0.6079278394528311,
+              6.329877532579226e-10,
+              1.070160096252948e-07
+            ],
+            [
+              -0.01465213674324061,
+              -0.01913661844039208,
+              -0.9997094737526435,
+              -8.424378329588482e-10
+            ],
+            [
+              -0.6077513138797616,
+              -0.7937617020759316,
+              0.0241017714757108,
+              4.031129360866748
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "c0f2305c2f50379848eae96395ea79536c235cdc485d95a6b60d5d8c68bc661d",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "C_007",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "C_007",
+      "seal_sha256": "aba319b60cef265329a80f7af9503a8bcced2533c72c9128dea61a9764625888"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "FoVx": 0.6194058656692505,
+          "FoVy": 0.6194058656692506,
+          "index": 21,
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "split": "train",
+          "w2c": [
+            [
+              0.8701536260755797,
+              -0.49278044128824794,
+              -1.4135305757935704e-09,
+              7.92848035635938e-09
+            ],
+            [
+              -0.039345561886170846,
+              -0.06947654960885259,
+              -0.9968074064387469,
+              -1.301380368978532e-10
+            ],
+            [
+              0.4912071760345074,
+              0.8673755843853107,
+              -0.07984399630911487,
+              4.0311288797637905
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "1d00a4983ff726a46f2cebe8ad6e45807118c1b68c560042c8671aecbbad7a79",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "C_021",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "C_021",
+      "seal_sha256": "6d59814ef3769d0eb6629fb283f2dfc74d819829100978f399395c9eee0af3e4"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "FoVx": 0.6194058656692505,
+          "FoVy": 0.6194058656692506,
+          "index": 33,
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "split": "train",
+          "w2c": [
+            [
+              -0.5975927945735849,
+              0.8017997148671283,
+              -4.4972007489413585e-09,
+              8.415311837645684e-08
+            ],
+            [
+              0.5666263546153639,
+              0.42231472006904724,
+              -0.707520218463915,
+              1.2291543017028736e-08
+            ],
+            [
+              -0.567289502374892,
+              -0.42280897357163905,
+              -0.7066931228208806,
+              4.031128979154594
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "4fc365dfb2b7d1a6b05a45b37cb75f623c5e039efb3cc238b5891680a68a8689",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "C_033",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "C_033",
+      "seal_sha256": "00d7bcc4fffa98fb68980e0c719370b1e6ad3528e74e673e8662d46c03a6141c"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "FoVx": 0.6194058656692505,
+          "FoVy": 0.6194058656692506,
+          "index": 47,
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "split": "train",
+          "w2c": [
+            [
+              0.9989815788950791,
+              0.04511773238491908,
+              2.2381509752435415e-10,
+              -4.47431922871965e-09
+            ],
+            [
+              0.02957801950259482,
+              -0.6549065096434593,
+              -0.7551309279082564,
+              5.984828714634171e-08
+            ],
+            [
+              -0.03406980359784315,
+              0.7543620117600642,
+              -0.6555741702930139,
+              4.031129411203688
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "e1067f2a7611222ce2611fe388ccb5bccc4cd73343be8e952028989db6cf65ff",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "C_047",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "C_047",
+      "seal_sha256": "61fc48a5e73e4a42c7e6397d75b355500c19e258d0c39412b012df9bc85b8b95"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "FoVx": 0.6194058656692505,
+          "FoVy": 0.6194058656692506,
+          "index": 59,
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "split": "train",
+          "w2c": [
+            [
+              -0.9082824607504446,
+              0.4183575792894112,
+              -1.1817579918931207e-08,
+              -9.99938814166409e-10
+            ],
+            [
+              -0.24463935603349216,
+              -0.5311285820130933,
+              -0.811205292693993,
+              -4.1350458345053704e-08
+            ],
+            [
+              -0.3393738032169583,
+              -0.7368034718434122,
+              0.5847614677155836,
+              4.031128907325385
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "b9742179f8d6d3088a53f691c93e6aeb566984d7ab47c84c0f1a306b33d78289",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "C_059",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "C_059",
+      "seal_sha256": "f2235725503db31fe7f3e058c358a631629288b53f9d79fbf32a433d94557059"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "FoVx": 0.6194058656692505,
+          "FoVy": 0.6194058656692506,
+          "index": 73,
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "split": "train",
+          "w2c": [
+            [
+              0.9631867058785,
+              -0.26883316916943106,
+              -5.169305064046827e-09,
+              3.335236276404493e-08
+            ],
+            [
+              -0.2169425870996895,
+              -0.7772709604742087,
+              -0.5905809070966795,
+              8.357065388182214e-08
+            ],
+            [
+              0.15876772329104408,
+              0.5688396634110733,
+              -0.8069785255079737,
+              4.031129020620489
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "280f1edf9d1adb925a7ad390376e0f09362bc69531ad038caacd6613813ac336",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "C_073",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "C_073",
+      "seal_sha256": "75373823609a07ad915c0172431404dbd798dff76c7b8a15e9bd6f050139a676"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "FoVx": 0.6194058656692505,
+          "FoVy": 0.6194058656692506,
+          "index": 86,
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "split": "train",
+          "w2c": [
+            [
+              0.997024734637771,
+              -0.07708241241896009,
+              8.674598440148548e-11,
+              2.029897894242284e-08
+            ],
+            [
+              0.0006453268248720593,
+              0.008346998123360896,
+              -0.9999649574784919,
+              -3.6803148081612633e-09
+            ],
+            [
+              0.07707971426823215,
+              0.9969898410489106,
+              0.008371907366123385,
+              4.031129132059343
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "095c5251ee2da6c93f6afcb2c559b5f461e704395bd1f8afb63d411e1cc0d15c",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "C_086",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "C_086",
+      "seal_sha256": "647f97aa5317f2f11f74d70ca8771692de05347a689ed9c88e46568b68d9f53d"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "FoVx": 0.6194058656692505,
+          "FoVy": 0.6194058656692506,
+          "index": 99,
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "split": "train",
+          "w2c": [
+            [
+              -0.7698582829950333,
+              0.6382149822472848,
+              -2.3448425722595518e-08,
+              -2.0330453704986733e-08
+            ],
+            [
+              0.5243394997296748,
+              0.6324939357866698,
+              -0.5701048378672756,
+              5.886570300479031e-08
+            ],
+            [
+              -0.36384941717666625,
+              -0.4388999206116704,
+              -0.8215719600268534,
+              4.03112892389215
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "721a3bb8b2dfa7c6e2f2ec94a24f6036cfefd131fe1680a8e4fef0b4c9a04b6d",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "C_099",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "C_099",
+      "seal_sha256": "ecd89d6992606b0022cb4847be6b676102fe166f46ee2d26f72b3c8ee82b444e"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.0,
+          "w2c": [
+            [
+              -0.7939922852039332,
+              0.6079278337406797,
+              2.834652777052011e-08,
+              1.7536565709812973e-07
+            ],
+            [
+              -0.014652179969872389,
+              -0.01913662917458631,
+              -0.9997095093305679,
+              1.3594965377420223e-07
+            ],
+            [
+              -0.6077512358348327,
+              -0.7937616382688187,
+              0.02410180395809309,
+              4.031128968651369
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "3688a26fb389edd4a9e4da9c1c49c56df3e074d02465d8a45f3b0062df421d71",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_000",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_000",
+      "seal_sha256": "e394de19ed4f734a0a6c717de1042d0423c3e97bf270a3a2cc735501aa490e2d"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.03125,
+          "w2c": [
+            [
+              -0.7889658983947032,
+              0.6144276040535289,
+              -0.0033956659551155144,
+              -0.0048282489512352774
+            ],
+            [
+              0.003307880069611676,
+              -0.0012789790430294584,
+              -0.999993711051251,
+              0.0007588273850045295
+            ],
+            [
+              -0.6144280829354107,
+              -0.7889721690843392,
+              -0.0010233819759561502,
+              4.031739555119488
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "65835be2c6069fbc0033b733b1fcbae5112472b9f0f1f9f4d39dcd875eacbfdc",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_001",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_001",
+      "seal_sha256": "283a0a8ceac81b1a448bc1e90e0593db861b651c7d32e0543db6baf77898e7ed"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.0625,
+          "w2c": [
+            [
+              -0.7838269072501282,
+              0.6209444696473028,
+              -0.006583698438432445,
+              -0.0093629825492611
+            ],
+            [
+              0.021412636909428923,
+              0.01643061733029697,
+              -0.9996357005403168,
+              0.001482439296446994
+            ],
+            [
+              -0.6206100856828571,
+              -0.7836823338755156,
+              -0.026174818435692665,
+              4.032295483008797
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "7c6e2b44d6acf032c123ff2dec360b1189d02424116b64b767b24d694e4ccc2a",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_002",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_002",
+      "seal_sha256": "62da8de6f3f1b5296f03cc2e609b7b2d3e6242fbe0685ee5d299c6c4d7cd188b"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.09375,
+          "w2c": [
+            [
+              -0.778578958852572,
+              0.627473805578136,
+              -0.00956180659377591,
+              -0.013600514765894876
+            ],
+            [
+              0.03964924181380863,
+              0.03397959165041837,
+              -0.9986357318736702,
+              0.0021695733644953303
+            ],
+            [
+              -0.6262928567815822,
+              -0.7778958867769916,
+              -0.05133465573861656,
+              4.032798539462173
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "f8274cdac3337690bda79a8dabeecae6c0619cd898ad8a89b771fa125e85c30c",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_003",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_003",
+      "seal_sha256": "ca1d3ac22ffbcffdb7d12e838ae71bdf321cac8b54322945c371a948bf3cf667"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.125,
+          "w2c": [
+            [
+              -0.773225777610093,
+              0.6340109780521105,
+              -0.012327876892357623,
+              -0.01753756846721923
+            ],
+            [
+              0.05800475247593826,
+              0.05135548961396604,
+              -0.9969945147174656,
+              0.0028188073903664544
+            ],
+            [
+              -0.631472363234902,
+              -0.7716169343631047,
+              -0.07648503824024612,
+              4.033250493105295
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "882c866dcf5848cbc8faddac24746f1afc557e5008df2eb2f5f5dc5adb5c8e83",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_004",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_004",
+      "seal_sha256": "1f37d2e5f1f29e77e7d4f6a74f99d53a2ef9eb10a10af8404126421a18cb29d4"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.15625,
+          "w2c": [
+            [
+              -0.7677711626132807,
+              0.6405513477138044,
+              -0.014879946286194908,
+              -0.021171101944297936
+            ],
+            [
+              0.07646614220296997,
+              0.0685459797478528,
+              -0.9947132138244682,
+              0.0034286993865207016
+            ],
+            [
+              -0.6361449292072099,
+              -0.7648499327334977,
+              -0.10160811700606319,
+              4.033653089981288
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "a59dd7d177df885c3106be8cb800749d31139bd8ec4624c4375131cafeb2cac2",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_005",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_005",
+      "seal_sha256": "54cf00dc5ccfac9a5ff1be1baa6b22f3cfe86fe33fbc5dfc2cfe5cbd3f6d8fc9"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.1875,
+          "w2c": [
+            [
+              -0.762218984939082,
+              0.6470902729387882,
+              -0.01721620360126328,
+              -0.024498310576812624
+            ],
+            [
+              0.09502030916091202,
+              0.08553886216077587,
+              -0.9917934482074403,
+              0.003997791817032844
+            ],
+            [
+              -0.6403072386326741,
+              -0.7575996843506765,
+              -0.12668606247869318,
+              4.0340080496665065
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "4d781ff297eef243203e33167a7c52b9e0e4b554ad1add6c9c0148962d872afa",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_006",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_006",
+      "seal_sha256": "7a963aa7210b6bb5c332293832bb5ace15df9eb25bd367595aaf0ef7e8bae9f2"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.21875,
+          "w2c": [
+            [
+              -0.7565731849035428,
+              0.653623113127733,
+              -0.019334990822864943,
+              -0.027516628264523543
+            ],
+            [
+              0.11365408567284895,
+              0.10232207720133828,
+              -0.988237289990148,
+              0.004524615975843392
+            ],
+            [
+              -0.6439563375686105,
+              -0.749871334631758,
+              -0.15170107713133635,
+              4.034317061577924
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "04c244be3dc23e8c1e3f32b2f705fca0cc6dd942e50a9ee350cb9162fc954484",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_007",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_007",
+      "seal_sha256": "d77971d4fb1de71ef03fb64f9d1b41f8efd868665ea0fe5316c8307ac3795489"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.25,
+          "w2c": [
+            [
+              -0.7508377692654126,
+              0.6601452319997897,
+              -0.021234804272303412,
+              -0.030223728627489403
+            ],
+            [
+              0.13235424756388933,
+              0.1188837140166438,
+              -0.984047262936799,
+              0.005007696490493247
+            ],
+            [
+              -0.6470896362918632,
+              -0.7416703682968282,
+              -0.17663540809846542,
+              4.034581781482038
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "1d66b7a9f2e48d90a839e99b752487be97a0f1a91fcc54713972baefbd348ab8",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_008",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_008",
+      "seal_sha256": "5f44b5e37cc41b8ba745f1ab61471cd479f0627a57cf0395cb84b7537fd4169c"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.28125,
+          "w2c": [
+            [
+              -0.7450168083825934,
+              0.6666520008829023,
+              -0.022914295674026898,
+              -0.03261752597631656
+            ],
+            [
+              0.15110752354620857,
+              0.13521201900528967,
+              -0.9792263406609552,
+              0.00544555593851068
+            ],
+            [
+              -0.6497049111366991,
+              -0.7330026054764991,
+              -0.2014713597748276,
+              4.0348038282144945
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "5c9b8b444650962f8730fabfa685650aed8f1bcaf56ac9fc1a8c91471b5a805b",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_009",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_009",
+      "seal_sha256": "14230903ff90643643695e98d2cfd6eb64bdeed1c339b00c1efc11886ab746c2"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.3125,
+          "w2c": [
+            [
+              -0.7391144333234555,
+              0.6731388019987243,
+              -0.024372273112482433,
+              -0.034696176054070306
+            ],
+            [
+              0.16990060463752768,
+              0.15129540415876314,
+              -0.9737779445151954,
+              0.005836719563208029
+            ],
+            [
+              -0.6518003060729182,
+              -0.7238741975814298,
+              -0.22619130637381163,
+              4.034984780618969
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "d1e0d31338758e3349f01ee9e261a1e676d7a1d6f6cd743c8a2a701bfd16a68c",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_010",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_010",
+      "seal_sha256": "79b26375a1abd7df3554b5041c1a5342e1a35ffad07dcacffc765a110d7c5cc5"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.34375,
+          "w2c": [
+            [
+              -0.7331348329350635,
+              0.6796010317398021,
+              -0.025607701878006203,
+              -0.03645807655175439
+            ],
+            [
+              0.18872015360634425,
+              0.16712245528531458,
+              -0.9677059411630197,
+              0.006179720075317313
+            ],
+            [
+              -0.6533743340230578,
+              -0.7142916229367416,
+              -0.2507777044362621,
+              4.035126174713163
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "272882c42098af2131aa96459e9fce6ab682783efac75519634138c7b1310a81",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_011",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_011",
+      "seal_sha256": "d7e0a4256d4905263eb55c915262840ec25c13bcdb75573b08b61ac4b0d20e41"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.375,
+          "w2c": [
+            [
+              -0.7270822508704027,
+              0.6860341039367013,
+              -0.026619705201143953,
+              -0.03790186739964216
+            ],
+            [
+              0.20755281443721044,
+              0.18268194011047822,
+              -0.9610146398347239,
+              0.006473102526537294
+            ],
+            [
+              -0.6544258779177528,
+              -0.7042616821844268,
+              -0.27521310528087084,
+              4.035229501089035
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "d0112b3ec3d896346eecee10fe11ded622a6a1ccf0374d93f14b26d893ae06b6",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_012",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_012",
+      "seal_sha256": "a8c3a72177bd43653f1aa4399b3c7fe473279f269ee98919b1b65f8b035fc4a0"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.40625,
+          "w2c": [
+            [
+              -0.7209609825767066,
+              0.692433453112758,
+              -0.027407564874884473,
+              -0.03902643083702619
+            ],
+            [
+              0.22638522180934195,
+              0.19796281624848672,
+              -0.9537087892691892,
+              0.0067154292408187575
+            ],
+            [
+              -0.6549541914885072,
+              -0.6937914934570107,
+              -0.29948016738730143,
+              4.035296202553638
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "9a29eb7f057d607bf332212c4c32687e8385889e8d092ee214dc7106a2696b12",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_013",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_013",
+      "seal_sha256": "19e3f5c2d29e7541b7f012b9510e9894e9d3d8ac1c3ad3eb53650a35d54bf43f"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.4375,
+          "w2c": [
+            [
+              -0.7147753722470289,
+              0.6987945377241451,
+              -0.027970721764362796,
+              -0.03983089126324618
+            ],
+            [
+              0.2452040105818314,
+              0.21295423903892335,
+              -0.9457935743437562,
+              0.00690528478894971
+            ],
+            [
+              -0.6549588997973126,
+              -0.6828884873258964,
+              -0.3235616687032664,
+              4.035327672016169
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "1b0eb543b6604282cedc48e444f174d4b813cbf240d2536e6756e841c187671f",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_014",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_014",
+      "seal_sha256": "f2fb713e2db36e7eca756bdfe699309ce7be586e3420f85fa52cf8d5f83c3e32"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.46875,
+          "w2c": [
+            [
+              -0.7085298097372177,
+              0.7051128433829527,
+              -0.028308776203671587,
+              -0.040314614873165726
+            ],
+            [
+              0.2639958252787333,
+              0.22764556924305246,
+              -0.9372746123945782,
+              0.007041280991818061
+            ],
+            [
+              -0.6544399995027371,
+              -0.6715604015279741,
+              -0.34744051886681737,
+              4.035325250626104
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "b21a5841c4414e997ae7a356dbbab5947383fe77fe9eb91055607c18d631571d",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_015",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_015",
+      "seal_sha256": "e6091ba7397c817c786118ded1dfbd9ebe628e729f7c8aa7b7d35cba9e74e601"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.5,
+          "w2c": [
+            [
+              -0.7022287274504888,
+              0.7113838860609965,
+              -0.028421488279498874,
+              -0.04047720908053173
+            ],
+            [
+              0.28274732956729043,
+              0.24202638059436393,
+              -0.9281579492300636,
+              0.007122061937560961
+            ],
+            [
+              -0.6533978588622957,
+              -0.6598152754742396,
+              -0.3710997713351763,
+              4.035290226166427
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "573f13281a769beaeb67c2eb584b8b96c3943e120b35ec6485fd7828c93f84ad",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_016",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_016",
+      "seal_sha256": "6f1a845ed2c7eb3f1fc7c508dddd86955d2f71500b585553068fd09a2b2304bf"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.53125,
+          "w2c": [
+            [
+              -0.6958765971917994,
+              0.717603215272082,
+              -0.02830877800139347,
+              -0.040318521732925085
+            ],
+            [
+              0.30144521572257504,
+              0.2560864671979723,
+              -0.9184500548402358,
+              0.007146308997710585
+            ],
+            [
+              -0.651833217471105,
+              -0.6476614445443172,
+              -0.39452263541150046,
+              4.0352238317052285
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "3d6a78749278365cb5edf84ff1e4836fd9f8876da608d70d4fc81252ac07b7ed",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_017",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_017",
+      "seal_sha256": "21f39950df048dbcd96b5e5f656b9b1f26bdb9bf773c051779a1ecc712acf70f"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.5625,
+          "w2c": [
+            [
+              -0.6894779269942584,
+              0.7237664172304611,
+              -0.027970725358531092,
+              -0.039838640122266906
+            ],
+            [
+              0.3200762140718252,
+              0.2698158507736227,
+              -0.9081578188050541,
+              0.007112745827357684
+            ],
+            [
+              -0.649747185736997,
+              -0.6351075341709373,
+              -0.4176924881610445,
+              4.03512724450808
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "d0fe9df180fae5fae645f3ef9363de5c8d283e1f7f0325a41e47fd39458b1679",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_018",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_018",
+      "seal_sha256": "103e71c7a549c62acddb801bbc87806c326a97f3b314aa94cec6db4583caa935"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.59375,
+          "w2c": [
+            [
+              -0.68303725791983,
+              0.7298691179832455,
+              -0.027407570262948155,
+              -0.039037889795075754
+            ],
+            [
+              0.3386271024117789,
+              0.28320478773716085,
+              -0.8972885454049617,
+              0.0070201433343312246
+            ],
+            [
+              -0.6471412440924794,
+              -0.6221624537185675,
+              -0.4405928862082652,
+              4.035001585212849
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "840f38eebc8359119b320db54177de14100aaf284164c62a5678c1c5f11acfc1",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_019",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_019",
+      "seal_sha256": "71185676f01bf10fe9b0ef53e0a4c2a04ebfa03b49fb1beb91744bcbf2169bfb"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.625,
+          "w2c": [
+            [
+              -0.6765591608365946,
+              0.7359069865145507,
+              -0.026619712379279292,
+              -0.03791683316691438
+            ],
+            [
+              0.35708471539231856,
+              0.2962437761154412,
+              -0.8858499484371217,
+              0.006867324602416455
+            ],
+            [
+              -0.6440172419440877,
+              -0.6088353901605399,
+              -0.46320757740649404,
+              4.0348479172676965
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "c2aab5dd7e10caeabc71a742b85a92be336869ce173a443b5e070049374ff9c6",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_020",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_020",
+      "seal_sha256": "18fff787d1d89c5b20c6dc52dc880f9c5190ab16dedadf088c922669b12e63fe"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.65625,
+          "w2c": [
+            [
+              -0.6700482331748543,
+              0.7418757378191672,
+              -0.025607710841118903,
+              -0.03647626794567955
+            ],
+            [
+              0.37543595385976547,
+              0.3089235622897667,
+              -0.8738501457410238,
+              0.006653169753680503
+            ],
+            [
+              -0.6403773963598841,
+              -0.5951358015591625,
+              -0.48552051237189664,
+              4.034667246632275
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "102216e7d9608416afaf4e02df67e7460e26863f033e48e31873e48c1885722d",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_021",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_021",
+      "seal_sha256": "5f7aef8c63ace036625a4072024cdb46bb505cc577cd7739b25c7ad9740167c1"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.6875,
+          "w2c": [
+            [
+              -0.6635090956643926,
+              0.7477711359435784,
+              -0.024372283854211613,
+              -0.034717225368573745
+            ],
+            [
+              0.3936677941531987,
+              0.32123514756307514,
+              -0.8612976534373494,
+              0.006376620735067444
+            ],
+            [
+              -0.6362242904960284,
+              -0.5810734103534422,
+              -0.5075158558735339,
+              4.034460521741246
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "990c2056a917999eb2d8c71db69f3f6b9e3505d8ae70d4b0a174713092a0a0a5",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_022",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_022",
+      "seal_sha256": "c15bc0ac69c0e6c8c3c161b893ec9b73d934f7f1e8c7d59822771eb21e1e7489"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.71875,
+          "w2c": [
+            [
+              -0.6569463890551956,
+              0.7535889969921681,
+              -0.022914308186749183,
+              -0.03264096825780116
+            ],
+            [
+              0.4117672973471945,
+              0.3331697945462091,
+              -0.8482013798841781,
+              0.006036686014599331
+            ],
+            [
+              -0.6315608717635431,
+              -0.5666581964591836,
+              -0.5291779980714416,
+              4.0342286337284765
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "e232651f5656275acddb205db9ab873453faabcd7ad973f2672ec498c7cf22b1",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_023",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_023",
+      "seal_sha256": "1af5a58207e3d15af211e96b2b8f3528dee3fc834784d34ebec5058bd3e5274b"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.75,
+          "w2c": [
+            [
+              -0.650364770823964,
+              0.759325192096484,
+              -0.021234818547138937,
+              -0.03024898890020352
+            ],
+            [
+              0.42972161843443385,
+              0.3447190333587411,
+              -0.8345706193548307,
+              0.005632445172653507
+            ],
+            [
+              -0.6263904497365705,
+              -0.5519003901863564,
+              -0.5504915655947545,
+              4.033972416909419
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "25099bbf35bf98845dc4fc3ff081ea9f7d78e3686f66d389675dd157f6404ca3",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_024",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_024",
+      "seal_sha256": "97946697b2d3c4a8036dd4734e65c704235459abfe8420fa2ef692cb4d7f7827"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.78125,
+          "w2c": [
+            [
+              -0.6437689118687586,
+              0.7649756503454453,
+              -0.019335006849682538,
+              -0.02754300675618855
+            ],
+            [
+              0.44751801544165265,
+              0.35587466763994824,
+              -0.8204150454418306,
+              0.005163053374088843
+            ],
+            [
+              -0.6207166938036055,
+              -0.5368104649787662,
+              -0.5714414324520068,
+              4.033692649518383
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "c1c6e68298c665654a2de741736edd33e396957ff72f822eec2a1756059edc9d",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_025",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_025",
+      "seal_sha256": "9720fb0bd080fd629aef182de6ba740f4c0f4d1b4e3f3dd18c8c05b4bbbf9891"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.8125,
+          "w2c": [
+            [
+              -0.6371634931941152,
+              0.7705363616744226,
+              -0.017216221368688948,
+              -0.024524966003480968
+            ],
+            [
+              0.4651438584724734,
+              0.36662878036567426,
+              -0.8057447041916673,
+              0.00462774570717885
+            ],
+            [
+              -0.6145436305633734,
+              -0.5213991299811702,
+              -0.5920127307658734,
+              4.033390054696611
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "a39a6161e097fba4482bb717a456c955c7fbe63df3b0d654de368a525cfd19b0",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_026",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_026",
+      "seal_sha256": "75c2a949219ddf033d0b9aab02d5c0ecdd5bde81cc3e6e763443de42b475f158"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.84375,
+          "w2c": [
+            [
+              -0.6305532025889925,
+              0.776003379711134,
+              -0.014879965781619823,
+              -0.021197032921307875
+            ],
+            [
+              0.4825866386706961,
+              0.37697373946695023,
+              -0.7905700069752346,
+              0.004025841375690343
+            ],
+            [
+              -0.6078756409671996,
+              -0.5056773224391233,
+              -0.6121908613247301,
+              4.03306530172632
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "0371faed22f36655660727d68dbd6e7c551c7f23161808f4c79c9b3dab843608",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_027",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_027",
+      "seal_sha256": "97263b60566c5f63e26c4e584994621f996ac233004d333d4ddb6848f0f1566a"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.875,
+          "w2c": [
+            [
+              -0.6239427312999016,
+              0.781372824576339,
+              -0.012327898101945619,
+              -0.017561593120802712
+            ],
+            [
+              0.49983397709768784,
+              0.38690220324638563,
+              -0.7749017230990007,
+              0.0033567477307654687
+            ],
+            [
+              -0.6007174572098989,
+              -0.4896561999369411,
+              -0.631961503943545,
+              4.03271900750503
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "a4bd2e16325e39b4a90e7b952cf12de2ade016cff7235ecd900556f515f21d75",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_028",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_028",
+      "seal_sha256": "a33929147b7966d305f4f527f574058ceb93faf5ac8cba20cbc7547e818dbd92"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.90625,
+          "w2c": [
+            [
+              -0.6173367707015824,
+              0.7866408856373456,
+              -0.00956182950247492,
+              -0.013621248627431432
+            ],
+            [
+              0.5168736335175722,
+              0.3964071255884841,
+              -0.7587509721621569,
+              0.0026199641296369165
+            ],
+            [
+              -0.5930741593713927,
+              -0.4733471324792919,
+              -0.6513106276267472,
+              4.032351738253829
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "0d90ef253b6f9e14948a3c51d41bec066554f2fa79cda787adcb01af28b6a25f",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_029",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_029",
+      "seal_sha256": "5b80a7a77e787724b32a449f54a2d07c0e36914074f59b61c841809a4e5a8634"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.9375,
+          "w2c": [
+            [
+              -0.6107400089675904,
+              0.7918038242123685,
+              -0.006583723029984422,
+              -0.009378814821411079
+            ],
+            [
+              0.5336935150839821,
+              0.4054817609601916,
+              -0.7421292161651667,
+              0.0018150856086954995
+            ],
+            [
+              -0.5849511718114344,
+              -0.45676169442203685,
+              -0.6702245005258605,
+              4.0319640114524224
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "2c27c22e86b098e28c7e54a877b5568c8c9a8dff616240aafca8c8ef31f49ee0",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_030",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_030",
+      "seal_sha256": "be0a0c02f66f423782335c78fa1baca4531f3c27a0409802162f5cff46ec12e2"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 0.96875,
+          "w2c": [
+            [
+              -0.6041571277431539,
+              0.7968579762238331,
+              -0.0033956922120683755,
+              -0.004837317242080276
+            ],
+            [
+              0.5502816849222144,
+              0.41411966919812276,
+              -0.7250482513753177,
+              0.0009418063588162572
+            ],
+            [
+              -0.5763542593200044,
+              -0.4399116562580424,
+              -0.6886896996848396,
+              4.031556297993167
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "22bd2e9cb599c70c0e5ebfa6607d2874cde6681c84ecdff2dbd5210034acae00",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_031",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_031",
+      "seal_sha256": "69872f7c4e524fae1718b2ac9b435428d36bc8bcf67c77c59273d8a7cd62f29c"
+    },
+    {
+      "context": {
+        "adapter_source_hashes": {
+          "adapters.py": "b69fed9b0018c9437272b0683d6534ce8932cbae80057e62ce1d1f44d5769976",
+          "run_transport.py": "2d46efa54361e7f06ef18ea1090ea0c4bdf6b0f039b2b8e1491444131e6a4b1f"
+        },
+        "calibration_sha256": "5eedf4d88fca82f665991d7cce25c749a9bd8def7493ad7f8f60013f101e4c08",
+        "camera": {
+          "native_K": [
+            [
+              1250.0000504168488,
+              0.0,
+              399.5
+            ],
+            [
+              0.0,
+              1250.0000504168488,
+              399.5
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "native_height": 800,
+          "native_width": 800,
+          "t": 1.0,
+          "w2c": [
+            [
+              -0.5975927988226646,
+              0.8017997547987242,
+              4.4280851872757217e-10,
+              1.1737716797329004e-08
+            ],
+            [
+              0.5666263706006871,
+              0.42231472007906845,
+              -0.7075201999550477,
+              -7.700857697162964e-08
+            ],
+            [
+              -0.5672895230261062,
+              -0.42280897626380126,
+              -0.7066931205661825,
+              4.031129024545543
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "camera_hash": "eddc35e7683bea4167418a6794e901a425ecf496ce25966c0ae8f418d98a313f",
+        "camera_manifest_sha256": "7319e2732226c5bfbdf3fc062978ade40b4fff3fe4a40991f97d52f7672bca2d",
+        "checkpoint_sha256": "9c05502d45a5572ec5d5be80011075a2d09369c2c4c04913f63a79070cfd4945",
+        "inherited_lock_sha256": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+        "key": "arc0_032",
+        "render_recipe": {
+          "SH": 0,
+          "background": "white",
+          "kernel_size": 0,
+          "topk": 4
+        },
+        "renderer_source_sha256": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+        "scene": "materials",
+        "scientific_parameter_hash": "6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9",
+        "source_hashes": {
+          "scripts/run_hybrid_raster_evidence_v2.py": "bb11102bb0db951df02d4c483c03edc29e0aa231664cf62fa7d37a0ff453d2ee",
+          "src/hao_mukai_source_2026.py": "b3654519916a62106d224cb4168cfe0d6885816cb3dc4967a54f3eaa2748c109",
+          "src/hybrid_raster_evidence.py": "c7da6b689998876bcdf20d88356f5550c09afc1d71cbc3e3e36bda267251821f",
+          "src/hybrid_raster_io.py": "5eb76f6c842e5ade84467cc7791b83ada14c82b1e954a439d50e13f43388403f",
+          "src/hybrid_raster_native.py": "29140b969100308def08c1af3373aa72a919bd03f8a8edeb75cda334016247f6",
+          "src/hybrid_raster_stage.py": "a6146a4f3310856a6c7fde0b38c909a6bffa6cd1829cc1b5207f48812df372e7"
+        }
+      },
+      "key": "arc0_032",
+      "seal_sha256": "501d87ae8de98b1e93ece22e653e513f970fef5b364cbccc3e0dd5d4e25534a5"
+    }
+  ],
+  "scene": "materials",
+  "status": "ENGINEERING_VALID_SCIENTIFIC_REVIEW_PENDING"
+}

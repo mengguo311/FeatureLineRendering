@@ -1,5 +1,7 @@
 # 四场景冻结 NPR transport：复现与产物索引
 
+> 存储续跑更新：旧说明中的 `out` 仅适用于已完成且只读的 Hotdog。Materials/Mic/Ship 现在由新增存储适配层写入 `/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport`；ART/原producer源码和全部科学设置不变。当前入口、冻结/trace与双根核验见 [REPRODUCE](../REPRODUCE.md)、[STORAGE_MAP](../continuation/STORAGE_MAP.json)。请勿按下方历史示例重复Hotdog或直接启动旧producer main。原说明字节快照见 [历史README](../continuation/historical_607b908/transport/README.md)。
+
 本目录只封装既有 v2 科学计算。hotdog、materials、mic、ship 各固定 8F + 8C + 33 arc，共49帧；四场景合计196帧。先以 seed1729、30000次标准 vanilla3DGS 光度训练获得模型，再冻结 checkpoint 与精确相机，最后执行 NPR。C 本身属于 GS TRAIN，**只对 NPR 参数拟合留出，绝不是盲测或训练外泛化评估**。本轮 NPR 完全不重新拟合。
 
 `SOURCE_MANIFEST.json` 固定 producer、相机适配器及其测试的源码哈希。`summarize_results.py` 是另行跟踪的离线报告汇总器，既不参与 producer，也不改变任何科学参数或生成图像。`REVIEW_PLAN.json` 预声明固定评审路径；路径出现不代表实际产物已经存在。
@@ -12,7 +14,9 @@ A 是既定灰度 RGB、median-depth、alpha 边缘；B 是 OUR dense 六通道�
 
 F=`[1,14,27,41,53,67,79,93]`，C=`[7,21,33,47,59,73,86,99]`。`PREDECLARED_CAMERAS.json` 在 GPU 前记录准确 F/C 相机和目标 checkpoint 路径：800×800，主点399.5，Materials 使用其自身 FoV。arc 固定 C7→C33、33个不同 pose；严格采用旧球面位置插值、线性半径及旋转 Slerp。中心由30000次 checkpoint 的 float64 坐标 .001/.999 分位边界均值确定。训练完成后先把全部精确 arc pose 写入 `CAMERAS.json` 并 commit/push，再渲染。
 
-## 执行顺序
+## 历史执行顺序
+
+本节记录已完成的历史流程；本次双根续跑与核验使用顶部链接的REPRODUCE入口，不执行下方旧producer示例。
 
 所有命令从授权 worktree 运行，解释器为 `/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python`。设置 `PYTHONDONTWRITEBYTECODE=1`，缓存、TMP、日志均写本轮授权输出。磁盘、训练和 freeze 条件由根任务协议管理。
 
@@ -23,7 +27,7 @@ F=`[1,14,27,41,53,67,79,93]`，C=`[7,21,33,47,59,73,86,99]`。`PREDECLARED_CAMER
 5. 每场景运行 `run_transport.py --phase media --scene SCENE`。此阶段仅编码已有输出，不启动 renderer。
 6. 执行独立 verifier 的实际产物、完整视频解码与访问审计。最后运行 `summarize_results.py` 生成 `transport/DIAGNOSTIC_SUMMARY.json`，按 `REVIEW_PLAN.json` 检查固定代表帧和完整 contact sheets。
 
-默认四场景示意命令（scene逐个执行，freeze和设备占用检查必须已经满足）：
+历史四场景示意命令（仅为原执行记录，不用于此次存储续跑，也不重复Hotdog）：
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python artifacts/hybrid_raster_trained_models_v1/transport/adapters.py --resolve hotdog
@@ -36,17 +40,19 @@ render 前先对每场景全部8F做 patched/unpatched 校准。一般字段 max
 
 ## 路径与数据结构
 
+下表 `OUT` 按记录的scene resolver解释：Hotdog为工作树内 `out/hybrid_raster_trained_models_v1/transport`；Materials/Mic/Ship为 `/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport`。原始产物目录和完整封印不因GitHub小交付而改写。
+
 | 路径（相对本轮 transport） | 内容 |
 |---|---|
 | artifacts `SCENE/CAMERAS.json` | 精确 checkpoint lineage、F/C/arc49个相机、中心、预声明哈希 |
 | artifacts `SCENE/CALIBRATION.json` | 8F同输入两版校准、误差、两版 NPZ 路径和 SHA |
-| out `calibration/SCENE/F_001.npz` | patched原始输出；同目录 `_unpatched.npz` 为对应基线 |
-| out `raw/SCENE/KEY/` | `native.npz`、camera、checkpoint qualification、seal |
-| out `frames/SCENE/KEY/` | native、typed、responses、provenance、diagnostics、PNG、seal |
+| OUT `calibration/SCENE/F_001.npz` | patched原始输出；同目录 `_unpatched.npz` 为对应基线 |
+| OUT `raw/SCENE/KEY/` | `native.npz`、camera、checkpoint qualification、seal |
+| OUT `frames/SCENE/KEY/` | native、typed、responses、provenance、diagnostics、PNG、seal |
 | artifacts `SCENE/FRAMES.json` | 49个 frame 的 context、seal SHA 和精确计数 |
-| out `media/SCENE/` | 六个视频、15张contact、九张首中末panel、媒体manifest与seal |
+| OUT `media/SCENE/` | 六个视频、15张contact、九张首中末panel、媒体manifest与seal |
 | artifacts `SCENE/MEDIA.json` | 每个视频全解码33帧/33 distinct/尺寸/SHA，contact和首中末路径 |
-| out `RUNTIME.json` | 逐进程阶段、PID、墙钟、失败原因；GPU阶段合计限制4小时 |
+| OUT `RUNTIME.json` | 逐进程阶段、PID、墙钟、失败原因；GPU阶段合计限制4小时 |
 | artifacts `STATUS.json` | transport进度；同步更新本轮顶层STATUS |
 
 KEY 是 `F_001` 等8个 F、`C_007` 等8个 C，以及 `arc0_000`…`arc0_032`。帧的 `SEAL.json` 绑定完整 camera、checkpoint、继承科学哈希、封装源码哈希及每个 payload SHA；`SEAL.sha256` 绑定 seal 本体。写 staging、完成所有输出后原子发布。已有损坏、部分或上下文不同的产物拒绝静默覆盖；只有完整匹配 seal 才能恢复跳过。
@@ -64,3 +70,5 @@ KEY 是 `F_001` 等8个 F、`C_007` 等8个 C，以及 `arc0_000`…`arc0_032`�
 汇总器检查 seal 封套、文件清单存在性和实际消费 payload 哈希；它不冒充完整独立 verifier，不重复解码所有图像/视频。数量不完整或损坏时报告 PARTIAL_OR_INVALID 并退出2；不能将缺失场景当作空集合成功。质量结论始终依赖实际检查，不能把更多墨量、更多B-only像素或某通道占比直接解释为优越。
 
 固定检查 F1/F41、C7/C47、arc首/中/末，并提供所有C与完整arc contact。中文报告应逐场景描述真实可见的内部密纹、碎线、轮廓、细结构遮挡或训练缺陷；Materials等反光/折射误差应如实披露。实现代理检查不等于独立 human GO，最终人类 review 保留 pending。
+
+GitHub小交付切片的实际视频/JPEG数量、路径与hash/readback以 [DELIVERY](../continuation/DELIVERY.json) 和最终REPORT为准。上传JPEG使用F_001与arc0_016双视角，每个选定面板保留完整五列和原始构图。未上传comparison、全部overlay/matched控制视频、完整7视角JPEG与native大产物继续在上述双根/外部评审目录保留并索引。根可用空间下降使完整12条Telegram加9张JPEG、四场景comparison方案及三个新场景comparison加三个双视角JPEG方案均未通过当时的1GiB硬reserve守卫，故不能据本README的完整产物描述推断所有媒体均已上传；已完成的模型复核仍覆盖全部规定代表视角和完整联系表。

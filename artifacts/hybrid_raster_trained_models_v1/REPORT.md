@@ -1,74 +1,75 @@
-# 四场景 TRAIN → FREEZE → NPR 实验
+# 四模型冻结 NPR：存储续跑完成报告
 
-**部分完成，因授权工作区容量不足停止后续NPR。** 四个 vanilla3DGS 模型均已实际完成唯一一次 seed1729、30000步训练并冻结；Hotdog完成49帧及全部媒体，总计 **49/196帧**。Materials、Mic、Ship的147帧未运行，不能视为科学负结果。Hotdog首次运行的syscall trace因异常终止而不完整，此限制没有被后续恢复掩盖。最终独立核验确认Hotdog全部49帧、6视频、15联系表和9首中末图完整；总体因另三场景缺失而退出1。结论见 `FINAL.json` 和 `independent_review/PRODUCTION.json`。
+**计划产物已完成并逐项独立核验：196/196 帧、24/24 视频、60/60 完整联系表、36/36 首中末面板。** 本次新增 Materials、Mic、Ship 各49帧和6视频；旧 Hotdog 49帧和6视频保持只读。四个30000步模型没有重训，科学设置没有改变。此结论限于产物完整性，**不是科学效果通过或人类 GO**；历史首次 Hotdog render 与首次 checker 的143中断审计缺口仍保留。
 
-全部新代码/报告位于本工作区 `artifacts/hybrid_raster_trained_models_v1`，大产物位于 `out/hybrid_raster_trained_models_v1`。大模型、原始字段和视频保留本地并由哈希清单绑定；Git提交保存代码、报告及来源证据，不代表这些大文件已上传。
+机器结论：[FINAL.json](FINAL.json)；本次完整独立核验：[PRODUCTION.json](continuation/independent_review/PRODUCTION.json)。续跑前的报告、FINAL、STATUS、代码与审计证据共251份小文件已保存为[历史快照](continuation/historical_607b908/REPORT.md)，原始失败trace与旧产物均未删除、移动或重写。
 
-## 实际完成范围
+## 实际范围与可访问评审入口
 
-| 场景 | vanilla采集 | 最终Gaussian数 | 训练秒数 | NPR帧 | patched/unpatched资格 |
-|---|---|---:|---:|---:|---|
-| hotdog | 30000 / seed1729，PASS | 148610 | 474.685 | 49/49 | 全部8F独立PASS |
-| materials | 30000 / seed1729，PASS | 282537 | 486.267 | 0/49 | 未启动，空间阻塞 |
-| mic | 30000 / seed1729，PASS | 311562 | 496.476 | 0/49 | 未启动 |
-| ship | 30000 / seed1729，PASS | 320284 | 657.632 | 0/49 | 未启动 |
+| 场景 | 冻结模型 | Gaussian数 | F / C / arc | 视频 | 联系表 / 首中末 | GitHub完整33帧comparison |
+|---|---|---:|---|---:|---|---|
+| Hotdog | 30000步 / seed1729，原训练PASS | 148610 | 8 / 8 / 33 | 6 | 15 / 9 | 原本地根，见路径/SHA索引 |
+| Materials | 30000步 / seed1729，原训练PASS | 282537 | 8 / 8 / 33 | 6 | 15 / 9 | 批准外部根，见路径/SHA索引 |
+| Mic | 30000步 / seed1729，原训练PASS | 311562 | 8 / 8 / 33 | 6 | 15 / 9 | [播放或下载](review/mic/arc0_comparison_telegram1600.mp4) |
+| Ship | 30000步 / seed1729，原训练PASS | 320284 | 8 / 8 / 33 | 6 | 15 / 9 | [播放或下载](review/ship/arc0_comparison_telegram1600.mp4) |
+| 总计 | 4个既有模型 | — | 32 / 32 / 132 = 196 | 24 | 60 / 36 | 其中Mic/Ship已上传并读回核对SHA |
 
-总训练进程墙钟2115.060秒；保留8个7000/30000 PLY、8个完整恢复snapshot、120000条有限loss和24张TRAIN诊断图。没有真实场景重训或训练resume。`acquisition/results/`记录精确CLI/config、source/input hash、GPU/资源/timestamps、checkpoint lineage及大文件索引；`independent_review/ACQUISITION_FINAL.json`独立重新核验四场景并PASS。
+小JPEG评审面板：[materials](review/materials/materials_F001_arc016_review.jpg)、[mic](review/mic/mic_F001_arc016_review.jpg)、[ship](review/ship/ship_F001_arc016_review.jpg)。JPEG为评审缩略副本，不替代原生图或独立数值检查。实际GitHub交付为Mic/Ship两段Telegram comparison和三个新场景各一张F001/arc016 JPEG，共2421867字节；[DELIVERY.json](continuation/DELIVERY.json)逐项列出源、目标、大小、SHA和空间检查，[GITHUB_READBACK.json](continuation/GITHUB_READBACK.json)给出固定提交URL与远端读回哈希。GitHub可能需要下载MP4后播放。
 
-## 训练设置与实际可见缺陷
+完整的12段Telegram视频及12段原生视频均已生成。复制前实测根空闲1099980800字节，所选切片按原守卫3×payload+16MiB估计24042817字节，余量仍高于1073741824字节。更大的四视频/三新视频方案在实测空间下降后均未通过原守卫；没有为发布放松守卫或改共享Git配置。GitHub只上传上述小评审切片；Hotdog/Materials的comparison、全部Telegram overlay/matched、全部原生媒体和巨大raw字段保留在记录的双根，不能把未上传文件的本地路径当作GitHub链接。
 
-沿用旧Lego实际设置中适用的部分：原生800、白背景、SH3、seed1729、30000步、随机100000点初始化、原始0.8 L1 + 0.2(1−SSIM)损失和默认增密/optimizer schedule。无normal/depth/mesh/NPR监督、人工标签或结果驱动调参。所有初始化/cache写本工作区，既有解释器及official vanilla二进制只读，没有环境安装或全局设置修改。
+每帧原生800×800，五列顺序 **RGB | A | B | C | AUTHOR**；原生line/overlay/matched面板及视频为4000×832。每场景的六视频为三类各一原生版、一Telegram版，全部未剪切33帧；Telegram为1600×368、H264/yuv420p/faststart。独立checker完整解码24段，每段均33 expected、33 decoded、33 distinct并核对SHA，不以首帧或路径存在推断完整。每帧均保留raw、typed、responses、provenance、diagnostics、单臂图、同相机overlay、等墨量控制、相机及raw/frame seal；四场景共588张五列面板。AUTHOR仍用冻结增益，等墨量只适用于A/B/C。
 
-必要差异：旧Lego流程使用86个TRAIN及16个VAL诊断，本轮使用原始全部100个TRAIN，严格不读TEST/VAL元数据或像素，并增加TRAIN-only loader、隔离、日志和可核验恢复。**C相机参与GS训练，只对NPR参数拟合留出，不是盲测或泛化评估；本轮NPR完全没有重新拟合。** 以下仅为预声明F1/F41的TRAIN in-sample RGB诊断，不作为质量门槛：
+## 双根路径与科学冻结
 
-- **Hotdog：** 盘沿、面包和芥末带基本对齐，未见黑屏、整体错位或主要对象缺失；面包细纹和盘面反射略平滑。
-- **Materials：** 球体、切口和底座基本对齐；镜面环境反射变软、局部高光略糊，粗糙金属颗粒被平滑。反光/折射外观的视角相关近似不能证明几何正确。
-- **Mic：** 主体、支架和电缆基本对齐，网罩孔格大体保留；局部灰度、细高光及表面过渡仍与源图有差别。
-- **Ship：** 船体、桅杆和容器整体对齐；水面高频波纹明显变软，船侧木纹、炮口及部分细索模糊，反光仍有差别。保留这些缺陷，没有追加训练。
-
-诊断原图路径/hash见 `TRAIN_RGB_VISUAL_REVIEW.json`。全SH训练外观与下面SH0 NPR原生RGB不同，不能混为同一个质量检查。
-
-## Hotdog冻结NPR的经验结果
-
-固定检查F1/F41、C7/C47、arc首/中/末，另审阅全部C和完整33帧arc联系表；具体实际查看文件及hash见 `NPR_VISUAL_REVIEW.json`、`SECOND_VISUAL_REVIEW.json`。观察来自实现代理，人类科学评审仍pending。
-
-A保留盘沿和食物边界，但面包/香肠内部有拥挤碎线，盘面可见由明暗变化引出的长弯线或折线。B在食物内部形成大面积灰色密纹，盘面出现颗粒/片状杂纹；C保留A边线并叠加B覆盖，画面更拥挤。等墨量后B/C整体变浅，空间杂纹仍在，部分边界对比变弱。弧线中段（包括arc016）的盘子下沿超出画面下边界，各臂共同可见；保持冻结相机，没有事后重构图。AUTHOR固定增益列主要呈很细的外轮廓与稀疏内部斑点；它是独立Eq.1–5重建，**NOT official**。
-
-49帧平均连续墨量A=38992.69、B=94992.00、C=112476.05；这不是准确率或有用线增益。按前景alpha>0.05像素加权的top4贡献覆盖均值约0.51923，反映截断贡献统计，不是几何质量。B-only argmax以delta_G（10000863像素）及visibility_raw（1245094像素）为主；不能把通道占比直接解释为正确表面线。完整分组统计见 `transport/DIAGNOSTIC_SUMMARY.json`，该汇总明确49/196并以退出2标记总体不完整。
-
-**当前观察不支持“额外墨量就是更好的线条”。** 不作fixed3D或时序收益声明，也不从Hotdog外推未运行的三个场景。
-
-## 产物入口
-
-Hotdog每帧原生800×800，五列panel为4000×832，顺序RGB | A | B | C | AUTHOR。49帧均有raw、typed、responses、provenance、diagnostics、单臂图、line/overlay/matched panel及seal。matched仅匹配A/B/C墨量，AUTHOR仍用固定增益，标签明确。
-
-| 内容 | 路径 |
+| 用途 | 真实路径 |
 |---|---|
-| 原生五列示例 | [F1 line](../../out/hybrid_raster_trained_models_v1/transport/frames/hotdog/F_001/line_panel.png)、[matched](../../out/hybrid_raster_trained_models_v1/transport/frames/hotdog/F_001/matched_panel.png)、[overlay](../../out/hybrid_raster_trained_models_v1/transport/frames/hotdog/F_001/overlay_panel.png) |
-| 全33帧原生视频 | [comparison](../../out/hybrid_raster_trained_models_v1/transport/media/hotdog/arc0_comparison.mp4)、[overlay](../../out/hybrid_raster_trained_models_v1/transport/media/hotdog/arc0_overlay.mp4)、[matched](../../out/hybrid_raster_trained_models_v1/transport/media/hotdog/arc0_matched.mp4) |
-| Telegram全33帧 | [comparison](../../out/hybrid_raster_trained_models_v1/transport/media/hotdog/arc0_comparison_telegram1600.mp4)、[overlay](../../out/hybrid_raster_trained_models_v1/transport/media/hotdog/arc0_overlay_telegram1600.mp4)、[matched](../../out/hybrid_raster_trained_models_v1/transport/media/hotdog/arc0_matched_telegram1600.mp4) |
-| 全C/arc联系表及首中末 | [媒体目录](../../out/hybrid_raster_trained_models_v1/transport/media/hotdog/)，完整清单见 `transport/hotdog/MEDIA.json` |
-| 原始字段/逐帧seal | `out/hybrid_raster_trained_models_v1/transport/{raw,frames}/hotdog/` |
-| 四个模型 | `out/hybrid_raster_trained_models_v1/training/{hotdog,materials,mic,ship}/seed_1729/checkpoints/` |
+| 当前工作树、小元数据/报告/评审副本 | `/home/u00134/3dgs_line/hybrid_raster_trained_models_v1` |
+| Hotdog旧transport，只读 | `/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/out/hybrid_raster_trained_models_v1/transport` |
+| Materials/Mic/Ship新transport | `/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport` |
+| 新trace、cache、tmp、失败staging和agent日志 | 批准的外部根 `/mnt/hdd1/u00134/hybrid_raster_trained_models_v1` 内 |
+| 四个既有训练模型，只读 | 工作树内 `out/hybrid_raster_trained_models_v1/training/{scene}/seed_1729/checkpoints/` |
 
-实际有6视频（3原生、3Telegram）、15联系表、9首中末面板；四场景原期望分别为24、60、36。原生视频4000×832；Telegram为1600×368、H264/yuv420p/faststart，重画可读标签，保留全部33帧。独立产物checker已完整核验decode/distinct/尺寸/hash，6视频各33帧且全部distinct；首帧标签检查不替代全视频核验。
+解析器使用[STORAGE_MAP.json](continuation/STORAGE_MAP.json)中每场景的真实根；没有用symlink绕过守卫，也没有伪造旧seal的ROOT或source上下文。[ARTIFACT_PATH_SHA256.json](continuation/ARTIFACT_PATH_SHA256.json)以场景根加相对路径逐项给出完整产物的大小和SHA，包含视频、原始字段、seal及元数据；训练checkpoint的精确路径/SHA沿用FINAL中既有lineage。
 
-## 冻结、来源与核验边界
+存储协议与代码在GPU前冻结并推送为 `baadea14f7dfe74722dfb9b896135882d3f1a614`，release receipt提交 `95c79369fd8e614084f5db092f2bb9798efe783f` 随后通过远端顺序核验。封存清单见[STORAGE_FREEZE.json](continuation/STORAGE_FREEZE.json)。新adapter只绑定原producer的OUT、adapters.OUT及native.STAGE；ROOT、ART和native二进制路径仍为真实旧路径。原producer/adapters/checker及六份科学源码字节不变，运行另存新的glue绑定凭证；准确范围和diff见[SOURCE_DELTA.json](continuation/SOURCE_DELTA.json)、[STORAGE_GLUE.diff](continuation/STORAGE_GLUE.diff)。
 
-GPU前协议冻结提交 `8b3915b5e3211530beefd8606dbdcdd5cdf25e2d`；支持修正 `9fb46557958e5ec4b3e13df0894b9be747c43e6b`；真实采集最终源码冻结 `206b9ebf3e90d4766fb1b3e32ebfba491e390f4e`。实际源为上游 `472689c0dc70417448fb451bf529ae532d32c095` 的17个git blob，保留许可证。外部只读工作目录的未提交renderer改动曾使合成夹具失败；最后允许的修复轮次改为immutable blob提取后，才开始四场景训练。三轮修复和原失败证据全部保留，没有第四次producer修复。
+模型/相机既有冻结顺序、checkpoint SHA、patched/unpatched native二进制、原尺度及AUTHOR增益全部保留。parameter SHA固定为 `6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9`。F=[1,14,27,41,53,67,79,93]；C=[7,21,33,47,59,73,86,99]；arc33为冻结C7→C33轨迹。每场景先做全部8F的原patched/unpatched资格检查，再生产；新三场景各8F的五项比较max_abs均0，独立重算通过，旧Hotdog8F亦重核通过。
 
-全部checkpoint的哈希/lineage/lock及49×4精确相机清单在 `26636535ab39c1996493d0088a7a53bb358dbb9a` 提交推送，10:06:08 UTC核对远端后才释放NPR。训练前已冻结F/C精确矩阵和唯一arc算法；旧arc中心依赖最终checkpoint，因此模型封存后才解析并推送全部33 poses。F=[1,14,27,41,53,67,79,93]，C=[7,21,33,47,59,73,86,99]，arc固定C7→C33；800×800、主点399.5，Materials用其独立FoV。`independent_review/FREEZE_ORDER.json`核对实际先后顺序。
+原生readout继续白底SH0、精确800网格、原Gaussian行ID与raw alpha*T，各臂同一次native traversal。A为灰度RGB/depth/alpha dense edges，B为原OUR六通道，C为原自动互补；无新尺度拟合/F归一化、逐场景救援、路由或时间身份算法。AUTHOR为独立Eq.1–5重建，**NOT official**。缺filter3D，raster/splat/ray-plane normals不是GT表面法线。C参与全部100个TRAIN相机的GS训练，只对NPR拟合留出，**不是盲测或泛化评估**；本次没有NPR重拟合，也没有读取源C图像进行NPR计算。
 
-六个旧科学源码、patched/unpatched隔离二进制均只读且hash一致；parameter hash固定为 `6c4ef4afa648f54794d7094a7b21368a89e14cdbc792766441aa3d3639d487c9`。A=灰度RGB/depth/alpha dense edges，B=OUR dense六通道，C=自动互补；原尺度、作者增益全部继承，无新F拟合。各臂同一次native traversal、白底SH0、原Gaussian行ID、raw alpha*T。缺filter3D；raster/splat/ray-plane normals不是GT表面法线。
+## 实际画面检查与限制
 
-92项最终选定的新/相关旧测试全部通过，另有真实两步CUDA训练集成通过；RED、失败夹具、重跑不增加通过数。`independent_review/TEST_INDEX.json`保存命令/日志hash和计数。四场景训练实际trace均PASS；严格loader不会读取transforms_test，即使标准Scene仍无条件打印“Loading Test Cameras”，该列表也为空。审计仅覆盖记录进程的open/openat/openat2/creat和退出，不声称覆盖整个会话。
+检查者是模型代理，人类科学评审仍pending。每个新场景直接查看原件或由F001/F041、C007/C047、arc000/016/032的line/overlay/matched共21张原生面板生成并绑定源hash的缩览，以及全部F/C/arc × RGB/A/B/C/AUTHOR的15张完整联系表的分块/缩览；覆盖全部245个联系表子图，未逐像素放大全部原件。原生文件完整保留。具体查看文件、seal/SHA、缩览来源与观察分别记录在[Materials](continuation/MATERIALS_MODEL_REVIEW.json)、[Mic](continuation/MIC_MODEL_REVIEW.json)、[Ship](continuation/SHIP_MODEL_REVIEW.json)。Ship还直接查看arc016原生RGB。Hotdog既有模型review和历史缺陷仍有效，见[NPR_VISUAL_REVIEW.json](NPR_VISUAL_REVIEW.json)与[SECOND_VISUAL_REVIEW.json](SECOND_VISUAL_REVIEW.json)。
 
-Hotdog第一次NPR在27帧后工具返回143，原因/发信者未知，无正常EXIT及trace退出尾标，故该审计保持INVALID/不完整。27完整frame、28raw及中断arc011 staging保留；独立核验后按原清单续跑，首段保守计入622秒预算，并非伪造实测墙钟。第二次实际执行目录名为`hotdog_render_003`（logger的glob计入outer文件，并非四次启动）。续跑trace和媒体trace完整PASS；原帧hash保持不变。一次独立CPU核验也遇到143，原失败log/trace保留，再用不改源码的独立会话完成核验。数据完整性与原执行审计缺口分别报告。
+- **Materials：** A常能显示球体外缘和底座环线，但反射球也出现碎线和密纹。B/C在平滑灰球、绿球内部形成颗粒或云状灰填充，C更暗，overlay会遮住细节；等墨量变浅后空间杂纹仍在。AUTHOR细且断续。F041的不规则深色楔块在共同SH0 RGB已有，不能归因于新增NPR；边缘对象与底座裁切保留。
+- **Mic：** A的主体、支架、电缆轮廓较清楚，网罩本身已有密线。B/C在金属表面、底座和电缆产生密集划痕状纹理，C007网罩接近黑团；等墨量不消除内部杂纹。弧线中后段支架/电缆出下边界，部分帧麦克风头部出右边界，末帧电缆仍有裁切。AUTHOR较淡。
+- **Ship：** B在水面形成密集卷曲灰纹，部分底座墙面也有RGB不明显的纹理；C进一步压暗船体/水面，overlay遮住甲板和船身细节，等墨量仅减轻深浅。**弧线中段严重出画：arc016大部分船体和圆盘落在下边界之外，上部大面积空白；原生RGB直接证实，并非JPEG排版裁切。** 首末视角较完整也不能掩盖中段问题。桅杆附近孤立点在RGB亦有，不能认作真实细索。AUTHOR主要留下淡外缘，细部较弱。
+- **Hotdog（保留旧观察）：** A有盘沿/食物边线，也有拥挤内部碎线；B/C内部密纹与盘面杂纹明显。等墨量后图案仍在。arc中段盘子下沿出画，AUTHOR细而稀疏。
 
-## 真实阻塞与剩余事项
+这些缺陷全部保留，没有为好看而改相机、追加训练、删帧或逐场景调参。不建立“更多墨量意味着更好线条”、fixed3D线身份或时序稳定/收益结论。
 
-Materials原启动守卫于10:34:34 UTC实际退出3，GPU未启动：空闲1266896896字节，低于该阶段保守门槛2147483648字节。硬保留1073741824字节后只余193155072字节，少于Hotdog实测16个校准NPZ的206130333字节，尚未考虑新帧。`transport/STORAGE_BLOCKER.json`明确区分硬余量和阶段估算，不伪称磁盘已物理写满。
+| 场景 | 每帧连续墨量均值 A | B | C | 前景加权top4贡献覆盖 |
+|---|---:|---:|---:|---:|
+| Hotdog | 38992.69 | 94992.00 | 112476.05 | 0.519233 |
+| Materials | 30905.41 | 67056.94 | 81817.22 | 0.563793 |
+| Mic | 19075.59 | 35538.14 | 43553.39 | 0.594190 |
+| Ship | 37953.76 | 100832.90 | 118468.18 | 0.531567 |
 
-Hotdog媒体依据实际输入体积将操作层阶段估算从512MiB调整到256MiB，未改producer、参数或硬1GiB余量；实际约131MB，完整交付后再尝试下一场景预检。没有删旧资产、损失性压缩字段、减帧、降分辨率或写外部磁盘。曾请求仅授权新外部目录 `/mnt/hdd1/u00134/hybrid_raster_trained_models_v1`，尚未收到许可，故未使用。
+统计按196帧既有diagnostics/provenance汇总，见[DIAGNOSTIC_SUMMARY.json](continuation/DIAGNOSTIC_SUMMARY.json)。墨量不是准确率；top4为alpha>0.05前景像素加权的截断贡献统计，不是几何正确性。汇总脚本不是独立产物checker。
 
-继续剩余147帧需要足够的授权存储；三个模型及精确相机已冻结，无需重训或调参。人类需要审阅完整五列/等墨量/overlay及原始字段，接受或拒绝科学解释，并注意首次NPR审计缺口。当前结果不是四场景完整实验或人类GO。
+## 执行、测试与保留的失败
+
+新增三次render和三次成功media均有实际strace、正常exit0及完整退出尾部，逐次检查外来GPU任务、双根归属/空间及冻结hash。独立访问审计未见这些NPR进程树打开TEST、mesh或源C图像；确实观察到所需checkpoint、冻结camera/parameter/science/native来源读取。索引：[LAUNCH_INDEX.json](continuation/LAUNCH_INDEX.json)；六份独立审计位于 `continuation/independent_review/{SCENE}_{RENDER,MEDIA}_ACCESS.json`。本次全量checker本身亦有[完整访问审计](continuation/independent_review/FULL_VERIFIER_ACCESS.json)。范围仅为记录的open/openat/openat2/creat进程树与退出，不宣称全会话系统调用覆盖。
+
+本次 **124项唯一单元/相关回归测试PASS**：原相关CPU回归85、存储adapter13、launcher10、独立多根checker16。adapter/路径、seal上下文、归属及启动守卫均保留真实RED→GREEN证据。另 **1项真实媒体集成PASS**：同一历史编码器实际编码并完整解码33帧。命令/日志SHA/计数见[TEST_INDEX.json](continuation/TEST_INDEX.json)。RED、中间失败、重跑不增加通过数；旧92项测试和旧真实CUDA训练集成只是保留的历史证据，本次未重训或重复计入。
+
+Materials首次media正常记录exit1：新Python写守卫拒绝imageio_ffmpeg自动探测写`/dev/null`，库吞掉该PermissionError后报告找不到编码器。保留原trace、stdout、staging和INVALID结果；修复只以进程局部`IMAGEIO_FFMPEG_EXE`绑定旧Hotdog使用的同一ffmpeg（SHA `e7e7fb30477f717e6f55f9180a70386c62677ef8a4d4d1a5d948f4098aa3eb99`），实际编码与解码照常进行，没有安装环境、改全局配置或跳过验证。绑定在重试前冻结并推送为 `c3f6d25bac9c07da22b517880e1dd566d2c95679`，见[修复记录](continuation/REPAIR_LOG.json)及[失败审计](continuation/independent_review/MATERIALS_MEDIA_ATTEMPT001_ACCESS.json)。
+
+续跑用掉2/3轮明确工程修复；从协议建立至媒体修复完成的保守计时1688.216秒（含中间生产），低于90分钟。三次GPU render阶段总墙钟 **2087.729秒 / 34.795分钟**，低于4小时预算；本次墙钟至最终记录4524.214秒，低于8小时。GPU阶段墙钟不是独占GPU核时。精确运行账本、预算与双根空间在FINAL/启动凭证中；未终止外来任务、删除旧文件或改动共享Git配置。
+
+**历史缺口仍未解决：** 首次Hotdog render在27帧后143中断，无完整子进程退出；第一次checker亦143中断，原因/发信者未知。两份审计仍INVALID。原失败文件哈希及251份小快照已重新核对，见[HISTORICAL_GAP_RECHECK.json](continuation/HISTORICAL_GAP_RECHECK.json)。新checker可以证明现存196帧/24视频的完整性，却不能补齐旧执行trace。原存储阻塞当时真实存在；本次用户授权的新外部根解决续跑容量限制，不将过去“未运行”改写成科学负结果或过去审计PASS。
+
+## 后续判定边界
+
+计划产物生产和发布切片已完成，旧训练资格状态原样保留。人类仍需结合完整五列、等墨量、overlay、原始字段与裁切问题评审科学解释并决定GO；本报告不替代该判断。复现/只读复核入口见[REPRODUCE.md](REPRODUCE.md)。本报告的Git版本以所在提交为准；远端媒体固定版本及读回SHA在GITHUB_READBACK，最终分支HEAD核对结果另存外部交付凭证，避免自引用提交哈希。
