@@ -12,6 +12,25 @@
       ],
       "scientific_changes": false,
       "actual_production_repair": false
+    },
+    {
+      "round": 2,
+      "kind": "actual media launch operational path binding",
+      "reason": "imageio_ffmpeg automatic validity probe opens /dev/null for writing; new Python filesystem write guard rejects it, probe catches OSError and reports no ffmpeg. Exact IMAGEIO_FFMPEG_EXE skips discovery but actual encode and full decode still run.",
+      "scientific_changes": false,
+      "source_changes": false,
+      "frozen_encoder_sha256": "e7e7fb30477f717e6f55f9180a70386c62677ef8a4d4d1a5d948f4098aa3eb99",
+      "preserved_failure": {
+        "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/launchlogs/materials_media_20261003T112617Z_3d8d96fc",
+        "exit_sha256": "e0e7811aa071aa842c1a5ee9867d8e37fa34e0b5431f2903d8cce851a127b193",
+        "trace_sha256": "b0e2db38625190f790772ebcdf5ada52d63d3c001b75239d5ed00bb2074e75e7",
+        "exit_code": 1,
+        "completed": false,
+        "preserved_staging": [
+          "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/staging/media_materials_2499678"
+        ]
+      },
+      "started_utc": "2026-10-03T11:29:29.042818+00:00"
     }
   ],
   "scope": "Initial TDD RED is intentional; iteration within first clearly scoped engineering round. Original historical3 training fixes remain separate immutable evidence."

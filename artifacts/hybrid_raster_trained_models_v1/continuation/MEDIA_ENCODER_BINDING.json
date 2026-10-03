@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "repair_round": 2,
+  "scope": "Process-local binding of the exact historical encoder path only; producer/glue/scientific sources and all sealed frames unchanged; no installation or global environment change.",
+  "reason": "imageio_ffmpeg automatic validity probe opens /dev/null for writing; new Python filesystem write guard rejects it, probe catches OSError and reports no ffmpeg. Exact IMAGEIO_FFMPEG_EXE skips discovery but actual encode and full decode still run.",
+  "process_environment": {
+    "IMAGEIO_FFMPEG_EXE": "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2"
+  },
+  "encoder_sha256": "e7e7fb30477f717e6f55f9180a70386c62677ef8a4d4d1a5d948f4098aa3eb99",
+  "historical_media": {
+    "path": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/artifacts/hybrid_raster_trained_models_v1/transport/hotdog/MEDIA.json",
+    "sha256": "c7f5cd53aeb48c6c2adca24ecef469f4cad0331a29ec6b0a47c61a8abb4cf058"
+  },
+  "failed_attempt": {
+    "path": "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/launchlogs/materials_media_20261003T112617Z_3d8d96fc",
+    "exit_sha256": "e0e7811aa071aa842c1a5ee9867d8e37fa34e0b5431f2903d8cce851a127b193",
+    "trace_sha256": "b0e2db38625190f790772ebcdf5ada52d63d3c001b75239d5ed00bb2074e75e7",
+    "exit_code": 1,
+    "completed": false,
+    "preserved_staging": [
+      "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/transport/staging/media_materials_2499678"
+    ]
+  },
+  "required_before_retry": "Commit/push this exact binding and verify remote; child inherits this process-only environment; no source mutation. Record actual new attempt and output encoder identity.",
+  "utc": "2026-10-03T11:29:29.042818+00:00"
+}
