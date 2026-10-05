@@ -70,10 +70,13 @@ def ellipsoid_pairs(mu,L,labels,k=3,epsilon=.05):
     # Radius expands by the largest ellipsoid; no small centre-only prefilter.
     for i in range(len(mu)):
         if labels[i]<=0:continue
-        for j in tree.query_ball_point(mu[i],bounding[i]+bounding.max()+epsilon):
-            if j<=i or labels[j]<=0 or labels[i]==labels[j]:continue
-            if np.any(np.abs(mu[i]-mu[j])>ext[i]+ext[j]+epsilon):continue
+        js=np.asarray(tree.query_ball_point(mu[i],bounding[i]+bounding.max()+epsilon),dtype=int)
+        js=js[(js>i)&(labels[js]>0)&(labels[js]!=labels[i])]
+        js=js[np.all(np.abs(mu[js]-mu[i])<=ext[i]+ext[js]+epsilon,axis=1)]
+        for j in js:
             if ellipsoid_distance(mu[i],L[i],mu[j],L[j],k,decision_epsilon=epsilon)<=epsilon:result.append((i,j))
+        if i%1000==0:
+            print(f'C1 processed {i}/{len(mu)} rows; certified pairs={len(result)}',flush=True)
     return result
 
 def surface_relation(distance,epsilon_contact,epsilon_near):

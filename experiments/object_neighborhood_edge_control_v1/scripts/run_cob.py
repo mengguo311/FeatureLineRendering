@@ -59,7 +59,8 @@ def run(scene,mask_only=False):
     dataset=mp.extract(args);maskpath=Path(dataset.mask_path);maskpath.mkdir(parents=True,exist_ok=True)
     for frame in frames('train'):
         v=training_view(scene,frame)
-        Image.fromarray(((v['instance']==1)*255).astype(np.uint8)).save(maskpath/(frame['id']+'.png'))
+        # Official synthetic loader uses Path(...).stem and get_mask appends no extension.
+        Image.fromarray(((v['instance']==1)*255).astype(np.uint8)).save(maskpath/frame['id'],format='PNG')
     initial=OUT/'models'/scene/f'chkpnt{cfg["training"]["iterations"]}.pth'
     start=time.monotonic();torch.cuda.reset_peak_memory_stats()
     upstream.training(dataset,op.extract(args),pp.extract(args),14,[],[],[336],str(initial),-1)
