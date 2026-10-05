@@ -24,8 +24,12 @@ def profiles(rgb,ids,contrast_min=.02):
 def boundary_iou(a,b,ratio=.02):
     # R18 distance-to-interior-boundary band (mask & ~eroded-mask), not colour band.
     r=max(1,int(round(ratio*np.hypot(*a.shape))))
-    x=a & ~binary_erosion(a,iterations=r,border_value=0)
-    y=b & ~binary_erosion(b,iterations=r,border_value=0)
+    import cv2
+    def boundary(mask):
+        mask=mask.astype(np.uint8)
+        pad=cv2.copyMakeBorder(mask,1,1,1,1,cv2.BORDER_CONSTANT,value=0)
+        return mask-cv2.erode(pad,np.ones((3,3),np.uint8),iterations=r)[1:-1,1:-1]
+    x=boundary(a).astype(bool);y=boundary(b).astype(bool)
     return float((x&y).sum()/max((x|y).sum(),1))
 
 def evaluate_frame(image,reference,ids,objects,alpha,depth_proxy,depth_gt,baseline=None):

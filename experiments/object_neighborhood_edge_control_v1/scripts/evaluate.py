@@ -50,6 +50,9 @@ def evaluate(scene,method,group='val',save_figures=True):
         objects=diag['objects'].cpu().permute(1,2,0).numpy();alpha=diag['alpha'].cpu().numpy()
         depth=diag['depth_center_proxy'].cpu().numpy()
         metrics,profile,refprofile=evaluate_frame(im,reference,ids,objects,alpha,depth,depthgt,before)
+        from perceptual import score
+        band,_=visible_band(ids)
+        metrics.update(score(im,reference,band))
         rows.append({'scene':scene,'method':method,'split':group,'view':frame['id'],'seed':cfg['seed'],
                      'metrics':metrics,'profile':profile,'reference_profile':refprofile})
         if save_figures:

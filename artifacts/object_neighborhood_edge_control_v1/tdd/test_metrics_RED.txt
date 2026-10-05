@@ -1,0 +1,14 @@
+test_boundary_iou_official_square_erosion (test_metrics.MetricTests) ... FAIL
+
+======================================================================
+FAIL: test_boundary_iou_official_square_erosion (test_metrics.MetricTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/experiments/object_neighborhood_edge_control_v1/tests/test_metrics.py", line 17, in test_boundary_iou_official_square_erosion
+    self.assertAlmostEqual(boundary_iou(a.astype(bool),b.astype(bool)),expected,places=12)
+AssertionError: 0.2084063047285464 != 0.34124629080118696 within 12 places (0.13283998607264055 difference)
+
+----------------------------------------------------------------------
+Ran 1 test in 0.021s
+
+FAILED (failures=1)
