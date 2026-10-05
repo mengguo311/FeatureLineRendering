@@ -1,0 +1,86 @@
+test_atomic_seal_resume_and_corruption_refusal (test_temporal_depth2d.TemporalBehavior) ... ERROR
+test_camera_flow_projection (test_temporal_depth2d.TemporalBehavior) ... ERROR
+test_closed_camera_loop_identity_and_image (test_temporal_depth2d.TemporalBehavior) ... ERROR
+test_identity_texture_follows_camera (test_temporal_depth2d.TemporalBehavior) ... ERROR
+test_occlusion_and_reappearance_keeps_identity (test_temporal_depth2d.TemporalBehavior) ... ERROR
+test_quantized_actual_ink_preserves_separate_structures (test_temporal_depth2d.TemporalBehavior) ... ERROR
+test_reject_abnormal_poses (test_temporal_depth2d.TemporalBehavior) ... ERROR
+test_reverse_recomputes_equal_atlas (test_temporal_depth2d.TemporalBehavior) ... ERROR
+test_split_merge_no_bridge_and_complete_graph (test_temporal_depth2d.TemporalBehavior) ... ERROR
+
+======================================================================
+ERROR: test_atomic_seal_resume_and_corruption_refusal (test_temporal_depth2d.TemporalBehavior)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/temporal_depth2d_video_probe/tests/test_temporal_depth2d.py", line 100, in test_atomic_seal_resume_and_corruption_refusal
+    from src.temporal_depth2d import seal_directory, verify_seal
+ModuleNotFoundError: No module named 'src.temporal_depth2d'
+
+======================================================================
+ERROR: test_camera_flow_projection (test_temporal_depth2d.TemporalBehavior)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/temporal_depth2d_video_probe/tests/test_temporal_depth2d.py", line 20, in test_camera_flow_projection
+    from src.temporal_depth2d import project_points, transport
+ModuleNotFoundError: No module named 'src.temporal_depth2d'
+
+======================================================================
+ERROR: test_closed_camera_loop_identity_and_image (test_temporal_depth2d.TemporalBehavior)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/temporal_depth2d_video_probe/tests/test_temporal_depth2d.py", line 72, in test_closed_camera_loop_identity_and_image
+    from src.temporal_depth2d import atlas
+ModuleNotFoundError: No module named 'src.temporal_depth2d'
+
+======================================================================
+ERROR: test_identity_texture_follows_camera (test_temporal_depth2d.TemporalBehavior)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/temporal_depth2d_video_probe/tests/test_temporal_depth2d.py", line 54, in test_identity_texture_follows_camera
+    from src.temporal_depth2d import Tracker, texture
+ModuleNotFoundError: No module named 'src.temporal_depth2d'
+
+======================================================================
+ERROR: test_occlusion_and_reappearance_keeps_identity (test_temporal_depth2d.TemporalBehavior)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/temporal_depth2d_video_probe/tests/test_temporal_depth2d.py", line 30, in test_occlusion_and_reappearance_keeps_identity
+    from src.temporal_depth2d import Tracker, transport
+ModuleNotFoundError: No module named 'src.temporal_depth2d'
+
+======================================================================
+ERROR: test_quantized_actual_ink_preserves_separate_structures (test_temporal_depth2d.TemporalBehavior)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/temporal_depth2d_video_probe/tests/test_temporal_depth2d.py", line 81, in test_quantized_actual_ink_preserves_separate_structures
+    from src.temporal_depth2d import match_ink, actual_ink
+ModuleNotFoundError: No module named 'src.temporal_depth2d'
+
+======================================================================
+ERROR: test_reject_abnormal_poses (test_temporal_depth2d.TemporalBehavior)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/temporal_depth2d_video_probe/tests/test_temporal_depth2d.py", line 91, in test_reject_abnormal_poses
+    from src.temporal_depth2d import validate_camera
+ModuleNotFoundError: No module named 'src.temporal_depth2d'
+
+======================================================================
+ERROR: test_reverse_recomputes_equal_atlas (test_temporal_depth2d.TemporalBehavior)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/temporal_depth2d_video_probe/tests/test_temporal_depth2d.py", line 63, in test_reverse_recomputes_equal_atlas
+    from src.temporal_depth2d import atlas
+ModuleNotFoundError: No module named 'src.temporal_depth2d'
+
+======================================================================
+ERROR: test_split_merge_no_bridge_and_complete_graph (test_temporal_depth2d.TemporalBehavior)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/temporal_depth2d_video_probe/tests/test_temporal_depth2d.py", line 41, in test_split_merge_no_bridge_and_complete_graph
+    from src.temporal_depth2d import Tracker, graph
+ModuleNotFoundError: No module named 'src.temporal_depth2d'
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.003s
+
+FAILED (errors=9)

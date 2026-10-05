@@ -1,0 +1,24 @@
+test_association_unique_bounded (test_core.CoreTests) ... ok
+test_backproject_pose_and_units (test_core.CoreTests) ... ok
+test_edit_identity_topology_serialize (test_core.CoreTests) ... ok
+test_native_boundary (test_core.CoreTests) ... ok
+test_occlusion_unknown_contradiction (test_core.CoreTests) ... ok
+test_projection_nonidentity_and_behind (test_core.CoreTests) ... ok
+test_role_boundary (test_core.CoreTests) ... ok
+test_fixed_world_asset_all_views_and_occlusion (test_render.RenderTests) ... ERROR
+test_frozen_alignment_metadata (test_render.RenderTests) ... ok
+
+======================================================================
+ERROR: test_fixed_world_asset_all_views_and_occlusion (test_render.RenderTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/independent_rgbd_asset_probe/tests/independent_rgbd/test_render.py", line 13, in test_fixed_world_asset_all_views_and_occlusion
+    mask,stats=render_asset(asset,K,c,np.ones((60,80)))
+  File "/home/u00134/3dgs_line/independent_rgbd_asset_probe/src/independent_rgbd/render.py", line 1, in render_asset
+    def render_asset(*a): raise NotImplementedError
+NotImplementedError
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.365s
+
+FAILED (errors=1)
