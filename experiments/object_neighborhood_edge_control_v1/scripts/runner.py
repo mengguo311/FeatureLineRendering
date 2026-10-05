@@ -29,7 +29,9 @@ def unit(name,args,outputs):
     atomic_json(ART/'STATUS.json',{'state':'RUNNING','unit':name,'guard':guard,'pid':os.getpid(),
         'milestones':{'P0':'NATIVE_TRAINING_AND_STOCK_AUDIT_EXECUTED','P1':'TESTS_EXECUTED; CANDIDATE_ENGINEERING_ACTIVE',
                       'P2':'PILOT_VALIDATION_IN_PROGRESS','P3':'BASELINES_PENDING_OR_PARTIAL',
-                      'P4':None,'P5':None,'P6':None,'P7':'IN_PROGRESS'},'TEST_opened':False})
+                      'P4':None,'P5':None,'P6':None,'P7':'IN_PROGRESS'},
+        'TEST_opened':any((EXP/'results/tables').glob('*_test.json')),
+        'TEST_policy':'read-only; frozen model/config/evaluator remain immutable'})
     log=OUT/'logs'/(name+'.txt');log.parent.mkdir(parents=True,exist_ok=True)
     script_sha=sha(args[0])
     source_snapshot={str(p):sha(p) for p in (EXP/'src').glob('*.py')}
