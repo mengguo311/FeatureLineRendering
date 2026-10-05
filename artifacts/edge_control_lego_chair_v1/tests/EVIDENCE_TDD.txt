@@ -1,0 +1,47 @@
+CPU evidence/profile TDD, 2026-10-05
+Environment: /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python; OMP_NUM_THREADS=2; OPENBLAS_NUM_THREADS=2.
+Command: python -m unittest discover -s experiments/edge_control_lego_chair_v1/tests -p test_evidence.py -v
+
+RED (before implementing evidence.py): exit 1, actual ModuleNotFoundError: No module named 'evidence'.
+Eight fixture tests were already authored: exact sRGB decoding; oblique analytic width; curved analytic normals/width; lowcontrast null; nonmonotonic/texture rejection; internal/outline disjointness and AA coverage preservation; isoluminant RGB edge; deterministic balanced maps and unchanged input arrays.
+
+Initial GREEN: exit 0, all eight initial tests passed in 0.641 s.
+
+Meaningful regression RED: an isolated Python process monkeypatched the tensor-normal function to return horizontal normals everywhere, without changing the source file. Actual curved-edge test failed:
+  measured median width = 5.003717660900991 px
+  analytic width = 4.394449154672438 px
+  absolute error = 0.6092685062285526 px > allowed 0.4 px
+  test_circle_normals_and_width: FAIL, assertion failure.
+The injected bug process ended; the production source never contained this horizontal-normal bug.
+
+Final GREEN: actual complete suite exit 0, 10 tests passed in 0.526 s, after the regression probe and final implementation edits:
+  test_circle_normals_and_width ... ok
+  test_different_size_segments_have_equal_balanced_mass ... ok
+  test_exact_srgb_conversion ... ok
+  test_internal_rgb_and_alpha_outline_remain_distinct ... ok
+  test_low_contrast_is_null_not_zero_width ... ok
+  test_maps_are_fixed_balanced_and_inputs_unmodified ... ok
+  test_multichannel_normals_detect_isoluminant_edge ... ok
+  test_oblique_width_is_in_linear_profile_encoding ... ok
+  test_texture_and_nonmonotonic_are_rejected ... ok
+  test_two_separated_monotone_transitions_are_not_one_width ... ok
+
+Calibration (CPU2; actual analytic-fixture execution):
+  Oblique logistic analytic linear-RGB 10--90 width = 5.493061443340547 px.
+  Measured same fixed profile width = 5.610788494438716 px.
+  Circle analytic width = 4.394449154672438 px.
+  Circle median fixed-normal width = 4.540464435311053 px; 36/36 proposed profiles valid.
+  Circle normal absolute radial dot product tested >0.98 for every returned profile.
+  512x512 oblique fixture extraction = 0.5143849819432944 s, 62 fixed valid profiles.
+  This is fixture calibration, not a Lego/Chair measured success claim.
+
+Implementation semantics:
+  Internal RGB evidence is extracted in actual display-PNG encoding at sigma 0.8/1.6/3.2 px using multichannel structure-tensor normals and normal-direction NMS.
+  Alpha-outline evidence is separate; internal_band excludes outline_band >0.01 and unreliable reference alpha.
+  Original AA foreground alpha is returned unchanged; reliable threshold alpha>=0.995; nonband=1-max(internal_band,outline_band).
+  Three fixed balanced_maps each sum1 if nonempty; every connected target edge segment gets equal total map mass at its scale. No Gaussian alpha*T contribution is truncated by this CPU module.
+  Profiles convert display sRGB to linear RGB explicitly; width is a 10--90 projection transition in image pixels, not a geometric width or contact label.
+  Low contrast yields null, never zero width. Nonmonotonic/texture, separated transitions, missing crossings, unbounded plateaus and border profiles are rejected.
+  Deterministic profile cap96; budget64 internal/32 outline if both present, otherwise cap96 for the present kind; up to768 reference candidates validated. Profile rejection counts and conditional validity rate are reported.
+  All profile centers/normals and ROI are from reference targets only. ROI prioritizes the first valid internal reference profile, otherwise reference evidence bbox/full image.
+  Native-render integration and actual-scene measurements are the root runner's responsibility; this unit used no GPU and read no original TEST images.

@@ -1,0 +1,17 @@
+{
+  "scenes": ["lego", "chair"], "resolution_width": 512, "steps": 336,
+  "train_indices": [1,14,27,41,53,67,79,93],
+  "dev_indices": [7,33,59,86], "holdout_indices": [0,8,18,30,48,60,80,98],
+  "budget_fraction": 0.1, "budget_cap": 32768, "seed": 1729,
+  "color_lr": 0.0025, "scale_lr": 0.002, "rotation_lr": 0.001,
+  "dc_display_delta_bound": 0.15, "scale_ratio_bound": 1.2,
+  "rotation_relative_delta_norm_bound": 0.08,
+  "outside_weight": 10.0, "coverage_weight": 0.2, "cov_regularizer": 0.01,
+  "selector_floor_total_pixels": 0.1,
+  "loss_encoding": "original display PNG RGB / native full SH, no EOTF for loss",
+  "profile_encoding": "sRGB EOTF to linear for validated profile metrics only",
+  "background": [1.0,1.0,1.0], "sh_degree": 3,
+  "arms": ["B0", "zero_step_dc_projection", "relative_color", "relative_color_ordinary", "relative_cov", "relative_cov_ordinary", "relative_color_ordinary_time", "relative_cov_ordinary_time", "band2d_cov", "random_cov"],
+  "holdout_status": "exploratory GS-TRAIN-seen edit-holdout, never independent formal TEST",
+  "contact_arm": "blocked: no genuine part labels; label-free relative support only"
+}

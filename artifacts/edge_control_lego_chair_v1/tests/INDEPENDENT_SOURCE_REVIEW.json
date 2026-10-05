@@ -1,0 +1,165 @@
+{
+  "schema": "independent-cpu-source-review-v1",
+  "utc": "2026-10-05T14:07:03Z",
+  "reviewer": "profiles_evidence independent CPU agent",
+  "reviewed_source_sha256": {
+    "data.py": "da25a526ad8840dca1f9ee776db5da1a016ed1e58d9e8f626d8d9ce966625b6f",
+    "adapter.py": "dbe5ca2d3a111476b25f3e347c363b3e4d31e40652dab05c5cc54642cd46c4af",
+    "optimization.py": "a29bed4c80c87cf3057757155153efcd9d43820622901cf211e64275b1282751",
+    "preparation.py": "1bd7c9321c2591b2bfbb6a3e46c8b128a94fa23290568bb204ce15ad45424025",
+    "evaluation.py": "7d692af0570c22ef8440477fc9a5ebcf33fb0ef56993e5ede7d3098c577aad94",
+    "media.py": "d529f4990243e84df4b9ae4416899cebf807a2ec433c8db1a8d809db2f1f8724"
+  },
+  "auxiliary_sources_read": [
+    "runtime.py",
+    "tests/test_native.py",
+    "tests/test_contracts.py",
+    "DATA_FREEZE.json",
+    "read-only stock dataset_readers.py and utils/general_utils.py"
+  ],
+  "scope": "Read-only CPU review of six new stage modules; no root-source edits; no GPU calls, installs, credentials, source model mutation, or old output writes.",
+  "overall": "No observed full-SH replacement, original TEST image read, permission unlock, selected-only visibility render, Gaussian contribution top-k truncation, or test-based selection in these six modules. Concrete metric/media/seal robustness findings require root disposition before production. Runner was not available at this review snapshot.",
+  "verified": {
+    "models": {
+      "lego": {
+        "original_rows": 310475,
+        "degree": 3
+      },
+      "chair": {
+        "original_rows": 256690,
+        "degree": 3
+      }
+    },
+    "roles_per_scene": {
+      "edit-train": 8,
+      "dev": 4,
+      "edit-holdout": 8
+    },
+    "qualification": "All roles are original GS TRAIN seen; prior F/C usage is enumerated and dev/prior arc are explicitly seen. No new formal blind TEST claim.",
+    "source_input_lock_match": true,
+    "camera_counts": {
+      "arc": 33,
+      "orbit": 33
+    },
+    "camera_hashes_distinct_per_scene_and_path": true,
+    "native_alpha_support": "Override feature images preserve full primitive traversal/occlusion; color Jacobian uses full-model native backward, not TOP4.",
+    "full_SH": "PLY header checks45 rest coefficients/degree3 before load; official native SH forward retained; DC edits preserve all original rest SH.",
+    "permissions": "Original base tensors are frozen. Editor uses selected-row DC delta and optional bounded log-scale/raw-quaternion deltas; audit requires byte-equivalent original center/opacity/rest and all nonselected rows.",
+    "coverage": "Covariance arm actually renders native alpha with geometry autograd and includes reliable foreground one-sided deficit plus continuous AA outline loss; ordinary control has the same parameter permissions and coverage/regularizer.",
+    "selector": "Training views only; count frozen from ceil0.10N cap32768; exact full contribution masses, balanced target evidence, own full-image mass density, visibility weighting; random matches joint visibility/logmass strata.",
+    "media": "Same cameras in row panels; overlay from B0 full-model selected alphaT; videos render actual shared3D native model per frozen camera; decode enforces all expected frames and unique decoded hashes.",
+    "loss_encoding": "Display/native PNG RGB. Width alone explicitly decodes sRGB to linear; rendered unclipped floats are retained for metrics.",
+    "original_TEST_images_read_by_reviewer": false,
+    "edit_holdout_images_read_by_reviewer": false,
+    "only_reviewer_photo_reads": [
+      "lego/edit-train/r_001",
+      "chair/edit-train/r_001"
+    ]
+  },
+  "findings": [
+    {
+      "id": "R01",
+      "severity": "medium",
+      "file": "media.py",
+      "line": 26,
+      "status": "sent_to_root",
+      "issue": "Native edge-crop cells can be49px wide, but full keys such as relative_cov_ordinary need about140px; labels overlap and nearest enlargement preserves the overlap.",
+      "recommendation": "Use legible wider cells with native pixels centered, or a separate key legend; retain exact subplot keys."
+    },
+    {
+      "id": "R02",
+      "severity": "medium",
+      "file": "optimization.py",
+      "line": 42,
+      "status": "sent_to_root",
+      "issue": "Training outside_damage uses1-internal_band; evaluation outside_damage uses1-max(internal_band,outline_band). Same metric name currently denotes different regions.",
+      "recommendation": "Align masks or explicitly report both named region definitions in results/report."
+    },
+    {
+      "id": "R03",
+      "severity": "medium",
+      "file": "data.py",
+      "line": 69,
+      "status": "sent_to_root",
+      "issue": "Comment claims mirror source training resize, but stock PILtoTorch uses PIL.resize default RGB BICUBIC while this stage explicitly uses BILINEAR. Display encoding/compositing/quantization are preserved, but resampling differs.",
+      "recommendation": "Declare BILINEAR as the new512 reduction and remove exact stock-preprocessing implication, or use the stock filter before sealing targets."
+    },
+    {
+      "id": "R04",
+      "severity": "medium",
+      "file": "data.py",
+      "line": 63,
+      "status": "sent_to_root",
+      "issue": "Holdout loader accepts any existing holdout_seal path; it does not authenticate completed scene/model/selection/config/data freeze content. No observed actual leak.",
+      "recommendation": "Require actual root completed seal and verify its schema/hash fields; review runner ordering before holdout reads."
+    },
+    {
+      "id": "R05",
+      "severity": "low",
+      "file": "media.py",
+      "line": 46,
+      "status": "sent_to_root",
+      "issue": "ART/videos directory is assumed to exist. Missing directory would fail ffmpeg, after all render work.",
+      "recommendation": "Create video.parent in videos or ensure this invariant explicitly in runner."
+    },
+    {
+      "id": "R06",
+      "severity": "low",
+      "file": "runtime.py",
+      "line": 34,
+      "status": "sent_to_root",
+      "issue": "Stage cap currently counts OUT only, omitting new stage EXP and ART bytes. Expected present media size is small, but total-stage wording is broader.",
+      "recommendation": "Aggregate EXP+ART+OUT for the16GiB stage cap."
+    }
+  ],
+  "cpu_photo_sanity": {
+    "lego": {
+      "key": "r_001",
+      "role": "edit-train",
+      "native_dimensions": [
+        800,
+        800
+      ],
+      "bilinear_vs_stock_default_mse": 3.0332216005913186e-05,
+      "bilinear_vs_stock_default_max_abs": 0.10196078431372546,
+      "valid_profiles": {
+        "internal": 4,
+        "outline": 2
+      },
+      "proposed": 768,
+      "rejections": {
+        "nonmonotonic_texture": 259,
+        "off_axis_color_texture": 374,
+        "low_contrast": 123,
+        "multiple_transitions": 2,
+        "unbounded_plateaus": 4
+      },
+      "extraction_seconds": 0.9520286349579692
+    },
+    "chair": {
+      "key": "r_001",
+      "role": "edit-train",
+      "native_dimensions": [
+        800,
+        800
+      ],
+      "bilinear_vs_stock_default_mse": 4.125905773295327e-05,
+      "bilinear_vs_stock_default_max_abs": 0.0980392156862745,
+      "valid_profiles": {},
+      "proposed": 768,
+      "rejections": {
+        "off_axis_color_texture": 486,
+        "nonmonotonic_texture": 246,
+        "low_contrast": 36
+      },
+      "extraction_seconds": 0.889480218058452
+    },
+    "interpretation": "Widths on these natural views may be mostly or wholly null. Keep fixed thresholds; band/allforeground/outline metrics and actual target-defined zooms remain valid. Do not fabricate widths or tune this evaluator on these scene examples."
+  },
+  "limitations": [
+    "No native GPU run by reviewer; root native-test pass claim is separate evidence.",
+    "No production runner or report present at review snapshot, so authentic seal sequencing and per-arm ownership gates await runner review.",
+    "No independent human visual GO established.",
+    "Source findings apply to recorded SHA256 revisions; any root changes require recheck."
+  ]
+}

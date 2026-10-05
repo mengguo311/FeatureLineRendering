@@ -1,0 +1,86 @@
+{
+  "schema": "independent-final-cpu-source-review-v1",
+  "utc": "2026-10-05T14:10:55Z",
+  "reviewer": "profiles_evidence independent CPU agent",
+  "reviewed_source_sha256": {
+    "experiments/edge_control_lego_chair_v1/src/data.py": "da25a526ad8840dca1f9ee776db5da1a016ed1e58d9e8f626d8d9ce966625b6f",
+    "experiments/edge_control_lego_chair_v1/src/adapter.py": "dbe5ca2d3a111476b25f3e347c363b3e4d31e40652dab05c5cc54642cd46c4af",
+    "experiments/edge_control_lego_chair_v1/src/optimization.py": "a29bed4c80c87cf3057757155153efcd9d43820622901cf211e64275b1282751",
+    "experiments/edge_control_lego_chair_v1/src/preparation.py": "1bd7c9321c2591b2bfbb6a3e46c8b128a94fa23290568bb204ce15ad45424025",
+    "experiments/edge_control_lego_chair_v1/src/evaluation.py": "7d692af0570c22ef8440477fc9a5ebcf33fb0ef56993e5ede7d3098c577aad94",
+    "experiments/edge_control_lego_chair_v1/src/media.py": "d529f4990243e84df4b9ae4416899cebf807a2ec433c8db1a8d809db2f1f8724",
+    "experiments/edge_control_lego_chair_v1/src/runtime.py": "98c5630c9241cd4fa2e280e92afd7a065a0a17415a30666ead1bbd14eba4eb7b",
+    "experiments/edge_control_lego_chair_v1/src/reporting.py": "0bfd69447b2f4a94ab8cc90a0d6ba487fc145c6df73680e161ca1bddf4d0ce4e",
+    "experiments/edge_control_lego_chair_v1/scripts/runner.py": "6dacb46afdb10e2fad1df5659754b76b76a6e36694b6fa84347713f384937277",
+    "experiments/edge_control_lego_chair_v1/scripts/launch_production.py": "1b9a873a78c96b8844b58d575a7d2e32f18a28c4c413415903f990f21174fb6e"
+  },
+  "prior_review_record_unchanged": "artifacts/edge_control_lego_chair_v1/tests/INDEPENDENT_SOURCE_REVIEW.json",
+  "read_policy": {
+    "source_and_metadata_only": true,
+    "images_opened": false,
+    "GPU_used": false,
+    "source_mutated": false,
+    "only_new_write": "artifacts/edge_control_lego_chair_v1/tests/INDEPENDENT_SOURCE_REVIEW_FINAL.json"
+  },
+  "outcome": "All six original review findings are resolved at this source snapshot. Source-level seal ordering, train-only optimizer, full SH and bounded selected-row permissions pass. Actual production execution and human visual quality are not asserted by this CPU review.",
+  "previous_findings_disposition": {
+    "R01": {
+      "status": "resolved",
+      "evidence": "media crop cell=max(native ROI width,210); raw native crop is centered inside cell, exact keys have adequate label width."
+    },
+    "R02": {
+      "status": "resolved",
+      "evidence": "preparation now stores nonband; objective out=view[nonband]; evaluation uses the same1-max(internal_band,outline_band) field."
+    },
+    "R03": {
+      "status": "resolved",
+      "evidence": "load_reference converts original RGBA to float64/255, composites RGB*AA+(1-AA), truncates to uint8, then explicitly resizes RGB with BICUBIC. This matches stock float64 compositing/truncation/default RGB PIL resize. AA coverage remains separately BILINEAR and is not Gaussian identity."
+    },
+    "R04": {
+      "status": "resolved",
+      "evidence": "Holdout read requires matching actual scene from original source path, DATA_FREEZE SHA, nonempty edit SHA/dev summaries, matching selection and target seals, and matching every persisted edit SHA before image hash/open. Actual metadata scene paths resolve correctly for Lego and Chair."
+    },
+    "R05": {
+      "status": "resolved",
+      "evidence": "videos creates ART/videos before encoding."
+    },
+    "R06": {
+      "status": "resolved",
+      "evidence": "runtime.guard aggregates OUT+EXP+ART bytes for the16GiB cap while preserving root4GiB/commonGit1.5GiB reserves and live ownership queries."
+    }
+  },
+  "runner_logic": {
+    "both_scene_initial_native_B0_before_optimization": true,
+    "training_optimizer_inputs_only_edit_train": true,
+    "selection_before_dev_and_training_targets_frozen_before_edit": true,
+    "all_fixed_arms_and_dev_scores_complete_before_dev_model_seal": true,
+    "holdout_loader_called_only_after_scene_dev_model_seal": true,
+    "no_optimization_after_first_holdout_read": true,
+    "per_optimize_arm_and_per_arm_role_evaluation_guarded": true,
+    "selector_each_train_view_guarded": true,
+    "initial_render_and_scene_preparation_guarded": true,
+    "full_shared3D_native_models_for_media": true,
+    "source_hashes_checked_at_start_before_each_edit_and_before_holdout": true,
+    "source_model_and_readonly_dependency_integrity_checked_before_after": true,
+    "scene_failure_caught_and_next_scene_attempted": true,
+    "production_no_duplicate_lock": true,
+    "detached_start_new_session": true,
+    "config_matches_DATA_FREEZE_sha256": true,
+    "per_video_arm_guard_present_at_snapshot": false
+  },
+  "remaining_notes": [
+    {
+      "severity": "low",
+      "file": "src/media.py",
+      "issue": "At snapshot, videos ownership gate is once per four-arm camera-path collection, not once per video arm.",
+      "root_notified": true,
+      "recommendation": "Add guard for each video arm before freezing production source if each video is an execution unit."
+    }
+  ],
+  "limitations": [
+    "Production not executed by this reviewer; no image or GPU evidence was read in this final pass.",
+    "Runner is durable through per-arm npz/progress/epoch files but refuses automatic rerun if FINAL exists; any failed-scene resume needs explicitly verified units, as its error metadata states.",
+    "Reporting final phase correctly records partial scene failure; generic narrative completion sentences should be read together with actual scene status if a scene fails.",
+    "Independent human visual GO remains pending."
+  ]
+}
