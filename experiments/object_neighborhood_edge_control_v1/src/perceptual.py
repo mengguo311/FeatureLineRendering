@@ -1,6 +1,7 @@
 """Read-only standard LPIPS v0.1 and FLIP at declared viewing conditions."""
 import sys
 import numpy as np
+from pathlib import Path
 from runtime import OUT
 sys.path.append(str(OUT/'deps'))
 from edge_profiles import linear_to_srgb
@@ -12,7 +13,8 @@ def score(image,reference,band):
     import flip_evaluator as flip
     global _LPIPS
     if _LPIPS is None:
-        torch.hub.set_dir(str(OUT/'cache/torch_hub'))
+        public_cache=Path('/home/u00134/.cache/torch/hub')
+        torch.hub.set_dir(str(public_cache if (public_cache/'checkpoints/alexnet-owt-7be5be79.pth').exists() else OUT/'cache/torch_hub'))
         _LPIPS=lpips.LPIPS(net='alex',version='0.1').cuda().eval()
     def tensor(x):return torch.tensor(linear_to_srgb(x).transpose(2,0,1)[None],device='cuda')*2-1
     with torch.no_grad():

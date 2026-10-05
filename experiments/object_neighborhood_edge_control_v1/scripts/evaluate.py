@@ -3,6 +3,7 @@ import argparse
 import json
 import time
 import sys
+import hashlib
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 from runtime import EXP,OUT,ART,atomic_json,sha,resource_guard,code_identity
@@ -62,7 +63,10 @@ def evaluate(scene,method,group='val',save_figures=True):
             for j,(name,part) in enumerate(zip(('GT A','B0 natural trained',method+' pilot seed1729'),parts)):
                 montage.paste(part,(j*512,30));draw.text((j*512+12,8),name,fill=(0,0,0))
             png=pathdir/f'{i:04d}.png';montage.save(png)
-            frames_manifest.append({'index':i,'camera_id':frame['id'],'camera_sha256':sha(OUT/'data'/scene/group/frame['id']/'A_target.npz'),
+            np.savez_compressed(pathdir/f'{i:04d}_linear.npz',render=im,residual=im-reference)
+            frames_manifest.append({'index':i,'camera_id':frame['id'],
+                                    'camera_sha256':hashlib.sha256(json.dumps(frame,sort_keys=True).encode()).hexdigest(),
+                                    'reference_sha256':sha(OUT/'data'/scene/group/frame['id']/'A_target.npz'),
                                     'theta_deg':frame['theta_deg'],'png_sha256':sha(png)})
             if i==0:
                 curated=ART/'figures';curated.mkdir(exist_ok=True)
