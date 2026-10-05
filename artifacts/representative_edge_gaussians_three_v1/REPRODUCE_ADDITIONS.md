@@ -1,0 +1,7 @@
+# 不改S0的验证与报告补充
+
+S0科学源文件、配置、normalization与F选择始终保持原seal。复现首先按REPRODUCE.md运行原plain pipeline；若在继承audit.py的Chair float64绝对Bscore检查停止，按AUDIT_ARITHMETIC_NOTE.md运行audit_stored_dtype.py，再恢复原run.sh。原失败必须保留，不改断言/阈值，不改科学数组。
+
+完成原pipeline后运行 `bash artifacts/representative_edge_gaussians_three_v1/finish.sh`：独立ffmpeg逐帧解码六个视频，报告明确披露原float64审计失败/实际float32补充验证scope与全部连续比较，重新生成SOURCE_MAP并核验。finish.sh与附加源码是显式标注的验证/叙述补充，不回写S0，也不改变任何科学结果或native容差。SOURCE_MAP和FINAL覆盖最终实际文件SHA256。
+
+新out仅本地Git exclusion排除大科学数组，文件均保存；没有删除旧资产。只发布本新stage与curated modest media。native视频在out，Telegram1600完整33帧在media可通过GitHub下载，独立人类审阅仍PENDING。
