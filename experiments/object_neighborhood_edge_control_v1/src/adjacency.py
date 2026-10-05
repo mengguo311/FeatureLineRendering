@@ -1,5 +1,6 @@
 """Centre radius and convex ellipsoid proximity proxies, never physical contact."""
 import numpy as np
+import os
 from scipy.spatial import cKDTree
 from scipy.optimize import minimize
 
@@ -69,12 +70,42 @@ def ellipsoid_distance(a,L_a,b,L_b,k=3,decision_epsilon=None):
             raise RuntimeError('distance uncertainty straddles candidate threshold')
     return float(upper*scale)
 
-def ellipsoid_pairs(mu,L,labels,k=3,epsilon=.05):
+_WORKER_INPUT=None
+def _worker_init(mu,L,labels,k,epsilon):
+    global _WORKER_INPUT
+    _WORKER_INPUT=(mu,L,labels,k,epsilon)
+
+def _worker_chunk(bounds):
+    SOLVER_AUDIT.clear()
+    mu,L,labels,k,epsilon=_WORKER_INPUT
+    pairs=ellipsoid_pairs(mu,L,labels,k,epsilon,workers=1,row_range=bounds)
+    stats={'_count':len(SOLVER_AUDIT),'lower':0.,'upper':max((x['upper']-x['lower'] for x in SOLVER_AUDIT),default=0),
+           'threshold':epsilon,'decision_certified':all(x['decision_certified'] for x in SOLVER_AUDIT),
+           'scipy_success':True,'_unsuccessful':sum(not x['scipy_success'] for x in SOLVER_AUDIT)}
+    return pairs,stats
+
+def ellipsoid_pairs(mu,L,labels,k=3,epsilon=.05,workers=1,row_range=None):
     mu,L,labels=map(np.asarray,(mu,L,labels))
+    if workers==2:
+        import multiprocessing as mp
+        previous={key:os.environ.get(key) for key in ('OMP_NUM_THREADS','OPENBLAS_NUM_THREADS','MKL_NUM_THREADS')}
+        os.environ.update(OMP_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',MKL_NUM_THREADS='1')
+        pairs=[]
+        try:
+            with mp.get_context('spawn').Pool(2,initializer=_worker_init,initargs=(mu,L,labels,k,epsilon)) as pool:
+                chunks=[(i,min(i+256,len(mu))) for i in range(0,len(mu),256)]
+                for index,(part,stats) in enumerate(pool.imap(_worker_chunk,chunks)):
+                    pairs.extend(part);SOLVER_AUDIT.append(stats)
+                    print(f'C1 completed {index+1}/{len(chunks)} chunks, certified neighbors={len(pairs)}, CPU workers=2 x 1 thread',flush=True)
+        finally:
+            for key,value in previous.items():
+                if value is None:os.environ.pop(key,None)
+                else:os.environ[key]=value
+        return sorted(pairs)
     ext=k*np.sqrt((L*L).sum(axis=2));bounding=np.linalg.norm(ext,axis=1)
     tree=cKDTree(mu);result=[]
     # Radius expands by the largest ellipsoid; no small centre-only prefilter.
-    for i in range(len(mu)):
+    for i in range(*(row_range or (0,len(mu)))):
         if i%1000==0:
             print(f'C1 processed {i}/{len(mu)} rows; certified pairs={len(result)}',flush=True)
         if labels[i]<=0:continue

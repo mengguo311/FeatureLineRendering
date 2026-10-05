@@ -43,7 +43,7 @@ def extract(scene):
                         band_mass=band_mass.cpu().numpy(),total_mass=total_mass.cpu().numpy())
     start=time.monotonic();p0=center_pairs(mu,labels,cfg['selection']['center_radius']);t0=time.monotonic()-start
     L=(build_rotation(m._rotation).detach()@torch.diag_embed(m.get_scaling.detach())).cpu().numpy()
-    start=time.monotonic();p1=ellipsoid_pairs(mu,L,labels,cfg['selection']['ellipsoid_k'],cfg['selection']['ellipsoid_epsilon']);t1=time.monotonic()-start
+    start=time.monotonic();p1=ellipsoid_pairs(mu,L,labels,cfg['selection']['ellipsoid_k'],cfg['selection']['ellipsoid_epsilon'],workers=2);t1=time.monotonic()-start
     mass=band_mass.cpu().numpy();visible=mass>cfg['selection']['band_mass_min']
     selections={}
     for key,pairs in (('C0',p0),('C1',p1)):
@@ -63,10 +63,11 @@ def extract(scene):
         'label_counts':{str(k):int((labels==k).sum()) for k in (-1,0,1,2)},
         'identity_sha256':sha(directory/'identity.json'),'fixed_labels_sha256':sha(directory/'fixed_labels.npz'),
         'initial_checkpoint_sha256':sha(checkpoint),'C0_time_seconds':t0,'C1_time_seconds':t1,
-        'C1_distance_certificate_count':len(SOLVER_AUDIT),
+        'C1_distance_certificate_count':sum(x.get('_count',1) for x in SOLVER_AUDIT),
         'C1_uncertified_decisions':sum(not x['decision_certified'] for x in SOLVER_AUDIT),
         'C1_max_distance_interval':max((x['upper']-x['lower'] for x in SOLVER_AUDIT),default=0),
-        'C1_scipy_unsuccessful_but_certified':sum(not x['scipy_success'] for x in SOLVER_AUDIT),
+        'C1_scipy_unsuccessful_but_certified':sum(x.get('_unsuccessful',int(not x['scipy_success'])) for x in SOLVER_AUDIT),
+        'C1_CPU_workers':2,'C1_threads_per_worker':1,
         'source':code_identity(),'guard':guard,'observed_profiles':observed,'reference_profiles':reference,
         'diagnosis_hypotheses':['native_training_reconstruction_error'] if decision=='hard_edge_color_only' else [],
         'explicit_target':{'task':'A','source':'training_reference_RGB','target_width':'measured per-view, not threshold backprop'}}
