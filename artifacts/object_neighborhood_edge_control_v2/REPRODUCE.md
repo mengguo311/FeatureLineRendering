@@ -20,3 +20,17 @@ cat out/object_neighborhood_edge_control_v2/STATUS.json
 视频通过只读 v1 stage 的 FFmpeg 二进制编码，完整36帧原生开发渲染，H264/yuv420p/faststart；`results/MEDIA.json` 保存全帧解码SHA。同视角放大图三列为参考/B0/该方法，展示采用 sRGB OETF，数值评价在线性RGB。
 
 目标精度修正记录见 `TARGET_PRECISION_CORRECTION.json`。第二次生产冻结统一诊断监督与 train 的量化精度，浮点评价真值保留；F10/F11 旧结果仅存忽略 out 的 superseded/run1，不进入主表。R0/F00/F01及其 outside 单元的拟合输入未改变，`VERIFIED_REUSE.json` 核对原 source seal 身份与每个输出 SHA 后复用。R4 尚未启动时已修正 recoverability 色彩范围：仅该探针允许每 UID 的上界 max(1,扰动 checkpoint 有效颜色)，保证原颜色可行；优化器只读取扰动 checkpoint/目标渲染/UID mask，不读取原 scale 或倍率。`SOURCE_FREEZE_run1.json` 保留第一版源码 hash。
+
+完整交付的续算/审计为以下实际命令，须顺序执行；GPU0 只允许一个计算进程。各模块使用对应 *_FREEZE.json 的源码SHA。原主 runner 恢复会刷新主报告，完整交付之后依次运行下面模块；已有颜色/同目标凸续算单元仅哈希核验后跳过。
+
+```bash
+"$research_python" artifacts/object_neighborhood_edge_control_v2/REFINE_COLORS.py
+"$research_python" artifacts/object_neighborhood_edge_control_v2/REFINE_EXACT_L1.py
+"$research_python" artifacts/object_neighborhood_edge_control_v2/FINALIZE.py
+```
+
+本次以上模块均通过 `subprocess.Popen(..., start_new_session=True)` 独立启动并依次等待前序任务；实际PID记录分别在 `refinement.pid`、`l1_refinement.pid`、`finalize.pid`。状态分别为 `REFINEMENT_STATUS.json`、`L1_REFINEMENT_STATUS.json`、`FINALIZE_STATUS.json`。它们已真实运行结束，无后台训练留待完成。
+
+颜色续算用同一 native A/Aᵀ 和盒约束，d=AᵀA1 的对角主化缩小gap，保存独立可行P和任意可行dual y及SHA。四个单元归一化gap均小于1e-6。相同 v1 band L1+outside MSE 又实际续算4000步，保存更低可行目标，但最终gap仍3.21e-5；不宣称已认证最优。R5条件实际运行64核诊断子集361对，未重新选择原1379核、未评测全量成本或旧低/远TEST。
+
+`SUPPLEMENTAL_AUDIT.py` 在所有GPU工作完成后原生扫描真实相机投影宽度及分项梯度、核验所有单元seal和原输入；最终10个core测试+7个补充数学/三态测试通过。原 checkpoint 和 source hash完整读回未变。`FINAL.json`明确实验完成与仍待完成的科学验证，所有正式TEST保持封存。

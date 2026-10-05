@@ -56,5 +56,35 @@
     "fit_precision": "train byte-exact 8bit linear PNG; diagnostic reference rounded to same 8bit grid; evaluation preserves float target",
     "probe_bounds": "preserve native initial effective colors >1 in recoverability probe only, box upper per UID derived from perturbed checkpoint; R1/R3 retain [0,1]",
     "solver_inputs": "R4 consumes only perturbed checkpoint, target renders, frozen UID masks; no original checkpoint/identity anchors read by optimizer"
+  },
+  "production_source_commits": {
+    "run1": "394821a",
+    "run2": "33bc758"
+  },
+  "supplemental_scripts": {
+    "REFINE_COLORS.py": {
+      "sha256": "7b25793e87afa71a25f52ce646731ec56b180435148ef23fda9bfe1b16a79fc6",
+      "scope": "frozen standalone same-objective optimization/conditional diagnostic/read-only verification"
+    },
+    "REFINE_EXACT_L1.py": {
+      "sha256": "0259badbf2659ded12982130575c307181458527da2861a3ec84dd1e56910688",
+      "scope": "frozen standalone same-objective optimization/conditional diagnostic/read-only verification"
+    },
+    "R5_TRI_STATE.py": {
+      "sha256": "7c0e43e853f01b39b63cc4b37b6b8deb002848bfe932c311300f5babd50e80c3",
+      "scope": "frozen standalone same-objective optimization/conditional diagnostic/read-only verification"
+    },
+    "SUPPLEMENTAL_AUDIT.py": {
+      "sha256": "f8c162dbf8be61bc395d23dcab2f6e7aec2355a78c5d6673b9d57e151cda1768",
+      "scope": "frozen standalone same-objective optimization/conditional diagnostic/read-only verification"
+    },
+    "FINALIZE.py": {
+      "sha256": "4a546e9748eaa7918548a38a4cdb647f087a11f93fcf9a50a52e9126f4ea2de8",
+      "scope": "frozen standalone same-objective optimization/conditional diagnostic/read-only verification"
+    },
+    "PLOT_ACTUAL.py": {
+      "sha256": "6c031552a6db11a2df7d646c6ad7697608d16fb3741e440d6e408471b75f8fb4",
+      "scope": "frozen standalone same-objective optimization/conditional diagnostic/read-only verification"
+    }
   }
 }

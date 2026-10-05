@@ -1,0 +1,179 @@
+{
+  "state": "FOLLOWUP_PILOT_AND_CONVERGENCE_COMPLETED_TEST_CLOSED",
+  "completed_units": [
+    "O_cov",
+    "R0",
+    "G10",
+    "F01",
+    "R4_C1_scale",
+    "F00",
+    "F11",
+    "O_cov_ordinary",
+    "R4_all_scale",
+    "R4_C1_color",
+    "G11",
+    "R4_known_color",
+    "G01",
+    "O_color_ordinary",
+    "O_color",
+    "F00_outside",
+    "G00",
+    "C1_exact_convex",
+    "F10",
+    "O_cov_ordinary_time",
+    "O_color_ordinary_time",
+    "R4_all_color",
+    "F01_outside",
+    "R4_known_scale"
+  ],
+  "remaining_units": [],
+  "R0": "COMPLETED",
+  "R1": "COMPLETED",
+  "R2": "COMPLETED",
+  "R3": "COMPLETED",
+  "R4": "COMPLETED_SIX_PROBES",
+  "R5": "COMPLETED_DIAGNOSTIC_SUBSET",
+  "test_state": "TEST_CLOSED",
+  "formal_GO": false,
+  "gates": {
+    "O_color": {
+      "band_improvement": 0.0025974397080721356,
+      "dev_in_mse_increase": -2.2241404925201286e-07,
+      "psnr_drop": -0.16662905759326208,
+      "hole_increase": 0.0,
+      "pass": false
+    },
+    "O_cov": {
+      "band_improvement": -0.06790221671549079,
+      "dev_in_mse_increase": 4.851831666504344e-06,
+      "psnr_drop": 0.14243835968914098,
+      "hole_increase": -0.00016585677296523504,
+      "pass": false
+    }
+  },
+  "inputs_unchanged": true,
+  "source_freeze_sha256": "b4fc9b24cde134911c4a2814c9c9b8c818d0f60ff67610862961e1621918b807",
+  "checkpoint_source_sha256": "cc440283b70bf62cd98dfedf24bf47383a147b70483deec4f849763f3f7847c6",
+  "independent_verification_required": true,
+  "R1_refinements": {
+    "F00": {
+      "certificate": {
+        "P": 3.512160298143774,
+        "D_raw": 3.3434305014535606,
+        "D": 3.2710601514535607,
+        "gap": 0.24110014669021326,
+        "mse_upper": 1.455911280577104e-05,
+        "mse_lower": 1.3559669746464792e-05,
+        "numerical_margin": 0.07237035,
+        "scalar_observations": 482469,
+        "primal_and_dual_may_come_from_different_iterations": true,
+        "saved_dual_y_sha256": "ab1c0ad4561293e4e2203b4d989c6af3f9786e5fd54d4529c75b9cf83fb9a0fd"
+      },
+      "claim": "FEASIBLE_WITHIN_TOLERANCE",
+      "checkpoint_sha256": "13773379ef322dd7591396a028370b38fda118151b1c5dbce45f1b490a18ff2b"
+    },
+    "F01": {
+      "certificate": {
+        "P": 3.4365275276249623,
+        "D_raw": 3.271377445694263,
+        "D": 3.199007095694263,
+        "gap": 0.23752043193069924,
+        "mse_upper": 1.424558895027437e-05,
+        "mse_lower": 1.32609850402586e-05,
+        "numerical_margin": 0.07237035,
+        "scalar_observations": 482469,
+        "primal_and_dual_may_come_from_different_iterations": true,
+        "saved_dual_y_sha256": "205a3bf16c14e7c084e1a88531b02542eac8ad2cafcd11afa4bace99e0cd3f4f"
+      },
+      "claim": "FEASIBLE_WITHIN_TOLERANCE",
+      "checkpoint_sha256": "6711d8cf640e224522c5be4b6a0bae5c66dc73812467d948a71a09945b0499cc"
+    },
+    "F10": {
+      "certificate": {
+        "P": 175.54681033308296,
+        "D_raw": 175.35373710881123,
+        "D": 175.26933915881122,
+        "gap": 0.27747117427172835,
+        "mse_upper": 0.0006239967096348299,
+        "mse_lower": 0.000623010413732127,
+        "numerical_margin": 0.08439795,
+        "scalar_observations": 562653,
+        "primal_and_dual_may_come_from_different_iterations": true,
+        "saved_dual_y_sha256": "d78224ab75a824ed7d9eb13b48524f31278ff1347c682f0d85fa563cd521c740"
+      },
+      "claim": "NUMERICALLY_BOUNDED_UNREACHABLE",
+      "checkpoint_sha256": "be16850663ebfcab3dcaab8e785fd132c7019079c6f3bf1b8a325bb9b0cc56d0"
+    },
+    "F11": {
+      "certificate": {
+        "P": 149.6876271802328,
+        "D_raw": 149.49231768079562,
+        "D": 149.4079197307956,
+        "gap": 0.27970744943717246,
+        "mse_upper": 0.0005320779492164186,
+        "mse_lower": 0.0005310837042752659,
+        "numerical_margin": 0.08439795,
+        "scalar_observations": 562653,
+        "primal_and_dual_may_come_from_different_iterations": true,
+        "saved_dual_y_sha256": "b3249783e312bfbb84f38b28aa88ca090ceadd170e76f3b0439475c9d8f2c1dc"
+      },
+      "claim": "NUMERICALLY_BOUNDED_UNREACHABLE",
+      "checkpoint_sha256": "d4582219c22bd6bbcd20be66bb9658c80155d050a28077c303a54cd35c3fc67a"
+    }
+  },
+  "same_v1_convex_objective_refined": {
+    "iteration": 4000,
+    "P_current": 0.0005786403437812263,
+    "D_current_raw": 0.0005467707003582652,
+    "exact_v1_primal": 0.0005786133456216664,
+    "dual_lower": 0.0005464707003582653,
+    "dual_margin": 3e-07,
+    "gap": 3.214264526340122e-05,
+    "seconds": 430.9414725971874
+  },
+  "supplemental_audit_sha256": "b0dbcc3c8760b3e1165bd4cef15ea8446aa4c534addcd30c3092074c3fcf5df4",
+  "native_input_hashes_verified_unchanged": true,
+  "R2_costs": {
+    "G00": {
+      "training_wall_seconds": 80.57469708588906,
+      "unit_end_to_end_seconds": 90.8985584829934,
+      "peak_gpu_note": "reported allocated peak includes evaluation allocations, not isolated training peak"
+    },
+    "G10": {
+      "training_wall_seconds": 83.83222378487699,
+      "unit_end_to_end_seconds": 93.521216558991,
+      "peak_gpu_note": "reported allocated peak includes evaluation allocations, not isolated training peak"
+    },
+    "G01": {
+      "training_wall_seconds": 173.7631182060577,
+      "unit_end_to_end_seconds": 183.80675917095505,
+      "peak_gpu_note": "reported allocated peak includes evaluation allocations, not isolated training peak"
+    },
+    "G11": {
+      "training_wall_seconds": 182.9357105961535,
+      "unit_end_to_end_seconds": 192.84293550811708,
+      "peak_gpu_note": "reported allocated peak includes evaluation allocations, not isolated training peak"
+    }
+  },
+  "completed_unit_seal_count": 31,
+  "test_new_target_generator_status": "SIZE_POSE_EXTENSION_AND_NORMAL_PROFILES_NOT_VALIDATED_TEST_CLOSED",
+  "scientific_limits": [
+    "single scene/seed diagnostic",
+    "R2 final N differs, no count-matched causal advantage",
+    "R3 dev gates fail, no independent control advantage",
+    "fixed-weight SH0 numerical bounds do not prove general 3DGS limits",
+    "no old low/far TEST reads"
+  ],
+  "same_v1_objective_solver_convergence": "UNDETERMINED_OPTIMIZATION_NOT_CERTIFIED_OPTIMUM",
+  "primary_source_commits": {
+    "run1": "394821a",
+    "run2": "33bc758"
+  },
+  "pending_scientific_work": [
+    "same-objective L1 convergence certification",
+    "R2 count-matched confirmation before causal/resource claims",
+    "full R5 selector cost benchmark",
+    "pose/size test generator and boundary-normal profiles validation",
+    "multi-scene three-seed formal stage only after dev gates"
+  ]
+}
