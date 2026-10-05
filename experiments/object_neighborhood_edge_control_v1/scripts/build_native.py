@@ -24,12 +24,12 @@ def build():
     sources = [rast/p for p in ('ext.cpp','rasterize_points.cu','cuda_rasterizer/rasterizer_impl.cu',
                                 'cuda_rasterizer/forward.cu','cuda_rasterizer/backward.cu')]
     load(name='onec_stock_C', sources=list(map(str,sources)), build_directory=str(cache),
-         extra_cuda_cflags=['-I'+str(rast/'third_party/glm')], verbose=True)
+         extra_cuda_cflags=['-I'+str(rast/'third_party/glm'), '-include', 'cstdint'], verbose=True)
     knn = base/'simple-knn'
     cache = OUT/'build/knn'
     cache.mkdir(parents=True,exist_ok=True)
     load(name='onec_knn_C',sources=[str(knn/p) for p in ('ext.cpp','simple_knn.cu','spatial.cu')],
-         build_directory=str(cache),verbose=True)
+         build_directory=str(cache),extra_cuda_cflags=['-include','cfloat'],verbose=True)
     atomic_json(ART/'environment/native_build.json',{
         'guard':preflight,'rasterizer_sha':command(['git','-C',str(rast),'rev-parse','HEAD']),
         'source_files':{str(p.relative_to(OUT)):sha(p) for p in sources},
