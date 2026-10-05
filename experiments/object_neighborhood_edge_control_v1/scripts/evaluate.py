@@ -8,7 +8,7 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 from runtime import EXP,OUT,ART,atomic_json,sha,resource_guard,code_identity
 
-def evaluate(scene,method,group='val',save_figures=True):
+def evaluate(scene,method,group='val',save_figures=True,tag=''):
     guard=resource_guard()
     import numpy as np
     import torch
@@ -100,10 +100,12 @@ def evaluate(scene,method,group='val',save_figures=True):
         'mean_metrics':means,'rows':rows,'checkpoint_sha256':sha(checkpoint),
         'identity_sha256':sha(identity_file),'input_data_freeze_sha256':sha(EXP/'data/manifests/data_freeze.json'),
         'source':code_identity(),'guard':guard,'scope':'single-seed pilot; no formal/method superiority claim'}
-    atomic_json(EXP/f'results/tables/{scene}_{method}_{group}.json',result)
-    atomic_json(EXP/f'results/manifests/{scene}_{method}_{group}_frames.json',frames_manifest)
+    suffix='_'+tag if tag else ''
+    atomic_json(EXP/f'results/tables/{scene}_{method}_{group}{suffix}.json',result)
+    atomic_json(EXP/f'results/manifests/{scene}_{method}_{group}{suffix}_frames.json',frames_manifest)
     return result
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('scene');p.add_argument('method');p.add_argument('--split',default='val',choices=['val','test','path'])
-    p.add_argument('--no-figures',action='store_true');a=p.parse_args();evaluate(a.scene,a.method,a.split,not a.no_figures)
+    p.add_argument('--no-figures',action='store_true');p.add_argument('--tag',default='')
+    a=p.parse_args();evaluate(a.scene,a.method,a.split,not a.no_figures,a.tag)
