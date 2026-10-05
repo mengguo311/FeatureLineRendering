@@ -3,12 +3,14 @@ import numpy as np
 from scipy.spatial import cKDTree
 from scipy.optimize import minimize
 
+SOLVER_AUDIT=[]
+
 def center_pairs(mu,labels,radius):
     mu=np.asarray(mu);labels=np.asarray(labels)
     return [(i,j) for i,j in sorted(cKDTree(mu).query_pairs(radius))
             if labels[i]>0 and labels[j]>0 and labels[i]!=labels[j]]
 
-def ellipsoid_distance(a,L_a,b,L_b,k=3):
+def ellipsoid_distance(a,L_a,b,L_b,k=3,decision_epsilon=None):
     a,b,L_a,L_b=[np.asarray(v,dtype=np.float64) for v in (a,b,L_a,L_b)]
     # Scale world distances and use unit balls to avoid ill-conditioned tiny GS.
     scale=max(np.linalg.norm(b-a),k*np.linalg.norm(L_a),k*np.linalg.norm(L_b),1e-8)
@@ -31,6 +33,10 @@ def ellipsoid_distance(a,L_a,b,L_b,k=3):
         lower=max(0,float(direction@b-np.linalg.norm(L_a.T@direction)-np.linalg.norm(L_b.T@direction)))
         return lower,upper
     x=project(r.x);lower,upper=certificate(x)
+    if decision_epsilon is not None and (upper*scale<=decision_epsilon or lower*scale>decision_epsilon):
+        SOLVER_AUDIT.append({'lower':lower*scale,'upper':upper*scale,'threshold':decision_epsilon,
+                             'decision_certified':True,'scipy_success':bool(r.success)})
+        return float(upper*scale)
     if (upper-lower)*scale>1e-5:
         # Projected accelerated gradient is a convex fallback; certificate checks
         # the feasible primal distance against a separating-plane lower bound.
@@ -41,8 +47,13 @@ def ellipsoid_distance(a,L_a,b,L_b,k=3):
             y=new+(momentum-1)/next_momentum*(new-x);x=new;momentum=next_momentum
             lower,upper=certificate(x)
             if (upper-lower)*scale<=1e-5:break
-    if (upper-lower)*scale>1e-5:
+    if (upper-lower)*scale>1e-5 and not (decision_epsilon is not None and (upper*scale<=decision_epsilon or lower*scale>decision_epsilon)):
         raise RuntimeError(f'uncertified ellipsoid distance interval [{lower*scale},{upper*scale}]')
+    if decision_epsilon is not None:
+        SOLVER_AUDIT.append({'lower':lower*scale,'upper':upper*scale,'threshold':decision_epsilon,
+                             'decision_certified':upper*scale<=decision_epsilon or lower*scale>decision_epsilon,'scipy_success':bool(r.success)})
+        if not SOLVER_AUDIT[-1]['decision_certified']:
+            raise RuntimeError('distance uncertainty straddles candidate threshold')
     return float(upper*scale)
 
 def ellipsoid_pairs(mu,L,labels,k=3,epsilon=.05):
@@ -55,7 +66,7 @@ def ellipsoid_pairs(mu,L,labels,k=3,epsilon=.05):
         for j in tree.query_ball_point(mu[i],bounding[i]+bounding.max()+epsilon):
             if j<=i or labels[j]<=0 or labels[i]==labels[j]:continue
             if np.any(np.abs(mu[i]-mu[j])>ext[i]+ext[j]+epsilon):continue
-            if ellipsoid_distance(mu[i],L[i],mu[j],L[j],k)<=epsilon:result.append((i,j))
+            if ellipsoid_distance(mu[i],L[i],mu[j],L[j],k,decision_epsilon=epsilon)<=epsilon:result.append((i,j))
     return result
 
 def surface_relation(distance,epsilon_contact,epsilon_near):

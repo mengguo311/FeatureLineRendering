@@ -13,7 +13,7 @@ def extract(scene):
     from data_access import config,frames,training_view
     from metrics import visible_band,profiles
     from stable_ids import Identity
-    from adjacency import center_pairs,ellipsoid_pairs
+    from adjacency import center_pairs,ellipsoid_pairs,SOLVER_AUDIT
     from utils.general_utils import build_rotation
     cfg=config();checkpoint=OUT/'models'/scene/f'chkpnt{cfg["training"]["iterations"]}.pth'
     m=load_checkpoint(checkpoint);N=len(m.get_xyz)
@@ -62,6 +62,10 @@ def extract(scene):
         'label_counts':{str(k):int((labels==k).sum()) for k in (-1,0,1,2)},
         'identity_sha256':sha(directory/'identity.json'),'fixed_labels_sha256':sha(directory/'fixed_labels.npz'),
         'initial_checkpoint_sha256':sha(checkpoint),'C0_time_seconds':t0,'C1_time_seconds':t1,
+        'C1_distance_certificate_count':len(SOLVER_AUDIT),
+        'C1_uncertified_decisions':sum(not x['decision_certified'] for x in SOLVER_AUDIT),
+        'C1_max_distance_interval':max((x['upper']-x['lower'] for x in SOLVER_AUDIT),default=0),
+        'C1_scipy_unsuccessful_but_certified':sum(not x['scipy_success'] for x in SOLVER_AUDIT),
         'source':code_identity(),'guard':guard,'observed_profiles':observed,'reference_profiles':reference,
         'diagnosis_hypotheses':['native_training_reconstruction_error'] if decision=='hard_edge_color_only' else [],
         'explicit_target':{'task':'A','source':'training_reference_RGB','target_width':'measured per-view, not threshold backprop'}}

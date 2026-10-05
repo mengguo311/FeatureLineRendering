@@ -35,7 +35,9 @@ def unit(name,args,outputs):
         atomic_json(ART/'STATUS.json',{'state':'UNIT_FAILED','unit':name,'returncode':ret,'log':str(log)})
         raise RuntimeError('unit failed '+name)
     atomic_json(seal,{'unit':name,'command':[PYTHON,*args],'start_unix':start,'duration_seconds':time.time()-start,
-        'guard':guard,'returncode':ret,'outputs':{str(p):sha(p) for p in outputs},'log_sha256':sha(log)})
+        'guard':guard,'returncode':ret,'outputs':{str(p):sha(p) for p in outputs},'log_sha256':sha(log),
+        'config_sha256':sha(EXP/'configs/pilot.json'),'data_freeze_sha256':sha(EXP/'data/manifests/data_freeze.json'),
+        'script_sha256':sha(args[0])})
 
 def run(scenes):
     scripts=EXP/'scripts';cfg=json.loads((EXP/'configs/pilot.json').read_text())
@@ -49,6 +51,8 @@ def run(scenes):
         methods=['B0','B1','B3_uniform','B6']
         if scene=='panels_high':methods+=['B4_mask_only','B4_official']
         for method in methods:
+            if method.startswith('B4'):
+                unit('B4_native_calibration',[str(scripts/'calibrate_cob.py')],[ART/'environment/cob_calibration.json'])
             script='run_cob.py' if method.startswith('B4') else 'run_controls.py'
             args=[str(scripts/script),scene]
             if method=='B4_mask_only':args+=['--mask-only']
