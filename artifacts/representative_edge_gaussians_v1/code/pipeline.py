@@ -30,7 +30,7 @@ def stage(check=False):
   subprocess.run([sys.executable,'-B',str(ART/'code'/cmd[0])]+cmd[1:],check=True)
   if prior and sha(OUT/'F_SELECTION_SEAL/SEAL.json')!=prior:raise RuntimeError('Existing F global seal changed')
  stage(check=True)
- for script in ['projection_audit.py','finalize.py','interpret.py','supplement.py','ledger.py']:
+ for script in ['projection_audit.py','finalize.py','interpret.py','supplement.py','ledger.py','verify_delivery.py']:
   subprocess.run([sys.executable,'-B',str(ART/'code'/script)],check=True)
  if prior:assert sha(OUT/'F_SELECTION_SEAL/SEAL.json')==prior
 if __name__=='__main__':
