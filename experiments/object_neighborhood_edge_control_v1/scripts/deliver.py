@@ -145,7 +145,10 @@ def assemble():
               'P4': None, 'P5': None, 'P6': None, 'P7': 'CURATED_PILOT_DELIVERY_COMPLETE'}
     final = {'created_utc': datetime.now(timezone.utc).isoformat(), 'branch': 'object-neighborhood-edge-control-v1',
         'immutable_base': '8deeb1d6f12ef813c4ff20cbd4992410311d92ba', 'scientific_freeze_code_commit': frozen['code']['commit'],
-        'publication_commit': 'git rev-parse HEAD after publication commit; remote readback recorded separately',
+        'publication_commit': read(ART/'source_bindings/remote_readback.json')['verified_artifact_commit']
+                              if (ART/'source_bindings/remote_readback.json').exists() else None,
+        'publication_commit_scope': 'complete scientific artifact commit before the readback metadata commit',
+        'publication_readback_receipt': str(ART/'source_bindings/remote_readback.json'),
         'milestones': status, 'formal_completed': False, 'human_visual_GO': None, 'seed_count': 1,
         'natural_baseline_trained_scenes': 3, 'scene_summary': scenes,
         'heldout_scope': {'high_test_views_per_checkpoint': 12, 'frozen_checkpoints_evaluated': len(frozen['checkpoints']),
