@@ -7,6 +7,7 @@ from runtime import EXP,OUT,atomic_json,resource_guard,sha,code_identity,assert_
 
 def extract(scene):
     assert_training_open(scene)
+    execution_source=code_identity()
     guard=resource_guard()
     import numpy as np
     import torch
@@ -19,7 +20,7 @@ def extract(scene):
     cfg=config();checkpoint=OUT/'models'/scene/f'chkpnt{cfg["training"]["iterations"]}.pth'
     m=load_checkpoint(checkpoint);N=len(m.get_xyz)
     support=torch.zeros((N,3),device='cuda');band_mass=torch.zeros(N,device='cuda');total_mass=torch.zeros(N,device='cuda')
-    observed=[];reference=[];timings=[]
+    observed=[];reference=[];per_view=[];band_by_view=[];total_by_view=[]
     for frame in frames('train'):
         view=training_view(scene,frame);cam=make_camera(frame,cfg['resolution'],cfg['camera_angle_x'])
         c=torch.zeros((N,3),device='cuda',requires_grad=True)
@@ -29,8 +30,11 @@ def extract(scene):
         band,_=visible_band(view['instance'],cfg['selection']['band_px'])
         diag=contribution(m,cam,np.ones(N),torch.tensor(band,device='cuda'))
         band_mass+=diag['band_mass'];total_mass+=diag['total_mass']
-        observed.extend(profiles(rgb(m,cam).detach().cpu().permute(1,2,0).numpy(),view['instance']))
-        reference.extend(profiles(view['rgb'],view['instance']))
+        band_by_view.append(diag['band_mass'].cpu().numpy());total_by_view.append(diag['total_mass'].cpu().numpy())
+        obs=profiles(rgb(m,cam).detach().cpu().permute(1,2,0).numpy(),view['instance'])
+        ref=profiles(view['rgb'],view['instance']);observed.extend(obs);reference.extend(ref)
+        per_view.append({'view':frame['id'],'visibility':'visible_2D_boundary' if band.any() else 'unknown',
+                         'observed_profiles':obs,'reference_profiles':ref})
     prob=(support/support.sum(1,keepdim=True).clamp_min(1e-8)).cpu().numpy()
     maxp=prob.max(1);raw=prob.argmax(1);labels=np.array([1,2,0])[raw]
     labels[maxp<cfg['selection']['label_confidence']]=-1
@@ -40,7 +44,8 @@ def extract(scene):
     directory=OUT/'controls'/scene;directory.mkdir(parents=True,exist_ok=True)
     atomic_json(directory/'identity.json',ids.as_dict())
     np.savez_compressed(directory/'fixed_labels.npz',probability=prob,confidence=maxp,
-                        band_mass=band_mass.cpu().numpy(),total_mass=total_mass.cpu().numpy())
+                        band_mass=band_mass.cpu().numpy(),total_mass=total_mass.cpu().numpy(),
+                        band_mass_by_view=band_by_view,total_mass_by_view=total_by_view)
     start=time.monotonic();p0=center_pairs(mu,labels,cfg['selection']['center_radius']);t0=time.monotonic()-start
     L=(build_rotation(m._rotation).detach()@torch.diag_embed(m.get_scaling.detach())).cpu().numpy()
     start=time.monotonic();p1=ellipsoid_pairs(mu,L,labels,cfg['selection']['ellipsoid_k'],cfg['selection']['ellipsoid_epsilon'],workers=2);t1=time.monotonic()-start
@@ -68,10 +73,22 @@ def extract(scene):
         'C1_max_distance_interval':max((x['upper']-x['lower'] for x in SOLVER_AUDIT),default=0),
         'C1_scipy_unsuccessful_but_certified':sum(x.get('_unsuccessful',int(not x['scipy_success'])) for x in SOLVER_AUDIT),
         'C1_CPU_workers':2,'C1_threads_per_worker':1,
-        'source':code_identity(),'guard':guard,'observed_profiles':observed,'reference_profiles':reference,
+        'source':execution_source,'guard':guard,'observed_profiles':observed,'reference_profiles':reference,
         'diagnosis_hypotheses':['native_training_reconstruction_error'] if decision=='hard_edge_color_only' else [],
         'explicit_target':{'task':'A','source':'training_reference_RGB','target_width':'measured per-view, not threshold backprop'}}
     atomic_json(directory/'selection.json',result)
+    primary=np.isin(ids.uid,selections['C1']['uids'])
+    atomic_json(directory/'edge_record.json',{'pair_id':scene+'/1:2','object_a':1,'object_b':2,
+        'candidate_uids':selections['C1']['uids'],'relation_type':'Gaussian_neighborhood_proxy',
+        'spatial_confidence':{'certified_proxy_queries':True,'physical_contact':None},
+        'anchor_positions':ids.anchor[primary].tolist(),'anchor_provenance':'trained model positions, not GT',
+        'per_view_visibility':[{'view':x['view'],'value':x['visibility']} for x in per_view],
+        'per_view_width':per_view,'per_view_contrast':'DeltaE76/D65/2deg in profile records',
+        'per_view_profile_confidence':'per-profile confidence/reason in per_view_width',
+        'continuity_field':None,'diagnosis_hypotheses':result['diagnosis_hypotheses'],
+        'target_width':{'task':'A','reference':'fixed training RGB profile; null for low contrast'},
+        'target_contrast':{'task':'A','reference':'fixed training RGB'},'target_emphasis':None,
+        'edit_history':'per-method edit manifests, not merged into observations'})
     summary={k:v for k,v in result.items() if k not in ('observed_profiles','reference_profiles','selections')}
     summary['selections']={k:{'candidate_count':len(v['uids']),**{x:y for x,y in v.items() if not x.endswith('uids')}} for k,v in selections.items()}
     atomic_json(EXP/f'results/manifests/selection_{scene}.json',summary)

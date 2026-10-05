@@ -71,6 +71,7 @@ def run(scene,mask_only=False):
     # Export colour/geometry checkpoint to the common stock evaluator; drop only mask latent.
     export=tuple(cap[:7])+tuple(cap[8:])
     torch.save((export,336),directory/f'{method}.pth')
+    np.savez_compressed(directory/f'{method}_foreground_mask_latent.npz',probability=m.get_mask.detach().cpu().numpy())
     atomic_json(directory/f'{method}_identity.json',m.identity.as_dict())
     np.savez_compressed(directory/f'{method}_labels.npz',probability=m.label_probability)
     result={'scene':scene,'method':method,'executed_official_training':True,'component_only':False,

@@ -51,6 +51,15 @@ def evaluate(scene,method,group='val',save_figures=True):
         objects=diag['objects'].cpu().permute(1,2,0).numpy();alpha=diag['alpha'].cpu().numpy()
         depth=diag['depth_center_proxy'].cpu().numpy()
         metrics,profile,refprofile=evaluate_frame(im,reference,ids,objects,alpha,depth,depthgt,before)
+        metrics['mask_iou_provenance']='common frozen training-mask-supported UID labels; not official COB mask-head output'
+        if method.startswith('B4'):
+            latent=np.load(directory/f'{method}_foreground_mask_latent.npz')['probability']
+            features=torch.tensor(latent,device='cuda').reshape(-1,1).expand(-1,3).contiguous()
+            with torch.no_grad():mask_head=rgb(m,cam,features)[0].cpu().numpy()
+            foreground=mask_head>.5;truth=ids==1
+            from metrics import boundary_iou
+            metrics['COB_mask_head_foreground_iou']=float((foreground&truth).sum()/max((foreground|truth).sum(),1))
+            metrics['COB_mask_head_boundary_iou']=boundary_iou(foreground,truth)
         from perceptual import score
         band,_=visible_band(ids)
         metrics.update(score(im,reference,band))

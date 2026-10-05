@@ -31,6 +31,8 @@ def unit(name,args,outputs):
                       'P2':'PILOT_VALIDATION_IN_PROGRESS','P3':'BASELINES_PENDING_OR_PARTIAL',
                       'P4':None,'P5':None,'P6':None,'P7':'IN_PROGRESS'},'TEST_opened':False})
     log=OUT/'logs'/(name+'.txt');log.parent.mkdir(parents=True,exist_ok=True)
+    script_sha=sha(args[0])
+    source_snapshot={str(p):sha(p) for p in (EXP/'src').glob('*.py')}
     start=time.time()
     with log.open('w') as f:
         ret=subprocess.run([PYTHON,*args],cwd=EXP.parents[1],stdout=f,stderr=subprocess.STDOUT).returncode
@@ -40,7 +42,7 @@ def unit(name,args,outputs):
     atomic_json(seal,{'unit':name,'command':[PYTHON,*args],'start_unix':start,'duration_seconds':time.time()-start,
         'guard':guard,'returncode':ret,'outputs':{str(p):sha(p) for p in outputs},'log_sha256':sha(log),
         'config_sha256':sha(EXP/'configs/pilot.json'),'data_freeze_sha256':sha(EXP/'data/manifests/data_freeze.json'),
-        'script_sha256':sha(args[0])})
+        'script_sha256':script_sha,'source_snapshot_sha256':source_snapshot})
 
 def run(scenes):
     scripts=EXP/'scripts';cfg=json.loads((EXP/'configs/pilot.json').read_text())
