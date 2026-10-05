@@ -1,0 +1,72 @@
+{
+  "base_commit": "245e0560665dc45c41420f6aa2ab32782504d782",
+  "checkpoint_sha256": "cc440283b70bf62cd98dfedf24bf47383a147b70483deec4f849763f3f7847c6",
+  "selection_sha256": "0fee41d7c5071d869511ce4ba18e383579fd7b76f9c1de0927c46dcfab759284",
+  "identity_sha256": "b7b3d8f9d26735253acbc5c5d0d3f03402b895c5cc85b6879989ea84b8f2d97c",
+  "input_snapshot_sha256": "11187a61ae38e127caa7110a378257071fd7a081828bfab2dd18ff1e77e566d7",
+  "input_count": 2165,
+  "input_unchanged_after_native_integration": true,
+  "native_operator_actual_checkpoint_tests": [
+    {
+      "reconstruction_max_abs": 4.76837158203125e-07,
+      "adjoint_relative_error": 3.7532330884414113e-08,
+      "dot_Ax_y": 29.72673492305016,
+      "dot_x_ATy": 29.726733807336508,
+      "selected_count": 1379,
+      "scalar_observations": 40209,
+      "interval_necessary_mse_lower": 0.003974718790757084,
+      "noncandidate_color_max": 1.225698709487915,
+      "storage": "O(N+views*band_pixels), no dense N*H*W",
+      "normalization": "each view equal weight; A rows weighted sqrt(M/(V*3*band_pixels)); MSE=2P/M"
+    },
+    {
+      "reconstruction_max_abs": 0.0,
+      "adjoint_relative_error": 2.447442509422269e-06,
+      "dot_Ax_y": -11.199241661522816,
+      "dot_x_ATy": -11.199269071090015,
+      "selected_count": 10659,
+      "scalar_observations": 40209,
+      "interval_necessary_mse_lower": 3.802385586568337e-08,
+      "noncandidate_color_max": null,
+      "storage": "O(N+views*band_pixels), no dense N*H*W",
+      "normalization": "each view equal weight; A rows weighted sqrt(M/(V*3*band_pixels)); MSE=2P/M"
+    }
+  ],
+  "original_training_source_commit": "d2f31e0fa2809a39337134252b4372826ad2e29a",
+  "original_training_source_hashes": {
+    "experiments/object_neighborhood_edge_control_v1/tests/test_profiles.py": "81bc295c136f7d50a3a390f20d3fea101f8b34f72067abd0274e90b341182abf",
+    "experiments/object_neighborhood_edge_control_v1/tests/test_alpha_compositing.py": "93da6506a223bffe45b75da21ab05abc7c8a39e34f2a7aba2c30553f4654438a",
+    "experiments/object_neighborhood_edge_control_v1/tests/test_split_identity.py": "22703ffa92fd7c434ea9f42e8717bdd1ce6d6d2296175b77a15bd9b154899af5",
+    "experiments/object_neighborhood_edge_control_v1/tests/test_ellipsoid_candidates.py": "7d8a7a98a0d9f7fe35e6f143d0684b5e015c81cb941e33f98bb8884c86dbbb4b",
+    "experiments/object_neighborhood_edge_control_v1/tests/test_native.py": "685c3886b103a79921324d5a7f6d8b120af3a3663289c5df5802dc05368433c9",
+    "experiments/object_neighborhood_edge_control_v1/configs/pilot.json": "a3260584d8ce570bdf08be2914194bbd3ec59b304251337dd0abfb74bc77ffbd",
+    "experiments/object_neighborhood_edge_control_v1/src/runtime.py": "93e2a58919018bedcdcb68b93debd375a59d01251144ba5ea1e4f678db02e637",
+    "experiments/object_neighborhood_edge_control_v1/src/native.py": "b30b3df169ef8c5cbb4d880d40404055bfe9e72e5c91d5077c5cb4023a4dc3e6",
+    "experiments/object_neighborhood_edge_control_v1/src/edge_profiles.py": "efc16db51d38e8c67eb2cd0a0774483c4a00557a2fc84bfcd4bb774692dc4b09",
+    "experiments/object_neighborhood_edge_control_v1/src/adjacency.py": "4598789db5cdde8c2580e3c38de47ced7fd9e7e6a383d1575cc2fe03f54f4d15",
+    "experiments/object_neighborhood_edge_control_v1/src/metrics.py": "e7115198d164eb54d9a1c9cdbf696f8a3a2ed797619dae264e2d6895c5ab6ee4",
+    "experiments/object_neighborhood_edge_control_v1/src/contribution.py": "70af04c254f561a1ec9c13a5ce7172e707d55e6d2fc3f4510099cdc8fa60111d",
+    "experiments/object_neighborhood_edge_control_v1/src/targets.py": "57579e320027a3919d36e8c169501e4942c7fb709b291de69746716c720cb9aa",
+    "experiments/object_neighborhood_edge_control_v1/src/renderer_adapter.py": "79a467d984f12d99d823f668eff6aa5a435d7dba5945a708bd144f4f7d09b1e5",
+    "experiments/object_neighborhood_edge_control_v1/src/data_access.py": "65fbbfbaa40b60ba5784a518a561ee9a45e39610d26085182d9d03bf28b40da0",
+    "experiments/object_neighborhood_edge_control_v1/src/stable_ids.py": "61f13b60c0b82659682a345cbd06e2c6bf352ce0ced70adff8412a9e60556a20",
+    "experiments/object_neighborhood_edge_control_v1/data/manifests/data_freeze.json": "ece9ce217e4ce4c6f6a2d1bfbcf9c67ea051407c6c1e157ab3ac6dec2e20bf47",
+    "experiments/object_neighborhood_edge_control_v1/data/manifests/cameras.json": "3ffe73f03e4ed5a708c9879d9763113874aaa81e45a66e8a1d2324979cb15edc",
+    "experiments/object_neighborhood_edge_control_v1/scripts/generate_scenes.py": "6e078542391ba7d76234eb24bb1dafddefa94f4e046ce2d6c741d3b1c78758d5",
+    "experiments/object_neighborhood_edge_control_v1/scripts/train_baseline.py": "ef70070b336ed9d8f9d91b31417e1898d436d202162cb8ed8de0d1095786a701",
+    "experiments/object_neighborhood_edge_control_v1/scripts/tdd.py": "495bd9227611c4b98d1f6d56dbd76e8234c3fd45824c2cf66d43e62666fe2222",
+    "experiments/object_neighborhood_edge_control_v1/scripts/build_native.py": "54b5588f7a75aea73b61b56c35af5f432a6aab4a7fbddb45a7f1ef7df96fda91"
+  },
+  "G00_policy": "rerun all four arms with same native training loop; no unverifiable reuse claim",
+  "guard": {
+    "utc": "2026-10-05T08:56:54Z",
+    "root_free_bytes": 126837735424,
+    "git_free_bytes": 52578795520,
+    "stage_bytes": 62129643,
+    "foreign_gpu0_count": 0
+  },
+  "python": "/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python",
+  "torch_version": "2.3.1+cu121",
+  "gpu": "NVIDIA RTX A6000",
+  "test_state": "TEST_CLOSED"
+}

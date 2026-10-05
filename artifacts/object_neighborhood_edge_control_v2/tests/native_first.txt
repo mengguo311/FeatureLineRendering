@@ -1,0 +1,24 @@
+test_dual_valid_arbitrary_y_and_normalization (test_contract.ContractTests) ... ok
+test_readonly_boundary (test_contract.ContractTests) ... ok
+test_reclassify_extra_supervision (test_contract.ContractTests) ... ok
+test_roles_reject_transform_leak (test_contract.ContractTests) ... ok
+test_native_v2 (unittest.loader._FailedTest) ... ERROR
+
+======================================================================
+ERROR: test_native_v2 (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_native_v2
+Traceback (most recent call last):
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/unittest/loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/unittest/loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "/home/u00134/3dgs_line/object_neighborhood_edge_control_v2/experiments/object_neighborhood_edge_control_v2/tests/test_native_v2.py", line 6, in <module>
+    from operator import ColorOperator
+ImportError: cannot import name 'ColorOperator' from 'operator' (/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/operator.py)
+
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+FAILED (errors=1)

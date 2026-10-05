@@ -1,0 +1,11 @@
+{
+  "seed":1729,"resolution":512,"supersample":2,"camera_angle_x":0.8,"camera_radius":3.8,
+  "scene":"panels_high","r1_iterations":600,"r1_mse_tolerance":0.0001,"r1_gap_tolerance":0.000001,
+  "r1_margin_mse":0.0000003,"r3_steps":336,"outside_weight":1.0,"coverage_weight":1.0,
+  "color_lr":0.0025,"scale_lr":0.001,"rotation_lr":0.0005,
+  "scale_log_bound":0.22314355131420976,"rotation_delta_bound":0.1,
+  "oracle_plane_weight":0.1,"oracle_thickness_weight":0.1,"oracle_tau":0.015,"scene_scale":1.0,
+  "gate":{"dev_out_band_improvement":0.1,"dev_in_band_mse_increase_max":0.00001,"psnr_drop_db_max":0.2,"holes_increase_max":0.001},
+  "test_new_condition":{"geometry":"coplanar_panels","size_scale":1.17,"pose_y_deg":11,"pose_z_deg":7,"note":"independent geometry size and pose; cameras frozen, target not generated while TEST_CLOSED"},
+  "formal_stage":"multiple scenes x 3 seeds only after all dev gates and independent method advantage"
+}
