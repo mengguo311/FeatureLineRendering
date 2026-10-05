@@ -33,18 +33,52 @@
       },
       "submodules/diff-gaussian-rasterization/LICENSE.md": {
         "sha256": "cd5c95b3cfff3acc1bd412420c770f88809331c3db6872df11a970147aa8e81f",
-        "citation": "https://github.com/graphdeco-inria/gaussian-splatting/blob/472689c0dc70417448fb451bf529ae532d32c095/submodules/diff-gaussian-rasterization/LICENSE.md"
+        "citation": "https://github.com/graphdeco-inria/diff-gaussian-rasterization/blob/59f5f77e3ddbac3ed9db93ec2cfe99ed6c5d121d/LICENSE.md"
       },
       "submodules/diff-gaussian-rasterization/cuda_rasterizer/forward.cu": {
         "sha256": "83c182561b9f75e93b7b72a24aaf1fce507388a0198aa4a56137d25deabcd6c8",
-        "citation": "https://github.com/graphdeco-inria/gaussian-splatting/blob/472689c0dc70417448fb451bf529ae532d32c095/submodules/diff-gaussian-rasterization/cuda_rasterizer/forward.cu"
+        "citation": "https://github.com/graphdeco-inria/diff-gaussian-rasterization/blob/59f5f77e3ddbac3ed9db93ec2cfe99ed6c5d121d/cuda_rasterizer/forward.cu"
       },
       "submodules/diff-gaussian-rasterization/cuda_rasterizer/backward.cu": {
         "sha256": "f37bd8192453b05b299c54d060649ab12d114d46cef0a54d728fc130f23c99d6",
-        "citation": "https://github.com/graphdeco-inria/gaussian-splatting/blob/472689c0dc70417448fb451bf529ae532d32c095/submodules/diff-gaussian-rasterization/cuda_rasterizer/backward.cu"
+        "citation": "https://github.com/graphdeco-inria/diff-gaussian-rasterization/blob/59f5f77e3ddbac3ed9db93ec2cfe99ed6c5d121d/cuda_rasterizer/backward.cu"
       }
     },
-    "read_entrypoints": true
+    "read_entrypoints": true,
+    "submodules_exact": {
+      "submodules/diff-gaussian-rasterization": {
+        "commit": "59f5f77e3ddbac3ed9db93ec2cfe99ed6c5d121d",
+        "origin": "https://github.com/graphdeco-inria/diff-gaussian-rasterization",
+        "files": {
+          "LICENSE.md": {
+            "sha256": "cd5c95b3cfff3acc1bd412420c770f88809331c3db6872df11a970147aa8e81f",
+            "citation": "https://github.com/graphdeco-inria/diff-gaussian-rasterization/blob/59f5f77e3ddbac3ed9db93ec2cfe99ed6c5d121d/LICENSE.md"
+          },
+          "cuda_rasterizer/forward.cu": {
+            "sha256": "83c182561b9f75e93b7b72a24aaf1fce507388a0198aa4a56137d25deabcd6c8",
+            "citation": "https://github.com/graphdeco-inria/diff-gaussian-rasterization/blob/59f5f77e3ddbac3ed9db93ec2cfe99ed6c5d121d/cuda_rasterizer/forward.cu"
+          },
+          "cuda_rasterizer/backward.cu": {
+            "sha256": "f37bd8192453b05b299c54d060649ab12d114d46cef0a54d728fc130f23c99d6",
+            "citation": "https://github.com/graphdeco-inria/diff-gaussian-rasterization/blob/59f5f77e3ddbac3ed9db93ec2cfe99ed6c5d121d/cuda_rasterizer/backward.cu"
+          }
+        }
+      },
+      "submodules/simple-knn": {
+        "commit": "44f764299fa305faf6ec5ebd99939e0508331503",
+        "origin": "https://gitlab.inria.fr/bkerbl/simple-knn",
+        "files": {
+          "simple_knn.cu": {
+            "sha256": "1b24c6befe58c159d3d44da3c17edfffb37b5ee2bc39e7fd8970e3ab5573cef3",
+            "citation": "https://gitlab.inria.fr/bkerbl/simple-knn/-/blob/44f764299fa305faf6ec5ebd99939e0508331503/simple_knn.cu"
+          },
+          "spatial.cu": {
+            "sha256": "a08d56af7b3918c06591ce2f9ae5933c0d62b41f9c26a9a8cdc5a70d116771d1",
+            "citation": "https://gitlab.inria.fr/bkerbl/simple-knn/-/blob/44f764299fa305faf6ec5ebd99939e0508331503/spatial.cu"
+          }
+        }
+      }
+    }
   },
   "gaussian-grouping": {
     "commit": "0ab60afed3385b717c985af1d30a20f7b0884c89",
