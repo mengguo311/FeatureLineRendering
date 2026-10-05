@@ -25,6 +25,8 @@ def evaluate(scene,method,group='val',save_figures=True,tag=''):
             raise RuntimeError('TEST checkpoint does not match pre-evaluation freeze')
         if freeze['data_sha256']!=sha(EXP/'data/manifests/data_freeze.json'):
             raise RuntimeError('data freeze changed')
+        if freeze['config_sha256']!=sha(EXP/'configs/pilot.json') or freeze['cameras_sha256']!=sha(EXP/'data/manifests/cameras.json'):
+            raise RuntimeError('config or camera partition changed after freeze')
         for file,digest in freeze['evaluator_source_sha256'].items():
             if sha(Path(file))!=digest:raise RuntimeError('evaluator changed after freeze: '+file)
     identity_file=directory/(f'{method}_identity.json' if method.startswith('B4') else 'identity.json')
@@ -32,6 +34,7 @@ def evaluate(scene,method,group='val',save_figures=True,tag=''):
     m=load_checkpoint(checkpoint)
     initial=OUT/'models'/scene/f'chkpnt{cfg["training"]["iterations"]}.pth';original=load_checkpoint(initial)
     fs=json.loads((EXP/'data/manifests/cameras.json').read_text())['splits'][group]
+    data_records={r['id']:r for r in json.loads((EXP/'data/manifests/data_freeze.json').read_text())['records'][scene][group]}
     # Synchronized stock timing, identical hardware/resolution/warmup.
     cam=make_camera(fs[0],cfg['resolution'],cfg['camera_angle_x'])
     with torch.no_grad():
@@ -42,7 +45,9 @@ def evaluate(scene,method,group='val',save_figures=True,tag=''):
     rows=[];frames_manifest=[];pathdir=OUT/'renders'/scene/method/group;pathdir.mkdir(parents=True,exist_ok=True)
     for i,frame in enumerate(fs):
         cam=make_camera(frame,cfg['resolution'],cfg['camera_angle_x'])
-        with np.load(OUT/'data'/scene/group/frame['id']/'A_target.npz') as target:
+        target_file=OUT/'data'/scene/group/frame['id']/'A_target.npz'
+        if sha(target_file)!=data_records[frame['id']]['A_sha256']:raise RuntimeError('target checksum changed: '+frame['id'])
+        with np.load(target_file) as target:
             reference=target['rgb'];ids=target['instance'];depthgt=target['depth_ray_parameter']
         with torch.no_grad():
             im=rgb(m,cam).cpu().permute(1,2,0).numpy()

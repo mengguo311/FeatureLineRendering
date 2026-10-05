@@ -77,6 +77,10 @@
       "utils/loss_utils.py": {
         "sha256": "b0ce08a69de40fec92812a173ab1e2efb1e4977421447b2ab72defc7f1b0b25e",
         "citation": "https://github.com/lkeab/gaussian-grouping/blob/0ab60afed3385b717c985af1d30a20f7b0884c89/utils/loss_utils.py"
+      },
+      "config/gaussian_dataset/train.json": {
+        "sha256": "d805250fd13dd826071e0adfd2e13c530459304ff50b582c4225da39eabcf23c",
+        "citation": "https://github.com/lkeab/gaussian-grouping/blob/0ab60afed3385b717c985af1d30a20f7b0884c89/config/gaussian_dataset/train.json"
       }
     },
     "read_entrypoints": true
@@ -143,6 +147,24 @@
     "COB_signal": "backward.cu: count negative/positive mask pixel gradient signs for accepted Gaussian-pixel entries, unweighted counts",
     "COB_split": "gaussian_model.py:736-779 mean absolute relative foreground/rest counts <0.8; scale > percent_dense*extent; two samples; scale /(0.8*N); final prune_only",
     "Gaussian_Grouping": "identity-feature image CrossEntropy plus periodic 3D neighbour regularization; not equal to one-hot contribution maps",
-    "compiler_compatibility": "stock source unchanged; nvcc force-includes cstdint; simple-knn force-includes cfloat"
+    "compiler_compatibility": "stock source unchanged; nvcc force-includes cstdint; simple-knn force-includes cfloat",
+    "GaussianGrouping_exact_reg3d_defaults": {
+      "interval": 2,
+      "k": 5,
+      "lambda": 2,
+      "max_points": 300000,
+      "sample_size": 1000,
+      "identity_classes_default": 200,
+      "classifier_lr": 0.0005
+    },
+    "GaussianGrouping_train_config_exact": {
+      "densify_until_iter": 10000,
+      "num_classes": 256,
+      "reg3d_interval": 5,
+      "reg3d_k": 5,
+      "reg3d_lambda_val": 2,
+      "reg3d_max_points": 200000,
+      "reg3d_sample_size": 1000
+    }
   }
 }
