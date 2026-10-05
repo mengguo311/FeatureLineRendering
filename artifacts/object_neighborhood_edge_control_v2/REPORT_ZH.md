@@ -33,7 +33,7 @@ F10/F11 使用额外诊断监督，只是能力参照，不参加仅原 train �
 
 四组全部实际重训练，4096 初始点、SH0、同一 24 张量化线性 PNG、同一增密与学习率日程。surface 仅给 z=0 表面中心，颜色恒为 127/255，无真 UID 标签；原生最近邻尺度随初始化制度改变。oracle 正则中心离面与法向厚度，tau=0.015 场景单位，未用中心深度代替表面监督。每 epoch 保存全部训练相机 RGB 目标与几何项。
 
-| 分支 | 初始化 | oracle | 最终 N / 参数 | 秒 | dev-out band MSE | dev-out W |
+| 分支 | 初始化 | oracle几何约束 | 最终 N / 参数 | 秒 | dev-out band MSE | dev-out W |
 |---|---|---|---:|---:|---:|---:|
 |G00|byte-exact original seeded random-volume point cloud; native nearest-neighbour scale|False|10628 / 148792|80.6|0.00721988|3.63427|
 |G10|uniform known z=0 panel surface; native nearest-neighbour scale|False|14054 / 196756|83.8|0.00053732|1.00287|
@@ -131,3 +131,5 @@ R0 的相机横向协方差投影宽度、贡献权重、量化误差底限，�
 |dev-out|44 / 4|6.38482|3.65977|1.07926|1.09918|0.636812|
 
 逐相机共同索引与各自拒绝情况见 [R2_COMMON_PROFILES.json](results/R2_COMMON_PROFILES.json) 和各方法逐剖面结果；band MSE仍评价所有固定band像素。
+
+表面初始化本身也使用合成几何 oracle。G10 的“RGB-only”只指训练损失，不是无几何先验的纯 RGB 系统；G01 使用 oracle 正则，G11 同时使用 oracle 初始化与正则。没有任何分支使用 oracle 目标颜色或真正 Gaussian UID 标签初始化。
