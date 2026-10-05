@@ -51,5 +51,10 @@
   "identity_sha256": "b7b3d8f9d26735253acbc5c5d0d3f03402b895c5cc85b6879989ea84b8f2d97c",
   "labels_sha256": "ad16be99ad995f1e14afd2689613fd2d16924be4e8a8fb356834b19e08c6ec57",
   "permission_boundary": "v1 disk libraries/source/input copied into GPU tensors or separate v2 files, no hardlinks; all writer interfaces restricted to v2 subtrees",
-  "original_documents_unchanged": true
+  "original_documents_unchanged": true,
+  "revision2": {
+    "fit_precision": "train byte-exact 8bit linear PNG; diagnostic reference rounded to same 8bit grid; evaluation preserves float target",
+    "probe_bounds": "preserve native initial effective colors >1 in recoverability probe only, box upper per UID derived from perturbed checkpoint; R1/R3 retain [0,1]",
+    "solver_inputs": "R4 consumes only perturbed checkpoint, target renders, frozen UID masks; no original checkpoint/identity anchors read by optimizer"
+  }
 }

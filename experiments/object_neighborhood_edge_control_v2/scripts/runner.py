@@ -26,7 +26,10 @@ def main():
         assert source_hashes()==freeze['source_hashes'],'source changed during production'
         sealpath=OUT/'seals'/f'{name}.json'
         if sealpath.exists():
-            sealed=json.loads(sealpath.read_text());assert sealed['identity']==identity
+            sealed=json.loads(sealpath.read_text())
+            if sealed['identity']!=identity:
+                reuse=json.loads((ART/'VERIFIED_REUSE.json').read_text());assert name in reuse['units'];assert sealed['identity']==reuse['old_identity'];assert sha(sealpath)==reuse['seal_hashes'][name]
+            else:assert sealed['identity']==identity
             for p,h in sealed['outputs'].items():assert sha(ROOT/p)==h,('sealed output modified',p)
             completed.append(name);print('VERIFIED_SKIP',name,flush=True);return get_result(name)
         while True:

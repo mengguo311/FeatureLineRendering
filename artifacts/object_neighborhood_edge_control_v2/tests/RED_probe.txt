@@ -1,0 +1,23 @@
+test_known_recoverable_probe_keeps_native_initial_color_feasible (test_probe.ProbeTests) ... FAIL
+test_probe_bounds_derived_only_from_perturbed_native_colors (test_probe.ProbeTests) ... FAIL
+
+======================================================================
+FAIL: test_known_recoverable_probe_keeps_native_initial_color_feasible (test_probe.ProbeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/object_neighborhood_edge_control_v2/experiments/object_neighborhood_edge_control_v2/tests/test_probe.py", line 9, in test_known_recoverable_probe_keeps_native_initial_color_feasible
+    self.assertTrue(torch.equal(probe_color_projection(initial,initial),initial))
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_probe_bounds_derived_only_from_perturbed_native_colors (test_probe.ProbeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/object_neighborhood_edge_control_v2/experiments/object_neighborhood_edge_control_v2/tests/test_probe.py", line 13, in test_probe_bounds_derived_only_from_perturbed_native_colors
+    self.assertTrue(torch.allclose(got,torch.tensor([[1.22,0.,1.]])))
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.010s
+
+FAILED (failures=2)

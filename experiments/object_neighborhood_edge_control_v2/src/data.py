@@ -44,6 +44,7 @@ def view(frame,role):
     z=np.load(OUT/'data'/role/(frame['id']+'.npz'))
     r={k:z[k] for k in z.files};r['float_rgb']=r['rgb'].copy()
     if role=='train':r['rgb']=np.asarray(Image.open(OUT/'data/native_train'/(frame['id']+'.png')),dtype=np.float32)[...,:3]/255
+    elif role=='diagnostic-supervision':r['rgb']=(np.round(r['rgb']*255)/255).astype(np.float32)
     return r
 
 def input_snapshot():

@@ -18,3 +18,5 @@ cat out/object_neighborhood_edge_control_v2/STATUS.json
 `tests/RED*.txt` 保存新增接口的真实先失败记录；`GREEN_all.txt` 与原 checkpoint 数值记录保存实际验证。`results/*.json` 保存全部迭代/每 epoch 全相机日志、P/D/gap、各角色逐视角指标与共同剖面。原始大 checkpoint、渲染 PNG 和执行 stderr 仅留忽略 out，不推送。
 
 视频通过只读 v1 stage 的 FFmpeg 二进制编码，完整36帧原生开发渲染，H264/yuv420p/faststart；`results/MEDIA.json` 保存全帧解码SHA。同视角放大图三列为参考/B0/该方法，展示采用 sRGB OETF，数值评价在线性RGB。
+
+目标精度修正记录见 `TARGET_PRECISION_CORRECTION.json`。第二次生产冻结统一诊断监督与 train 的量化精度，浮点评价真值保留；F10/F11 旧结果仅存忽略 out 的 superseded/run1，不进入主表。R0/F00/F01及其 outside 单元的拟合输入未改变，`VERIFIED_REUSE.json` 核对原 source seal 身份与每个输出 SHA 后复用。R4 尚未启动时已修正 recoverability 色彩范围：仅该探针允许每 UID 的上界 max(1,扰动 checkpoint 有效颜色)，保证原颜色可行；优化器只读取扰动 checkpoint/目标渲染/UID mask，不读取原 scale 或倍率。`SOURCE_FREEZE_run1.json` 保留第一版源码 hash。

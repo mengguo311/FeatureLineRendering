@@ -1,0 +1,14 @@
+test_diagnostic_fit_precision_matches_native_training_png (test_precision.PrecisionTests) ... FAIL
+
+======================================================================
+FAIL: test_diagnostic_fit_precision_matches_native_training_png (test_precision.PrecisionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/object_neighborhood_edge_control_v2/experiments/object_neighborhood_edge_control_v2/tests/test_precision.py", line 10, in test_diagnostic_fit_precision_matches_native_training_png
+    self.assertLess(np.max(np.abs(v['rgb']*255-np.round(v['rgb']*255))),1e-5)
+AssertionError: 0.47499943 not less than 1e-05
+
+----------------------------------------------------------------------
+Ran 1 test in 0.067s
+
+FAILED (failures=1)

@@ -218,12 +218,13 @@ def make_recoverable_probe(manifest):
     save_model(m,path)
     atomic_json(OUT/'probe/injector_oracle.json',{'UIDs':uids[chosen].tolist(),'original_checkpoint_sha256':sha(CHECKPOINT),'amplitude':1.5,'original_scale':load_checkpoint(CHECKPOINT)._scaling[chosen].detach().cpu().tolist(),'solver_forbidden_inputs':['injector_oracle.json','original_checkpoint','actual_amplitude'],'target_source':'unperturbed B0 native render, recoverable original scales exist'})
     atomic_json(OUT/'probe/known_uids.json',{'uids':uids[chosen].tolist()})
+    atomic_json(OUT/'probe/solver_uid_inputs.json',{'uids':uids.tolist(),'labels':labels.tolist(),'C1_mask':sel.tolist(),'known_mask':np.isin(np.arange(len(uids)),chosen).tolist()})
     return {'known_count':32,'perturbed_sha256':sha(path)}
 
 def solve_probe(manifest,name,scope,cov):
     # Only perturbed checkpoint, UID set and target images enter solver; original scales/amplitude unavailable here.
-    initial=OUT/'probe/perturbed.pth';m=load_checkpoint(initial);uids,labels,sel=selection()
-    known=json.loads((OUT/'probe/known_uids.json').read_text())['uids'];mask=torch.tensor(sel if scope=='C1' else np.isin(uids,known) if scope=='known' else np.ones(len(uids),bool),device='cuda')
+    initial=OUT/'probe/perturbed.pth';m=load_checkpoint(initial);uiddata=json.loads((OUT/'probe/solver_uid_inputs.json').read_text());uids=np.asarray(uiddata['uids']);labels=np.asarray(uiddata['labels']);sel=np.asarray(uiddata['C1_mask'])
+    mask=torch.tensor(sel if scope=='C1' else np.asarray(uiddata['known_mask']) if scope=='known' else np.ones(len(uids),bool),device='cuda');initial_colors=effective(m).clone()
     views=prepare(manifest,m,('train',))
     for v in views:
         target=torch.tensor(np.load(OUT/'probe/targets'/(v['frame']['id']+'.npy')),device='cuda');v['target']=target;v['base']=target
@@ -239,11 +240,11 @@ def solve_probe(manifest,name,scope,cov):
                 p=getattr(m,k)
                 if k not in ('_features_dc','_scaling') or (k=='_scaling' and not cov):p.copy_(original[k])
                 else:p[~mask]=original[k][~mask]
-            colors=(m._features_dc[mask]*C0+.5).clamp(0,1);m._features_dc[mask]=(colors-.5)/C0
+            colors=probe_color_projection(m._features_dc[mask]*C0+.5,initial_colors[mask,None,:]);m._features_dc[mask]=(colors-.5)/C0
             if cov:m._scaling[mask]=torch.maximum(torch.minimum(m._scaling[mask],original['_scaling'][mask]+np.log(2)),original['_scaling'][mask]-np.log(2))
         if (it+1)%24==0:trace.append({'iteration':it+1,'full_train':full_objective(m,views),'seconds':time.monotonic()-start});status(name,'RUNNING',iteration=it+1,total=336);atomic_json(OUT/'traces'/f'{name}.json',trace)
     final=full_objective(m,views);save_model(m,OUT/'checkpoints'/f'{name}.pth',initial)
-    out={'status':'COMPLETED','scope':scope,'permission':'color+scale' if cov else 'color','steps':336,'before':before,'after':final,'relative_improvement':1-sum(final.values())/max(sum(before.values()),1e-20),'perturb_valid':sum(before.values())>1e-5,'duration_seconds':time.monotonic()-start,'trace':trace,'solver_read_original_parameters':False,'solver_read_amplitude':False,'capacity_reference':scope=='all','interpretation':'controlled recoverability only, not natural-error cause; finite short optimizer budget, failure does not establish unattainability'}
+    out={'status':'COMPLETED','scope':scope,'permission':'color+scale' if cov else 'color','steps':336,'before':before,'after':final,'relative_improvement':1-sum(final.values())/max(sum(before.values()),1e-20),'perturb_valid':sum(before.values())>1e-5,'duration_seconds':time.monotonic()-start,'trace':trace,'solver_read_original_parameters':False,'solver_read_amplitude':False,'color_feasibility':'per-UID [0,max(1,perturbed_native_initial_color)]; original colors unchanged by scale injection and therefore feasible; same rule all scopes','capacity_reference':scope=='all','interpretation':'controlled recoverability only, not natural-error cause; finite short optimizer budget, failure does not establish unattainability'}
     result(name,out);return out
 
 def fit_band_outside(manifest,source_name,name):
@@ -271,3 +272,6 @@ def fit_band_outside(manifest,source_name,name):
             trace.append({'iteration':it+1,'band_mse':float(np.mean([x['band_mse'] for x in vals])),'outside_mse':float(np.mean([x['outside_mse'] for x in vals])),'seconds':time.monotonic()-start});status(name,'RUNNING',iteration=it+1,total=300);save_model(m,OUT/'checkpoints'/f'{name}.pth');atomic_json(OUT/'traces'/f'{name}.json',trace)
     out={'status':'COMPLETED','trigger':'source arm band-only feasible upper MSE <= fixed 1e-4','source_arm':source_name,'loss':'equal-view mean band MSE + equal-view mean outside MSE to original B0','fit_roles':sorted(set(v['role'] for v in fit)),'steps':300,'trace':trace,'optimizer':'native matrix-free FISTA with nonnegative row/column mass Lipschitz bound','checkpoint_sha256':sha(OUT/'checkpoints'/f'{name}.pth'),'metrics':assess(m,views,labels,name,[v['frame']['theta_deg'] for v in fit],True),'claim':'finite feasible error only; outside constraint introduces additional coupling, no new lower-bound claim'}
     result(name,out);return out
+
+def probe_color_projection(colors,initial_colors):
+    return torch.minimum(colors.clamp_min(0),torch.maximum(torch.ones_like(initial_colors),initial_colors))
