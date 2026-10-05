@@ -27,6 +27,9 @@ def score(image,reference,band):
     fmap,mean,parameters=flip.evaluate(np.clip(reference,0,1).astype(np.float32),np.clip(image,0,1).astype(np.float32),
         'LDR',inputsRGB=False,applyMagma=False,parameters={'ppd':67.0})
     fmap=np.asarray(fmap).squeeze()
+    # LDR API returns +/-inf for HDR exposure settings that are not applicable.
+    parameters={k:(None if isinstance(v,(float,np.floating)) and not np.isfinite(v) else v)
+                for k,v in parameters.items()}
     return {'LPIPS':full,'LPIPS_edge_crop':crop_score,'FLIP':float(mean),
             'FLIP_band':float(fmap[band].mean()) if band.any() else None,
             'LPIPS_color_space':'sRGB OETF, normalized [-1,1]',
