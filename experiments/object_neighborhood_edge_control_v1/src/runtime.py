@@ -12,6 +12,10 @@ EXP = ROOT / 'experiments/object_neighborhood_edge_control_v1'
 ART = ROOT / 'artifacts/object_neighborhood_edge_control_v1'
 OUT = ROOT / 'out/object_neighborhood_edge_control_v1'
 PYTHON = '/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python'
+os.environ.setdefault('CUDA_CACHE_PATH',str(OUT/'cache/cuda'))
+os.environ.setdefault('TORCH_EXTENSIONS_DIR',str(OUT/'build'))
+os.environ.setdefault('TMPDIR',str(OUT/'tmp'))
+(OUT/'tmp').mkdir(parents=True,exist_ok=True)
 
 def sha(path):
     h = hashlib.sha256()
