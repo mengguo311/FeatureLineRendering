@@ -1,0 +1,545 @@
+--- readonly-reference/config.json
++++ newstage/config.json
+@@ -1,37 +1,139 @@
+ {
+   "schema": "representative-fixed-original-gaussian-v1",
+-  "model": "gpt-6.1-sol", "reasoning_effort": "xhigh",
+-  "base_sha": "20f85a15c3d3c382b94b83e8b6aa501c72009e70",
+-  "F": [1,14,27,41,53,67,79,93], "C": [7,21,33,47,59,73,86,99], "arc_count": 33,
+-  "scenes": ["mic","materials"], "sigmas_pixels": [0.8,1.6,3.2],
+-  "normalization": "Mic eight F only, each scale/class positive ROI P99; Materials inherits unchanged",
+-  "normalization_percentile": 99, "evidence_threshold": 0.1,
+-  "depth_field": "median_depth", "interior_alpha": 0.5, "foreground_alpha": 0.08,
+-  "interior_erosion_pixels": 2, "nms_step_pixels": 1,
+-  "persistence_min_scales": 2, "persistence_radius_pixels": 2,
+-  "chunk_spatial_pixels": 32, "min_component_pixels": 3,
++  "model": "gpt-6.1-sol",
++  "reasoning_effort": "xhigh",
++  "base_sha": "d5265b4b71f635bac6563ad12466e4abcd2e1ffb",
++  "F": [
++    1,
++    14,
++    27,
++    41,
++    53,
++    67,
++    79,
++    93
++  ],
++  "C": [
++    7,
++    21,
++    33,
++    47,
++    59,
++    73,
++    86,
++    99
++  ],
++  "arc_count": 33,
++  "scenes": [
++    "lego",
++    "chair",
++    "ficus"
++  ],
++  "sigmas_pixels": [
++    0.8,
++    1.6,
++    3.2
++  ],
++  "normalization": "Exact persisted previous Mic F P99 values, inherited without refit",
++  "normalization_percentile": 99,
++  "evidence_threshold": 0.1,
++  "depth_field": "median_depth",
++  "interior_alpha": 0.5,
++  "foreground_alpha": 0.08,
++  "interior_erosion_pixels": 2,
++  "nms_step_pixels": 1,
++  "persistence_min_scales": 2,
++  "persistence_radius_pixels": 2,
++  "chunk_spatial_pixels": 32,
++  "min_component_pixels": 3,
+   "chunking": "8-connected components, partition by absolute 32x32 pixel tiles; keep every tile of parent component >=3 pixels",
+   "objective_weight": "each nonempty chunk has equal weight; pixel weight proportional to evidence within chunk; each F/class total 1/24; empty class weight zero, no reassignment",
+-  "nonedge_band_pixels": 2, "nonedge_grid": "all original native800 foreground rays, not subsampled",
+-  "topk_sequence": [32,64,128], "max_topk": 128,
+-  "completeness_weighted_major_mass_min": 0.95, "completeness_major_ray_p10_min": 0.90,
++  "nonedge_band_pixels": 2,
++  "nonedge_grid": "all original native800 foreground rays, not subsampled",
++  "topk_sequence": [
++    32,
++    64,
++    128
++  ],
++  "max_topk": 128,
++  "completeness_weighted_major_mass_min": 0.95,
++  "completeness_major_ray_p10_min": 0.9,
+   "completeness_scope": "each of all16 F, weighted major uses frozen balanced omega; p10 unweighted union MAJOR foreground rays; report perclass and fullforeground/detail/offedge tails",
+-  "calibration": {"rgb_atol": 0.000003, "alpha_atol": 0.000003, "depth_atol": 0.00003, "top4_id_atol": 0, "top4_w_atol": 0.000003, "top4_depth_atol": 0.000003, "attribute_alpha_atol": 0.000003, "attribute_visibility_alpha_atol": 0, "attribute_visibility_depth_atol": 0},
+-  "min_raw_visibility_mass": 1.0, "min_visible_views": 2,
+-  "demand_fullalpha_fraction": 0.5, "lambda_grid": [0,0.1,0.3],
+-  "budgets": {"mic": [336,1007,3356], "materials": [722,2164,7213]},
+-  "arms": {"A": "historical TOP4 baseline_union independent ratio ranking, original eligible", "B": "expanded-K independent ratio: balanced major sum(omega*w/fullalpha) / equal-view foreground mean(w/fullalpha)", "C": "joint greedy lambda0", "D": "joint greedy lambda0.1", "E": "joint greedy lambda0.3"},
++  "calibration": {
++    "rgb_atol": 3e-06,
++    "alpha_atol": 3e-06,
++    "depth_atol": 3e-05,
++    "top4_id_atol": 0,
++    "top4_w_atol": 3e-06,
++    "top4_depth_atol": 3e-06,
++    "attribute_alpha_atol": 3e-06,
++    "attribute_visibility_alpha_atol": 0,
++    "attribute_visibility_depth_atol": 0
++  },
++  "min_raw_visibility_mass": 1.0,
++  "min_visible_views": 2,
++  "demand_fullalpha_fraction": 0.5,
++  "lambda_grid": [
++    0,
++    0.1,
++    0.3
++  ],
++  "budgets": {},
++  "arms": {
++    "A": "Exact historical TOP4 baseline_union; same algorithm newly computed from each scene F, inherited historical Mic-only evidence normalization",
++    "B": "expanded-K independent ratio: balanced major sum(omega*w/fullalpha) / equal-view foreground mean(w/fullalpha)",
++    "C": "joint greedy lambda0",
++    "D": "joint greedy lambda0.1",
++    "E": "joint greedy lambda0.3"
++  },
+   "leakage_cost": "per-ID mean(w/fullalpha) over each view foreground offedge rays, zero for absent ID; average over eight F; preserve raw full-grid mass and class counterevidence",
+   "early_stop": "net marginal <=1e-15; no padding; all count mismatches explicit, baseline at actual joint count additionally evaluated",
+-  "ties": "ascending original ID", "coverage_matching": "F utility at A middle budget; earliest available prefix attaining it, otherwise null; chosen before any C/arc raw reads",
++  "ties": "ascending original ID",
++  "coverage_matching": "F utility at A middle budget; earliest available prefix attaining it, otherwise null; chosen before any C/arc raw reads",
+   "projection": "native full original model opacity/transmittance, fixed ID fields, black bg; RGB SH0 clipped DC white bg; no deletion, no perview masking or clipping",
+-  "native_thresholds": {"kernel_size": 0, "near_plane": 0.01, "far_plane": 100, "alpha_max": 0.99, "alpha_skip_below": 0.00392156862745098, "early_termination_T": 0.0001},
+-  "display_gain": 1, "display": "original Q contribution white-to-black; gain1 all arms, no ink mass matching",
++  "native_thresholds": {
++    "kernel_size": 0,
++    "near_plane": 0.01,
++    "far_plane": 100,
++    "alpha_max": 0.99,
++    "alpha_skip_below": 0.00392156862745098,
++    "early_termination_T": 0.0001
++  },
++  "display_gain": 1,
++  "display": "original Q contribution white-to-black; gain1 all arms, no ink mass matching",
+   "evaluation": "all8F+all8C all three budgets and count/coverage matched operatingpoints; all33arc middle budget all5arms; full native field projection required for final comparisons",
+-  "ink_thresholds": [0.01,0.1,0.5], "video_fps": 8,
+-  "science_budget_bytes": 8589934592, "root_reserve_bytes": 2147483648, "git_reserve_bytes": 1073741824,
+-  "cpu_threads": 2, "gpu_initial": 0, "initial_max_wall_seconds": 5400,
+-  "stage_deadline": "2026-10-05T00:41:34+00:00",
+-  "allowed_outputs": ["artifacts/representative_edge_gaussians_v1","out/representative_edge_gaussians_v1"],
+-  "prohibited": ["TEST","mesh","human line labels","retraining","old-data writes","C/arc tuning","center linking","geometric edge accuracy claims"]
++  "ink_thresholds": [
++    0.01,
++    0.1,
++    0.5
++  ],
++  "video_fps": 8,
++  "science_budget_bytes": 10737418240,
++  "root_reserve_bytes": 2147483648,
++  "git_reserve_bytes": 1073741824,
++  "cpu_threads": 2,
++  "gpu_initial": 0,
++  "initial_max_wall_seconds": 7200,
++  "stage_deadline": "2026-10-05T02:42:48.827656+00:00",
++  "allowed_outputs": [
++    "artifacts/representative_edge_gaussians_three_v1",
++    "out/representative_edge_gaussians_three_v1"
++  ],
++  "prohibited": [
++    "TEST",
++    "mesh",
++    "human line labels",
++    "retraining",
++    "old-data writes",
++    "C/arc tuning",
++    "center linking",
++    "geometric edge accuracy claims"
++  ],
++  "scene_display": {
++    "lego": "Lego",
++    "chair": "Chair",
++    "ficus": "tree / Ficus (ficus)"
++  },
++  "budget_rule": "historical legacy_core.rank_tiers: ceil(old TOP4 A eligible count * [1,3,10]/100), same original-ID counts all arms; sealed before selection",
++  "stage_start": "2026-10-05T00:42:48.827656+00:00"
+ }
+--- readonly-reference/evaluate.py
++++ newstage/evaluate.py
+@@ -8,7 +8,7 @@
+ from native_attributes import NativeAttributeRenderer
+ import visuals
+ 
+-ARMLABEL={'A':'旧独立 A','B':'新独立 B','C':'联合 λ=0','D':'联合 λ=0.1','E':'联合 λ=0.3'}
++ARMLABEL={'A':'历史算法新算 A','B':'新独立 B','C':'联合 λ=0','D':'联合 λ=0.1','E':'联合 λ=0.3'}
+ def metric(alpha,e,q):
+  fg=alpha>=.08;demand=np.maximum(.5*alpha,1e-30);coverage=np.minimum(q/demand,1)
+  classes={};chunkstats={};kindvalue={}
+@@ -78,7 +78,7 @@
+ def stage():
+  verify_s0();verify(OUT/'F_SELECTION_SEAL')
+  for scene in CFG['scenes']:scene_eval(scene)
+- event('S4_NATIVE_COMPLETE',actual_poses=98)
++ event('S4_NATIVE_COMPLETE',actual_poses=147)
+ if __name__=='__main__':
+  try:stage()
+  except Exception as ex:event('ENGINEERING_STOP',requested_phase='evaluation',error=str(ex),traceback=traceback.format_exc());raise
+--- readonly-reference/finalize.py
++++ newstage/finalize.py
+@@ -16,7 +16,7 @@
+ def frontier(scene,rs,path):
+  import matplotlib;matplotlib.use('Agg');import matplotlib.pyplot as plt
+  s=load(OUT/scene/'assets/scorebank.npz');selection=json.loads((OUT/scene/'assets/selected_ids.json').read_text());fig,axs=plt.subplots(1,3,figsize=(15,4.5))
+- labels=dict(A='A old independent',B='B new independent',C='joint lambda0',D='joint lambda.1',E='joint lambda.3');colors=dict(A='black',B='gray',C='tab:blue',D='tab:orange',E='tab:green')
++ labels=dict(A='A historical algorithm new',B='B new independent',C='joint lambda0',D='joint lambda.1',E='joint lambda.3');colors=dict(A='black',B='gray',C='tab:blue',D='tab:orange',E='tab:green')
+  for arm in labels:
+   u=s[arm+'_utility_curve'];cost=s[arm+'_cumulative_nonedge_cost'];axs[0].plot(np.arange(1,len(u)+1),u,label=labels[arm],color=colors[arm]);axs[1].plot(cost,u,color=colors[arm],label=labels[arm])
+   cr=[r for r in rs if r['phase']=='C'];xs=[];ys=[]
+@@ -94,38 +94,3 @@
+   q=ART/'assets'/scene;q.mkdir(parents=True,exist_ok=True);guard(sp.stat().st_size);shutil.copyfile(sp,q/'selected_ids.json');shutil.copyfile(OUT/scene/'assets/ASSET.json',q/'ASSET.json')
+  atomic(ART/('SUMMARY_'+scene+'.json'),result);return result
+ 
+-def report(summaries,complete,media):
+- lines=['# 代表性原始 Gaussian 支持组：实际实验报告','', '本轮实际运行固定 vanilla30k 模型的独立多尺度证据、扩展贡献、联合固定ID选择和原生全模型T属性投影。当前模型为 **gpt-6.1-sol / xhigh**；基点 `.codex/config.toml` 为 **gpt-6-astra / ultra**，历史结果不改名。科学对象是固定原始Gaussian ID组，不是几何边缘恢复。','',f"S0协议提交 `2b980d1807c7f22fdfbd7b186a44830c955c505d`、测试日志提交 `9595396b7736412353eeb9a5cfd210efe678a411` 已经SSH推送并读回。S0封条 `{sha(ART/'S0_SEAL.json')}`；全部F选择封条 `{sha(OUT/'F_SELECTION_SEAL/SEAL.json') if (OUT/'F_SELECTION_SEAL/SEAL.json').exists() else '未完成'}`。",'', '## S0—S4 实际阶段','', '| 场景 | S1 F证据 | S2共同容量 | S3五组预算 | S4 F / C / arc 原生姿态 | expanded eligible / unknown |','|---|---:|---:|---|---|---|']
+- for s in summaries:
+-  scene=s['scene'];fcount=len(list((OUT/scene/'F').glob('*/SEAL.json')));a=s['asset'];counts=s['actual_counts'];lines.append(f"| {scene} | {fcount}/8 | {complete.get('available_K')} | {CFG['budgets'][scene] if a else '未运行'} | {counts['F']}/8 / {counts['C']}/8 / {counts['arc']}/33 | {str(a['eligible'])+' / '+str(a['unknown']) if a else '未运行'} |")
+- lines+=['','实际合成CPU测试：S0 8项RED→GREEN，G0扩展共13项通过（pixel/world单位、独立NMS、短组件/DETAIL、raw fullalpha需求、原始ID、饱和冗余、泄漏早停、输出约束）。独立CPU从保存的raw foreground CSR重算每场景64个ID的B分子/分母及offedge成本；全网格质量只交叉核对per-view统计，不冒称独立CUDA实现。native与媒体校验和人类科学验收分开。','','## 管线原则与证据差异','','RGB/depth/alpha三类各用自身梯度方向NMS；sigma=0.8/1.6/3.2 px，Mic八F各尺度各类正值ROI P99，Materials/C/arc原样继承。masked log median-depth沿用历史双层平滑处理，有效深度尺度不同于单次Gaussian。旧sigma=1.0与新多尺度不是相同证据合同。任意>=2尺度2px内支持形成MAJOR，原0.8 fine未持久响应完整保存DETAIL；短母组件>=3px保留其所有32px空间格片段。1/2px证据保留但不进入chunk目标。每chunk强度归一后等重，每视图/类1/24，空类不转赠。空间块不是自动恢复的物理曲线；网罩与材质纹理仍可跨尺度持久。旧广union/81.49% Mic C alpha容差区域只作历史背景，不是新MAJOR目标。','','逐像素需求=0.5×原始full alpha，矩阵保存真实alphaT/demand；U=Σomega min(Σselected alphaT/demand,1)。全foreground网格保留非边缘反证，离MAJOR或DETAIL union>2px为offedge；成本为每F offedge mean(w/fullalpha)，八F均值。A历史TOP4 baseline_union独立排名，B新MAJOR+expanded贡献独立比率，C/D/E联合贪心λ=0/.1/.3。B分子为Σomega w/fullalpha，分母为等视图foreground mean(w/fullalpha)，可大于1，不是概率。三λ及三档固定预算全部显示；无C选英雄参数。懒堆增益按剩余需求精确更新；泄漏使目标可能非单调，不声称经典单调greedy保证。','','## S2 截断完整性与校准','','| K | 实际校准F | 通过门槛F | 最低weighted MAJOR mass | 最低MAJOR ray p10 |','|---|---:|---:|---:|---:|']
+- for audit in complete.get('audits',[]):
+-  rr=audit['rows'];lines.append(f"| {audit['K']} | {len(rr)}/16 | {sum(r['coverage']['gate_pass'] for r in rr)}/16 | {min(r['coverage']['major']['captured_mass_fraction'] for r in rr):.6f} | {min(r['coverage']['major']['p10'] for r in rr):.6f} |")
+- lines+=['', 'TOP32失败视图及K64扩展真实记录见 COMPLETENESS.json。冻结操作门槛为每F weighted MAJOR mass>=.95且MAJOR射线p10>=.90，ROI alpha>=.08；全部通过也不等于数学全部贡献。完整归因始终 **FULL_ATTRIBUTION_UNDETERMINED**，所有选择是最后共同可用K的条件结果。每F/类foreground、MAJOR、DETAIL、offedge的mean/p10/p05/min/剩余质量保留；unobserved核不是nonedge。完整native投影与截断归因严格区分。','', '原始RGB/alpha/depth/median-depth与缓存逐元素按原冻结容差校准；前4 ID完全一致、w和depth按原容差。S4全一属性≈alpha，全部field bank的alpha/depth/median-depth与原RGB遍历完全相同。全原模型核位置、形状、opacity、排序保持；未删除核。属性黑底Q=Σ原始alphaT×固定ID指示量；原RGB白底SH0 clipped DC、kernel_size0，高阶45个SH系数未参与渲染，不能当完整材质反射验证。native alpha<=.99、alpha<1/255跳过、T<1e-4提前终止；“完整native”以这些定义为限。','', '## 所有预算的C定量结果（实际视图均值）','', '| 场景 | 预算 / 实际IDs | arm | C视图 | MAJOR需求覆盖 | DETAIL需求覆盖 | offedge alpha贡献比例 | offedge占selected质量 |','|---|---|---|---:|---:|---:|---:|---:|']
+- for s in summaries:
+-  for row in s['standard']:
+-   if row['phase']!='C':continue
+-   m=row['metrics'] or {};lines.append(f"| {s['scene']} | {row['budget']} / {row['count']} | {row['arm']} | {row['actual_views']} | {fmt(m.get('major_coverage'))} | {fmt(m.get('detail_coverage'))} | {fmt(m.get('offedge_alpha_fraction'))} | {fmt(m.get('offedge_selected_mass_fraction'))} |")
+- lines+=['','需求覆盖是渲染证据处所需alpha支持的饱和效用，不是真实边缘准确率。offedge alpha比例是Σoffedge Q / Σoffedge alpha；selected漏出比例分母是Σ全图Q。两个分母不同；不能只看漏出占比或少核数。完整逐视图、class/chunk、宽度、原始mass结果与F/C前沿保留。','','## 仅F选择的coverage-match点','', '| 场景 | arm | 固定IDs | F目标U | C实际views | C MAJOR覆盖 | C offedge alpha比例 |','|---|---|---:|---:|---:|---:|---:|']
+- for s in summaries:
+-  for row in s['coverage_matched']:
+-   if row['phase']!='C':continue
+-   m=row['metrics'] or {};lines.append(f"| {s['scene']} | {row['arm']} | {row['count']} | {row['F_target']:.5f} | {row['actual_views']} | {fmt(m.get('major_coverage'))} | {fmt(m.get('offedge_alpha_fraction'))} |")
+- lines+=['','这些点仅用F最短前缀选择，C没有重新匹配覆盖。跨视图C覆盖可以偏离目标，应报告差异。所有标准预算是同数量比较，早停时另有实际同数量基线；本轮实际早停情况见ASSET与selection JSON。','','## 负结果、工程结论与科学范围','','成功诊断需同预算覆盖不崩塌且漏出下降，本报告直接展示两者，不因C调阈值。Gaussian整核足迹可能宽、含非边缘支持，不能用投影剪裁或逐视图mask伪造细线。ink宽度仅area(Q>threshold)/独立ridge像素数与Q加权到证据距离，单位px，不是物理边缘宽度。outline始终视角相关；geometry只是深度/遮挡证据；核在不可见视图不作为负例。未知核不被判nonedge。','', '模型视觉观察与人类验收另存VISUAL_REVIEW_ZH.md；**独立人类科学结论PENDING**。C是归因构造留出，GS训练见过全部TRAIN；旧媒体/demo已知，不称盲测。未使用人工标注、mesh、TEST、重训、中心连接、曲线拟合或几何P/R。未宣称时序优势或第三方方法复现。','', '内核来自第三方RaDe分支，历史阶段独立插桩，本轮复用TOP32及隔离容量扩展；不是原创RaDe。方法受weighted coverage/set-cover式饱和效用与已有贡献提升启发，不提出未经证明的新颖性或研究博客主张。历史audited core/native/media复制到本阶段，源码来源及SHA256在SOURCE_MAP。','', '## 实际交付与复现','']
+- for s in summaries:
+-  scene=s['scene'];lines.append(f"- **{scene}**：[全部视图](figures/{scene}_all_views.jpg) · [全部C](figures/{scene}_C8.jpg) · [arc首中末](figures/{scene}_arc_first_mid_last.jpg) · [F选定覆盖匹配C图](figures/{scene}_C_coverage_match.jpg) · [F/C全部λ前沿](figures/{scene}_frontier.png) · [Telegram1600视频](media/{scene}/arc33_telegram1600.mp4) · [固定ID JSON](assets/{scene}/selected_ids.json)。")
+- lines+=['', f'实际大型数组、native视频及逐姿态原始投影保留于 `{OUT}`，精确路径/每文件SHA256见 SOURCE_MAP.json；不修改旧demo/report。媒体保留native800所有完整帧，不cut arc；原始gain1，非匹配墨量。每段H264/yuv420p/+faststart，33帧逐帧解码，去标题RGB内容互异、相机hash/尺寸核验。图组12张（每场景6张），完整C所有预算单帧原始图留out。', '', '[复现步骤](REPRODUCE.md)、[协议](PROTOCOL.md)、[机器FINAL](FINAL.json)、[来源ledger](SOURCE_MAP.json)。STATUS原子记录实际阶段；plain runner按per-pose seal恢复；未运行不是0，工程阻碍如实记录。']
+- (ART/'REPORT_ZH.md').write_text('\n'.join(lines)+'\n')
+-
+-def stage():
+- verify_s0();guard();complete=json.loads((OUT/'COMPLETENESS.json').read_text()) if (OUT/'COMPLETENESS.json').exists() else {};ss=[];mm={}
+- for scene in CFG['scenes']:
+-  rs=records(scene);ss.append(summarize(scene,rs));mm[scene]=scene_media(scene,rs) if (OUT/scene/'assets/SEAL.json').exists() else None
+- for name in ['COMPLETENESS.json','INDEPENDENT_CPU_AUDIT.json','NATIVE_CAPTURED_MASS_AUDIT.json']:
+-  if (OUT/name).exists():shutil.copyfile(OUT/name,ART/name)
+- report(ss,complete,mm);final=dict(schema='representative-fixed-gaussian-final-v1',created_utc=utc(),model='gpt-6.1-sol',reasoning_effort='xhigh',historical_base_model='gpt-6-astra',historical_base_effort='ultra',base_sha=CFG['base_sha'],S0_commit='2b980d1807c7f22fdfbd7b186a44830c955c505d',F_selection_seal_sha256=sha(OUT/'F_SELECTION_SEAL/SEAL.json') if (OUT/'F_SELECTION_SEAL/SEAL.json').exists() else None,scenes=ss,media=mm,actual_pose_count=sum(s['actual_pose_count'] for s in ss),requested_pose_count=98,operational_completeness_gate=complete.get('operational_gate_pass'),mathematically_full_attribution='FULL_ATTRIBUTION_UNDETERMINED',human_science_verdict='PENDING',out_root=str(OUT),budget=guard(),cpu_tests=13,independent_cpu_audit=(ART/'INDEPENDENT_CPU_AUDIT.json').exists(),method_limits=['fixed original Gaussian ID support, not geometric edge recovery','C/arc not blind or GS-unseen','K-truncated attribution residuals remain','SH0 only, higher SH ignored','no temporal superiority or third-party method replication claim'])
+- final['engineering_GO']=final['actual_pose_count']==98 and all(v and v.get('video_native') and v.get('video_telegram1600') for v in mm.values()) and final['independent_cpu_audit']
+- atomic(ART/'FINAL.json',final);event('DELIVERY_GENERATED',actual_pose_count=final['actual_pose_count'],engineering_GO=final['engineering_GO'])
+-if __name__=='__main__':
+- try:stage()
+- except Exception as e:event('ENGINEERING_STOP',requested_phase='finalize',error=str(e),traceback=traceback.format_exc());raise
+--- readonly-reference/freeze.py
++++ newstage/freeze.py
+@@ -1,30 +1,45 @@
++"""S0 metadata-only binding; F raw hashes checked, C/arc pixels remain closed."""
+ from pathlib import Path
+-import json, hashlib, datetime, shutil, subprocess
+-ROOT=Path(__file__).resolve().parents[3];ART=ROOT/'artifacts/representative_edge_gaussians_v1'
+-SRC=Path('/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1');TRANS=SRC.parent/'transport/frames'
+-def sha(p):
+- h=hashlib.sha256()
+- with Path(p).open('rb') as f:
+-  for b in iter(lambda:f.read(1024*1024),b''):h.update(b)
+- return h.hexdigest()
+-def main():
+- orig=SRC/'artifacts/gaussian_edge_attribution_v1/INPUTS_FROZEN.json';x=json.loads(orig.read_text());cfg=json.loads((ART/'code/config.json').read_text())
+- m=dict(schema='representative-input-manifest-v1',base_sha=cfg['base_sha'],created_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),source_root=str(SRC),transport=str(TRANS),inherited_manifest=dict(path=str(orig),sha256=sha(orig)),scenes={},source_files={})
+- for scene,v in x['scenes'].items():
+-  cp=v['checkpoint'];assert sha(cp['path'])==cp['sha256'];frames=[]
+-  for f in v['frames']:
+-   cam=TRANS/scene/f['key']/'camera.json';assert sha(cam)==f['camera_json_sha256']
+-   raw=TRANS/scene/f['key']/'native.npz';rec=dict(f,camera_json_path=str(cam),raw_path=str(raw),raw_hash_verification='inherited, verify on read')
+-   if f['key'].startswith('F_'):assert sha(raw)==f['raw_sha256'];rec['raw_hash_verification']='S0 F-only hash checked'
+-   frames.append(rec)
+-  m['scenes'][scene]=dict(checkpoint=cp,frames=frames,training_scope=v['training_lock']['training_access'])
+- paths=[orig,SRC/'native_extension/BUILD_TOP32.json',SRC/'native_extension/top32/diff_gaussian_rasterization/_C.cpython-39-x86_64-linux-gnu.so']
+- paths += [SRC/'artifacts/gaussian_edge_attribution_v1/code'/n for n in ['core.py','native_attributes.py','run_experiment.py','media.py','config.json']]
+- paths += [SRC/'artifacts/gaussian_edge_attribution_v1/assets'/s/n for s in cfg['scenes'] for n in ['scores.npz','selection.npz']]
+- for p in paths:m['source_files'][str(p)]=dict(sha256=sha(p),bytes=p.stat().st_size)
+- (ART/'INPUT_HASH_MANIFEST.json').write_text(json.dumps(m,indent=2)+'\n')
+- files={str(p.relative_to(ROOT)):sha(p) for p in sorted(ART.rglob('*')) if p.is_file() and p.name!='S0_SEAL.json'}
+- files['.codex/config.toml']=sha(ROOT/'.codex/config.toml')
+- seal=dict(created_utc=m['created_utc'],files=files,preproduction=True,tests=dict(red='actual import failure before core implementation',green='8 synthetic CPU unittest passed'),runtime=dict(model='gpt-6.1-sol',reasoning_effort='xhigh',evidence='AGENT.log launch header; launch.sh explicit flags'),available_bytes=dict(root=shutil.disk_usage(ROOT).free,git=shutil.disk_usage(subprocess.check_output(['git','rev-parse','--git-common-dir'],text=True).strip()).free))
+- (ART/'S0_SEAL.json').write_text(json.dumps(seal,indent=2)+'\n');print(json.dumps(dict(frames=sum(len(v['frames']) for v in m['scenes'].values()),seal_sha256=sha(ART/'S0_SEAL.json'),available_bytes=seal['available_bytes'])))
+-if __name__=='__main__':main()
++import json,datetime,subprocess,shutil,difflib
++from scene_binding import *
++ROOT=Path(__file__).resolve().parents[3];ART=ROOT/'artifacts/representative_edge_gaussians_three_v1';SRC=Path('/mnt/hdd1/u00134/hybrid_raster_trained_models_v1/gaussian_edge_attribution_v1')
++def bind():
++ from native_attributes import load_checkpoint,canonical_hash,camera_record
++ cfg=json.loads((ART/'code/config.json').read_text());orig=HYBRID/'artifacts/direct_curve_global_fit_probe/INPUTS.json';x=json.loads(orig.read_text());assert x['F']==cfg['F'] and x['C']==cfg['C']
++ m=dict(schema='representative-three-input-v1',base_sha=cfg['base_sha'],created_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),source_root=str(SRC),frame_source=str(HYBRID/'out/hybrid_raster_evidence_v2/frames'),scenes={},source_files={})
++ paths=[orig,HYBRID/'artifacts/hybrid_raster_evidence_v2/ACCESS.json',HYBRID/'artifacts/hybrid_raster_evidence_v2/PARAMETER_LOCK.json',HYBRID/'out/hybrid_raster_evidence_v2/LOCK.json',HYBRID/'out/hybrid_raster_evidence_v2/CONFIG.json',HYBRID/'scripts/run_hybrid_raster_evidence_v2.py',HYBRID/'src/hybrid_raster_io.py',HYBRID/'src/hybrid_raster_native.py',SRC/'native_extension/BUILD_TOP32.json']
++ for key,p in [('normalization_source',REFERENCE/'out/representative_edge_gaussians_v1/NORMALIZATION.json'),('A_normalization_source',SRC/'out/gaussian_edge_attribution_v1/mic/NORMALIZATION.json'),('A_config_source',SRC/'artifacts/gaussian_edge_attribution_v1/code/config.json')]:m[key]=dict(path=str(p),sha256=sha(p));paths.append(p)
++ paths += [REFERENCE/'artifacts/representative_edge_gaussians_v1'/n for n in ['FINAL.json','REPORT_ZH.md','PROTOCOL.md','INPUT_HASH_MANIFEST.json','SOURCE_MAP.json','REPRODUCE.md']]
++ b=capacity64();paths.extend([Path(b['library']),Path(b['build_manifest_path']),Path(b['build_manifest_path']).parent/'capacity.patch'])
++ for scene in SCENES:
++  cp=dict(x['scenes'][scene]['checkpoint']);g,q=load_checkpoint(cp['path'],cp['sha256']);cp['qualification']=q;del g
++  training=Path(cp['path']).parents[3];manifest=training/'manifest.json';completion=training/'completion.json';tr=json.loads(manifest.read_text());assert tr['scene']==scene and tr['seed']==1729 and tr['expected_iteration']==30000 and tr['source'].endswith('/vendor/gaussian-splatting');assert json.loads(completion.read_text())['sha256']==cp['sha256'];paths.extend([manifest,completion])
++  records=[]
++  for key in [f'F_{i:03d}' for i in cfg['F']]+[f'C_{i:03d}' for i in cfg['C']]+[f'arc0_{i:03d}' for i in range(33)]:
++   d=HYBRID/'out/hybrid_raster_evidence_v2/frames'/scene/key;camfile=d/'camera.json';sealf=d/'SEAL.json';v=json.loads(camfile.read_text());seal=json.loads(sealf.read_text());assert v['scene']==scene and v['key']==key and v['checkpoint_sha256']==cp['sha256'];assert v['camera_hash']==canonical_hash(v['camera']);assert seal['files']['camera.json']==sha(camfile);assert seal['context']==v
++   expected=x['scenes'][scene]['arcs'][0]['frames'][int(key[-3:])] if key.startswith('arc0_') else x['scenes'][scene]['cameras'][str(int(key[-3:]))];assert expected==v['camera'];camera_record(v['camera']);raw=d/'native.npz'
++   if key.startswith('F_'):assert sha(raw)==seal['files']['native.npz']
++   records.append(dict(key=key,camera=v['camera'],camera_hash=v['camera_hash'],camera_json_path=str(camfile),camera_json_sha256=sha(camfile),native_camera_hash=canonical_hash(camera_record(v['camera'])),raw_path=str(raw),raw_sha256=seal['files']['native.npz'],raw_hash_verification='S0 checked F only' if key.startswith('F_') else 'inherited seal; verify after all F selection seals',source_seal_path=str(sealf),source_seal_sha256=sha(sealf)))
++  m['scenes'][scene]=dict(checkpoint=cp,display=display(scene),frames=records,training_scope='TRAIN cameras exposed to GS training; old C media already known; not blind or GS-unseen',training_provenance=dict(manifest_path=str(manifest),manifest_sha256=sha(manifest),source_commit=tr['source_commit'],source=tr['source']))
++ for p in paths:
++  if not p.is_file():raise FileNotFoundError(p)
++  m['source_files'][str(p)]=dict(sha256=sha(p),bytes=p.stat().st_size)
++ for p in (ART/'code').glob('*'):
++  if p.is_file() and (REFERENCE/'artifacts/representative_edge_gaussians_v1/code'/p.name).is_file():m['source_files'][str(REFERENCE/'artifacts/representative_edge_gaussians_v1/code'/p.name)]=dict(sha256=sha(REFERENCE/'artifacts/representative_edge_gaussians_v1/code'/p.name),bytes=(REFERENCE/'artifacts/representative_edge_gaussians_v1/code'/p.name).stat().st_size)
++ (ART/'INPUT_HASH_MANIFEST.json').write_text(json.dumps(m,indent=2)+'\n');return m
++
++def seal_s0():
++ m=bind();diff=[];entries={}
++ for p in sorted((ART/'code').glob('*')):
++  if not p.is_file():continue
++  ref=REFERENCE/'artifacts/representative_edge_gaussians_v1/code'/p.name
++  entries[p.name]=dict(new_sha256=sha(p),reference_sha256=sha(ref) if ref.exists() else None,byte_identical=ref.exists() and p.read_bytes()==ref.read_bytes())
++  if ref.exists():diff.extend(difflib.unified_diff(ref.read_text().splitlines(True),p.read_text().splitlines(True),fromfile='readonly-reference/'+p.name,tofile='newstage/'+p.name))
++ for name in ['representative_core.py','legacy_core.py']:assert entries[name]['byte_identical']
++ (ART/'ALGORITHM_DIFF.patch').write_text(''.join(diff));(ART/'ALGORITHM_BINDINGS.json').write_text(json.dumps(dict(files=entries,unchanged_scientific_cores=['representative_core.py','legacy_core.py'],allowed_adaptations=['scene binding','new outputs','persisted Mic normalization import','fresh deadline/resources','new historical A generation and scene budget counts','truthful scene counts/report/provenance'],diff_sha256=sha(ART/'ALGORITHM_DIFF.patch')),indent=2)+'\n')
++ files={str(p.relative_to(ROOT)):sha(p) for p in sorted(ART.rglob('*')) if p.is_file() and p.name not in ['S0_SEAL.json','TASK.txt','launch.sh'] and '__pycache__' not in p.parts};files['.codex/config.toml']=sha(ROOT/'.codex/config.toml')
++ (ART/'S0_SEAL.json').write_text(json.dumps(dict(created_utc=m['created_utc'],files=files,preproduction=True,actual_test_logs=['logs/TDD_RED.log','logs/TDD_RED_SCENE.log','logs/TDD_GREEN.log'],normalization_inherited_no_refit=True,source_binding_frozen=True),indent=2)+'\n');print('S0',sha(ART/'S0_SEAL.json'),'poses',sum(len(x['frames']) for x in m['scenes'].values()))
++if __name__=='__main__':
++ import sys
++ if '--bind-only' in sys.argv:bind()
++ else:seal_s0()
+--- readonly-reference/io_utils.py
++++ newstage/io_utils.py
+@@ -1,8 +1,9 @@
+ from pathlib import Path
+ import os,json,hashlib,datetime,shutil,subprocess,time
+ import numpy as np
+-ROOT=Path(__file__).resolve().parents[3];ART=ROOT/'artifacts/representative_edge_gaussians_v1';OUT=ROOT/'out/representative_edge_gaussians_v1'
++ROOT=Path(__file__).resolve().parents[3];ART=ROOT/'artifacts/representative_edge_gaussians_three_v1';OUT=ROOT/'out/representative_edge_gaussians_three_v1'
+ CFG=json.loads((ART/'code/config.json').read_text());INPUTS=json.loads((ART/'INPUT_HASH_MANIFEST.json').read_text());SRC=Path(INPUTS['source_root'])
++if (OUT/'BUDGET_SEAL/binding.json').exists():CFG['budgets']=json.loads((OUT/'BUDGET_SEAL/binding.json').read_text())['counts']
+ COMMON=Path(subprocess.check_output(['git','rev-parse','--git-common-dir'],cwd=ROOT,text=True).strip())
+ def utc():return datetime.datetime.now(datetime.timezone.utc).isoformat()
+ def sha(p):
+@@ -15,6 +16,10 @@
+  if not any(p==r or r in p.parents for r in [ART,OUT]):raise ValueError('Output containment')
+  return p
+ def guard(payload=0):
++ if datetime.datetime.now(datetime.timezone.utc)>datetime.datetime.fromisoformat(CFG['stage_deadline']):raise RuntimeError('DEADLINE_BLOCKER')
++ if payload:
++  mem={x.split(':')[0]:int(x.split()[1])*1024 for x in Path('/proc/meminfo').read_text().splitlines() if x.startswith(('MemAvailable:','MemTotal:'))}
++  if mem['MemAvailable']<payload*3+512*1024**2:raise RuntimeError('RESIDENT_MEMORY_BLOCKER '+str(dict(peak_estimate_bytes=payload*3+512*1024**2,available_bytes=mem['MemAvailable'])))
+  root=shutil.disk_usage(ROOT).free;git=shutil.disk_usage(COMMON).free
+  used=sum(p.stat().st_size for r in [ART,OUT] for p in r.rglob('*') if p.is_file())
+  if root < CFG['root_reserve_bytes']+payload or git < CFG['git_reserve_bytes'] or used+payload>CFG['science_budget_bytes']:raise RuntimeError('BUDGET_BLOCKER '+str(dict(root_free=root,git_free=git,used=used,estimated_payload=payload)))
+@@ -43,7 +48,10 @@
+  for f,h in s['files'].items():
+   if sha(ROOT/f)!=h:raise RuntimeError('S0_CHANGED '+f)
+  return sha(ART/'S0_SEAL.json')
+-def frames(scene,phase):return [f for f in INPUTS['scenes'][scene]['frames'] if (f['key'].startswith(phase+'_') if phase in ('F','C') else f['key'].startswith('arc0_'))]
++def frames(scene,phase):
++ from scene_binding import scene_id
++ scene=scene_id(scene)
++ return [f for f in INPUTS['scenes'][scene]['frames'] if (f['key'].startswith(phase+'_') if phase in ('F','C') else f['key'].startswith('arc0_'))]
+ def read(scene,spec,phase):
+  if not spec['key'].startswith('F_'):
+   verify(OUT/'F_SELECTION_SEAL');
+--- readonly-reference/native_attributes.py
++++ newstage/native_attributes.py
+@@ -31,7 +31,7 @@
+ 
+ def _local(path):
+     path = Path(path).resolve()
+-    if not any(base == path or base in path.parents for base in (ROOT/'artifacts/representative_edge_gaussians_v1', ROOT/'out/representative_edge_gaussians_v1')):
++    if not any(base == path or base in path.parents for base in (ROOT/'artifacts/representative_edge_gaussians_three_v1', ROOT/'out/representative_edge_gaussians_three_v1')):
+         raise ValueError('New outputs must remain inside authorized workspace')
+     return path
+ 
+@@ -122,6 +122,8 @@
+         colors=np.asarray(colors,np.float32)
+         if colors.shape!=(len(self.g['mu']),3) or not np.isfinite(colors).all():raise ValueError('Attribute field bank must be finite N x 3')
+         if np.any(colors<0) or np.any(colors>1):raise ValueError('Attribution fields must be in [0,1]')
++        from io_utils import guard
++        guard(800*800*self.topk*24+128*1024**2 if export_topk else 128*1024**2)
+         self._prepare();gpu_guard(self.output_dir)
+         torch=self.torch;t=self._t;d=self._device;c=camera_record(cam);view,full=camera_matrices(c);h,w=c['native_height'],c['native_width'];k=np.asarray(c['native_K'])
+         args=[t(background),d['xyz'],t(colors),d['opacity'],d['sc'],d['rot'],1.,d['empty'],t(view),t(full),w/(2*k[0,0]),h/(2*k[1,1]),0.,h,w,d['empty'],0,t(np.linalg.inv(np.asarray(c['w2c']))[:3,3]),False,True,False]
+--- readonly-reference/pipeline.py
++++ newstage/pipeline.py
+@@ -30,7 +30,7 @@
+   subprocess.run([sys.executable,'-B',str(ART/'code'/cmd[0])]+cmd[1:],check=True)
+   if prior and sha(OUT/'F_SELECTION_SEAL/SEAL.json')!=prior:raise RuntimeError('Existing F global seal changed')
+  stage(check=True)
+- for script in ['projection_audit.py','finalize.py','interpret.py','supplement.py','ledger.py','verify_delivery.py']:
++ for script in ['projection_audit.py','delivery.py','ledger.py','verify_delivery.py']:
+   subprocess.run([sys.executable,'-B',str(ART/'code'/script)],check=True)
+  if prior:assert sha(OUT/'F_SELECTION_SEAL/SEAL.json')==prior
+ if __name__=='__main__':
+--- readonly-reference/projection_audit.py
++++ newstage/projection_audit.py
+@@ -14,5 +14,5 @@
+    captured=g@fields;residual=np.maximum(z['alpha']-np.asarray(g.sum(1)).ravel(),0)
+    lower=float(np.min(q-captured,initial=0));upper=float(np.max(q-captured-residual[:,None],initial=0));assert lower>=-5e-6 and upper<=5e-6
+    rows.append(dict(scene=scene,key=f['key'],fields=len(meta['fields']),captured_alphaT_never_renormalized=True,native_minus_captured_min=lower,residual_bound_excess=upper,allones_max_abs=meta['allones_alpha_max_abs'],field_alpha_depth_exact=meta['attributes_alpha_depth_exact'],native_projection_sha256=sha(d/'projection.npz')))
+- atomic(OUT/'NATIVE_CAPTURED_MASS_AUDIT.json',dict(K=k,all16_F_pass=True,rows=rows,scope='CPU CSR sums vs actual full-native selected fields, original all-ray T retained; omission interval uses full original alpha',rounding_bound_atol=5e-6));event('G0_NATIVE_CAPTURED_MASS_PASS',F_count=16)
++ atomic(OUT/'NATIVE_CAPTURED_MASS_AUDIT.json',dict(K=k,all24_F_pass=True,rows=rows,scope='CPU CSR sums vs actual full-native selected fields, original all-ray T retained; omission interval uses full original alpha',rounding_bound_atol=5e-6));event('G0_NATIVE_CAPTURED_MASS_PASS',F_count=24)
+ if __name__=='__main__':stage()
+--- readonly-reference/run.py
++++ newstage/run.py
+@@ -12,15 +12,10 @@
+  verify_s0();guard();normp=OUT/'NORMALIZATION.json'
+  if normp.exists():norm=json.loads(normp.read_text())['scales'];verify(OUT/'NORMALIZATION_SEAL')
+  else:
+-  pools=[[[] for c in range(3)] for s in range(3)]
+-  for f in frames('mic','F'):
+-   raw=read('mic',f,'S1_F_NORMALIZATION');fields=core.multiscale_fields(raw,CFG['sigmas_pixels'])
+-   for s,v in enumerate(fields):
+-    for c in range(3):
+-     a=v['magnitude'][:,:,c];pools[s][c].append(a[(a>1e-12)&v['roi'][:,:,c]])
+-  norm=[[max(float(np.percentile(np.concatenate(pools[s][c]),CFG['normalization_percentile'])),1e-12) if sum(map(len,pools[s][c])) else 1. for c in range(3)] for s in range(3)]
+-  atomic(normp,dict(scales=norm,scope='Mic all8 F only; inherited unchanged',F_hashes=[f['raw_sha256'] for f in frames('mic','F')],config_sha256=sha(ART/'code/config.json'),core_sha256=sha(ART/'code/representative_core.py')))
+-  d=OUT/'NORMALIZATION_SEAL';d.mkdir(exist_ok=True);atomic(d/'binding.json',dict(normalization_sha256=sha(normp)));seal(d,dict(F_only=True))
++  from scene_binding import inherited_normalization
++  original=inherited_normalization();norm=original['scales']
++  atomic(normp,dict(original,inherited_readonly=True,source=INPUTS['normalization_source']))
++  d=OUT/'NORMALIZATION_SEAL';d.mkdir(exist_ok=True);atomic(d/'binding.json',dict(normalization_sha256=sha(normp),source=INPUTS['normalization_source']));seal(d,dict(inherited_Mic_F_only=True,no_refit=True))
+  for scene in CFG['scenes']:
+   for f in frames(scene,'F'):
+    d=OUT/scene/'F'/f['key']
+@@ -31,9 +26,12 @@
+    atomic(d/'COUNTS.json',dict(counts=counts,chunks=m,offedge_foreground_pixels=int(e['offedge'].sum()),foreground_pixels=int((raw['alpha']>=.08).sum()),preview=info))
+    seal(d,dict(raw_sha256=f['raw_sha256'],camera_hash=f['camera_hash'],normalization_sha256=sha(normp),core_sha256=sha(ART/'code/representative_core.py')))
+    event('S1_EVIDENCE_COMPLETE',scene=scene,key=f['key'],counts=counts,chunks={k:v['chunks'] for k,v in m.items()})
+- event('S1_COMPLETE',actual_F=16,normalization_sha256=sha(normp))
++ event('S1_COMPLETE',actual_F=24,normalization_sha256=sha(normp))
+ 
+ def build_variant(k):
++ if k==64:
++  from scene_binding import capacity64
++  b=capacity64();atomic(OUT/'native/top64/BUILD.json',b);return b
+  d=OUT/'native'/('top'+str(k));build=d/'BUILD.json'
+  if build.exists():return json.loads(build.read_text())
+  guard(128*1024**2);gpu_guard(OUT/'native/logs');source=SRC/'native_extension/top32'
+@@ -82,7 +80,7 @@
+     d=OUT/scene/'contributions'/('K'+str(k))/f['key']
+     if (d/'SEAL.json').exists():verify(d);rows.append(json.loads((d/'AUDIT.json').read_text()));continue
+     raw=read(scene,f,'S2_TOPK_'+str(k));e=load(OUT/scene/'F'/f['key']/'evidence.npz');event('S2_RENDER',scene=scene,key=f['key'],topk=k);guard(256*1024**2)
+-    rendered=renderer.render_rgb(f['camera'],export_topk=True);cal=calibration(rendered,raw);ids=rendered['topk_id'];w=rendered['topk_w'];audit=coverage(raw,e,ids,w)
++    guard(800*800*k*24+512*1024**2);rendered=renderer.render_rgb(f['camera'],export_topk=True);cal=calibration(rendered,raw);ids=rendered['topk_id'];w=rendered['topk_w'];audit=coverage(raw,e,ids,w)
+     flatid=ids.ravel();flatw=w.ravel();ok=flatid>=0;mass=np.bincount(flatid[ok],weights=flatw[ok],minlength=n)
+     fg=raw['alpha']>=.08;pixels=np.flatnonzero(fg.ravel()).astype(np.int32);fi=ids.reshape(-1,k)[pixels];fw=w.reshape(-1,k)[pixels];valid=fi>=0;ptr=np.r_[0,np.cumsum(valid.sum(1))].astype(np.int64)
+     fgcost=np.bincount(fi[valid],weights=(fw/np.maximum(raw['alpha'].ravel()[pixels,None],1e-30))[valid],minlength=n)/max(len(pixels),1)
+@@ -97,11 +95,11 @@
+     del rendered,ids,w,fi,fw
+    del renderer
+    import gc;gc.collect()
+-  used=k;audits.append(dict(K=k,rows=rows,all16_gate_pass=all(r['coverage']['gate_pass'] for r in rows)))
+-  atomic(OUT/'COMPLETENESS.json',dict(available_K=used,audits=audits,blocker=block,mathematically_full_attribution='UNDETERMINED',operational_gate_pass=audits[-1]['all16_gate_pass']))
+-  if audits[-1]['all16_gate_pass']:break
+- atomic(OUT/'COMPLETENESS.json',dict(available_K=used,audits=audits,blocker=block,mathematically_full_attribution='UNDETERMINED',operational_gate_pass=audits[-1]['all16_gate_pass'] if audits else None))
+- event('S2_COMPLETE',available_K=used,all16_gate_pass=audits[-1]['all16_gate_pass'] if audits else None)
++  used=k;audits.append(dict(K=k,rows=rows,all24_gate_pass=all(r['coverage']['gate_pass'] for r in rows)))
++  atomic(OUT/'COMPLETENESS.json',dict(available_K=used,audits=audits,blocker=block,mathematically_full_attribution='UNDETERMINED',operational_gate_pass=audits[-1]['all24_gate_pass']))
++  if audits[-1]['all24_gate_pass']:break
++ atomic(OUT/'COMPLETENESS.json',dict(available_K=used,audits=audits,blocker=block,mathematically_full_attribution='UNDETERMINED',operational_gate_pass=audits[-1]['all24_gate_pass'] if audits else None))
++ event('S2_COMPLETE',available_K=used,all24_gate_pass=audits[-1]['all24_gate_pass'] if audits else None)
+ 
+ if __name__=='__main__':
+  p=argparse.ArgumentParser();p.add_argument('phase',choices=['evidence','contributions']);a=p.parse_args()
+--- readonly-reference/selection.py
++++ newstage/selection.py
+@@ -28,8 +28,8 @@
+ def select_scene(scene,k):
+  folder=OUT/scene/'assets'
+  if (folder/'SEAL.json').exists():verify(folder);return
+- a,omega,stats,rows=matrix(scene,k);n=a.shape[1];maxcount=max(CFG['budgets'][scene]);ids=np.arange(n,dtype=np.int32)
+- old=load(SRC/'artifacts/gaussian_edge_attribution_v1/assets'/scene/'scores.npz');assert np.array_equal(old['original_ids'],ids)
++ a,omega,stats,rows=matrix(scene,k);n=a.shape[1];budgets=json.loads((OUT/'BUDGET_SEAL/binding.json').read_text())['counts'][scene];maxcount=max(budgets);ids=np.arange(n,dtype=np.int32)
++ old=load(OUT/scene/'baseline_A/assets/scores.npz');assert np.array_equal(old['original_ids'],ids)
+  aorder=np.lexsort((ids,-old['baseline_union']));aorder=aorder[old['eligible'][aorder]][:maxcount].astype(np.int32)
+  numerator=np.asarray(a.T@omega).ravel()*.5;den=stats['foreground_mean_fraction'];bscore=np.divide(numerator,den,out=np.zeros(n),where=den>0)
+  border=np.lexsort((ids,-bscore));border=border[stats['eligible'][border]][:maxcount].astype(np.int32)
+@@ -39,7 +39,7 @@
+   order,g,u=core.greedy(a,omega,stats['nonedge_cost'],stats['eligible'],maxcount,lam,progress=lambda count,util,attempts:event('S3_GREEDY_PROGRESS',scene=scene,arm=arm,count=count,utility=util,heap_evaluations=attempts))
+   selected[arm]=order;gains[arm]=g;curves[arm]=u
+   event('S3_GREEDY_COMPLETE',scene=scene,arm=arm,count=len(order),utility=float(u[-1]) if len(u) else 0,early_stop=len(order)<maxcount)
+- budgets=CFG['budgets'][scene];middle=budgets[1];target=float(curves['A'][min(middle,len(aorder))-1]);matches={}
++ middle=budgets[1];target=float(curves['A'][min(middle,len(aorder))-1]);matches={}
+  for arm,u in curves.items():
+   p=np.flatnonzero(u>=target-1e-12);matches[arm]=int(p[0])+1 if len(p) else None
+  evalcounts={arm:sorted(set(min(b,len(v)) for b in budgets)) for arm,v in selected.items()}
+@@ -62,9 +62,11 @@
+  seal(folder,dict(F_only=True,all_8_F=True,scene=scene));event('S3_SCENE_SEALED',scene=scene,counts={arm:len(order) for arm,order in selected.items()},coverage_match=matches)
+ 
+ def stage():
++ from baseline_a import stage as baseline_stage
++ baseline_stage()
+  verify_s0();k=json.loads((OUT/'COMPLETENESS.json').read_text())['available_K']
+  for s in CFG['scenes']:select_scene(s,k)
+- d=OUT/'F_SELECTION_SEAL';d.mkdir(exist_ok=True);atomic(d/'bindings.json',dict(scenes={s:sha(OUT/s/'assets/SEAL.json') for s in CFG['scenes']},normalization_sha256=sha(OUT/'NORMALIZATION.json'),S0_sha256=sha(ART/'S0_SEAL.json'),completeness_sha256=sha(OUT/'COMPLETENESS.json'),created_before_C_or_arc=True));seal(d,dict(all16F_selected=True));event('S3_ALL_F_SEALED',seal_sha256=sha(d/'SEAL.json'))
++ d=OUT/'F_SELECTION_SEAL';d.mkdir(exist_ok=True);atomic(d/'bindings.json',dict(scenes={s:sha(OUT/s/'assets/SEAL.json') for s in CFG['scenes']},normalization_sha256=sha(OUT/'NORMALIZATION.json'),S0_sha256=sha(ART/'S0_SEAL.json'),completeness_sha256=sha(OUT/'COMPLETENESS.json'),created_before_C_or_arc=True));seal(d,dict(all24F_selected=True));event('S3_ALL_F_SEALED',seal_sha256=sha(d/'SEAL.json'))
+ if __name__=='__main__':
+  try:stage()
+  except Exception as ex:event('ENGINEERING_STOP',requested_phase='selection',error=str(ex));raise
+--- readonly-reference/test_engineering.py
++++ newstage/test_engineering.py
+@@ -14,7 +14,7 @@
+  def test_reject_unqualified_principal_point(self):
+   with self.assertRaises(ValueError):camera_record(dict(H=800,W=800,K=[[400,0,400],[0,400,400],[0,0,1]],w2c=np.eye(4)))
+  def test_output_containment(self):
+-  self.assertEqual(_local(ROOT/'out/representative_edge_gaussians_v1/x'),ROOT/'out/representative_edge_gaussians_v1/x')
++  self.assertEqual(_local(ROOT/'out/representative_edge_gaussians_three_v1/x'),ROOT/'out/representative_edge_gaussians_three_v1/x')
+   with self.assertRaises(ValueError):_local(ROOT/'artifacts/gaussian_edge_attribution_v1/x')
+  def test_nonpersistent_fine_not_deleted_near_other_major(self):
+   x=np.zeros((3,20,20,3),np.float32);x[0,8,8,0]=1;x[1,8,6,0]=1;x[0,8,10,0]=.5
+--- readonly-reference/verify_delivery.py
++++ newstage/verify_delivery.py
+@@ -1,29 +1,19 @@
+-"""Final checks of stable ledger, counts, native controls and preserved old baseline."""
++"""Verify immutable S0, new A historical rule, all147 poses and actual full media."""
+ from io_utils import *
+-import json,numpy as np
+-
+ def stage():
+- verify_s0();verify(OUT/'F_SELECTION_SEAL');ledger=json.loads((ART/'SOURCE_MAP.json').read_text());bad=[]
+- for path,v in ledger['files'].items():
+-  if sha(path)!=v['sha256']:bad.append(path)
+- if bad:raise RuntimeError('HASH_MISMATCH '+str(bad))
+- f=json.loads((ART/'FINAL.json').read_text());assert f['source_map_sha256']==sha(ART/'SOURCE_MAP.json') and f['report_sha256']==sha(ART/'REPORT_ZH.md');assert f['actual_pose_count']==98 and f['engineering_GO']
+- oldbaselines={};counts={}
++ verify_s0();verify(OUT/'F_SELECTION_SEAL');verify(OUT/'BUDGET_SEAL');ledger=json.loads((ART/'SOURCE_MAP.json').read_text())
++ for p,v in ledger['files'].items():assert sha(p)==v['sha256'],p
++ f=json.loads((ART/'FINAL.json').read_text());assert f['actual_pose_count']==147 and f['engineering_GO'];assert f['source_map_sha256']==sha(ART/'SOURCE_MAP.json') and f['report_sha256']==sha(ART/'REPORT_ZH.md')
++ counts={}
+  for scene in CFG['scenes']:
+-  s=load(OUT/scene/'assets/scorebank.npz');old=load(SRC/'artifacts/gaussian_edge_attribution_v1/assets'/scene/'selection.npz');selection=json.loads((OUT/scene/'assets/selected_ids.json').read_text());
+-  for pct,b in zip([1,3,10],CFG['budgets'][scene]):
+-   key='baseline_union_'+str(pct).zfill(2);assert np.array_equal(s['A_ordered_ids'][:b],old[key])
+-  oldbaselines[scene]='all historical baseline_union 1/3/10 percent original IDs exactly preserved'
+-  count={p:0 for p in ['F','C','arc']}
++  new=load(OUT/scene/'assets/scorebank.npz');old=load(OUT/scene/'baseline_A/assets/selection.npz')
++  for pct,b in zip((1,3,10),CFG['budgets'][scene]):assert np.array_equal(new['A_ordered_ids'][:b],old['baseline_union_'+str(pct).zfill(2)])
++  count=dict(F=0,C=0,arc=0)
+   for spec in INPUTS['scenes'][scene]['frames']:
+-   d=OUT/scene/'evaluation'/spec['key'];verify(d);m=json.loads((d/'METRICS.json').read_text());count[m['phase']]+=1;assert m['camera_hash']==spec['camera_hash'] and m['raw_sha256']==spec['raw_sha256'];assert m['attributes_alpha_depth_exact'] and m['allones_alpha_max_abs']<=CFG['calibration']['attribute_alpha_atol']
++   d=OUT/scene/'evaluation'/spec['key'];verify(d);m=json.loads((d/'METRICS.json').read_text());count[m['phase']]+=1;assert m['camera_hash']==spec['camera_hash'] and m['camera_json_sha256']==spec['camera_json_sha256'] and m['raw_sha256']==spec['raw_sha256'];assert m['attributes_alpha_depth_exact'] and m['allones_alpha_max_abs']<=CFG['calibration']['attribute_alpha_atol']
+   assert count==dict(F=8,C=8,arc=33);counts[scene]=count
+-  for key in ['video_native','video_telegram1600']:
+-   v=f['media'][scene][key];assert sha(v['path'])==v['sha256'];assert v['decoded_frame_count']==33 and all(v['checks'].values());assert v['content_audit']['distinct_RGB_content_without_labels']==33;assert len(set(v['camera_hashes']))==33
+-   assert v['dimensions']==([4000,1768] if key=='video_native' else [1600,708])
+- assert len(list((ART/'figures').glob('*')))==12
+- red=json.loads((ART/'logs/LEDGER_RED.json').read_text())
+- atomic(ART/'logs/LEDGER_GREEN.json',dict(pass_status=True,checked_generated_files=len(ledger['files']),corrected_issue='self-written live LEDGER.log excluded, no scientific data or configuration changed',prior_mismatches=red['mismatches'],counts=counts,old_baseline_checks=oldbaselines))
+- atomic(OUT/'DELIVERY_VERIFICATION.json',dict(utc=utc(),pass_status=True,checked_generated_files=len(ledger['files']),actual_counts=counts,old_baselines=oldbaselines,FINAL_sha256=sha(ART/'FINAL.json'),SOURCE_MAP_sha256=sha(ART/'SOURCE_MAP.json'),REPORT_sha256=sha(ART/'REPORT_ZH.md'),space=guard()))
+- print(json.dumps(dict(pass_status=True,files_checked=len(ledger['files']),counts=counts,old_baselines=oldbaselines)))
++  for key in ('video_native','video_telegram1600'):
++   v=f['media'][scene][key];assert sha(v['path'])==v['sha256'];assert v['decoded_frame_count']==33 and all(v['checks'].values());assert v['content_audit']['distinct_RGB_content_without_labels']==33 and len(set(v['camera_hashes']))==33;assert v['dimensions']==([4000,1768] if key=='video_native' else [1600,708])
++ assert len(list((ART/'figures').glob('*')))==18
++ atomic(OUT/'DELIVERY_VERIFICATION.json',dict(utc=utc(),pass_status=True,checked_generated_files=len(ledger['files']),actual_counts=counts,A_baselines='same historical algorithm newly computed; all frozen tier prefixes exact',FINAL_sha256=sha(ART/'FINAL.json'),SOURCE_MAP_sha256=sha(ART/'SOURCE_MAP.json'),REPORT_sha256=sha(ART/'REPORT_ZH.md'),space=guard()));event('DELIVERY_VERIFIED',counts=counts,all147=True)
+ if __name__=='__main__':stage()

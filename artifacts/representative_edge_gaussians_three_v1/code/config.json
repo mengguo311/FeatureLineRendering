@@ -1,0 +1,139 @@
+{
+  "schema": "representative-fixed-original-gaussian-v1",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "xhigh",
+  "base_sha": "d5265b4b71f635bac6563ad12466e4abcd2e1ffb",
+  "F": [
+    1,
+    14,
+    27,
+    41,
+    53,
+    67,
+    79,
+    93
+  ],
+  "C": [
+    7,
+    21,
+    33,
+    47,
+    59,
+    73,
+    86,
+    99
+  ],
+  "arc_count": 33,
+  "scenes": [
+    "lego",
+    "chair",
+    "ficus"
+  ],
+  "sigmas_pixels": [
+    0.8,
+    1.6,
+    3.2
+  ],
+  "normalization": "Exact persisted previous Mic F P99 values, inherited without refit",
+  "normalization_percentile": 99,
+  "evidence_threshold": 0.1,
+  "depth_field": "median_depth",
+  "interior_alpha": 0.5,
+  "foreground_alpha": 0.08,
+  "interior_erosion_pixels": 2,
+  "nms_step_pixels": 1,
+  "persistence_min_scales": 2,
+  "persistence_radius_pixels": 2,
+  "chunk_spatial_pixels": 32,
+  "min_component_pixels": 3,
+  "chunking": "8-connected components, partition by absolute 32x32 pixel tiles; keep every tile of parent component >=3 pixels",
+  "objective_weight": "each nonempty chunk has equal weight; pixel weight proportional to evidence within chunk; each F/class total 1/24; empty class weight zero, no reassignment",
+  "nonedge_band_pixels": 2,
+  "nonedge_grid": "all original native800 foreground rays, not subsampled",
+  "topk_sequence": [
+    32,
+    64,
+    128
+  ],
+  "max_topk": 128,
+  "completeness_weighted_major_mass_min": 0.95,
+  "completeness_major_ray_p10_min": 0.9,
+  "completeness_scope": "each of all16 F, weighted major uses frozen balanced omega; p10 unweighted union MAJOR foreground rays; report perclass and fullforeground/detail/offedge tails",
+  "calibration": {
+    "rgb_atol": 3e-06,
+    "alpha_atol": 3e-06,
+    "depth_atol": 3e-05,
+    "top4_id_atol": 0,
+    "top4_w_atol": 3e-06,
+    "top4_depth_atol": 3e-06,
+    "attribute_alpha_atol": 3e-06,
+    "attribute_visibility_alpha_atol": 0,
+    "attribute_visibility_depth_atol": 0
+  },
+  "min_raw_visibility_mass": 1.0,
+  "min_visible_views": 2,
+  "demand_fullalpha_fraction": 0.5,
+  "lambda_grid": [
+    0,
+    0.1,
+    0.3
+  ],
+  "budgets": {},
+  "arms": {
+    "A": "Exact historical TOP4 baseline_union; same algorithm newly computed from each scene F, inherited historical Mic-only evidence normalization",
+    "B": "expanded-K independent ratio: balanced major sum(omega*w/fullalpha) / equal-view foreground mean(w/fullalpha)",
+    "C": "joint greedy lambda0",
+    "D": "joint greedy lambda0.1",
+    "E": "joint greedy lambda0.3"
+  },
+  "leakage_cost": "per-ID mean(w/fullalpha) over each view foreground offedge rays, zero for absent ID; average over eight F; preserve raw full-grid mass and class counterevidence",
+  "early_stop": "net marginal <=1e-15; no padding; all count mismatches explicit, baseline at actual joint count additionally evaluated",
+  "ties": "ascending original ID",
+  "coverage_matching": "F utility at A middle budget; earliest available prefix attaining it, otherwise null; chosen before any C/arc raw reads",
+  "projection": "native full original model opacity/transmittance, fixed ID fields, black bg; RGB SH0 clipped DC white bg; no deletion, no perview masking or clipping",
+  "native_thresholds": {
+    "kernel_size": 0,
+    "near_plane": 0.01,
+    "far_plane": 100,
+    "alpha_max": 0.99,
+    "alpha_skip_below": 0.00392156862745098,
+    "early_termination_T": 0.0001
+  },
+  "display_gain": 1,
+  "display": "original Q contribution white-to-black; gain1 all arms, no ink mass matching",
+  "evaluation": "all8F+all8C all three budgets and count/coverage matched operatingpoints; all33arc middle budget all5arms; full native field projection required for final comparisons",
+  "ink_thresholds": [
+    0.01,
+    0.1,
+    0.5
+  ],
+  "video_fps": 8,
+  "science_budget_bytes": 10737418240,
+  "root_reserve_bytes": 2147483648,
+  "git_reserve_bytes": 1073741824,
+  "cpu_threads": 2,
+  "gpu_initial": 0,
+  "initial_max_wall_seconds": 7200,
+  "stage_deadline": "2026-10-05T02:42:48.827656+00:00",
+  "allowed_outputs": [
+    "artifacts/representative_edge_gaussians_three_v1",
+    "out/representative_edge_gaussians_three_v1"
+  ],
+  "prohibited": [
+    "TEST",
+    "mesh",
+    "human line labels",
+    "retraining",
+    "old-data writes",
+    "C/arc tuning",
+    "center linking",
+    "geometric edge accuracy claims"
+  ],
+  "scene_display": {
+    "lego": "Lego",
+    "chair": "Chair",
+    "ficus": "tree / Ficus (ficus)"
+  },
+  "budget_rule": "historical legacy_core.rank_tiers: ceil(old TOP4 A eligible count * [1,3,10]/100), same original-ID counts all arms; sealed before selection",
+  "stage_start": "2026-10-05T00:42:48.827656+00:00"
+}
