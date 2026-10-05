@@ -16,16 +16,17 @@ def save_edit(m,initial,ids,path):
     tmp=Path(str(path)+'.tmp');torch.save((tuple(cap),step),tmp);tmp.replace(path)
 
 def optimize(scene,method,time_budget=None):
+    algorithm=method.split('_time_')[0]
     cfg=config();directory=OUT/'controls'/scene
     selection=json.loads((directory/'selection.json').read_text());identity=json.loads((directory/'identity.json').read_text())
     initial=OUT/'models'/scene/f'chkpnt{cfg["training"]["iterations"]}.pth'
     m=load_checkpoint(initial);uids=np.asarray(identity['uid']);labels=np.asarray(identity['label'])
-    key='B6' if method=='B6' else 'C0' if method=='C0_control' else 'C1'
+    key='B6' if algorithm=='B6' else 'C0' if algorithm=='C0_control' else 'C1'
     chosen=np.asarray(selection['selections'][key]['uids']);mask=torch.tensor(np.isin(uids,chosen),device='cuda')
     original={n:getattr(m,n).detach().clone() for n in ('_xyz','_features_dc','_features_rest','_scaling','_rotation','_opacity')}
-    if method=='B3_uniform':
+    if algorithm=='B3_uniform':
         with torch.no_grad():m._scaling[mask]+=np.log(cfg['controls']['uniform_scale_factor'])
-    no_op=method=='B0' or method=='reliable_no_op' or (method in ('C0_control','C1_control') and selection['decision'].startswith('no_op'))
+    no_op=algorithm=='B0' or algorithm=='reliable_no_op' or (algorithm in ('C0_control','C1_control') and selection['decision'].startswith('no_op'))
     m._features_dc.requires_grad_(not no_op)
     opt=torch.optim.Adam([m._features_dc],lr=cfg['controls']['color_lr']) if not no_op else None
     trainframes=frames('train');views=[]
@@ -41,7 +42,7 @@ def optimize(scene,method,time_budget=None):
     for it in range(steps):
         camera,target,band,base=views[it%len(views)]
         image=rgb(m,camera)
-        if method in ('B1','B3_uniform'):
+        if algorithm in ('B1','B3_uniform'):
             loss=.8*l1_loss(image,target)+.2*(1-ssim(image,target))
         else:
             # Pixels of fixed reference profiles; W is measurement only.
@@ -64,7 +65,7 @@ def optimize(scene,method,time_budget=None):
     for n,v in original.items():
         if n!='_features_dc' and n!='_scaling':assert torch.equal(getattr(m,n),v)
         if v.numel():assert torch.equal(getattr(m,n)[~mask],v[~mask])
-    result={'scene':scene,'method':method,'task':'A','initial_sha256':sha(initial),'output_sha256':sha(path),
+    result={'scene':scene,'method':method,'algorithm':algorithm,'seed':cfg['seed'],'task':'A','initial_sha256':sha(initial),'output_sha256':sha(path),
         'candidate_count':int(mask.sum()),'gaussian_count':len(uids),'iterations':steps,'duration_seconds':duration,
         'peak_allocated_bytes':torch.cuda.max_memory_allocated(),'time_budget_seconds':time_budget,
         'changed_rows':changed,'labels_sha256':sha(directory/'fixed_labels.npz'),'identity_sha256':sha(directory/'identity.json'),

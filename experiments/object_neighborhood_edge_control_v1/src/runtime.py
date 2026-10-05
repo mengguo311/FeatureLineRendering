@@ -53,3 +53,8 @@ def code_identity():
     return {'commit':command(['git','rev-parse','HEAD']),
             'source_sha256':{str(p.relative_to(ROOT)):sha(p) for p in EXP.rglob('*')
                             if p.is_file() and p.suffix in ('.py','.sh','.json','.yaml','.patch')}}
+
+def assert_training_open(scene):
+    freeze=EXP/'results/manifests/test_freeze.json'
+    if freeze.exists() and any(key.startswith(scene+'/') for key in json.loads(freeze.read_text())['checkpoints']):
+        raise RuntimeError('scene TEST already frozen/opened; training and selection are closed: '+scene)

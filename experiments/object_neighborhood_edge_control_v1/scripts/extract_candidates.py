@@ -3,9 +3,10 @@ import time
 from pathlib import Path
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
-from runtime import EXP,OUT,atomic_json,resource_guard,sha,code_identity
+from runtime import EXP,OUT,atomic_json,resource_guard,sha,code_identity,assert_training_open
 
 def extract(scene):
+    assert_training_open(scene)
     guard=resource_guard()
     import numpy as np
     import torch

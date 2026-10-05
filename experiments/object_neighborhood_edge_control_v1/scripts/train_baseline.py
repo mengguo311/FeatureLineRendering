@@ -6,9 +6,10 @@ import sys
 import time
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
-from runtime import EXP, OUT, ART, atomic_json, code_identity, resource_guard, sha
+from runtime import EXP, OUT, ART, atomic_json, code_identity, resource_guard, sha,assert_training_open
 
 def train_scene(scene):
+    assert_training_open(scene)
     guard=resource_guard()
     from native import install_stock
     install_stock()

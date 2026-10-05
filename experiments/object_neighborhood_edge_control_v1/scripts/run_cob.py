@@ -10,9 +10,10 @@ import random
 import time
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
-from runtime import OUT,EXP,ART,atomic_json,resource_guard,sha,code_identity
+from runtime import OUT,EXP,ART,atomic_json,resource_guard,sha,code_identity,assert_training_open
 
 def run(scene,mask_only=False):
+    assert_training_open(scene)
     guard=resource_guard()
     from native import install_cob
     install_cob()

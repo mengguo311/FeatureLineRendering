@@ -51,14 +51,20 @@ def run(scenes):
         methods=['B0','B1','B3_uniform','B6']
         if scene=='panels_high':methods+=['B4_mask_only','B4_official']
         for method in methods:
-            if method.startswith('B4'):
-                unit('B4_native_calibration',[str(scripts/'calibrate_cob.py')],[ART/'environment/cob_calibration.json'])
             script='run_cob.py' if method.startswith('B4') else 'run_controls.py'
             args=[str(scripts/script),scene]
             if method=='B4_mask_only':args+=['--mask-only']
             elif not method.startswith('B4'):args+=[method]
-            unit(scene+'_'+method,args,[directory/f'{method}.pth',directory/f'{method}_edit.json'])
-            unit(scene+'_'+method+'_val',[str(scripts/'evaluate.py'),scene,method],[EXP/f'results/tables/{scene}_{method}_val.json'])
+            try:
+                if method.startswith('B4'):
+                    unit('B4_native_calibration',[str(scripts/'calibrate_cob.py')],[ART/'environment/cob_calibration.json'])
+                unit(scene+'_'+method,args,[directory/f'{method}.pth',directory/f'{method}_edit.json'])
+                unit(scene+'_'+method+'_val',[str(scripts/'evaluate.py'),scene,method],[EXP/f'results/tables/{scene}_{method}_val.json'])
+            except RuntimeError as e:
+                if not method.startswith('B4'):raise
+                atomic_json(EXP/f'results/manifests/{scene}_{method}_blocked.json',{
+                    'status':'BLOCKED_OR_UNQUALIFIED','full_reproduction_claim':False,'reason':str(e),
+                    'independent_work_continues':True})
         for method in ['C0_control','C1_control']:
             unit(scene+'_'+method,[str(scripts/'run_controls.py'),scene,method],[directory/f'{method}.pth'])
             unit(scene+'_'+method+'_val',[str(scripts/'evaluate.py'),scene,method],[EXP/f'results/tables/{scene}_{method}_val.json'])
