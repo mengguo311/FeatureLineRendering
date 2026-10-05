@@ -1,0 +1,46 @@
+test_budget_is_historical_rank_tiers (test_scene_binding.SceneBinding) ... ok
+test_exact_scenes (test_scene_binding.SceneBinding) ... FAIL
+test_output_containment (test_scene_binding.SceneBinding) ... ERROR
+test_unknown_scene (test_scene_binding.SceneBinding) ... FAIL
+
+======================================================================
+ERROR: test_output_containment (test_scene_binding.SceneBinding)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/representative_edge_gaussians_three_v1/artifacts/representative_edge_gaussians_three_v1/code/test_scene_binding.py", line 13, in test_output_containment
+    root=Path('/tmp/new');self.assertEqual(b.output_path(root,root/'out/representative_edge_gaussians_three_v1/x'),root/'out/representative_edge_gaussians_three_v1/x')
+  File "/home/u00134/3dgs_line/representative_edge_gaussians_three_v1/artifacts/representative_edge_gaussians_three_v1/code/scene_binding.py", line 10, in output_path
+    if not any(p==r or r in p.parents for r in allowed):raise ValueError('Output containment')
+ValueError: Output containment
+
+======================================================================
+FAIL: test_exact_scenes (test_scene_binding.SceneBinding)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/representative_edge_gaussians_three_v1/artifacts/representative_edge_gaussians_three_v1/code/test_scene_binding.py", line 6, in test_exact_scenes
+    self.assertEqual(b.SCENES,('lego','chair','ficus'))
+AssertionError: Tuples differ: ('mic', 'materials') != ('lego', 'chair', 'ficus')
+
+First differing element 0:
+'mic'
+'lego'
+
+Second tuple contains 1 additional elements.
+First extra element 2:
+'ficus'
+
+- ('mic', 'materials')
++ ('lego', 'chair', 'ficus')
+
+======================================================================
+FAIL: test_unknown_scene (test_scene_binding.SceneBinding)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/representative_edge_gaussians_three_v1/artifacts/representative_edge_gaussians_three_v1/code/test_scene_binding.py", line 11, in test_unknown_scene
+    with self.assertRaises(ValueError):b.scene_id(s)
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (failures=2, errors=1)
