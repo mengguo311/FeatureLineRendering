@@ -1,0 +1,23 @@
+test_contracts (unittest.loader._FailedTest) ... ERROR
+
+======================================================================
+ERROR: test_contracts (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_contracts
+Traceback (most recent call last):
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/unittest/loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/unittest/loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "/home/u00134/3dgs_line/edge_responsibility_lego_chair_v2/experiments/edge_responsibility_lego_chair_v2/tests/test_contracts.py", line 5, in <module>
+    from evidence import signed_map, classify_contrast, profile_vector
+  File "/home/u00134/3dgs_line/edge_responsibility_lego_chair_v2/experiments/edge_responsibility_lego_chair_v2/src/evidence.py", line 99
+    if len(result)>=maximum:break
+                           ^
+SyntaxError: invalid syntax
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)
