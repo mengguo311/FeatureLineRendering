@@ -1,0 +1,681 @@
+PROJECT: Gaussian Attribution Edge Rendering (GAER)
+VERSION: Experiment v0.1
+GOAL: Validate whether visible geometric edges in 3DGS can be mapped back to existing Gaussian primitives through rasterization attribution, then re-render those Gaussians as lines/strokes without adding line primitives.
+
+======================================================================
+0. CORE HYPOTHESIS
+======================================================================
+
+H1:
+A visible screen-space geometric edge corresponds to a discontinuity in the distribution of Gaussian rasterization contributions.
+
+For pixel p:
+
+    C(p) = Σ_i w_i(p) c_i
+
+where:
+
+    w_i(p) = T_i(p) * alpha_i(p)
+
+and:
+
+    T_i(p) = Π_{j<i} (1 - alpha_j(p))
+
+Define the sparse Gaussian attribution vector:
+
+    W(p) = { (gaussian_id_i, w_i(p)) }
+
+For an edge pixel p with screen-space edge normal n:
+
+    p_minus = p - delta * n
+    p_plus  = p + delta * n
+
+Then define Gaussian attribution discontinuity:
+
+    D_i(p) = | w_i(p_minus) - w_i(p_plus) |
+
+Hypothesis:
+
+    Large D_i(p) => Gaussian i participates strongly in forming the visible edge.
+
+IMPORTANT:
+Do NOT define an "edge Gaussian" permanently in object space.
+
+Edge responsibility is view-dependent:
+
+    S_i = S_i(camera)
+
+The same Gaussian may be:
+    - edge-contributing from camera A
+    - interior surface Gaussian from camera B
+
+======================================================================
+1. NON-GOALS
+======================================================================
+
+DO NOT:
+- reconstruct a mesh
+- extract explicit 3D curves
+- create line primitives
+- replace Gaussian primitives
+- permanently modify the original 3DGS geometry
+- initially train a neural edge detector
+- initially optimize new Gaussian parameters
+
+The first experiment must remain as close as possible to vanilla trained 3DGS.
+
+======================================================================
+2. PIPELINE OVERVIEW
+======================================================================
+
+                    trained 3DGS
+                         |
+                         v
+                standard projection
+                         |
+                         v
+                  modified rasterizer
+                   /             \
+                  /               \
+               RGB/depth      attribution
+                                  |
+                         H x W x K buffer
+                                  |
+                         screen-space edge
+                                  |
+                    sample both edge sides
+                                  |
+                         compare W- / W+
+                                  |
+                                  v
+                     Gaussian edge scores
+                           S_i(camera)
+                                  |
+                    select / weight Gaussians
+                                  |
+                                  v
+                      stylized re-render
+                                  |
+                                  v
+                         line-like image
+
+======================================================================
+3. PHASE 0 — BASELINE SETUP
+======================================================================
+
+Use a standard 3DGS implementation with CUDA rasterizer.
+
+Requirements:
+- load pretrained Gaussian scene
+- render arbitrary camera
+- access mu_i, Sigma_i / scale + rotation, opacity_i, SH/color_i
+- render RGB
+- render depth if implementation supports it
+
+Before modifying anything:
+TEST:
+    render reference views
+
+SAVE:
+    baseline_rgb/
+    baseline_depth/
+
+Record:
+    FPS
+    Gaussian count
+    GPU memory
+    image resolution
+
+======================================================================
+4. PHASE 1 — ATTRIBUTION RASTERIZER
+======================================================================
+
+OBJECTIVE:
+For every pixel, recover the Gaussian primitives that contribute most strongly to its final color.
+
+Standard rasterization already computes:
+    alpha_i(p)
+    T_i(p)
+
+Compute:
+    contribution_i(p) = T_i(p) * alpha_i(p)
+
+NOTE:
+Do NOT rank only by Gaussian opacity.
+
+Correct quantity:
+    w_i(p) = T_i(p) * alpha_i(p)
+
+because an opaque Gaussian behind an already opaque foreground Gaussian may have almost zero actual image contribution.
+
+4.1 OUTPUT BUFFER
+-----------------
+
+Add:
+    gaussian_ids:     [H, W, K] int32
+    gaussian_weights: [H, W, K] float32
+
+Suggested initial:
+    K = 8
+
+For each pixel retain top-K contributions:
+    [(id_1,w_1), ..., (id_K,w_K)]
+
+Sorted:
+    w_1 >= w_2 >= ... >= w_K
+
+4.2 OPTIONAL DEBUG OUTPUT
+-------------------------
+
+Also expose:
+    accumulated_alpha [H,W]
+    depth             [H,W]
+    dominant_id       [H,W]
+
+where:
+    dominant_id(p) = argmax_i w_i(p)
+
+Visualize dominant_id using random ID colors.
+
+======================================================================
+5. PHASE 2 — EDGE CANDIDATE GENERATION
+======================================================================
+
+Avoid RGB edges initially because RGB gradients contain texture, illumination, shadows, and specular highlights.
+
+Start with geometry-related buffers.
+
+5.1 DEPTH EDGE
+
+Given rendered depth D(x,y), compute depth gradient.
+
+Optionally normalize:
+    E_depth_normalized = |grad D| / (D + epsilon)
+
+Threshold:
+    mask_depth = E_depth_normalized > tau_depth
+
+5.2 SILHOUETTE EDGE
+
+Use accumulated alpha M(p).
+
+    foreground = M > tau_alpha
+
+Then:
+    E_silhouette = morphological_gradient(foreground)
+
+5.3 NORMAL EDGE — OPTIONAL
+
+If reliable normal rendering exists:
+
+    E_normal(p) = 1 - dot(N(p_minus), N(p_plus))
+
+5.4 COMBINED EDGE MASK
+
+Initial:
+    E(p) = max(lambda_d * E_depth, lambda_s * E_silhouette)
+
+Later:
+    E(p) = lambda_d*E_depth + lambda_s*E_silhouette + lambda_n*E_normal
+
+Do NOT use RGB edge in Experiment A.
+
+======================================================================
+6. PHASE 3 — EDGE NORMAL ESTIMATION
+======================================================================
+
+For every edge pixel p compute:
+
+    n(p) = normalize(grad E(p))
+
+Tangent:
+    t(p) = (-n_y, n_x)
+
+Sample:
+    p_minus = p - delta*n
+    p_plus  = p + delta*n
+
+Test:
+    delta = {1,2,4} pixels
+
+Prefer bilinear sampling for non-integer coordinates.
+
+======================================================================
+7. PHASE 4 — GAUSSIAN ATTRIBUTION DISCONTINUITY
+======================================================================
+
+Read:
+    W_minus = attribution(p_minus)
+    W_plus  = attribution(p_plus)
+
+Construct union:
+    U = IDs(W_minus) UNION IDs(W_plus)
+
+Missing Gaussian weight = 0.
+
+For each Gaussian i in U:
+
+    D_i(p) = abs(w_i(p_minus) - w_i(p_plus))
+
+======================================================================
+8. DISTRIBUTION DISCONTINUITY
+======================================================================
+
+Calculate:
+
+    E_attr(p) = Σ_i D_i(p)
+
+equivalent to:
+
+    E_attr(p) = ||W_minus - W_plus||_1
+
+This produces a Gaussian Attribution Edge Map without using RGB.
+
+SAVE:
+    attribution_edge_map.png
+
+COMPARE WITH:
+    RGB edge
+    depth edge
+    silhouette edge
+
+======================================================================
+9. PIXEL → GAUSSIAN AGGREGATION
+======================================================================
+
+Do NOT immediately choose argmax_i D_i.
+
+Accumulate evidence:
+
+    raw_score_i = Σ_{p in edge_pixels} D_i(p)
+
+Visibility normalization:
+
+    visibility_i = Σ_p w_i(p)
+
+    score_i = raw_score_i / (visibility_i + epsilon)
+
+Optional:
+
+    raw_score_i = Σ_p E(p) * D_i(p)
+
+Store:
+
+    edge_score[camera_id][gaussian_id]
+
+NOT:
+    gaussian.is_edge = true
+
+The score belongs to Gaussian + camera/view.
+
+======================================================================
+10. VISUAL VALIDATION
+======================================================================
+
+Render:
+
+A. Gaussian score projection
+B. Selected Gaussian visualization
+C. Screen-space overlay
+
+SUCCESS CONDITION:
+Selected Gaussians should cluster around silhouettes, occlusion boundaries, and strong geometric discontinuities, not fill large interior regions.
+
+======================================================================
+11. EXPERIMENT A — ATTRIBUTION DISCONTINUITY
+======================================================================
+
+QUESTION:
+Does ||W(p_minus)-W(p_plus)|| increase near visible geometric edges?
+
+Scenes:
+1. cube
+2. sphere
+3. two overlapping objects
+4. object against background
+5. textured but geometrically flat surface
+
+Metrics:
+    AUROC
+    Average Precision
+
+Baselines:
+B1: RGB gradient
+B2: depth gradient
+B3: dominant Gaussian ID change
+B4: attribution distribution difference
+
+======================================================================
+12. EXPERIMENT B — WHICH GAUSSIANS FORM EDGES?
+======================================================================
+
+Compare:
+
+M1: largest Gaussian opacity
+M2: largest alpha_i(p)
+M3: largest T_i(p)*alpha_i(p)
+M4: largest |w_i(p_minus)-w_i(p_plus)|
+M5: proposed aggregated score
+
+CAUSAL INTERVENTION:
+
+For selected Gaussians:
+    opacity -> 0
+
+Re-render.
+
+Measure how much the target edge changes versus unrelated image regions.
+
+A good attribution method should select Gaussians whose removal strongly affects the target edge while minimally affecting unrelated regions.
+
+======================================================================
+13. EXPERIMENT C — SIMPLE LINE RENDERING
+======================================================================
+
+Do NOT modify covariance yet.
+
+C1:
+    selected Gaussian color = black
+    non-selected opacity = 0
+
+C2:
+    color_i = mix(original_color, black, clamp(score_i))
+
+C3:
+    alpha_i' = alpha_i * score_i
+    color_i' = black
+
+QUESTION:
+Can existing Gaussian footprints alone form recognizable silhouettes and geometric boundaries?
+
+======================================================================
+14. EXPERIMENT D — STROKE-LIKE GAUSSIANS
+======================================================================
+
+Only run after Experiment C succeeds.
+
+For each selected Gaussian aggregate screen-space edge tangent:
+
+    t_i = weighted_average(t(p), weight=D_i(p))
+
+Handle 180-degree orientation ambiguity using doubled-angle representation:
+
+    theta -> (cos(2theta), sin(2theta))
+
+Modify SCREEN-SPACE covariance only.
+
+Construct:
+
+    Sigma_style =
+        R_edge diag(sigma_t^2, sigma_n^2) R_edge^T
+
+Test:
+    sigma_t / sigma_n = {2,4,8}
+
+IMPORTANT:
+Do NOT overwrite original 3D covariance.
+
+======================================================================
+15. EXPERIMENT E — VIEW DEPENDENCE
+======================================================================
+
+Use a camera trajectory around the object.
+
+For every frame independently calculate:
+    score_i(camera)
+
+Expected:
+A Gaussian may have high score when on silhouette and low score when it becomes interior.
+
+Compare temporal/view consistency against image-space Canny/Sobel.
+
+Metrics:
+1. temporal line flicker
+2. selected Gaussian persistence
+3. line thickness variance
+4. line position variance
+
+CORE CLAIM:
+Gaussian identity may improve multi-view / temporal consistency.
+
+======================================================================
+16. EXPERIMENT F — TEXTURE VS GEOMETRY
+======================================================================
+
+Use a geometrically flat surface containing high-contrast texture.
+
+Expected:
+    RGB gradient detects texture boundary.
+    Geometry-aware attribution should not strongly classify it as a geometry boundary.
+
+This experiment is essential to distinguish the method from ordinary image edge detection.
+
+======================================================================
+17. ABLATIONS
+======================================================================
+
+A1 attribution:
+    alpha_i
+    T_i*alpha_i
+    normalized T_i*alpha_i
+
+A2 top-K:
+    K={1,4,8,16}
+
+A3 sampling distance:
+    delta={1,2,4,8}
+
+A4 discontinuity metric:
+    L1
+    L2
+    cosine distance
+    Jensen-Shannon divergence
+
+A5 edge source:
+    silhouette
+    depth
+    normal
+    combined
+    RGB
+
+A6 Gaussian selection:
+    top-1
+    top-K
+    hard threshold
+    soft score
+
+======================================================================
+18. MEMORY OPTIMIZATION
+======================================================================
+
+NEVER allocate H*W*N_gaussians.
+
+Use sparse top-K:
+
+    IDs:     H*W*K int32
+    weights: H*W*K fp16/fp32
+
+At 1920x1080, K=8:
+    IDs ~66 MB
+    FP32 weights ~66 MB
+    total ~132 MB
+
+FP16 weights reduce storage.
+
+======================================================================
+19. IMPLEMENTATION ORDER
+======================================================================
+
+Milestone 1:
+    expose T_i*alpha_i from rasterizer
+
+Milestone 2:
+    top-K Gaussian IDs per pixel
+
+Milestone 3:
+    visualize dominant Gaussian ID
+
+Milestone 4:
+    calculate W-minus/W-plus discontinuity offline
+
+Milestone 5:
+    generate Gaussian edge scores
+
+Milestone 6:
+    visualize selected Gaussians
+
+Milestone 7:
+    black-Gaussian line rendering
+
+Milestone 8:
+    rotating-camera test
+
+Milestone 9:
+    covariance-based stroke rendering
+
+Milestone 10:
+    runtime optimization
+
+======================================================================
+20. REQUIRED DEBUG OUTPUT
+======================================================================
+
+For every camera save:
+
+01_rgb.png
+02_depth.png
+03_geometry_edge.png
+04_dominant_gaussian.png
+05_attribution_discontinuity.png
+06_selected_gaussians.png
+07_edge_overlay.png
+08_line_render.png
+
+Also:
+    gaussian_scores.npy
+    topk_ids.npy
+    topk_weights.npy
+
+======================================================================
+21. FIRST SUCCESS CRITERIA
+======================================================================
+
+Success requires:
+
+1. Visible geometric edges correspond to high attribution discontinuity.
+2. A relatively small Gaussian subset receives high edge score.
+3. Those Gaussians project near corresponding screen-space edges.
+4. Removing those Gaussians damages corresponding edges.
+5. Recoloring/rendering those Gaussians produces recognizable line structure.
+6. Responsible Gaussian sets change sensibly with camera direction.
+
+If criteria 1–4 fail:
+    STOP.
+
+Do not proceed to artistic stylization.
+
+======================================================================
+22. KEY FORMULAS
+======================================================================
+
+Raster contribution:
+
+    w_i(p) = T_i(p) * alpha_i(p)
+
+Sparse attribution vector:
+
+    W(p) = {(id_i,w_i(p))}
+
+Edge-side sampling:
+
+    p_minus = p - delta*n(p)
+    p_plus  = p + delta*n(p)
+
+Per-Gaussian edge contribution:
+
+    D_i(p) = |w_i(p_minus)-w_i(p_plus)|
+
+Screen-space attribution discontinuity:
+
+    E_attr(p) = Σ_i D_i(p)
+
+View-dependent Gaussian score:
+
+    S_i(v) =
+        [Σ_{p in E_v} E_v(p) D_i(p)]
+        /
+        [Σ_p w_i(p) + epsilon]
+
+Selection:
+
+    G_edge(v) = {G_i | S_i(v) > tau}
+
+======================================================================
+23. RESEARCH FRAMING
+======================================================================
+
+DO NOT frame as:
+    "Extract edges from 3DGS."
+
+Frame as:
+    "Attribute visible screen-space boundaries to the Gaussian primitives responsible for their formation."
+
+Core conceptual hypothesis:
+
+    A visible edge is a discontinuity in screen-space Gaussian attribution.
+
+======================================================================
+24. POSSIBLE CLAIM — ONLY IF SUPPORTED BY EXPERIMENTS
+======================================================================
+
+A visible boundary in Gaussian Splatting can be interpreted as a discontinuity in the screen-space Gaussian attribution distribution.
+
+By tracing this discontinuity through the rasterization process, we can identify the existing Gaussian primitives responsible for visible boundaries and directly stylize those primitives, enabling view-dependent, 3D-consistent line rendering without explicit line primitives.
+
+======================================================================
+25. FIRST TASK FOR IMPLEMENTATION AGENT
+======================================================================
+
+TASK:
+
+Inspect the existing 3DGS CUDA rasterizer.
+
+Find the exact section where per-pixel front-to-back alpha compositing computes:
+
+    alpha
+    transmittance T
+    color contribution
+
+Add a DEBUG/EXPERIMENTAL output path that records:
+
+    top-K Gaussian IDs
+    top-K contribution weights
+
+where:
+
+    contribution = T_before * alpha
+
+Requirements:
+
+- K configurable, default K=8
+- do not change RGB output
+- do not change Gaussian sorting
+- do not change training behavior
+- preserve differentiability of existing RGB path
+- attribution output does not initially need gradients
+- avoid H*W*N allocation
+- use sparse H*W*K storage
+- add CPU/Python-accessible output
+- add a unit/debug test for one pixel verifying:
+      sum(all contributions) ≈ accumulated opacity
+  before top-K truncation
+- report:
+    modified files
+    modified CUDA kernels
+    tensor shapes
+    dtype
+    additional memory
+    runtime overhead
+
+STOP after attribution-buffer implementation and validation.
+Do NOT implement edge detection or stylization yet.
