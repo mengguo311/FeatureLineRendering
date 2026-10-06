@@ -1,0 +1,42 @@
+{
+  "patched_files": [
+    "cuda_rasterizer/forward.cu",
+    "cuda_rasterizer/forward.h",
+    "cuda_rasterizer/rasterizer.h",
+    "cuda_rasterizer/rasterizer_impl.cu",
+    "diff_gaussian_rasterization/__init__.py",
+    "ext.cpp",
+    "rasterize_points.cu",
+    "rasterize_points.h"
+  ],
+  "generated_source_root": "out/gaer_attribution_buffer_v01/native/patched",
+  "functions": {
+    "cuda_rasterizer/forward.cu": {
+      "renderCUDA(": 263,
+      "const float weight = T * alpha;": 367,
+      "void FORWARD::render(": 408
+    },
+    "cuda_rasterizer/rasterizer_impl.cu": {
+      "int CudaRasterizer::Rasterizer::forward(": 198
+    },
+    "rasterize_points.cu": {
+      "RasterizeGaussiansAttributionCUDA(": 119
+    },
+    "diff_gaussian_rasterization/__init__.py": {
+      "class AttributionOutput(": 229,
+      "def rasterize_gaussians_attribution(": 246,
+      "class _RasterizeGaussiansAttribution(": 263,
+      "ctx.mark_non_differentiable(ids, weights, all_sum, final_T)": 280
+    }
+  },
+  "modified_kernels": [
+    "renderCUDA<3, true>"
+  ],
+  "off_kernel": "renderCUDA<3, false>",
+  "unchanged_native": [
+    "cuda_rasterizer/backward.cu",
+    "cuda_rasterizer/backward.h",
+    "cuda_rasterizer/rasterizer_impl.h"
+  ],
+  "patch_sha256": "92f97b9ba389accdcc23ede81ec9cc01933f5285d6f81bcec3b39e30ef20fa14"
+}

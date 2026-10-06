@@ -1,0 +1,377 @@
+--- a/cuda_rasterizer/forward.cu
++++ b/cuda_rasterizer/forward.cu
+@@ -258,7 +258,7 @@
+ // Main rasterization method. Collaboratively works on one tile per
+ // block, each thread treats one pixel. Alternates between fetching 
+ // and rasterizing data.
+-template <uint32_t CHANNELS>
++template <uint32_t CHANNELS, bool ATTRIBUTION = false>
+ __global__ void __launch_bounds__(BLOCK_X * BLOCK_Y)
+ renderCUDA(
+ 	const uint2* __restrict__ ranges,
+@@ -270,7 +270,12 @@
+ 	float* __restrict__ final_T,
+ 	uint32_t* __restrict__ n_contrib,
+ 	const float* __restrict__ bg_color,
+-	float* __restrict__ out_color)
++	float* __restrict__ out_color,
++	int attribution_k,
++	int* __restrict__ out_ids,
++	float* __restrict__ out_weights,
++	float* __restrict__ out_sum,
++	float* __restrict__ out_T)
+ {
+ 	// Identify current tile and associated min/max pixel range.
+ 	auto block = cg::this_thread_block();
+@@ -301,6 +306,7 @@
+ 	uint32_t contributor = 0;
+ 	uint32_t last_contributor = 0;
+ 	float C[CHANNELS] = { 0 };
++	float contribution_sum = 0.0f;
+ 
+ 	// Iterate over batches until all done or range is complete
+ 	for (int i = 0; i < rounds; i++, toDo -= BLOCK_SIZE)
+@@ -354,6 +360,27 @@
+ 			for (int ch = 0; ch < CHANNELS; ch++)
+ 				C[ch] += features[collected_id[j] * CHANNELS + ch] * alpha * T;
+ 
++			// GAER debug: only RGB-accepted splats, using original model row ID.
++			// Strict weight ordering keeps earlier depth-traversal entries on ties.
++			if constexpr (ATTRIBUTION)
++			{
++				const float weight = T * alpha;
++				contribution_sum += weight; // All accepted contributions, before truncation.
++				const size_t base = size_t(pix_id) * attribution_k;
++				int rank = 0;
++				while (rank < attribution_k && out_weights[base + rank] >= weight) ++rank;
++				if (weight > 0.0f && rank < attribution_k)
++				{
++					for (int k = attribution_k - 1; k > rank; --k)
++					{
++						out_ids[base + k] = out_ids[base + k - 1];
++						out_weights[base + k] = out_weights[base + k - 1];
++					}
++					out_ids[base + rank] = collected_id[j];
++					out_weights[base + rank] = weight;
++				}
++			}
++
+ 			T = test_T;
+ 
+ 			// Keep track of last range entry to update this
+@@ -367,6 +394,11 @@
+ 	if (inside)
+ 	{
+ 		final_T[pix_id] = T;
++		if constexpr (ATTRIBUTION)
++		{
++			out_sum[pix_id] = contribution_sum;
++			out_T[pix_id] = T;
++		}
+ 		n_contrib[pix_id] = last_contributor;
+ 		for (int ch = 0; ch < CHANNELS; ch++)
+ 			out_color[ch * H * W + pix_id] = C[ch] + T * bg_color[ch];
+@@ -384,9 +416,17 @@
+ 	float* final_T,
+ 	uint32_t* n_contrib,
+ 	const float* bg_color,
+-	float* out_color)
+-{
+-	renderCUDA<NUM_CHANNELS> << <grid, block >> > (
++	float* out_color,
++	int attribution_k, int* out_ids, float* out_weights, float* out_sum, float* out_T)
++{
++	if (attribution_k > 0)
++	{
++		renderCUDA<NUM_CHANNELS, true><<<grid, block>>>(ranges, point_list, W, H, means2D, colors,
++			conic_opacity, final_T, n_contrib, bg_color, out_color,
++			attribution_k, out_ids, out_weights, out_sum, out_T);
++		return;
++	}
++	renderCUDA<NUM_CHANNELS, false> << <grid, block >> > (
+ 		ranges,
+ 		point_list,
+ 		W, H,
+@@ -396,7 +436,7 @@
+ 		final_T,
+ 		n_contrib,
+ 		bg_color,
+-		out_color);
++		out_color, 0, nullptr, nullptr, nullptr, nullptr);
+ }
+ 
+ void FORWARD::preprocess(int P, int D, int M,
+--- a/cuda_rasterizer/forward.h
++++ b/cuda_rasterizer/forward.h
+@@ -59,7 +59,8 @@
+ 		float* final_T,
+ 		uint32_t* n_contrib,
+ 		const float* bg_color,
+-		float* out_color);
++		float* out_color,
++		int attribution_k, int* out_ids, float* out_weights, float* out_sum, float* out_T);
+ }
+ 
+ 
+--- a/cuda_rasterizer/rasterizer.h
++++ b/cuda_rasterizer/rasterizer.h
+@@ -50,7 +50,9 @@
+ 			const bool prefiltered,
+ 			float* out_color,
+ 			int* radii = nullptr,
+-			bool debug = false);
++			bool debug = false,
++			int attribution_k = 0, int* out_ids = nullptr, float* out_weights = nullptr,
++			float* out_sum = nullptr, float* out_T = nullptr);
+ 
+ 		static void backward(
+ 			const int P, int D, int M, int R,
+--- a/cuda_rasterizer/rasterizer_impl.cu
++++ b/cuda_rasterizer/rasterizer_impl.cu
+@@ -217,7 +217,8 @@
+ 	const bool prefiltered,
+ 	float* out_color,
+ 	int* radii,
+-	bool debug)
++	bool debug,
++	int attribution_k, int* out_ids, float* out_weights, float* out_sum, float* out_T)
+ {
+ 	const float focal_y = height / (2.0f * tan_fovy);
+ 	const float focal_x = width / (2.0f * tan_fovx);
+@@ -330,7 +331,7 @@
+ 		imgState.accum_alpha,
+ 		imgState.n_contrib,
+ 		background,
+-		out_color), debug)
++		out_color, attribution_k, out_ids, out_weights, out_sum, out_T), debug)
+ 
+ 	return num_rendered;
+ }
+--- a/diff_gaussian_rasterization/__init__.py
++++ b/diff_gaussian_rasterization/__init__.py
+@@ -184,7 +184,7 @@
+             
+         return visible
+ 
+-    def forward(self, means3D, means2D, opacities, shs = None, colors_precomp = None, scales = None, rotations = None, cov3D_precomp = None):
++    def forward(self, means3D, means2D, opacities, shs = None, colors_precomp = None, scales = None, rotations = None, cov3D_precomp = None, *, attribution=False, K=8):
+         
+         raster_settings = self.raster_settings
+ 
+@@ -206,6 +206,11 @@
+         if cov3D_precomp is None:
+             cov3D_precomp = torch.Tensor([])
+ 
++        # Opt-in only; default returns the original (RGB, radii) pair.
++        if attribution:
++            return rasterize_gaussians_attribution(means3D, means2D, shs,
++                colors_precomp, opacities, scales, rotations, cov3D_precomp,
++                raster_settings, K)
+         # Invoke C++/CUDA rasterization routine
+         return rasterize_gaussians(
+             means3D,
+@@ -219,3 +224,63 @@
+             raster_settings, 
+         )
+ 
++
++
++class AttributionOutput(NamedTuple):
++    rgb: torch.Tensor
++    radii: torch.Tensor
++    gaussian_ids: torch.Tensor
++    gaussian_weights: torch.Tensor
++    all_contribution_sum: torch.Tensor
++    final_T: torch.Tensor
++
++    @property
++    def accumulated_alpha(self):
++        return 1.0 - self.final_T
++
++    @property
++    def dominant_id(self):
++        return self.gaussian_ids[..., 0]
++
++
++def rasterize_gaussians_attribution(means3D, means2D, sh, colors_precomp, opacities,
++                                    scales, rotations, cov3Ds_precomp, raster_settings, K=8):
++    """Experimental nondifferentiable attribution alongside stock differentiable RGB.
++
++    K is a Python int in [1,32]. Equal FP32 weights keep depth traversal order.
++    IDs/weights are contiguous CUDA int32/float32 [H,W,K]; unused slots -1/0.
++    Raw positive weights are T_before*alpha, never normalized. The two float32
++    [H,W] maps sum ALL RGB-accepted weights and expose the final transmittance.
++    CPU access: output.gaussian_ids.cpu().numpy() (likewise other maps).
++    """
++    if isinstance(K, bool) or not isinstance(K, int) or not 1 <= K <= 32:
++        raise ValueError('GAER K must be a Python int in [1, 32]')
++    return AttributionOutput(*_RasterizeGaussiansAttribution.apply(
++        means3D, means2D, sh, colors_precomp, opacities, scales, rotations,
++        cov3Ds_precomp, raster_settings, K))
++
++
++class _RasterizeGaussiansAttribution(torch.autograd.Function):
++    @staticmethod
++    def forward(ctx, means3D, means2D, sh, colors_precomp, opacities,
++                scales, rotations, cov3Ds_precomp, raster_settings, K):
++        args = (raster_settings.bg, means3D, colors_precomp, opacities, scales,
++                rotations, raster_settings.scale_modifier, cov3Ds_precomp,
++                raster_settings.viewmatrix, raster_settings.projmatrix,
++                raster_settings.tanfovx, raster_settings.tanfovy,
++                raster_settings.image_height, raster_settings.image_width,
++                sh, raster_settings.sh_degree, raster_settings.campos,
++                raster_settings.prefiltered, raster_settings.debug, K)
++        num_rendered, color, radii, geomBuffer, binningBuffer, imgBuffer, ids, weights, all_sum, final_T = _C.rasterize_gaussians_attribution(*args)
++        ctx.raster_settings = raster_settings
++        ctx.num_rendered = num_rendered
++        # Exact stock saved tensor ordering and native backward buffer layout.
++        ctx.save_for_backward(colors_precomp, means3D, scales, rotations,
++                              cov3Ds_precomp, radii, sh, geomBuffer, binningBuffer, imgBuffer)
++        ctx.mark_non_differentiable(ids, weights, all_sum, final_T)
++        return color, radii, ids, weights, all_sum, final_T
++
++    @staticmethod
++    def backward(ctx, grad_out_color, *ignored_debug_grads):
++        # Stock RGB backward receives exactly its original ABI; K has no gradient.
++        return _RasterizeGaussians.backward(ctx, grad_out_color, None) + (None,)
+--- a/ext.cpp
++++ b/ext.cpp
+@@ -16,4 +16,5 @@
+   m.def("rasterize_gaussians", &RasterizeGaussiansCUDA);
+   m.def("rasterize_gaussians_backward", &RasterizeGaussiansBackwardCUDA);
+   m.def("mark_visible", &markVisible);
++  m.def("rasterize_gaussians_attribution", &RasterizeGaussiansAttributionCUDA);
+ }
+\ No newline at end of file
+--- a/rasterize_points.cu
++++ b/rasterize_points.cu
+@@ -112,6 +112,99 @@
+ 		debug);
+   }
+   return std::make_tuple(rendered, out_color, radii, geomBuffer, binningBuffer, imgBuffer);
++}
++
++// Opt-in GAER entry point; original six-output entry and backward ABI are unchanged.
++std::tuple<int, torch::Tensor, torch::Tensor, torch::Tensor, torch::Tensor, torch::Tensor, torch::Tensor, torch::Tensor, torch::Tensor, torch::Tensor>
++RasterizeGaussiansAttributionCUDA(
++	const torch::Tensor& background,
++	const torch::Tensor& means3D,
++    const torch::Tensor& colors,
++    const torch::Tensor& opacity,
++	const torch::Tensor& scales,
++	const torch::Tensor& rotations,
++	const float scale_modifier,
++	const torch::Tensor& cov3D_precomp,
++	const torch::Tensor& viewmatrix,
++	const torch::Tensor& projmatrix,
++	const float tan_fovx, 
++	const float tan_fovy,
++    const int image_height,
++    const int image_width,
++	const torch::Tensor& sh,
++	const int degree,
++	const torch::Tensor& campos,
++	const bool prefiltered,
++	const bool debug, const int K)
++{
++  if (means3D.ndimension() != 2 || means3D.size(1) != 3) {
++    AT_ERROR("means3D must have dimensions (num_points, 3)");
++  }
++  
++  TORCH_CHECK(K >= 1 && K <= 32, "GAER K must be in [1, 32]");
++  TORCH_CHECK(means3D.is_cuda() && means3D.scalar_type() == torch::kFloat32, "GAER requires CUDA FP32 means3D");
++  TORCH_CHECK(image_height > 0 && image_width > 0, "GAER image dimensions must be positive");
++  const int P = means3D.size(0);
++  const int H = image_height;
++  const int W = image_width;
++
++  auto int_opts = means3D.options().dtype(torch::kInt32);
++  auto float_opts = means3D.options().dtype(torch::kFloat32);
++
++  torch::Tensor out_color = torch::full({NUM_CHANNELS, H, W}, 0.0, float_opts);
++  // Debug outputs use detached options and no H*W*N workspace.
++  auto debug_float_opts = float_opts.requires_grad(false);
++  torch::Tensor ids = torch::full({H, W, K}, -1, int_opts.requires_grad(false));
++  torch::Tensor weights = torch::zeros({H, W, K}, debug_float_opts);
++  torch::Tensor all_sum = torch::zeros({H, W}, debug_float_opts);
++  torch::Tensor final_T = torch::ones({H, W}, debug_float_opts);
++  torch::Tensor radii = torch::full({P}, 0, means3D.options().dtype(torch::kInt32));
++  
++  torch::Device device(torch::kCUDA);
++  torch::TensorOptions options(torch::kByte);
++  torch::Tensor geomBuffer = torch::empty({0}, options.device(device));
++  torch::Tensor binningBuffer = torch::empty({0}, options.device(device));
++  torch::Tensor imgBuffer = torch::empty({0}, options.device(device));
++  std::function<char*(size_t)> geomFunc = resizeFunctional(geomBuffer);
++  std::function<char*(size_t)> binningFunc = resizeFunctional(binningBuffer);
++  std::function<char*(size_t)> imgFunc = resizeFunctional(imgBuffer);
++  
++  int rendered = 0;
++  if(P != 0)
++  {
++	  int M = 0;
++	  if(sh.size(0) != 0)
++	  {
++		M = sh.size(1);
++      }
++
++	  rendered = CudaRasterizer::Rasterizer::forward(
++	    geomFunc,
++		binningFunc,
++		imgFunc,
++	    P, degree, M,
++		background.contiguous().data<float>(),
++		W, H,
++		means3D.contiguous().data<float>(),
++		sh.contiguous().data_ptr<float>(),
++		colors.contiguous().data<float>(), 
++		opacity.contiguous().data<float>(), 
++		scales.contiguous().data_ptr<float>(),
++		scale_modifier,
++		rotations.contiguous().data_ptr<float>(),
++		cov3D_precomp.contiguous().data<float>(), 
++		viewmatrix.contiguous().data<float>(), 
++		projmatrix.contiguous().data<float>(),
++		campos.contiguous().data<float>(),
++		tan_fovx,
++		tan_fovy,
++		prefiltered,
++		out_color.contiguous().data<float>(),
++		radii.contiguous().data<int>(),
++		debug, K, ids.data_ptr<int>(), weights.data_ptr<float>(),
++		all_sum.data_ptr<float>(), final_T.data_ptr<float>());
++  }
++  return std::make_tuple(rendered, out_color, radii, geomBuffer, binningBuffer, imgBuffer, ids, weights, all_sum, final_T);
+ }
+ 
+ std::tuple<torch::Tensor, torch::Tensor, torch::Tensor, torch::Tensor, torch::Tensor, torch::Tensor, torch::Tensor, torch::Tensor>
+--- a/rasterize_points.h
++++ b/rasterize_points.h
+@@ -64,4 +64,25 @@
+ torch::Tensor markVisible(
+ 		torch::Tensor& means3D,
+ 		torch::Tensor& viewmatrix,
+-		torch::Tensor& projmatrix);
+\ No newline at end of file
++		torch::Tensor& projmatrix);
++std::tuple<int, torch::Tensor, torch::Tensor, torch::Tensor, torch::Tensor, torch::Tensor, torch::Tensor, torch::Tensor, torch::Tensor, torch::Tensor>
++RasterizeGaussiansAttributionCUDA(
++	const torch::Tensor& background,
++	const torch::Tensor& means3D,
++    const torch::Tensor& colors,
++    const torch::Tensor& opacity,
++	const torch::Tensor& scales,
++	const torch::Tensor& rotations,
++	const float scale_modifier,
++	const torch::Tensor& cov3D_precomp,
++	const torch::Tensor& viewmatrix,
++	const torch::Tensor& projmatrix,
++	const float tan_fovx, 
++	const float tan_fovy,
++    const int image_height,
++    const int image_width,
++	const torch::Tensor& sh,
++	const int degree,
++	const torch::Tensor& campos,
++	const bool prefiltered,
++	const bool debug, const int K);
