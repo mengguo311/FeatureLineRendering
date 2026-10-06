@@ -32,7 +32,7 @@ def finalize():
   # Save every loss/KKT/dual log, not just terminal successes.
   lossfile=ART/'downloads'/scene/'known_target_solver_logs.csv';lossfile.parent.mkdir(parents=True,exist_ok=True)
   with lossfile.open('w',newline='') as out:
-   keys=['scope','view','start','iteration','primal_feasible_objective','dual_lower_bound','relative_dual_gap','projected_gradient_norm','projected_gradient_relative','relative_objective_change','wall_seconds'];writer=csv.DictWriter(out,fieldnames=keys);writer.writeheader()
+   keys=['scope','view','start','iteration','primal_feasible_objective','dual_lower_bound','relative_dual_gap','projected_gradient_norm','projected_gradient_relative','relative_objective_change','wall_seconds'];writer=csv.DictWriter(out,fieldnames=keys,lineterminator="\n");writer.writeheader()
    for fit in capacity['fits']:
     allfits.append(dict(scene=scene,scope=fit['scope'],view=fit.get('view','shared'),certificate=fit['independent_FP64_certificate']))
     for start in fit['starts']:
