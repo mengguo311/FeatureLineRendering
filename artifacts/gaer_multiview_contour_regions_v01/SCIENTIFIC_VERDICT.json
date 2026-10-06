@@ -1,0 +1,42 @@
+{
+  "status": "NO_GO_CONTOUR_OVERFILL",
+  "shape_status": "PARTIAL_SHAPE_RECOVERY",
+  "execution_status": "VALID_FIXED_ASSET_EXPERIMENT",
+  "scientific_goal_achieved": false,
+  "utc": "2026-10-06T17:53:34Z",
+  "summary_zh": "多视角原核融合明显补足形体覆盖，但宽区域将大面积表面填实，未达到连续、可读的三维轮廓带目标。保留真实固定宽区域草模，不将高覆盖率当成视觉成功。",
+  "scenes": {
+    "lego": {
+      "assessment_zh": "Lego 的底板、车体、铲斗和抬升支架比旧稀疏图及两源区域更完整，部分开口仍保留；但车身、铲斗与驾驶室大片填黑，底板出现粗块和后方杂域，轮廓结构被面域吞并。结论为形体恢复 PARTIAL、轮廓带 NO_GO。"
+    },
+    "chair": {
+      "assessment_zh": "Chair 的椅腿、扶手、椅背整体位置和连续外周得到恢复，若干扶手开口仍可辨；但座面与靠背大量填实，俯视接近整物体剪影。结论为形体恢复 PARTIAL、轮廓带 NO_GO。"
+    }
+  },
+  "limitations_zh": "这次没有完成可读而较完整的固定3D轮廓带，也没有校准原不透明物体的独立遮挡：所有结果只做资产自遮挡，相对原GS仍是x-ray。内部RGB细节层未实施；底部及相机覆盖域外未验证。两源/多源对照同时改变来源和construction背景约束，不能作选核器的单因子因果证据。追加墨量控制仅匹配DEV均值且是主协议后诊断。大面积形体内墨迹是本轮主要代价；并非所有孔洞消失，但残余开口不构成成功。本轮失败不改写历史证书，不否定原核的相对轮廓支持能力，不提出方法新颖性声明。",
+  "evidence": {
+    "independent_audit": "results/ARTIFACT_AUDIT.json",
+    "visual_review": "research/VISUAL_REVIEW_FINAL.json",
+    "main_metrics": [
+      "results/lego_reserved_complete.json",
+      "results/chair_reserved_complete.json"
+    ],
+    "fixed_geometry": {
+      "lego": "88845b06c27434dc7cdcac22e937e9afaea18966ee49826eddb6fb3780dbcfb3",
+      "chair": "2edaab0e955cef7fb7e684a1d6165dce82f9516df839b5b49eff92e1873c42ff"
+    }
+  },
+  "requirements": {
+    "two_real_scenes": "COMPLETE",
+    "frozen_camera_roles": "COMPLETE",
+    "full_N_original_kernel_provenance": "COMPLETE_CALIBRATED_CPU_REPLICA",
+    "unique_fixed_triangle_assets": "COMPLETE",
+    "primary_four_controls": "COMPLETE_WITH_CAPPED_INK_MISMATCH_REPORTED",
+    "additional_DEV_mean_ink_control": "COMPLETE_POST_PROTOCOL",
+    "offline_viewer": "STATIC_CODE_AND_GEOMETRY_VALIDATED_BROWSER_NOT_AVAILABLE",
+    "independent_original_object_occlusion": "NOT_IMPLEMENTED_XRAY_DISCLOSED",
+    "internal_RGB_detail_layer": "NOT_RUN",
+    "two_full_33_camera_videos": "COMPLETE_FULL_DECODE",
+    "readable_contour_band": "NO_GO_OVERFILL"
+  }
+}

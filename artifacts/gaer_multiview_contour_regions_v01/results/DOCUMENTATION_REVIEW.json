@@ -1,0 +1,225 @@
+{
+  "schema": "independent-delivery-documentation-review-v1",
+  "utc": "2026-10-06T17:58:50.910477+00:00",
+  "status": "PASS_DOCUMENTATION_WITH_DISCLOSED_LIMITS",
+  "scientific_goal_achieved": false,
+  "scientific_verdict_unchanged": "NO_GO_CONTOUR_OVERFILL",
+  "scope_zh": "轻量文档与证据一致性审阅；不重跑实验、不改变封印核心/资产。不把审阅PASS当科学GO。",
+  "reviewed_files_sha256": {
+    "REPORT_ZH.md": "679216254435461aa8c08247ad9ee753f5b3a88e8dd8af1530bf98f9a663c87c",
+    "RESEARCH_ZH.md": "60a04dfd2d0a71b9381b44575c9dff51ed5b57d911d0e413281310228a36adde",
+    "INDEX.html": "5c9f28ffbb531e509dd34227ee5f7db55994b5603928f454c82b605744fa49ce",
+    "SCIENTIFIC_VERDICT.json": "d9867e119207ee15ca0a6f983c3de410f941365fe91e9c05d9f39403d180f9ea",
+    "research/SOURCE_LEDGER.json": "f4b7ef678eff8107ddd0307fed663a7226c7fa09d287c53b6a4528d6ee673070",
+    "research/SOURCE_VERIFICATION.json": "037f7f1606d97da869e6046f8db87df90267809421a7795222ed558f76f066cd",
+    "research/FETCH_RECEIPTS.json": "c1c5b4e4f10024e375885e9ccef418f3ec01055b6080d5e9742e7ce9c7ca1511",
+    "research/VISUAL_REVIEW_FINAL_ZH.md": "ba60b09681520507491ff5999e8ab1cc654b19db4b984f0603ead8cfeca240ea",
+    "research/VISUAL_REVIEW_FINAL.json": "e9cd0a8e992e16e5694e510654073d0251abe532e5024489af91f9535aaace37",
+    "results/ARTIFACT_AUDIT.json": "31fc393eb87d51097e999adffe6e36d210cc4bb962c96a55c61deaf76683e821",
+    "results/ADDITIONAL_ASSET_AUDIT.json": "68445ea94005f821d9eb9b593bc19af181fea4bb8b20b59b910c2b547fc7098d",
+    "supplemental/SOURCE_COVERAGE_ANALYSIS.json": "183aeffc4c331c2a649a62de5f82402fc69cda9f80692669cc6fd38119fda247",
+    "results/lego_reserved_complete.json": "6554a56ce604c82fe2a3dc6d742214ab750997b12cd5af01465532c5dce4616a",
+    "results/chair_reserved_complete.json": "3a6fad787404d95f264ab5c0610727e7073ce3ebbad21ae261f1a1d99b13c47f",
+    "results/lego_post_protocol_dev_ink_diagnostic_complete.json": "42af93ca66716e827f701aec864a05d3b4d10e0c505d1d8826fbf72f163112e2",
+    "results/chair_post_protocol_dev_ink_diagnostic_complete.json": "23c4d912c0a19298e8a64db4f8517194a0de50e7184d33b39aa74ae3105f3e59"
+  },
+  "research": {
+    "actual_primary_papers": 5,
+    "quotes": [
+      {
+        "source_id": "hao_mukai_author_preprint",
+        "word_count": 14,
+        "location": "PDF page 2, section 3, second paragraph"
+      },
+      {
+        "source_id": "edgegaussians_arxiv_v2",
+        "word_count": 21,
+        "location": "Section 3.2, Learning oriented edge points as Gaussians; web parsed line 101"
+      },
+      {
+        "source_id": "emap_arxiv_v1",
+        "word_count": 15,
+        "location": "Section 4.1 Datasets; web parsed line 182"
+      },
+      {
+        "source_id": "curvegaussian_arxiv_v1",
+        "word_count": 9,
+        "location": "Section 3.3 introductory paragraph; web parsed line 128"
+      },
+      {
+        "source_id": "l1_medial_author_pdf",
+        "word_count": 8,
+        "location": "PDF page 7, Limitations paragraph about close-by surface sheets"
+      }
+    ],
+    "all_quotes_previously_exact_text_verified": true,
+    "verification_ledger_sha_matches": true,
+    "research_matches_pre_extraction_protocol_sha": true,
+    "read_scope_per_source_explicit": true,
+    "failed_or_snippet_only_sources_marked_unverified": true,
+    "distinctions_zh": [
+      "Hao–Mukai为随视角变化的raster field，persistent strokes是未来方向。",
+      "EdgeGaussians/EMAP/CurveGaussian依赖重新优化或新训练，并非冻结原RGB Gaussian ID后处理。",
+      "原RGB covariance不认证边切向；占据proxy不冒称SDF/UDF或真实表面。",
+      "L1 medial skeleton是内部骨架，不能替代外轮廓；近sheet拓扑错误已有原文依据。",
+      "没有将union/加粗/后处理宣称新颖。"
+    ]
+  },
+  "visual_evidence": {
+    "actual_opened_image_count": 28,
+    "all_recorded_image_hashes_rechecked": true,
+    "visual_report_hash_rechecked": true,
+    "reserved_primary_images": 16,
+    "all_frame_strip_entries": 66,
+    "actual_decoded_sample_indices_per_scene": [
+      0,
+      16,
+      32
+    ],
+    "independent_full_decode_frames_per_scene": 33,
+    "dynamic_browser_playback": false,
+    "verdict_agrees_with_report_and_machine_verdict": true,
+    "postprotocol_diagnostic_not_used_to_rescue_visual_verdict": true
+  },
+  "limitations_disclosed": {
+    "two_vs_24_changes_sources_foreground_constraints_and_grid_spacing": true,
+    "extra_kernel_count_not_equal_budget_advantage": true,
+    "world_floor_not_final_tube_radius": true,
+    "covariance_orientation_retained_but_axes_inflated_clipped": true,
+    "world_displacement_and_original_mahalanobis_cost_reported": true,
+    "vertex_anchor_nearest_retained_raw_voxel_owner_not_certified_adjacent": true,
+    "fixed_mesh_self_zbuffer_only_xray_relative_original_object": true,
+    "CPU_replica_calibrated_not_live_native_CUDA": true,
+    "coverage_includes_hole_boundaries": true,
+    "projected_mask_inradius_diameter_proxy_not_world_radius": true,
+    "postprotocol_DEV_average_ink_only_reserved_previously_used": true,
+    "causal_mechanism_explicitly_unablated": true,
+    "thin_widened_int64_to_int32_hash_schema_problem_retained": true,
+    "upper_hemisphere_and_short_arc_only": true,
+    "internal_detail_layer_not_run": true,
+    "viewer_static_checked_browser_interaction_unverified": true
+  },
+  "resolved_wording_findings": [
+    {
+      "issue": "更多来源的定位收益可能被误解为单因子归因",
+      "resolution": "改为multi24整个pipeline相对旧图描粗对照，并明确来源/选核/表示/约束共变。"
+    },
+    {
+      "issue": "相邻raw体素不保证成立",
+      "resolution": "改全局最近保留raw体素owner，明确不保证网格邻接。"
+    },
+    {
+      "issue": "原生alpha可能误读为本轮CUDA执行",
+      "resolution": "首个结果定义明确经校准CPU replica及本轮未调用CUDA native。"
+    }
+  ],
+  "numeric_crosschecks": {
+    "main_table_recomputed_percent_means": {
+      "lego": {
+        "thin": {
+          "coverage3": 13.4,
+          "ink_over_foreground": 0.6,
+          "deep_interior_fraction": 62.0,
+          "background_far_fraction": 0.0,
+          "negative_space_fill_fraction": 0.0
+        },
+        "widened": {
+          "coverage3": 72.5,
+          "ink_over_foreground": 64.7,
+          "deep_interior_fraction": 59.2,
+          "background_far_fraction": 17.9,
+          "negative_space_fill_fraction": 27.7
+        },
+        "two_source": {
+          "coverage3": 50.8,
+          "ink_over_foreground": 31.3,
+          "deep_interior_fraction": 70.5,
+          "background_far_fraction": 0.3,
+          "negative_space_fill_fraction": 4.3
+        },
+        "multi24": {
+          "coverage3": 100.0,
+          "ink_over_foreground": 85.2,
+          "deep_interior_fraction": 76.3,
+          "background_far_fraction": 0.1,
+          "negative_space_fill_fraction": 10.9
+        }
+      },
+      "chair": {
+        "thin": {
+          "coverage3": 22.9,
+          "ink_over_foreground": 0.7,
+          "deep_interior_fraction": 48.2,
+          "background_far_fraction": 0.2,
+          "negative_space_fill_fraction": 0.0
+        },
+        "widened": {
+          "coverage3": 58.8,
+          "ink_over_foreground": 49.8,
+          "deep_interior_fraction": 54.0,
+          "background_far_fraction": 23.0,
+          "negative_space_fill_fraction": 24.8
+        },
+        "two_source": {
+          "coverage3": 56.5,
+          "ink_over_foreground": 26.9,
+          "deep_interior_fraction": 61.8,
+          "background_far_fraction": 1.3,
+          "negative_space_fill_fraction": 5.6
+        },
+        "multi24": {
+          "coverage3": 100.0,
+          "ink_over_foreground": 101.2,
+          "deep_interior_fraction": 81.0,
+          "background_far_fraction": 0.1,
+          "negative_space_fill_fraction": 13.9
+        }
+      }
+    },
+    "source_mass_capture_recomputed_percent_medians": {
+      "lego": {
+        "fixed_multi24_selected_mass_capture": 98.5615,
+        "fixed_two_source_selected_mass_capture": 42.9873,
+        "raw_0p5pct_mass_capture": 33.0123,
+        "relative_0p5pct_mass_capture": 6.8824
+      },
+      "chair": {
+        "fixed_multi24_selected_mass_capture": 98.4344,
+        "fixed_two_source_selected_mass_capture": 25.2794,
+        "raw_0p5pct_mass_capture": 44.5302,
+        "relative_0p5pct_mass_capture": 6.672
+      }
+    },
+    "postprotocol_DEV_error_radius_and_reserved_means_agree_with_result_JSON": true,
+    "audit_seals": 309,
+    "audit_hash_references": 1652,
+    "protected_files": 417,
+    "historical_branch_heads": 19
+  },
+  "local_link_checks": {
+    "REPORT_ZH.md": {
+      "checked": 32,
+      "missing": []
+    },
+    "RESEARCH_ZH.md": {
+      "checked": 1,
+      "missing": []
+    },
+    "INDEX.html": {
+      "checked": 22,
+      "missing": []
+    },
+    "research/VISUAL_REVIEW_FINAL_ZH.md": {
+      "checked": 7,
+      "missing": []
+    }
+  },
+  "unresolved_documentation_errors": [],
+  "handoff_pending": [
+    {
+      "file": "REPRODUCE.md",
+      "owner": "root",
+      "task": "补充新checkout ignored render缓存rehydrate命令并核验；本审阅不绑定该尚待更新文档最终SHA。"
+    }
+  ]
+}

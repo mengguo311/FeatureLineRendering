@@ -1,0 +1,6 @@
+{
+  "status": "INVALID_OR_INCOMPLETE_DIAGNOSTIC",
+  "error": "RuntimeError('primary geometry hash mismatch')",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/u00134/3dgs_line/gaer_multiview_contour_regions_v01/experiments/gaer_multiview_contour_regions_v01/matched_ink_audit.py\", line 127, in main\n    fit_and_seal(name,freeze['scenes'][name]);results[name]=evaluate_reserved(name,freeze['scenes'][name])\n  File \"/home/u00134/3dgs_line/gaer_multiview_contour_regions_v01/experiments/gaer_multiview_contour_regions_v01/matched_ink_audit.py\", line 44, in fit_and_seal\n    primary,meshes=load_primary(name);target_mesh=meshes['multi24'];devkeys=scene['roles']['dev'];dev=[camera_for(scene,k,'develop') for k in devkeys]\n  File \"/home/u00134/3dgs_line/gaer_multiview_contour_regions_v01/experiments/gaer_multiview_contour_regions_v01/matched_ink_audit.py\", line 31, in load_primary\n    if geometry_hash(**meshes[arm])!=rec['arms'][arm]['geometry_sha256']:raise RuntimeError('primary geometry hash mismatch')\nRuntimeError: primary geometry hash mismatch\n",
+  "primary_results_untouched": true
+}

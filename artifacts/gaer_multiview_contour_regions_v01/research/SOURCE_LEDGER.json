@@ -1,0 +1,118 @@
+{
+  "schema": "primary-source-evidence-ledger-v1",
+  "research_date_jst": "2026-10-07",
+  "policy": "Live web search followed by actual primary full-text reading. Search snippets alone are not evidence for a paper's method. No third-party code executed. Full-text reading caches excluded from git and not redistributed.",
+  "searches": [
+    "EMAP 3D edge reconstruction Gaussian splatting paper official",
+    "CurveGaussian LineGS EdgeGaussians paper 3D sketch Gaussian",
+    "L1 medial skeleton point cloud Huang 2013 author pdf contraction",
+    "point cloud consolidation locally optimal projection operator Lipman 2007 author pdf"
+  ],
+  "sources": [
+    {
+      "id": "hao_mukai_author_preprint",
+      "url": "https://mukai-lab.org/content/SA2026PosterHao.pdf",
+      "title": "Feature Line Rendering from Rasterization States in 3D Gaussian Splatting",
+      "authority": "authors' laboratory",
+      "access": [
+        {"transport": "live_web_open", "status": "FAILED_INTERNAL_ERROR", "http_status": null},
+        {"transport": "HTTPS_curl", "status": "SUCCESS_COMPLETE_PDF", "pages": 2}
+      ],
+      "read_scope": "Both pages; sections 1, 2, 3; equations 1-5; limitations and future work.",
+      "sha256": "124862cf38711236e04aba255b8815e29437f11de8f15e4c57af0e8bed34bd58",
+      "quote": "The output remains a view-dependent raster field rather than a persistent 3D stroke representation.",
+      "quote_location": "PDF page 2, section 3, second paragraph",
+      "method_evidence": "Top-K primitive identities and alpha-transmittance contributions remain raster evidence; persistent strokes are future work.",
+      "not_established": "No fixed editable 3D asset or all-angle silhouette recovery is demonstrated by this preprint.",
+      "version_note": "Downloaded PDF still contains DOI/ISBN placeholders; official page now has a concrete DOI. These are distinct retrieved records.",
+      "full_copy_git_ignored": true
+    },
+    {
+      "id": "hao_mukai_official_page",
+      "url": "https://mukai-lab.org/publications/sa2026poster-3dgs/",
+      "authority": "authors' laboratory",
+      "access": [{"transport": "live_web_open", "status": "SUCCESS_FULL_PAGE", "parsed_lines": 40}],
+      "read_scope": "Full official publication entry; publication date, authors, preprint link, DOI.",
+      "quote": "",
+      "evidence": "Official page dated 2026-09-20 links the author preprint and DOI 10.1145/3829333.3847934.",
+      "method_claims_supported": false
+    },
+    {
+      "id": "edgegaussians_arxiv_v2",
+      "url": "https://arxiv.org/html/2409.12886v2",
+      "title": "EdgeGaussians - 3D Edge Mapping via Gaussian Splatting",
+      "authority": "author arXiv full text",
+      "access": [{"transport": "live_web_open", "status": "SUCCESS_FULL_TEXT", "parsed_lines": 330}, {"transport": "HTTPS_urllib", "status": "SUCCESS_HTTP_200", "receipt": "FETCH_RECEIPTS.json"}],
+      "read_scope": "Sections 1-3, 4.1, 4.2 discussion, 5-6; Appendix A-C.",
+      "quote": "The 3D Gaussians optimized only with the rendering loss can be oriented and scaled without correlation to the 3D edge geometry.",
+      "quote_location": "Section 3.2, Learning oriented edge points as Gaussians; web parsed line 101",
+      "method_evidence": "Edge-supervised retraining plus orientation/shape regularization precedes cluster-then-fit extraction. Appendix C records missed and spurious fitted edges.",
+      "not_established": "Covariance axes from an unchanged RGB-trained model are not certified edge tangents by this method."
+    },
+    {
+      "id": "emap_arxiv_v1",
+      "url": "https://arxiv.org/html/2405.19295v1",
+      "title": "3D Neural Edge Reconstruction",
+      "authority": "author arXiv full text",
+      "access": [{"transport": "live_web_open", "status": "SUCCESS_FULL_TEXT", "parsed_lines": 521}, {"transport": "HTTPS_urllib", "status": "SUCCESS_HTTP_200", "receipt": "FETCH_RECEIPTS.json"}],
+      "read_scope": "Sections 3.1-3.2 and 4.1 including UDF rendering, point shifting/direction/linkage, fitting/merging, dataset scope.",
+      "quote": "We select 82 CAD models, excluding those containing inconsistent edge observations (e.g., cylinders or balls).",
+      "quote_location": "Section 4.1 Datasets; web parsed line 182",
+      "method_evidence": "A trained UDF supplies edge distances and gradients before parametric extraction; dataset scope excludes some rolling silhouettes.",
+      "not_established": "An untrained Gaussian occupancy proxy is not thereby a distance field, and all-view fixed silhouette curves are not established."
+    },
+    {
+      "id": "emap_official_repo",
+      "url": "https://github.com/cvg/EMAP",
+      "authority": "official author repository",
+      "access": [{"transport": "live_web_search_full_readme_result", "status": "READ_README_ONLY"}],
+      "read_scope": "Project identity and link discovery only. No implementation downloaded or executed.",
+      "quote": "",
+      "method_claims_supported": false
+    },
+    {
+      "id": "curvegaussian_arxiv_v1",
+      "url": "https://arxiv.org/html/2506.21401v1",
+      "title": "Curve-Aware Gaussian Splatting for 3D Parametric Curve Reconstruction",
+      "authority": "author arXiv full text",
+      "access": [{"transport": "live_web_open", "status": "SUCCESS_FULL_TEXT", "parsed_lines": 339}, {"transport": "HTTPS_urllib", "status": "SUCCESS_HTTP_200", "receipt": "FETCH_RECEIPTS.json"}],
+      "read_scope": "Sections 1, 3.1-3.4, 4.1; curve-Gaussian coupling, width, merging/splitting/pruning, losses.",
+      "quote": "we initialize the process with random Bézier parameterized curves.",
+      "quote_location": "Section 3.3 introductory paragraph; web parsed line 128",
+      "method_evidence": "Curves control Gaussian positions and orientations; training optimizes control points, opacity and thickness with adaptive topology.",
+      "not_established": "This is not direct selection or fusion of immutable original SH3 Gaussian identities."
+    },
+    {
+      "id": "curvegaussian_official_page",
+      "url": "https://zhirui-gao.github.io/CurveGaussian/",
+      "authority": "authors' project page",
+      "access": [{"transport": "live_web_open", "status": "SUCCESS_FULL_PAGE", "parsed_lines": 66}],
+      "read_scope": "Full project description and paper link; confirms ICCV 2025 and arXiv identifier.",
+      "quote": "",
+      "method_claims_supported": "Only as corroboration of primary paper, not replacement for reading it."
+    },
+    {
+      "id": "l1_medial_author_pdf",
+      "url": "https://www.cs.sfu.ca/~haoz/pubs/huang_sig13_l1skel.pdf",
+      "title": "L1-Medial Skeleton of Point Cloud",
+      "authority": "coauthor's university page",
+      "access": [{"transport": "live_web_open", "status": "FAILED_INTERNAL_ERROR", "http_status": null}, {"transport": "HTTPS_curl", "status": "SUCCESS_COMPLETE_PDF", "pages": 8}],
+      "read_scope": "Abstract and sections 2-4, section 5 limitations; local contraction, branch formation, centering and topology restrictions.",
+      "sha256": "4eb21ba45d21b223479265a535a015272e6937d119efdadffa96ace32bb68627",
+      "quote": "our algorithm may produce skeletons with incorrect topology",
+      "quote_location": "PDF page 7, Limitations paragraph about close-by surface sheets",
+      "method_evidence": "Localized median contraction targets the shape's medial curve; nearby sheets can produce wrong topology when only position is available.",
+      "not_established": "A medial skeleton is not the same target as an external contour band.",
+      "full_copy_git_ignored": true
+    }
+  ],
+  "failed_or_discovery_only_urls": [
+    {"url": "https://openaccess.thecvf.com/content/WACV2025/papers/Chelani_EdgeGaussians_-_3D_Edge_Mapping_via_Gaussian_Splatting_WACV_2025_paper.pdf", "status": "WEB_OPEN_HTTP_403", "resolution": "Read author arXiv v2 full text instead; search snippet not used as full-text evidence."},
+    {"url": "https://www.openaccess.thecvf.com/content/ICCV2025/papers/Gao_Curve-Aware_Gaussian_Splatting_for_3D_Parametric_Curve_Reconstruction_ICCV_2025_paper.pdf", "status": "WEB_OPEN_HTTP_403", "resolution": "Read author arXiv v1 full text instead."},
+    {"url": "https://openaccess.thecvf.com/content/CVPR2024/papers/Li_3D_Neural_Edge_Reconstruction_CVPR_2024_paper.pdf", "status": "WEB_OPEN_HTTP_403", "resolution": "Read author arXiv v1 full text instead."},
+    {"url": "https://www.cs.tau.ac.il/~dcor/articles/2013/L1-Medial-Skeleton-of-Point.pdf", "status": "WEB_OPEN_INTERNAL_ERROR", "resolution": "Read the SFU coauthor PDF by HTTPS instead."},
+    {"url": "https://www.openaccess.thecvf.com/content/ICCV2025/papers/Ying_SketchSplat_3D_Edge_Reconstruction_via_Differentiable_Multi-view_Sketch_Splatting_ICCV_2025_paper.pdf", "status": "SEARCH_SNIPPET_ONLY_UNVERIFIED", "resolution": "No method conclusion relied on this candidate."},
+    {"url": "https://www.researchgate.net/publication/386375000_LineGS_3D_Line_Segment_Representation_on_3D_Gaussian_Splatting", "status": "SEARCH_SNIPPET_ONLY_UNVERIFIED", "resolution": "Not used as primary evidence."},
+    {"url": "https://www.wisdom.weizmann.ac.il/~ylipman/lop/lop.htm", "status": "SEARCH_DISCOVERY_ONLY", "resolution": "Not used as method evidence; L1 paper itself was read."}
+  ]
+}

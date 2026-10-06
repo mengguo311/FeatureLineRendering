@@ -1,0 +1,105 @@
+{
+  "schema": "independent-method-review-resolution-v1",
+  "utc": "2026-10-06T17:18:50.885732+00:00",
+  "prior_review": "METHOD_REVIEW_ZH.md",
+  "prior_review_sha256": "6f622e6ec6e61959edcf84c1ce38d724bc8199d43e95d48f97f2880e4827c867",
+  "review_type": "Read-only static code and existing calibration metadata review. No source extraction or renderer execution; no reserved/arc image opened.",
+  "production_code_sha256": {
+    "runtime.py": "0151390e118a378e0182baafec417cc88e03bd32e6b7667f795ed8c576253cae",
+    "run.py": "761527b059d5151564f784754750d884e308456ce2f1459b19487dfa38ddc83a",
+    "pipeline.py": "680f377dd4f959c3bc51ce62e658b0a02cbf45565c3bdbca313f145a9059ea19",
+    "regions.py": "dc14525ad2cba00647f6446b0478716c586a9f4e8c4bed9d2248567e213a341a",
+    "fusion.py": "efd6f3711818e369c2b01eca5c8432c147cd32212cb28d203e39f6a9f36899ce",
+    "protocol.py": "a0bde5616aa2bdfbccc4ab2c970c0fe20edf9ecc36b62cb2228c284fc9d03f09",
+    "cpu_native.py": "d360806654584227cc342ce22af7c26399f3d5d387b51a01c2eaddadc3b449a4",
+    "mesh_tools.py": "1a4362c56b87353398141f4ce1e4bfa2b61d1a9eebc2f134669048e4c8cdb9a8",
+    "mesh_raster.cpp": "9f1bc54a7a6255f51728b4355f8b76961c6cd0875c92fcdc792dd63b3904bf6b"
+  },
+  "protocol_sha256": "1126c228d1041ef57e751f0376508ee5fb57a719246b583bc7f1501ab746dd02",
+  "protocol_production_python_hashes_match": true,
+  "calibration_binding_checks": [
+    {
+      "scene": "lego",
+      "camera": "r_7",
+      "status": "PASS",
+      "cpu_native_hash_matches": true,
+      "calibration_sha256": "084c1f1539bbb5d87538f26100280b830cf21d25214011d00f5d8a7bd2058e43"
+    },
+    {
+      "scene": "lego",
+      "camera": "r_33",
+      "status": "PASS",
+      "cpu_native_hash_matches": true,
+      "calibration_sha256": "110a8fbd3e5af3e4c326bfbad5b5ec58746e8be12d91c8a557fb265e519ad497"
+    },
+    {
+      "scene": "chair",
+      "camera": "r_7",
+      "status": "PASS",
+      "cpu_native_hash_matches": true,
+      "calibration_sha256": "45f08542aa43fa6138e9e3d9b0b286f86cf6bfcf2c8df3cdb17ec75c053dcc00"
+    },
+    {
+      "scene": "chair",
+      "camera": "r_33",
+      "status": "PASS",
+      "cpu_native_hash_matches": true,
+      "calibration_sha256": "ae1fe3ec6b1b7cd049ddf63df62f8320cc8e3a2044ab51a401ed7348f5af80d3"
+    }
+  ],
+  "findings": [
+    {
+      "id": "R1_current_code_resume",
+      "status": "RESOLVED_STATIC",
+      "evidence": "runtime.resume now compares sealed result method_hashes to method_hashes() of current essential Python and mesh_raster.cpp files. runtime.seal records that same manifest.",
+      "limit": "No intentional code mutation performed against live production to test rejection."
+    },
+    {
+      "id": "R2_calibration_code_binding",
+      "status": "RESOLVED_READBACK",
+      "evidence": "run.main requires code_binding.cpu_native_py_sha256 equal current cpu_native.py SHA256. All four construction calibration JSON bindings match current file and status PASS. The embedded renderer CPP is part of that Python file."
+    },
+    {
+      "id": "R3_direct_upstream_seals",
+      "status": "RESOLVED_DIRECT_DEPENDENCIES_WITH_RESIDUAL_LIMIT",
+      "evidence": "fusion_arm validates each extraction seal; build_arm validates fusion seal; seal_scene validates DEV selection seal.",
+      "residual": "build_arm additionally consumes raw alpha caches without checking their source/rgb seals at that point; asset footprint evaluation reads region_provenance NPZ not included in the asset seal. An independent final traversal of all stage seals/inputs remains necessary for complete provenance consistency. No tampering or inconsistent artifact was observed."
+    },
+    {
+      "id": "R4_vertex_support_anchor",
+      "status": "RESOLVED_STATIC_WITH_SEMANTIC_LIMIT",
+      "evidence": "Primary vertex_anchor_ids now identify the owner of nearest retained raw occupied voxel. Nearest-center IDs are separately retained. Mahalanobis/displacement use primary owner.",
+      "limit": "This is a local support witness, not proof every extracted/fill vertex lies inside its original Gaussian ellipsoid. Marching-cubes and declared closing add displacement; owner is one winner rather than the exhaustive overlapping support set."
+    },
+    {
+      "id": "R5_footprint_candidate_mismatch",
+      "status": "RESOLVED_STATIC",
+      "evidence": "evaluate_view uses final region retained_owner_ids and labels the native-footprint panel accordingly, replacing broader fusion selected_ids.",
+      "limit": "Fusion PLY still represents candidate support; final region-owner IDs are separately stored. Both counts should be reported."
+    },
+    {
+      "id": "R6_two_vs_multi_confounds",
+      "status": "DISCLOSED_IN_FROZEN_PROTOCOL",
+      "evidence": "control_limit explicitly records simultaneous support, source silhouette constraints and bbox-spacing differences; this is a pipeline source-count comparison."
+    },
+    {
+      "id": "R7_multiscale_claim",
+      "status": "DISCLOSED_IN_FROZEN_PROTOCOL",
+      "evidence": "fusion.rim_used explicitly states 3px wide map used; 1.5px map diagnostic only."
+    },
+    {
+      "id": "R8_width_world_floor_name",
+      "status": "REPORT_LIMIT_RETAINED",
+      "evidence": "Final axes are score-dependent with truncation and minimum voxel axis. width_world_floor remains a storage key for covariance inflation, not actual final radius. REPORT_METHODS_ZH.md spells this out."
+    },
+    {
+      "id": "R9_foreground_carving_xray",
+      "status": "LIMIT_RETAINED",
+      "evidence": "Construction foreground constraints occur once in object space; evaluation remains fixed mesh self-zbuffer, x-ray relative to the original opaque object."
+    }
+  ],
+  "judgment": "Reviewed fixes address the reported immediate code-version/calibration/direct-input gaps. No basis found to halt the current ordered production run. Full end-to-end seal verification and visual evaluation remain pending; this is not a scientific GO.",
+  "reserved_images_opened": false,
+  "arc_images_opened": false,
+  "code_modified_by_reviewer": false
+}

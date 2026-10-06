@@ -1,0 +1,97 @@
+{
+  "utc": "2026-10-06T17:17:01Z",
+  "frozen_before_new_source_extraction": true,
+  "research_sha256": "60a04dfd2d0a71b9381b44575c9dff51ed5b57d911d0e413281310228a36adde",
+  "input_freeze_sha256": "fa3d3b46f748da2c78ebc22ff63b02dd2b882f155438d5aea299dc9c97795277",
+  "source": "Original SH3 seed1729 iteration30000 PLY; immutable original row IDs",
+  "renderer": "CPU all-N stock-rule alphaT replica must pass four construction native-cache calibration; no GPU while foreign occupancy",
+  "roles": "24 metadata-only construction, 4 DEV, 8 reserved per scene; reserved and 33arc only after unique scene asset seal",
+  "evidence": {
+    "alpha_threshold": 0.5,
+    "min_component_pixels": 32,
+    "holes": "not filled; enclosed-hole participation saved separately; open negative spaces preserved",
+    "rim_sigma_pixels": [
+      1.5,
+      3.0
+    ],
+    "all_N": true,
+    "topK": false
+  },
+  "fusion": {
+    "valid_mass": 0.1,
+    "min_rim_mass": 0.01,
+    "high_relative": 0.35,
+    "high_rim_mass": 0.05,
+    "weak_relative": 0.12,
+    "soft": "relative * sqrt(rim_mass/(rim_mass+.05)); max across distinct cameras",
+    "rim_used": "3px wide map; 1.5px narrow map diagnostic only, not fused",
+    "hysteresis": "one nearest-high hop with distance <= sum min(2*max_sigma,.025*robust_bbox_diagonal); save weak acceptance/rejection",
+    "single_view": "allowed and distinctly labelled; no vote duplication"
+  },
+  "region": {
+    "type": "original full 3D covariance anchored ellipsoid-union edge occupancy proxy, not SDF nor physical surface",
+    "grid_resolution_diagonal": 224,
+    "width_candidates_voxels": [
+      0.4,
+      0.8,
+      1.2
+    ],
+    "sigma_multiplier": 1.25,
+    "level": 0.1,
+    "max_axis_diagonal": 0.025,
+    "min_axis_voxels": 0.55,
+    "closing": "one iteration six-neighbor cross; raw support retained; source-neighborhood CSR for each fill",
+    "background_veto": "once in object space: each construction foreground dilated 2px; outside image unknown; holes not filled",
+    "connectivity": 6
+  },
+  "arms": [
+    "thin_A_exact_old_graph_world_radius",
+    "same_A_widened_DEV_matched_ink",
+    "two_source_new_selection_region",
+    "multi24_new_selection_region"
+  ],
+  "control_limit": "two/multi change source support plus source silhouette constraints; bbox-derived spacing differs. This is a pipeline source-count control, not isolated selector causality.",
+  "dev": {
+    "selection": "maximize average coverage3 - .45*background_far_fraction - .30*deep_interior_fraction - .40*negative_space_fill_fraction - .08*ink_over_foreground; lower width wins ties",
+    "widened_match": "8 bisections of world radius in [old_radius,.025*region_diagonal], match average DEV ink; residual explicit if unmatchable",
+    "two_source_width": "same selected voxel-width multiplier as multi24; physical width separately reported"
+  },
+  "visibility": "triangle asset self-zbuffer only; x-ray relative to original opaque object; NO perview hide masks; full rear geometry shown",
+  "internal_layer": "NOT_RUN unless primary delivered with time remaining; primary includes alpha-hole boundaries, no RGB texture edges",
+  "scientific_status": "Engineering pass != GO. Visual decision on readable shape/continuity/stability + width and holes. Invalid calibration/execution = INVALID/UNDETERMINED, not scientific NO_GO. New selection cannot overwrite old REFUSED.",
+  "cheap_falsification": [
+    "calibration fail => INVALID",
+    "multi-source supports fail DEV shape coverage => added observations unproven",
+    "matched ink widened comparable => fusion representation advantage unproven",
+    "near-full black object or merged holes => PARTIAL/NO_GO contour quality"
+  ],
+  "resources": {
+    "cpu_threads": 2,
+    "root_min_GiB": 4,
+    "shared_git_min_GiB": 1.5,
+    "stage_max_GiB": 6,
+    "production_guard_GiB": 1,
+    "no_installs": true,
+    "no_training": true
+  },
+  "method_sha256": {
+    "test_cpu_native.py": "47a33602b834b54673f6c49597554f34749c2f92c4b38a93b4605a204c96eebe",
+    "runtime.py": "0151390e118a378e0182baafec417cc88e03bd32e6b7667f795ed8c576253cae",
+    "run.py": "761527b059d5151564f784754750d884e308456ce2f1459b19487dfa38ddc83a",
+    "pipeline.py": "680f377dd4f959c3bc51ce62e658b0a02cbf45565c3bdbca313f145a9059ea19",
+    "freeze.py": "6ab0e1662f0124a02680b6760646b42099ef97f1f7892e5d5065ca1b398513a9",
+    "contracts.py": "7eb6ece3d8aef9f7df93d9680e7f51e393b14e7a309dd8a938ffa50c08b82c2f",
+    "test_regions.py": "c0838e7fff1fa80b29e581eb80dc9783b015eff571cb82182a30bc4b10c808be",
+    "regions.py": "dc14525ad2cba00647f6446b0478716c586a9f4e8c4bed9d2248567e213a341a",
+    "metrics.py": "dbcf6b67ee0fa510f549573925ca969094e8b7bd51813fcf5b16aaf2256eecd2",
+    "protocol.py": "a0bde5616aa2bdfbccc4ab2c970c0fe20edf9ecc36b62cb2228c284fc9d03f09",
+    "test_contracts.py": "7fd828e807ee12af10a31b554ae486bf8a91a9000237888ead69c3d626e3e2d2",
+    "test_mesh_tools.py": "9748cf51a7628443177ba6e06ae67414d046def6dc13313916cc221e7e0e09e5",
+    "cpu_native.py": "d360806654584227cc342ce22af7c26399f3d5d387b51a01c2eaddadc3b449a4",
+    "mesh_tools.py": "1a4362c56b87353398141f4ce1e4bfa2b61d1a9eebc2f134669048e4c8cdb9a8",
+    "test_fusion.py": "e0debc276228e1b11ce10e4cb5b6d793e8613c21d5bf0f189b433633504f1ee4",
+    "test_media_tools.py": "72c5387676799139353ac7b76f0f90a587520ae360f886e406db3cca814da4ee",
+    "fusion.py": "efd6f3711818e369c2b01eca5c8432c147cd32212cb28d203e39f6a9f36899ce",
+    "media_tools.py": "f141ed49d61de890ccfc1178c766127f805e2b7424cea7a2aec8ea45c980d741"
+  }
+}

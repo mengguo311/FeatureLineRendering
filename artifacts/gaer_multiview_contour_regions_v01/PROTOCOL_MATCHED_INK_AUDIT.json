@@ -1,0 +1,36 @@
+{
+  "name": "post_protocol_dev_ink_diagnostic",
+  "status": "ADDITIONAL_DIAGNOSTIC_PROTOCOL_FROZEN_BEFORE_ITS_DEV_SEARCH",
+  "preregistered_main_arm": false,
+  "reason": "The preregistered old-A widening radius cap failed to match the chosen main multi24 mean DEV ink area; the reported Lego residual was about 22.4%. Preserve that primary result and add an explicitly post-protocol control to test the ink-area confound.",
+  "purpose": "Measure whether the primary fused-region result can be explained by increased projected ink, using the identical historical A graph and only a different fixed world-space tube radius. This does not repair or reselect the proposed fusion method.",
+  "inputs": {
+    "development": "Exactly the four frozen DEV cameras and their already generated RGB/alpha arrays per scene; no new renderer or extra geometry input.",
+    "target": "Mean DEV binary ink pixels from real triangle rasterization of the already sealed main multi24 mesh.",
+    "control_topology": "Unchanged historical FULL_GRAPH.npz xyz, original IDs and A edge pairs.",
+    "reserved": "Only after this diagnostic asset seal, evaluate its fixed mesh on the eight frozen reserved cameras. They were already used by the main experiment and are not fresh blind data."
+  },
+  "search": {
+    "variable": "One scene-wide fixed world-space tube radius; 8-sided closed tubes.",
+    "start": "Historical original tube radius (world half-width).",
+    "scene_D": "Axis-aligned bounding-box diagonal of the already sealed main multi24 mesh.",
+    "expansion": "Evaluate the starting radius, then double monotonically, clipping to scene_D/2, until mean DEV ink brackets the target or the upper bound is reached.",
+    "bisection_steps": 12,
+    "choose": "Smallest absolute mean DEV ink error among all recorded trials; ties choose smaller world radius.",
+    "expected_relative_error": 0.01,
+    "unmatched_policy": "If the target is not bracketed or residual is at least 1%, keep the best actual control and report DIAGNOSTIC_UNMATCHED; do not alter the rule or main scientific verdict.",
+    "trial_record": "Every world radius, four camera ink counts, mean ink, signed residual and relative absolute error; preserve negative and intermediate evidence."
+  },
+  "immutability": {
+    "main_protocol": "unchanged",
+    "main_assets": "unchanged",
+    "main_four_arms": "unchanged",
+    "main_scientific_gates": "unchanged",
+    "main_width_choice": "unchanged",
+    "main_reserved_media": "unchanged",
+    "history_status": "unchanged"
+  },
+  "visibility": "The same calibrated CPU perspective triangle rasterizer, asset self-zbuffer only; x-ray relative to the original GS object, all rear regions retained.",
+  "outputs": "Separate post_protocol_dev_ink_diagnostic directory, GLB/OBJ/NPZ and asset seal per scene; separate eight-view RGB/main/capped-control/exact-ink-control panels and metrics. No replacement of the main eight-view boards.",
+  "claim_limit": "A post-protocol DEV-only area-matching diagnostic, not a preregistered fifth primary arm, algorithmic rescue, physical-edge certificate, or new blind test."
+}
