@@ -1,0 +1,6 @@
+{
+ "failures_preserved": [
+  {"stage":"initial ROI presentation", "cause":"cached RGB roundoff divided by near-zero color term magnitude", "effect":"invalid cancellation display means; no effect on D winners or probes", "resolution":"separate scalar FP64 ROI audit with explicit insufficient-signal marker; original sealed records retained"},
+  {"stage":"first independent ROI audit", "cause":"NumPy float32 term summation produced triangle inequality roundoff above 1e-10 audit tolerance", "effect":"audit stopped before scientific conclusion", "resolution":"independent mathematical normalization terms computed in FP64; tolerance and scientific protocol unchanged"}
+ ]
+}
