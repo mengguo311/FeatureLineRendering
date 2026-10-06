@@ -51,4 +51,4 @@ A 的局部邻接出现度 3–6 的分叉、短三角/杂线和局部线团，�
 
 全流程 CPU 两线程，不安装、不训练、不使用 GPU、mesh 输入、额外几何或网络数据。资源日志 [RESOURCES.jsonl](RESOURCES.jsonl) 每阶段执行 root>=4GiB / sharedGit>=1.5GiB / stage<=2GiB 守卫，未修改生产 1GiB 守卫。没有 tube 原生渲染或表面遮挡验证，没有人工物理边标签；这是明确限制，不是资产/33 帧缺失。
 
-复现命令与来源见 [REPRODUCE.md](REPRODUCE.md)。[MANIFEST.json](MANIFEST.json) 保存冻结交付文件 hash。最终 commit / 显式 SSH push / remote SHA / clean status 在本地 `DELIVERY.json`；它是 push 后生成的 receipt，按本 stage `.gitignore` 忽略，避免文件包含自身 commit hash 的循环。全部模型/图/媒体/测试/中文文档在同一最终交付 commit 中。
+复现命令与来源见 [REPRODUCE.md](REPRODUCE.md)。[MANIFEST.json](MANIFEST.json) 保存冻结交付文件 hash。最终 commit / 显式 SSH push / remote SHA / clean status 在本地 `DELIVERY.json`；它是 push 后生成的 receipt，按本 stage `.gitignore` 忽略，避免文件包含自身 commit hash 的循环。全部固定图资产、媒体、测试和中文文档都在最终交付树中；原始训练 PLY 保持原路径只读，不复制或重新提交。
