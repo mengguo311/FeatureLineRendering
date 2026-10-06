@@ -1,0 +1,17 @@
+# GAER 原边缘核 → 纯物空间邻接连线（中文交付）
+
+最新用户明确要求：尝试以检测出的边缘核为基础直接在物空间连出线段。这明确授权以已有原核中心作为三维图候选点、输出显式固定三维线。上一轮 cd09b5266fa446b8cf36527c9cb904d54389198e 的单视角 alpha 轮廓升维不满足此要求；严禁沿二维轮廓排序、用射线/depth-proxy 回投影布点、图像 DT pull、RGB/alpha 轮廓重新放置顶点，或把旧资产换名交付。中心连接只称 kernel-space candidate graph，不称已恢复真实物理边。
+
+你在专用树 /home/u00134/3dgs_line/gaer_kernel_space_lines_v01，分支 gaer-kernel-space-lines-v01，未修改基点已推送。只写 experiments/gaer_kernel_space_lines_v01、artifacts/gaer_kernel_space_lines_v01、out/gaer_kernel_space_lines_v01；不改其他树/分支/main/旧汇总、共享二进制或模型。不删除历史/负结果；不读、输出或提交凭据，尤其 ~/.ssh/DSSpwd.txt。不启动其他代理、不安装、不训练、不使用 mesh/额外几何/网络。GPU如被外来PID占用则不要争用/杀进程，可先做CPU图构造。资源每阶段 root>=4GiB、sharedGit>=1.5GiB、stage<=2GiB，绝不减生产1GiB守卫。Python /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python；固定2 CPU线程、禁止pycache、所有缓存/TMPDIR限新stage；tmux前置 TERM=xterm-256color。
+
+精确源：旧边缘核来自 /home/u00134/3dgs_line/gaer_view_selection_v01/artifacts/gaer_view_selection_v01/downloads/{scene}_{view}_scores_ids.npz，其交付commit e682614a7fedcb529102f67efcf78f7905d3d519，NPZ原键 gaer_ratio_0.005_ids。Lego每视角1553、Chair1284。automatic_accepted_ids为空，旧自动状态 REFUSED 必须保留，不能宣传已认证选核。此次是用户授权基于已有预算诊断候选进行连线，不是验证selector成功。不要改用全N C-arm强度充当边缘核。
+
+输入合同：Lego/Chair各将 r_7 与 r_33 两视角的 gaer_ratio_0.005_ids 去重成固定原ID候选集，仅此一组主要输入。source NPZ、exact model hash/count、original IDs和冻结INPUT manifest完整保存。r_1/r_14不是图构建输入，仅作检查；所有这些视角以前被GS训练/研究曝光，不称真正blind/GS-unseen。原PLY/path和四固定相机/各33真实弧线相机读 /home/u00134/3dgs_line/gaer_object_contours_v01/artifacts/gaer_object_contours_v01/INPUT_FREEZE.json；scenes为字典；PLY原Gaussian xyz直接读取，所有图节点的XYZ必须逐项等于对应原模型行（不得任何2D升维/偏移/平滑移动）。记录每个ID来自哪个source view。
+
+先读实际代码/API，编写并运行严格 RED→GREEN 的投影/图/GLB/ID契约测试；不要猜函数。可只读复用上个独立资产树 experiments/gaer_fixed_contour_asset_v01/core.py 的已测 tube_mesh/glb_bytes；保留复用来源及hash，不触发其 run.py。原buffer API scene_io.load_model(record)、make_settings(module,camera) 和 GaussianRasterizer(...)(**model,attribution=True,K=32)，不是 load_scene/render_attribution。不要导入旧stage runtime（会安装旧树写守卫及建目录）；使用新stage shim/importlib 或只读NPZ与PLY直接加载。
+
+预注册一个便宜真实实验，不陷入参数救图：在查看真实图结果之前冻结算法与同场景自动尺度规则，图建立仅依赖selected 3D xyz/原ID/可选原covariance（若用covariance明确它不是表面法线）。做两臂：(A) 简单三维局部近邻连线基线；(B) 局部PCA无向切线+双端方向一致/互选+局部距离门控的保守度<=2连线。建议基础参数 k=12、局部线性度 (lambda1-lambda2)/max(lambda1,eps)>=0.45、双端 |t dot segment|>=cos45deg、最大距离<=3倍两端局部非零最近邻尺度；具体合理接口细节必须在协议中先冻结，共用两场景，不能结果后选择阈值。不强行MST贯穿全部点，不长距离桥接，不为完整性跨部件。保存所有原选核XYZ、PCA方向/特征值/线性度、所有候选邻接及拒绝原因、最终原ID edge pairs、度/长度/组件分布、孤立点。主B若无有效线明确空结果，不改门槛；仍输出A真实诊断并标明不是B成功。线段本身必须端点等于原核XYZ，tube thickness为单一自动世界尺度，导出后永久冻结，不依赖相机。不得因图像效果选择/删线；图像仅用于后验检查。
+
+交付：每scene A/B固定 GLB（三角管线）、tube OBJ、centerline OBJ（线段l记录），selected-kernel-centers PLY、EDGE_PAIRS.json/NPZ及full provenance。原核图、本地PCA field要有真三维可视化，可附PLY带颜色/方向。给所有四相机同一固定图的原RGB/选核中心/ A / B / 叠加拼图（明确 x-ray 与隐藏线消除状态）。四相机的检查绝不反馈图顶点/连边。两scene各33既定实际camera帧完整静态图投影视频，最好A/B对照；视角变只做投影，绝不framewise reselection/形变。可从旧准确NPZ/native RGB取同相机背景，不变形2D图来冒充；2px中心线投影视频若不是tube原生mesh render要标明展示宽度，不声称width稳定/隐藏线验证。保留坏帧/全部帧，H264 yuv420p +faststart，全视频完整解码确认33 distinct camera frames；独立glb解析读回vertices/faces，原ID/端点/固定性契约，hash manifest及Chinese REPORT_ZH.md/REPRODUCE.md。无人工语义标签不宣称真实棱边/接触线。工程通过和视觉科学GO分开；明确线团、碎裂、跨面误连和换视角偏差，不拿数量当质量。这个attempt不证明固定轮廓的一般可恢复性，不声称新颖性。
+
+最终按新stage范围commit、SSH显式push gaer-kernel-space-lines-v01，读回remoteSHA、clean status；原核模型及旧source/summary保持不变。完成后返回实际结果与文件，而非开始状态。预算<=45分钟，先确保真实两scene管线/图模型可交付，再完成检查/视频；若资源或期限不足保存已有成果并诚实列缺项。不得输出伪造图/数据。结束前 artifacts/gaer_kernel_space_lines_v01/DELIVERY.json 写 final commit、asset/media相对路径、scientific verdict、测试命令与真实结果。
