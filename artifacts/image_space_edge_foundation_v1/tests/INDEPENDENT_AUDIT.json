@@ -1,0 +1,259 @@
+{
+  "status": "PASS",
+  "checks": 47081,
+  "failures": [],
+  "seal_units": 24,
+  "sealed_files": 1207,
+  "protected_files": 291,
+  "protected_changes": [],
+  "prior_freeze_mismatches": [],
+  "old_branch_heads_unchanged": true,
+  "model_sha256_after": {
+    "lego": "fa9bea3fa4f8d349fa873a66d892c53cd1263499caec6421c286350a5bb7cbbc",
+    "chair": "13e4ecc9ffe9c5ae2a0656e2e5c56a737cfdc90a62ad04799db3c46b0b442f5d"
+  },
+  "native_input_frames": 82,
+  "native_unique_by_scene_role": {
+    "lego/dev": 4,
+    "lego/fixed": 4,
+    "lego/arc": 33,
+    "chair/dev": 4,
+    "chair/fixed": 4,
+    "chair/arc": 33
+  },
+  "videos": [
+    {
+      "path": "artifacts/image_space_edge_foundation_v1/media/lego/arc/lines_33.mp4",
+      "decoded_frames": 33,
+      "distinct_RGB_without_labels": 33,
+      "max_native_RGB_MSE": 0.00021606691007036716,
+      "codec": "H264",
+      "pixel_format": "yuv420p",
+      "faststart": true
+    },
+    {
+      "path": "artifacts/image_space_edge_foundation_v1/media/lego/arc/overlays_33.mp4",
+      "decoded_frames": 33,
+      "distinct_RGB_without_labels": 33,
+      "max_native_RGB_MSE": 0.00021572696277871728,
+      "codec": "H264",
+      "pixel_format": "yuv420p",
+      "faststart": true
+    },
+    {
+      "path": "artifacts/image_space_edge_foundation_v1/media/chair/arc/lines_33.mp4",
+      "decoded_frames": 33,
+      "distinct_RGB_without_labels": 33,
+      "max_native_RGB_MSE": 6.734918861184269e-05,
+      "codec": "H264",
+      "pixel_format": "yuv420p",
+      "faststart": true
+    },
+    {
+      "path": "artifacts/image_space_edge_foundation_v1/media/chair/arc/overlays_33.mp4",
+      "decoded_frames": 33,
+      "distinct_RGB_without_labels": 33,
+      "max_native_RGB_MSE": 6.716387724736705e-05,
+      "codec": "H264",
+      "pixel_format": "yuv420p",
+      "faststart": true
+    }
+  ],
+  "raw_candidate_control_status": "FAIL",
+  "guarded_control_status": "PASS",
+  "RGB_control_guards": [
+    {
+      "scene": "lego",
+      "key": "r_000",
+      "arm": "sharpen",
+      "max_delta": 0.045252978801727295,
+      "outside_max": 0.0,
+      "changed_pixels": 1442,
+      "nonedge_max_delta": 0.0,
+      "alpha_byte_equal": true,
+      "new_clipped_values": 0,
+      "raw_candidate_new_clipped_values": 1
+    },
+    {
+      "scene": "lego",
+      "key": "r_000",
+      "arm": "soften",
+      "max_delta": 0.03925710916519165,
+      "outside_max": 0.0,
+      "changed_pixels": 1443,
+      "nonedge_max_delta": 0.0,
+      "alpha_byte_equal": true,
+      "new_clipped_values": 0,
+      "raw_candidate_new_clipped_values": 0
+    },
+    {
+      "scene": "lego",
+      "key": "r_008",
+      "arm": "sharpen",
+      "max_delta": 0.036681413650512695,
+      "outside_max": 0.0,
+      "changed_pixels": 1250,
+      "nonedge_max_delta": 0.0,
+      "alpha_byte_equal": true,
+      "new_clipped_values": 0,
+      "raw_candidate_new_clipped_values": 0
+    },
+    {
+      "scene": "lego",
+      "key": "r_008",
+      "arm": "soften",
+      "max_delta": 0.026386559009552002,
+      "outside_max": 0.0,
+      "changed_pixels": 1250,
+      "nonedge_max_delta": 0.0,
+      "alpha_byte_equal": true,
+      "new_clipped_values": 0,
+      "raw_candidate_new_clipped_values": 0
+    },
+    {
+      "scene": "lego",
+      "key": "r_018",
+      "arm": "sharpen",
+      "max_delta": 0.06655657291412354,
+      "outside_max": 0.0,
+      "changed_pixels": 1147,
+      "nonedge_max_delta": 0.0,
+      "alpha_byte_equal": true,
+      "new_clipped_values": 0,
+      "raw_candidate_new_clipped_values": 1
+    },
+    {
+      "scene": "lego",
+      "key": "r_018",
+      "arm": "soften",
+      "max_delta": 0.06420882046222687,
+      "outside_max": 0.0,
+      "changed_pixels": 1151,
+      "nonedge_max_delta": 0.0,
+      "alpha_byte_equal": true,
+      "new_clipped_values": 0,
+      "raw_candidate_new_clipped_values": 0
+    },
+    {
+      "scene": "lego",
+      "key": "r_030",
+      "arm": "sharpen",
+      "max_delta": 0.04785853624343872,
+      "outside_max": 0.0,
+      "changed_pixels": 741,
+      "nonedge_max_delta": 0.0,
+      "alpha_byte_equal": true,
+      "new_clipped_values": 0,
+      "raw_candidate_new_clipped_values": 5
+    },
+    {
+      "scene": "lego",
+      "key": "r_030",
+      "arm": "soften",
+      "max_delta": 0.04785853624343872,
+      "outside_max": 0.0,
+      "changed_pixels": 746,
+      "nonedge_max_delta": 0.0,
+      "alpha_byte_equal": true,
+      "new_clipped_values": 0,
+      "raw_candidate_new_clipped_values": 0
+    },
+    {
+      "scene": "chair",
+      "key": "r_000",
+      "arm": "sharpen",
+      "max_delta": 0.017143547534942627,
+      "outside_max": 0.0,
+      "changed_pixels": 932,
+      "nonedge_max_delta": 0.0,
+      "alpha_byte_equal": true,
+      "new_clipped_values": 0,
+      "raw_candidate_new_clipped_values": 11
+    },
+    {
+      "scene": "chair",
+      "key": "r_000",
+      "arm": "soften",
+      "max_delta": 0.013679325580596924,
+      "outside_max": 0.0,
+      "changed_pixels": 940,
+      "nonedge_max_delta": 0.0,
+      "alpha_byte_equal": true,
+      "new_clipped_values": 0,
+      "raw_candidate_new_clipped_values": 0
+    },
+    {
+      "scene": "chair",
+      "key": "r_008",
+      "arm": "sharpen",
+      "max_delta": 0.015471965074539185,
+      "outside_max": 0.0,
+      "changed_pixels": 73,
+      "nonedge_max_delta": 0.0,
+      "alpha_byte_equal": true,
+      "new_clipped_values": 0,
+      "raw_candidate_new_clipped_values": 0
+    },
+    {
+      "scene": "chair",
+      "key": "r_008",
+      "arm": "soften",
+      "max_delta": 0.013108819723129272,
+      "outside_max": 0.0,
+      "changed_pixels": 73,
+      "nonedge_max_delta": 0.0,
+      "alpha_byte_equal": true,
+      "new_clipped_values": 0,
+      "raw_candidate_new_clipped_values": 0
+    },
+    {
+      "scene": "chair",
+      "key": "r_018",
+      "arm": "sharpen",
+      "max_delta": 0.04090017080307007,
+      "outside_max": 0.0,
+      "changed_pixels": 59,
+      "nonedge_max_delta": 0.0,
+      "alpha_byte_equal": true,
+      "new_clipped_values": 0,
+      "raw_candidate_new_clipped_values": 2
+    },
+    {
+      "scene": "chair",
+      "key": "r_018",
+      "arm": "soften",
+      "max_delta": 0.035208702087402344,
+      "outside_max": 0.0,
+      "changed_pixels": 61,
+      "nonedge_max_delta": 0.0,
+      "alpha_byte_equal": true,
+      "new_clipped_values": 0,
+      "raw_candidate_new_clipped_values": 0
+    },
+    {
+      "scene": "chair",
+      "key": "r_030",
+      "arm": "sharpen",
+      "max_delta": 0.03885510563850403,
+      "outside_max": 0.0,
+      "changed_pixels": 1010,
+      "nonedge_max_delta": 0.0,
+      "alpha_byte_equal": true,
+      "new_clipped_values": 0,
+      "raw_candidate_new_clipped_values": 5
+    },
+    {
+      "scene": "chair",
+      "key": "r_030",
+      "arm": "soften",
+      "max_delta": 0.0321507453918457,
+      "outside_max": 0.0,
+      "changed_pixels": 1017,
+      "nonedge_max_delta": 0.0,
+      "alpha_byte_equal": true,
+      "new_clipped_values": 0,
+      "raw_candidate_new_clipped_values": 0
+    }
+  ],
+  "scope": "independent CPU integrity/interface/media audit; not human semantic or visual science GO"
+}

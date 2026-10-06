@@ -1,0 +1,94 @@
+{
+  "production": {
+    "experiments/image_space_edge_foundation_v1/run.py": "26d6c69a54953ae6b8e71f51a842ef4c73af9e082c0972c859533580fc6b33f1",
+    "experiments/image_space_edge_foundation_v1/src/boundary.py": "11bbb41a762f252d9eeb4ea3f0a8399ed026139d9490bb8cf161bc815e05dd30",
+    "experiments/image_space_edge_foundation_v1/src/campaign.py": "a57a076362931c91f30217388da57e4b6e4816bcc14bcc3117420e739beaccac",
+    "experiments/image_space_edge_foundation_v1/src/fixtures.py": "32709f129bcfda64db1a8d764853a17fdbca123cca96d6e1c731a79ba6644e35",
+    "experiments/image_space_edge_foundation_v1/src/native.py": "348077884d8d519f81d6382c119515924e52381d95356aa007e65a5ae4a63f10",
+    "experiments/image_space_edge_foundation_v1/src/presentation.py": "2e1a9c825b332ce34e3b2b3f5f6e524ac6ba5b8ddf2ade983d8c84bbd6b3c601",
+    "experiments/image_space_edge_foundation_v1/src/runtime.py": "37b2a464feba10fc69986174277b55bbed9253efb00e0df39a4c9d96194a986e",
+    "experiments/image_space_edge_foundation_v1/tests/intensity_baseline_red.py": "5822d0ecaa67e47b80ea344859544d99cfe5447c69ea2353f09cf7fba7a969d4",
+    "experiments/image_space_edge_foundation_v1/tests/test_foundation.py": "9cf4eca6f611cf590617775c09ae4f8740434ed04672b6c4ce1fa3528b9ccc2f"
+  },
+  "postproduction": {
+    "artifacts/image_space_edge_foundation_v1/CURATE.py": "0c4ac25397068aaecac538a9c1c3d6348067bfcfeea22e53171deda849abcbbc",
+    "artifacts/image_space_edge_foundation_v1/INDEPENDENT_CHECK.py": "e58edd6dd96a4078a80281877bc8f0ff4ba50292f876eeed37eeef72ddd74150",
+    "artifacts/image_space_edge_foundation_v1/POST_ABLATIONS.py": "bdd125d1b8bf9dc363bff52b34b54a6e7bbb7e2920fe4b358a3b49348fb348a8",
+    "artifacts/image_space_edge_foundation_v1/POST_CONTROL_ANCHORED.py": "fe43025d95b876e7ce8dfd727411abae35c5f664972432566b39ec953b3e0064",
+    "artifacts/image_space_edge_foundation_v1/POST_CONTROL_GUARD.py": "c0bd1af529df1b04e0466154b5ea3bf8fada3c67f269741cf907a1dc46fdc2dd",
+    "artifacts/image_space_edge_foundation_v1/POST_LAYER_CLASSIFICATION.py": "b62758aea86157a4dd506dbc7b66ec6106241482384ce92fd662375c935b8257",
+    "artifacts/image_space_edge_foundation_v1/TEMPORAL_CONTROL_AUDIT.py": "99dc92c016bd1a543d72f25ec42cd3d978b2f7d21997b15636d3dba2932b3cbc"
+  },
+  "dependencies": {
+    "stock_rasterizer_sha256": "9c94ad47062bdb30b20f0b5e91d5f43aebe88a4fed675ca6d2966473a8b0dde1",
+    "knn_sha256": "3dba5b35d6c09edcae469c61ce129dc4e2c61653287c6a512105108e43db7027",
+    "data_freeze_sha256": "c48d0471b96b78b58aa4c23bbc1e89cffb6de64ad2290ebdc7b5ec00ab394906",
+    "prior_input_sha256": "f55deb435763d55ee30afe1a7a95a113204ee51bf97db3729b9ad68643e2e2dd"
+  },
+  "model_sha256": {
+    "lego": "fa9bea3fa4f8d349fa873a66d892c53cd1263499caec6421c286350a5bb7cbbc",
+    "chair": "13e4ecc9ffe9c5ae2a0656e2e5c56a737cfdc90a62ad04799db3c46b0b442f5d"
+  },
+  "layer_provenance": {
+    "native_RGB": "native.py: stock full SH3, original 30k, immutable model; cameras in PRODUCTION_FREEZE",
+    "evidence": "boundary.py tensor_field: Gaussian derivatives, opponent/luminance tensor, scale/directional agreement; raw full fields saved",
+    "profiles": "boundary.py fit_profiles: robust sides, signed RGB contrast, plateau variance, monotone width/center and bounded residual; rejected detail retained",
+    "2D_chains_and_ink": "boundary.py analyze/chains/ink: screen-space ridge/hysteresis, tangent support; arc-length coherence statistics, no UID/lifting gate",
+    "temporal": "boundary.py flow_pair/blend_temporal: actual RGB bidirectional Farneback, confidence/occlusion check and evidence clamp; same spatial OFF/ON",
+    "alpha_aux": "native alpha independently rendered with all primitives; alpha_outline; POST_LAYER_CLASSIFICATION is separate auxiliary coverage diagnostic",
+    "RGB_control": "POST_CONTROL_ANCHORED: frozen two-side fit inverse composition, endpoint anchoring; clipping/nonedge/exterior reset; no ink recoloring"
+  },
+  "logs_original_sha256": {
+    "out/image_space_edge_foundation_v1/logs/ALPHA_LAYER_PROVENANCE.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "out/image_space_edge_foundation_v1/logs/ANCHORED_CONTROL_RUN.txt": "17e133c3eea0837a99c78f09f56daa4ccff6228752c45ca067ad8e6e46639167",
+    "out/image_space_edge_foundation_v1/logs/DEV_RUN.txt": "13f36831662a21855499acf8ee78bd76fc4f3a01368cef9d1a0e049bf073565c",
+    "out/image_space_edge_foundation_v1/logs/GUARDED_CONTROL_RUN.txt": "dd3695d632f6c90f560f0a1875653e8c7658803960853708a3de978f8f884ede",
+    "out/image_space_edge_foundation_v1/logs/INDEPENDENT_AUDIT_FINAL.txt": "b17f2b02b112e918bb413366a7780aaebddbfba69a102d8bc678523c134c28fb",
+    "out/image_space_edge_foundation_v1/logs/INDEPENDENT_AUDIT_INITIAL.txt": "cb533a83575d684037d68e80d0bf5a48ddbde991cd02ddbb0edc53fd20b3c389",
+    "out/image_space_edge_foundation_v1/logs/PRODUCTION_RESUME.txt": "32bacfb42946f3e95bc4cd392a4826df9eb70dbdf200b4116734ff1d19dc7fe1",
+    "out/image_space_edge_foundation_v1/logs/PRODUCTION_RUN.txt": "13c3699bc1b25ebd2efbf6434d9af216cf421d2d4207ae89d820bb0501eba2b6",
+    "out/image_space_edge_foundation_v1/logs/PROFILE_ABLATION_RUN.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "out/image_space_edge_foundation_v1/logs/TEMPORAL_CONTROL_AUDIT.txt": "6178e1e25f3b5d4e058122d1a975533eeaff7e52855a7344a38631a6fc5d2824",
+    "out/image_space_edge_foundation_v1/logs/original_CONTROL_RED.txt": "d0ba7accd9f75dc49fed51df87e6f5fc6537f6665ba6e8d66daa8868b17819be",
+    "out/image_space_edge_foundation_v1/logs/original_GREEN.txt": "0f2ff91b3888a6ba4dc75afed42c6aa3908458424fa894445f72cbad05c5d2be",
+    "out/image_space_edge_foundation_v1/logs/original_GREEN_full_object.txt": "77910fb7a7e9bc9bb73362d9aa7544e14ddd6907b16fb6ef03717fe5a1bf862a",
+    "out/image_space_edge_foundation_v1/logs/original_GREEN_initial.txt": "7e1714223b157c7f232e49901ff8a39162612697711624180ca904cae11a324f",
+    "out/image_space_edge_foundation_v1/logs/original_RED.txt": "5cfe9ba1ae8c82f9bdef37cc754c34f4ed1ad72bfa608df8d795f40111ace554",
+    "out/image_space_edge_foundation_v1/logs/original_RED_behavioral.txt": "886007caf87a4671044c01ddaf23c7f7217b429382190daa24f15b0569d6b17a",
+    "out/image_space_edge_foundation_v1/logs/original_RED_behavioral_actual.txt": "447a2e79e482433820d665fb5aa7376b5e494097f8b05dbff3ae0fb211c50457",
+    "out/image_space_edge_foundation_v1/logs/RESOURCE_GATE.jsonl": "b11c0304559d5105fdfc992e3c9b7f43f05104fb445653d625f5e221793ddf8a"
+  },
+  "development_history": "DEVELOPMENT_HISTORY.json",
+  "prior_artifacts_read_only": true,
+  "citations": [
+    {
+      "title": "Coherent Line Drawing",
+      "authors": [
+        "Henry Kang",
+        "Seungyong Lee",
+        "Charles K. Chui"
+      ],
+      "year": 2007,
+      "url": "https://cg.postech.ac.kr/papers/kang_npar07_hi.pdf",
+      "retrieved": "2026-10-06",
+      "source": "author university PDF",
+      "relation": "prior direction field and flow-based DoG line drawing; this prototype does not reproduce ETF/FDoG"
+    },
+    {
+      "title": "Video Watercolorization using Bidirectional Texture Advection",
+      "authors": [
+        "Adrien Bousseau",
+        "Fabrice Neyret",
+        "Joelle Thollot",
+        "David Salesin"
+      ],
+      "year": 2007,
+      "url": "https://research.adobe.com/publication/video-watercolorization-using-bbidirectional-texture-advection/",
+      "retrieved": "2026-10-06",
+      "source": "author research organization publication page",
+      "relation": "prior flow-guided temporal NPR; this prototype only warps evidence-clamped soft response"
+    }
+  ],
+  "novelty_claim": false,
+  "published_method_reproduction": false
+}

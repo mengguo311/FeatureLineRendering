@@ -1,0 +1,90 @@
+{
+  "base_commit": "245e0560665dc45c41420f6aa2ab32782504d782",
+  "source_map": {
+    "native.py": {
+      "source": "experiments/object_neighborhood_edge_control_v1/src/native.py",
+      "source_sha256": "409bda2000f57ac0b6199879352e43af3711fc2d07ca3fe85794e524d07f307a",
+      "v2_sha256": "a9918e82e4935f27eaed5ede72a28024613083538474f846acbcda841973841d",
+      "port": "minimum read-only native binding/camera/forward/diagnostic/target helpers, generation/audit writers excluded"
+    },
+    "renderer_adapter.py": {
+      "source": "experiments/object_neighborhood_edge_control_v1/src/renderer_adapter.py",
+      "source_sha256": "79a467d984f12d99d823f668eff6aa5a435d7dba5945a708bd144f4f7d09b1e5",
+      "v2_sha256": "6f4bcf583aa891dc6032b2a3ea60a5724ff1871349d5dd50950a0a127ed12da9",
+      "port": "minimum read-only native binding/camera/forward/diagnostic/target helpers, generation/audit writers excluded"
+    },
+    "edge_profiles.py": {
+      "source": "experiments/object_neighborhood_edge_control_v1/src/edge_profiles.py",
+      "source_sha256": "efc16db51d38e8c67eb2cd0a0774483c4a00557a2fc84bfcd4bb774692dc4b09",
+      "v2_sha256": "efc16db51d38e8c67eb2cd0a0774483c4a00557a2fc84bfcd4bb774692dc4b09",
+      "port": "byte-identical evaluator"
+    },
+    "metrics.py": {
+      "source": "experiments/object_neighborhood_edge_control_v1/src/metrics.py",
+      "source_sha256": "dc26cdbca77cade22867e5bf7740aa0a85d46f571fd7040e99a57a8d53059e7b",
+      "v2_sha256": "dc26cdbca77cade22867e5bf7740aa0a85d46f571fd7040e99a57a8d53059e7b",
+      "port": "byte-identical evaluator"
+    },
+    "targets.py": {
+      "source": "experiments/object_neighborhood_edge_control_v1/src/targets.py",
+      "source_sha256": "57579e320027a3919d36e8c169501e4942c7fb709b291de69746716c720cb9aa",
+      "v2_sha256": "6fd34b60b88879670a03cbe2d74d02529b7a05426de0dc81f098ad7090bbb5f7",
+      "port": "minimum read-only native binding/camera/forward/diagnostic/target helpers, generation/audit writers excluded"
+    }
+  },
+  "native_vendor_readonly": "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/out/object_neighborhood_edge_control_v1/vendor/gaussian-splatting",
+  "native_stock_sha256": "9c94ad47062bdb30b20f0b5e91d5f43aebe88a4fed675ca6d2966473a8b0dde1",
+  "native_knn_sha256": "3dba5b35d6c09edcae469c61ce129dc4e2c61653287c6a512105108e43db7027",
+  "training_hook_source": {
+    "path": "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/out/object_neighborhood_edge_control_v1/vendor/gaussian-splatting/train.py",
+    "sha256": "be4d22f4bc69cc7cdbfbf7d6ac0b4fe1a88d82fc9b9e2414acecbfcf65441423",
+    "port": "train_r2 uses same native Scene, optimizer, random camera epochs, learning-rate, densification/reset rules; removes GUI/global writers, adds surface-init and explicit oracle regularizers/full-epoch logs; last iteration no optimizer step matches upstream"
+  },
+  "checkpoint": {
+    "path": "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/out/object_neighborhood_edge_control_v1/models/panels_high/chkpnt7000.pth",
+    "sha256": "cc440283b70bf62cd98dfedf24bf47383a147b70483deec4f849763f3f7847c6"
+  },
+  "selection": {
+    "path": "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/out/object_neighborhood_edge_control_v1/controls/panels_high/selection.json",
+    "sha256": "0fee41d7c5071d869511ce4ba18e383579fd7b76f9c1de0927c46dcfab759284"
+  },
+  "identity_sha256": "b7b3d8f9d26735253acbc5c5d0d3f03402b895c5cc85b6879989ea84b8f2d97c",
+  "labels_sha256": "ad16be99ad995f1e14afd2689613fd2d16924be4e8a8fb356834b19e08c6ec57",
+  "permission_boundary": "v1 disk libraries/source/input copied into GPU tensors or separate v2 files, no hardlinks; all writer interfaces restricted to v2 subtrees",
+  "original_documents_unchanged": true,
+  "revision2": {
+    "fit_precision": "train byte-exact 8bit linear PNG; diagnostic reference rounded to same 8bit grid; evaluation preserves float target",
+    "probe_bounds": "preserve native initial effective colors >1 in recoverability probe only, box upper per UID derived from perturbed checkpoint; R1/R3 retain [0,1]",
+    "solver_inputs": "R4 consumes only perturbed checkpoint, target renders, frozen UID masks; no original checkpoint/identity anchors read by optimizer"
+  },
+  "production_source_commits": {
+    "run1": "394821a",
+    "run2": "33bc758"
+  },
+  "supplemental_scripts": {
+    "REFINE_COLORS.py": {
+      "sha256": "7b25793e87afa71a25f52ce646731ec56b180435148ef23fda9bfe1b16a79fc6",
+      "scope": "frozen standalone same-objective optimization/conditional diagnostic/read-only verification"
+    },
+    "REFINE_EXACT_L1.py": {
+      "sha256": "0259badbf2659ded12982130575c307181458527da2861a3ec84dd1e56910688",
+      "scope": "frozen standalone same-objective optimization/conditional diagnostic/read-only verification"
+    },
+    "R5_TRI_STATE.py": {
+      "sha256": "7c0e43e853f01b39b63cc4b37b6b8deb002848bfe932c311300f5babd50e80c3",
+      "scope": "frozen standalone same-objective optimization/conditional diagnostic/read-only verification"
+    },
+    "SUPPLEMENTAL_AUDIT.py": {
+      "sha256": "f8c162dbf8be61bc395d23dcab2f6e7aec2355a78c5d6673b9d57e151cda1768",
+      "scope": "frozen standalone same-objective optimization/conditional diagnostic/read-only verification"
+    },
+    "FINALIZE.py": {
+      "sha256": "4a546e9748eaa7918548a38a4cdb647f087a11f93fcf9a50a52e9126f4ea2de8",
+      "scope": "frozen standalone same-objective optimization/conditional diagnostic/read-only verification"
+    },
+    "PLOT_ACTUAL.py": {
+      "sha256": "6c031552a6db11a2df7d646c6ad7697608d16fb3741e440d6e408471b75f8fb4",
+      "scope": "frozen standalone same-objective optimization/conditional diagnostic/read-only verification"
+    }
+  }
+}

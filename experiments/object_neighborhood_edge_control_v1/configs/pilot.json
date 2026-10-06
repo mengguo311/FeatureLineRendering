@@ -1,0 +1,47 @@
+{
+  "scope": "pilot_only_not_formal",
+  "seed": 1729,
+  "resolution": 512,
+  "supersample": 2,
+  "train_views": 24,
+  "validation_views": 6,
+  "test_views": 12,
+  "path_frames": 36,
+  "scenes": ["panels_high", "panels_low", "far_background"],
+  "color_space": "linear_sRGB_D65; training PNG quantized linear values; presentation sRGB OETF",
+  "camera_angle_x": 0.8,
+  "camera_radius": 3.8,
+  "training": {
+    "iterations": 7000,
+    "sh_degree": 0,
+    "initial_points": 4096,
+    "initialization": "seeded random volume, no surface oracle",
+    "densify_from_iter": 500,
+    "densify_until_iter": 4000,
+    "densification_interval": 100,
+    "opacity_reset_interval": 3000,
+    "position_lr_max_steps": 7000,
+    "lambda_dssim": 0.2,
+    "reason_for_7000": "bounded planar Lambertian engineering pilot; no standard 30k reproduction claim"
+  },
+  "selection": {
+    "center_radius": 0.09,
+    "ellipsoid_k": 3.0,
+    "ellipsoid_epsilon": 0.02,
+    "band_px": 12,
+    "label_confidence": 0.85,
+    "band_mass_min": 0.05,
+    "contrast_min": 0.02
+  },
+  "controls": {
+    "iterations": 336,
+    "color_lr": 0.0025,
+    "uniform_scale_factor": 0.85,
+    "outside_weight": 1.0,
+    "coverage_weight": 1.0,
+    "count_cap": "initial checkpoint count; no split in first color ablation"
+  },
+  "task_B_target": {"field":"3D surface x-dependent logistic blend", "width_world":0.1,"emphasis_field":"0.5+0.5*sin(4*pi*y)","execute":false},
+  "oracle_evaluation": {"epsilon_contact":0.001,"epsilon_near":0.05},
+  "preliminary_gate": {"edge_error_relative_improvement":0.10,"psnr_drop_db_max":0.2,"hole_increase_max":0.001,"temporal_increase_max":0.05,"formal_seeds_required":3}
+}

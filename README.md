@@ -1,8 +1,12 @@
 # FeatureLineRendering — 当前研究汇总入口
 
-**推荐查看分支：`research-progress-summary-v1`。** 以最新三场景实验 `c873fb8` 为基点，保留主线历史，补齐两条并行负结果快照，并首次发布真实交互demo与历史综合报告。没有删除历史分支、强推、改默认分支或把不同算法代码强行合并。
+**推荐查看分支：`research-progress-summary-v1`。2026-10-06 已补齐后续九阶段实验与导师会议材料；新研究暂停。** 保留原三场景基点、并行负结果、demo与历史报告，精确提交导入新的协议/代码/证据快照。没有删除历史分支、强推、改默认分支或强合并不同算法。
 
 ## 从这里开始
+
+- **[导师会议：通俗原理讲解、海报对比、真实图与讨论问题](docs/ADVISOR_MEETING_PRINCIPLES_ZH.md)**
+- **[2026-10-06 后续九阶段方法与结果](docs/UPDATE_20261006_ZH.md)**
+- **[最新全原核黑墨容量：Lego](artifacts/gaer_attribution_capacity_v02/media/lego/fourview_known_target_capacity.jpg)** · **[Chair](artifacts/gaer_attribution_capacity_v02/media/chair/fourview_known_target_capacity.jpg)**
 
 - **[最新进展与科学结论](docs/PROGRESS_ZH.md)**
 - **[所有分支的用途与固定SHA](docs/BRANCHES_ZH.md)** · [机器盘点](docs/BRANCH_INVENTORY.json)
@@ -13,6 +17,10 @@
 - **[历史32页综合PDF](artifacts/npr_progress_report_sol_v1/REPORT_ZH.pdf)**（形成于2026-10-04，不含后来的联合选择实验）
 
 ## 当前结论
+
+原核全 N 连续强度能形成可辨线结构，证明固定小核集合失败不等于表示不可行；但这是已知目标容量诊断，不是自动算法或泛化成绩，细线完整性、部分近最优认证和时间稳定仍未成立。GAER 支撑变化与海报核心明显重叠；区别在指定线归因到原核及原核实际墨迹容量，尚不宣称创新/优越。下一方向只讨论，未启动。
+
+### 旧五场景结论（历史保留）
 
 五场景联合选核：贡献需求覆盖增加，但非边缘泄漏也增加；**尚不支持同时保留主要边界并减少面内泄漏的总体成功**。数学完整归因仍UNDETERMINED，独立人类视觉验收PENDING。工程完成不是科学GO。Chair原float64审计失败与实际存储精度补充验证均保留，不宣称原检查全部通过。
 

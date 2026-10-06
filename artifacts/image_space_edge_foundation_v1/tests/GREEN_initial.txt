@@ -1,0 +1,20 @@
+test_color_opponent_edge_even_when_luminance_equal (test_foundation.FoundationTests) ... FAIL
+test_constant_plane_has_no_ink (test_foundation.FoundationTests) ... ok
+test_corner_junction_not_forced_into_profiles (test_foundation.FoundationTests) ... ok
+test_disocclusion_and_vanishing_edges_do_not_ghost (test_foundation.FoundationTests) ... ok
+test_legitimate_stripes_stay_in_union (test_foundation.FoundationTests) ... ok
+test_low_contrast_unknown_is_not_structural (test_foundation.FoundationTests) ... ok
+test_width_control_preserves_band_and_plateaus (test_foundation.FoundationTests) ... ok
+
+======================================================================
+FAIL: test_color_opponent_edge_even_when_luminance_equal (test_foundation.FoundationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "$WORKSPACE/experiments/image_space_edge_foundation_v1/tests/test_foundation.py", line 17, in test_color_opponent_edge_even_when_luminance_equal
+    self.assertGreater(float(r['union'][15:-15,x-2:x+3].mean()),.25)
+AssertionError: 0.19532941281795502 not greater than 0.25
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.463s
+
+FAILED (failures=1)

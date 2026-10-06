@@ -1,0 +1,35 @@
+{
+  "active_blockers": [],
+  "numerical_test_failures": [],
+  "recovered": [
+    {
+      "unit": "initial build",
+      "error": "Ninja executable not found in Python process PATH",
+      "resolution": "prepend existing vfsdgs bin and CUDA bin to process-local PATH; no install",
+      "evidence": "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/logs/build_attempt1_missing_PATH.log"
+    },
+    {
+      "unit": "patch application",
+      "error": "upstream files lack final newlines, generated diff lacked EOF markers",
+      "resolution": "proper unified diff EOF markers; patch --fuzz=0 passes",
+      "evidence": "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/logs/build_attempt2_patch_EOF.log"
+    },
+    {
+      "unit": "camera discovery",
+      "error": "training metadata is a subset, original index14 is metadata row12",
+      "resolution": "match original frozen filenames and validate matrices exactly"
+    },
+    {
+      "unit": "first synthetic kernel profiling",
+      "error": "local PyTorch Interval has elapsed_us/end-start rather than elapsed",
+      "resolution": "read local installed source and use end-start; canonical rerun has all compositor timings",
+      "evidence": "artifacts/gaer_attribution_buffer_v01/results/SYNTHETIC_BENCHMARK_attempt1.json"
+    }
+  ],
+  "inspection_incident": {
+    "unit": "initial process inspection",
+    "description": "A full command-line process listing incidentally exposed an unrelated sensitive argument in tool output.",
+    "mitigation": "All subsequent GPU ownership checks use GPU UUID and PID only. No raw process dump, raw agent log or sensitive value is included in Git delivery.",
+    "credential_files_read": false
+  }
+}

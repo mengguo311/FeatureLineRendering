@@ -1,0 +1,12 @@
+Retrieved author preprint excerpts, 2026-10-06; not full PDF redistribution.
+Source: https://mukai-lab.org/content/SA2026PosterHao.pdf
+
+Weiren Hao and Tomohiko Mukai. 2026. Feature Line Rendering from Rasterization States in 3D Gaussian Splatting.
+
+We formulate feature line detection by measuring discontinuities in Gaussian rasterization states: top-K Gaussian support distributions, front-to-back splat contributions, expected depth, opacity, normal, and appearance.
+
+The support-change response is therefore activated only when a change in Gaussian support coincides with layer competition and a depth, opacity, or visibility response. This gating suppresses spurious detections caused by Gaussian-ranking changes on smooth surfaces.
+
+The output remains a view-dependent raster field rather than a persistent 3D stroke representation. The main limitations are truncation to K = 4, noisy reconstructed normals, and a fixed one-pixel neighborhood that is not scale invariant.
+
+In future work, we will lift stable raster-space feature samples into persistent, surface-parameterized 3D strokes carrying identity, reliability, and semantic line types. We will also investigate meaningful feature line selection, as well as the joint rendering and optimization of feature lines and color tones within a unified 3DGS-based NPR framework.

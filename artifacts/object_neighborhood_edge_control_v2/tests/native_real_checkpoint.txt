@@ -1,0 +1,30 @@
+{
+  "input_count": 2165,
+  "checkpoint": "cc440283b70bf62cd98dfedf24bf47383a147b70483deec4f849763f3f7847c6",
+  "operator_tests": [
+    {
+      "reconstruction_max_abs": 4.76837158203125e-07,
+      "adjoint_relative_error": 3.7532330884414113e-08,
+      "dot_Ax_y": 29.72673492305016,
+      "dot_x_ATy": 29.726733807336508,
+      "selected_count": 1379,
+      "scalar_observations": 40209,
+      "interval_necessary_mse_lower": 0.003974718790757084,
+      "noncandidate_color_max": 1.225698709487915,
+      "storage": "O(N+views*band_pixels), no dense N*H*W",
+      "normalization": "each view equal weight; A rows weighted sqrt(M/(V*3*band_pixels)); MSE=2P/M"
+    },
+    {
+      "reconstruction_max_abs": 0.0,
+      "adjoint_relative_error": 2.447442509422269e-06,
+      "dot_Ax_y": -11.199241661522816,
+      "dot_x_ATy": -11.199269071090015,
+      "selected_count": 10659,
+      "scalar_observations": 40209,
+      "interval_necessary_mse_lower": 3.802385586568337e-08,
+      "noncandidate_color_max": null,
+      "storage": "O(N+views*band_pixels), no dense N*H*W",
+      "normalization": "each view equal weight; A rows weighted sqrt(M/(V*3*band_pixels)); MSE=2P/M"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "request_commit": "2eb5c8fb2b2e3bca68ff159bd6920c351e7f9a62",
+  "documentation": [
+    "artifacts/edge_control_lego_chair_followup/edge_responsibility_revision.md",
+    "artifacts/edge_control_lego_chair_followup/edge_responsibility_audit.json"
+  ],
+  "legacy_reference_commit": "cd4dc554bc406a2cc392a3d004e8d28338a33b4b",
+  "modules": {
+    "experiments/edge_responsibility_lego_chair_v2/scripts/launch.py": {
+      "sha256": "5d8062bd86bb3c125f308452119c20cadd557339e34eaf9b950f8b9b6b252b8b",
+      "kind": "new isolated implementation"
+    },
+    "experiments/edge_responsibility_lego_chair_v2/scripts/runner.py": {
+      "sha256": "ae5c21dc46eed08bfd45d05818957c1143e966d37bca35fa12dd7de6dd30b32d",
+      "kind": "new isolated implementation"
+    },
+    "experiments/edge_responsibility_lego_chair_v2/src/adapter.py": {
+      "sha256": "c7bcbdd9a28fe87426b022389cd8ef88b5d9d4fb645e1ad8952da0a5d2dd5f0b",
+      "kind": "new isolated implementation"
+    },
+    "experiments/edge_responsibility_lego_chair_v2/src/calibration.py": {
+      "sha256": "299bdeebd5fe78834150c63c765fc8792de75aaa3d41040d4cea8c7702168baa",
+      "kind": "new isolated implementation"
+    },
+    "experiments/edge_responsibility_lego_chair_v2/src/evaluation.py": {
+      "sha256": "deb8e9ba11e5daebe25b6a1fa32bc94d3e664b473a730afea8341c240f2586f0",
+      "kind": "new isolated implementation"
+    },
+    "experiments/edge_responsibility_lego_chair_v2/src/evidence.py": {
+      "sha256": "a6ad914d60553c45d4497650b461556a38d06709933921df59781e3c06445724",
+      "kind": "new isolated implementation"
+    },
+    "experiments/edge_responsibility_lego_chair_v2/src/inputs.py": {
+      "sha256": "ae87b0f0af633ad613856d6fc5d6aa113042c5c0031fdf048fc4c8d6602cb144",
+      "kind": "new isolated implementation"
+    },
+    "experiments/edge_responsibility_lego_chair_v2/src/interventions.py": {
+      "sha256": "88040b2b45d7603c3de46ffce7c582b7f6939bb0994ccc863b831e60479ed1df",
+      "kind": "new isolated implementation"
+    },
+    "experiments/edge_responsibility_lego_chair_v2/src/legacy_evidence.py": {
+      "sha256": "fc2b4794000952370273c62999d9e2905456298da2e14ac3c7516b99352b7935",
+      "kind": "byte identical legacy reference"
+    },
+    "experiments/edge_responsibility_lego_chair_v2/src/media.py": {
+      "sha256": "8980de59ebf6d549a29d0aa43d56f20161f70aed4c45bb75ce20481ec61f4b85",
+      "kind": "new isolated implementation"
+    },
+    "experiments/edge_responsibility_lego_chair_v2/src/reporting.py": {
+      "sha256": "ffa438809172f7bab41a9c80f418db847715a1f27522beb3c339cabbd87eb746",
+      "kind": "new isolated implementation"
+    },
+    "experiments/edge_responsibility_lego_chair_v2/src/runtime.py": {
+      "sha256": "18412d5e36963565162e6e1cc9bacc6a2bc20763f4210077ee68590f0e798d0b",
+      "kind": "new isolated implementation"
+    },
+    "experiments/edge_responsibility_lego_chair_v2/src/scoring.py": {
+      "sha256": "d23978f8fb789517b74a48481fbd9cd2f5fb49902bd1baa7611c1dd802087b97",
+      "kind": "new isolated implementation"
+    },
+    "experiments/edge_responsibility_lego_chair_v2/src/synthetic.py": {
+      "sha256": "1ca28a7107437dd33c073d2f8928b1bb3debfff9d8c655e570e05fdaf3203523",
+      "kind": "new isolated implementation"
+    },
+    "experiments/edge_responsibility_lego_chair_v2/tests/legacy_regression_red.py": {
+      "sha256": "607f21ec77b7b785dc51427f1460cf1a0577b0923691c268a17babb723341c53",
+      "kind": "new isolated implementation"
+    },
+    "experiments/edge_responsibility_lego_chair_v2/tests/test_contracts.py": {
+      "sha256": "644da5895657f3c6020b984c6a68501f0ad14f45ab94aa0d0c08e56d53470534",
+      "kind": "new isolated implementation"
+    }
+  },
+  "read_only_native_bindings": {
+    "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/out/object_neighborhood_edge_control_v1/build/stock/onec_stock_C.so": "9c94ad47062bdb30b20f0b5e91d5f43aebe88a4fed675ca6d2966473a8b0dde1",
+    "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/out/object_neighborhood_edge_control_v1/build/knn/onec_knn_C.so": "3dba5b35d6c09edcae469c61ce129dc4e2c61653287c6a512105108e43db7027",
+    "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/out/object_neighborhood_edge_control_v1/vendor/gaussian-splatting/gaussian_renderer/__init__.py": "75fcc86a57d27d9ea55b2904a4faaf075e7f73dba8c54bcb6cbd4c02c4884084",
+    "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/out/object_neighborhood_edge_control_v1/vendor/gaussian-splatting/utils/sh_utils.py": "7d1ff267546390635e6d1f68c4f88c4a8b052482d5c9be1d32f06bc69e9a96e7"
+  },
+  "legacy_evidence_port": {
+    "source": "/home/u00134/3dgs_line/edge_control_lego_chair_v1/experiments/edge_control_lego_chair_v1/src/evidence.py",
+    "destination": "experiments/edge_responsibility_lego_chair_v2/src/legacy_evidence.py",
+    "source_sha256": "fc2b4794000952370273c62999d9e2905456298da2e14ac3c7516b99352b7935",
+    "destination_sha256": "fc2b4794000952370273c62999d9e2905456298da2e14ac3c7516b99352b7935",
+    "byte_identical": true,
+    "old_module_not_imported": true
+  },
+  "old_adapter_reference": "/home/u00134/3dgs_line/edge_control_lego_chair_v1/experiments/edge_control_lego_chair_v1/src/adapter.py",
+  "upstream_license": "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/out/object_neighborhood_edge_control_v1/vendor/gaussian-splatting/LICENSE.md",
+  "write_scope": [
+    "experiments/edge_responsibility_lego_chair_v2",
+    "artifacts/edge_responsibility_lego_chair_v2",
+    "out/edge_responsibility_lego_chair_v2"
+  ],
+  "old_roots_edited": false,
+  "original_TEST_RGB_read": false,
+  "native_source_modified": false,
+  "appendix_runners": {
+    "artifacts/edge_responsibility_lego_chair_v2/CURATE.py": "bf7d80fc1890bb967a35ec4140df311775c0d54ee15bbf9e43a72d9cad2ec0a5",
+    "artifacts/edge_responsibility_lego_chair_v2/INDEPENDENT_CHECKS.py": "bb392284333d6f3de48e4b4df749033dcb6eb4891bbe00f29276f2d33bd111aa",
+    "artifacts/edge_responsibility_lego_chair_v2/SUPPLEMENTAL_METRICS.py": "c5c051337098a50d5a6db2c3b84542e91163ce1ce1b8a1bb9399d4510fe6685d",
+    "artifacts/edge_responsibility_lego_chair_v2/SYNTHETIC_SCORE_CHECK.py": "4a5fbb9e8095d8a9f0b730c361cd580a7bbdeb89203cf4a370c78b557fae1910"
+  },
+  "appendices_do_not_modify_frozen_production_sources": true
+}

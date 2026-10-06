@@ -1,6 +1,6 @@
 # GitHub分支导航与保留策略
 
-盘点GitHub远端 **38 个现有分支**；盘点后新增 `research-progress-summary-v1` 作为统一入口。没有删除、重命名、强推历史分支，没有更改默认分支。
+**下方 38 分支是 2026-10-05 的历史盘点，不是当前远端总数。** 该次盘点后新增 `research-progress-summary-v1` 作为统一入口。2026-10-06 后续九阶段固定 SHA 导航见 [更新正文](UPDATE_20261006_ZH.md)、[来源清单](../artifacts/research_progress_summary_v1/IMPORTED_20261006_SNAPSHOTS.json)。没有删除、重命名、强推历史分支，没有更改默认分支。
 
 分支名是实验标签，不代表科学成功。commit subject仅为历史元数据，不视为重新验证的结论；结论请读对应冻结报告。
 
@@ -11,7 +11,7 @@
 - `representative-edge-gaussians-v1`：Mic/Materials联合选核实验，98姿态。
 - `gaussian-edge-attribution-v1`：最初固定ID贡献回溯，Mic/Materials，TOP4限制。
 
-## 完整远端盘点（按用途分组）
+## 2026-10-05 历史远端盘点（按用途分组）
 
 ### 当前贡献核主线
 

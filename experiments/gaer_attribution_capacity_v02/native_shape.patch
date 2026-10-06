@@ -1,0 +1,11 @@
+--- a/cuda_rasterizer/forward.cu
++++ b/cuda_rasterizer/forward.cu
+@@ -213,7 +213,7 @@
+ 	}
+ 
+ 	// Compute 2D screen-space covariance matrix
+-	float3 cov = computeCov2D(p_orig, focal_x, focal_y, tan_fovx, tan_fovy, cov3D, viewmatrix);
++	float3 cov = cov3D[5] == -12345.f ? make_float3(cov3D[0], cov3D[1], cov3D[2]) : computeCov2D(p_orig, focal_x, focal_y, tan_fovx, tan_fovy, cov3D, viewmatrix);
+ 
+ 	// Invert covariance (EWA algorithm)
+ 	float det = (cov.x * cov.z - cov.y * cov.y);

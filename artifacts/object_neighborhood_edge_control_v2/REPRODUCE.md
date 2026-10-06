@@ -1,0 +1,36 @@
+# v2 重现与恢复
+
+只在 v2 根目录运行。Python 环境和 v1 的 vendor/native .so 只读复用，不安装或修改全局依赖。v1 `panels_high` 原 checkpoint SHA256 为 `cc440283b70bf62cd98dfedf24bf47383a147b70483deec4f849763f3f7847c6`；输入清单来自 `PRECHECK.json` 和 `INPUT_INTEGRITY.json`。新输出仅进入 `out/object_neighborhood_edge_control_v2`，新 stage ≤16 GiB、根盘留4 GiB、common Git盘留1.5 GiB。GPU0 外来进程存在时 runner 等待，不终止它。
+
+```bash
+cd /home/u00134/3dgs_line/object_neighborhood_edge_control_v2
+export CUDA_VISIBLE_DEVICES=0 OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 MKL_NUM_THREADS=2 PYTHONDONTWRITEBYTECODE=1
+research_python=/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python
+"$research_python" -m unittest discover -s experiments/object_neighborhood_edge_control_v2/tests -v
+"$research_python" experiments/object_neighborhood_edge_control_v2/scripts/launch_production.py
+cat out/object_neighborhood_edge_control_v2/STATUS.json
+```
+
+首次启动前已实际执行 `scripts/preflight.py`（生成并封印开发数据；原 checkpoint 原生全体/选定算子验证），并冻结 `SOURCE_FREEZE.json`。生产进程使用 `start_new_session=True`，PID 在 `production.pid`；coding agent 结束不会结束生产。禁止同时启动第二实例；已完成单元仅在 source/config/data/input/output/checkpoint SHA 全部一致时跳过。失败单元从该单元起点重算，中间 checkpoint/每轮日志保留；不声称任意迭代精确续训。原输入变化、生产源码变化或已封印输出变化会拒绝恢复。
+
+若进程确已退出，可运行以上 launch 命令恢复；不删除 seal 绕过检查。`runner.py` 顺序执行 R0、F00/F01/F10/F11、可行时 outside 对照、v1 同目标凸求解、G00/G10/G01/G11 全部7000步、O-color/O-cov与同权限普通微调及等墙钟对照；无开发潜力时执行六个 R4 探针。R5 和正式多场景/三种子仍受证据门槛约束。新 TEST 无加载入口、目标未生成。低对比/远背景旧 TEST 未读取。
+
+`tests/RED*.txt` 保存新增接口的真实先失败记录；`GREEN_all.txt` 与原 checkpoint 数值记录保存实际验证。`results/*.json` 保存全部迭代/每 epoch 全相机日志、P/D/gap、各角色逐视角指标与共同剖面。原始大 checkpoint、渲染 PNG 和执行 stderr 仅留忽略 out，不推送。
+
+视频通过只读 v1 stage 的 FFmpeg 二进制编码，完整36帧原生开发渲染，H264/yuv420p/faststart；`results/MEDIA.json` 保存全帧解码SHA。同视角放大图三列为参考/B0/该方法，展示采用 sRGB OETF，数值评价在线性RGB。
+
+目标精度修正记录见 `TARGET_PRECISION_CORRECTION.json`。第二次生产冻结统一诊断监督与 train 的量化精度，浮点评价真值保留；F10/F11 旧结果仅存忽略 out 的 superseded/run1，不进入主表。R0/F00/F01及其 outside 单元的拟合输入未改变，`VERIFIED_REUSE.json` 核对原 source seal 身份与每个输出 SHA 后复用。R4 尚未启动时已修正 recoverability 色彩范围：仅该探针允许每 UID 的上界 max(1,扰动 checkpoint 有效颜色)，保证原颜色可行；优化器只读取扰动 checkpoint/目标渲染/UID mask，不读取原 scale 或倍率。`SOURCE_FREEZE_run1.json` 保留第一版源码 hash。
+
+完整交付的续算/审计为以下实际命令，须顺序执行；GPU0 只允许一个计算进程。各模块使用对应 *_FREEZE.json 的源码SHA。原主 runner 恢复会刷新主报告，完整交付之后依次运行下面模块；已有颜色/同目标凸续算单元仅哈希核验后跳过。
+
+```bash
+"$research_python" artifacts/object_neighborhood_edge_control_v2/REFINE_COLORS.py
+"$research_python" artifacts/object_neighborhood_edge_control_v2/REFINE_EXACT_L1.py
+"$research_python" artifacts/object_neighborhood_edge_control_v2/FINALIZE.py
+```
+
+本次以上模块均通过 `subprocess.Popen(..., start_new_session=True)` 独立启动并依次等待前序任务；实际PID记录分别在 `refinement.pid`、`l1_refinement.pid`、`finalize.pid`。状态分别为 `REFINEMENT_STATUS.json`、`L1_REFINEMENT_STATUS.json`、`FINALIZE_STATUS.json`。它们已真实运行结束，无后台训练留待完成。
+
+颜色续算用同一 native A/Aᵀ 和盒约束，d=AᵀA1 的对角主化缩小gap，保存独立可行P和任意可行dual y及SHA。四个单元归一化gap均小于1e-6。相同 v1 band L1+outside MSE 又实际续算4000步，保存更低可行目标，但最终gap仍3.21e-5；不宣称已认证最优。R5条件实际运行64核诊断子集361对，未重新选择原1379核、未评测全量成本或旧低/远TEST。
+
+`SUPPLEMENTAL_AUDIT.py` 在所有GPU工作完成后原生扫描真实相机投影宽度及分项梯度、核验所有单元seal和原输入；最终10个core测试+7个补充数学/三态测试通过。原 checkpoint 和 source hash完整读回未变。`FINAL.json`明确实验完成与仍待完成的科学验证，所有正式TEST保持封存。

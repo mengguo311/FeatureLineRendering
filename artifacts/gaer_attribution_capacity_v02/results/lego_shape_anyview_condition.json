@@ -1,0 +1,127 @@
+{
+  "status": "COMPLETE",
+  "edited_strength_sum": 1.5811187028884888,
+  "condition_line_MSE": 0.1284862756729126,
+  "baseline_formula_max_abs": 1.1585652828216553e-06,
+  "metrics": [
+    {
+      "ratio": 2,
+      "line_MSE": 0.12844057381153107,
+      "outside_ink_MSE": 0.0027633709833025932,
+      "edited_count": 32,
+      "full_T_recomputed": true,
+      "alpha_MSE": 1.8624349706897192e-07,
+      "alpha_coverage_changed": 1,
+      "ROI_metrics": [
+        {
+          "roi": 0,
+          "category": "outline",
+          "line_MSE": 0.041271016001701355
+        },
+        {
+          "roi": 2,
+          "category": "internal_color_transition",
+          "line_MSE": 0.026573972776532173
+        }
+      ]
+    },
+    {
+      "ratio": 4,
+      "line_MSE": 0.12845465540885925,
+      "outside_ink_MSE": 0.002763677155598998,
+      "edited_count": 32,
+      "full_T_recomputed": true,
+      "alpha_MSE": 2.4570053369643574e-07,
+      "alpha_coverage_changed": 0,
+      "ROI_metrics": [
+        {
+          "roi": 0,
+          "category": "outline",
+          "line_MSE": 0.04234791919589043
+        },
+        {
+          "roi": 2,
+          "category": "internal_color_transition",
+          "line_MSE": 0.02643270418047905
+        }
+      ]
+    }
+  ],
+  "signed_centerline_offset_quantiles": [
+    -15.118823488317458,
+    -1.6662649561857954,
+    4.423898975283313,
+    8.415993611968009,
+    11.702124535313635
+  ],
+  "absolute_centerline_offset_quantiles": [
+    0.8606868807384842,
+    3.4577344349992774,
+    5.602422284154949,
+    9.033427810461495,
+    15.118823488317458
+  ],
+  "interpretation": "capability only; fixed centers can remain off line; original full-T linear oracle upper bound does not apply; no fitted shape trajectory",
+  "files": [
+    "artifacts/gaer_attribution_capacity_v02/downloads/lego/shape_ratio2.npz",
+    "artifacts/gaer_attribution_capacity_v02/media/lego/shape_ratio2.png",
+    "artifacts/gaer_attribution_capacity_v02/downloads/lego/shape_ratio4.npz",
+    "artifacts/gaer_attribution_capacity_v02/media/lego/shape_ratio4.png",
+    "artifacts/gaer_attribution_capacity_v02/media/lego/conditional_shape_comparison.jpg",
+    "artifacts/gaer_attribution_capacity_v02/media/lego/conditional_shape_ROI_nearest.png"
+  ],
+  "conditional_trigger": {
+    "view": "r_018",
+    "certificate": {
+      "primal_feasible_objective": 0.006063129118874357,
+      "dual_lower_bound": 0.0060355382312721,
+      "dual_gap": 2.7590887602257398e-05,
+      "relative_dual_gap": 0.004550602017754778,
+      "atomic_allowance": 2.6588217903755094e-07,
+      "FP64_atomic_roundoff_bound": 5.669151534891262e-12,
+      "FP64_scalar_roundoff_bound": 5.732154598491799e-10,
+      "preregistered_extra_allowance": 2.6530329442616685e-07,
+      "native_vs_FP64_accepted_weight_A_max_abs": [
+        4.39603418445067e-07
+      ],
+      "max_accepted_per_pixel": [
+        406
+      ],
+      "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+      "bounds_min": 0.0,
+      "bounds_max": 1.0,
+      "active_gt_1e_5": 77613,
+      "at_upper_bound": 25793,
+      "strength_sum": 38274.9036298426,
+      "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE"
+    },
+    "line_target_MSE": 0.12295159697532654
+  },
+  "shape_view_original_fit_certificate": {
+    "primal_feasible_objective": 0.004374777748436895,
+    "dual_lower_bound": 0.00434448604919788,
+    "dual_gap": 3.029169923901478e-05,
+    "relative_dual_gap": 0.006924168719162472,
+    "atomic_allowance": 1.9008578212356215e-07,
+    "FP64_atomic_roundoff_bound": 4.027415254026587e-12,
+    "FP64_scalar_roundoff_bound": 5.723076073164072e-10,
+    "preregistered_extra_allowance": 1.8950944710099173e-07,
+    "native_vs_FP64_accepted_weight_A_max_abs": [
+      4.298944864533638e-07
+    ],
+    "max_accepted_per_pixel": [
+      498
+    ],
+    "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+    "bounds_min": 0.0,
+    "bounds_max": 1.0,
+    "active_gt_1e_5": 59824,
+    "at_upper_bound": 16633,
+    "strength_sum": 26469.62018320251,
+    "status": "MAX_BUDGET_UNCERTIFIED"
+  },
+  "gate_correction": "initial r_000-only gate NOT_RUN retained; frozen protocol permits any perview; capability in fixed r_000 with uncertified r_000 base strength, not r_000 impossibility proof",
+  "unit": "lego_shape_anyview_condition",
+  "wall_seconds": 42.23171704588458,
+  "protocol_sha256": "4218282d0823f0b530089af4b75555f03606071aea4e68e03838fd7f96111132"
+}

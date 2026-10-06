@@ -1,0 +1,725 @@
+{
+  "status": "PARTIAL",
+  "actual_execution_complete": true,
+  "branch": "image-space-edge-foundation-v1",
+  "base": "f76fd00f03dc96a099a5ea1ff7935cb8ddb04f0e",
+  "start_head": "51da04473768828266c36b1137663a4fab649a90",
+  "counts": {
+    "native_RGB_inputs": 82,
+    "DEV_views": 8,
+    "fixed_views": 8,
+    "arc_views": 66,
+    "scenes": 2,
+    "synthetic_interfaces": 7,
+    "moving_control_frames": 7,
+    "videos": 4,
+    "decoded_video_frames": 132,
+    "foundation_unittests": 8,
+    "independent_audit_checks": 47081,
+    "sealed_units": 24,
+    "media_files": 423
+  },
+  "decisions": {
+    "representation_and_native_execution": {
+      "status": "GO",
+      "scope": "engineering: actual per-view RGB fields, profiles and 2D chains; no 3D selection"
+    },
+    "structural_layer_as_complete_line_drawing": {
+      "status": "NO-GO",
+      "reason": "necessary studs, upholstery pattern, trim/legs often missing; do not replace union with this sparse layer"
+    },
+    "RGB_only_generous_union": {
+      "status": "PARTIAL",
+      "reason": "recognizable complete-object prototype; dense/shading double contours remain and real superiority to classic control is unproven"
+    },
+    "analytic_color_profile_interface": {
+      "status": "GO",
+      "scope": "constructed color step/constant/low contrast/stripes/corners/junctions; not material or geometry semantics"
+    },
+    "temporal_regularizer": {
+      "status": "PARTIAL",
+      "reason": "zero unsupported ghosts under current-evidence guard; motion-corrected error lower but line churn remains high"
+    },
+    "temporally_stable_finished_video": {
+      "status": "NO-GO",
+      "reason": "Chair exceeds frozen .2 spatial motion-error alarm on 31 transitions; perceptual stable-video superiority is not established"
+    },
+    "original_RGB_width_candidate": {
+      "status": "NO-GO",
+      "reason": "25 new clipped channel values across six fixed images and a constructed reverse slope; all original evidence retained"
+    },
+    "anchored_guarded_RGB_stylization": {
+      "status": "PARTIAL",
+      "reason": "known transition monotonic/no overshoot plus fixed exact outside/nonedge/alpha/no-new-clipping guards pass; small local edits, real photorealistic repair not established"
+    },
+    "independent_human_semantic_visual_review": {
+      "status": "PENDING",
+      "reason": "primary agent inspected actual exported media; independent human review pending"
+    }
+  },
+  "scenes": {
+    "lego": {
+      "fixed_views": 4,
+      "candidates": 138437,
+      "valid_profiles": 19646,
+      "profile_increased_union_pixels": 1289,
+      "total_union_ink_area": 112853.99609375,
+      "total_structural_ink_area": 14217.56787109375,
+      "arc_native_frames": 33,
+      "temporal": {
+        "motion_corrected_spatial_MAE": 0.1777816423080629,
+        "motion_corrected_temporal_MAE": 0.1658290750710945,
+        "spatial_churn": 0.29109309108779463,
+        "temporal_churn": 0.2786368818847955,
+        "edge_valid_fraction": 0.986021548633901
+      },
+      "failure_frames": [],
+      "RGB_control_changed_pixels": {
+        "sharpen": 4580,
+        "soften": 4590
+      }
+    },
+    "chair": {
+      "fixed_views": 4,
+      "candidates": 103415,
+      "valid_profiles": 5649,
+      "profile_increased_union_pixels": 1432,
+      "total_union_ink_area": 84785.263671875,
+      "total_structural_ink_area": 3941.7139892578125,
+      "arc_native_frames": 33,
+      "temporal": {
+        "motion_corrected_spatial_MAE": 0.21071512776208662,
+        "motion_corrected_temporal_MAE": 0.1991137329725719,
+        "spatial_churn": 0.3204862171337892,
+        "temporal_churn": 0.2996507643574927,
+        "edge_valid_fraction": 0.9671811392240809
+      },
+      "failure_frames": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        32
+      ],
+      "RGB_control_changed_pixels": {
+        "sharpen": 2074,
+        "soften": 2091
+      }
+    }
+  },
+  "baseline_matching": {
+    "classic": {
+      "area_ratio": 1.0775000958219265,
+      "length_ratio": 0.9834470386779376
+    },
+    "canny": {
+      "area_ratio": 0.9561353560607114,
+      "length_ratio": 1.0838955179255796
+    }
+  },
+  "profile_ablation": {
+    "source_sha256": "bdd125d1b8bf9dc363bff52b34b54a6e7bbb7e2920fe4b358a3b49348fb348a8",
+    "records": [
+      {
+        "scene": "lego",
+        "role": "fixed",
+        "key": "r_000",
+        "no_profile": {
+          "ink_area": 20689.986328125,
+          "visible_area": 27704,
+          "ridge_length": 23718
+        },
+        "union": {
+          "ink_area": 20818.982421875,
+          "visible_area": 27800,
+          "ridge_length": 23808
+        },
+        "increased_pixels": 715,
+        "pixel_MAE": 0.00017134950030595064,
+        "exact_field_source": "frozen detail, gain1; original spatial orientation/confidence/ridges unchanged"
+      },
+      {
+        "scene": "lego",
+        "role": "fixed",
+        "key": "r_008",
+        "no_profile": {
+          "ink_area": 28531.3828125,
+          "visible_area": 34915,
+          "ridge_length": 28682
+        },
+        "union": {
+          "ink_area": 28548.9609375,
+          "visible_area": 34936,
+          "ridge_length": 28701
+        },
+        "increased_pixels": 171,
+        "pixel_MAE": 2.3424609025823884e-05,
+        "exact_field_source": "frozen detail, gain1; original spatial orientation/confidence/ridges unchanged"
+      },
+      {
+        "scene": "lego",
+        "role": "fixed",
+        "key": "r_018",
+        "no_profile": {
+          "ink_area": 29958.33984375,
+          "visible_area": 38415,
+          "ridge_length": 31675
+        },
+        "union": {
+          "ink_area": 29981.564453125,
+          "visible_area": 38435,
+          "ridge_length": 31691
+        },
+        "increased_pixels": 188,
+        "pixel_MAE": 3.0901359423296526e-05,
+        "exact_field_source": "frozen detail, gain1; original spatial orientation/confidence/ridges unchanged"
+      },
+      {
+        "scene": "lego",
+        "role": "fixed",
+        "key": "r_030",
+        "no_profile": {
+          "ink_area": 33475.08984375,
+          "visible_area": 43967,
+          "ridge_length": 33327
+        },
+        "union": {
+          "ink_area": 33504.48828125,
+          "visible_area": 43990,
+          "ridge_length": 33347
+        },
+        "increased_pixels": 215,
+        "pixel_MAE": 3.893570465152152e-05,
+        "exact_field_source": "frozen detail, gain1; original spatial orientation/confidence/ridges unchanged"
+      },
+      {
+        "scene": "chair",
+        "role": "fixed",
+        "key": "r_000",
+        "no_profile": {
+          "ink_area": 13556.806640625,
+          "visible_area": 17836,
+          "ridge_length": 13260
+        },
+        "union": {
+          "ink_area": 13679.458984375,
+          "visible_area": 17980,
+          "ridge_length": 13354
+        },
+        "increased_pixels": 673,
+        "pixel_MAE": 0.00016581178351771086,
+        "exact_field_source": "frozen detail, gain1; original spatial orientation/confidence/ridges unchanged"
+      },
+      {
+        "scene": "chair",
+        "role": "fixed",
+        "key": "r_008",
+        "no_profile": {
+          "ink_area": 33478.59375,
+          "visible_area": 43311,
+          "ridge_length": 34287
+        },
+        "union": {
+          "ink_area": 33494.046875,
+          "visible_area": 43332,
+          "ridge_length": 34305
+        },
+        "increased_pixels": 72,
+        "pixel_MAE": 2.066278648271691e-05,
+        "exact_field_source": "frozen detail, gain1; original spatial orientation/confidence/ridges unchanged"
+      },
+      {
+        "scene": "chair",
+        "role": "fixed",
+        "key": "r_018",
+        "no_profile": {
+          "ink_area": 22769.294921875,
+          "visible_area": 30539,
+          "ridge_length": 24266
+        },
+        "union": {
+          "ink_area": 22772.333984375,
+          "visible_area": 30542,
+          "ridge_length": 24269
+        },
+        "increased_pixels": 17,
+        "pixel_MAE": 4.01592797061312e-06,
+        "exact_field_source": "frozen detail, gain1; original spatial orientation/confidence/ridges unchanged"
+      },
+      {
+        "scene": "chair",
+        "role": "fixed",
+        "key": "r_030",
+        "no_profile": {
+          "ink_area": 14719.607421875,
+          "visible_area": 19273,
+          "ridge_length": 14186
+        },
+        "union": {
+          "ink_area": 14839.423828125,
+          "visible_area": 19392,
+          "ridge_length": 14276
+        },
+        "increased_pixels": 670,
+        "pixel_MAE": 0.0001619419635972008,
+        "exact_field_source": "frozen detail, gain1; original spatial orientation/confidence/ridges unchanged"
+      }
+    ],
+    "DEV": [
+      {
+        "scene": "lego",
+        "role": "dev",
+        "key": "r_007",
+        "no_profile": {
+          "ink_area": 30365.302734375,
+          "visible_area": 41670,
+          "ridge_length": 29607
+        },
+        "union": {
+          "ink_area": 30398.5078125,
+          "visible_area": 41689,
+          "ridge_length": 29627
+        },
+        "increased_pixels": 268,
+        "pixel_MAE": 4.338992221164517e-05,
+        "exact_field_source": "frozen detail, gain1; original spatial orientation/confidence/ridges unchanged"
+      },
+      {
+        "scene": "lego",
+        "role": "dev",
+        "key": "r_033",
+        "no_profile": {
+          "ink_area": 34756.91796875,
+          "visible_area": 46633,
+          "ridge_length": 34949
+        },
+        "union": {
+          "ink_area": 34773.828125,
+          "visible_area": 46653,
+          "ridge_length": 34961
+        },
+        "increased_pixels": 112,
+        "pixel_MAE": 2.2410848032450303e-05,
+        "exact_field_source": "frozen detail, gain1; original spatial orientation/confidence/ridges unchanged"
+      },
+      {
+        "scene": "lego",
+        "role": "dev",
+        "key": "r_059",
+        "no_profile": {
+          "ink_area": 33437.8359375,
+          "visible_area": 42292,
+          "ridge_length": 33310
+        },
+        "union": {
+          "ink_area": 33478.7421875,
+          "visible_area": 42315,
+          "ridge_length": 33322
+        },
+        "increased_pixels": 278,
+        "pixel_MAE": 5.5567186791449785e-05,
+        "exact_field_source": "frozen detail, gain1; original spatial orientation/confidence/ridges unchanged"
+      },
+      {
+        "scene": "lego",
+        "role": "dev",
+        "key": "r_086",
+        "no_profile": {
+          "ink_area": 33230.1171875,
+          "visible_area": 44657,
+          "ridge_length": 33346
+        },
+        "union": {
+          "ink_area": 33240.515625,
+          "visible_area": 44665,
+          "ridge_length": 33354
+        },
+        "increased_pixels": 121,
+        "pixel_MAE": 1.3838535778631922e-05,
+        "exact_field_source": "frozen detail, gain1; original spatial orientation/confidence/ridges unchanged"
+      },
+      {
+        "scene": "chair",
+        "role": "dev",
+        "key": "r_007",
+        "no_profile": {
+          "ink_area": 10424.6396484375,
+          "visible_area": 13136,
+          "ridge_length": 10340
+        },
+        "union": {
+          "ink_area": 10507.5654296875,
+          "visible_area": 13275,
+          "ridge_length": 10451
+        },
+        "increased_pixels": 336,
+        "pixel_MAE": 0.00011180175351910293,
+        "exact_field_source": "frozen detail, gain1; original spatial orientation/confidence/ridges unchanged"
+      },
+      {
+        "scene": "chair",
+        "role": "dev",
+        "key": "r_033",
+        "no_profile": {
+          "ink_area": 11423.953125,
+          "visible_area": 14616,
+          "ridge_length": 11125
+        },
+        "union": {
+          "ink_area": 11521.90234375,
+          "visible_area": 14761,
+          "ridge_length": 11241
+        },
+        "increased_pixels": 383,
+        "pixel_MAE": 0.00013265438610687852,
+        "exact_field_source": "frozen detail, gain1; original spatial orientation/confidence/ridges unchanged"
+      },
+      {
+        "scene": "chair",
+        "role": "dev",
+        "key": "r_059",
+        "no_profile": {
+          "ink_area": 18439.935546875,
+          "visible_area": 23697,
+          "ridge_length": 18940
+        },
+        "union": {
+          "ink_area": 18482.62890625,
+          "visible_area": 23734,
+          "ridge_length": 18966
+        },
+        "increased_pixels": 278,
+        "pixel_MAE": 5.806115223094821e-05,
+        "exact_field_source": "frozen detail, gain1; original spatial orientation/confidence/ridges unchanged"
+      },
+      {
+        "scene": "chair",
+        "role": "dev",
+        "key": "r_086",
+        "no_profile": {
+          "ink_area": 11720.560546875,
+          "visible_area": 14875,
+          "ridge_length": 11839
+        },
+        "union": {
+          "ink_area": 11857.3720703125,
+          "visible_area": 15109,
+          "ridge_length": 12033
+        },
+        "increased_pixels": 517,
+        "pixel_MAE": 0.000184485106728971,
+        "exact_field_source": "frozen detail, gain1; original spatial orientation/confidence/ridges unchanged"
+      }
+    ],
+    "DEV_area_ratio": 0.9974937743307135,
+    "DEV_length_ratio": 0.997287380065777,
+    "gain": 1.0,
+    "postproduction_diagnostic": true,
+    "scope": "exposes frozen existing-component layer; no parameter selection after fixed view inspection; no novelty or superiority claim"
+  },
+  "input_integrity": {
+    "protected_files": 291,
+    "changed_files": [],
+    "model_sha256_after": {
+      "lego": "fa9bea3fa4f8d349fa873a66d892c53cd1263499caec6421c286350a5bb7cbbc",
+      "chair": "13e4ecc9ffe9c5ae2a0656e2e5c56a737cfdc90a62ad04799db3c46b0b442f5d"
+    },
+    "old_heads_unchanged": true
+  },
+  "actual_videos": [
+    {
+      "path": "artifacts/image_space_edge_foundation_v1/media/lego/arc/lines_33.mp4",
+      "decoded_frames": 33,
+      "distinct_RGB_without_labels": 33,
+      "max_native_RGB_MSE": 0.00021606691007036716,
+      "codec": "H264",
+      "pixel_format": "yuv420p",
+      "faststart": true
+    },
+    {
+      "path": "artifacts/image_space_edge_foundation_v1/media/lego/arc/overlays_33.mp4",
+      "decoded_frames": 33,
+      "distinct_RGB_without_labels": 33,
+      "max_native_RGB_MSE": 0.00021572696277871728,
+      "codec": "H264",
+      "pixel_format": "yuv420p",
+      "faststart": true
+    },
+    {
+      "path": "artifacts/image_space_edge_foundation_v1/media/chair/arc/lines_33.mp4",
+      "decoded_frames": 33,
+      "distinct_RGB_without_labels": 33,
+      "max_native_RGB_MSE": 6.734918861184269e-05,
+      "codec": "H264",
+      "pixel_format": "yuv420p",
+      "faststart": true
+    },
+    {
+      "path": "artifacts/image_space_edge_foundation_v1/media/chair/arc/overlays_33.mp4",
+      "decoded_frames": 33,
+      "distinct_RGB_without_labels": 33,
+      "max_native_RGB_MSE": 6.716387724736705e-05,
+      "codec": "H264",
+      "pixel_format": "yuv420p",
+      "faststart": true
+    }
+  ],
+  "known_width_control": [
+    {
+      "name": "width",
+      "known_width": 6.0,
+      "arms": {
+        "sharpen": {
+          "width": 3.98248381461341,
+          "min_fraction_slope": 0.0,
+          "outside_max": 0.0,
+          "max_delta": 0.04451608657836914,
+          "profiles_used": 106
+        },
+        "soften": {
+          "width": 8.318722709640348,
+          "min_fraction_slope": 0.0,
+          "outside_max": 0.0,
+          "max_delta": 0.03771638870239258,
+          "profiles_used": 106
+        }
+      },
+      "original_width": 5.9999988450262975
+    },
+    {
+      "name": "color_step",
+      "known_width": 3.0,
+      "arms": {
+        "sharpen": {
+          "width": 1.9909984563826697,
+          "min_fraction_slope": 0.0,
+          "outside_max": 0.0,
+          "max_delta": 0.044770121574401855,
+          "profiles_used": 106
+        },
+        "soften": {
+          "width": 4.199340932703798,
+          "min_fraction_slope": 0.0,
+          "outside_max": 0.0,
+          "max_delta": 0.037931621074676514,
+          "profiles_used": 106
+        }
+      },
+      "original_width": 3.2805331297555824
+    }
+  ],
+  "moving_lag": {
+    "records": [
+      {
+        "frame": 0,
+        "edges": [
+          {
+            "name": "left",
+            "analytic_center": 20.5,
+            "spatial_center": 20.0,
+            "temporal_center": 20.0,
+            "spatial_absolute_error": 0.5,
+            "temporal_absolute_error": 0.5,
+            "temporal_minus_spatial": 0.0
+          },
+          {
+            "name": "right",
+            "analytic_center": 54.5,
+            "spatial_center": 55.0,
+            "temporal_center": 55.0,
+            "spatial_absolute_error": 0.5,
+            "temporal_absolute_error": 0.5,
+            "temporal_minus_spatial": 0.0
+          }
+        ],
+        "ghost_mass_outside_truth_3px": 0.0
+      },
+      {
+        "frame": 1,
+        "edges": [
+          {
+            "name": "left",
+            "analytic_center": 28.5,
+            "spatial_center": 28.0,
+            "temporal_center": 28.0,
+            "spatial_absolute_error": 0.5,
+            "temporal_absolute_error": 0.5,
+            "temporal_minus_spatial": 0.0
+          },
+          {
+            "name": "right",
+            "analytic_center": 62.5,
+            "spatial_center": 63.0,
+            "temporal_center": 63.0,
+            "spatial_absolute_error": 0.5,
+            "temporal_absolute_error": 0.5,
+            "temporal_minus_spatial": 0.0
+          }
+        ],
+        "ghost_mass_outside_truth_3px": 0.0
+      },
+      {
+        "frame": 2,
+        "edges": [
+          {
+            "name": "left",
+            "analytic_center": 36.5,
+            "spatial_center": 36.0,
+            "temporal_center": 36.0,
+            "spatial_absolute_error": 0.5,
+            "temporal_absolute_error": 0.5,
+            "temporal_minus_spatial": 0.0
+          },
+          {
+            "name": "right",
+            "analytic_center": 70.5,
+            "spatial_center": 71.0,
+            "temporal_center": 71.0,
+            "spatial_absolute_error": 0.5,
+            "temporal_absolute_error": 0.5,
+            "temporal_minus_spatial": 0.0
+          }
+        ],
+        "ghost_mass_outside_truth_3px": 0.0
+      },
+      {
+        "frame": 3,
+        "edges": [
+          {
+            "name": "left",
+            "analytic_center": 44.5,
+            "spatial_center": 44.0,
+            "temporal_center": 44.0,
+            "spatial_absolute_error": 0.5,
+            "temporal_absolute_error": 0.5,
+            "temporal_minus_spatial": 0.0
+          },
+          {
+            "name": "right",
+            "analytic_center": 78.5,
+            "spatial_center": 79.0,
+            "temporal_center": 79.0,
+            "spatial_absolute_error": 0.5,
+            "temporal_absolute_error": 0.5,
+            "temporal_minus_spatial": 0.0
+          }
+        ],
+        "ghost_mass_outside_truth_3px": 0.0
+      },
+      {
+        "frame": 4,
+        "edges": [
+          {
+            "name": "left",
+            "analytic_center": 52.5,
+            "spatial_center": 52.0,
+            "temporal_center": 52.0,
+            "spatial_absolute_error": 0.5,
+            "temporal_absolute_error": 0.5,
+            "temporal_minus_spatial": 0.0
+          },
+          {
+            "name": "right",
+            "analytic_center": 86.5,
+            "spatial_center": 87.0,
+            "temporal_center": 87.0,
+            "spatial_absolute_error": 0.5,
+            "temporal_absolute_error": 0.5,
+            "temporal_minus_spatial": 0.0
+          }
+        ],
+        "ghost_mass_outside_truth_3px": 0.0
+      },
+      {
+        "frame": 5,
+        "edges": [
+          {
+            "name": "left",
+            "analytic_center": 60.5,
+            "spatial_center": 60.0,
+            "temporal_center": 60.0,
+            "spatial_absolute_error": 0.5,
+            "temporal_absolute_error": 0.5,
+            "temporal_minus_spatial": 0.0
+          },
+          {
+            "name": "right",
+            "analytic_center": 94.5,
+            "spatial_center": 95.0,
+            "temporal_center": 95.0,
+            "spatial_absolute_error": 0.5,
+            "temporal_absolute_error": 0.5,
+            "temporal_minus_spatial": 0.0
+          }
+        ],
+        "ghost_mass_outside_truth_3px": 0.0
+      },
+      {
+        "frame": 6,
+        "edges": [],
+        "disappearance_max_soft": 0.0,
+        "ghost_mass_outside_truth_3px": 0.0
+      }
+    ],
+    "max_temporal_minus_spatial_center": 0.0,
+    "spatial_MAE": 0.5,
+    "temporal_MAE": 0.5,
+    "ghost_mass_max": 0.0,
+    "scope": "analytic 2D translating rectangle, occluder below measured band, final full disappearance; not physical scene correspondence"
+  },
+  "media_manifest_sha256": "2cd5225d87dd7224994ce8d8a60b8cd528e3b5c69a557ef97372c6a679b382df",
+  "production_freeze_sha256": "f78400c1383b7865867aba53b86d6e288876afbc01d2dc13fff9131c01202d32",
+  "resume_verification": {
+    "status": "PASS",
+    "sealed_skips": [
+      "synthetic",
+      "lego_native_fixed",
+      "lego_fixed_spatial",
+      "lego_native_arc",
+      "lego_arc_spatial",
+      "lego_temporal",
+      "lego_arc_media",
+      "chair_native_fixed",
+      "chair_fixed_spatial",
+      "chair_native_arc",
+      "chair_arc_spatial",
+      "chair_temporal",
+      "chair_arc_media"
+    ],
+    "actual_new_renders": 0,
+    "source_freeze_accepted": true
+  },
+  "parameters_frozen_before_fixed_arc": true,
+  "RGB_control_fix_post_hoc": true,
+  "fresh_blind": false,
+  "physical_material_edge_truth": false,
+  "underlying_3D_geometry_improved": false,
+  "photorealistic_repair_established": false,
+  "independent_human_review": "pending"
+}

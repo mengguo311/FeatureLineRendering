@@ -1,0 +1,530 @@
+{
+  "protocol_sha256": "8d7310ef8daa4d85adabe320ba10a475ad7cd0420a55451e95780001331b3235",
+  "protocol": {
+    "schema": "GAER selection preregistration v1",
+    "base": "ee28fdce75b07a2cee5406e60f4be8014aa77336",
+    "views": [
+      "r_1",
+      "r_14",
+      "r_7",
+      "r_33"
+    ],
+    "scenes": [
+      "lego",
+      "chair"
+    ],
+    "resolution": [
+      800,
+      800
+    ],
+    "SH_degree": 3,
+    "background": "white",
+    "alpha_threshold": 0.5,
+    "candidate": "one-pixel inner silhouette boundary, E=1",
+    "normal": "gradient of signed Euclidean distance foreground minus background; normalized",
+    "deltas": [
+      1,
+      2,
+      4
+    ],
+    "main_delta": 2,
+    "heldout_delta": 4,
+    "direction_diagnostic_degrees": [
+      -15,
+      15
+    ],
+    "main_K": 8,
+    "sensitivity_K": [
+      16,
+      32
+    ],
+    "epsilon": 1e-06,
+    "min_visibility_mass": 0.25,
+    "raw_absolute_floor": 0.01,
+    "numerical_ratio_floor": 0.0002,
+    "auto_ratio_floor": "max(numerical_ratio_floor, 2 * flat_null_ratio_99.9_percentile)",
+    "auto_max_aggregate_ambiguity_over_observed_L1": 0.1,
+    "auto_min_delta2_delta4_Jaccard": 0.6,
+    "diagnostic_count_fractions": [
+      0.001,
+      0.005,
+      0.01
+    ],
+    "primary_diagnostic_count_fraction": 0.005,
+    "random_seed": 172901,
+    "random_mass_log_bin_width": 0.1,
+    "ring_widths_pixels": [
+      2,
+      4
+    ],
+    "exterior_pixels": 4,
+    "profile_offsets": [
+      -8,
+      -7,
+      -6,
+      -5,
+      -4,
+      -3,
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "sparse_batch_edges": 512,
+    "causal": "opacity zero on isolated in-RAM clone; no optimization",
+    "standalone_B4_detection": "NOT_RUN; no AUROC/AP of edge-gated maps",
+    "geometry_depth": "NOT_AVAILABLE",
+    "geometry_followup": "NOT_RUN",
+    "human_visual_GO": "PENDING",
+    "artistic_C_D_training_trajectory": "NOT_RUN",
+    "prior_exposure": "all views exploratory; previous GS/experiments seen; no formal blind claim"
+  },
+  "scenes": {
+    "lego": {
+      "model": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+      "model_sha256": "fa9bea3fa4f8d349fa873a66d892c53cd1263499caec6421c286350a5bb7cbbc",
+      "count": 310475,
+      "sh_degree": 3,
+      "cameras": [
+        {
+          "key": "r_1",
+          "width": 800,
+          "height": 800,
+          "FoVx": 0.6911112070083618,
+          "FoVy": 0.6911112070083618,
+          "w2c": [
+            [
+              -0.93054224873443,
+              -0.3661845799677077,
+              1.0460740714037742e-08,
+              4.976467275260123e-08
+            ],
+            [
+              -0.11707552976929711,
+              0.29751040522863337,
+              -0.9475129452780043,
+              -2.731658896745382e-08
+            ],
+            [
+              0.34696467623376553,
+              -0.881700976116199,
+              -0.319717287713915,
+              4.031129292275722
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "metadata_index": 1,
+          "frame_file": "./train/r_1",
+          "metadata_path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/inputs/lego/seed_1729/transforms_train.json",
+          "metadata_sha256": "9491165896ffc91dcf0db3ac4b9006e6cb4af3b999dc0786aa56ebca70985a2e",
+          "original_image": "/home/u00134/cglib/data/full/lego/train/r_1.png",
+          "original_image_sha256": "e019daa781bd4cf618192b09476d136061a323a1bf32f3045efee3328333eb6d",
+          "metadata_w2c_error": 0.0,
+          "previous_role": "edit-train",
+          "formal_blind": false,
+          "camera_sha256": "ea2dedd2f9ed506d71fbe61a4b224a0289109d216d0d791fad77565173fee6f3"
+        },
+        {
+          "key": "r_14",
+          "width": 800,
+          "height": 800,
+          "FoVx": 0.6911112070083618,
+          "FoVy": 0.6911112070083618,
+          "w2c": [
+            [
+              -0.06348516697937168,
+              -0.9979827042606239,
+              -7.56940526370268e-10,
+              5.724366135967961e-09
+            ],
+            [
+              -0.8717355255808693,
+              0.055454141507323966,
+              -0.4868285637493449,
+              6.704225821973217e-08
+            ],
+            [
+              0.48584644188251425,
+              -0.030906389092070358,
+              -0.8734975035820635,
+              4.031128479881814
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "metadata_index": 12,
+          "frame_file": "./train/r_14",
+          "metadata_path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/inputs/lego/seed_1729/transforms_train.json",
+          "metadata_sha256": "9491165896ffc91dcf0db3ac4b9006e6cb4af3b999dc0786aa56ebca70985a2e",
+          "original_image": "/home/u00134/cglib/data/full/lego/train/r_14.png",
+          "original_image_sha256": "2c72fbc81278eaca42b8e3f2417ae481fa366ce29b28b5c613b8a46900955ef7",
+          "metadata_w2c_error": 0.0,
+          "previous_role": "edit-train",
+          "formal_blind": false,
+          "camera_sha256": "2883021828a8a776d6222e27473c010e8e27a86d48f6f8744a9f4f540abe189a"
+        },
+        {
+          "key": "r_7",
+          "width": 800,
+          "height": 800,
+          "FoVx": 0.6911112070083618,
+          "FoVy": 0.6911112070083618,
+          "w2c": [
+            [
+              0.9045063953319579,
+              -0.4264598190525402,
+              -2.827666837669439e-10,
+              3.0331696099244634e-09
+            ],
+            [
+              -0.42524267578235675,
+              -0.9019247930815488,
+              -0.0755003837439085,
+              6.712087712585558e-09
+            ],
+            [
+              0.0321977856587085,
+              0.06829037352492265,
+              -0.997145851100388,
+              4.0311292814851045
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "metadata_index": 5,
+          "frame_file": "./train/r_7",
+          "metadata_path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/inputs/lego/seed_1729/transforms_train.json",
+          "metadata_sha256": "9491165896ffc91dcf0db3ac4b9006e6cb4af3b999dc0786aa56ebca70985a2e",
+          "original_image": "/home/u00134/cglib/data/full/lego/train/r_7.png",
+          "original_image_sha256": "097969f1f334a21c85d664fbbfee675e813b683b30874e07a50dfc8966c55421",
+          "metadata_w2c_error": 0.0,
+          "previous_role": "dev",
+          "formal_blind": false,
+          "camera_sha256": "4b713d76dd9e19852b33fc2130c188b3e6b44850d5cd9d716918e33c30b98535"
+        },
+        {
+          "key": "r_33",
+          "width": 800,
+          "height": 800,
+          "FoVx": 0.6911112070083618,
+          "FoVy": 0.6911112070083618,
+          "w2c": [
+            [
+              0.7431972636342684,
+              0.669072272277679,
+              -2.775245134906176e-09,
+              2.886683626983087e-08
+            ],
+            [
+              0.5280798646532778,
+              -0.5865845717955348,
+              -0.6140441877196208,
+              3.2700284352088143e-08
+            ],
+            [
+              -0.4108399995880237,
+              0.45635598205026673,
+              -0.7892717494383432,
+              4.031129324239134
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "metadata_index": 28,
+          "frame_file": "./train/r_33",
+          "metadata_path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/inputs/lego/seed_1729/transforms_train.json",
+          "metadata_sha256": "9491165896ffc91dcf0db3ac4b9006e6cb4af3b999dc0786aa56ebca70985a2e",
+          "original_image": "/home/u00134/cglib/data/full/lego/train/r_33.png",
+          "original_image_sha256": "801ab9df4b3cac75806222560390527a580d8bd58a6ab7de09bd671e2f2595b1",
+          "metadata_w2c_error": 0.0,
+          "previous_role": "dev",
+          "formal_blind": false,
+          "camera_sha256": "8fd3c6f5cc8482f0baa98e84b81965c4a72e63f127c5711ef04625049c1f3dbd"
+        }
+      ]
+    },
+    "chair": {
+      "model": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply",
+      "model_sha256": "13e4ecc9ffe9c5ae2a0656e2e5c56a737cfdc90a62ad04799db3c46b0b442f5d",
+      "count": 256690,
+      "sh_degree": 3,
+      "cameras": [
+        {
+          "key": "r_1",
+          "width": 800,
+          "height": 800,
+          "FoVx": 0.6911112070083618,
+          "FoVy": 0.6911112070083618,
+          "w2c": [
+            [
+              0.6858149464926122,
+              0.7277759159864173,
+              3.6490876595688422e-09,
+              -5.0587127426816695e-09
+            ],
+            [
+              0.7249027440079984,
+              -0.6831073906373843,
+              -0.08877095704847392,
+              -1.947162605182502e-09
+            ],
+            [
+              -0.06460526413020715,
+              0.06088035600845806,
+              -0.9960521169767121,
+              4.031129233767258
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "metadata_index": 1,
+          "frame_file": "./train/r_1",
+          "metadata_path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/inputs/chair/seed_1729/transforms_train.json",
+          "metadata_sha256": "2ef32cbc60b28932cc8d5a2b25f12f892211ed093fd7e0a4aec4e1a3c6f7947d",
+          "original_image": "/home/u00134/cglib/data/full/chair/train/r_1.png",
+          "original_image_sha256": "a3a5a400dd5df5a917ae40ed6da2f86d0a3e597d074b6ad2f03997418d72d45a",
+          "metadata_w2c_error": 0.0,
+          "previous_role": "edit-train",
+          "formal_blind": false,
+          "camera_sha256": "31d1b2821b0212e74be13bd95229dedb026ea9848e6f99b105f4f930b6d1c361"
+        },
+        {
+          "key": "r_14",
+          "width": 800,
+          "height": 800,
+          "FoVx": 0.6911112070083618,
+          "FoVy": 0.6911112070083618,
+          "w2c": [
+            [
+              0.745470838597442,
+              0.6665383319888877,
+              -1.3007026896501387e-08,
+              -7.675648010089189e-08
+            ],
+            [
+              0.3573520037696867,
+              -0.399670199315367,
+              -0.8441347089696221,
+              7.95080645609307e-08
+            ],
+            [
+              -0.5626480569631108,
+              0.6292777393121364,
+              -0.5361312854430011,
+              4.031129009695354
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "metadata_index": 12,
+          "frame_file": "./train/r_14",
+          "metadata_path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/inputs/chair/seed_1729/transforms_train.json",
+          "metadata_sha256": "2ef32cbc60b28932cc8d5a2b25f12f892211ed093fd7e0a4aec4e1a3c6f7947d",
+          "original_image": "/home/u00134/cglib/data/full/chair/train/r_14.png",
+          "original_image_sha256": "2121533141a6ca49d68a14acfc3979b5a01994287e8b110239b1bac788485d19",
+          "metadata_w2c_error": 0.0,
+          "previous_role": "edit-train",
+          "formal_blind": false,
+          "camera_sha256": "62d6e9744058acd5e996d055241da42fc9915ca1864528c8bded60060bacfa14"
+        },
+        {
+          "key": "r_7",
+          "width": 800,
+          "height": 800,
+          "FoVx": 0.6911112070083618,
+          "FoVy": 0.6911112070083618,
+          "w2c": [
+            [
+              -0.9958430952161544,
+              0.09108519205727607,
+              2.6686061265102378e-09,
+              4.393074732723296e-09
+            ],
+            [
+              0.06001296536855059,
+              0.6561274932579945,
+              -0.7522599141001929,
+              -7.492457388069121e-08
+            ],
+            [
+              -0.06851974606887687,
+              -0.7491328786282053,
+              -0.658866397422203,
+              4.031128884460626
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "metadata_index": 5,
+          "frame_file": "./train/r_7",
+          "metadata_path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/inputs/chair/seed_1729/transforms_train.json",
+          "metadata_sha256": "2ef32cbc60b28932cc8d5a2b25f12f892211ed093fd7e0a4aec4e1a3c6f7947d",
+          "original_image": "/home/u00134/cglib/data/full/chair/train/r_7.png",
+          "original_image_sha256": "63d1a9b671bf0e3f0da2786905fbb0807d6b466cff6843da76ef9ad0e7fa7da7",
+          "metadata_w2c_error": 0.0,
+          "previous_role": "dev",
+          "formal_blind": false,
+          "camera_sha256": "b6b2a72d75124f2ec176580377714a7bfc0664d7f379df661b51b7dc44cdc274"
+        },
+        {
+          "key": "r_33",
+          "width": 800,
+          "height": 800,
+          "FoVx": 0.6911112070083618,
+          "FoVy": 0.6911112070083618,
+          "w2c": [
+            [
+              -0.9745738378111829,
+              0.22406627928339057,
+              -3.6582691199339693e-09,
+              2.318607265192579e-08
+            ],
+            [
+              0.1518210202480917,
+              0.6603438496947678,
+              -0.7354567587454045,
+              9.346719064553642e-09
+            ],
+            [
+              -0.1647910565436791,
+              -0.7167568792219928,
+              -0.6775716121311884,
+              4.031128349342041
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "metadata_index": 28,
+          "frame_file": "./train/r_33",
+          "metadata_path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/inputs/chair/seed_1729/transforms_train.json",
+          "metadata_sha256": "2ef32cbc60b28932cc8d5a2b25f12f892211ed093fd7e0a4aec4e1a3c6f7947d",
+          "original_image": "/home/u00134/cglib/data/full/chair/train/r_33.png",
+          "original_image_sha256": "9c94a89d339727d19420e401543007d67a641742c27b4beabebdad5b573c6faf",
+          "metadata_w2c_error": 0.0,
+          "previous_role": "dev",
+          "formal_blind": false,
+          "camera_sha256": "3932aa90780a7bdbd741565beae4e326bdad41eb99881e9647d2f44a30752e07"
+        }
+      ]
+    }
+  },
+  "protected_before": {
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/artifacts/edge_control_lego_chair_v1/DATA_FREEZE.json": "c48d0471b96b78b58aa4c23bbc1e89cffb6de64ad2290ebdc7b5ec00ab394906",
+    "/home/u00134/cglib/data/full/lego/train/r_1.png": "e019daa781bd4cf618192b09476d136061a323a1bf32f3045efee3328333eb6d",
+    "/home/u00134/cglib/data/full/lego/train/r_14.png": "2c72fbc81278eaca42b8e3f2417ae481fa366ce29b28b5c613b8a46900955ef7",
+    "/home/u00134/cglib/data/full/lego/train/r_7.png": "097969f1f334a21c85d664fbbfee675e813b683b30874e07a50dfc8966c55421",
+    "/home/u00134/cglib/data/full/lego/train/r_33.png": "801ab9df4b3cac75806222560390527a580d8bd58a6ab7de09bd671e2f2595b1",
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply": "fa9bea3fa4f8d349fa873a66d892c53cd1263499caec6421c286350a5bb7cbbc",
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/inputs/lego/seed_1729/transforms_train.json": "9491165896ffc91dcf0db3ac4b9006e6cb4af3b999dc0786aa56ebca70985a2e",
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_1729/manifest.json": "85d3430abf6269dee653a8afb2f6bdccd9246444c270b30bbd9a5eb877fa6209",
+    "/home/u00134/cglib/data/full/chair/train/r_1.png": "a3a5a400dd5df5a917ae40ed6da2f86d0a3e597d074b6ad2f03997418d72d45a",
+    "/home/u00134/cglib/data/full/chair/train/r_14.png": "2121533141a6ca49d68a14acfc3979b5a01994287e8b110239b1bac788485d19",
+    "/home/u00134/cglib/data/full/chair/train/r_7.png": "63d1a9b671bf0e3f0da2786905fbb0807d6b466cff6843da76ef9ad0e7fa7da7",
+    "/home/u00134/cglib/data/full/chair/train/r_33.png": "9c94a89d339727d19420e401543007d67a641742c27b4beabebdad5b573c6faf",
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply": "13e4ecc9ffe9c5ae2a0656e2e5c56a737cfdc90a62ad04799db3c46b0b442f5d",
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/inputs/chair/seed_1729/transforms_train.json": "2ef32cbc60b28932cc8d5a2b25f12f892211ed093fd7e0a4aec4e1a3c6f7947d",
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_1729/manifest.json": "2f651c3a63130b33f973ca691aa03094723d8d282ceae9aad29deda103405fab",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/experiments/gaer_attribution_buffer_v01/src/native.py": "db02b4d55e4a958bcf173634a776c219ee4d99a3097b346e0dc34eb76c5f81f8",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/experiments/gaer_attribution_buffer_v01/src/runtime.py": "ca6e913a4d560689f9efce89304182db65bb83e6f661a19c8e50fcae3b41acb4",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/experiments/gaer_attribution_buffer_v01/src/scene_io.py": "b828a587a9fa48a9fdb211d13f97453a5b6b23a013f4eaea99c8d6b999add47d",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/artifacts/gaer_attribution_buffer_v01/BUILD.json": "485d9c33c7bd0b98e4df6b41d8afabcbc8ac9a56a58d3df6d9a0531a75317419",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/artifacts/gaer_attribution_buffer_v01/REPORT_ZH.md": "eea75112c8a958de144e855da4ba07eeaceb10bd8496375d43279d8c2d730992",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/artifacts/gaer_attribution_buffer_v01/REPRODUCE.md": "066d0d106d0fd7c62710accd6fd27637c04320bd2ae4897111b28f8aa313b51d",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/artifacts/gaer_attribution_buffer_v01/FUTURE_CAVEATS.md": "4554266b7a16308bad374d41a687a633eba983dc390ce62d02def11947c4c4dc",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/artifacts/gaer_attribution_buffer_v01/instructions/GAER_agent_experiment_prompt.txt": "64b967ed51c335a4a50a160df516bd3685b6e068b41e078079a14456d9af86a9",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/artifacts/gaer_attribution_buffer_v01/results/REPRODUCTION.json": "01a514b7e811d437982b85db375b6f8d6d7189eacaa285ae50b44951bfa4014a",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/diff_gaussian_rasterization/__init__.py": "7ffc48cd474cc27260c60802443a52c374a6a7b1b0159d78dc3dc40b686fbf52",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/torch_extensions/gaer_native_C/gaer_native_C.so": "505f441561e3643dde1d5995a3a465b29d95fea71b7a88266ca65c7b04ffb48c",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/original/diff_gaussian_rasterization/__init__.py": "eafa9c3f670258b34535b7ee2832e6d8410d6a68762037216f04935ccdafba34",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/torch_extensions/gaer_original_C/gaer_original_C.so": "81cfda30700bf34dfc2b7ca970fb8a6e566231a4734428f6c588156a50bf487d",
+    "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/out/object_neighborhood_edge_control_v1/build/stock/onec_stock_C.so": "9c94ad47062bdb30b20f0b5e91d5f43aebe88a4fed675ca6d2966473a8b0dde1",
+    "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/out/object_neighborhood_edge_control_v1/vendor/gaussian-splatting/submodules/diff-gaussian-rasterization/diff_gaussian_rasterization/__init__.py": "eafa9c3f670258b34535b7ee2832e6d8410d6a68762037216f04935ccdafba34",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/rasterize_points.h": "4a72ab133052ca2d7e922d93fc15687e1c634bcf0be0cd58988af84b133ef382",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/ext.cpp": "a6a677b6b4d3c455972bf28a7825292b7b5f13091841bf26628abb75e0bb7feb",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/rasterize_points.cu": "ae959f1a882eda7e43c1f6257522c234163e53d1810d0de8c860de3963713a40",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/cuda_rasterizer/auxiliary.h": "f3a1a046df7e68076ecb15f145aa682e51c7e69b0054d6cd59c3cadc217f918a",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/cuda_rasterizer/forward.h": "e5d51722935f837892ca03f1fc1fa2079c8252845ba6155be9cf73bce6454481",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/cuda_rasterizer/rasterizer_impl.h": "58b97a9728e24d41602a2ac3e8eace025cfd3228de6e75033dc458d0303a46f4",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/cuda_rasterizer/rasterizer.h": "a8258308d24b8903a62e732832e75f917ba84e346be16f6b26097f64bdd91207",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/cuda_rasterizer/forward.cu": "40d1431b3d681de9315d86c58f002705cd18ad8e245164719d1a4c558c8e0c57",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/cuda_rasterizer/backward.h": "b2f10cc1b3fc2367872fb08a9f91c73c54e22f1a37f8080aef439daf00252a91",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/cuda_rasterizer/config.h": "86d90fe26989e5a991104842961341d1bcb4374d5068dcb2a56d63a9017f8d65",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/cuda_rasterizer/backward.cu": "f37bd8192453b05b299c54d060649ab12d114d46cef0a54d728fc130f23c99d6",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/cuda_rasterizer/rasterizer_impl.cu": "dce8e788bdeca1413724ca2ce73a252250d1499c2645f2eb755fe6e5a430ef8a",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/third_party/glm/glm/simd/matrix.h": "de72b2ee8363f2786d74b4b64bc05efb7e06d492b7e90ba96e4b82ec3c5f46c2",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/third_party/glm/glm/simd/common.h": "b748515c9fc5afc0a5360a8330e6736edb5965c16db52b1e74910f18503fa526",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/third_party/glm/glm/simd/geometric.h": "b3bfad1960c1663f9a4bf202373140e2f2342ae572843e35b01c032c52592f4a",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/third_party/glm/glm/simd/trigonometric.h": "d913a8e77523146df0afc5128079693a56b207647f2d8bcd7376721585e38eef",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/third_party/glm/glm/simd/platform.h": "94828fc7882d8672600400e025b828ee67e9681dd0adf49e3e5b8f22093f956b",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/third_party/glm/glm/simd/exponential.h": "e712431ac31ee2006032dd823f45fe7d2f69e6c617830304ffb0d45598a9b349",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/third_party/glm/glm/simd/packing.h": "8445dd14a6bf6793f4e4cf24225fcab80e4058f8e8637ad5294f2b06ef7f4f04",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/third_party/glm/glm/simd/vector_relational.h": "c2487e32dcde079ccb5717776e5e0d4bfb056844ab89bfa49e3c031d09371c27",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/third_party/glm/glm/simd/neon.h": "3a8d08ed65a472bb22d36a7578d28f352f4810136087384ef633c64db35daedd",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/third_party/glm/glm/simd/integer.h": "15e75f9839bc88590f57179c4a9dc375d8ebb6b0588829f65b686e00f471f3be",
+    "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/native/patched/third_party/glm/glm/detail/glm.cpp": "a094f828e1f0f17b04662c7742f2de9f1568654ac1c627a5a34f13f4a428ae73"
+  },
+  "source_method_sha256": "1c31b2b83bf440d8355da4c787b1ff87492658f769734e5d11dd1bf21226f12e",
+  "source_method_files": {
+    "experiments/gaer_view_selection_v01/binding.py": "368ed25f0fc39816e15ae73b8ff5fc8dc9e9f6129f69c4f16172296c8285b535",
+    "experiments/gaer_view_selection_v01/calibrate.py": "a90e62fb837edbc57f8499fbec00c8e2e64fd185360e5c8fd53458db28a58a70",
+    "experiments/gaer_view_selection_v01/fixtures.py": "8eecaba479c7b37f722ee7c590004253853963fabbfc7352e58f50f1ebef8080",
+    "experiments/gaer_view_selection_v01/freeze.py": "3e5f853f7f64f1b10fa2ed753a962fd68b06506a4a9ec11213747d3dd136e0b0",
+    "experiments/gaer_view_selection_v01/make_report.py": "9f51ea54880ecd558d285869066072a000f00f6ffc87fd3f3ed8962601c48feb",
+    "experiments/gaer_view_selection_v01/media.py": "b00650f1808b25612d7585470f13dd28c3c79d246b703a89b7346358c40df987",
+    "experiments/gaer_view_selection_v01/native_ops.py": "9a4dafc3048f1ff8fc369e578ea84aa5b81bc9e2296017b548d777156a7214d6",
+    "experiments/gaer_view_selection_v01/protocol.json": "8d7310ef8daa4d85adabe320ba10a475ad7cd0420a55451e95780001331b3235",
+    "experiments/gaer_view_selection_v01/reproduce.py": "10b245cdd12d715167d984d133d369cb3f78271d380b50ce1961faa7dfc02d63",
+    "experiments/gaer_view_selection_v01/run.py": "6c1019907984ca2a721736692b7d92d34fa7c1bcbda179d23606f1a1de379c8f",
+    "experiments/gaer_view_selection_v01/selection.py": "3e63749b8729aba03bebc7280dcc445830aee13b2093959ec73aada9bc16c315",
+    "experiments/gaer_view_selection_v01/stage_runtime.py": "46dc7e6439a359f4320a476895ae231df468b0aef65046d779943a35bd1a4aaf",
+    "experiments/gaer_view_selection_v01/tests/test_causal.py": "4b5f148433c1d311e12c89197ec8f0645b08b3e6ea555409e44d156135b54161",
+    "experiments/gaer_view_selection_v01/tests/test_native_stage.py": "90556c9e6e6f916110dc5e564962c95f506b8a71249c545aaa9e752ea86273ec",
+    "experiments/gaer_view_selection_v01/tests/test_sparse.py": "59022f15cc3398ec1334f8c2b6885f4d259c09317774edf74edc8adb2ee139ec",
+    "experiments/gaer_view_selection_v01/validation.py": "2cf1a49c8f353574a6bf13fb1f6f8fea55d7d2056682a2705ffa9a042b0075a8",
+    "experiments/gaer_view_selection_v01/verify.py": "9315ce6ea4f2394075157382cc525520b3ca65fbc97105023c719d15cd348b26"
+  },
+  "old_dirty_status": " M artifacts/gaer_attribution_buffer_v01/results/REPRODUCTION.json\n",
+  "AGENTS_search": "No AGENTS.md in workspace ancestors or searched project tree",
+  "reused_native_build": "485d9c33c7bd0b98e4df6b41d8afabcbc8ac9a56a58d3df6d9a0531a75317419",
+  "new_kernel_build": false
+}

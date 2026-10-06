@@ -1,0 +1,5498 @@
+{
+  "schema": "screen-space-boundary-foundation-v1",
+  "base": "f76fd00f03dc96a099a5ea1ff7935cb8ddb04f0e",
+  "start_head": "51da04473768828266c36b1137663a4fab649a90",
+  "source_hashes": {
+    "experiments/image_space_edge_foundation_v1/run.py": "26d6c69a54953ae6b8e71f51a842ef4c73af9e082c0972c859533580fc6b33f1",
+    "experiments/image_space_edge_foundation_v1/src/boundary.py": "11bbb41a762f252d9eeb4ea3f0a8399ed026139d9490bb8cf161bc815e05dd30",
+    "experiments/image_space_edge_foundation_v1/src/campaign.py": "a57a076362931c91f30217388da57e4b6e4816bcc14bcc3117420e739beaccac",
+    "experiments/image_space_edge_foundation_v1/src/fixtures.py": "32709f129bcfda64db1a8d764853a17fdbca123cca96d6e1c731a79ba6644e35",
+    "experiments/image_space_edge_foundation_v1/src/native.py": "348077884d8d519f81d6382c119515924e52381d95356aa007e65a5ae4a63f10",
+    "experiments/image_space_edge_foundation_v1/src/presentation.py": "2e1a9c825b332ce34e3b2b3f5f6e524ac6ba5b8ddf2ade983d8c84bbd6b3c601",
+    "experiments/image_space_edge_foundation_v1/src/runtime.py": "37b2a464feba10fc69986174277b55bbed9253efb00e0df39a4c9d96194a986e",
+    "experiments/image_space_edge_foundation_v1/tests/intensity_baseline_red.py": "5822d0ecaa67e47b80ea344859544d99cfe5447c69ea2353f09cf7fba7a969d4",
+    "experiments/image_space_edge_foundation_v1/tests/test_foundation.py": "9cf4eca6f611cf590617775c09ae4f8740434ed04672b6c4ce1fa3528b9ccc2f"
+  },
+  "data_freeze_sha256": "c48d0471b96b78b58aa4c23bbc1e89cffb6de64ad2290ebdc7b5ec00ab394906",
+  "prior_input_sha256": "f55deb435763d55ee30afe1a7a95a113204ee51bf97db3729b9ad68643e2e2dd",
+  "config": {
+    "scales": [
+      0.7,
+      1.4,
+      2.8
+    ],
+    "tensor_sigma": 2.0,
+    "gradient_floor": 0.0007,
+    "response_scale": 0.035,
+    "profile_radius": 9,
+    "contrast_min": 0.025,
+    "plateau_max": 0.045,
+    "residual_max": 0.055,
+    "backtrack_max": 0.4,
+    "coherence_min": 0.22,
+    "weak": 0.075,
+    "strong": 0.22,
+    "ink_sigma": 0.5,
+    "temporal_mix": 0.3,
+    "temporal_delta": 0.12,
+    "flow_fb_max": 1.5,
+    "flow_photo_max": 0.08,
+    "control_delta": 0.08
+  },
+  "baseline_matching": {
+    "target": {
+      "ink_area": 184261.0625,
+      "ridge_length": 183955
+    },
+    "selected": {
+      "classic": {
+        "arm": "classic",
+        "gain": 1.2,
+        "area": 198541.3125,
+        "length": 180910,
+        "objective": 0.005850216379264117
+      },
+      "canny": {
+        "arm": "canny",
+        "threshold": 60,
+        "gain": 0.6,
+        "area": 176178.5166015625,
+        "length": 199388,
+        "objective": 0.008502109104040817
+      }
+    },
+    "trials": [
+      {
+        "arm": "classic",
+        "gain": 0.65,
+        "area": 110368.2490234375,
+        "length": 157736,
+        "objective": 0.2863288272466218
+      },
+      {
+        "arm": "classic",
+        "gain": 0.8,
+        "area": 135837.8544921875,
+        "length": 168049,
+        "objective": 0.10113623086548687
+      },
+      {
+        "arm": "classic",
+        "gain": 1.0,
+        "area": 169797.3125,
+        "length": 176472,
+        "objective": 0.008407313762564685
+      },
+      {
+        "arm": "classic",
+        "gain": 1.2,
+        "area": 198541.3125,
+        "length": 180910,
+        "objective": 0.005850216379264117
+      },
+      {
+        "arm": "classic",
+        "gain": 1.5,
+        "area": 227486.7978515625,
+        "length": 182203,
+        "objective": 0.04450191617396105
+      },
+      {
+        "arm": "classic",
+        "gain": 2.0,
+        "area": 254568.7080078125,
+        "length": 182606,
+        "objective": 0.10452256478108427
+      },
+      {
+        "arm": "classic",
+        "gain": 2.5,
+        "area": 271414.666015625,
+        "length": 182862,
+        "objective": 0.15003097258378198
+      },
+      {
+        "arm": "classic",
+        "gain": 3.0,
+        "area": 284631.71484375,
+        "length": 183309,
+        "objective": 0.18909875102032456
+      },
+      {
+        "arm": "canny",
+        "threshold": 4,
+        "gain": 0.6,
+        "area": 250507.08203125,
+        "length": 288449,
+        "objective": 0.29667285650294994
+      },
+      {
+        "arm": "canny",
+        "threshold": 4,
+        "gain": 0.8,
+        "area": 334009.451171875,
+        "length": 287443,
+        "objective": 0.5530146179101805
+      },
+      {
+        "arm": "canny",
+        "threshold": 4,
+        "gain": 1.0,
+        "area": 417511.8125,
+        "length": 277568,
+        "objective": 0.8382801089580203
+      },
+      {
+        "arm": "canny",
+        "threshold": 7,
+        "gain": 0.6,
+        "area": 233738.5166015625,
+        "length": 267890,
+        "objective": 0.19786029177950287
+      },
+      {
+        "arm": "canny",
+        "threshold": 7,
+        "gain": 0.8,
+        "area": 311651.359375,
+        "length": 267048,
+        "objective": 0.41511288417409964
+      },
+      {
+        "arm": "canny",
+        "threshold": 7,
+        "gain": 1.0,
+        "area": 389564.19140625,
+        "length": 258034,
+        "objective": 0.6750237393135743
+      },
+      {
+        "arm": "canny",
+        "threshold": 10,
+        "gain": 0.6,
+        "area": 222135.1435546875,
+        "length": 253943,
+        "objective": 0.13889620188921856
+      },
+      {
+        "arm": "canny",
+        "threshold": 10,
+        "gain": 0.8,
+        "area": 296180.18359375,
+        "length": 253131,
+        "objective": 0.327154800854801
+      },
+      {
+        "arm": "canny",
+        "threshold": 10,
+        "gain": 1.0,
+        "area": 370225.220703125,
+        "length": 244564,
+        "objective": 0.5679645846203559
+      },
+      {
+        "arm": "canny",
+        "threshold": 15,
+        "gain": 0.6,
+        "area": 214524.6484375,
+        "length": 244798,
+        "objective": 0.10477322148895266
+      },
+      {
+        "arm": "canny",
+        "threshold": 15,
+        "gain": 0.8,
+        "area": 286032.8876953125,
+        "length": 243998,
+        "objective": 0.2731691062047614
+      },
+      {
+        "arm": "canny",
+        "threshold": 15,
+        "gain": 1.0,
+        "area": 357541.1015625,
+        "length": 235774,
+        "objective": 0.5010226090226836
+      },
+      {
+        "arm": "canny",
+        "threshold": 20,
+        "gain": 0.6,
+        "area": 209239.9208984375,
+        "length": 238357,
+        "objective": 0.08328232404256264
+      },
+      {
+        "arm": "canny",
+        "threshold": 20,
+        "gain": 0.8,
+        "area": 278986.54296875,
+        "length": 237570,
+        "objective": 0.23748404466029294
+      },
+      {
+        "arm": "canny",
+        "threshold": 20,
+        "gain": 1.0,
+        "area": 348733.212890625,
+        "length": 229576,
+        "objective": 0.45606237189599547
+      },
+      {
+        "arm": "canny",
+        "threshold": 30,
+        "gain": 0.6,
+        "area": 200967.88671875,
+        "length": 228495,
+        "objective": 0.05454452189141744
+      },
+      {
+        "arm": "canny",
+        "threshold": 30,
+        "gain": 0.8,
+        "area": 267957.1875,
+        "length": 227723,
+        "objective": 0.18578492670896685
+      },
+      {
+        "arm": "canny",
+        "threshold": 30,
+        "gain": 1.0,
+        "area": 334946.5009765625,
+        "length": 220114,
+        "objective": 0.38934703240765217
+      },
+      {
+        "arm": "canny",
+        "threshold": 45,
+        "gain": 0.6,
+        "area": 188665.2421875,
+        "length": 214056,
+        "objective": 0.023524040168335186
+      },
+      {
+        "arm": "canny",
+        "threshold": 45,
+        "gain": 0.8,
+        "area": 251553.66015625,
+        "length": 213342,
+        "objective": 0.118873106433486
+      },
+      {
+        "arm": "canny",
+        "threshold": 45,
+        "gain": 1.0,
+        "area": 314442.03515625,
+        "length": 206162,
+        "objective": 0.2986195983403525
+      },
+      {
+        "arm": "canny",
+        "threshold": 60,
+        "gain": 0.6,
+        "area": 176178.5166015625,
+        "length": 199388,
+        "objective": 0.008502109104040817
+      },
+      {
+        "arm": "canny",
+        "threshold": 60,
+        "gain": 0.8,
+        "area": 234904.6767578125,
+        "length": 198711,
+        "objective": 0.06491766686969938
+      },
+      {
+        "arm": "canny",
+        "threshold": 60,
+        "gain": 1.0,
+        "area": 293630.83984375,
+        "length": 192048,
+        "objective": 0.2189795774082078
+      },
+      {
+        "arm": "canny",
+        "threshold": 90,
+        "gain": 0.6,
+        "area": 158227.84912109375,
+        "length": 178272,
+        "objective": 0.024185083315733647
+      },
+      {
+        "arm": "canny",
+        "threshold": 90,
+        "gain": 0.8,
+        "area": 210970.4482421875,
+        "length": 177704,
+        "objective": 0.01951856557254817
+      },
+      {
+        "arm": "canny",
+        "threshold": 90,
+        "gain": 1.0,
+        "area": 263713.0654296875,
+        "length": 171834,
+        "objective": 0.13317290547000185
+      }
+    ],
+    "rule": "single shared parameters for both scenes, selected on 8 DEV images before fixed/arc render",
+    "exact_match": false,
+    "qualification": "aggregate closest match; residual area/length mismatch explicitly retained",
+    "residuals": {
+      "classic": {
+        "area_ratio": 1.0775000958219265,
+        "length_ratio": 0.9834470386779376
+      },
+      "canny": {
+        "area_ratio": 0.9561353560607114,
+        "length_ratio": 1.0838955179255796
+      }
+    }
+  },
+  "scenes": {
+    "lego": {
+      "model_sha256": "fa9bea3fa4f8d349fa873a66d892c53cd1263499caec6421c286350a5bb7cbbc",
+      "gaussian_count": 310475,
+      "SH_degree": 3,
+      "groups": {
+        "dev": [
+          {
+            "key": "r_007",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.9045063953319579,
+                  -0.4264598190525402,
+                  -2.827666837669439e-10,
+                  3.0331696099244634e-09
+                ],
+                [
+                  -0.42524267578235675,
+                  -0.9019247930815488,
+                  -0.0755003837439085,
+                  6.712087712585558e-09
+                ],
+                [
+                  0.0321977856587085,
+                  0.06829037352492265,
+                  -0.997145851100388,
+                  4.0311292814851045
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, n=0.01 f=100, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "f314d05b3d02457868047008c4a61246f202b7162608daa35821c2e42092ec5c",
+            "source_camera_sha256": "29955c87f32705f7f3d5bf7ac798b13221e666ef552ae0f599e50e1f7e3f5e34",
+            "GS_TRAIN_seen": true,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": "097969f1f334a21c85d664fbbfee675e813b683b30874e07a50dfc8966c55421",
+            "reference": "original TRAIN RGBA composited on white; comparison only"
+          },
+          {
+            "key": "r_033",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7431972636342684,
+                  0.669072272277679,
+                  -2.775245134906176e-09,
+                  2.886683626983087e-08
+                ],
+                [
+                  0.5280798646532778,
+                  -0.5865845717955348,
+                  -0.6140441877196208,
+                  3.2700284352088143e-08
+                ],
+                [
+                  -0.4108399995880237,
+                  0.45635598205026673,
+                  -0.7892717494383432,
+                  4.031129324239134
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, n=0.01 f=100, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "a1f7007679b2bafc295a555310b525bf421953465de21348ac122b5f5bda2f36",
+            "source_camera_sha256": "5c30a2d101b797f2b0ccaf1830b469f8f6a0d2ac8685c192e6815da9fbe8dbbc",
+            "GS_TRAIN_seen": true,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": "801ab9df4b3cac75806222560390527a580d8bd58a6ab7de09bd671e2f2595b1",
+            "reference": "original TRAIN RGBA composited on white; comparison only"
+          },
+          {
+            "key": "r_059",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.281668420013226,
+                  0.9595117209129667,
+                  1.6412730773207233e-08,
+                  2.4995121853918136e-08
+                ],
+                [
+                  0.5504834962386229,
+                  0.161596603266679,
+                  -0.819057215402264,
+                  -2.7580941457287044e-08
+                ],
+                [
+                  -0.7858950991442205,
+                  -0.23070255441092127,
+                  -0.5737119926187596,
+                  4.031129286508015
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, n=0.01 f=100, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "baecd5af33f42a293c6e03d3096337506d614c9b922e50488d210110d5d33cdc",
+            "source_camera_sha256": "5ad4b822835448f3a9ffb1feb0e5d568716b51b70a1358b8ab6823cb6328edbf",
+            "GS_TRAIN_seen": true,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": "68792fe17384f5ceaf293321e156f6da27df73d9b86a28d20f7455d496f35931",
+            "reference": "original TRAIN RGBA composited on white; comparison only"
+          },
+          {
+            "key": "r_086",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7959839280401386,
+                  0.6053179400300328,
+                  2.1753571406129643e-08,
+                  -4.556135405069358e-08
+                ],
+                [
+                  0.531946343686724,
+                  -0.6995013312240768,
+                  -0.477211596290653,
+                  -2.0673794599310903e-08
+                ],
+                [
+                  -0.28886471821763526,
+                  0.37985272807338444,
+                  -0.8787884190894648,
+                  4.031128859271579
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, n=0.01 f=100, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "cd97e8f73bcd1b8d440ba7c8b163758cec30e7dd269b99e59d07ff75362dada8",
+            "source_camera_sha256": "814ab415c02f00f6bdccb737a10fd8b280ed17fad234b8b4b3ad1411e6f8cb5b",
+            "GS_TRAIN_seen": true,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": "15d0455393c73b196adb5d2dff921008c6ddd5ad67d188f4a36e141c02d92bab",
+            "reference": "original TRAIN RGBA composited on white; comparison only"
+          }
+        ],
+        "fixed": [
+          {
+            "key": "r_000",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9999021184605152,
+                  -0.013988680256845002,
+                  -1.1926427195704825e-10,
+                  6.330681008562156e-10
+                ],
+                [
+                  -0.004192244007389245,
+                  0.2996590144500511,
+                  -0.9540371093771692,
+                  -5.153636009929078e-08
+                ],
+                [
+                  0.013345722973470963,
+                  -0.9539439308979806,
+                  -0.29968842520819977,
+                  4.0311294416755175
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, n=0.01 f=100, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "6229833f13290466ca90686686d9702f55e4064239394e666fd345d1817b61fd",
+            "source_camera_sha256": "73c138e2ff15e2b381f3d47dff4b7fc33ce935ada08a3e0e9eef95904d08c50b",
+            "GS_TRAIN_seen": true,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": "90d5de8283795410d8ae8a432c9bd1c8b19605bdecab1c34dda6d593d93921e7",
+            "reference": "original TRAIN RGBA composited on white; comparison only"
+          },
+          {
+            "key": "r_008",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.15998956986775315,
+                  -0.9871186250164088,
+                  3.0782957143614265e-09,
+                  -3.880852105149675e-09
+                ],
+                [
+                  -0.33046631933752874,
+                  -0.05356110507356894,
+                  -0.9422969024724984,
+                  1.0834553511985249e-08
+                ],
+                [
+                  0.9301587824412392,
+                  0.15075766989298875,
+                  -0.33477866086614677,
+                  4.031128823088497
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, n=0.01 f=100, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "888144953816b668acff80126619f4a78f5d0fff9a3fd125e92ff8ddf51bbb72",
+            "source_camera_sha256": "08ddfc1d9992ef253744a61fbdf384dd6cffe1c7ccd8b5d116d6584f18eddb74",
+            "GS_TRAIN_seen": true,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": "7643351ad091ca81c7cdad1d59e6131769ec21acf3f5597f5735bb39da6c8137",
+            "reference": "original TRAIN RGBA composited on white; comparison only"
+          },
+          {
+            "key": "r_018",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.09750015957468039,
+                  0.9952354546518823,
+                  -1.0702813509321421e-09,
+                  7.768715256042532e-11
+                ],
+                [
+                  0.966267896103595,
+                  0.09466230138566699,
+                  -0.23951070818129525,
+                  8.440546476093553e-09
+                ],
+                [
+                  -0.23836948621545206,
+                  -0.023352329202811446,
+                  -0.9708938478880302,
+                  4.031129187060922
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, n=0.01 f=100, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "2ba65ca3dff893b588bce45dd542d7ab36ce84fce0b395beb3aa1be71929b2e0",
+            "source_camera_sha256": "0ac72fc31023f0a19cba751eb68f4b29496035335cdf44f447e940b162c28c11",
+            "GS_TRAIN_seen": true,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": "55d167c8624d6764bd989945421b73da487cfe79ce285aabc67f8b6bea9e4092",
+            "reference": "original TRAIN RGBA composited on white; comparison only"
+          },
+          {
+            "key": "r_030",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.2867388931354061,
+                  0.9580087750052212,
+                  5.354895503060855e-09,
+                  -2.8262456458106015e-08
+                ],
+                [
+                  0.8562213080761252,
+                  0.25627318527581566,
+                  -0.4485633618251291,
+                  1.0395443111623317e-08
+                ],
+                [
+                  -0.4297277192161235,
+                  -0.12862059185641764,
+                  -0.8937510694389422,
+                  4.031129224648785
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, n=0.01 f=100, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "e020dfcd7d19453350d0c2c37aba1a49b405c2d9b1058974528cee7c971636a0",
+            "source_camera_sha256": "25d30bb081197d43d800355c48264019adfbf6cf14fcdc71f149341d2e4714c7",
+            "GS_TRAIN_seen": true,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": "7d23808c652d3d6c596aff198451fa7aaf785be601d942a74add87cf64e5e3d3",
+            "reference": "original TRAIN RGBA composited on white; comparison only"
+          }
+        ],
+        "arc": [
+          {
+            "key": "arc0_000",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.743197278679104,
+                  0.6690723465844136,
+                  1.8315624081078827e-08,
+                  7.354334309812961e-08
+                ],
+                [
+                  0.5280798695597054,
+                  -0.5865845640444084,
+                  -0.6140441357025044,
+                  -1.2666685199549765e-07
+                ],
+                [
+                  -0.41083994003721036,
+                  0.45635594031507615,
+                  -0.7892716892232762,
+                  4.031128957253206
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "38adac91bf6df19811d836a7776068f7682d85556a6c1cecad04cb0df3690e64",
+            "source_camera_sha256": "c2e66b2813a4402d9d6cfddbd5726a637fe63e1944496a9bc9d442e3bf221537",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_001",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7449223847051646,
+                  0.6671511063314274,
+                  -0.00020514853949959267,
+                  -0.0006581757875685709
+                ],
+                [
+                  0.5285578997264632,
+                  -0.5903606366470345,
+                  -0.6100007092901275,
+                  0.000249692612599518
+                ],
+                [
+                  -0.40708375968825,
+                  0.4542947501550737,
+                  -0.7924008408498937,
+                  4.031238228848493
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "47150f890716d3900bac192e0e78a50a3dace2e480b3d8ea29e6989d01d30b37",
+            "source_camera_sha256": "9146b911db74bc52f3fca96370a166df5ec0c5380c8b79bd24adeab1e351d2c4",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_002",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7466431721539779,
+                  0.6652246355774936,
+                  -0.0003971103574000862,
+                  -0.001273372791789185
+                ],
+                [
+                  0.5290129791847005,
+                  -0.5941219449216789,
+                  -0.6059409067034585,
+                  0.00048487868207537974
+                ],
+                [
+                  -0.4033227508211912,
+                  0.4522115641856946,
+                  -0.7955095598965198,
+                  4.031340585505895
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "0264c2a1046c81be7e9005e780dfc3306b290629c9506f546cb7f5c87b71009d",
+            "source_camera_sha256": "1d6661c4a4937d0420d7000bd79c4546681d9b74f4dec3ae5798d5692b1cae41",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_003",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.748359584502178,
+                  0.6632929976021373,
+                  -0.0005758608326340295,
+                  -0.0018455615144976907
+                ],
+                [
+                  0.529445092986248,
+                  -0.5978683653192042,
+                  -0.6018648612963926,
+                  0.0007052787321980013
+                ],
+                [
+                  -0.3995570369753371,
+                  0.4501064508341483,
+                  -0.7985977442498667,
+                  4.031436023376127
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "72f00599a9a0255e9e5dcb5ffd24fafa647e745db92cb847be7cf687b974b3fd",
+            "source_camera_sha256": "4817b4a96e0c7cbbf86a0f739528ff0251b3d81b3c11d11193a7f0b3ff28ca7e",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_004",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7500715653701087,
+                  0.6613562558546132,
+                  -0.0007413940937153409,
+                  -0.002374788033336028
+                ],
+                [
+                  0.5298542269372972,
+                  -0.6015997747795004,
+                  -0.5977727069563596,
+                  0.0009107404349324267
+                ],
+                [
+                  -0.3957867418445368,
+                  0.4479794792479023,
+                  -0.8016652924711563,
+                  4.031524537279939
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "bf4f86a41e48eb34b444ac1cf2477c3288c34dc99301369da33adce8460c15a2",
+            "source_camera_sha256": "5e55199c5291023afed07665f096db29dfe2d06c8441e50d9402fe8048c221e8",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_005",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7517790585236767,
+                  0.659414473951821,
+                  -0.0008937047033100156,
+                  -0.0028611004517810966
+                ],
+                [
+                  0.5302403675988683,
+                  -0.6053160507355277,
+                  -0.5936645780999239,
+                  0.0011011119668951012
+                ],
+                [
+                  -0.39201198927312253,
+                  0.44583071929240864,
+                  -0.8047121037994533,
+                  4.031606120706644
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "4defd6f06b9fc334995e7e25716cae6bac03caf27d9b185f93e35ebfdacffc3b",
+            "source_camera_sha256": "52ae99b20381636464ec29e7e9b6c09b5d5aee007d6c2f79fae1f4c92210bbd9",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_006",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.753482007876199,
+                  0.6574677156762178,
+                  -0.0010327876584124691,
+                  -0.0033045488923766513
+                ],
+                [
+                  0.5306035022872508,
+                  -0.6090170711173423,
+                  -0.5895406096683732,
+                  0.0012762420326504524
+                ],
+                [
+                  -0.3882329032518426,
+                  0.44366024154881173,
+                  -0.8077380781549768,
+                  4.031680765812897
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "bd66eb3b9d82383dcd1ba351e211f86105c913ac45ddfe8de18e76463bb947e8",
+            "source_camera_sha256": "bf7ddf3a9e6008ffa9a7c361cf5c5ee728633a765becb4075709ffd1595cb350",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_007",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7551803574902438,
+                  0.6555160449737192,
+                  -0.001158638390511753,
+                  -0.003705185489808342
+                ],
+                [
+                  0.53094361907442,
+                  -0.6127027143561061,
+                  -0.5854009371232818,
+                  0.00143597988795808
+                ],
+                [
+                  -0.3844496079137864,
+                  0.441468117311627,
+                  -0.8107431161423838,
+                  4.0317484634217085
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "e66ff9fb8b6480a5e04cab6317f99d1e935e5660a3c08b0fdcd6fa90d467bf76",
+            "source_camera_sha256": "ae4621b78195c73d6bae075748da2cfe319393829c573d50c795a13adbc9d39f",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_008",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7568740515794692,
+                  0.6535595259516029,
+                  -0.001271252765740462,
+                  -0.004063064383844921
+                ],
+                [
+                  0.5312607067884293,
+                  -0.61637285938808,
+                  -0.5812456964420643,
+                  0.0015801753630114847
+                ],
+                [
+                  -0.3806622275303095,
+                  0.43925441858640163,
+                  -0.8137271190540379,
+                  4.031809203021718
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "b096adda37ea9eed733440adaaee146e96c68c314ed56fcee2138e46965644c6",
+            "source_camera_sha256": "155862cb0a9185e99bba8d738d587b043d8783208979ccfa1005111b6e91ceca",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_009",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7585630345104548,
+                  0.6515982228764011,
+                  -0.0013706270850109843,
+                  -0.004378241712122488
+                ],
+                [
+                  0.5315547550137764,
+                  -0.6200273856586003,
+                  -0.5770750241135074,
+                  0.0017086788856165928
+                ],
+                [
+                  -0.3768708865069501,
+                  0.43701921808734784,
+                  -0.8166899888732494,
+                  4.031862972766703
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "0cf54ed74324bf4cfaa4c5e6a343cded5cb686fb330ba531779b877a304c910d",
+            "source_camera_sha256": "7c20c27f1e10750a21064d45d590222bc72185d907901f9d328c3d5806510c28",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_010",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7602472508045295,
+                  0.6496322001717888,
+                  -0.0014567580841369438,
+                  -0.004650775602796448
+                ],
+                [
+                  0.5318257540917465,
+                  -0.623666173126039,
+                  -0.5728890571332873,
+                  0.0018213415043472842
+                ],
+                [
+                  -0.3730757093793431,
+                  0.4347625892349554,
+                  -0.819631628277495,
+                  4.031909759475333
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "7c95967c830061f946d2427706abd94ac9265cb992804f0d0d447a6d2fd283cc",
+            "source_camera_sha256": "2f08f28136651dba1be3abead836a738d2f152a4391dbe73d3342179f8bbfa51",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_011",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7619266451395936,
+                  0.6476615224164692,
+                  -0.0015296429339401204,
+                  -0.004880726167039114
+                ],
+                [
+                  0.5320736951207286,
+                  -0.6272891022657457,
+                  -0.5686879329994687,
+                  0.0019180149116494376
+                ],
+                [
+                  -0.3692768208091294,
+                  0.43248460615357837,
+                  -0.8225519406416146,
+                  4.031949548631175
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "55445a915f4407e52a3d82145e789e43b9491c05c3680c21b33cf3cfd1ded0a7",
+            "source_camera_sha256": "1adec36224457edffc86454015030fa301646f7c803c40a7edeb9b17bbfa9d3e",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_012",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.763601162351936,
+                  0.6456862543420513,
+                  -0.001589279240343805,
+                  -0.005068155491404192
+                ],
+                [
+                  0.5322985699565087,
+                  -0.6308960540739763,
+                  -0.5644717897079904,
+                  0.001998551466898872
+                ],
+                [
+                  -0.36547434557986114,
+                  0.43018534366900263,
+                  -0.8254508300409868,
+                  4.031982324382942
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "6560c988110391da8333bd9f6cf8f8023a2f53b2b7f2dce887a7fe8c3a79332f",
+            "source_camera_sha256": "9a746736c464603031af9da2f5e4e974486dab553bf4094b3bdc0114c07fc4e6",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_013",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7652707474380475,
+                  0.6437064608309248,
+                  -0.0016356650444516083,
+                  -0.0052131276300458685
+                ],
+                [
+                  0.5325003712125368,
+                  -0.6344869100717989,
+                  -0.5602407657481303,
+                  0.002062804219417923
+                ],
+                [
+                  -0.3616684085929026,
+                  0.42786487730598577,
+                  -0.8283282012546783,
+                  4.032008069544979
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "a47b3ce46b647d4393139473b395f7c7c75f8542aabd338bf20f6d2f1cd6ebbd",
+            "source_camera_sha256": "b8158116bcd9eed1f2e63eabc62054a38ee1751d45660659aea36e7d33ce3253",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_014",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7669353455564243,
+                  0.6417222069141267,
+                  -0.0016687988226109951,
+                  -0.005315708596796654
+                ],
+                [
+                  0.5326790922601693,
+                  -0.6380615523089866,
+                  -0.5559950000979577,
+                  0.0021106269314325682
+                ],
+                [
+                  -0.35785913486332815,
+                  0.42552328328577804,
+                  -0.831183959768571,
+                  4.032026765598002
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "26dc365a8b400f784e342160a98ecb8c19e12a531bdf6dba6a0e6d086cad1384",
+            "source_camera_sha256": "307426f33e24feacea2c8dc6815f0b2370d72a9772aa9bb9285fefa8ed253d66",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_015",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7685949020293737,
+                  0.6397335577692086,
+                  -0.0016886794864642153,
+                  -0.005375966357110314
+                ],
+                [
+                  0.5328347272288875,
+                  -0.641619863367894,
+                  -0.5517346322197677,
+                  0.0021418741009751247
+                ],
+                [
+                  -0.3540466495158151,
+                  0.42316063852361757,
+                  -0.8340180117784686,
+                  4.032038392690085
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "716daef64286a7584ef73ff85e76375f1fccb2a16417dceab372ff7f101269c2",
+            "source_camera_sha256": "a7806f45feee02f88b81c24022d3c58bc0ab2f5656fc285b19f88258f796d0b9",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_016",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7702493623448061,
+                  0.6377405787180921,
+                  -0.00169530638298336,
+                  -0.0053939708198609375
+                ],
+                [
+                  0.5329672710064896,
+                  -0.6451617263673101,
+                  -0.5474598020555002,
+                  0.0021564009847298777
+                ],
+                [
+                  -0.35023107778053375,
+                  0.4207770206262042,
+                  -0.8368302641931756,
+                  4.0320429296378775
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "580734b67ea91f444243167872956389ffa2664986462769c9b5122fa6bccf57",
+            "source_camera_sha256": "04b6ed2feb4dc013bad34ccd0cf530dd1253c1ae2dbce45c95ac50f40fff5408",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_017",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7718986721580288,
+                  0.6357433352249259,
+                  -0.0016886792944923242,
+                  -0.005369793829012566
+                ],
+                [
+                  0.5330767192392589,
+                  -0.6486870249663003,
+                  -0.5431706500221439,
+                  0.002154063620825067
+                ],
+                [
+                  -0.34641254498903523,
+                  0.41837250788915104,
+                  -0.8396206246375572,
+                  4.032040353928085
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "7daddd0dc7e43e151dced9ecc4d17a9c2a30488c902f9657f3a11bd0bb5f2c23",
+            "source_camera_sha256": "d5c6ef0da5b3c701467e7a8ee5ab2950b5a7fa8beee0c59d465e4e79acadad16",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_018",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7735427772935275,
+                  0.6337418928939341,
+                  -0.001668798438673367,
+                  -0.005303509155143108
+                ],
+                [
+                  0.533163068332108,
+                  -0.6521956433680277,
+                  -0.5388673170071235,
+                  0.002134718851541245
+                ],
+                [
+                  -0.34259117657013244,
+                  0.41594717929441133,
+                  -0.8423890014555716,
+                  4.032030641719172
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "acabb0e86e42302bc7a684ed86d5e22f839bd6304d8373937ff662271ac43566",
+            "source_camera_sha256": "4d523d900a68025b34540d0c270a388cc9362c47d942ed860ceda8d6bae181da",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_019",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7751816237467503,
+                  0.6317363174672622,
+                  -0.001635664468560854,
+                  -0.00519519248684188
+                ],
+                [
+                  0.5332263154486948,
+                  -0.6556874663235563,
+                  -0.5345499443636712,
+                  0.0020982243459692768
+                ],
+                [
+                  -0.3387670980457817,
+                  0.4135011145076848,
+                  -0.8451353037132825,
+                  4.0320137678433285
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "6bbb4f7c61d70ce30a189e55dd02e3703dcbe056d59a0782f858151ceec42da3",
+            "source_camera_sha256": "a23a0899359f3fa5236a93d65a85d881fa7c0a5355780453e45d8f2d06b73e02",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_020",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7768151576858783,
+                  0.6297266748228162,
+                  -0.0015892784725187168,
+                  -0.005044921421967428
+                ],
+                [
+                  0.5332664585115169,
+                  -0.6591623791356357,
+                  -0.5302186739061847,
+                  0.0020444386225934074
+                ],
+                [
+                  -0.3349404350269592,
+                  0.41103439387580143,
+                  -0.8478594412018442,
+                  4.031989705808673
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "7b70b879c8c5e61d340fb26b76d676c340e98712b626ba74f91455cd612c2e18",
+            "source_camera_sha256": "addd9f99d2c8c3b9d3ef00e011eba767effc9cdfb5a7489b871f098b2a876bbe",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_021",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.778443325453594,
+                  0.6277130309720997,
+                  -0.001529641974205896,
+                  -0.004852775458775322
+                ],
+                [
+                  0.5332834962019795,
+                  -0.6626202676624702,
+                  -0.5258736479055681,
+                  0.001973221071796393
+                ],
+                [
+                  -0.3311113132095352,
+                  0.4085470984240811,
+                  -0.8505613244404667,
+                  4.031958427801694
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "0a49547a614983f85f26890b9b2675101dd91fc77729bb29db1ad4fb182d0d9b",
+            "source_camera_sha256": "46781701dd6bea1d888fe0ee7b4e3e9caedb975bec0f628719545d2f4c2a362c",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_022",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.780066073568846,
+                  0.6256954520580462,
+                  -0.00145675693252549,
+                  -0.004618835986913938
+                ],
+                [
+                  0.533277427960439,
+                  -0.666061018321467,
+                  -0.52151500908456,
+                  0.0018844319782931767
+                ],
+                [
+                  -0.3272798583701446,
+                  0.4060393098536732,
+                  -0.8532408646793533,
+                  4.031919904689933
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "9e9e9c31e38d09714685948a38880338384bd942e50fe8a5d36cbaca6f489784",
+            "source_camera_sha256": "69d224d8c6710e143a24ae976df8b730b3e1bfceaa0a5561b31e789804d4c681",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_023",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7816833487286032,
+                  0.6236740043528455,
+                  -0.0013706257415600166,
+                  -0.004343186278287043
+                ],
+                [
+                  0.533248253986222,
+                  -0.6694845180929677,
+                  -0.5171429006130436,
+                  0.0017779325434763905
+                ],
+                [
+                  -0.32344619636205657,
+                  0.40351111053887184,
+                  -0.8558979739026166,
+                  4.031874106024926
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "ae2c254b57eb7f1d72d90eb9fa46151636d4c3e9a8ebc05db5ab37557f643ff8",
+            "source_camera_sha256": "48e7f0293773c9bb833c5b8b3e472ca07efce334118d569cfe393721e3c10dbc",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_024",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7832950978096078,
+                  0.6216487542557663,
+                  -0.001271251230493953,
+                  -0.004025911477790343
+                ],
+                [
+                  0.5331959752376167,
+                  -0.6728906545239599,
+                  -0.5127574661033455,
+                  0.0016535849076941126
+                ],
+                [
+                  -0.31961045311103947,
+                  0.4009625835244113,
+                  -0.8585325648311691,
+                  4.031821000045364
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "407ae920fa2452ec87852c5200caba04d310b293cdff09dee8925646ba9c5950",
+            "source_camera_sha256": "1fd5e129af9546b85e63c0a6861a00c12b01f48a2f4c9fecc3d7eb9d0bbcb23f",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_025",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7849012678701178,
+                  0.6196197682909765,
+                  -0.0011586366635202077,
+                  -0.0036670985939161642
+                ],
+                [
+                  0.5331205934318431,
+                  -0.6762793157317728,
+                  -0.5083588496055171,
+                  0.0015112521724205178
+                ],
+                [
+                  -0.315772754611225,
+                  0.39839381252273715,
+                  -0.8611445509255906,
+                  4.031760553680508
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "2b3ab2b3d2f14537b3b4bf0b1e84c6a72277e7bfbe9f17de5d1774236766a5b8",
+            "source_camera_sha256": "095bb58d9e3f951dfa20cda3ee829e118c20d8f74017d0f4876b2197ddadeece",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_026",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7865018061516487,
+                  0.6175871131053577,
+                  -0.0010327857397325983,
+                  -0.0032668364892336336
+                ],
+                [
+                  0.5330221110449964,
+                  -0.679650390407749,
+                  -0.5039471956026046,
+                  0.0013507984223632712
+                ],
+                [
+                  -0.3119332269209703,
+                  0.39580488191125734,
+                  -0.8637338463889708,
+                  4.031692732553852
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "dec79f9f945f7dc3606b681790bac4d26da790275d20d3713d1194ed54921e04",
+            "source_camera_sha256": "731441c3067091353d06d6fd49ca49508cfabefef5a7b8996dc4ab2fbd258e87",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_027",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7880966600807049,
+                  0.6155508554663154,
+                  -0.0008937025930047072,
+                  -0.002825215870741401
+                ],
+                [
+                  0.5329005313119655,
+                  -0.6830037678209043,
+                  -0.4995226490059012,
+                  0.0011720887474513763
+                ],
+                [
+                  -0.3080919961587161,
+                  0.39319587672957,
+                  -0.8663003661697264,
+                  4.031617500987003
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "59776b325361ba94a396d9b31fd75384ad59b29e4a2363a5431358263ad73240",
+            "source_camera_sha256": "2c94938173b6a2c1591be3374dc09bb9919c0fbddc1ff2b6fb65e59638c755b2",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_028",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7896857772705069,
+                  0.6135110622595866,
+                  -0.0007413917918542062,
+                  -0.0023423292800938875
+                ],
+                [
+                  0.5327558582263267,
+                  -0.6863393378215628,
+                  -0.4950853551501889,
+                  0.0009749892647538408
+                ],
+                [
+                  -0.30424918849884464,
+                  0.3905668826766706,
+                  -0.8688440259643971,
+                  4.031534822003827
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "7242218da6ec41c4c15b5d83a3e605272c3e09284a9d50b194e0525b55a4aeb2",
+            "source_camera_sha256": "c32fce3b75933b8d32ff6eb3c1e995454a00a4e99b9acf3650a0c068b8dfc61f",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_029",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7912691055227111,
+                  0.6114678004870421,
+                  -0.0005758583392923979,
+                  -0.0018182710837057008
+                ],
+                [
+                  0.5325880965402121,
+                  -0.6896569908449751,
+                  -0.490635459788963,
+                  0.0007593671402789419
+                ],
+                [
+                  -0.3004049301675352,
+                  0.38791798610813655,
+                  -0.8713647422204123,
+                  4.031444657334812
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "a71e2302224bd205271ddb764210f6a4209c518dd79a1eaf2658d324f4c43ae2",
+            "source_camera_sha256": "8bdef9b602366c60cac95f64d1e998a544de5b77e39e4c832e1cc83b53c2ca58",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_030",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7928465928291275,
+                  0.6094211372644864,
+                  -0.0003971076726600126,
+                  -0.001253137462735197
+                ],
+                [
+                  0.5323972517641545,
+                  -0.692956617914918,
+                  -0.4861731090896465,
+                  0.0005250906106915739
+                ],
+                [
+                  -0.2965593474386182,
+                  0.3852492740332913,
+                  -0.8738624321388366,
+                  4.031346967421679
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "834682191af50f6481aa1f59959a75f8116fa203af64f6ea70b23cb545bf527b",
+            "source_camera_sha256": "5b99c31d56c4ccceed758eb5f426469ccf0d0055cb956e6321732c3c4834cf30",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_031",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7944181873734235,
+                  0.6073711398194525,
+                  -0.00020514566344919256,
+                  -0.0006470264029386154
+                ],
+                [
+                  0.5321833301669056,
+                  -0.696238110647274,
+                  -0.48169844962878605,
+                  0.0002720290049088319
+                ],
+                [
+                  -0.2927125666294262,
+                  0.38256083411234487,
+                  -0.87633701367709,
+                  4.031241711422238
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "75a49e82eb0d68ecbf9df417936e3ab0226fc56012c5ca21dd524e65320f1388",
+            "source_camera_sha256": "63e9f96b94b4cd3d699840c0660d6dacd07fba50043ee839934e63a1a7c9bc79",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_032",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.7959838375328296,
+                  0.6053178754889933,
+                  2.1382890269585883e-08,
+                  -3.768441720614333e-08
+                ],
+                [
+                  0.53194633877523,
+                  -0.6995013612535906,
+                  -0.47721162838723985,
+                  5.276560338890463e-08
+                ],
+                [
+                  -0.28886471409664627,
+                  0.37985275465351626,
+                  -0.8787884055516424,
+                  4.031128847215466
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "bcccb956afa2493009db652f3a43fdeea6d735e83dae84883ac4c53c776f46ce",
+            "source_camera_sha256": "fd40b1f74cadce789d2bb73a9cffc987d6ddd02739d4c3f4bd7c0e24bcf4aabb",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          }
+        ]
+      }
+    },
+    "chair": {
+      "model_sha256": "13e4ecc9ffe9c5ae2a0656e2e5c56a737cfdc90a62ad04799db3c46b0b442f5d",
+      "gaussian_count": 256690,
+      "SH_degree": 3,
+      "groups": {
+        "dev": [
+          {
+            "key": "r_007",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9958430952161544,
+                  0.09108519205727607,
+                  2.6686061265102378e-09,
+                  4.393074732723296e-09
+                ],
+                [
+                  0.06001296536855059,
+                  0.6561274932579945,
+                  -0.7522599141001929,
+                  -7.492457388069121e-08
+                ],
+                [
+                  -0.06851974606887687,
+                  -0.7491328786282053,
+                  -0.658866397422203,
+                  4.031128884460626
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, n=0.01 f=100, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "8acea9497dc13b3bb16747f7cee620f1db3e7ffd06860002eeb2ae4de3ecae97",
+            "source_camera_sha256": "03786c9e5e4e43fbe3ec8471d4c0576355d5448a2ed162cdb2a1ab35e910fe9b",
+            "GS_TRAIN_seen": true,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": "63d1a9b671bf0e3f0da2786905fbb0807d6b466cff6843da76ef9ad0e7fa7da7",
+            "reference": "original TRAIN RGBA composited on white; comparison only"
+          },
+          {
+            "key": "r_033",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9745738378111829,
+                  0.22406627928339057,
+                  -3.6582691199339693e-09,
+                  2.318607265192579e-08
+                ],
+                [
+                  0.1518210202480917,
+                  0.6603438496947678,
+                  -0.7354567587454045,
+                  9.346719064553642e-09
+                ],
+                [
+                  -0.1647910565436791,
+                  -0.7167568792219928,
+                  -0.6775716121311884,
+                  4.031128349342041
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, n=0.01 f=100, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "ead1574df9614a70ad45d14671c5280c2b6046fcc422559c39ecb52e0f07a855",
+            "source_camera_sha256": "5940f39ba21a1df4febd10a31b3687c7b6c6e2a81f6b583bd30e2014e2f4cdf1",
+            "GS_TRAIN_seen": true,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": "9c94a89d339727d19420e401543007d67a641742c27b4beabebdad5b573c6faf",
+            "reference": "original TRAIN RGBA composited on white; comparison only"
+          },
+          {
+            "key": "r_059",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.4221813613294347,
+                  -0.9065113348349361,
+                  3.3211333435134427e-09,
+                  -1.0159211014277905e-08
+                ],
+                [
+                  -0.2230530231845229,
+                  0.10388047451584322,
+                  -0.9692554638987182,
+                  2.4191955023344124e-08
+                ],
+                [
+                  0.878641127264663,
+                  -0.40920161460390303,
+                  -0.24605649914358185,
+                  4.0311289116734805
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, n=0.01 f=100, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "b32899303ba316ded1b5c2453a961891b6d0e258e5cdacc4155a7a41adf5517f",
+            "source_camera_sha256": "12fd9db14b075e9f65c9e138a7ba31b8ca0288e51ff491b38fb9fdab50d6bf26",
+            "GS_TRAIN_seen": true,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": "1329adbfe1867293c767a66fa01c7c502ba3d33a66a0a7a4e163bb66be73ccf8",
+            "reference": "original TRAIN RGBA composited on white; comparison only"
+          },
+          {
+            "key": "r_086",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.999967374113483,
+                  -0.008069036537172738,
+                  -1.177124498950978e-10,
+                  -7.102897607829434e-10
+                ],
+                [
+                  -0.004079710681333356,
+                  0.505584262689518,
+                  -0.8627676451991827,
+                  -8.483061184138262e-08
+                ],
+                [
+                  0.00696170396258269,
+                  -0.8627395438257048,
+                  -0.5056006720721442,
+                  4.031128910890396
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, n=0.01 f=100, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "010a65cbf165c5adec9bfedacd54b243f22ddaaceb7b293dd29a99e713374408",
+            "source_camera_sha256": "1b8ba3b6835b1a957f8ce0fa39a5765069ffc4771991c7ffdae19c776f1e2b3e",
+            "GS_TRAIN_seen": true,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": "245499c3a95ef560357126bfbc8750a5b8e7a278fa8e1be4278d4249a0cffcd9",
+            "reference": "original TRAIN RGBA composited on white; comparison only"
+          }
+        ],
+        "fixed": [
+          {
+            "key": "r_000",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9250138729569959,
+                  -0.37993312490431513,
+                  -1.1369394534205679e-09,
+                  -5.37207106686135e-08
+                ],
+                [
+                  -0.2748899943953119,
+                  0.6692679474746716,
+                  -0.6903013912495164,
+                  2.011459774948251e-08
+                ],
+                [
+                  0.26226836767068284,
+                  -0.6385383815246057,
+                  -0.7235220084215614,
+                  4.031128890664436
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, n=0.01 f=100, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "46e3e7f53bbfc9590bfd0555b70a5c69d05f6b4e3ea8651a55055167e9dae2fa",
+            "source_camera_sha256": "a567a8cbdb88c916b1c76ba3be301732710ecd0375e8a948ccbfcfca4ba1acdc",
+            "GS_TRAIN_seen": true,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": "2b8473183bc3778a69c0c6ea91b8cc30d912c99b2e52d81d8dc8960b0ab0202e",
+            "reference": "original TRAIN RGBA composited on white; comparison only"
+          },
+          {
+            "key": "r_008",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.9012928866907928,
+                  -0.4332102979527877,
+                  -7.51739417615484e-09,
+                  2.039321989575756e-08
+                ],
+                [
+                  -0.18108688307122905,
+                  -0.3767507548102368,
+                  -0.9084417838324419,
+                  6.793821830020733e-08
+                ],
+                [
+                  0.39354631047051625,
+                  0.8187720828205564,
+                  -0.4180114644923743,
+                  4.031128879540425
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, n=0.01 f=100, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "d8c622266ad1f4affbc235d59c127c4b6bf8dc20279b64f9b167144b00fac6b6",
+            "source_camera_sha256": "b7155cdf49fff8fd28726a547f77b2f72aadfeb167906d15f868913b99c92786",
+            "GS_TRAIN_seen": true,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": "aaf9ec5e34ecd0ba33ed1db1b3ecf97712173b82fe382062a84e25b29e1f50af",
+            "reference": "original TRAIN RGBA composited on white; comparison only"
+          },
+          {
+            "key": "r_018",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  0.33449800800204665,
+                  0.942396378801119,
+                  2.1900524765418926e-10,
+                  6.859228367698655e-08
+                ],
+                [
+                  0.31323993771858344,
+                  -0.11118265535878052,
+                  -0.9431432086623269,
+                  7.265842999019154e-08
+                ],
+                [
+                  -0.8888148543534427,
+                  0.3154795533069116,
+                  -0.33238661229866057,
+                  4.031128876720471
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, n=0.01 f=100, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "a1a8f186e1f2e1d61f998df5642fd6976b76dea27280cf9f3d5928f076674f24",
+            "source_camera_sha256": "e3f8229bfa837d7a4c9a7a49623cb8d40e3293971749a054003392621c659dd8",
+            "GS_TRAIN_seen": true,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": "5694cd44976d0c0f5228ade956f90eb4f57c3463da9116812c795ccde5aa2693",
+            "reference": "original TRAIN RGBA composited on white; comparison only"
+          },
+          {
+            "key": "r_030",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.8545520071922758,
+                  -0.5193660121889212,
+                  7.457250819875607e-09,
+                  -8.74651057152332e-09
+                ],
+                [
+                  -0.3337989997481944,
+                  0.5492246184100275,
+                  -0.7661138579522583,
+                  7.488091989432215e-09
+                ],
+                [
+                  0.397893458086344,
+                  -0.6546840995668964,
+                  -0.6427048118911634,
+                  4.031128831658871
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, n=0.01 f=100, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "9235e3c99e948da097eccefd4f63059ecb7c2522942b7918d9d7e7a85cf1a4c8",
+            "source_camera_sha256": "e4b367741a4fb16b00ef4ffc8175d4ba1dda9b77a16fbaf1020e5b12a22c560b",
+            "GS_TRAIN_seen": true,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": "e928d14608ab3e62ec09f0df2ec26e23bd9630dbd6abb6868370fa175b49214f",
+            "reference": "original TRAIN RGBA composited on white; comparison only"
+          }
+        ],
+        "arc": [
+          {
+            "key": "arc0_000",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9958431036959129,
+                  0.09108519540129073,
+                  1.2848089857866214e-09,
+                  3.1218886238887737e-10
+                ],
+                [
+                  0.060012972357057284,
+                  0.6561275447374453,
+                  -0.7522599870960058,
+                  -3.84400965955707e-08
+                ],
+                [
+                  -0.0685197487602107,
+                  -0.7491329202588286,
+                  -0.6588663838854714,
+                  4.031128974969078
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "058f808afb68b03271d64f846eaa6df496e488399da8dbee3aad524a112c28e8",
+            "source_camera_sha256": "1a6706cf6f2e5c47413433423f08701d235223e3900a0783b0f5f3dea46fb40d",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_001",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9954506703306955,
+                  0.0952783307301736,
+                  -5.1297566049116996e-05,
+                  -0.00015587232226205215
+                ],
+                [
+                  0.06287029996971487,
+                  0.6564527232640496,
+                  -0.7517427402382618,
+                  0.0005412202713902358
+                ],
+                [
+                  -0.07159111900149834,
+                  -0.748326039779777,
+                  -0.6594564806472286,
+                  4.031132787930864
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "07c9388635db1e616b6631f220105b197d4e4c20b6c8f64ee89447561005525b",
+            "source_camera_sha256": "d34dee9cb8ae24874a59343f0c6c47b8f21e64f80e88d91f3d63be08cdc88719",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_002",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9950405751041528,
+                  0.09946981470603268,
+                  -9.929120983800467e-05,
+                  -0.0002997500595789272
+                ],
+                [
+                  0.06572890658634628,
+                  0.6567654637283586,
+                  -0.7512248907568475,
+                  0.0010481599025826895
+                ],
+                [
+                  -0.07465898964866986,
+                  -0.7475057736339042,
+                  -0.6600463268957856,
+                  4.0311362751151405
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "3e9762b4ace01c163df9f2775c866dd105eda585af3111040244ae424b67e8e9",
+            "source_camera_sha256": "24b480b78ef598fa26ba9f1121fac3e442ad78a833d5a227e2c3515e992e2730",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_003",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9946128255434205,
+                  0.10365957039583247,
+                  -0.00014397876565328826,
+                  -0.0004318237821036402
+                ],
+                [
+                  0.06858873973835432,
+                  0.6570657603901439,
+                  -0.7507064481566856,
+                  0.0015207119065483836
+                ],
+                [
+                  -0.0777233043921693,
+                  -0.7466721368768717,
+                  -0.6606359118047465,
+                  4.031139451544767
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "0366a61100f6b106e981230b39303b02336f32ede025e1b706729aecd751f5e8",
+            "source_camera_sha256": "5b622eb82b349782fe19d429f8d6d230f858d57669d2728227403d60d551e1b7",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_004",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.994167429499673,
+                  0.1078475208982593,
+                  -0.00018535941327246626,
+                  -0.0005522848453546784
+                ],
+                [
+                  0.07144974693462908,
+                  0.6573536077375786,
+                  -0.7501874219535855,
+                  0.0019588088899459275
+                ],
+                [
+                  -0.0807840069877078,
+                  -0.7458251448097528,
+                  -0.6612252245525126,
+                  4.031142331268054
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "3138be5b1b5372c3c86d6650bc9be321222e339e72736b0ea82ea17ab944e681",
+            "source_camera_sha256": "1503c393610b3f1e60a722a46e96b78fc2bdd7901673afa396393f5c5faf08d4",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_005",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9937043951479791,
+                  0.1120335893451333,
+                  -0.0002234323931700521,
+                  -0.0006613250669328223
+                ],
+                [
+                  0.07431187566251184,
+                  0.6576290004873386,
+                  -0.7496678216740685,
+                  0.002362384616735338
+                ],
+                [
+                  -0.08384104125729631,
+                  -0.7449648129787539,
+                  -0.6618142543224814,
+                  4.031144927357821
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "4b9bae22f52f0019b3e308cf2f6797a22b94c6eac4d6f92dd000d6e2f4946f44",
+            "source_camera_sha256": "d693796b1a999221cb3fe57fb33ca6ee3ad580b522d88b9050999d2232bbc0b7",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_006",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9932237309871526,
+                  0.11621769890281883,
+                  -0.0002581970065315696,
+                  -0.000759136715398629
+                ],
+                [
+                  0.0771750733887584,
+                  0.6578919335846986,
+                  -0.7491476568551932,
+                  0.002731374011843872
+                ],
+                [
+                  -0.08689435109027627,
+                  -0.7440911571749261,
+                  -0.6624029903032439,
+                  4.031147251910506
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "a24f31478e139394b9f0d3f1bc50441d6592079cc63715ca6c15f82d4fe140c5",
+            "source_camera_sha256": "490cc934ffc87744842db4cf76572824e9e26b30f3f8391af18b5550f6526588",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_007",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9927254458395933,
+                  0.12039977277363482,
+                  -0.00028965261526620284,
+                  -0.000845912499129168
+                ],
+                [
+                  0.08003928756050346,
+                  0.6581424022036246,
+                  -0.7486269370443792,
+                  0.0030657131647677197
+                ],
+                [
+                  -0.08994388044434966,
+                  -0.7432041934338769,
+                  -0.6629914216887826,
+                  4.0311493160453535
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "b2b060aceaad36f473b8b8c6c67edf58124f49125123c6639424a53930483e63",
+            "source_camera_sha256": "98794f20383e81b2acd72f0ef3f97d58e95192f85668d181feedd12a43385d6b",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_008",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9922095488511296,
+                  0.12457973419726458,
+                  -0.00031779864201869076,
+                  -0.0009218455551518813
+                ],
+                [
+                  0.08290446560622541,
+                  0.6583804017468645,
+                  -0.7481056717992343,
+                  0.0033653393331159027
+                ],
+                [
+                  -0.09298957334660775,
+                  -0.7423039380354763,
+                  -0.6635795376786718,
+                  4.0311511299036615
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "5d7f51108e562e82bc65d21df054f767f464af9d138597fb050fcc0cdb705230",
+            "source_camera_sha256": "cbfa757b9dfc178ddc59890f7bb1dbf1cc56ed7d2ae35e2f00fab269bf4e9b51",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_009",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9916760494908468,
+                  0.12875750645216438,
+                  -0.0003426345701797759,
+                  -0.0009871294379550908
+                ],
+                [
+                  0.0857705549367111,
+                  0.6586059278460304,
+                  -0.7475838706873752,
+                  0.00363019094610402
+                ],
+                [
+                  -0.09603137389455836,
+                  -0.741390407503557,
+                  -0.6641673274782744,
+                  4.031152702648102
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "bff7cd1cb3093cd2e0362fe8da6329eee028a2d69b46ed5cd0f92eacd3b05423",
+            "source_camera_sha256": "a5847a61480ec3f3fe436bbabe02a04dfcfc34d392f7647efa563ddc3db93c23",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_010",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9911249575509151,
+                  0.132933012856972,
+                  -0.00036415994389584573,
+                  -0.0010419581082789678
+                ],
+                [
+                  0.08863750294602099,
+                  0.6588189763616796,
+                  -0.7470615432862561,
+                  0.0038602076079845924
+                ],
+                [
+                  -0.09906922625715184,
+                  -0.7404636186056115,
+                  -0.6647547802989403,
+                  4.0311540424620835
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "25785bdcc0eb8a4f58630c151d7329ea4f1bccf974492045b9b0940c5f727469",
+            "source_camera_sha256": "d15bdb31d866a66ff767e445ccf32cbd9432a9f067e884dfcf5c150a4b0ff5df",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_011",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9905562831464102,
+                  0.137106176771914,
+                  -0.0003823743680771333,
+                  -0.0010865259218847457
+                ],
+                [
+                  0.09150525701245499,
+                  0.6590195433833906,
+                  -0.7465386991829907,
+                  0.00405533010142762
+                ],
+                [
+                  -0.10210307467580615,
+                  -0.7395235883524852,
+                  -0.6653418853582049,
+                  4.0311551565492145
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "e6c18168077224fe46a0b524fc9065aae03805c81fd36f7573a7f3f50a21dd8a",
+            "source_camera_sha256": "e4b09e21d5a078bc0bc9ef4e16cf0aa10af5a8601fa8c0bb393aef224b4485ac",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_012",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9899700367151263,
+                  0.14127692160021216,
+                  -0.0003972775084050016,
+                  -0.0011210276183022375
+                ],
+                [
+                  0.09437376449951794,
+                  0.6592076252298347,
+                  -0.746015347974176,
+                  0.004215500390838718
+                ],
+                [
+                  -0.1051328634654298,
+                  -0.738570333998062,
+                  -0.6659286318799862,
+                  4.031156051132784
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "decc217987573a494747a2307508020c15b14a33a971f1f5057f545600a3cd11",
+            "source_camera_sha256": "2ffc6447275a55623bf7f185b23d01fcf9432b02b6f8851bb114e69721b8ad11",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_013",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9893662290173855,
+                  0.14544517078948996,
+                  -0.0004088690913382045,
+                  -0.0011456583095613491
+                ],
+                [
+                  0.09724297275688619,
+                  0.6593832184488444,
+                  -0.7454914992657171,
+                  0.004340661625615262
+                ],
+                [
+                  -0.1081585370154443,
+                  -0.7376038730389501,
+                  -0.6665150090947832,
+                  4.031156731455354
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "13cf8ee05aecc9a632f476407a15e6e5349dae066016cbef92fa65df6580dc2a",
+            "source_camera_sha256": "203f014b15a96bf151b457c581f7432a65949d314aac4f55c8124a0b8c0c6eb3",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_014",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9887448711358404,
+                  0.14961084783317719,
+                  -0.0004171489041179314,
+                  -0.0011606134689013776
+                ],
+                [
+                  0.10011282912137359,
+                  0.6595463198174747,
+                  -0.744967162672651,
+                  0.004430758143367396
+                ],
+                [
+                  -0.11118003979080486,
+                  -0.7366242232141591,
+                  -0.6671010062398735,
+                  4.031157201778383
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "d22e9af553c1542da06a9b12928e5e951e38c1b6fca2a2e2de0d2ede7281e17d",
+            "source_camera_sha256": "58e44edf84975ba02d458e8d9297719ce3f24091996683add2a5f1b3a828e556",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_015",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9881059744752692,
+                  0.1537738762719143,
+                  -0.00042211679477138043,
+                  -0.0011660889194643374
+                ],
+                [
+                  0.10298328091789817,
+                  0.6596969263420643,
+                  -0.7444423478189687,
+                  0.004485735473046445
+                ],
+                [
+                  -0.11419731633301944,
+                  -0.7356314025047753,
+                  -0.66768661255951,
+                  4.031157465381927
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "6440324bc75ffa6837cd7712f1e6668fc786dff821d7c925415dad8df360b19e",
+            "source_camera_sha256": "2ab3fac3d97b6378fd85ab155017d5429ad7c207f2ab2bd785490269e9fd21b9",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_016",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9874495507623686,
+                  0.1579341796949561,
+                  -0.0004237726721148334,
+                  -0.0011622808229699616
+                ],
+                [
+                  0.10585427546044923,
+                  0.6598350352582903,
+                  -0.7439170643374393,
+                  0.004505540338043653
+                ],
+                [
+                  -0.11721031126116696,
+                  -0.7346254291336313,
+                  -0.6682718173051203,
+                  4.031157524564412
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "505651399cc14d43587c764fb9e4bc702f62e7bcd0d14a13669e8ef027bcd011",
+            "source_camera_sha256": "171ae012f62e1a4cf65483f75755ce20c9ec003893f788182c41ab9c69703108",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_017",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9867756120455369,
+                  0.1620916817415735,
+                  -0.00042211650575540386,
+                  -0.0011493856683720566
+                ],
+                [
+                  0.10872576005305394,
+                  0.6599606440312178,
+                  -0.7433913218694349,
+                  0.0044901206592227304
+                ],
+                [
+                  -0.12021896927291358,
+                  -0.7336063215649715,
+                  -0.668856609735502,
+                  4.031157380642456
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "a922dbc37c570463c9448a3ed583169453b4a33b45021e2d284ac1c8bd106ff2",
+            "source_camera_sha256": "9e073a42e31d94b7a0b6aa192c9239c887c9ee057db0a2a692c2568269f37683",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_018",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9860841706946532,
+                  0.16624630610245622,
+                  -0.0004171483260912838,
+                  -0.001127600260502197
+                ],
+                [
+                  0.111597681990745,
+                  0.660073750355347,
+                  -0.7428651300647509,
+                  0.004439425557892487
+                ],
+                [
+                  -0.12322323514552802,
+                  -0.7325740985041139,
+                  -0.66944097911702,
+                  4.03115703395076
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "8e1f0c6d6fa9abc478b53c1c59f497c1a70f7f07e3be98b011d005053fc793b0",
+            "source_camera_sha256": "11c14ce2afc9d63853323e39e1171c9c92953c18802efe5949df207dd479fab1",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_019",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9853752394008515,
+                  0.1703979765211123,
+                  -0.0004088682243115955,
+                  -0.0010971217086944206
+                ],
+                [
+                  0.11446998856052779,
+                  0.6601743521546563,
+                  -0.7423384985814304,
+                  0.004353405358713958
+                ],
+                [
+                  -0.12622305373689482,
+                  -0.7315287788971054,
+                  -0.6700249147238053,
+                  4.0311564838420795
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "e578dc7e9ed716babdc975cf751c1b0e86ef8af4a6a2993dcbd13001b3669a43",
+            "source_camera_sha256": "66abbde27ebb34c0264b26d91e6ad142f7c6a138fd6547ff41d644c0e875b125",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_020",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9846488311762854,
+                  0.17454661679526823,
+                  -0.0003972763523942456,
+                  -0.001058147415396616
+                ],
+                [
+                  0.11734262704234776,
+                  0.6602624475826393,
+                  -0.7418114370855864,
+                  0.004232011592563289
+                ],
+                [
+                  -0.12921836998652658,
+                  -0.7304703819303748,
+                  -0.67060840583795,
+                  4.031155728687233
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "63417a7cd38b01b4262b268ecc41d707e7f88d5bbb75b8f822a040b9297745b9",
+            "source_camera_sha256": "1b12f49001d22e39600933d82937d78b65a30afc0bf830ac9b9a0b2297997a07",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_021",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9839049593538922,
+                  0.17869215077826803,
+                  -0.0003823729231034197,
+                  -0.0010108750647674781
+                ],
+                [
+                  0.12021554471005852,
+                  0.6603380350223393,
+                  -0.7412839552512247,
+                  0.00407519699933218
+                ],
+                [
+                  -0.13220912891657488,
+                  -0.729398927030382,
+                  -0.6711914417497052,
+                  4.031154765875206
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "5816dd116fe22485cb49cfabf50d206ea13ebaaf25897f2fbb4e61c492f2c0eb",
+            "source_camera_sha256": "bce2599e641239bdbd6e87a65b5d2c0f29fc3b440d4858e11f782093cdc73d9e",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_022",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9831436375871453,
+                  0.1828345023804699,
+                  -0.00036415820998577937,
+                  -0.0009555026112587989
+                ],
+                [
+                  0.12308868883238903,
+                  0.6604011130863782,
+                  -0.7407560627600669,
+                  0.0038829155306619395
+                ],
+                [
+                  -0.13519527563283879,
+                  -0.7283144338632586,
+                  -0.6717740117576758,
+                  4.0311535918132835
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "e59338b19ab937a3ac53461aa82e07839cdde6ef296eb16309d004b9edd0b2cc",
+            "source_camera_sha256": "2bffb807bbd26e6abf184951888fa56e6b03eda5ab1d5315a420f89d2d99627e",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_023",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9823648798498054,
+                  0.1869735955706436,
+                  -0.00034263254736516355,
+                  -0.0008922282681840417
+                ],
+                [
+                  0.12596200667391189,
+                  0.6604516806169829,
+                  -0.740227769301371,
+                  0.0036551223526245374
+                ],
+                [
+                  -0.1381767553257728,
+                  -0.7272169223344487,
+                  -0.6723561051690193,
+                  4.031152201927281
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "fa14014f8910278e11d4ba7163f3f3c2ad6b18519d3c09f554d50f1f369de6f5",
+            "source_camera_sha256": "12f976193e2d1d92e36f184d98043ed3c0075fa007ec8aae2c993e73f2bf711c",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_024",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9815687004356642,
+                  0.19110935437736606,
+                  -0.0003177963303366502,
+                  -0.0008212504962803185
+                ],
+                [
+                  0.12883544549601128,
+                  0.6604897366860073,
+                  -0.7396990845717555,
+                  0.0033917738483341775
+                ],
+                [
+                  -0.14115351327149303,
+                  -0.7261064125883443,
+                  -0.6729377112996414,
+                  4.031150590661835
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "a3b06654478610f3fb1467085c3539d286021633d5d85db3d715ddb894db733c",
+            "source_camera_sha256": "166dd96109dc9f959f2ac61e84a51a8a9d623731c5d8ae91c807463dc4bd8bc8",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_025",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9807551139582806,
+                  0.19524170289041512,
+                  -0.0002896500147591213,
+                  -0.0007427679922484529
+                ],
+                [
+                  0.1317089525578507,
+                  0.6605152805949465,
+                  -0.7391700182750198,
+                  0.0030928276205290646
+                ],
+                [
+                  -0.1441254948327812,
+                  -0.7249829250079137,
+                  -0.67351881947439,
+                  4.031148751480723
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "df58f4b23c55e9d9454c8f229589b0d95c39ffae97d64df927ddea95d847b804",
+            "source_camera_sha256": "1e05a686852a30b8946e291a72abed960be3a04f2625c01099e57c0e265ebdef",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_026",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9799241353507133,
+                  0.19937056526216326,
+                  -0.0002581941172472164,
+                  -0.0006569796772901483
+                ],
+                [
+                  0.13458247511734092,
+                  0.6605283118749519,
+                  -0.7386405801219672,
+                  0.002758242494053649
+                ],
+                [
+                  -0.14709264546008746,
+                  -0.723846480214328,
+                  -0.6740994190272539,
+                  4.031146676867299
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "c9fa95704865e99d16c3d24f9bf2a59885c731498493a4c8e635cbeb523d69ba",
+            "source_camera_sha256": "ed04331955a078f5c0b97b86cd7a726e1d3ca5526be220cd42e7acf4ea641c1c",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_027",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9790757798652475,
+                  0.20349586570897005,
+                  -0.0002234292151614935,
+                  -0.0005640846856335266
+                ],
+                [
+                  0.13745596043210886,
+                  0.6605288302868402,
+                  -0.7381107798302265,
+                  0.002387978518307124
+                ],
+                [
+                  -0.1500549106925324,
+                  -0.7226970990665837,
+                  -0.6746794993015578,
+                  4.031144358324963
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "786289e660f39b7abc758d8fff0b48578a91febc0b77e31e44c457549fd7ee38",
+            "source_camera_sha256": "a64b0fd475f3e90f30d5158e87d2e15e0ef0f942118b7be5e1c85b8e061d8f78",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_028",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9782100630731133,
+                  0.2076175285125723,
+                  -0.0001853559465979198,
+                  -0.00046428235304405026
+                ],
+                [
+                  0.14032935576046446,
+                  0.6605168358210957,
+                  -0.737580627124073,
+                  0.001981996969632301
+                ],
+                [
+                  -0.15301223615890572,
+                  -0.7215348026611185,
+                  -0.6752590496501564,
+                  4.03114178637769
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "7498ddb3219a58ad73dd326430b67c23f7723e181ad2e2ba099ba8db34da9e70",
+            "source_camera_sha256": "d61c7500996d27ce9b8516f12b6907d7e37efd8f3a4803077ef5c1ee547116e9",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_029",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9773270008642009,
+                  0.21173547802147463,
+                  -0.0001439750103765058,
+                  -0.0003577722053319775
+                ],
+                [
+                  0.14320260836236953,
+                  0.660492328697872,
+                  -0.7370501317342503,
+                  0.0015402603536252828
+                ],
+                [
+                  -0.15596456757866448,
+                  -0.720359612331424,
+                  -0.6758380594356317,
+                  4.031138950570651
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "62e25dfbbad5f9228eb5fc0ecad823af47aab496982528f75a9780d28edbf6a3",
+            "source_camera_sha256": "7d0549a49e1a9f0e9e5a07e31aeed3aa9eb039b85a4f4f167b48715e6163ddbc",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_030",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9764266094467695,
+                  0.21584963865233772,
+                  -9.928716602790944e-05,
+                  -0.00024475394684782856
+                ],
+                [
+                  0.14607566550040563,
+                  0.6604553093669879,
+                  -0.7365193033977926,
+                  0.0010627324074121945
+                ],
+                [
+                  -0.15891185076292988,
+                  -0.7191715496476562,
+                  -0.6764165180304875,
+                  4.031135839470877
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "bb5356480f535d089f90ae76dd5c3b2f6171fc8be65ad73753fec456b231528c",
+            "source_camera_sha256": "c3d4099c26d3fa34e9c04bcbb7738623fd9052d8f6491c0d1af80b29d54576c0",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_031",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.9755089053471474,
+                  0.21995993489136548,
+                  -5.129323377988374e-05,
+                  -0.0001254274489720873
+                ],
+                [
+                  0.148948474440742,
+                  0.6604057785079188,
+                  -0.7359881518578443,
+                  0.0005493781018363769
+                ],
+                [
+                  -0.16185403161548123,
+                  -0.7179706364162366,
+                  -0.6769944148173446,
+                  4.031132440667985
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "41f3ef10d9b93815a5b3489482101187320e885100f0090f65fa4cdb7357184c",
+            "source_camera_sha256": "1c57d5cf499fa2cab4363d6ea0ea93b764ab36fdcffb3f33a0d3511096823d5b",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          },
+          {
+            "key": "arc0_032",
+            "native_camera": {
+              "width": 800,
+              "height": 800,
+              "native_width": 800,
+              "native_height": 800,
+              "FoVx": 0.6911112070083618,
+              "FoVy": 0.6911112070083618,
+              "w2c": [
+                [
+                  -0.974573905409433,
+                  0.22406629129569133,
+                  5.905457878548537e-09,
+                  7.261405772670307e-09
+                ],
+                [
+                  0.15182098245410333,
+                  0.6603437370297839,
+                  -0.7354566868634825,
+                  1.6364361698001835e-07
+                ],
+                [
+                  -0.16479105613374923,
+                  -0.7167568946794542,
+                  -0.6775717391891352,
+                  4.031128740774988
+                ],
+                [
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ]
+              ],
+              "K": [
+                [
+                  1111.1110311937682,
+                  0,
+                  399.5
+                ],
+                [
+                  0,
+                  1111.1110311937682,
+                  399.5
+                ],
+                [
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor"
+            },
+            "native_camera_sha256": "b3b7b85d956c6a9285969bf8acd61897f3488ff89f9763f5dd36b545fb9767ad",
+            "source_camera_sha256": "a8929ea5134f0f8c1f67fea65699609b9d9bce982eb7687741c65f491a441355",
+            "GS_TRAIN_seen": null,
+            "previous_research_seen": true,
+            "scope": "exploratory, historical TRAIN/research seen; not fresh blind",
+            "reference_sha256": null,
+            "reference": null
+          }
+        ]
+      }
+    }
+  },
+  "core_API_inputs": [
+    "RGB only"
+  ],
+  "auxiliary": [
+    "native alpha contour only"
+  ],
+  "representation": "per-view 2D normal profiles, soft response and screen-space stroke chains",
+  "temporal": "Farneback forward/backward, evidence-clamped soft response only; no path/UID persistence",
+  "control": "optional bounded local RGB transition stylization; alpha unchanged; no geometry/photorealistic repair claim",
+  "ROI": {
+    "lego": [
+      240,
+      260,
+      560,
+      580
+    ],
+    "chair": [
+      240,
+      330,
+      560,
+      650
+    ]
+  },
+  "resource_guards": {
+    "root_reserve_GiB": 4,
+    "Git_reserve_GiB": 1.5,
+    "stage_cap_GiB": 8,
+    "GPU": 0,
+    "CPU_threads": 2
+  },
+  "frozen_before_fixed_and_arc": true,
+  "fresh_blind": false,
+  "human_review": "pending",
+  "novelty": "independent prototype; no published-method reproduction or novelty claim"
+}

@@ -1,0 +1,1312 @@
+{
+  "schema": "independent-actual-result-audit-v1",
+  "utc": "2026-10-05T14:23:57Z",
+  "reviewer": "profiles_evidence independent CPU agent",
+  "status": "PASS",
+  "checks": 21268,
+  "failures": [],
+  "source_files_verified": 15,
+  "source_matches_production_freeze": true,
+  "readonly_dependency_hash_matches": {
+    "/home/u00134/3dgs_line/representative_edge_gaussians_three_v1/artifacts/representative_edge_gaussians_three_v1/INPUT_HASH_MANIFEST.json": true,
+    "/home/u00134/3dgs_line/representative_edge_gaussians_three_v1/artifacts/representative_edge_gaussians_three_v1/S0_SEAL.json": true,
+    "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/artifacts/hybrid_raster_evidence_v2/PARAMETER_LOCK.json": true,
+    "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/artifacts/direct_curve_global_fit_probe/INPUTS.json": true,
+    "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/out/object_neighborhood_edge_control_v1/build/stock/onec_stock_C.so": true,
+    "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/out/object_neighborhood_edge_control_v1/build/knn/onec_knn_C.so": true,
+    "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/out/object_neighborhood_edge_control_v1/vendor/gaussian-splatting/gaussian_renderer/__init__.py": true,
+    "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/out/object_neighborhood_edge_control_v1/vendor/gaussian-splatting/scene/gaussian_model.py": true,
+    "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/out/object_neighborhood_edge_control_v1/vendor/gaussian-splatting/submodules/diff-gaussian-rasterization/diff_gaussian_rasterization/__init__.py": true,
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply": true,
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_1729/manifest.json": true,
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_1729/entry.json": true,
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_1729/checkpoints/cfg_args": true,
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/inputs/lego/seed_1729/transforms_train.json": true,
+    "/home/u00134/cglib/data/full/lego/transforms_train.json": true,
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply": true,
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_1729/manifest.json": true,
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_1729/entry.json": true,
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_1729/checkpoints/cfg_args": true,
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/inputs/chair/seed_1729/transforms_train.json": true,
+    "/home/u00134/cglib/data/full/chair/transforms_train.json": true
+  },
+  "scenes": {
+    "lego": {
+      "phase": "COMPLETE",
+      "source_model_sha256": "fa9bea3fa4f8d349fa873a66d892c53cd1263499caec6421c286350a5bb7cbbc",
+      "source_gaussians": 310475,
+      "SH_degree": 3,
+      "rest_SH_coefficients": 45,
+      "selected_count": 31048,
+      "selections": {
+        "relative": {
+          "count": 31048,
+          "ids_array_sha256": "66f52fcfa25d4e4a92b744c423da134f571487d6b70f1116d6ffa8230bda61d5",
+          "band_contribution_coverage": 0.35417700572341687
+        },
+        "band2d": {
+          "count": 31048,
+          "ids_array_sha256": "87ba3cf271f50d98756567226c99566d4987d0746786594d9c143b97cafab35b",
+          "band_contribution_coverage": 0.6999426910664457
+        },
+        "random": {
+          "count": 31048,
+          "ids_array_sha256": "3ed2755f02476e14b2b1ca0c2e15434af80e6824cc468f91584e70b2923a38f2",
+          "band_contribution_coverage": 0.29722534970130854
+        }
+      },
+      "optimization": {
+        "relative_color": {
+          "steps": 336,
+          "complete_epochs": 42,
+          "optimizer_seconds": 5.709234402049333,
+          "final_ids_match": true,
+          "freeze_audit_pass": true
+        },
+        "relative_color_ordinary": {
+          "steps": 336,
+          "complete_epochs": 42,
+          "optimizer_seconds": 6.377890476025641,
+          "final_ids_match": true,
+          "freeze_audit_pass": true
+        },
+        "relative_cov": {
+          "steps": 336,
+          "complete_epochs": 42,
+          "optimizer_seconds": 10.426564479013905,
+          "final_ids_match": true,
+          "freeze_audit_pass": true
+        },
+        "relative_cov_ordinary": {
+          "steps": 336,
+          "complete_epochs": 42,
+          "optimizer_seconds": 11.160667432937771,
+          "final_ids_match": true,
+          "freeze_audit_pass": true
+        },
+        "relative_color_ordinary_time": {
+          "steps": 303,
+          "complete_epochs": 37,
+          "optimizer_seconds": 5.71141319302842,
+          "final_ids_match": true,
+          "freeze_audit_pass": true
+        },
+        "relative_cov_ordinary_time": {
+          "steps": 315,
+          "complete_epochs": 39,
+          "optimizer_seconds": 10.43577556591481,
+          "final_ids_match": true,
+          "freeze_audit_pass": true
+        },
+        "band2d_cov": {
+          "steps": 336,
+          "complete_epochs": 42,
+          "optimizer_seconds": 10.391861113952473,
+          "final_ids_match": true,
+          "freeze_audit_pass": true
+        },
+        "random_cov": {
+          "steps": 336,
+          "complete_epochs": 42,
+          "optimizer_seconds": 10.331112599931657,
+          "final_ids_match": true,
+          "freeze_audit_pass": true
+        }
+      },
+      "roles": {
+        "edit-train": {
+          "views_per_arm": 8,
+          "methods": 10,
+          "mean_recomputed": true
+        },
+        "dev": {
+          "views_per_arm": 4,
+          "methods": 10,
+          "mean_recomputed": true
+        },
+        "edit-holdout": {
+          "views_per_arm": 8,
+          "methods": 10,
+          "mean_recomputed": true
+        }
+      },
+      "saved_native_RGB_views": 200,
+      "human_visual_GO": "PENDING"
+    },
+    "chair": {
+      "phase": "COMPLETE",
+      "source_model_sha256": "13e4ecc9ffe9c5ae2a0656e2e5c56a737cfdc90a62ad04799db3c46b0b442f5d",
+      "source_gaussians": 256690,
+      "SH_degree": 3,
+      "rest_SH_coefficients": 45,
+      "selected_count": 25669,
+      "selections": {
+        "relative": {
+          "count": 25669,
+          "ids_array_sha256": "4e7d5be9cf419194bc57a74c0e67b6c78fc557f1b1e7bb93cd47cadef221ad1a",
+          "band_contribution_coverage": 0.1790352900585137
+        },
+        "band2d": {
+          "count": 25669,
+          "ids_array_sha256": "30a8748757f13c5317bbacc752498c54f33853b81765b1c16128e9421f27a9c9",
+          "band_contribution_coverage": 0.6004265512668104
+        },
+        "random": {
+          "count": 25669,
+          "ids_array_sha256": "61e9f7f48b7182e95e1e79b808a77fade88abe2b409fdcf1f1b74cc0b39bac62",
+          "band_contribution_coverage": 0.14713843261805218
+        }
+      },
+      "optimization": {
+        "relative_color": {
+          "steps": 336,
+          "complete_epochs": 42,
+          "optimizer_seconds": 5.268954328028485,
+          "final_ids_match": true,
+          "freeze_audit_pass": true
+        },
+        "relative_color_ordinary": {
+          "steps": 336,
+          "complete_epochs": 42,
+          "optimizer_seconds": 6.115491223987192,
+          "final_ids_match": true,
+          "freeze_audit_pass": true
+        },
+        "relative_cov": {
+          "steps": 336,
+          "complete_epochs": 42,
+          "optimizer_seconds": 9.724326813826337,
+          "final_ids_match": true,
+          "freeze_audit_pass": true
+        },
+        "relative_cov_ordinary": {
+          "steps": 336,
+          "complete_epochs": 42,
+          "optimizer_seconds": 10.61422610306181,
+          "final_ids_match": true,
+          "freeze_audit_pass": true
+        },
+        "relative_color_ordinary_time": {
+          "steps": 288,
+          "complete_epochs": 36,
+          "optimizer_seconds": 5.2948089758865535,
+          "final_ids_match": true,
+          "freeze_audit_pass": true
+        },
+        "relative_cov_ordinary_time": {
+          "steps": 311,
+          "complete_epochs": 38,
+          "optimizer_seconds": 9.734621478943154,
+          "final_ids_match": true,
+          "freeze_audit_pass": true
+        },
+        "band2d_cov": {
+          "steps": 336,
+          "complete_epochs": 42,
+          "optimizer_seconds": 9.886556811165065,
+          "final_ids_match": true,
+          "freeze_audit_pass": true
+        },
+        "random_cov": {
+          "steps": 336,
+          "complete_epochs": 42,
+          "optimizer_seconds": 9.743167788023129,
+          "final_ids_match": true,
+          "freeze_audit_pass": true
+        }
+      },
+      "roles": {
+        "edit-train": {
+          "views_per_arm": 8,
+          "methods": 10,
+          "mean_recomputed": true
+        },
+        "dev": {
+          "views_per_arm": 4,
+          "methods": 10,
+          "mean_recomputed": true
+        },
+        "edit-holdout": {
+          "views_per_arm": 8,
+          "methods": 10,
+          "mean_recomputed": true
+        }
+      },
+      "saved_native_RGB_views": 200,
+      "human_visual_GO": "PENDING"
+    }
+  },
+  "counts": {
+    "saved_native_RGB_views": 400,
+    "complete_epochs_verified": 654,
+    "full_epoch_per_view_losses_verified": 5232,
+    "heldout_per_view_mean_fields_recomputed": 280,
+    "independently_fully_decoded_videos": 16,
+    "decoded_frames": 528
+  },
+  "videos": [
+    {
+      "scene": "lego",
+      "arm": "B0",
+      "path": "artifacts/edge_control_lego_chair_v1/videos/lego_B0_arc0_33.mp4",
+      "independently_decoded_frames": 33,
+      "distinct_decoded_frames": 33,
+      "decoded_hashes_match_production": true,
+      "native_png_hashes_match": true,
+      "camera_hashes_match": true,
+      "actual_top_level_boxes": [
+        "ftyp",
+        "moov",
+        "free",
+        "mdat"
+      ],
+      "H264_yuv420p_512x512": true,
+      "decoded_frame_sha256": [
+        "bf36203fbe6c94eb555e642bfc1e7dc7c52f3c84d8c3a416dd1fc66f28c5e612",
+        "9532c439081a461bdea9c0c89b4a51bdcee698b932fe5d7830a2c0866869168d",
+        "557f5873d86a54da4792b8a31aa08b6d726cfc5922d3e1e5de6a249d6ef093ed",
+        "88602beee50e3f3ffd25a1cf6aba083c2b273206f690aae47861512c67c4d00b",
+        "dfb2d6d1739d74456b6a8d7545e12c1def669b970057c04a9ef59746b7693522",
+        "b97c3029c4e5590c76b931e03df13c8074499dcf6b2b517a496e0d8165471792",
+        "b318cbf1c7c66bd9a410334378af9e42bbca3586df8581a1d9321806cadd0043",
+        "9bfcdadad33a9e80158b03dc670d9d8ebc4e3a0c92e19ca40049af5af9c86bdc",
+        "b628e64a4a7ac672bdba6691b148ae719d272ea153862dec85386dd8886e04f9",
+        "941f9de31da7b9d7bcd176ab769c62d670aa11f7e5a231ea316c3565a5fe5781",
+        "753ed1027a2c34d9e8ff337d107274ea970dea998286bee6531f25fb68849bf5",
+        "a7f8a7edba4e0643633ac9dd8ce429da307ad8a2d61ca30a60316477ebba38dd",
+        "9706fc4dee9ce1c436f5bab1d5a365d71ae910c866fcefff3d33ee33858e745a",
+        "5cb9accc8db43eb2365e449fd2aa99345321ee57b8431e475566a24bd89d63b3",
+        "995566566f79e068c6360ed22c79fa11e07934bcf730eba53406eaea77a0116c",
+        "893ee3005dc400ac93793576d5170191ac34c62541ab3bb610bb9bee6f060f38",
+        "1caeb88d4014b26e648d836c15b1064d296743fa17b00be2858d2a429bb051c4",
+        "21752939fe6ca0ac32e49bf5c95d598360a54cdca0f09aa3eb83b6ac360a673e",
+        "1d96c652c60af656303987a2a70495cd602b0cb8b36fd2cdaae6680710c99358",
+        "6d2f1320dda71cfcecc1bc9a3a4611ea78d63e81ff5403c905e39717f5c5e844",
+        "d8bd0d93891b58801450c8b6e1732e23085c71976abc70cd1de460f01af75cc2",
+        "6a5be831a76471c171f350c848a89cc2cd02fd247b86e53ae92283e01507d904",
+        "7802037481f2f29cd878d7f032c9861e47317942e9e7c3da5added36f8358f7d",
+        "8619f46c0edb28317892c903476a4ca2404336f3995db98f4c031c7372b4a3d5",
+        "f7a04c06250654d78a9e2aeb6663527b1cc64ddf21f68ed27c673d44d49abda5",
+        "d231368e26b97840504fc8c79baa94f76db037b654fa25da1d1faa0f660ea796",
+        "e6df74bc093b88fe646c855b4851dea27d803a8249925d31eabe02f0727f4bcf",
+        "5638987a03a595c5c3807bf6a92f3098e4aaa4aba744a2a3066e93e9616610e8",
+        "46e20ce1c555b3603effe8b0445bc11e6605ce02b9f7b8a8a85fdf7df7f8b688",
+        "bcfaf8cf7e98960eb64f46b59736a99a222bbd230785c5c41b0705f4f9e6b3d6",
+        "4399b2c6848c2097b522f0962e7402412fbc30d053123111d27eaf716242ea1b",
+        "a5690e429dedfb193c1bca24b30465efa9cd687bf21d1104e2c2e2679fa76455",
+        "f131f6a3d71fc8ac97dbb79d2b648ba11c6636d4f0f80e340c73e3e388dc6cce"
+      ]
+    },
+    {
+      "scene": "lego",
+      "arm": "relative_color",
+      "path": "artifacts/edge_control_lego_chair_v1/videos/lego_relative_color_arc0_33.mp4",
+      "independently_decoded_frames": 33,
+      "distinct_decoded_frames": 33,
+      "decoded_hashes_match_production": true,
+      "native_png_hashes_match": true,
+      "camera_hashes_match": true,
+      "actual_top_level_boxes": [
+        "ftyp",
+        "moov",
+        "free",
+        "mdat"
+      ],
+      "H264_yuv420p_512x512": true,
+      "decoded_frame_sha256": [
+        "a95b11f8f8b321838a175d4a26a42fac7d4f973a6ac3ad06b350f20ed684a074",
+        "3e8f90a4dd3e0417ff5cef57e2091b761a13da8ac72c202f8a08e829d9a7a25c",
+        "d43d3ac6efe5d231a94348d3b510b59c661c39f5b216fb067e2eed7b01ea6ac1",
+        "bf36bc37ec987fd779b4a0ad7b9c2f371a359bb5a134d30f37fa67788fa366d8",
+        "9dd68ca58e3f3e34d28c268175d6bcd2bd9d1f4b1a09d2c6fd464b701580154d",
+        "88503e0816ed48e6305c1942c8b45289b2963bac50dc8327be50a6249427f6a1",
+        "381a333e9be1591b337219a553ca2d8e28d27a30e725d4832ff4148a92eff6bb",
+        "bebf345839f7115906f19ed24d1fa9a5ae4c8edb43363655461eaa9ac8d9b6aa",
+        "8483df278883418c644abff6d3b0636426b159c1416fae30c2540e2fb90b12ac",
+        "241c5b73212dc56226445fcf6f1068e8a80dc98aca3f3dab28de16d5a707baaa",
+        "bff6017e0ef2bfa3d37cd496fb1dc19b7f605a2eef01f58c3b1dc87786081657",
+        "59eaee13f57730b1939889622b13475d8776c0af6bd263418f03d29cdca271d9",
+        "a1021217b62e2f2fee7a5f2549f167746e2c46cd7792ee4db281725459782100",
+        "49f10dd22379d81c9f877f5b62f27b486de9fe52579e95832c4e7fbccb30374d",
+        "49533c5f642e373fcd577aaca0ce407be55e63143d63e0a1c151a3cf5cc3cc01",
+        "92030d00a178cc22f3db54940f9c261d055cf9cd2ddde0265613bdb8a815a4cd",
+        "e840a9fc4996d29acf3f57fc9e8b62a006e0f97d59ab58062750446bba4f652f",
+        "4fb33f17a88a7187f6c8e73248cf2e52a518db76a59420288242d8f6d88aaace",
+        "caa8f6fb33c75be4c168be01a50afa869aecc539ab09e26515d95a04f50da1e9",
+        "36d65b24a147a86af7707e4dcf67ac6a13addd20546a215e3c6f03ab71e9d73a",
+        "f0d422888e5ad647d2eb0dc845c86d7b14e4fe267386076c2fcd123a5c796fa1",
+        "27cc8e70bd6569c2bf18d3aaf0862f5dd0d82ff3366636279a578d8dd23dce22",
+        "6c65878fb2df5f972ffca0889c8d02e2cfa39f946c881735d1302d9e343af866",
+        "ee72d199e7e769c1b5f57448e4d6683de3658aef4f3b76d1188e60eae65ba94b",
+        "acc9b37e790451cc32e2aa273613759fac84309f29c26930ab860ecd3618feb0",
+        "4be9a24c432013918fc31bfca01434de89e08ee957c8e906871a14b629e0628f",
+        "baab7b17d5e71529ea8ebaf37db941903f9ed9d0aaa9c6c843fa25f98a22c5fd",
+        "75b9304b5469aa8dbfc3e788ec1f4eeb373ee7edda1a88d285b95a59755b735f",
+        "96e0bd7c5f8a47083921467258763df8e7271bcee273245220e7fa5180886017",
+        "2145dbe0732d374fb2ae440a9c736c7b63870cca9b5c3232a710bf8f08ece2c3",
+        "180e3b416966e0d63cd5f1222975fc5d5c1cf6e3f8e4966b256867a8ccc2c2d3",
+        "4bf8095d6d61c52a30287a66f35e51bb2d389488a8c199afb39ca6ae5d37d49c",
+        "63d6bfe98ab5976b36e100a2a1dd364271a7d5a92bbe8a9475527a3a6f0fc3fd"
+      ]
+    },
+    {
+      "scene": "lego",
+      "arm": "relative_cov",
+      "path": "artifacts/edge_control_lego_chair_v1/videos/lego_relative_cov_arc0_33.mp4",
+      "independently_decoded_frames": 33,
+      "distinct_decoded_frames": 33,
+      "decoded_hashes_match_production": true,
+      "native_png_hashes_match": true,
+      "camera_hashes_match": true,
+      "actual_top_level_boxes": [
+        "ftyp",
+        "moov",
+        "free",
+        "mdat"
+      ],
+      "H264_yuv420p_512x512": true,
+      "decoded_frame_sha256": [
+        "b82fa8ecc8fa437f2773b9439b2bd80c8a1f70e267bcc612c12e973bea010b66",
+        "f087d624aff678d6a9415066fc103ddbb5212f36b3bc7fb37aad9c3e39659451",
+        "dabe528cb634b2bdf1db714e9b37d81c3958720c3fff8f3ae7316c8103bc1a3d",
+        "e58c71b06a20f76934dad4ce85b6303f1554a371fa56dedfa94d4ef8cea0315f",
+        "c4c3e7b2fe3ed82dd57beedebbe51102c45977e549c42764f442fd486ef030ad",
+        "2c2c5acd960e39ee527c7d062d4e8546f24ffa639ff84d81a18e35196a11fad1",
+        "f5a06252e761ee02a8d23a930cc9b9501a8efd9b767eae087c681d5eb5fe192f",
+        "660ffc782bada7f7544149fbd2fbef84d2e48731cfff92d0203e1de4e2da5e56",
+        "10f5f6066d5bae14d9fef3bf8837eda4f2a9f69c6d434256fce5fc5d0fc74204",
+        "5edd36a43fdf6259cdb9618b8613a61cc7d68a4060961c38a27de1de969ec888",
+        "58f420b1d6b19cdaca89e5305e80c426e817555c6a8963b38c1f4aba2d17102d",
+        "624c9719c63be301659366ebcca9c19f6233a3194f4bae428e94664535e053cf",
+        "c82b861d3cd705fd94aaa3cddff43885d4e1ddc6b526fbfb661b9a73ce0d9ebf",
+        "fe18593c4569a7cf1168aa8ed125c641cdea61ddb55edea87840bb11b01deb9d",
+        "c35df5e9a49ec0c10a05dd2e322c58c5e9523925d564f1a4faedadada44f0fa2",
+        "7736d79b0dbc646ca051cc20c28acf0e610253deaa6aa413f31276e4245e70c7",
+        "a38386bef83a1a119d44a68e5c0de18dcffb669fecdb84543d5aa5c4c1f8c0fd",
+        "3cfa928f9dbd060915fe6bf8b42e68ec57d3460508214081fc0abceee5d63a2e",
+        "f25b27e164005b6544fd00e1fdf02f6fa1bcfb271299a4322192ee55b054907d",
+        "a7e070101c4b8975dddbe26c3c4f3d4c76f1a8c18773827c2413c6b72b914bc7",
+        "7c232587877f7b32dc1e5e9098bf380304f138f7bbcca6c17f359bfb2910dce4",
+        "c1582ec60fa9199e627f4fe980ce8a012350e095a3221d1eba9d62f3a94e28c3",
+        "731ec4b1e8e5a02c4582d05ce1ef69f3e3bfdb3fb5bc077d1724a5d3eff88813",
+        "8ee6910ab111d829721352f391db67c47dbf0db6c2f7630cc4a1aed1bce79a45",
+        "1bd7dbc63fa72b9e70479e856d7a59528ba13b228be18f8e7d44ac28e3a02832",
+        "3598168558033cd6bda26f17094554936f4f0580c0c4b0b43283202aa85be0d7",
+        "0d8eb452a9bd821f71e6a2c30f5aa66ebf3dcb30bf380ee050534756b96a39c0",
+        "a92f87d26bd46543b60094c1941b7a4170ad715b3a1a530fa2e1bdfd1d962d8d",
+        "7e7f21729a2ced92daa5fe5fcfcb04f97ff9f93517f27a49377e07bf61789ede",
+        "82728ecf88d0da518681e5e73cae6877b64d493b9f7d197337f04bb3cd226f4b",
+        "fff3858b21ce571c384fd06abacdad13a5d2e59de7237507a2da5c9fb72e7103",
+        "ebb4b49c66d1a90ecb676e0517575f2c83095412d7b20402899d153cc06f7d8d",
+        "9070882502ef2be7b1b27d0070321d99ff75041ba9beefe0995021a995693cb3"
+      ]
+    },
+    {
+      "scene": "lego",
+      "arm": "relative_cov_ordinary",
+      "path": "artifacts/edge_control_lego_chair_v1/videos/lego_relative_cov_ordinary_arc0_33.mp4",
+      "independently_decoded_frames": 33,
+      "distinct_decoded_frames": 33,
+      "decoded_hashes_match_production": true,
+      "native_png_hashes_match": true,
+      "camera_hashes_match": true,
+      "actual_top_level_boxes": [
+        "ftyp",
+        "moov",
+        "free",
+        "mdat"
+      ],
+      "H264_yuv420p_512x512": true,
+      "decoded_frame_sha256": [
+        "60726255eac40d5cb771145bb644e197753cccf73d8f541329195006df4ca29c",
+        "0fe2b5f01d79723654f562aaad380e7773d383f5902e494f68930191ba5b0a18",
+        "3729f653e4605e4f0927bb9c6d9f53cf8c2cc749a26d5fae57d7e21062b72a02",
+        "7f7a1b9ce3e6428fdde9c0c7163ae8578cf4235c7347c3cb1c6d23d1b4ecdc4d",
+        "201423bc11ad02390983895a281d392932b6411ab3f36c4f8ac9b075e664a8c1",
+        "c1bd4490bf3615899e256f365b7eea209c204866c51671ced0103ac3181d10eb",
+        "24d354e60c1422d5755e300f4b8f618099c9eac540ff003cedf31d5da727ecca",
+        "9581656b4eb5133e822105c6591300bfd1625eea867d2e1ae77a0fc1a0208c60",
+        "32f08aa799c1a2e552a9401a36fbedf3be15f139572453f13fa5c0d387247edc",
+        "e8c69b415936d067232e0854bd65cc030a7fc2f5a9e4c3a5c6220d02f81522be",
+        "78270d892e27fd01933790d6b49448886f26a523bd032fee8fb217cbebde1d56",
+        "4cd8c0891c9fc74f06f02664152a5b102a5b7d43b067a94191a8013a5c19ca33",
+        "fc8166135fbff7a7e4bedd589fcb7e8b59e1bd273455e34e52482317a3d931f2",
+        "fe30689e4ea8db0833f87c03906f7c05f55c751f96c97b95043c4adbe9edef95",
+        "3f41de333e711ee6b7af795fe55d3a97ef0e3710a2d95a1cac3edd67d2d09d1e",
+        "636731b315cd5a264420ffbbb58621f20c96fd2d15f23b7b29097940b90d0503",
+        "d404779a7a8df6f9323d45a6b3e37b9e59feb8545ad4ee3a0a7f010658c54da7",
+        "4f34d648024004bdd2cf30f764660e73d4367468011db372c795df1dbdc9665a",
+        "8a23cd2b2e265b7c31a77f882a21a05887dfe1b794cccad4553238d05853a2b5",
+        "c1ccd58cdd97190a38179ff74807b85b895fdf850a8ff4c8efa4ed5b0bbb0349",
+        "cf3e239c79f992b99c42a3ab0a7fff11b508ca0a9802791ea94deb35fbd5003e",
+        "a807cb5015cb0244a8836b224eb0e98bf3c55e9b87bcb636cd30e4a75e93384b",
+        "53e6a1f320538b5b97e0a936bf96c0af6b9641c27ed4234592e322d833e1219b",
+        "798b2107b02800ed16f855d5a5aaa3bfc4f7ea6a1230b63e1ca5502cf16f3751",
+        "c187eadc2ba78f82290ca54dec223fa6d6513e1e7deaf5142ffcff37b38c8214",
+        "4a16f2d32996dc64588e057383d317e2716e4344c4c9b5b89934a0d19f3bc7aa",
+        "0368f8c780e26df7951347992ffd7511c4929ff8f02093e2ce194533bca434d0",
+        "981b535b6098b633fb1e2ea1d1abc8dbbd1ccb72d7243354ef42ac066c93116b",
+        "e117cf64d62a97cc1f9d5d8179fee336d29a4394071c5695aa6991937527e92b",
+        "49fcd2f6e2cc11384c9a5d0e4c9a2a59332b5e5c995c9b6aee149a691acb39ee",
+        "5d170fabad2c2c88b2a8f9bcb19da37c5babb12aa23ff41ba8736fb1fa6a0cb0",
+        "70c1e3b8fd8e4027b2ba8af8bc9be721f0ae9c910a06fb266319ae0288cd0e23",
+        "4cd5863ddb0811a9ad58260629606555c5c9b93760bf4ea1c6b39709a80eab30"
+      ]
+    },
+    {
+      "scene": "lego",
+      "arm": "B0",
+      "path": "artifacts/edge_control_lego_chair_v1/videos/lego_B0_orbit_33.mp4",
+      "independently_decoded_frames": 33,
+      "distinct_decoded_frames": 33,
+      "decoded_hashes_match_production": true,
+      "native_png_hashes_match": true,
+      "camera_hashes_match": true,
+      "actual_top_level_boxes": [
+        "ftyp",
+        "moov",
+        "free",
+        "mdat"
+      ],
+      "H264_yuv420p_512x512": true,
+      "decoded_frame_sha256": [
+        "d2fc3ad12f810a92f0e04a214576d40cdb47d02f648cbc4442043148e18220c3",
+        "65985d16edf51cce51fdcd3df14027a64c054fae89f055046685226061adb705",
+        "51e4fc65f737b8e44f6c3fd793806ef805fa9d404563739ef66c9f1436a79fb1",
+        "de2a88d96ca0977fb487132f7706e86e7be7f806179f1f0b276c5062cc69a75b",
+        "e99314a820643d9d3c93a6745c76f3abef78e84b555958e7944b9ec017be9a05",
+        "cbcbc8692928a017dbcee92a15048741ed9b4c49f0714030c59cc881bdef9468",
+        "77ba8575bf3fd41491dfce23a1c7f6a86e56897d6fc4a8c628011e0d0b956e1a",
+        "1819458954672aaf32f567b55a8625b98d97db5c3cb645bbcc02519be96ca0c6",
+        "be23e622131065e59f8a5b7f6a9e0caf39129270623f304732003cc70ffa7373",
+        "c52557f2dc59c8375c2831f7e78a035c20c616794c55aedd12d49f208b4500ea",
+        "e3876f2386da197d97b16ac6b3aa553f3c1f8d9dce5adb18542a662bacb12a36",
+        "a5b1f4ad3eb4469d56720a7c53a694d6c5d3e33ae4aab68dce4a5b396ee7a5f8",
+        "74170621335150c426f8dba044e20914473a1a2fbe2e0e807fc7e6f2d33a3654",
+        "4bf6d8c2d68ab8a02ef781925b166434362bb785d6229ac87656474078855d4c",
+        "7e2e39ae08cbd12a062a2bbf71c94d24547099b4eafd65d7f745b2b6f9ceacc6",
+        "d1fc7c851c49cd6c376a6ccd46fc4d8b9293593833c44b67bbe11c40f2f1bb8c",
+        "b631386154b3e85a58f61e947da1b46d85ba85173d787a6ff4bfa19de13add31",
+        "01d5696e4106311bb2f609fbfdf851408442c3ed7d7d7ee409db49b8397cb422",
+        "5737aa4262a23b250c650a4c884b329ec56b8f4812244bdc9759aab0e1f0ba97",
+        "0ab308619d0dc9d102179e327b8a29a425d57d508c38b325d471a2c6a40ecdf8",
+        "caa74e5b6af93a2b4c9ca46a4373ad2e7f0e120812b465c6637c29533912959b",
+        "99232c60715f775cbe77ed3a59e87126e8af4c3e3d472f6b65c1b21cf3de8715",
+        "13c7b89ea86e9c03ab496e86c5ca4163118d4801db79a8ec84f43d18fb09f6a7",
+        "d43f0b3f4bd69a57e1028caea37afc70c992b91432682189c3d18d6c2e0745c3",
+        "14188ccc3675b193e1fd40dc198c1abf51442caeb61679167af8e9da47a10e6b",
+        "537891645ea7db48e0f2aa64e27cef81a36c14786e1c5fc7656a9e8a153c23a8",
+        "0ac19662e6eb87628273a829c9c86036367a9081c90138f1aeb0f06ef00c936b",
+        "75f1b6284059b0e191e4aa178104497975b7ceb33312cebeb1f071500f537045",
+        "c5244f02c15ca1fe987a336744539839a256095ffef3dfd31275f0f02b279eae",
+        "9bf26eaa76e7e6bf51dd08bbec42f816ff9a93de384762ee24e996ac84980f3e",
+        "bb0bcb59719e6b3baf62ac73e9e90aa132409f9c17abc391a76afc95c78bd20b",
+        "d7765141a70ce97100639513011abcdb0d348271e0e0643467e13a5d26c40e9c",
+        "b3cf4fe81ddfd31ad672f4e42026011723fe11f81e14e65bcd8c3dc06aeb5506"
+      ]
+    },
+    {
+      "scene": "lego",
+      "arm": "relative_color",
+      "path": "artifacts/edge_control_lego_chair_v1/videos/lego_relative_color_orbit_33.mp4",
+      "independently_decoded_frames": 33,
+      "distinct_decoded_frames": 33,
+      "decoded_hashes_match_production": true,
+      "native_png_hashes_match": true,
+      "camera_hashes_match": true,
+      "actual_top_level_boxes": [
+        "ftyp",
+        "moov",
+        "free",
+        "mdat"
+      ],
+      "H264_yuv420p_512x512": true,
+      "decoded_frame_sha256": [
+        "53ec21fcaa3ca8a0493203735ca5cdbe6a885b666b15262576faea0174aa30e3",
+        "0e9cbd612240a6499ae3fde973288f0d476af37eae701fae7c4909e02d174d16",
+        "5422e5b256bfb2ce016f5e1e4f7bd5933e71b93267a9e7677d32a55003a837dd",
+        "3f9538cc8e289e44cf174bbc1cd21bf9272d2ceaf4c5dab2a2a3133932b5b413",
+        "ec49b7c1bf5cd622d7bc786384182f9111c2c5057f9558dd9839e1d471a7ef05",
+        "e3ca29b792e84465f4067a707771d35cd1890ed3d39138517dbb821afa348eee",
+        "fef94138172ccd6615164c479e11a5f7dfc98cd66c497a069855dbf12d0608e7",
+        "6d13960488b2c35dc8efa0de7cb7693205bf81d9ed2ba991abc381aebeb77882",
+        "7dd97222f4b36e5a9006626895db5b43a81a3bacdc80d0d9366cb8258f228c81",
+        "68017b77dfd5946653ed9487a5df5fcaf9e6bf1c14119523429ace8e178d734d",
+        "f5947ed3b21106f82230f7b78a6d38915131af79d15f9e52215dd44bb3ffebed",
+        "83fea7901b492f49241cc7d9b829eb383b297bfab3eb7e06d627ec65d3a188c1",
+        "06e06a01ca0930f23f3d84cd66c8cb4106800a74d5d56a2f76120bf7a0389f5f",
+        "c00ac8af7eef5fae4563a2f68fa616e68c039e9f95b22221bb7f397f3615d02c",
+        "1471919c9305c2848da994817d2ad8f9b0617593d5e89380dc3aab5572a5d193",
+        "fdcea6a61fa0be78ee66f15f107028325976af8c5b4fa82ca3d57c6b8f2bd4f7",
+        "26179c8c2d6d3ed7f89dd377e38e716386852d3cde7a64cc8ac0282e1a7c10a9",
+        "c6b0a1e9ea645381141008e6d1e0ffc3216664d2fd9e26a0990860eb86182788",
+        "a7b8dec4c3c567fc05232ee2613b0323b162a13d79f26c41be5956a619ff759b",
+        "941ab8ce7325eb2f181d36fcefed151178d53c2b4604f1a73110033892a62a14",
+        "515ecdf27bec53781936d803e7daecae247114eb5985f979b8d216ca8e1e0e9f",
+        "b6af1ec259b6597b80b6e8f55e9d69cf00bde9ac93706a2c10a4eb5f2883391e",
+        "de189334da0fdc1cbe410237dbfe6f7c5e78b4d316609e49204f8680e6be3a18",
+        "dddd1d57d70a2a7bf5ccedbbd6e5965a5a15a6ec184757452bceb019536d1500",
+        "d9d1042c1ce8c4b6ba5d6f5741eeddb0085afac2a87d3ed1d66737482ad34cf3",
+        "72a7663b2f7686462910e93c5ecdcd104a00e68254256b42a306451c8c71991c",
+        "2719f64e12695bdf23f962731149d4e604311e47394e4d37fb8433522961ca1a",
+        "acd343356899c3e45e9ab57415a3425b79d7563d37e2c98fcb36ff440ba3dc06",
+        "36bd098a46449a9e56bc2b8bdee0969e35dc4b2dab9126f9ea2424e42f8bbb81",
+        "76563f1d5e8a013093bfba9be9370339daf4673164fd124b51fc73d1a2fae88e",
+        "42267e911d117b7ccd353ce6572e7856d5d6a016c21ceb512487527b1e8d866f",
+        "c44d612f23b0621214f3ad952bf32fe5b27f70aeb7156e53e581e8431063ecfc",
+        "4ad7376303fed7a412f1abebac0fb832184e7f9ac66575e0dc46df587f389e93"
+      ]
+    },
+    {
+      "scene": "lego",
+      "arm": "relative_cov",
+      "path": "artifacts/edge_control_lego_chair_v1/videos/lego_relative_cov_orbit_33.mp4",
+      "independently_decoded_frames": 33,
+      "distinct_decoded_frames": 33,
+      "decoded_hashes_match_production": true,
+      "native_png_hashes_match": true,
+      "camera_hashes_match": true,
+      "actual_top_level_boxes": [
+        "ftyp",
+        "moov",
+        "free",
+        "mdat"
+      ],
+      "H264_yuv420p_512x512": true,
+      "decoded_frame_sha256": [
+        "83e910aeaf96bfe8e71764b81181400e72e2351dcbf02eb4a51e6d0b1d1d6010",
+        "c67d7a5c4968ca57815f3cb9be4a405a9ca1ecf83a249769b455739fec7601ad",
+        "4efca092929c4ee5145457d1859d2942f2fce72097d24a9174aa348596c88a2e",
+        "c257e4488d5a23e90425dfe06f4dc09d2ce18a4680fed33b232d82dfead96c8d",
+        "079f1477fc6a3c1f64e8965eff8d43bf4304b8315bf40a3f3b8e2e09c7c61c68",
+        "939be0c817b51884ea4cdc77d2e733db160b0637358f7e88453d0364d4838ab2",
+        "07bf3a1b4f1906dddd79ecf1dae218f368a9f278d0a9711654a2b99114e73f94",
+        "0adbe73581900f013193d758e994cc7ddaeaab4fac7b59ec84acd6d27840a936",
+        "6ad4cb8edec6b1c3d763447b0bb612624c2dafef305b6fa2960af170eb9fc6c6",
+        "3aacb55d2d5aaaca3182571412ce07f41ad661932183b81d1fbe5d91593299e5",
+        "014feb8066aa968a22a1a4c590022353da8da4aeea0993ba0de1b0a04c1dd144",
+        "264a39f952bd811355597824bac8536cd0b94c1742eb3528a17ac7e87e391fe2",
+        "0c312ced76a9aeb2ebd86ce6804203477342c8fedabc7a5c8bffb149c95524ea",
+        "2fd77671e1e35eaff424407394071edb157c9b8cc60bb611a93063268633724a",
+        "6dbc8ed8c8ba3f547a3885be5652521708ad0fa275cd29526e2f6ec8fd33bb46",
+        "59368083d528bdb0df94bc92c24c3392190392baf35464348f8ade9f4e273a12",
+        "94e72fee5d9272cd01fc96af408318d4be13fc644596d6ac77b08f8b7c2ecd78",
+        "b4d482542d5d1847c8bcb071a530085299482c0f9acf3ab71ea8eedce90060fc",
+        "52efb001de285f749908252fc6d58ebd6bc5f035b987cbbd526730a0511190b8",
+        "f3cf2b9936e0d7a7a5d2b5d13cd5d593dc8b3b3aa6d411a92aaa45bec9a221b0",
+        "04401ce4bf362c956c7b52527ad0fa2d6300fc0617a72db4bf27b85ecd1db1c8",
+        "80f01ebd5b9c4a982f10a7ec6b01184e7af7e715af7cf0812420cbdb1f27c6df",
+        "479b86bbf53c4feb59a4cc118c21e285ea1b08091a7b840bd85a872752bdff08",
+        "844823c3075cc661e6c09d90dcdcadbc72d4978846daf744a70ef739aaedf76c",
+        "4eded6ac1690eb3b4f7bd6a465b2a08e4566ced77bfc93153ca8cf30cc18a36d",
+        "0c739d3b7dfbd3cb04d7040457e3d6c7c1721d17a9e5326dfaa1d76a141b5da8",
+        "0d224e47a65911ddc81a3d3f2cb7b693bd960b4c8c988533d5e34c5917f69cfc",
+        "1ee33c335d2e6f0285925690d74e3ad9dba5ff55f90856dce31f88d144c41bcf",
+        "d356834e3e06fe9a42514e54d216596a09fdcca7a1d0cd6e336ddeab1afa939f",
+        "a309057eb52c304dd02f098af57210d171ce22059a6aa16947a5318496d9d572",
+        "faa6ab08ca044142d00612b185b3c1ed9fef6661e83ce9c7182586be7c92f10c",
+        "a354bb0606b2f847742260beefa1b0f1a8c5ab1041b171ce4c3e63281a7f1aae",
+        "bcf4dc6447b3e417ae02c3215a967f565268872a37c10bd2de52d24f5412fa30"
+      ]
+    },
+    {
+      "scene": "lego",
+      "arm": "relative_cov_ordinary",
+      "path": "artifacts/edge_control_lego_chair_v1/videos/lego_relative_cov_ordinary_orbit_33.mp4",
+      "independently_decoded_frames": 33,
+      "distinct_decoded_frames": 33,
+      "decoded_hashes_match_production": true,
+      "native_png_hashes_match": true,
+      "camera_hashes_match": true,
+      "actual_top_level_boxes": [
+        "ftyp",
+        "moov",
+        "free",
+        "mdat"
+      ],
+      "H264_yuv420p_512x512": true,
+      "decoded_frame_sha256": [
+        "ec7b28ce1d58d42d91720d76e66af98dcbb4735b7a887528a243da88a0e2ba47",
+        "804ba577eb9a8c9ea6abcd09371e45b8dd1a5d78331d8dd928df545c3156003b",
+        "a85ff900dcb411a949002adda12a7ee23fd5c5ea91a4d9c15f6f18f6d4dba7e9",
+        "9e3589eec635555c4e6bde80bcfc70953c4168b7b4d6adc55318f46526f8ea8b",
+        "0a5e47b3ffec0ba5f0494b28fbff32bf54eeb81dc870dfaaad3ebb8d14220b8c",
+        "4f42a836b3e11cfe3525cf80548bd7edc83de0fb89d6a8e677b3bd59f50b81a4",
+        "3dd9e4cd785edd88613fade6a2dc374ea231520c9429fa0917bd8c4397159154",
+        "11de988954ece259eddff60770fb6198ca740118d6813fd9628244f8f0d36413",
+        "9a153d449be77446cae3205c9c37074bb0b00f151c71b8cb6f37ecc0e99ecc97",
+        "37ecdb8354c02ee6e7b1b7440d4d02c1a891b24ae44443e779947db25e07505c",
+        "b298d816783c057026118886ef7a955240f8e231564b3f6d3c9523fe4f0c48a8",
+        "c43945008c024a895cd9330253ec5205d5482e8e059ecf5af2a4ea2fe0031fe3",
+        "bb0a8821ade3ffa336f949c2f29a80fdebaff8e7e057393fb25884e60d6b73e7",
+        "34d4e894bfa87b76cf0a2a09240ae4e153dc7652897186481281ed5c29a3560a",
+        "d4aa807be8e2b3387459a701b6e8e1d95c0666c3f955b8d4e35956e3128813f5",
+        "ba048ad304d539cc7f8132bdbe5c7f9bbe7807f2b7140b3b4e4735498a56f440",
+        "1c194db85943adca84fe508609d30db7d163dae2b96bbdce6b60362c08fc45fb",
+        "6449c18258934903124be93b374e91c798d652d7355ca0d4fc773d86cbeff59c",
+        "7b8f9b87ee3415398e34eff158cafb24957d1f8b7863c50f0e6e92e0190cb631",
+        "b21115f323f3cedd5406189749f2572f34aacdc3fca9b498148735af10657eac",
+        "ccf36f8ad03f3f8e9433b7a5df42d6496d1e0c1a742ebf505759772b757ba920",
+        "639262ab9b87b7e2b8fd69b765bb2f6c707a39f7eee3ac4d0fa057b53d4cdb66",
+        "003c4a04d6af50a2418536b703ece408ef03bfcb3e83a502068f52ca2aef6f35",
+        "8ae5cb2cffce34c55e7a698a23d2c10038d3a13242098eca269c60f6bc457c3d",
+        "0faba9e7f0ed5aa6e2365ef8babf3440ae0e82763ef8c0e8fd8c68bb8fea60eb",
+        "a5a67e7008f9aedb01f3a566d3b268008128f9c500076ee47957cc72e2a50a56",
+        "35ff95ad088b169986628dd543a53998d358c616137a291b4d5bcd2b1c67530f",
+        "ebd63bbd2b5eabb1692b92d70d38ab388ea6c182bbc5a5ba7da097afec51f527",
+        "6e97b275da0f23f3c287943e496fddcd8bad8b066fc70382360fe35ea7fc0635",
+        "13430028e42fedab839ef13371944fc8db43534839479ea9e5e840a719b3cd39",
+        "b8177afccb6b1566b3242c23139b60b7a6cee37343e93f703a64ce7cde6413de",
+        "70ef2c4d057c070feff0a89158c82d44881076d1f00e4f5465beb9ec18e60028",
+        "8b5f9bfa448250711c8465d55d1cfa272fd8999ff68ef9b94b4bc46150b74176"
+      ]
+    },
+    {
+      "scene": "chair",
+      "arm": "B0",
+      "path": "artifacts/edge_control_lego_chair_v1/videos/chair_B0_arc0_33.mp4",
+      "independently_decoded_frames": 33,
+      "distinct_decoded_frames": 33,
+      "decoded_hashes_match_production": true,
+      "native_png_hashes_match": true,
+      "camera_hashes_match": true,
+      "actual_top_level_boxes": [
+        "ftyp",
+        "moov",
+        "free",
+        "mdat"
+      ],
+      "H264_yuv420p_512x512": true,
+      "decoded_frame_sha256": [
+        "9788622427ee415ec11e3e34bc096b2cfe6c228666bec536636ab742f4b41d12",
+        "ad888ba30570d5a5fcb790549448eaa42214b9f7344cccb9eabf94ad2083dda1",
+        "26c37fa3f0f481c32a6d475ca60b3235ba6ea6990569508d3a699011aaed3b3c",
+        "23e97a065b2d9d5078035fbffa46466986f60da5e743742ee772748bdf42e1b6",
+        "4b01d83806133cd474dae71bc110e9099e1e043bfde661804b9467a3f227f539",
+        "f61a92c687fda992ae67915e9b71f55d9160f8f696a2262a1f2d6f6da1aeff72",
+        "074e7abaf0713d56489598f845c1088c616cd95b887f8b04a9040c8d2951d14e",
+        "33faa01e682e63d36801f70693b8e7dc9d1968e89000b5a3edbd49f240b6af18",
+        "dbcd3d35428f9ba2915b6b1191a7f6e03a45f14fbc5e6bb14b16892c7184899a",
+        "14412543d229293e5d43e638eada2517ef07dd70d1ae6858eb24c1e32ecc4e35",
+        "8725982d26e21f498b6d1fba1c0900bbea8d01a8c7623414786a3a30e978fdca",
+        "bbabb00d6a20f0110e0138a2a1a7cd4065879fe767528871cd83a256ae5b255f",
+        "3e13ce361831f34d66f78a50c853e0ed8c65c30ecccfe6b4b0faaa32e356c620",
+        "7d71156535edeb52cbb923638bd7d8be060f30201b68ebe6580bd62005bae033",
+        "63045f39a7bea1b154ad70071e111a5abe6902edadd867099fcb26782c43f800",
+        "9cb834ccc496490ca24c841ed5df66262e0ec78be2ebe9278b946175caad8b03",
+        "f7221fb0343fcf3f8440e1745be3bb773874fe2312044895e34cae9712a95f7b",
+        "baf1c2ef6f4700167cd17c11cad4f7dcaababf136db06c76f41bec6b67747522",
+        "7dc4e3f9bc8b791cac493630ef6bfe02f69c68181b9aea18e16aa4f7f9d43a7b",
+        "417573c88a7288c9d775b47e78935cead4966c7572f2f1ba6a5ab352770cab83",
+        "402d90bad3b1157f131f5c5df8c544dd5af453b70a294eeb6ef06c721d26fded",
+        "1004380d85ef2ff20f9e5e6dd3b1c57f1e236291f7d6f875a8e4da78cfc133c6",
+        "a9838276e4c16f8089b79b4c8090e98bf4ebd9d4f5353f645df3d9439955591c",
+        "ef59e000fca0c937620d06629b3645bd775ace9efea1e2e75f29d8a4880502b1",
+        "822b0825432df65204ddcf8c0cdc4d96786ef7c735baf3cc1249f87b6049ceab",
+        "da42629f22d50a78ccce786b84ee97d1ad10d5ae822f03bb40a15501643ccc83",
+        "90687d7711cc5eb68d6797bf6ce6c60e365028774256fa01ba6b9891509f7007",
+        "79628e7b1e6a1bc1a15d16831ebc0fb620e2d2b53efe78f6458e0ca0c41c4d4a",
+        "519506d38551a9b14a3378cb6418b7f2991ef294a2c169108777497b9ce1fd93",
+        "8d830847c4e71672f589d6bff573c44a37f5d873a30f2462f0b8b63234d84d60",
+        "aa9d19efd9bc5963501ddc56cc6a31bf318a02133ca1becbdbdbaf8f1dbfb3d6",
+        "10a18ce223ebde01001d29c5220fd652ed9a334fea88b4194ae328d54432e0d0",
+        "debaf8a4b91192684d9af325183f7d9316555e4b1edcc8a804b925a9f0588cfa"
+      ]
+    },
+    {
+      "scene": "chair",
+      "arm": "relative_color",
+      "path": "artifacts/edge_control_lego_chair_v1/videos/chair_relative_color_arc0_33.mp4",
+      "independently_decoded_frames": 33,
+      "distinct_decoded_frames": 33,
+      "decoded_hashes_match_production": true,
+      "native_png_hashes_match": true,
+      "camera_hashes_match": true,
+      "actual_top_level_boxes": [
+        "ftyp",
+        "moov",
+        "free",
+        "mdat"
+      ],
+      "H264_yuv420p_512x512": true,
+      "decoded_frame_sha256": [
+        "bb09d7aa2f3a3ec24aa96165d15c681c0d1e9b01c1e8bda1e5532586fcd739c2",
+        "722a0ba92ba5f29d39fef33feea9d8e7c872562a305aed406d4d8d8bda5d879b",
+        "7a15c862e889ea165a75dbc5ca8c79cfa3bbcea2f240a236b0db75ebc3607c9b",
+        "6551fe67cf93534a7110716f3f4b2a3d6c0a0c3e7202abba07964a550af93073",
+        "f05000d0cb59baf1fc78b043234a5e0f2dff0c52c15fb85ec79a7261ac736805",
+        "5686238ccf92d934b54190c91607a3d73eca8fd6f45af9b64c99741e317b3343",
+        "a9f1a9bef2ca10a16a2c654745ac9838174503b429e787ca081c9bd86151fa7f",
+        "eb9ed414c67f7ed7482b29b9a364274a67e883d7fec40035d4461daa3179cd5e",
+        "0612fcda2ce5e0e4801a32d7dd518b86731ada64979d201f0cb201a85cd77262",
+        "1c8929e54529030f4c0ce7ae49ec414d94a9b1534fb82e556bf513482810eccd",
+        "204b93371c86ec1e426667424152b11e39d4fdcc2cb4abe2606b6c52455d8c85",
+        "ac4a162f83ee67b79330b0f77a62a08000599293dc74f79411a99cd97f2e364e",
+        "328b7c2a03fd7cb324cf3d0687b6b3f5717ebb9aa538ddf49bc541ae5cecb29d",
+        "e4d5a3eea95a36cc6d073ee98b37090ab465bc4612cea7d7ac8ecb49738cce33",
+        "43cf3f049885155ed6ae27f8971d1c6fd377561358ca7637fbe78ed15f666a98",
+        "2f487a8ad3aa85ed2c5e40be683117dc28fbef40d45c3827c66ea801d6c214b8",
+        "062fd392aa71021d7d2c2a7dbd54e326d28c8d24bd9435aff699a4a857442496",
+        "6051fa914d6f86e895b828c9021c04e6094cd2286cde28e82b71429f7cc0d793",
+        "9d8e7533007a8c6d5be87883cc64db5c9aa7c1356d22eb100d24844b543f162e",
+        "23a2c3a6b196b5ef264b7eaeefdc5bbf1db3a1214ca92ae8dc3023d95afa681f",
+        "186473c1a8a513c59d8b5e8380c0333f9d91db378cf931db19b54513a2defa47",
+        "4b8acde16c0494f477dcc8a35a82067bce85b71d25552434f30336e077d0d93a",
+        "c41288152f2366c239cd72cf770d16a3220b27dc9eaa8db674a65932b90d0c4c",
+        "da4bca84a0f0509b74bc2974e1cbbf8cc39b13e1c7650b9158f9d23c8b97531c",
+        "c892ae25c3dd26f39507cedf5c17bc557ed71a78504326da704f3b05a01bef03",
+        "c08b8d90ef17c09a4d34666f5c6bef9b9e04de8cb7044384d1bd1f9aff20261a",
+        "49bb1caa61155645b1b42e1e1c857a1d0db486b94febfe0e7086ae72127a74fb",
+        "2af6aabba9b9d42a1c3da6fad1bdb688e93c036db824174af45631ea63b1cb3a",
+        "119b65fd3b833cad4ec1ece464d2c8be708b83f4f2088860dacb9b3ffe303cf6",
+        "17e4914b70815bb5fd77de2abfe3c94cc740ba7973e4c3011794a2a638da5dc0",
+        "2cbaa7ee0bd41e9d1f42a2436e9ada46d0e58d8291ff3ca83a1bb29e27f8fa00",
+        "bb01871bc7ed66ed2d3d156e6a92da295104c91836de24ff860fe564c0587700",
+        "df5ab2e9d8cf2c49a4eff588b8b5047a3306f2ca4d23d3c31ac3bb80341f8538"
+      ]
+    },
+    {
+      "scene": "chair",
+      "arm": "relative_cov",
+      "path": "artifacts/edge_control_lego_chair_v1/videos/chair_relative_cov_arc0_33.mp4",
+      "independently_decoded_frames": 33,
+      "distinct_decoded_frames": 33,
+      "decoded_hashes_match_production": true,
+      "native_png_hashes_match": true,
+      "camera_hashes_match": true,
+      "actual_top_level_boxes": [
+        "ftyp",
+        "moov",
+        "free",
+        "mdat"
+      ],
+      "H264_yuv420p_512x512": true,
+      "decoded_frame_sha256": [
+        "353a748348953d9628eac2d2d7373c4e04e5f507e8add4c2562ed6cb7cac963f",
+        "9730146dba7a11034189e9714a12b4f890fa9563cd625fb1b4dc3a26443a831e",
+        "d77179b47929b157d633767dc0eb4e917708afff786597fad1d8132a1cd2669c",
+        "cd1595ebb2a36602f089af5078b20406909f90aae2db2ffeb0c38d377aa4db37",
+        "509e27d1e595237d76be389fe7403aef52a2888128d7c9aa60dc20a021e64c67",
+        "90ae757a0db10babafaaa840098c29d1cd8609e9b531fd694702e8b920e08dbe",
+        "73ba000016604fa97a29eaf9b24a40230aa4083e4001ca596ae7751ba8cf2d45",
+        "b130dbbb636e2079d2a64296489480d7f5e417f240925db292e73f045b013ac9",
+        "640e40cf6852dddfd59c99420522427b34a7077317eb6b6baef4b9f84d544be3",
+        "3dba78155f9d3a9aaa946fdb046f193a680a6f995918be905a6766f799bd7b01",
+        "7fa292c252927049b482f028ee0417f5ac0a4aceb6c19f08eff0b4bf4c754caa",
+        "49298ffd9d323f22a865b2279269be97a924e6821ee03a2668986008bbd72c13",
+        "7057baa7e4514236ad075993ec56584ff17f7736c924691931b9f73d3f9fb1ea",
+        "8aa25fd409a03b372b436cd918d55a8b39b026ffc0d21de3e10dc8d269feb44e",
+        "7771f224f01e11d56a511b57e6792f1819c71f8d94aaf79d3ececa39d148bd13",
+        "ad3898eb9359f844fdebec667251d126502b142eebddfcd1eb4b7e5160edfc41",
+        "bb15981635d906639c994aa83d28a0b2fb76fb41e64fbf12b96ec1866579a58f",
+        "3fb48975e7f3f052c1cda8970550f4ff67b841acd73f92691c11ebbf2921891c",
+        "a8fb9c9feded0be51f66c537b885b95a2d3c48c4cef031a610678c22fdb4143c",
+        "c2d1056ea6c4a44a6e3795ecd3ec60513d9ab1be2bee39865c304a683362cacb",
+        "a1d3f34d7a4c39340a340e0c7bc20841e190f2ac6ee70fd59adfe950d09048e7",
+        "517f8fcfe36557dd22ff896efd3dc7c9197c2969b657e20aabb9b71a6691f298",
+        "46d122247a4f4c5eea0f30d238a0745659d51d90881b287d6c65785b4d98a605",
+        "079f22325c342bf3407b24ad049c851c6cf329565a3a5e3bedf9f252186173ba",
+        "c717e61ca9dcaf041c1b68fb887b05580f07e3b9dde01e9021c67f89c96aff5b",
+        "71554f6cd8d23f275e664d90680012da29b8edfcf339956aae90960dcef3dae8",
+        "bfafac446742063bd08d69e0e7789a943cf5f22737207dbf6eb32626e8aa8a7a",
+        "e2f6b118df43e231184a02470080787d29a10e89148f0e7e488f6a029d0aade2",
+        "2997049d5a843d9b36c07b8fd7b523e95ca9a4878e4d539e899515befefafd06",
+        "97f5c39c3848d202f9a741d250f7e9da5fe8bd85a47bc9ade0fc83476a3de531",
+        "7bee91c5d42a6b7e9f7ba26d7a195c4cea753559d7f000e2f7c8ff27d9b1548f",
+        "a2e935b2fe971d006774302a6132c4b78e397b273928db51ea830601b4112db1",
+        "93ac3b3e8527e570e99d8531621c73b3f730508563f31152899589b194954572"
+      ]
+    },
+    {
+      "scene": "chair",
+      "arm": "relative_cov_ordinary",
+      "path": "artifacts/edge_control_lego_chair_v1/videos/chair_relative_cov_ordinary_arc0_33.mp4",
+      "independently_decoded_frames": 33,
+      "distinct_decoded_frames": 33,
+      "decoded_hashes_match_production": true,
+      "native_png_hashes_match": true,
+      "camera_hashes_match": true,
+      "actual_top_level_boxes": [
+        "ftyp",
+        "moov",
+        "free",
+        "mdat"
+      ],
+      "H264_yuv420p_512x512": true,
+      "decoded_frame_sha256": [
+        "4a5b2908ef5b7c1f8acd9221d3d5d452e62b827df790bc202f3cbcbc60425fc1",
+        "c930b6ddeb48727f781c84e1005bb9adef2e01fb6cf60c77388a5d85ef196406",
+        "a70c5b57df89399c983cf8489424c503a06edc6d46c5fe7bfb9926bc0aefac10",
+        "1af8bdc295258c60f731b5ef987133a41a490619e846f6092f9607de671a7951",
+        "38fbb0766620e64255365a23394c8d167f5d5c516a2cc1ea9c59f448212b519f",
+        "94cadbd210f7d2915461789391735e4aa08d524e3152cc20622ebf7d17444b91",
+        "cdb93dbce37f42def9832c434fb8ab0954888cac5c487d2dd90e5feb1a92680f",
+        "482c51d9355d4f8e2b893ffa1404ceaf60cdeaf45ea69e9451e2a270c68be4ec",
+        "030a4d25abbaca8abbf08ede2c5adfaef91ce0a009f650ee2fc1ed2a36423fdb",
+        "32460523e78ab3c3793594da4a522af2a55b721c99688f99aabeeefdc3faaa94",
+        "8b33d99fd1685d4a25c8de8388a4dd7e05528fe4e59789e56191a7bf365288b0",
+        "1144181da346a92dab660941252663677216b7d666a09150490ff7d1ec6a7f25",
+        "c9de9c6a393356e14d457632b60c2deba62ee76b6c6ebebadbae931d7f55197a",
+        "951aa68ae7f49a2f7f1c8c854c72e410db2747e2de7e5bddded7658c6dcf7099",
+        "39ae4d04af0af25a8d286df92bdad7f0dad66c6a145f4172947eda0f794c9839",
+        "edf532191f2daa448b8c9f1f27f363884f2609c725c042060caaae29c71fff28",
+        "d5607abb2a83ceb8e4f8db523a69fc2fb510bf54bbdcfe832fe66d84836df237",
+        "ea72bf4f79d0087ec1269b60e09a128d946957e11fb6a11a9f92e0638a737053",
+        "80e85982b583caca7c4d03fb602a2afd4111db19a46d5c8f402cc758a489a73f",
+        "190305b6cfca9e6a575d69dc83c18245d34bd64ef25a7472fdf09ffa2a1a4c00",
+        "8ae46438b44543071fdfea1fc6e4cc2c6dd8c67bbbe95a10d7ab9e56b2cccc4c",
+        "9084fae073c6edf84b2c8af05d7d9f96d275aca774664e1d1c896f58a0129f56",
+        "a684e7dedac5904a032514195cca4806668593b73d85b93be4cc4a1e128a471b",
+        "b404dcf2251fbae816dd378f7bce12eab8ad9c588c76f16b0a9c225dc2af2c04",
+        "f346fcb4fe421d002f256d69ce2dafdac34b7bb2448848130d1564c52a7e2064",
+        "c8ac7eb3c1b4c1445d9896407751005731972b1f84fd89b069ae598ef95281c3",
+        "68ba89456b40622bbab8da3fbe78b0d897f61ada3bfcbc0e7849ae4767961ace",
+        "2dbd90388d7640bc86d874a76e6b4c9634b26b54fbc9edc321f40bb7aa816eef",
+        "77cd2028eca0be29906795b61d9ff73b90cf5a1a7d872a458e354401963410c8",
+        "6f8afdba51f9aeb9470a1dc8a5d328a1d250837c962dec0559d3728e62f372f3",
+        "c53bb399d1adefd0c4fbb8df9970e8f30cdcaab2dcddc9d287e46a56138d8a06",
+        "63ae7b2d3314756f762f5ff4e68d74598ba50a2aa470d7e002dd763856ff1bcf",
+        "75217b8f4baf11193fca99b18fcb31f727b4d0158d3c6c5bc5798f171dbd0b12"
+      ]
+    },
+    {
+      "scene": "chair",
+      "arm": "B0",
+      "path": "artifacts/edge_control_lego_chair_v1/videos/chair_B0_orbit_33.mp4",
+      "independently_decoded_frames": 33,
+      "distinct_decoded_frames": 33,
+      "decoded_hashes_match_production": true,
+      "native_png_hashes_match": true,
+      "camera_hashes_match": true,
+      "actual_top_level_boxes": [
+        "ftyp",
+        "moov",
+        "free",
+        "mdat"
+      ],
+      "H264_yuv420p_512x512": true,
+      "decoded_frame_sha256": [
+        "f468cfa8c973fabe461c9694b1eadca15dc20950f9fac0979e10fb1b6d6755ac",
+        "a22be848e97f5b929897ef8e8c24d076fd24ce0acd044c9cdbf08204bb7641f6",
+        "e3110eaa7f4528af15878a016b6abe402f2e0a417f12a21469d0ff31b806f20c",
+        "a12ead63caa1b1921c8bfd8f7925695f7e60b3b8fb8ac0cca64d5da5ac98a811",
+        "93402f814c786ce140bd51ada96fea2f52e9d94dc93080a13c684b292fd5035a",
+        "9cb644fd37c6ce9be5ce3c47f69aec48e6c7ff96c2c161ec14bd6605b3beefb4",
+        "5a6cac5d3bff55ccb7a6e31f667cfb0c5f939b90e63723ff222a296d49f1031f",
+        "159328ea35664004323ed1a0493bf9fdf8cbc85b434c834cfae807fb3683bbb2",
+        "c3306b0f890713557e35dd686208083cbed42b816ec8c12f8bfcb8bf85e07fc9",
+        "1cddc9c044b547849680cbc4b06bcfe2637f9fb0a8bae207eef7747a27bfdff2",
+        "af8e5a2f1dab999e69e6f415308a0f739ca6ba0c43cc0c3b9a8f7db7b1b83c60",
+        "45182bb0ce450701ce99a2fa609f5f5d2c3f681b57f888942a4c57619bee650b",
+        "fd847efc789b9265cc5d4c03f090bc75d7c91b34f65a3b0c44bf1b66de67a478",
+        "4b267785d4ac4f8f78b315829998ac254f39f95e96ca3179ecc05217e8f184b7",
+        "2b5f7b0ae6f1130d0b9e729679a84967c06b590c3613f2fbd11159a1df090487",
+        "afa05502279a14476d494ebdb82533dbd6ae5d40c548fffbe19e23058e1531fb",
+        "79407e2ed3903d50ffb9c25bd381318bc207f2a36c0021de2d37bd0260839590",
+        "0961dd33b1d6532537b23ab9f4dcd5326f6e10a680e73cab0bc4119b9ac7a027",
+        "ed08bf564de33ff90b9f132d39e4964227cd69f645ef5ae7863e08c6d0b0839e",
+        "c460befb89ffab7932c87d12e3602944d722f1b617a2118e559d8871d95e75ef",
+        "ed6d87725f0a83fee9e6faa32b16fbd24c51524cdfc64cab590ed53c6241aaad",
+        "aad8efc273fd597b6371ee9bff4f4a1572f9c249547ad78b9677c0ce044323a1",
+        "45fed3c16c8f2a0918143a65e72d03a66963d085fc6785ce014f0887a728f3dc",
+        "0dae15b879e1a13228838612efa0f9c4c130bd29125cd2c86af188c7b01c30b9",
+        "c506878a6ed4536389eaf6ed9b467433612ce104518bea6e017c351319186fa3",
+        "441eef1ff2e1457711a7ca580d36e5faa5abf14ccaa29db037b340a4975aa972",
+        "f826acc6f688d904fb6b60a828c0642c56d6e8228e0697ef6f1d87fb99a1eaf9",
+        "2dc6a1fd161d3aec3961889c842b5823b490eeab69a1d618bb59eadc15f05013",
+        "8a01209ae9484c7a4c26f19ad42ca64ddfa3cd49ed802495a0e5ac37f25ed5db",
+        "487eaa4dd525e6a552f4f47dd65ebd376fc339a4498e615c103e9e1224b90028",
+        "eba94e5cd7ced49369ea4c6b3d65fcd5a5f5b03475ec08286a6fe83323bf16b6",
+        "9160c2572415a045d3c52b4978272492dc04c69815ee4972ae07e9f7712a565a",
+        "598fdfd9ff9497ae6f496b07c38cecb3a68c21c41cc8980d656635b134dc5aa5"
+      ]
+    },
+    {
+      "scene": "chair",
+      "arm": "relative_color",
+      "path": "artifacts/edge_control_lego_chair_v1/videos/chair_relative_color_orbit_33.mp4",
+      "independently_decoded_frames": 33,
+      "distinct_decoded_frames": 33,
+      "decoded_hashes_match_production": true,
+      "native_png_hashes_match": true,
+      "camera_hashes_match": true,
+      "actual_top_level_boxes": [
+        "ftyp",
+        "moov",
+        "free",
+        "mdat"
+      ],
+      "H264_yuv420p_512x512": true,
+      "decoded_frame_sha256": [
+        "e38edc8166ca6d216f6b7b9f3825aeed765859e5de76f8aa6876782924bac08f",
+        "2d4c37b80daee6b93cf8218882c3113345df438bb44b692abd91bf70cb85de03",
+        "6301ecf48157e30a624808ecd0afab0f7a32cd7f237d98a2ebb517f6668fbd94",
+        "2134fa17b30dd58a28dc81fee65efd4e565dd8f63e13420feb8cf6504a8e6f17",
+        "08f7fa9d39f5e70422588a1af85a913a1ce61b2e7b2f3b6b0dd2d80c242998e9",
+        "17e555d104dfb843b05b225748beb750e285a4f4a182a2f5d598c3051f9c118f",
+        "39d9b041f2cce3fbd57807bb18f352ac765aa027241984967b19ca081cbf446d",
+        "ebd44c48cd9ac83f00865fe65fb3e5196aa5d2b6769f2b4d6e8366f92a3e80c5",
+        "c7533a6ce4fa8dff3a1955b9b02c58ea1bd70b305b71838c7c154f432120e062",
+        "6a1914de507864bec25a89659ea93e9900313a3dab8948022c4022573780e545",
+        "d5be1784af7aed0d203d04543279060b7c77af494a91cbdcc703f635beefbdf6",
+        "aee6ab3d1c80c0dcb66b8ad2041e5f2e3661ddb682dc926e430a85af00d6f6f5",
+        "590a26e7a6e9da048e7d76470ca54059682a9cb20a25b53dc5f1d5c61995dac4",
+        "65de4aa5026da33f93d6e63f4fdecc06089cfe233c3daa5a8c1f1ecebaeda195",
+        "5fdc915c228f475a74dfa524bc4f753b0f8ed96ce8387f2e6aa0a5f6feb2fd7b",
+        "e02e9d6c25ed0e0e8be19387b6924fb5aec4442df2d2a6410fdbd22ab1b4f0a1",
+        "9b7cf0935e7dc9a2e208c9604520675afc94180dd90fa2da680d3b89f2f94734",
+        "f08f91f712bcc9f606c3134d3a979f4c5af14d69c9769b57174a52d1b85f326c",
+        "611e0c32fde92235922fa7892ef26c914229d824c70f2d68f7bca8eefa71286e",
+        "a3c2174431ba01489264af443b9de4d710c0b660b929c338e87f91c4f2a6b7dc",
+        "edbbb636b1c39a757893047144349dfae19a21d31232ea9ce1d49e4d72306b76",
+        "16061bf6ef06afc1ccf6089e5dddf4dffdf3f645f9917023077cceb14e891d05",
+        "f053c1725fe8134507336fd51fc3a2c681de6b76bb3068abccec8d5381346755",
+        "f89375821a4f36526cb968bb218cba3333377cda00e1e191adfce9acd162f5f6",
+        "2ee7184c9ce8bfedb22d358b01e0e4a146e6ab08c3758b044cc50092f1a474e2",
+        "d4ae46ac742307898233912159dc5073230e1330de5bda146a5b2aeb26c9d525",
+        "427187b6e46bc60547d3512a30948862731e7d2aecd70e56b4e2ab64e0dfae6f",
+        "7fd00e9415c4fcf2e106c241b3f7f1e1ba3b91a5a6c2567f066f5075fd4e2bfd",
+        "fe0fb019d3c51ba061968db058de9fa57b99ad5bf0f902da1a6f9a2980bb72d2",
+        "1651c9372254bd86bad8ce6b9d71137b8041a7001abe8dd56e39b3a5ac93bf43",
+        "5f0c2dfcae72cadb83c9d06ad2764b65738338439fce86df8108e2d5388b4513",
+        "fd62803d44edf305f26c76f1b6815523515e9fc112c80321f6a468f7c00de8c2",
+        "f2679ab92935d05e4b362906c950b894ff4a2801fffc91406f9f8470c848b881"
+      ]
+    },
+    {
+      "scene": "chair",
+      "arm": "relative_cov",
+      "path": "artifacts/edge_control_lego_chair_v1/videos/chair_relative_cov_orbit_33.mp4",
+      "independently_decoded_frames": 33,
+      "distinct_decoded_frames": 33,
+      "decoded_hashes_match_production": true,
+      "native_png_hashes_match": true,
+      "camera_hashes_match": true,
+      "actual_top_level_boxes": [
+        "ftyp",
+        "moov",
+        "free",
+        "mdat"
+      ],
+      "H264_yuv420p_512x512": true,
+      "decoded_frame_sha256": [
+        "a1cd0981b2bdd90c38b0c74f84227a95253748899c23f332bcac6267c88ff03f",
+        "11c5a06ac6f8cd214a0816c5c4ff97b5be99dc76b692a1d93ced51bbed03f8ac",
+        "95fcbbe3c226252f852d83a9290593ca12170fb0ab22aa5cb63848af2f77684e",
+        "6b9be60f4edf2223d1f9a4f9533d55e6f4b4cc44d181495963d4ce3ce9ceaa2a",
+        "fc13957b8de25fb410ed91d637cecb7d483b55d9174f4f3f621448416dfe04f7",
+        "ffa6a6835d36a7dc111b084b050b3358337c3f228c69bd27eb16e50d9c117c50",
+        "41ceb92ee9e1a61ba5cb3dfa389e352ba61ace1c828842d672963d036bced8f9",
+        "83250f6144fcf78dcc7e98fd304e083398831d73d103ad6d1b546e95ba388324",
+        "7edeefe57bc7f9eb2bd75aeda531ae2cd9607c078de62a6f94fffa07bf0a74db",
+        "19846c50eb746127a963338ffa68c4c5d547b75719fe0ec41d7fe6dd06c949fb",
+        "097e175cd36fc40626658461823cf5910ac2841ebf25f316f38fb5fa38befb9c",
+        "2979cd3ab9bd7b39ccda77f64bdbd1df9f031be74561085b533d9afbd356add0",
+        "ae5f9112cf221e761e5d2841559961b3d8d637566626fb9b43a34ffc491de1db",
+        "df9de7de0fe9ea7cf9de27d42a392c5c5d85c3650885be170ef693ff5d490866",
+        "25a032df76b1cbb692370c49a1e6f0da3992d80f7e0e5f9dadb92d8b5fe7c4e7",
+        "3e1d2b660a8a180be9a4bbd882ff71b9898faf4b38a2d88e2942483dd9d853fe",
+        "b64a8b7a7d0643c3d0258131f5d6bcf74e6cdba7cc6b9d975f3dbbd23fd3f02d",
+        "7ebfe1a5908ad099876041b24f4188fe8a1ebde1b7b679226c2b1dc680e52907",
+        "07c65054ad2d8f7dc574c3db3539d117d2ba5ca1b4c9dd2f09b1563d7eda815c",
+        "1b0be8ad35af0770ff91b9e21410a1a8b139ed2706a19f3717cfac7c06368b57",
+        "49c9bcf004c2210fdfefcf70195a30d5caff8ad1ba6528e63da35930998bb427",
+        "31225b3fc36668f7450ed2e1f5049c0b40e56f9adf873e0852fa0f96a43351c9",
+        "665ecf7a1c3ea7211c26ab4636aa43a8be85224bcc4d345a717cd1ad7d017713",
+        "e25b6c689f360a3f2d8a6732c4d3ff187e5712ad93030ca888c6356f51df5458",
+        "1f950641936aac8083445068732e7a40df0b1a502dd234c4bcfe3823a7b484e4",
+        "d9d82820601f787828d9a25d2d82f89aaec5a5de020229a9d9eb22f8697f287d",
+        "95c4159a35903d8d5952059aad29b5468003674ba741ebbc55c6b42ac0845fea",
+        "14b8e4b531ae583cae604fde2c6b402d24c7ef30be45425942cf62665db04742",
+        "be8644049082677fe461387733966733d5c4412f5d5e247cc8adcf75b1c19283",
+        "be2c985834ac077fe930f2a96654fd83746561219e720f6c8dfe6d7f311fd42a",
+        "6461359a2cc00fbda17a9b6e1619d3dc813ffb4d65c7316582988c30e325bbc0",
+        "f39ff4d37845a47a6f120d78b73b9a92fe740d84ab001838edfc58198838c8ea",
+        "026f8257aed56d8d79149e4d9f52b7c14af9ab49756f5ee0561855bf1ffc4264"
+      ]
+    },
+    {
+      "scene": "chair",
+      "arm": "relative_cov_ordinary",
+      "path": "artifacts/edge_control_lego_chair_v1/videos/chair_relative_cov_ordinary_orbit_33.mp4",
+      "independently_decoded_frames": 33,
+      "distinct_decoded_frames": 33,
+      "decoded_hashes_match_production": true,
+      "native_png_hashes_match": true,
+      "camera_hashes_match": true,
+      "actual_top_level_boxes": [
+        "ftyp",
+        "moov",
+        "free",
+        "mdat"
+      ],
+      "H264_yuv420p_512x512": true,
+      "decoded_frame_sha256": [
+        "9e5b787231f71ef4e2e447c511b5790bf8f85542310b276dcfbc760d0e127242",
+        "09702e2cec2d176368f487249a58ddf8d468e4f77bcea451df462903666da5d0",
+        "621e41dfb0c6e4f1c07fb0d38b2d2f6b1bd7c00b01e316a0ff8920504a166e7f",
+        "15dd623be76be3507670e7b14c780debb6493e965cd43cfc19bb2be0d9d51765",
+        "d09011b4ad9ac5fc8bb8f5e1088db1f80ecc29d3cfe8c30a39d3758439afbd5b",
+        "75b518dac37d6821c0cb778664f68cf4174567d161ef285ef25a345351948588",
+        "3970b0f4f7869617f42916fdf828cb2da05f28f08e8d512e123c2d054c8738d5",
+        "0a7a850af83cae63929a355fd42e6d2f765bfbd0ca567a594af88d1058f5eb36",
+        "35c41a3e801301b8a173a0990e7deb23fd130a722922fd8a8d2fc3b4de037458",
+        "239cbc79ad6aa2bb2d651ea70b66ec9a0ef3a286383db75158c0fb9936a5822a",
+        "0e9e1f5712d79ef3493868773a5c6a0509d5c4673c4b6c20b8999268bac998d0",
+        "97dbdcd1f705dd4f5b3ffd56ce85ff3d15cfc82220bb525de3fd5b29c99c3182",
+        "ad25c898fbcba54738bbf1837804e4cd5f3a10c9b1b9d08d056407401d48dd7c",
+        "3b13cfd3481614cd712405c9ef58bbd481f3c645456533adcaeee77336fb2cd2",
+        "c5bb64f00eb4917715f7cca8be6f5b1ffeefbc43ce00960739ce43dc3c347ac6",
+        "ea813bb93c4072b6590b14cf0d368358f7a15b4925e496a21a529201527c5aa3",
+        "7b6c8d2ed74c336d009c999461bb588d1a6e06187a4c09541bedeae1a52ddd9f",
+        "71a0307d93eb871c089b3b07ec890bb2ab51105fca51386dbc02886b24932578",
+        "aa977ab18b0c790b691680c281fc6e9882dc5aa83bb4c3e1d208343794cf5389",
+        "63db7bfd12845b8d5b85e492ac9bc41e4fae80b140b6cc8d99ba652478ae6881",
+        "81e5f30842146febbf4b431d80c31eea53a1ab6caaa2cf477455149ef97306d3",
+        "ef74bebb95c1697a77c43fc775a798fd768d81112e843f41a5f42a063ee91d36",
+        "1019d8a8d21cf790796264a0d04a332a1ae753eb7cc16a307a0998c1715371ff",
+        "48d61b6bf0d30c79a39fa67cf85f2e570152b804571813b262fb7be72121f00f",
+        "6e2540cb81466c8aebb5fce0ff454479fe4817019d989ce5c91d15bb71f72b92",
+        "4bbf3b24decb09a0592e0e6d33d50c3c1dedfcab1112d21d574591b6ac7a711b",
+        "3846f54f9f110933082cf1d081eeda20d26415c1e8a2d8b59d3d2b597ed4795f",
+        "419a9e6ef2abceffae7abc91105f10501d6b6452c62d8f0085ceaaff9eebf9c9",
+        "c5d52e4a2f70ade2d3aa9ac8279095cd596d1aec9ed2e99af881d9bd53e91921",
+        "d1837371818840899d8f0fda4071fe0dbafe47882c94805c2fd5d267629e7ff3",
+        "82f257cf02968fa57890db0b0b5bf3f88adafc2d6ee35025fe9d6a278b92b2a7",
+        "ef1128f128a3d1ec621151c62ccde754bd9d22cef3e6545c35fe1a4c6acf96ea",
+        "c103ddc1e040b2c1820bfe459a583942f4b3946ef591272298fb13b4ba63eeee"
+      ]
+    }
+  ],
+  "CPU_audit_seconds": 14.53588020382449,
+  "visual_review": {
+    "generated_figures_inspected": [
+      {
+        "path": "artifacts/edge_control_lego_chair_v1/figures/lego_edit-holdout_fourview_contactsheet.jpg",
+        "sha256": "6bf2ebc49d0b77a97d3f37fc53c89ceb4eddc948de122319bd7eae4bb0ca1e77"
+      },
+      {
+        "path": "artifacts/edge_control_lego_chair_v1/figures/chair_edit-holdout_fourview_contactsheet.jpg",
+        "sha256": "ef9cc2f3e6b8415eedcf2621e681613b8fc89a7e4b39be069fa2ead9b61f2787"
+      },
+      {
+        "path": "artifacts/edge_control_lego_chair_v1/figures/lego_edit-holdout_r_000_same_camera_edge_zoom.png",
+        "sha256": "84a8a89b5f8cdcc7950a18b00040470a7d6100dfe02623ed6d7b40f9938bb340"
+      },
+      {
+        "path": "artifacts/edge_control_lego_chair_v1/figures/chair_edit-holdout_r_000_same_camera_edge_zoom.png",
+        "sha256": "44fda5408491f891d5548a7a4d8bf48ce656b3adef2a8b6b175c8ac9912ce35f"
+      }
+    ],
+    "observations": [
+      "Both scenes show actual distinct frozen views with aligned reference/B0/ordinary/local/covariance panels and separately annotated full-model-T candidate overlay.",
+      "Exact subplot keys are legible, and native crop pixels remain visible inside wider labelled cells.",
+      "B0 is already visually close in these sheets; differences from local edits are subtle at this scale. These inspections do not establish a substantial visual superiority.",
+      "Chair r_000 has no validated width profile; its target-defined fallback ROI is broad, and null width is retained."
+    ],
+    "independent_human_visual_GO": "PENDING"
+  },
+  "access_policy": {
+    "GPU_used": false,
+    "original_photos_read": false,
+    "original_TEST_images_read": false,
+    "source_model_read_only": true,
+    "generated_native_RGB_PNGs_read": true,
+    "read_only_original_ffmpeg_used": "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/out/object_neighborhood_edge_control_v1/deps/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2"
+  },
+  "limitations": [
+    "Ground-truth-dependent per-view band/foreground/outline metrics were not independently recomputed from original photos, because this audit explicitly forbids original photo reads; their serialized per-view aggregate arithmetic was verified.",
+    "No new native render or optimization was run in this CPU audit.",
+    "Physical contact identity, new independent formal TEST and human visual GO are not established."
+  ],
+  "initial_numeric_probe": {
+    "relative_tolerance_used": 1e-07,
+    "float64_vs_float32_flags": [
+      {
+        "key": "lego:objective_arithmetic:band2d_cov:26",
+        "detail": null
+      },
+      {
+        "key": "chair:objective_arithmetic:relative_cov_ordinary:25",
+        "detail": null
+      },
+      {
+        "key": "chair:objective_arithmetic:relative_cov_ordinary:32",
+        "detail": null
+      },
+      {
+        "key": "chair:objective_arithmetic:relative_cov_ordinary_time:11",
+        "detail": null
+      },
+      {
+        "key": "chair:objective_arithmetic:relative_cov_ordinary_time:24",
+        "detail": null
+      },
+      {
+        "key": "chair:objective_arithmetic:relative_cov_ordinary_time:24",
+        "detail": null
+      },
+      {
+        "key": "chair:objective_arithmetic:relative_cov_ordinary_time:26",
+        "detail": null
+      },
+      {
+        "key": "chair:objective_arithmetic:band2d_cov:36",
+        "detail": null
+      },
+      {
+        "key": "chair:objective_arithmetic:band2d_cov:38",
+        "detail": null
+      },
+      {
+        "key": "chair:objective_arithmetic:band2d_cov:38",
+        "detail": null
+      }
+    ],
+    "explanation": "Component .item() values are float32, while the first probe recombined them with float64 arithmetic. Reconstructing the actual float32 multiplication/addition order exactly matches every5232 stored objective value. No scientific threshold or result was altered."
+  },
+  "objective_arithmetic_calibration": {
+    "perview_losses": 5232,
+    "bit_exact_native_float32_matches": 5232,
+    "max_native_float32_residual": 0.0,
+    "max_float64_reconstruction_residual": 6.361515259012407e-09,
+    "float32_epsilon": 1.1920928955078125e-07,
+    "actual_operation_order": "float32(float32(rgb)+float32(coverage_weight)*float32(coverage))+float32(cov_regularizer)*float32(cov_reg)"
+  },
+  "profile_and_common_width_audit": {
+    "perview_profile_records_checked": 400,
+    "invalid_widths_remain_null": true,
+    "common_by_scene": {
+      "lego": {
+        "profiles_total": 28,
+        "by_kind": {
+          "outline": 10,
+          "internal": 18
+        },
+        "views": [
+          {
+            "key": "r_000",
+            "count": 3,
+            "by_kind": {
+              "outline": 3
+            }
+          },
+          {
+            "key": "r_008",
+            "count": 2,
+            "by_kind": {
+              "internal": 2
+            }
+          },
+          {
+            "key": "r_018",
+            "count": 3,
+            "by_kind": {
+              "internal": 3
+            }
+          },
+          {
+            "key": "r_030",
+            "count": 2,
+            "by_kind": {
+              "outline": 1,
+              "internal": 1
+            }
+          },
+          {
+            "key": "r_048",
+            "count": 6,
+            "by_kind": {
+              "internal": 5,
+              "outline": 1
+            }
+          },
+          {
+            "key": "r_060",
+            "count": 7,
+            "by_kind": {
+              "outline": 4,
+              "internal": 3
+            }
+          },
+          {
+            "key": "r_080",
+            "count": 0,
+            "by_kind": {}
+          },
+          {
+            "key": "r_098",
+            "count": 5,
+            "by_kind": {
+              "internal": 4,
+              "outline": 1
+            }
+          }
+        ],
+        "perview_then_macro_common_width_arithmetic_verified": true
+      },
+      "chair": {
+        "profiles_total": 5,
+        "by_kind": {
+          "internal": 4,
+          "outline": 1
+        },
+        "views": [
+          {
+            "key": "r_000",
+            "count": 0,
+            "by_kind": {}
+          },
+          {
+            "key": "r_008",
+            "count": 0,
+            "by_kind": {}
+          },
+          {
+            "key": "r_018",
+            "count": 1,
+            "by_kind": {
+              "internal": 1
+            }
+          },
+          {
+            "key": "r_030",
+            "count": 1,
+            "by_kind": {
+              "internal": 1
+            }
+          },
+          {
+            "key": "r_048",
+            "count": 1,
+            "by_kind": {
+              "outline": 1
+            }
+          },
+          {
+            "key": "r_060",
+            "count": 1,
+            "by_kind": {
+              "internal": 1
+            }
+          },
+          {
+            "key": "r_080",
+            "count": 1,
+            "by_kind": {
+              "internal": 1
+            }
+          },
+          {
+            "key": "r_098",
+            "count": 0,
+            "by_kind": {}
+          }
+        ],
+        "perview_then_macro_common_width_arithmetic_verified": true
+      }
+    },
+    "original_photos_read": false
+  },
+  "finalized_utc": "2026-10-05T14:27:54Z"
+}

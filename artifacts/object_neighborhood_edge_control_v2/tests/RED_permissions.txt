@@ -1,0 +1,26 @@
+test_dual_valid_arbitrary_y_and_normalization (test_contract.ContractTests) ... ok
+test_readonly_boundary (test_contract.ContractTests) ... ok
+test_reclassify_extra_supervision (test_contract.ContractTests) ... ok
+test_roles_reject_transform_leak (test_contract.ContractTests) ... ok
+test_all_selected_operator_with_clamp_and_non_candidate_gt_one (test_native_v2.NativeV2Tests) ... ok
+test_continuous_coverage_loss_backpropagates_covariance (test_native_v2.NativeV2Tests) ... ok
+test_permissions (unittest.loader._FailedTest) ... ERROR
+
+======================================================================
+ERROR: test_permissions (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_permissions
+Traceback (most recent call last):
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/unittest/loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/home/u00134/bin/miniconda3/envs/vfsdgs/lib/python3.9/unittest/loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "/home/u00134/3dgs_line/object_neighborhood_edge_control_v2/experiments/object_neighborhood_edge_control_v2/tests/test_permissions.py", line 5, in <module>
+    from experiments import project_parameters,PARAMS
+ImportError: cannot import name 'project_parameters' from 'experiments' (/home/u00134/3dgs_line/object_neighborhood_edge_control_v2/experiments/object_neighborhood_edge_control_v2/src/experiments.py)
+
+
+----------------------------------------------------------------------
+Ran 7 tests in 1.015s
+
+FAILED (errors=1)

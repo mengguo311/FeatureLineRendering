@@ -1,0 +1,153 @@
+{
+  "scene": "chair",
+  "original_N": 256690,
+  "source_views": 8,
+  "marked_pixels": 178125,
+  "received_pixels": 178052,
+  "unassignable_pixels": 73,
+  "eligible_positive_vote_IDs": 47303,
+  "sets": {
+    "top100": {
+      "count": 100,
+      "IDs_sha256": "6fc9eed1a1642af74400609e9f6b8a4b51720ca458887640508dfb91415c33ff"
+    },
+    "top500": {
+      "count": 500,
+      "IDs_sha256": "1369dbcaa161832a536c91594c7d2136dbe0833f1292b685838abfbdb36dac0c"
+    },
+    "top2000": {
+      "count": 2000,
+      "IDs_sha256": "aed0c9c92ce0a1b1ebf7d2f1c9ca98bc7277021489ad69c71ca360e159a151a1"
+    },
+    "views_ge2": {
+      "count": 19925,
+      "IDs_sha256": "bf743419809318070dbee97c8079623e9dbdbc32ed213cb249089a58e50c27bc"
+    },
+    "views_ge4": {
+      "count": 4152,
+      "IDs_sha256": "f8639caba0c76f511f72d2fa715eccb2a42971e5cd2d8bc29be0a34e3bb3a2c3"
+    },
+    "views_ge6": {
+      "count": 907,
+      "IDs_sha256": "d1f49045e6a86304d98863e2f20a44a0398aede51f482c3816ec894c64b1aba8"
+    },
+    "center_top500": {
+      "count": 500,
+      "IDs_sha256": "7c956c344ab1be9cd901e4228096931e7577d979b00160ee3aea97039a72b1ba"
+    },
+    "nofallback_top500": {
+      "count": 500,
+      "IDs_sha256": "80d63c65711973832a3826e816555dda42431239f9d29052125b319384bec3f1"
+    },
+    "random_top500": {
+      "count": 500,
+      "IDs_sha256": "bf81e91f9f360bc56dc23cf8ca5712af1356d58b06351a813c73e73960dc67bd"
+    },
+    "center_top2000": {
+      "count": 2000,
+      "IDs_sha256": "f80c3009da1bfdd7d5e68f67750fcd7126a94925233770896028097d5025c13a"
+    },
+    "nofallback_top2000": {
+      "count": 2000,
+      "IDs_sha256": "71433493a176a062910d180018d063c6590de0bd1fb8e1390f8e0d4925e20f7d"
+    },
+    "random_top2000": {
+      "count": 2000,
+      "IDs_sha256": "ee52fa3c2b77a09448df36002f971b3e93a57455377abf8e578ef61eb35ceb51"
+    }
+  },
+  "main_vs_center_top500_jaccard": 0.6,
+  "main_vs_center_top2000_jaccard": 0.6515276630883567,
+  "random_check": {
+    "500": {
+      "count": 500,
+      "same_count": true,
+      "summed_source_visible_mass_relative_error": 0.0003566342939138458,
+      "overlap_count": 58,
+      "sampling": "all original rows with same .1-wide log source-visible-mass bin, without replacement"
+    },
+    "2000": {
+      "count": 2000,
+      "same_count": true,
+      "summed_source_visible_mass_relative_error": 0.0004807579133353138,
+      "overlap_count": 376,
+      "sampling": "all original rows with same .1-wide log source-visible-mass bin, without replacement"
+    }
+  },
+  "drop_one_view_stability": [
+    {
+      "dropped": "r_007",
+      "top500_jaccard": 0.7857142857142857,
+      "top2000_jaccard": 0.8173557473875511
+    },
+    {
+      "dropped": "r_033",
+      "top500_jaccard": 0.7605633802816901,
+      "top2000_jaccard": 0.8140589569160998
+    },
+    {
+      "dropped": "r_059",
+      "top500_jaccard": 0.763668430335097,
+      "top2000_jaccard": 0.7406440382941688
+    },
+    {
+      "dropped": "r_086",
+      "top500_jaccard": 0.7482517482517482,
+      "top2000_jaccard": 0.7857142857142857
+    },
+    {
+      "dropped": "r_000",
+      "top500_jaccard": 0.7857142857142857,
+      "top2000_jaccard": 0.8066847335140018
+    },
+    {
+      "dropped": "r_008",
+      "top500_jaccard": 0.8621973929236499,
+      "top2000_jaccard": 0.7628911414720141
+    },
+    {
+      "dropped": "r_018",
+      "top500_jaccard": 0.8832391713747646,
+      "top2000_jaccard": 0.8042399639152007
+    },
+    {
+      "dropped": "r_030",
+      "top500_jaccard": 0.7793594306049823,
+      "top2000_jaccard": 0.774622892635315
+    }
+  ],
+  "K_four_view_aggregate_sensitivity": [
+    {
+      "K": 16,
+      "views": [
+        "r_007",
+        "r_000",
+        "r_018",
+        "r_030"
+      ],
+      "changed_aggregate_vote_IDs": 17909,
+      "top500_jaccard": 0.48588410104011887,
+      "top2000_jaccard": 0.5060240963855421
+    },
+    {
+      "K": 32,
+      "views": [
+        "r_007",
+        "r_000",
+        "r_018",
+        "r_030"
+      ],
+      "changed_aggregate_vote_IDs": 28671,
+      "top500_jaccard": 0.28369704749679076,
+      "top2000_jaccard": 0.299545159194282
+    }
+  ],
+  "vote_archive": "artifacts/gaer_rgb_union_voting_v01/downloads/chair_votes_all_original.npz",
+  "top100_csv": "artifacts/gaer_rgb_union_voting_v01/downloads/chair_top100.csv",
+  "files": [
+    "artifacts/gaer_rgb_union_voting_v01/downloads/chair_votes_all_original.npz",
+    "artifacts/gaer_rgb_union_voting_v01/downloads/chair_top100.csv"
+  ],
+  "unit": "chair_aggregate",
+  "end_to_end_seconds": 1.3244122921023518
+}

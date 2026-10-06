@@ -1,0 +1,2156 @@
+{
+  "source_sha256": "4a5fbb9e8095d8a9f0b730c361cd580a7bbdeb89203cf4a370c78b557fae1910",
+  "original_input_freeze_sha256": "f55deb435763d55ee30afe1a7a95a113204ee51bf97db3729b9ad68643e2e2dd",
+  "extra_constructs": [
+    {
+      "id": "fully_occluded_full_frame",
+      "path": "out/edge_responsibility_lego_chair_v2/appendix_constructs/fully_occluded_full_frame.npz",
+      "sha256": "c6941811e3797b0bfef24fe59d611b0664bf43ab93846b5a2c279498dd5f0eb9",
+      "group": [
+        4,
+        5
+      ],
+      "independent_construct_truth": "Four very wide .99 front Gaussians trigger native early stop before both rear Gaussians on every frame pixel.",
+      "sample": {
+        "id": "fully_occluded_full_frame",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          1.0,
+          0.0
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "u": [
+          1.0,
+          0,
+          0
+        ],
+        "c_star": [
+          0.5,
+          0.5,
+          0.5
+        ]
+      }
+    },
+    {
+      "id": "signed_cancellation",
+      "path": "out/edge_responsibility_lego_chair_v2/appendix_constructs/signed_cancellation.npz",
+      "sha256": "d337d4d7a07eeddb8d67ffe0a6d9a379b234a9d0b4814598e6e5efb9283b787b",
+      "group": [
+        0,
+        1
+      ],
+      "independent_construct_truth": "Projected front dark/bright and rear bright/dark pairs have opposite signed color terms; front opacity .4 and conditional rear 2/3 match center weights.",
+      "sample": {
+        "id": "signed_cancellation",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          1.0,
+          0.0
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "u": [
+          1.0,
+          0,
+          0
+        ],
+        "c_star": [
+          0.5,
+          0.5,
+          0.5
+        ]
+      }
+    }
+  ],
+  "existing_constructs": [
+    {
+      "id": "constant_plane_0",
+      "kind": "constant_plane",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/constant_plane_default.npz",
+      "model_sha256": "55d16f507ea18c3a4a00708b304bdcbafae282745edf89832d1109e45ddd3176",
+      "sample": {
+        "id": "constant_plane_0",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          1.0,
+          0.0
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "clear_color_transition",
+        "expected_visible_rgb": false,
+        "expected_geometry": false,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": false,
+      "expected_geometry": false,
+      "expected_semantic_instance_boundary": false,
+      "expected_accept": false,
+      "texture_is_legitimate_detail": false
+    },
+    {
+      "id": "constant_plane_1",
+      "kind": "constant_plane",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            0.9920144948391232,
+            -0.11971220728891936,
+            0.03970175632253664,
+            -0.11910526896760992
+          ],
+          [
+            0.11961645029170932,
+            0.9928086358538663,
+            0.004787211463496218,
+            -0.014361634390488655
+          ],
+          [
+            -0.03998933418663416,
+            0.0,
+            0.9992001066609779,
+            0.0023996800170662524
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/constant_plane_default.npz",
+      "model_sha256": "55d16f507ea18c3a4a00708b304bdcbafae282745edf89832d1109e45ddd3176",
+      "sample": {
+        "id": "constant_plane_1",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          0.9928086358538664,
+          0.11971220728891847
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "clear_color_transition",
+        "expected_visible_rgb": false,
+        "expected_geometry": false,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": false,
+      "expected_geometry": false,
+      "expected_semantic_instance_boundary": false,
+      "expected_accept": false,
+      "texture_is_legitimate_detail": false
+    },
+    {
+      "id": "constant_plane_2",
+      "kind": "constant_plane",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            0.9875353715596337,
+            0.14943813247359922,
+            -0.04941795707411653,
+            0.1482538712223496
+          ],
+          [
+            -0.14925137372094469,
+            0.9887710779360422,
+            0.007468793718392068,
+            -0.0224063811551762
+          ],
+          [
+            0.04997916927067833,
+            0.0,
+            0.9987502603949663,
+            0.003749218815101152
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/constant_plane_default.npz",
+      "model_sha256": "55d16f507ea18c3a4a00708b304bdcbafae282745edf89832d1109e45ddd3176",
+      "sample": {
+        "id": "constant_plane_2",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          0.9887710779360422,
+          -0.14943813247359886
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "clear_color_transition",
+        "expected_visible_rgb": false,
+        "expected_geometry": false,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": false,
+      "expected_geometry": false,
+      "expected_semantic_instance_boundary": false,
+      "expected_accept": false,
+      "texture_is_legitimate_detail": false
+    },
+    {
+      "id": "constant_plane_3",
+      "kind": "constant_plane",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            0.9671689025014918,
+            -0.24740395925452294,
+            0.058099870733471455,
+            -0.17429961220041437
+          ],
+          [
+            0.24695876570997205,
+            0.9689124217106447,
+            0.014835332615778461,
+            -0.04450599784733538
+          ],
+          [
+            -0.059964006479444595,
+            0.0,
+            0.9982005399352042,
+            0.005398380194387542
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/constant_plane_default.npz",
+      "model_sha256": "55d16f507ea18c3a4a00708b304bdcbafae282745edf89832d1109e45ddd3176",
+      "sample": {
+        "id": "constant_plane_3",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          0.9689124217106446,
+          0.24740395925452352
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "clear_color_transition",
+        "expected_visible_rgb": false,
+        "expected_geometry": false,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": false,
+      "expected_geometry": false,
+      "expected_semantic_instance_boundary": false,
+      "expected_accept": false,
+      "texture_is_legitimate_detail": false
+    },
+    {
+      "id": "same_color_different_ids_0",
+      "kind": "same_color_different_ids",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/same_color_different_ids_default.npz",
+      "model_sha256": "55d16f507ea18c3a4a00708b304bdcbafae282745edf89832d1109e45ddd3176",
+      "sample": {
+        "id": "same_color_different_ids_0",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          1.0,
+          0.0
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "clear_color_transition",
+        "expected_visible_rgb": false,
+        "expected_geometry": false,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": false,
+      "expected_geometry": false,
+      "expected_semantic_instance_boundary": true,
+      "expected_accept": false,
+      "texture_is_legitimate_detail": false
+    },
+    {
+      "id": "same_color_different_ids_1",
+      "kind": "same_color_different_ids",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            0.9920144948391232,
+            -0.11971220728891936,
+            0.03970175632253664,
+            -0.11910526896760992
+          ],
+          [
+            0.11961645029170932,
+            0.9928086358538663,
+            0.004787211463496218,
+            -0.014361634390488655
+          ],
+          [
+            -0.03998933418663416,
+            0.0,
+            0.9992001066609779,
+            0.0023996800170662524
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/same_color_different_ids_default.npz",
+      "model_sha256": "55d16f507ea18c3a4a00708b304bdcbafae282745edf89832d1109e45ddd3176",
+      "sample": {
+        "id": "same_color_different_ids_1",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          0.9928086358538664,
+          0.11971220728891847
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "clear_color_transition",
+        "expected_visible_rgb": false,
+        "expected_geometry": false,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": false,
+      "expected_geometry": false,
+      "expected_semantic_instance_boundary": true,
+      "expected_accept": false,
+      "texture_is_legitimate_detail": false
+    },
+    {
+      "id": "same_color_different_ids_2",
+      "kind": "same_color_different_ids",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            0.9875353715596337,
+            0.14943813247359922,
+            -0.04941795707411653,
+            0.1482538712223496
+          ],
+          [
+            -0.14925137372094469,
+            0.9887710779360422,
+            0.007468793718392068,
+            -0.0224063811551762
+          ],
+          [
+            0.04997916927067833,
+            0.0,
+            0.9987502603949663,
+            0.003749218815101152
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/same_color_different_ids_default.npz",
+      "model_sha256": "55d16f507ea18c3a4a00708b304bdcbafae282745edf89832d1109e45ddd3176",
+      "sample": {
+        "id": "same_color_different_ids_2",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          0.9887710779360422,
+          -0.14943813247359886
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "clear_color_transition",
+        "expected_visible_rgb": false,
+        "expected_geometry": false,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": false,
+      "expected_geometry": false,
+      "expected_semantic_instance_boundary": true,
+      "expected_accept": false,
+      "texture_is_legitimate_detail": false
+    },
+    {
+      "id": "same_color_different_ids_3",
+      "kind": "same_color_different_ids",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            0.9671689025014918,
+            -0.24740395925452294,
+            0.058099870733471455,
+            -0.17429961220041437
+          ],
+          [
+            0.24695876570997205,
+            0.9689124217106447,
+            0.014835332615778461,
+            -0.04450599784733538
+          ],
+          [
+            -0.059964006479444595,
+            0.0,
+            0.9982005399352042,
+            0.005398380194387542
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/same_color_different_ids_default.npz",
+      "model_sha256": "55d16f507ea18c3a4a00708b304bdcbafae282745edf89832d1109e45ddd3176",
+      "sample": {
+        "id": "same_color_different_ids_3",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          0.9689124217106446,
+          0.24740395925452352
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "clear_color_transition",
+        "expected_visible_rgb": false,
+        "expected_geometry": false,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": false,
+      "expected_geometry": false,
+      "expected_semantic_instance_boundary": true,
+      "expected_accept": false,
+      "texture_is_legitimate_detail": false
+    },
+    {
+      "id": "material_step_0",
+      "kind": "material_step",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/material_step_default.npz",
+      "model_sha256": "e303812b5a1d20f39100fb76aaaa87c49865dff5a33b8333a1160980f437cdbb",
+      "sample": {
+        "id": "material_step_0",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          1.0,
+          0.0
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "clear_color_transition",
+        "expected_visible_rgb": true,
+        "expected_geometry": false,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": true,
+      "expected_geometry": false,
+      "expected_semantic_instance_boundary": false,
+      "expected_accept": true,
+      "texture_is_legitimate_detail": false
+    },
+    {
+      "id": "material_step_1",
+      "kind": "material_step",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            0.9920144948391232,
+            -0.11971220728891936,
+            0.03970175632253664,
+            -0.11910526896760992
+          ],
+          [
+            0.11961645029170932,
+            0.9928086358538663,
+            0.004787211463496218,
+            -0.014361634390488655
+          ],
+          [
+            -0.03998933418663416,
+            0.0,
+            0.9992001066609779,
+            0.0023996800170662524
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/material_step_default.npz",
+      "model_sha256": "e303812b5a1d20f39100fb76aaaa87c49865dff5a33b8333a1160980f437cdbb",
+      "sample": {
+        "id": "material_step_1",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          0.9928086358538664,
+          0.11971220728891847
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "clear_color_transition",
+        "expected_visible_rgb": true,
+        "expected_geometry": false,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": true,
+      "expected_geometry": false,
+      "expected_semantic_instance_boundary": false,
+      "expected_accept": true,
+      "texture_is_legitimate_detail": false
+    },
+    {
+      "id": "material_step_2",
+      "kind": "material_step",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            0.9875353715596337,
+            0.14943813247359922,
+            -0.04941795707411653,
+            0.1482538712223496
+          ],
+          [
+            -0.14925137372094469,
+            0.9887710779360422,
+            0.007468793718392068,
+            -0.0224063811551762
+          ],
+          [
+            0.04997916927067833,
+            0.0,
+            0.9987502603949663,
+            0.003749218815101152
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/material_step_default.npz",
+      "model_sha256": "e303812b5a1d20f39100fb76aaaa87c49865dff5a33b8333a1160980f437cdbb",
+      "sample": {
+        "id": "material_step_2",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          0.9887710779360422,
+          -0.14943813247359886
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "clear_color_transition",
+        "expected_visible_rgb": true,
+        "expected_geometry": false,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": true,
+      "expected_geometry": false,
+      "expected_semantic_instance_boundary": false,
+      "expected_accept": true,
+      "texture_is_legitimate_detail": false
+    },
+    {
+      "id": "material_step_3",
+      "kind": "material_step",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            0.9671689025014918,
+            -0.24740395925452294,
+            0.058099870733471455,
+            -0.17429961220041437
+          ],
+          [
+            0.24695876570997205,
+            0.9689124217106447,
+            0.014835332615778461,
+            -0.04450599784733538
+          ],
+          [
+            -0.059964006479444595,
+            0.0,
+            0.9982005399352042,
+            0.005398380194387542
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/material_step_default.npz",
+      "model_sha256": "e303812b5a1d20f39100fb76aaaa87c49865dff5a33b8333a1160980f437cdbb",
+      "sample": {
+        "id": "material_step_3",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          0.9689124217106446,
+          0.24740395925452352
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "clear_color_transition",
+        "expected_visible_rgb": true,
+        "expected_geometry": false,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": true,
+      "expected_geometry": false,
+      "expected_semantic_instance_boundary": false,
+      "expected_accept": true,
+      "texture_is_legitimate_detail": false
+    },
+    {
+      "id": "fold_depth_step_0",
+      "kind": "fold_depth_step",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/fold_depth_step_default.npz",
+      "model_sha256": "b66ddea7124f734479fcc8b5638da574130c9a10a31b35c2f797220db8c282df",
+      "sample": {
+        "id": "fold_depth_step_0",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          1.0,
+          0.0
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "clear_color_transition",
+        "expected_visible_rgb": false,
+        "expected_geometry": true,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": false,
+      "expected_geometry": true,
+      "expected_semantic_instance_boundary": false,
+      "expected_accept": false,
+      "texture_is_legitimate_detail": false
+    },
+    {
+      "id": "fold_depth_step_1",
+      "kind": "fold_depth_step",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            0.9920144948391232,
+            -0.11971220728891936,
+            0.03970175632253664,
+            -0.11910526896760992
+          ],
+          [
+            0.11961645029170932,
+            0.9928086358538663,
+            0.004787211463496218,
+            -0.014361634390488655
+          ],
+          [
+            -0.03998933418663416,
+            0.0,
+            0.9992001066609779,
+            0.0023996800170662524
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/fold_depth_step_default.npz",
+      "model_sha256": "b66ddea7124f734479fcc8b5638da574130c9a10a31b35c2f797220db8c282df",
+      "sample": {
+        "id": "fold_depth_step_1",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          0.9928086358538664,
+          0.11971220728891847
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "clear_color_transition",
+        "expected_visible_rgb": false,
+        "expected_geometry": true,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": false,
+      "expected_geometry": true,
+      "expected_semantic_instance_boundary": false,
+      "expected_accept": false,
+      "texture_is_legitimate_detail": false
+    },
+    {
+      "id": "fold_depth_step_2",
+      "kind": "fold_depth_step",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            0.9875353715596337,
+            0.14943813247359922,
+            -0.04941795707411653,
+            0.1482538712223496
+          ],
+          [
+            -0.14925137372094469,
+            0.9887710779360422,
+            0.007468793718392068,
+            -0.0224063811551762
+          ],
+          [
+            0.04997916927067833,
+            0.0,
+            0.9987502603949663,
+            0.003749218815101152
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/fold_depth_step_visible.npz",
+      "model_sha256": "65db74b974873e2fd08e3386598bfe6a10f47a8a6fb5bc2fb55d1aeaf26b35e9",
+      "sample": {
+        "id": "fold_depth_step_2",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          0.9887710779360422,
+          -0.14943813247359886
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "clear_color_transition",
+        "expected_visible_rgb": true,
+        "expected_geometry": true,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": true,
+      "expected_geometry": true,
+      "expected_semantic_instance_boundary": false,
+      "expected_accept": true,
+      "texture_is_legitimate_detail": false
+    },
+    {
+      "id": "fold_depth_step_3",
+      "kind": "fold_depth_step",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            0.9671689025014918,
+            -0.24740395925452294,
+            0.058099870733471455,
+            -0.17429961220041437
+          ],
+          [
+            0.24695876570997205,
+            0.9689124217106447,
+            0.014835332615778461,
+            -0.04450599784733538
+          ],
+          [
+            -0.059964006479444595,
+            0.0,
+            0.9982005399352042,
+            0.005398380194387542
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/fold_depth_step_visible.npz",
+      "model_sha256": "65db74b974873e2fd08e3386598bfe6a10f47a8a6fb5bc2fb55d1aeaf26b35e9",
+      "sample": {
+        "id": "fold_depth_step_3",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          0.9689124217106446,
+          0.24740395925452352
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "clear_color_transition",
+        "expected_visible_rgb": true,
+        "expected_geometry": true,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": true,
+      "expected_geometry": true,
+      "expected_semantic_instance_boundary": false,
+      "expected_accept": true,
+      "texture_is_legitimate_detail": false
+    },
+    {
+      "id": "texture_detail_0",
+      "kind": "texture_detail",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/texture_detail_default.npz",
+      "model_sha256": "c8ddee8086575830fa1851bb2533895d6656b75abb325f5b25ffb0366bde4c39",
+      "sample": {
+        "id": "texture_detail_0",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          1.0,
+          0.0
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "texture_detail",
+        "expected_visible_rgb": false,
+        "expected_geometry": false,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": false,
+      "expected_geometry": false,
+      "expected_semantic_instance_boundary": false,
+      "expected_accept": false,
+      "texture_is_legitimate_detail": true
+    },
+    {
+      "id": "texture_detail_1",
+      "kind": "texture_detail",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            0.9920144948391232,
+            -0.11971220728891936,
+            0.03970175632253664,
+            -0.11910526896760992
+          ],
+          [
+            0.11961645029170932,
+            0.9928086358538663,
+            0.004787211463496218,
+            -0.014361634390488655
+          ],
+          [
+            -0.03998933418663416,
+            0.0,
+            0.9992001066609779,
+            0.0023996800170662524
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/texture_detail_default.npz",
+      "model_sha256": "c8ddee8086575830fa1851bb2533895d6656b75abb325f5b25ffb0366bde4c39",
+      "sample": {
+        "id": "texture_detail_1",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          0.9928086358538664,
+          0.11971220728891847
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "texture_detail",
+        "expected_visible_rgb": false,
+        "expected_geometry": false,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": false,
+      "expected_geometry": false,
+      "expected_semantic_instance_boundary": false,
+      "expected_accept": false,
+      "texture_is_legitimate_detail": true
+    },
+    {
+      "id": "texture_detail_2",
+      "kind": "texture_detail",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            0.9875353715596337,
+            0.14943813247359922,
+            -0.04941795707411653,
+            0.1482538712223496
+          ],
+          [
+            -0.14925137372094469,
+            0.9887710779360422,
+            0.007468793718392068,
+            -0.0224063811551762
+          ],
+          [
+            0.04997916927067833,
+            0.0,
+            0.9987502603949663,
+            0.003749218815101152
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/texture_detail_default.npz",
+      "model_sha256": "c8ddee8086575830fa1851bb2533895d6656b75abb325f5b25ffb0366bde4c39",
+      "sample": {
+        "id": "texture_detail_2",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          0.9887710779360422,
+          -0.14943813247359886
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "texture_detail",
+        "expected_visible_rgb": false,
+        "expected_geometry": false,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": false,
+      "expected_geometry": false,
+      "expected_semantic_instance_boundary": false,
+      "expected_accept": false,
+      "texture_is_legitimate_detail": true
+    },
+    {
+      "id": "texture_detail_3",
+      "kind": "texture_detail",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            0.9671689025014918,
+            -0.24740395925452294,
+            0.058099870733471455,
+            -0.17429961220041437
+          ],
+          [
+            0.24695876570997205,
+            0.9689124217106447,
+            0.014835332615778461,
+            -0.04450599784733538
+          ],
+          [
+            -0.059964006479444595,
+            0.0,
+            0.9982005399352042,
+            0.005398380194387542
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/texture_detail_default.npz",
+      "model_sha256": "c8ddee8086575830fa1851bb2533895d6656b75abb325f5b25ffb0366bde4c39",
+      "sample": {
+        "id": "texture_detail_3",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          0.9689124217106446,
+          0.24740395925452352
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "texture_detail",
+        "expected_visible_rgb": false,
+        "expected_geometry": false,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": false,
+      "expected_geometry": false,
+      "expected_semantic_instance_boundary": false,
+      "expected_accept": false,
+      "texture_is_legitimate_detail": true
+    },
+    {
+      "id": "low_contrast_0",
+      "kind": "low_contrast",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/low_contrast_default.npz",
+      "model_sha256": "6f353f2988e68017c7fd3e17ea665293cf6370f09037f23ea3b374cdae38b57f",
+      "sample": {
+        "id": "low_contrast_0",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          1.0,
+          0.0
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "clear_color_transition",
+        "expected_visible_rgb": false,
+        "expected_geometry": false,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": false,
+      "expected_geometry": false,
+      "expected_semantic_instance_boundary": false,
+      "expected_accept": false,
+      "texture_is_legitimate_detail": false
+    },
+    {
+      "id": "low_contrast_1",
+      "kind": "low_contrast",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            0.9920144948391232,
+            -0.11971220728891936,
+            0.03970175632253664,
+            -0.11910526896760992
+          ],
+          [
+            0.11961645029170932,
+            0.9928086358538663,
+            0.004787211463496218,
+            -0.014361634390488655
+          ],
+          [
+            -0.03998933418663416,
+            0.0,
+            0.9992001066609779,
+            0.0023996800170662524
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/low_contrast_default.npz",
+      "model_sha256": "6f353f2988e68017c7fd3e17ea665293cf6370f09037f23ea3b374cdae38b57f",
+      "sample": {
+        "id": "low_contrast_1",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          0.9928086358538664,
+          0.11971220728891847
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "clear_color_transition",
+        "expected_visible_rgb": false,
+        "expected_geometry": false,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": false,
+      "expected_geometry": false,
+      "expected_semantic_instance_boundary": false,
+      "expected_accept": false,
+      "texture_is_legitimate_detail": false
+    },
+    {
+      "id": "low_contrast_2",
+      "kind": "low_contrast",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            0.9875353715596337,
+            0.14943813247359922,
+            -0.04941795707411653,
+            0.1482538712223496
+          ],
+          [
+            -0.14925137372094469,
+            0.9887710779360422,
+            0.007468793718392068,
+            -0.0224063811551762
+          ],
+          [
+            0.04997916927067833,
+            0.0,
+            0.9987502603949663,
+            0.003749218815101152
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/low_contrast_default.npz",
+      "model_sha256": "6f353f2988e68017c7fd3e17ea665293cf6370f09037f23ea3b374cdae38b57f",
+      "sample": {
+        "id": "low_contrast_2",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          0.9887710779360422,
+          -0.14943813247359886
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "clear_color_transition",
+        "expected_visible_rgb": false,
+        "expected_geometry": false,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": false,
+      "expected_geometry": false,
+      "expected_semantic_instance_boundary": false,
+      "expected_accept": false,
+      "texture_is_legitimate_detail": false
+    },
+    {
+      "id": "low_contrast_3",
+      "kind": "low_contrast",
+      "camera": {
+        "width": 128,
+        "height": 128,
+        "FoVx": 0.65,
+        "FoVy": 0.65,
+        "w2c": [
+          [
+            0.9671689025014918,
+            -0.24740395925452294,
+            0.058099870733471455,
+            -0.17429961220041437
+          ],
+          [
+            0.24695876570997205,
+            0.9689124217106447,
+            0.014835332615778461,
+            -0.04450599784733538
+          ],
+          [
+            -0.059964006479444595,
+            0.0,
+            0.9982005399352042,
+            0.005398380194387542
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "K": [
+          [
+            189.94042499572654,
+            0,
+            63.5
+          ],
+          [
+            0,
+            189.94042499572654,
+            63.5
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ],
+        "projection": "official native symmetric projection; covariance floor .3"
+      },
+      "model_path": "out/edge_responsibility_lego_chair_v2/synthetic_constructs/low_contrast_default.npz",
+      "model_sha256": "6f353f2988e68017c7fd3e17ea665293cf6370f09037f23ea3b374cdae38b57f",
+      "sample": {
+        "id": "low_contrast_3",
+        "center": [
+          63.5,
+          63.5
+        ],
+        "normal": [
+          0.9689124217106446,
+          0.24740395925452352
+        ],
+        "radius": 12.0,
+        "samples": 97,
+        "class_name": "clear_color_transition",
+        "expected_visible_rgb": false,
+        "expected_geometry": false,
+        "independent_truth": "known 3D plane/material/depth/instance construction, never gradient labels",
+        "u": null,
+        "c_star": [
+          0.45,
+          0.45,
+          0.45
+        ]
+      },
+      "expected_visible_rgb": false,
+      "expected_geometry": false,
+      "expected_semantic_instance_boundary": false,
+      "expected_accept": false,
+      "texture_is_legitimate_detail": false
+    }
+  ],
+  "fixed_independent_directions_and_amplitudes": {
+    "seed": 1729,
+    "gpu": 0,
+    "cpu_threads": 2,
+    "group_budget": 64,
+    "groups_per_view": 3,
+    "rank_reference_fraction": 0.1,
+    "rank_reference_cap": 32768,
+    "construction_dc_delta": 0.01,
+    "construction_scale_delta": 0.01,
+    "independent_dc_delta": 0.006,
+    "independent_scale_delta": 0.006,
+    "construction_dc_direction": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "independent_dc_direction": [
+      0.5,
+      -0.75,
+      0.25
+    ],
+    "construction_scale_direction": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "independent_scale_direction": [
+      1.0,
+      -0.5,
+      0.25
+    ],
+    "outside_rms_budget": 0.0005,
+    "flat_rms_budget": 0.0005,
+    "minimum_edge_rms": 0.0001,
+    "noise_multiplier": 20.0,
+    "minimum_action_floor": 0.0001,
+    "stability_relative_tolerance": 0.25,
+    "identity_abs_tolerance": 3e-05,
+    "identity_weight_tolerance": 2e-05,
+    "prediction_relative_tolerance": 0.25,
+    "prediction_absolute_floor": 3e-05,
+    "display_diff_gain": 20.0,
+    "subset_background": [
+      1,
+      1,
+      1
+    ],
+    "optimization_steps": 336,
+    "original_TEST_RGB_read": false,
+    "formal_blind_TEST": false,
+    "human_visual_GO": "PENDING",
+    "semantic_internal_certification": "UNAVAILABLE",
+    "synthetic_presence_threshold": 0.02,
+    "synthetic_localization_tolerance_px": 4.0,
+    "heldout_indices": [
+      0,
+      8,
+      18,
+      30
+    ],
+    "render_new_arc33": true
+  },
+  "group_budget": 64,
+  "freezes_before_score_or_fixture_probe": true,
+  "preserves_original_gate_failures": true
+}

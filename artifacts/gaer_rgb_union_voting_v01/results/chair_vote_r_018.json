@@ -1,0 +1,119 @@
+{
+  "scene": "chair",
+  "view": "r_018",
+  "marked_pixels": 30542,
+  "weak_pixels": 94265,
+  "received_pixels": 30535,
+  "unassignable_pixels": 7,
+  "received_ratio": 0.9997708074127432,
+  "fallback_reasons": {
+    "BEST_RETAINED_D": 6154,
+    "NORMAL_UNDEFINED_OR_LOW_CONFIDENCE": 4377,
+    "D_NUMERICAL_FLOOR": 88,
+    "SIDE_UNKNOWN_EXCEEDS_D": 19916,
+    "ENDPOINT_OUTSIDE_IMAGE": 0,
+    "UNASSIGNABLE_BACKGROUND": 7
+  },
+  "endpoint_only_best_pixels": 21810,
+  "unknown_positive_pixels": 30520,
+  "unknown_bound_sum": 11985.153637927053,
+  "regions": {
+    "line": {
+      "marked": 30542,
+      "received": 30535
+    },
+    "interior_line": {
+      "marked": 25928,
+      "received": 25928
+    },
+    "outline_line": {
+      "marked": 4614,
+      "received": 4607
+    },
+    "exterior_line": {
+      "marked": 0,
+      "received": 0
+    },
+    "outline": {
+      "marked": 23335,
+      "received": 4607
+    }
+  },
+  "K_sensitivity": [
+    {
+      "K": 16,
+      "marked_pixels": 30542,
+      "changed_winners": 8523,
+      "changed_fraction": 0.27905834588435596,
+      "changed_vote_IDs": 8577,
+      "fallback_pixels": 16034,
+      "K8_prefix_bitwise": true,
+      "RGB_bitwise": true
+    },
+    {
+      "K": 32,
+      "marked_pixels": 30542,
+      "changed_winners": 16875,
+      "changed_fraction": 0.5525178442800078,
+      "changed_vote_IDs": 15216,
+      "fallback_pixels": 7793,
+      "K8_prefix_bitwise": true,
+      "RGB_bitwise": true
+    }
+  ],
+  "timing": {
+    "stock": {
+      "cuda_ms": 3.4280319213867188,
+      "wall_ms": 3.6385711282491684,
+      "peak_GPU_bytes": 161390080,
+      "scope": "one actual native forward; no fabricated warmup/median; excludes CPU copies and assignment"
+    },
+    "K8": {
+      "cuda_ms": 5.286111831665039,
+      "wall_ms": 5.538902943953872,
+      "peak_GPU_bytes": 208335360,
+      "scope": "one actual native forward; no fabricated warmup/median; excludes CPU copies and assignment"
+    },
+    "CPU_assignment_s": 0.7136843691114336,
+    "full_visibility_gradient_s": 0.007959234062582254,
+    "K16": {
+      "cuda_ms": 7.345983982086182,
+      "wall_ms": 7.592726964503527,
+      "peak_GPU_bytes": 248499200,
+      "scope": "one actual native forward; no fabricated warmup/median; excludes CPU copies and assignment",
+      "CPU_assignment_s": 0.7584791870322078
+    },
+    "K32": {
+      "cuda_ms": 17.59699249267578,
+      "wall_ms": 17.73648103699088,
+      "peak_GPU_bytes": 330868736,
+      "scope": "one actual native forward; no fabricated warmup/median; excludes CPU copies and assignment",
+      "CPU_assignment_s": 1.1553433169610798
+    }
+  },
+  "RGB_cached_stock_K8_bitwise": true,
+  "alpha_cached_max_abs": 2.384185791015625e-07,
+  "source_fields_sha256": "7ab2ee435b12a55f48181d8b6bc2423f108f1ec27fa7754e9e6ca5ffb3ae658b",
+  "winner_map_sha256": "d35d43610fdc05fcc323c60489cb1af9c0f76498c482ccfcae8ffd141b397d26",
+  "line_binary_sha256": "c7d20a8381ee7cbcea90e9acf91a597f78fa59b1ac28340a06813eac76a84e4a",
+  "assignment_archive": "artifacts/gaer_rgb_union_voting_v01/downloads/chair/r_018/assignment.npz",
+  "source_archive": "artifacts/gaer_rgb_union_voting_v01/downloads/chair/r_018/source_fields.npz",
+  "visible_mass_archive": "artifacts/gaer_rgb_union_voting_v01/downloads/chair/r_018/visible_mass.npz",
+  "files": [
+    "artifacts/gaer_rgb_union_voting_v01/downloads/chair/r_018/source_fields.npz",
+    "artifacts/gaer_rgb_union_voting_v01/downloads/chair/r_018/assignment.npz",
+    "artifacts/gaer_rgb_union_voting_v01/downloads/chair/r_018/visible_mass.npz",
+    "out/gaer_rgb_union_voting_v01/units/chair/r_018/K8_buffer.npz",
+    "artifacts/gaer_rgb_union_voting_v01/downloads/chair/r_018/sensitivity_K16.npz",
+    "artifacts/gaer_rgb_union_voting_v01/downloads/chair/r_018/sensitivity_K32.npz",
+    "artifacts/gaer_rgb_union_voting_v01/media/chair/receivers/r_018/RGB.png",
+    "artifacts/gaer_rgb_union_voting_v01/media/chair/receivers/r_018/spatial_union_ink.png",
+    "artifacts/gaer_rgb_union_voting_v01/media/chair/receivers/r_018/marked_binary.png",
+    "artifacts/gaer_rgb_union_voting_v01/media/chair/receivers/r_018/winner_ID.png",
+    "artifacts/gaer_rgb_union_voting_v01/media/chair/receivers/r_018/receiver_overlay.png",
+    "artifacts/gaer_rgb_union_voting_v01/media/chair/receivers/r_018/evidence.jpg",
+    "artifacts/gaer_rgb_union_voting_v01/media/chair/receivers/r_018/interior_zoom.png"
+  ],
+  "unit": "chair_vote_r_018",
+  "end_to_end_seconds": 6.505393346073106
+}

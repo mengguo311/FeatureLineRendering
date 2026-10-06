@@ -1,0 +1,226 @@
+{
+  "status": "SECTION25_FIRSTTASK_COMPLETE",
+  "stop": true,
+  "future_phases_started": false,
+  "original_instructions": {
+    "path": "artifacts/gaer_attribution_buffer_v01/instructions/GAER_agent_experiment_prompt.txt",
+    "sha256": "64b967ed51c335a4a50a160df516bd3685b6e068b41e078079a14456d9af86a9",
+    "bytes": 17327,
+    "provenance": "user uploaded original bytes; unchanged from launch commit 20f6e4baa4f2c6c90319f8f030da0426154195ab",
+    "active_scope": "section 25 FIRSTTASK only",
+    "base_commit": "b2d562753de6759b1bb2d3ac2034b35dc080d025",
+    "launch_commit": "20f6e4baa4f2c6c90319f8f030da0426154195ab"
+  },
+  "scope": "native opt-in alpha*T attribution buffer and engineering validation only",
+  "source": {
+    "path": "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/out/object_neighborhood_edge_control_v1/vendor/gaussian-splatting/submodules/diff-gaussian-rasterization",
+    "commit": "59f5f77e3ddbac3ed9db93ec2cfe99ed6c5d121d",
+    "aggregate_sha256": "dc29715803f624c5cff66150e81851c4a80023f71b404bbc02a065db112bd957",
+    "patch_sha256": "92f97b9ba389accdcc23ede81ec9cc01933f5285d6f81bcec3b39e30ef20fa14",
+    "modules": {
+      "original": {
+        "path": "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/torch_extensions/gaer_original_C/gaer_original_C.so",
+        "sha256": "81cfda30700bf34dfc2b7ca970fb8a6e566231a4734428f6c588156a50bf487d"
+      },
+      "patched": {
+        "path": "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/torch_extensions/gaer_native_C/gaer_native_C.so",
+        "sha256": "505f441561e3643dde1d5995a3a465b29d95fea71b7a88266ca65c7b04ffb48c"
+      }
+    },
+    "actual_module_before_after_sha256": "9c94ad47062bdb30b20f0b5e91d5f43aebe88a4fed675ca6d2966473a8b0dde1"
+  },
+  "api": {
+    "import_path": "experiments/gaer_attribution_buffer_v01/src",
+    "package": "gaer_attribution",
+    "opt_in": "GaussianRasterizer(settings)(**model, attribution=True, K=8)",
+    "default_K": 8,
+    "K_range": [
+      1,
+      32
+    ],
+    "IDs": {
+      "shape": "H,W,K",
+      "dtype": "int32",
+      "unused": -1,
+      "identity": "original model row"
+    },
+    "weights": {
+      "shape": "H,W,K",
+      "dtype": "float32",
+      "unused": 0,
+      "normalized": false,
+      "formula": "T_before*alpha"
+    },
+    "maps": {
+      "shape": "H,W",
+      "dtype": "float32",
+      "names": [
+        "all_contribution_sum",
+        "final_T"
+      ]
+    },
+    "attribution_differentiable": false,
+    "RGB_differentiable": true,
+    "tie_policy": "equal positive FP32 weights retain existing depth traversal order",
+    "depth": "NOT_AVAILABLE"
+  },
+  "modified_native_files": [
+    "cuda_rasterizer/forward.cu",
+    "cuda_rasterizer/forward.h",
+    "cuda_rasterizer/rasterizer.h",
+    "cuda_rasterizer/rasterizer_impl.cu",
+    "diff_gaussian_rasterization/__init__.py",
+    "ext.cpp",
+    "rasterize_points.cu",
+    "rasterize_points.h"
+  ],
+  "modified_kernels": [
+    "renderCUDA<3,true>"
+  ],
+  "functions": {
+    "cuda_rasterizer/forward.cu": {
+      "renderCUDA(": 263,
+      "const float weight = T * alpha;": 367,
+      "void FORWARD::render(": 408
+    },
+    "cuda_rasterizer/rasterizer_impl.cu": {
+      "int CudaRasterizer::Rasterizer::forward(": 198
+    },
+    "rasterize_points.cu": {
+      "RasterizeGaussiansAttributionCUDA(": 119
+    },
+    "diff_gaussian_rasterization/__init__.py": {
+      "class AttributionOutput(": 229,
+      "def rasterize_gaussians_attribution(": 246,
+      "class _RasterizeGaussiansAttribution(": 263,
+      "ctx.mark_non_differentiable(ids, weights, all_sum, final_T)": 280
+    }
+  },
+  "validation": {
+    "vertical_RED": true,
+    "vertical_GREEN": true,
+    "native_tests": 6,
+    "native_passed": true,
+    "gradient_max_error": 0.0,
+    "training_one_step_exact": true,
+    "raw_model_Adam_exact": true,
+    "real_views": 4,
+    "resolution": [
+      800,
+      800
+    ],
+    "full_SH_degree": 3,
+    "real_RGB_max_error": 0.0,
+    "real_RGB_bitwise_equal": true,
+    "all_contributions_alpha_tolerance": 2e-06,
+    "real_sum_alpha_max_error": 1.1920928955078125e-06,
+    "real_all_K_rerun_passed": true,
+    "selfcontained_reproduction_passed": true,
+    "protected_sources_and_checkpoints_unchanged": true
+  },
+  "memory": {
+    "formula_bytes": "H*W*(8*K+8)",
+    "at_800x800": {
+      "1": 10240000,
+      "4": 25600000,
+      "8": 46080000,
+      "16": 87040000
+    },
+    "no_H_W_N": true,
+    "peak_measurement": "per-forward reset_peak_memory_stats; allocated/reserved reported separately"
+  },
+  "runtime": {
+    "warmup": 5,
+    "repeats": 20,
+    "K8_overhead_percent_vs_actual": [
+      {
+        "unit": "lego_r_001",
+        "vs_actual_stock_percent": 51.722872481111935
+      },
+      {
+        "unit": "lego_r_014",
+        "vs_actual_stock_percent": 42.43400067575331
+      },
+      {
+        "unit": "chair_r_001",
+        "vs_actual_stock_percent": 44.40658702553895
+      },
+      {
+        "unit": "chair_r_014",
+        "vs_actual_stock_percent": 70.14820459115177
+      }
+    ],
+    "compositor_timing": "separate profiler CUDA/CUPTI pass",
+    "cpu_copy": "separate 20 copies",
+    "canonical_results": [
+      "artifacts/gaer_attribution_buffer_v01/results/lego_r_001.json",
+      "artifacts/gaer_attribution_buffer_v01/results/lego_r_014.json",
+      "artifacts/gaer_attribution_buffer_v01/results/chair_r_001.json",
+      "artifacts/gaer_attribution_buffer_v01/results/chair_r_014.json"
+    ],
+    "measured_not_estimated": true,
+    "complexity": "O(accepted_contributions*K)"
+  },
+  "failures": {
+    "active_blockers": [],
+    "numerical_test_failures": [],
+    "recovered": [
+      {
+        "unit": "initial build",
+        "error": "Ninja executable not found in Python process PATH",
+        "resolution": "prepend existing vfsdgs bin and CUDA bin to process-local PATH; no install",
+        "evidence": "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/logs/build_attempt1_missing_PATH.log"
+      },
+      {
+        "unit": "patch application",
+        "error": "upstream files lack final newlines, generated diff lacked EOF markers",
+        "resolution": "proper unified diff EOF markers; patch --fuzz=0 passes",
+        "evidence": "/home/u00134/3dgs_line/gaer_attribution_buffer_v01/out/gaer_attribution_buffer_v01/logs/build_attempt2_patch_EOF.log"
+      },
+      {
+        "unit": "camera discovery",
+        "error": "training metadata is a subset, original index14 is metadata row12",
+        "resolution": "match original frozen filenames and validate matrices exactly"
+      },
+      {
+        "unit": "first synthetic kernel profiling",
+        "error": "local PyTorch Interval has elapsed_us/end-start rather than elapsed",
+        "resolution": "read local installed source and use end-start; canonical rerun has all compositor timings",
+        "evidence": "artifacts/gaer_attribution_buffer_v01/results/SYNTHETIC_BENCHMARK_attempt1.json"
+      }
+    ],
+    "inspection_incident": {
+      "unit": "initial process inspection",
+      "description": "A full command-line process listing incidentally exposed an unrelated sensitive argument in tool output.",
+      "mitigation": "All subsequent GPU ownership checks use GPU UUID and PID only. No raw process dump, raw agent log or sensitive value is included in Git delivery.",
+      "credential_files_read": false
+    }
+  },
+  "science_claim": "engineering only; H1/geometric/temporal claims untested; mechanism not novel",
+  "delivery": {
+    "branch": "gaer-attribution-buffer-v01",
+    "remote": "git@github.com:mengguo311/FeatureLineRendering.git",
+    "base": "b2d562753de6759b1bb2d3ac2034b35dc080d025",
+    "publish_receipt": "out/gaer_attribution_buffer_v01/PUBLISH_RECEIPT.json"
+  },
+  "source_code_sha256": {
+    "experiments/gaer_attribution_buffer_v01/UPSTREAM_LICENSE.md": "cd5c95b3cfff3acc1bd412420c770f88809331c3db6872df11a970147aa8e81f",
+    "experiments/gaer_attribution_buffer_v01/build.py": "84fee9c671ab47cf3f8156563f141e8ed27fa36be2201d42164d242e7296a6ba",
+    "experiments/gaer_attribution_buffer_v01/make_report.py": "ffea1eda182a9c3ebda12c97064c1bfbad4af1d6e6227982b5250b1bd17b3a05",
+    "experiments/gaer_attribution_buffer_v01/native.patch": "92f97b9ba389accdcc23ede81ec9cc01933f5285d6f81bcec3b39e30ef20fa14",
+    "experiments/gaer_attribution_buffer_v01/protocol.json": "89e0bbc32f51806c5d2d863bb1f292f074bd716b2d6398ea820faac4aa6010e2",
+    "experiments/gaer_attribution_buffer_v01/rebenchmark_real.py": "99a133f08ae50122eb8bd8958441423fac89fabc8c2afd7490745132d1baba31",
+    "experiments/gaer_attribution_buffer_v01/reproduce.py": "912b336b2de0bd206ef15de71cf721a0ed8b5c3978eb64b875f6623e547227cf",
+    "experiments/gaer_attribution_buffer_v01/run_real.py": "f7c0748be69430ec67baeac567d59ed2ffb06a20a3b0c20423c0f2393300acad",
+    "experiments/gaer_attribution_buffer_v01/run_synthetic_benchmark.py": "d0a20acc62225967c1f2a5c67e3cd31a30de87154a81c1abbbb030a2dc270906",
+    "experiments/gaer_attribution_buffer_v01/src/benchmark.py": "97b5691cc8eb8b8a5df152ba9a36242599a5c68133deda3f67c1d1c5cd3ec389",
+    "experiments/gaer_attribution_buffer_v01/src/gaer_attribution/__init__.py": "d42a0943bdb9c04e42379115cd4c8fedaeaed6beff691f9aa168f594679bf298",
+    "experiments/gaer_attribution_buffer_v01/src/native.py": "db02b4d55e4a958bcf173634a776c219ee4d99a3097b346e0dc34eb76c5f81f8",
+    "experiments/gaer_attribution_buffer_v01/src/runtime.py": "ca6e913a4d560689f9efce89304182db65bb83e6f661a19c8e50fcae3b41acb4",
+    "experiments/gaer_attribution_buffer_v01/src/scene_io.py": "b828a587a9fa48a9fdb211d13f97453a5b6b23a013f4eaea99c8d6b999add47d",
+    "experiments/gaer_attribution_buffer_v01/tests/fixtures.json": "d4b1679f373bebdccac2343edb257e2f2dee68183fc6aaa6eb9d6d5d39061ea7",
+    "experiments/gaer_attribution_buffer_v01/tests/test_api_vertical.py": "8f25c7bcc7244f5fea9b66667f3e257e9c69d0d2e397dd759ce0174ef1f46abe",
+    "experiments/gaer_attribution_buffer_v01/tests/test_native.py": "f14b27cfee270bb91c2f947e93d26c871be8e79b1b7beb5a43edc8b6c9614cdb",
+    "experiments/gaer_attribution_buffer_v01/verify_real.py": "2dac4be0b3e4afbea4fed82374616b0ee67396fec2e561c926b18fddbc0794f7"
+  }
+}

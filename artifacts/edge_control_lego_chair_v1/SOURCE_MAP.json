@@ -1,0 +1,883 @@
+{
+  "original_read_only_dependencies": {
+    "/home/u00134/3dgs_line/representative_edge_gaussians_three_v1/artifacts/representative_edge_gaussians_three_v1/INPUT_HASH_MANIFEST.json": "b4ebae66799287fdba0867bfd460adafc34c7cc181620a91c349670aa42fc7a4",
+    "/home/u00134/3dgs_line/representative_edge_gaussians_three_v1/artifacts/representative_edge_gaussians_three_v1/S0_SEAL.json": "f36c5c7fda1bab50cf26c212c04829412a74a6be9ecbfe60b4b1ed7948d930ca",
+    "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/artifacts/hybrid_raster_evidence_v2/PARAMETER_LOCK.json": "d5ec038e8ebc8a7160bc9e31ebb6ac8ce755fdbf1677a32ad55102a48c6a0926",
+    "/home/u00134/3dgs_line/hybrid_raster_evidence_v2/artifacts/direct_curve_global_fit_probe/INPUTS.json": "5c8cc2ac0a984b02343f48d71beb46818a572f161447a56e701d2b76bfc4ab7d",
+    "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/out/object_neighborhood_edge_control_v1/build/stock/onec_stock_C.so": "9c94ad47062bdb30b20f0b5e91d5f43aebe88a4fed675ca6d2966473a8b0dde1",
+    "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/out/object_neighborhood_edge_control_v1/build/knn/onec_knn_C.so": "3dba5b35d6c09edcae469c61ce129dc4e2c61653287c6a512105108e43db7027",
+    "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/out/object_neighborhood_edge_control_v1/vendor/gaussian-splatting/gaussian_renderer/__init__.py": "75fcc86a57d27d9ea55b2904a4faaf075e7f73dba8c54bcb6cbd4c02c4884084",
+    "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/out/object_neighborhood_edge_control_v1/vendor/gaussian-splatting/scene/gaussian_model.py": "fb31f5a087733194985a82192746c36dc627596fd084600b29cfefb5c92fdeb5",
+    "/home/u00134/3dgs_line/object_neighborhood_edge_control_v1/out/object_neighborhood_edge_control_v1/vendor/gaussian-splatting/submodules/diff-gaussian-rasterization/diff_gaussian_rasterization/__init__.py": "eafa9c3f670258b34535b7ee2832e6d8410d6a68762037216f04935ccdafba34",
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply": "fa9bea3fa4f8d349fa873a66d892c53cd1263499caec6421c286350a5bb7cbbc",
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_1729/manifest.json": "85d3430abf6269dee653a8afb2f6bdccd9246444c270b30bbd9a5eb877fa6209",
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_1729/entry.json": "c3ee7ea7252c2aced126379aa2842c5bf60c94195662bf8d8c303fce3848f6e1",
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/lego/seed_1729/checkpoints/cfg_args": "27452177cc42e29defade114987632fbd6bf00b6c294ea89df25dce209a18046",
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/inputs/lego/seed_1729/transforms_train.json": "9491165896ffc91dcf0db3ac4b9006e6cb4af3b999dc0786aa56ebca70985a2e",
+    "/home/u00134/cglib/data/full/lego/transforms_train.json": "82d46cfbd405d7da8562b6fa75b6fb0631a3f941adf66f0c023acb8bf9ea273a",
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_1729/checkpoints/point_cloud/iteration_30000/point_cloud.ply": "13e4ecc9ffe9c5ae2a0656e2e5c56a737cfdc90a62ad04799db3c46b0b442f5d",
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_1729/manifest.json": "2f651c3a63130b33f973ca691aa03094723d8d282ceae9aad29deda103405fab",
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_1729/entry.json": "ebdcf377b374f1b857caee7fbdb2c01c6f4799504ce73fa76b59e9e7105739ec",
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/training/chair/seed_1729/checkpoints/cfg_args": "781fbc7153180df0abe3c68706677bc5fbc21dd0c0468c93a894926a51b969a6",
+    "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/inputs/chair/seed_1729/transforms_train.json": "2ef32cbc60b28932cc8d5a2b25f12f892211ed093fd7e0a4aec4e1a3c6f7947d",
+    "/home/u00134/cglib/data/full/chair/transforms_train.json": "f096327d91a775c3d3dbc62d03a244839f6b7d8683b9a7b400573c6e0a414f1f"
+  },
+  "new_code": {
+    "experiments/edge_control_lego_chair_v1/configs/pilot.json": "e5d6d6647c4e3c7b741eab318bad7e4c6e97e56c1ee7125e1e88d84ad8494152",
+    "experiments/edge_control_lego_chair_v1/scripts/launch_production.py": "1b9a873a78c96b8844b58d575a7d2e32f18a28c4c413415903f990f21174fb6e",
+    "experiments/edge_control_lego_chair_v1/scripts/runner.py": "6dacb46afdb10e2fad1df5659754b76b76a6e36694b6fa84347713f384937277",
+    "experiments/edge_control_lego_chair_v1/src/adapter.py": "dbe5ca2d3a111476b25f3e347c363b3e4d31e40652dab05c5cc54642cd46c4af",
+    "experiments/edge_control_lego_chair_v1/src/data.py": "da25a526ad8840dca1f9ee776db5da1a016ed1e58d9e8f626d8d9ce966625b6f",
+    "experiments/edge_control_lego_chair_v1/src/evaluation.py": "7d692af0570c22ef8440477fc9a5ebcf33fb0ef56993e5ede7d3098c577aad94",
+    "experiments/edge_control_lego_chair_v1/src/evidence.py": "fc2b4794000952370273c62999d9e2905456298da2e14ac3c7516b99352b7935",
+    "experiments/edge_control_lego_chair_v1/src/media.py": "d529f4990243e84df4b9ae4416899cebf807a2ec433c8db1a8d809db2f1f8724",
+    "experiments/edge_control_lego_chair_v1/src/optimization.py": "a29bed4c80c87cf3057757155153efcd9d43820622901cf211e64275b1282751",
+    "experiments/edge_control_lego_chair_v1/src/preparation.py": "1bd7c9321c2591b2bfbb6a3e46c8b128a94fa23290568bb204ce15ad45424025",
+    "experiments/edge_control_lego_chair_v1/src/reporting.py": "0bfd69447b2f4a94ab8cc90a0d6ba487fc145c6df73680e161ca1bddf4d0ce4e",
+    "experiments/edge_control_lego_chair_v1/src/runtime.py": "98c5630c9241cd4fa2e280e92afd7a065a0a17415a30666ead1bbd14eba4eb7b",
+    "experiments/edge_control_lego_chair_v1/tests/test_contracts.py": "e25f48aef5d1dec766576cb8429a5bf9c20dc47f9b658d49f90f48d2caf45960",
+    "experiments/edge_control_lego_chair_v1/tests/test_evidence.py": "8af48d7f5b51d40b35c0a73e153da9f2d304d45cab56f3c7537661fd4a4dc8a2",
+    "experiments/edge_control_lego_chair_v1/tests/test_native.py": "c470fd99c7378b0a2786bdfbb130790331efffcc5ba3f96922bdec5c79c54fc8"
+  },
+  "curated_artifacts": {
+    "artifacts/edge_control_lego_chair_v1/REPRODUCE.md": {
+      "sha256": "767534523aa8325257573a71a97dd5fd7e175995c845daf10d30bab77e7e92d0",
+      "bytes": 5809
+    },
+    "artifacts/edge_control_lego_chair_v1/lego_TARGET_FREEZE.json": {
+      "sha256": "a881158cf9cf889b63e1c121d37a3c4fcf64f4732e3b601474f8df5ff35e7744",
+      "bytes": 55173
+    },
+    "artifacts/edge_control_lego_chair_v1/PROFILE_VALIDITY_AND_COMMON.json": {
+      "sha256": "4166bf022e8ec9515c8bbf97497d1b32fb01cdff46b2aa842ae8f632571f9d1e",
+      "bytes": 98048
+    },
+    "artifacts/edge_control_lego_chair_v1/ENVIRONMENT.json": {
+      "sha256": "08a93d85105e7d6c4753ee0b61b7d3c133a3016a8c0628cf5f66f0d1f3c25ee0",
+      "bytes": 1240
+    },
+    "artifacts/edge_control_lego_chair_v1/SCIENTIFIC_DECISION.json": {
+      "sha256": "a211d176df06c4dbcefb3ecd5c9e5d1293c79111feffd1a5fcfa98cf97fe0458",
+      "bytes": 1163
+    },
+    "artifacts/edge_control_lego_chair_v1/lego_PROGRESS.json": {
+      "sha256": "ae4af0f105c073804e414589ca144e736b385c05eb7a474c4a61ff4afc0cfd5b",
+      "bytes": 442
+    },
+    "artifacts/edge_control_lego_chair_v1/lego_DEV_MODEL_SEAL.json": {
+      "sha256": "d91152cbd9c6b1cec35ea44701a25b851ace1a5f5030bb764fdf598486d9884a",
+      "bytes": 10156
+    },
+    "artifacts/edge_control_lego_chair_v1/SEAL_CHAIN.json": {
+      "sha256": "7b73d9c0f0a7c3804f8fb79113ac9ff92a647300ea9eb344d34b129253dbb23a",
+      "bytes": 1128
+    },
+    "artifacts/edge_control_lego_chair_v1/launch.sh": {
+      "sha256": "00286e8d3c5d8451a15b34a5cb291c33f2a04e39d70ed7549bea62cff34463c6",
+      "bytes": 863
+    },
+    "artifacts/edge_control_lego_chair_v1/EDIT_PAYLOAD_MANIFEST.json": {
+      "sha256": "b79c880676bac11e0031c418fa6a746449fbd5258dfef3c88f99a78a78587185",
+      "bytes": 16273
+    },
+    "artifacts/edge_control_lego_chair_v1/REMOTE_HEADS_BEFORE.txt": {
+      "sha256": "e05bc587707f756c64045e5ec1cf88040e3eea678e7fbdc32a2a49d1697971a3",
+      "bytes": 3247
+    },
+    "artifacts/edge_control_lego_chair_v1/chair_SELECTION_FREEZE.json": {
+      "sha256": "82cd5b2f41862c71029f3eb09fb9884c8293dfbcd4c64575d7f693bfd05af594",
+      "bytes": 1053876
+    },
+    "artifacts/edge_control_lego_chair_v1/TIMINGS.json": {
+      "sha256": "62329f5de1a40c449a90f952640c0adc1e4415b6d96d08c3fc585814cbc91af8",
+      "bytes": 12314
+    },
+    "artifacts/edge_control_lego_chair_v1/COUNTS.json": {
+      "sha256": "521682f850bf6270520a27829ae22a43cae7bc085199ab20c5ef7dedf0b0f707",
+      "bytes": 6464
+    },
+    "artifacts/edge_control_lego_chair_v1/SELECTOR_FIGURES.py": {
+      "sha256": "10e054ad5ebf637d6f0e047a0d4286737521ccbbc769559f21b06f99539577c7",
+      "bytes": 3603
+    },
+    "artifacts/edge_control_lego_chair_v1/chair_TARGET_FREEZE.json": {
+      "sha256": "51c456114b5df4271d53796c00a4ebc4860d492cca64131f432348945a0aef52",
+      "bytes": 32362
+    },
+    "artifacts/edge_control_lego_chair_v1/lego_FINAL.json": {
+      "sha256": "64783ab9454c30beb3b9a6ca27ac6275d69bcf598c3de1e7ac8ebd3aec2bb608",
+      "bytes": 2811711
+    },
+    "artifacts/edge_control_lego_chair_v1/chair_DEV_MODEL_SEAL.json": {
+      "sha256": "56fa82d60a3342afd9adb5d1c0ba54b216da4a1d109a75a2a89e0605bf8f8d77",
+      "bytes": 10338
+    },
+    "artifacts/edge_control_lego_chair_v1/FINAL.json": {
+      "sha256": "5f73b7ffb11eb3b47d91b678c28f2758f5f35da9a79c1eaec29c6f2cea4ef364",
+      "bytes": 151085
+    },
+    "artifacts/edge_control_lego_chair_v1/PROFILE_AUDIT.py": {
+      "sha256": "b0e96d845470bfc1d2e9e330c78a32d2964591914b80418118224c75ce415a80",
+      "bytes": 4192
+    },
+    "artifacts/edge_control_lego_chair_v1/lego_SELECTION_FREEZE.json": {
+      "sha256": "461f0cd38b9ff0064ae592cb1e17181842c931633900090debee103f7e3aa353",
+      "bytes": 1268722
+    },
+    "artifacts/edge_control_lego_chair_v1/SELECTOR_FIGURE_MANIFEST.json": {
+      "sha256": "89236a6d4da0969b52a1dd003af3e17c20a0a1c6d3c584fe7173dd627e71974b",
+      "bytes": 5506
+    },
+    "artifacts/edge_control_lego_chair_v1/chair_PROGRESS.json": {
+      "sha256": "884aed7e67f6a4295ab123bfdd14f89cb227b04637a01af90f5aa9410da2186a",
+      "bytes": 442
+    },
+    "artifacts/edge_control_lego_chair_v1/REPORT_ZH.md": {
+      "sha256": "c62d26cd5e65d26f01f86fdfb1b20ce6ce19f98af6e52dfc9eb2d1a00ac6adc1",
+      "bytes": 12367
+    },
+    "artifacts/edge_control_lego_chair_v1/SOURCE_FREEZE.json": {
+      "sha256": "b847a841a36a939381d0b903bf8a67c5a2316ad338c53bab5ecfe00c0849514c",
+      "bytes": 2179
+    },
+    "artifacts/edge_control_lego_chair_v1/DATA_FREEZE.json": {
+      "sha256": "c48d0471b96b78b58aa4c23bbc1e89cffb6de64ad2290ebdc7b5ec00ab394906",
+      "bytes": 345887
+    },
+    "artifacts/edge_control_lego_chair_v1/MEDIA.json": {
+      "sha256": "dd5f636750bfeb83219c45421b1b382dda80fed85a31a33abb63a8489438ac82",
+      "bytes": 132807
+    },
+    "artifacts/edge_control_lego_chair_v1/VALIDATION.md": {
+      "sha256": "7d0687a724da45a0785e6cdc3918e8dfe1d95219bf732ca36203b87421f41a27",
+      "bytes": 3592
+    },
+    "artifacts/edge_control_lego_chair_v1/ANALYZE_FINAL.py": {
+      "sha256": "c4b4408d943c002110c4d1494950d534bb45ad171e8c01c4aa776972bd4bffe1",
+      "bytes": 9298
+    },
+    "artifacts/edge_control_lego_chair_v1/TASK.txt": {
+      "sha256": "b3616f533e9f8bdccfddbfc1226e54d864e360ffbbdf7154922e0ff02d6da64c",
+      "bytes": 8105
+    },
+    "artifacts/edge_control_lego_chair_v1/chair_FINAL.json": {
+      "sha256": "c5890de0f3e1b6db24a3d0c1e172d61d2e9621312841cd01e8877298c36f4043",
+      "bytes": 1747627
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_cov_ordinary_time_edit-train.json": {
+      "sha256": "747a43480ef39d025c7672d9ab49f3a9aacd61cbfcb55b985e0cbf32e81041ed",
+      "bytes": 55209
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_cov_ordinary_time_dev.json": {
+      "sha256": "d95431e2692d8bf512e0ac0040b67832872ee2f975427a519477b93d865d2395",
+      "bytes": 11297
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_color_ordinary_time_edit-holdout.json": {
+      "sha256": "25d56b8a3ae65463881af23a6b348e35aecc4b52281dad6b8da009522429da78",
+      "bytes": 46853
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_color_ordinary_edit-holdout.json": {
+      "sha256": "68d3467bb9ff61214536d28582c99bddfddd5a907d8c34d312032f83fe73986d",
+      "bytes": 46845
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_color_edit-train.json": {
+      "sha256": "a45f08c456eb928d3332043668ca2c702ad96aadc51ef995c69c5b9c0e1f0964",
+      "bytes": 55185
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_color_ordinary_time_edit-train.json": {
+      "sha256": "a2c57f42a6bbbd504c563db721c860dd09a559590c8b405cfa3ad6e1e3f08040",
+      "bytes": 55216
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_cov_ordinary_time_edit-holdout.json": {
+      "sha256": "9f2b444e86048d8455871661303b90f81edb3a0b4f77131f818b94acd6314993",
+      "bytes": 46833
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_color_ordinary_dev.json": {
+      "sha256": "3b2cc2a8b3522fad4d2a3b3470a3564b395ec614d1e808700bf6a9df3258f3b5",
+      "bytes": 11289
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_B0_dev.json": {
+      "sha256": "2589ed283dd0345dea2ac14999348c34e6bbd810a411c663bbd3f63fb8169edb",
+      "bytes": 12898
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_cov_optimization.json": {
+      "sha256": "aa98475a9221e03a9c8328bb6461654bae8afe0a4d8a90c0c38b6a215072e9fe",
+      "bytes": 255427
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_color_ordinary_time_optimization.json": {
+      "sha256": "dbf6faa3409ab7175ed67abc0fc45236abe32ad0788421fe1ad21fd7dee8df65",
+      "bytes": 217917
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_zero_step_dc_projection_edit-train.json": {
+      "sha256": "808efa6280dc3344330c03113c4cb0338c2c739c2d32b7f04316585157abff80",
+      "bytes": 14590
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_color_ordinary_dev.json": {
+      "sha256": "4b1b396914b3afb46fb51a12a8563d9326160a5a942b2cba0083522a3c9b9e17",
+      "bytes": 13009
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_band2d_cov_edit-holdout.json": {
+      "sha256": "77d953d28c17c9def3545b58891414d9e33f39139712b6fb93df8d13a9806523",
+      "bytes": 15953
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_color_optimization.json": {
+      "sha256": "4ea30fa771f2e817a20ddb46f92cfce0dc90279942d233dc727248beb5c6f8bc",
+      "bytes": 243915
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_cov_optimization.json": {
+      "sha256": "b5629dbd71af7e8fa4987bdba92aef637d73b405349d2d2e330e128eef048b3c",
+      "bytes": 256479
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_random_cov_dev.json": {
+      "sha256": "e5fb6304c579492cde2e29b647372f81a447eb582f93c5b5842206a39952f775",
+      "bytes": 11281
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_dev_figure_manifest.json": {
+      "sha256": "ccb895c76880929a57532434b7f7d29f8a8bd0e82b25aa2ba60052ff32e58cd3",
+      "bytes": 3611
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_cov_ordinary_optimization.json": {
+      "sha256": "ec87e17db160da4c42a35739335f281ca7d44466ef2e65d590eaae7ae874fde9",
+      "bytes": 256410
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_random_cov_edit-train.json": {
+      "sha256": "a74967c9886308ead4b30a52b6ffe1ef436c396d0f04147a80ec16cf9aec1991",
+      "bytes": 55256
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_band2d_cov_dev.json": {
+      "sha256": "3859f9547552ee680db7e041aedbf65852c7e806db3a010f779c6efd774df15f",
+      "bytes": 12992
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_cov_edit-train.json": {
+      "sha256": "95465cf3f07e4dee99d329e3753fe2bba570cd16b6a173c44056396fed5d10cc",
+      "bytes": 14667
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_color_ordinary_optimization.json": {
+      "sha256": "098339fd5038fb6f58e07879a879000ddc125a57f63cf9fb505875f465e5e29c",
+      "bytes": 243628
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_common_profiles_dev.json": {
+      "sha256": "a4af16620830d20231055636a98785ee07b72e8c7dc72132a792f10702ead372",
+      "bytes": 2951
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_common_profiles_dev.json": {
+      "sha256": "6e2bdca54329841ffda481c7b7813f61288f9bdca71694268eb428f506c6d2db",
+      "bytes": 3093
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_band2d_cov_edit-holdout.json": {
+      "sha256": "2c8fbc416c9b49fbee40b797c09d69d2a949886dbf35e3b17a04f6dfb42078e3",
+      "bytes": 46778
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_media_arc0.json": {
+      "sha256": "8f165730c558c59c4187792837398e2fc6d4f6d3eeabac53e975e5e4b665b1bd",
+      "bytes": 32117
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_edit-holdout_figure_manifest.json": {
+      "sha256": "05edaed7fee3a0010d8381a8a0992a82ec81600dc2f0077874a2735cc84ccb93",
+      "bytes": 3686
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_color_ordinary_time_dev.json": {
+      "sha256": "e360139c9c2a92461edf09b35d125672d2f0bc2365c9ec6c57be7dc95486df5f",
+      "bytes": 13017
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_band2d_cov_optimization.json": {
+      "sha256": "1cf3fc2355367461fba9afcc3b481360e4ed945478d052987abcc8afbcedd86c",
+      "bytes": 255640
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_color_dev.json": {
+      "sha256": "4d6aa09c5bd2b317184b9d41d1a23901a9b10fb59211d9c2f17902d33ec9fed5",
+      "bytes": 13000
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_band2d_cov_edit-train.json": {
+      "sha256": "b06014792540d074235b2610e38a8e55cbb7092e57007cd12624bdc1df25f3bc",
+      "bytes": 14528
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_band2d_cov_edit-train.json": {
+      "sha256": "e38a6e4e0219dde3a3bc137b046591b42106611ca140eba545ee3b44ad00ecae",
+      "bytes": 55428
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_zero_step_dc_projection_edit-train.json": {
+      "sha256": "11e602fa73cfeeea72bf3836f09a89690e75e65e8790488ce03f5439afc86e8e",
+      "bytes": 55307
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_color_edit-holdout.json": {
+      "sha256": "aecce27d9b99d94bb72e6ac9a72f967f12dbca9d854e5c50a578770afe2de076",
+      "bytes": 46848
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_cov_ordinary_time_dev.json": {
+      "sha256": "c88e60ffc418a99f1069490ff899b9a4f64ae802bd61159a858660511cc518fb",
+      "bytes": 13010
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_cov_ordinary_dev.json": {
+      "sha256": "6b3d98e9caa9b14f2801b56d27b8b527716f1bc2a7100fc4bfa4f995797e86d4",
+      "bytes": 13000
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_cov_ordinary_edit-train.json": {
+      "sha256": "385656e529271a829bf2b92f63006e82664dc6e224a6decf0f01a0e3aecacef7",
+      "bytes": 55194
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_band2d_cov_dev.json": {
+      "sha256": "b8356b4f78d37777758fffa38695b98d10d88f26a427497e7353af1b7f499c3b",
+      "bytes": 11311
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_B0_edit-train.json": {
+      "sha256": "37ccbcb1f224daeb1c83c052c6bd5aaf1d27f3a3546e62a95ec1236d04f4cd9b",
+      "bytes": 55090
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_cov_edit-holdout.json": {
+      "sha256": "ed5d36430711473e04590978b9911eaadef93ab14eb9ea697fc762daef9a00a2",
+      "bytes": 46817
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_cov_ordinary_edit-holdout.json": {
+      "sha256": "f8f5f07a48f2d5bf9fba49a41f9d2b684b84c4d977e1f2552e62148ccc9c9633",
+      "bytes": 46830
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_zero_step_dc_projection_dev.json": {
+      "sha256": "98a6bcd88d7d1056040787033ed670ba17935d79de8de16c0b8a5a3c347648d0",
+      "bytes": 11294
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_zero_step_dc_projection_edit-holdout.json": {
+      "sha256": "2a23e266573b419ec97d6ee74f26210fdcc45b04107f3e05a4f972798060d566",
+      "bytes": 15896
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_dev_figure_manifest.json": {
+      "sha256": "1896b7fa500274e504eebfd8bd85d7b5ea0a8aef6fba7b154bcf01691aae57b4",
+      "bytes": 3626
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_color_ordinary_time_dev.json": {
+      "sha256": "8b3637ce3991ebe733a514f02877d03610edc0f851801e6be7e10d1a4007f92f",
+      "bytes": 11296
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_B0_edit-train.json": {
+      "sha256": "e64c45f38f8c93c1d6693d5394953644fdd0aebf1176fbbe8ecdc28ba744805d",
+      "bytes": 14410
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_color_ordinary_time_edit-train.json": {
+      "sha256": "0c73e0cae76304c29a7bdf95cbc08a986b236183daaf8eccee1c4101bdc3523c",
+      "bytes": 14674
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_media_orbit.json": {
+      "sha256": "1fae567bf57333f587eefd5b25c38082ab2fb784bf27323f98afcf077f35b2d0",
+      "bytes": 32217
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_cov_edit-train.json": {
+      "sha256": "e888fab1eb7a21c260a2d54e733adf06b8b403186f239925d5f9f6b56304dd98",
+      "bytes": 55197
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_native_calibration.json": {
+      "sha256": "368994498ba1e5a379211e33af4ae7f34b1f0edd370636173987b80bd395a25a",
+      "bytes": 1028
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_color_ordinary_edit-train.json": {
+      "sha256": "5e6c91850ad147e203e98939b27e37e86ce13860ae556fdc6bdbbc3f17d92e2f",
+      "bytes": 55206
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_B0_edit-holdout.json": {
+      "sha256": "181bb806a3c2841fa538d0ec401751b9d9c85f24c28e929ac7a80f65de7bee3d",
+      "bytes": 15705
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_cov_ordinary_edit-train.json": {
+      "sha256": "6289fdc06f604d7280970c36803b6a4154139e5190b523dd73e92b034bb5723a",
+      "bytes": 14676
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_random_cov_edit-train.json": {
+      "sha256": "f49c8439ec3630f25fc0b9936673a74f44c14397d46294f7468231de4458f6f4",
+      "bytes": 14743
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_cov_ordinary_optimization.json": {
+      "sha256": "2bb45e8b029d28c680332264fc8ce4062d2294efa433cc685c9ea771bf44ef7f",
+      "bytes": 256788
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_media_arc0.json": {
+      "sha256": "2c062a7344113a00fde1347c19d97e8940110a39007a4db8346dc5d632ceac31",
+      "bytes": 32121
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_cov_edit-holdout.json": {
+      "sha256": "0d186ff35e56994f4922d12d950d5fbd20b269191cd49b1fc0d0b4a17f55d054",
+      "bytes": 15887
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_B0_dev.json": {
+      "sha256": "abf0258e5f46ef5a2665706b72a446d90fb572c51af24631ffdc3839bae46284",
+      "bytes": 11170
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_native_calibration.json": {
+      "sha256": "6ea37d2f986a0d122eacaa475649e23cc630564ab01fc1b9f11bc88b4c7f985d",
+      "bytes": 1028
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_color_optimization.json": {
+      "sha256": "00422186c5737cd810abd3822da6fe0b2f8794436984d39a1c93b0303ca82070",
+      "bytes": 242906
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_color_edit-holdout.json": {
+      "sha256": "b1c1c31f02e9a808c27ad8bb7ffda661560c298e1b6c18036a2c1e019239b0d4",
+      "bytes": 15898
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_B0_edit-holdout.json": {
+      "sha256": "060f3c4f28ec80c7694d09415d13dfed4181d07467e28c1df53b455172613b69",
+      "bytes": 46725
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_color_dev.json": {
+      "sha256": "57b01218c81a7aa7a667032174ae3c7447d5af283f0d2eeb91b640f1d9306637",
+      "bytes": 11287
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_color_ordinary_time_optimization.json": {
+      "sha256": "b7248f14edfb9070cc3f69b2a37243c71456e59bbca2f811b29247d9e864d911",
+      "bytes": 209269
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_cov_ordinary_time_optimization.json": {
+      "sha256": "78d9e3c2fa9b25065cda3f6d72985ed8e8fe57edc1227072867f3a1502531579",
+      "bytes": 239790
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_random_cov_optimization.json": {
+      "sha256": "2c3ba6310b61121e850e1e9ffc4cdfbd5144b384064ec0d36d5267c0cd3dfc10",
+      "bytes": 256292
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_cov_ordinary_time_edit-train.json": {
+      "sha256": "e1477943f49726be800c777c36ed1ad4b33387f21fa1951268a9028f0ccd95af",
+      "bytes": 14683
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_cov_ordinary_time_optimization.json": {
+      "sha256": "13c1360a5f31d095685b4006825330ce6156ec0d4b3070e423a5f5d7df32fff4",
+      "bytes": 234815
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_zero_step_dc_projection_edit-holdout.json": {
+      "sha256": "0f43bff4dbea2a823f3cdb0bd1e1dd0cdfeb7620164fe114eda6cffd119c5359",
+      "bytes": 46897
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_edit-holdout_figure_manifest.json": {
+      "sha256": "1fa858f069f6de48ca8326f337b5d69c5637a4b03899be0e403dd0172cd15a8f",
+      "bytes": 3697
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_common_profiles_edit-holdout.json": {
+      "sha256": "a0f354ba10b48f2e94099c685c4720674c9998763c0d35d71bd0bf437174570d",
+      "bytes": 5325
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_color_edit-train.json": {
+      "sha256": "693db4ef29a7d752a3ea7c3d04fb262782d1fd4fc4fb53e232bedd3df1bee4fc",
+      "bytes": 14599
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_random_cov_edit-holdout.json": {
+      "sha256": "ee5e2fa3c9412589ecf40808eba4d9e270438331bc4a8dbf6ee568e60d5ff21f",
+      "bytes": 15876
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_color_ordinary_edit-train.json": {
+      "sha256": "67b49150e0649a5633c197495d69a1a47b495e904361ffe8033758263173319b",
+      "bytes": 14677
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_random_cov_optimization.json": {
+      "sha256": "a1100334106a593df8fa8cbc67ec7921279cf8c95130256bb6b2ea9fdb563bb0",
+      "bytes": 255436
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_color_ordinary_optimization.json": {
+      "sha256": "8ad50301ac65bb4aa447beaec58f34de05d992d5f89a6e2b862a9308de3c8afa",
+      "bytes": 244220
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_color_ordinary_time_edit-holdout.json": {
+      "sha256": "7060e2f67e256ae3bc7d9b23615b3bdb35580075252cdd284f20379406c721e7",
+      "bytes": 15906
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_cov_dev.json": {
+      "sha256": "993330426aa9eb41f14a5cef784970797e3b4b2ca3f16445997b42969b0d410c",
+      "bytes": 11280
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_relative_cov_dev.json": {
+      "sha256": "2421eabc3a6545fb01130aa7ddda748ff5264b09a1e8cc2ce7dd57e1e541576b",
+      "bytes": 12997
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_band2d_cov_optimization.json": {
+      "sha256": "f143d0ff4c3616255341c7812cdd06ad9d015783b5f7432c1a5f5337d5a4a77d",
+      "bytes": 256265
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_zero_step_dc_projection_dev.json": {
+      "sha256": "329cdb1ee31a4602140e4ee49d187a0a2d16216b0ac20cf5483f9ec7c06bb966",
+      "bytes": 13019
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_common_profiles_edit-holdout.json": {
+      "sha256": "a1955590a7317d83810eb7bc8e253115b480355f903bc83f0aa2e4cd1abd5900",
+      "bytes": 6288
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_random_cov_edit-holdout.json": {
+      "sha256": "aad357880f9dbb4bc0490ca37be5f6680a703c6249e94d6e6d1fa0ccb5c19630",
+      "bytes": 46640
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_media_orbit.json": {
+      "sha256": "7d3d883a042ed5858e675645fcf2d43cc9554df4ac10be382f3cb91fa52356dc",
+      "bytes": 32225
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_cov_ordinary_dev.json": {
+      "sha256": "0927915c61465b963d853fecb2810da219af04a462522918c9c23946503bdabe",
+      "bytes": 11300
+    },
+    "artifacts/edge_control_lego_chair_v1/results/lego_random_cov_dev.json": {
+      "sha256": "9f6dc5ca070a56d24b09a2523cd9e05b2685554db4363d6cf79165eea0386db6",
+      "bytes": 12994
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_color_ordinary_edit-holdout.json": {
+      "sha256": "df1d529a470be206d9249c7cd57f73db3bb0064218f92c9ff1d760627ae15418",
+      "bytes": 15892
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_cov_ordinary_time_edit-holdout.json": {
+      "sha256": "9dd5060279bedc9c78d90ad522fd0b91ea4d3588a915da2778e98124cc98f58a",
+      "bytes": 15902
+    },
+    "artifacts/edge_control_lego_chair_v1/results/chair_relative_cov_ordinary_edit-holdout.json": {
+      "sha256": "33013e59f478e6e686549aa559ad49e190eeff3cdf678de9435974e6d976a0a1",
+      "bytes": 15897
+    },
+    "artifacts/edge_control_lego_chair_v1/tests/NATIVE_CHANNEL_PRECISION_RED.txt": {
+      "sha256": "70ca99b3b20971d4566a3b859f5b157218ae211b338994a59cd198851346ea07",
+      "bytes": 640
+    },
+    "artifacts/edge_control_lego_chair_v1/tests/EVIDENCE_TDD.txt": {
+      "sha256": "2dd30f037cd1b0edf3e8aecc5e865e8d38c6e8569948aebc472ebc005f2b7e53",
+      "bytes": 3980
+    },
+    "artifacts/edge_control_lego_chair_v1/tests/INDEPENDENT_SOURCE_REVIEW.json": {
+      "sha256": "c0e576c435b38484361bf4c4ec55660faed98320ca6650ea1b01dd521bfcd15b",
+      "bytes": 8056
+    },
+    "artifacts/edge_control_lego_chair_v1/tests/NATIVE_GREEN.txt": {
+      "sha256": "8c1200a50ba7f869320530812240e41fa3b28d3d74488cd4e085eb0ab0bbcdc0",
+      "bytes": 98
+    },
+    "artifacts/edge_control_lego_chair_v1/tests/NATIVE_RED.txt": {
+      "sha256": "e52e0dcbfdf4faaa32fe4606edc42798b748a52c23d27fd681a1d4f9875f43bb",
+      "bytes": 935
+    },
+    "artifacts/edge_control_lego_chair_v1/tests/INDEPENDENT_SOURCE_REVIEW_FINAL.json": {
+      "sha256": "4f778f5b906cbb6e0b73ee8a09c638c6ccc6a41b3553d0791ad7e5ceb8575fee",
+      "bytes": 5541
+    },
+    "artifacts/edge_control_lego_chair_v1/tests/CONTRACT_GREEN.txt": {
+      "sha256": "c6c9218febf71de0a65d89ac6d3a7b31e21bf5287ccddb6c7762681f4b24134c",
+      "bytes": 102
+    },
+    "artifacts/edge_control_lego_chair_v1/tests/CONTRACT_RED.txt": {
+      "sha256": "4a2ddce59b45d8f7272fb39f89b40bc9ff974f88a5519d3f781646a28094b98f",
+      "bytes": 968
+    },
+    "artifacts/edge_control_lego_chair_v1/tests/INDEPENDENT_RESULT_AUDIT.json": {
+      "sha256": "3415001f818bb3ae9a77351be8c7779c1a64a26af81ba2926627f66278662046",
+      "bytes": 65731
+    },
+    "artifacts/edge_control_lego_chair_v1/tests/ALL_GREEN.txt": {
+      "sha256": "38755d744a5c23bb29a644616663215f86a8bd7f5eb7f2c8d6121d60410b3ee1",
+      "bytes": 115
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_edit-holdout_r_030_same_camera_edge_zoom.png": {
+      "sha256": "d6a39cde410cb4d10ce381a9024c1ffca42c836025565a073a74c0459a8c752b",
+      "bytes": 23047
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_initial_native_B0.png": {
+      "sha256": "4c9ef4bed4dc136f1b90c938dd8eb8e38a2c49b6c4a1dccecfb4c92d55024ef7",
+      "bytes": 135017
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_edit-holdout_r_018_same_camera_edge_zoom.png": {
+      "sha256": "1cda60a18998f05f5b1712704cf23a9d45a159ae7643f68407fc6d353f4101e2",
+      "bytes": 25802
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_dev_r_059_same_camera_native_edge.png": {
+      "sha256": "0973afe28de1e36f13a330c5751edb10a43c6277da1ddc74c16ccabae72b430e",
+      "bytes": 14606
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_edit-holdout_fourview_contactsheet.jpg": {
+      "sha256": "ef9cc2f3e6b8415eedcf2621e681613b8fc89a7e4b39be069fa2ead9b61f2787",
+      "bytes": 456116
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_edit-holdout_r_000_same_camera.jpg": {
+      "sha256": "97cc87985773315e840aa183275113fa37486b3083e2d38335e66bf1300f1250",
+      "bytes": 206725
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/actual_complete_epoch_and_holdout_curves.png": {
+      "sha256": "00dcd49c714865d8338d8128b7e8b650b3e7cd602d2eb480e25e888a2551cdaf",
+      "bytes": 366547
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_edit-holdout_r_008_same_camera.jpg": {
+      "sha256": "6c46908e0ac2a2a346ee8ec6810e3f8b7f80ddad167f3931680e4ccaf8ae3392",
+      "bytes": 377913
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_dev_r_007_same_camera_native_edge.png": {
+      "sha256": "479f88bd83df486a9153c09160d3d0327672d27053b310e5bd847b49826d01be",
+      "bytes": 7537
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_edit-holdout_r_030_same_camera_edge_zoom.png": {
+      "sha256": "2f53b6583026cd4d34d33b1140a1b8c975687392c935174bfffa034edadac192",
+      "bytes": 26768
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_edit-holdout_r_018_same_camera_native_edge.png": {
+      "sha256": "2f6bea92529632fa3e450e4be3413b1b10b8df75760bf6fd6c50498cc2080e05",
+      "bytes": 18098
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_edit-holdout_r_030_same_camera_native_edge.png": {
+      "sha256": "b0b28df696c68176cd379f4da69a79c08e2edc2144c5de588f55931362375fbf",
+      "bytes": 16570
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_edit-holdout_r_008_same_camera_edge_zoom.png": {
+      "sha256": "c0ab4c9f2ad83afa650e17b59bfe70896b5f26d8afe7bd53747b30614e8917df",
+      "bytes": 26044
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_dev_r_086_same_camera_native_edge.png": {
+      "sha256": "4297de719dc662161d24014a9bdfd93c5cd7f5722f4264caa866c6b910d1eb8f",
+      "bytes": 516913
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_edit-holdout_r_008_same_camera_native_edge.png": {
+      "sha256": "08a2c515f0d92d7f4b053effb0267acbba98c6109e7f26956371355191d1176c",
+      "bytes": 409027
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_edit-holdout_r_000_same_camera.jpg": {
+      "sha256": "dfcb9aa718f0e832cd70185fb9ace3727e48fa7f71a7407a58c0b15130e2190a",
+      "bytes": 288002
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_dev_r_033_same_camera_edge_zoom.png": {
+      "sha256": "88f2d3554f7e2bf4bf54b2e5594dae8417ba4dc14f12eea2dd4b639d51bdfe85",
+      "bytes": 706062
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_edit-holdout_r_000_same_camera_edge_zoom.png": {
+      "sha256": "84a8a89b5f8cdcc7950a18b00040470a7d6100dfe02623ed6d7b40f9938bb340",
+      "bytes": 25307
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_dev_r_086_same_camera_native_edge.png": {
+      "sha256": "89e2fc2f44f609e3a576e60a7dd5a2ce0f211129f30b01e70bec9b068bd08790",
+      "bytes": 17486
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_edit-holdout_r_018_same_camera.jpg": {
+      "sha256": "9e69da91977036824af79584bddecb2200179d1869eab6c1edd6ec0963df80e9",
+      "bytes": 408714
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_initial_TRAIN_reference.png": {
+      "sha256": "4e0827273957900d13b1e7496ac620c485d10d7a58bf1f08296318c269935fc8",
+      "bytes": 136267
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_edit-holdout_r_008_same_camera.jpg": {
+      "sha256": "be9ba085d7dd1747d164b15ffe474e39a468955ff041d1d1e98ae472cd77dbe2",
+      "bytes": 366375
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_dev_r_033_same_camera.jpg": {
+      "sha256": "db8d869ba174b0ae41002817b0f589b70e15688f08f281e2dcfd8613f4385381",
+      "bytes": 190296
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_edit-holdout_r_000_same_camera_edge_zoom.png": {
+      "sha256": "44fda5408491f891d5548a7a4d8bf48ce656b3adef2a8b6b175c8ac9912ce35f",
+      "bytes": 258495
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_dev_r_086_same_camera_edge_zoom.png": {
+      "sha256": "eeb456a48039ee29bea1f63cbe8b85119f363ff8e5e5e6995069a17bc474539a",
+      "bytes": 23900
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_dev_r_033_same_camera_native_edge.png": {
+      "sha256": "1aa22ecf05794b3c9eea079bfe626d0648853d9f5598ddea8e0ffcd6e0070179",
+      "bytes": 530307
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_edit-holdout_r_008_same_camera_native_edge.png": {
+      "sha256": "a523d1b56148961e7ca4a51cb5279182de6b8fafbad3c5ea7af6fffc97797d78",
+      "bytes": 18712
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_edit-holdout_r_018_same_camera_edge_zoom.png": {
+      "sha256": "c266519164f034ab5bbe5523ec2c4e3cca03efb2d90dfd39b4fc8407789248c1",
+      "bytes": 24642
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_dev_r_033_same_camera.jpg": {
+      "sha256": "6ad1502325f564e8bbdcaa9f8df0dd2572badefccc05b43f82720938224aa701",
+      "bytes": 453536
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_dev_r_059_same_camera.jpg": {
+      "sha256": "83ad9bd20fc50a59412c128739f3dd52a73fbc7c1609ac66dec99f04e007f7a3",
+      "bytes": 250189
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_initial_TRAIN_reference.png": {
+      "sha256": "426b1579f85169ff9073ccca1957e46691aa63cfbd68a24f8261fd5df462fab2",
+      "bytes": 140611
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_dev_fourview_contactsheet.jpg": {
+      "sha256": "46e17388021cf88ac103fced76cd8cd1272e22cefa7449330cfb0961b3d7e5c2",
+      "bytes": 723996
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_dev_r_033_same_camera_native_edge.png": {
+      "sha256": "072dbe8048cc1259e49c0d80dc84e69cc54a0ef10cf3ee53ea81dc1d474f9bff",
+      "bytes": 15580
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_dev_r_059_same_camera_native_edge.png": {
+      "sha256": "ecb03f1e2b44c152cad18df0d98162b8bcfe32b902fa636367415e2c00342b2d",
+      "bytes": 238436
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_dev_r_033_same_camera_edge_zoom.png": {
+      "sha256": "f910765ca61995aea0a796b51afaba0ab6e5e6843d6dcaa552644c06e9516e6b",
+      "bytes": 21782
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_dev_r_059_same_camera_edge_zoom.png": {
+      "sha256": "ea820dd281b7ffcc6202ed45bd5954403f8f6f2248f093ef4161e0a6bd39afab",
+      "bytes": 20738
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_edit-holdout_r_018_same_camera.jpg": {
+      "sha256": "1fd8bddede1d6b3274a0b316d8fcf9c9c737d2e30591a27e000fc049f5c880f5",
+      "bytes": 273618
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_edit-holdout_r_030_same_camera_native_edge.png": {
+      "sha256": "7aaa4b2a764df7af1e760c342361b66152c2836cd35192115791e0d239f31a8b",
+      "bytes": 19023
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_dev_r_007_same_camera_native_edge.png": {
+      "sha256": "20f6d862b479ecb45fffca87d737cb35fee1015f0a453a27910f12b18b7dadfd",
+      "bytes": 21394
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_initial_native_B0.png": {
+      "sha256": "758f888ae5189849eedfd894c0b32309d90a06061f8aa40a5aa3e64ed17cfe91",
+      "bytes": 135006
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_dev_r_007_same_camera.jpg": {
+      "sha256": "4a0663a4dde59ca6e566cc82a51575f2a23e24f31600043626e32cf1e707b60a",
+      "bytes": 423878
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_dev_fourview_contactsheet.jpg": {
+      "sha256": "c290601c33adbc80073158ce3211d75eca64c49fe40a1f67a905afe97a0ebe22",
+      "bytes": 375758
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_dev_r_059_same_camera.jpg": {
+      "sha256": "8a7cf01ea1c495db3d4e4d09fbac63f345505301400c8a4e6fb07f5534ce0f4e",
+      "bytes": 453047
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_dev_r_086_same_camera_edge_zoom.png": {
+      "sha256": "308bffcd78eab95e83c5bca8bd8a0f1559d3a563feedac155fbc42ae8d99eedc",
+      "bytes": 691147
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_dev_r_007_same_camera_edge_zoom.png": {
+      "sha256": "97f49589758483579e9327587e687227e30a51cddc91b3a9c1f1f24a903e00f7",
+      "bytes": 29987
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_edit-holdout_fourview_contactsheet.jpg": {
+      "sha256": "6bf2ebc49d0b77a97d3f37fc53c89ceb4eddc948de122319bd7eae4bb0ca1e77",
+      "bytes": 642204
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_dev_r_059_same_camera_edge_zoom.png": {
+      "sha256": "4d8f056d2d350c2bfab0977e64f7f03a90da66848488d2237b710afa59b6262a",
+      "bytes": 324699
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_dev_r_086_same_camera.jpg": {
+      "sha256": "d4c0d2b0145b3ad3d1b26f4f36dced1dfaa64fbe1d2c6f166a25b7361585cac8",
+      "bytes": 442758
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_edit-holdout_r_000_same_camera_native_edge.png": {
+      "sha256": "cdc711ce8c3a5e57e36c42e250f3ef68289eb7eea71f783889e979a860548a7f",
+      "bytes": 17922
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_fourview_failure_context.jpg": {
+      "sha256": "09a42b0665f87dc3d445d0e5be65351e8f424835abc338155fe7be6dedf0f758",
+      "bytes": 591396
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_fourview_selectors.jpg": {
+      "sha256": "e18e01213a07eb97415b2ec58018a5c51e5c6993b9d39cbedaac375c4aef61b3",
+      "bytes": 277665
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_dev_r_086_same_camera.jpg": {
+      "sha256": "efca3a6cb5a585b9dfc6d3a14d461177c618b1171aa7556944e5524e2cb8eaa0",
+      "bytes": 191524
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_edit-holdout_r_018_same_camera_native_edge.png": {
+      "sha256": "e3fc87d6da2f2993af2bb46ff55a9ebcaf377622006cb51baf06bebb63cf0390",
+      "bytes": 17642
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_dev_r_007_same_camera_edge_zoom.png": {
+      "sha256": "42fa7bf45fbbe83f73bcbe002e093712af17df6a559c5e27712ca5397ac8ff61",
+      "bytes": 10848
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_fourview_selectors.jpg": {
+      "sha256": "52be8b559dbf33d5bfbfcf67ce25f872174fd179ab25c30ff14579cc35479166",
+      "bytes": 522738
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_edit-holdout_r_030_same_camera.jpg": {
+      "sha256": "4d6787f5065071f16c81e8bd1b10961377e3c7066de3340fb5607557f05883bf",
+      "bytes": 219704
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/lego_edit-holdout_r_030_same_camera.jpg": {
+      "sha256": "755a740b313a70bd2bcdfedb527b4511cc94058a5c0055e2cf2515df60850a17",
+      "bytes": 453104
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_edit-holdout_r_000_same_camera_native_edge.png": {
+      "sha256": "c062ab21ab8be5c5670bd7cf4fca0cec32711c8b5a9a3781ffa348a95db4ac60",
+      "bytes": 191549
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_fourview_failure_context.jpg": {
+      "sha256": "008805c3a6185e59ee0e11d135fdafbb0db3824e60480aac2f8f1aa2c91198b9",
+      "bytes": 341295
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_dev_r_007_same_camera.jpg": {
+      "sha256": "264dbf47cf386f1e36e7265ba860c0bcb62ff34beace5dcba58660b1ef66b192",
+      "bytes": 179546
+    },
+    "artifacts/edge_control_lego_chair_v1/figures/chair_edit-holdout_r_008_same_camera_edge_zoom.png": {
+      "sha256": "1120a424f76e000c0a304dbdc80f6959f21e0a76ae5e572bbdc708423d5917cc",
+      "bytes": 539294
+    },
+    "artifacts/edge_control_lego_chair_v1/videos/lego_relative_cov_ordinary_orbit_33.mp4": {
+      "sha256": "33e66575c3dcb3e4790a58f9cb6082bd61415d449d1549d3fe65ba5abdd5f548",
+      "bytes": 656844
+    },
+    "artifacts/edge_control_lego_chair_v1/videos/chair_relative_cov_arc0_33.mp4": {
+      "sha256": "e012419dab98b32c929ba465095713423fdac0add47c2dd258ff52d156e2c084",
+      "bytes": 71976
+    },
+    "artifacts/edge_control_lego_chair_v1/videos/lego_relative_cov_arc0_33.mp4": {
+      "sha256": "e2f774c183f94acf3bab7809ccab8181ce82237d0e2a6394beb3dbdba311eca9",
+      "bytes": 239557
+    },
+    "artifacts/edge_control_lego_chair_v1/videos/chair_relative_color_arc0_33.mp4": {
+      "sha256": "3877458f253c40ccde3483f35bc3c15e3d66a29fe82a3d70864cee58a3a650d9",
+      "bytes": 71737
+    },
+    "artifacts/edge_control_lego_chair_v1/videos/chair_relative_cov_ordinary_orbit_33.mp4": {
+      "sha256": "75e3d6f2680314028440dde64660956916d816078b7b4808c7363c62d6b86589",
+      "bytes": 433705
+    },
+    "artifacts/edge_control_lego_chair_v1/videos/chair_relative_color_orbit_33.mp4": {
+      "sha256": "b0196fd630e444e389af02fc044ba6c27a78e29cfb5272814ad5ba6ff11771c9",
+      "bytes": 432275
+    },
+    "artifacts/edge_control_lego_chair_v1/videos/lego_B0_orbit_33.mp4": {
+      "sha256": "906e69c9ecdf6543106bcc15f7d5f8328eb4d757bf7e7bd273f766e18266ac60",
+      "bytes": 653234
+    },
+    "artifacts/edge_control_lego_chair_v1/videos/chair_B0_arc0_33.mp4": {
+      "sha256": "608f1d2413a619cf3542326e5c4aea77f126e86eb3360f04b2c25a93f128221f",
+      "bytes": 71324
+    },
+    "artifacts/edge_control_lego_chair_v1/videos/chair_B0_orbit_33.mp4": {
+      "sha256": "95349a5fa9ad0dcc264c75c14c5688199acf5c745fb142ae6c1df65c8825a426",
+      "bytes": 430219
+    },
+    "artifacts/edge_control_lego_chair_v1/videos/lego_relative_cov_orbit_33.mp4": {
+      "sha256": "b20c98c9cfe5bd77152c53bab2353fc4e73e87a502fabebe47483e8efe056cf3",
+      "bytes": 657082
+    },
+    "artifacts/edge_control_lego_chair_v1/videos/lego_B0_arc0_33.mp4": {
+      "sha256": "c5c9172279b8d09f93b6d238b8a79d90d65c74f4f7f1a85b6eef394c12a389d4",
+      "bytes": 239082
+    },
+    "artifacts/edge_control_lego_chair_v1/videos/chair_relative_cov_orbit_33.mp4": {
+      "sha256": "4e8b2b2d0a4ce04e19caecb859df67b97cbd889517df221bb84dddc0e5287089",
+      "bytes": 433922
+    },
+    "artifacts/edge_control_lego_chair_v1/videos/lego_relative_color_orbit_33.mp4": {
+      "sha256": "eb6e3694d033e37ee7c650955aa0469f40fff87c443c2c1a17e47f4921b917a4",
+      "bytes": 654552
+    },
+    "artifacts/edge_control_lego_chair_v1/videos/chair_relative_cov_ordinary_arc0_33.mp4": {
+      "sha256": "f3d1a34338fb1ddbf343f2c2b2239e54c9d2408b7f6debc2e5cb9a1c20abb11e",
+      "bytes": 71903
+    },
+    "artifacts/edge_control_lego_chair_v1/videos/lego_relative_color_arc0_33.mp4": {
+      "sha256": "9eaa084c2d5fc4f4f58de4f86ebd0d1a8a8780448e8ace5ed6fe3c2d5d2069b0",
+      "bytes": 238432
+    },
+    "artifacts/edge_control_lego_chair_v1/videos/lego_relative_cov_ordinary_arc0_33.mp4": {
+      "sha256": "e9714b2aabf612d5c00fa08332dfbf92559bd2fc5fc994ef77c00a433629478a",
+      "bytes": 239671
+    }
+  },
+  "source_data_freeze_sha256": "c48d0471b96b78b58aa4c23bbc1e89cffb6de64ad2290ebdc7b5ec00ab394906",
+  "actual_production_runner": "experiments/edge_control_lego_chair_v1/scripts/runner.py",
+  "CPU_postrun_code": {
+    "artifacts/edge_control_lego_chair_v1/SELECTOR_FIGURES.py": "10e054ad5ebf637d6f0e047a0d4286737521ccbbc769559f21b06f99539577c7",
+    "artifacts/edge_control_lego_chair_v1/PROFILE_AUDIT.py": "b0e96d845470bfc1d2e9e330c78a32d2964591914b80418118224c75ce415a80",
+    "artifacts/edge_control_lego_chair_v1/ANALYZE_FINAL.py": "c4b4408d943c002110c4d1494950d534bb45ad171e8c01c4aa776972bd4bffe1"
+  }
+}
