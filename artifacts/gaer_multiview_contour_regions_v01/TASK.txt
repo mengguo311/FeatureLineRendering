@@ -1,0 +1,42 @@
+# Astra ultra / 多视角轮廓核融合为固定三维轮廓带：深入研究后开展真实实验
+
+用户最新原话：切换codex模型为astra ultracode，深入研究之后进行以下目的的实验：用多视角下检测出的边缘轮廓核，完成立体边缘轮廓线的绘制，并且结合不同视角的结果组合成一个完整的3D轮廓线模型。我们可以舍弃一部分精度将线段变成一个更宽的“部分”以获得更加连续的效果。本次实验目标着重在还原程度更好的轮廓核上，对于物体内部的细节线边缘核，尽量实现，但不是本次的主要目标。
+
+## 模型/范围/保护
+你是已实测可响应的 gpt-6-astra / model_reasoning_effort=ultra（用户称 ultracode），Codex CLI 0.160.1；新项目 .codex/config.toml 已设该默认并通过无override的响应验证，不得降回Sol。独立树 /home/u00134/3dgs_line/gaer_multiview_contour_regions_v01，branch gaer-multiview-contour-regions-v01，原始基点5ddbcbd88aea9f60f97cc5168a98142fbda7eb5a已未修改推送。只写 experiments/gaer_multiview_contour_regions_v01、artifacts/gaer_multiview_contour_regions_v01、out/gaer_multiview_contour_regions_v01；.codex/config.toml 仅本次已授权配置，不进一步更改。旧树、旧main、旧summary、历史negative evidence和模型原件只读；不删/强推历史branches。不读/输出/提交认证数据，特别 ~/.ssh/DSSpwd.txt 受保护。不动其他tmux/Claude进程，不查看进程参数，只PID/comm。不要启动另一个外部 coding/research 进程；ultra内部工具如自动调度助手也必须继承同样路径/资源/密钥保护，不能双占GPU。
+Python /home/u00134/bin/miniconda3/envs/vfsdgs/bin/python，2 CPU线程，pycache关。预检nvidia-smi仅PID/ownership，若GPU0外来占用先CPU研究，不抢/杀。所有cache/temp新stage。阶段守卫 root>=4GiB、sharedGit>=1.5GiB、stage<=6GiB，生产1GiB守卫不降。禁止安装/训练原模型/新网络、mesh GT/扫描/depth-sensor等额外几何输入；允许公开文献/作者PDF/方法官方仓库的只读调研（不下载执行第三方代码）。从所选kernel支持生成的tube/region triangle mesh作为输出是允许的，不把它误叫输入mesh。
+
+## 本轮输出合同与优先级
+固定可编辑3D资产，不是某个相机的alpha轮廓升维，不是每帧换一批线，也不只是x-ray单图。多视角检测的轮廓核必须是主原料，有原ID/provenance；允许用完整Gaussian足迹、共同支持和三维短距聚合，不再局限“0.5%点中心细链/degree<=2”。允许以固定三维厚管、局部带、capsule/区域、object-space支撑合并获得完整连续效果；新坐标/区域需要以多视角选核支撑为锚、记录空间位移/宽度/填补归因，不要求所有新tube顶点是核中心。自动算法，禁止手工给部件/线画答案。不同视角的证据可离线合并/优化成唯一固定资产，最终geometry/width/topology不随相机更新。相机仅投影与事先冻结的真实可见性算子；不以逐视角隐藏mask/路径副本/二维调位制造完整模型。原核能参与轮廓不等于中心在真实轮廓；rolling silhouette一般不存在一个处处精确固定曲线，本轮用户已明确接受更宽、更近似的固定空间部分，必须解释适用视角域与完整性/宽度/错误填充tradeoff。
+主目标是形体外轮廓和薄部件的整体还原/连续性；孔洞、部件间负空间应单独说明策略，不把抹平全部孔洞叫完整。内部细节作为可独立关闭的次要层，不允许杂密内纹把外轮廓质量掩盖。宁愿保留宽但连贯的正确结构，不重复上一轮稀疏clean后大量孤立核。也不得直接铺满整个物体变黑来冒充粗线。
+
+## 必须先做深入但有时间边界的研究
+第一阶段先读真实历史报告/代码/完整图：
+- /home/u00134/3dgs_line/gaer_kernel_space_lines_v01/artifacts/gaer_kernel_space_lines_v01/REPORT_ZH.md、PROTOCOL、FULL_GRAPH/拒绝邻接、PCA方向/selected kernel图。上一轮纯中心图已NO_GO_FRAGMENTED：Lego3057选核 A3240边/B1154边，B最大组件17、孤立1317；Chair1953核 A2166/B753，最大组件9、孤立814。不要只调k/角度、继续几何短碎片包装成功。
+- /home/u00134/3dgs_line/gaer_view_selection_v01/artifacts/gaer_view_selection_v01/REPORT_ZH.md：旧automatic accepted空/ALL8 REFUSED仍保留。旧0.5% gaer_ratio预算是诊断，不是validated物理边；有raw/ratio/alphaT participation对照和full footprint支持。
+- /home/u00134/3dgs_line/gaer_object_contours_v01/artifacts/gaer_object_contours_v01/REPORT_ZH.md：原核联合支持能补轮廓，但在线view fitting不是固定模型。
+- /home/u00134/3dgs_line/gaer_attribution_capacity_v02/artifacts/gaer_attribution_capacity_v02/REPORT_ZH.md：K32不一定完整、固定-full-T capacity、证书状态不可篡改。
+- 上轮cd09b52单视角射线proxy lift不是本轮方法。
+定位raw候选空间分布、跨视角互补与选核稀疏/footprint丢失/三维邻接不可靠之间的具体区别。不要从一个下游NO_GO宣布不存在相对轮廓支撑者。
+
+使用启用的live web search，读作者原文/官方说明调研3DGS/点云的多视角feature support融合、厚edge-distance/占据带、curve/skeleton/point-cloud局部sheet联系；至少3个实际读到的最相关primary sources，含最近3DGS/3D sketch prior（例如LineGS/CurveGaussian/EMAP/EdgeGaussians，名字不是必须，查实际可获取原文）和Hao-Mukai作者预印本 https://mukai-lab.org/content/SA2026PosterHao.pdf / https://mukai-lab.org/publications/sa2026poster-3dgs/。严格区分他们的方法与我们方法，不把普通后处理/粗线/multi-view union称新颖性。保存RESEARCH_ZH.md与逐URL实际检索摘录/访问状态/精确quote证据ledger；搜索snippet不足以支持整篇结论，未读到标未核实。研究必须输出候选路线比较、最早失败假设、为什么“区域”能或不能改善连续性、一个主latent object及便宜证伪，不是纯文献综述。研究目标预算30-40分钟，随后真正实现/运行；可根据真实资料选择合理路线，不被某个预想算法绑死。
+
+## 多视角与选核：需要实质增加形体覆盖
+继续真实 Lego/Chair 原SH3 seed1729 iteration30000 PLY，冻结hash；源路径及四视角/33arc读取 gaer_object_contours_v01/artifacts/gaer_object_contours_v01/INPUT_FREEZE.json（scenes为字典）。camera metadata each86 frames；按实际file_path stem匹配，绝不按r数字index。基于camera metadata覆盖方向的确定性抽样，在任何新图像/选核/结果开封前冻结construction/dev/reserved；建议约24构建+4开发+8保留检查，按实际可用camera/时间记录数量，r_7/r_33可用于construction，r_1/r_14保留检查。不能只union之前两视角就称完整多视角研究。相机覆盖域与没看到的部分明确报告。reserved只评估，不能改变选核/聚合/宽度；所有这些camera被旧GS训练或部分研究曝光，不称GS-unseen/全新blind，construction-holdout标签即可。
+
+把二维证据用于**多视角轮廓核检测/贡献/定位约束**是允许的；主输入仍是原核ID/footprint而非独立2D描边升维。选核要追形体还原，不能把每view0.5%当强默认：比较冻结的raw/full-native轮廓参与/relative responsiveness，使用软强度、group support、自动hysteresis/多尺度支持避免硬稀疏截断漏轮廓。新自动选核是新规则/新假设，不能反写旧REFUSED为通过。记录每view原ID/贡献/score/footprint、visibility、重复观测与fusion的区别；distinct views不是raw pixelvote。检测外轮廓可来自原生alpha，内部候选只补充可隔离层。原核全量joint participation是来源控制，不应假装和0.5%等预算优势。可从native full-N feature adjoint在有界ROI提取共同支持，避免H*W*N；K若截断记录未捕获mass及unknown，不能称真零。
+
+先校准实际API/renderer。已有buffer的隔离binary和source只读可用；不要重建覆盖共享库。原API GaussianRasterizer(settings)(**model,attribution=True,K=...) 返回AttributionOutput包括 all_contribution_sum 和 accumulated_alpha；scene_io.load_model(record)、make_settings(module,camera)。使用新stage runtime shim/importlib避免旧runtime导入产生旧树写。已有full-native weight/adjoint在capacity operators/binding和objectcontours adapter可读复用并保存代码来源/hash。新metadata camera/calibration tests过后才实际大批提取。
+
+## 实验与自动选择（必须可复现，不能结果后救门槛）
+在研究后、真实实验前freeze一个主空间模型/协议、三个最小控制：(1)上一轮thin kernel graph原样基线；(2)同旧图只加宽（区分描粗本身增益）；(3)新多视角轮廓核融合+固定区域/连贯结构。尽量再做two-source vs multi-source对照，区分额外观测和新representation功劳。只在DEV上允许预先声明的小范围宽度/支撑scale选择，选定后seal唯一资产再开reserved与33arc。不要后验把更宽/更多核称同预算算法优势；报告实际ink area、外轮廓覆盖、unsupported interior/background/负空间填充与artifactwidth，并用匹配DEV ink的simple widened基线防“全部涂黑”作弊。
+
+重点是在多视角正确轮廓核的空间支撑域形成更连续的固定立体部分，而不是给单视角rim复制24份。提取宽空间区域如涉及density/level-set/morphological closing，明确是edge occupancy proxy而非真SDF/surface；不得任意大半径把近部件/孔洞连接。保存每填补/merge原始支撑ID、空间距离、方向及拒绝原因。合并、滤波、宽度都在物空间一次冻结。对完整性/漏线/短段与错误跨部件/体内大片填充/宽度代价分开报告。outer primary、internal secondary独立GLB node/OBJ group或独立文件，可一键关闭内部细节。如果主空间对象不可辨识或无法跨视角连贯，保留真实宽区域草模并称PARTIAL/NO_GO，不改任务成view-dependent线上渲染。
+
+严格RED→GREEN分纵向小片段：native calibration、camera coordinate、输入ID/softfusion、多视角来源/heldout隔离、region/merge topology/false bridges、固定geometry与export、真实renderer及遮挡；每模块先fail再pass，中间错误log保留。科学GO不等于exit0/文件非空。独立可见性必须有校准证据；若只做到x-ray，明确其限制，并提供所有后方杂线，不用未验证遮挡装成干净输出。GLB实际实体三角面、OBJ tube/regions、PLY/kernel support、machine-readable provenance、offline独立旋转viewer都交付，不依赖原GS在线重新拟合。三维区域的渲染要真实投影/rasterize固定mesh，宽度为实际世界几何；中心线2px展示不能拿来证明宽区域连续性。
+
+## 交付与运行
+阶段式producer/runner，不依赖代理一直在线：scene/arm/width/develop/seal/eval各atomic completion seal，继续只skip hash通过产物。模型quota/网络中断也保留可复现输出；不能链第1scene evalfail导致其他scene没跑。科学门槛只在有效执行上判，数值未收敛/渲染未校准等用INVALID/UNDETERMINED，不伪造NO_GO。
+交付两scene同相机 RGB/所选核原生footprint或3D区域/旧thin/只加宽/新fusion/static region/overlay四视角或更多保留视角板、原尺寸单图、edge/负空间zoom，注明camera角色。每scene至少一段33真实camera完整固定asset视频（bad frames不剪）；宽区域真实mesh投影，H264 yuv420p +faststart，完整decode，manifest同时保存camera和geometryhash不变。最终GLB/OBJ/PLY、source/score/fusion/region/asset/媒体provenance、Chinese RESEARCH_ZH/REPORT_ZH/REPRODUCE、tests、选择与failures日志、质量结论/适用域/没实现项。只依据renderings/videos的可读、较完整、连续、稳定来决定视觉成功，precision/recall-vs-mesh不gate也不用mesh，旧数值状态原样保留。完成后newstage范围commit并显式SSH push新branch，读回remoteSHA+clean status，确认历史保护hash不变；push后local ignored DELIVERY.json记录finalcommit/actual models/images/videos/科学verdict，避免自引用commit循环。不要只交计划或启动状态，必须交真实工作产物。
+
+总任务预算约110分钟（含研究），launch有7200s上限；优先保证两scene实际外轮廓模型和完整检查，再做可关闭内部层。资源/方法受阻就保存有价值真实结果及准确blocker，不伪造数据、不用纯2D/上轮模型冒充新融合。
