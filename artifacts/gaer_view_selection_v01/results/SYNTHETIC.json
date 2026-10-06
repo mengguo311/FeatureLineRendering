@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "cpu_ray_max_mass_error": 2.4651469177072727e-06,
+  "cpu_ray_shape": [
+    9,
+    9,
+    12
+  ],
+  "truth": {
+    "type": "analytic coplanar z=1 square patch",
+    "interior_geometry_edges": 0,
+    "texture_step_x": 0,
+    "foreground_half_extent": 0.65,
+    "boundary_truth": "independent square signed distance; no interior depth/normal discontinuity"
+  },
+  "full_visibility_method": "native RGB[0].sum gradient wrt per-original-row precomputed color[0], bg0",
+  "null_region": "441 fixed interior pixels (22..42)^2; analytic coplanar truth says no geometry edges",
+  "null_observed_L1_mean": 0.8832648395605031,
+  "null_observed_L1_max": 1.0679468465968966,
+  "null_residual_bound_mean": 0.06033240390261487,
+  "null_ratio_p999": 0.9930559419945042,
+  "auto_ratio_floor": 1.9861118839890084,
+  "texture_weights_bitwise_identical": true,
+  "texture_RGB_max_change": 0.42006218433380127,
+  "standalone_B4_detection": "NOT_RUN; no edge-gated AUROC/AP or independent detector claim",
+  "conclusion": "smooth coplanar individual footprint derivatives produce attribution differences without interior geometry edges"
+}
