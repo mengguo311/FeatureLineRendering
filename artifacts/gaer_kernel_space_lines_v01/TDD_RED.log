@@ -1,0 +1,82 @@
+test_glb_independent_read_and_tube_endpoints (__main__.Contracts) ... ERROR
+test_id_union_exact_rows (__main__.Contracts) ... ERROR
+test_line_degree_mutual_locality (__main__.Contracts) ... ERROR
+test_no_forced_bridge_and_empty (__main__.Contracts) ... ERROR
+test_projection_actual_convention (__main__.Contracts) ... ERROR
+test_rigid_and_scale_invariance (__main__.Contracts) ... ERROR
+test_tie_duplicate_and_rejection_audit (__main__.Contracts) ... ERROR
+
+======================================================================
+ERROR: test_glb_independent_read_and_tube_endpoints (__main__.Contracts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/gaer_kernel_space_lines_v01/experiments/gaer_kernel_space_lines_v01/test_contracts.py", line 52, in test_glb_independent_read_and_tube_endpoints
+    v,f,b=core.mesh_and_glb(xyz,edges,.02)
+  File "/home/u00134/3dgs_line/gaer_kernel_space_lines_v01/experiments/gaer_kernel_space_lines_v01/core.py", line 9, in mesh_and_glb
+    raise NotImplementedError('RED: tube/GLB')
+NotImplementedError: RED: tube/GLB
+
+======================================================================
+ERROR: test_id_union_exact_rows (__main__.Contracts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/gaer_kernel_space_lines_v01/experiments/gaer_kernel_space_lines_v01/test_contracts.py", line 16, in test_id_union_exact_rows
+    ids,xyz,mask=core.selected_rows(model,[np.array([7,2,3]),np.array([3,1,7])])
+  File "/home/u00134/3dgs_line/gaer_kernel_space_lines_v01/experiments/gaer_kernel_space_lines_v01/core.py", line 7, in selected_rows
+    raise NotImplementedError('RED: original ID/XYZ')
+NotImplementedError: RED: original ID/XYZ
+
+======================================================================
+ERROR: test_line_degree_mutual_locality (__main__.Contracts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/gaer_kernel_space_lines_v01/experiments/gaer_kernel_space_lines_v01/test_contracts.py", line 25, in test_line_degree_mutual_locality
+    g=core.build_graph(xyz,ids)
+  File "/home/u00134/3dgs_line/gaer_kernel_space_lines_v01/experiments/gaer_kernel_space_lines_v01/core.py", line 5, in build_graph
+    raise NotImplementedError('RED: object-space graph')
+NotImplementedError: RED: object-space graph
+
+======================================================================
+ERROR: test_no_forced_bridge_and_empty (__main__.Contracts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/gaer_kernel_space_lines_v01/experiments/gaer_kernel_space_lines_v01/test_contracts.py", line 40, in test_no_forced_bridge_and_empty
+    g=core.build_graph(xyz,np.arange(32))
+  File "/home/u00134/3dgs_line/gaer_kernel_space_lines_v01/experiments/gaer_kernel_space_lines_v01/core.py", line 5, in build_graph
+    raise NotImplementedError('RED: object-space graph')
+NotImplementedError: RED: object-space graph
+
+======================================================================
+ERROR: test_projection_actual_convention (__main__.Contracts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/gaer_kernel_space_lines_v01/experiments/gaer_kernel_space_lines_v01/test_contracts.py", line 8, in test_projection_actual_convention
+    uv,z=core.project(np.array([[0,0,2],[.2,-.4,2],[0,0,-1.]]),camera)
+  File "/home/u00134/3dgs_line/gaer_kernel_space_lines_v01/experiments/gaer_kernel_space_lines_v01/core.py", line 3, in project
+    raise NotImplementedError('RED: projection')
+NotImplementedError: RED: projection
+
+======================================================================
+ERROR: test_rigid_and_scale_invariance (__main__.Contracts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/gaer_kernel_space_lines_v01/experiments/gaer_kernel_space_lines_v01/test_contracts.py", line 35, in test_rigid_and_scale_invariance
+    g=core.build_graph(xyz,ids);h=core.build_graph(xyz@rotation*7+np.array([2,4,6]),ids)
+  File "/home/u00134/3dgs_line/gaer_kernel_space_lines_v01/experiments/gaer_kernel_space_lines_v01/core.py", line 5, in build_graph
+    raise NotImplementedError('RED: object-space graph')
+NotImplementedError: RED: object-space graph
+
+======================================================================
+ERROR: test_tie_duplicate_and_rejection_audit (__main__.Contracts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/gaer_kernel_space_lines_v01/experiments/gaer_kernel_space_lines_v01/test_contracts.py", line 63, in test_tie_duplicate_and_rejection_audit
+    g=core.build_graph(xyz,np.array([2,7,11,13,19]))
+  File "/home/u00134/3dgs_line/gaer_kernel_space_lines_v01/experiments/gaer_kernel_space_lines_v01/core.py", line 5, in build_graph
+    raise NotImplementedError('RED: object-space graph')
+NotImplementedError: RED: object-space graph
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.001s
+
+FAILED (errors=7)

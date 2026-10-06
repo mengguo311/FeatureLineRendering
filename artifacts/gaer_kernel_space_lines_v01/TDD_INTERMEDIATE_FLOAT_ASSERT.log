@@ -1,0 +1,20 @@
+test_glb_independent_read_and_tube_endpoints (__main__.Contracts) ... ok
+test_id_union_exact_rows (__main__.Contracts) ... ok
+test_line_degree_mutual_locality (__main__.Contracts) ... ok
+test_no_forced_bridge_and_empty (__main__.Contracts) ... ok
+test_projection_actual_convention (__main__.Contracts) ... FAIL
+test_rigid_and_scale_invariance (__main__.Contracts) ... ok
+test_tie_duplicate_and_rejection_audit (__main__.Contracts) ... ok
+
+======================================================================
+FAIL: test_projection_actual_convention (__main__.Contracts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/gaer_kernel_space_lines_v01/experiments/gaer_kernel_space_lines_v01/test_contracts.py", line 13, in test_projection_actual_convention
+    self.assertEqual(uv[0,0],899.5)
+AssertionError: 899.4999999999999 != 899.5
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.034s
+
+FAILED (failures=1)

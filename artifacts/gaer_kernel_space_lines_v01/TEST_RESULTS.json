@@ -1,0 +1,33 @@
+{
+  "tests": [
+    {
+      "command": "bash experiments/gaer_kernel_space_lines_v01/env.sh experiments/gaer_kernel_space_lines_v01/test_contracts.py",
+      "result": "PASS 7/7 after RED 7 NotImplementedError",
+      "evidence": "artifacts/gaer_kernel_space_lines_v01/TDD_GREEN.log"
+    },
+    {
+      "command": "bash experiments/gaer_kernel_space_lines_v01/env.sh experiments/gaer_kernel_space_lines_v01/verify.py",
+      "result": "PASS: both scenes; 159 protected files unchanged",
+      "evidence": "artifacts/gaer_kernel_space_lines_v01/VERIFICATION.json"
+    },
+    {
+      "command": "bash experiments/gaer_kernel_space_lines_v01/env.sh experiments/gaer_kernel_space_lines_v01/replay.py",
+      "result": "PASS: all graph arrays exact and 4 GLBs byte exact",
+      "evidence": "artifacts/gaer_kernel_space_lines_v01/REPLAY_VERIFICATION.json"
+    }
+  ],
+  "RED": {
+    "exit_code": 1,
+    "errors": 7
+  },
+  "GREEN": {
+    "exit_code": 0,
+    "passed": 7
+  },
+  "intermediate_negative_logs": [
+    "TDD_INTERMEDIATE_FLOAT_ASSERT.log",
+    "PREPARE_ATTEMPT1_METADATA_KEY.log"
+  ],
+  "real_scene_audit": "PASS",
+  "deterministic_replay": "PASS"
+}
