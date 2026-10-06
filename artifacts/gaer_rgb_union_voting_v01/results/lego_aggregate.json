@@ -1,0 +1,153 @@
+{
+  "scene": "lego",
+  "original_N": 310475,
+  "source_views": 8,
+  "marked_pixels": 320483,
+  "received_pixels": 320434,
+  "unassignable_pixels": 49,
+  "eligible_positive_vote_IDs": 61114,
+  "sets": {
+    "top100": {
+      "count": 100,
+      "IDs_sha256": "1c048d51b64b0fc16d677d058cc17e49f880411da603e30e023f6537c11be8cf"
+    },
+    "top500": {
+      "count": 500,
+      "IDs_sha256": "b58377659501983c23ec153c76b840612ae7ba4c8762644285ae4048251fb246"
+    },
+    "top2000": {
+      "count": 2000,
+      "IDs_sha256": "7ea61ffc49d1c35fddd2fddbadc14f985a7a8064b2a0bd78d8405e95428d138e"
+    },
+    "views_ge2": {
+      "count": 31348,
+      "IDs_sha256": "ec461c60ecd239d7545619d81a39db65e166961450b5025be4aa4129db659ae5"
+    },
+    "views_ge4": {
+      "count": 9532,
+      "IDs_sha256": "307f6169446b1827d9fc4f76cc317e03e3a61d9bd92526d30f293852c152620b"
+    },
+    "views_ge6": {
+      "count": 1571,
+      "IDs_sha256": "902e63cb205cbec450f40eb2e49350a925ffea9f72a125cb94acec9ce1ff87c6"
+    },
+    "center_top500": {
+      "count": 500,
+      "IDs_sha256": "de8345c00f1753caaa281b1dbc96402b6fee2a69b221e155ab4f06cb84bdaba4"
+    },
+    "nofallback_top500": {
+      "count": 500,
+      "IDs_sha256": "59757c049f193b3b664e7154cacd0a27e3bcd137285960da04171653b264bbbe"
+    },
+    "random_top500": {
+      "count": 500,
+      "IDs_sha256": "fb2f78f28bff209b207d3de7b304ecbe13ccb61a0d931c172680a5cee3cda013"
+    },
+    "center_top2000": {
+      "count": 2000,
+      "IDs_sha256": "d4d32199271053293626bbf7a715090f30b6ec596a8b5fd33ec6c7f7fd015ddb"
+    },
+    "nofallback_top2000": {
+      "count": 2000,
+      "IDs_sha256": "e02b98c99eaba3ce77a350d3a9d9aa4b1901e94161a8291dda2317a00d90d914"
+    },
+    "random_top2000": {
+      "count": 2000,
+      "IDs_sha256": "d0ff8c83d0478c0e348954b8fbb3198a8c58830a53ddcb48474e3eb4fc4155b8"
+    }
+  },
+  "main_vs_center_top500_jaccard": 0.5455950540958269,
+  "main_vs_center_top2000_jaccard": 0.5521924718665114,
+  "random_check": {
+    "500": {
+      "count": 500,
+      "same_count": true,
+      "summed_source_visible_mass_relative_error": 0.0008851789591907851,
+      "overlap_count": 112,
+      "sampling": "all original rows with same .1-wide log source-visible-mass bin, without replacement"
+    },
+    "2000": {
+      "count": 2000,
+      "same_count": true,
+      "summed_source_visible_mass_relative_error": 0.0011148863406874776,
+      "overlap_count": 500,
+      "sampling": "all original rows with same .1-wide log source-visible-mass bin, without replacement"
+    }
+  },
+  "drop_one_view_stability": [
+    {
+      "dropped": "r_007",
+      "top500_jaccard": 0.7452006980802792,
+      "top2000_jaccard": 0.7574692442882249
+    },
+    {
+      "dropped": "r_033",
+      "top500_jaccard": 0.680672268907563,
+      "top2000_jaccard": 0.7590149516270889
+    },
+    {
+      "dropped": "r_059",
+      "top500_jaccard": 0.763668430335097,
+      "top2000_jaccard": 0.8058690744920993
+    },
+    {
+      "dropped": "r_086",
+      "top500_jaccard": 0.6977928692699491,
+      "top2000_jaccard": 0.7520805957074025
+    },
+    {
+      "dropped": "r_000",
+      "top500_jaccard": 0.8796992481203008,
+      "top2000_jaccard": 0.8691588785046729
+    },
+    {
+      "dropped": "r_008",
+      "top500_jaccard": 0.8248175182481752,
+      "top2000_jaccard": 0.8621973929236499
+    },
+    {
+      "dropped": "r_018",
+      "top500_jaccard": 0.7921146953405018,
+      "top2000_jaccard": 0.797752808988764
+    },
+    {
+      "dropped": "r_030",
+      "top500_jaccard": 0.7667844522968198,
+      "top2000_jaccard": 0.7921146953405018
+    }
+  ],
+  "K_four_view_aggregate_sensitivity": [
+    {
+      "K": 16,
+      "views": [
+        "r_007",
+        "r_000",
+        "r_018",
+        "r_030"
+      ],
+      "changed_aggregate_vote_IDs": 29990,
+      "top500_jaccard": 0.6420361247947455,
+      "top2000_jaccard": 0.596169193934557
+    },
+    {
+      "K": 32,
+      "views": [
+        "r_007",
+        "r_000",
+        "r_018",
+        "r_030"
+      ],
+      "changed_aggregate_vote_IDs": 37335,
+      "top500_jaccard": 0.4771048744460857,
+      "top2000_jaccard": 0.46038700255567727
+    }
+  ],
+  "vote_archive": "artifacts/gaer_rgb_union_voting_v01/downloads/lego_votes_all_original.npz",
+  "top100_csv": "artifacts/gaer_rgb_union_voting_v01/downloads/lego_top100.csv",
+  "files": [
+    "artifacts/gaer_rgb_union_voting_v01/downloads/lego_votes_all_original.npz",
+    "artifacts/gaer_rgb_union_voting_v01/downloads/lego_top100.csv"
+  ],
+  "unit": "lego_aggregate",
+  "end_to_end_seconds": 1.6706070099025965
+}

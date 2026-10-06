@@ -1,0 +1,119 @@
+{
+  "scene": "lego",
+  "view": "r_018",
+  "marked_pixels": 38435,
+  "weak_pixels": 155229,
+  "received_pixels": 38434,
+  "unassignable_pixels": 1,
+  "received_ratio": 0.9999739820476129,
+  "fallback_reasons": {
+    "BEST_RETAINED_D": 13793,
+    "NORMAL_UNDEFINED_OR_LOW_CONFIDENCE": 6002,
+    "D_NUMERICAL_FLOOR": 77,
+    "SIDE_UNKNOWN_EXCEEDS_D": 18562,
+    "ENDPOINT_OUTSIDE_IMAGE": 0,
+    "UNASSIGNABLE_BACKGROUND": 1
+  },
+  "endpoint_only_best_pixels": 18043,
+  "unknown_positive_pixels": 38435,
+  "unknown_bound_sum": 12904.361427778611,
+  "regions": {
+    "line": {
+      "marked": 38435,
+      "received": 38434
+    },
+    "interior_line": {
+      "marked": 35411,
+      "received": 35411
+    },
+    "outline_line": {
+      "marked": 3024,
+      "received": 3023
+    },
+    "exterior_line": {
+      "marked": 0,
+      "received": 0
+    },
+    "outline": {
+      "marked": 18115,
+      "received": 3023
+    }
+  },
+  "K_sensitivity": [
+    {
+      "K": 16,
+      "marked_pixels": 38435,
+      "changed_winners": 11347,
+      "changed_fraction": 0.2952257057369585,
+      "changed_vote_IDs": 11595,
+      "fallback_pixels": 13506,
+      "K8_prefix_bitwise": true,
+      "RGB_bitwise": true
+    },
+    {
+      "K": 32,
+      "marked_pixels": 38435,
+      "changed_winners": 17055,
+      "changed_fraction": 0.44373617796279435,
+      "changed_vote_IDs": 15138,
+      "fallback_pixels": 8096,
+      "K8_prefix_bitwise": true,
+      "RGB_bitwise": true
+    }
+  ],
+  "timing": {
+    "stock": {
+      "cuda_ms": 3.753920078277588,
+      "wall_ms": 3.978997003287077,
+      "peak_GPU_bytes": 213103104,
+      "scope": "one actual native forward; no fabricated warmup/median; excludes CPU copies and assignment"
+    },
+    "K8": {
+      "cuda_ms": 4.879583835601807,
+      "wall_ms": 5.137312924489379,
+      "peak_GPU_bytes": 259181056,
+      "scope": "one actual native forward; no fabricated warmup/median; excludes CPU copies and assignment"
+    },
+    "CPU_assignment_s": 0.8816740810871124,
+    "full_visibility_gradient_s": 0.01118102390319109,
+    "K16": {
+      "cuda_ms": 6.514463901519775,
+      "wall_ms": 6.788522005081177,
+      "peak_GPU_bytes": 300141056,
+      "scope": "one actual native forward; no fabricated warmup/median; excludes CPU copies and assignment",
+      "CPU_assignment_s": 0.944061306072399
+    },
+    "K32": {
+      "cuda_ms": 21.932031631469727,
+      "wall_ms": 22.17679494060576,
+      "peak_GPU_bytes": 382061056,
+      "scope": "one actual native forward; no fabricated warmup/median; excludes CPU copies and assignment",
+      "CPU_assignment_s": 1.3662120818626136
+    }
+  },
+  "RGB_cached_stock_K8_bitwise": true,
+  "alpha_cached_max_abs": 2.980232238769531e-07,
+  "source_fields_sha256": "0e1a9ae8ba615abb4298a12a80aca52982c0f2f064471582ad0ff95bb24212b2",
+  "winner_map_sha256": "68f3ca15c1616882dd510ebdc06316d3a97715b42c62dc5933e6f68e6d0e3b64",
+  "line_binary_sha256": "65fa49f4ca91ab2ea6dcf1b6fc71a0fa0e45f94a2d541f951e533ef516e31d6a",
+  "assignment_archive": "artifacts/gaer_rgb_union_voting_v01/downloads/lego/r_018/assignment.npz",
+  "source_archive": "artifacts/gaer_rgb_union_voting_v01/downloads/lego/r_018/source_fields.npz",
+  "visible_mass_archive": "artifacts/gaer_rgb_union_voting_v01/downloads/lego/r_018/visible_mass.npz",
+  "files": [
+    "artifacts/gaer_rgb_union_voting_v01/downloads/lego/r_018/source_fields.npz",
+    "artifacts/gaer_rgb_union_voting_v01/downloads/lego/r_018/assignment.npz",
+    "artifacts/gaer_rgb_union_voting_v01/downloads/lego/r_018/visible_mass.npz",
+    "out/gaer_rgb_union_voting_v01/units/lego/r_018/K8_buffer.npz",
+    "artifacts/gaer_rgb_union_voting_v01/downloads/lego/r_018/sensitivity_K16.npz",
+    "artifacts/gaer_rgb_union_voting_v01/downloads/lego/r_018/sensitivity_K32.npz",
+    "artifacts/gaer_rgb_union_voting_v01/media/lego/receivers/r_018/RGB.png",
+    "artifacts/gaer_rgb_union_voting_v01/media/lego/receivers/r_018/spatial_union_ink.png",
+    "artifacts/gaer_rgb_union_voting_v01/media/lego/receivers/r_018/marked_binary.png",
+    "artifacts/gaer_rgb_union_voting_v01/media/lego/receivers/r_018/winner_ID.png",
+    "artifacts/gaer_rgb_union_voting_v01/media/lego/receivers/r_018/receiver_overlay.png",
+    "artifacts/gaer_rgb_union_voting_v01/media/lego/receivers/r_018/evidence.jpg",
+    "artifacts/gaer_rgb_union_voting_v01/media/lego/receivers/r_018/interior_zoom.png"
+  ],
+  "unit": "lego_vote_r_018",
+  "end_to_end_seconds": 7.879357167053968
+}
