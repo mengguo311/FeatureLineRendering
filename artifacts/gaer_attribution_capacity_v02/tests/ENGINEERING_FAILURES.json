@@ -1,6 +1,34 @@
 {
- "failures_preserved": [
-  {"stage":"initial ROI presentation", "cause":"cached RGB roundoff divided by near-zero color term magnitude", "effect":"invalid cancellation display means; no effect on D winners or probes", "resolution":"separate scalar FP64 ROI audit with explicit insufficient-signal marker; original sealed records retained"},
-  {"stage":"first independent ROI audit", "cause":"NumPy float32 term summation produced triangle inequality roundoff above 1e-10 audit tolerance", "effect":"audit stopped before scientific conclusion", "resolution":"independent mathematical normalization terms computed in FP64; tolerance and scientific protocol unchanged"}
- ]
+  "failures_preserved": [
+    {
+      "stage": "initial ROI presentation",
+      "cause": "cached RGB roundoff divided by near-zero color term magnitude",
+      "effect": "invalid cancellation display means; no effect on D winners or probes",
+      "resolution": "separate scalar FP64 ROI audit with explicit insufficient-signal marker; original sealed records retained"
+    },
+    {
+      "stage": "first independent ROI audit",
+      "cause": "NumPy float32 term summation produced triangle inequality roundoff above 1e-10 audit tolerance",
+      "effect": "audit stopped before scientific conclusion",
+      "resolution": "independent mathematical normalization terms computed in FP64; tolerance and scientific protocol unchanged"
+    },
+    {
+      "stage": "first profile presentation finalizer",
+      "cause": "native white-background FP32 RGB can exceed 1 by tiny roundoff; negative ink weights made mass-moment sqrt undefined",
+      "effect": "finalizer stopped, no science record changed",
+      "resolution": "descriptive ink moments use nonnegative ink with raw native minimum separately recorded; original RGB/ink NPZ retained"
+    },
+    {
+      "stage": "initial conditional shape gate",
+      "cause": "runner required r_000 certificate although frozen condition allows any certified perview with high residual",
+      "effect": "initial NOT_RUN records retained",
+      "resolution": "separate anyview condition unit; same fixed r_000 shape views/ratios/IDs, no threshold change"
+    },
+    {
+      "stage": "truncated margin counter label",
+      "cause": "initial K8/16/32 counter name suggested full-winner certification but only measured retained-set margin",
+      "effect": "counter interpretation only; no effect on winners, probes or full records",
+      "resolution": "retained original records; independent sufficient intervals include all other endpoint IDs, missing center candidates and residual mass; checked certified winners against full"
+    }
+  ]
 }

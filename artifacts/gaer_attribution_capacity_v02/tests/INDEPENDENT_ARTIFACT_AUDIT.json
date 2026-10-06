@@ -1,17 +1,306 @@
 {
   "passed": true,
-  "checks": 8813,
+  "checks": 9018,
   "seals": {
+    "chair_native_style_exports.json": "COMPLETE",
+    "chair_shape.json": "NOT_RUN",
+    "lego_capacity.json": "COMPLETE",
+    "lego_shape_anyview_condition.json": "COMPLETE",
     "lego_roi_r_000.json": "COMPLETE",
     "lego_roi_r_018.json": "COMPLETE",
     "lego_probes.json": "COMPLETE",
     "chair_oracle.json": "COMPLETE",
     "chair_probes.json": "COMPLETE",
     "lego_oracle.json": "COMPLETE",
+    "lego_shape.json": "NOT_RUN",
+    "chair_capacity.json": "COMPLETE",
+    "chair_oracle_roundoff_audit.json": "COMPLETE",
+    "lego_oracle_roundoff_audit.json": "COMPLETE",
+    "chair_shape_anyview_condition.json": "COMPLETE",
     "chair_roi_r_018.json": "COMPLETE",
-    "chair_roi_r_000.json": "COMPLETE"
+    "lego_native_center_exports.json": "COMPLETE",
+    "chair_roi_r_000.json": "COMPLETE",
+    "chair_native_center_exports.json": "COMPLETE",
+    "lego_native_style_exports.json": "COMPLETE"
   },
-  "capacity_certificates": {},
+  "capacity_certificates": {
+    "lego": [
+      {
+        "view": "r_000",
+        "certificate": {
+          "primal_feasible_objective": 0.004374777748436895,
+          "dual_lower_bound": 0.00434448604919788,
+          "dual_gap": 3.029169923901478e-05,
+          "relative_dual_gap": 0.006924168719162472,
+          "atomic_allowance": 1.9008578212356215e-07,
+          "FP64_atomic_roundoff_bound": 4.027415254026587e-12,
+          "FP64_scalar_roundoff_bound": 5.723076073164072e-10,
+          "preregistered_extra_allowance": 1.8950944710099173e-07,
+          "native_vs_FP64_accepted_weight_A_max_abs": [
+            4.298944864533638e-07
+          ],
+          "max_accepted_per_pixel": [
+            498
+          ],
+          "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+          "bounds_min": 0.0,
+          "bounds_max": 1.0,
+          "active_gt_1e_5": 59824,
+          "at_upper_bound": 16633,
+          "strength_sum": 26469.62018320251,
+          "status": "MAX_BUDGET_UNCERTIFIED"
+        }
+      },
+      {
+        "view": "r_018",
+        "certificate": {
+          "primal_feasible_objective": 0.006063129118874357,
+          "dual_lower_bound": 0.0060355382312721,
+          "dual_gap": 2.7590887602257398e-05,
+          "relative_dual_gap": 0.004550602017754778,
+          "atomic_allowance": 2.6588217903755094e-07,
+          "FP64_atomic_roundoff_bound": 5.669151534891262e-12,
+          "FP64_scalar_roundoff_bound": 5.732154598491799e-10,
+          "preregistered_extra_allowance": 2.6530329442616685e-07,
+          "native_vs_FP64_accepted_weight_A_max_abs": [
+            4.39603418445067e-07
+          ],
+          "max_accepted_per_pixel": [
+            406
+          ],
+          "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+          "bounds_min": 0.0,
+          "bounds_max": 1.0,
+          "active_gt_1e_5": 77613,
+          "at_upper_bound": 25793,
+          "strength_sum": 38274.9036298426,
+          "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE"
+        }
+      },
+      {
+        "view": "r_001",
+        "certificate": {
+          "primal_feasible_objective": 0.005188419601043685,
+          "dual_lower_bound": 0.005164343022816168,
+          "dual_gap": 2.4076578227516694e-05,
+          "relative_dual_gap": 0.004640445468726841,
+          "atomic_allowance": 2.186431861293624e-07,
+          "FP64_atomic_roundoff_bound": 4.720718583660901e-12,
+          "FP64_scalar_roundoff_bound": 5.727648491548064e-10,
+          "preregistered_extra_allowance": 2.1806570056162394e-07,
+          "native_vs_FP64_accepted_weight_A_max_abs": [
+            5.078932011626236e-07
+          ],
+          "max_accepted_per_pixel": [
+            490
+          ],
+          "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+          "bounds_min": 0.0,
+          "bounds_max": 1.0,
+          "active_gt_1e_5": 65775,
+          "at_upper_bound": 21229,
+          "strength_sum": 32508.294302655682,
+          "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE"
+        }
+      },
+      {
+        "view": "r_014",
+        "certificate": {
+          "primal_feasible_objective": 0.0067698844222859565,
+          "dual_lower_bound": 0.006736658274472,
+          "dual_gap": 3.32261478139563e-05,
+          "relative_dual_gap": 0.004907934277958763,
+          "atomic_allowance": 2.979348679851556e-07,
+          "FP64_atomic_roundoff_bound": 6.0692264089598305e-12,
+          "FP64_scalar_roundoff_bound": 5.73708402207663e-10,
+          "preregistered_extra_allowance": 2.9735509035653897e-07,
+          "native_vs_FP64_accepted_weight_A_max_abs": [
+            3.39745022115423e-07
+          ],
+          "max_accepted_per_pixel": [
+            413
+          ],
+          "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+          "bounds_min": 0.0,
+          "bounds_max": 1.0,
+          "active_gt_1e_5": 72194,
+          "at_upper_bound": 24501,
+          "strength_sum": 36594.96776113202,
+          "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE"
+        }
+      },
+      {
+        "view": "shared",
+        "certificate": {
+          "primal_feasible_objective": 0.0067852720323647,
+          "dual_lower_bound": 0.0067526286242367145,
+          "dual_gap": 3.2643408127985135e-05,
+          "relative_dual_gap": 0.004810921061422611,
+          "atomic_allowance": 2.006748686041729e-07,
+          "FP64_atomic_roundoff_bound": 2.2916839254105025e-11,
+          "FP64_scalar_roundoff_bound": 2.2899940567475107e-09,
+          "preregistered_extra_allowance": 1.9836195770817128e-07,
+          "native_vs_FP64_accepted_weight_A_max_abs": [
+            3.7222732396369196e-07,
+            4.81523667716921e-07,
+            2.9790211442115577e-07,
+            3.8220414988465734e-07
+          ],
+          "max_accepted_per_pixel": [
+            498,
+            406,
+            490,
+            413
+          ],
+          "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+          "bounds_min": 0.0,
+          "bounds_max": 1.0,
+          "active_gt_1e_5": 102014,
+          "at_upper_bound": 30612,
+          "strength_sum": 52153.23152627947,
+          "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE"
+        }
+      }
+    ],
+    "chair": [
+      {
+        "view": "r_000",
+        "certificate": {
+          "primal_feasible_objective": 0.002322721563467195,
+          "dual_lower_bound": 0.0022804834236277265,
+          "dual_gap": 4.223813983946856e-05,
+          "relative_dual_gap": 0.01818476243722405,
+          "atomic_allowance": 1.272551757581657e-07,
+          "FP64_atomic_roundoff_bound": 2.1599903735534285e-12,
+          "FP64_scalar_roundoff_bound": 5.705385381232062e-10,
+          "preregistered_extra_allowance": 1.2668247722966894e-07,
+          "native_vs_FP64_accepted_weight_A_max_abs": [
+            4.004518557865211e-07
+          ],
+          "max_accepted_per_pixel": [
+            230
+          ],
+          "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+          "bounds_min": 0.0,
+          "bounds_max": 1.0,
+          "active_gt_1e_5": 48221,
+          "at_upper_bound": 11512,
+          "strength_sum": 20010.878555657546,
+          "status": "MAX_BUDGET_UNCERTIFIED"
+        }
+      },
+      {
+        "view": "r_018",
+        "certificate": {
+          "primal_feasible_objective": 0.003969179832911343,
+          "dual_lower_bound": 0.0039233497825938235,
+          "dual_gap": 4.5830050317519425e-05,
+          "relative_dual_gap": 0.011546478679930122,
+          "atomic_allowance": 1.8068435153937508e-07,
+          "FP64_atomic_roundoff_bound": 3.710726762886494e-12,
+          "FP64_scalar_roundoff_bound": 5.71701824778587e-10,
+          "preregistered_extra_allowance": 1.801089389878336e-07,
+          "native_vs_FP64_accepted_weight_A_max_abs": [
+            4.620539185706818e-07
+          ],
+          "max_accepted_per_pixel": [
+            332
+          ],
+          "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+          "bounds_min": 0.0,
+          "bounds_max": 1.0,
+          "active_gt_1e_5": 75908,
+          "at_upper_bound": 20915,
+          "strength_sum": 35677.03665610088,
+          "status": "MAX_BUDGET_UNCERTIFIED"
+        }
+      },
+      {
+        "view": "r_001",
+        "certificate": {
+          "primal_feasible_objective": 0.004846134981081745,
+          "dual_lower_bound": 0.004824152132281778,
+          "dual_gap": 2.198284879996633e-05,
+          "relative_dual_gap": 0.0045361610615021215,
+          "atomic_allowance": 1.9934577362708865e-07,
+          "FP64_atomic_roundoff_bound": 4.7759441537290416e-12,
+          "FP64_scalar_roundoff_bound": 5.718714809063485e-10,
+          "preregistered_extra_allowance": 1.9876912620202859e-07,
+          "native_vs_FP64_accepted_weight_A_max_abs": [
+            4.054024635991027e-07
+          ],
+          "max_accepted_per_pixel": [
+            206
+          ],
+          "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+          "bounds_min": 0.0,
+          "bounds_max": 1.0,
+          "active_gt_1e_5": 77134,
+          "at_upper_bound": 28767,
+          "strength_sum": 44420.43131451246,
+          "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE"
+        }
+      },
+      {
+        "view": "r_014",
+        "certificate": {
+          "primal_feasible_objective": 0.005302472024489569,
+          "dual_lower_bound": 0.005271759120174984,
+          "dual_gap": 3.071290431458547e-05,
+          "relative_dual_gap": 0.005792186016774313,
+          "atomic_allowance": 2.304403736284937e-07,
+          "FP64_atomic_roundoff_bound": 5.101072715844548e-12,
+          "FP64_scalar_roundoff_bound": 5.722478716572729e-10,
+          "preregistered_extra_allowance": 2.298630246841206e-07,
+          "native_vs_FP64_accepted_weight_A_max_abs": [
+            4.13700547929885e-07
+          ],
+          "max_accepted_per_pixel": [
+            218
+          ],
+          "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+          "bounds_min": 0.0,
+          "bounds_max": 1.0,
+          "active_gt_1e_5": 79688,
+          "at_upper_bound": 27178,
+          "strength_sum": 43934.76918895336,
+          "status": "MAX_BUDGET_UNCERTIFIED"
+        }
+      },
+      {
+        "view": "shared",
+        "certificate": {
+          "primal_feasible_objective": 0.005185527646248458,
+          "dual_lower_bound": 0.0051612617934723055,
+          "dual_gap": 2.426585277615252e-05,
+          "relative_dual_gap": 0.004679533970609141,
+          "atomic_allowance": 1.504150558913772e-07,
+          "FP64_atomic_roundoff_bound": 1.8231526362633014e-11,
+          "FP64_scalar_roundoff_bound": 2.285810047646519e-09,
+          "preregistered_extra_allowance": 1.4811101431736804e-07,
+          "native_vs_FP64_accepted_weight_A_max_abs": [
+            3.615000888634867e-07,
+            3.167635590495266e-07,
+            3.600416453863886e-07,
+            3.340771319582103e-07
+          ],
+          "max_accepted_per_pixel": [
+            230,
+            332,
+            206,
+            218
+          ],
+          "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+          "bounds_min": 0.0,
+          "bounds_max": 1.0,
+          "active_gt_1e_5": 98257,
+          "at_upper_bound": 30371,
+          "strength_sum": 53482.148131845344,
+          "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE"
+        }
+      }
+    ]
+  },
   "protocol_sha256": "4218282d0823f0b530089af4b75555f03606071aea4e68e03838fd7f96111132",
   "old_files_preserved": 5535,
   "scope": "parent saved-artifact inspection, scalar original-ID decomposition, CPU official SH3 calibration, all-N oracle ranking, strengths bounds/certificates and unit SHA seals; no old test campaign"

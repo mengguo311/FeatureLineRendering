@@ -1,0 +1,1032 @@
+{
+  "status": "BOUNDED_DIAGNOSTICS_COMPLETE_WITH_UNCONVERGED_AND_VISUAL_PENDING_LIMITS",
+  "protocol_sha256": "4218282d0823f0b530089af4b75555f03606071aea4e68e03838fd7f96111132",
+  "scenes": {
+    "lego": {
+      "original_N": 310475,
+      "roi_total_samples": 325,
+      "roi_marked_samples": 72,
+      "all_K8_winner_changes": 155,
+      "all_K32_winner_changes": 20,
+      "marked_K8_winner_changes": 45,
+      "marked_fallback_to_valid_full": 46,
+      "oracle_budgets": [
+        {
+          "budget": 500,
+          "source8_optimal_line_mass": 18362.110484522273,
+          "raw_source8_fraction_of_bound": 0.802539736836346,
+          "center_source8_fraction_of_bound": 0.8214696377115424,
+          "diagnostic_pooled_bound": 4684.761465328396,
+          "diagnostic_perview_adapted_bound": 6355.707273483276,
+          "raw_diagnostic_fraction_of_pooled_bound": 0.21891932415134932,
+          "center_diagnostic_fraction_of_pooled_bound": 0.2464804963383001
+        },
+        {
+          "budget": 2000,
+          "source8_optimal_line_mass": 40042.03981005639,
+          "raw_source8_fraction_of_bound": 0.8299905264525772,
+          "center_source8_fraction_of_bound": 0.8570781991797157,
+          "diagnostic_pooled_bound": 11447.589453550885,
+          "diagnostic_perview_adapted_bound": 15128.845924139023,
+          "raw_diagnostic_fraction_of_pooled_bound": 0.3148211275056192,
+          "center_diagnostic_fraction_of_pooled_bound": 0.3235756804911658
+        }
+      ],
+      "oracle_evaluation_metrics": {
+        "raw_500": {
+          "line_total_contribution": 1025.584859865834,
+          "mass_recall": 0.014574543322496896,
+          "coverage_gt_01": 0.050647582851520906,
+          "coverage_gt_05": 0.003733203951535735,
+          "nonline_mass_leakage": 0.8655423576440675
+        },
+        "center_500": {
+          "line_total_contribution": 1154.7023745400747,
+          "mass_recall": 0.01640942689474369,
+          "coverage_gt_01": 0.059003490613081036,
+          "coverage_gt_05": 0.004285772045445356,
+          "nonline_mass_leakage": 0.8374576480319599
+        },
+        "source8_oracle_500": {
+          "line_total_contribution": 1213.8898091204123,
+          "mass_recall": 0.0172505370390095,
+          "coverage_gt_01": 0.053855173250313346,
+          "coverage_gt_05": 0.0041509993396137415,
+          "nonline_mass_leakage": 0.8795995286376893
+        },
+        "diagnostic2_pooled_oracle_500": {
+          "line_total_contribution": 4684.76146122476,
+          "mass_recall": 0.0665749481531116,
+          "coverage_gt_01": 0.19490828717368158,
+          "coverage_gt_05": 0.04548578821817006,
+          "nonline_mass_leakage": 0.8127804614662627
+        },
+        "raw_2000": {
+          "line_total_contribution": 3603.9430364127047,
+          "mass_recall": 0.051215482961477564,
+          "coverage_gt_01": 0.17621531287483658,
+          "coverage_gt_05": 0.022372269168048086,
+          "nonline_mass_leakage": 0.8434984414965169
+        },
+        "center_2000": {
+          "line_total_contribution": 3704.16155466445,
+          "mass_recall": 0.05263968411063218,
+          "coverage_gt_01": 0.18159274383751803,
+          "coverage_gt_05": 0.026375018531247053,
+          "nonline_mass_leakage": 0.8147081326745266
+        },
+        "source8_oracle_2000": {
+          "line_total_contribution": 3715.489675182028,
+          "mass_recall": 0.05280066755501289,
+          "coverage_gt_01": 0.16043342902195448,
+          "coverage_gt_05": 0.019757678674914757,
+          "nonline_mass_leakage": 0.855272898217411
+        },
+        "diagnostic2_pooled_oracle_2000": {
+          "line_total_contribution": 11447.589428766023,
+          "mass_recall": 0.16268121205448977,
+          "coverage_gt_01": 0.4000053909082333,
+          "coverage_gt_05": 0.12562163910564833,
+          "nonline_mass_leakage": 0.8023538478248585
+        }
+      },
+      "probe_methods": {
+        "DC_center": {
+          "fragments": 7,
+          "mean_target_response_fraction": 0.8724329083751708,
+          "median_half_amplitude_derivative_relative_change": 1.446938949811738e-05,
+          "max_half_amplitude_derivative_relative_change": 0.0417473278939724,
+          "mean_visible_mass": 192.25379943847656,
+          "mean_projected_area": 82.80947385515485,
+          "median_outside_MSE": 1.3925960211380595e-11,
+          "max_matched_mass_error": 0.0
+        },
+        "DC_oneD": {
+          "fragments": 7,
+          "mean_target_response_fraction": 0.9093908341699398,
+          "median_half_amplitude_derivative_relative_change": 4.9299134843749925e-05,
+          "max_half_amplitude_derivative_relative_change": 0.07240048050880432,
+          "mean_visible_mass": 139.68213054112024,
+          "mean_projected_area": 78.39696175711495,
+          "median_outside_MSE": 6.872465378900128e-13,
+          "max_matched_mass_error": 0.0
+        },
+        "DC_multiD": {
+          "fragments": 7,
+          "mean_target_response_fraction": 0.916512322071941,
+          "median_half_amplitude_derivative_relative_change": 1.404613703925861e-05,
+          "max_half_amplitude_derivative_relative_change": 0.07106414437294006,
+          "mean_visible_mass": 174.88046182904924,
+          "mean_projected_area": 70.07830238342285,
+          "median_outside_MSE": 1.2282033029498152e-12,
+          "max_matched_mass_error": 0.0
+        },
+        "DC_color_signed": {
+          "fragments": 7,
+          "mean_target_response_fraction": 0.894480080046412,
+          "median_half_amplitude_derivative_relative_change": 0.016164584085345268,
+          "max_half_amplitude_derivative_relative_change": 0.1091092973947525,
+          "mean_visible_mass": 206.6936482020787,
+          "mean_projected_area": 86.18840517316546,
+          "median_outside_MSE": 1.0802100316661956e-12,
+          "max_matched_mass_error": 0.0
+        },
+        "DC_matched_random": {
+          "fragments": 7,
+          "mean_target_response_fraction": 5.998804772147928e-06,
+          "median_half_amplitude_derivative_relative_change": 1.8669536075321957e-05,
+          "max_half_amplitude_derivative_relative_change": 0.01976039446890354,
+          "mean_visible_mass": 177.0635073525565,
+          "mean_projected_area": 70.68989304133824,
+          "median_outside_MSE": 1.830651186196519e-10,
+          "max_matched_mass_error": 0.018515171483159065
+        },
+        "logscale_center": {
+          "fragments": 7,
+          "mean_target_response_fraction": 0.798262933817229,
+          "median_half_amplitude_derivative_relative_change": 0.14087964594364166,
+          "max_half_amplitude_derivative_relative_change": 0.15766964852809906,
+          "mean_visible_mass": 192.25379943847656,
+          "mean_projected_area": 82.80947385515485,
+          "median_outside_MSE": 2.2819857115052855e-11,
+          "max_matched_mass_error": 0.0
+        },
+        "logscale_oneD": {
+          "fragments": 7,
+          "mean_target_response_fraction": 0.7802084998183112,
+          "median_half_amplitude_derivative_relative_change": 0.15877072513103485,
+          "max_half_amplitude_derivative_relative_change": 0.24184589087963104,
+          "mean_visible_mass": 139.68213054112024,
+          "mean_projected_area": 78.39696175711495,
+          "median_outside_MSE": 2.2599470905770858e-11,
+          "max_matched_mass_error": 0.0
+        },
+        "logscale_multiD": {
+          "fragments": 7,
+          "mean_target_response_fraction": 0.8182040596482765,
+          "median_half_amplitude_derivative_relative_change": 0.14706800878047943,
+          "max_half_amplitude_derivative_relative_change": 0.19567209482192993,
+          "mean_visible_mass": 174.88046182904924,
+          "mean_projected_area": 70.07830238342285,
+          "median_outside_MSE": 1.717046817228951e-11,
+          "max_matched_mass_error": 0.0
+        },
+        "logscale_color_signed": {
+          "fragments": 7,
+          "mean_target_response_fraction": 0.7356262475646468,
+          "median_half_amplitude_derivative_relative_change": 0.13601770997047424,
+          "max_half_amplitude_derivative_relative_change": 0.25443798303604126,
+          "mean_visible_mass": 206.6936482020787,
+          "mean_projected_area": 86.18840517316546,
+          "median_outside_MSE": 1.717046817228951e-11,
+          "max_matched_mass_error": 0.0
+        },
+        "logscale_matched_random": {
+          "fragments": 7,
+          "mean_target_response_fraction": 1.3313635727522123e-05,
+          "median_half_amplitude_derivative_relative_change": 0.09121181070804596,
+          "max_half_amplitude_derivative_relative_change": 0.25755202770233154,
+          "mean_visible_mass": 177.0635073525565,
+          "mean_projected_area": 70.68989304133824,
+          "median_outside_MSE": 1.2034702401297892e-10,
+          "max_matched_mass_error": 0.018515171483159065
+        }
+      },
+      "matched_random_residuals": {
+        "0": {
+          "log_mass_mean_abs": 0.008345738053321838,
+          "log_area_mean_abs": 0.001909865066409111,
+          "relative_total_mass_error": 0.003052551532164216,
+          "overlap": 0
+        },
+        "1": {
+          "log_mass_mean_abs": 0.02338816225528717,
+          "log_area_mean_abs": 0.0043699294328689575,
+          "relative_total_mass_error": 0.012757965363562107,
+          "overlap": 0
+        },
+        "2": {
+          "log_mass_mean_abs": 0.010709293186664581,
+          "log_area_mean_abs": 0.002690456807613373,
+          "relative_total_mass_error": 0.0059437984600663185,
+          "overlap": 0
+        },
+        "3": {
+          "log_mass_mean_abs": 0.01703476905822754,
+          "log_area_mean_abs": 0.002390526235103607,
+          "relative_total_mass_error": 0.018039295449852943,
+          "overlap": 0
+        },
+        "4": {
+          "log_mass_mean_abs": 0.011123962700366974,
+          "log_area_mean_abs": 0.0026028305292129517,
+          "relative_total_mass_error": 0.01114032231271267,
+          "overlap": 0
+        },
+        "5": {
+          "log_mass_mean_abs": 0.0177338607609272,
+          "log_area_mean_abs": 0.003406150033697486,
+          "relative_total_mass_error": 0.00873624812811613,
+          "overlap": 0
+        },
+        "6": {
+          "log_mass_mean_abs": 0.102458655834198,
+          "log_area_mean_abs": 0.01666194200515747,
+          "relative_total_mass_error": 0.018515171483159065,
+          "overlap": 0
+        }
+      },
+      "perview_whole_target_MSE": 0.008573510334827006,
+      "shared_whole_target_MSE": 0.011005154578015208,
+      "perview_mean_objective": 0.005599052722660223,
+      "shared_objective": 0.0067852720323647,
+      "capacity_certificates": {
+        "r_000": {
+          "primal_feasible_objective": 0.004374777748436895,
+          "dual_lower_bound": 0.00434448604919788,
+          "dual_gap": 3.029169923901478e-05,
+          "relative_dual_gap": 0.006924168719162472,
+          "atomic_allowance": 1.9008578212356215e-07,
+          "FP64_atomic_roundoff_bound": 4.027415254026587e-12,
+          "FP64_scalar_roundoff_bound": 5.723076073164072e-10,
+          "preregistered_extra_allowance": 1.8950944710099173e-07,
+          "native_vs_FP64_accepted_weight_A_max_abs": [
+            4.298944864533638e-07
+          ],
+          "max_accepted_per_pixel": [
+            498
+          ],
+          "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+          "bounds_min": 0.0,
+          "bounds_max": 1.0,
+          "active_gt_1e_5": 59824,
+          "at_upper_bound": 16633,
+          "strength_sum": 26469.62018320251,
+          "status": "MAX_BUDGET_UNCERTIFIED"
+        },
+        "r_018": {
+          "primal_feasible_objective": 0.006063129118874357,
+          "dual_lower_bound": 0.0060355382312721,
+          "dual_gap": 2.7590887602257398e-05,
+          "relative_dual_gap": 0.004550602017754778,
+          "atomic_allowance": 2.6588217903755094e-07,
+          "FP64_atomic_roundoff_bound": 5.669151534891262e-12,
+          "FP64_scalar_roundoff_bound": 5.732154598491799e-10,
+          "preregistered_extra_allowance": 2.6530329442616685e-07,
+          "native_vs_FP64_accepted_weight_A_max_abs": [
+            4.39603418445067e-07
+          ],
+          "max_accepted_per_pixel": [
+            406
+          ],
+          "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+          "bounds_min": 0.0,
+          "bounds_max": 1.0,
+          "active_gt_1e_5": 77613,
+          "at_upper_bound": 25793,
+          "strength_sum": 38274.9036298426,
+          "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE"
+        },
+        "r_001": {
+          "primal_feasible_objective": 0.005188419601043685,
+          "dual_lower_bound": 0.005164343022816168,
+          "dual_gap": 2.4076578227516694e-05,
+          "relative_dual_gap": 0.004640445468726841,
+          "atomic_allowance": 2.186431861293624e-07,
+          "FP64_atomic_roundoff_bound": 4.720718583660901e-12,
+          "FP64_scalar_roundoff_bound": 5.727648491548064e-10,
+          "preregistered_extra_allowance": 2.1806570056162394e-07,
+          "native_vs_FP64_accepted_weight_A_max_abs": [
+            5.078932011626236e-07
+          ],
+          "max_accepted_per_pixel": [
+            490
+          ],
+          "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+          "bounds_min": 0.0,
+          "bounds_max": 1.0,
+          "active_gt_1e_5": 65775,
+          "at_upper_bound": 21229,
+          "strength_sum": 32508.294302655682,
+          "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE"
+        },
+        "r_014": {
+          "primal_feasible_objective": 0.0067698844222859565,
+          "dual_lower_bound": 0.006736658274472,
+          "dual_gap": 3.32261478139563e-05,
+          "relative_dual_gap": 0.004907934277958763,
+          "atomic_allowance": 2.979348679851556e-07,
+          "FP64_atomic_roundoff_bound": 6.0692264089598305e-12,
+          "FP64_scalar_roundoff_bound": 5.73708402207663e-10,
+          "preregistered_extra_allowance": 2.9735509035653897e-07,
+          "native_vs_FP64_accepted_weight_A_max_abs": [
+            3.39745022115423e-07
+          ],
+          "max_accepted_per_pixel": [
+            413
+          ],
+          "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+          "bounds_min": 0.0,
+          "bounds_max": 1.0,
+          "active_gt_1e_5": 72194,
+          "at_upper_bound": 24501,
+          "strength_sum": 36594.96776113202,
+          "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE"
+        },
+        "shared": {
+          "primal_feasible_objective": 0.0067852720323647,
+          "dual_lower_bound": 0.0067526286242367145,
+          "dual_gap": 3.2643408127985135e-05,
+          "relative_dual_gap": 0.004810921061422611,
+          "atomic_allowance": 2.006748686041729e-07,
+          "FP64_atomic_roundoff_bound": 2.2916839254105025e-11,
+          "FP64_scalar_roundoff_bound": 2.2899940567475107e-09,
+          "preregistered_extra_allowance": 1.9836195770817128e-07,
+          "native_vs_FP64_accepted_weight_A_max_abs": [
+            3.7222732396369196e-07,
+            4.81523667716921e-07,
+            2.9790211442115577e-07,
+            3.8220414988465734e-07
+          ],
+          "max_accepted_per_pixel": [
+            498,
+            406,
+            490,
+            413
+          ],
+          "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+          "bounds_min": 0.0,
+          "bounds_max": 1.0,
+          "active_gt_1e_5": 102014,
+          "at_upper_bound": 30612,
+          "strength_sum": 52153.23152627947,
+          "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE"
+        }
+      },
+      "shape": {
+        "status": "COMPLETE",
+        "edited_strength_sum": 1.5811187028884888,
+        "condition_line_MSE": 0.1284862756729126,
+        "baseline_formula_max_abs": 1.1585652828216553e-06,
+        "metrics": [
+          {
+            "ratio": 2,
+            "line_MSE": 0.12844057381153107,
+            "outside_ink_MSE": 0.0027633709833025932,
+            "edited_count": 32,
+            "full_T_recomputed": true,
+            "alpha_MSE": 1.8624349706897192e-07,
+            "alpha_coverage_changed": 1,
+            "ROI_metrics": [
+              {
+                "roi": 0,
+                "category": "outline",
+                "line_MSE": 0.041271016001701355
+              },
+              {
+                "roi": 2,
+                "category": "internal_color_transition",
+                "line_MSE": 0.026573972776532173
+              }
+            ]
+          },
+          {
+            "ratio": 4,
+            "line_MSE": 0.12845465540885925,
+            "outside_ink_MSE": 0.002763677155598998,
+            "edited_count": 32,
+            "full_T_recomputed": true,
+            "alpha_MSE": 2.4570053369643574e-07,
+            "alpha_coverage_changed": 0,
+            "ROI_metrics": [
+              {
+                "roi": 0,
+                "category": "outline",
+                "line_MSE": 0.04234791919589043
+              },
+              {
+                "roi": 2,
+                "category": "internal_color_transition",
+                "line_MSE": 0.02643270418047905
+              }
+            ]
+          }
+        ],
+        "signed_centerline_offset_quantiles": [
+          -15.118823488317458,
+          -1.6662649561857954,
+          4.423898975283313,
+          8.415993611968009,
+          11.702124535313635
+        ],
+        "absolute_centerline_offset_quantiles": [
+          0.8606868807384842,
+          3.4577344349992774,
+          5.602422284154949,
+          9.033427810461495,
+          15.118823488317458
+        ],
+        "interpretation": "capability only; fixed centers can remain off line; original full-T linear oracle upper bound does not apply; no fitted shape trajectory",
+        "files": [
+          "artifacts/gaer_attribution_capacity_v02/downloads/lego/shape_ratio2.npz",
+          "artifacts/gaer_attribution_capacity_v02/media/lego/shape_ratio2.png",
+          "artifacts/gaer_attribution_capacity_v02/downloads/lego/shape_ratio4.npz",
+          "artifacts/gaer_attribution_capacity_v02/media/lego/shape_ratio4.png",
+          "artifacts/gaer_attribution_capacity_v02/media/lego/conditional_shape_comparison.jpg",
+          "artifacts/gaer_attribution_capacity_v02/media/lego/conditional_shape_ROI_nearest.png"
+        ],
+        "conditional_trigger": {
+          "view": "r_018",
+          "certificate": {
+            "primal_feasible_objective": 0.006063129118874357,
+            "dual_lower_bound": 0.0060355382312721,
+            "dual_gap": 2.7590887602257398e-05,
+            "relative_dual_gap": 0.004550602017754778,
+            "atomic_allowance": 2.6588217903755094e-07,
+            "FP64_atomic_roundoff_bound": 5.669151534891262e-12,
+            "FP64_scalar_roundoff_bound": 5.732154598491799e-10,
+            "preregistered_extra_allowance": 2.6530329442616685e-07,
+            "native_vs_FP64_accepted_weight_A_max_abs": [
+              4.39603418445067e-07
+            ],
+            "max_accepted_per_pixel": [
+              406
+            ],
+            "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+            "bounds_min": 0.0,
+            "bounds_max": 1.0,
+            "active_gt_1e_5": 77613,
+            "at_upper_bound": 25793,
+            "strength_sum": 38274.9036298426,
+            "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE"
+          },
+          "line_target_MSE": 0.12295159697532654
+        },
+        "shape_view_original_fit_certificate": {
+          "primal_feasible_objective": 0.004374777748436895,
+          "dual_lower_bound": 0.00434448604919788,
+          "dual_gap": 3.029169923901478e-05,
+          "relative_dual_gap": 0.006924168719162472,
+          "atomic_allowance": 1.9008578212356215e-07,
+          "FP64_atomic_roundoff_bound": 4.027415254026587e-12,
+          "FP64_scalar_roundoff_bound": 5.723076073164072e-10,
+          "preregistered_extra_allowance": 1.8950944710099173e-07,
+          "native_vs_FP64_accepted_weight_A_max_abs": [
+            4.298944864533638e-07
+          ],
+          "max_accepted_per_pixel": [
+            498
+          ],
+          "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+          "bounds_min": 0.0,
+          "bounds_max": 1.0,
+          "active_gt_1e_5": 59824,
+          "at_upper_bound": 16633,
+          "strength_sum": 26469.62018320251,
+          "status": "MAX_BUDGET_UNCERTIFIED"
+        },
+        "gate_correction": "initial r_000-only gate NOT_RUN retained; frozen protocol permits any perview; capability in fixed r_000 with uncertified r_000 base strength, not r_000 impossibility proof",
+        "unit": "lego_shape_anyview_condition",
+        "wall_seconds": 42.23171704588458,
+        "protocol_sha256": "4218282d0823f0b530089af4b75555f03606071aea4e68e03838fd7f96111132"
+      }
+    },
+    "chair": {
+      "original_N": 256690,
+      "roi_total_samples": 400,
+      "roi_marked_samples": 83,
+      "all_K8_winner_changes": 230,
+      "all_K32_winner_changes": 54,
+      "marked_K8_winner_changes": 75,
+      "marked_fallback_to_valid_full": 74,
+      "oracle_budgets": [
+        {
+          "budget": 500,
+          "source8_optimal_line_mass": 11286.533971898178,
+          "raw_source8_fraction_of_bound": 0.8180026036638283,
+          "center_source8_fraction_of_bound": 0.8686727341873711,
+          "diagnostic_pooled_bound": 5873.341356952222,
+          "diagnostic_perview_adapted_bound": 7043.670789003372,
+          "raw_diagnostic_fraction_of_pooled_bound": 0.10704683485909194,
+          "center_diagnostic_fraction_of_pooled_bound": 0.10666267190166759
+        },
+        {
+          "budget": 2000,
+          "source8_optimal_line_mass": 26544.755525495344,
+          "raw_source8_fraction_of_bound": 0.8330854119880416,
+          "center_source8_fraction_of_bound": 0.8700293083580132,
+          "diagnostic_pooled_bound": 12905.455791219845,
+          "diagnostic_perview_adapted_bound": 15141.655229449272,
+          "raw_diagnostic_fraction_of_pooled_bound": 0.18028226580841103,
+          "center_diagnostic_fraction_of_pooled_bound": 0.17736640807339688
+        }
+      ],
+      "oracle_evaluation_metrics": {
+        "raw_500": {
+          "line_total_contribution": 628.7226180307011,
+          "mass_recall": 0.008268036695439844,
+          "coverage_gt_01": 0.025839760178328935,
+          "coverage_gt_05": 0.0022291116861820693,
+          "nonline_mass_leakage": 0.8197654519436445
+        },
+        "center_500": {
+          "line_total_contribution": 626.466309120478,
+          "mass_recall": 0.008238365033675223,
+          "coverage_gt_01": 0.026172845832586025,
+          "coverage_gt_05": 0.0021138128058623075,
+          "nonline_mass_leakage": 0.80803328404348
+        },
+        "source8_oracle_500": {
+          "line_total_contribution": 976.0708350650409,
+          "mass_recall": 0.012835850421516559,
+          "coverage_gt_01": 0.03699812959594148,
+          "coverage_gt_05": 0.0022034897127776783,
+          "nonline_mass_leakage": 0.8026093233574844
+        },
+        "diagnostic2_pooled_oracle_500": {
+          "line_total_contribution": 5873.341424834076,
+          "mass_recall": 0.07723756237286153,
+          "coverage_gt_01": 0.2670578287939737,
+          "coverage_gt_05": 0.010876527710164237,
+          "nonline_mass_leakage": 0.7342150771970216
+        },
+        "raw_2000": {
+          "line_total_contribution": 2326.6248575569675,
+          "mass_recall": 0.030596353856422204,
+          "coverage_gt_01": 0.09724820005636835,
+          "coverage_gt_05": 0.008493684183555818,
+          "nonline_mass_leakage": 0.783171920555831
+        },
+        "center_2000": {
+          "line_total_contribution": 2288.994396026618,
+          "mass_recall": 0.030101493280587033,
+          "coverage_gt_01": 0.09541622895795435,
+          "coverage_gt_05": 0.008339952343129467,
+          "nonline_mass_leakage": 0.7756011468941931
+        },
+        "source8_oracle_2000": {
+          "line_total_contribution": 3268.7123125393264,
+          "mass_recall": 0.04298530476215742,
+          "coverage_gt_01": 0.13324707268953856,
+          "coverage_gt_05": 0.00814778754259653,
+          "nonline_mass_leakage": 0.787628455425432
+        },
+        "diagnostic2_pooled_oracle_2000": {
+          "line_total_contribution": 12905.455858401272,
+          "mass_recall": 0.16971360588689752,
+          "coverage_gt_01": 0.48061697711957774,
+          "coverage_gt_05": 0.08004304491531938,
+          "nonline_mass_leakage": 0.7322335519765013
+        }
+      },
+      "probe_methods": {
+        "DC_center": {
+          "fragments": 8,
+          "mean_target_response_fraction": 0.7272167378322749,
+          "median_half_amplitude_derivative_relative_change": 3.427140291023534e-05,
+          "max_half_amplitude_derivative_relative_change": 0.027899812906980515,
+          "mean_visible_mass": 652.4430216550827,
+          "mean_projected_area": 505.5850918292999,
+          "median_outside_MSE": 8.254755559655713e-11,
+          "max_matched_mass_error": 0.0
+        },
+        "DC_oneD": {
+          "fragments": 8,
+          "mean_target_response_fraction": 0.6774182458070793,
+          "median_half_amplitude_derivative_relative_change": 3.29644899466075e-05,
+          "max_half_amplitude_derivative_relative_change": 0.02611025795340538,
+          "mean_visible_mass": 487.4604277610779,
+          "mean_projected_area": 336.52655959129333,
+          "median_outside_MSE": 1.7247595712754915e-10,
+          "max_matched_mass_error": 0.0
+        },
+        "DC_multiD": {
+          "fragments": 8,
+          "mean_target_response_fraction": 0.730250313808986,
+          "median_half_amplitude_derivative_relative_change": 3.510618626023643e-05,
+          "max_half_amplitude_derivative_relative_change": 0.007295302115380764,
+          "mean_visible_mass": 665.3523967266083,
+          "mean_projected_area": 477.2613649368286,
+          "median_outside_MSE": 9.153230257075151e-11,
+          "max_matched_mass_error": 0.0
+        },
+        "DC_color_signed": {
+          "fragments": 8,
+          "mean_target_response_fraction": 0.7069630994479572,
+          "median_half_amplitude_derivative_relative_change": 3.546530570019968e-05,
+          "max_half_amplitude_derivative_relative_change": 0.021410798653960228,
+          "mean_visible_mass": 576.1262633800507,
+          "mean_projected_area": 440.9135539531708,
+          "median_outside_MSE": 1.604878348271388e-10,
+          "max_matched_mass_error": 0.0
+        },
+        "DC_matched_random": {
+          "fragments": 8,
+          "mean_target_response_fraction": 0.007011368121794924,
+          "median_half_amplitude_derivative_relative_change": 3.9092446968425065e-05,
+          "max_half_amplitude_derivative_relative_change": 7.045834354357794e-05,
+          "mean_visible_mass": 652.9443144798279,
+          "mean_projected_area": 476.8694415092468,
+          "median_outside_MSE": 3.3046584912987953e-10,
+          "max_matched_mass_error": 0.06859924644231796
+        },
+        "logscale_center": {
+          "fragments": 8,
+          "mean_target_response_fraction": 0.5686877072452785,
+          "median_half_amplitude_derivative_relative_change": 0.26883482933044434,
+          "max_half_amplitude_derivative_relative_change": 0.48194754123687744,
+          "mean_visible_mass": 652.4430216550827,
+          "mean_projected_area": 505.5850918292999,
+          "median_outside_MSE": 4.45372939916755e-11,
+          "max_matched_mass_error": 0.0
+        },
+        "logscale_oneD": {
+          "fragments": 8,
+          "mean_target_response_fraction": 0.5930888134923579,
+          "median_half_amplitude_derivative_relative_change": 0.2123231291770935,
+          "max_half_amplitude_derivative_relative_change": 0.4300556182861328,
+          "mean_visible_mass": 487.4604277610779,
+          "mean_projected_area": 336.52655959129333,
+          "median_outside_MSE": 2.6068187539141086e-11,
+          "max_matched_mass_error": 0.0
+        },
+        "logscale_multiD": {
+          "fragments": 8,
+          "mean_target_response_fraction": 0.6673558059418184,
+          "median_half_amplitude_derivative_relative_change": 0.2228437438607216,
+          "max_half_amplitude_derivative_relative_change": 0.480808824300766,
+          "mean_visible_mass": 665.3523967266083,
+          "mean_projected_area": 477.2613649368286,
+          "median_outside_MSE": 1.6439791802186354e-11,
+          "max_matched_mass_error": 0.0
+        },
+        "logscale_color_signed": {
+          "fragments": 8,
+          "mean_target_response_fraction": 0.5463087516418952,
+          "median_half_amplitude_derivative_relative_change": 0.21038927137851715,
+          "max_half_amplitude_derivative_relative_change": 0.5049090385437012,
+          "mean_visible_mass": 576.1262633800507,
+          "mean_projected_area": 440.9135539531708,
+          "median_outside_MSE": 4.2081733930832144e-11,
+          "max_matched_mass_error": 0.0
+        },
+        "logscale_matched_random": {
+          "fragments": 8,
+          "mean_target_response_fraction": 0.0021608880537086674,
+          "median_half_amplitude_derivative_relative_change": 0.2384924814105034,
+          "max_half_amplitude_derivative_relative_change": 0.5139670372009277,
+          "mean_visible_mass": 652.9443144798279,
+          "mean_projected_area": 476.8694415092468,
+          "median_outside_MSE": 5.1234627651552955e-11,
+          "max_matched_mass_error": 0.06859924644231796
+        }
+      },
+      "matched_random_residuals": {
+        "0": {
+          "log_mass_mean_abs": 0.009801809675991535,
+          "log_area_mean_abs": 0.0026142564602196217,
+          "relative_total_mass_error": 0.0004941092920489609,
+          "overlap": 0
+        },
+        "1": {
+          "log_mass_mean_abs": 0.0429728627204895,
+          "log_area_mean_abs": 0.010641664266586304,
+          "relative_total_mass_error": 0.06859924644231796,
+          "overlap": 0
+        },
+        "2": {
+          "log_mass_mean_abs": 0.02489691972732544,
+          "log_area_mean_abs": 0.014925362542271614,
+          "relative_total_mass_error": 0.004664175678044558,
+          "overlap": 0
+        },
+        "3": {
+          "log_mass_mean_abs": 0.024378091096878052,
+          "log_area_mean_abs": 0.008796751499176025,
+          "relative_total_mass_error": 0.015645699575543404,
+          "overlap": 0
+        },
+        "4": {
+          "log_mass_mean_abs": 0.03152996301651001,
+          "log_area_mean_abs": 0.012321189045906067,
+          "relative_total_mass_error": 0.004128102213144302,
+          "overlap": 0
+        },
+        "5": {
+          "log_mass_mean_abs": 0.028786495327949524,
+          "log_area_mean_abs": 0.013997204601764679,
+          "relative_total_mass_error": 0.06102358549833298,
+          "overlap": 0
+        },
+        "6": {
+          "log_mass_mean_abs": 0.062306106090545654,
+          "log_area_mean_abs": 0.035031259059906006,
+          "relative_total_mass_error": 0.06119360774755478,
+          "overlap": 1
+        },
+        "7": {
+          "log_mass_mean_abs": 0.05919593572616577,
+          "log_area_mean_abs": 0.019193172454833984,
+          "relative_total_mass_error": 0.0072141229175031185,
+          "overlap": 1
+        }
+      },
+      "perview_whole_target_MSE": 0.005815175245516002,
+      "shared_whole_target_MSE": 0.00790103548206389,
+      "perview_mean_objective": 0.004110127100487463,
+      "shared_objective": 0.005185527646248458,
+      "capacity_certificates": {
+        "r_000": {
+          "primal_feasible_objective": 0.002322721563467195,
+          "dual_lower_bound": 0.0022804834236277265,
+          "dual_gap": 4.223813983946856e-05,
+          "relative_dual_gap": 0.01818476243722405,
+          "atomic_allowance": 1.272551757581657e-07,
+          "FP64_atomic_roundoff_bound": 2.1599903735534285e-12,
+          "FP64_scalar_roundoff_bound": 5.705385381232062e-10,
+          "preregistered_extra_allowance": 1.2668247722966894e-07,
+          "native_vs_FP64_accepted_weight_A_max_abs": [
+            4.004518557865211e-07
+          ],
+          "max_accepted_per_pixel": [
+            230
+          ],
+          "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+          "bounds_min": 0.0,
+          "bounds_max": 1.0,
+          "active_gt_1e_5": 48221,
+          "at_upper_bound": 11512,
+          "strength_sum": 20010.878555657546,
+          "status": "MAX_BUDGET_UNCERTIFIED"
+        },
+        "r_018": {
+          "primal_feasible_objective": 0.003969179832911343,
+          "dual_lower_bound": 0.0039233497825938235,
+          "dual_gap": 4.5830050317519425e-05,
+          "relative_dual_gap": 0.011546478679930122,
+          "atomic_allowance": 1.8068435153937508e-07,
+          "FP64_atomic_roundoff_bound": 3.710726762886494e-12,
+          "FP64_scalar_roundoff_bound": 5.71701824778587e-10,
+          "preregistered_extra_allowance": 1.801089389878336e-07,
+          "native_vs_FP64_accepted_weight_A_max_abs": [
+            4.620539185706818e-07
+          ],
+          "max_accepted_per_pixel": [
+            332
+          ],
+          "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+          "bounds_min": 0.0,
+          "bounds_max": 1.0,
+          "active_gt_1e_5": 75908,
+          "at_upper_bound": 20915,
+          "strength_sum": 35677.03665610088,
+          "status": "MAX_BUDGET_UNCERTIFIED"
+        },
+        "r_001": {
+          "primal_feasible_objective": 0.004846134981081745,
+          "dual_lower_bound": 0.004824152132281778,
+          "dual_gap": 2.198284879996633e-05,
+          "relative_dual_gap": 0.0045361610615021215,
+          "atomic_allowance": 1.9934577362708865e-07,
+          "FP64_atomic_roundoff_bound": 4.7759441537290416e-12,
+          "FP64_scalar_roundoff_bound": 5.718714809063485e-10,
+          "preregistered_extra_allowance": 1.9876912620202859e-07,
+          "native_vs_FP64_accepted_weight_A_max_abs": [
+            4.054024635991027e-07
+          ],
+          "max_accepted_per_pixel": [
+            206
+          ],
+          "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+          "bounds_min": 0.0,
+          "bounds_max": 1.0,
+          "active_gt_1e_5": 77134,
+          "at_upper_bound": 28767,
+          "strength_sum": 44420.43131451246,
+          "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE"
+        },
+        "r_014": {
+          "primal_feasible_objective": 0.005302472024489569,
+          "dual_lower_bound": 0.005271759120174984,
+          "dual_gap": 3.071290431458547e-05,
+          "relative_dual_gap": 0.005792186016774313,
+          "atomic_allowance": 2.304403736284937e-07,
+          "FP64_atomic_roundoff_bound": 5.101072715844548e-12,
+          "FP64_scalar_roundoff_bound": 5.722478716572729e-10,
+          "preregistered_extra_allowance": 2.298630246841206e-07,
+          "native_vs_FP64_accepted_weight_A_max_abs": [
+            4.13700547929885e-07
+          ],
+          "max_accepted_per_pixel": [
+            218
+          ],
+          "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+          "bounds_min": 0.0,
+          "bounds_max": 1.0,
+          "active_gt_1e_5": 79688,
+          "at_upper_bound": 27178,
+          "strength_sum": 43934.76918895336,
+          "status": "MAX_BUDGET_UNCERTIFIED"
+        },
+        "shared": {
+          "primal_feasible_objective": 0.005185527646248458,
+          "dual_lower_bound": 0.0051612617934723055,
+          "dual_gap": 2.426585277615252e-05,
+          "relative_dual_gap": 0.004679533970609141,
+          "atomic_allowance": 1.504150558913772e-07,
+          "FP64_atomic_roundoff_bound": 1.8231526362633014e-11,
+          "FP64_scalar_roundoff_bound": 2.285810047646519e-09,
+          "preregistered_extra_allowance": 1.4811101431736804e-07,
+          "native_vs_FP64_accepted_weight_A_max_abs": [
+            3.615000888634867e-07,
+            3.167635590495266e-07,
+            3.600416453863886e-07,
+            3.340771319582103e-07
+          ],
+          "max_accepted_per_pixel": [
+            230,
+            332,
+            206,
+            218
+          ],
+          "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+          "bounds_min": 0.0,
+          "bounds_max": 1.0,
+          "active_gt_1e_5": 98257,
+          "at_upper_bound": 30371,
+          "strength_sum": 53482.148131845344,
+          "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE"
+        }
+      },
+      "shape": {
+        "status": "COMPLETE",
+        "edited_strength_sum": 2.8734943866729736,
+        "condition_line_MSE": 0.09903842210769653,
+        "baseline_formula_max_abs": 8.568167686462402e-07,
+        "metrics": [
+          {
+            "ratio": 2,
+            "line_MSE": 0.09904526174068451,
+            "outside_ink_MSE": 0.0015138686867430806,
+            "edited_count": 32,
+            "full_T_recomputed": true,
+            "alpha_MSE": 5.238048883526858e-10,
+            "alpha_coverage_changed": 0,
+            "ROI_metrics": [
+              {
+                "roi": 0,
+                "category": "outline",
+                "line_MSE": 0.01728840172290802
+              },
+              {
+                "roi": 2,
+                "category": "internal_color_transition",
+                "line_MSE": 0.018021663650870323
+              }
+            ]
+          },
+          {
+            "ratio": 4,
+            "line_MSE": 0.09902766346931458,
+            "outside_ink_MSE": 0.0015145119978114963,
+            "edited_count": 32,
+            "full_T_recomputed": true,
+            "alpha_MSE": 8.817287455720191e-10,
+            "alpha_coverage_changed": 0,
+            "ROI_metrics": [
+              {
+                "roi": 0,
+                "category": "outline",
+                "line_MSE": 0.01730024628341198
+              },
+              {
+                "roi": 2,
+                "category": "internal_color_transition",
+                "line_MSE": 0.018126627430319786
+              }
+            ]
+          }
+        ],
+        "signed_centerline_offset_quantiles": [
+          -10.813729069190718,
+          -7.048287674760155,
+          -5.054320565221733,
+          -2.418953018868565,
+          7.235192764613961
+        ],
+        "absolute_centerline_offset_quantiles": [
+          0.7056173830881243,
+          2.7679217086564187,
+          5.187187140852416,
+          7.212283432444247,
+          10.813729069190718
+        ],
+        "interpretation": "capability only; fixed centers can remain off line; original full-T linear oracle upper bound does not apply; no fitted shape trajectory",
+        "files": [
+          "artifacts/gaer_attribution_capacity_v02/downloads/chair/shape_ratio2.npz",
+          "artifacts/gaer_attribution_capacity_v02/media/chair/shape_ratio2.png",
+          "artifacts/gaer_attribution_capacity_v02/downloads/chair/shape_ratio4.npz",
+          "artifacts/gaer_attribution_capacity_v02/media/chair/shape_ratio4.png",
+          "artifacts/gaer_attribution_capacity_v02/media/chair/conditional_shape_comparison.jpg",
+          "artifacts/gaer_attribution_capacity_v02/media/chair/conditional_shape_ROI_nearest.png"
+        ],
+        "conditional_trigger": {
+          "view": "r_001",
+          "certificate": {
+            "primal_feasible_objective": 0.004846134981081745,
+            "dual_lower_bound": 0.004824152132281778,
+            "dual_gap": 2.198284879996633e-05,
+            "relative_dual_gap": 0.0045361610615021215,
+            "atomic_allowance": 1.9934577362708865e-07,
+            "FP64_atomic_roundoff_bound": 4.7759441537290416e-12,
+            "FP64_scalar_roundoff_bound": 5.718714809063485e-10,
+            "preregistered_extra_allowance": 1.9876912620202859e-07,
+            "native_vs_FP64_accepted_weight_A_max_abs": [
+              4.054024635991027e-07
+            ],
+            "max_accepted_per_pixel": [
+              206
+            ],
+            "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+            "bounds_min": 0.0,
+            "bounds_max": 1.0,
+            "active_gt_1e_5": 77134,
+            "at_upper_bound": 28767,
+            "strength_sum": 44420.43131451246,
+            "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE"
+          },
+          "line_target_MSE": 0.09449683874845505
+        },
+        "shape_view_original_fit_certificate": {
+          "primal_feasible_objective": 0.002322721563467195,
+          "dual_lower_bound": 0.0022804834236277265,
+          "dual_gap": 4.223813983946856e-05,
+          "relative_dual_gap": 0.01818476243722405,
+          "atomic_allowance": 1.272551757581657e-07,
+          "FP64_atomic_roundoff_bound": 2.1599903735534285e-12,
+          "FP64_scalar_roundoff_bound": 5.705385381232062e-10,
+          "preregistered_extra_allowance": 1.2668247722966894e-07,
+          "native_vs_FP64_accepted_weight_A_max_abs": [
+            4.004518557865211e-07
+          ],
+          "max_accepted_per_pixel": [
+            230
+          ],
+          "certified_domain": "real linear operator from original forward-accepted FP32 T*alpha; FP64 sums, bounded roundoff; native RGB agreement separately measured",
+          "bounds_min": 0.0,
+          "bounds_max": 1.0,
+          "active_gt_1e_5": 48221,
+          "at_upper_bound": 11512,
+          "strength_sum": 20010.878555657546,
+          "status": "MAX_BUDGET_UNCERTIFIED"
+        },
+        "gate_correction": "initial r_000-only gate NOT_RUN retained; frozen protocol permits any perview; capability in fixed r_000 with uncertified r_000 base strength, not r_000 impossibility proof",
+        "unit": "chair_shape_anyview_condition",
+        "wall_seconds": 0.8741867379285395,
+        "protocol_sha256": "4218282d0823f0b530089af4b75555f03606071aea4e68e03838fd7f96111132"
+      }
+    }
+  },
+  "six_questions": [
+    {
+      "question": "截断是主要限制吗？",
+      "status": "SEVERE_FOR_D_NOT_PROVEN_PRIMARY_VISUAL_LIMIT",
+      "answer": "K8严重改变冻结样本的D赢家与回退；K32仍不等于完整。完整记录并未单独证明D更好，不能把截断称为最终线绘唯一或主要限制。"
+    },
+    {
+      "question": "完整记录后D胜过center吗？",
+      "status": "NO_CLEAR_UNIVERSAL_ADVANTAGE",
+      "answer": "实际DC/logscale成对扰动已运行；单赢家D在两场景/ROI上优劣不一致，multiD常较局部但可见质量/面积不同；没有普遍优势或因果边责任结论。"
+    },
+    {
+      "question": "旧选择距B上界多远？",
+      "status": "MEASURED_FULL_N",
+      "answer": "B500/2000八源 raw 达源域上界约80–83%，center更接近；两个已知诊断视图 raw 仅达 pooled 上界约11–31%。必须区分源域、已知答案域和perview适配。"
+    },
+    {
+      "question": "理想强度下原足迹能形成线吗？",
+      "status": "RECOGNIZABLE_LINES_PARTIAL_FIDELITY_HUMAN_PENDING",
+      "answer": "全N连续强度确实生成可辨线结构，远超固定少量二值核；窄峰/深色平台/轮廓仍有误差。四个perview未达到冻结近最优证书，其他perview及两个shared已有证书；只对冻结E/外域λ=1目标有效，不是全表示不可能证明。"
+    },
+    {
+      "question": "固定集合和视角激活限制？",
+      "status": "BOTH_VIEW_ADAPTATION_AND_JOINT_STRENGTH",
+      "answer": "诊断perview固定B上界高于pooled；同四图 perview连续目标误差低于shared，仍含已知答案。固定八视角集合、单赢家、view activation 是不同约束；不是泛化算法。"
+    },
+    {
+      "question": "需要shape吗，有何剩余限制？",
+      "status": "TINY_NATIVE_CAPABILITY_NO_SUFFICIENCY_EVIDENCE",
+      "answer": "每场景32原核法向2/4缩窄已原生重算T，改善极小；中心未移动，所选核总强度小，不能判定shape必需或足够。单独报告nearest旧mask法向偏移；初次更严格gate的NOT_RUN保留。"
+    }
+  ],
+  "next_one_action": "allocationaggregation",
+  "next_one_reason": "联合贡献/连续强度已能形成线结构，单赢家固定少量集合损失大量共同支持；下一步最有证据支持联合分配与强度聚合，不把oracle当预测算法，不新增训练或新视角。",
+  "not_run": {
+    "opacity_probes": "optional, DC and logscale actual probes performed",
+    "lambda_sensitivity": "protocol predeclared empty; only lambda=1",
+    "new_training": "outside authorized scope",
+    "generalization": "known-target capacity only",
+    "long_shape_optimization": "only fixed-ratio capability permitted"
+  },
+  "scientific_primary_objective": "continuous L on E=L>.2; weak and zero regions targeted white, outside L^2 constant and lambda A^2 penalty; whole original continuous target MSE separately reported"
+}
