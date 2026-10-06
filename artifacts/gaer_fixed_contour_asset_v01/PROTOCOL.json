@@ -1,0 +1,21 @@
+{
+  "stage":"gaer_fixed_contour_asset_v01",
+  "user_contract":"Explicit fixed 3D polylines and tube mesh, independent of camera after export; GLB and OBJ",
+  "source_commit":"e174e9fcda71f3b328e5e44b668d11f1dda7da3d",
+  "construction_view":"r_33",
+  "inspection_only_views":["r_1","r_14","r_7"],
+  "scenes":["lego","chair"],
+  "source_boundary":"alpha>=0.5; exterior contours RETR_EXTERNAL; no internal holes or feature edges",
+  "anchor":"Native top32 alpha*T contributions times previously frozen C-style support; contribution weighted original Gaussian-center camera-z is ONLY a depth proxy, not surface depth",
+  "fallback":"If style mass is zero, use native alpha*T support; save fallback count and top32 mass",
+  "depth_filter":"5-sample median inside each source contour, applied before freezing once",
+  "line_creation":"Lift ordered boundary pixels on calibrated source-camera rays using proxy depths; never connect Gaussian centers directly",
+  "sample_stride_pixels":2,
+  "minimum_component_points":8,
+  "breaks":"Nonfinite/nonpositive depths or consecutive world step >8*(median source depth/focal*pixel stride)",
+  "tube_radius":"0.65 source pixel at median proxy depth; 8 sides",
+  "static_asset":"Original world coordinates; no animation, billboards, camera-conditioned nodes, model weights or re-fitting needed",
+  "acceptance":"Files parse as actual finite nonempty static mesh; serialization round-trip; source reprojection checked; no claim of multiview correct silhouette or recovered physical curve",
+  "scientific_status":"Fixed 3D candidate export, single construction view, NOT a validated multiview curve recovery",
+  "protect":"No base-model training or edits; writes only new stage; do not alter previous branches or protected credentials"
+}
