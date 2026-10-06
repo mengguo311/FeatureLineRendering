@@ -1,0 +1,518 @@
+{
+  "status": "COMPLETE",
+  "scene": "chair",
+  "camera": {
+    "key": "r_33",
+    "width": 800,
+    "height": 800,
+    "FoVx": 0.6911112070083618,
+    "FoVy": 0.6911112070083618,
+    "w2c": [
+      [
+        -0.9745738378111829,
+        0.22406627928339057,
+        -3.6582691199339693e-09,
+        2.318607265192579e-08
+      ],
+      [
+        0.1518210202480917,
+        0.6603438496947678,
+        -0.7354567587454045,
+        9.346719064553642e-09
+      ],
+      [
+        -0.1647910565436791,
+        -0.7167568792219928,
+        -0.6775716121311884,
+        4.031128349342041
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "metadata_index": 28,
+    "frame_file": "./train/r_33",
+    "metadata_path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/inputs/chair/seed_1729/transforms_train.json",
+    "metadata_sha256": "2ef32cbc60b28932cc8d5a2b25f12f892211ed093fd7e0a4aec4e1a3c6f7947d",
+    "original_image": "/home/u00134/cglib/data/full/chair/train/r_33.png",
+    "original_image_sha256": "9c94a89d339727d19420e401543007d67a641742c27b4beabebdad5b573c6faf",
+    "metadata_w2c_error": 0.0,
+    "previous_role": "dev",
+    "formal_blind": false,
+    "camera_sha256": "3932aa90780a7bdbd741565beae4e326bdad41eb99881e9647d2f44a30752e07"
+  },
+  "camera_role": "DEV",
+  "count": 256690,
+  "source_model_sha256": "13e4ecc9ffe9c5ae2a0656e2e5c56a737cfdc90a62ad04799db3c46b0b442f5d",
+  "arms": {
+    "A": {
+      "metrics": {
+        "boundary_pixels": 2120,
+        "boundary_coverage": 0.9306603773584906,
+        "longest_gap_pixels": 35,
+        "gap_runs": 22,
+        "gap_lengths": [
+          35,
+          15,
+          6,
+          6,
+          5,
+          3,
+          3,
+          3,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "ink_mass": 2236.75463449955,
+        "interior_ink_mass_fraction": 0.028554814793428297,
+        "interior_threshold_pixels": 36,
+        "contour_distance_quantiles_pixels": [
+          0.5,
+          1.5,
+          2.3284270763397217,
+          2.6622776985168457,
+          3.623105525970459
+        ],
+        "profile_FWHM_quantiles_pixels": [
+          1.6499938457449916,
+          2.0525117906521038,
+          2.346961255931067,
+          2.6461639373878545,
+          3.3206631496826926
+        ],
+        "profile_peak_quantiles": [
+          0.15420861020684243,
+          0.42785457521677017,
+          0.5857537388801575,
+          0.7204525023698807,
+          0.8731973528861999
+        ],
+        "profile_location_quantiles_pixels": [
+          0.8632231801748276,
+          1.5092234909534454,
+          1.8676982522010803,
+          2.220237076282501,
+          2.7921754717826843
+        ],
+        "global_target_MSE": 0.003288993379101157,
+        "target_band_MSE": 0.37131038308143616,
+        "outside_band_MSE": 0.0008573164232075214,
+        "strength_independent": "metrics are from complete raw native ink; no thresholded/dilated final drawing",
+        "clean_checks": {
+          "coverage": false,
+          "gap": false,
+          "distance": false,
+          "width": true,
+          "interior_mass": true,
+          "interior_pixels": false,
+          "blackness": true
+        },
+        "clean_all": false,
+        "recognizable": true
+      },
+      "fit": {
+        "status": "BINARY_REFERENCE",
+        "allowed_ids": 1284,
+        "active_ids": 1284
+      },
+      "native_formula_max_error": 8.344650268554688e-07,
+      "support_visibility_mass": 2236.7545509934425,
+      "full_native": true,
+      "deleted_gaussians": 0
+    },
+    "B": {
+      "metrics": {
+        "boundary_pixels": 2120,
+        "boundary_coverage": 0.9183962264150943,
+        "longest_gap_pixels": 37,
+        "gap_runs": 37,
+        "gap_lengths": [
+          37,
+          15,
+          6,
+          6,
+          6,
+          5,
+          3,
+          3,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "ink_mass": 1682.2526146769524,
+        "interior_ink_mass_fraction": 0.026219061386797263,
+        "interior_threshold_pixels": 11,
+        "contour_distance_quantiles_pixels": [
+          0.5,
+          1.5,
+          2.3284270763397217,
+          2.5,
+          3.623105525970459
+        ],
+        "profile_FWHM_quantiles_pixels": [
+          1.5842316595426709,
+          1.9577190356957561,
+          2.2503234764961286,
+          2.5734587334404737,
+          3.1909127032171756
+        ],
+        "profile_peak_quantiles": [
+          0.13664290606975557,
+          0.3206624984741211,
+          0.4349888414144516,
+          0.5471117496490479,
+          0.7115987539291382
+        ],
+        "profile_location_quantiles_pixels": [
+          0.7067373514175415,
+          1.3093957901000977,
+          1.6863559484481812,
+          2.04083514213562,
+          2.6346126914024355
+        ],
+        "global_target_MSE": 0.0027865238953381777,
+        "target_band_MSE": 0.37123042345046997,
+        "outside_band_MSE": 0.0003520545724313706,
+        "strength_independent": "metrics are from complete raw native ink; no thresholded/dilated final drawing",
+        "clean_checks": {
+          "coverage": false,
+          "gap": false,
+          "distance": false,
+          "width": true,
+          "interior_mass": true,
+          "interior_pixels": true,
+          "blackness": true
+        },
+        "clean_all": false,
+        "recognizable": true
+      },
+      "fit": {
+        "label": "chair_r_33_B",
+        "iterations": 40,
+        "maximum_iterations": 300,
+        "start": "zero",
+        "warm_start": false,
+        "seconds": 0.29722271393984556,
+        "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE",
+        "optimization_status": "NUMERICAL_DUAL_ESTIMATE_CONVERGED",
+        "certificate": {
+          "primal": 0.005048431704812575,
+          "dual_lower": 0.005048343933630643,
+          "relative_dual_gap": 1.7385831296688747e-05,
+          "roundoff_allowance": 5.659963529932228e-08,
+          "max_accepted_per_pixel": 234,
+          "native_A_FP64_max_error": 1.1864899107649762e-07,
+          "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE"
+        },
+        "log": [
+          {
+            "iteration": 20,
+            "objective": 0.0050484448942556236,
+            "estimated_relative_dual_gap": 5.844731232736581e-05,
+            "relative_objective_change": 1.0,
+            "projected_gradient_relative": 0.0008260834332579111,
+            "diagonal_scale": 1.0001,
+            "restarts": 0,
+            "seconds": 0.148374066920951
+          },
+          {
+            "iteration": 40,
+            "objective": 0.005048431711456402,
+            "estimated_relative_dual_gap": 1.7264491559474165e-05,
+            "relative_objective_change": 2.6112594070639337e-06,
+            "projected_gradient_relative": 0.00016041064673833153,
+            "diagonal_scale": 1.0001,
+            "restarts": 0,
+            "seconds": 0.2838668448384851
+          }
+        ],
+        "allowed_ids": 1284,
+        "active_ids": 1004,
+        "strength_sum": 929.7881082389504,
+        "at_upper_bound": 854,
+        "bound_min": 0.0,
+        "bound_max": 1.0
+      },
+      "native_formula_max_error": 8.344650268554688e-07,
+      "support_visibility_mass": 1892.8884829878807,
+      "full_native": true,
+      "deleted_gaussians": 0
+    },
+    "C": {
+      "metrics": {
+        "boundary_pixels": 2120,
+        "boundary_coverage": 1.0,
+        "longest_gap_pixels": 0,
+        "gap_runs": 0,
+        "gap_lengths": [],
+        "ink_mass": 3788.4271661043167,
+        "interior_ink_mass_fraction": 0.034110800542046064,
+        "interior_threshold_pixels": 111,
+        "contour_distance_quantiles_pixels": [
+          0.5,
+          0.5,
+          1.5,
+          1.7360680103302002,
+          3.623105525970459
+        ],
+        "profile_FWHM_quantiles_pixels": [
+          2.107925016325679,
+          2.2960385628404594,
+          2.4655715795815487,
+          2.7286340047115605,
+          3.887564875920339
+        ],
+        "profile_peak_quantiles": [
+          0.6437996089458465,
+          0.7934813350439072,
+          0.8412109911441803,
+          0.8812317103147507,
+          0.9205664485692978
+        ],
+        "profile_location_quantiles_pixels": [
+          0.044824310764670375,
+          0.45487529784440994,
+          0.7780875861644745,
+          1.0840753018856049,
+          1.631935006380081
+        ],
+        "global_target_MSE": 0.00045680275070481,
+        "target_band_MSE": 0.02031637169420719,
+        "outside_band_MSE": 0.0003255819610785693,
+        "strength_independent": "metrics are from complete raw native ink; no thresholded/dilated final drawing",
+        "clean_checks": {
+          "coverage": true,
+          "gap": true,
+          "distance": false,
+          "width": true,
+          "interior_mass": true,
+          "interior_pixels": false,
+          "blackness": true
+        },
+        "clean_all": false,
+        "recognizable": true
+      },
+      "fit": {
+        "label": "chair_r_33_C",
+        "iterations": 40,
+        "maximum_iterations": 300,
+        "start": "zero",
+        "warm_start": false,
+        "seconds": 0.286741741001606,
+        "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE",
+        "optimization_status": "NUMERICAL_DUAL_ESTIMATE_CONVERGED",
+        "certificate": {
+          "primal": 0.0004284382558364209,
+          "dual_lower": 0.00042811718238030107,
+          "relative_dual_gap": 0.0007494042647826045,
+          "roundoff_allowance": 4.576951554532556e-08,
+          "max_accepted_per_pixel": 234,
+          "native_A_FP64_max_error": 3.8134996782623887e-07,
+          "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE"
+        },
+        "log": [
+          {
+            "iteration": 20,
+            "objective": 0.00042863353560697456,
+            "estimated_relative_dual_gap": 0.00404576268880564,
+            "relative_objective_change": 1.0,
+            "projected_gradient_relative": 0.006386494551550468,
+            "diagonal_scale": 1.0001,
+            "restarts": 0,
+            "seconds": 0.14177674404345453
+          },
+          {
+            "iteration": 40,
+            "objective": 0.0004284382607285175,
+            "estimated_relative_dual_gap": 0.0007480442922043486,
+            "relative_objective_change": 0.00045557536271754984,
+            "projected_gradient_relative": 0.0010974307989394508,
+            "diagonal_scale": 1.0001,
+            "restarts": 0,
+            "seconds": 0.2733759449329227
+          }
+        ],
+        "allowed_ids": 15604,
+        "active_ids": 8702,
+        "strength_sum": 8216.95491915094,
+        "at_upper_bound": 7644,
+        "bound_min": 0.0,
+        "bound_max": 1.0
+      },
+      "native_formula_max_error": 8.344650268554688e-07,
+      "support_visibility_mass": 4669.514599257894,
+      "full_native": true,
+      "deleted_gaussians": 0
+    },
+    "P": {
+      "metrics": {
+        "boundary_pixels": 2120,
+        "boundary_coverage": 0.9669811320754716,
+        "longest_gap_pixels": 6,
+        "gap_runs": 23,
+        "gap_lengths": [
+          6,
+          5,
+          4,
+          3,
+          3,
+          3,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "ink_mass": 4718.653114914894,
+        "interior_ink_mass_fraction": 0.18417890703838669,
+        "interior_threshold_pixels": 1453,
+        "contour_distance_quantiles_pixels": [
+          0.5,
+          0.9142135381698608,
+          1.7360680103302002,
+          3.5,
+          7.985281467437744
+        ],
+        "profile_FWHM_quantiles_pixels": [
+          1.677296891741391,
+          2.3984094541842924,
+          3.095035227169321,
+          3.790118852476052,
+          7.831486266871291
+        ],
+        "profile_peak_quantiles": [
+          0.26553027629852294,
+          0.6194574534893036,
+          0.7942371964454651,
+          0.9096340537071228,
+          0.9737561404705047
+        ],
+        "profile_location_quantiles_pixels": [
+          0.005859485692749983,
+          0.7859530448913574,
+          1.3054769039154053,
+          2.0475592613220215,
+          3.161845111846923
+        ],
+        "global_target_MSE": 0.0024269348941743374,
+        "target_band_MSE": 0.11224952340126038,
+        "outside_band_MSE": 0.0017012892058119178,
+        "strength_independent": "metrics are from complete raw native ink; no thresholded/dilated final drawing",
+        "clean_checks": {
+          "coverage": true,
+          "gap": true,
+          "distance": false,
+          "width": false,
+          "interior_mass": false,
+          "interior_pixels": false,
+          "blackness": true
+        },
+        "clean_all": false,
+        "recognizable": true
+      },
+      "fit": {
+        "status": "BINARY_ALPHAT_PARTICIPATION",
+        "allowed_ids": 1284,
+        "active_ids": 1284
+      },
+      "native_formula_max_error": 8.344650268554688e-07,
+      "support_visibility_mass": 4718.653042495251,
+      "full_native": true,
+      "deleted_gaussians": 0
+    }
+  },
+  "components": {
+    "components_total": 1,
+    "components_kept": 1,
+    "component_sizes": [
+      105296
+    ],
+    "holes_count": 1,
+    "hole_sizes": [
+      1
+    ]
+  },
+  "files": [
+    "artifacts/gaer_object_contours_v01/downloads/chair/r_33/evidence.npz",
+    "artifacts/gaer_object_contours_v01/media/chair/r_33/original_RGB_SH3.png",
+    "artifacts/gaer_object_contours_v01/media/chair/r_33/target_DIAGNOSTIC_ONLY.png",
+    "artifacts/gaer_object_contours_v01/media/chair/r_33/raw_alpha.png",
+    "artifacts/gaer_object_contours_v01/media/chair/r_33/coverage_holes_DIAGNOSTIC_ONLY.png",
+    "artifacts/gaer_object_contours_v01/downloads/chair/r_33/A_style.npz",
+    "artifacts/gaer_object_contours_v01/media/chair/r_33/A_native_ink.png",
+    "artifacts/gaer_object_contours_v01/media/chair/r_33/A_RGB_overlay_PRESENTATION.png",
+    "artifacts/gaer_object_contours_v01/downloads/chair/r_33/A_fit.json",
+    "artifacts/gaer_object_contours_v01/downloads/chair/r_33/B_style.npz",
+    "artifacts/gaer_object_contours_v01/media/chair/r_33/B_native_ink.png",
+    "artifacts/gaer_object_contours_v01/media/chair/r_33/B_RGB_overlay_PRESENTATION.png",
+    "artifacts/gaer_object_contours_v01/downloads/chair/r_33/B_fit.json",
+    "artifacts/gaer_object_contours_v01/downloads/chair/r_33/C_style.npz",
+    "artifacts/gaer_object_contours_v01/media/chair/r_33/C_native_ink.png",
+    "artifacts/gaer_object_contours_v01/media/chair/r_33/C_RGB_overlay_PRESENTATION.png",
+    "artifacts/gaer_object_contours_v01/downloads/chair/r_33/C_fit.json",
+    "artifacts/gaer_object_contours_v01/downloads/chair/r_33/P_style.npz",
+    "artifacts/gaer_object_contours_v01/media/chair/r_33/P_native_ink.png",
+    "artifacts/gaer_object_contours_v01/media/chair/r_33/P_RGB_overlay_PRESENTATION.png",
+    "artifacts/gaer_object_contours_v01/downloads/chair/r_33/P_fit.json",
+    "artifacts/gaer_object_contours_v01/media/chair/r_33/comparison.png",
+    "artifacts/gaer_object_contours_v01/media/chair/r_33/old_deleted_vs_fullT.png",
+    "artifacts/gaer_object_contours_v01/media/chair/r_33/edge_zooms_native96.png",
+    "artifacts/gaer_object_contours_v01/downloads/chair/r_33/zoom_boxes.json"
+  ],
+  "unit": "chair_r_33",
+  "protocol_sha256": "7aba982efaf98cfc0c5c717b57a33e3d16a5a3604e7b4d5f1c33e0d0afb1f5f9",
+  "freeze_sha256": "58618938d983be6b09ddbadb8c890df2266e69385b6e68af16434908c2702e47"
+}

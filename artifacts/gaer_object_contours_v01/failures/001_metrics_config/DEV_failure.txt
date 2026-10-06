@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/gaer_object_contours_v01/experiments/gaer_object_contours_v01/run.py", line 20, in <module>
+    if __name__=='__main__':main()
+  File "/home/u00134/3dgs_line/gaer_object_contours_v01/experiments/gaer_object_contours_v01/run.py", line 17, in main
+    c=next(c for c in record['cameras'] if c['key']==key);run_view(name,c,record,config,digest,model)
+  File "/home/u00134/3dgs_line/gaer_object_contours_v01/experiments/gaer_object_contours_v01/pipeline.py", line 51, in run_view
+    m,profiles=metrics(ink,e,config['thresholds']);sp=p/(arm+'_style.npz');rt.npz(sp,original_ids=np.arange(op.n,dtype=np.int32),strength=strength.cpu().numpy(),active_original_ids=np.flatnonzero(strength.cpu().numpy()>1e-5).astype(np.int32),camera_json=np.array(json.dumps(camera)),camera_sha256=np.array(camera['camera_sha256']),source_model_sha256=np.array(record['model_sha256']),protocol_sha256=np.array(rt.sha(rt.ART/'PROTOCOL.json')),original_alpha=alpha,native_ink=ink,native_rgb=image,full_visible_mass=mass.cpu().numpy(),silhouette_participation=b.cpu().numpy(),**profiles);files.append(sp);files+=[save_image(media/(arm+'_native_ink.png'),image),save_image(media/(arm+'_RGB_overlay_PRESENTATION.png'),rgb*image)]
+  File "/home/u00134/3dgs_line/gaer_object_contours_v01/experiments/gaer_object_contours_v01/silhouette.py", line 20, in metrics
+    coords=np.argwhere(e['boundary']);normal=e['normal_yx'][e['boundary']];offs=np.arange(-8,8.01,.5,dtype=np.float32);p=coords[:,None,:]+normal[:,None,:]*offs[None,:,None];profiles=map_coordinates(ink,[p[...,0],p[...,1]],order=1,mode='constant',cval=0);peaks=profiles.max(1);region=(offs>=-1)&(offs<=3);covered=profiles[:,region].max(1)>=thresholds['ink_threshold'];covermask=np.zeros_like(ink,dtype=bool);covermask[e['boundary']]=covered
+KeyError: 'ink_threshold'

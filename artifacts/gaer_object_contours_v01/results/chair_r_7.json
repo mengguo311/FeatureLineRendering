@@ -1,0 +1,517 @@
+{
+  "status": "COMPLETE",
+  "scene": "chair",
+  "camera": {
+    "key": "r_7",
+    "width": 800,
+    "height": 800,
+    "FoVx": 0.6911112070083618,
+    "FoVy": 0.6911112070083618,
+    "w2c": [
+      [
+        -0.9958430952161544,
+        0.09108519205727607,
+        2.6686061265102378e-09,
+        4.393074732723296e-09
+      ],
+      [
+        0.06001296536855059,
+        0.6561274932579945,
+        -0.7522599141001929,
+        -7.492457388069121e-08
+      ],
+      [
+        -0.06851974606887687,
+        -0.7491328786282053,
+        -0.658866397422203,
+        4.031128884460626
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "metadata_index": 5,
+    "frame_file": "./train/r_7",
+    "metadata_path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/inputs/chair/seed_1729/transforms_train.json",
+    "metadata_sha256": "2ef32cbc60b28932cc8d5a2b25f12f892211ed093fd7e0a4aec4e1a3c6f7947d",
+    "original_image": "/home/u00134/cglib/data/full/chair/train/r_7.png",
+    "original_image_sha256": "63d1a9b671bf0e3f0da2786905fbb0807d6b466cff6843da76ef9ad0e7fa7da7",
+    "metadata_w2c_error": 0.0,
+    "previous_role": "dev",
+    "formal_blind": false,
+    "camera_sha256": "b6b2a72d75124f2ec176580377714a7bfc0664d7f379df661b51b7dc44cdc274"
+  },
+  "camera_role": "DEV",
+  "count": 256690,
+  "source_model_sha256": "13e4ecc9ffe9c5ae2a0656e2e5c56a737cfdc90a62ad04799db3c46b0b442f5d",
+  "arms": {
+    "A": {
+      "metrics": {
+        "boundary_pixels": 2069,
+        "boundary_coverage": 0.9381343644272595,
+        "longest_gap_pixels": 32,
+        "gap_runs": 22,
+        "gap_lengths": [
+          32,
+          11,
+          7,
+          3,
+          3,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "ink_mass": 2249.139190196991,
+        "interior_ink_mass_fraction": 0.028636497234343593,
+        "interior_threshold_pixels": 36,
+        "contour_distance_quantiles_pixels": [
+          0.5,
+          1.5,
+          2.3284270763397217,
+          2.6622776985168457,
+          3.623105525970459
+        ],
+        "profile_FWHM_quantiles_pixels": [
+          1.6114756579277019,
+          2.0431487873269645,
+          2.3020633192281803,
+          2.642727803600312,
+          3.315494160806289
+        ],
+        "profile_peak_quantiles": [
+          0.1599653095006943,
+          0.43887364864349365,
+          0.5714157819747925,
+          0.7233457565307617,
+          0.8920627951622009
+        ],
+        "profile_location_quantiles_pixels": [
+          0.812030029296875,
+          1.4424206614494324,
+          1.8451206684112549,
+          2.1897342205047607,
+          2.707121634483336
+        ],
+        "global_target_MSE": 0.003291265806183219,
+        "target_band_MSE": 0.37196648120880127,
+        "outside_band_MSE": 0.0009124617790803313,
+        "strength_independent": "metrics are from complete raw native ink; no thresholded/dilated final drawing",
+        "clean_checks": {
+          "coverage": false,
+          "gap": false,
+          "distance": false,
+          "width": true,
+          "interior_mass": true,
+          "interior_pixels": false,
+          "blackness": true
+        },
+        "clean_all": false,
+        "recognizable": true
+      },
+      "fit": {
+        "status": "BINARY_REFERENCE",
+        "allowed_ids": 1284,
+        "active_ids": 1284
+      },
+      "native_formula_max_error": 7.152557373046875e-07,
+      "support_visibility_mass": 2249.1390386223793,
+      "full_native": true,
+      "deleted_gaussians": 0
+    },
+    "B": {
+      "metrics": {
+        "boundary_pixels": 2069,
+        "boundary_coverage": 0.9212179797003384,
+        "longest_gap_pixels": 32,
+        "gap_runs": 36,
+        "gap_lengths": [
+          32,
+          13,
+          7,
+          5,
+          3,
+          3,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "ink_mass": 1664.550044953823,
+        "interior_ink_mass_fraction": 0.02426522537095657,
+        "interior_threshold_pixels": 8,
+        "contour_distance_quantiles_pixels": [
+          0.5,
+          1.5,
+          1.7360680103302002,
+          2.5,
+          3.623105525970459
+        ],
+        "profile_FWHM_quantiles_pixels": [
+          1.4945953055232635,
+          1.9287900720850564,
+          2.196708290398443,
+          2.5011191095486973,
+          3.2348188028037073
+        ],
+        "profile_peak_quantiles": [
+          0.14066176414489748,
+          0.33457517623901367,
+          0.44076007604599,
+          0.5431541204452515,
+          0.7163383483886717
+        ],
+        "profile_location_quantiles_pixels": [
+          0.6338193863630295,
+          1.2614896595478058,
+          1.6373229622840881,
+          1.9943158626556396,
+          2.519277274608612
+        ],
+        "global_target_MSE": 0.002739761723205447,
+        "target_band_MSE": 0.3734811544418335,
+        "outside_band_MSE": 0.00034762569703161716,
+        "strength_independent": "metrics are from complete raw native ink; no thresholded/dilated final drawing",
+        "clean_checks": {
+          "coverage": false,
+          "gap": false,
+          "distance": false,
+          "width": true,
+          "interior_mass": true,
+          "interior_pixels": true,
+          "blackness": true
+        },
+        "clean_all": false,
+        "recognizable": true
+      },
+      "fit": {
+        "label": "chair_r_7_B",
+        "iterations": 40,
+        "maximum_iterations": 300,
+        "start": "zero",
+        "warm_start": false,
+        "seconds": 0.27730951295234263,
+        "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE",
+        "optimization_status": "NUMERICAL_DUAL_ESTIMATE_CONVERGED",
+        "certificate": {
+          "primal": 0.004961427282643362,
+          "dual_lower": 0.0049613382264626915,
+          "relative_dual_gap": 1.7949709951790967e-05,
+          "roundoff_allowance": 5.777410854733163e-08,
+          "max_accepted_per_pixel": 289,
+          "native_A_FP64_max_error": 1.3372785190313152e-07,
+          "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE"
+        },
+        "log": [
+          {
+            "iteration": 20,
+            "objective": 0.0049614335619255715,
+            "estimated_relative_dual_gap": 6.666156162705788e-05,
+            "relative_objective_change": 1.0,
+            "projected_gradient_relative": 0.0009120513451644105,
+            "diagonal_scale": 1.0001,
+            "restarts": 0,
+            "seconds": 0.13831338891759515
+          },
+          {
+            "iteration": 40,
+            "objective": 0.004961427278089197,
+            "estimated_relative_dual_gap": 1.7830222401407983e-05,
+            "relative_objective_change": 1.266536434766905e-06,
+            "projected_gradient_relative": 0.00012969383883722224,
+            "diagonal_scale": 1.0001,
+            "restarts": 0,
+            "seconds": 0.2649342359509319
+          }
+        ],
+        "allowed_ids": 1284,
+        "active_ids": 1015,
+        "strength_sum": 936.3844666033983,
+        "at_upper_bound": 865,
+        "bound_min": 0.0,
+        "bound_max": 1.0
+      },
+      "native_formula_max_error": 7.152557373046875e-07,
+      "support_visibility_mass": 1849.6807101368904,
+      "full_native": true,
+      "deleted_gaussians": 0
+    },
+    "C": {
+      "metrics": {
+        "boundary_pixels": 2069,
+        "boundary_coverage": 0.9995166747220879,
+        "longest_gap_pixels": 0,
+        "gap_runs": 0,
+        "gap_lengths": [],
+        "ink_mass": 3735.9836261868477,
+        "interior_ink_mass_fraction": 0.02823360344021715,
+        "interior_threshold_pixels": 53,
+        "contour_distance_quantiles_pixels": [
+          0.5,
+          0.5,
+          1.5,
+          1.7360680103302002,
+          3.5
+        ],
+        "profile_FWHM_quantiles_pixels": [
+          2.0888079823704016,
+          2.2925499434605356,
+          2.463225116781947,
+          2.732429756892736,
+          3.8839652107034195
+        ],
+        "profile_peak_quantiles": [
+          0.6635043740272523,
+          0.7992157936096191,
+          0.8490747809410095,
+          0.8853906393051147,
+          0.9201089620590209
+        ],
+        "profile_location_quantiles_pixels": [
+          0.0024236073339125508,
+          0.42093586921691895,
+          0.7408840656280518,
+          1.0438874661922455,
+          1.557633191347121
+        ],
+        "global_target_MSE": 0.0004479927883949131,
+        "target_band_MSE": 0.019639939069747925,
+        "outside_band_MSE": 0.0003241605299990624,
+        "strength_independent": "metrics are from complete raw native ink; no thresholded/dilated final drawing",
+        "clean_checks": {
+          "coverage": true,
+          "gap": true,
+          "distance": false,
+          "width": true,
+          "interior_mass": true,
+          "interior_pixels": false,
+          "blackness": true
+        },
+        "clean_all": false,
+        "recognizable": true
+      },
+      "fit": {
+        "label": "chair_r_7_C",
+        "iterations": 40,
+        "maximum_iterations": 300,
+        "start": "zero",
+        "warm_start": false,
+        "seconds": 0.26438921713270247,
+        "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE",
+        "optimization_status": "NUMERICAL_DUAL_ESTIMATE_CONVERGED",
+        "certificate": {
+          "primal": 0.0004128620386049004,
+          "dual_lower": 0.00041250423648918404,
+          "relative_dual_gap": 0.000866638446405569,
+          "roundoff_allowance": 4.43815625600685e-08,
+          "max_accepted_per_pixel": 289,
+          "native_A_FP64_max_error": 4.143538870904351e-07,
+          "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE"
+        },
+        "log": [
+          {
+            "iteration": 20,
+            "objective": 0.000413116452325251,
+            "estimated_relative_dual_gap": 0.004731323492834723,
+            "relative_objective_change": 1.0,
+            "projected_gradient_relative": 0.008319145243975425,
+            "diagonal_scale": 1.0001,
+            "restarts": 0,
+            "seconds": 0.13052704301662743
+          },
+          {
+            "iteration": 40,
+            "objective": 0.0004128620438086541,
+            "estimated_relative_dual_gap": 0.0008652274723287163,
+            "relative_objective_change": 0.0006158276078450535,
+            "projected_gradient_relative": 0.0013533661957385765,
+            "diagonal_scale": 1.0001,
+            "restarts": 0,
+            "seconds": 0.2519245140720159
+          }
+        ],
+        "allowed_ids": 16808,
+        "active_ids": 9760,
+        "strength_sum": 9226.956450198999,
+        "at_upper_bound": 8679,
+        "bound_min": 0.0,
+        "bound_max": 1.0
+      },
+      "native_formula_max_error": 7.152557373046875e-07,
+      "support_visibility_mass": 4564.352035032213,
+      "full_native": true,
+      "deleted_gaussians": 0
+    },
+    "P": {
+      "metrics": {
+        "boundary_pixels": 2069,
+        "boundary_coverage": 0.9661672305461576,
+        "longest_gap_pixels": 11,
+        "gap_runs": 25,
+        "gap_lengths": [
+          11,
+          4,
+          4,
+          3,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "ink_mass": 4443.341132938862,
+        "interior_ink_mass_fraction": 0.1564810733627686,
+        "interior_threshold_pixels": 1188,
+        "contour_distance_quantiles_pixels": [
+          0.5,
+          0.9142135381698608,
+          1.7360680103302002,
+          3.105551242828369,
+          7.3102498054504395
+        ],
+        "profile_FWHM_quantiles_pixels": [
+          1.5792544955749326,
+          2.351234409295854,
+          2.9728915867019703,
+          3.780206318099392,
+          7.668012262503277
+        ],
+        "profile_peak_quantiles": [
+          0.2838923931121826,
+          0.6139349341392517,
+          0.7924742698669434,
+          0.9057908654212952,
+          0.9667306065559387
+        ],
+        "profile_location_quantiles_pixels": [
+          -0.21107030212879174,
+          0.7040305435657501,
+          1.245477318763733,
+          1.867420494556427,
+          3.059394669532776
+        ],
+        "global_target_MSE": 0.0022231205366551876,
+        "target_band_MSE": 0.11577475816011429,
+        "outside_band_MSE": 0.0014904509298503399,
+        "strength_independent": "metrics are from complete raw native ink; no thresholded/dilated final drawing",
+        "clean_checks": {
+          "coverage": true,
+          "gap": true,
+          "distance": false,
+          "width": false,
+          "interior_mass": false,
+          "interior_pixels": false,
+          "blackness": true
+        },
+        "clean_all": false,
+        "recognizable": true
+      },
+      "fit": {
+        "status": "BINARY_ALPHAT_PARTICIPATION",
+        "allowed_ids": 1284,
+        "active_ids": 1284
+      },
+      "native_formula_max_error": 7.152557373046875e-07,
+      "support_visibility_mass": 4443.341248750687,
+      "full_native": true,
+      "deleted_gaussians": 0
+    }
+  },
+  "components": {
+    "components_total": 1,
+    "components_kept": 1,
+    "component_sizes": [
+      105885
+    ],
+    "holes_count": 0,
+    "hole_sizes": []
+  },
+  "files": [
+    "artifacts/gaer_object_contours_v01/downloads/chair/r_7/evidence.npz",
+    "artifacts/gaer_object_contours_v01/media/chair/r_7/original_RGB_SH3.png",
+    "artifacts/gaer_object_contours_v01/media/chair/r_7/target_DIAGNOSTIC_ONLY.png",
+    "artifacts/gaer_object_contours_v01/media/chair/r_7/raw_alpha.png",
+    "artifacts/gaer_object_contours_v01/media/chair/r_7/coverage_holes_DIAGNOSTIC_ONLY.png",
+    "artifacts/gaer_object_contours_v01/downloads/chair/r_7/A_style.npz",
+    "artifacts/gaer_object_contours_v01/media/chair/r_7/A_native_ink.png",
+    "artifacts/gaer_object_contours_v01/media/chair/r_7/A_RGB_overlay_PRESENTATION.png",
+    "artifacts/gaer_object_contours_v01/downloads/chair/r_7/A_fit.json",
+    "artifacts/gaer_object_contours_v01/downloads/chair/r_7/B_style.npz",
+    "artifacts/gaer_object_contours_v01/media/chair/r_7/B_native_ink.png",
+    "artifacts/gaer_object_contours_v01/media/chair/r_7/B_RGB_overlay_PRESENTATION.png",
+    "artifacts/gaer_object_contours_v01/downloads/chair/r_7/B_fit.json",
+    "artifacts/gaer_object_contours_v01/downloads/chair/r_7/C_style.npz",
+    "artifacts/gaer_object_contours_v01/media/chair/r_7/C_native_ink.png",
+    "artifacts/gaer_object_contours_v01/media/chair/r_7/C_RGB_overlay_PRESENTATION.png",
+    "artifacts/gaer_object_contours_v01/downloads/chair/r_7/C_fit.json",
+    "artifacts/gaer_object_contours_v01/downloads/chair/r_7/P_style.npz",
+    "artifacts/gaer_object_contours_v01/media/chair/r_7/P_native_ink.png",
+    "artifacts/gaer_object_contours_v01/media/chair/r_7/P_RGB_overlay_PRESENTATION.png",
+    "artifacts/gaer_object_contours_v01/downloads/chair/r_7/P_fit.json",
+    "artifacts/gaer_object_contours_v01/media/chair/r_7/comparison.png",
+    "artifacts/gaer_object_contours_v01/media/chair/r_7/old_deleted_vs_fullT.png",
+    "artifacts/gaer_object_contours_v01/media/chair/r_7/edge_zooms_native96.png",
+    "artifacts/gaer_object_contours_v01/downloads/chair/r_7/zoom_boxes.json"
+  ],
+  "unit": "chair_r_7",
+  "protocol_sha256": "7aba982efaf98cfc0c5c717b57a33e3d16a5a3604e7b4d5f1c33e0d0afb1f5f9",
+  "freeze_sha256": "58618938d983be6b09ddbadb8c890df2266e69385b6e68af16434908c2702e47"
+}

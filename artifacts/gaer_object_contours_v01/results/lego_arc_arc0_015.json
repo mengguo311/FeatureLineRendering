@@ -1,0 +1,201 @@
+{
+  "status": "COMPLETE",
+  "scene": "lego",
+  "camera": {
+    "width": 800,
+    "height": 800,
+    "native_width": 800,
+    "native_height": 800,
+    "FoVx": 0.6911112070083618,
+    "FoVy": 0.6911112070083618,
+    "w2c": [
+      [
+        0.7685949020293737,
+        0.6397335577692086,
+        -0.0016886794864642153,
+        -0.005375966357110314
+      ],
+      [
+        0.5328347272288875,
+        -0.641619863367894,
+        -0.5517346322197677,
+        0.0021418741009751247
+      ],
+      [
+        -0.3540466495158151,
+        0.42316063852361757,
+        -0.8340180117784686,
+        4.032038392690085
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "K": [
+      [
+        1111.1110311937682,
+        0,
+        399.5
+      ],
+      [
+        0,
+        1111.1110311937682,
+        399.5
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor",
+    "key": "arc0_015",
+    "source_camera_hash": "719f24f77415183ace00c0971feaafa3736c7b03b9555272748f6f6a92397dd0",
+    "metadata_path": "/home/u00134/3dgs_line/image_space_edge_foundation_v1/artifacts/edge_control_lego_chair_v1/DATA_FREEZE.json",
+    "metadata_sha256": "c48d0471b96b78b58aa4c23bbc1e89cffb6de64ad2290ebdc7b5ec00ab394906",
+    "prior_exposure": "GS/research seen exploratory visualization",
+    "camera_sha256": "33ec46c01cb715c7a9ad307b72d49f735e58762b1884ea75fb23a4054e21e803"
+  },
+  "index": 15,
+  "method": "S",
+  "original_N": 310475,
+  "fit": {
+    "label": "lego_arc_arc0_015_S",
+    "iterations": 40,
+    "maximum_iterations": 300,
+    "start": "zero",
+    "warm_start": false,
+    "seconds": 0.3914001639932394,
+    "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE",
+    "optimization_status": "NUMERICAL_DUAL_ESTIMATE_CONVERGED",
+    "certificate": {
+      "primal": 0.0003863462276377993,
+      "dual_lower": 0.0003853962510147341,
+      "relative_dual_gap": 0.0024588738160420914,
+      "roundoff_allowance": 6.030471548596677e-08,
+      "max_accepted_per_pixel": 395,
+      "native_A_FP64_max_error": 5.577684254465254e-07,
+      "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE"
+    },
+    "log": [
+      {
+        "iteration": 20,
+        "objective": 0.00038757888282563244,
+        "estimated_relative_dual_gap": 0.010783569355638786,
+        "relative_objective_change": 1.0,
+        "projected_gradient_relative": 0.01453170381128066,
+        "diagonal_scale": 1.0001,
+        "restarts": 0,
+        "seconds": 0.1970191819127649
+      },
+      {
+        "iteration": 40,
+        "objective": 0.0003863462268133802,
+        "estimated_relative_dual_gap": 0.002457336334876947,
+        "relative_objective_change": 0.003180400343965149,
+        "projected_gradient_relative": 0.003181467949033576,
+        "diagonal_scale": 1.0001,
+        "restarts": 0,
+        "seconds": 0.37632684712298214
+      }
+    ],
+    "allowed_ids": 33298,
+    "active_ids": 17035,
+    "strength_sum": 15762.030789418986,
+    "at_upper_bound": 14719,
+    "bound_min": 0.0,
+    "bound_max": 1.0
+  },
+  "metrics": {
+    "boundary_pixels": 3365,
+    "boundary_coverage": 1.0,
+    "longest_gap_pixels": 0,
+    "gap_runs": 0,
+    "gap_lengths": [],
+    "ink_mass": 4826.037026524544,
+    "interior_ink_mass_fraction": 0.02753857317851265,
+    "interior_threshold_pixels": 17,
+    "contour_distance_quantiles_pixels": [
+      0.5,
+      0.5,
+      0.9142135381698608,
+      1.7360680103302002,
+      3.105551242828369
+    ],
+    "profile_FWHM_quantiles_pixels": [
+      1.8978185680577715,
+      2.06009214281665,
+      2.2286165349550275,
+      2.346523022057457,
+      2.6166462390116085
+    ],
+    "profile_peak_quantiles": [
+      0.7080078601837159,
+      0.7938776612281799,
+      0.8449717164039612,
+      0.899092972278595,
+      0.9363252401351929
+    ],
+    "profile_location_quantiles_pixels": [
+      -0.1317956209182739,
+      0.22808662056922913,
+      0.6548154950141907,
+      0.9591554403305054,
+      1.5444522857665994
+    ],
+    "global_target_MSE": 0.00030878669349476695,
+    "target_band_MSE": 0.014822009950876236,
+    "outside_band_MSE": 0.00015577662270516157,
+    "strength_independent": "metrics are from complete raw native ink; no thresholded/dilated final drawing",
+    "clean_checks": {
+      "coverage": true,
+      "gap": true,
+      "distance": false,
+      "width": true,
+      "interior_mass": true,
+      "interior_pixels": true,
+      "blackness": true
+    },
+    "clean_all": false,
+    "recognizable": true
+  },
+  "alpha_damage": {
+    "alpha_MAE_full_image": 0.0007333902758546174,
+    "alpha_threshold_changed_pixels": 419,
+    "alpha_threshold_changed_fraction_of_original_foreground": 0.0019093100509908819,
+    "foreground_lost_pixels": 419,
+    "passed": true
+  },
+  "edited_count": 22481,
+  "center_to_exterior_distance_quantiles": [
+    0.5,
+    1.4181363582611084,
+    2.254455089569092,
+    3.075936794281006,
+    3.7953941822052,
+    3.999967575073242
+  ],
+  "native_formula_max_error": 1.1436641216278076e-06,
+  "replay": {
+    "original_RGB_cache_max_error": 0.0,
+    "original_alpha_cache_max_error": 0.0,
+    "prior_cache_sha256": "cacd2d4c9e409278ce92227429aaddf180ec6675e7f0dc574ee40f74397ed952"
+  },
+  "online_full_seconds": 2.5145795079879463,
+  "online_fitting_includes": "per-camera full original alpha, SDF target, native contribution adjoint, shape if S, zero-start bounded joint fit, native render; no predictor",
+  "files": [
+    "out/gaer_object_contours_v01/arc_raw/lego/arc0_015.npz",
+    "artifacts/gaer_object_contours_v01/downloads/lego/arc/arc0_015/style.npz",
+    "artifacts/gaer_object_contours_v01/downloads/lego/arc/arc0_015/fit.json",
+    "artifacts/gaer_object_contours_v01/media/lego/arc/native_ink/015.png",
+    "artifacts/gaer_object_contours_v01/media/lego/arc/RGB_overlay_PRESENTATION/015.png",
+    "artifacts/gaer_object_contours_v01/media/lego/arc/original_RGB_SH3/015.png",
+    "artifacts/gaer_object_contours_v01/media/lego/arc/target_DIAGNOSTIC_ONLY/015.png"
+  ],
+  "unit": "lego_arc_arc0_015",
+  "protocol_sha256": "7aba982efaf98cfc0c5c717b57a33e3d16a5a3604e7b4d5f1c33e0d0afb1f5f9",
+  "freeze_sha256": "4ec2e4d1324ea9bc67a5ba0a6a15aec49d0a46e2adfe821cbf01ee2596e41baf"
+}

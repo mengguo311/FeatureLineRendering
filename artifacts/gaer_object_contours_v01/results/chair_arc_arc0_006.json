@@ -1,0 +1,188 @@
+{
+  "status": "COMPLETE",
+  "scene": "chair",
+  "camera": {
+    "width": 800,
+    "height": 800,
+    "native_width": 800,
+    "native_height": 800,
+    "FoVx": 0.6911112070083618,
+    "FoVy": 0.6911112070083618,
+    "w2c": [
+      [
+        -0.9932237309871526,
+        0.11621769890281883,
+        -0.0002581970065315696,
+        -0.000759136715398629
+      ],
+      [
+        0.0771750733887584,
+        0.6578919335846986,
+        -0.7491476568551932,
+        0.002731374011843872
+      ],
+      [
+        -0.08689435109027627,
+        -0.7440911571749261,
+        -0.6624029903032439,
+        4.031147251910506
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "K": [
+      [
+        1111.1110311937682,
+        0,
+        399.5
+      ],
+      [
+        0,
+        1111.1110311937682,
+        399.5
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "projection": "stock symmetric centered pixel convention, unchanged 0.3 covariance pixel floor",
+    "key": "arc0_006",
+    "source_camera_hash": "b81cda957802264826e3b1121a1d2ec791a1b2a1def1e5ef8b0846e47b68f4b0",
+    "metadata_path": "/home/u00134/3dgs_line/image_space_edge_foundation_v1/artifacts/edge_control_lego_chair_v1/DATA_FREEZE.json",
+    "metadata_sha256": "c48d0471b96b78b58aa4c23bbc1e89cffb6de64ad2290ebdc7b5ec00ab394906",
+    "prior_exposure": "GS/research seen exploratory visualization",
+    "camera_sha256": "366517e5641d8cda3bbb27a3dd7e67a084dd9bf01f7ab3b6248bbe13a1d19895"
+  },
+  "index": 6,
+  "method": "C",
+  "original_N": 256690,
+  "fit": {
+    "label": "chair_arc_arc0_006_C",
+    "iterations": 40,
+    "maximum_iterations": 300,
+    "start": "zero",
+    "warm_start": false,
+    "seconds": 0.2713977349922061,
+    "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE",
+    "optimization_status": "NUMERICAL_DUAL_ESTIMATE_CONVERGED",
+    "certificate": {
+      "primal": 0.0004128785924630826,
+      "dual_lower": 0.0004124923475227417,
+      "relative_dual_gap": 0.000935492775337939,
+      "roundoff_allowance": 4.5039408393583184e-08,
+      "max_accepted_per_pixel": 282,
+      "native_A_FP64_max_error": 5.918606211796629e-07,
+      "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE"
+    },
+    "log": [
+      {
+        "iteration": 20,
+        "objective": 0.0004131431418292066,
+        "estimated_relative_dual_gap": 0.00488850834279151,
+        "relative_objective_change": 1.0,
+        "projected_gradient_relative": 0.010474036184296076,
+        "diagonal_scale": 1.0001,
+        "restarts": 0,
+        "seconds": 0.13386244978755713
+      },
+      {
+        "iteration": 40,
+        "objective": 0.000412878593667493,
+        "estimated_relative_dual_gap": 0.0009340961763503914,
+        "relative_objective_change": 0.0006403305172688995,
+        "projected_gradient_relative": 0.0013638719497470362,
+        "diagonal_scale": 1.0001,
+        "restarts": 0,
+        "seconds": 0.258784546982497
+      }
+    ],
+    "allowed_ids": 16766,
+    "active_ids": 9721,
+    "strength_sum": 9230.08382305596,
+    "at_upper_bound": 8712,
+    "bound_min": 0.0,
+    "bound_max": 1.0
+  },
+  "metrics": {
+    "boundary_pixels": 2082,
+    "boundary_coverage": 1.0,
+    "longest_gap_pixels": 0,
+    "gap_runs": 0,
+    "gap_lengths": [],
+    "ink_mass": 3752.130431294441,
+    "interior_ink_mass_fraction": 0.030577376013420438,
+    "interior_threshold_pixels": 55,
+    "contour_distance_quantiles_pixels": [
+      0.5,
+      0.5,
+      1.5,
+      1.7360680103302002,
+      3.5
+    ],
+    "profile_FWHM_quantiles_pixels": [
+      2.0915389107967544,
+      2.285692888723247,
+      2.4648034073400136,
+      2.7308027154838923,
+      3.8216721940680767
+    ],
+    "profile_peak_quantiles": [
+      0.661128580570221,
+      0.7938195765018463,
+      0.8426724672317505,
+      0.8800105452537537,
+      0.9232332319021225
+    ],
+    "profile_location_quantiles_pixels": [
+      0.016720260493457317,
+      0.438034288585186,
+      0.7575279474258423,
+      1.0515436232089996,
+      1.5870773017406445
+    ],
+    "global_target_MSE": 0.0004436422896105796,
+    "target_band_MSE": 0.019718876108527184,
+    "outside_band_MSE": 0.0003183268418069929,
+    "strength_independent": "metrics are from complete raw native ink; no thresholded/dilated final drawing",
+    "clean_checks": {
+      "coverage": true,
+      "gap": true,
+      "distance": false,
+      "width": true,
+      "interior_mass": true,
+      "interior_pixels": false,
+      "blackness": true
+    },
+    "clean_all": false,
+    "recognizable": true
+  },
+  "alpha_damage": null,
+  "edited_count": 0,
+  "center_to_exterior_distance_quantiles": null,
+  "native_formula_max_error": 7.152557373046875e-07,
+  "replay": {
+    "original_RGB_cache_max_error": 0.0,
+    "original_alpha_cache_max_error": 0.0,
+    "prior_cache_sha256": "890cf2eccd19036e7ea518feb60f4463590214db8e966c72d311b865ac77bab7"
+  },
+  "online_full_seconds": 1.7928687480743974,
+  "online_fitting_includes": "per-camera full original alpha, SDF target, native contribution adjoint, shape if S, zero-start bounded joint fit, native render; no predictor",
+  "files": [
+    "out/gaer_object_contours_v01/arc_raw/chair/arc0_006.npz",
+    "artifacts/gaer_object_contours_v01/downloads/chair/arc/arc0_006/style.npz",
+    "artifacts/gaer_object_contours_v01/downloads/chair/arc/arc0_006/fit.json",
+    "artifacts/gaer_object_contours_v01/media/chair/arc/native_ink/006.png",
+    "artifacts/gaer_object_contours_v01/media/chair/arc/RGB_overlay_PRESENTATION/006.png",
+    "artifacts/gaer_object_contours_v01/media/chair/arc/original_RGB_SH3/006.png",
+    "artifacts/gaer_object_contours_v01/media/chair/arc/target_DIAGNOSTIC_ONLY/006.png"
+  ],
+  "unit": "chair_arc_arc0_006",
+  "protocol_sha256": "7aba982efaf98cfc0c5c717b57a33e3d16a5a3604e7b4d5f1c33e0d0afb1f5f9",
+  "freeze_sha256": "4ec2e4d1324ea9bc67a5ba0a6a15aec49d0a46e2adfe821cbf01ee2596e41baf"
+}

@@ -1,0 +1,535 @@
+{
+  "status": "COMPLETE",
+  "scene": "lego",
+  "camera": {
+    "key": "r_7",
+    "width": 800,
+    "height": 800,
+    "FoVx": 0.6911112070083618,
+    "FoVy": 0.6911112070083618,
+    "w2c": [
+      [
+        0.9045063953319579,
+        -0.4264598190525402,
+        -2.827666837669439e-10,
+        3.0331696099244634e-09
+      ],
+      [
+        -0.42524267578235675,
+        -0.9019247930815488,
+        -0.0755003837439085,
+        6.712087712585558e-09
+      ],
+      [
+        0.0321977856587085,
+        0.06829037352492265,
+        -0.997145851100388,
+        4.0311292814851045
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "metadata_index": 5,
+    "frame_file": "./train/r_7",
+    "metadata_path": "/home/u00134/3dgs_line/tier1/out/multiscene_foundation/inputs/lego/seed_1729/transforms_train.json",
+    "metadata_sha256": "9491165896ffc91dcf0db3ac4b9006e6cb4af3b999dc0786aa56ebca70985a2e",
+    "original_image": "/home/u00134/cglib/data/full/lego/train/r_7.png",
+    "original_image_sha256": "097969f1f334a21c85d664fbbfee675e813b683b30874e07a50dfc8966c55421",
+    "metadata_w2c_error": 0.0,
+    "previous_role": "dev",
+    "formal_blind": false,
+    "camera_sha256": "4b713d76dd9e19852b33fc2130c188b3e6b44850d5cd9d716918e33c30b98535"
+  },
+  "camera_role": "DEV",
+  "count": 310475,
+  "source_model_sha256": "fa9bea3fa4f8d349fa873a66d892c53cd1263499caec6421c286350a5bb7cbbc",
+  "arms": {
+    "A": {
+      "metrics": {
+        "boundary_pixels": 2537,
+        "boundary_coverage": 0.9306267244777296,
+        "longest_gap_pixels": 28,
+        "gap_runs": 34,
+        "gap_lengths": [
+          28,
+          24,
+          7,
+          5,
+          5,
+          4,
+          3,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "ink_mass": 1988.8567643165588,
+        "interior_ink_mass_fraction": 0.025444488825940668,
+        "interior_threshold_pixels": 29,
+        "contour_distance_quantiles_pixels": [
+          0.5,
+          1.7360680103302002,
+          2.3284270763397217,
+          2.6622776985168457,
+          3.9721360206604004
+        ],
+        "profile_FWHM_quantiles_pixels": [
+          1.629903686707116,
+          1.939698525660868,
+          2.1687217637605642,
+          2.460873326099497,
+          3.353200977583634
+        ],
+        "profile_peak_quantiles": [
+          0.1596416622400284,
+          0.3295036852359772,
+          0.45902150869369507,
+          0.5952674746513367,
+          0.7903484582901
+        ],
+        "profile_location_quantiles_pixels": [
+          1.054894781112671,
+          1.5126585364341736,
+          1.883430004119873,
+          2.2455270290374756,
+          2.8334378480911253
+        ],
+        "global_target_MSE": 0.003699838649481535,
+        "target_band_MSE": 0.4072229564189911,
+        "outside_band_MSE": 0.0005032756016589701,
+        "strength_independent": "metrics are from complete raw native ink; no thresholded/dilated final drawing",
+        "clean_checks": {
+          "coverage": false,
+          "gap": false,
+          "distance": false,
+          "width": true,
+          "interior_mass": true,
+          "interior_pixels": true,
+          "blackness": true
+        },
+        "clean_all": false,
+        "recognizable": true
+      },
+      "fit": {
+        "status": "BINARY_REFERENCE",
+        "allowed_ids": 1553,
+        "active_ids": 1553
+      },
+      "native_formula_max_error": 8.773058652877808e-07,
+      "support_visibility_mass": 1988.8565548360348,
+      "full_native": true,
+      "deleted_gaussians": 0
+    },
+    "B": {
+      "metrics": {
+        "boundary_pixels": 2537,
+        "boundary_coverage": 0.9085534095388254,
+        "longest_gap_pixels": 28,
+        "gap_runs": 52,
+        "gap_lengths": [
+          28,
+          24,
+          10,
+          7,
+          5,
+          5,
+          3,
+          3,
+          3,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "ink_mass": 1551.2177983522415,
+        "interior_ink_mass_fraction": 0.02147218385435192,
+        "interior_threshold_pixels": 12,
+        "contour_distance_quantiles_pixels": [
+          0.5,
+          1.5,
+          2.3284270763397217,
+          2.6622776985168457,
+          3.623105525970459
+        ],
+        "profile_FWHM_quantiles_pixels": [
+          1.6122276057478524,
+          1.907122475131082,
+          2.120904639979044,
+          2.3955591174751922,
+          3.1779622265861636
+        ],
+        "profile_peak_quantiles": [
+          0.1432528614997864,
+          0.276680052280426,
+          0.3625868856906891,
+          0.45847198367118835,
+          0.5944895148277283
+        ],
+        "profile_location_quantiles_pixels": [
+          0.9184660583734512,
+          1.3677671551704407,
+          1.747812569141388,
+          2.1265427470207214,
+          2.669880151748658
+        ],
+        "global_target_MSE": 0.0033931320067495108,
+        "target_band_MSE": 0.4044867157936096,
+        "outside_band_MSE": 0.00021581606415566057,
+        "strength_independent": "metrics are from complete raw native ink; no thresholded/dilated final drawing",
+        "clean_checks": {
+          "coverage": false,
+          "gap": false,
+          "distance": false,
+          "width": true,
+          "interior_mass": true,
+          "interior_pixels": true,
+          "blackness": true
+        },
+        "clean_all": false,
+        "recognizable": true
+      },
+      "fit": {
+        "label": "lego_r_7_B",
+        "iterations": 40,
+        "maximum_iterations": 300,
+        "start": "zero",
+        "warm_start": false,
+        "seconds": 0.48031957005150616,
+        "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE",
+        "optimization_status": "NUMERICAL_DUAL_ESTIMATE_CONVERGED",
+        "certificate": {
+          "primal": 0.006465085476717228,
+          "dual_lower": 0.006464992779908242,
+          "relative_dual_gap": 1.4338063946639119e-05,
+          "roundoff_allowance": 5.4791808467987024e-08,
+          "max_accepted_per_pixel": 394,
+          "native_A_FP64_max_error": 1.0304630471136278e-07,
+          "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE"
+        },
+        "log": [
+          {
+            "iteration": 20,
+            "objective": 0.00646509634676099,
+            "estimated_relative_dual_gap": 6.584563243457852e-05,
+            "relative_objective_change": 1.0,
+            "projected_gradient_relative": 0.0014154785698212967,
+            "diagonal_scale": 1.0001,
+            "restarts": 0,
+            "seconds": 0.2656805629376322
+          },
+          {
+            "iteration": 40,
+            "objective": 0.006465085476616147,
+            "estimated_relative_dual_gap": 1.4246070890471851e-05,
+            "relative_objective_change": 1.681358522653881e-06,
+            "projected_gradient_relative": 0.0001361779121766617,
+            "diagonal_scale": 1.0001,
+            "restarts": 0,
+            "seconds": 0.45203698403202
+          }
+        ],
+        "allowed_ids": 1553,
+        "active_ids": 1329,
+        "strength_sum": 1240.5908512931783,
+        "at_upper_bound": 1149,
+        "bound_min": 0.0,
+        "bound_max": 1.0
+      },
+      "native_formula_max_error": 8.773058652877808e-07,
+      "support_visibility_mass": 1732.0861350297928,
+      "full_native": true,
+      "deleted_gaussians": 0
+    },
+    "C": {
+      "metrics": {
+        "boundary_pixels": 2537,
+        "boundary_coverage": 1.0,
+        "longest_gap_pixels": 0,
+        "gap_runs": 0,
+        "gap_lengths": [],
+        "ink_mass": 4075.9522802829742,
+        "interior_ink_mass_fraction": 0.015574013909276846,
+        "interior_threshold_pixels": 4,
+        "contour_distance_quantiles_pixels": [
+          0.5,
+          0.5,
+          0.9142135381698608,
+          1.7360680103302002,
+          2.6622776985168457
+        ],
+        "profile_FWHM_quantiles_pixels": [
+          2.102393979682767,
+          2.2547430928942522,
+          2.3669098587712414,
+          2.5024938739422904,
+          2.8989590853538543
+        ],
+        "profile_peak_quantiles": [
+          0.7780110359191894,
+          0.835634708404541,
+          0.8741118907928467,
+          0.9087390899658203,
+          0.9440206050872803
+        ],
+        "profile_location_quantiles_pixels": [
+          -0.012366457469761366,
+          0.28462281823158264,
+          0.6364667415618896,
+          0.9566543102264404,
+          1.349150490760803
+        ],
+        "global_target_MSE": 0.000281237909803167,
+        "target_band_MSE": 0.012360084801912308,
+        "outside_band_MSE": 0.0001855537120718509,
+        "strength_independent": "metrics are from complete raw native ink; no thresholded/dilated final drawing",
+        "clean_checks": {
+          "coverage": true,
+          "gap": true,
+          "distance": false,
+          "width": true,
+          "interior_mass": true,
+          "interior_pixels": true,
+          "blackness": true
+        },
+        "clean_all": false,
+        "recognizable": true
+      },
+      "fit": {
+        "label": "lego_r_7_C",
+        "iterations": 40,
+        "maximum_iterations": 300,
+        "start": "zero",
+        "warm_start": false,
+        "seconds": 0.39881984307430685,
+        "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE",
+        "optimization_status": "NUMERICAL_DUAL_ESTIMATE_CONVERGED",
+        "certificate": {
+          "primal": 0.0002863327809496583,
+          "dual_lower": 0.00028588187051407167,
+          "relative_dual_gap": 0.0015747775511106502,
+          "roundoff_allowance": 4.314052272220377e-08,
+          "max_accepted_per_pixel": 394,
+          "native_A_FP64_max_error": 5.970024995471945e-07,
+          "status": "CERTIFIED_WITH_ROUNDOFF_ALLOWANCE"
+        },
+        "log": [
+          {
+            "iteration": 20,
+            "objective": 0.00028685931973802727,
+            "estimated_relative_dual_gap": 0.008686426708670803,
+            "relative_objective_change": 1.0,
+            "projected_gradient_relative": 0.015222021226664204,
+            "diagonal_scale": 1.0001,
+            "restarts": 0,
+            "seconds": 0.19811977609060705
+          },
+          {
+            "iteration": 40,
+            "objective": 0.00028633277978067567,
+            "estimated_relative_dual_gap": 0.0015727455002168004,
+            "relative_objective_change": 0.0018355337307237039,
+            "projected_gradient_relative": 0.002517824890846108,
+            "diagonal_scale": 1.0001,
+            "restarts": 0,
+            "seconds": 0.3830358951818198
+          }
+        ],
+        "allowed_ids": 34937,
+        "active_ids": 17503,
+        "strength_sum": 16547.919413062074,
+        "at_upper_bound": 15738,
+        "bound_min": 0.0,
+        "bound_max": 1.0
+      },
+      "native_formula_max_error": 8.344650268554688e-07,
+      "support_visibility_mass": 4887.473050985905,
+      "full_native": true,
+      "deleted_gaussians": 0
+    },
+    "P": {
+      "metrics": {
+        "boundary_pixels": 2537,
+        "boundary_coverage": 0.9838391801340165,
+        "longest_gap_pixels": 5,
+        "gap_runs": 15,
+        "gap_lengths": [
+          5,
+          4,
+          3,
+          3,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "ink_mass": 3502.7364611029625,
+        "interior_ink_mass_fraction": 0.05384463487519192,
+        "interior_threshold_pixels": 261,
+        "contour_distance_quantiles_pixels": [
+          0.5,
+          0.5,
+          1.5,
+          2.3284270763397217,
+          4.5
+        ],
+        "profile_FWHM_quantiles_pixels": [
+          1.866809744677864,
+          2.2534041521921697,
+          2.606055623769879,
+          3.1747800740331584,
+          4.68140577625673
+        ],
+        "profile_peak_quantiles": [
+          0.2851905345916748,
+          0.5256978869438171,
+          0.683604896068573,
+          0.7841097712516785,
+          0.9031533002853391
+        ],
+        "profile_location_quantiles_pixels": [
+          -0.06520412713289259,
+          0.43301546573638916,
+          0.8490342497825623,
+          1.3115713596343994,
+          2.5220640659332276
+        ],
+        "global_target_MSE": 0.0012869627680629492,
+        "target_band_MSE": 0.10816884785890579,
+        "outside_band_MSE": 0.0004402835911605507,
+        "strength_independent": "metrics are from complete raw native ink; no thresholded/dilated final drawing",
+        "clean_checks": {
+          "coverage": true,
+          "gap": true,
+          "distance": false,
+          "width": false,
+          "interior_mass": false,
+          "interior_pixels": false,
+          "blackness": true
+        },
+        "clean_all": false,
+        "recognizable": true
+      },
+      "fit": {
+        "status": "BINARY_ALPHAT_PARTICIPATION",
+        "allowed_ids": 1553,
+        "active_ids": 1553
+      },
+      "native_formula_max_error": 8.344650268554688e-07,
+      "support_visibility_mass": 3502.73623585701,
+      "full_native": true,
+      "deleted_gaussians": 0
+    }
+  },
+  "components": {
+    "components_total": 1,
+    "components_kept": 1,
+    "component_sizes": [
+      195595
+    ],
+    "holes_count": 0,
+    "hole_sizes": []
+  },
+  "files": [
+    "artifacts/gaer_object_contours_v01/downloads/lego/r_7/evidence.npz",
+    "artifacts/gaer_object_contours_v01/media/lego/r_7/original_RGB_SH3.png",
+    "artifacts/gaer_object_contours_v01/media/lego/r_7/target_DIAGNOSTIC_ONLY.png",
+    "artifacts/gaer_object_contours_v01/media/lego/r_7/raw_alpha.png",
+    "artifacts/gaer_object_contours_v01/media/lego/r_7/coverage_holes_DIAGNOSTIC_ONLY.png",
+    "artifacts/gaer_object_contours_v01/downloads/lego/r_7/A_style.npz",
+    "artifacts/gaer_object_contours_v01/media/lego/r_7/A_native_ink.png",
+    "artifacts/gaer_object_contours_v01/media/lego/r_7/A_RGB_overlay_PRESENTATION.png",
+    "artifacts/gaer_object_contours_v01/downloads/lego/r_7/A_fit.json",
+    "artifacts/gaer_object_contours_v01/downloads/lego/r_7/B_style.npz",
+    "artifacts/gaer_object_contours_v01/media/lego/r_7/B_native_ink.png",
+    "artifacts/gaer_object_contours_v01/media/lego/r_7/B_RGB_overlay_PRESENTATION.png",
+    "artifacts/gaer_object_contours_v01/downloads/lego/r_7/B_fit.json",
+    "artifacts/gaer_object_contours_v01/downloads/lego/r_7/C_style.npz",
+    "artifacts/gaer_object_contours_v01/media/lego/r_7/C_native_ink.png",
+    "artifacts/gaer_object_contours_v01/media/lego/r_7/C_RGB_overlay_PRESENTATION.png",
+    "artifacts/gaer_object_contours_v01/downloads/lego/r_7/C_fit.json",
+    "artifacts/gaer_object_contours_v01/downloads/lego/r_7/P_style.npz",
+    "artifacts/gaer_object_contours_v01/media/lego/r_7/P_native_ink.png",
+    "artifacts/gaer_object_contours_v01/media/lego/r_7/P_RGB_overlay_PRESENTATION.png",
+    "artifacts/gaer_object_contours_v01/downloads/lego/r_7/P_fit.json",
+    "artifacts/gaer_object_contours_v01/media/lego/r_7/comparison.png",
+    "artifacts/gaer_object_contours_v01/media/lego/r_7/old_deleted_vs_fullT.png",
+    "artifacts/gaer_object_contours_v01/media/lego/r_7/edge_zooms_native96.png",
+    "artifacts/gaer_object_contours_v01/downloads/lego/r_7/zoom_boxes.json"
+  ],
+  "unit": "lego_r_7",
+  "protocol_sha256": "7aba982efaf98cfc0c5c717b57a33e3d16a5a3604e7b4d5f1c33e0d0afb1f5f9",
+  "freeze_sha256": "58618938d983be6b09ddbadb8c890df2266e69385b6e68af16434908c2702e47"
+}

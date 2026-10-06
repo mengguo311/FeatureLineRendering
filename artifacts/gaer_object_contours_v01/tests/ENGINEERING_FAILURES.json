@@ -1,0 +1,20 @@
+{
+  "failures": [
+    {
+      "stage": "protocol bootstrap before native science",
+      "exception": "RuntimeError: immutable protocol differs",
+      "reason": "JSON serialization whitespace was compared as raw bytes with source protocol",
+      "resolution": "compare parsed equal protocol values at bootstrap; artifact protocol bytes/thresholds retained unchanged",
+      "evidence": "tdd/02_protocol_bootstrap_preserved.json and initial tool execution; no fabricated console reconstruction"
+    },
+    {
+      "stage": "first DEV attempt before any fit",
+      "exception": "KeyError: 'ink_threshold'",
+      "reason": "metrics threshold resides in protocol.metrics, adapter passed only protocol.thresholds",
+      "resolution": "quality_config passes existing frozen .2 threshold; added RED/GREEN metric regression",
+      "evidence": "failures/001_metrics_config/DEV_failure.log; prior source, freeze and partial native references preserved"
+    }
+  ],
+  "scientific_thresholds_revised": false,
+  "all_partial_evidence_retained": true
+}
