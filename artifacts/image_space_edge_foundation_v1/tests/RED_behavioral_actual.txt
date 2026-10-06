@@ -1,0 +1,13 @@
+F
+======================================================================
+FAIL: test_equal_luminance_color_boundary (__main__.IntensityRegression)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "$WORKSPACE/experiments/image_space_edge_foundation_v1/tests/intensity_baseline_red.py", line 10, in test_equal_luminance_color_boundary
+    self.assertGreater(float(soft[15:-15,t['center']-2:t['center']+3].max(axis=1).mean()),.25)
+AssertionError: 2.2947787670091202e-07 not greater than 0.25
+
+----------------------------------------------------------------------
+Ran 1 test in 0.014s
+
+FAILED (failures=1)
