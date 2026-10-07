@@ -1,0 +1,30 @@
+test_normal_archive_is_extracted_and_counted (__main__.ArchiveTests.test_normal_archive_is_extracted_and_counted) ... ok
+test_tar_rejects_traversal_links_absolute_and_duplicates_before_writes (__main__.ArchiveTests.test_tar_rejects_traversal_links_absolute_and_duplicates_before_writes) ... ok
+test_compute_graphics_context_memory_util_and_failure_block (__main__.IdleTests.test_compute_graphics_context_memory_util_and_failure_block) ... FAIL
+test_foreign_context_is_not_excused_by_free_memory (__main__.IdleTests.test_foreign_context_is_not_excused_by_free_memory) ... ok
+test_idle_requires_two_spaced_samples_same_uuid (__main__.IdleTests.test_idle_requires_two_spaced_samples_same_uuid) ... ok
+test_failed_stage_retains_history (__main__.PersistenceTests.test_failed_stage_retains_history) ... ok
+test_seal_skip_only_after_verified_inputs_and_outputs (__main__.PersistenceTests.test_seal_skip_only_after_verified_inputs_and_outputs) ... ok
+test_stage_order_and_fail_closed (__main__.PersistenceTests.test_stage_order_and_fail_closed) ... ok
+test_unsealed_and_interrupted_atomic_write_do_not_skip (__main__.PersistenceTests.test_unsealed_and_interrupted_atomic_write_do_not_skip) ... ok
+
+======================================================================
+FAIL: test_compute_graphics_context_memory_util_and_failure_block (__main__.IdleTests.test_compute_graphics_context_memory_util_and_failure_block)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/gaer_rade_depth_lift_v01/reproduction/radegs_paper_v01/stage2/test_safety.py", line 36, in test_compute_graphics_context_memory_util_and_failure_block
+    self.assertEqual(gate.observe(safety.parse_gpu_xml(sample), 60), [])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['GPU-test'] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+'GPU-test'
+
+- ['GPU-test']
++ []
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.144s
+
+FAILED (failures=1)

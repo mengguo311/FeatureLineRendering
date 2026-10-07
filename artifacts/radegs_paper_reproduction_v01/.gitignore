@@ -1,0 +1,16 @@
+# Launcher transcripts belong to the invoking session, not the research commit.
+*.log
+LAUNCH.json
+STAGE2_LAUNCH.json
+STAGE1_PROMPT.txt
+STAGE2_USER_AUTHORIZATION_PROMPT.txt
+EXIT_CODE.txt
+ASTRA_STAGE1_FINAL.md
+!stage2_evidence/tests/*.log
+# Local reading caches: publish provenance/hashes, not the complete paper/site.
+evidence/paper_v2.txt
+stage1_frozen/evidence/paper_v2.txt
+evidence/project.html
+evidence/web/*
+!evidence/web/*.json
+!evidence/web/*LICENSE*

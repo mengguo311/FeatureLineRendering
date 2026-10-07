@@ -1,0 +1,88 @@
+{
+  "GPU_workload_started": false,
+  "config": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/stage2/state/runner_config.json",
+  "config_sha256": "70b80acf34c330150ac2ac362b664cbec9768876be91b381a1b79ffd85bcf175",
+  "kind": "actual_live_runner_not_completion_evidence",
+  "observed_utc": "2026-10-07T15:42:04.693711+00:00",
+  "prior_waiter": "Prior PID 27387 was stopped while it had no child, its state archived, then this final-binary configuration was launched in the same task-specific tmux pane.",
+  "runner_pid": 32137,
+  "scientificdone": false,
+  "selected_gpu_uuid": null,
+  "source_clone_head": "2d4bc087f1b4bd62c96054fbe89d273490526b81",
+  "source_variant": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/sources/paper_text_variant",
+  "stage_commands": {
+    "eval": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/envs/c24_py39/bin/python",
+      "/home/u00134/3dgs_line/gaer_rade_depth_lift_v01/reproduction/radegs_paper_v01/stage2/gpu_stages.py",
+      "--config",
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/stage2/state/runner_config.json",
+      "--stage",
+      "eval"
+    ],
+    "export": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/envs/c24_py39/bin/python",
+      "/home/u00134/3dgs_line/gaer_rade_depth_lift_v01/reproduction/radegs_paper_v01/stage2/gpu_stages.py",
+      "--config",
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/stage2/state/runner_config.json",
+      "--stage",
+      "export"
+    ],
+    "smoke": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/envs/c24_py39/bin/python",
+      "/home/u00134/3dgs_line/gaer_rade_depth_lift_v01/reproduction/radegs_paper_v01/stage2/gpu_stages.py",
+      "--config",
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/stage2/state/runner_config.json",
+      "--stage",
+      "smoke"
+    ],
+    "train": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/envs/c24_py39/bin/python",
+      "/home/u00134/3dgs_line/gaer_rade_depth_lift_v01/reproduction/radegs_paper_v01/stage2/gpu_stages.py",
+      "--config",
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/stage2/state/runner_config.json",
+      "--stage",
+      "train"
+    ],
+    "tsdf": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/envs/c24_py39/bin/python",
+      "/home/u00134/3dgs_line/gaer_rade_depth_lift_v01/reproduction/radegs_paper_v01/stage2/gpu_stages.py",
+      "--config",
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/stage2/state/runner_config.json",
+      "--stage",
+      "tsdf"
+    ]
+  },
+  "supervisor_log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/stage2/logs/runner_supervisor_final.log",
+  "supervisor_script": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/stage2/run_scan24.sh",
+  "supervisor_script_sha256": "3fa765225db2ae521195ca34d7fa7573ccc9f2f03dac21725c3d8c8718d22456",
+  "tmux_pane": "%51",
+  "tmux_session": "radegs-scan24-queue-v01",
+  "tmux_window": 0,
+  "train_command": [
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/envs/c24_py39/bin/python",
+    "train.py",
+    "-s",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan24",
+    "-m",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/models/scan24_paper_text_half_30k",
+    "-r",
+    "2",
+    "--use_decoupled_appearance",
+    "--iterations",
+    "30000",
+    "--lambda_distortion",
+    "100",
+    "--lambda_depth_normal",
+    "5",
+    "--regularization_from_iter",
+    "15001",
+    "--test_iterations",
+    "-1",
+    "--save_iterations",
+    "15000",
+    "30000",
+    "--pilot_config",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/stage2/state/runner_config.json"
+  ],
+  "training_started": false
+}

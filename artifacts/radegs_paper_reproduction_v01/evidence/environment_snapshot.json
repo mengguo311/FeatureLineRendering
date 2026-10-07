@@ -1,0 +1,287 @@
+{
+  "python": {
+    "executable": "/home/u00134/bin/miniconda3/bin/python3",
+    "version": "3.13.13 | packaged by Anaconda, Inc. | (main, Apr 14 2026, 06:19:41) [GCC 14.3.0]"
+  },
+  "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.39",
+  "commands": {
+    "nvidia-smi --query-gpu=index,name,uuid,driver_version,memory.total,memory.used,utilization.gpu --format=csv,noheader,nounits": {
+      "rc": 0,
+      "stdout": "0, NVIDIA RTX A6000, GPU-d2d1e4fd-e246-0633-3343-ccc0a0bd981a, 560.35.05, 49140, 10052, 0\n1, NVIDIA RTX A6000, GPU-fedc3ced-16db-8c9b-fbc4-eec90f51bb55, 560.35.05, 49140, 24409, 0\n",
+      "stderr": ""
+    },
+    "nvidia-smi --query-compute-apps=pid --format=csv,noheader,nounits": {
+      "rc": 0,
+      "stdout": "3542248\n3542247\n3542756\n3542754\n3542764\n3542755\n3542757\n3542762\n3542763\n3542761\n3542760\n3542751\n3542759\n3542758\n3543135\n3543128\n3543132\n3543133\n3543138\n3543131\n3543134\n3543136\n3543130\n3543129\n3543137\n3543125\n3613407\n3542249\n3542250\n3543234\n3543226\n3543238\n3543239\n3543233\n3543237\n3543229\n3543231\n3543230\n3543235\n3543232\n3543236\n3543379\n3543396\n3543397\n3543399\n3543367\n3543370\n3543393\n3543395\n3543398\n3543400\n3543394\n3543371\n3613407\n4064883\n",
+      "stderr": ""
+    },
+    "gcc --version": {
+      "rc": 0,
+      "stdout": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+      "stderr": ""
+    },
+    "g++ --version": {
+      "rc": 0,
+      "stdout": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+      "stderr": ""
+    },
+    "ldd --version": {
+      "rc": 0,
+      "stdout": "ldd (Ubuntu GLIBC 2.39-0ubuntu8.9) 2.39\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\nWritten by Roland McGrath and Ulrich Drepper.\n",
+      "stderr": ""
+    },
+    "df -h / /mnt/hdd1": {
+      "rc": 0,
+      "stdout": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda2       880G  785G   50G  95% /\n/dev/sde1        13T  9.2T  2.9T  77% /mnt/hdd1\n",
+      "stderr": ""
+    },
+    "/usr/local/cuda-12.6/bin/nvcc --version": {
+      "rc": 0,
+      "stdout": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2024 NVIDIA Corporation\nBuilt on Tue_Oct_29_23:50:19_PDT_2024\nCuda compilation tools, release 12.6, V12.6.85\nBuild cuda_12.6.r12.6/compiler.35059454_0\n"
+    },
+    "/usr/local/cuda-12/bin/nvcc --version": {
+      "rc": 0,
+      "stdout": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2024 NVIDIA Corporation\nBuilt on Tue_Oct_29_23:50:19_PDT_2024\nCuda compilation tools, release 12.6, V12.6.85\nBuild cuda_12.6.r12.6/compiler.35059454_0\n"
+    },
+    "/usr/local/cuda/bin/nvcc --version": {
+      "rc": 0,
+      "stdout": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2024 NVIDIA Corporation\nBuilt on Tue_Oct_29_23:50:19_PDT_2024\nCuda compilation tools, release 12.6, V12.6.85\nBuild cuda_12.6.r12.6/compiler.35059454_0\n"
+    }
+  },
+  "gpu_processes_pid_comm": [
+    {
+      "pid": 3542247,
+      "comm": "python"
+    },
+    {
+      "pid": 3542248,
+      "comm": "python"
+    },
+    {
+      "pid": 3542249,
+      "comm": "python"
+    },
+    {
+      "pid": 3542250,
+      "comm": "python"
+    },
+    {
+      "pid": 3542751,
+      "comm": "python"
+    },
+    {
+      "pid": 3542754,
+      "comm": "python"
+    },
+    {
+      "pid": 3542755,
+      "comm": "python"
+    },
+    {
+      "pid": 3542756,
+      "comm": "python"
+    },
+    {
+      "pid": 3542757,
+      "comm": "python"
+    },
+    {
+      "pid": 3542758,
+      "comm": "python"
+    },
+    {
+      "pid": 3542759,
+      "comm": "python"
+    },
+    {
+      "pid": 3542760,
+      "comm": "python"
+    },
+    {
+      "pid": 3542761,
+      "comm": "python"
+    },
+    {
+      "pid": 3542762,
+      "comm": "python"
+    },
+    {
+      "pid": 3542763,
+      "comm": "python"
+    },
+    {
+      "pid": 3542764,
+      "comm": "python"
+    },
+    {
+      "pid": 3543125,
+      "comm": "python"
+    },
+    {
+      "pid": 3543128,
+      "comm": "python"
+    },
+    {
+      "pid": 3543129,
+      "comm": "python"
+    },
+    {
+      "pid": 3543130,
+      "comm": "python"
+    },
+    {
+      "pid": 3543131,
+      "comm": "python"
+    },
+    {
+      "pid": 3543132,
+      "comm": "python"
+    },
+    {
+      "pid": 3543133,
+      "comm": "python"
+    },
+    {
+      "pid": 3543134,
+      "comm": "python"
+    },
+    {
+      "pid": 3543135,
+      "comm": "python"
+    },
+    {
+      "pid": 3543136,
+      "comm": "python"
+    },
+    {
+      "pid": 3543137,
+      "comm": "python"
+    },
+    {
+      "pid": 3543138,
+      "comm": "python"
+    },
+    {
+      "pid": 3543226,
+      "comm": "python"
+    },
+    {
+      "pid": 3543229,
+      "comm": "python"
+    },
+    {
+      "pid": 3543230,
+      "comm": "python"
+    },
+    {
+      "pid": 3543231,
+      "comm": "python"
+    },
+    {
+      "pid": 3543232,
+      "comm": "python"
+    },
+    {
+      "pid": 3543233,
+      "comm": "python"
+    },
+    {
+      "pid": 3543234,
+      "comm": "python"
+    },
+    {
+      "pid": 3543235,
+      "comm": "python"
+    },
+    {
+      "pid": 3543236,
+      "comm": "python"
+    },
+    {
+      "pid": 3543237,
+      "comm": "python"
+    },
+    {
+      "pid": 3543238,
+      "comm": "python"
+    },
+    {
+      "pid": 3543239,
+      "comm": "python"
+    },
+    {
+      "pid": 3543367,
+      "comm": "python"
+    },
+    {
+      "pid": 3543370,
+      "comm": "python"
+    },
+    {
+      "pid": 3543371,
+      "comm": "python"
+    },
+    {
+      "pid": 3543379,
+      "comm": "python"
+    },
+    {
+      "pid": 3543393,
+      "comm": "python"
+    },
+    {
+      "pid": 3543394,
+      "comm": "python"
+    },
+    {
+      "pid": 3543395,
+      "comm": "python"
+    },
+    {
+      "pid": 3543396,
+      "comm": "python"
+    },
+    {
+      "pid": 3543397,
+      "comm": "python"
+    },
+    {
+      "pid": 3543398,
+      "comm": "python"
+    },
+    {
+      "pid": 3543399,
+      "comm": "python"
+    },
+    {
+      "pid": 3543400,
+      "comm": "python"
+    },
+    {
+      "pid": 3613407,
+      "comm": "python"
+    },
+    {
+      "pid": 4064883,
+      "comm": "python"
+    }
+  ],
+  "/usr/local": [
+    "cuda-12.6",
+    "cuda-12",
+    "cuda"
+  ],
+  "/home/u00134/bin/miniconda3/envs": [
+    "vfsdgs",
+    "tex",
+    "codex-cli",
+    "scgs",
+    "ts_diffusion",
+    "latex"
+  ],
+  "observed_utc_from_snapshot_mtime": "2026-10-07T10:44:35.262973+00:00",
+  "inspection_policy": "No environment dump, credentials, torch import, native extension import or GPU workload; process details only PID/comm.",
+  "alternative_compilers": {},
+  "host_memory": "               total        used        free      shared  buff/cache   available\nMem:           502Gi       306Gi       131Gi       113Gi       175Gi       195Gi\nSwap:          8.0Gi       8.0Gi        40Ki\n",
+  "cpu": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           46 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  72\nOn-line CPU(s) list:                     0-71\nVendor ID:                               GenuineIntel\nModel name:                              Intel(R) Xeon(R) Gold 6154 CPU @ 3.00GHz\nCPU family:                              6\nModel:                                   85\nThread(s) per core:                      2\nCore(s) per socket:                      18\nSocket(s):                               2\nStepping:                                4\nCPU(s) scaling MHz:                      74%\nCPU max MHz:                             3700.0000\nCPU min MHz:                             1200.0000\nBogoMIPS:                                6000.00\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l3 cdp_l3 pti intel_ppin ssbd mba ibrs ibpb stibp tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm cqm mpx rdt_a avx512f avx512dq rdseed adx smap clflushopt clwb intel_pt avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local dtherm ida arat pln pts vnmi pku ospke md_clear flush_l1d arch_capabilities ibpb_exit_to_user\nVirtualization:                          VT-x\nL1d cache:                               1.1 MiB (36 instances)\nL1i cache:                               1.1 MiB (36 instances)\nL2 cache:                                36 MiB (36 instances)\nL3 cache:                                49.5 MiB (2 instances)\nNUMA node(s):                            2\nNUMA node0 CPU(s):                       0-17,36-53\nNUMA node1 CPU(s):                       18-35,54-71\nVulnerability Gather data sampling:      Mitigation; Microcode\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             KVM: Mitigation: VMX disabled\nVulnerability L1tf:                      Mitigation; PTE Inversion; VMX conditional cache flushes, SMT vulnerable\nVulnerability Mds:                       Mitigation; Clear CPU buffers; SMT vulnerable\nVulnerability Meltdown:                  Mitigation; PTI\nVulnerability Mmio stale data:           Mitigation; Clear CPU buffers; SMT vulnerable\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Mitigation; IBRS\nVulnerability Spec rstack overflow:      Not affected\nVulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; IBRS; IBPB conditional; STIBP conditional; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Not affected\nVulnerability Tsx async abort:           Mitigation; Clear CPU buffers; SMT vulnerable\nVulnerability Vmscape:                   Mitigation; IBPB before exit to userspace\n"
+}

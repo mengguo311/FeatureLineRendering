@@ -1,0 +1,153 @@
+{
+  "observed_utc": "2026-10-07T10:53:14.026173+00:00",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/sources/RaDe-GS",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "2d4bc087f1b4bd62c96054fbe89d273490526b81\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/sources/RaDe-GS",
+        "status",
+        "--porcelain",
+        "--untracked-files=all"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/sources/RaDe-GS",
+        "submodule",
+        "status"
+      ],
+      "exit_code": 0,
+      "stdout": " 5c46b9c07008ae65cb81ab79cd677ecc1934b903 submodules/diff-gaussian-rasterization/third_party/glm (0.9.5.3-2728-g5c46b9c0)\n 44f764299fa305faf6ec5ebd99939e0508331503 submodules/simple-knn (44f7642)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/sources/RaDe-GS",
+        "ls-remote",
+        "origin",
+        "refs/heads/main"
+      ],
+      "exit_code": 0,
+      "stdout": "d72f20792005ae1d6555a82aa2d15345f247604e\trefs/heads/main\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/sources/RaDe-GS/submodules/simple-knn",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "44f764299fa305faf6ec5ebd99939e0508331503\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/sources/RaDe-GS/submodules/simple-knn",
+        "status",
+        "--porcelain"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/sources/RaDe-GS/submodules/simple-knn",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "exit_code": 0,
+      "stdout": "https://gitlab.inria.fr/bkerbl/simple-knn.git\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/sources/RaDe-GS/submodules/diff-gaussian-rasterization/third_party/glm",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout": "5c46b9c07008ae65cb81ab79cd677ecc1934b903\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/sources/RaDe-GS/submodules/diff-gaussian-rasterization/third_party/glm",
+        "status",
+        "--porcelain"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/sources/RaDe-GS/submodules/diff-gaussian-rasterization/third_party/glm",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "exit_code": 0,
+      "stdout": "https://github.com/g-truc/glm.git\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "du",
+        "-sh",
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/sources/RaDe-GS"
+      ],
+      "exit_code": 0,
+      "stdout": "32M\t/mnt/hdd1/u00134/radegs_paper_reproduction_v01/sources/RaDe-GS\n",
+      "stderr": ""
+    }
+  ],
+  "licenses": {
+    "LICENSE.md": {
+      "sha256": "cd5c95b3cfff3acc1bd412420c770f88809331c3db6872df11a970147aa8e81f",
+      "bytes": 4275
+    },
+    "submodules/diff-gaussian-rasterization/LICENSE.md": {
+      "sha256": "cd5c95b3cfff3acc1bd412420c770f88809331c3db6872df11a970147aa8e81f",
+      "bytes": 4275
+    },
+    "submodules/diff-gaussian-rasterization/third_party/glm/copying.txt": {
+      "sha256": "62d2d642c7d054d4fb4c9b42faad617d6c88fcd91e317f8035aa9f277cc159c3",
+      "bytes": 2865
+    }
+  }
+}

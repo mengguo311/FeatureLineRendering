@@ -1,0 +1,545 @@
+diff --git a/.gitmodules b/.gitmodules
+old mode 100644
+new mode 100755
+diff --git a/README.md b/README.md
+old mode 100644
+new mode 100755
+index 19c0686..31afd29
+--- a/README.md
++++ b/README.md
+@@ -5,7 +5,15 @@ Baowen Zhang, Chuan Fang, Rakesh Shrestha, Yixun Liang, Xiaoxiao Long, Ping Tan
+ 
+ [Project page](https://baowenz.github.io/radegs/)
+ ![Teaser image](assets/teaser.png)
+-### Thank you for your interest in our work! We have released the training and testing code on dtu. We are currently organizing the remaining code and will release it soon.
++# News! 
++### 1. We have updated the formluation of RaDe-GS (as shown in the 'Modifications'). It achieves better performance on TNT dataset.
++### 2. Now, we release the updated code of Marching Tetrahedra, based on [GOF](https://github.com/autonomousvision/gaussian-opacity-fields/blob/main/eval_tnt/run.py)'s orginal proposal. In our version, opacities are calculated in ray space, which better fits our needs.
++
++# Modifications
++
++1. We change to calculate depth using per-pixel cosine values  (Eq. 14: $d=cos\theta\ t^*$). Additionally, an option is provided to directly render the camera space coordinate map. We utilize the inverse of affine approximation to transform intersections from ray space to camera space, and these transformed points are then used in computing normal consistency loss.
++2. The depth distortion loss has been eliminated from our training process. Currently, we rely solely on normal consistency loss for geometry regularization.  We believe future techniques will enhance performance even further.
++
+ 
+ # 1. Installation
+ ## Clone this repository.
+@@ -30,12 +38,42 @@ pip install -r requirements.txt
+ ```
+ pip install submodules/diff-gaussian-rasterization
+ pip install submodules/simple-knn/
++
++# tetra-nerf for Marching Tetrahedra
++cd submodules/tetra_triangulation
++conda install cmake
++conda install conda-forge::gmp
++conda install conda-forge::cgal
++cmake .
++# you can specify your own cuda path
++# export CPATH=/usr/local/cuda-11.3/targets/x86_64-linux/include:$CPATH
++make 
++pip install -e .
+ ```
+ 
+ # 2. Preparation
+-We use preprocessed DTU dataset from [2DGS](https://surfsplatting.github.io/) for training. And we follow GOF to evaluate the geometry. Point clouds from the [DTU dataset](https://roboimagedata.compute.dtu.dk/?page_id=36) need saved to dtu_eval/Offical_DTU_Dataset for the geometry evaluation. 
++We use preprocessed DTU dataset from [2DGS](https://surfsplatting.github.io/) for training. And we follow GOF to evaluate the geometry. Point clouds from the [DTU dataset](https://roboimagedata.compute.dtu.dk/?page_id=36) need saved to dtu_eval/Offical_DTU_Dataset for the geometry evaluation.
++We use preprocessed Tanks and Temples dataset from [GOF](https://huggingface.co/datasets/ZehaoYu/gaussian-opacity-fields/tree/main). For evalution, please download ground truth point cloud, camera poses, alignments and cropfiles from [Tanks and Temples dataset](https://www.tanksandtemples.org/download/). The ground truth dataset should be organized as:
++```
++GT_TNT_dataset
++│
++└─── Barn
++│   │
++|   └─── Barn.json
++│   │
++|   └─── Barn.ply
++│   │
++|   └─── Barn_COLMAP_SfM.log
++│   │
++|   └─── Barn_trans.txt
++│ 
++└─── Caterpillar
++│   │
++......
++```
+ 
+ # 3. Training and Evalution
++## DTU Dataset
+ ```
+ # training
+ python train.py -s <path to DTU dataset> -m <output folder> -r 2 --use_decoupled_appearance
+@@ -44,6 +82,22 @@ python mesh_extract.py -s <path to DTU dataset> -m <output folder> -r 2
+ # evaluation
+ python evaluate_dtu_mesh.py -s <path to DTU dataset> -m <output folder>
+ ```
++## TNT Dataset
++```
++# training
++python train.py -s <path to preprocessed TNT dataset> -m <output folder> -r 2 --eval --use_decoupled_appearance
++# mesh extraction
++python mesh_extract_tetrahedra.py -s <path to preprocessed TNT dataset> -m <output folder> -r 2 --eval
++# evaluation
++python eval_tnt/run.py --dataset-dir <path to GT TNT dataset> --traj-path <path to preprocessed TNT COLMAP_SfM.log file> --ply-path <output folder>/recon.ply
++```
++## Novel View Synthesis
++```
++python train.py -s <path to COLMAP or NeRF Synthetic dataset> --eval
++python render.py -m <path to pre-trained model> -s <path to dataset>
++python metrics.py -m <path to trained model> # Compute error metrics on renderings
++```
++Our model can directly render coordinate map for training, without the need to first render a depth map and then convert it. This feature can be activated by including `--use_coord_map` in the argument list of 'train.py'.
+ 
+ # 4. Viewer
+ Current viewer in this repository is very similar to the original Gaussian Splatting viewer (with small modifications for 3D filters).
+@@ -53,8 +107,12 @@ You can build and use it in the same way as [Gaussian Splatting](https://github.
+ # 5. Acknowledge
+ We build this project based on [Gaussian Splatting](https://github.com/graphdeco-inria/gaussian-splatting).
+ 
+-We adopt the loss functions of [2D GS](https://github.com/hbb1/2d-gaussian-splatting) and use the preprocessed DTU dataset.
++We incorporate the filters proposed in [Mip-Splatting](https://github.com/autonomousvision/mip-splatting).
++
++We incorporate the loss functions of [2D GS](https://github.com/hbb1/2d-gaussian-splatting) and use the preprocessed DTU dataset.
++
++We incorporate the densification strategy, evalution and decoupled appearance modeling form [GOF](https://github.com/autonomousvision/gaussian-opacity-fields/tree/main)  and use the preprocessed TNT dataset.
+ 
+-We adopt the densification strategy, evalution and decoupled appearance modeling form [GOF](https://github.com/autonomousvision/gaussian-opacity-fields/tree/main).
++The evaluation scripts for the DTU and Tanks and Temples datasets are sourced from [DTUeval-python](https://github.com/jzhangbs/DTUeval-python) and [TanksAndTemples](https://github.com/isl-org/TanksAndTemples/tree/master/python_toolbox/evaluation), respectively.
+ 
+-We thank the authors of Gaussian Splatting, 2D GS, and GOF for their great works.
+\ No newline at end of file
++We thank the authors of Gaussian Splatting, Mip-Splatting, 2D GS, GOF， and the repos for their great works.
+diff --git a/arguments/__init__.py b/arguments/__init__.py
+old mode 100644
+new mode 100755
+index 804918c..ac582ef
+--- a/arguments/__init__.py
++++ b/arguments/__init__.py
+@@ -51,12 +51,14 @@ class ModelParams(ParamGroup):
+         self._model_path = ""
+         self._images = "images"
+         self._dataset = ""
+-        self.w_mask = False
+         self._resolution = -1
+         self._white_background = False
+         self.data_device = "cuda"
+         self.eval = False
+         self.use_decoupled_appearance = False
++        self.use_coord_map = False
++        self.disable_filter3D = False
++        self.kernel_size = 0.0 # Size of 2D filter in mip-splatting
+         super().__init__(parser, "Loading Parameters", sentinel)
+ 
+     def extract(self, args):
+@@ -69,7 +71,6 @@ class PipelineParams(ParamGroup):
+         self.convert_SHs_python = False
+         self.compute_cov3D_python = False
+         self.debug = False
+-        self.interval = 1
+         super().__init__(parser, "Pipeline Parameters")
+ 
+ class OptimizationParams(ParamGroup):
+@@ -87,7 +88,6 @@ class OptimizationParams(ParamGroup):
+         self.appearance_network_lr = 0.001
+         self.percent_dense = 0.01
+         self.lambda_dssim = 0.2
+-        self.lambda_distortion = 100
+         self.lambda_depth_normal = 0.05
+         self.densification_interval = 100
+         self.opacity_reset_interval = 3000
+diff --git a/gaussian_renderer/__init__.py b/gaussian_renderer/__init__.py
+old mode 100644
+new mode 100755
+index 03c5c92..9df196c
+--- a/gaussian_renderer/__init__.py
++++ b/gaussian_renderer/__init__.py
+@@ -16,7 +16,7 @@ from scene.gaussian_model import GaussianModel
+ from utils.sh_utils import eval_sh
+ 
+ 
+-def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor, scaling_modifier = 1.0):
++def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor, kernel_size, scaling_modifier = 1.0, require_coord : bool = True, require_depth : bool = True):
+     """
+     Render the scene. 
+     
+@@ -37,6 +37,7 @@ def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor,
+         image_width=int(viewpoint_camera.image_width),
+         tanfovx=tanfovx,
+         tanfovy=tanfovy,
++        kernel_size = kernel_size,
+         bg=bg_color,
+         scale_modifier=scaling_modifier,
+         viewmatrix=viewpoint_camera.world_view_transform,
+@@ -44,6 +45,8 @@ def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor,
+         sh_degree=pc.active_sh_degree,
+         campos=viewpoint_camera.camera_center,
+         prefiltered=False,
++        require_coord = require_coord,
++        require_depth = require_depth,
+         debug=pipe.debug
+     )
+ 
+@@ -65,7 +68,7 @@ def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor,
+     shs = pc.get_features
+     colors_precomp = None
+ 
+-    rendered_image, radii, rendered_depth, rendered_middepth, rendered_alpha, rendered_normal, depth_distortion = rasterizer(
++    rendered_image, radii, rendered_expected_coord, rendered_median_coord, rendered_expected_depth, rendered_median_depth, rendered_alpha, rendered_normal = rasterizer(
+         means3D = means3D,
+         means2D = means2D,
+         shs = shs,
+@@ -81,17 +84,18 @@ def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor,
+     # They will be excluded from value updates used in the splitting criteria.
+     return {"render": rendered_image,
+             "mask": rendered_alpha,
+-            "depth": rendered_depth,
+-            "middepth": rendered_middepth,
++            "expected_coord": rendered_expected_coord,
++            "median_coord": rendered_median_coord,
++            "expected_depth": rendered_expected_depth,
++            "median_depth": rendered_median_depth,
+             "viewspace_points": means2D,
+             "visibility_filter" : radii > 0,
+             "radii": radii,
+             "normal":rendered_normal,
+-            "depth_distortion": depth_distortion,
+             }
+ 
+ # integration is adopted from GOF for marching tetrahedra https://github.com/autonomousvision/gaussian-opacity-fields/blob/main/gaussian_renderer/__init__.py
+-def integrate(points3D, viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor, scaling_modifier = 1.0, override_color = None):
++def integrate(points3D, viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor, kernel_size : float, scaling_modifier = 1.0, override_color = None):
+     """
+     integrate Gaussians to the points, we also render the image for visual comparison. 
+     
+@@ -115,6 +119,7 @@ def integrate(points3D, viewpoint_camera, pc : GaussianModel, pipe, bg_color : t
+         image_width=int(viewpoint_camera.image_width),
+         tanfovx=tanfovx,
+         tanfovy=tanfovy,
++        kernel_size = kernel_size,
+         bg=bg_color,
+         scale_modifier=scaling_modifier,
+         viewmatrix=viewpoint_camera.world_view_transform,
+@@ -122,7 +127,9 @@ def integrate(points3D, viewpoint_camera, pc : GaussianModel, pipe, bg_color : t
+         sh_degree=pc.active_sh_degree,
+         campos=viewpoint_camera.camera_center,
+         prefiltered=False,
+-        debug=pipe.debug
++        debug=pipe.debug,
++        require_depth = True,
++        require_coord=True
+     )
+ 
+     rasterizer = GaussianRasterizer(raster_settings=raster_settings)
+diff --git a/requirements.txt b/requirements.txt
+old mode 100644
+new mode 100755
+diff --git a/scene/dataset_readers.py b/scene/dataset_readers.py
+old mode 100644
+new mode 100755
+index 2be9437..6fdf875
+--- a/scene/dataset_readers.py
++++ b/scene/dataset_readers.py
+@@ -39,10 +39,7 @@ class CameraInfo(NamedTuple):
+     image_name: str
+     width: int
+     height: int
+-    depth: np.array
+     mask: np.array = None
+-    intrinsics: np.array = None
+-    extrinsics: np.array = None
+ 
+ class SceneInfo(NamedTuple):
+     point_cloud: BasicPointCloud
+@@ -149,35 +146,9 @@ def readColmapCameras(cam_extrinsics, cam_intrinsics, images_folder):
+         image_path = os.path.join(images_folder, os.path.basename(extr.name))
+         image_name = os.path.basename(image_path).split(".")[0]
+         image = Image.open(image_path)
+-        
+-        # # read depth image
+-        # depth_path = os.path.join(os.path.dirname(images_folder)+'/depths', image_name + ".png")
+-        # # for Replica data, the depth scale is 4000
+-        # depth = np.array(Image.open(depth_path)) / 4000.0
+-        # read depth image
+-        depth_path = os.path.join(os.path.dirname(images_folder)+'/depth_est', "00"+image_name + ".pfm")
+-        confidence_path = os.path.join(os.path.dirname(images_folder)+'/confidence', "00"+image_name + ".pfm")
+-        if os.path.exists(depth_path):
+-            depth, _ = read_pfm(depth_path)
+-            depth = depth[...,0]
+-            depth = Image.fromarray(depth)
+-            confidence, _ = read_pfm(confidence_path)
+-            mask = (confidence>0.9).astype(np.uint8)*255
+-            image = Image.fromarray(np.concatenate([np.asarray(image),mask],axis=-1), "RGBA")
+-        else:
+-            depth = None
+-        # depth_mask_path = os.path.join(os.path.dirname(images_folder)+'/mask', "00"+image_name + "_final.png")
+-        # if os.path.exists(depth_mask_path):
+-        #     mask = cv2.imread(depth_mask_path,-1)
+-        #     image = Image.fromarray(np.concatenate([np.asarray(image),mask[...,None]],axis=-1), "RGBA")
+-        # for Replica data, the depth scale is 4000
+-        intrinsic = np.array([[focal_length_x,0,width/2],[0,focal_length_y,height/2],[0,0,1]])
+-        extrinsic = np.eye(4)
+-        extrinsic[:3,:3] = qvec2rotmat(extr.qvec)
+-        extrinsic[:3,3] = T
+-
+-        cam_info = CameraInfo(uid=uid, R=R, T=T, FovY=FovY, FovX=FovX, image=image, depth=depth, 
+-                              image_path=image_path, image_name=image_name, width=width, height=height, intrinsics=intrinsic, extrinsics=extrinsic)
++
++        cam_info = CameraInfo(uid=uid, R=R, T=T, FovY=FovY, FovX=FovX, image=image,  
++                              image_path=image_path, image_name=image_name, width=width, height=height)
+         cam_infos.append(cam_info)
+     sys.stdout.write('\n')
+     return cam_infos
+@@ -308,18 +279,17 @@ def readCamerasFromTransforms(path, transformsfile, white_background, extension=
+             FovY = fovy 
+             FovX = fovx
+ 
+-
+             cam_infos.append(CameraInfo(uid=idx, R=R, T=T, FovY=FovY, FovX=FovX, image=image,
+-                            image_path=image_path, image_name=image_name, width=image.size[0], height=image.size[1], depth=None, mask=None))
++                            image_path=image_path, image_name=image_name, width=image.size[0], height=image.size[1], mask=None))
+             
+     return cam_infos
+ 
+-def readNerfSyntheticInfo(path, white_background, eval, extension=".png", gap = 1):
++def readNerfSyntheticInfo(path, white_background, eval, extension=".png"):
+     print("Reading Training Transforms")
+     train_cam_infos = readCamerasFromTransforms(path, "transforms_train.json", white_background, extension)
+     print("Reading Test Transforms")
+     test_cam_infos = readCamerasFromTransforms(path, "transforms_test.json", white_background, extension)
+-    train_cam_infos = train_cam_infos[::gap]
++    train_cam_infos = train_cam_infos
+     print("train num:", len(train_cam_infos))
+     # if not eval:
+     #     train_cam_infos.extend(test_cam_infos)
+diff --git a/train.py b/train.py
+old mode 100644
+new mode 100755
+index 835a0bc..3e35407
+--- a/train.py
++++ b/train.py
+@@ -20,7 +20,7 @@ from utils.general_utils import safe_state
+ import uuid
+ from tqdm import tqdm
+ from utils.image_utils import psnr
+-from utils.graphics_utils import depth_double_to_normal
++from utils.graphics_utils import point_double_to_normal, depth_double_to_normal
+ from argparse import ArgumentParser, Namespace
+ from arguments import ModelParams, PipelineParams, OptimizationParams
+ try:
+@@ -30,7 +30,8 @@ except ImportError:
+     TENSORBOARD_FOUND = False
+ 
+ from scene.cameras import Camera
+-
++import matplotlib.pyplot as plt
++from utils.vis_utils import apply_depth_colormap
+ 
+ # function L1_loss_appearance is fork from GOF https://github.com/autonomousvision/gaussian-opacity-fields/blob/main/train.py
+ def L1_loss_appearance(image, gt_image, gaussians, view_idx, return_transformed_image=False):
+@@ -61,22 +62,30 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
+     first_iter = 0
+     tb_writer = prepare_output_and_logger(dataset)
+     gaussians = GaussianModel(dataset.sh_degree)
+-    scene = Scene(dataset, gaussians, gap = pipe.interval)
++    scene = Scene(dataset, gaussians)
+     gaussians.training_setup(opt)
+     if checkpoint:
+         (model_params, first_iter) = torch.load(checkpoint)
+         gaussians.restore(model_params, opt)
+     bg_color = [1, 1, 1] if dataset.white_background else [0, 0, 0]
+     background = torch.tensor(bg_color, dtype=torch.float32, device="cuda")
++    kernel_size = dataset.kernel_size
+ 
+     iter_start = torch.cuda.Event(enable_timing = True)
+     iter_end = torch.cuda.Event(enable_timing = True)
+ 
+     trainCameras = scene.getTrainCameras().copy()
+-    gaussians.compute_3D_filter(cameras=trainCameras)
+-    
++    if dataset.disable_filter3D:
++        gaussians.reset_3D_filter()
++    else:
++        gaussians.compute_3D_filter(cameras=trainCameras)
++
+     viewpoint_stack = None
+     ema_loss_for_log, ema_depth_loss_for_log, ema_mask_loss_for_log, ema_normal_loss_for_log = 0.0, 0.0, 0.0, 0.0
++
++    require_depth = not dataset.use_coord_map
++    require_coord = dataset.use_coord_map
++    
+     progress_bar = tqdm(range(first_iter, opt.iterations), desc="Training progress")
+     first_iter += 1
+     for iteration in range(first_iter, opt.iterations + 1):        
+@@ -87,7 +96,7 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
+                 net_image_bytes = None
+                 custom_cam, do_training, pipe.convert_SHs_python, pipe.compute_cov3D_python, keep_alive, scaling_modifer = network_gui.receive()
+                 if custom_cam != None:
+-                    net_image = render(custom_cam, gaussians, pipe, background, scaling_modifer)["render"]
++                    net_image = render(custom_cam, gaussians, pipe, background, kernel_size, scaling_modifer)["render"]
+                     net_image_bytes = memoryview((torch.clamp(net_image, min=0, max=1.0) * 255).byte().permute(1, 2, 0).contiguous().cpu().numpy())
+                 network_gui.send(net_image_bytes, dataset.source_path)
+                 if do_training and ((iteration < int(opt.iterations)) or not keep_alive):
+@@ -112,57 +121,45 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
+         if (iteration - 1) == debug_from:
+             pipe.debug = True
+ 
+-        render_pkg = render(viewpoint_cam, gaussians, pipe, background)
++        reg_kick_on = iteration >= opt.regularization_from_iter
++        
++        render_pkg = render(viewpoint_cam, gaussians, pipe, background, kernel_size, require_coord = require_coord and reg_kick_on, require_depth = require_depth and reg_kick_on)
+         rendered_image: torch.Tensor
+         rendered_image, viewspace_point_tensor, visibility_filter, radii = (
+                                                                     render_pkg["render"], 
+                                                                     render_pkg["viewspace_points"], 
+                                                                     render_pkg["visibility_filter"], 
+                                                                     render_pkg["radii"])
+-        
+-        rendered_mask: torch.Tensor = render_pkg["mask"]
+-        rendered_depth: torch.Tensor = render_pkg["depth"]
+-        rendered_middepth: torch.Tensor = render_pkg["middepth"]
+-        rendered_normal: torch.Tensor = render_pkg["normal"]
+-        depth_distortion: torch.Tensor = render_pkg["depth_distortion"]
+-        
+-
+-        gt_image = viewpoint_cam.original_image
+-        edge = viewpoint_cam.edge
++        gt_image = viewpoint_cam.original_image.cuda()
+ 
+-        
+         if dataset.use_decoupled_appearance:
+             Ll1_render = L1_loss_appearance(rendered_image, gt_image, gaussians, viewpoint_cam.uid)
+         else:
+             Ll1_render = l1_loss(rendered_image, gt_image)
+ 
+         
+-        if iteration >= opt.regularization_from_iter:
+-            # depth distortion loss
+-            lambda_distortion = opt.lambda_distortion
+-            depth_distortion = torch.where(rendered_mask>0,depth_distortion/(rendered_mask * rendered_mask).detach(),0)
+-            distortion_map = depth_distortion[0] * edge
+-            distortion_loss = distortion_map.mean()
+-
+-            # normal consistency loss
+-            rendered_depth = rendered_depth / rendered_mask
+-            rendered_depth = torch.nan_to_num(rendered_depth, 0, 0)
+-            depth_middepth_normal, _ = depth_double_to_normal(viewpoint_cam, rendered_depth, rendered_middepth)
++        if reg_kick_on:
++            lambda_depth_normal = opt.lambda_depth_normal
++            if require_depth:
++                rendered_expected_depth: torch.Tensor = render_pkg["expected_depth"]
++                rendered_median_depth: torch.Tensor = render_pkg["median_depth"]
++                rendered_normal: torch.Tensor = render_pkg["normal"]
++                depth_middepth_normal = depth_double_to_normal(viewpoint_cam, rendered_expected_depth, rendered_median_depth)
++            else:
++                rendered_expected_coord: torch.Tensor = render_pkg["expected_coord"]
++                rendered_median_coord: torch.Tensor = render_pkg["median_coord"]
++                rendered_normal: torch.Tensor = render_pkg["normal"]
++                depth_middepth_normal = point_double_to_normal(viewpoint_cam, rendered_expected_coord, rendered_median_coord)
+             depth_ratio = 0.6
+-            rendered_normal = torch.nn.functional.normalize(rendered_normal, p=2, dim=0)
+-            rendered_normal = rendered_normal.permute(1,2,0)
+-            normal_error_map = (1 - (rendered_normal.unsqueeze(0) * depth_middepth_normal).sum(dim=-1))
++            normal_error_map = (1 - (rendered_normal.unsqueeze(0) * depth_middepth_normal).sum(dim=1))
+             depth_normal_loss = (1-depth_ratio) * normal_error_map[0].mean() + depth_ratio * normal_error_map[1].mean()
+-            lambda_depth_normal = opt.lambda_depth_normal
+         else:
+-            lambda_distortion = 0
+             lambda_depth_normal = 0
+-            distortion_loss = torch.tensor([0],dtype=torch.float32,device="cuda")
+             depth_normal_loss = torch.tensor([0],dtype=torch.float32,device="cuda")
+             
+         rgb_loss = (1.0 - opt.lambda_dssim) * Ll1_render + opt.lambda_dssim * (1.0 - ssim(rendered_image, gt_image.unsqueeze(0)))
+         
+-        loss = rgb_loss + depth_normal_loss * lambda_depth_normal + distortion_loss * lambda_distortion
++        loss = rgb_loss + depth_normal_loss * lambda_depth_normal
+         loss.backward()
+ 
+         iter_end.record()
+@@ -170,17 +167,16 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
+         with torch.no_grad():
+             # Progress bar
+             ema_loss_for_log = 0.4 * loss.item() + 0.6 * ema_loss_for_log
+-            ema_depth_loss_for_log = 0.4 * distortion_loss.item() + 0.6 * ema_depth_loss_for_log
+             ema_normal_loss_for_log = 0.4 * depth_normal_loss.item() + 0.6 * ema_normal_loss_for_log
+ 
+             if iteration % 10 == 0:
+-                progress_bar.set_postfix({"Loss": f"{ema_loss_for_log:.{4}f}", "loss_dep": f"{ema_depth_loss_for_log:.{4}f}", "loss_normal": f"{ema_normal_loss_for_log:.{4}f}"})
++                progress_bar.set_postfix({"Loss": f"{ema_loss_for_log:.{4}f}", "loss_normal": f"{ema_normal_loss_for_log:.{4}f}"})
+                 progress_bar.update(10)
+             if iteration == opt.iterations:
+                 progress_bar.close()
+             
+             # Log and save
+-            training_report(tb_writer, iteration, Ll1_render, loss, distortion_loss, depth_normal_loss, l1_loss, iter_start.elapsed_time(iter_end), testing_iterations, scene, render, (pipe, background))
++            training_report(tb_writer, iteration, Ll1_render, loss, depth_normal_loss, l1_loss, iter_start.elapsed_time(iter_end), testing_iterations, scene, render, (pipe, background, kernel_size))
+             if (iteration in saving_iterations):
+                 print("\n[ITER {}] Saving Gaussians".format(iteration))
+                 scene.save(iteration)
+@@ -194,16 +190,20 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
+                 if iteration > opt.densify_from_iter and iteration % opt.densification_interval == 0:
+                     size_threshold = 20 if iteration > opt.opacity_reset_interval else None
+                     gaussians.densify_and_prune(opt.densify_grad_threshold, 0.05, scene.cameras_extent, size_threshold)
+-                    gaussians.compute_3D_filter(cameras=trainCameras)
++                    if dataset.disable_filter3D:
++                        gaussians.reset_3D_filter()
++                    else:
++                        gaussians.compute_3D_filter(cameras=trainCameras)
+ 
+                 if iteration % opt.opacity_reset_interval == 0 or (dataset.white_background and iteration == opt.densify_from_iter):
+                     gaussians.reset_opacity()
+                 
+-            if iteration % 100 == 0 and iteration > opt.densify_until_iter:
++            if iteration % 100 == 0 and iteration > opt.densify_until_iter and not dataset.disable_filter3D:
+                 if iteration < opt.iterations - 100:
+                     # don't update in the end of training
+                     gaussians.compute_3D_filter(cameras=trainCameras)
+ 
++
+             # Optimizer step
+             if iteration < opt.iterations:
+                 gaussians.optimizer.step()
+@@ -235,10 +235,9 @@ def prepare_output_and_logger(args):
+         print("Tensorboard not available: not logging progress")
+     return tb_writer
+ 
+-def training_report(tb_writer, iteration, Ll1, loss, depth_loss, normal_loss, l1_loss, elapsed, testing_iterations, scene : Scene, renderFunc, renderArgs):
++def training_report(tb_writer, iteration, Ll1, loss, normal_loss, l1_loss, elapsed, testing_iterations, scene : Scene, renderFunc, renderArgs):
+     if tb_writer:
+         tb_writer.add_scalar('train_loss_patches/l1_loss', Ll1.item(), iteration)
+-        tb_writer.add_scalar('train_loss_patches/depth_loss', depth_loss.item(), iteration)
+         tb_writer.add_scalar('train_loss_patches/normal_loss', normal_loss.item(), iteration)
+         tb_writer.add_scalar('train_loss_patches/total_loss', loss.item(), iteration)
+         tb_writer.add_scalar('iter_time', elapsed, iteration)
+@@ -253,12 +252,10 @@ def training_report(tb_writer, iteration, Ll1, loss, depth_loss, normal_loss, l1
+             if config['cameras'] and len(config['cameras']) > 0:
+                 l1_test = 0.0
+                 psnr_test = 0.0
+-                l1_depth = 0.0
+                 for idx, viewpoint in enumerate(config['cameras']):
+                     render_result = renderFunc(viewpoint, scene.gaussians, *renderArgs)
+-                    depth = render_result["depth"]
+                     image = torch.clamp(render_result["render"], 0.0, 1.0)
+-                    gt_image = torch.clamp(viewpoint.original_image, 0.0, 1.0)
++                    gt_image = torch.clamp(viewpoint.original_image.cuda(), 0.0, 1.0)
+                     if tb_writer and (idx < 5):
+                         tb_writer.add_images(config['name'] + "_view_{}/render".format(viewpoint.image_name), image[None], global_step=iteration)
+                         if iteration == testing_iterations[0]:
+@@ -266,17 +263,14 @@ def training_report(tb_writer, iteration, Ll1, loss, depth_loss, normal_loss, l1
+                     l1_test += l1_loss(image, gt_image).mean().double()
+                     psnr_test += psnr(image, gt_image).mean().double()
+                 psnr_test /= len(config['cameras'])
+-                l1_test /= len(config['cameras'])          
+-                # l1_depth /= len(config['cameras'])  
+-                l1_depth = 0        
+-                print("\n[ITER {}] Evaluating {}: L1 {} PSNR {} depth {}".format(iteration, config['name'], l1_test, psnr_test, l1_depth))
++                l1_test /= len(config['cameras'])
++                print("\n[ITER {}] Evaluating {}: L1 {} PSNR {}".format(iteration, config['name'], l1_test, psnr_test))
+                 if config["name"] == "test":
+                     with open(scene.model_path + "/chkpnt" + str(iteration) + ".txt", "w") as file_object:
+                         print("\n[ITER {}] Evaluating {}: L1 {} PSNR {}".format(iteration, config['name'], l1_test, psnr_test), file=file_object)
+                 if tb_writer:
+                     tb_writer.add_scalar(config['name'] + '/loss_viewpoint - l1_loss', l1_test, iteration)
+                     tb_writer.add_scalar(config['name'] + '/loss_viewpoint - psnr', psnr_test, iteration)
+-                    tb_writer.add_scalar(config['name'] + '/loss_viewpoint - l1_depth', l1_depth, iteration)
+ 
+         if tb_writer:
+             tb_writer.add_histogram("scene/opacity_histogram", scene.gaussians.get_opacity, iteration)

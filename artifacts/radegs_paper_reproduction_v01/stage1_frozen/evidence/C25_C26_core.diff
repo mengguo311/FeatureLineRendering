@@ -1,0 +1,1093 @@
+diff --git a/README.md b/README.md
+index 31afd29..8ec342d 100755
+--- a/README.md
++++ b/README.md
+@@ -5,114 +5,155 @@ Baowen Zhang, Chuan Fang, Rakesh Shrestha, Yixun Liang, Xiaoxiao Long, Ping Tan
+ 
+ [Project page](https://baowenz.github.io/radegs/)
+ ![Teaser image](assets/teaser.png)
+-# News! 
+-### 1. We have updated the formluation of RaDe-GS (as shown in the 'Modifications'). It achieves better performance on TNT dataset.
+-### 2. Now, we release the updated code of Marching Tetrahedra, based on [GOF](https://github.com/autonomousvision/gaussian-opacity-fields/blob/main/eval_tnt/run.py)'s orginal proposal. In our version, opacities are calculated in ray space, which better fits our needs.
++## News!
++- **The paper has been accepted for publication in ACM Transactions on Graphics (TOG)!**
++- **We incorporate the multi-view regularization from PGSR.**
+ 
+-# Modifications
+-
+-1. We change to calculate depth using per-pixel cosine values  (Eq. 14: $d=cos\theta\ t^*$). Additionally, an option is provided to directly render the camera space coordinate map. We utilize the inverse of affine approximation to transform intersections from ray space to camera space, and these transformed points are then used in computing normal consistency loss.
+-2. The depth distortion loss has been eliminated from our training process. Currently, we rely solely on normal consistency loss for geometry regularization.  We believe future techniques will enhance performance even further.
+-
+-
+-# 1. Installation
+-## Clone this repository.
++## 1. Installation
++### Clone this repository.
+ ```
+-git clone https://github.com/BaowenZ/RaDe-GS.git --recursive
++git clone https://github.com/HKUST-SAIL/RaDe-GS.git --recursive
+ ```
+ 
+-## Install dependencies.
+-1. create an environment
++### Create an environment
+ ```
+-conda create -n radegs python=3.9
++conda create -n radegs python=3.12
+ conda activate radegs
+ ```
+ 
+-2. install pytorch and other dependencies.
++### Install pytorch and other dependencies.
+ ```
+-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
++pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu130
+ pip install -r requirements.txt
+ ```
+ 
+-3. install submodules
++### Install submodules
+ ```
+-pip install submodules/diff-gaussian-rasterization
+-pip install submodules/simple-knn/
++pip install submodules/diff-gaussian-rasterization --no-build-isolation
++pip install submodules/warp-patch-ncc --no-build-isolation
++pip install submodules/simple-knn/ --no-build-isolation
++pip install git+https://github.com/rahul-goel/fused-ssim/ --no-build-isolation
+ 
+ # tetra-nerf for Marching Tetrahedra
+-cd submodules/tetra_triangulation
+-conda install cmake
+-conda install conda-forge::gmp
+ conda install conda-forge::cgal
+-cmake .
+-# you can specify your own cuda path
+-# export CPATH=/usr/local/cuda-11.3/targets/x86_64-linux/include:$CPATH
+-make 
+-pip install -e .
++pip install submodules/tetra_triangulation/ --no-build-isolation
+ ```
++---
+ 
+-# 2. Preparation
+-We use preprocessed DTU dataset from [2DGS](https://surfsplatting.github.io/) for training. And we follow GOF to evaluate the geometry. Point clouds from the [DTU dataset](https://roboimagedata.compute.dtu.dk/?page_id=36) need saved to dtu_eval/Offical_DTU_Dataset for the geometry evaluation.
+-We use preprocessed Tanks and Temples dataset from [GOF](https://huggingface.co/datasets/ZehaoYu/gaussian-opacity-fields/tree/main). For evalution, please download ground truth point cloud, camera poses, alignments and cropfiles from [Tanks and Temples dataset](https://www.tanksandtemples.org/download/). The ground truth dataset should be organized as:
+-```
+-GT_TNT_dataset
+-│
+-└─── Barn
+-│   │
+-|   └─── Barn.json
+-│   │
+-|   └─── Barn.ply
+-│   │
+-|   └─── Barn_COLMAP_SfM.log
+-│   │
+-|   └─── Barn_trans.txt
+-│ 
+-└─── Caterpillar
+-│   │
+-......
+-```
++## 2. Data Preparation
++
++### DTU
++We train on the **preprocessed DTU dataset** from **2DGS**:  
++https://surfsplatting.github.io/
+ 
+-# 3. Training and Evalution
+-## DTU Dataset
++For geometry evaluation, download the **official DTU point clouds** and place them under:
++```text
++dtu_eval/Offical_DTU_Dataset
+ ```
+-# training
+-python train.py -s <path to DTU dataset> -m <output folder> -r 2 --use_decoupled_appearance
+-# mesh extraction
+-python mesh_extract.py -s <path to DTU dataset> -m <output folder> -r 2
+-# evaluation
+-python evaluate_dtu_mesh.py -s <path to DTU dataset> -m <output folder>
++DTU dataset page: https://roboimagedata.compute.dtu.dk/?page_id=36
++
++### Tanks and Temples (TnT)
++Please follow [PGSR](https://github.com/zju3dv/PGSR) to preprocess the TnT dataset. For evaluation, download the **GT point clouds**, **camera poses**, **alignments**, and **crop files** from:  
++https://www.tanksandtemples.org/download/
++
++Expected structure:
++```text
++GT_TNT_dataset/
++  Barn/
++    images/
++      000001.jpg
++      000002.jpg
++      ...
++    sparse/
++      0/
++        ...
++    Barn.json
++    Barn.ply
++    Barn_COLMAP_SfM.log
++    Barn_trans.txt
++  Caterpillar/
++    ...
+ ```
+-## TNT Dataset
++
++### Objaverse
++For depth and normal evaluation, we render multi-view images from Objaverse assets and export the corresponding ground-truth depth maps and surface normal maps. The rendered dataset can be downloaded from [this link](https://huggingface.co/datasets/BaowenZ/objaverse-multiview-renderings).
++
++---
++
++## 3. Training & Evaluation
++
++Below are example commands for training, mesh extraction, rendering, and evaluation.
++
++### DTU
++
++```bash
++# Training
++python train.py -s <path_to_dtu> -m <output_dir> -r 2 --use_decoupled_appearance 3
++
++# Mesh extraction
++python mesh_extract.py -m <output_dir>
++
++# Evaluation
++python evaluate_dtu_mesh.py -m <output_dir>
+ ```
+-# training
+-python train.py -s <path to preprocessed TNT dataset> -m <output folder> -r 2 --eval --use_decoupled_appearance
+-# mesh extraction
+-python mesh_extract_tetrahedra.py -s <path to preprocessed TNT dataset> -m <output folder> -r 2 --eval
+-# evaluation
+-python eval_tnt/run.py --dataset-dir <path to GT TNT dataset> --traj-path <path to preprocessed TNT COLMAP_SfM.log file> --ply-path <output folder>/recon.ply
++
++### Tanks and Temples (TnT)
++
++```bash
++# Training
++python train.py -s <path_to_preprocessed_tnt> -m <output_dir> -r 2 --use_decoupled_appearance 3
++
++# Mesh extraction
++python mesh_extract_tnt.py -m <output_dir>
++
++# Evaluation
++python eval_tnt/run.py \
++  --dataset-dir <path_to_gt_tnt> \
++  --traj-path <path_to_COLMAP_SfM.log> \
++  --ply-path <output_dir>/recon_post.ply \
++  --out-dir <output_dir>/mesh
+ ```
+-## Novel View Synthesis
++
++### Novel View Synthesis
++
++```bash
++# Training
++python train.py -s <path_to_dataset> -m <output_dir> --eval
++
++# Rendering
++python render.py -m <output_dir>
++
++# Evaluation
++python metrics.py -m <output_dir>
+ ```
+-python train.py -s <path to COLMAP or NeRF Synthetic dataset> --eval
+-python render.py -m <path to pre-trained model> -s <path to dataset>
+-python metrics.py -m <path to trained model> # Compute error metrics on renderings
++
++### Objaverse
++```bash
++# Training
++python train.py -s <path_to_dataset> -m <output_dir> --eval
++
++# Evaluation
++python geometry_metric.py -m <output_dir>
+ ```
+-Our model can directly render coordinate map for training, without the need to first render a depth map and then convert it. This feature can be activated by including `--use_coord_map` in the argument list of 'train.py'.
++
++---
+ 
+ # 4. Viewer
+-Current viewer in this repository is very similar to the original Gaussian Splatting viewer (with small modifications for 3D filters).
++Current viewer in this repository is very similar to the original Gaussian Splatting viewer, with minor updates for newer library versions and for loading 3D Gaussian models.
+ You can build and use it in the same way as [Gaussian Splatting](https://github.com/graphdeco-inria/gaussian-splatting).
+ 
+ 
+-# 5. Acknowledge
+-We build this project based on [Gaussian Splatting](https://github.com/graphdeco-inria/gaussian-splatting).
++# 5. Acknowledgements
+ 
+-We incorporate the filters proposed in [Mip-Splatting](https://github.com/autonomousvision/mip-splatting).
++This project is built upon the original implementation of 3D Gaussian Splatting (3DGS):
++https://github.com/graphdeco-inria/gaussian-splatting.
+ 
+-We incorporate the loss functions of [2D GS](https://github.com/hbb1/2d-gaussian-splatting) and use the preprocessed DTU dataset.
++We integrate components and ideas from several recent works, including the filtering strategy from [Mip-Splatting](https://github.com/autonomousvision/mip-splatting), and regularization terms from [2DGS](https://github.com/hbb1/2d-gaussian-splatting) and [PGSR](https://github.com/zju3dv/PGSR).
+ 
+-We incorporate the densification strategy, evalution and decoupled appearance modeling form [GOF](https://github.com/autonomousvision/gaussian-opacity-fields/tree/main)  and use the preprocessed TNT dataset.
++We also incorporate the densification strategy proposed in [GOF](https://github.com/autonomousvision/gaussian-opacity-fields), and adopt decoupled appearance modeling practices inspired by 3DGS, GOF, and PGSR.
+ 
+-The evaluation scripts for the DTU and Tanks and Temples datasets are sourced from [DTUeval-python](https://github.com/jzhangbs/DTUeval-python) and [TanksAndTemples](https://github.com/isl-org/TanksAndTemples/tree/master/python_toolbox/evaluation), respectively.
++For geometric evaluation, we use the DTU and Tanks and Temples evaluation toolboxes from DTUeval-python
++(https://github.com/jzhangbs/DTUeval-python) and the TanksAndTemples Python evaluation scripts
++(https://github.com/isl-org/TanksAndTemples/tree/master/python_toolbox/evaluation), respectively.
+ 
+-We thank the authors of Gaussian Splatting, Mip-Splatting, 2D GS, GOF， and the repos for their great works.
++We thank the authors of these projects for making their code publicly available.
+\ No newline at end of file
+diff --git a/arguments/__init__.py b/arguments/__init__.py
+index ac582ef..c6e016b 100755
+--- a/arguments/__init__.py
++++ b/arguments/__init__.py
+@@ -55,10 +55,17 @@ class ModelParams(ParamGroup):
+         self._white_background = False
+         self.data_device = "cuda"
+         self.eval = False
+-        self.use_decoupled_appearance = False
+-        self.use_coord_map = False
++        self.use_decoupled_appearance = 0 # 0: NO, 1: GS, 2: GOF, 3: PGSR
+         self.disable_filter3D = False
+         self.kernel_size = 0.0 # Size of 2D filter in mip-splatting
++        
++        # self.depth_ratio = 0.6
++        self.depth_ratio = 0.0
++        
++        self.multi_view_num = 8
++        self.multi_view_max_angle = 30
++        self.multi_view_min_dis = 0.01
++        self.multi_view_max_dis = 1.5
+         super().__init__(parser, "Loading Parameters", sentinel)
+ 
+     def extract(self, args):
+@@ -86,6 +93,11 @@ class OptimizationParams(ParamGroup):
+         self.rotation_lr = 0.001
+         self.appearance_embeddings_lr = 0.001
+         self.appearance_network_lr = 0.001
++        self.pgsr_appearance_lr = 0.001
++        self.gs_appearance_lr_init = 0.01
++        self.gs_appearance_lr_final = 0.001
++        self.gs_appearance_lr_delay_steps = 0
++        self.gs_appearance_lr_delay_mult = 0.0
+         self.percent_dense = 0.01
+         self.lambda_dssim = 0.2
+         self.lambda_depth_normal = 0.05
+@@ -93,9 +105,14 @@ class OptimizationParams(ParamGroup):
+         self.opacity_reset_interval = 3000
+         self.densify_from_iter = 500
+         self.densify_until_iter = 15_000
+-        self.regularization_from_iter = 15_000
++        self.regularization_from_iter = 7000
+         self.densify_grad_threshold = 0.0002
+ 
++        self.lambda_multi_view_geo = 0.02
++        self.lambda_multi_view_ncc = 0.3
++        self.multi_view_patch_size = 3
++        self.multi_view_pixel_noise_th = 1.0
++
+         super().__init__(parser, "Optimization Parameters")
+ 
+ def get_combined_args(parser : ArgumentParser):
+diff --git a/gaussian_renderer/__init__.py b/gaussian_renderer/__init__.py
+index 9df196c..1156702 100755
+--- a/gaussian_renderer/__init__.py
++++ b/gaussian_renderer/__init__.py
+@@ -16,7 +16,7 @@ from scene.gaussian_model import GaussianModel
+ from utils.sh_utils import eval_sh
+ 
+ 
+-def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor, kernel_size, scaling_modifier = 1.0, require_coord : bool = True, require_depth : bool = True):
++def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor, kernel_size, scaling_modifier = 1.0, require_depth : bool = True):
+     """
+     Render the scene. 
+     
+@@ -45,7 +45,6 @@ def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor,
+         sh_degree=pc.active_sh_degree,
+         campos=viewpoint_camera.camera_center,
+         prefiltered=False,
+-        require_coord = require_coord,
+         require_depth = require_depth,
+         debug=pipe.debug
+     )
+@@ -68,7 +67,7 @@ def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor,
+     shs = pc.get_features
+     colors_precomp = None
+ 
+-    rendered_image, radii, rendered_expected_coord, rendered_median_coord, rendered_expected_depth, rendered_median_depth, rendered_alpha, rendered_normal = rasterizer(
++    rendered_image, radii, rendered_expected_depth, rendered_median_depth, rendered_alpha, rendered_normal = rasterizer(
+         means3D = means3D,
+         means2D = means2D,
+         shs = shs,
+@@ -84,8 +83,6 @@ def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor,
+     # They will be excluded from value updates used in the splitting criteria.
+     return {"render": rendered_image,
+             "mask": rendered_alpha,
+-            "expected_coord": rendered_expected_coord,
+-            "median_coord": rendered_median_coord,
+             "expected_depth": rendered_expected_depth,
+             "median_depth": rendered_median_depth,
+             "viewspace_points": means2D,
+@@ -94,7 +91,7 @@ def render(viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor,
+             "normal":rendered_normal,
+             }
+ 
+-# integration is adopted from GOF for marching tetrahedra https://github.com/autonomousvision/gaussian-opacity-fields/blob/main/gaussian_renderer/__init__.py
++# adopted from GOF for marching tetrahedra https://github.com/autonomousvision/gaussian-opacity-fields/blob/main/gaussian_renderer/__init__.py
+ def integrate(points3D, viewpoint_camera, pc : GaussianModel, pipe, bg_color : torch.Tensor, kernel_size : float, scaling_modifier = 1.0, override_color = None):
+     """
+     integrate Gaussians to the points, we also render the image for visual comparison. 
+@@ -129,7 +126,6 @@ def integrate(points3D, viewpoint_camera, pc : GaussianModel, pipe, bg_color : t
+         prefiltered=False,
+         debug=pipe.debug,
+         require_depth = True,
+-        require_coord=True
+     )
+ 
+     rasterizer = GaussianRasterizer(raster_settings=raster_settings)
+@@ -159,10 +155,6 @@ def integrate(points3D, viewpoint_camera, pc : GaussianModel, pipe, bg_color : t
+         if pipe.convert_SHs_python:
+             shs_view = pc.get_features.transpose(1, 2).view(-1, 3, (pc.max_sh_degree+1)**2)
+             dir_pp = (pc.get_xyz - viewpoint_camera.camera_center.repeat(pc.get_features.shape[0], 1))
+-            # # we local direction
+-            # cam_pos_local = view2gaussian_precomp[:, 3, :3]
+-            # cam_pos_local_scaled = cam_pos_local / scales
+-            # dir_pp = -cam_pos_local_scaled
+             dir_pp_normalized = dir_pp/dir_pp.norm(dim=1, keepdim=True)
+             sh2rgb = eval_sh(pc.active_sh_degree, shs_view, dir_pp_normalized)
+             colors_precomp = torch.clamp_min(sh2rgb + 0.5, 0.0)
+@@ -172,7 +164,7 @@ def integrate(points3D, viewpoint_camera, pc : GaussianModel, pipe, bg_color : t
+         colors_precomp = override_color
+ 
+     # Rasterize visible Gaussians to image, obtain their radii (on screen). 
+-    rendered_image, alpha_integrated, color_integrated, point_coordinate, point_sdf, radii = rasterizer.integrate(
++    color_integrated, alpha_integrated, inside = rasterizer.integrate(
+         points3D = points3D,
+         means3D = means3D,
+         means2D = means2D,
+@@ -186,10 +178,61 @@ def integrate(points3D, viewpoint_camera, pc : GaussianModel, pipe, bg_color : t
+ 
+     # Those Gaussians that were frustum culled or had a radius of 0 were not visible.
+     # They will be excluded from value updates used in the splitting criteria.
+-    return {"render": rendered_image,
++    return {"color_integrated": color_integrated,
+             "alpha_integrated": alpha_integrated,
+-            "color_integrated": color_integrated,
+-            "point_coordinate": point_coordinate,
+-            "point_sdf": point_sdf,
+-            "visibility_filter" : radii > 0,
+-            "radii": radii}
+\ No newline at end of file
++            "inside": inside}
++
++
++def sample_depth(points3D, viewpoint_camera, pc : GaussianModel, pipe : torch.Tensor, kernel_size : float, scaling_modifier = 1.0):
++
++    # Set up rasterization configuration
++    tanfovx = math.tan(viewpoint_camera.FoVx * 0.5)
++    tanfovy = math.tan(viewpoint_camera.FoVy * 0.5)
++
++        
++    raster_settings = GaussianRasterizationSettings(
++        image_height=int(viewpoint_camera.image_height),
++        image_width=int(viewpoint_camera.image_width),
++        tanfovx=tanfovx,
++        tanfovy=tanfovy,
++        kernel_size = kernel_size,
++        bg=0,
++        scale_modifier=scaling_modifier,
++        viewmatrix=viewpoint_camera.world_view_transform,
++        projmatrix=viewpoint_camera.full_proj_transform,
++        sh_degree=pc.active_sh_degree,
++        campos=viewpoint_camera.camera_center,
++        prefiltered=False,
++        debug=pipe.debug,
++        require_depth = True,
++    )
++
++    rasterizer = GaussianRasterizer(raster_settings=raster_settings)
++
++    means3D = pc.get_xyz
++    opacity = pc.get_opacity_with_3D_filter
++
++    # If precomputed 3d covariance is provided, use it. If not, then it will be computed from
++    # scaling / rotation by the rasterizer.
++    scales = None
++    rotations = None
++    cov3D_precomp = None
++    if pipe.compute_cov3D_python:
++        cov3D_precomp = pc.get_covariance(scaling_modifier)
++    else:
++        scales = pc.get_scaling_with_3D_filter
++        rotations = pc.get_rotation
++
++    # Rasterize visible Gaussians to image, obtain their radii (on screen). 
++    depth, inside = rasterizer.sample_depth(
++        points3D = points3D,
++        means3D = means3D,
++        opacities = opacity,
++        scales = scales,
++        rotations = rotations,
++        cov3D_precomp = cov3D_precomp,)
++
++    # Those Gaussians that were frustum culled or had a radius of 0 were not visible.
++    # They will be excluded from value updates used in the splitting criteria.
++    return {"sampled_depth": depth,
++            "inside": inside}
+\ No newline at end of file
+diff --git a/scene/dataset_readers.py b/scene/dataset_readers.py
+index 6fdf875..86dae61 100755
+--- a/scene/dataset_readers.py
++++ b/scene/dataset_readers.py
+@@ -40,6 +40,8 @@ class CameraInfo(NamedTuple):
+     width: int
+     height: int
+     mask: np.array = None
++    depth: np.array = None
++    normal: np.array = None
+ 
+ class SceneInfo(NamedTuple):
+     point_cloud: BasicPointCloud
+@@ -321,9 +323,124 @@ def readNerfSyntheticInfo(path, white_background, eval, extension=".png"):
+                            point_cloud=pcd)
+     return scene_info
+ 
++def readObjaverseInfo(path, white_background, eval):
++    cam_infos = []
++    import lmdb
++
++    lmdb_dir = path
++    env = lmdb.open(lmdb_dir)
++    txn = env.begin()
++    with open(os.path.join(lmdb_dir, "metadata.json")) as json_data:
++        meta = json.load(json_data)
++
++    cam2world_matrices = meta["cam2world_matrices"]
++    intrisic = np.array(meta["intrinsics"][0])
++    W, H = meta["resolution"]
++
++    FovX = focal2fov(intrisic[0, 0], W)
++    FovY = focal2fov(intrisic[1, 1], H)
++    image_num = len(cam2world_matrices)
++
++    uvh = np.stack(
++        [*np.meshgrid(np.arange(W), np.arange(H)), np.ones((H, W), dtype=np.float32)],
++        axis=-1,
++    )
++    uvh = uvh.reshape(-1, 3) @ np.linalg.inv(intrisic).T
++    for image_id in range(image_num):
++
++        extr = np.array(cam2world_matrices[image_id])
++        cam_pos = extr[:3, 3:]
++        R = np.zeros([3, 3])
++
++        R[0] = extr[:3, 0]
++        R[1] = -extr[:3, 1]
++        R[2] = -extr[:3, 2]
++        T = -R @ cam_pos
++
++        data = txn.get(("%04d_rgb" % image_id).encode())
++        image_array = np.frombuffer(data, dtype=np.uint8)
++        image = cv2.imdecode(
++            image_array, cv2.IMREAD_UNCHANGED
++        )  # IMREAD_COLOR IMREAD_UNCHANGED
++        image = image.astype(np.float32) / 255
++
++        depth_data = txn.get(("%04d_depth" % image_id).encode())
++        depth_array = np.frombuffer(depth_data, dtype=np.float32)
++        depth = depth_array.reshape(H, W)
++
++        normal_data = txn.get(("%04d_normal" % image_id).encode())
++        normal_array = np.frombuffer(normal_data, dtype=np.uint8)
++        normal = cv2.imdecode(normal_array, cv2.IMREAD_UNCHANGED)
++        normal = normal[..., [2, 1, 0]]
++
++        normal = (normal / 65535) * 2 - 1
++        normal = normal / np.linalg.norm(normal, axis=-1, keepdims=True)
++        normal[..., 1] = -normal[..., 1]
++        normal[..., 2] = -normal[..., 2]
++
++        bg = np.array([1, 1, 1]) if white_background else np.array([0, 0, 0])
++        mask = image[..., 3]
++        image[..., :3] = image[..., :3] * mask[..., None] + bg * (1 - mask[..., None])
++        image = Image.fromarray((image * 255).astype(np.uint8), "RGBA")
++
++        cam_infos.append(
++            CameraInfo(
++                uid=image_id,
++                R=np.transpose(R),
++                T=T.squeeze(),
++                FovY=FovY,
++                FovX=FovX,
++                image=image,
++                image_path="",
++                image_name="",
++                width=W,
++                height=H,
++                mask=None,
++                depth=depth,
++                normal=normal,
++            )
++        )
++    env.close()
++
++    if eval:
++        train_cam_infos = [c for idx, c in enumerate(cam_infos) if idx % 3 != 0]
++        test_cam_infos = [c for idx, c in enumerate(cam_infos) if idx % 3 == 0]
++    else:
++        train_cam_infos = cam_infos
++        test_cam_infos = []
++
++    nerf_normalization = getNerfppNorm(train_cam_infos)
++    print(f'cameras extent: {nerf_normalization["radius"]}')
++
++    ply_path = os.path.join(lmdb_dir, "points3d.ply")
++    if not os.path.exists(ply_path):
++        # Since this data set has no colmap data, we start with random points
++        num_pts = 100_000
++        print(f"Generating random point cloud ({num_pts})...")
++
++        xyz = np.random.random((num_pts, 3)) * 2.6 - 1.3
++        shs = np.random.random((num_pts, 3)) / 255.0
++        pcd = BasicPointCloud(
++            points=xyz, colors=SH2RGB(shs), normals=np.zeros((num_pts, 3))
++        )
++
++        storePly(ply_path, xyz, SH2RGB(shs) * 255)
++    try:
++        pcd = fetchPly(ply_path)
++    except:
++        pcd = None
+ 
++    scene_info = SceneInfo(
++        point_cloud=pcd,
++        train_cameras=train_cam_infos,
++        test_cameras=test_cam_infos,
++        nerf_normalization=nerf_normalization,
++        ply_path=ply_path,
++    )
++    return scene_info
+ 
+ sceneLoadTypeCallbacks = {
+     "Colmap": readColmapSceneInfo,
+-    "Blender" : readNerfSyntheticInfo
++    "Blender" : readNerfSyntheticInfo,
++    "Objaverse": readObjaverseInfo,
+ }
+\ No newline at end of file
+diff --git a/train.py b/train.py
+index 3e35407..b5164c4 100755
+--- a/train.py
++++ b/train.py
+@@ -3,62 +3,57 @@
+ # GRAPHDECO research group, https://team.inria.fr/graphdeco
+ # All rights reserved.
+ #
+-# This software is free for non-commercial, research and evaluation use 
++# This software is free for non-commercial, research and evaluation use
+ # under the terms of the LICENSE.md file.
+ #
+ # For inquiries contact  george.drettakis@inria.fr
+ #
+ 
++from argparse import ArgumentParser, Namespace
+ import os
+-import torch
+-from random import randint
+-from utils.loss_utils import l1_loss, ssim
+-from gaussian_renderer import render, network_gui
++from random import randint, sample
+ import sys
+-from scene import Scene, GaussianModel
+-from utils.general_utils import safe_state
++from typing import Sequence, TypedDict
+ import uuid
++
++import torch
+ from tqdm import tqdm
+-from utils.image_utils import psnr
+-from utils.graphics_utils import point_double_to_normal, depth_double_to_normal
+-from argparse import ArgumentParser, Namespace
+-from arguments import ModelParams, PipelineParams, OptimizationParams
++
+ try:
+     from torch.utils.tensorboard import SummaryWriter
++
+     TENSORBOARD_FOUND = True
+ except ImportError:
+     TENSORBOARD_FOUND = False
+ 
++from arguments import ModelParams, OptimizationParams, PipelineParams
++from gaussian_renderer import network_gui, render
++from scene import GaussianModel, Scene
+ from scene.cameras import Camera
+-import matplotlib.pyplot as plt
+-from utils.vis_utils import apply_depth_colormap
+-
+-# function L1_loss_appearance is fork from GOF https://github.com/autonomousvision/gaussian-opacity-fields/blob/main/train.py
+-def L1_loss_appearance(image, gt_image, gaussians, view_idx, return_transformed_image=False):
+-    appearance_embedding = gaussians.get_apperance_embedding(view_idx)
+-    # center crop the image
+-    origH, origW = image.shape[1:]
+-    H = origH // 32 * 32
+-    W = origW // 32 * 32
+-    left = origW // 2 - W // 2
+-    top = origH // 2 - H // 2
+-    crop_image = image[:, top:top+H, left:left+W]
+-    crop_gt_image = gt_image[:, top:top+H, left:left+W]
+-    
+-    # down sample the image
+-    crop_image_down = torch.nn.functional.interpolate(crop_image[None], size=(H//32, W//32), mode="bilinear", align_corners=True)[0]
+-    
+-    crop_image_down = torch.cat([crop_image_down, appearance_embedding[None].repeat(H//32, W//32, 1).permute(2, 0, 1)], dim=0)[None]
+-    mapping_image = gaussians.appearance_network(crop_image_down)
+-    transformed_image = mapping_image * crop_image
+-    if not return_transformed_image:
+-        return l1_loss(transformed_image, crop_gt_image)
+-    else:
+-        transformed_image = torch.nn.functional.interpolate(transformed_image, size=(origH, origW), mode="bilinear", align_corners=True)[0]
+-        return transformed_image
+-
+-
+-def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoint_iterations, checkpoint, debug_from):
++from utils.general_utils import safe_state
++from utils.graphics_utils import (
++    depth_double_to_normal,
++    depth_to_normal,
++)
++from utils.image_utils import psnr
++from utils.loss_utils import (
++    l1_loss,
++    ssim,
++    L1_loss_appearance,
++    PatchMatch,
++)
++
++
++def training(
++    dataset,
++    opt,
++    pipe,
++    testing_iterations,
++    saving_iterations,
++    checkpoint_iterations,
++    checkpoint,
++    debug_from,
++):
+     first_iter = 0
+     tb_writer = prepare_output_and_logger(dataset)
+     gaussians = GaussianModel(dataset.sh_degree)
+@@ -71,8 +66,8 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
+     background = torch.tensor(bg_color, dtype=torch.float32, device="cuda")
+     kernel_size = dataset.kernel_size
+ 
+-    iter_start = torch.cuda.Event(enable_timing = True)
+-    iter_end = torch.cuda.Event(enable_timing = True)
++    iter_start = torch.cuda.Event(enable_timing=True)
++    iter_end = torch.cuda.Event(enable_timing=True)
+ 
+     trainCameras = scene.getTrainCameras().copy()
+     if dataset.disable_filter3D:
+@@ -80,23 +75,46 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
+     else:
+         gaussians.compute_3D_filter(cameras=trainCameras)
+ 
+-    viewpoint_stack = None
+-    ema_loss_for_log, ema_depth_loss_for_log, ema_mask_loss_for_log, ema_normal_loss_for_log = 0.0, 0.0, 0.0, 0.0
++    if opt.lambda_multi_view_ncc > 0 or opt.lambda_multi_view_geo > 0:
++        patchmatch = PatchMatch(
++            opt.multi_view_patch_size,
++            opt.multi_view_pixel_noise_th,
++            kernel_size=kernel_size,
++            pipe=pipe,
++            debug=True,
++            model_path=dataset.model_path,
++        )
+ 
+-    require_depth = not dataset.use_coord_map
+-    require_coord = dataset.use_coord_map
+-    
++    viewpoint_stack = None
++    ema_loss_for_log = 0.0
++    ema_normal_loss_for_log = 0.0
++    ema_ncc_loss_for_log = 0.0
++    os.makedirs(os.path.join(dataset.model_path, "debug"), exist_ok=True)
+     progress_bar = tqdm(range(first_iter, opt.iterations), desc="Training progress")
+     first_iter += 1
+-    for iteration in range(first_iter, opt.iterations + 1):        
++    for iteration in range(first_iter, opt.iterations + 1):
+         if network_gui.conn == None:
+             network_gui.try_connect()
+         while network_gui.conn != None:
+             try:
+                 net_image_bytes = None
+-                custom_cam, do_training, pipe.convert_SHs_python, pipe.compute_cov3D_python, keep_alive, scaling_modifer = network_gui.receive()
++                (
++                    custom_cam,
++                    do_training,
++                    pipe.convert_SHs_python,
++                    pipe.compute_cov3D_python,
++                    keep_alive,
++                    scaling_modifer,
++                ) = network_gui.receive()
+                 if custom_cam != None:
+-                    net_image = render(custom_cam, gaussians, pipe, background, kernel_size, scaling_modifer)["render"]
++                    net_image = render(
++                        custom_cam,
++                        gaussians,
++                        pipe,
++                        background,
++                        kernel_size,
++                        scaling_modifer,
++                    )["render"]
+                     net_image_bytes = memoryview((torch.clamp(net_image, min=0, max=1.0) * 255).byte().permute(1, 2, 0).contiguous().cpu().numpy())
+                 network_gui.send(net_image_bytes, dataset.source_path)
+                 if do_training and ((iteration < int(opt.iterations)) or not keep_alive):
+@@ -115,51 +133,60 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
+         # Pick a random Camera
+         if not viewpoint_stack:
+             viewpoint_stack = scene.getTrainCameras().copy()
+-        viewpoint_cam: Camera = viewpoint_stack.pop(randint(0, len(viewpoint_stack)-1))
++        viewpoint_cam: Camera = viewpoint_stack.pop(randint(0, len(viewpoint_stack) - 1))
+ 
+         # Render
+         if (iteration - 1) == debug_from:
+             pipe.debug = True
+ 
+         reg_kick_on = iteration >= opt.regularization_from_iter
+-        
+-        render_pkg = render(viewpoint_cam, gaussians, pipe, background, kernel_size, require_coord = require_coord and reg_kick_on, require_depth = require_depth and reg_kick_on)
++        render_pkg = render(
++            viewpoint_cam,
++            gaussians,
++            pipe,
++            background,
++            kernel_size,
++            require_depth=reg_kick_on,
++        )
+         rendered_image: torch.Tensor
+         rendered_image, viewspace_point_tensor, visibility_filter, radii = (
+-                                                                    render_pkg["render"], 
+-                                                                    render_pkg["viewspace_points"], 
+-                                                                    render_pkg["visibility_filter"], 
+-                                                                    render_pkg["radii"])
++            render_pkg["render"],
++            render_pkg["viewspace_points"],
++            render_pkg["visibility_filter"],
++            render_pkg["radii"],
++        )
+         gt_image = viewpoint_cam.original_image.cuda()
+ 
+-        if dataset.use_decoupled_appearance:
+-            Ll1_render = L1_loss_appearance(rendered_image, gt_image, gaussians, viewpoint_cam.uid)
+-        else:
+-            Ll1_render = l1_loss(rendered_image, gt_image)
+-
+-        
+-        if reg_kick_on:
+-            lambda_depth_normal = opt.lambda_depth_normal
+-            if require_depth:
+-                rendered_expected_depth: torch.Tensor = render_pkg["expected_depth"]
+-                rendered_median_depth: torch.Tensor = render_pkg["median_depth"]
+-                rendered_normal: torch.Tensor = render_pkg["normal"]
+-                depth_middepth_normal = depth_double_to_normal(viewpoint_cam, rendered_expected_depth, rendered_median_depth)
++        Ll1_render = L1_loss_appearance(rendered_image, gt_image, gaussians, viewpoint_cam.uid)
++        # normal consistency
++        if reg_kick_on and opt.lambda_depth_normal > 0:
++            rendered_expected_depth: torch.Tensor = render_pkg["expected_depth"]
++            rendered_median_depth: torch.Tensor = render_pkg["median_depth"]
++            rendered_normal: torch.Tensor = render_pkg["normal"]
++            if 0.0 < dataset.depth_ratio < 1.0:
++                depth_normal = depth_double_to_normal(viewpoint_cam, rendered_expected_depth, rendered_median_depth)
++                normal_error_map = 1 - torch.linalg.vecdot(rendered_normal.unsqueeze(0), depth_normal, dim=1)
++                depth_normal_loss = (1 - dataset.depth_ratio) * normal_error_map[0].mean() + dataset.depth_ratio * normal_error_map[1].mean()
++                depth_normal = None
+             else:
+-                rendered_expected_coord: torch.Tensor = render_pkg["expected_coord"]
+-                rendered_median_coord: torch.Tensor = render_pkg["median_coord"]
+-                rendered_normal: torch.Tensor = render_pkg["normal"]
+-                depth_middepth_normal = point_double_to_normal(viewpoint_cam, rendered_expected_coord, rendered_median_coord)
+-            depth_ratio = 0.6
+-            normal_error_map = (1 - (rendered_normal.unsqueeze(0) * depth_middepth_normal).sum(dim=1))
+-            depth_normal_loss = (1-depth_ratio) * normal_error_map[0].mean() + depth_ratio * normal_error_map[1].mean()
++                depth_map = rendered_expected_depth if dataset.depth_ratio < 1.0 else rendered_median_depth
++                depth_normal = depth_to_normal(viewpoint_cam, depth_map)
++                normal_error_map = 1 - torch.linalg.vecdot(rendered_normal, depth_normal, dim=0)
++                depth_normal_loss = normal_error_map.mean()
++        else:
++            depth_normal_loss = torch.tensor([0], dtype=torch.float32, device="cuda")
++
++        # patch match loss
++        if reg_kick_on and opt.lambda_multi_view_ncc > 0:
++            nearest_cam = None if len(viewpoint_cam.nearest_id) == 0 else scene.getTrainCameras()[sample(viewpoint_cam.nearest_id, 1)[0]]
++            ncc_loss, geo_loss = patchmatch(gaussians, render_pkg, viewpoint_cam, nearest_cam, iteration, depth_normal)
+         else:
+-            lambda_depth_normal = 0
+-            depth_normal_loss = torch.tensor([0],dtype=torch.float32,device="cuda")
+-            
+-        rgb_loss = (1.0 - opt.lambda_dssim) * Ll1_render + opt.lambda_dssim * (1.0 - ssim(rendered_image, gt_image.unsqueeze(0)))
+-        
+-        loss = rgb_loss + depth_normal_loss * lambda_depth_normal
++            ncc_loss = torch.tensor([0], dtype=torch.float32, device="cuda")
++            geo_loss = torch.tensor([0], dtype=torch.float32, device="cuda")
++
++        rgb_loss = (1.0 - opt.lambda_dssim) * Ll1_render + opt.lambda_dssim * (1.0 - ssim(rendered_image.unsqueeze(0), gt_image.unsqueeze(0)))
++
++        loss = rgb_loss + opt.lambda_depth_normal * depth_normal_loss + opt.lambda_multi_view_ncc * ncc_loss + opt.lambda_multi_view_geo * geo_loss
+         loss.backward()
+ 
+         iter_end.record()
+@@ -168,16 +195,36 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
+             # Progress bar
+             ema_loss_for_log = 0.4 * loss.item() + 0.6 * ema_loss_for_log
+             ema_normal_loss_for_log = 0.4 * depth_normal_loss.item() + 0.6 * ema_normal_loss_for_log
++            ema_ncc_loss_for_log = 0.4 * ncc_loss.item() + 0.6 * ema_ncc_loss_for_log
+ 
+             if iteration % 10 == 0:
+-                progress_bar.set_postfix({"Loss": f"{ema_loss_for_log:.{4}f}", "loss_normal": f"{ema_normal_loss_for_log:.{4}f}"})
++                progress_bar.set_postfix(
++                    {
++                        "Loss": f"{ema_loss_for_log:.{4}f}",
++                        "loss_normal": f"{ema_normal_loss_for_log:.{4}f}",
++                        "loss_ncc": f"{ema_ncc_loss_for_log:.{4}f}",
++                    }
++                )
+                 progress_bar.update(10)
+             if iteration == opt.iterations:
+                 progress_bar.close()
+-            
++
+             # Log and save
+-            training_report(tb_writer, iteration, Ll1_render, loss, depth_normal_loss, l1_loss, iter_start.elapsed_time(iter_end), testing_iterations, scene, render, (pipe, background, kernel_size))
+-            if (iteration in saving_iterations):
++            training_report(
++                tb_writer,
++                iteration,
++                Ll1_render,
++                loss,
++                depth_normal_loss,
++                ncc_loss,
++                l1_loss,
++                iter_start.elapsed_time(iter_end),
++                testing_iterations,
++                scene,
++                render,
++                (pipe, background, kernel_size),
++            )
++            if iteration in saving_iterations:
+                 print("\n[ITER {}] Saving Gaussians".format(iteration))
+                 scene.save(iteration)
+ 
+@@ -189,7 +236,12 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
+ 
+                 if iteration > opt.densify_from_iter and iteration % opt.densification_interval == 0:
+                     size_threshold = 20 if iteration > opt.opacity_reset_interval else None
+-                    gaussians.densify_and_prune(opt.densify_grad_threshold, 0.05, scene.cameras_extent, size_threshold)
++                    gaussians.densify_and_prune(
++                        opt.densify_grad_threshold,
++                        0.05,
++                        scene.cameras_extent,
++                        size_threshold,
++                    )
+                     if dataset.disable_filter3D:
+                         gaussians.reset_3D_filter()
+                     else:
+@@ -197,34 +249,37 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
+ 
+                 if iteration % opt.opacity_reset_interval == 0 or (dataset.white_background and iteration == opt.densify_from_iter):
+                     gaussians.reset_opacity()
+-                
++
+             if iteration % 100 == 0 and iteration > opt.densify_until_iter and not dataset.disable_filter3D:
+                 if iteration < opt.iterations - 100:
+                     # don't update in the end of training
+                     gaussians.compute_3D_filter(cameras=trainCameras)
+ 
+-
+             # Optimizer step
+             if iteration < opt.iterations:
+                 gaussians.optimizer.step()
+-                gaussians.optimizer.zero_grad(set_to_none = True)
++                gaussians.optimizer.zero_grad(set_to_none=True)
+ 
+-            if (iteration in checkpoint_iterations):
++            if iteration in checkpoint_iterations:
+                 print("\n[ITER {}] Saving Checkpoint".format(iteration))
+-                torch.save((gaussians.capture(), iteration), scene.model_path + "/chkpnt" + str(iteration) + ".pth")
++                torch.save(
++                    (gaussians.capture(), iteration),
++                    scene.model_path + "/chkpnt" + str(iteration) + ".pth",
++                )
++
+ 
+-def prepare_output_and_logger(args):    
++def prepare_output_and_logger(args):
+     if not args.model_path:
+-        if os.getenv('OAR_JOB_ID'):
+-            unique_str=os.getenv('OAR_JOB_ID')
++        if os.getenv("OAR_JOB_ID"):
++            unique_str = os.getenv("OAR_JOB_ID")
+         else:
+             unique_str = str(uuid.uuid4())
+         args.model_path = os.path.join("./output/", unique_str[0:10])
+-        
++
+     # Set up output folder
+     print("Output folder: {}".format(args.model_path))
+-    os.makedirs(args.model_path, exist_ok = True)
+-    with open(os.path.join(args.model_path, "cfg_args"), 'w') as cfg_log_f:
++    os.makedirs(args.model_path, exist_ok=True)
++    with open(os.path.join(args.model_path, "cfg_args"), "w") as cfg_log_f:
+         cfg_log_f.write(str(Namespace(**vars(args))))
+ 
+     # Create Tensorboard writer
+@@ -235,66 +290,102 @@ def prepare_output_and_logger(args):
+         print("Tensorboard not available: not logging progress")
+     return tb_writer
+ 
+-def training_report(tb_writer, iteration, Ll1, loss, normal_loss, l1_loss, elapsed, testing_iterations, scene : Scene, renderFunc, renderArgs):
++
++def training_report(
++    tb_writer,
++    iteration,
++    Ll1,
++    loss,
++    normal_loss,
++    ncc_loss,
++    l1_loss,
++    elapsed,
++    testing_iterations,
++    scene: Scene,
++    renderFunc,
++    renderArgs,
++):
+     if tb_writer:
+-        tb_writer.add_scalar('train_loss_patches/l1_loss', Ll1.item(), iteration)
+-        tb_writer.add_scalar('train_loss_patches/normal_loss', normal_loss.item(), iteration)
+-        tb_writer.add_scalar('train_loss_patches/total_loss', loss.item(), iteration)
+-        tb_writer.add_scalar('iter_time', elapsed, iteration)
++        tb_writer.add_scalar("train_loss_patches/l1_loss", Ll1.item(), iteration)
++        tb_writer.add_scalar("train_loss_patches/normal_loss", normal_loss.item(), iteration)
++        tb_writer.add_scalar("train_loss_patches/ncc_loss", ncc_loss.item(), iteration)
++        tb_writer.add_scalar("train_loss_patches/total_loss", loss.item(), iteration)
++        tb_writer.add_scalar("iter_time", elapsed, iteration)
++
++    class ValidationConfig(TypedDict):
++        name: str
++        cameras: Sequence[Camera]
+ 
+     # Report test and samples of training set
+     if iteration in testing_iterations:
+         torch.cuda.empty_cache()
+-        validation_configs = ({'name': 'test', 'cameras' : scene.getTestCameras()}, 
+-                              {'name': 'train', 'cameras' : [scene.getTrainCameras()[idx % len(scene.getTrainCameras())] for idx in range(5, 30, 5)]})
++        validation_configs: tuple[ValidationConfig, ...] = (
++            {"name": "test", "cameras": scene.getTestCameras()},
++            {
++                "name": "train",
++                "cameras": [scene.getTrainCameras()[idx % len(scene.getTrainCameras())] for idx in range(5, 30, 5)],
++            },
++        )
+ 
+         for config in validation_configs:
+-            if config['cameras'] and len(config['cameras']) > 0:
++            if config["cameras"] and len(config["cameras"]) > 0:
+                 l1_test = 0.0
+                 psnr_test = 0.0
+-                for idx, viewpoint in enumerate(config['cameras']):
++                for idx, viewpoint in enumerate(config["cameras"]):
+                     render_result = renderFunc(viewpoint, scene.gaussians, *renderArgs)
+                     image = torch.clamp(render_result["render"], 0.0, 1.0)
+                     gt_image = torch.clamp(viewpoint.original_image.cuda(), 0.0, 1.0)
+                     if tb_writer and (idx < 5):
+-                        tb_writer.add_images(config['name'] + "_view_{}/render".format(viewpoint.image_name), image[None], global_step=iteration)
++                        tb_writer.add_images(
++                            config["name"] + "_view_{}/render".format(viewpoint.image_name),
++                            image[None],
++                            global_step=iteration,
++                        )
+                         if iteration == testing_iterations[0]:
+-                            tb_writer.add_images(config['name'] + "_view_{}/ground_truth".format(viewpoint.image_name), gt_image[None], global_step=iteration)
++                            tb_writer.add_images(
++                                config["name"] + "_view_{}/ground_truth".format(viewpoint.image_name),
++                                gt_image[None],
++                                global_step=iteration,
++                            )
+                     l1_test += l1_loss(image, gt_image).mean().double()
+                     psnr_test += psnr(image, gt_image).mean().double()
+-                psnr_test /= len(config['cameras'])
+-                l1_test /= len(config['cameras'])
+-                print("\n[ITER {}] Evaluating {}: L1 {} PSNR {}".format(iteration, config['name'], l1_test, psnr_test))
++                psnr_test /= len(config["cameras"])
++                l1_test /= len(config["cameras"])
++                print("\n[ITER {}] Evaluating {}: L1 {} PSNR {}".format(iteration, config["name"], l1_test, psnr_test))
+                 if config["name"] == "test":
+                     with open(scene.model_path + "/chkpnt" + str(iteration) + ".txt", "w") as file_object:
+-                        print("\n[ITER {}] Evaluating {}: L1 {} PSNR {}".format(iteration, config['name'], l1_test, psnr_test), file=file_object)
++                        print(
++                            "\n[ITER {}] Evaluating {}: L1 {} PSNR {}".format(iteration, config["name"], l1_test, psnr_test),
++                            file=file_object,
++                        )
+                 if tb_writer:
+-                    tb_writer.add_scalar(config['name'] + '/loss_viewpoint - l1_loss', l1_test, iteration)
+-                    tb_writer.add_scalar(config['name'] + '/loss_viewpoint - psnr', psnr_test, iteration)
++                    tb_writer.add_scalar(config["name"] + "/loss_viewpoint - l1_loss", l1_test, iteration)
++                    tb_writer.add_scalar(config["name"] + "/loss_viewpoint - psnr", psnr_test, iteration)
+ 
+         if tb_writer:
+             tb_writer.add_histogram("scene/opacity_histogram", scene.gaussians.get_opacity, iteration)
+-            tb_writer.add_scalar('total_points', scene.gaussians.get_xyz.shape[0], iteration)
++            tb_writer.add_scalar("total_points", scene.gaussians.get_xyz.shape[0], iteration)
+         torch.cuda.empty_cache()
+ 
++
+ if __name__ == "__main__":
+     # Set up command line argument parser
+     parser = ArgumentParser(description="Training script parameters")
+     lp = ModelParams(parser)
+     op = OptimizationParams(parser)
+     pp = PipelineParams(parser)
+-    parser.add_argument('--ip', type=str, default="127.0.0.1")
+-    parser.add_argument('--port', type=int, default=6009)
+-    parser.add_argument('--debug_from', type=int, default=-1)
+-    parser.add_argument('--detect_anomaly', action='store_true', default=False)
++    parser.add_argument("--ip", type=str, default="127.0.0.1")
++    parser.add_argument("--port", type=int, default=6009)
++    parser.add_argument("--debug_from", type=int, default=-1)
++    parser.add_argument("--detect_anomaly", action="store_true", default=False)
+     parser.add_argument("--test_iterations", nargs="+", type=int, default=[7_000, 30_000])
+     parser.add_argument("--save_iterations", nargs="+", type=int, default=[7_000, 30_000])
+     parser.add_argument("--quiet", action="store_true")
+     parser.add_argument("--checkpoint_iterations", nargs="+", type=int, default=[15000])
+-    parser.add_argument("--start_checkpoint", type=str, default = None)
++    parser.add_argument("--start_checkpoint", type=str, default=None)
+     args = parser.parse_args(sys.argv[1:])
+     args.save_iterations.append(args.iterations)
+-    
++
+     print("Optimizing " + args.model_path)
+ 
+     # Initialize system state (RNG)
+@@ -303,14 +394,16 @@ if __name__ == "__main__":
+     # Start GUI server, configure and run training
+     # network_gui.init(args.ip, args.port)
+     # torch.autograd.set_detect_anomaly(args.detect_anomaly)
+-    training(dataset=lp.extract(args), 
+-             opt=op.extract(args), 
+-             pipe=pp.extract(args), 
+-             testing_iterations=args.test_iterations, 
+-             saving_iterations=args.save_iterations, 
+-             checkpoint_iterations=args.checkpoint_iterations, 
+-             checkpoint=args.start_checkpoint, 
+-             debug_from=args.debug_from)
++    training(
++        dataset=lp.extract(args),
++        opt=op.extract(args),
++        pipe=pp.extract(args),
++        testing_iterations=args.test_iterations,
++        saving_iterations=args.save_iterations,
++        checkpoint_iterations=args.checkpoint_iterations,
++        checkpoint=args.start_checkpoint,
++        debug_from=args.debug_from,
++    )
+ 
+     # All done
+     print("\nTraining complete.")
