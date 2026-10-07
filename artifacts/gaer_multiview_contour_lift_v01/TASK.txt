@@ -1,0 +1,35 @@
+# 多视角二维轮廓升维 → 固定细三维轮廓线（Astra ultra）
+
+最新用户原话：“本次结果似乎把线宽放得太大了，根本没有了轮廓线的效果。重新尝试多视角二维轮廓升维构造轮廓线”。这明确改变主输入合同：允许多视角二维轮廓提取、校准相机射线升维/符合条件的多视角三角化，合并为一次冻结的3D曲线。旧任务中禁止二维升维的约束不适用于本轮。仍要求可独立查看的固定3D线模型，而不是逐帧2D画线。
+
+## 范围与保护
+专用tree /home/u00134/3dgs_line/gaer_multiview_contour_lift_v01，branch gaer-multiview-contour-lift-v01，untouched基点a58c76bd8a03f1d04afcf8e8dde455d2f806629c已推送。只写 experiments/gaer_multiview_contour_lift_v01、artifacts/gaer_multiview_contour_lift_v01、out/gaer_multiview_contour_lift_v01；不得修改旧main/summary/工作树/旧branch/原PLY/共享binary，不删除历史负结果，不forcepush。保留继承.codex/config.toml gpt-6-astra / ultra。Codex CLI0.160.1。PYTHON=/home/u00134/bin/miniconda3/envs/vfsdgs/bin/python，2CPU线程、pycache关、cache/tmp仅新stage。禁止读/输出credentials，尤其 ~/.ssh/DSSpwd.txt protected；进程只PID/comm，不args。不得杀/干扰其他tmux/Claude/GPU进程。已查两GPU均有外来任务，默认CPU-only；不等GPU、不抢资源。root4GiB/sharedGit1.5GiB/stage4GiB，每阶段检查，生产1GiB守卫不减。无安装、无训练、无新增传感器/GTmesh/scan/depth输入。允许新的3D线/tube为输出，不能将GTmesh当输入。不要再起外部coding/researchagent；ultra内部工具须继承保护并无并行重叠生产科学。
+
+## 为什么重做与真实来源
+上一轮不是仅一条线的radius大，而是把多个方向轮廓参与核的完整椭球支撑合并成大片表面。用户明确否定这种轮廓效果，本轮禁止 ellipsoid/voxel occupancy union、morphological closing填面、全物体black silhouette替代线。不得把旧面域网格缩小/改名充当新二维升维方法。
+读真实历史：
+- /home/u00134/3dgs_line/gaer_multiview_contour_regions_v01/artifacts/gaer_multiview_contour_regions_v01/REPORT_ZH.md、RESEARCH_ZH、INPUT_FREEZE.json、PROTOCOL、cpu_native.py/cpp源码、缓存目录。原上轮NO_GO_CONTOUR_OVERFILL不改变；Lego/Chair固定新区域只是粗面失败证据。
+- /home/u00134/3dgs_line/gaer_fixed_contour_asset_v01/artifacts/gaer_fixed_contour_asset_v01/README_ZH.md 及 experiments/gaer_fixed_contour_asset_v01/run.py/core.py：r_33单视角lift采用alphaT×C强度加权原中心z代理，能回投影source但其它视角明显错位。这是本轮必须改善的单视角对照，不得把source重投影吻合当3D深度正确。
+- 原31k/25k等预算来源与shadow相关旧reports只读；无需重做整个文献综述，先核具体source-lift/multiview merging失效原因并写METHOD_DESIGN_ZH.md。
+
+两真实scene Lego/Chair，原SH3 seed1729 iteration30000 PLY和metadata从上轮INPUT_FREEZE读，scenes是dict，每scene模型hash验证，86metadata相机。主实验复用上轮预先冻结24construction/4DEV/8reserved和33arc相机，避免又改变覆盖域；所有相机之前都被训练/研究曝光，reserved是构线holdout而非freshblind/GS-unseen。允许读construction/development二维原生alpha/RGB；reserved/arc仅在本轮asset参数seal后开封评价，不用其图像指导调位、匹配、裁剪、宽度选择。cached构建RGB/alpha若使用必须逐相机验证camera/hash，按实际file_path匹配，不能用r数字index。
+
+## 主路线与几何诚实
+1) 每construction view以原alpha轮廓为主提取有序细边/curve，外轮廓优先，保留孔洞/部件负空间并注明分离类别。不能把粗foreground mask当线。内部RGB detail次要，若没实现明说。
+2) 将每个二维轮廓采样点提升为世界坐标候选，并保存源像素/相机/原kernel支持/深度定义/不确定性。可用GS真实accepted alphaT贡献的中心深度weighted median/conditional ray depth作为代理，但必须命名proxy，不是测得surface depth。严禁凭空设置统一平面depth、把多视角各自pseudo-depth当物理真值。尽可能用多视角校准射线相交/三角化校正具备可证明同一性的轮廓片段；源匹配需epipolar、切向、空间支撑/深度一致性联合检查，无贡献/near-parallel/behind-camera/rolling generator记录拒绝，不能强配所有silhouettes。
+3) 核心要做真实跨视角三维重复线去重/融合，保存多source provenance。比较曲线空间距离、切向、支撑与投影证据，不能只union24份rim、不将滚动silhouette不同几何部位当同一条线。合并准则在真实result之前冻结，两scene共用自动尺度。连接只在可信短距、方向连续、support充分的位置做，不用MST/长距离补桥贯穿所有片段。允许3D控制点融合/平滑，但bounds与所有displacement真实记录，多source条件或置信度不足时保持candidate/refuse，不手工部件/人工标线。
+4) 主输出明确是1D固定curve中心+细世界管线；XYZ/topology/width/path IDs最终一次固定。不同camera仅投影/一个预先冻结经过校准的可见性算子；禁止view-conditioned坐标、mask隐藏错误、framewise reselection/perview2D修正。若relative原GS只能xray，必须保留后方线并标注，不拿未经验证depthproxy隐藏它们冒充物理遮挡。
+
+Silhouette随视角rolling，本实验不要求一个固定curve解释所有view的每个rim像素；必须报告可覆盖的视角域/未合并source/明显错位。单视角lift、原样multi-view union与融合方法至少3臂固定对照，宽度与renderer共用，以区分更多source、去重和纯加粗效果。无法完成完整可读asset则保留真实fused-candidate GLB并给PARTIAL/NO_GO，不能把展示很多3D线等同完整轮廓。
+
+## 先验证再产出，禁止用线宽救失败
+先写严格RED→GREEN垂直tracer tests：full-intrinsic ray/triangulation解析fixture、cheirality/conditioning、轮廓链/holes、depth provenance/finite、curve dedup与反向切线等价、cross-view support vs rolling不强合并、负空间不跨桥、fusion后source-track一致、sealedgeometry和GLB/OBJ。真实view坐标与CPU计算接口通过再批处理。
+当前GPU外来占用，已验证的上轮CPU replica可读借鉴但禁止导入旧runtime/旧run产生write。private stage CPU扩展/缓存允许，不安装。需要accepted contributor/query depth时在新stage copy源码/隔离build中增加受测试接口，原CPU shared binary不改。先read actual API，禁止臆造 load_scene/render_attribution。已有CPU replica四历史缓存校准是近似不是CUDA bit-exact；新depth也需analytic fixtures和重投影自检，但后者不证明surface depth正确。不得将原核中心均值/中位z或最小cov轴冒充实测depth/法线。
+
+视觉目标明确是线而非面：正常800×800 DEV视角目标实际线径约1.5–3px，只允许预声明有限范围选择世界radius，seal后固定。建议孤立stroke profile p95直径不得>6px；相交/密集线导致大块黑不能用平均半径合格蒙混。补连续性依靠可靠跨view融合/局部连线，不靠扩大半径/closing。保存width tails、交叉区域大片墨、前景内空白面积/负空间、冗余近重复线、短段数量和轮廓覆盖，视觉静帧与完整视频为主，任何P/R-vs-mesh不gate/不使用GTmesh。原样union对照必须完整展示，不偷偷把杂线删干净，主fusion pruning只依据construction证据且事先freeze，不看reserved图选线。
+
+## 真实交付、核验与预算
+各scene输出：所有construction二维轮廓/升维单source3D、single-source/rawunion/fused固定curve GLB+实体tube OBJ+centerline OBJ+PLY/JSON控制点与原kernel支持，source-camera-pixel-depth-matching/fusion/rejection provenance；建议共享同一r33singlebaseline新生成，不能拿旧风格强度/深度差异未经标注比较。方法设计/PROTOCOL/INPUT_FREEZE/FUSION_FREEZE/assetseal、tests真实日志、原model/旧files保护hash。
+每scene8reserved对应原RGB/独立2D参考/单源/rawunion/fused/tube线与overlay全图板、4关键视角800px单图及edgezoom；新目标focus可读外轮廓与孔洞，不强求内部细节。至少各33相机完整视频，真实固定tube 3D rasterization/投影，保持实际world thickness。参考2D每camera仅作检查，不是finalink。H264 yuv420p +faststart，全部帧bad保留，camera/geometry hash一致，ffmpeg完整decode；原asset geometry前后hash不变。原GS独立遮挡未验证时给明确xray/self-zbuffer两种说明，不能假装消除hidden errors。离线模型viewer可带source provenance切换而不影响最终静态asset。
+执行stagewise atomic seals，模型额度中断可重复verified-skip，不让第1sceneeval失败阻断第2scene构建。每阶段边界记录状态、冻结代码hash、资源守卫。预算约90分钟，launch timeout7200；先保证两scene可查看的真实线模型与图片，再优化评估/视频，不耗全时间在计划。不能只交方法描述/启动状态。
+完成后scope内commit，显式SSH push gaer-multiview-contour-lift-v01，readback remoteSHA/clean、原models/hash/历史branches不改。Chinese REPORT_ZH.md与REPRODUCE说明真正融合还是只是union、source/DEV/reserved/arc曝光域、最明显失败及线宽/精度/continuity代价。ignored out/.../DELIVERY.json 在push后记录actualcommit/推荐模型媒体路径/verdict；不自引用commithash。不宣称新颖性。退出成功不等于视觉GO。
