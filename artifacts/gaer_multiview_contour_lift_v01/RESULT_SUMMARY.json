@@ -1,0 +1,341 @@
+{
+  "scenes": {
+    "lego": {
+      "verdict": "PARTIAL_THIN_FIXED_CURVES / NO_GO_COMPLETE_CONTOUR",
+      "asset": {
+        "single": {
+          "geometry_sha256": "9087df35b4a1a3e7c0cd9f9fa99e799a2c373083fe8a56b1827599e5d6f1c588",
+          "paths": 104,
+          "short_paths": 22,
+          "vertices": 24320,
+          "faces": 42560,
+          "nodes": 1637,
+          "edges": 1520
+        },
+        "rawunion": {
+          "geometry_sha256": "30619be1b13eca1f55b0acb63220df07a1323342bd183ee9e758af3267cc09ec",
+          "paths": 3688,
+          "short_paths": 1004,
+          "vertices": 594064,
+          "faces": 1039612,
+          "nodes": 41671,
+          "edges": 37129
+        },
+        "fused": {
+          "geometry_sha256": "0f7c26acc341adff0b3ab5607eb6ff023fde9264b9dd8fa01757b5e95a22126b",
+          "paths": 5437,
+          "short_paths": 5124,
+          "vertices": 115024,
+          "faces": 201292,
+          "nodes": 5244,
+          "edges": 7189
+        }
+      },
+      "world_radius": 0.0034690477243745133,
+      "metrics": {
+        "single": {
+          "coverage3": 0.16527979296071588,
+          "ink_over_foreground": 0.027787782720827284,
+          "foreground_blank_fraction": 0.9729653357550173,
+          "negative_space_fill_fraction": 0.002278534371028802,
+          "hole_fill_fraction": 0.002366249266793344,
+          "artifact_diameter_p95_px": 2.974873734152917,
+          "largest_dense_core_component": 0.375,
+          "longest_gap_px": 640.375,
+          "background_far_fraction": 0.0,
+          "deep_interior_fraction": 0.6291039527731339,
+          "analytic_diameter_p95_max": 2.531015827650659
+        },
+        "rawunion": {
+          "coverage3": 0.9882764460256048,
+          "ink_over_foreground": 0.28167007841878,
+          "foreground_blank_fraction": 0.735609472751703,
+          "negative_space_fill_fraction": 0.0477748471624041,
+          "hole_fill_fraction": 0.11134289382273611,
+          "artifact_diameter_p95_px": 6.243416490252569,
+          "largest_dense_core_component": 305.375,
+          "longest_gap_px": 11.125,
+          "background_far_fraction": 0.001602257816050913,
+          "deep_interior_fraction": 0.6070415966912992,
+          "analytic_diameter_p95_max": 2.533583805863878
+        },
+        "fused": {
+          "coverage3": 0.7024443400936435,
+          "ink_over_foreground": 0.07809668597588743,
+          "foreground_blank_fraction": 0.9285598395691831,
+          "negative_space_fill_fraction": 0.02187575214500468,
+          "hole_fill_fraction": 0.014461199030760954,
+          "artifact_diameter_p95_px": 4.0,
+          "largest_dense_core_component": 6.875,
+          "longest_gap_px": 125.0,
+          "background_far_fraction": 3.433922828356962e-05,
+          "deep_interior_fraction": 0.48966739536674175,
+          "analytic_diameter_p95_max": 2.5544262481926876
+        }
+      },
+      "fusion": {
+        "status": "FUSED_CANDIDATE",
+        "raw_nodes": 41671,
+        "raw_edges": 37129,
+        "near_reciprocal_pairs": 58410,
+        "track_accepted_pairs": 24534,
+        "cluster_merges": 12813,
+        "multi_source_clusters": 5437,
+        "fused_nodes": 5244,
+        "fused_edges": 7189,
+        "duplicate_edges_removed": 7041,
+        "rejected_raw_edges": 22899,
+        "displacement_p95": 0.0067649023374542535,
+        "reprojection_max": 1.9404474981461832,
+        "rejection_counts": {
+          "tangent": 16857,
+          "boundary_class": 2387,
+          "proxy_displacement": 2802,
+          "epipolar": 3738,
+          "short_or_inconsistent_track": 8047,
+          "no_shared_support_rolling_or_distinct": 45,
+          "cluster_all_tangent": 1225,
+          "same_camera_collision": 3343,
+          "cluster_all_source_displacement": 456,
+          "cluster_all_source_reprojection": 8
+        },
+        "seconds": 78.80360627174377,
+        "method_hashes": {
+          "runtime.py": "167032eda189d6fadab73c343312c52dfd19ac2c4245de4e1ad392b6b999d593",
+          "core.py": "47c62589d605d9f38c916965108fb28c31194889b15d0d7e2989dadd50d79a13",
+          "cpu_native.py": "179c33a5179fa70326b45514d0d3bea9b34b70f35d0933c9045763a0806ea84e",
+          "mesh_tools.py": "3f25410dfea880022f7f92a2b62b13f07da87d61dcc781c356488b97484ff6ce",
+          "mesh_raster.cpp": "9f1bc54a7a6255f51728b4355f8b76961c6cd0875c92fcdc792dd63b3904bf6b",
+          "metrics.py": "dbcf6b67ee0fa510f549573925ca969094e8b7bd51813fcf5b16aaf2256eecd2",
+          "media_tools.py": "f141ed49d61de890ccfc1178c766127f805e2b7424cea7a2aec8ea45c980d741",
+          "pipeline.py": "9101f533fbbeb66ee44fce4bc157c4a1759c4a30e6be148b7d9a26197e5dcf31"
+        }
+      },
+      "edge_audit": {
+        "source_camera_histogram": {
+          "3": 959,
+          "4": 429,
+          "2": 2353,
+          "5": 185,
+          "7": 36,
+          "1": 3130,
+          "6": 80,
+          "8": 12,
+          "9": 3,
+          "11": 1,
+          "10": 1
+        },
+        "direction_change_deg_quantiles": [
+          18.98239440909456,
+          53.56388814944503,
+          71.7425606120444,
+          109.06103111722489
+        ],
+        "raw_source_direction_reversals": 26,
+        "length_ratio_quantiles": [
+          1.0295380353927612,
+          1.694614380598068,
+          2.2168648910522446,
+          4.024322032928467
+        ],
+        "final_length_wpp_quantiles": [
+          2.33809564793397,
+          4.546223980857307,
+          5.9728028500198675,
+          8.919565769389983
+        ],
+        "over_initial_6wpp_limit": 69,
+        "source_endpoint_reprojection_max": 1.8729008468655537,
+        "no_new_cross_chain_edges": true
+      },
+      "source_track": {
+        "max_reprojection_px": 1.9404474981461832,
+        "max_displacement_wpp": 2.4997216494576406,
+        "all_sources_checked": true,
+        "accepted_pair_count": 24534,
+        "local_direction_sign_changes": 40,
+        "accepted_pairs_with_fewer_than3_final_local_votes": 1005,
+        "strict_monotonic_certification": false
+      },
+      "profile_count": 116,
+      "profile_quantiles": [
+        2.125,
+        3.21875,
+        5.887499999999996,
+        11.5
+      ],
+      "worst_profile_camera": "r_89",
+      "worst_profile_count": 6,
+      "worst_profile_p95": 9.15625,
+      "video_decode_frames": 33
+    },
+    "chair": {
+      "verdict": "PARTIAL_THIN_FIXED_CURVES / NO_GO_COMPLETE_CONTOUR",
+      "asset": {
+        "single": {
+          "geometry_sha256": "cefdf9f0aa7b9c975f02a406c1aba10050c668c29b4c40df743398d440f5174e",
+          "paths": 89,
+          "short_paths": 23,
+          "vertices": 12672,
+          "faces": 22176,
+          "nodes": 912,
+          "edges": 792
+        },
+        "rawunion": {
+          "geometry_sha256": "96e737518934c4465b78739565af3ffb7649a46afad9f3778abafe100a18eba2",
+          "paths": 2237,
+          "short_paths": 681,
+          "vertices": 452560,
+          "faces": 791980,
+          "nodes": 31338,
+          "edges": 28285
+        },
+        "fused": {
+          "geometry_sha256": "5e193d5c58a8037c78831db8c6091a9e6fb9adcbd3ec5bf7883d05bed8c92bb2",
+          "paths": 3860,
+          "short_paths": 3598,
+          "vertices": 83984,
+          "faces": 146972,
+          "nodes": 4067,
+          "edges": 5249
+        }
+      },
+      "world_radius": 0.003542959861477035,
+      "metrics": {
+        "single": {
+          "coverage3": 0.32583024045776954,
+          "ink_over_foreground": 0.021377716783559948,
+          "foreground_blank_fraction": 0.9802828076254446,
+          "negative_space_fill_fraction": 0.004440726038852993,
+          "hole_fill_fraction": 0.20303376781699478,
+          "artifact_diameter_p95_px": 2.8284271247461903,
+          "largest_dense_core_component": 0.0,
+          "longest_gap_px": 582.5,
+          "background_far_fraction": 9.686168151879117e-05,
+          "deep_interior_fraction": 0.44620539138499665,
+          "analytic_diameter_p95_max": 2.7146010748775007
+        },
+        "rawunion": {
+          "coverage3": 0.9978509146059713,
+          "ink_over_foreground": 0.2907193104527034,
+          "foreground_blank_fraction": 0.7254889644309138,
+          "negative_space_fill_fraction": 0.061767463992888294,
+          "hole_fill_fraction": 0.43028602018472834,
+          "artifact_diameter_p95_px": 7.376738864866418,
+          "largest_dense_core_component": 498.375,
+          "longest_gap_px": 2.75,
+          "background_far_fraction": 0.001598683830456043,
+          "deep_interior_fraction": 0.5868018481707094,
+          "analytic_diameter_p95_max": 2.6983378693371325
+        },
+        "fused": {
+          "coverage3": 0.835333693608421,
+          "ink_over_foreground": 0.08844415344942028,
+          "foreground_blank_fraction": 0.9179231104151104,
+          "negative_space_fill_fraction": 0.024831082624765483,
+          "hole_fill_fraction": 0.06037309587293262,
+          "artifact_diameter_p95_px": 4.177050983124842,
+          "largest_dense_core_component": 7.25,
+          "longest_gap_px": 48.0,
+          "background_far_fraction": 0.0,
+          "deep_interior_fraction": 0.47511746847469744,
+          "analytic_diameter_p95_max": 2.705750466755651
+        }
+      },
+      "fusion": {
+        "status": "FUSED_CANDIDATE",
+        "raw_nodes": 31338,
+        "raw_edges": 28285,
+        "near_reciprocal_pairs": 39370,
+        "track_accepted_pairs": 16834,
+        "cluster_merges": 9247,
+        "multi_source_clusters": 4304,
+        "fused_nodes": 4067,
+        "fused_edges": 5249,
+        "duplicate_edges_removed": 4785,
+        "rejected_raw_edges": 18251,
+        "displacement_p95": 0.0070538107771426425,
+        "reprojection_max": 1.973084803892269,
+        "rejection_counts": {
+          "tangent": 10937,
+          "proxy_displacement": 2204,
+          "epipolar": 2340,
+          "short_or_inconsistent_track": 6184,
+          "boundary_class": 723,
+          "no_shared_support_rolling_or_distinct": 139,
+          "near_parallel": 9,
+          "cluster_all_tangent": 548,
+          "cluster_all_source_displacement": 405,
+          "same_camera_collision": 2248,
+          "cluster_all_source_reprojection": 14
+        },
+        "seconds": 52.5935697555542,
+        "method_hashes": {
+          "runtime.py": "167032eda189d6fadab73c343312c52dfd19ac2c4245de4e1ad392b6b999d593",
+          "core.py": "47c62589d605d9f38c916965108fb28c31194889b15d0d7e2989dadd50d79a13",
+          "cpu_native.py": "179c33a5179fa70326b45514d0d3bea9b34b70f35d0933c9045763a0806ea84e",
+          "mesh_tools.py": "3f25410dfea880022f7f92a2b62b13f07da87d61dcc781c356488b97484ff6ce",
+          "mesh_raster.cpp": "9f1bc54a7a6255f51728b4355f8b76961c6cd0875c92fcdc792dd63b3904bf6b",
+          "metrics.py": "dbcf6b67ee0fa510f549573925ca969094e8b7bd51813fcf5b16aaf2256eecd2",
+          "media_tools.py": "f141ed49d61de890ccfc1178c766127f805e2b7424cea7a2aec8ea45c980d741",
+          "pipeline.py": "9101f533fbbeb66ee44fce4bc157c4a1759c4a30e6be148b7d9a26197e5dcf31"
+        }
+      },
+      "edge_audit": {
+        "source_camera_histogram": {
+          "2": 1818,
+          "1": 2360,
+          "5": 144,
+          "3": 568,
+          "4": 283,
+          "6": 53,
+          "7": 20,
+          "8": 3
+        },
+        "direction_change_deg_quantiles": [
+          18.789724399267357,
+          52.86496860082868,
+          70.49087020976714,
+          107.54471337055496
+        ],
+        "raw_source_direction_reversals": 13,
+        "length_ratio_quantiles": [
+          1.0426077842712402,
+          1.7434138953685763,
+          2.3184920382499694,
+          4.429697036743164
+        ],
+        "final_length_wpp_quantiles": [
+          2.4662321869339636,
+          4.80512400345216,
+          6.1099729208202325,
+          8.342174902678778
+        ],
+        "over_initial_6wpp_limit": 60,
+        "source_endpoint_reprojection_max": 1.973084803892269,
+        "no_new_cross_chain_edges": true
+      },
+      "source_track": {
+        "max_reprojection_px": 1.973084803892269,
+        "max_displacement_wpp": 2.499773466165696,
+        "all_sources_checked": true,
+        "accepted_pair_count": 16834,
+        "local_direction_sign_changes": 51,
+        "accepted_pairs_with_fewer_than3_final_local_votes": 828,
+        "strict_monotonic_certification": false
+      },
+      "profile_count": 109,
+      "profile_quantiles": [
+        2.125,
+        3.125,
+        5.870000000000003,
+        10.625
+      ],
+      "worst_profile_camera": "r_30",
+      "worst_profile_count": 9,
+      "worst_profile_p95": 7.374999999999997,
+      "video_decode_frames": 33
+    }
+  },
+  "generated_utc": "2026-10-07T03:22:39Z"
+}

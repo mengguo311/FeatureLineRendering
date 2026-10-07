@@ -1,0 +1,40 @@
+{
+  "alpha": 0.5,
+  "sample_arc_px": 2,
+  "min_perimeter_px": 16,
+  "proxy": "all accepted alphaT conditional weighted median original kernel center camera-z; NOT surface depth",
+  "source_max_edge_wpp": 6,
+  "source_max_edge_diagonal": 0.025,
+  "matching": {
+    "world_distance_wpp": 2.5,
+    "abs_tangent_dot": 0.92,
+    "shared_normalized_mass": 0.1,
+    "epipolar_px": 1.0,
+    "source_reproject_px": 2.0,
+    "min_ray_angle_deg": 3.0,
+    "max_displacement_wpp": 2.5,
+    "local_track_min": 3,
+    "local_track_index_window": 4,
+    "distinct_camera_per_cluster": true,
+    "all_sources_rechecked": true
+  },
+  "fused_min_endpoint_views": 2,
+  "radius_wpp_candidates": [
+    0.75,
+    1.0,
+    1.25
+  ],
+  "dev_rule": "min absolute median analytic projected diameter - 2px; p95<=6; lower radius tie",
+  "visibility": "fixed actual tube self-zbuffer, xray relative to GS; no external occluder",
+  "internal_rgb": "NOT_IMPLEMENTED",
+  "resources": {
+    "cpu_threads": 2,
+    "root_min_GiB": 4,
+    "shared_git_min_GiB": 1.5,
+    "stage_max_GiB": 4,
+    "production_single_allocation_max_GiB": 1
+  },
+  "method_design_sha256": "56c3a8835073ce8991eca308e60bc3628783762b39436e3f802e0affbb07cdd0",
+  "input_freeze_sha256": "9f43b273d9e49bfbbe4fe094b0f577b179ea7a6c52796dd3e863ae2a8d698c91",
+  "utc": "2026-10-07T03:02:35Z"
+}
