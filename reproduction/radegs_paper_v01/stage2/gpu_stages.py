@@ -74,9 +74,14 @@ def smoke(config):
     run([sys.executable,str(worker),'--mode','baseline','--output',str(base)],env=env)
     run([sys.executable,str(worker),'--mode','variant','--output',str(variant)])
     run([sys.executable,str(worker),'--mode','compare','--baseline',str(base),'--variant',str(variant),'--output',str(comparison)])
+    extra=out/'independent_eq24.json'
+    extra_worker=Path(__file__).resolve().parent.parent/'gradient_fix_v01/validate_eq24.py'
+    run([sys.executable,str(extra_worker),'--output',str(extra)])
+    sweep=out/'eq24_eps_sweep.json'
+    run([sys.executable,str(extra_worker.with_name('probe_eq24.py')),'--output',str(sweep)])
     details=integration_smoke(config)
     path=out/'integration.json';atomic_json(path,details)
-    report(config,'smoke',[base,variant,comparison,path],details)
+    report(config,'smoke',[base,variant,comparison,extra,sweep,path],details)
 
 
 def train(config):
