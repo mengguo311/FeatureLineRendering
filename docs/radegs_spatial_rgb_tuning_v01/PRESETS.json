@@ -1,0 +1,224 @@
+{
+  "utc": "2026-10-14T05:57:47.884731+00:00",
+  "presets": [
+    {
+      "id": "A10",
+      "analysis": "native",
+      "detail_lambda": 1.0,
+      "threshold": 0.1,
+      "gain": 1.0,
+      "ink_sigma": 0.5,
+      "family": "threshold"
+    },
+    {
+      "id": "A15",
+      "analysis": "native",
+      "detail_lambda": 1.0,
+      "threshold": 0.15,
+      "gain": 1.0,
+      "ink_sigma": 0.5,
+      "family": "threshold"
+    },
+    {
+      "id": "A20",
+      "analysis": "native",
+      "detail_lambda": 1.0,
+      "threshold": 0.2,
+      "gain": 1.0,
+      "ink_sigma": 0.5,
+      "family": "threshold"
+    },
+    {
+      "id": "A30",
+      "analysis": "native",
+      "detail_lambda": 1.0,
+      "threshold": 0.3,
+      "gain": 1.0,
+      "ink_sigma": 0.5,
+      "family": "threshold"
+    },
+    {
+      "id": "A40",
+      "analysis": "native",
+      "detail_lambda": 1.0,
+      "threshold": 0.4,
+      "gain": 1.0,
+      "ink_sigma": 0.5,
+      "family": "threshold"
+    },
+    {
+      "id": "A50",
+      "analysis": "native",
+      "detail_lambda": 1.0,
+      "threshold": 0.5,
+      "gain": 1.0,
+      "ink_sigma": 0.5,
+      "family": "threshold"
+    },
+    {
+      "id": "B75",
+      "analysis": "native",
+      "detail_lambda": 0.75,
+      "threshold": 0.2,
+      "gain": 1.0,
+      "ink_sigma": 0.5,
+      "family": "branch_mix"
+    },
+    {
+      "id": "B50",
+      "analysis": "native",
+      "detail_lambda": 0.5,
+      "threshold": 0.2,
+      "gain": 1.0,
+      "ink_sigma": 0.5,
+      "family": "branch_mix"
+    },
+    {
+      "id": "B25",
+      "analysis": "native",
+      "detail_lambda": 0.25,
+      "threshold": 0.2,
+      "gain": 1.0,
+      "ink_sigma": 0.5,
+      "family": "branch_mix"
+    },
+    {
+      "id": "B00",
+      "analysis": "native",
+      "detail_lambda": 0.0,
+      "threshold": 0.2,
+      "gain": 1.0,
+      "ink_sigma": 0.5,
+      "family": "branch_mix"
+    },
+    {
+      "id": "M75T30",
+      "analysis": "native",
+      "detail_lambda": 0.75,
+      "threshold": 0.3,
+      "gain": 1.0,
+      "ink_sigma": 0.5,
+      "family": "combined"
+    },
+    {
+      "id": "M50T30",
+      "analysis": "native",
+      "detail_lambda": 0.5,
+      "threshold": 0.3,
+      "gain": 1.0,
+      "ink_sigma": 0.5,
+      "family": "combined"
+    },
+    {
+      "id": "C1U20",
+      "analysis": "medium",
+      "detail_lambda": 1.0,
+      "threshold": 0.2,
+      "gain": 1.0,
+      "ink_sigma": 0.5,
+      "family": "scales"
+    },
+    {
+      "id": "C1L50",
+      "analysis": "medium",
+      "detail_lambda": 0.5,
+      "threshold": 0.2,
+      "gain": 1.0,
+      "ink_sigma": 0.5,
+      "family": "scales"
+    },
+    {
+      "id": "C2U20",
+      "analysis": "coarse",
+      "detail_lambda": 1.0,
+      "threshold": 0.2,
+      "gain": 1.0,
+      "ink_sigma": 0.5,
+      "family": "scales"
+    },
+    {
+      "id": "C2L50",
+      "analysis": "coarse",
+      "detail_lambda": 0.5,
+      "threshold": 0.2,
+      "gain": 1.0,
+      "ink_sigma": 0.5,
+      "family": "scales"
+    }
+  ],
+  "analysis_configs": {
+    "native": {
+      "scales": [
+        0.7,
+        1.4,
+        2.8
+      ],
+      "tensor_sigma": 2.0,
+      "gradient_floor": 0.0007,
+      "response_scale": 0.035,
+      "profile_radius": 9,
+      "contrast_min": 0.025,
+      "plateau_max": 0.045,
+      "residual_max": 0.055,
+      "backtrack_max": 0.4,
+      "coherence_min": 0.22,
+      "weak": 0.075,
+      "strong": 0.22,
+      "ink_sigma": 0.5,
+      "temporal_mix": 0.3,
+      "temporal_delta": 0.12,
+      "flow_fb_max": 1.5,
+      "flow_photo_max": 0.08,
+      "control_delta": 0.08
+    },
+    "medium": {
+      "scales": [
+        1.0,
+        2.0,
+        4.0
+      ],
+      "tensor_sigma": 2.0,
+      "gradient_floor": 0.0007,
+      "response_scale": 0.035,
+      "profile_radius": 9,
+      "contrast_min": 0.025,
+      "plateau_max": 0.045,
+      "residual_max": 0.055,
+      "backtrack_max": 0.4,
+      "coherence_min": 0.22,
+      "weak": 0.075,
+      "strong": 0.22,
+      "ink_sigma": 0.5,
+      "temporal_mix": 0.3,
+      "temporal_delta": 0.12,
+      "flow_fb_max": 1.5,
+      "flow_photo_max": 0.08,
+      "control_delta": 0.08
+    },
+    "coarse": {
+      "scales": [
+        1.4,
+        2.8,
+        5.6
+      ],
+      "tensor_sigma": 2.0,
+      "gradient_floor": 0.0007,
+      "response_scale": 0.035,
+      "profile_radius": 9,
+      "contrast_min": 0.025,
+      "plateau_max": 0.045,
+      "residual_max": 0.055,
+      "backtrack_max": 0.4,
+      "coherence_min": 0.22,
+      "weak": 0.075,
+      "strong": 0.22,
+      "ink_sigma": 0.5,
+      "temporal_mix": 0.3,
+      "temporal_delta": 0.12,
+      "flow_fb_max": 1.5,
+      "flow_photo_max": 0.08,
+      "control_delta": 0.08
+    }
+  },
+  "expected_presets": 16
+}
