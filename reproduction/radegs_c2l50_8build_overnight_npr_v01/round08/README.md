@@ -1,0 +1,2 @@
+# Round 08 scalar-intensity quotient
+Run only after METHOD_FREEZE: `experiment.py --phase pilot`, then fit, review, reserved. New r08 only; original RGB and C8/source read-only. `verify.py --readonly --replay` checks all models, predictions, matches, exact r03 baseline, hashes and old worktrees. Use existing official_code_fix_v01/env/bin/python -B. No GPU/network/new models. No export of styled GS or labels as physical primitives. See output REPORT_ZH and METHOD_FREEZE_ZH. Do not rerun freeze or overwrite sealed units.
