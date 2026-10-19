@@ -33,6 +33,34 @@ def contributions(uv, z, cov, opacity, x, y):
     return np.asarray(ids, dtype=np.int32), np.asarray(weights, dtype=float)
 
 
+def color_reweight(weights, source_rgb, pixel_rgb, sigma):
+    """Color-conditioned alpha*T with unchanged per-pixel mass (diagnostic only)."""
+    if not np.isfinite(sigma) or sigma <= 0:
+        raise ValueError('sigma must be positive and finite')
+    weights = np.asarray(weights, dtype=float)
+    source_rgb = np.asarray(source_rgb, dtype=float)
+    pixel_rgb = np.asarray(pixel_rgb, dtype=float)
+    if source_rgb.shape != (len(weights), 3) or pixel_rgb.shape != (3,):
+        raise ValueError('RGB shape mismatch')
+    if (not np.isfinite(weights).all() or np.any(weights < 0)
+            or not np.isfinite(source_rgb).all() or not np.isfinite(pixel_rgb).all()):
+        raise ValueError('non-finite or negative color evidence')
+    if not len(weights) or not weights.sum():
+        return weights.copy()
+    distances = np.sum((source_rgb - pixel_rgb) ** 2, axis=1)
+    logits = -distances / (2 * sigma * sigma)
+    logits -= np.max(logits)
+    colored = weights * np.exp(logits)
+    total = colored.sum()
+    return colored * (weights.sum() / total) if total > 0 else weights.copy()
+
+
+def effective_sampling_weight(raw, count, reference_count):
+    if not np.isfinite(raw) or count <= 0 or reference_count <= 0:
+        raise ValueError('invalid sampling weight or count')
+    return raw * reference_count / count
+
+
 def sample_pixels(labels, unknown, count, seed=0):
     """Stratify supported parts; inverse-frequency weights preserve full-mask prevalence."""
     rng = np.random.default_rng(seed)
