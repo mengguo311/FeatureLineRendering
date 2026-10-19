@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from source_membership import contributions, aggregate, assign, sample_pixels
+from source_membership import contributions, aggregate, assign, sample_pixels, resolve_membership, shuffled_within_strata, winner_vote, replay_rgb, conflicting_views
 
 class SourceMembershipTests(unittest.TestCase):
     def test_full_order_and_transmittance_not_nearest_center(self):
@@ -37,5 +37,33 @@ class SourceMembershipTests(unittest.TestCase):
         self.assertEqual({int(labels[y,x]) for x,y,w in samples},{1,2,3})
         self.assertTrue(all(not unknown[y,x] for x,y,w in samples))
         self.assertAlmostEqual(sum(w for x,y,w in samples),6.)
+
+    def test_zero_exposure_stays_unobserved_and_view_count_is_arm_specific(self):
+        score=np.array([[0.,0.,0.],[.05,0,0],[.95,.05,0],[.95,.05,0],[.5,.5,0]])
+        exp=np.array([0.,.05,1.,1.,1.]);views=np.array([0,2,1,2,2])
+        ids,reason=resolve_membership(score,exp,views,min_exposure=.15,min_fraction=.8,min_views=2)
+        np.testing.assert_array_equal(ids,[0,0,0,1,0])
+        self.assertEqual(list(reason),['unobserved','low_mass','single_view','confident','mixed'])
+
+    def test_winner_keeps_same_observed_mass_not_unit_vote(self):
+        idx,m=winner_vote(np.array([3,5]),np.array([.15,.20]),4.0)
+        self.assertEqual(idx,5)
+        self.assertAlmostEqual(m,1.4)
+
+    def test_stratified_shuffle_retains_weighted_label_prior(self):
+        labels=np.array([1,1,2,2]); weights=np.array([2.,2.,.5,.5])
+        q=np.array([[.9,.1],[.8,.2],[.1,.9],[.2,.8]])
+        shuffled=shuffled_within_strata(q,labels,seed=4)
+        np.testing.assert_allclose((weights[:,None]*q).sum(0),(weights[:,None]*shuffled).sum(0))
+
+    def test_replayed_rgb_keeps_original_background_mass(self):
+        ids=np.array([0,1]);w=np.array([.5,.2]);cols=np.array([[.3,.4,.5],[.7,.8,.9]])
+        np.testing.assert_allclose(replay_rgb(ids,w,cols,np.ones(3)),[.59,.66,.73])
+
+    def test_conflicting_view_ids_stay_unknown(self):
+        first=np.array([[.9,.1,0],[.1,.9,0],[.8,.2,0]])
+        second=np.array([[.1,.9,0],[.1,.9,0],[.45,.55,0]])
+        out=conflicting_views(first,second,min_mass=.05,min_fraction=.6)
+        np.testing.assert_array_equal(out,[True,False,False])
 
 if __name__=='__main__':unittest.main()

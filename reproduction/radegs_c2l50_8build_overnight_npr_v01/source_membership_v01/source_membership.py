@@ -55,6 +55,39 @@ def sample_pixels(labels, unknown, count, seed=0):
     return out
 
 
+def shuffled_within_strata(q, labels, seed):
+    out=np.array(q,copy=True)
+    rng=np.random.default_rng(seed)
+    for label in np.unique(labels):
+        indices=np.flatnonzero(labels==label)
+        out[indices]=q[rng.permutation(indices)]
+    return out
+
+
+def winner_vote(ids, weights, sampling_weight):
+    k=int(np.argmax(weights))
+    return int(ids[k]), float(weights.sum()*sampling_weight)
+
+
+def replay_rgb(ids, weights, all_colors, background):
+    return (weights[:,None]*all_colors[ids]).sum(axis=0)+(1-weights.sum())*np.asarray(background)
+
+
+def resolve_membership(score, exposure, distinct_views, min_exposure, min_fraction, min_views):
+    out,reason=assign(score,exposure,min_exposure,min_fraction)
+    reason[(exposure>0)&(exposure<min_exposure)]='low_mass'
+    insufficient=(exposure>=min_exposure)&(distinct_views<min_views)
+    out[insufficient]=0;reason[insufficient]='single_view'
+    return out,reason
+
+
+def conflicting_views(first, second, min_mass, min_fraction):
+    mass1,mass2=first.sum(axis=1),second.sum(axis=1)
+    p1=np.divide(first.max(axis=1),mass1,out=np.zeros_like(mass1),where=mass1>0)
+    p2=np.divide(second.max(axis=1),mass2,out=np.zeros_like(mass2),where=mass2>0)
+    return (mass1>=min_mass)&(mass2>=min_mass)&(p1>=min_fraction)&(p2>=min_fraction)&(first.argmax(axis=1)!=second.argmax(axis=1))
+
+
 def aggregate(n, observations, classes):
     score = np.zeros((n, classes), dtype=float)
     exposure = np.zeros(n, dtype=float)
