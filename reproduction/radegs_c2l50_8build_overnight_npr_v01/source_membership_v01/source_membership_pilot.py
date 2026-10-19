@@ -75,7 +75,7 @@ def main():
         ids0=np.flatnonzero(valid);v_uv,v_z,v_cov,v_op=uv[valid],z[valid],cov[valid],a['opacity'][valid]
         samples=sample_pixels(labels,unknown,cfg['fit_samples_per_view'] if v in cfg['fit_views'] else cfg['reserved_samples_per_view'],cfg['sampler_seed']+vi)
         q_values=np.array([prob[y,x] for x,y,_ in samples]); sample_labels=np.array([labels[y,x] for x,y,_ in samples]); q_shuffled=shuffled_within_strata(q_values,sample_labels,cfg['sampler_seed']+100+vi)
-        visited=np.zeros(n,dtype=bool);winner_seen=np.zeros(n,dtype=bool);vscore=np.zeros((n,3));vexp=np.zeros(n)
+        visited=np.zeros(n,dtype=bool);winner_seen=np.zeros(n,dtype=bool);vscore=np.zeros((n,3));vwinner=np.zeros((n,3));vshuffle=np.zeros((n,3));vexp=np.zeros(n)
         all_ids=[];all_weights=[];all_xy=[];mass_errors=[];rgb_errors=[];source_colors=colors(a,c)
         for si,(x,y,sample_w) in enumerate(samples):
             local,w=contributions(v_uv,v_z,v_cov,v_op,x,y)
@@ -90,17 +90,17 @@ def main():
                 np.add.at(exposure,ids,val);np.add.at(vexp,ids,val)
                 for j in range(3):
                     np.add.at(score[:,j],ids,val*q[j]);np.add.at(vscore[:,j],ids,val*q[j])
-                    np.add.at(shuffled[:,j],ids,val*q_shuffled[si,j])
+                    np.add.at(shuffled[:,j],ids,val*q_shuffled[si,j]);np.add.at(vshuffle[:,j],ids,val*q_shuffled[si,j])
                 if len(w):
                     winner,mass=winner_vote(ids,w,sample_w)
-                    baseline[winner,:]+=mass*q
+                    baseline[winner,:]+=mass*q;vwinner[winner,:]+=mass*q
                     if w[np.argmax(w)]>=cfg['pixel_w_min_for_view_presence']: winner_seen[winner]=True
                 visited[ids[w>=cfg['pixel_w_min_for_view_presence']]]=True
             else:
                 all_ids.append(ids.astype(np.int32));all_weights.append(w.astype(np.float32));all_xy.append((x,y))
         if v in cfg['fit_views']:
             vcount+=visited.astype(np.uint8);baseline_views+=winner_seen.astype(np.uint8)
-            np.savez_compressed(stage/(v+'_build_samples.npz'),xy=np.array([(x,y) for x,y,_ in samples],dtype=np.int32),sampling_weight=np.array([w for x,y,w in samples]),label=sample_labels,score=vscore,exposure=vexp,visited=visited,winner_seen=winner_seen)
+            np.savez_compressed(stage/(v+'_build_samples.npz'),xy=np.array([(x,y) for x,y,_ in samples],dtype=np.int32),sampling_weight=np.array([w for x,y,w in samples]),label=sample_labels,score=vscore,winner_score=vwinner,shuffled_score=vshuffle,exposure=vexp,visited=visited,winner_seen=winner_seen)
         maxerr=max(mass_errors);rgb_err=max(rgb_errors)
         assert maxerr<=gate['sample_mass_max_error'] and rgb_err<=gate['sample_rgb_max_error'],('sample calibration',v,maxerr,rgb_err)
         audit['views'][v]=dict(rgb_mae=mae,alpha_mae=am,subject_rgb_mae=smae,subject_alpha_mae=sam,sample_mass_max_error=maxerr,sample_rgb_max_error=rgb_err,label_sha256=digest(label_path),input_sha256=digest(input_path),samples=len(samples),valid_gaussians=int(valid.sum()),seconds=round(time.monotonic()-start,2))
@@ -111,12 +111,13 @@ def main():
         outputs[v]=(native_rgb,labels,unknown,c)
         write_json(stage/'INPUT_AUDIT.json',audit)
     params=dict(min_exposure=cfg['min_exposure'],min_fraction=cfg['min_label_fraction'],min_views=cfg['min_distinct_fit_views'])
+    per_view=[np.load(stage/(v+'_build_samples.npz')) for v in cfg['fit_views']]
     result,reason=resolve_membership(score,exposure,vcount,**params)
-    build_scores=[np.load(stage/(v+'_build_samples.npz'))['score'] for v in cfg['fit_views']]
-    conflict=conflicting_views(build_scores[0],build_scores[1],cfg['view_conflict_min_mass'],cfg['view_conflict_min_fraction'])
-    result[conflict]=0;reason[conflict]='view_conflict'
     control,creason=resolve_membership(baseline,baseline.sum(1),baseline_views,**params)
     null,nreason=resolve_membership(shuffled,shuffled.sum(1),vcount,**params)
+    for arm,key,part,reasons in (('alphaT','score',result,reason),('winner','winner_score',control,creason),('shuffled','shuffled_score',null,nreason)):
+        conflict=conflicting_views(per_view[0][key],per_view[1][key],cfg['view_conflict_min_mass'],cfg['view_conflict_min_fraction'])
+        part[conflict]=0;reasons[conflict]='view_conflict'
     np.savez_compressed(stage/'SOURCE_MEMBERSHIP.npz',source_index=np.arange(n,dtype=np.int32),membership_score=score,exposure=exposure,distinct_fit_views=vcount,part_id=result,reason=reason,baseline_part_id=control,baseline_distinct_fit_views=baseline_views,shuffled_part_id=null)
     summary=dict(status='DIAGNOSTIC_ONLY_NOT_CERTIFIED',original_source_count=n,part_counts={str(i):int(np.sum(result==i)) for i in range(4)},baseline_counts={str(i):int(np.sum(control==i)) for i in range(4)},null_counts={str(i):int(np.sum(null==i)) for i in range(4)},reasons={k:int(np.sum(reason==k)) for k in np.unique(reason)},eligible_definition='ONLY sampled pixels with known r04 pseudo-label; unknown footprint not tested',reserved={})
     pal=np.array([[.55,.55,.55],[.05,.75,.95],[.98,.35,.14],[.40,.80,.20]])

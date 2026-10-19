@@ -105,7 +105,7 @@ def aggregate(n, observations, classes):
 
 def assign(score, exposure, min_exposure=.05, min_fraction=.8):
     result = np.zeros(len(exposure), dtype=np.uint8)
-    reason = np.full(len(exposure), 'unobserved', dtype='<U12')
+    reason = np.full(len(exposure), 'unobserved', dtype='<U20')
     enough = exposure >= min_exposure
     reason[enough] = 'mixed'
     fraction = np.divide(score.max(axis=1), exposure, out=np.zeros_like(exposure), where=exposure > 0)

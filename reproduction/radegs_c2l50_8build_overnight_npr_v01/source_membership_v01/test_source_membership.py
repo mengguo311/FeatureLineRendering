@@ -66,4 +66,9 @@ class SourceMembershipTests(unittest.TestCase):
         out=conflicting_views(first,second,min_mass=.05,min_fraction=.6)
         np.testing.assert_array_equal(out,[True,False,False])
 
+    def test_conflict_reason_is_not_truncated(self):
+        _,reason=resolve_membership(np.array([[1.,0.,0]]),np.array([1.]),np.array([2]),.15,.8,2)
+        reason[0]='view_conflict'
+        self.assertEqual(reason[0],'view_conflict')
+
 if __name__=='__main__':unittest.main()
