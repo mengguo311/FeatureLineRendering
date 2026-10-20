@@ -1,0 +1,48 @@
+{
+  "id": "round_004_frozen_missing_support_stage_attribution",
+  "state": "FROZEN_BEFORE_STAGE_EVALUATION",
+  "scope": "Only round_003 Astra NEXT. Supplementary post-hoc P0 stage attribution, no renderer repair, no new scientific effectiveness claim.",
+  "outline_sections": ["3.3", "5.8", "9.5", "10", "14.3"],
+  "inputs": {
+    "round003": ["PROTOCOL.json", "ASSET_LOCK.json", "SEAL.json", "MISSING_SUPPORT_SAMPLES.json", "samples.npz", "raw/", "frames/"],
+    "round002": ["assets/lamp_mesh.npz", "strokes/mixed.npz", "camera_trajectories.json"],
+    "source": "Inherited core.py and temporal_audit.py remain byte-identical. Hash-lock new tracer and tests before stage evaluation. Verify prior seal."
+  },
+  "selection": {
+    "cases": "ALL 61 entries, all 14 frames and all 3 stable IDs in MISSING_SUPPORT_SAMPLES.json; assert exact key set.",
+    "controls": "For each case choose the supported sample from the SAME stroke ID and SAME frame with minimum absolute global sample-index difference. Candidate must have original eligible_geometry=true, ambiguity=false, distance[0]<=1.5. Ties choose lower global index. Reuse allowed and reported; empty candidate set remains an explicit no_control record. No alternative control search.",
+    "denominators": "Retain 61 paired rows even if controls repeat; also report unique (trajectory,frame,sample) control count, per-ID and per-frame counts, original 54687 samples/frame and inherited coverage. This selection conditions on failures and is not a new population performance estimate."
+  },
+  "fixed_controls": {
+    "resolution": [512, 512], "supersample": 2, "screen_width_px": 1,
+    "depth_tolerance_world": 0.006, "boundary_band_px": 2,
+    "support_radius_px": 1.5, "ink_threshold": 0.04,
+    "geometry_labels_directions": "Original procedural GT mesh, manual part IDs and direction rules; unchanged paths and cameras; no training, generation, LOD or style edits."
+  },
+  "stage_trace": {
+    "analytic": "Recompute independent continuous first hit at exact sample projection; retain original eligibility, boundary and ambiguity values. For dense renderer points retain first-hit depth/part at exact and rounded supersample rays.",
+    "mesh_z_test": "Trace actual core.dense_path points, projection, rounded supersample pixel, optical z, mesh depth at that pixel, foreground ID, signed z-minus-depth, and the exact original visible_points decision. Retain all points for each affected ID/frame, not only nearest witnesses.",
+    "exact_mesh": "Independently ray-intersect frozen triangles at exact dense-point projected coordinates. This only diagnoses point-vs-rounded-pixel depth correspondence; never supplies a replacement render depth. Report own-part occlusion and other-part occlusion separately; numerical intersection tolerance 1e-9, diagnostic only.",
+    "raster": "Retain per-ID arrays for unrounded dense positions, rounded pre-z deposition, accepted same-ID deposition, maximum-filter width, foreground clip, uint8 quantization and LANCZOS output. Distances at supersample stages are in output-pixel units via division by 2, preserving inherited coordinate convention. Record nearest support distances and counts within unchanged 1.5px radius at every stage.",
+    "identity": "Retain isolated layer >.04, combined hatch >.04, nonzero-layer count and final count==1 support. Reproduce original identified pixels/distances and compare all affected complete frames byte-for-byte.",
+    "final_composite": "For each affected ID/frame, recomposite with that ID omitted using the identical max-ink, width, foreground, quantization, LANCZOS and structure/contour overwrite order. Record exact leave-one-out pixel changes for hatch and full image separately, both nonzero and >.04, within the same radius. This causal influence diagnostic is distinct from isolated support and is not a replacement visibility metric."
+  },
+  "attribution": {
+    "ordered_labels": ["analytic_visibility_mismatch", "dense_sampling_support_absent", "rounded_deposition_support_absent", "mesh_z_test_local_rejection", "width_or_foreground_clip_loss", "quantization_or_LANCZOS_support_loss", "combined_hatch_threshold_loss", "identity_filter_loss", "supported", "unknown_or_mixed"],
+    "rule": "For a frozen missing case, report the earliest stage whose local support changes from present to absent, together with all later stage values. Call it the observed stage of loss, not automatically a renderer bug. If stages recover and fail again, retain all transitions and label mixed when a single explanation is unsupported. Explicitly distinguish geometric occlusion, rounded-pixel depth disagreement and near-threshold/AA behavior using recorded witnesses; do not force a single cause.",
+    "nonclaims": "No tolerance tuning, no renderer fix, no improvement of P1/H1, no new general temporal stability or reconstruction claim. Dense samples and support pixels are not subpixel centerlines; leave-one-out influence is not human discernibility."
+  },
+  "tests": {
+    "toy_occlusion": "Known front/back planar surfaces: exact ray and actual rounded z-test reject rear points; a front point deposits. Validate geometry-stage attribution without lamp data.",
+    "toy_overlap": "Two identical same-pixel ink strokes: each isolated layer has support, identity support is removed, equal-ink omission has zero final influence. Unequal-ink omission has nonzero influence for dominant layer.",
+    "toy_stage_loss": "Synthetic arrays distinguish z rejection, quantization loss and ID-filter loss; explicit empty support handling. RED uses deliberately broken classifier, not a claim that the inherited renderer failed.",
+    "regression": "Unchanged inherited temporal regression passes; new full-canvas stages match inherited layer_crop and instrumented_render on all affected frames; exact same-ID support distances reproduced for cases and controls."
+  },
+  "go_no_go": {
+    "go": "61 cases plus deterministic controls fully traced, all 14 images and hatch/count outputs match prior bytes, all original selected distances match, toy checks pass, no omitted or falsely classified cases. Unknown/mixed is permitted but cannot support repair recommendation.",
+    "no_go": "Any identity/replay mismatch or incomplete trace is engineering-invalid. Ambiguous cause means stop expansion and retain unknown, never relax criteria."
+  },
+  "resources": {"cpu_affinity": [0, 1], "threads_max": 2, "GPU": false, "max_invocation_seconds": 600, "round_deadline_jst": "2026-10-21T05:24:18.844098+09:00", "root_floor_GiB": 1, "hdd_floor_GiB": 10, "task_output_cap_GiB": 12},
+  "outputs": ["STATUS.json", "NEXT.json", "SELECTION.json", "raw stage NPZ", "ATTRIBUTION.json", "metrics.json", "full-view contact sheet", "stage contact sheets", "Chinese report", "execution receipts", "SHA256 manifest and seal"],
+  "freeze": "Protocol and toy tests committed before tests/evaluation; implementation and input/source hash lock committed before lamp stage evaluation. Any implementation failure retained and explicitly amended."
+}
