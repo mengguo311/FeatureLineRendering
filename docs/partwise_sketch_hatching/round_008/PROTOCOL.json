@@ -1,0 +1,83 @@
+{
+  "round": "round_008",
+  "authority": "Only round007 Astra NEXT; outline 3.2,5.6,5.8,9.4,14.3",
+  "hypothesis": "A mesh-only barycentric attachment adapter rejects invalid declared segments before the unchanged renderer and preserves valid original objects and all exposed outputs.",
+  "fixtures_sha256": "5b1ca0d9ccde1756e1f520d9e1a355d5c9bb8b3ce59a052831646bf6c0bd3c35",
+  "acceptance": {
+    "cases": 30,
+    "valid": 8,
+    "invalid": 22,
+    "split": "Independent frozen diagnostic package; development fixtures use different geometry; prior12+38+20 are exposed regression only",
+    "no_statistical_claim": true
+  },
+  "adapter_contract": {
+    "inputs": [
+      "mesh vertices and integer face topology",
+      "explicit unique integer owner face IDs",
+      "one integer face ID per supplied straight segment",
+      "original finite 3D path waypoints"
+    ],
+    "returns": "Original mesh/path/owner/segment objects unchanged; diagnostics may contain barycentrics and residuals. No projection or owner expansion.",
+    "epsilon_world": 1e-09,
+    "barycentric_epsilon": 1e-09,
+    "degeneracy_relative_cross_over_longest_edge_squared": 1e-12,
+    "degeneracy_min_edge_world": 1e-12,
+    "checks": [
+      "finite well-shaped mesh and path",
+      "all triangles finite nondegenerate; face indices valid",
+      "cached tri if supplied must exactly equal vertices[faces]",
+      "strict integer IDs; segment faces in explicit owner list",
+      "consecutive different faces share exactly two actual mesh vertex IDs",
+      "transition waypoint on that finite shared edge",
+      "each endpoint plane residual <=1e-9 world and barycentrics within [-1e-9,1+1e-9]"
+    ],
+    "scope_limit": "Checks transitions used by path; no global mesh manifold certification or automatic owner discovery; tolerance is fixed-unit fixture engineering policy"
+  },
+  "candidate_source_sha256": "7ecb2e9f87e1a2fc201bfa6d691b96d3706b7e9c461bb198047cf49bf10feb96",
+  "fixed_rendering": "Round007 unchanged .006 depth,1px width,2x supersample,.45 dense step,.8 ink,np.rint,size2 stencil,uint8 then LANCZOS; no new visibility evaluation on rotated fixtures",
+  "independent_truth": "Round007 analytic plane/XY halfspace validator in canonical coordinates after inverse known rigid transform; input identity/topology invalid cases have explicit construction truth. Adapter never receives analytic parameters or oracle depths.",
+  "go_no_go": {
+    "go": [
+      "All8 valid cases accepted with byte identity and same Python object references",
+      "All22 invalid cases reject intended error before render callback; no mutation",
+      "Independent analytic validator accepts all valid geometry and rejects geometric invalid controls where applicable",
+      "Round007559 and round0061634 and round005860 arrays and metrics exact",
+      "Primary candidate render after adapter exact on12 prior cases; all inherited tests green"
+    ],
+    "no_go": "Any false acceptance/rejection, wrong intended reason, silent mutation/projection/owner expansion or replay difference: preserve evidence, stop promotion, no acceptance tuning"
+  },
+  "resources": {
+    "cpu_affinity": [
+      0,
+      1
+    ],
+    "threads_max": 2,
+    "GPU": false,
+    "serial_compute": true,
+    "ordinary_seconds_max": 600,
+    "deadline_jst": "2026-10-21T06:16:49.448806+09:00",
+    "root_free_min_bytes": 1073741824,
+    "hdd_free_min_bytes": 10737418240,
+    "output_cap_bytes": 12884901888,
+    "downloads_bytes": 0
+  },
+  "outputs": [
+    "raw per-case inputs/results",
+    "full-view contact sheet of every new fixture plus all prior12 render views",
+    "regression arrays/metrics receipts",
+    "Chinese report",
+    "STATUS/NEXT",
+    "SHA manifest/seal"
+  ],
+  "prohibited": [
+    "lamp integration/rerender",
+    "H2",
+    "GPU/training",
+    "projection repair",
+    "owner expansion/nearest-sheet substitution",
+    "parameter sweep",
+    "historical artifact modification",
+    "orchestration edit",
+    "push/merge"
+  ]
+}
