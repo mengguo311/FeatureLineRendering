@@ -1,29 +1,36 @@
 {
   "stage": "gaer_c2l50_8build_part_prior_feasibility_v03",
-  "status": "PREFLIGHT_BLOCKED_GPU_EXCLUSIVE_GATE",
-  "snapshot_jst": "2026-10-20 03:13:11 JST",
+  "snapshot_jst": "2026-10-20 14:33:06 JST",
+  "status": "CPU_PARTFIELD_FEATURES_AND_EXPLORATORY_CLUSTERS_ONLY",
   "branch": "gaer-c2l50-8build-part-prior-feasibility-v03",
-  "base_commit": "1db93f717f86b0f99d2d5d35d34d1775305dcb00",
   "source_ply_sha256": "9afacac137474a50c5db52e41d2f1656b1e5f22ee5b6804e7e819697679cebac",
   "source_count": 284835,
-  "source_ply_registry_sha256_match": true,
-  "source_xyz_finite": true,
-  "source_field_count": 62,
-  "astrareview": {
-    "model": "gpt-6-astra",
-    "effort": "ultra",
-    "session": "01a1542d-c61f-7a30-9735-2c81fde86bc0",
-    "read_only_sandbox_local_read": "BLOCKED_bwrap_loopback",
-    "remote_review_sha256": "272b22fc183ccfaba29e96de5e943382d686f42b3cddf18ff4a21d1ccae808cf"
+  "source_index_convention": "original PLY row number; no explicit source_index property",
+  "official_partfield_commit": "373025dbd283bb44cc4a6dc78c99994dbc91de32",
+  "partfield_checkpoint_sha256": "463efc8a3afd3913142aa025e0125c00f16ef452b8de6a132ebe32bbe7877ee4",
+  "cpu_inference": {
+    "gpu_visible": false,
+    "cpu_threads": 2,
+    "encoder_source_subset_rows": 8192,
+    "query_original_rows": 284835,
+    "feature_shape": [284835, 448],
+    "feature_sha256": "78b6c984898545aaf6a7b38a599e3e873eddce6c5cced14c8c6b7e6107cc0f75",
+    "feature_manifest": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/cpu_probe_v03/full_manifest.json",
+    "difference_from_official_full_cloud": "The encoder receives 8192 deterministic original centers, while queries cover all original centers in row order. This is a CPU adaptation, not an official full-cloud result."
   },
-  "gpu_process_counts_by_index": {"0": 26, "1": 26},
-  "gpu_permission": "only one GPU completely free of other process contexts; if busy pause and notify user; no waiter or queue",
-  "partfield_inference_executed": false,
+  "exploratory_kmeans_k3": {
+    "cluster_counts": [54774, 192732, 37329],
+    "labels_sha256": "afdf723cbd781bd40e034454aca1fe7e98b131b2b9e32cfc47c608c6a9ce8248",
+    "labels_path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/cpu_probe_v03/k3_labels.npy",
+    "cluster_2_all_z_below": -0.47233104705810547,
+    "status": "SCREENING_ONLY_NOT_SEMANTIC_PARTS"
+  },
+  "last_gpu_context_counts_by_index": {"0": 26, "1": 26},
+  "gpu_authorization": "The prior permission expired at 08:00 JST; no GPU run started in this CPU workaround.",
   "saga_training_executed": false,
-  "new_source_index_labels": false,
-  "new_edit_renders": false,
-  "result": "No new part-classification or editing feasibility result. This is an engineering/resource gate, not a scientific NO-GO.",
-  "historically_exposed_reserved_views": ["test_r_14", "test_r_79"],
+  "semantic_pot_trunk_canopy_labels_verified": false,
+  "original_gaussian_edit_renders_verified": false,
   "source_asset_changed": false,
-  "old_v02_worktree_changed": false
+  "old_v02_worktree_changed": false,
+  "result": "CPU PartField features and unsupervised cluster screening exist, but three physical parts and independent editing are NOT demonstrated."
 }
