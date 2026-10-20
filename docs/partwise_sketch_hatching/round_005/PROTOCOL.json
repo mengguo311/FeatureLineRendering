@@ -1,0 +1,174 @@
+{
+  "id": "round_005_independent_pixel_coverage_contract",
+  "state": "FROZEN_BEFORE_TOY_EVALUATION",
+  "authorization": "Only round_004 Astra NEXT; independent analytic slanted and overlapping plane correctness diagnostic. No lamp rerender or renderer modification.",
+  "outline_sections": [
+    "3.3",
+    "5.8",
+    "9.5",
+    "10",
+    "14.3"
+  ],
+  "evidence_class": "Analytic diagnostic GT; no RaDe-GS, reconstruction, automatic labels, temporal stability, P1 or H1 comparative claim.",
+  "inherited_failures": "Round004 matched-control NO_GO, eight null controls, eleven mixed cases, original validation outer143/child UNKNOWN all retained.",
+  "camera": {
+    "resolution": 64,
+    "supersample": 2,
+    "focal_output_px": 64.0,
+    "center_high_px": [
+      64.0,
+      64.0
+    ],
+    "R": "identity",
+    "t": [
+      0,
+      0,
+      0
+    ],
+    "eye": [
+      0,
+      0,
+      0
+    ],
+    "depth": "optical z"
+  },
+  "primitive": {
+    "source": "unchanged core.py functions finalize_mesh/project/raster_surface/dense_path/visible_points; no render(lamp) call",
+    "depth_tolerance_world": 0.006,
+    "screen_width_px": 1.0,
+    "high_width_filter_size": 2,
+    "filter": "scipy.ndimage.maximum_filter default origin=0 and mode=reflect; impulse must show offsets (0,0),(1,0),(0,1),(1,1)",
+    "dense_step_high_px": 0.45,
+    "ink": 0.8,
+    "order": [
+      "dense 3D segment",
+      "np.rint ties-to-even",
+      "point z <= rounded-site depth + 0.006",
+      "foreground gate",
+      "max ink deposits",
+      "maximum_filter size2",
+      "foreground clip",
+      "uint8(clip(ink,0,1)*255)",
+      "PIL LANCZOS resize 128 to64"
+    ]
+  },
+  "geometry": {
+    "plane_equation": "z = z0 + sx*x + sy*y in camera/world coordinates",
+    "rear_patch_output_bounds_xyxy": [
+      4,
+      4,
+      60,
+      60
+    ],
+    "front_patch_output_bounds_xyxy": [
+      16,
+      24,
+      48,
+      40
+    ],
+    "front_plane": [
+      2.0,
+      0.0,
+      0.0
+    ],
+    "stroke_owner": "rear plane ID1; front ID2",
+    "stroke_output": "vertical center x=32+phase, endpoints y=12+phase and52+phase; straight 3D segment on rear plane",
+    "phases_output_px": [
+      -0.375,
+      -0.125,
+      0.125,
+      0.375
+    ],
+    "scenes": [
+      {
+        "id": "flat",
+        "z0": 3.0,
+        "sx": 0.0,
+        "sy": 0.0,
+        "occluder": false
+      },
+      {
+        "id": "slant_pos",
+        "z0": 3.0,
+        "sx": 1.5,
+        "sy": 0.0,
+        "occluder": false
+      },
+      {
+        "id": "slant_neg",
+        "z0": 3.0,
+        "sx": -1.5,
+        "sy": 0.0,
+        "occluder": false
+      },
+      {
+        "id": "overlap_flat",
+        "z0": 3.0,
+        "sx": 0.0,
+        "sy": 0.0,
+        "occluder": true
+      },
+      {
+        "id": "overlap_slant",
+        "z0": 3.0,
+        "sx": 1.5,
+        "sy": 0.0,
+        "occluder": true
+      }
+    ],
+    "scene_count": 5,
+    "case_count": 20,
+    "all_frozen_cases_required": true,
+    "no_randomness": true
+  },
+  "oracle": {
+    "numerical_epsilon": 1e-09,
+    "raster_sample_coordinates": "High-resolution integer (x,y), exactly those used by core.raster_surface. Optical rays ((x-64)/128,(y-64)/128,1).",
+    "analytic_depth": "z0/(1-sx*ray_x-sy*ray_y), only positive rays within owning finite projected patch; independent of triangle z buffer",
+    "coverage": "Centered finite vertical screen rectangle, width2 high-res units (=1 output px), butt caps at projected endpoints; closed inequalities with numerical eps1e-9. This is point-sampled coverage, NOT continuous area coverage.",
+    "visibility": "Footprint AND valid owner-patch hit AND owner depth equals independent nearest scene depth to1e-9. Foreground ties absent by design.",
+    "matched_footprint_diagnostic": "Also form legacy pre-z deposits and their inherited width stencil; classify its sites by independent owner/scene depth. This secondary diagnostic separates inherited footprint differences from visibility; not a new geometric coverage truth.",
+    "validation": "Known coordinates/depth, negative depth/finite patch controls, exact triangle-ray checks, unchanged raster buffer, reverse face order equality; independently hand-computed closed-form control values.",
+    "point_attribution": "Record all dense points: xyz,uv,z,pixel,exact nearest depth/owner,rounded owner depth and scene depth/owner,zpass; report point-coordinate mismatch separately from legitimate rounded-site occlusion and unrounded visibility.",
+    "pixel_attribution": "Record pre-z candidate, accepted, width-added, oracle footprint, visible/hidden, corresponding independent plane depths. Report retained visible support and hidden ink leakage together; no count pooling conceals a phase."
+  },
+  "metrics": {
+    "primary_high": "Counts and ratio of expected visible ribbon sites with actual >0; false rejection; hidden ribbon ink; ALL actual ink on hidden owner surface including outside ribbon; extra visible footprint; missing despite matchable candidate; no minimum quality gate on unchanged renderer.",
+    "clear_controls": "flat points and visible ribbon interior must have nonzero output; overlap scenes points/sites y in[28,36] output are clearly hidden with depth gap>0.5 and must have zero accepted deposits/width ink. Every case has nonempty visible denominator; every overlap case has nonempty hidden and edge denominators.",
+    "edge_band_high": "Distance <=4 high-res units (=2 output px) from any front-patch edge or ribbon/owner-patch edge; report separate regions. For thin width1px all ribbon lies in ribbon-edge band: state this explicitly. Occlusion-edge band also reported separately so ribbon-edge exclusion never empties main metric.",
+    "AA": "Apply identical uint8->LANCZOS to actual and oracle; save both. Pixel output index j maps to high sample coordinate 2*j+0.5 under resize pixel centers (not 2*j). Report L1, retained reference ink min(actual,ref)/sum(ref), excess ink, and near/deep-occluder bands at these centers; AA tails are not prefilter physical leakage.",
+    "thresholds": "Primary ink>0 high; final counts >0 uint8 with sums also reported; no 0.04 support criterion/no threshold search.",
+    "coverage": "All20 cases and every phase separately; selected line/plane fixtures only, no object-population claim."
+  },
+  "go_no_go": {
+    "diagnostic_go": "All independent oracle and known positive/negative controls pass; unchanged primitive adapter agrees byte-for-byte with frozen stage operations; all20 cases complete with nonempty visible coverage; all8 overlap cases have explicit hidden/edge coverage; reproducible raw and metric results; historical seal unchanged. Renderer quality can fail while diagnostic GO. Only then may NEXT recommend separately frozen later primitive repair on independent fixtures.",
+    "no_go": "Unclear sample/coverage semantics, empty required denominator, failed known oracle/control, replay mismatch: retain evidence and stop renderer-change path; no altered phases/tolerance or lamp tuning."
+  },
+  "resources": {
+    "cpu_affinity": [
+      0,
+      1
+    ],
+    "threads_max": 2,
+    "GPU": false,
+    "max_invocation_seconds": 600,
+    "round_deadline_jst": "2026-10-21T05:40:41.301109+09:00",
+    "root_floor_bytes": 1073741824,
+    "hdd_floor_bytes": 10737418240,
+    "task_cap_bytes": 12884901888,
+    "downloads_bytes": 0
+  },
+  "freeze": "Commit protocol and tests before execution. Commit source SHA lock before evaluation; no changes to frozen sources/thresholds after opening20 cases. Retain any execution failure and explicit amendment.",
+  "outputs": [
+    "raw20 NPZ",
+    "per-case metrics",
+    "full-view20-case contact sheet",
+    "point/pixel/AA diagnostic figures",
+    "Chinese report",
+    "test/execution receipts",
+    "STATUS.json",
+    "NEXT.json",
+    "SHA256_MANIFEST.json",
+    "SEAL.json"
+  ]
+}
