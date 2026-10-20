@@ -1,0 +1,243 @@
+{
+  "round": "round_009",
+  "authority": "Only round008 Astra NEXT; outline 3.3,5.6,5.8,9.4-9.6,14.3",
+  "hypothesis": "Unchanged mesh attachment adapter and visibility candidate preserve matched ink at exact equal-depth dual hits on a noncoplanar shared edge, independent of owner/face submission order.",
+  "candidate_source_sha256": "7ecb2e9f87e1a2fc201bfa6d691b96d3706b7e9c461bb198047cf49bf10feb96",
+  "adapter_source_sha256": "bc7430d757c71ba11ee7b4550d5a8991f224f21a7bf2baf4bf5ecc390c45f8ed",
+  "camera": {
+    "resolution": 64,
+    "supersample": 2,
+    "focal_output_px": 32,
+    "center_high_px": [
+      64,
+      64
+    ],
+    "R": "identity",
+    "eye": [
+      0,
+      0,
+      0
+    ]
+  },
+  "geometry": {
+    "vertices": [
+      [
+        -2,
+        0,
+        4
+      ],
+      [
+        2,
+        0,
+        4
+      ],
+      [
+        0,
+        -2,
+        3
+      ],
+      [
+        0,
+        2,
+        3
+      ]
+    ],
+    "faces": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        0,
+        1,
+        3
+      ]
+    ],
+    "parts": [
+      1,
+      1
+    ],
+    "owners": [
+      0,
+      1
+    ],
+    "shared_edge": [
+      [
+        -2,
+        0,
+        4
+      ],
+      [
+        2,
+        0,
+        4
+      ]
+    ],
+    "analytic_faces": [
+      {
+        "z0": 4,
+        "sx": 0,
+        "sy": 0.5,
+        "xy": [
+          [
+            -2,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            -2
+          ]
+        ]
+      },
+      {
+        "z0": 4,
+        "sx": 0,
+        "sy": -0.5,
+        "xy": [
+          [
+            -2,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            0,
+            2
+          ]
+        ]
+      }
+    ]
+  },
+  "cases": [
+    {
+      "id": "crossing_exact_edge",
+      "path": [
+        [
+          -0.5,
+          -1,
+          3.5
+        ],
+        [
+          0,
+          0,
+          4
+        ],
+        [
+          0.5,
+          1,
+          3.5
+        ]
+      ],
+      "segment_faces": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "along_exact_edge",
+      "path": [
+        [
+          -1,
+          0,
+          4
+        ],
+        [
+          0,
+          0,
+          4
+        ],
+        [
+          1,
+          0,
+          4
+        ]
+      ],
+      "segment_faces": [
+        0,
+        1
+      ]
+    }
+  ],
+  "exact_ties": {
+    "high_row": 64,
+    "high_columns_inclusive": [
+      32,
+      96
+    ],
+    "count": 65,
+    "depth_world": 4,
+    "expected_mask_rule": "Only row64 x32..96; every ray hits both finite faces; includes both shared vertices",
+    "derivation": "y_ray=0 => z=4 for either plane. x_world=(u-64)*4/64=(u-64)/16. Finite shared edge -2<=x<=2 gives integer32<=u<=96. Binary-exact inputs.",
+    "strict_depth_equality": true,
+    "footprint_requirement": "At least one exact dual-hit site for each fixed path; no expected site-count tuning."
+  },
+  "primitive": {
+    "depth_tolerance_world": 0.006,
+    "screen_width_px": 1.0,
+    "high_width_filter_size": 2,
+    "dense_step_high_px": 0.45,
+    "ink": 0.8,
+    "deposition": "Unchanged dense_path,np.rint,maximum_filter default size2, uint8 then LANCZOS"
+  },
+  "oracle": {
+    "method": "Independent frozen plane equations and finite XY supporting halfspaces; no candidate hit data",
+    "depth_epsilon": 1e-09,
+    "matched_footprint": "Unchanged raw pre-visibility deposition reconstructed before candidate call; shared footprint is intentional",
+    "face_ID_policy": "At ties either incident face is valid; owner_face ID is not stable physical identity. Compare physical depth/gate/ink."
+  },
+  "go_no_go": {
+    "go": [
+      "Both attached paths and noncoplanar patch valid; immutable inputs",
+      "Independent dual-hit mask equals exactly65 prescribed integer sites; both depths exactly4 with zero gap; nonempty dual hits inside each raw footprint",
+      "Each candidate face alone hits65 exact z4 rays; joint owner coalesces with no exception; all footprint ties retained",
+      "Full scene and owner finite masks/depths agree within1e-9; high and final matched-reference outputs exact",
+      "Physical high/final outputs exact for original, reversed owners, reversed mesh face submission, both reversed; no face identity claim",
+      "Connected historical distinct-depth rejection retained, including analytic nonempty gap; run via unchanged mesh adapter as well",
+      "30 round008 cases/181 arrays and prior12+38+20 metrics/arrays exact; all52 inherited tests pass",
+      "Repeat new outputs/metrics exactly; mutation controls detect dropped tie, unequal depth, output corruption, order-dependent ink"
+    ],
+    "no_go": "Any failed control/gate: retain original outputs; stop promotion. No geometry/camera/phase/threshold adjustments after acceptance exposure."
+  },
+  "regressions": "All prior30+12+38+20 cases exposed only",
+  "resources": {
+    "cpu_affinity": [
+      0,
+      1
+    ],
+    "threads_max": 2,
+    "GPU": false,
+    "serial_compute": true,
+    "invocation_seconds_max": 600,
+    "deadline_jst": "2026-10-21T06:26:32.524860+09:00",
+    "root_free_min_bytes": 1073741824,
+    "hdd_free_min_bytes": 10737418240,
+    "output_cap_bytes": 12884901888,
+    "downloads_bytes": 0
+  },
+  "prohibited": [
+    "phase/threshold sweep",
+    "candidate or adapter changes",
+    "owner expansion or projection repair",
+    "lamp integration or rerender",
+    "centered footprint repair",
+    "H2",
+    "GPU/training",
+    "orchestration edits",
+    "push/merge"
+  ],
+  "outputs": [
+    "raw arrays and metrics",
+    "full-view contact sheet",
+    "prior replay receipt",
+    "Chinese report",
+    "STATUS/NEXT",
+    "source/config/output SHA manifest/seal"
+  ]
+}
