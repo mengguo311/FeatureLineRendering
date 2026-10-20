@@ -119,7 +119,7 @@ def sequence_report(records,arrays):
 def visuals(arrays):
     font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',14)
     sheet=Image.new('RGB',(1000,60+4*310),'white');draw=ImageDraw.Draw(sheet)
-    draw.text((12,8),'Fixed planar translation | Analytic GT | All 12 full views',font=font,fill='black');draw.text((12,30),'Left: candidate. Right: independent reference. 64x64 output enlarged 2x.',font=font,fill='black')
+    draw.text((12,8),'Fixed planar translation | Analytic GT | All 12 full views',font=font,fill='black');draw.text((12,30),'Left: candidate. Right: independent reference. 64x64 output enlarged with nearest-neighbor.',font=font,fill='black')
     frames=[]
     for i,a in enumerate(arrays):
         panel=Image.new('RGB',(528,286),'white');d=ImageDraw.Draw(panel)
