@@ -34,3 +34,4 @@
 - `transfer.py`、`compare.py`、`test_transfer.py`：CPU≤2、禁 CUDA；4 个新单测通过；v04 的 14 个原测试未在这组三模型上重新定义真值。所有九臂和 PartField 标签文件、counts、SHA 与三视角对比 PNG 已重新逐个读回验证。
 - 原始特征和每臂 `.npy` 在 HDD `.../c2l50_8build_cross_model_smoke_v05/{chair,lego,drums}/`。本报告同目录的每场景 `SUMMARY.json`、`PARAMETER_COMPARISON.json`、`*_original_vs_off.png`（三簇全对照）、`*_parameter_comparison.png`（选中簇与 XYZ/融合对照）是压缩后的可复核产物。图题/图例用英文。
 - `source_index` 没有被重训、重排、拆分或删核改变；源资产与 v03/v04 worktree 只读。新实验隔离在 `gaer-c2l50-8build-cross-model-smoke-v05`，无 GPU 占用／无 push／无 merge。
+- 本轮**没有获得事前 Astra ultra 审查**。事后尝试独立审阅时，当前远端会话的 `codex` 命令不可用（exit 127）；故不能把结果表述为经 Astra 放行。四项新单测、旧 Ficus 相机一致性检查和产物哈希读回不替代科学审查。
