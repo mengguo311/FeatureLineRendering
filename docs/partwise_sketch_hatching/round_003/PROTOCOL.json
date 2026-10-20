@@ -1,0 +1,45 @@
+{
+  "id": "round_003_identified_raster_temporal_audit",
+  "state": "FROZEN_BEFORE_LAMP_EVALUATION",
+  "scope": "Only round_002 Astra NEXT: independent analytic visibility plus identified actual raster output on the unchanged mixed lamp orbit/zoom. Engineering diagnostic, not H1 comparison or P1 promotion.",
+  "outline_sections": ["3.3", "5.8", "9.5", "10", "14.3"],
+  "prior_commit": "87744df82d808e5d82f7725bfc8910b7b4f49786",
+  "controls": {
+    "source_protocol": "docs/partwise_sketch_hatching/round_001/PROTOCOL.json",
+    "assets": "Read sealed round_002 lamp_mesh.npz, mixed.npz and camera_trajectories.json; hash-bind all four stroke snapshots. No regeneration or style edits.",
+    "frames": {"orbit": 36, "zoom": 24},
+    "style": "mixed (the original videos' style); parallel/cross/edit unchanged but not expanded into new temporal trajectories",
+    "render": "Same CPU raster algorithm, 512x512, 2x supersampling, 1px width, 0.006 world depth tolerance, fixed light/ink, no LOD",
+    "boundary_band_px": 2,
+    "resources": "CPU affinity [0,1], all thread caps 2, no GPU, no download, each evaluation invocation <600s; total round <=40min ending 05:01:46 JST"
+  },
+  "sampling": {
+    "spacing_world_max": 0.003,
+    "definition": "Per saved stroke, N=ceil(total polyline arc/0.003); fixed midpoint arc samples at (j+0.5)*L/N, each weighted L/N. Consecutive coincident anchors carry zero arc. Stable stroke index and sample index across all cameras.",
+    "reference": "Continuous lathe ray/profile intersections at each exact projected sample coordinate; no triangle depth or rendered visibility used for expected visibility. Separately rasterize analytic part labels at 512 for fixed 2px boundary exclusion.",
+    "eligibility": "Positive depth, in image, nearest analytic hit belongs to the stored part, absolute optical-z discrepancy <=0.006 world; nearest pixel is >2px from analytic silhouette/part boundary. All exclusion categories and sample/world-length denominators retained.",
+    "caveat": "Continuous analytic geometry shares the authored procedural recipe with mesh, not independently acquired reconstruction truth; proxy chord error and known rim outliers retained. Expected visibility depends on fixed proxy path points, not predicted depth."
+  },
+  "raster_identity": {
+    "method": "Instrument unchanged renderer to retain each stroke's actual depth-tested supersampled layer. Same maximum-filter width, foreground clip, quantization and LANCZOS downsampling. Local crops aligned to 2px grid with >=8 supersample pixels halo; regression checks exact equality to full-canvas layer. Reconstructed full images must byte-match all 60 original saved frames.",
+    "support": "Final quantized hatch pixels >0.04 AND own rendered layer >0.04. Count all nonzero per-stroke final layers for overlap; support pixel is identifiable only if exactly one stroke contributes. Sparse provenance and composite/fault hatch images saved.",
+    "ambiguity": "A sample is overlap-ambiguous if any pixel with >=2 nonzero stroke layers lies within Euclidean 1.5px of its expected projection. Freeze these baseline exclusions for all fault variants. Missing baseline raster output does not exclude a sample.",
+    "limitations": "Metrics are distances to identifiable raster support, not a subpixel skeleton or along-stroke phase correspondence. Final structure/contour ink is kept separate and cannot substitute for hatch support. Report overlap exclusions explicitly; no claim about excluded regions."
+  },
+  "metrics": {
+    "support_radius_px": 1.5,
+    "frame": "For every eligible unambiguous sample, nearest identifiable actual pixel of the SAME stroke. Empty support gives infinite distance and missing=true. Report weighted finite-distance mean/P95 and missing fraction separately; never omit missing from denominator.",
+    "pair": "35 consecutive orbit pairs and 23 zoom pairs (no wrap). Same world sample must be independently eligible and baseline-unambiguous in both frames. Report common length / total length / jointly visible length and stroke coverage. Report per-frame support offsets and norm(offset_next-offset_prev) where both detected; report denominator separately.",
+    "events": "On all common samples: detected->missing disappearance, missing->detected reappearance, both-missing, both-detected. Rates weighted by world arc. Raw per-sample arrays and per-frame/per-pair/per-part summaries retained.",
+    "statistical_scope": "One procedural object and seed, repeated frames not independent objects; descriptive statistics only. No frozen baseline quality pass threshold or 1024px threshold rescaling claim."
+  },
+  "faults": {
+    "drift": "On odd frame indices translate the actual final hatch raster and each stroke layer support by (+6,+6) output pixels with zero fill, no wrap; even frames unchanged. Same fixed denominators.",
+    "drop": "On indices index%3==1 omit stroke IDs whose SHA256 UTF-8 integer modulo 5 equals zero before compositing; others unchanged. Save actually recomposited fault hatch raster. Same fixed denominators.",
+    "go": "Toy algorithm regressions pass; original 60 full images byte-match; all coverage categories saved; on eligible odd-frame samples drift weighted finite-distance mean exceeds baseline by >1px; on eligible selected drop-frame samples missing fraction is exactly 1 and exceeds baseline by >0.5, with >=100 selected eligible samples; injected drop creates at least one disappearance and reappearance.",
+    "no_go": "Any gate failure is retained with unchanged thresholds. No tuning on these already exposed trajectories, no difficult-view omission, no H2/H3/LOD/dataset expansion."
+  },
+  "freeze": "Commit protocol/tests before implementation regression run. Commit implementation and hash lock before first lamp evaluation. RED uses deliberately faulty metric backends on toy arrays; baseline metrics remain unopened until lock.",
+  "outputs": ["STATUS.json", "NEXT.json", "raw per-frame NPZ", "metrics.json", "all-frame contact sheets", "fault examples", "REPORT_ZH.md", "source/config/output SHA manifest", "execution receipts"],
+  "not_measured": ["subpixel centerline jitter", "along-stroke tangential phase", "overlap-ambiguous regions", "real reconstruction", "automatic parts", "H1 superiority", "H2-H5", "human perceived flicker"]
+}
