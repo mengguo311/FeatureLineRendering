@@ -1,0 +1,11 @@
+{
+  "kind": "infrastructure_summary_serialization_only",
+  "original_protocol_commit": "da8c8387",
+  "original_asset_lock_commit": "ee654a05",
+  "failure_evidence": "round_001/FAILURE_INITIAL.json and runtime/run.log",
+  "failure": "numpy.bool_ gate value cannot be encoded by default json.dumps",
+  "preserved": ["original source and asset lock unchanged", "all 100 frame timings", "all 84 video input frames", "all three full decode records", "all four view metrics", "all original thresholds and camera/style settings"],
+  "authorized_recovery": "Read metrics_partial.json and camera_trajectories.json, assert completeness and frozen identities, compute the same frozen predicates using Python bool, write final metrics.json. No rerender, new hypothesis, tuning or discarded failure.",
+  "source": "experiments/partwise_sketch_hatching/recover_summary.py",
+  "scientific_effect": "None; receipt explicitly distinguishes failed original invocation and successful data-only finalization."
+}
