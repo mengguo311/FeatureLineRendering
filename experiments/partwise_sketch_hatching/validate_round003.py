@@ -9,6 +9,9 @@ from PIL import Image
 def main():
     r.verify_lock(); r.resource_check()
     assert not (r.R/'VALIDATION.json').exists()
+    lock = json.loads((r.D/'VALIDATION_LOCK.json').read_text())
+    for path, digest in lock['sources'].items(): assert r.sha(r.W/path) == digest, path
+    for path, digest in lock['evidence'].items(): assert r.sha(r.R/path) == digest, path
     samples = dict(np.load(r.R/'samples.npz'))
     w = samples['weight']; n = len(w); owner = samples['owner']
     selected_drop = samples['selected_drop'][owner]
