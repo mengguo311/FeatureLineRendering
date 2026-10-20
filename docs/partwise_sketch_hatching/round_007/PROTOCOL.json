@@ -1,0 +1,556 @@
+{
+  "round": "round_007",
+  "authority": "Only round006 Astra NEXT; outline 3.3,5.6,5.8,9.4-9.6,14.3",
+  "hypothesis": "Unchanged candidate is correct for an explicitly owned connected noncoplanar two-triangle patch with independently validated attached segments, under frozen matched footprint.",
+  "candidate_source_sha256": "7ecb2e9f87e1a2fc201bfa6d691b96d3706b7e9c461bb198047cf49bf10feb96",
+  "camera": {
+    "resolution": 64,
+    "supersample": 2,
+    "focal_output_px": 50,
+    "center_high_px": [
+      64,
+      64
+    ],
+    "phase_rule": "center_high_px += 2*phase in x and y",
+    "R": "identity",
+    "eye": [
+      0,
+      0,
+      0
+    ]
+  },
+  "primitive": {
+    "source": "unchanged core.py functions finalize_mesh/project/raster_surface/dense_path/visible_points; no render(lamp) call",
+    "depth_tolerance_world": 0.006,
+    "screen_width_px": 1.0,
+    "high_width_filter_size": 2,
+    "filter": "scipy.ndimage.maximum_filter default origin=0 and mode=reflect; impulse must show offsets (0,0),(1,0),(0,1),(1,1)",
+    "dense_step_high_px": 0.45,
+    "ink": 0.8,
+    "order": [
+      "dense 3D segment",
+      "np.rint ties-to-even",
+      "point z <= rounded-site depth + 0.006",
+      "foreground gate",
+      "max ink deposits",
+      "maximum_filter size2",
+      "foreground clip",
+      "uint8(clip(ink,0,1)*255)",
+      "PIL LANCZOS resize 128 to64"
+    ]
+  },
+  "geometry": {
+    "z0": 4.0,
+    "sx": 0.0,
+    "owner_xy_triangles": [
+      [
+        [
+          -1.5,
+          0
+        ],
+        [
+          1.5,
+          0
+        ],
+        [
+          0,
+          -1.5
+        ]
+      ],
+      [
+        [
+          -1.5,
+          0
+        ],
+        [
+          1.5,
+          0
+        ],
+        [
+          0,
+          1.5
+        ]
+      ]
+    ],
+    "shared_edge_xyz": [
+      [
+        -1.5,
+        0,
+        4
+      ],
+      [
+        1.5,
+        0,
+        4
+      ]
+    ],
+    "owner_faces": [
+      0,
+      1
+    ],
+    "part_ids": [
+      1,
+      1
+    ],
+    "front": {
+      "z0": 2.8,
+      "sx": 0,
+      "sy": 0,
+      "bounds_output_xyxy": [
+        12,
+        26,
+        58,
+        38
+      ],
+      "part_id": 2
+    },
+    "samepart_back": {
+      "z0": 6.0,
+      "sx": 0,
+      "sy": 0,
+      "bounds_output_xyxy": [
+        4,
+        4,
+        60,
+        60
+      ],
+      "part_id": 1,
+      "owner": false
+    }
+  },
+  "acceptance": {
+    "cases": [
+      {
+        "id": "ridge_clear_phase0",
+        "family": "ridge_clear",
+        "phase_output_px": -0.35,
+        "slopes_y": [
+          0.35,
+          -0.3
+        ],
+        "path_xy": [
+          [
+            0.12,
+            -1.2
+          ],
+          [
+            0.12,
+            0
+          ],
+          [
+            0.12,
+            1.2
+          ]
+        ],
+        "segment_owner_faces": [
+          0,
+          1
+        ],
+        "extra_scene": null,
+        "crease_angle_degrees": 35.989290453182356
+      },
+      {
+        "id": "ridge_clear_phase1",
+        "family": "ridge_clear",
+        "phase_output_px": 0.1,
+        "slopes_y": [
+          0.35,
+          -0.3
+        ],
+        "path_xy": [
+          [
+            0.12,
+            -1.2
+          ],
+          [
+            0.12,
+            0
+          ],
+          [
+            0.12,
+            1.2
+          ]
+        ],
+        "segment_owner_faces": [
+          0,
+          1
+        ],
+        "extra_scene": null,
+        "crease_angle_degrees": 35.989290453182356
+      },
+      {
+        "id": "ridge_clear_phase2",
+        "family": "ridge_clear",
+        "phase_output_px": 0.35,
+        "slopes_y": [
+          0.35,
+          -0.3
+        ],
+        "path_xy": [
+          [
+            0.12,
+            -1.2
+          ],
+          [
+            0.12,
+            0
+          ],
+          [
+            0.12,
+            1.2
+          ]
+        ],
+        "segment_owner_faces": [
+          0,
+          1
+        ],
+        "extra_scene": null,
+        "crease_angle_degrees": 35.989290453182356
+      },
+      {
+        "id": "valley_occluded_phase0",
+        "family": "valley_occluded",
+        "phase_output_px": -0.35,
+        "slopes_y": [
+          -0.25,
+          0.45
+        ],
+        "path_xy": [
+          [
+            0.12,
+            -1.2
+          ],
+          [
+            0.12,
+            0
+          ],
+          [
+            0.12,
+            1.2
+          ]
+        ],
+        "segment_owner_faces": [
+          0,
+          1
+        ],
+        "extra_scene": "front",
+        "crease_angle_degrees": 38.26398878588065
+      },
+      {
+        "id": "valley_occluded_phase1",
+        "family": "valley_occluded",
+        "phase_output_px": 0.1,
+        "slopes_y": [
+          -0.25,
+          0.45
+        ],
+        "path_xy": [
+          [
+            0.12,
+            -1.2
+          ],
+          [
+            0.12,
+            0
+          ],
+          [
+            0.12,
+            1.2
+          ]
+        ],
+        "segment_owner_faces": [
+          0,
+          1
+        ],
+        "extra_scene": "front",
+        "crease_angle_degrees": 38.26398878588065
+      },
+      {
+        "id": "valley_occluded_phase2",
+        "family": "valley_occluded",
+        "phase_output_px": 0.35,
+        "slopes_y": [
+          -0.25,
+          0.45
+        ],
+        "path_xy": [
+          [
+            0.12,
+            -1.2
+          ],
+          [
+            0.12,
+            0
+          ],
+          [
+            0.12,
+            1.2
+          ]
+        ],
+        "segment_owner_faces": [
+          0,
+          1
+        ],
+        "extra_scene": "front",
+        "crease_angle_degrees": 38.26398878588065
+      },
+      {
+        "id": "ridge_edge_background_phase0",
+        "family": "ridge_edge_background",
+        "phase_output_px": -0.35,
+        "slopes_y": [
+          0.35,
+          -0.3
+        ],
+        "path_xy": [
+          [
+            0.75,
+            -0.75
+          ],
+          [
+            1.5,
+            0
+          ],
+          [
+            0.75,
+            0.75
+          ]
+        ],
+        "segment_owner_faces": [
+          0,
+          1
+        ],
+        "extra_scene": null,
+        "crease_angle_degrees": 35.989290453182356
+      },
+      {
+        "id": "ridge_edge_background_phase1",
+        "family": "ridge_edge_background",
+        "phase_output_px": 0.1,
+        "slopes_y": [
+          0.35,
+          -0.3
+        ],
+        "path_xy": [
+          [
+            0.75,
+            -0.75
+          ],
+          [
+            1.5,
+            0
+          ],
+          [
+            0.75,
+            0.75
+          ]
+        ],
+        "segment_owner_faces": [
+          0,
+          1
+        ],
+        "extra_scene": null,
+        "crease_angle_degrees": 35.989290453182356
+      },
+      {
+        "id": "ridge_edge_background_phase2",
+        "family": "ridge_edge_background",
+        "phase_output_px": 0.35,
+        "slopes_y": [
+          0.35,
+          -0.3
+        ],
+        "path_xy": [
+          [
+            0.75,
+            -0.75
+          ],
+          [
+            1.5,
+            0
+          ],
+          [
+            0.75,
+            0.75
+          ]
+        ],
+        "segment_owner_faces": [
+          0,
+          1
+        ],
+        "extra_scene": null,
+        "crease_angle_degrees": 35.989290453182356
+      },
+      {
+        "id": "valley_edge_samepart_phase0",
+        "family": "valley_edge_samepart",
+        "phase_output_px": -0.35,
+        "slopes_y": [
+          -0.25,
+          0.45
+        ],
+        "path_xy": [
+          [
+            0.75,
+            -0.75
+          ],
+          [
+            1.5,
+            0
+          ],
+          [
+            0.75,
+            0.75
+          ]
+        ],
+        "segment_owner_faces": [
+          0,
+          1
+        ],
+        "extra_scene": "samepart_back",
+        "crease_angle_degrees": 38.26398878588065
+      },
+      {
+        "id": "valley_edge_samepart_phase1",
+        "family": "valley_edge_samepart",
+        "phase_output_px": 0.1,
+        "slopes_y": [
+          -0.25,
+          0.45
+        ],
+        "path_xy": [
+          [
+            0.75,
+            -0.75
+          ],
+          [
+            1.5,
+            0
+          ],
+          [
+            0.75,
+            0.75
+          ]
+        ],
+        "segment_owner_faces": [
+          0,
+          1
+        ],
+        "extra_scene": "samepart_back",
+        "crease_angle_degrees": 38.26398878588065
+      },
+      {
+        "id": "valley_edge_samepart_phase2",
+        "family": "valley_edge_samepart",
+        "phase_output_px": 0.35,
+        "slopes_y": [
+          -0.25,
+          0.45
+        ],
+        "path_xy": [
+          [
+            0.75,
+            -0.75
+          ],
+          [
+            1.5,
+            0
+          ],
+          [
+            0.75,
+            0.75
+          ]
+        ],
+        "segment_owner_faces": [
+          0,
+          1
+        ],
+        "extra_scene": "samepart_back",
+        "crease_angle_degrees": 38.26398878588065
+      }
+    ],
+    "count": 12,
+    "split": "Independent frozen analytic diagnostic fixtures; single object family, no statistical independence claim"
+  },
+  "negative_controls": {
+    "invalid_chord": "For every ordinary case drop genuine shared-edge waypoint; validate the single chord against each candidate segment owner face separately and require ValueError attachment; do not call candidate on invalid path.",
+    "multidepth_connected": {
+      "slopes_y": [
+        0.35,
+        -0.6
+      ],
+      "triangle1_apex_xy": [
+        0,
+        -1.2
+      ],
+      "path_xy": [
+        [
+          0.12,
+          -0.9
+        ],
+        [
+          0.12,
+          0
+        ],
+        [
+          0.12,
+          -0.8
+        ]
+      ],
+      "segment_owner_faces": [
+        0,
+        1
+      ],
+      "phase_output_px": 0.1,
+      "expected": "Whole candidate.render ValueError containing ambiguous; attachment remains valid.",
+      "reference": "Independent clipped analytic depths must show >=1 footprint site with two distinct positive owner depths."
+    },
+    "depth_gate": "Rerun frozen11 round006 development controls including NaN/inf/nonpositive and .0059/.0061 policy; do not label tolerance controls physical successes."
+  },
+  "attachment_validator": {
+    "epsilon_world": 1e-09,
+    "method": "Each segment endpoint analytic plane residual and signed XY triangle halfspaces; convex triangle guarantees whole linear segment. Face changes require waypoint on true shared edge; owner face declaration exact; no nearest-surface projection.",
+    "failure_policy": "Any invalid ordinary path is engineering-invalid and promotion NO_GO; do not repair fixture after exposure."
+  },
+  "oracle": {
+    "method": "Independent z=z0+sx*x+sy*y ray intersection, finite triangle XY halfspaces, per-face depths and minimum scene hit. No candidate intersections. Shared-edge equal-depth hits coalesce.",
+    "depth_epsilon": 1e-09,
+    "physical_hidden_gap_min_world": 0.5,
+    "matched_denominator": "Raw pre-z dense_path + np.rint + default size2 maximum_filter before owner/scene rejection, reconstructed independently from candidate output",
+    "centered_diagnostic": "Union of projected piecewise segment rectangles with butt caps, width2 high pixels; independently analytic point-line distances; no coverage gate against this different footprint.",
+    "AA": "Same uint8 then LANCZOS; report all/background/hidden/unsupported/edge/deep-hidden final ink against matched reference, no zero-AA-tail gate.",
+    "edge_band_high_px": 4
+  },
+  "go_no_go": {
+    "go": [
+      "All12 ordinary paths valid and connected noncoplanar",
+      "All ordinary analytic scene/owner depths and finite masks match <=1e-9",
+      "Every case nonempty visible; occluded family nonempty hidden gap>.5; edge families nonempty unsupported background or samepart foreground respectively",
+      "Matched visible recall1; pre-AA hidden/unsupported ink0; outside footprint0; exact high/final images",
+      "Reverse owner-face order and reverse scene submission exact high/final",
+      "All invalid chords rejected for attachment; connected multidepth call rejected for ambiguity",
+      "All38 exposed plane case metrics and1634 arrays exactly unchanged; original20 case860 arrays exact",
+      "All development and inherited oracle/temporal/stage tests pass"
+    ],
+    "no_go": "Any ordinary case/control failure preserves evidence and stops promotion. No candidate edits, constants/phase changes, patch expansion or lamp tuning."
+  },
+  "fixed_controls": [
+    "Original historical sources and seals unchanged",
+    "No lamp integration/rerender, no centered stencil repair, H2, training or GPU",
+    "Explicit owner IDs only, samepart sheet excluded",
+    "CPU[0,1],threads<=2,one serial compute,ordinary command<=600s",
+    "No downloads; root>=1GiB,HDD>=10GiB,output<=12GiB",
+    "No new round after10:40JST; hard11:00JST; this round ends06:05:36JST"
+  ],
+  "regressions": "Round00618+20 exposed only, plus round00520 exact replay",
+  "outputs": [
+    "raw NPZ/JSON every case",
+    "full-view contact sheet and detailed panels",
+    "negative_controls.json",
+    "metrics.json",
+    "VALIDATION.json",
+    "Chinese report",
+    "source/config/output SHA seal",
+    "recoverable STATUS/NEXT"
+  ]
+}
