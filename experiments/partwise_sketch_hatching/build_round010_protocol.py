@@ -1,0 +1,37 @@
+from pathlib import Path
+import json
+w=Path('/home/u00134/3dgs_line/partwise_sketch_hatching_p0p1_v01');d=w/'docs/partwise_sketch_hatching/round_010'
+p={
+ 'round':'round_010','authority':'Only round009 Astra NEXT; outline3.3,5.6,5.8,9.4-9.6,14.3',
+ 'hypothesis':'One projected finite butt-cap ribbon coverage rule matches independent centered support while retaining unchanged owner visibility and attachment.',
+ 'candidate_source_sha256':'7ecb2e9f87e1a2fc201bfa6d691b96d3706b7e9c461bb198047cf49bf10feb96',
+ 'adapter_source_sha256':'bc7430d757c71ba11ee7b4550d5a8991f224f21a7bf2baf4bf5ecc390c45f8ed',
+ 'camera':{'resolution':64,'supersample':2,'focal_output_px':32,'center_high_px':[64,64],'R':'identity','eye':[0,0,0]},
+ 'geometry':{'vertices':[[-2,-2,4],[2,-2,4],[2,2,4],[-2,2,4]],'faces':[[0,1,2],[0,2,3]],'parts':[1,1],'owners':[0,1],
+ 'analytic_owner':{'z':4,'bounds_high_xyxy':[32,32,96,96]}},
+ 'cases':[
+ {'id':'axial_visible','path':[[-1,0,4],[0,0,4],[1,0,4]],'segment_faces':[1,0],'projected_path':[[48,64],[64,64],[80,64]],'required':['visible']},
+ {'id':'oblique_visible','path':[[-1.25,-.75,4],[0,0,4],[1.25,.75,4]],'segment_faces':[1,0],'projected_path':[[44,52],[64,64],[84,76]],'required':['visible']},
+ {'id':'oblique_partial_hidden','path':[[-1.25,-.75,4],[0,0,4],[1.25,.75,4]],'segment_faces':[1,0],'projected_path':[[44,52],[64,64],[84,76]],'extra':{'z':3,'bounds_high_xyxy':[60,40,70,88],'part_id':2},'required':['visible','hidden']},
+ {'id':'axial_owner_edge_background','path':[[-1,-2,4],[1,-2,4]],'segment_faces':[0],'projected_path':[[48,32],[80,32]],'required':['visible','unsupported_background']},
+ {'id':'axial_owner_edge_samepart','path':[[-1,-2,4],[1,-2,4]],'segment_faces':[0],'projected_path':[[48,32],[80,32]],'extra':{'z':3,'bounds_high_xyxy':[40,28,88,31],'part_id':1},'required':['visible','unsupported_foreground','samepart_unsupported']}
+ ],
+ 'coverage':{'screen_width_px':1.,'high_width':2.,'ink':.8,'boundary_epsilon_high_px':1e-9,'rule':'Closed centered finite butt-cap ribbon for every projected segment; union at waypoints; no round caps, no extra joins. Reject zero projected length and nonpositive endpoint depth.',
+ 'candidate':'Project mesh path endpoints; construct four corners; normalized oriented polygon halfspaces on integer high raster grid.',
+ 'oracle':'Frozen projected endpoints, independent along-distance/end bounds and perpendicular distance via dot/cross formula; never call production polygon coverage or derive truth endpoints from candidate projection.',
+ 'oracle_bounds':'along >= -eps, along <= length+eps, squared cross <= (halfwidth+eps)^2 * length_squared; full grid before owner clipping',
+ 'sampling_disclosure':'Closed width2 at integer center includes3 rows; finite sample support only, not pixel area or exact effective width.',
+ 'projection_check_epsilon':1e-12},
+ 'primitive':{'depth_tolerance_world':.006,'screen_width_px':1.,'high_width_filter_size':2,'dense_step_high_px':.45,'ink':.8,'final':'uint8 clip(high)*255 then PIL LANCZOS down2; unchanged'},
+ 'controls':{'variants':['reverse_owners','reverse_faces','reverse_both','reverse_path'],'physical_arrays':['footprint','owner_depth','scene_depth','scene_owner','gate','high','quantized_uint8','final_uint8'],
+ 'tie_controls':'Both round009 paths through new backend; all65 exact z4 tie rays retained as query control and nonempty new centered tie footprint retained; old results replay unchanged.',
+ 'distinct_depth':'Historical connected patch through new backend; require nonempty centered ambiguous footprint independently before accepting rejection.',
+ 'sensitivity':['delete_support','add_beyond_cap','drop_visible_ink','hidden_ink','unsupported_ink','final_corruption','order_difference']},
+ 'go_no_go':{'go':['All5 fixed cases and2 exposed tie controls complete','Unclipped footprint exact analytic support; high and final centered reference exact','Required visible/hidden/unsupported subsets nonempty; all visible ink retained and hidden/unsupported ink zero','Analytic scene and owner finite masks exact, depths<=1e-9; no input mutations; all physical order arrays exact','Connected distinct-depth centered control rejected; exact tie controls preserved','All52 inherited tests and new RED to GREEN tests; old round009 plus full historical replay exact','Exact new output/metric replay; every sensitivity fault detected'],
+ 'no_go':'Any frozen gate fails: preserve full outputs and stop promotion; no threshold, geometry, camera, phase or algorithm tuning after acceptance exposure.'},
+ 'regressions':'All prior fixtures exposed only; old renderer unchanged. New backend tie and multidepth cases are control reuse, not independent new objects.',
+ 'resources':{'cpu_affinity':[0,1],'threads_max':2,'GPU':False,'serial_compute':True,'invocation_seconds_max':600,'round_deadline_jst':'2026-10-21T06:35:35.553027+09:00','root_free_min_bytes':2**30,'hdd_free_min_bytes':10*2**30,'output_cap_bytes':12*2**30,'downloads_bytes':0},
+ 'prohibited':['phase sweep','threshold selection','lamp integration','H2','training/GPU','old candidate/adapter edits','owner expansion','projection repair','orchestration edits','push/merge'],
+ 'limits':['Analytic GT diagnostic only','No area-coverage, AA-quality, effective-width, general joins or temporal claim','No lamp/P1/RaDe-GS reconstruction evidence','Depth tolerance .006 unchanged','Historical round004 NO_GO,8 null controls,11 mixed cases, original validation child UNKNOWN retained']}
+(d/'PROTOCOL.json').write_text(json.dumps(p,indent=2,ensure_ascii=False)+'\n')
+(d/'READING_AND_SCOPE_ZH.md').write_text('已先阅读orchestration/BRIEF.md，再完整阅读用户851行大纲（含截断后分段补读），随后阅读round009 STATUS、Astra NEXT、报告、协议、候选及适配器源码和完整输出接触表。仅执行其居中有限butt-cap脚印诊断建议。四层表示和H1优先、H2后置不变；本轮解析GT仅验证P0有限采样，不能作为RGB重建、自动分部、P1台灯或一般时序稳定的证据。引用大纲3.3、5.6、5.8、9.4–9.6、14.3。生产polygon覆盖与解析距离/端界真值独立；既有脚印作为已曝光基线。仅使用一个有界只读审查助手，无计算、写入、子助手或模型CLI。\n')

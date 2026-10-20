@@ -1,0 +1,7 @@
+接受评测前只读审查：生产实现以四角polygon有向半平面求闭合整数栅格支撑；独立真值从协议固定投影端点用点积端界与叉积平方距离求支撑。反向路径保持polygon正向绕序，归一化侧边/端界epsilon一致。先比较未裁剪脚印，再比较owner/visibility后的高分辨率和最终图像。反转面提交使用n_faces-1-ID重映射。五个新例保留非空visible、hidden、unsupported背景和同part前景控制；两个已曝光共享边与连接多深度负控仍使用新脚印，旧版本全部独立重放。
+
+一个有界只读助手已审查协议和centered_coverage.py、round010_fixture.py、run_round010.py、test_centered_coverage.py，未发现阻止接受曝光的具体实现问题；没有计算、写入、子助手或模型CLI。此结论只是代码审查，不是接受结果。
+
+工程RED：旧np.rint+偶数扩张模板在6项检查中3项失败（轴向、斜向、有限端帽）；新polygon后端6项全通过。继承52项算法测试返回码全部0。评测前冻结唯一规则，不按接受输出调整阈值、相位、几何或后端。
+
+记录一次写域偏离：协议生成脚本最初短暂写入/tmp/round010_protocol_writer.py，随后原样移到授权分支experiments/partwise_sketch_hatching/build_round010_protocol.py；未改其他工作树或历史科学产物。STATUS标记write_scope_fully_compliant=false，不宣称完全合规。
