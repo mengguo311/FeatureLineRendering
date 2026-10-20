@@ -1,0 +1,366 @@
+{
+  "round": "round_012",
+  "authority": "Only round011 Astra NEXT; outline5.8,9.5,9.6,14.3",
+  "study_type": "New physical-visibility metric on exposed analytic fixtures, no blind object evidence",
+  "hypothesis": "Center-site gating of correct ribbon area can over/under-estimate physical visible area at finite owner and occluder boundaries.",
+  "prior_protocol_sha256": "d379b3b6140658e1e5f21f5f3691392dece2e16a7bdedb21bacf6e62551934c0",
+  "candidate_sources": {
+    "area_coverage.py": "95fb30104bc2fe8a1fdb3cbd80fa529d56b4a92bd56b774c30d78589f47398c0",
+    "visibility_primitive.py": "7ecb2e9f87e1a2fc201bfa6d691b96d3706b7e9c461bb198047cf49bf10feb96",
+    "mesh_attachment.py": "bc7430d757c71ba11ee7b4550d5a8991f224f21a7bf2baf4bf5ecc390c45f8ed"
+  },
+  "camera": {
+    "resolution": 64,
+    "supersample": 2,
+    "focal_output_px": 32,
+    "center_high_px": [
+      64,
+      64
+    ],
+    "R": "identity",
+    "eye": [
+      0,
+      0,
+      0
+    ]
+  },
+  "geometry": {
+    "vertices": [
+      [
+        -2,
+        -2,
+        4
+      ],
+      [
+        2,
+        -2,
+        4
+      ],
+      [
+        2,
+        2,
+        4
+      ],
+      [
+        -2,
+        2,
+        4
+      ]
+    ],
+    "faces": [
+      [
+        0,
+        1,
+        2
+      ],
+      [
+        0,
+        2,
+        3
+      ]
+    ],
+    "parts": [
+      1,
+      1
+    ],
+    "owners": [
+      0,
+      1
+    ],
+    "analytic_owner": {
+      "z": 4,
+      "bounds_high_xyxy": [
+        32,
+        32,
+        96,
+        96
+      ]
+    }
+  },
+  "cases": [
+    {
+      "id": "area_oblique_visible",
+      "path": [
+        [
+          -1.296875,
+          -0.765625,
+          4.0
+        ],
+        [
+          0.03125,
+          0.03125,
+          4.0
+        ],
+        [
+          1.203125,
+          0.734375,
+          4.0
+        ]
+      ],
+      "segment_faces": [
+        1,
+        0
+      ],
+      "projected_path": [
+        [
+          43.25,
+          51.75
+        ],
+        [
+          64.5,
+          64.5
+        ],
+        [
+          83.25,
+          75.75
+        ]
+      ],
+      "required": [
+        "visible"
+      ]
+    },
+    {
+      "id": "area_oblique_partial_hidden",
+      "path": [
+        [
+          -1.296875,
+          -0.765625,
+          4.0
+        ],
+        [
+          0.03125,
+          0.03125,
+          4.0
+        ],
+        [
+          1.203125,
+          0.734375,
+          4.0
+        ]
+      ],
+      "segment_faces": [
+        1,
+        0
+      ],
+      "projected_path": [
+        [
+          43.25,
+          51.75
+        ],
+        [
+          64.5,
+          64.5
+        ],
+        [
+          83.25,
+          75.75
+        ]
+      ],
+      "extra": {
+        "z": 3,
+        "bounds_high_xyxy": [
+          60,
+          40,
+          70,
+          88
+        ],
+        "part_id": 2
+      },
+      "required": [
+        "visible",
+        "hidden"
+      ]
+    },
+    {
+      "id": "area_axial_owner_edge_background",
+      "path": [
+        [
+          -0.984375,
+          -2.0,
+          4.0
+        ],
+        [
+          1.015625,
+          -2.0,
+          4.0
+        ]
+      ],
+      "segment_faces": [
+        0
+      ],
+      "projected_path": [
+        [
+          48.25,
+          32
+        ],
+        [
+          80.25,
+          32
+        ]
+      ],
+      "required": [
+        "visible",
+        "unsupported_background"
+      ]
+    },
+    {
+      "id": "area_axial_owner_edge_samepart",
+      "path": [
+        [
+          -0.984375,
+          -2.0,
+          4.0
+        ],
+        [
+          1.015625,
+          -2.0,
+          4.0
+        ]
+      ],
+      "segment_faces": [
+        0
+      ],
+      "projected_path": [
+        [
+          48.25,
+          32
+        ],
+        [
+          80.25,
+          32
+        ]
+      ],
+      "extra": {
+        "z": 3,
+        "bounds_high_xyxy": [
+          40,
+          28,
+          88,
+          31
+        ],
+        "part_id": 1
+      },
+      "required": [
+        "visible",
+        "unsupported_foreground",
+        "samepart_unsupported"
+      ]
+    }
+  ],
+  "primitive": {
+    "depth_tolerance_world": 0.006,
+    "screen_width_px": 1.0,
+    "high_width_filter_size": 2,
+    "dense_step_high_px": 0.45,
+    "ink": 0.8,
+    "final": "uint8 clip(high)*255 then PIL LANCZOS down2; unchanged"
+  },
+  "coverage": {
+    "screen_width_px": 1.0,
+    "high_width": 2.0,
+    "ink": 0.8,
+    "pixel_square": "[x-.5,x+.5] x [y-.5,y+.5], centered at integer high raster site",
+    "rule": "One straight projected finite butt-cap rectangle; collinear intermediate attachment waypoints allowed. No general joins. Canonical lexicographic endpoints; reject noncollinearity, backtracking, zero projected segments.",
+    "candidate": "Sutherland-Hodgman polygon clipping to each pixel square; pixel-local shoelace area; no independent reference input.",
+    "oracle": "Frozen projected endpoints; axial interval-product exact area, otherwise affine vertical y bounds from along/cross inequalities, split x integral at ALL pairwise line intersections including pixel y bounds and zero-gap crossings. Midpoint integration exact on each linear interval. No candidate clipping or projection reused.",
+    "collinearity_epsilon_high_px": 1e-09,
+    "zero_length_epsilon_high_px": 1e-12,
+    "endpoint_area_cleanup": "Computed fractions <=1e-12 snap0 and >=1-1e-12 snap1 for candidate and reference before uint8; raw oracle fractions also saved. No other rounding.",
+    "endpoint_area_cleanup_epsilon": 1e-12,
+    "fraction_abs_error_max": 1e-10,
+    "area_sum_abs_error_max": 1e-08,
+    "ink_sum_abs_error_max": 1e-08,
+    "projection_check_epsilon": 1e-12,
+    "final_gate": "Strict full quantized uint8 and final LANCZOS equality. Any floor discrepancy is retained as NO_GO.",
+    "visibility": "Unchanged owner_depth and visibility_gate at positive-area pixel CENTERS only. No within-pixel visibility claim."
+  },
+  "physical_reference": {
+    "definition": "area(pixel square intersect finite butt-cap ribbon intersect finite owner rectangle minus strictly nearer occluder rectangle)",
+    "inputs": "Only frozen prescribed 2D endpoints and analytic rectangle bounds/depths; no candidate projection, coverage, gate or depth arrays",
+    "axial": "Exact interval intersection products",
+    "oblique": "Independent 1D vertical cross-section integral from along/cross half-plane inequalities and rectangle bounds; split at all affine-bound crossings, integrate positive linear thickness exactly",
+    "raw_and_clean": "Save raw fractions, mass partitions and cleaned fractions. Snap <=1e-12 to0 and >=1-1e-12 to1 solely before matched quantization; record raw numerical error.",
+    "conservation": [
+      "ribbon=visible+occluded+unsupported per pixel",
+      "sum per-pixel areas equals whole-image-domain integral",
+      "ribbon area=endpoint length*2",
+      "axial owner-edge visible area=length*1=32",
+      "oblique strip occluded area=(70-60)*2*length/abs(dx); no owner/end/y clipping for this frozen fixture",
+      "all-visible physical area equals full ribbon area"
+    ],
+    "quantization": "Same .8 ink, uint8 floor then PIL LANCZOS128->64; full arrays saved"
+  },
+  "subsets": {
+    "physical_boundary": "positive ribbon and 1e-10<visible_area<ribbon_area-1e-10; visibility mixed INSIDE pixel, excludes mere ribbon edge",
+    "visible_interior": "positive ribbon and abs(visible-ribbon)<=1e-10",
+    "hidden_interior": "positive ribbon, visible<=1e-10, owned>1e-10",
+    "unsupported_interior": "positive ribbon, owned<=1e-10",
+    "required": "visible interior all4; boundary in3 limited-visibility cases; hidden interior occluder case; unsupported interior both owner-edge cases; all-visible boundary empty",
+    "ribbon_edge": "0<ribbon<1, separately reported overlapping subset, not visibility boundary"
+  },
+  "metrics": {
+    "full_arrays": [
+      "ribbon",
+      "owned",
+      "occluded",
+      "unsupported",
+      "visible",
+      "candidate_visible_area",
+      "candidate_high",
+      "reference_high",
+      "candidate_quantized_uint8",
+      "reference_quantized_uint8",
+      "candidate_final_uint8",
+      "reference_final_uint8"
+    ],
+    "error": "signed candidate-reference; sum positive and negative separately, L1, max, mismatch count; high-area units and ink units separate; final uint8 errors /255",
+    "coverage": "subset site counts and ribbon/physical/candidate area and fraction of total ribbon; no excluded difficult pixels"
+  },
+  "gates": {
+    "fraction_abs_error": 1e-10,
+    "mass_abs_error": 1e-08,
+    "uint8_and_final": "strict equality",
+    "measurement_validity": "Independent reference range/partition/mass/closed-form controls, nonempty subsets, all64 inherited tests plus new reference tests, immutable candidate, historical exact replay, new exact replay, sensitivity response. Candidate mismatch does NOT invalidate measurement.",
+    "physical_promotion": "All4 full physical visible-area arrays and high ink match within1e-10, sums within1e-8, quantized and final exact. Any mismatch is NO_GO; do not repair or tune.",
+    "engineering_invalid": "Any reference/control/replay failure; preserve partials and no physical conclusion"
+  },
+  "sensitivity": [
+    "reference area deletion breaks mass control",
+    "reference area addition outside ribbon breaks partition/range",
+    "ideal candidate deletion yields under-ink",
+    "ideal candidate addition yields over-ink",
+    "matched-total relocation has nonzero L1",
+    "final corruption detected"
+  ],
+  "regression": "Replay all7 round011 cases, negative control and earlier historical chain exactly; preserve exact ties, distinct depths, round004 NO_GO,8 null controls,11 mixed cases, original validation child UNKNOWN",
+  "resources": {
+    "cpu_affinity": [
+      0,
+      1
+    ],
+    "threads_max": 2,
+    "GPU": false,
+    "serial_compute": true,
+    "invocation_seconds_max": 600,
+    "round_deadline_jst": "2026-10-21T06:56:22.863339+09:00",
+    "output_cap_bytes": 12884901888,
+    "downloads": 0
+  },
+  "prohibited": [
+    "renderer repair",
+    "phase sweep",
+    "threshold selection",
+    "owner expansion",
+    "lamp integration",
+    "H2",
+    "training",
+    "new evaluation scenes",
+    "historical seal writes"
+  ],
+  "limits": [
+    "No RaDe-GS reconstruction or P1 evidence",
+    "No temporal or visual quality inference",
+    "Only fronto-parallel finite planar owners/rectangular occluder and straight ribbons",
+    "Area ownership does not imply tested general surface visibility"
+  ]
+}
