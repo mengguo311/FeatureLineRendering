@@ -1,0 +1,444 @@
+{
+  "status": "PARAMETER_CLUSTER_SMOKE_NOT_SEMANTIC_LABELS",
+  "source_sha256": "9afacac137474a50c5db52e41d2f1656b1e5f22ee5b6804e7e819697679cebac",
+  "source_rows": 284835,
+  "source_index": "original PLY row i; no explicit source_index field",
+  "fit_views": [
+    "train_r_80",
+    "train_r_7"
+  ],
+  "fit_camera_manifest_sha256": "e0f2540da3a60dc4b274218badb1f5b843c1a2dac460253672bb0e27fe98b66e",
+  "reserved_pixel_data_opened": false,
+  "projected_covariance_floor_removed": 0.3,
+  "distance_formula": "sqrt(fx*fy)/camera_z * max(exp(log_scale))",
+  "view_aggregate": "mean of per-view log(size); full SH RGB concatenates FIT views, mean is ablation",
+  "standardization": "per-dimension z score for each arm; fusion equalizes blocks by sqrt(block_dimension)",
+  "common_eligible_rows": 284835,
+  "unknown_rows": 0,
+  "k": 3,
+  "seed": 0,
+  "n_init": 3,
+  "max_iter": 100,
+  "scoring": "z height-quartile contingency is a geometric diagnostic, not semantic truth; no labels from reserved views",
+  "preprocess_seconds": 5.25,
+  "arms": {
+    "A_world_long": {
+      "counts": [
+        134115,
+        57539,
+        93181
+      ],
+      "z_quartile_by_cluster": [
+        [
+          23959,
+          35508,
+          36090,
+          38558
+        ],
+        [
+          7152,
+          16138,
+          15797,
+          18452
+        ],
+        [
+          40098,
+          19562,
+          19322,
+          14199
+        ]
+      ],
+      "z_edges": [
+        -1.0341641902923584,
+        0.15918957442045212,
+        0.5339865684509277,
+        0.8206038475036621,
+        1.1414331197738647
+      ],
+      "feature_dim": 1,
+      "feature_input_min": -10.119998931884766,
+      "feature_input_max": -1.4194670915603638,
+      "inertia": 61819.5078125,
+      "seed_stability_ari": 0.9716835653761701,
+      "actual_k": 3,
+      "alt_actual_k": 3,
+      "n_iter": 5,
+      "alt_n_iter": 5,
+      "max_iter_hit": false,
+      "seconds": 0.89,
+      "labels_sha256": "6a326cc65e3b6a3e3897c41af42c455f27a6caece3dd96f7f1abf12ac04ce41d"
+    },
+    "B_distance_long": {
+      "counts": [
+        135023,
+        91573,
+        58239
+      ],
+      "z_quartile_by_cluster": [
+        [
+          23844,
+          35610,
+          36468,
+          39101
+        ],
+        [
+          40269,
+          19449,
+          18710,
+          13145
+        ],
+        [
+          7096,
+          16149,
+          16031,
+          18963
+        ]
+      ],
+      "z_edges": [
+        -1.0341641902923584,
+        0.15918957442045212,
+        0.5339865684509277,
+        0.8206038475036621,
+        1.1414331197738647
+      ],
+      "feature_dim": 1,
+      "feature_input_min": -4.58309441763237,
+      "feature_input_max": 4.2024535799027065,
+      "inertia": 61818.52734375,
+      "seed_stability_ari": 0.998053624700546,
+      "actual_k": 3,
+      "alt_actual_k": 3,
+      "n_iter": 6,
+      "alt_n_iter": 12,
+      "max_iter_hit": false,
+      "seconds": 0.86,
+      "labels_sha256": "84cf4da0421050fd90fee20a774a676ee0feb90b163edc8fa58ffa71f28879cd"
+    },
+    "C_projected_long": {
+      "counts": [
+        137060,
+        57892,
+        89883
+      ],
+      "z_quartile_by_cluster": [
+        [
+          26988,
+          35213,
+          36234,
+          38625
+        ],
+        [
+          6966,
+          16158,
+          15480,
+          19288
+        ],
+        [
+          37255,
+          19837,
+          19495,
+          13296
+        ]
+      ],
+      "z_edges": [
+        -1.0341641902923584,
+        0.15918957442045212,
+        0.5339865684509277,
+        0.8206038475036621,
+        1.1414331197738647
+      ],
+      "feature_dim": 1,
+      "feature_input_min": -4.82269241730631,
+      "feature_input_max": 4.199075227447196,
+      "inertia": 63104.53125,
+      "seed_stability_ari": 0.9985874558827785,
+      "actual_k": 3,
+      "alt_actual_k": 3,
+      "n_iter": 11,
+      "alt_n_iter": 17,
+      "max_iter_hit": false,
+      "seconds": 0.92,
+      "labels_sha256": "c65e7218b4c8e2b76bbaaa3b96cef85a8418b77811e4f69a2bcbd29997f360af"
+    },
+    "D_rgb_dc": {
+      "counts": [
+        52540,
+        167368,
+        64927
+      ],
+      "z_quartile_by_cluster": [
+        [
+          9573,
+          13691,
+          13953,
+          15323
+        ],
+        [
+          28834,
+          46127,
+          45582,
+          46825
+        ],
+        [
+          32802,
+          11390,
+          11674,
+          9061
+        ]
+      ],
+      "z_edges": [
+        -1.0341641902923584,
+        0.15918957442045212,
+        0.5339865684509277,
+        0.8206038475036621,
+        1.1414331197738647
+      ],
+      "feature_dim": 3,
+      "feature_input_min": 0.0,
+      "feature_input_max": 1.7333409546910188,
+      "inertia": 257607.921875,
+      "seed_stability_ari": 0.9734876435293195,
+      "actual_k": 3,
+      "alt_actual_k": 3,
+      "n_iter": 17,
+      "alt_n_iter": 7,
+      "max_iter_hit": false,
+      "seconds": 1.21,
+      "labels_sha256": "4dab88e2589026ed8def13b0d65d8ded99ad805e0c7a9368641f65d01786faf0"
+    },
+    "E_rgb_sh_fit_concat": {
+      "counts": [
+        148836,
+        58297,
+        77702
+      ],
+      "z_quartile_by_cluster": [
+        [
+          25804,
+          43643,
+          40728,
+          38661
+        ],
+        [
+          8040,
+          14233,
+          15847,
+          20177
+        ],
+        [
+          37365,
+          13332,
+          14634,
+          12371
+        ]
+      ],
+      "z_edges": [
+        -1.0341641902923584,
+        0.15918957442045212,
+        0.5339865684509277,
+        0.8206038475036621,
+        1.1414331197738647
+      ],
+      "feature_dim": 6,
+      "feature_input_min": 0.0,
+      "feature_input_max": 2.0813382020449382,
+      "inertia": 805987.375,
+      "seed_stability_ari": 0.9863708233903097,
+      "actual_k": 3,
+      "alt_actual_k": 3,
+      "n_iter": 18,
+      "alt_n_iter": 23,
+      "max_iter_hit": false,
+      "seconds": 1.59,
+      "labels_sha256": "e56423e256c07d381a4cec967f74d809fff5c7ace920e140bffc070a1ab88466"
+    },
+    "F_rgb_sh_fit_mean": {
+      "counts": [
+        150786,
+        59176,
+        74873
+      ],
+      "z_quartile_by_cluster": [
+        [
+          27053,
+          43151,
+          41364,
+          39218
+        ],
+        [
+          8203,
+          15163,
+          15694,
+          20116
+        ],
+        [
+          35953,
+          12894,
+          14151,
+          11875
+        ]
+      ],
+      "z_edges": [
+        -1.0341641902923584,
+        0.15918957442045212,
+        0.5339865684509277,
+        0.8206038475036621,
+        1.1414331197738647
+      ],
+      "feature_dim": 3,
+      "feature_input_min": 0.0,
+      "feature_input_max": 1.791177473089844,
+      "inertia": 255597.34375,
+      "seed_stability_ari": 0.9533108740543672,
+      "actual_k": 3,
+      "alt_actual_k": 3,
+      "n_iter": 13,
+      "alt_n_iter": 8,
+      "max_iter_hit": false,
+      "seconds": 1.24,
+      "labels_sha256": "25d735984822fa4adc084b9783b63c6dfd2597535732316dd8db7994b23bf061"
+    },
+    "G_xyz": {
+      "counts": [
+        77849,
+        132801,
+        74185
+      ],
+      "z_quartile_by_cluster": [
+        [
+          2270,
+          29976,
+          26428,
+          19175
+        ],
+        [
+          6985,
+          29011,
+          44771,
+          52034
+        ],
+        [
+          61954,
+          12221,
+          10,
+          0
+        ]
+      ],
+      "z_edges": [
+        -1.0341641902923584,
+        0.15918957442045212,
+        0.5339865684509277,
+        0.8206038475036621,
+        1.1414331197738647
+      ],
+      "feature_dim": 3,
+      "feature_input_min": -1.0341641902923584,
+      "feature_input_max": 1.1414331197738647,
+      "inertia": 385610.8125,
+      "seed_stability_ari": 0.9997828459007883,
+      "actual_k": 3,
+      "alt_actual_k": 3,
+      "n_iter": 8,
+      "alt_n_iter": 7,
+      "max_iter_hit": false,
+      "seconds": 1.01,
+      "labels_sha256": "136489119c000bd6a72c8104b28cf14411b7a9c2ab8ab185625abc87b2e2f059"
+    },
+    "H_shape_opacity": {
+      "counts": [
+        51075,
+        75540,
+        158220
+      ],
+      "z_quartile_by_cluster": [
+        [
+          38068,
+          5947,
+          4308,
+          2752
+        ],
+        [
+          11188,
+          21401,
+          20975,
+          21976
+        ],
+        [
+          21953,
+          43860,
+          45926,
+          46481
+        ]
+      ],
+      "z_edges": [
+        -1.0341641902923584,
+        0.15918957442045212,
+        0.5339865684509277,
+        0.8206038475036621,
+        1.1414331197738647
+      ],
+      "feature_dim": 4,
+      "feature_input_min": -17.967506408691406,
+      "feature_input_max": 14.272643089294434,
+      "inertia": 694110.3125,
+      "seed_stability_ari": 0.9877891470735081,
+      "actual_k": 3,
+      "alt_actual_k": 3,
+      "n_iter": 15,
+      "alt_n_iter": 51,
+      "max_iter_hit": false,
+      "seconds": 1.46,
+      "labels_sha256": "b49a2c157220d47646653044cfc25899b06b6c80198a61c5a6a9c1532c5a03ef"
+    },
+    "I_fusion_xyz_sh_projected": {
+      "counts": [
+        93178,
+        45087,
+        146570
+      ],
+      "z_quartile_by_cluster": [
+        [
+          10556,
+          25656,
+          25280,
+          31686
+        ],
+        [
+          41656,
+          2801,
+          518,
+          112
+        ],
+        [
+          18997,
+          42751,
+          45411,
+          39411
+        ]
+      ],
+      "z_edges": [
+        -1.0341641902923584,
+        0.15918957442045212,
+        0.5339865684509277,
+        0.8206038475036621,
+        1.1414331197738647
+      ],
+      "feature_dim": 10,
+      "feature_input_min": -7.957017421722412,
+      "feature_input_max": 5.353882789611816,
+      "inertia": 566986.75,
+      "seed_stability_ari": 0.9987144680068331,
+      "actual_k": 3,
+      "alt_actual_k": 3,
+      "n_iter": 19,
+      "alt_n_iter": 18,
+      "max_iter_hit": false,
+      "seconds": 1.97,
+      "labels_sha256": "d8e4dce54dd4abddcd5686a1319941caed025abfc282a52dec3400e8a6cf0f8f"
+    }
+  },
+  "image": "PARAMETER_ARMS_XZ_YZ.png",
+  "image_sha256": "d9853188ca71d449c1fe88dd56596dc82ebf528ccddd81e7e2e05cea3055457d",
+  "total_wall_seconds": 38.18,
+  "maxrss_kib_linux": 770652
+}
