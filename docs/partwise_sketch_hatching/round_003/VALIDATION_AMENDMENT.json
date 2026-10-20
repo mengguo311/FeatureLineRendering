@@ -1,0 +1,18 @@
+{
+  "scope": "Data-only validation after an outer execution session returned 143 and its wrapper receipt was absent; no new scientific evaluation or changed thresholds.",
+  "original_tool_session": 43601,
+  "observed_outer_returncode": 143,
+  "child_returncode": null,
+  "child_returncode_state": "UNKNOWN, never replaced by zero",
+  "facts": "Zoom log continued after the outer session exit and all 24 frames plus complete zoom_metrics.json were written. The wrapper did not write ZOOM_EXECUTION.json. Preserve SESSION_FAILURE.json and all original files.",
+  "validation": [
+    "Verify frozen source/input hashes and prior seal again",
+    "Check all 60 full-image pixels against prior frames",
+    "Recompute every saved sample-to-same-ID distance and offset for baseline/drift/drop from saved raster-support pixels",
+    "Verify actual saved no-wrap drift rasters, targeted drops and mutually exclusive coverage/event denominators",
+    "Keep finite-distance and detected-pair conditional denominators in pooled descriptive summaries",
+    "Bind validation source and completed evidence hashes before running validation"
+  ],
+  "allowed_outcome": "If all validation passes, science data can be complete while the outer session return 143 and unknown child return code remain explicit. Otherwise keep engineering_invalid. No re-render or replacement metrics.",
+  "nonclaim": "Successful data validation is not evidence of a successful original process exit."
+}

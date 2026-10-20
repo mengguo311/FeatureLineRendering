@@ -24,7 +24,11 @@ def main(verify):
     assert json.loads((r.R/'VALIDATION.json').read_text())['validation_complete']
     status = json.loads((r.R/'STATUS.json').read_text())
     assert status['execution_state'] == 'complete'
-    for name in ['ORBIT_EXECUTION', 'ZOOM_EXECUTION', 'SUMMARY_EXECUTION', 'VALIDATION_EXECUTION']:
+    failure = json.loads((r.R/'SESSION_FAILURE.json').read_text())
+    assert failure['outer_tool_returncode'] == 143 and failure['child_returncode'] is None
+    assert not (r.R/'ZOOM_EXECUTION.json').exists(), 'Do not invent missing child receipt'
+    for path, digest in failure['preserved_evidence_sha256'].items(): assert r.sha(r.R/path) == digest
+    for name in ['ORBIT_EXECUTION', 'SUMMARY_EXECUTION', 'VALIDATION_EXECUTION']:
         receipt = json.loads((r.R/(name+'.json')).read_text())
         assert receipt['returncode'] == 0 and r.sha(receipt['log']) == receipt['log_sha256']
     paths = [('worktree', r.W/p) for p in lock['source']]
