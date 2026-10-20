@@ -1,0 +1,14 @@
+{
+  "scope": "Data-only validation and sealing after the final terminal print failed; no scientific replay or metric change.",
+  "failure_evidence": "round_002/FAILURE_PRINT.json and EXECUTION.json retain original returncode 1.",
+  "diagnosis": "run_round002's JSON file writer handles numpy scalars, and metrics.json was completely written. Unmodified run_p0.evaluate line 223 then calls json.dumps directly for terminal output and raises TypeError on numpy.bool_.",
+  "allowed": [
+    "Verify every original source/config/asset lock identity.",
+    "Verify all metrics and the nine unchanged predicates without overwriting metrics.json.",
+    "Verify all 84 PNG frames; fully re-decode three MP4 files and compare every decoded frame hash with the saved first decode.",
+    "Write VALIDATION.json and a validation command receipt. Retain EXECUTION.json returncode 1 and all failed status/log evidence.",
+    "Use a separately versioned sealer requiring complete artifact validation, rather than pretending the failed process exited zero."
+  ],
+  "forbidden": ["Re-rendering", "Re-encoding", "Changing thresholds or frames", "Changing any locked source", "Changing original metrics", "Replacing original execution receipt"],
+  "claim_limit": "Artifact validation permits completion of this engineering repair round; it does not erase its CLI failure or establish P1, reconstruction, or temporal stability."
+}
