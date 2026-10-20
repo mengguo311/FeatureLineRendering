@@ -1,0 +1,14 @@
+{
+  "outline_read": {"path": "docs/partwise_sketch_hatching/experiment_outline_v1.md", "lines": 851, "sections": "0-17", "complete": true},
+  "objective": "Editable partwise surface hatching with stable identities and correct camera-dependent visibility",
+  "layers": ["surface_and_parts", "fixed_physical_structure", "view_dependent_contours", "generated_surface_hatching"],
+  "priority": ["P0_correctness", "P1_lamp_MVP", "H1_controlled_comparison", "H2_association", "H3_optional_trace", "H4_optional_backend", "H5_optional_feedback"],
+  "evidence": {"this_round": "analytic_GT_fixture_only", "reconstruction": "UNMEASURED", "automatic_segmentation": "UNMEASURED", "H1_improvement": "UNMEASURED", "H2_to_H5": "NOT_TESTED"},
+  "P0": ["depth_conventions", "tangent_fallback", "sign_invariant_field", "deterministic_mesh_anchors", "isolated_regeneration", "occlusion", "nonzero_edit_and_leakage", "injected_fault_response"],
+  "P1": ["shade_stem_base", "three_styles", "orbit_zoom_edit_videos"],
+  "invalid_claims": ["GT_is_reconstruction", "vanilla_GS_is_RaDe_GS", "manual_is_automatic", "unchanged_anchors_prove_temporal_quality", "decoded_video_is_flicker_free", "suggested_targets_are_results", "oracle_is_deployable", "clipping_improves_segmentation", "test_tuning_is_validation"],
+  "future_main_input": "RGB+cameras; proxy fusion uses training-view depths only",
+  "manual_inputs": ["part_IDs_from_fixture", "part_axis_and_style_rules", "physical_rim_selection"],
+  "not_inherited": ["frozen_original_kernel_only", "no_curves"],
+  "constraints": {"cpu_cores": 2, "gpu": false, "round_max_minutes": 40, "push": false, "merge": false}
+}
