@@ -25,7 +25,7 @@ def fixture():
  faces=[{'z0':3.,'sx':0.,'sy':.2,'xy':[[-1,0],[1,0],[0,-1]]},
         {'z0':3.,'sx':0.,'sy':-.5,'xy':[[-1,0],[1,0],[0,1]]}]
  path=np.array([[0,-.8,2.84],[0,0,3.],[0,.8,2.6]])
- return faces,path,np.array([[-1,0,3],[1,0,3]])
+ return faces,path,np.array([[-1,0,3],[1,0,3]],float)
 
 class AttachmentTests(unittest.TestCase):
  def test_genuine_shared_edge_path_valid(self):
