@@ -1,0 +1,397 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-20T18:43:17.500484+00:00",
+  "authorized_branch": "partwise-sketch-hatching-p0p1-v01",
+  "scope": "bounded read-only local scientific asset inventory; no training, rendering, heavy imports, CUDA access, downloads, or environment/credential inspection",
+  "roots": [
+    "/home/u00134/3dgs_line",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01",
+    "/mnt/hdd1/u00134/hybrid_raster_trained_models_v1"
+  ],
+  "author_source": {
+    "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/sources/RaDe-GS",
+    "observed_head": "2d4bc087f1b4bd62c96054fbe89d273490526b81",
+    "tracked_worktree_changes": "",
+    "readme_provenance": "Baowen Zhang et al., RaDe-GS: Rasterizing Depth in Gaussian Splatting; clone URL in scientific README https://github.com/BaowenZ/RaDe-GS.git",
+    "cpu_feasibility": "author README requires torch CUDA and CUDA rasterization/simple-knn modules; no CPU training capability asserted"
+  },
+  "local_modified_source": {
+    "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/sources/paper_text_precision_v01",
+    "git_status": "not a git repository; immutable prior snapshot manifest supplied instead",
+    "snapshot_manifest": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/full_reproduction_v01/precision_v01/candidate_source_frozen_v01.json",
+    "snapshot_manifest_sha256": "bd7ae6dd4f4c539bcecc1a2f0a22aec481442322e42bd062e64d6912f73c018b",
+    "caution": "prior training receipts and frozen manifest establish historical pipeline identity; this round did not replay training or verify entire frozen source manifest"
+  },
+  "trained_checkpoints": [
+    {
+      "scene": "scan24",
+      "class": "historical locally modified RaDe-GS precision-variant training; not vanilla GS; not claimed exact author baseline",
+      "checkpoint": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/models/scan24_paper_text_precision_v01_half_30k/point_cloud/iteration_30000/point_cloud.ply",
+      "size_bytes": 145049480,
+      "header_elements": [
+        "element vertex 575587"
+      ],
+      "filter_3D_present": true,
+      "checkpoint_sha256": null,
+      "checkpoint_hash_status": "not computed; inventory only, not admitted as experiment input",
+      "training_receipt": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/models/scan24_paper_text_precision_v01_half_30k/train_complete.json",
+      "training_receipt_sha256": "d55f45fdf8c352af6727ca1089f4f74663cb41b3cd4561361b5fddc20b491e3d",
+      "iterations": 30000,
+      "scientificdone": false,
+      "source_manifest_digest_claimed_by_receipt": "bd7ae6dd4f4c539bcecc1a2f0a22aec481442322e42bd062e64d6912f73c018b",
+      "data_manifest_digest_claimed_by_receipt": "a75820082e4b3fe5062fe23da4880d4459bc4bf2e7c9a38a43ec6da813e9a431",
+      "depth_npz_count": 49,
+      "camera_conventions_path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/models/scan24_paper_text_precision_v01_half_30k/depth_normal/cameras_and_conventions.json",
+      "camera_conventions_sha256": "8ada57391dfa87da2ec49612538c55196c940407a2e4d9cd64c7fbbdcf0c3caa",
+      "depth_kind": [
+        "median affine camera-z; raw, not alpha-normalized"
+      ],
+      "depth_size": [
+        [
+          777,
+          581
+        ]
+      ],
+      "camera_count": 49,
+      "recon_ply_exists": false
+    },
+    {
+      "scene": "scan37",
+      "class": "historical locally modified RaDe-GS precision-variant training; not vanilla GS; not claimed exact author baseline",
+      "checkpoint": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/models/scan37_paper_text_precision_v01_half_30k/point_cloud/iteration_30000/point_cloud.ply",
+      "size_bytes": 145148012,
+      "header_elements": [
+        "element vertex 575978"
+      ],
+      "filter_3D_present": true,
+      "checkpoint_sha256": null,
+      "checkpoint_hash_status": "not computed; inventory only, not admitted as experiment input",
+      "training_receipt": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/models/scan37_paper_text_precision_v01_half_30k/train_complete.json",
+      "training_receipt_sha256": "85b4f84cf496bf011d6c1eb2ef2e5a8845142f8795b832b4a9f212d00d943a51",
+      "iterations": 30000,
+      "scientificdone": false,
+      "source_manifest_digest_claimed_by_receipt": "bd7ae6dd4f4c539bcecc1a2f0a22aec481442322e42bd062e64d6912f73c018b",
+      "data_manifest_digest_claimed_by_receipt": "baea57e99d4be7a30679b2cdb62784362d62d8616c9add5249c8138f6fa96ddf",
+      "depth_npz_count": 49,
+      "camera_conventions_path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/models/scan37_paper_text_precision_v01_half_30k/depth_normal/cameras_and_conventions.json",
+      "camera_conventions_sha256": "c93f90704c4a951421f250ae88752c7e8a6a7ea8f98125ff883c09e4532170b2",
+      "depth_kind": [
+        "median affine camera-z; raw, not alpha-normalized"
+      ],
+      "depth_size": [
+        [
+          777,
+          581
+        ]
+      ],
+      "camera_count": 49,
+      "recon_ply_exists": false
+    },
+    {
+      "scene": "scan40",
+      "class": "historical locally modified RaDe-GS precision-variant training; not vanilla GS; not claimed exact author baseline",
+      "checkpoint": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/models/scan40_paper_text_precision_v01_half_30k/point_cloud/iteration_30000/point_cloud.ply",
+      "size_bytes": 170947772,
+      "header_elements": [
+        "element vertex 678358"
+      ],
+      "filter_3D_present": true,
+      "checkpoint_sha256": null,
+      "checkpoint_hash_status": "not computed; inventory only, not admitted as experiment input",
+      "training_receipt": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/models/scan40_paper_text_precision_v01_half_30k/train_complete.json",
+      "training_receipt_sha256": "e8e88652a4d2767ff2a557878641d6bec99a84407df49945c3b3486f0b5bbdbb",
+      "iterations": 30000,
+      "scientificdone": false,
+      "source_manifest_digest_claimed_by_receipt": "bd7ae6dd4f4c539bcecc1a2f0a22aec481442322e42bd062e64d6912f73c018b",
+      "data_manifest_digest_claimed_by_receipt": "15ef82ac901410947505f6e82c9291eaefd9d5a7ac278bd3ef76be85abccb176",
+      "depth_npz_count": 49,
+      "camera_conventions_path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/models/scan40_paper_text_precision_v01_half_30k/depth_normal/cameras_and_conventions.json",
+      "camera_conventions_sha256": "b5876af1fc02707a1e485ef0a6f0e6ee930139acaed4e8f80e367e8708f6f070",
+      "depth_kind": [
+        "median affine camera-z; raw, not alpha-normalized"
+      ],
+      "depth_size": [
+        [
+          777,
+          581
+        ]
+      ],
+      "camera_count": 49,
+      "recon_ply_exists": false
+    },
+    {
+      "scene": "scan55",
+      "class": "historical locally modified RaDe-GS precision-variant training; not vanilla GS; not claimed exact author baseline",
+      "checkpoint": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/models/scan55_paper_text_precision_v01_half_30k/point_cloud/iteration_30000/point_cloud.ply",
+      "size_bytes": 151836092,
+      "header_elements": [
+        "element vertex 602518"
+      ],
+      "filter_3D_present": true,
+      "checkpoint_sha256": null,
+      "checkpoint_hash_status": "not computed; inventory only, not admitted as experiment input",
+      "training_receipt": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/models/scan55_paper_text_precision_v01_half_30k/train_complete.json",
+      "training_receipt_sha256": "1027c53d12ae3e5574ff85ccb30eaddacc57c429d41d0277fa338e4029b6ed11",
+      "iterations": 30000,
+      "scientificdone": false,
+      "source_manifest_digest_claimed_by_receipt": "bd7ae6dd4f4c539bcecc1a2f0a22aec481442322e42bd062e64d6912f73c018b",
+      "data_manifest_digest_claimed_by_receipt": "53b19a5366b1ff2122c28ddd4fd7ac041d525095ee6669c69b5656e0de438371",
+      "depth_npz_count": 49,
+      "camera_conventions_path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/models/scan55_paper_text_precision_v01_half_30k/depth_normal/cameras_and_conventions.json",
+      "camera_conventions_sha256": "ee487acb8056629988a27a0cec9a93ce2d092ef75f21d904c206ce39fe0882fb",
+      "depth_kind": [
+        "median affine camera-z; raw, not alpha-normalized"
+      ],
+      "depth_size": [
+        [
+          777,
+          581
+        ]
+      ],
+      "camera_count": 49,
+      "recon_ply_exists": false
+    },
+    {
+      "scene": "scan63",
+      "class": "historical locally modified RaDe-GS precision-variant training; not vanilla GS; not claimed exact author baseline",
+      "checkpoint": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/models/scan63_paper_text_precision_v01_half_30k/point_cloud/iteration_30000/point_cloud.ply",
+      "size_bytes": 65757428,
+      "header_elements": [
+        "element vertex 260936"
+      ],
+      "filter_3D_present": true,
+      "checkpoint_sha256": null,
+      "checkpoint_hash_status": "not computed; inventory only, not admitted as experiment input",
+      "training_receipt": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/models/scan63_paper_text_precision_v01_half_30k/train_complete.json",
+      "training_receipt_sha256": "7272e19183725100a1c6b23642a98326ce8eca9c25e01843cd230ca86e54ee04",
+      "iterations": 30000,
+      "scientificdone": false,
+      "source_manifest_digest_claimed_by_receipt": "bd7ae6dd4f4c539bcecc1a2f0a22aec481442322e42bd062e64d6912f73c018b",
+      "data_manifest_digest_claimed_by_receipt": "0ecfe4defa0702f1e0e1ca1ec0f21beea013ff056438f59049db9b6f2d3c2793",
+      "depth_npz_count": 49,
+      "camera_conventions_path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/models/scan63_paper_text_precision_v01_half_30k/depth_normal/cameras_and_conventions.json",
+      "camera_conventions_sha256": "3caf74f2b4d16986a32d7f876adcc497a0c67573d7ff80c540ad7b6c89f3f0c0",
+      "depth_kind": [
+        "median affine camera-z; raw, not alpha-normalized"
+      ],
+      "depth_size": [
+        [
+          777,
+          581
+        ]
+      ],
+      "camera_count": 49,
+      "recon_ply_exists": true
+    },
+    {
+      "scene": "scan65",
+      "class": "historical locally modified RaDe-GS precision-variant training; not vanilla GS; not claimed exact author baseline",
+      "checkpoint": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/models/scan65_paper_text_precision_v01_half_30k/point_cloud/iteration_30000/point_cloud.ply",
+      "size_bytes": 83299400,
+      "header_elements": [
+        "element vertex 330547"
+      ],
+      "filter_3D_present": true,
+      "checkpoint_sha256": null,
+      "checkpoint_hash_status": "not computed; inventory only, not admitted as experiment input",
+      "training_receipt": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/models/scan65_paper_text_precision_v01_half_30k/train_complete.json",
+      "training_receipt_sha256": "76f521b37c5bf7e59542dc185b78262fda48cd786c295cec6b66a891e7aa91be",
+      "iterations": 30000,
+      "scientificdone": false,
+      "source_manifest_digest_claimed_by_receipt": "bd7ae6dd4f4c539bcecc1a2f0a22aec481442322e42bd062e64d6912f73c018b",
+      "data_manifest_digest_claimed_by_receipt": "54fb42b618c5560c21b2ed62b02624594bdc9e5e8281c2f6ab638d9fa8387e62",
+      "depth_npz_count": 49,
+      "camera_conventions_path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/models/scan65_paper_text_precision_v01_half_30k/depth_normal/cameras_and_conventions.json",
+      "camera_conventions_sha256": "e3e9c3bc549bad4ca56294d548eed2d7aa49ab76589d48e70d61eec6ffeaf024",
+      "depth_kind": [
+        "median affine camera-z; raw, not alpha-normalized"
+      ],
+      "depth_size": [
+        [
+          777,
+          581
+        ]
+      ],
+      "camera_count": 49,
+      "recon_ply_exists": false
+    }
+  ],
+  "datasets": [
+    {
+      "scene": "scan24",
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan24",
+      "rgb_count": 49,
+      "camera_npz_exists": true,
+      "camera_npz_sha256": "a2aca767d84999ea76e3c002de0e21fe189b9d28c43b211862a3e31339b72705",
+      "colmap_camera_file": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan24/sparse/0/cameras.bin",
+      "colmap_image_file": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan24/sparse/0/images.bin",
+      "masks_present": true,
+      "depths_present": true,
+      "part_labels_verified": false,
+      "evaluation_caveat": "RGB+cameras candidate only. Do not use prepared depths/masks/points or evaluation geometry as reconstructed-proxy evidence without provenance review."
+    },
+    {
+      "scene": "scan37",
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan37",
+      "rgb_count": 49,
+      "camera_npz_exists": true,
+      "camera_npz_sha256": "fbd4d03e10457cc36522f5a29d311ac50db867236bc4786c8c5a2a9c596c49ed",
+      "colmap_camera_file": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan37/sparse/0/cameras.bin",
+      "colmap_image_file": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan37/sparse/0/images.bin",
+      "masks_present": true,
+      "depths_present": true,
+      "part_labels_verified": false,
+      "evaluation_caveat": "RGB+cameras candidate only. Do not use prepared depths/masks/points or evaluation geometry as reconstructed-proxy evidence without provenance review."
+    },
+    {
+      "scene": "scan40",
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan40",
+      "rgb_count": 49,
+      "camera_npz_exists": true,
+      "camera_npz_sha256": "af1ba75cbb137e5e9c83036a8db6da463365c6f54079ec31d8b8a162779fad78",
+      "colmap_camera_file": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan40/sparse/0/cameras.bin",
+      "colmap_image_file": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan40/sparse/0/images.bin",
+      "masks_present": true,
+      "depths_present": true,
+      "part_labels_verified": false,
+      "evaluation_caveat": "RGB+cameras candidate only. Do not use prepared depths/masks/points or evaluation geometry as reconstructed-proxy evidence without provenance review."
+    },
+    {
+      "scene": "scan55",
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan55",
+      "rgb_count": 49,
+      "camera_npz_exists": true,
+      "camera_npz_sha256": "e545d725e1b0b4d8c7600edd4d008fd10624fa3f08e0ffec96cc81953f90d9bf",
+      "colmap_camera_file": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan55/sparse/0/cameras.bin",
+      "colmap_image_file": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan55/sparse/0/images.bin",
+      "masks_present": true,
+      "depths_present": true,
+      "part_labels_verified": false,
+      "evaluation_caveat": "RGB+cameras candidate only. Do not use prepared depths/masks/points or evaluation geometry as reconstructed-proxy evidence without provenance review."
+    },
+    {
+      "scene": "scan63",
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan63",
+      "rgb_count": 49,
+      "camera_npz_exists": true,
+      "camera_npz_sha256": "16e83ace8e81ebd88e99603fe822386e43cf673620f81c57e0f531624d6d6da5",
+      "colmap_camera_file": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan63/sparse/0/cameras.bin",
+      "colmap_image_file": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan63/sparse/0/images.bin",
+      "masks_present": true,
+      "depths_present": true,
+      "part_labels_verified": false,
+      "evaluation_caveat": "RGB+cameras candidate only. Do not use prepared depths/masks/points or evaluation geometry as reconstructed-proxy evidence without provenance review."
+    },
+    {
+      "scene": "scan65",
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan65",
+      "rgb_count": 49,
+      "camera_npz_exists": true,
+      "camera_npz_sha256": "1885e958bea92908feedca4a83fe4e83b8eaa0fb7e23409ddb23b1dc045ffe58",
+      "colmap_camera_file": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan65/sparse/0/cameras.bin",
+      "colmap_image_file": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan65/sparse/0/images.bin",
+      "masks_present": true,
+      "depths_present": true,
+      "part_labels_verified": false,
+      "evaluation_caveat": "RGB+cameras candidate only. Do not use prepared depths/masks/points or evaluation geometry as reconstructed-proxy evidence without provenance review."
+    },
+    {
+      "scene": "scan69",
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan69",
+      "rgb_count": 49,
+      "camera_npz_exists": true,
+      "camera_npz_sha256": "f671638953608c6bd94b9111032406d389a3c7229bcb730bfa824a116a6fa967",
+      "colmap_camera_file": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan69/sparse/0/cameras.bin",
+      "colmap_image_file": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan69/sparse/0/images.bin",
+      "masks_present": true,
+      "depths_present": true,
+      "part_labels_verified": false,
+      "evaluation_caveat": "RGB+cameras candidate only. Do not use prepared depths/masks/points or evaluation geometry as reconstructed-proxy evidence without provenance review."
+    },
+    {
+      "scene": "scan83",
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan83",
+      "rgb_count": 64,
+      "camera_npz_exists": true,
+      "camera_npz_sha256": "f57a896d48d428901edee27168fade86b6b59b611375214611b26e19f0484b8d",
+      "colmap_camera_file": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan83/sparse/0/cameras.bin",
+      "colmap_image_file": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/data/prepared/scan83/sparse/0/images.bin",
+      "masks_present": true,
+      "depths_present": true,
+      "part_labels_verified": false,
+      "evaluation_caveat": "RGB+cameras candidate only. Do not use prepared depths/masks/points or evaluation geometry as reconstructed-proxy evidence without provenance review."
+    }
+  ],
+  "possible_cached_proxy": {
+    "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/models/scan63_paper_text_precision_v01_half_30k/recon.ply",
+    "size_bytes": 1936,
+    "header_elements": [
+      "element vertex 29",
+      "element face 22"
+    ],
+    "status": "present only; origin/splits/geometry quality must be audited before main-experiment admission"
+  },
+  "lamp_search": {
+    "result": "NOT_FOUND_IN_BOUNDED_SEARCH",
+    "max_depth": 5,
+    "follow_symlinks": false,
+    "visited_directories": 9030,
+    "excluded_names": [
+      "venv",
+      ".venv",
+      ".git",
+      "node_modules",
+      "__pycache__",
+      "site-packages",
+      "orchestration",
+      "rounds"
+    ],
+    "substring_lamp_hits": 5,
+    "hits_interpreted": "all five were clamp filenames, no lamp dataset/checkpoint. This does not prove global absence."
+  },
+  "vanilla_warning": {
+    "evidence": "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/PROTOCOL_HAO_MUKAI.md",
+    "finding": "Protocol explicitly calls historical frozen GS PLY vanilla GS with own disc approximation, not author RaDe-GS; main PROTOCOL also warns vanilla PLY lacks filter_3D. Ficus/chair/lego/drums previously exposed views cannot be called blind."
+  },
+  "cpu_dependencies": {
+    "python": "3.10.20 (main, Mar 11 2026, 17:46:40) [GCC 14.3.0]",
+    "executable": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+    "inspection": "importlib.metadata only; no torch import or GPU probe",
+    "packages": {
+      "numpy": "2.2.6",
+      "scipy": "1.15.3",
+      "Pillow": "12.2.0",
+      "matplotlib": "3.10.9",
+      "opencv-python": null,
+      "imageio": "2.38.0",
+      "imageio-ffmpeg": null,
+      "trimesh": "5.1.1",
+      "open3d": "0.20.0",
+      "torch": "2.5.1+cu124",
+      "torchvision": "0.20.1+cu124",
+      "pytest": null,
+      "plyfile": "1.1.5",
+      "scikit-image": "0.25.2",
+      "networkx": "3.4.2"
+    },
+    "ffmpeg_on_PATH": false,
+    "ffmpeg_bounded_search_roots": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/envs",
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv",
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/build",
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/cache"
+    ],
+    "ffmpeg_binary_found": false,
+    "video_next_action": "Parent may install imageio-ffmpeg isolated in authorized worktree; shared environments must remain unchanged."
+  },
+  "evidence_file_sha256": {
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/sources/RaDe-GS/README.md": "f2520e9ad9ffe5d1a95cc856b7b560c7fe1162dc1684e4e78ef1477004b677ca",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/sources/RaDe-GS/train.py": "f64f58352583a5e988a574b0441ce40ce32c88ec0361f436dd804a54c5d73eb8",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/sources/RaDe-GS/mesh_extract.py": "f1be55708a802ecc8967a4340b4b6f762db640004f319500563afcd93a9bfbd8",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/full_reproduction_v01/precision_v01/candidate_source_frozen_v01.json": "bd7ae6dd4f4c539bcecc1a2f0a22aec481442322e42bd062e64d6912f73c018b",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/full_reproduction_v01/precision_v01/source_precision_evidence.json": "112575b20bfe8b2bad27bf935d4c3cc6a230f0825e5cf229634b16529e3c3979",
+    "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/PROTOCOL_HAO_MUKAI.md": "b1f87fbb2554eb511c5b0186a864d98abd559a3557f7edd8540f3a78afff071e",
+    "/home/u00134/3dgs_line/hybrid_raster_trained_models_v1/PROTOCOL.md": "479d84db65de08ae09dab35eba44ea59dd11a508ecbaac895f3b94eee3c8b881"
+  },
+  "recommendation": "Use explicitly labelled procedural GT lamp for round_001 P0. Defer reconstructed lamp claims. Future CPU-only preparation may audit the trained DTU precision variant and its cached depth/mesh provenance, or prepare new RGB+cameras for later RaDe-GS training. No empirical scores are reported here."
+}
