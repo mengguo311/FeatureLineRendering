@@ -1,0 +1,132 @@
+{
+  "status": "CROSS_MODEL_ORIGINAL_KERNEL_OFF_DIAGNOSTIC_NOT_SEMANTIC_EDIT",
+  "scene": "lego",
+  "source_sha256": "fa9bea3fa4f8d349fa873a66d892c53cd1263499caec6421c286350a5bb7cbbc",
+  "selected_partfield_cluster": 0,
+  "match_to_parameter_arms": {
+    "XYZ K3": {
+      "selected_cluster": 0,
+      "intersection_original_rows": 53222,
+      "jaccard_to_preselected_PartField_cluster": 0.2742723449868074,
+      "rows": 142894,
+      "note": "Post-hoc source-ID match only, not semantic truth"
+    },
+    "fusion K3": {
+      "selected_cluster": 0,
+      "intersection_original_rows": 36969,
+      "jaccard_to_preselected_PartField_cluster": 0.22778469235603643,
+      "rows": 94891,
+      "note": "Post-hoc source-ID match only, not semantic truth"
+    }
+  },
+  "views": {
+    "train_r_79": {
+      "native_calibration": {
+        "full_rgb_mae": 0.013141068629920483,
+        "roi_rgb_mae": 0.03398973122239113,
+        "native_reference_sha256": "86701a548607ef17cdf97dbc367626a8361a3b2d53c0a79338502427135ddf07",
+        "roi_pixels": 51873
+      },
+      "cuts": [
+        {
+          "candidate": "PartField 0",
+          "removed_original_rows": 104376,
+          "mae_vs_original": 0.07057803869247437,
+          "changed_pixel_fraction_gt_0p05": 0.14353125
+        },
+        {
+          "candidate": "axis y high",
+          "removed_original_rows": 104376,
+          "mae_vs_original": 0.08134255558252335,
+          "changed_pixel_fraction_gt_0p05": 0.15801875
+        },
+        {
+          "candidate": "XYZ K3 0",
+          "removed_original_rows": 142894,
+          "mae_vs_original": 0.05561228469014168,
+          "changed_pixel_fraction_gt_0p05": 0.14405
+        },
+        {
+          "candidate": "fusion K3 0",
+          "removed_original_rows": 94891,
+          "mae_vs_original": 0.012007253244519234,
+          "changed_pixel_fraction_gt_0p05": 0.07578125
+        }
+      ],
+      "image_sha256": "aec20b957d84055c311730511a0af382bc10c9c2167d67be00d6668a01a32cf7",
+      "image": "train_r_79_parameter_comparison.png"
+    },
+    "test_r_14": {
+      "native_calibration": {
+        "full_rgb_mae": 0.013655663467943668,
+        "roi_rgb_mae": 0.03339480608701706,
+        "native_reference_sha256": "5ac2df1a36503d73d138d5e7ebf1e19a88fe8f91ccc8c7d3fdb6f66997b94fe2",
+        "roi_pixels": 54165
+      },
+      "cuts": [
+        {
+          "candidate": "PartField 0",
+          "removed_original_rows": 104376,
+          "mae_vs_original": 0.084660105407238,
+          "changed_pixel_fraction_gt_0p05": 0.1542625
+        },
+        {
+          "candidate": "axis y high",
+          "removed_original_rows": 104376,
+          "mae_vs_original": 0.06844125688076019,
+          "changed_pixel_fraction_gt_0p05": 0.13275625
+        },
+        {
+          "candidate": "XYZ K3 0",
+          "removed_original_rows": 142894,
+          "mae_vs_original": 0.055023908615112305,
+          "changed_pixel_fraction_gt_0p05": 0.1546875
+        },
+        {
+          "candidate": "fusion K3 0",
+          "removed_original_rows": 94891,
+          "mae_vs_original": 0.012678584083914757,
+          "changed_pixel_fraction_gt_0p05": 0.08176875
+        }
+      ],
+      "image_sha256": "95061d2efe744a00e2230a4ef6de5e51277583b139497d9e92dc50c51f1ddfe3",
+      "image": "test_r_14_parameter_comparison.png"
+    },
+    "test_r_79": {
+      "native_calibration": {
+        "full_rgb_mae": 0.013114742003381252,
+        "roi_rgb_mae": 0.03482004255056381,
+        "native_reference_sha256": "5e979e3e04f0dbb224778c42dd275587d88ae087d891d8fd21d6d667ab15ef46",
+        "roi_pixels": 42303
+      },
+      "cuts": [
+        {
+          "candidate": "PartField 0",
+          "removed_original_rows": 104376,
+          "mae_vs_original": 0.0789928063750267,
+          "changed_pixel_fraction_gt_0p05": 0.13041875
+        },
+        {
+          "candidate": "axis y high",
+          "removed_original_rows": 104376,
+          "mae_vs_original": 0.05577147752046585,
+          "changed_pixel_fraction_gt_0p05": 0.0840375
+        },
+        {
+          "candidate": "XYZ K3 0",
+          "removed_original_rows": 142894,
+          "mae_vs_original": 0.05634109303355217,
+          "changed_pixel_fraction_gt_0p05": 0.10156875
+        },
+        {
+          "candidate": "fusion K3 0",
+          "removed_original_rows": 94891,
+          "mae_vs_original": 0.012594684027135372,
+          "changed_pixel_fraction_gt_0p05": 0.0811875
+        }
+      ],
+      "image_sha256": "f726259a3a99e0b6c912a468bc9035014d746e55dd604ca7019fa7cd7e8c431e",
+      "image": "test_r_79_parameter_comparison.png"
+    }
+  }
+}
