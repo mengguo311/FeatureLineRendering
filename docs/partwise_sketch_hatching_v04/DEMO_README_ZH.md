@@ -1,75 +1,77 @@
-# 真实旧模型分区排线 Demo
+# Chair / Lego / Drums 分区排线 Demo
 
-当前有 Chair、Lego、Drums 的真实旧模型资产。最新 Drums 演示支持**跨视角添加/减去可见面、总选区预览、一次保存为区域**，以及角度、间距、长度、线宽、旋转、缩放、撤销和导出。CPU 每帧约数秒，不是实时渲染。
+同一界面加载三个真实旧模型的保存资产，支持选择模型、跨视角选面、局部角度/间距/长度/线宽、旋转/缩放、撤销与导出。几何是原冻结GS的CPU深度所提取的粗代理，不是GT或自动语义部件；当前是可运行工程demo，外观仍partial。CPU每帧数秒，不是实时。
+
+## 启动
 
 ```bash
-cd /mnt/hdd1/u00134/partwise_sketch_hatching_models_v04/units/unit_007/portable_demo
-./run.sh preview
+cd /mnt/hdd1/u00134/partwise_sketch_hatching_models_v04/units/unit_008/portable_demo
+./run.sh preview --scene lego
 ./run.sh viewer
 ```
 
-浏览器打开终端显示的本机 URL。默认加载已保存的四区资产；在 Style region 选择 `Upper cymbal surface (manual)`，调整风格，点击 **Render & save style**。`./run.sh preview` 冷加载角度编辑后的资产并写入包内 `runs/`。
+打开终端给出的本机URL。**Model**切换Chair/Lego/Drums；每个模型在当前服务器中保留自己的相机、选择草稿、编辑和撤销记录。页面刷新也可继续当前状态。停止服务器前，对每个需要保留的模型点击 **Download saved asset**；下载只包含已提交资产，不包含尚未保存的选面草稿。不同模型的草稿名称在当前浏览器标签页分别保存。
 
-## 跨视角创建一个区域
+默认Lego已包含人工`Bucket surfaces (manual)`区域。选择该区域，调四个风格参数，点击 **Render & save style**；**Update view · keep selection**及Orbit/Zoom只改变相机，保持路径与选面。选择包含整个代理三角面，可能超出矩形或覆盖原先遮挡的部分；不是完整语义铲斗分割。
 
-从原三个高度区域开始：
+可直接启动其他模型：
 
 ```bash
-DEMO_ASSET=original ./run.sh viewer
+./run.sh viewer --scene chair --port 8766
+./run.sh preview --scene drums
+./run.sh orbit --scene lego
+./run.sh zoom --scene lego
 ```
 
-1. 点击模型选择来源区域，将 Image tool 改成 **Drag a visible rectangle**。
-2. 用 **Add visible faces** 拖框添加表面；用 **Subtract visible faces** 减去误选，或用 **Replace selection** 重新开始。
-3. 点击 Orbit/Zoom，或调整相机滑条后点 **Update view · keep selection**。已选三维面保持不变，粉色预览随相机重绘。导航不生成新路径或资产副本。
-4. **Undo selection step** 撤销一步；**Clear selection** 清空草稿；**Show total selection** 在当前相机检查总选区。
-5. 输入名称，按 **Save total selection as region** 一次提交。新区域会成为风格编辑目标，此后可调整四个风格参数。
-6. **Download saved asset** 导出网格、面标签、固定路径、参数、选面来源和当前相机。尚未提交的草稿不包含在资产下载中。
+输出自动写入包内新`runs/`子目录；可用`--output /搬移后包路径/runs/自定义目录`指定尚不存在的目录。保存资产渲染不需要原PLY或旧工作树。包不含Python环境，依赖见`requirements.txt`；本机Linux环境实测，其他平台未验证。可用`DEMO_PY=/path/to/python ./run.sh viewer`指定解释器。`demo.py build`所需原模型重建工具未放入此精简包，完整构建来源保留在原工作树与unit001/003/005。
 
-草稿存在时，风格保存和资产撤销暂不可用，防止在选面中途更换底层资产。浏览器刷新保留同一服务器中的选面草稿和相机，输入的区域名称保存在当前浏览器标签页。关闭服务器不会自动恢复未提交草稿；请先提交并下载资产。已保存的区域可在服务器重启后冷加载。
+## 创建自己的局部区域
 
-选择限于一个来源区内的首命中代理三角面，保存**整个三角面**。没有可见命中的面不会自动补齐；面的一部分可能超出框或原先被遮挡。世界框选 **World box (includes hidden sides)** 仍可用，但需先清空可见选面草稿。两者都是人工编辑区，不是自动语义分割。
+从Lego原三个高度区开始：
 
-本轮由代理图像人工指定四次矩形操作，三个构建视角，选面数640→855→911→718。718面仍有36个索引边连通片，包含邻近镲片/鼓沿/支架的少量碎片和背面遗漏；这个名称表达编辑意图，不是完整语义镲片标签。
+```bash
+DEMO_CATALOG=AUTHORING_CATALOG.json ./run.sh viewer --scene lego
+```
 
-## CLI 与冷加载
+1. 在图像上点击来源区域，或选`Select faces from`。将Image tool切换为`Drag a visible rectangle`。
+2. 拖框添加可见面；可切换Add/Subtract/Replace，或撤销一步/清空。相机旋转后继续添加另一侧，选中三维面保持不变。
+3. `Show total selection`查看当前相机的总选面；输入名字，`Save total selection as region`一次提交。
+4. 新区域成为风格编辑目标；调参数、保存并下载。草稿存在时风格更改和资产撤销暂停，避免更换其底层资产。
+5. 切换模型不会丢失当前会话的草稿。可回原模型继续，但服务器重启不会自动恢复未提交草稿。
 
-包内 `SELECTION_RECIPE.json` 保存本轮的相机、矩形、增减顺序和输入网格哈希。以下输出目录必须尚不存在：
+本轮Lego仅一次人工确定三矩形，三个固定构建视角；2030个选面仍可能含举升支撑的局部、边缘漏选和孔洞。没有阈值扫选或几何补洞。Chair为粗高度区；Drums含unit007的人工镲面选区，依然有邻近碎片与隐藏遗漏。
+
+## CLI与冷加载
+
+当前目录下，使用包内同一个入口：
+
+```bash
+./run.sh edit --scene lego --region 4 --angle 10 --spacing .06 --length .16 --width 1.6 --output "$PWD/runs/my_edit"
+./run.sh preview --scene lego --asset "$PWD/runs/my_edit" --output "$PWD/runs/my_preview"
+./run.sh author --scene lego --asset "$PWD/assets/lego_original" --region 3 --selection-recipe "$PWD/SELECTION_RECIPE.json" --name 'Bucket surfaces (manual)' --output "$PWD/runs/my_region"
+```
+
+上述输出目录应尚不存在。`--part`是`--region`别名。包内配方固定相机、三个矩形、操作顺序和原网格哈希，重放生成同一选面集合。
+
+把浏览器下载ZIP解压到包内`runs/downloaded`后，在新进程打开：
 
 ```bash
 DEMO_PY=/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python
-"$DEMO_PY" source/demo.py author --scene drums --asset assets/original --region 3 --selection-recipe SELECTION_RECIPE.json --name 'Upper cymbal surface (manual)' --output runs/my_region
-"$DEMO_PY" source/demo.py edit --scene drums --asset runs/my_region --part 4 --angle 35 --output runs/my_edit
-"$DEMO_PY" source/demo.py render --scene drums --asset runs/my_edit --view train_r_7 --output runs/my_preview
-./run.sh orbit
-./run.sh zoom
+"$DEMO_PY" source/viewer.py --asset "$PWD/runs/downloaded" --output "$PWD/runs/reopened" --port 8765
 ```
 
-`author` 也支持 `--screen-rect LEFT TOP RIGHT BOTTOM` 配合相机参数，以及 `--bounds XMIN YMIN ZMIN XMAX YMAX ZMAX`；`edit` 支持 `--angle --spacing --length --width`；`render` 支持 `--trajectory static|orbit|zoom` 或独立相机及 `--size`。
+单资产viewer保留下载时的模型、区域、参数、路径和相机。三个模型各自的导出均经关闭服务器后新进程重绘验证，图像与数组一致；搬移包也逐模型冷加载，并重放Lego选面→角度编辑→渲染。保存路径和自身代理局部性不代表独立几何精度。
 
-下载ZIP解压到 `runs/downloaded` 后，可执行：
+## 实际来源和证据范围
 
-```bash
-"$DEMO_PY" source/viewer.py --asset runs/downloaded --output runs/reopened --port 8765
-```
+- Chair：原冻结vanilla GS；unit001深度代理、unit002保存路径/风格。
+- Lego：原PLY SHA256 `fa9bea3fa4f8d349fa873a66d892c53cd1263499caec6421c286350a5bb7cbbc`，310475 Gaussian；unit003 CPU深度TSDF代理，16543顶点/29999面；本轮固定几何，直接再次渲染原PLY八参考相机。
+- Drums：unit005原GS深度TSDF代理；unit007的固定四区路径及人工多视角面选区。
 
-可搬移包无需原始PLY或旧工作树即可重绘保存资产。可用 `DEMO_PY=/path/to/python ./run.sh viewer` 指定已装依赖的解释器；依赖见 requirements.txt，未捆绑Python环境，其他平台未测试。
+本轮未重新构建三模型几何；未使用GT、GPU、训练、自动语义模型或下载新依赖。模型原始路径/哈希保存在`PORTABLE_DEMO.json`；包内只需真实保存资产。
 
-## 来源、实跑与限制
+`previews/three_models.png`为三个真实模型同一入口预览；`reference_proxy_regions_hatch.png`展示Lego全部八组来源/代理/区域/排线；`local_edit_all_views.png`保留所有编辑前后视角，`selection_all_views.png`展示三个构建视角的选区，`orbit.mkv`/`zoom.mkv`及全帧接触图展示真实保存路径的相机变化。视频全帧解码核对只证明有限序列产物，不是全路径时序认证。旧训练/测试相机已有曝光，不称盲评。
 
-Drums 原冻结 vanilla GS：360,012 Gaussian，SHA256 `d4b67123927613ade6b7e2f38ed6bf724fc5e348dbcca84a2be1352ec5113a8b`。unit005 从原PLY串行CPU深度渲染24训练视角，再TSDF提取16,839顶点/29,999面的粗代理。unit007固定该代理，重新执行原PLY八视角参考渲染；没有重建或修补几何，没有GT替代或GPU训练。原三区是世界高度阈值 -0.15 / 0.42。
+Lego仍有底板波浪排线、车体孔洞、短碎线和细杆缺失；Drums支架破碎、鼓沿粗糙；Chair仍为粗代理。人工选区不是语义真值；附着/编辑掩码来自同一代理，不能证明重建正确。H1/H2未测试，历史P1 NO_GO与P2 ZERO_HEADROOM不变。
 
-本轮实跑CLI作者操作、局部编辑、浏览器鼠标拖框/键盘命名/跨视角增减/撤销/刷新/导出、新进程冷加载和搬移包重放。其他区域路径与图层精确保持；八视角局部角度编辑在固定2px边界带之外变化为0。区域创建本身的微小栅格副作用另记在报告中，不宣称作者操作普遍零泄漏。
-
-薄支架断裂、鼓沿噪声、鼓体孔洞和碎短线仍明显。7/8静态视角完整入框；继承test_r_79左缘约1.56px裁切作为负例保留。12旋转/6缩放均完整入框并逐帧解码核对；不代表完整时序认证。附着/局部性相对于同一代理，同模型深度不是独立真值。旧训练/测试视图已有曝光，不称盲评；H1/H2未验证，历史NO_GO保留。
-
-最新包：`units/unit_007/portable_demo.tar.gz`。旧Chair包=`units/unit_002/portable_demo.tar.gz`，Lego=`units/unit_004/portable_demo.tar.gz`，Drums原三区=`units/unit_005/portable_demo.tar.gz`。旧包界面不会自动更新，新工作树viewer可读取其资产。
-
-原PLY→CPU深度→TSDF→路径完整重建由unit005验证；unit007是选区协议，不能用作build协议。原机重建入口：
-
-```bash
-cd /home/u00134/3dgs_line/partwise_sketch_hatching_models_v04
-DEMO_PY=/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python
-"$DEMO_PY" experiments/partwise_sketch_hatching_v04/demo.py build --scene drums --unit /mnt/hdd1/u00134/partwise_sketch_hatching_models_v04/units/unit_005 --output /mnt/hdd1/u00134/partwise_sketch_hatching_models_v04/user_runs/drums_build
-```
-
-当前证据在unit007：`selection/selection_all_views.png`、`media/reference_proxy_regions_hatch.png`、`media/local_edit_all_views.png`、`media/orbit.mkv`、`media/zoom.mkv`、`browser_complete/`、`metrics/`。准确命令和返回码见 `REPRODUCE_ZH.md` 与 `logs/*.receipt.json`；状态、失败及边界见 `STATUS.json` / `REPORT_ZH.md`。
+原机完整状态、实际命令/返回码与限制在`units/unit_008/STATUS.json`、`REPORT_ZH.md`、`REPRODUCE_ZH.md`和`logs/*.receipt.json`。可搬移归档为`units/unit_008/portable_demo.tar.gz`。

@@ -18,7 +18,8 @@ from screen_selection import visible_faces,pick_region
 from selection_draft import SelectionDraft
 
 class Editor:
-    def __init__(self,asset,output):
+    def __init__(self,asset,output,image_prefix=''):
+        self.image_prefix=image_prefix
         self.asset=Path(asset);self.output=new_output(output);self.revision=0
         self.pending=None;self.preview_count=0;self.history=[];self.draft=None
         meta=json.loads((self.asset/'asset.json').read_text())
@@ -31,7 +32,7 @@ class Editor:
         folder=self.output/f'view_{self.revision:04d}';folder.mkdir()
         save_frame(folder,'frame_000',mesh,strokes,meta,camera)
         record=dict(scene=meta['scene'],regions=meta['regions'],styles=meta['styles'],revision=self.revision,seconds=time.monotonic()-t,
-                    images={k:f'/image/view_{self.revision:04d}/frame_000_{k}.png' for k in ('image','region_rgb','proxy')},
+                    images={k:f'/image/{self.image_prefix}view_{self.revision:04d}/frame_000_{k}.png' for k in ('image','region_rgb','proxy')},
                     asset=str(self.asset),camera={k:values[k] for k in ('azimuth','elevation','distance')},
                     mesh_bounds=np.concatenate([mesh['vertices'].min(0),mesh['vertices'].max(0)]).tolist(),
                     manual_regions=len(meta.get('region_history',[])),can_undo=bool(self.history),
@@ -84,7 +85,7 @@ class Editor:
         overlay=proxy*(1-.75*selected[:,:,None])+np.array([.85,.16,.55])*(.75*selected[:,:,None])
         self.preview_count+=1;filename=f'selection_preview_{self.preview_count:04d}.png'
         Image.fromarray(np.uint8(overlay*255+.5)).save(self.output/filename)
-        return dict(visible_pixels=float(selected.sum()),image='/image/'+filename)
+        return dict(visible_pixels=float(selected.sum()),image='/image/'+self.image_prefix+filename)
 
     def publish_draft(self):
         summary=self.draft.summary()
@@ -192,21 +193,32 @@ class Handler(BaseHTTPRequestHandler):
         else:self.send({'error':'not found'},status=404)
     def do_POST(self):
         path=urlsplit(self.path).path
-        if path not in ('/render','/selection','/author','/undo','/pick','/view','/draft'):return self.send({'error':'not found'},status=404)
+        if path not in ('/render','/selection','/author','/undo','/pick','/view','/draft','/scene'):return self.send({'error':'not found'},status=404)
         try:
             length=int(self.headers.get('Content-Length',0))
             if not 0<length<=4096:raise ValueError('invalid request length')
             values=json.loads(self.rfile.read(length))
+            if path=='/scene':
+                if not hasattr(self.editor,'switch'):raise ValueError('single-scene viewer')
+                self.editor.check_scene({'scene':values.get('from_scene')})
+                return self.send(self.editor.switch(values['scene']))
+            if hasattr(self.editor,'check_scene'):self.editor.check_scene(values)
             result=(self.editor.apply(values) if path=='/render' else self.editor.preview_selection(values) if path=='/selection'
                     else self.editor.navigate(values) if path=='/view' else self.editor.draft_action(values) if path=='/draft'
                     else self.editor.author(values) if path=='/author' else self.editor.pick(values) if path=='/pick' else self.editor.undo())
+            if path in ('/render','/author','/undo','/view','/draft'):result=self.editor.record
             self.send(result)
         except (ValueError,KeyError,TypeError) as exc:self.send({'error':str(exc)},status=422)
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--asset',required=True,type=Path);p.add_argument('--output',required=True,type=Path)
+    p=argparse.ArgumentParser();inputs=p.add_mutually_exclusive_group(required=True)
+    inputs.add_argument('--asset',type=Path);inputs.add_argument('--catalog',type=Path)
+    p.add_argument('--scene');p.add_argument('--output',required=True,type=Path)
     p.add_argument('--port',type=int,default=8765);a=p.parse_args()
-    Handler.editor=Editor(a.asset,a.output)
+    if a.catalog:
+        from scene_catalog import SceneCatalog
+        Handler.editor=SceneCatalog(a.catalog,a.output,a.scene)
+    else:Handler.editor=Editor(a.asset,a.output)
     server=HTTPServer(('127.0.0.1',a.port),Handler)
     js(a.output/'SERVER.json',dict(port=server.server_address[1],host='127.0.0.1',utc=now()))
     print(f'Open http://127.0.0.1:{server.server_address[1]}',flush=True)

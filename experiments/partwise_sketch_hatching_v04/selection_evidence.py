@@ -30,7 +30,7 @@ def run(unit):
             im=Image.fromarray(np.uint8(overlay*255+.5));im.save(out/f'view_{i:02d}_{"first" if name.startswith("First") else "final"}.png')
             items.append((name,im));counts.append(float(mask.sum()))
         views.append(dict(view=c['view'],first_visible_pixel_coverage=counts[0],final_visible_pixel_coverage=counts[1]))
-    contact(out/'selection_all_views.png',items,cols=3,size=512,title='Drums | same proxy | manual add/subtract across three construction views')
+    contact(out/'selection_all_views.png',items,cols=3,size=512,title=p['scene'].capitalize()+' | same proxy | manual face selection across construction views')
     # Exact indexed-edge topology diagnostic; no repair, weld or nearest-neighbor expansion.
     parents={int(f):int(f) for f in selected};owners={}
     def root(f):

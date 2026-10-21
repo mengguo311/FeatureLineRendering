@@ -8,7 +8,7 @@
 #imageStage{position:relative;width:min(700px,100%);line-height:0}#preview{display:block;user-select:none;touch-action:none;cursor:crosshair}#dragBox{display:none;position:absolute;border:2px solid #bc2980;background:#dc5aa633;pointer-events:none}#interaction{font-size:13px}.pickHelp{margin:0 0 12px;font-size:13px;line-height:1.5;color:#4c514b}
 </style>
 <header><h1 id="sceneTitle">Partwise Hatch Demo</h1><p>Editable regions. Persistent strokes in 3D.</p></header>
-<main><aside><form id="controls">
+<main><aside><div id="sceneControl" hidden><label for="scene">Model</label><select id="scene"></select><p class="note">Each model keeps its edits and selection while this server is open. Download each saved asset to keep it.</p></div><form id="controls">
 <label for="region">Style region</label><select id="region"></select>
 <label>Angle <output id="angleValue"></output></label><input id="angle" type="range" min="-90" max="180" step="1">
 <label>Plane spacing <output id="spacingValue"></output></label><input id="spacing" type="range" min=".012" max=".15" step=".003">
@@ -55,7 +55,7 @@ function setBusy(value){busy=value;for(const e of document.querySelectorAll('but
  }}
 function options(select,preferred){const current=preferred||select.value;select.replaceChildren(...Object.entries(state.regions).map(([id,name])=>{const o=document.createElement('option');o.value=id;o.textContent=name;return o;}));select.value=state.regions[current]?current:Object.keys(state.regions)[0];}
 function sync(preferred){options($('region'),preferred);options($('sourceRegion'));for(const k of ['azimuth','elevation','distance'])$(k).value=k==='azimuth'?((state.camera[k]+540)%360)-180:state.camera[k];region();pending=state.draft?.token||null;selectionStatus();show();}
-async function post(path,body){const response=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const data=await response.json();if(!response.ok)throw Error(data.error);return data;}
+async function post(path,body){body={scene:state.scene,...body};const response=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const data=await response.json();if(!response.ok)throw Error(data.error);return data;}
 function cameraValues(){return Object.fromEntries(['azimuth','elevation','distance'].map(k=>[k,+$(k).value]));}
 async function navigate(){if(busy)return;setBusy(true);$('status').textContent='Rendering the new view; selected faces stay fixed…';try{state=await post('/view',{revision:state.revision,...cameraValues()});sync();$('status').textContent=`View updated · ${state.seconds.toFixed(2)} s · saved paths unchanged`;}catch(e){$('status').textContent=e.message;}finally{setBusy(false);}}
 async function render(){if(busy)return;setBusy(true);$('status').textContent='Rendering and saving the 3D asset…';try{const body={region:+$('region').value};for(const k of names)body[k]=+$(k).value;state=await post('/render',body);sync();$('status').textContent=`Saved revision ${state.revision} · ${state.seconds.toFixed(2)} s · other regions retained`;}catch(e){$('status').textContent=e.message;}finally{setBusy(false);}}
@@ -83,7 +83,18 @@ $('previewSelection').onclick=()=>selectionPreview({mode:'box',bounds:boxNames.m
 for(const [id,action] of [['undoSelection','undo'],['clearSelection','clear']])$(id).onclick=async()=>{if(busy)return;setBusy(true);try{state=await post('/draft',{revision:state.revision,action});pending=state.draft?.token||null;mode=state.draft?'selection':'image';sync();if(!state.draft)$('selectionStatus').textContent='Selection cleared. Choose a source region and drag to start again.';$('status').textContent=action==='clear'?'Selection cleared; saved asset unchanged.':'Last selection step undone; saved asset unchanged.';}catch(e){$('status').textContent=e.message;}finally{setBusy(false);}};
 $('saveRegion').onclick=async()=>{if(busy||!pending)return;setBusy(true);try{state=await post('/author',{token:pending,name:$('regionName').value});pending=null;mode='region_rgb';sync(String(state.selected_region));$('status').textContent=`Saved ${state.regions[state.selected_region]}. Change its style with the controls.`;$('selectionStatus').textContent='Total face selection saved. Other geometry and unselected path segments retained.';}catch(e){$('selectionStatus').textContent=e.message;}finally{setBusy(false);}};
 $('undo').onclick=async()=>{if(busy)return;setBusy(true);try{state=await post('/undo',{});sync(String(state.selected_region));$('status').textContent='Restored the previous asset and camera. Download to keep this version.';}catch(e){$('status').textContent=e.message;}finally{setBusy(false);}};
-$('regionName').value=sessionStorage.getItem('draftRegionName')||'My region';
-$('regionName').oninput=()=>sessionStorage.setItem('draftRegionName',$('regionName').value);
-fetch('/state').then(r=>r.json()).then(s=>{state=s;const title=s.scene[0].toUpperCase()+s.scene.slice(1)+' · Partwise Hatch Demo';$('sceneTitle').textContent=title;document.title=title;boxNames.forEach((k,i)=>$(k).value=s.mesh_bounds[i].toFixed(3));if(s.draft){mode='selection';$('interaction').value='visible';$('interaction').dispatchEvent(new Event('change'));}sync(String(s.selected_region));if(!s.draft)$('sourceRegion').value=Object.keys(s.regions).at(-1);setBusy(false);$('status').textContent=s.draft?'Selection restored. Orbit, refine it or save the region.':'Ready · select visible faces across views, then save one editable region';}).catch(e=>{$('status').textContent=e.message;});
+function nameKey(){return 'draftRegionName:'+state.scene;}
+$('regionName').oninput=()=>sessionStorage.setItem(nameKey(),$('regionName').value);
+function sceneReady(){
+ const title=state.scene[0].toUpperCase()+state.scene.slice(1)+' · Partwise Hatch Demo';$('sceneTitle').textContent=title;document.title=title;
+ $('sceneControl').hidden=!state.available_scenes;
+ if(state.available_scenes){$('scene').replaceChildren(...Object.entries(state.available_scenes).map(([id,name])=>{const o=document.createElement('option');o.value=id;o.textContent=name;return o;}));$('scene').value=state.scene;}
+ $('regionName').value=sessionStorage.getItem(nameKey())||'My region';
+ boxNames.forEach((k,i)=>$(k).value=state.mesh_bounds[i].toFixed(3));
+ mode=state.draft?'selection':'image';$('interaction').value=state.draft?'visible':'pick';$('interaction').dispatchEvent(new Event('change'));
+ $('selectionStatus').textContent='Choose a tool above. Preview before saving a new region.';
+ sync(String(state.selected_region));if(!state.draft)$('sourceRegion').value=Object.keys(state.regions).at(-1);
+}
+$('scene').onchange=async()=>{if(busy)return;const target=$('scene').value;setBusy(true);$('status').textContent='Opening '+target+'…';try{state=await post('/scene',{scene:target,from_scene:state.scene});sceneReady();$('status').textContent='Model opened. Its saved edits and selection are restored.';}catch(e){$('scene').value=state.scene;$('status').textContent=e.message;}finally{setBusy(false);}};
+fetch('/state').then(r=>r.json()).then(s=>{state=s;sceneReady();setBusy(false);$('status').textContent=s.draft?'Selection restored. Orbit, refine it or save the region.':'Ready · select visible faces across views, then save one editable region';}).catch(e=>{$('status').textContent=e.message;});
 </script></html>

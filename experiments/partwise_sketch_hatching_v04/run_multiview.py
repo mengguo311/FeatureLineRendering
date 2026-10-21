@@ -93,7 +93,7 @@ def run(unit,phase):
             unique=len({sha(f.with_name(f.stem+'_image.png')) for f in frames})
             trajectory[kind]=dict(frames=len(frames),unique_images=unique,all_proxy_vertices_inside=True)
         assert sum(row['target_edit_L1'] for row in rows)>0
-        result=dict(utc=now(),status='PASS_WITH_AUTHORING_LOCALITY_LIMITATION' if any(row['authoring_far_L1']>0 or row['far_edit_L1']>0 for row in rows) else 'PASS',scene='drums',selection=selection_summary,genuinely_ran_old_model=True,
+        result=dict(utc=now(),status='PASS_WITH_AUTHORING_LOCALITY_LIMITATION' if any(row['authoring_far_L1']>0 or row['far_edit_L1']>0 for row in rows) else 'PASS',scene=p['scene'],selection=selection_summary,genuinely_ran_old_model=True,
             single_view_faces=len(single),new_faces_beyond_first=len(np.setdiff1d(selected,single)),removed_from_first=len(np.setdiff1d(single,selected)),original_gaussians=json.loads((unit/'source_model/MODEL_IMPORT.json').read_text())['audit']['count'],
             vertices=len(mesh['vertices']),faces=len(mesh['faces']),selected_faces=len(selected),
             inherited_source_faces=int((original['regions']==3).sum()),source_segments_retained=int(keep.sum()),
@@ -109,12 +109,12 @@ def run(unit,phase):
             ref=Image.open(p['references'].get(c['view'],unit/f'source_model/frame_{i:03d}_rgb.png')).convert('RGBA')
             white=Image.new('RGBA',ref.size,'white');white.alpha_composite(ref)
             items.append((c['view']+' | RGB reference' if c['view'] in p['references'] else c['view']+' | original GS RGB',white))
-            for label,arm,key in [('Proxy (unchanged)','baseline','proxy'),('Height regions','original','region_rgb'),('Multi-view cymbal selection','baseline','region_rgb'),('Selected region angle 35','edited','image')]:
+            for label,arm,key in [('Proxy (unchanged)','baseline','proxy'),('Height regions','original','region_rgb'),('Manual multi-view selection','baseline','region_rgb'),('Selected region angle 35','edited','image')]:
                 items.append((label,Image.open(unit/f'renders/static_{arm}/frame_{i:03d}_{key}.png')))
             for arm in ('baseline','edited'):
                 edit_items.append((c['view']+' | '+arm,Image.open(unit/f'renders/static_{arm}/frame_{i:03d}_image.png')))
-        contact(out/'reference_proxy_regions_hatch.png',items,cols=5,size=320,title='Drums | frozen learned geometry | multi-view face selection -> local edit')
-        contact(out/'local_edit_all_views.png',edit_items,cols=4,size=384,title='Only manually selected cymbal surface angle -25 -> 35 | other region layers exact')
+        contact(out/'reference_proxy_regions_hatch.png',items,cols=5,size=320,title=p['scene'].capitalize()+' | frozen learned geometry | multi-view face selection -> local edit')
+        contact(out/'local_edit_all_views.png',edit_items,cols=4,size=384,title='Only manually selected surface angle -25 -> 35 | other region layers exact')
         receipts=[]
         for kind in ('orbit','zoom'):
             folder=unit/f'renders/{kind}';files=sorted(folder.glob('frame_*_image.png'))
@@ -138,7 +138,7 @@ def run(unit,phase):
             assert all(Path(name).name==name for name in z.namelist());z.extractall(out/'asset')
         meta=json.loads((out/'asset/asset.json').read_text());camera=meta['viewer_camera']
         current=json.loads((unit/'browser_complete/session/CURRENT.json').read_text());assert current['camera']==camera
-        command=[sys.executable,str(Path(__file__).with_name('demo.py')),'render','--scene','drums','--asset',str(out/'asset'),'--output',str(out/'preview')]
+        command=[sys.executable,str(Path(__file__).with_name('demo.py')),'render','--scene',p['scene'],'--asset',str(out/'asset'),'--output',str(out/'preview')]
         for k,v in camera.items():command+=['--'+k,str(v)]
         result=subprocess.run(command,timeout=120);result.check_returncode()
         from validate_replays import compare
