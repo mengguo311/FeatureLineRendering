@@ -1,4 +1,44 @@
-# Chair 分区排线 Demo — unit002
+# Chair / Lego 分区排线 Demo
+
+最新单元 `unit_003` 已在原有 Lego（310,475 个高斯）上生成真实代理、固定三维排线和局部编辑资产。Chair 的既有包保持不变。两个模型均为冻结 vanilla 3DGS 加探索性 TSDF 代理；不是 GT 或 RaDe-GS 训练表面。最终验证、失败与限制见各单元 STATUS / REPORT / metrics。
+
+## Lego quick start — unit003
+
+使用本机目录，或解压 `units/unit_003/portable_demo.tar.gz` 后在包目录运行：
+
+```bash
+cd /mnt/hdd1/u00134/partwise_sketch_hatching_models_v04/units/unit_003/portable_demo
+./run.sh preview
+./run.sh viewer
+```
+
+浏览器打开 `http://127.0.0.1:8765`。选择区域，调整 Angle / Plane spacing / Stroke length / Line width，按 **Render & save**。Orbit / Zoom 实际重绘固定三维路径；Regions / Proxy 切换图层；Download current asset 下载 ZIP。Ctrl+C 退出服务器。新结果只写包内 `runs/`。
+
+Lego `baseline` 是原角度资产（viewer 默认）；`edited` 只把中区域角度 45° 改为 95°（preview 默认）。Lego 没有 Chair 的 `original` 平滑前对照版本。可用 `./run.sh orbit`、`./run.sh zoom`，或 `DEMO_ASSET=baseline ./run.sh preview`。可设置 `DEMO_PORT=8766` 和 `DEMO_PY=/path/to/python`。包内 requirements.txt 列出依赖，未捆绑解释器。保存资产的演示不读取原始 PLY、照片或旧工作树；其他操作系统未验证。
+
+在工作树根目录执行自定义编辑与冷加载（输出必须为新目录）：
+
+```bash
+DEMO_PY=/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python
+DEMO_UNIT=/mnt/hdd1/u00134/partwise_sketch_hatching_models_v04/units/unit_003
+DEMO_CODE=experiments/partwise_sketch_hatching_v04
+DEMO_OUT=/mnt/hdd1/u00134/partwise_sketch_hatching_models_v04/demo_runs
+DEMO_STAMP=$(date +%Y%m%d_%H%M%S)
+"$DEMO_PY" "$DEMO_CODE/demo.py" edit --scene lego --asset "$DEMO_UNIT/assets/baseline" \
+  --part 2 --angle 95 --spacing .06 --length .12 --width 1.8 --output "$DEMO_OUT/edit_$DEMO_STAMP"
+"$DEMO_PY" "$DEMO_CODE/demo.py" render --scene lego --asset "$DEMO_OUT/edit_$DEMO_STAMP" \
+  --azimuth 47 --elevation 28 --distance 4.9 --output "$DEMO_OUT/preview_$DEMO_STAMP"
+"$DEMO_PY" "$DEMO_CODE/demo.py" build --scene lego --unit "$DEMO_UNIT" \
+  --output "$DEMO_OUT/rebuild_$DEMO_STAMP"
+```
+
+最后一条命令从协议中的原始 PLY 串行 CPU 渲染24个训练视角、融合代理、生成保存资产和首图，需原始输入仍在协议位置。Lego PLY SHA256：`fa9bea3fa4f8d349fa873a66d892c53cd1263499caec6421c286350a5bb7cbbc`。下载 ZIP 解压后，将目录作为 `--asset` 传入同一 `render` 命令即可。
+
+Lego 的1/2/3区域为 z<-0.20、-0.20≤z<0.45、z≥0.45 的**人工高度风格区**，不等同于完整履带、驾驶室或铲斗语义。Angle 是世界切割平面方向；spacing 是平面间距，不是统一测地间距；length 是最大世界弧长，孔洞/边界会提前截短；width 用屏幕像素。代理顶点/路径编号不是原始高斯索引，编辑目标路径会更新版本，非目标路径保留。
+
+`unit_003/media/` 展示八个完整对象视角、局部编辑和全部轨迹帧。孔洞、底面缺失、薄零件损失与碎线/密线仍在；人工高度规则会切过真实零件。自身代理附着、有限视角编辑保持和完整视频解码都不是独立几何/时序真值。无H1/H2增益、自动语义、交叉排线、LOD或实时帧率声明。
+
+## Chair instructions — unit002
 
 已在原有 Chair（256,690 个高斯）上真实运行。当前可选择区域、修改角度/间距/长度/线宽、旋转/缩放、导出并冷加载三维资产。CPU 单幅约 2–3 秒；这不是实时帧率或 H1/H2 科学成功证明。
 

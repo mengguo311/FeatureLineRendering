@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chair · Partwise Hatch Demo</title>
+<title>Partwise Hatch Demo</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#f3f1ed;color:#242724;font:15px system-ui,sans-serif}header{padding:25px 35px;border-bottom:1px solid #d8d8d1}h1{font-size:24px;font-weight:550;margin:0 0 5px}header p{margin:0;color:#62665f}main{display:grid;grid-template-columns:290px 1fr;max-width:1200px;margin:auto;padding:25px;gap:25px}aside{background:white;padding:24px;border-radius:12px}label{display:block;margin:15px 0 6px;color:#4c514b}input,select{width:100%;accent-color:#386853}output{float:right;font-variant-numeric:tabular-nums}button,.download{background:#315d48;color:white;border:0;border-radius:6px;padding:11px 14px;cursor:pointer;font:inherit}button:disabled{opacity:.5}select{padding:8px;background:#f7f7f3;border:1px solid #ccc;border-radius:4px}.mainbutton{width:100%;margin-top:22px}section{min-width:0}figure{margin:0;background:white;border-radius:12px;min-height:550px;display:grid;place-items:center}img{max-width:100%;width:700px;height:auto}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.toolbar button{background:#e0e5de;color:#2b4336}.note{font-size:12px;color:#73786f;line-height:1.55;margin-top:20px}#status{margin:14px 0;min-height:40px;font-size:13px}a.download{display:inline-block;text-decoration:none;background:#fff;color:#315d48;border:1px solid #b4c0b4}@media(max-width:800px){main{grid-template-columns:1fr}figure{min-height:300px}}
 </style>
-<header><h1>Chair · Partwise Hatch Demo</h1><p>Three editable regions. Persistent strokes in 3D.</p></header>
+<header><h1 id="sceneTitle">Partwise Hatch Demo</h1><p>Three editable regions. Persistent strokes in 3D.</p></header>
 <main><aside><form id="controls">
 <label for="region">Style region</label><select id="region"><option value="1">Lower · blue</option><option value="2" selected>Middle · amber</option><option value="3">Upper · green</option></select>
 <label>Angle <output id="angleValue"></output></label><input id="angle" type="range" min="-90" max="180" step="1">
@@ -15,8 +15,8 @@
 <label>Elevation <output id="elevationValue"></output></label><input id="elevation" type="range" min="5" max="75" value="20" step="1">
 <label>Distance <output id="distanceValue"></output></label><input id="distance" type="range" min="3.8" max="6" value="4.7" step=".1">
 <button class="mainbutton" id="apply">Render &amp; save</button></form>
-<p class="note">Regions use authored height cuts. Geometry is a rough proxy of the original learned Chair model. Spacing and length use scene units; width uses pixels. A render takes a few seconds on CPU.</p>
-</aside><section><figure><img id="preview" alt="Rendered Chair hatch image"></figure>
+<p class="note">Regions use authored height cuts. Geometry is a rough proxy of the original learned model. Spacing and length use scene units; width uses pixels. A render takes a few seconds on CPU.</p>
+</aside><section><figure><img id="preview" alt="Rendered model hatch image"></figure>
 <div class="toolbar"><button id="left">Orbit −30°</button><button id="right">Orbit +30°</button><button id="closer">Zoom in</button><button id="hatch">Hatching</button><button id="regions">Regions</button><button id="proxy">Proxy</button><a class="download" href="/export">Download current asset</a></div>
 <div id="status" role="status">Loading saved asset…</div></section></main>
 <script>
@@ -29,5 +29,5 @@ $('controls').onsubmit=e=>{e.preventDefault();render();};for(const k of names)$(
 for(const [id,key] of [['hatch','image'],['regions','region_rgb'],['proxy','proxy']])$(id).onclick=()=>{mode=key;show();};
 for(const [id,d] of [['left',-30],['right',30]])$(id).onclick=()=>{$('azimuth').value=((+$('azimuth').value+d+540)%360)-180;values();render();};
 $('closer').onclick=()=>{$('distance').value=Math.max(3.8,+$('distance').value-.2);values();render();};
-fetch('/state').then(r=>r.json()).then(s=>{state=s;for(const k of ['azimuth','elevation','distance'])$(k).value=s.camera[k];region();show();$('status').textContent='Ready · changes are saved as editable 3D assets';}).catch(e=>{$('status').textContent=e.message;});
+fetch('/state').then(r=>r.json()).then(s=>{state=s;const title=s.scene[0].toUpperCase()+s.scene.slice(1)+' · Partwise Hatch Demo';$('sceneTitle').textContent=title;document.title=title;for(const option of $('region').options)option.textContent=s.regions[option.value];for(const k of ['azimuth','elevation','distance'])$(k).value=s.camera[k];region();show();$('status').textContent='Ready · changes are saved as editable 3D assets';}).catch(e=>{$('status').textContent=e.message;});
 </script></html>

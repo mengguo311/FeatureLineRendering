@@ -28,7 +28,7 @@ def run(unit):
             with urllib.request.urlopen(base+path,timeout=30) as response:return response.read()
         html=get('/');assert b'Render &amp; save' in html and b"fetch('/render'" in html
         state=json.loads(get('/state'));initial=state
-        payload=dict(region=2,angle=45,spacing=.045,length=.22,width=1,azimuth=17,elevation=20,distance=4.7)
+        payload=dict(region=2,**state['styles']['2'],**state['camera'])
         for control,value in [('angle',95),('spacing',.06),('length',.12),('width',1.8),('azimuth',47),('distance',4.3)]:
             old=state;payload[control]=value;t=time.monotonic()
             request=urllib.request.Request(base+'/render',data=json.dumps(payload).encode(),headers={'Content-Type':'application/json'})
@@ -53,7 +53,8 @@ def run(unit):
         export=get('/export');(unit/'metrics/viewer_export.zip').write_bytes(export)
         js(unit/'metrics/VIEWER_SMOKE.json',dict(utc=now(),command=command,html_served=True,
                actual_http_edit_tests=events,invalid_spacing_http_status=422,export_bytes=len(export),
-               max_target_path_length=float(arc.max()),frontend_visual_browser_test='not performed; actual HTTP and generated images exercised'))
+               max_target_path_length=float(arc.max()),final_camera=state['camera'],scene=state['scene'],
+               frontend_visual_browser_test='separate browser_demo_test; this receipt covers HTTP controls'))
     finally:
         if process.poll() is None:process.terminate()
         process.wait(timeout=15);log.close()

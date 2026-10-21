@@ -26,12 +26,13 @@ def validate(unit):
             lengths=np.linalg.norm(s['points'][:,1]-s['points'][:,0],axis=1)
             _,indices=np.unique(s['stroke_id'],return_inverse=True)
             path_lengths=np.bincount(indices,weights=lengths)
+            requested=(bmeta if name=='baseline' else emeta)['styles'][str(region)]['length']
             per[str(region)]=dict(max_attachment_error=float(np.abs(s['points']-reconstructed).max()),
                  min_barycentric=float(s['bary'].min()),max_bary_sum_error=float(np.abs(s['bary'].sum(2)-1).max()),
                  paths=len(path_lengths),segments=len(lengths),max_path_length=float(path_lengths.max()),
-                 total_length=float(lengths.sum()),shorter_than_half_requested=int((path_lengths<.11).sum()))
+                 total_length=float(lengths.sum()),shorter_than_half_requested=int((path_lengths<requested/2).sum()))
             assert per[str(region)]['max_attachment_error']<1e-9 and per[str(region)]['min_barycentric']>-1e-9
-            assert path_lengths.max()<=.22000001
+            assert path_lengths.max()<=requested+1e-8
         anchors[name]=per
     frames=[]
     for i,c in enumerate(protocol['static_cameras']):
@@ -41,13 +42,16 @@ def validate(unit):
         delta=np.abs(a['image']-d['image']);target=a['regions']==2
         band=ndimage.binary_dilation(target,iterations=2)&~ndimage.binary_erosion(target,iterations=2)
         far_other=(a['regions']>0)&~target&~band;far_bg=(a['regions']==0)&~band
-        reference=np.asarray(Image.open(protocol['references'][c['view']]).convert('RGBA').resize((512,512),Image.Resampling.NEAREST))
-        refmask=reference[:,:,3]>=128;proxy=a['regions']>0
-        iou=float((proxy&refmask).sum()/max(1,(proxy|refmask).sum()))
+        proxy=a['regions']>0
+        refmask=None;iou=None
+        if c['view'] in protocol['references']:
+            reference=np.asarray(Image.open(protocol['references'][c['view']]).convert('RGBA').resize((512,512),Image.Resampling.NEAREST))
+            refmask=reference[:,:,3]>=128
+            iou=float((proxy&refmask).sum()/max(1,(proxy|refmask).sum()))
         row=dict(view=c['view'],delta_total=float(delta.sum()),target_delta=float(delta[target].sum()),
                  far_other_delta=float(delta[far_other].sum()),far_background_delta=float(delta[far_bg].sum()),
                  boundary_band_delta=float(delta[band].sum()),non_target_layers_exact=True,
-                 proxy_silhouette_reference_alpha_iou=iou,reference_mask_pixels=int(refmask.sum()),proxy_pixels=int(proxy.sum()),
+                 proxy_silhouette_reference_alpha_iou=iou,reference_mask_pixels=int(refmask.sum()) if refmask is not None else None,proxy_pixels=int(proxy.sum()),
                  baseline_ink=float((1-a['image']).sum()),edited_ink=float((1-d['image']).sum()))
         row['strict_zero_far_delta_pass']=row['far_other_delta']==0 and row['far_background_delta']==0
         row['far_delta_fraction']=float((row['far_other_delta']+row['far_background_delta'])/max(1e-30,row['delta_total']))

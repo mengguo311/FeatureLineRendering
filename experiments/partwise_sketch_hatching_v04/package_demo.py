@@ -18,7 +18,9 @@ def package(unit):
     for p in (unit/'media').iterdir():
         if p.suffix in ('.png','.mkv'):shutil.copy2(p,previews/p.name)
     shutil.copy2(unit/'renders/first/frame_000_image.png',previews/'first_hatch.png')
-    shutil.copy2(unit/'proxy/source_train_r_32.png',previews/'source_model_rgb.png')
+    protocol=json.loads((unit/'PROTOCOL.json').read_text())
+    first_view=protocol['static_cameras'][0]['view']
+    shutil.copy2(unit/f'proxy/source_{first_view}.png',previews/'source_model_rgb.png')
     deps=json.loads((unit/'DEPENDENCIES.json').read_text())
     (out/'requirements.txt').write_text(''.join(f'{k}=={v}\n' for k,v in deps['packages'].items()))
     protocol=json.loads((unit/'PROTOCOL.json').read_text())
@@ -41,7 +43,7 @@ case "${1:-preview}" in
   *) printf '%s\n' 'Usage: ./run.sh [preview|viewer|orbit|zoom]'; exit 2 ;;
 esac
 '''
-    (out/'run.sh').write_text(shell.replace('__SCENE__',protocol['scene']));os.chmod(out/'run.sh',0o755)
+    (out/'run.sh').write_text(shell.replace('__SCENE__',protocol['scene']).replace('train_r_32',first_view));os.chmod(out/'run.sh',0o755)
     readme=Path('docs/partwise_sketch_hatching_v04/DEMO_README_ZH.md').read_text()
     prefix='''# Portable quick start
 

@@ -32,7 +32,7 @@ def create(unit):
         items.append((c['view']+' | '+label,white))
         for label,key in [('Model-derived proxy','proxy'),('Authored height regions','region_rgb'),('Fixed 3D hatch baseline','image')]:
             items.append((label,Image.open(unit/f'renders/static_baseline/frame_{i:03d}_{key}.png')))
-    contact(out/'reference_proxy_regions_hatch.png',items,title='Chair | original model -> exploratory TSDF proxy -> persistent 3D hatching')
+    contact(out/'reference_proxy_regions_hatch.png',items,title=p['scene'].title()+' | original model -> exploratory TSDF proxy -> persistent 3D hatching')
     before_after=[]
     for i,c in enumerate(p['static_cameras']):
         for name in ('baseline','edited'):

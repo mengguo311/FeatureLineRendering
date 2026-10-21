@@ -46,6 +46,8 @@ def create(unit,output,scene):
               region_provenance=p['region_provenance'],geometry=p['geometry'],original=p['original'],
               mesh_sha256=sha(output/'mesh.npz'),protocol_sha256=sha(unit/'PROTOCOL.json'),
               cameras=p['static_cameras'],orbit=p['orbit'],zoom=p['zoom'],statistics=stats,
+              region_rule=p.get('region_rule',dict(axis='z',cuts=[-.35,.20])),
+              viewer_camera=p.get('viewer_camera',dict(azimuth=17,elevation=20,distance=4.7)),
               identities='proxy face IDs and region/path IDs; none is an original Gaussian source index')
     js(output/'asset.json',meta)
     print(json.dumps(dict(asset=str(output),statistics=stats)),flush=True)

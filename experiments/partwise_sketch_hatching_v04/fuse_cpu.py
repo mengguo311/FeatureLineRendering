@@ -42,7 +42,8 @@ def fuse(unit):
     mesh.remove_degenerate_triangles();mesh.remove_unreferenced_vertices();mesh.compute_vertex_normals()
     vertices=np.asarray(mesh.vertices);faces=np.asarray(mesh.triangles)
     assert len(faces)>0 and np.isfinite(vertices).all()
-    np.savez_compressed(out/'mesh.npz',vertices=vertices,faces=faces,face_regions=region_ids(vertices[faces].mean(1)))
+    cuts=p.get('region_rule',{}).get('cuts',[-.35,.20])
+    np.savez_compressed(out/'mesh.npz',vertices=vertices,faces=faces,face_regions=region_ids(vertices[faces].mean(1),cuts))
     o3d.io.write_triangle_mesh(str(out/'proxy.ply'),mesh)
     js(out/'PROXY.json',dict(utc=now(),source_model_sha256=p['original']['sha256'],geometry_source=p['geometry'],
         fusion_backend='NumPy projective TSDF + skimage marching cubes; Open3D cleanup/simplification',

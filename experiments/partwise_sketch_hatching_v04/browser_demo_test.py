@@ -72,6 +72,10 @@ def run(unit, name):
         request(root+'/window/rect','POST',dict(width=1280,height=1100))
         request(root+'/url','POST',{'url':app});wait(ready);screenshot('01_loaded')
         initial=request(app+'/state')
+        assert execute('return document.title;')==initial['scene'].title()+' · Partwise Hatch Demo'
+        labels=execute("return Array.from(document.querySelector('#region').options).map(x=>x.textContent);")
+        assert labels==[initial['regions'][str(k)] for k in (1,2,3)]
+        events.append(dict(action='scene title and authored region labels match loaded asset',scene=initial['scene'],labels=labels))
         execute("document.querySelector('#angle').value=95; document.querySelector('#angle').dispatchEvent(new Event('input'));")
         click('#apply');wait(lambda:request(app+'/state')['revision']==1);wait(ready);screenshot('02_angle_edit')
         edited=request(app+'/state')

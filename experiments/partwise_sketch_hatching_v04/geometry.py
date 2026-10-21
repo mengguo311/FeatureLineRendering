@@ -48,9 +48,12 @@ def depth_valid(depth, alpha, center):
     jump = ndimage.maximum_filter(z, size=3) - ndimage.minimum_filter(z, size=3)
     return valid & (jump <= .08)
 
-def region_ids(points):
+def region_ids(points, cuts=(-.35,.20)):
     """Authored height style regions, NOT learned semantic parts."""
-    return np.where(points[:, 2] < -.35, 1, np.where(points[:, 2] < .20, 2, 3)).astype(np.int32)
+    cuts=np.asarray(cuts,float)
+    if cuts.shape!=(2,) or not np.isfinite(cuts).all() or cuts[0]>=cuts[1]:
+        raise ValueError('two finite increasing world-height cuts are required')
+    return np.where(points[:, 2] < cuts[0], 1, np.where(points[:, 2] < cuts[1], 2, 3)).astype(np.int32)
 
 def mesh_data(vertices, faces, face_regions=None):
     tri = vertices[faces]

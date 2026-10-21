@@ -15,14 +15,15 @@ from geometry import orbit_camera
 class Editor:
     def __init__(self,asset,output):
         self.asset=Path(asset);self.output=new_output(output);self.revision=0
-        self.record=self.draw(dict(azimuth=17,elevation=20,distance=4.7))
+        meta=json.loads((self.asset/'asset.json').read_text())
+        self.record=self.draw(meta.get('viewer_camera',dict(azimuth=17,elevation=20,distance=4.7)))
 
     def draw(self,values):
         t=time.monotonic();mesh,strokes,meta=load_asset(self.asset)
         camera=orbit_camera(values['azimuth'],values['elevation'],values['distance'])
         folder=self.output/f'view_{self.revision:04d}';folder.mkdir()
         save_frame(folder,'frame_000',mesh,strokes,meta,camera)
-        record=dict(styles=meta['styles'],revision=self.revision,seconds=time.monotonic()-t,
+        record=dict(scene=meta['scene'],regions=meta['regions'],styles=meta['styles'],revision=self.revision,seconds=time.monotonic()-t,
                     images={k:f'/image/view_{self.revision:04d}/frame_000_{k}.png' for k in ('image','region_rgb','proxy')},
                     asset=str(self.asset),camera={k:values[k] for k in ('azimuth','elevation','distance')})
         js(self.output/'CURRENT.json',record)

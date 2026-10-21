@@ -35,9 +35,9 @@ def build(unit):
         errors={k:float(np.max(np.abs(check[k]-cache[k]))) for k in check}
     js(out/'CACHE_REPLAY.json',dict(camera=c,cache=p['input_cache_probe'],max_abs_errors=errors,
                                    all_arrays_exact=all(x==0 for x in errors.values()),scope='agreement with prior CPU source-only renderer, not independent ground truth'))
-    save_image(out/'source_train_r_32.png',check['rgb'])
-    ref=Image.open(p['references']['train_r_32']).convert('RGBA')
-    white=Image.new('RGBA',ref.size,'white');white.alpha_composite(ref);white.convert('RGB').save(out/'reference_train_r_32.png')
+    save_image(out/f"source_{c['view']}.png",check['rgb'])
+    ref=Image.open(p['references'][c['view']]).convert('RGBA')
+    white=Image.new('RGBA',ref.size,'white');white.alpha_composite(ref);white.convert('RGB').save(out/f"reference_{c['view']}.png")
     rows=[]
     for i,c in enumerate(p['build_cameras']):
         t=time.monotonic();f=adapter.render_source(a,c)
