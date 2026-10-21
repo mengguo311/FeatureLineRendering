@@ -1,0 +1,203 @@
+{
+  "unit": "unit_010",
+  "created_utc": "2026-10-21T10:18:23.708287+00:00",
+  "question": "Can one base-only length .18->.12 operation reduce foreground crossing clutter while preserving readable crosshatching, coverage and isolated editing on the complete selected434 lamp?",
+  "changed_variable": "Only base requested total world length .18->.12; no density/count/seed/direction/width/ink/renderer changes",
+  "candidate_count": 1,
+  "source_asset": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/edited/asset.json",
+  "source_asset_sha256": "a79e88f1694316bb2e4fb5945411a1ce23a5586e3cf31a3dc5466811ee58562b",
+  "inputs": {
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_010/inputs/mesh.npz": "f8de0de7f1b8199dd3a8e3c1045dddaebc1a71a9419d8625665c17ce869a9d08",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_010/inputs/asset.json": "c9d5863612158e2b17f67f64e154d093057bd3e6fca5584fbc7b515a192b52c4",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_010/inputs/config.json": "c9514dcaf7e1ab790a7496b8a51525ec03c71c2dac723690c9791385bfab460e",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_010/inputs/strokes.npz": "9dfcf098ddcfb41f6654f920bf830207cb52f2bcd15b9ebfd5457432de82712b"
+  },
+  "provenance": {
+    "geometry": "Authored analytic GT lamp868vertices1728faces; not reconstructed",
+    "parts": "GT1shade2stem3base",
+    "directions": "Unchanged manual circumferential shade0deg, short axial stem, two base cross layers",
+    "paths": "unit009 selected434:260shade24stem150base from75selected seed pairs;284non-target retained; original area sampler has150base seeds"
+  },
+  "exposure": {
+    "train": [],
+    "dev": [
+      0
+    ],
+    "diagnostic": [
+      30,
+      120,
+      210,
+      300
+    ],
+    "test": [],
+    "note": "Previously exposed GT object/view family. One frozen candidate, no tuning/retry or new held-out science claim"
+  },
+  "operation": {
+    "part": 3,
+    "length_before": 0.18,
+    "length_after": 0.12,
+    "length_api_domain": [
+      0.06,
+      0.24
+    ],
+    "absolute": true,
+    "seed": 1729,
+    "original_sampler_count": 150,
+    "selected_pairs": 75,
+    "selected_paths": 150,
+    "step_world": 0.015,
+    "layers": [
+      0,
+      1
+    ],
+    "ink": "Preserve original selected path ink and IDs; sample original seed sequence, walk only selected seeds, no compensation",
+    "cold": "Fresh process from recipe+mesh+retained284+config, selected seed/ink identity and dependency hashes; no target path cache",
+    "preserve": "284non-target paths and all selected seed IDs/inks"
+  },
+  "renderer": {
+    "backend": "Unchanged cpu_supersampled_surface_capsules_v1",
+    "resolution": [
+      512,
+      512
+    ],
+    "supersample": 2,
+    "focal_px": 600,
+    "widths": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0
+    },
+    "depth_tolerance": 0.006,
+    "contour_width": 0.8,
+    "structure_width": 0.65,
+    "contour_visibility": "visible_centerline",
+    "LOD": false,
+    "light": "Unchanged inherited world light",
+    "limitations": [
+      "2x sampled AA",
+      "owner-plane extension across width",
+      "no near-plane clipping"
+    ]
+  },
+  "camera": {
+    "azimuths": [
+      30,
+      120,
+      210,
+      300
+    ],
+    "dev_azimuth": 0,
+    "elevation": 20,
+    "distance": 4.5
+  },
+  "evaluation": {
+    "primary": "Actual full-lamp/base quality, nonzero isolated edit, geometric coverage and both layers retained; primitive-array equality secondary",
+    "independent_masks": "Continuous analytic profile ray intersections; separate from triangle renderer, same authored GT geometry disclosed",
+    "gates": {
+      "target_part": 3,
+      "target_inside_L1_min_exclusive": 10,
+      "far_other_fraction_max": 0.02,
+      "far_background_fraction_max": 0.02,
+      "boundary_band_px": 2,
+      "hatch_support_threshold": 0.1,
+      "every_part_support_pixels_min_exclusive": 0,
+      "full_shape_margin_px_min": 2
+    },
+    "coverage": {
+      "radial_edges_world": [
+        0,
+        0.29,
+        0.580000001
+      ],
+      "hemispheres": "front dot(world[x,z],camera.eye[x,z])>=0; back<0",
+      "cells": "inner/front,inner/back,outer/front,outer/back; analytic part==3; no erosion",
+      "minimum_eligible_pixels": 1,
+      "minimum_support_pixels": 3,
+      "minimum_support_fraction": 0.01,
+      "scope": "Four stills and all40 orbit/zoom rendered frames; visible pixels only; report every denominator and exclusions, no hidden-surface completeness claim",
+      "both_layer_gate": "At each four still views, separately render each selected base layer against complete mesh; EACH whole visible analytic base >=3 pixels ink>.1 and >=.01 support fraction; per-cell layer support descriptive",
+      "ink_ratio": "Report relative before/after ink descriptively; no oldunit004 .75 closing threshold"
+    },
+    "controls": [
+      "Noedit image totalL1=0 fails target nonzero gate",
+      "Blacken16brightest independent far-other pixels of baseline: fraction1 fails leakage",
+      "White-filled3px raster drift produces nonzero L1",
+      "Zero-hatch fails four coverage cells",
+      "Remove one rendered layer fails both-layer gate"
+    ],
+    "secondary": [
+      "Original selected75 seed pairs/150 IDs and inks unchanged",
+      "284non-target paths per-field bytes exact",
+      "Cold recipe regeneration and separate saved-path replay reproduce4PNG views",
+      "Length.18 regenerates baseline target for implementation compatibility/noop",
+      "Reject invalid length, stale/bad dependencies, historical/existing output"
+    ],
+    "visual_go": "Less tangled base still readable and visibly crosshatched in full object and base crops; complete3parts across frozen trajectories; fullvisual remains NO_GO if inherited shade/stem defects persist",
+    "no_go": "Empty/fragmented/unreadable base, lost direction layer, coverage/isolation failure, cold mismatch or loss of non-target identity; retain failure without length/threshold retry"
+  },
+  "media": {
+    "orbit": {
+      "frames": 24,
+      "azimuth": "15*k,k=0..23",
+      "elevation": 20,
+      "distance": 4.5
+    },
+    "zoom": {
+      "frames": 16,
+      "azimuth": 30,
+      "elevation": 20,
+      "distance": "4.8-.8*cos(2*pi*k/15),k=0..15"
+    },
+    "edit": {
+      "frames": 24,
+      "switch_frame": 12,
+      "azimuth": 30,
+      "elevation": 20,
+      "distance": 4.5,
+      "operation": "12before+12after discrete actual edit; no interpolation"
+    },
+    "fps": 12,
+    "format": "FFV1 lossless MKV",
+    "validation": "All64frames decode RGB-exact against sourcePNG; all-frame and first/middle/last contacts; no independent temporal stability claim"
+  },
+  "timing": "Module entry and external process wall include imports/hash/load/target regeneration/save/render; no24FPS claim",
+  "budgets": {
+    "cpu_affinity": [
+      0,
+      1
+    ],
+    "numeric_threads": 1,
+    "ffmpeg_threads": 1,
+    "gpu": false,
+    "serial_compute": true,
+    "invocation_max_seconds": 590,
+    "unit_max_minutes": 45,
+    "finish_before_jst": "2026-10-21T20:00:35+09:00",
+    "task_cap_bytes": 21474836480
+  },
+  "claims": {
+    "software": "PENDING",
+    "length_edit_visual": "PENDING",
+    "full_visual": "NO_GO_RETAINED",
+    "reconstructed_input": "BLOCKED",
+    "full_P1": "PARTIAL",
+    "H1_H2": "NOT_TESTED",
+    "temporal": "NOT_INDEPENDENTLY_AUDITED_FOR_UPDATED_ASSET"
+  },
+  "retained_failures": [
+    "Fullvisual NO_GO remains: shade spacing/parallel stacking and base foreground dark crossings/uneven short strokes persist. Stem is cleaner on4views but not uniformly spaced.",
+    "Selected434 asset has four exposed stills and one fixed-camera discrete edit video only; no new orbit/zoom visibility or temporal audit for this selected subset.",
+    "Four fixed shaft bins cover analytic visible y=.20..1.20;4.154589% visible stem pixels excluded, hidden upper stem unmeasured. Nonempty image support is not complete surface coverage or spacing proof.",
+    "No verified trained RaDe-GS lamp or reconstructed main proxy; CPU-only disallows training. Unit006 synthetic RGB/camera readiness is not reconstruction.",
+    "Unit007 temporal audit sampled18/458 paths;10 IDs unmeasured, eligible world-length14.324% of all sampled and50.825% of raw-visible. One of six sampled shade IDs contributed eligible observations. No all-stroke stability claim.",
+    "Inherited17 hidden-profile observations,359 raw-hidden supported observations before unit007 exclusions, and shade rim-depth outliers remain. Zero new edit leakage does not prove baseline hiding correctness.",
+    "Unit004 orbit19 ink ratio0.7521462443170939>.75 remains NO_GO. Unit004/005 remain DIAGNOSTIC_PREVIEW_ONLY; current short-path subset does not revise that result.",
+    "Density control reselects original48 paths; no new target curve generation. Length/crossing operations, composition across complete recipes and whole-object procedural regeneration remain incomplete.",
+    "GT geometry,GT labels,manual directions remain diagnostic upper bounds. No real/click-assisted labels, reconstructed lamp,H1/H2 comparison,LOD or24FPS claim.",
+    "Unit006 signed-RGB reader failure and uint8 adapter recovery retained. Historical round001 rc143/PythonUNKNOWN,round002 stdout rc1,round004/012/013 NO_GO and original validationUNKNOWN retained.",
+    "Old round016 planar width1->2 audit remains NOT_RUN and dispensable for the chosen whole-object surface-capsule route; not claimed passed."
+  ],
+  "outline_sha256": "c3b28f5e5cddedd40fdd47c7a112b9e10f09a9b6e03c1f9c3196d607070fd39f",
+  "brief_sha256": "3b78bcb577769cea1e5946ef69849147f31ef89b34c12ed3ced38612d90f064f",
+  "previous_next_sha256": "179127836c23016a950583977b17293feab8a55428bedfb6a2c4c6bf9650a438"
+}
