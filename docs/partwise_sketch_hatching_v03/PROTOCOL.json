@@ -1,0 +1,372 @@
+{
+  "experiment": "experiment_001",
+  "status": "FROZEN_BEFORE_CANDIDATE_RENDER",
+  "question": "Does toggling already-authored fixed profile rings produce a valid observable structure display on unchanged complete unit010 lamp? H2 not identifiable.",
+  "choice": "Brief-authorized ZERO_HEADROOM fallback: B1-like versus existing B2-like GT structure display only; exactly one diagnostic.",
+  "source_commit_at_design": "3ec477c0603a0b66110b825ab26f1d1f5c9f5d34",
+  "baseline_acceptance": "USER_ACCEPTED_GT_VISUAL_BASELINE_FOR_P2",
+  "baseline_asset": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_010/outputs/edited/asset.json",
+  "baseline_hashes": {
+    "/home/u00134/3dgs_line/partwise_sketch_hatching_p2_v03/experiments/partwise_sketch_hatching/core.py": "1e90cd3421ae68e30c9930170a1b17376aecfa6d5c12048713d81ec740c1a2f3",
+    "/home/u00134/3dgs_line/partwise_sketch_hatching_p2_v03/experiments/partwise_sketch_hatching/core_walk_v2.py": "6a9cd6aee3d79b6bfa6bfccd88eb5dedc907fb9c7bc8879139cd3be853fefcb8",
+    "/home/u00134/3dgs_line/partwise_sketch_hatching_p2_v03/experiments/partwise_sketch_hatching_v02/renderer.py": "2d5811f5bde3ba68843a2bb91508ea976cb16cdedb3f1909e06b04a533e5ea3d",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_010/outputs/edited/asset.json": "1718ea3f0e2fd3a60c945daac410810690178d87529427d2d2153e229778bd3f",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_010/outputs/edited/mesh.npz": "f8de0de7f1b8199dd3a8e3c1045dddaebc1a71a9419d8625665c17ce869a9d08",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_010/outputs/edited/strokes.npz": "7fb995dcbd8fc69851a7d0fbbadd0128be82cb024ae2729aa024ff710fed53fc",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_010/outputs/edited/config.json": "0c94581eac323cd00886040de75d87f4ab746a106adb5e316702f7881252ace9",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_010/outputs/edited/recipe.json": "b66346a21e8bb64d84ecd003cd8ee5fcb698041856834fc5b06ad63bfd25f40b",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_010/SEAL.json": "c5395b8c6239c5a8259fd5ae5ed9c578836e760f1cbd527a00d78d9ffb050a04",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_010/SHA256_MANIFEST.json": "04ecadb855dd137f556b7541ddc35d7227374d6fd5f5b47bd4a07e7aff011508"
+  },
+  "headroom_audit_sha256": "66a8b8237f0f133d634899a46d2431ad3025a0baaabd361bff36da96e3d21bfd",
+  "authored_curves_sha256": "ae5dfa4e87ff8d248a3d48fb051c9b823194db5887caf6a22b8badc698e7d146",
+  "inputs": {
+    "geometry": "Authored GT 868 vertices/1728 faces, 3 disconnected closed components; no reconstruction",
+    "labels": "Unchanged exact GT1shade2stem3base, not coarse/predicted; no new regionIDs or synthetic noise",
+    "paths": "Sealed unit010 authoritative434 paths:260shade0deg,24stem,150shortenedbase; no regeneration",
+    "curves": "864 existing authored mesh profile edges (27.703901806854265 world length), no ordinary-depth or image-edge recovery",
+    "contours": "View-dependent mesh silhouettes retained identically; physical rings coalesced with contours by existing backend",
+    "seeds": "Original1729 lineage; unchanged saved paths, inks and IDs",
+    "gt_use": "GT parts already constrain generator AND renderer semantic ownership; identical across both arms. Independent analytic reference is score-only.",
+    "hidden_data": "No TEST image edges or labels used to tune method; no external data accessed"
+  },
+  "arms": [
+    {
+      "id": "B1_like",
+      "structure": false,
+      "meaning": "Hatches plus same contours, existing physical profile rings disabled"
+    },
+    {
+      "id": "B2_existing",
+      "structure": true,
+      "meaning": "Exact accepted baseline display with existing authored profile rings"
+    }
+  ],
+  "changed_term": "Only renderer.render(structure=False/True), no new B2 capability or B3 association implemented",
+  "not_run": {
+    "U_S_D": "No connected physical part boundary / no crossing headroom; not instantiate false U/S/D success",
+    "direction": "No style-requested additional guidance tested",
+    "H2": "UNIDENTIFIABLE_FOR_H2",
+    "H1": "NOT_TESTED",
+    "H3_H4_H5": "NOT_TESTED"
+  },
+  "renderer": {
+    "backend": "unchanged cpu_supersampled_surface_capsules_v1",
+    "resolution": [
+      512,
+      512
+    ],
+    "supersample": 2,
+    "focal_px": 600,
+    "depth_tolerance_world": 0.006,
+    "widths_px": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0
+    },
+    "contour_width_px": 0.8,
+    "ring_width_px": 0.65,
+    "contour_visibility": "visible_centerline",
+    "hatch_ink": "unchanged stored per-stroke ink, max union",
+    "ring_ink": 0.85,
+    "contour_ink": 0.92,
+    "LOD": false,
+    "visibility": "same surface depth AND GT owner semantic part in both arms",
+    "limits": [
+      "2x sampled AA",
+      "owner-plane extension",
+      "no near-plane clipping; fixed cameras stay in front"
+    ]
+  },
+  "frames": [
+    {
+      "id": "static_00",
+      "sequence": "static",
+      "index": 0,
+      "azimuth": 30,
+      "elevation": 20,
+      "distance": 4.5,
+      "exposure": "HISTORICALLY_EXPOSED"
+    },
+    {
+      "id": "static_01",
+      "sequence": "static",
+      "index": 1,
+      "azimuth": 120,
+      "elevation": 20,
+      "distance": 4.5,
+      "exposure": "HISTORICALLY_EXPOSED"
+    },
+    {
+      "id": "static_02",
+      "sequence": "static",
+      "index": 2,
+      "azimuth": 210,
+      "elevation": 20,
+      "distance": 4.5,
+      "exposure": "HISTORICALLY_EXPOSED"
+    },
+    {
+      "id": "static_03",
+      "sequence": "static",
+      "index": 3,
+      "azimuth": 300,
+      "elevation": 20,
+      "distance": 4.5,
+      "exposure": "HISTORICALLY_EXPOSED"
+    },
+    {
+      "id": "orbit_00",
+      "sequence": "orbit",
+      "index": 0,
+      "azimuth": 7.5,
+      "elevation": 20,
+      "distance": 4.5,
+      "exposure": "CONSTRUCTION_HOLDOUT_ONLY"
+    },
+    {
+      "id": "orbit_01",
+      "sequence": "orbit",
+      "index": 1,
+      "azimuth": 37.5,
+      "elevation": 20,
+      "distance": 4.5,
+      "exposure": "CONSTRUCTION_HOLDOUT_ONLY"
+    },
+    {
+      "id": "orbit_02",
+      "sequence": "orbit",
+      "index": 2,
+      "azimuth": 67.5,
+      "elevation": 20,
+      "distance": 4.5,
+      "exposure": "CONSTRUCTION_HOLDOUT_ONLY"
+    },
+    {
+      "id": "orbit_03",
+      "sequence": "orbit",
+      "index": 3,
+      "azimuth": 97.5,
+      "elevation": 20,
+      "distance": 4.5,
+      "exposure": "CONSTRUCTION_HOLDOUT_ONLY"
+    },
+    {
+      "id": "orbit_04",
+      "sequence": "orbit",
+      "index": 4,
+      "azimuth": 127.5,
+      "elevation": 20,
+      "distance": 4.5,
+      "exposure": "CONSTRUCTION_HOLDOUT_ONLY"
+    },
+    {
+      "id": "orbit_05",
+      "sequence": "orbit",
+      "index": 5,
+      "azimuth": 157.5,
+      "elevation": 20,
+      "distance": 4.5,
+      "exposure": "CONSTRUCTION_HOLDOUT_ONLY"
+    },
+    {
+      "id": "orbit_06",
+      "sequence": "orbit",
+      "index": 6,
+      "azimuth": 187.5,
+      "elevation": 20,
+      "distance": 4.5,
+      "exposure": "CONSTRUCTION_HOLDOUT_ONLY"
+    },
+    {
+      "id": "orbit_07",
+      "sequence": "orbit",
+      "index": 7,
+      "azimuth": 217.5,
+      "elevation": 20,
+      "distance": 4.5,
+      "exposure": "CONSTRUCTION_HOLDOUT_ONLY"
+    },
+    {
+      "id": "orbit_08",
+      "sequence": "orbit",
+      "index": 8,
+      "azimuth": 247.5,
+      "elevation": 20,
+      "distance": 4.5,
+      "exposure": "CONSTRUCTION_HOLDOUT_ONLY"
+    },
+    {
+      "id": "orbit_09",
+      "sequence": "orbit",
+      "index": 9,
+      "azimuth": 277.5,
+      "elevation": 20,
+      "distance": 4.5,
+      "exposure": "CONSTRUCTION_HOLDOUT_ONLY"
+    },
+    {
+      "id": "orbit_10",
+      "sequence": "orbit",
+      "index": 10,
+      "azimuth": 307.5,
+      "elevation": 20,
+      "distance": 4.5,
+      "exposure": "CONSTRUCTION_HOLDOUT_ONLY"
+    },
+    {
+      "id": "orbit_11",
+      "sequence": "orbit",
+      "index": 11,
+      "azimuth": 337.5,
+      "elevation": 20,
+      "distance": 4.5,
+      "exposure": "CONSTRUCTION_HOLDOUT_ONLY"
+    },
+    {
+      "id": "zoom_00",
+      "sequence": "zoom",
+      "index": 0,
+      "azimuth": 52.5,
+      "elevation": 25,
+      "distance": 5.2,
+      "exposure": "CONSTRUCTION_HOLDOUT_ONLY"
+    },
+    {
+      "id": "zoom_01",
+      "sequence": "zoom",
+      "index": 1,
+      "azimuth": 52.5,
+      "elevation": 25,
+      "distance": 5.057142857142857,
+      "exposure": "CONSTRUCTION_HOLDOUT_ONLY"
+    },
+    {
+      "id": "zoom_02",
+      "sequence": "zoom",
+      "index": 2,
+      "azimuth": 52.5,
+      "elevation": 25,
+      "distance": 4.914285714285715,
+      "exposure": "CONSTRUCTION_HOLDOUT_ONLY"
+    },
+    {
+      "id": "zoom_03",
+      "sequence": "zoom",
+      "index": 3,
+      "azimuth": 52.5,
+      "elevation": 25,
+      "distance": 4.771428571428571,
+      "exposure": "CONSTRUCTION_HOLDOUT_ONLY"
+    },
+    {
+      "id": "zoom_04",
+      "sequence": "zoom",
+      "index": 4,
+      "azimuth": 52.5,
+      "elevation": 25,
+      "distance": 4.628571428571429,
+      "exposure": "CONSTRUCTION_HOLDOUT_ONLY"
+    },
+    {
+      "id": "zoom_05",
+      "sequence": "zoom",
+      "index": 5,
+      "azimuth": 52.5,
+      "elevation": 25,
+      "distance": 4.485714285714286,
+      "exposure": "CONSTRUCTION_HOLDOUT_ONLY"
+    },
+    {
+      "id": "zoom_06",
+      "sequence": "zoom",
+      "index": 6,
+      "azimuth": 52.5,
+      "elevation": 25,
+      "distance": 4.342857142857143,
+      "exposure": "CONSTRUCTION_HOLDOUT_ONLY"
+    },
+    {
+      "id": "zoom_07",
+      "sequence": "zoom",
+      "index": 7,
+      "azimuth": 52.5,
+      "elevation": 25,
+      "distance": 4.2,
+      "exposure": "CONSTRUCTION_HOLDOUT_ONLY"
+    }
+  ],
+  "exposure": "Four az30/120/210/300 views are exposed. New orbit/zoom cameras chosen from metadata before candidate evidence, construction holdout only; not unseen reconstructed-GS data.",
+  "evaluation": {
+    "reference": "Independent continuous analytic lathe ray intersection (same authored profile parameters); GT diagnostic oracle",
+    "aa_band_px": 2,
+    "hatch_support_threshold": 0.1,
+    "ring_support_tolerance_px": 1.5,
+    "centerline_sampling_max_step_world": 0.002,
+    "hiding": "Analytic optical z residual>.006 means expected hidden; abs residual<=.006 visible; other residual/outside unknown. Separate AA band; do not score expected hiding as crossing.",
+    "boundary": "Physical shared part boundary support=0; authored profile ring support reported separately. No mIoU/segmentation gain claim.",
+    "metrics": [
+      "nonzero total operation L1",
+      "hatch and contour exact equality",
+      "per-part visible area/support/ink",
+      "image darkness retained/change",
+      "distance-to-hatch median/P95 (empty-area proxy, not true inter-stroke spacing)",
+      "ring-neighborhood2px hatch overlap (clutter proxy, not crossing count)",
+      "independent far wrong-part/background ink in isolated static part hatches",
+      "expected hidden/visible/AA/unknown authored-ring centerline length and support",
+      "raw accepted/rejected part/depth renderer diagnostics (fragments include overlaps, not leakage metric)"
+    ],
+    "gates": {
+      "nonzero_display_L1_min_exclusive": 0,
+      "hatch_exact": true,
+      "contours_exact": true,
+      "part_labels_and_depth_exact": true,
+      "erased_ink_max": 0,
+      "outside_rendered_ring_delta_max": 0,
+      "every_part_hatch_support_pixels_min_exclusive": 0,
+      "full_shape_margin_px_min": 2,
+      "baseline_static_png_pixel_exact": true,
+      "visible_authored_ring_length_min_exclusive": 0
+    },
+    "controls": [
+      "Actual saved-image no-op fails nonzero gate",
+      "Delete-all ink fails retention/support",
+      "White-filled3px horizontal drift fails localization/retention",
+      "Far wrong-part injection16bright pixels responds to independent mask metric",
+      "Real walker crossing/GT stop unit test",
+      "Invalid curve/missing evidence -> UNKNOWN",
+      "No KNN connection across separated surfaces"
+    ],
+    "no_matched_ink_control_reason": "No hatch clipping or deletion: byte-identical hatch fields are mandatory; display adds declared ring ink. No benefit claim based on reduced ink.",
+    "invalid": "Missing support/evidence -> UNKNOWN/UNDETERMINED. Engineering contract failure -> ENGINEERING_INVALID. No global method NO_GO.",
+    "inherited_gate": "Do not use unit004 .75 density threshold or reopen accepted aesthetics; catastrophic loss of accepted structure is regression"
+  },
+  "media": {
+    "fps": 6,
+    "format": "FFV1 lossless MKV",
+    "orbit_frames": 12,
+    "zoom_frames": 8,
+    "size": [
+      1024,
+      544
+    ],
+    "note": "Each source is an actual per-camera render pair with fixed3D paths. No animated stills, realtime, or full temporal certification claim.",
+    "validation": "Full decode to RGB; exact match each source PNG, expected frame count, unique frames and SHA256. Native512 panels plus32px labels."
+  },
+  "resource": {
+    "affinity": [
+      0,
+      1
+    ],
+    "numeric_threads": 1,
+    "ffmpeg_threads": 1,
+    "CUDA_VISIBLE_DEVICES": "",
+    "serial_compute": true,
+    "invocation_timeout_seconds": 590,
+    "output_cap_bytes": 8589934592,
+    "root_free_min_bytes": 1073741824,
+    "hdd_free_min_bytes": 10737418240,
+    "deadline_utc": "2026-10-21T15:40:00Z"
+  },
+  "stop_rule": "Single diagnostic. No tuning/retry of scientific parameters; infrastructure failures retained with original exits. No P3 or unit011 continuation."
+}
