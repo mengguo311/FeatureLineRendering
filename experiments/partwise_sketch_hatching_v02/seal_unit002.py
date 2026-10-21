@@ -8,7 +8,7 @@ status=json.loads((OUT/'STATUS.json').read_text());assert status['execution_stat
 commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
 files=[]
 for path in sorted(OUT.rglob('*')):
-    if not path.is_file() or 'runtime' in path.relative_to(OUT).parts or path.name in ('SEAL.json','SHA256_MANIFEST.json'):continue
+    if not path.is_file() or 'runtime' in path.relative_to(OUT).parts or path in (OUT/'SEAL.json',OUT/'SHA256_MANIFEST.json'):continue
     files.append({'root':'unit','path':str(path.relative_to(OUT)),'bytes':path.stat().st_size,'sha256':sha(path)})
 sources=list((WORK/'experiments/partwise_sketch_hatching_v02').glob('*.py'))
 sources+=list((WORK/'docs/partwise_sketch_hatching_v02').glob('*unit002*'))
