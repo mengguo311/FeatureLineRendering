@@ -10,7 +10,7 @@ cd /mnt/hdd1/u00134/partwise_sketch_hatching_models_v04/units/unit_005/portable_
 
 浏览器打开终端显示的本机 URL，选择 Style region，修改 Angle、Spacing、Length 或 Width，点击 **Render & save style**。Orbit/Zoom 会从固定3D资产实际重新渲染。下载按钮导出当前资产，`./run.sh orbit`、`./run.sh zoom` 输出保存轨迹。CPU 每帧约2–3秒，不是实时浏览器3D渲染。
 
-Drums 从原360,012个高斯直接串行CPU渲染24个训练视角，再提取16,839顶点/29,999面代理。没有可用的历史Drums源深度缓存，缓存重放明确标记 `NOT_AVAILABLE`；不把无缓存当作核验通过。三个区域是人工世界高度阈值 -0.15 / 0.42，不是鼓或镲片的语义分割。完整对象可辨，但薄支架、鼓沿及孔洞仍有缺失；细节和弱视图见 `unit_005/media/reference_proxy_regions_hatch.png`。
+Drums 从原360,012个高斯直接串行CPU渲染24个训练视角，再提取16,839顶点/29,999面代理。没有可用的历史Drums源深度缓存，缓存重放明确标记 `NOT_AVAILABLE`；不把无缓存当作核验通过。三个区域是人工世界高度阈值 -0.15 / 0.42，不是鼓或镲片的语义分割。完整对象可辨，但薄支架、鼓沿及孔洞仍有缺失。7/8静态视角及18/18轨迹视角完整在框内；原 `test_r_79` 左缘约1.56px裁切保留为负例，执行状态为partial。细节和弱视图见 `unit_005/media/reference_proxy_regions_hatch.png`。
 
 从保存资产编辑和冷加载，不需要原始检查点：
 

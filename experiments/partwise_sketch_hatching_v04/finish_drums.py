@@ -56,6 +56,9 @@ def finish(unit):
       http_test=dict(returncode=1,cause="obsolete static fetch('/render' spelling assertion after frontend adopted post() helper",
         fix='assert served Apply control; keep actual six endpoint operations and separate real Firefox UI test',
         recovery_returncode=0,preserved='attempt_ui_assert/ and logs/viewer_smoke.log'),
+      handoff=dict(returncode=1,cause='all-static-framing assertion exposed frozen test_r_79 xmin=-1.5594268664 px',
+        recovery='record partial framing and preserve original camera/output; no rerender or threshold change',
+        receipt='HANDOFF_FAILURE.json',preserved='attempt_handoff/'),
       ancillary=[dict(command='python ../run_logged.py (from code directory)',returncode=2,
         cause='wrong relative test-runner path; no test executed; corrected invocation passed'),
         dict(action='read-only guessed historical NEXT/READING_LOG paths',subprocess_returncode='UNKNOWN',
@@ -63,7 +66,7 @@ def finish(unit):
       extra_time_extension=False,scientific_settings_changed=False))
     inspected=['media/reference_proxy_regions_hatch.png','media/local_edit_all_views.png','media/orbit_all_frames.png',
       'media/zoom_all_frames.png','browser_complete/05_reloaded.png','renders/first/frame_000_image.png','proxy/reference_train_r_7.png']
-    negatives='Thin stands are fragmented or absent, drum rims and cavities are coarse, lower drum has holes, some paths are short or crowded; height regions jointly affect multiple physical pieces.'
+    negatives='Thin stands are fragmented or absent, drum rims and cavities are coarse, lower drum has holes, some paths are short or crowded; height regions jointly affect multiple physical pieces. Frozen original test_r_79 clips the left proxy bound by 1.56 px.'
     js(unit/'VISUAL_REVIEW.json',dict(utc=now(),reviewer='primary agent; not independent human/blind assessment',inspected=inspected,
       all_static_views=8,all_orbit_frames=12,all_zoom_frames=6,
       positives='recognizable complete drum kit with major cymbals; middle edit visible and upper/lower appearance retained; usable actual browser',
@@ -74,12 +77,15 @@ def finish(unit):
       'v02/base_density.py; v03/run_comparison.py; v04/model_adapter.py, build_proxy.py, fuse_cpu.py, geometry.py, hatching.py, render.py, demo.py, viewer.py',
       'unit_004 STATUS/REPORT/NEXT and actual 8-view comparison/edit images']
     js(unit/'READING_RECORD.json',dict(read=reading,historical_no_go_unchanged=True,no_old_helper_invoked=True))
+    framing=[dict(view=p['static_cameras'][i]['view'],**read(f'renders/static_baseline/frame_{i:03d}.json')['bounds']) for i in range(8)]
+    complete_static=sum(x['all_proxy_vertices_inside'] for x in framing)
     audit=dict(utc=now(),previous_sealed_files_unchanged=len(old['files']),inputs_unchanged=True,
-      successful_prefix_files=len(prefix),all_static_proxy_bounds_inside=all(read(f'renders/static_baseline/frame_{i:03d}.json')['bounds']['all_proxy_vertices_inside'] for i in range(8)),
+      successful_prefix_files=len(prefix),all_static_proxy_bounds_inside=complete_static==8,static_framing=framing,
       inspected_own_process_groups=sorted(groups),remaining_own_processes=[],ps_fields=['pid','comm'],
       package_source_matches_snapshot=True,root_free_bytes=shutil.disk_usage('/').free,hdd_free_bytes=shutil.disk_usage(root).free,
       task_bytes=sum(f.stat().st_size for f in root.rglob('*') if f.is_file()))
-    assert audit['all_static_proxy_bounds_inside'];js(unit/'metrics/FINAL_AUDIT.json',audit)
+    js(unit/'metrics/FINAL_AUDIT.json',audit)
+    state='completed' if audit['all_static_proxy_bounds_inside'] else 'partial'
     base=v['anchors']['baseline'];edited=v['anchors']['edited']
     nextstep='优先提高现有三模型的选区可用性：为浏览器增加基于当前相机射线命中代理面的点击选区/局部框选预览，保存真实face IDs并明确只选可见面还是贯穿选择；用Lego或Drums一次局部编辑、非目标保持、导出冷加载验证。不要把点击工具称为自动语义分割；暂不为凑四模型直接扩展Ficus，也不做平滑/阈值扫描。'
     progress=dict(scene='drums',genuinely_ran_old_model=True,available_models=['chair','lego','drums'],
@@ -87,7 +93,9 @@ def finish(unit):
       region_source='authored z thresholds -0.15 / 0.42; nonsemantic',
       baseline_paths=sum(x['paths'] for x in base.values()),edited_paths=sum(x['paths'] for x in edited.values()),
       retained_non_target_paths=base['1']['paths']+base['3']['paths'],non_target_paths_and_layers_exact=True,
-      far_edit_delta_all_views=0.,complete_object_views=8,cold_reload_exact=True,actual_browser_test=True,
+      far_edit_delta_all_views=0.,static_comparison_views=8,complete_object_views=complete_static,
+      cropped_static_views=[x['view'] for x in framing if not x['all_proxy_vertices_inside']],
+      all_18_trajectory_views_complete=True,cold_reload_exact=True,actual_browser_test=True,
       actual_http_controls=len(http['actual_http_edit_tests']),exported_zip_cold_reload_exact=True,
       relocated_package_cold_reload_exact=True,full_original_model_rebuild_exact=True,full_rebuild_seconds=build['seconds'],
       orbit_frames=12,zoom_frames=6,all_video_frames_decoded_exact=True,visual_quality='partial',
@@ -99,16 +107,16 @@ def finish(unit):
       'media/editor_05_reloaded.png','metrics/VALIDATION.json','metrics/SOURCE_DIAGNOSTICS.json','metrics/BUILD_REPLAY.json',
       'metrics/EXPORT_REPLAY.json','metrics/PORTABLE_REPLAY.json','browser_complete/BROWSER_VALIDATION.json','metrics/FINAL_AUDIT.json']
     assert all((unit/f).is_file() for f in artifacts)
-    status=dict(stage='UNIT005_HANDOFF',execution_state='completed',completed_utc=now(),elapsed_minutes=elapsed,
+    status=dict(stage='UNIT005_HANDOFF',execution_state=state,completed_utc=now(),elapsed_minutes=elapsed,
       scientific_verdict='H1_H2_NOT_TESTED; historical P1 NO_GO and P2 ZERO_HEADROOM unchanged',
-      engineering_validation='PASS for bounded real-model build/edit/browser/export/cold replay; visual quality partial',
+      engineering_validation='PASS for bounded real-model build/edit/browser/export/cold replay; PARTIAL static framing and visual quality',
       genuinely_ran_old_model=True,demo_progress=progress,source_commit=commit,artifacts=artifacts+['REPRODUCE_ZH.md'],
       tests_and_command_receipts=receipts,blockers=[],limitations=[negatives,
         'No historical Drums source cache: NOT_AVAILABLE, not a replay pass.',
         'Proxy-relative attachment and masks; same-model depth agreement is not independent accuracy.',
         'Offline finite orbit/zoom decode is not full temporal/occlusion certification; no realtime claim.',
         'Manual region authoring retained from Lego; only three height-region style controls tested on Drums.'],
-      failure_records=['EXECUTION_AMENDMENT.json',*[x['path'] for x in failures]],next_action='continue',recommended_next_step=nextstep,
+      failure_records=['EXECUTION_AMENDMENT.json','HANDOFF_FAILURE.json',*[x['path'] for x in failures]],next_action='continue',recommended_next_step=nextstep,
       supervisor_verification='reported_not_independently_verified',seal_scope='validated finite engineering evidence and explicit failure receipts; no scientific certification',
       resources=dict(cpu_affinity=sorted(os.sched_getaffinity(0)),numeric_threads=1,serial=True,gpu=False,nested_models=False,
         new_dependencies=False,servers_stopped=True,extra_recovery_extension=False))
@@ -121,7 +129,7 @@ def finish(unit):
     short=sum(x['shorter_than_half_requested'] for x in base.values())
     report=f'''# Unit005 — Drums real-model demo
 
-工程执行 **completed**，外观 **partial**；H1/H2未测试。用时 {elapsed:.1f} 分钟。源码提交 `{commit}`。完整阅读BRIEF、851行大纲、最新P1/P2报告/NEXT与相关源，实际审阅unit004八视角完整对象及局部编辑图：Lego已可独立编辑前部，侧后孔洞、细杆缺失、底板拥挤仍在。本轮选择第三真实模型Drums，不重复toy门槛，不扫参数。
+工程执行 **{state}**，核心构建/编辑/冷加载通过，外观 **partial**；H1/H2未测试。用时 {elapsed:.1f} 分钟。源码提交 `{commit}`。完整阅读BRIEF、851行大纲、最新P1/P2报告/NEXT与相关源，实际审阅unit004八视角完整对象及局部编辑图：Lego已可独立编辑前部，侧后孔洞、细杆缺失、底板拥挤仍在。本轮选择第三真实模型Drums，不重复toy门槛，不扫参数。
 
 ## Frozen protocol and source
 
@@ -141,13 +149,13 @@ Drums不在历史源缓存registry中。新增可选缓存诊断：未指定缓�
 
 八视角上下区域图层/路径、深度、轮廓精确相同；固定2px带外变化全0，目标变化均非零。附着最大2.22e-16仅是相对自身代理的实现约束；上述IoU和深度残差也是同模型诊断，不是独立几何准确度。原RGBA轮廓IoU、合格像素/共同深度/遗漏数、分区覆盖和墨量逐视角保留在metrics。
 
-实际查看完整八组参考RGB/代理/区域/排线、八组编辑前后、全部12旋转/6缩放及Firefox刷新图。鼓组、主要镲片可辨，顶视排线连续；侧后支架断裂、鼓沿粗糙、鼓体底部孔洞和短碎线明显，部分支撑仅剩漂离片段。中区同时包含鼓身/座椅等多个实体，不能称单个语义部件。所有26个静态/轨迹相机代理在框内；18帧均不同，FFV1全部解码与PNG精确，仍不是全路径时序认证。
+实际查看八组参考RGB/代理/区域/排线、八组编辑前后、全部12旋转/6缩放及Firefox刷新图。鼓组、主要镲片可辨，顶视排线连续；侧后支架断裂、鼓沿粗糙、鼓体底部孔洞和短碎线明显，部分支撑仅剩漂离片段。中区同时包含鼓身/座椅等多个实体，不能称单个语义部件。{complete_static}/8静态视角及18/18轨迹视角代理完整在框内；冻结原test_r_79的xmin=-1.5594px，左缘轻微裁切，原图保留，不调相机隐藏。18轨迹帧均不同，FFV1全部解码与PNG精确，仍不是全路径时序认证。
 
 真实Firefox软件渲染验证场景/标签、角度编辑、Orbit、Zoom、刷新相机保持。HTTP另外实跑角度/间距/长度/线宽/旋转/缩放六操作，非法spacing返回422。关闭服务器后下载ZIP用新CLI重绘，PNG与所有数组精确。`demo.py build --scene drums` 从原PLY再次完整执行24帧→TSDF→路径→首图，{build['seconds']:.2f}s，网格、三份路径及PNG/NPZ精确。打包、搬移解压后的 `./run.sh preview` 实际冷加载也精确；保存资产运行不需要原检查点。
 
 ## Failures, delivery and next
 
-首构建收到SIGTERM，child=-15、outer=143、发送方/原因UNKNOWN；原部分输出保留attempt_interrupted。相同设置一次恢复rc0，原6份完成深度文件与恢复逐文件相同。HTTP首辅助测试因过时JS源码字符串断言rc1，在真实Firefox已通过的前提下修复测试；首尝试及自身清理收据保留，恢复六操作/导出rc0。另有测试runner相对路径错误rc2和只读历史路径猜测失败。全部区别记录EXECUTION_AMENDMENT，不改写失败码，没有延长55分钟时限或更换候选。
+首构建收到SIGTERM，child=-15、outer=143、发送方/原因UNKNOWN；原部分输出保留attempt_interrupted。相同设置一次恢复rc0，原6份完成深度文件与恢复逐文件相同。HTTP首辅助测试因过时JS源码字符串断言rc1，在真实Firefox已通过的前提下修复测试；首尝试及自身清理收据保留，恢复六操作/导出rc0。首次交付检查因上述test_r_79取景断言rc1，失败收据及旧交付快照保留；改为如实记录partial，所有原图/相机/参数不变。另有测试runner相对路径错误rc2和只读历史路径猜测失败。全部区别记录EXECUTION_AMENDMENT，不改写失败码，没有延长55分钟时限或更换候选。
 
 启动：`cd {unit/'portable_demo'} && ./run.sh viewer`；预览用 `./run.sh preview`。包 `{unit/'portable_demo.tar.gz'}` 含真实资产、源码、预览与视频。根DEMO_README_ZH包含三模型入口和Drums完整构建命令。精确命令/返回码在REPRODUCE_ZH与logs，状态/下一步见STATUS/NEXT，验证指标见metrics。
 
@@ -160,7 +168,7 @@ NEXT=continue：{nextstep} 历史P1 NO_GO、P2 ZERO_HEADROOM保持，H1/H2未测
     for r in raw:commands.append(f"\n`{r['start_utc']}` — rc `{r['returncode']}`，{r['seconds']:.3f}s\n\n```bash\n{shlex.join(r['command'])}\n```\n")
     (unit/'REPRODUCE_ZH.md').write_text(''.join(commands))
     shutil.copy2('docs/partwise_sketch_hatching_v04/DEMO_README_ZH.md',root/'DEMO_README_ZH.md')
-    delivery=dict(updated_utc=now(),execution_state='completed',visual_quality='partial',working_demo=True,current_unit='units/unit_005',
+    delivery=dict(updated_utc=now(),execution_state=state,visual_quality='partial',working_demo=True,current_unit='units/unit_005',
       available_models={'chair':'units/unit_002/portable_demo.tar.gz','lego':'units/unit_004/portable_demo.tar.gz','drums':'units/unit_005/portable_demo.tar.gz'},
       start_command=f'cd {unit}/portable_demo && ./run.sh viewer',demo_progress=progress,report='units/unit_005/REPORT_ZH.md',
       next_action='continue',recommended_next_step=nextstep,scientific_verdict=status['scientific_verdict'],
@@ -175,7 +183,7 @@ NEXT=continue：{nextstep} 历史P1 NO_GO、P2 ZERO_HEADROOM保持，H1/H2未测
     selected.extend((unit/'browser_complete').glob('*.json'));selected.extend((unit/'browser_complete').glob('*.png'))
     selected.extend((unit/'attempt_ui_assert').glob('*.json'));selected.extend((unit/'attempt_ui_assert').glob('*.log'))
     for name in ['PROTOCOL.json','INVENTORY.json','DEPENDENCIES.json','STATUS.json','REPORT_ZH.md','NEXT.json','SOURCE_LOCK.json',
-      'SOURCE_DIFF.patch','EXECUTION_AMENDMENT.json','VISUAL_REVIEW.json','READING_RECORD.json','REPRODUCE_ZH.md',
+      'SOURCE_DIFF.patch','EXECUTION_AMENDMENT.json','HANDOFF_FAILURE.json','VISUAL_REVIEW.json','READING_RECORD.json','REPRODUCE_ZH.md',
       'DELIVERY_STATUS_SNAPSHOT.json','DEMO_README_ZH_SNAPSHOT.md','portable_demo.tar.gz']:
         selected.append(unit/name)
     files=[dict(path=str(f.relative_to(unit)),sha256=sha(f),bytes=f.stat().st_size) for f in sorted(set(selected))]
@@ -183,7 +191,7 @@ NEXT=continue：{nextstep} 历史P1 NO_GO、P2 ZERO_HEADROOM保持，H1/H2未测
        excluded='mutable browser profiles/runtime logs, interrupted numerical arrays, replay duplicate directories, orchestration scratch, final model response'))
     assert all(sha(unit/f['path'])==f['sha256'] for f in files)
     js(unit/'ENGINEERING_SEAL.json',dict(utc=now(),manifest='SHA256_MANIFEST.json',manifest_sha256=sha(unit/'SHA256_MANIFEST.json'),
-      file_count=len(files),source_commit=commit,execution_state='completed',scientific_seal=False,
+      file_count=len(files),source_commit=commit,execution_state=state,scientific_seal=False,
       scope=status['seal_scope'],supervisor_verification='reported_not_independently_verified'))
     print(json.dumps(dict(status=str(unit/'STATUS.json'),files=len(files),elapsed_minutes=elapsed,next_action='continue')))
 
