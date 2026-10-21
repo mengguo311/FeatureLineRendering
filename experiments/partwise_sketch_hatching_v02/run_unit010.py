@@ -6,8 +6,24 @@ from PIL import Image
 from asset_cli import load_asset
 from renderer import render
 from run_unit002 import contact
-from validate_unit004 import audit_video
 U=OUT.parent/'unit_010';VIEWS=[30,120,210,300]
+def audit_video(unit,ffmpeg,name,sources):
+    """Decode the exact declared sequence length, including16-frame zoom."""
+    command=[ffmpeg,'-v','error','-threads','1','-i',str(unit/'videos'/f'{name}.mkv'),'-f','rawvideo','-pix_fmt','rgb24','-threads','1','-']
+    result=subprocess.run(command,capture_output=True,timeout=90)
+    (unit/'runtime'/f'decode_{name}.log').write_bytes(result.stderr)
+    record=dict(command=command,returncode=result.returncode,expected_frames=len(sources),decoded_bytes=len(result.stdout))
+    write_json(unit/f'DECODE_{name}.json',record)
+    result.check_returncode()
+    frames=np.frombuffer(result.stdout,dtype=np.uint8)
+    assert frames.size==len(sources)*512*512*3,(name,frames.size)
+    hashes=[]
+    for i,frame in enumerate(frames.reshape(len(sources),512,512,3)):
+        with Image.open(sources[i]) as im:expected=np.asarray(im.convert('RGB'))
+        assert np.array_equal(frame,expected),(name,i)
+        hashes.append(hashlib.sha256(frame.tobytes()).hexdigest())
+    assert len(set(hashes))>=2,name
+    return dict(**record,decoded_frames=len(sources),all_rgb_exact=True,distinct_frames=len(set(hashes)),frame_sha256=hashes)
 def cp(src,dst):
     assert not dst.exists(),dst
     dst.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(src,dst)
