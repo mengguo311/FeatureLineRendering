@@ -14,6 +14,25 @@ from geometry import depth_valid, backproject, region_ids
 def save_image(path, a):
     Image.fromarray(np.uint8(np.clip(a,0,1)*255+.5)).save(path)
 
+def source_cache_diagnostic(rendered, cache_path):
+    """A new source model can run without a historical render cache.
+
+    An explicitly supplied missing/broken cache still fails; no cache means no
+    replay evidence, rather than an invented agreement or an extraction veto.
+    """
+    if cache_path is None:
+        return dict(status='NOT_AVAILABLE',cache=None,max_abs_errors=None,
+                    all_arrays_exact=None,
+                    scope='no source-only historical cache supplied; direct original-model rendering only; no replay claim')
+    with np.load(cache_path) as cache:
+        errors={}
+        for key,value in rendered.items():
+            if value.shape!=cache[key].shape:raise ValueError('source cache shape mismatch: '+key)
+            errors[key]=float(np.max(np.abs(value-cache[key])))
+    return dict(status='COMPARED',cache=str(cache_path),max_abs_errors=errors,
+                all_arrays_exact=all(x==0 for x in errors.values()),
+                scope='agreement with prior CPU source-only renderer, not independent ground truth')
+
 def build(unit):
     unit=output_guard(unit); p=json.loads((unit/'PROTOCOL.json').read_text())
     out=unit/'proxy';out.mkdir(exist_ok=True)
@@ -28,13 +47,10 @@ def build(unit):
     js(out/'MODEL_IMPORT.json',dict(utc=now(),source_path=p['original']['original_ply'],source_sha256=p['original']['sha256'],
                                   audit=a['audit'],seconds=time.monotonic()-start,source_index='original PLY row, 0..N-1; proxy vertices have separate identity'))
     bounds=np.array([a['means'][a['opacity']>.5].min(0)-.06,a['means'][a['opacity']>.5].max(0)+.06])
-    # Verify against a real source-only historical array using the same camera.
+    # Compare to a historical source-only array when one is explicitly supplied.
     c=p['static_cameras'][0]
     check=adapter.render_source(a,c)
-    with np.load(p['input_cache_probe']) as cache:
-        errors={k:float(np.max(np.abs(check[k]-cache[k]))) for k in check}
-    js(out/'CACHE_REPLAY.json',dict(camera=c,cache=p['input_cache_probe'],max_abs_errors=errors,
-                                   all_arrays_exact=all(x==0 for x in errors.values()),scope='agreement with prior CPU source-only renderer, not independent ground truth'))
+    js(out/'CACHE_REPLAY.json',dict(camera=c,**source_cache_diagnostic(check,p.get('input_cache_probe'))))
     save_image(out/f"source_{c['view']}.png",check['rgb'])
     ref=Image.open(p['references'][c['view']]).convert('RGBA')
     white=Image.new('RGBA',ref.size,'white');white.alpha_composite(ref);white.convert('RGB').save(out/f"reference_{c['view']}.png")

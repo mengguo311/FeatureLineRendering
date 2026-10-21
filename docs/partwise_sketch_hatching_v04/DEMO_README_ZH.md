@@ -1,6 +1,38 @@
 # 真实旧模型分区排线 Demo
 
-当前提供 Chair 与 Lego 的真实旧模型资产。Lego 最新版本增加**可预览、保存、撤销的人工三维区域选择**：可以从原来的高度区域里分出前铲斗区域，再单独修改排线角度、间距、长度和线宽。保存的三维路径参与每个相机的深度测试。
+当前提供 **Chair、Lego、Drums** 三个真实旧模型资产。Drums 的入口如下；Lego 人工区域作者说明保留在后面。
+
+```bash
+cd /mnt/hdd1/u00134/partwise_sketch_hatching_models_v04/units/unit_005/portable_demo
+./run.sh preview
+./run.sh viewer
+```
+
+浏览器打开终端显示的本机 URL，选择 Style region，修改 Angle、Spacing、Length 或 Width，点击 **Render & save style**。Orbit/Zoom 会从固定3D资产实际重新渲染。下载按钮导出当前资产，`./run.sh orbit`、`./run.sh zoom` 输出保存轨迹。CPU 每帧约2–3秒，不是实时浏览器3D渲染。
+
+Drums 从原360,012个高斯直接串行CPU渲染24个训练视角，再提取16,839顶点/29,999面代理。没有可用的历史Drums源深度缓存，缓存重放明确标记 `NOT_AVAILABLE`；不把无缓存当作核验通过。三个区域是人工世界高度阈值 -0.15 / 0.42，不是鼓或镲片的语义分割。完整对象可辨，但薄支架、鼓沿及孔洞仍有缺失；细节和弱视图见 `unit_005/media/reference_proxy_regions_hatch.png`。
+
+从保存资产编辑和冷加载，不需要原始检查点：
+
+```bash
+DEMO_PY=/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python
+"$DEMO_PY" source/demo.py edit --scene drums --asset assets/baseline --region 2 --angle 95 --output runs/my_edit
+"$DEMO_PY" source/demo.py render --scene drums --asset runs/my_edit --view train_r_7 --output runs/my_preview
+```
+
+保留原检查点的本机，还可从工作树一条命令重新执行完整构建（输出目录须为空）：
+
+```bash
+cd /home/u00134/3dgs_line/partwise_sketch_hatching_models_v04
+DEMO_PY=/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python
+"$DEMO_PY" experiments/partwise_sketch_hatching_v04/demo.py build --scene drums --unit /mnt/hdd1/u00134/partwise_sketch_hatching_models_v04/units/unit_005 --output /mnt/hdd1/u00134/partwise_sketch_hatching_models_v04/user_runs/drums_build
+```
+
+各模型包位置：Chair=`units/unit_002/portable_demo.tar.gz`，Lego=`units/unit_004/portable_demo.tar.gz`，Drums=`units/unit_005/portable_demo.tar.gz`。可搬移解压；依赖见包内 `requirements.txt`，未捆绑Python环境，其他平台未测。Drums 的 `STATUS.json`、`REPORT_ZH.md`、`REPRODUCE_ZH.md`、`metrics/` 记录实际测试、命令返回码及限制。
+
+## Lego 人工区域作者
+
+Lego 最新版本增加**可预览、保存、撤销的人工三维区域选择**：可以从原来的高度区域里分出前铲斗区域，再单独修改排线角度、间距、长度和线宽。保存的三维路径参与每个相机的深度测试。
 
 这仍是外观部分完成的工程 demo。几何来自旧 vanilla 3DGS 的 CPU 深度估计与 TSDF 代理，不是 GT，也不是重新训练的 RaDe-GS。细杆缺失、孔洞、底板密集波浪线和短片段仍可见。手动框选不是自动语义分割；本示例“Front bucket area”也包含附近的举升支撑。
 

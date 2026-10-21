@@ -26,7 +26,10 @@ def run(unit):
         port=json.loads((out/'SERVER.json').read_text())['port'];base=f'http://127.0.0.1:{port}'
         def get(path):
             with urllib.request.urlopen(base+path,timeout=30) as response:return response.read()
-        html=get('/');assert b'Render &amp; save' in html and b"fetch('/render'" in html
+        # The browser now uses a shared post() helper. Verify the served control
+        # here; actual endpoint behavior is exercised below and UI binding is
+        # tested in Firefox, not inferred from a particular JS spelling.
+        html=get('/');assert b'Render &amp; save' in html and b'id="apply"' in html
         state=json.loads(get('/state'));initial=state
         payload=dict(region=2,**state['styles']['2'],**state['camera'])
         for control,value in [('angle',95),('spacing',.06),('length',.12),('width',1.8),('azimuth',47),('distance',4.3)]:
