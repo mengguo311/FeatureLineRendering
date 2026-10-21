@@ -1,59 +1,70 @@
 # 真实旧模型分区排线 Demo
 
-当前支持 Chair、Lego、Drums。最新 Drums 包增加**直接点选已有区域、拖框预览可见面、保存为新区域**，并保留角度、间距、长度、线宽、Orbit、Zoom、撤销和导出。CPU 每帧约数秒，非实时 3D 浏览器。
+当前有 Chair、Lego、Drums 的真实旧模型资产。最新 Drums 演示支持**跨视角添加/减去可见面、总选区预览、一次保存为区域**，以及角度、间距、长度、线宽、旋转、缩放、撤销和导出。CPU 每帧约数秒，不是实时渲染。
 
 ```bash
-cd /mnt/hdd1/u00134/partwise_sketch_hatching_models_v04/units/unit_006/portable_demo
+cd /mnt/hdd1/u00134/partwise_sketch_hatching_models_v04/units/unit_007/portable_demo
 ./run.sh preview
 ./run.sh viewer
 ```
 
-打开终端显示的本机 URL。默认包有四个区域；点击对象选择已有区域，再修改风格并按 **Render & save style**。也可在 Style region 下拉框中选 `Visible upper patch (manual)`。选择只改变操作目标，按保存后才把所选区域与风格写入当前资产。
+浏览器打开终端显示的本机 URL。默认加载已保存的四区资产；在 Style region 选择 `Upper cymbal surface (manual)`，调整风格，点击 **Render & save style**。`./run.sh preview` 冷加载角度编辑后的资产并写入包内 `runs/`。
 
-## 从图像创建区域
+## 跨视角创建一个区域
 
-从原三个高度区域演示：
+从原三个高度区域开始：
 
 ```bash
 DEMO_ASSET=original ./run.sh viewer
 ```
 
-1. 点击模型上希望编辑的部位，选中其已有 style region。
-2. Image tool 改为 **Drag a visible rectangle**，在右侧图像中拖一个矩形。
-3. 检查粉色预览和选中面数量，输入名称，按 **Save new region**。
-4. 新区域自动成为风格编辑目标；改 Angle、Spacing、Length 或 Width，再按保存。
-5. Orbit / Zoom 实际重绘固定 3D 路径。**Download current asset** 导出当前网格、面标签、路径、参数、选择来源和相机。
+1. 点击模型选择来源区域，将 Image tool 改成 **Drag a visible rectangle**。
+2. 用 **Add visible faces** 拖框添加表面；用 **Subtract visible faces** 减去误选，或用 **Replace selection** 重新开始。
+3. 点击 Orbit/Zoom，或调整相机滑条后点 **Update view · keep selection**。已选三维面保持不变，粉色预览随相机重绘。导航不生成新路径或资产副本。
+4. **Undo selection step** 撤销一步；**Clear selection** 清空草稿；**Show total selection** 在当前相机检查总选区。
+5. 输入名称，按 **Save total selection as region** 一次提交。新区域会成为风格编辑目标，此后可调整四个风格参数。
+6. **Download saved asset** 导出网格、面标签、固定路径、参数、选面来源和当前相机。尚未提交的草稿不包含在资产下载中。
 
-可见选择只纳入当前相机前方射线首先命中的代理三角面，并限于指定来源区域。完全没有可见命中的面不会被纳入；**保存整个三角面**，因此面的一部分可越出屏幕矩形或原先受遮挡。它不会自动选中整件物体或补齐背面。旋转之后仍编辑这些固定面 ID，不重新按屏幕位置选取。较大的三角面、薄片两面和代理孔洞会限制选择精度。
+草稿存在时，风格保存和资产撤销暂不可用，防止在选面中途更换底层资产。浏览器刷新保留同一服务器中的选面草稿和相机，输入的区域名称保存在当前浏览器标签页。关闭服务器不会自动恢复未提交草稿；请先提交并下载资产。已保存的区域可在服务器重启后冷加载。
 
-**World box (includes hidden sides)** 保留旧的模型坐标框选：按面中心选择，包含隐藏侧。两种方式都属于人工编辑区，不是自动语义分割。空选择、非法坐标、过期视图/预览与会清空来源区域的选择会被拒绝。撤销栈只在当前服务器会话有效；浏览器刷新保留当前资产/相机，服务器重启时用下载的资产路径恢复。
+选择限于一个来源区内的首命中代理三角面，保存**整个三角面**。没有可见命中的面不会自动补齐；面的一部分可能超出框或原先被遮挡。世界框选 **World box (includes hidden sides)** 仍可用，但需先清空可见选面草稿。两者都是人工编辑区，不是自动语义分割。
 
-本轮固定 Drums 相机 azimuth157°/elevation24°/distance4.9，在512²图像边坐标 `[128,128,260,240]` 拖框，从上区选1,291面。它覆盖部分上方表面，不保证是完整镲片。
+本轮由代理图像人工指定四次矩形操作，三个构建视角，选面数640→855→911→718。718面仍有36个索引边连通片，包含邻近镲片/鼓沿/支架的少量碎片和背面遗漏；这个名称表达编辑意图，不是完整语义镲片标签。
 
 ## CLI 与冷加载
 
-包内运行以下命令，使用尚不存在的输出目录。保存资产重绘不需要原始 PLY：
+包内 `SELECTION_RECIPE.json` 保存本轮的相机、矩形、增减顺序和输入网格哈希。以下输出目录必须尚不存在：
 
 ```bash
 DEMO_PY=/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python
-"$DEMO_PY" source/demo.py author --scene drums --asset assets/original --region 3 --screen-rect 128 128 260 240 --azimuth 157 --elevation 24 --distance 4.9 --name 'Visible upper patch (manual)' --output runs/my_region
+"$DEMO_PY" source/demo.py author --scene drums --asset assets/original --region 3 --selection-recipe SELECTION_RECIPE.json --name 'Upper cymbal surface (manual)' --output runs/my_region
 "$DEMO_PY" source/demo.py edit --scene drums --asset runs/my_region --part 4 --angle 35 --output runs/my_edit
 "$DEMO_PY" source/demo.py render --scene drums --asset runs/my_edit --view train_r_7 --output runs/my_preview
 ./run.sh orbit
 ./run.sh zoom
 ```
 
-`author` 另支持 `--bounds XMIN YMIN ZMIN XMAX YMAX ZMAX` 的世界框选；`edit` 支持 `--angle --spacing --length --width`；`render` 支持 `--trajectory static|orbit|zoom` 或独立相机参数与 `--size`。从下载ZIP解压到例如 `runs/downloaded` 后，可运行 `source/viewer.py --asset runs/downloaded --output runs/reopened --port 8765`。换目录解压包后可直接用 `./run.sh`，或设 `DEMO_PY=/path/to/python`；依赖见 requirements.txt，未捆绑Python环境，其他平台未测试。
+`author` 也支持 `--screen-rect LEFT TOP RIGHT BOTTOM` 配合相机参数，以及 `--bounds XMIN YMIN ZMIN XMAX YMAX ZMAX`；`edit` 支持 `--angle --spacing --length --width`；`render` 支持 `--trajectory static|orbit|zoom` 或独立相机及 `--size`。
 
-## 来源与限制
+下载ZIP解压到 `runs/downloaded` 后，可执行：
 
-Drums 原冻结 vanilla GS：360,012 Gaussian，SHA256 `d4b67123927613ade6b7e2f38ed6bf724fc5e348dbcca84a2be1352ec5113a8b`。unit005 从原 PLY 串行 CPU 深度渲染24训练视角并TSDF提取16,839顶点/29,999面的粗代理；unit006固定该几何，重新执行原PLY八视角参考渲染。本轮不重建或修补几何。没有 GT 替代、GPU训练或旧 ink 代理。
+```bash
+"$DEMO_PY" source/viewer.py --asset runs/downloaded --output runs/reopened --port 8765
+```
 
-原三分区为人工世界高度阈值 -0.15 / 0.42；新区域为保存的人工可见面选择。附着和编辑局部性是相对于同一代理的实现检查；同模型深度一致性不是独立几何真值。薄支架断裂、鼓沿粗糙、鼓体孔洞和短碎线仍明显。原test_r_79左缘约1.56px裁切保留为负例。视频完整解码不等于全路径时序认证，历史曝光视角不称盲测，H1/H2未验证，历史NO_GO不改写。
+可搬移包无需原始PLY或旧工作树即可重绘保存资产。可用 `DEMO_PY=/path/to/python ./run.sh viewer` 指定已装依赖的解释器；依赖见 requirements.txt，未捆绑Python环境，其他平台未测试。
 
-最新包 `units/unit_006/portable_demo.tar.gz`；旧Chair=`units/unit_002/portable_demo.tar.gz`、Lego=`units/unit_004/portable_demo.tar.gz`、Drums原三分区=`units/unit_005/portable_demo.tar.gz`。旧包不会自动更新界面；新工作树viewer可加载其保存资产。
+## 来源、实跑与限制
 
-原PLY→CPU深度→TSDF→路径完整重建由unit005实际验证；在原机工作树可复现（输出须为空，unit006是选区协议，不能传给build）：
+Drums 原冻结 vanilla GS：360,012 Gaussian，SHA256 `d4b67123927613ade6b7e2f38ed6bf724fc5e348dbcca84a2be1352ec5113a8b`。unit005 从原PLY串行CPU深度渲染24训练视角，再TSDF提取16,839顶点/29,999面的粗代理。unit007固定该代理，重新执行原PLY八视角参考渲染；没有重建或修补几何，没有GT替代或GPU训练。原三区是世界高度阈值 -0.15 / 0.42。
+
+本轮实跑CLI作者操作、局部编辑、浏览器鼠标拖框/键盘命名/跨视角增减/撤销/刷新/导出、新进程冷加载和搬移包重放。其他区域路径与图层精确保持；八视角局部角度编辑在固定2px边界带之外变化为0。区域创建本身的微小栅格副作用另记在报告中，不宣称作者操作普遍零泄漏。
+
+薄支架断裂、鼓沿噪声、鼓体孔洞和碎短线仍明显。7/8静态视角完整入框；继承test_r_79左缘约1.56px裁切作为负例保留。12旋转/6缩放均完整入框并逐帧解码核对；不代表完整时序认证。附着/局部性相对于同一代理，同模型深度不是独立真值。旧训练/测试视图已有曝光，不称盲评；H1/H2未验证，历史NO_GO保留。
+
+最新包：`units/unit_007/portable_demo.tar.gz`。旧Chair包=`units/unit_002/portable_demo.tar.gz`，Lego=`units/unit_004/portable_demo.tar.gz`，Drums原三区=`units/unit_005/portable_demo.tar.gz`。旧包界面不会自动更新，新工作树viewer可读取其资产。
+
+原PLY→CPU深度→TSDF→路径完整重建由unit005验证；unit007是选区协议，不能用作build协议。原机重建入口：
 
 ```bash
 cd /home/u00134/3dgs_line/partwise_sketch_hatching_models_v04
@@ -61,6 +72,4 @@ DEMO_PY=/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_f
 "$DEMO_PY" experiments/partwise_sketch_hatching_v04/demo.py build --scene drums --unit /mnt/hdd1/u00134/partwise_sketch_hatching_models_v04/units/unit_005 --output /mnt/hdd1/u00134/partwise_sketch_hatching_models_v04/user_runs/drums_build
 ```
 
-局部角度编辑的其他区域路径和图层精确不变；创建区域本身在三个视角仍有0.2–0.4灰度L1的远区栅格变化，属于已知部分完成项。没有为此改图或放宽2px边界带。
-
-本轮证据位于unit006：`media/reference_proxy_regions_hatch.png`（八视角完整对象/弱视图）、`media/local_edit_all_views.png`、`media/orbit.mkv`、`media/zoom.mkv`、`browser_complete/`、`metrics/`；精确命令与返回码见 `REPRODUCE_ZH.md`、`logs/*.receipt.json`，最终状态与局限见 `STATUS.json`/`REPORT_ZH.md`。
+当前证据在unit007：`selection/selection_all_views.png`、`media/reference_proxy_regions_hatch.png`、`media/local_edit_all_views.png`、`media/orbit.mkv`、`media/zoom.mkv`、`browser_complete/`、`metrics/`。准确命令和返回码见 `REPRODUCE_ZH.md` 与 `logs/*.receipt.json`；状态、失败及边界见 `STATUS.json` / `REPORT_ZH.md`。

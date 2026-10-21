@@ -97,6 +97,7 @@ def main():
     p.add_argument('--output',required=True,type=Path);p.add_argument('--region','--part',type=int)
     p.add_argument('--bounds',type=float,nargs=6,metavar=('XMIN','YMIN','ZMIN','XMAX','YMAX','ZMAX'))
     p.add_argument('--screen-rect',type=float,nargs=4,metavar=('LEFT','TOP','RIGHT','BOTTOM'))
+    p.add_argument('--selection-recipe',type=Path,help='Saved multi-view add/subtract rectangle recipe')
     p.add_argument('--name',default='Manual region')
     for name in ('angle','spacing','length','width'):p.add_argument('--'+name,type=float)
     p.add_argument('--view');p.add_argument('--trajectory',choices=['static','orbit','zoom'])
@@ -126,12 +127,18 @@ def main():
         if not a.unit:p.error('create requires --unit')
         create(a.unit,a.output,a.scene)
     elif a.command=='author':
-        if not a.asset or not a.region or (a.bounds is None)==(a.screen_rect is None):
-            p.error('author requires --asset, --region and exactly one of --bounds or --screen-rect')
+        if not a.asset or not a.region or sum(x is not None for x in (a.bounds,a.screen_rect,a.selection_recipe))!=1:
+            p.error('author requires --asset, --region and exactly one of --bounds, --screen-rect or --selection-recipe')
         mesh,_,meta=load_asset(a.asset)
         if meta['scene']!=a.scene:p.error('scene/asset mismatch')
         from region_tools import author_region,author_face_selection
-        if a.bounds is not None:author_region(a.asset,a.output,a.bounds,a.region,a.name)
+        if a.selection_recipe is not None:
+            from selection_draft import replay_recipe
+            recipe=json.loads(a.selection_recipe.read_text())
+            if recipe['source_region']!=a.region:p.error('recipe/source region mismatch')
+            draft=replay_recipe(mesh,meta['mesh_sha256'],recipe)
+            author_face_selection(a.asset,a.output,draft.face_ids,a.region,a.name,draft.provenance())
+        elif a.bounds is not None:author_region(a.asset,a.output,a.bounds,a.region,a.name)
         else:
             if not 64<=a.size<=1024:p.error('--size must be between 64 and 1024')
             from screen_selection import visible_faces

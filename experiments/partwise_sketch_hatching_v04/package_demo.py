@@ -14,6 +14,8 @@ def package(unit):
     for p in Path(__file__).parent.iterdir():
         if p.suffix in ('.py','.cpp','.html'):shutil.copy2(p,out/'source'/p.name)
     shutil.copytree(unit/'assets',out/'assets')
+    if (unit/'SELECTION_RECIPE.json').is_file():
+        shutil.copy2(unit/'SELECTION_RECIPE.json',out/'SELECTION_RECIPE.json')
     previews=out/'previews';previews.mkdir()
     for p in (unit/'media').iterdir():
         if p.suffix in ('.png','.mkv'):shutil.copy2(p,previews/p.name)

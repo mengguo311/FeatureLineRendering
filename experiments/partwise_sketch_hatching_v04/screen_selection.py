@@ -3,7 +3,7 @@ import runtime
 import numpy as np
 from geometry import ray_surface
 
-def visible_faces(mesh,camera,rectangle,source_region):
+def visible_faces(mesh,camera,rectangle,source_region,allow_all=False):
     b=np.asarray(rectangle,float)
     width,height=camera['width'],camera['height']
     if (b.shape!=(4,) or not np.isfinite(b).all() or
@@ -18,7 +18,7 @@ def visible_faces(mesh,camera,rectangle,source_region):
     ids=np.unique(hit[mesh['regions'][hit]==source_region]).astype(np.int32)
     if not len(ids):raise ValueError('rectangle has no visible faces in the source region')
     total=int((mesh['regions']==source_region).sum())
-    if len(ids)==total:raise ValueError('selection must leave some faces in the source region')
+    if len(ids)==total and not allow_all:raise ValueError('selection must leave some faces in the source region')
     return ids,dict(face_count=len(ids),source_face_count=total,source_region=int(source_region),
         rectangle=b.tolist(),camera=camera,hidden_faces_selected=0,
         rule='frontmost 2x pixel-center ray hits only; selects whole triangles, which may extend beyond the rectangle; no hidden-face expansion')
