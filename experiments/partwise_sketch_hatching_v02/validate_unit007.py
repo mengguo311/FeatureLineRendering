@@ -310,10 +310,19 @@ def directional_dropout(part, candidates, paths, asset, destination):
     reported = summarize(replacement)['per_part'][str(part)]['temporal']
     for name, value in b.items():
         close(value, reported[name], 'directional dropout ' + name)
-    responsive = b['dropout_world_fraction'] > a['dropout_world_fraction'] + 1e-12
+    pair_baseline = temporal_presence([before, after])
+    pair_fault = temporal_presence([before, dropped])
+    reported_pair = summarize([before, dropped])['per_part'][str(part)]['temporal']
+    for name, value in pair_fault.items():
+        close(value, reported_pair[name], 'directional selected pair ' + name)
+    # An existing dropout in the following pair can move one transition earlier
+    # without increasing the sequence aggregate. Assert the injected pair itself.
+    responsive = pair_fault['dropout_world_fraction'] > pair_baseline['dropout_world_fraction'] + 1e-12
     result = dict(rule='First orbit then zoom, later frame ascending, stroke lexical adjacent pair with >=1 common-visible sample present in both; zero later actual raster',
                   sequence=seq, stroke_id=sid, frames=[before['frame'], frame],
-                  both_present_sample_indices=both, baseline=a, fault=b, directional_dropout_response=responsive,
+                  both_present_sample_indices=both, baseline=a, fault=b,
+                  selected_pair_baseline=pair_baseline, selected_pair_fault=pair_fault,
+                  directional_dropout_response=responsive,
                   source_png=str(original), source_sha256=sha(original),
                   temporal_before_png_sha256=sha(destination / 'temporal_before.png'),
                   temporal_drop_png_sha256=sha(destination / 'temporal_drop.png'), dropped_row=dropped)
