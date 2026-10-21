@@ -94,7 +94,17 @@ p1_sequence=orbit
 - `stills`：包装器被观察到的返回码为 **143**；**科学子进程返回码 UNKNOWN**。科学 stdout 显示 `all_gates true`，完整输出存在，但包装器最终收据缺失；事实保存在 `EXECUTION_stills_INTERRUPTED.json`。不得补写原子进程 rc=0，也不能把外层中断误记为科学 NO_GO。独立验证可以确认输出，不会恢复丢失的退出码。
 - 初始非科学设置失败（未限定路径的 `python` 不存在、当前 worktree 没有 `.runtime_p0`）保存在 `SETUP_NOTES.json`，之后使用指定解释器和历史只读 ffmpeg。
 
-本文件编写时，新的独立 validator 尚待单独冻结来源锁和执行。其命令、锁、收据和实际结果必须单独记录；不能预先把待执行校验写作通过，也不能改动原生产来源锁以追认新增校验器。最终 producer seal 不等同于独立验证。
+独立 validator 在实现提交 `b77d35ab`、来源锁提交 `9c1c81fc` 后实际执行，rc=0、42.094秒，七组复核全部通过。`VALIDATION_LOCK.json` 单独绑定该后验校验器，没有改动原生产来源锁。原始收据是 `EXECUTION_validation.json`，详细结果是 `INDEPENDENT_VALIDATION.json`；它是工件一致性复核，最终 producer seal 不等同于独立科学验证。
+
+实际执行命令如下；它们是此次命令记录，不得直接覆盖封存目录：
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 taskset -c 0,1 "$p1_python" experiments/partwise_sketch_hatching_v02/receipt.py validation "$p1_python" experiments/partwise_sketch_hatching_v02/validate_outputs.py
+PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 taskset -c 0,1 "$p1_python" experiments/partwise_sketch_hatching_v02/receipt.py cli_angle "$p1_python" experiments/partwise_sketch_hatching_v02/edit_asset.py --part 1 --angle 35 --output /mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_001/cli/angle35
+PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 taskset -c 0,1 "$p1_python" experiments/partwise_sketch_hatching_v02/receipt.py cli_width "$p1_python" experiments/partwise_sketch_hatching_v02/edit_asset.py --part 1 --width 2 --output /mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_001/cli/width2
+```
+
+两个 CLI 的完整输出图分别与冻结角度／宽度静帧逐像素一致。实际命令执行顺序为 cli_angle、cli_width、validation。三视频84帧完成全量解码；最终视觉仍为 NO_GO，见报告与 `VISUAL_REVIEW.json`。
 
 ## 新目录重放原则
 
