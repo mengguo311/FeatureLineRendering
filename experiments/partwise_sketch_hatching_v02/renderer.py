@@ -30,6 +30,35 @@ from experiments.partwise_sketch_hatching import core
 BACKEND = "cpu_supersampled_surface_capsules_v1"
 
 
+def projected_depth_query(mesh, camera):
+    """Nearest triangle depth at arbitrary screen rays, without pixel rounding.
+
+    This query is used only for contour centerlines. It is independent of the
+    integer sample surface buffer, but not an independent geometry reference.
+    Near-plane crossing triangles are excluded as in the bounded base backend.
+    """
+    uv, z = core.project(mesh["vertices"], camera)
+    p, zz = uv[mesh["faces"]], z[mesh["faces"]]
+    a, b, d = p[:, 0], p[:, 1], p[:, 2]
+    den = (b[:, 1]-d[:, 1])*(a[:, 0]-d[:, 0]) + (d[:, 0]-b[:, 0])*(a[:, 1]-d[:, 1])
+    valid = (np.abs(den) > 1e-12) & (zz.min(axis=1) > 0)
+    a, b, d, zz, den = a[valid], b[valid], d[valid], zz[valid], den[valid]
+    def query(points):
+        answer = np.full(len(points), np.inf)
+        for start in range(0, len(points), 256):
+            q = points[start:start+256]
+            x, y = q[:, 0, None], q[:, 1, None]
+            w0 = ((b[:, 1]-d[:, 1])*(x-d[:, 0]) + (d[:, 0]-b[:, 0])*(y-d[:, 1]))/den
+            w1 = ((d[:, 1]-a[:, 1])*(x-d[:, 0]) + (a[:, 0]-d[:, 0])*(y-d[:, 1]))/den
+            w2 = 1-w0-w1
+            inside = (w0 >= -1e-9) & (w1 >= -1e-9) & (w2 >= -1e-9)
+            inv = w0/zz[:, 0] + w1/zz[:, 1] + w2/zz[:, 2]
+            depths = np.divide(1., inv, out=np.full_like(inv, np.inf), where=inside & (inv > 0))
+            answer[start:start+len(q)] = depths.min(axis=1)
+        return answer
+    return query
+
+
 def _edge_owners(mesh):
     """Unique physical mesh edges and their incident faces."""
     edges = {}
@@ -99,6 +128,9 @@ def render(mesh, strokes, cfg, azimuth=30, elevation=20, distance=4.5,
     if tolerance != 0.006:
         raise ValueError("this backend freezes visibility tolerance at 0.006 world units")
     widths = cfg.get("widths_by_part", {})
+    contour_mode = renderer.get("contour_visibility", "surface_fragments")
+    if contour_mode not in ("surface_fragments", "visible_centerline"):
+        raise ValueError("unknown contour_visibility mode")
     part_widths = {p: float(widths.get(str(p), widths.get(p, 1.0))) for p in (1, 2, 3)}
     for width in part_widths.values():
         if not np.isfinite(width) or not 0 < width <= 64:
@@ -117,6 +149,7 @@ def render(mesh, strokes, cfg, azimuth=30, elevation=20, distance=4.5,
     origins_camera = mesh["tri"][:, 0] @ c["R"].T + c["t"]
     plane_constant = np.einsum("ij,ij->i", normals_camera, origins_camera)
     selected = None if selected_ids is None else set(selected_ids)
+    contour_depth = projected_depth_query(mesh, c) if contour_mode == "visible_centerline" else None
     diagnostics = {
         "backend": BACKEND,
         "supersample": scale,
@@ -131,9 +164,13 @@ def render(mesh, strokes, cfg, azimuth=30, elevation=20, distance=4.5,
         "rejected_part_fragments": 0,
         "rejected_depth_fragments": 0,
         "selected_strokes": 0,
+        "contour_visibility": contour_mode,
+        "contour_covered_fragments": 0,
+        "contour_visible_fragments": 0,
+        "contour_hidden_fragments": 0,
     }
 
-    def draw_segment(target, a, b, owners, width, ink, count=False):
+    def draw_segment(target, a, b, owners, width, ink, count=False, centerline=False):
         if np.linalg.norm(b - a) < 1e-8:
             if count:
                 diagnostics["skipped_zero_segments"] += 1
@@ -161,6 +198,25 @@ def render(mesh, strokes, cfg, azimuth=30, elevation=20, distance=4.5,
                      (yy - uv[0, 1] - u * direction[1]) ** 2)
         covered = distance2 <= radius * radius + 1e-12
         if not covered.any():
+            return
+        if centerline:
+            # The nearest projected centerline point has reciprocal-linear
+            # optical depth. Query exactly that ray, including background-side
+            # capsule samples. A visible centerline emits a symmetric stroke.
+            # This is screen-space contour ink, not surface hatch coverage;
+            # at occlusion endpoints its round cap can extend <=width/2 px.
+            uu = u[covered]
+            q = uv[0] + uu[:, None]*direction
+            scene_z = contour_depth(q)
+            line_z = 1. / ((1.-uu)/zz[0] + uu/zz[1])
+            visible = np.isfinite(scene_z) & (np.abs(line_z-scene_z) <= tolerance)
+            take = np.zeros_like(covered)
+            take[covered] = visible
+            region = target[lo[1]:hi[1]+1, lo[0]:hi[0]+1]
+            region[take] = np.maximum(region[take], ink)
+            diagnostics["contour_covered_fragments"] += int(covered.sum())
+            diagnostics["contour_visible_fragments"] += int(visible.sum())
+            diagnostics["contour_hidden_fragments"] += int((~visible).sum())
             return
         surface_depth = depth[lo[1]:hi[1] + 1, lo[0]:hi[0] + 1]
         surface_part = parts[lo[1]:hi[1] + 1, lo[0]:hi[0] + 1]
@@ -207,20 +263,22 @@ def render(mesh, strokes, cfg, azimuth=30, elevation=20, distance=4.5,
                 continue
             draw_segment(hatch, points[i], points[i + 1], [stroke["faces"][i]], width, ink, count=True)
 
-    allink = hatch.copy()
+    contour_ink = np.zeros_like(hatch)
+    ring_ink = np.zeros_like(hatch)
     contours, rings = _structure_edges(mesh, cfg, c)
     contour_width = float(renderer.get("contour_width_px", 0.8))
     ring_width = float(renderer.get("structure_width_px", 0.65))
     for edge, owners in contours:
         a, b = mesh["vertices"][list(edge)]
-        draw_segment(allink, a, b, owners, contour_width, 0.92)
+        draw_segment(contour_ink, a, b, owners, contour_width, 0.92,
+                     centerline=contour_mode == "visible_centerline")
     contour_keys = {edge for edge, _ in contours}
     if structure:
         for edge, owners in rings:
             if edge in contour_keys:
                 continue
             a, b = mesh["vertices"][list(edge)]
-            draw_segment(allink, a, b, owners, ring_width, 0.85)
+            draw_segment(ring_ink, a, b, owners, ring_width, 0.85)
     diagnostics["contour_edges"] = len(contours)
     diagnostics["profile_ring_edges"] = len(rings)
     diagnostics["drawn_profile_ring_edges"] = sum(edge not in contour_keys for edge, _ in rings) if structure else 0
@@ -228,9 +286,12 @@ def render(mesh, strokes, cfg, azimuth=30, elevation=20, distance=4.5,
     def down(array):
         return array.reshape(size, scale, size, scale).mean(axis=(1, 3))
 
+    allink = np.maximum(np.maximum(hatch, contour_ink), ring_ink)
     return {
         "image": np.clip(1.0 - down(allink), 0.0, 1.0),
         "hatch": np.clip(down(hatch), 0.0, 1.0),
+        "contours": down(contour_ink),
+        "rings": down(ring_ink),
         "parts": low_parts,
         "depth": low_depth,
         "camera": low_camera,
