@@ -59,7 +59,8 @@ def mesh_data(vertices, faces, face_regions=None):
     tri = vertices[faces]
     cross = np.cross(tri[:, 1]-tri[:, 0], tri[:, 2]-tri[:, 0])
     regions = region_ids(tri.mean(axis=1)) if face_regions is None else np.asarray(face_regions)
-    if regions.shape != (len(faces),) or not np.isin(regions, [1, 2, 3]).all():
+    if (regions.shape != (len(faces),) or not np.isfinite(regions).all()
+            or not ((regions>=1)&(regions<=32)&(regions==np.floor(regions))).all()):
         raise ValueError('one valid saved region ID per face is required')
     return dict(vertices=vertices, faces=faces, tri=tri, normals=normalize(cross),
                 regions=regions.astype(np.int32))

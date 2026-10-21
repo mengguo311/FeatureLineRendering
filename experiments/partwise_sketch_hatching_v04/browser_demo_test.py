@@ -74,13 +74,14 @@ def run(unit, name):
         initial=request(app+'/state')
         assert execute('return document.title;')==initial['scene'].title()+' · Partwise Hatch Demo'
         labels=execute("return Array.from(document.querySelector('#region').options).map(x=>x.textContent);")
-        assert labels==[initial['regions'][str(k)] for k in (1,2,3)]
+        assert labels==[initial['regions'][str(k)] for k in sorted(map(int,initial['regions']))]
         events.append(dict(action='scene title and authored region labels match loaded asset',scene=initial['scene'],labels=labels))
         execute("document.querySelector('#angle').value=95; document.querySelector('#angle').dispatchEvent(new Event('input'));")
         click('#apply');wait(lambda:request(app+'/state')['revision']==1);wait(ready);screenshot('02_angle_edit')
         edited=request(app+'/state')
         assert initial['images']['image']!=edited['images']['image']
-        for region in (1,3):assert sha(Path(initial['asset'])/f'region_{region}.npz')==sha(Path(edited['asset'])/f'region_{region}.npz')
+        for region in sorted(map(int,initial['regions'])):
+            if region!=2:assert sha(Path(initial['asset'])/f'region_{region}.npz')==sha(Path(edited['asset'])/f'region_{region}.npz')
         events.append(dict(action='select middle angle95 and click Render & save',revision=1,other_regions_exact=True))
         click('#right');wait(lambda:request(app+'/state')['revision']==2);wait(ready)
         click('#closer');wait(lambda:request(app+'/state')['revision']==3);wait(ready);screenshot('03_orbit_zoom')

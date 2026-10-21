@@ -6,9 +6,9 @@ Authored region boundaries stop paths. A view never changes a hatch path.
 import runtime
 import numpy as np
 
-def cutting_normal(region, angle):
+def cutting_normal(region, angle, plane=None):
     a=np.deg2rad(angle)
-    if region==3:
+    if plane=='xz' or (plane is None and region==3):
         return np.array([np.cos(a),0.,np.sin(a)])
     return np.array([np.cos(a),np.sin(a),0.])
 
@@ -18,13 +18,14 @@ def validate_style(style):
             raise ValueError('style needs finite angle/spacing/length/width')
     if not .008<=style['spacing']<=.5 or not .02<=style['length']<=2. or not .2<=style['width']<=8.:
         raise ValueError('spacing [.008,.5], length [.02,2] world; width [.2,8] pixels')
+    if style.get('plane','xy') not in ('xy','xz'):raise ValueError('cutting plane must be xy or xz')
 
 def generate_region(mesh, region, style):
     validate_style(style)
     ids=np.flatnonzero(mesh['regions']==region)
     if not len(ids):
         raise ValueError('region has no proxy faces')
-    normal=cutting_normal(region,style['angle'])
+    normal=cutting_normal(region,style['angle'],style.get('plane'))
     q=mesh['vertices']@normal
     qt=q[mesh['faces'][ids]]
     spacing=style['spacing'];max_length=style['length'];gap=.035

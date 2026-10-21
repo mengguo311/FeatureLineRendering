@@ -17,7 +17,14 @@ def load_asset(path):
     if sha(path/'mesh.npz')!=meta['mesh_sha256']:raise ValueError('proxy checksum mismatch')
     with np.load(path/'mesh.npz') as d:mesh=mesh_data(d['vertices'],d['faces'],d.get('face_regions'))
     strokes={}
-    for region in (1,2,3):
+    region_list=sorted(int(k) for k in meta['regions'])
+    if set(region_list)!=set(np.unique(mesh['regions'])) or set(meta['styles'])!=set(meta['regions']):
+        raise ValueError('saved region metadata and mesh labels disagree')
+    for history in meta.get('region_history',[]):
+        filename=history['face_ids_file']
+        if Path(filename).name!=filename or sha(path/filename)!=history['face_ids_sha256']:
+            raise ValueError('saved selection checksum mismatch')
+    for region in region_list:
         with np.load(path/f'region_{region}.npz') as d:strokes[region]={k:d[k] for k in d.files}
         s=strokes[region]
         if not len(s['points']) or not np.isfinite(s['points']).all():raise ValueError('empty or invalid region paths')
@@ -53,11 +60,13 @@ def create(unit,output,scene):
     print(json.dumps(dict(asset=str(output),statistics=stats)),flush=True)
 
 def edit(asset,output,region,changes):
-    mesh,strokes,meta=load_asset(asset);output=new_output(output)
-    for p in Path(asset).iterdir():
-        if p.is_file():shutil.copy2(p,output/p.name)
+    mesh,strokes,meta=load_asset(asset)
+    if str(region) not in meta['styles']:raise ValueError('unknown region')
     old_style=dict(meta['styles'][str(region)])
     style=dict(old_style);style.update(changes);validate_style(style)
+    output=new_output(output)
+    for p in Path(asset).iterdir():
+        if p.is_file():shutil.copy2(p,output/p.name)
     geometry_changed=any(style[k]!=old_style[k] for k in ('angle','spacing','length'))
     if geometry_changed:
         data,stat=generate_region(mesh,region,style)
@@ -83,9 +92,11 @@ def save_frame(output,name,mesh,strokes,meta,c):
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('command',choices=['build','create','edit','render'])
+    p.add_argument('command',choices=['build','create','author','edit','render'])
     p.add_argument('--scene',default='chair');p.add_argument('--unit',type=Path);p.add_argument('--asset',type=Path)
-    p.add_argument('--output',required=True,type=Path);p.add_argument('--region','--part',type=int,choices=[1,2,3])
+    p.add_argument('--output',required=True,type=Path);p.add_argument('--region','--part',type=int)
+    p.add_argument('--bounds',type=float,nargs=6,metavar=('XMIN','YMIN','ZMIN','XMAX','YMAX','ZMAX'))
+    p.add_argument('--name',default='Manual region')
     for name in ('angle','spacing','length','width'):p.add_argument('--'+name,type=float)
     p.add_argument('--view');p.add_argument('--trajectory',choices=['static','orbit','zoom'])
     p.add_argument('--azimuth',type=float,default=47);p.add_argument('--elevation',type=float,default=25)
@@ -113,6 +124,10 @@ def main():
     elif a.command=='create':
         if not a.unit:p.error('create requires --unit')
         create(a.unit,a.output,a.scene)
+    elif a.command=='author':
+        if not a.asset or not a.region or a.bounds is None:p.error('author requires --asset, --region and --bounds')
+        from region_tools import author_region
+        author_region(a.asset,a.output,a.bounds,a.region,a.name)
     elif a.command=='edit':
         if not a.asset or not a.region:p.error('edit requires --asset and --region')
         changes={k:getattr(a,k) for k in ('angle','spacing','length','width') if getattr(a,k) is not None}

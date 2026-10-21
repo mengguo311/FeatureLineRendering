@@ -57,7 +57,9 @@ def render(mesh, strokes, styles, camera, supersample=2):
     n=np.zeros((*face_image.shape,3));n[hit]=mesh['normals'][face_image[hit]]
     light=np.array([-.4,-.6,.7]);light/=np.linalg.norm(light)
     shade=np.ones_like(depth);shade[hit]=.6+.35*np.abs(n[hit]@light)
-    palette=np.array([[1,1,1],[.24,.49,.77],[.9,.58,.19],[.29,.69,.48]])
+    from colorsys import hsv_to_rgb
+    palette=np.array([[1,1,1],[.24,.49,.77],[.9,.58,.19],[.29,.69,.48],[.80,.32,.58]]+
+                     [hsv_to_rgb((i*.61803398875)%1,.55,.80) for i in range(5,33)])
     color=palette[regions].reshape(camera['height'],scale,camera['width'],scale,3).mean((1,3))
     uv,z=project(mesh['vertices'],camera)
     bounds=dict(all_vertices_in_front=bool((z>.2).all()),xmin=float(uv[:,0].min()),xmax=float(uv[:,0].max()),
