@@ -1,0 +1,158 @@
+{
+  "commands": [
+    {
+      "receipt": "EXECUTION_baseline.json",
+      "command": [
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+        "experiments/partwise_sketch_hatching_v02/direction_cli.py",
+        "preview",
+        "--asset",
+        "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_008/inputs/asset.json",
+        "--output",
+        "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_008/outputs/baseline"
+      ],
+      "returncode": 0,
+      "wall_seconds": 14.214328923262656
+    },
+    {
+      "receipt": "EXECUTION_cold_regenerate.json",
+      "command": [
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+        "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_008/source_snapshot/experiments/partwise_sketch_hatching_v02/direction_cli.py",
+        "regenerate",
+        "--recipe",
+        "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_008/cold_request/recipe.json",
+        "--output",
+        "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_008/outputs/cold_regenerate"
+      ],
+      "returncode": 0,
+      "wall_seconds": 18.065697893034667
+    },
+    {
+      "receipt": "EXECUTION_cold_replay.json",
+      "command": [
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+        "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_008/source_snapshot/experiments/partwise_sketch_hatching_v02/direction_cli.py",
+        "replay",
+        "--bundle",
+        "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_008/outputs/edited",
+        "--output",
+        "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_008/outputs/cold_replay"
+      ],
+      "returncode": 0,
+      "wall_seconds": 18.80704264389351
+    },
+    {
+      "receipt": "EXECUTION_cold_request.json",
+      "command": [
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+        "experiments/partwise_sketch_hatching_v02/run_unit008.py",
+        "cold_request"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.4151012431830168
+    },
+    {
+      "receipt": "EXECUTION_dev_after.json",
+      "command": [
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+        "experiments/partwise_sketch_hatching_v02/direction_cli.py",
+        "edit",
+        "--asset",
+        "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_008/inputs/asset.json",
+        "--part",
+        "shade",
+        "--angle-deg",
+        "15",
+        "--azimuths",
+        "0",
+        "--output",
+        "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_008/dev/after"
+      ],
+      "returncode": 0,
+      "wall_seconds": 7.529891504906118
+    },
+    {
+      "receipt": "EXECUTION_dev_before.json",
+      "command": [
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+        "experiments/partwise_sketch_hatching_v02/direction_cli.py",
+        "preview",
+        "--asset",
+        "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_008/inputs/asset.json",
+        "--azimuths",
+        "0",
+        "--output",
+        "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_008/dev/before"
+      ],
+      "returncode": 0,
+      "wall_seconds": 4.829054476227611
+    },
+    {
+      "receipt": "EXECUTION_edited.json",
+      "command": [
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+        "experiments/partwise_sketch_hatching_v02/direction_cli.py",
+        "edit",
+        "--asset",
+        "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_008/inputs/asset.json",
+        "--part",
+        "shade",
+        "--angle-deg",
+        "15",
+        "--output",
+        "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_008/outputs/edited"
+      ],
+      "returncode": 0,
+      "wall_seconds": 15.616958413738757
+    },
+    {
+      "receipt": "EXECUTION_freeze.json",
+      "command": [
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+        "experiments/partwise_sketch_hatching_v02/run_unit008.py",
+        "freeze"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.4154454320669174
+    },
+    {
+      "receipt": "EXECUTION_history.json",
+      "command": [
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+        "experiments/partwise_sketch_hatching_v02/run_unit008.py",
+        "history"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.916386506985873
+    },
+    {
+      "receipt": "EXECUTION_media.json",
+      "command": [
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+        "experiments/partwise_sketch_hatching_v02/run_unit008.py",
+        "media"
+      ],
+      "returncode": 0,
+      "wall_seconds": 1.819978694897145
+    },
+    {
+      "receipt": "EXECUTION_tests.json",
+      "command": [
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+        "experiments/partwise_sketch_hatching_v02/test_direction_unit008.py"
+      ],
+      "returncode": 0,
+      "wall_seconds": 4.730584526900202
+    },
+    {
+      "receipt": "EXECUTION_validate.json",
+      "command": [
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+        "experiments/partwise_sketch_hatching_v02/validate_unit008.py"
+      ],
+      "returncode": 0,
+      "wall_seconds": 2.519284131936729
+    }
+  ]
+}

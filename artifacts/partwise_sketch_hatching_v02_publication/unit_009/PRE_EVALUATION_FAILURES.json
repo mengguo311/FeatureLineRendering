@@ -1,0 +1,79 @@
+{
+  "initial": {
+    "command": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+      "-B",
+      "experiments/partwise_sketch_hatching_v02/prepare_unit009.py"
+    ],
+    "cwd": "/home/u00134/3dgs_line/partwise_sketch_hatching_p1_v02",
+    "started_utc": "2026-10-21T10:03:45.388673+00:00",
+    "cpu_affinity": [
+      0,
+      1
+    ],
+    "numeric_threads": 1,
+    "gpu": false,
+    "timeout_s": 590,
+    "returncode": 1,
+    "wall_seconds": 0.417780838906765,
+    "log": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/runtime/prepare.log",
+    "log_sha256": "d4eb49adfd91c46a3bf773b9953106292a83cda5406b97bf72b3ca1c63b0a8cc"
+  },
+  "retry": {
+    "command": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+      "-B",
+      "experiments/partwise_sketch_hatching_v02/prepare_unit009.py"
+    ],
+    "cwd": "/home/u00134/3dgs_line/partwise_sketch_hatching_p1_v02",
+    "started_utc": "2026-10-21T10:04:09.179372+00:00",
+    "cpu_affinity": [
+      0,
+      1
+    ],
+    "numeric_threads": 1,
+    "gpu": false,
+    "timeout_s": 590,
+    "returncode": 1,
+    "wall_seconds": 0.31776824686676264,
+    "log": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/runtime/prepare_recovery.log",
+    "log_sha256": "e6e9daf0a91339695b225d957195de293b76b40ce8f88eb1cbe5a8dc63e486f3"
+  },
+  "recovered": {
+    "command": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+      "-B",
+      "experiments/partwise_sketch_hatching_v02/prepare_unit009.py"
+    ],
+    "cwd": "/home/u00134/3dgs_line/partwise_sketch_hatching_p1_v02",
+    "started_utc": "2026-10-21T10:04:21.590843+00:00",
+    "cpu_affinity": [
+      0,
+      1
+    ],
+    "numeric_threads": 1,
+    "gpu": false,
+    "timeout_s": 590,
+    "returncode": 0,
+    "wall_seconds": 0.3648570249788463,
+    "log": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/runtime/prepare_recovered.log",
+    "log_sha256": "7b63f3eb3786a91136a11aef3fe5ce7b3cb7b0e96cf89692b899f0f6bfef71eb"
+  },
+  "cause": "Initial preparation expected unit008/INHERITED_FAILURES.json, but file is under unit008/previous_snapshot. First repair command used unavailable unqualified python, so no patch ran; next preparation refused already copied files.",
+  "extra_terminal_errors": [
+    {
+      "command": "unqualified python heredoc repair",
+      "message": "python: command not found",
+      "separate_returncode": "NOT_CAPTURED"
+    },
+    {
+      "command": "git add protocol before preparation succeeded (twice)",
+      "returncode": 128,
+      "reason": "protocol path absent"
+    }
+  ],
+  "correction": "Known explicit Python applied read-only previous_snapshot fallback and verified SHA equality on already copied files; remaining input staging succeeded before protocol lock/evaluation.",
+  "preserved_source": "PREPARE_INITIAL.py.txt",
+  "science_evaluated_before_recovery": false,
+  "threshold_or_candidate_change": false
+}

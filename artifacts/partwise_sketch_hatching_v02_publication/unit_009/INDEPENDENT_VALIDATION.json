@@ -1,0 +1,1200 @@
+{
+  "verdict": "VALID",
+  "checks": {
+    "frozen_source_and_input_sha256": {
+      "passed": true
+    },
+    "explicit_bundle_baseline": {
+      "passed": true
+    },
+    "explicit_bundle_edited": {
+      "passed": true
+    },
+    "explicit_bundle_cold_reselect": {
+      "passed": true
+    },
+    "explicit_bundle_cold_replay": {
+      "passed": true
+    },
+    "independent_original_seed_order": {
+      "passed": true
+    },
+    "target_only_nested_selection_config_and_cold_arrays": {
+      "passed": true
+    },
+    "explicit_recipe_edited": {
+      "passed": true
+    },
+    "explicit_recipe_cold_reselect": {
+      "passed": true
+    },
+    "explicit_recipe_cold_replay": {
+      "passed": true
+    },
+    "cold_request_without_selected_cache": {
+      "passed": true
+    },
+    "actual_operation_receipts_and_latency": {
+      "passed": true
+    },
+    "actual_images_masks_controls_and_cold_030": {
+      "passed": true
+    },
+    "actual_images_masks_controls_and_cold_120": {
+      "passed": true
+    },
+    "actual_images_masks_controls_and_cold_210": {
+      "passed": true
+    },
+    "actual_images_masks_controls_and_cold_300": {
+      "passed": true
+    }
+  },
+  "evidence": {
+    "frozen_source_and_input_sha256": {
+      "files": 22
+    },
+    "explicit_bundle_baseline": {
+      "name": "baseline",
+      "asset_sha256": "d8da2ddaafe743eae71a2a0366b08b2b1dfb067cd8b64f0cd5a47c8f8c8bcf10",
+      "files": {
+        "mesh": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/baseline/mesh.npz",
+        "strokes": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/baseline/strokes.npz",
+        "config": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/baseline/config.json"
+      },
+      "counts_by_part": {
+        "1": 260,
+        "2": 48,
+        "3": 150
+      },
+      "exact_mesh_keys": [
+        "faces",
+        "parts",
+        "vertices"
+      ],
+      "inherited_verdict_retained": true,
+      "anchors": {
+        "strokes": 458,
+        "anchor_samples": 19636,
+        "max_barycentric_sum_error": 2.220446049250313e-16,
+        "minimum_barycentric": 0.0,
+        "scope": "Saved mesh attachment legality; not independent reconstruction accuracy"
+      }
+    },
+    "explicit_bundle_edited": {
+      "name": "edited",
+      "asset_sha256": "a79e88f1694316bb2e4fb5945411a1ce23a5586e3cf31a3dc5466811ee58562b",
+      "files": {
+        "mesh": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/edited/mesh.npz",
+        "strokes": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/edited/strokes.npz",
+        "config": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/edited/config.json"
+      },
+      "counts_by_part": {
+        "1": 260,
+        "2": 24,
+        "3": 150
+      },
+      "exact_mesh_keys": [
+        "faces",
+        "parts",
+        "vertices"
+      ],
+      "inherited_verdict_retained": true,
+      "anchors": {
+        "strokes": 434,
+        "anchor_samples": 18482,
+        "max_barycentric_sum_error": 2.220446049250313e-16,
+        "minimum_barycentric": 0.0,
+        "scope": "Saved mesh attachment legality; not independent reconstruction accuracy"
+      }
+    },
+    "explicit_bundle_cold_reselect": {
+      "name": "cold_reselect",
+      "asset_sha256": "a79e88f1694316bb2e4fb5945411a1ce23a5586e3cf31a3dc5466811ee58562b",
+      "files": {
+        "mesh": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/cold_reselect/mesh.npz",
+        "strokes": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/cold_reselect/strokes.npz",
+        "config": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/cold_reselect/config.json"
+      },
+      "counts_by_part": {
+        "1": 260,
+        "2": 24,
+        "3": 150
+      },
+      "exact_mesh_keys": [
+        "faces",
+        "parts",
+        "vertices"
+      ],
+      "inherited_verdict_retained": true,
+      "anchors": {
+        "strokes": 434,
+        "anchor_samples": 18482,
+        "max_barycentric_sum_error": 2.220446049250313e-16,
+        "minimum_barycentric": 0.0,
+        "scope": "Saved mesh attachment legality; not independent reconstruction accuracy"
+      }
+    },
+    "explicit_bundle_cold_replay": {
+      "name": "cold_replay",
+      "asset_sha256": "a79e88f1694316bb2e4fb5945411a1ce23a5586e3cf31a3dc5466811ee58562b",
+      "files": {
+        "mesh": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/cold_replay/mesh.npz",
+        "strokes": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/cold_replay/strokes.npz",
+        "config": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/cold_replay/config.json"
+      },
+      "counts_by_part": {
+        "1": 260,
+        "2": 24,
+        "3": 150
+      },
+      "exact_mesh_keys": [
+        "faces",
+        "parts",
+        "vertices"
+      ],
+      "inherited_verdict_retained": true,
+      "anchors": {
+        "strokes": 434,
+        "anchor_samples": 18482,
+        "max_barycentric_sum_error": 2.220446049250313e-16,
+        "minimum_barycentric": 0.0,
+        "scope": "Saved mesh attachment legality; not independent reconstruction accuracy"
+      }
+    },
+    "independent_original_seed_order": {
+      "ordered_ids": [
+        "p2:seed0000:layer0",
+        "p2:seed0018:layer0",
+        "p2:seed0010:layer0",
+        "p2:seed0019:layer0",
+        "p2:seed0024:layer0",
+        "p2:seed0008:layer0",
+        "p2:seed0004:layer0",
+        "p2:seed0041:layer0",
+        "p2:seed0036:layer0",
+        "p2:seed0001:layer0",
+        "p2:seed0025:layer0",
+        "p2:seed0021:layer0",
+        "p2:seed0017:layer0",
+        "p2:seed0037:layer0",
+        "p2:seed0016:layer0",
+        "p2:seed0007:layer0",
+        "p2:seed0045:layer0",
+        "p2:seed0043:layer0",
+        "p2:seed0029:layer0",
+        "p2:seed0011:layer0",
+        "p2:seed0046:layer0",
+        "p2:seed0022:layer0",
+        "p2:seed0014:layer0",
+        "p2:seed0047:layer0",
+        "p2:seed0034:layer0",
+        "p2:seed0013:layer0",
+        "p2:seed0006:layer0",
+        "p2:seed0005:layer0",
+        "p2:seed0042:layer0",
+        "p2:seed0031:layer0",
+        "p2:seed0032:layer0",
+        "p2:seed0027:layer0",
+        "p2:seed0002:layer0",
+        "p2:seed0009:layer0",
+        "p2:seed0040:layer0",
+        "p2:seed0028:layer0",
+        "p2:seed0038:layer0",
+        "p2:seed0012:layer0",
+        "p2:seed0044:layer0",
+        "p2:seed0035:layer0",
+        "p2:seed0015:layer0",
+        "p2:seed0020:layer0",
+        "p2:seed0003:layer0",
+        "p2:seed0039:layer0",
+        "p2:seed0023:layer0",
+        "p2:seed0033:layer0",
+        "p2:seed0026:layer0",
+        "p2:seed0030:layer0"
+      ],
+      "selected_ids": [
+        "p2:seed0000:layer0",
+        "p2:seed0001:layer0",
+        "p2:seed0004:layer0",
+        "p2:seed0007:layer0",
+        "p2:seed0008:layer0",
+        "p2:seed0010:layer0",
+        "p2:seed0011:layer0",
+        "p2:seed0014:layer0",
+        "p2:seed0016:layer0",
+        "p2:seed0017:layer0",
+        "p2:seed0018:layer0",
+        "p2:seed0019:layer0",
+        "p2:seed0021:layer0",
+        "p2:seed0022:layer0",
+        "p2:seed0024:layer0",
+        "p2:seed0025:layer0",
+        "p2:seed0029:layer0",
+        "p2:seed0036:layer0",
+        "p2:seed0037:layer0",
+        "p2:seed0041:layer0",
+        "p2:seed0043:layer0",
+        "p2:seed0045:layer0",
+        "p2:seed0046:layer0",
+        "p2:seed0047:layer0"
+      ],
+      "seed_records": [
+        {
+          "id": "p2:seed0000:layer0",
+          "face": 911,
+          "bary": [
+            0.4873675007067866,
+            0.3718544366486583,
+            0.1407780626445551
+          ],
+          "point": [
+            0.001824033283120077,
+            0.9402119988691414,
+            0.0749402873330302
+          ],
+          "original_anchor_index": 21
+        },
+        {
+          "id": "p2:seed0001:layer0",
+          "face": 965,
+          "bary": [
+            0.5606405346223691,
+            0.29462682331581896,
+            0.14473264206181205
+          ],
+          "point": [
+            -0.07379444091618528,
+            0.8229751446042096,
+            -0.013205099816561986
+          ],
+          "original_anchor_index": 20
+        },
+        {
+          "id": "p2:seed0002:layer0",
+          "face": 928,
+          "bary": [
+            0.17772553011804848,
+            0.4592438960694313,
+            0.36303057381252024
+          ],
+          "point": [
+            -0.03901302701850012,
+            0.85479023371109,
+            0.06401104462306659
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0003:layer0",
+          "face": 929,
+          "bary": [
+            0.22992708555386188,
+            0.021513858065197698,
+            0.7485590563809404
+          ],
+          "point": [
+            -0.04157810271853264,
+            1.352116663113821,
+            0.06241597805218629
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0004:layer0",
+          "face": 997,
+          "bary": [
+            0.8643381969810491,
+            0.13400657826066945,
+            0.0016552247582814314
+          ],
+          "point": [
+            -0.024723491982617994,
+            0.33705888483032137,
+            -0.07078808983998287
+          ],
+          "original_anchor_index": 43
+        },
+        {
+          "id": "p2:seed0005:layer0",
+          "face": 1045,
+          "bary": [
+            0.6865903944347,
+            0.10681288058672223,
+            0.20659672497857767
+          ],
+          "point": [
+            0.0708351021624015,
+            0.6214553689044798,
+            -0.02459858323827035
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0006:layer0",
+          "face": 864,
+          "bary": [
+            0.5562188867136089,
+            0.0489672143195703,
+            0.39481389896682084
+          ],
+          "point": [
+            0.07493660048518844,
+            0.19834754291131249,
+            0.001936654834198772
+          ],
+          "original_anchor_index": 113
+        },
+        {
+          "id": "p2:seed0007:layer0",
+          "face": 885,
+          "bary": [
+            0.38082919130584736,
+            0.5105863339206913,
+            0.10858447477346138
+          ],
+          "point": [
+            0.05797770375042633,
+            1.1106732939106443,
+            0.047513858913904396
+          ],
+          "original_anchor_index": 20
+        },
+        {
+          "id": "p2:seed0008:layer0",
+          "face": 1042,
+          "bary": [
+            0.07691338130480385,
+            0.3806678042177996,
+            0.5424188144773966
+          ],
+          "point": [
+            0.06836412998086039,
+            0.7290684867484793,
+            -0.030746825768794728
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0009:layer0",
+          "face": 952,
+          "bary": [
+            0.5054844191616059,
+            0.4093190506138797,
+            0.08519653022451433
+          ],
+          "point": [
+            -0.07253938501654689,
+            0.7749104809822075,
+            0.019004218426494107
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0010:layer0",
+          "face": 925,
+          "bary": [
+            0.016343910857979482,
+            0.5777064784346583,
+            0.40594961070736224
+          ],
+          "point": [
+            -0.030589075995602105,
+            1.6938497426272328,
+            0.06843560547320665
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0011:layer0",
+          "face": 1012,
+          "bary": [
+            0.1948582097582554,
+            0.32458371144869197,
+            0.4805580787930526
+          ],
+          "point": [
+            0.01211647547953495,
+            0.6393339383179072,
+            -0.07397417352163871
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0012:layer0",
+          "face": 870,
+          "bary": [
+            0.15666162329460598,
+            0.293424149686402,
+            0.549914227018992
+          ],
+          "point": [
+            0.07294603913850875,
+            0.5894786394982432,
+            0.017260174013331686
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0013:layer0",
+          "face": 901,
+          "bary": [
+            0.619845986011555,
+            0.14169517778321045,
+            0.23845883620523456
+          ],
+          "point": [
+            0.024758808007811304,
+            0.7282464223815119,
+            0.07077479782931057
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0014:layer0",
+          "face": 944,
+          "bary": [
+            0.3416512293193761,
+            0.05183711494924778,
+            0.6065116557313761
+          ],
+          "point": [
+            -0.06635510052577757,
+            0.20293938391879643,
+            0.034874806346272526
+          ],
+          "original_anchor_index": 79
+        },
+        {
+          "id": "p2:seed0015:layer0",
+          "face": 992,
+          "bary": [
+            0.17409735686726757,
+            0.160678690153724,
+            0.6652239529790084
+          ],
+          "point": [
+            -0.03462067907819161,
+            0.37708590424595834,
+            -0.06649093438051558
+          ],
+          "original_anchor_index": 28
+        },
+        {
+          "id": "p2:seed0016:layer0",
+          "face": 1020,
+          "bary": [
+            0.5494561152514579,
+            0.056585918976197754,
+            0.39395796577234443
+          ],
+          "point": [
+            0.030462404887391426,
+            0.2105374703619164,
+            -0.06849299940564896
+          ],
+          "original_anchor_index": 45
+        },
+        {
+          "id": "p2:seed0017:layer0",
+          "face": 918,
+          "bary": [
+            0.05026791819891663,
+            0.7721488877383561,
+            0.1775831940627273
+          ],
+          "point": [
+            -0.015480560416151161,
+            1.3554382203813697,
+            0.07336098683097067
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0018:layer0",
+          "face": 797,
+          "bary": [
+            0.42646109130745546,
+            0.3822494324116244,
+            0.19128947628092016
+          ],
+          "point": [
+            -0.014705502489399933,
+            0.12,
+            0.040401895234028665
+          ],
+          "original_anchor_index": 38
+        },
+        {
+          "id": "p2:seed0019:layer0",
+          "face": 1005,
+          "bary": [
+            0.26154874011758256,
+            0.09920594438330713,
+            0.6392453154991103
+          ],
+          "point": [
+            -0.005389779314639268,
+            1.3015220158118679,
+            -0.07479169576304803
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0020:layer0",
+          "face": 949,
+          "bary": [
+            0.1724273329702979,
+            0.7985445566715361,
+            0.029028110358165982
+          ],
+          "point": [
+            -0.06963924005592358,
+            1.4441162672475234,
+            0.027775912637207648
+          ],
+          "original_anchor_index": 21
+        },
+        {
+          "id": "p2:seed0021:layer0",
+          "face": 1029,
+          "bary": [
+            0.026685212997441643,
+            0.26270818606471824,
+            0.7106066009378401
+          ],
+          "point": [
+            0.048454266209011006,
+            1.6773036592040933,
+            -0.05720593142859178
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0022:layer0",
+          "face": 940,
+          "bary": [
+            0.2241658936351626,
+            0.7133912926570072,
+            0.062442813707830176
+          ],
+          "point": [
+            -0.05968000706727556,
+            1.2614260682512115,
+            0.045408001580000676
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0023:layer0",
+          "face": 870,
+          "bary": [
+            0.2799316669763332,
+            0.38183083386281286,
+            0.33823749916085394
+          ],
+          "point": [
+            0.07318194418535706,
+            0.7309293341805005,
+            0.016248432445318817
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0024:layer0",
+          "face": 898,
+          "bary": [
+            0.4682097565679201,
+            0.23307730851711106,
+            0.29871293491496886
+          ],
+          "point": [
+            0.03183628715318219,
+            0.49292369362737765,
+            0.06787050144964055
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0025:layer0",
+          "face": 952,
+          "bary": [
+            0.33069997035132115,
+            0.34692788418779363,
+            0.3223721454608852
+          ],
+          "point": [
+            -0.07280370752941712,
+            0.6750846147004699,
+            0.017870600993525842
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0026:layer0",
+          "face": 914,
+          "bary": [
+            0.34184038664246064,
+            0.425374418924777,
+            0.23278519443276238
+          ],
+          "point": [
+            -0.00604221105827295,
+            0.8005990702796433,
+            0.0747274368450228
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0027:layer0",
+          "face": 878,
+          "bary": [
+            0.34811799538403476,
+            0.013455711733602776,
+            0.6384262928823624
+          ],
+          "point": [
+            0.06578842425365873,
+            0.14152913877376444,
+            0.03593498308349024
+          ],
+          "original_anchor_index": 80
+        },
+        {
+          "id": "p2:seed0028:layer0",
+          "face": 980,
+          "bary": [
+            0.5571975422779805,
+            0.15388354992703315,
+            0.28891890779498636
+          ],
+          "point": [
+            -0.058601947179930475,
+            0.36621367988325304,
+            -0.046753216094228466
+          ],
+          "original_anchor_index": 29
+        },
+        {
+          "id": "p2:seed0029:layer0",
+          "face": 923,
+          "bary": [
+            0.09001864967266238,
+            0.0160364990696072,
+            0.8939448512577304
+          ],
+          "point": [
+            -0.028627597015821134,
+            1.5759701605237402,
+            0.06931868875412787
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0030:layer0",
+          "face": 1048,
+          "bary": [
+            0.3299879849891284,
+            0.3920407271672256,
+            0.277971287843646
+          ],
+          "point": [
+            0.07275422459143764,
+            0.747265163467561,
+            -0.018082821740517438
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0031:layer0",
+          "face": 1028,
+          "bary": [
+            0.011728704604273221,
+            0.1374755290300193,
+            0.8507957663657074
+          ],
+          "point": [
+            0.04888488079045861,
+            0.3399608464480309,
+            -0.05685253517457616
+          ],
+          "original_anchor_index": 41
+        },
+        {
+          "id": "p2:seed0032:layer0",
+          "face": 892,
+          "bary": [
+            0.5138762259621692,
+            0.47285230616699164,
+            0.013271467870839094
+          ],
+          "point": [
+            0.04560416278201047,
+            0.8765636898671866,
+            0.0595394399377942
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0033:layer0",
+          "face": 915,
+          "bary": [
+            0.01768305725865127,
+            0.37790119005833384,
+            0.6044157526830148
+          ],
+          "point": [
+            -0.007943708191194101,
+            1.691707108386158,
+            0.07454015572392175
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0034:layer0",
+          "face": 1031,
+          "bary": [
+            0.3028945721908193,
+            0.36801042765785313,
+            0.3290950001513276
+          ],
+          "point": [
+            0.05171476857237827,
+            1.2353686844946892,
+            -0.05426767509921409
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0035:layer0",
+          "face": 915,
+          "bary": [
+            0.5073428750694462,
+            0.38894762343218015,
+            0.10370950149837369
+          ],
+          "point": [
+            -0.00788975487296269,
+            0.908251399888886,
+            0.07454546966195015
+          ],
+          "original_anchor_index": 21
+        },
+        {
+          "id": "p2:seed0036:layer0",
+          "face": 1019,
+          "bary": [
+            0.39827794194154986,
+            0.5236806544212766,
+            0.07804140363717349
+          ],
+          "point": [
+            0.02629583637110578,
+            1.0827552928935202,
+            -0.07019630131684307
+          ],
+          "original_anchor_index": 21
+        },
+        {
+          "id": "p2:seed0037:layer0",
+          "face": 1015,
+          "bary": [
+            0.5062585400096401,
+            0.3742107434284909,
+            0.11953071656186895
+          ],
+          "point": [
+            0.017622830419395982,
+            0.9099863359845758,
+            -0.07286147952450528
+          ],
+          "original_anchor_index": 20
+        },
+        {
+          "id": "p2:seed0038:layer0",
+          "face": 910,
+          "bary": [
+            0.3444239593411834,
+            0.01731598341121781,
+            0.6382600572475988
+          ],
+          "point": [
+            0.0017744193167654972,
+            0.1477055734579485,
+            0.0749419115261178
+          ],
+          "original_anchor_index": 24
+        },
+        {
+          "id": "p2:seed0039:layer0",
+          "face": 1034,
+          "bary": [
+            0.27157486616975157,
+            0.31714394258344475,
+            0.4112811912468037
+          ],
+          "point": [
+            0.05766851570301495,
+            0.6274303081335116,
+            -0.047890605639744815
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0040:layer0",
+          "face": 869,
+          "bary": [
+            0.6032119962460865,
+            0.2747929163997869,
+            0.12199508735412656
+          ],
+          "point": [
+            0.07377858433093018,
+            0.7548608060062616,
+            0.013301141737098746
+          ],
+          "original_anchor_index": 21
+        },
+        {
+          "id": "p2:seed0041:layer0",
+          "face": 948,
+          "bary": [
+            0.0008271990698814902,
+            0.847449052301038,
+            0.15172374862908056
+          ],
+          "point": [
+            -0.06955326416203575,
+            1.4759184836816608,
+            0.028004345107615364
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0042:layer0",
+          "face": 888,
+          "bary": [
+            0.5099293148785418,
+            0.28101507665756975,
+            0.20905560846388854
+          ],
+          "point": [
+            0.052284156252038666,
+            0.5696241226521116,
+            0.05373438534124069
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0043:layer0",
+          "face": 888,
+          "bary": [
+            0.4365924479816765,
+            0.329356811893972,
+            0.2340507401243515
+          ],
+          "point": [
+            0.05219462187937148,
+            0.6469708990303551,
+            0.05381824343237195
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0044:layer0",
+          "face": 974,
+          "bary": [
+            0.33542940480103467,
+            0.45767406950324685,
+            0.2068965256957185
+          ],
+          "point": [
+            -0.06678679008942098,
+            0.8522785112051949,
+            -0.03406717197795295
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0045:layer0",
+          "face": 908,
+          "bary": [
+            0.49471854685654604,
+            0.4358694882195585,
+            0.06941196492389547
+          ],
+          "point": [
+            0.009450440434204467,
+            0.8173911811512936,
+            0.07439175555082418
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0046:layer0",
+          "face": 969,
+          "bary": [
+            0.21743737276458686,
+            0.27638852371081746,
+            0.5061741035245957
+          ],
+          "point": [
+            -0.07141352415666355,
+            1.372100203576661,
+            -0.022809892485731655
+          ],
+          "original_anchor_index": 19
+        },
+        {
+          "id": "p2:seed0047:layer0",
+          "face": 1047,
+          "bary": [
+            0.47386546689247855,
+            0.21847894326037617,
+            0.3076555898471453
+          ],
+          "point": [
+            0.07213317498952715,
+            0.9618152529720343,
+            -0.02043752162508586
+          ],
+          "original_anchor_index": 19
+        }
+      ],
+      "count": 48,
+      "keep": 24,
+      "method": "Independent area sampler plus all-selected-seed distance recomputation; lexical ties"
+    },
+    "target_only_nested_selection_config_and_cold_arrays": {
+      "unchanged_non_target_paths": 410,
+      "retained_stem_paths": 24,
+      "removed_stem_paths": 24,
+      "independent_selected_ids": [
+        "p2:seed0000:layer0",
+        "p2:seed0001:layer0",
+        "p2:seed0004:layer0",
+        "p2:seed0007:layer0",
+        "p2:seed0008:layer0",
+        "p2:seed0010:layer0",
+        "p2:seed0011:layer0",
+        "p2:seed0014:layer0",
+        "p2:seed0016:layer0",
+        "p2:seed0017:layer0",
+        "p2:seed0018:layer0",
+        "p2:seed0019:layer0",
+        "p2:seed0021:layer0",
+        "p2:seed0022:layer0",
+        "p2:seed0024:layer0",
+        "p2:seed0025:layer0",
+        "p2:seed0029:layer0",
+        "p2:seed0036:layer0",
+        "p2:seed0037:layer0",
+        "p2:seed0041:layer0",
+        "p2:seed0043:layer0",
+        "p2:seed0045:layer0",
+        "p2:seed0046:layer0",
+        "p2:seed0047:layer0"
+      ],
+      "retained_per_field_bytes": {
+        "strokes": 434,
+        "fields": [
+          "ids",
+          "parts",
+          "inks",
+          "faces",
+          "bary"
+        ],
+        "checked": [
+          "dtype",
+          "shape",
+          "bytes"
+        ],
+        "offsets": "Archive offsets can shift with target path lengths; per-stroke slices are compared"
+      },
+      "cold_exact_array_keys": {
+        "cold_reselect": [
+          "bary",
+          "faces",
+          "ids",
+          "inks",
+          "offsets",
+          "parts"
+        ],
+        "cold_replay": [
+          "bary",
+          "faces",
+          "ids",
+          "inks",
+          "offsets",
+          "parts"
+        ]
+      },
+      "only_config_change": "add density_by_part={\"2\":0.5}",
+      "scope": "Secondary selection/identity contract; no path regeneration or spacing guarantee"
+    },
+    "explicit_recipe_edited": {
+      "path": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/edited/recipe.json",
+      "sha256": "f7f442619b6f7f51aafdb8d4ed8773c24df6d513c1229408c524742cef8ab721",
+      "files": {
+        "mesh": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/edited/mesh.npz",
+        "source_strokes": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/edited/source_strokes.npz",
+        "config": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/edited/config.json"
+      },
+      "original_source_paths": 458,
+      "selected_target_cache_required": false,
+      "independent_order_match": true
+    },
+    "explicit_recipe_cold_reselect": {
+      "path": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/cold_reselect/recipe.json",
+      "sha256": "f7f442619b6f7f51aafdb8d4ed8773c24df6d513c1229408c524742cef8ab721",
+      "files": {
+        "mesh": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/cold_reselect/mesh.npz",
+        "source_strokes": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/cold_reselect/source_strokes.npz",
+        "config": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/cold_reselect/config.json"
+      },
+      "original_source_paths": 458,
+      "selected_target_cache_required": false,
+      "independent_order_match": true
+    },
+    "explicit_recipe_cold_replay": {
+      "path": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/cold_replay/recipe.json",
+      "sha256": "f7f442619b6f7f51aafdb8d4ed8773c24df6d513c1229408c524742cef8ab721",
+      "files": {
+        "mesh": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/cold_replay/mesh.npz",
+        "source_strokes": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/cold_replay/source_strokes.npz",
+        "config": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/outputs/cold_replay/config.json"
+      },
+      "original_source_paths": 458,
+      "selected_target_cache_required": false,
+      "independent_order_match": true
+    },
+    "cold_request_without_selected_cache": {
+      "path": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/cold_request/recipe.json",
+      "sha256": "f7f442619b6f7f51aafdb8d4ed8773c24df6d513c1229408c524742cef8ab721",
+      "files": {
+        "mesh": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/cold_request/mesh.npz",
+        "source_strokes": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/cold_request/source_strokes.npz",
+        "config": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/cold_request/config.json"
+      },
+      "original_source_paths": 458,
+      "selected_target_cache_required": false,
+      "independent_order_match": true,
+      "cold_request_files": [
+        "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/cold_request/config.json",
+        "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/cold_request/mesh.npz",
+        "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/cold_request/recipe.json",
+        "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/cold_request/source_strokes.npz"
+      ],
+      "no_selected_strokes_npz_cache": true,
+      "scope": "Cold re-selection uses original458 paths; it does not regenerate curves"
+    },
+    "actual_operation_receipts_and_latency": {
+      "bundles": {
+        "baseline": {
+          "operation": "preview",
+          "selection_seconds": 0.0,
+          "command_to_first_preview_seconds": 4.755577032919973,
+          "command_to_all_previews_seconds": 14.101253123022616,
+          "per_view_seconds": {
+            "30": 3.1463154768571258,
+            "120": 3.063761482015252,
+            "210": 2.9846583283506334,
+            "300": 3.037682896014303
+          }
+        },
+        "edited": {
+          "operation": "edit",
+          "selection_seconds": 0.002773753833025694,
+          "command_to_first_preview_seconds": 4.631127445027232,
+          "command_to_all_previews_seconds": 13.388369643129408,
+          "per_view_seconds": {
+            "30": 2.969978686887771,
+            "120": 2.902052580844611,
+            "210": 2.799748608842492,
+            "300": 2.7958863000385463
+          }
+        },
+        "cold_reselect": {
+          "operation": "reselect",
+          "selection_seconds": 0.002790838945657015,
+          "command_to_first_preview_seconds": 4.580742829944938,
+          "command_to_all_previews_seconds": 13.308722908142954,
+          "per_view_seconds": {
+            "30": 2.9355183159932494,
+            "120": 2.878637830261141,
+            "210": 2.79121937090531,
+            "300": 2.7984357881359756
+          }
+        },
+        "cold_replay": {
+          "operation": "replay",
+          "selection_seconds": 0.0,
+          "command_to_first_preview_seconds": 5.7531139752827585,
+          "command_to_all_previews_seconds": 14.501272425986826,
+          "per_view_seconds": {
+            "30": 2.9344649706035852,
+            "120": 2.8691827380098403,
+            "210": 2.7789583350531757,
+            "300": 2.8398107797838748
+          }
+        }
+      },
+      "scope": "One CPU invocation per operation; includes selection before preview; no FPS claim"
+    },
+    "actual_images_masks_controls_and_cold_030": {
+      "azimuth": 30,
+      "analytic_mask_recomputed": true,
+      "quantitative_go": true,
+      "controls_passed": true,
+      "cold_reselect_and_replay_png_exact": true
+    },
+    "actual_images_masks_controls_and_cold_120": {
+      "azimuth": 120,
+      "analytic_mask_recomputed": true,
+      "quantitative_go": true,
+      "controls_passed": true,
+      "cold_reselect_and_replay_png_exact": true
+    },
+    "actual_images_masks_controls_and_cold_210": {
+      "azimuth": 210,
+      "analytic_mask_recomputed": true,
+      "quantitative_go": true,
+      "controls_passed": true,
+      "cold_reselect_and_replay_png_exact": true
+    },
+    "actual_images_masks_controls_and_cold_300": {
+      "azimuth": 300,
+      "analytic_mask_recomputed": true,
+      "quantitative_go": true,
+      "controls_passed": true,
+      "cold_reselect_and_replay_png_exact": true
+    }
+  },
+  "scientific_gates": {
+    "local_edit_go_four_stills": true,
+    "axial_coverage_go_four_stills": true,
+    "all_parts_nonempty_four_stills": true,
+    "whole_shape_visible_four_stills": true,
+    "quantitative_go_four_stills": true,
+    "metric_controls_go_four_stills": true,
+    "density_edit_visual_go": "REQUIRES_ACTUAL_IMAGE_REVIEW",
+    "full_visual": "INHERITED_NO_GO",
+    "inherited_unit004_density_contract": "NO_GO_RETAINED_NOT_RETESTED",
+    "reconstructed_input": "BLOCKED",
+    "H1_H2": "NOT_TESTED",
+    "temporal_visibility": "NOT_NEWLY_TESTED"
+  },
+  "seconds": 2.0629258090630174,
+  "scope": "Independent saved-file/analytic-mask/actual-PNG audit; no selector, CLI, walker or renderer imported",
+  "limitations": [
+    "Authored GT mesh and labels; no reconstructed-input or auto-segmentation claim.",
+    "Four exposed views from one object; no blind or multi-object conclusion.",
+    "Axial y bins cover only [.20,1.20]; excluded visible stem fractions are reported.",
+    "Hatch support is image coverage, not surface completeness or target-darkness fidelity.",
+    "Seed prefix is Euclidean density control, not guaranteed geodesic/whole-curve spacing.",
+    "File equality and cold reproduction are secondary to actual edit and visible coverage.",
+    "Cold operation reselects original paths; no curve regeneration or whole-recipe generation claim.",
+    "No new orbit/zoom temporal, full hiding, H1/H2 or24FPS evidence.",
+    "Inherited unit004 density NO_GO,17 hidden-profile cases and temporal exclusions remain."
+  ]
+}

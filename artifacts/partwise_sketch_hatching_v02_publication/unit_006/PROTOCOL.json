@@ -1,0 +1,201 @@
+{
+  "unit": "unit_006",
+  "status": "FROZEN_BEFORE_EVALUATION",
+  "created_utc": "2026-10-21T09:12:34.179803+00:00",
+  "question": "Can the current complete three-part authored lamp become an explicit RGB/camera-only reconstruction input with disjoint splits, usable loader and isolated oracle?",
+  "changed_variable": "One input-bridge addition only; inherited NPR styles, paths, renderer and failed density gates are not changed.",
+  "scope": "Synthetic input readiness only; no trained reconstruction, main reconstructed proxy, H1/H2, or full-P1 claim.",
+  "fallback": "Bounded <=5min read-only known-root inventory; absent verified trained lamp, execute frozen synthetic route.",
+  "inputs": [
+    {
+      "path": "/home/u00134/3dgs_line/partwise_sketch_hatching_p1_v02/docs/partwise_sketch_hatching/experiment_outline_v1.md",
+      "sha256": "c3b28f5e5cddedd40fdd47c7a112b9e10f09a9b6e03c1f9c3196d607070fd39f"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/orchestration/BRIEF.md",
+      "sha256": "3b78bcb577769cea1e5946ef69849147f31ef89b34c12ed3ced38612d90f064f"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_005/NEXT.json",
+      "sha256": "73a65eede9d80645fff6dbb49e297b99f9b9b5d1e9150f22844f6c85cf4e7b6c"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_001/inputs/lamp_mesh.npz",
+      "sha256": "f8de0de7f1b8199dd3a8e3c1045dddaebc1a71a9419d8625665c17ce869a9d08"
+    }
+  ],
+  "geometry": {
+    "source": "authored_lathe_lamp_gt_v1 inherited byte-identical mesh",
+    "labels": {
+      "1": "shade",
+      "2": "stem",
+      "3": "base"
+    },
+    "labels_provenance": "authored GT; oracle only",
+    "direction": "no hatching or direction field in RGB generation",
+    "training_geometry": "NONE; no GT points or mesh in training export"
+  },
+  "camera": {
+    "resolution": [
+      512,
+      512
+    ],
+    "supersample": 2,
+    "focal_px": 600.0,
+    "principal_point": [
+      255.5,
+      255.5
+    ],
+    "distance": 4.5,
+    "look_at": [
+      0,
+      1.17,
+      0
+    ],
+    "elevations_deg": [
+      10,
+      25,
+      40
+    ],
+    "world": "right-handed y-up",
+    "canonical": "x-right,y-down,z-forward; W2C row-vector Xc=Xw@R.T+t; depth optical z",
+    "export": "NeRF/OpenGL C2W x-right,y-up,z-back; C2W_cv @ diag(1,-1,-1,1); pixel centers integer; principal point (size-1)/2 agrees with official ndc2Pix; no subpixel export offset"
+  },
+  "splits": {
+    "train": {
+      "count": 36,
+      "azimuths_deg": [
+        0,
+        30,
+        60,
+        90,
+        120,
+        150,
+        180,
+        210,
+        240,
+        270,
+        300,
+        330
+      ]
+    },
+    "dev": {
+      "count": 12,
+      "azimuths_deg": [
+        7.5,
+        97.5,
+        187.5,
+        277.5
+      ]
+    },
+    "test": {
+      "count": 72,
+      "azimuths_deg": [
+        3.75,
+        18.75,
+        33.75,
+        48.75,
+        63.75,
+        78.75,
+        93.75,
+        108.75,
+        123.75,
+        138.75,
+        153.75,
+        168.75,
+        183.75,
+        198.75,
+        213.75,
+        228.75,
+        243.75,
+        258.75,
+        273.75,
+        288.75,
+        303.75,
+        318.75,
+        333.75,
+        348.75
+      ]
+    },
+    "exposure": "New RGB viewpoints, authored geometry and profile already exposed in prior units; this is preparation and inspection, not blind research evaluation. Test RGB inspected for integrity only; no tuning after freeze."
+  },
+  "renderer": {
+    "name": "CPU triangle z-buffer, perspective-correct optical-depth interpolation, 2x2 box AA",
+    "normal": "flat oriented face normals, two-sided triangles, no backface cull",
+    "lighting": {
+      "ambient": 0.35,
+      "diffuse": 0.65,
+      "world_light_to_source": [
+        0.4,
+        0.8,
+        0.6
+      ]
+    },
+    "materials_linear_rgb": {
+      "1": [
+        0.72,
+        0.38,
+        0.2
+      ],
+      "2": [
+        0.22,
+        0.24,
+        0.27
+      ],
+      "3": [
+        0.12,
+        0.28,
+        0.37
+      ]
+    },
+    "background_linear_rgb": [
+      1,
+      1,
+      1
+    ],
+    "encoding": "linear lighting then IEC sRGB transfer, uint8 rounded PNG RGB",
+    "shadows": "local Lambert only; no cast shadows, specular, textures or ambient occlusion",
+    "randomness": "none",
+    "hatch_structure_ink": "none"
+  },
+  "layout": {
+    "dataset/train": "RGB PNG + canonical cameras + transforms_train.json + EMPTY transforms_test.json; only train is reconstruction source",
+    "dataset/evaluation/dev": "RGB and cameras, separate explicit evaluator input",
+    "dataset/evaluation/test": "RGB and cameras, locked evaluator input",
+    "oracle_only": "GT mesh/face parts + per-view output-resolution optical-z depth/world normals/part IDs/coverage, never a reconstructed proxy",
+    "metadata": "RGB/camera-only loader defaults to train; explicit evaluation purpose required for dev/test; no oracle paths in returned samples"
+  },
+  "go_no_go": {
+    "software": "all 120 PNG fully decode; exact split sizes and pairwise disjoint angle/camera/file sets; loader returns only expected RGB/camera keys; source and image hashes verified; injected split overlap and oracle/path-escape cases rejected",
+    "geometry": "all vertices positive depth; all projected vertex bounds >=8px from image edge; every frame >=50 visible pixels for EACH of 3 parts; independent camera axis/center/project-backproject <1e-9 and OpenGL conversion roundtrip <1e-9",
+    "visual": "inspect ALL full-view contact sheets plus native first/middle/last per split; full lamp present, stem/base discernible, no blank/clipped/corrupt image; no test-driven changes",
+    "no_go": "Any frozen failure retained with failing views, no angle/material/threshold tuning; no input-readiness promotion until explained",
+    "application_gate": "actual RGB completeness/part visibility/usable isolated loader; not primitive-array equality"
+  },
+  "validation": {
+    "camera_fault": "flipped camera axis must fail independent projection validation",
+    "isolation_fault": "cross-split overlap and path outside split must fail",
+    "cold_replay": "one fixed train view train_e0_a00 regenerated in fresh child and compared to original RGB, not main quality gate",
+    "official_compatibility": "read local official RaDe-GS loader source; isolated unchanged camera-reader function execution if dependencies allow, otherwise explicit limitation; no training invocation"
+  },
+  "resources": {
+    "affinity": [
+      0,
+      1
+    ],
+    "numeric_threads": 1,
+    "total_threads_max": 2,
+    "GPU": false,
+    "timeout_s": 590,
+    "unit_minutes_max": 45,
+    "unit_deadline_jst": "2026-10-21T18:50:07+09:00",
+    "output_cap_bytes": 21474836480
+  },
+  "preserved_failures": [
+    "unit004 stem density frame19 az285 0.7521462443170939 >0.75 NO_GO",
+    "unit001/002 visual NO_GO; inherited17 hidden-profile observations/rim outliers",
+    "historical rc1/143/UNKNOWN and round004/012/013 NO_GO",
+    "unit005 preview is DIAGNOSTIC_PREVIEW_ONLY"
+  ],
+  "revision": 2
+}

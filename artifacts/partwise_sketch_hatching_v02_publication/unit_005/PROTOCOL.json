@@ -1,0 +1,152 @@
+{
+  "unit": "unit_005",
+  "created_utc": "2026-10-21T08:56:53.903045+00:00",
+  "question": "Can a user explicitly load the current complete-lamp diagnostic asset, select shade, edit its width, save, and cold replay while preserving inherited quality verdicts and untouched parts?",
+  "changed_variable": "One shade-only screen width edit1.0->1.5px on unit004418-path preview; no path generation or style sweep",
+  "input_assets": [
+    "unit003_baseline:458paths, separate identity/verdict",
+    "unit004_diagnostic_preview:418paths, density NO_GO retained"
+  ],
+  "input_sha256": {
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_005/inputs/unit003_baseline/config.json": "2c69b7e51901cc5b5cfb9d3e5be74d2a5fa028fe35611c6a0aefa7b3c596bc64",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_005/inputs/unit003_baseline/mesh.npz": "f8de0de7f1b8199dd3a8e3c1045dddaebc1a71a9419d8625665c17ce869a9d08",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_005/inputs/unit003_baseline/strokes.npz": "04462329f7ad27eeb0744aca99489756e82144e8afdd689f5055b76e21188085",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_005/inputs/unit003_baseline.asset.json": "bdab813caf642790297f702235f0fd28b5380ceadac11ad7fec2ff215854cead",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_005/inputs/unit004_diagnostic_preview/config.json": "2c69b7e51901cc5b5cfb9d3e5be74d2a5fa028fe35611c6a0aefa7b3c596bc64",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_005/inputs/unit004_diagnostic_preview/mesh.npz": "f8de0de7f1b8199dd3a8e3c1045dddaebc1a71a9419d8625665c17ce869a9d08",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_005/inputs/unit004_diagnostic_preview/strokes.npz": "d2911ac731d890f6f2b05244dce0bded6500871474489d8f6fc1c952401a8f48",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_005/inputs/unit004_diagnostic_preview.asset.json": "44d05294da44590d9a0275b4fe05c4dd09c9833fd7d358cfc0b82e09fd50b0cc"
+  },
+  "provenance": {
+    "geometry": "Authored GT lathe mesh868 vertices/1728 faces",
+    "parts": "GT fixed1shade/2stem/3base",
+    "directions": "Manual circumferential,axial,cross",
+    "reconstruction": "NOT_RECONSTRUCTED",
+    "paths": "Authoritative saved triangle/barycentric arrays with stable IDs and ink"
+  },
+  "exposure": {
+    "train": [],
+    "dev": [],
+    "diagnostic_views": [
+      30,
+      120,
+      210,
+      300
+    ],
+    "test": [],
+    "note": "Previously exposed GT object/views; software usability validation, no independent held-out science"
+  },
+  "renderer": {
+    "backend": "unchanged CPU supersampled surface capsules",
+    "contour_visibility": "visible_centerline",
+    "resolution": [
+      512,
+      512
+    ],
+    "supersample": 2,
+    "depth_tolerance_world": 0.006,
+    "widths_before": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0
+    },
+    "widths_after": {
+      "1": 1.5,
+      "2": 1.0,
+      "3": 1.0
+    },
+    "contour_width_px": 0.8,
+    "structure_width_px": 0.65,
+    "limitations": [
+      "2x sampled antialiasing",
+      "owner-plane extension across width",
+      "no near-plane clipping"
+    ]
+  },
+  "camera": {
+    "azimuths": [
+      30,
+      120,
+      210,
+      300
+    ],
+    "elevation": 20,
+    "distance": 4.5,
+    "focal_px": 600,
+    "frame_count_per_state": 4
+  },
+  "controls": [
+    "Same mesh/parts,all saved paths/IDs/ink,light,contours,rings,seed; no regeneration required for width",
+    "Unit003 named baseline is loaded/rendered separately at az30; it is not the before state for the width metric",
+    "Width metric pairs unedited unit004 preview vs same preview edited",
+    "All pre-existing failure verdicts retained; no automatic preview promotion"
+  ],
+  "evaluation": {
+    "primary": "Actual full-lamp output, nonzero intended local edit, independent-mask isolation, all-part nonempty hatch coverage, full shape, usable saved-config replay and latency",
+    "reference": "Independent continuous analytic lathe ray intersections; shares GT authored recipe, not candidate triangular depth",
+    "gates": {
+      "inside_edit_L1_min_exclusive": 10,
+      "far_other_fraction_max": 0.02,
+      "far_background_fraction_max": 0.02,
+      "band_px": 2,
+      "hatch_support_ink_threshold": 0.1,
+      "all_three_parts_nonempty": true,
+      "object_image_margin_min_px": 2
+    },
+    "controls": [
+      "No-edit pair total L1=0 and nonzero gate=false",
+      "Blacken16 brightest far-other pixels on no-edit image; far-other leakage>2%; edited injection descriptive only",
+      "White-filled3px horizontal image shift increases L1; diagnostic only, no temporal claim"
+    ],
+    "secondary": [
+      "Unchanged paths fields incl IDs,part,faces,bary,ink",
+      "Only target width config changes",
+      "Fresh process using source snapshot and saved edited bundle reproduces all4 PNGs",
+      "Required input/output,invalid width,hash mismatch,existing or historical destination refused"
+    ],
+    "visual_go": "Four before/after complete-lamp views show perceptible shade thickness change, distinct nonempty three-part styles and complete shape, with no new gross cross-part artifact; inherited imperfections retained",
+    "no_go": "Silent old608 input fallback, wrong destination, lost NO_GO metadata, empty edit, leakage failure or visually unusable output; retain evidence, do not tune",
+    "inapplicable": "Unit004 stem thinning0.15..0.75 ratio is a retained failed prior contract, not a shade-width criterion"
+  },
+  "cold_replay": "Separate process from frozen source snapshot loads saved edited config/mesh/path bundle, renders4 views; no path-generation determinism claim",
+  "media": {
+    "edit_frames": 24,
+    "fps": 12,
+    "azimuth": 30,
+    "switch_frame": 12,
+    "resolution": [
+      512,
+      512
+    ],
+    "operation": "12 unchanged before+12 unchanged after images, one actual discrete edit, no tween",
+    "encoding": "FFV1 lossless MKV",
+    "validation": "Full24-frame decode against actual source PNGs; contact sheet and first/middle/last",
+    "inherited_orbit_zoom": "Unit00424+24 frames retained provenance only; no new orbit/zoom or temporal stability claim"
+  },
+  "timing": "Fresh CLI process wall receipt plus process-entry-to-first-preview/all-previews; loading,validation,save,edit/render included; regeneration empty for width-only; no FPS claim",
+  "budgets": {
+    "cpu_affinity": [
+      0,
+      1
+    ],
+    "numeric_threads": 1,
+    "ffmpeg_threads": 1,
+    "gpu": false,
+    "invocation_max_seconds": 590,
+    "unit_max_minutes": 45,
+    "finish_before_jst": "2026-10-21T18:38:23+09:00",
+    "task_cap_bytes": 21474836480
+  },
+  "history": "Unit004 stem density0.7521462443170939>.75 NO_GO,17 hidden observations,rim-depth outliers,nine-ID temporal limits,old rc1/143/UNKNOWN and round004/012/013 NO_GO retained",
+  "original_outline_sha256": "c3b28f5e5cddedd40fdd47c7a112b9e10f09a9b6e03c1f9c3196d607070fd39f",
+  "brief_sha256": "3b78bcb577769cea1e5946ef69849147f31ef89b34c12ed3ced38612d90f064f",
+  "previous_next_sha256": "fc3ab6c1952405693212b5c85b63c86d38cf4538920e714f8bfde5ef17a609b1",
+  "claims": {
+    "software": "PENDING",
+    "visual": "PENDING",
+    "inherited_density": "NO_GO",
+    "reconstructed_input": "BLOCKED",
+    "full_P1": "PARTIAL",
+    "H1_H2": "NOT_TESTED"
+  }
+}

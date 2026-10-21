@@ -1,0 +1,59 @@
+{
+  "stage": "completed_base_pair_density_cleanup",
+  "execution_state": "complete",
+  "scientific_verdict": "BASE_DENSITY_CLEANUP_GO_FULL_VISUAL_NO_GO",
+  "tests": {
+    "pair_contracts": {
+      "tests": 3,
+      "passed": 3,
+      "returncode": 0
+    },
+    "artifact_validation": "VALID",
+    "independent_checks": 8,
+    "numeric_still_gates": true,
+    "metric_controls": true,
+    "cold_snapshot_replay": true,
+    "orbit_decoded_frames": 24,
+    "edit_decoded_frames": 24
+  },
+  "artifacts": [
+    "PROTOCOL.json",
+    "SOURCE_LOCK.json",
+    "CONFIG.json",
+    "SELECTION.json",
+    "inputs/selected.npz",
+    "METRICS.json",
+    "INDEPENDENT_VALIDATION.json",
+    "COLD_REPLAY.json",
+    "VISUAL_REVIEW.json",
+    "DELEGATED_VISUAL_REVIEW.json",
+    "figures/full_lamp_comparison.png",
+    "figures/base_comparison.png",
+    "figures/orbit_all_frames.png",
+    "videos/orbit.mkv",
+    "videos/edit.mkv",
+    "REPORT_ZH.md"
+  ],
+  "blockers": [
+    "Whole-object visual NO_GO: dense stem axial bars remain; base front-edge dark crossings/uneven patches remain despite improvement.",
+    "Inherited17 hidden-profile observations and prior nine-ID temporal coverage limitations unresolved; no new jitter/flicker claim.",
+    "Accepted base density has new orbit/edit evidence but no refreshed zoom sequence yet.",
+    "No verified reconstructed lamp; GT mesh, GT parts and manual directions remain an engineering diagnostic upper bound.",
+    "Euclidean seed dispersion is not geodesic/Poisson or whole-curve minimum spacing; lightness deliberately changes.",
+    "Legacy edit_asset CLI/common.OUT still target unit001; use explicit current-unit runners and visible_centerline mode."
+  ],
+  "outline_milestone": "P1 GT complete-object software slice: base style readability improved; full visual/reconstructed-input pending",
+  "p1_progress": "Reduced actual complete-lamp base crowding while retaining both cross directions, shape and substantial hatch coverage; a deterministic isolated density edit now works and replays. P1 still needs sparse readable stem, refreshed zoom and unresolved visibility/data evidence.",
+  "claim_status": {
+    "coding": "COMPLETE_FOR_FROZEN_SCOPE",
+    "software": "GO_BOUNDED_DENSITY_EDIT",
+    "base_visual": "GO_BOUNDED",
+    "whole_object_visual": "NO_GO",
+    "reconstructed_input": "BLOCKED",
+    "H1_H2": "NOT_TESTED"
+  },
+  "historical_failures": "No historical outputs altered. round001/002 stdout failures, round004/012/013 NO_GO, rim depth outliers, unit001/002143/UNKNOWN and full visual NO_GO retained.",
+  "session_started_jst": "2026-10-21T17:16:11.789229+09:00",
+  "completed_utc": "2026-10-21T08:31:20.873712+00:00",
+  "protocol_source_commit": "8d5214bddedcfee5fbee3e4542f3ca333d5c7849"
+}

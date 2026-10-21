@@ -1,0 +1,70 @@
+{
+  "stage": "completed_explicit_asset_width_edit_and_saved_config_replay",
+  "execution_state": "complete",
+  "scientific_verdict": "EXPLICIT_ASSET_WIDTH_EDIT_GO_INHERITED_DENSITY_NO_GO",
+  "tests": {
+    "cli_contracts": {
+      "tests": 4,
+      "passed": 4,
+      "returncode": 0
+    },
+    "artifact_validation": "VALID",
+    "artifact_checks": 6,
+    "actual_image_pairs": 4,
+    "all_four_image_pairs_go": true,
+    "metric_controls": true,
+    "cold_saved_config_replay": true,
+    "edit_video_decoded_frames": 24,
+    "edit_video_all_rgb_exact": true,
+    "named_unit003_baseline": true,
+    "historical_manifest_files": 878,
+    "historical_manifests_valid": true
+  },
+  "artifacts": [
+    "PROTOCOL.json",
+    "SOURCE_LOCK.json",
+    "inputs/unit003_baseline.asset.json",
+    "inputs/unit004_diagnostic_preview.asset.json",
+    "outputs/edited/asset.json",
+    "outputs/edited/EDIT.json",
+    "METRICS.json",
+    "INDEPENDENT_VALIDATION.json",
+    "COLD_REPLAY.json",
+    "TIMING_SUMMARY.json",
+    "NAMED_ASSET_CHECK.json",
+    "VISUAL_REVIEW.json",
+    "DELEGATED_VISUAL_REVIEW.json",
+    "figures/full_lamp_comparison.png",
+    "figures/shade_comparison.png",
+    "figures/edit_all_frames.png",
+    "videos/edit.mkv",
+    "previous_snapshot/unit004_diagnostic_preview/FROZEN_GATE_FAILURES.json",
+    "REPORT_ZH.md"
+  ],
+  "blockers": [
+    "Unit004 stem density NO_GO retained: frame19 az285 ratio0.7521462443170939 exceeds frozen0.75. Preview remains DIAGNOSTIC_PREVIEW_ONLY; shade width success does not promote it.",
+    "No verified reconstructed lamp. Authored GT geometry/parts and manual directions remain diagnostic; CPU-only prohibits new RaDe-GS training.",
+    "Inherited17 hidden-profile observations, rim-depth outliers and limited nine-ID temporal evidence remain unresolved; this discrete edit is not temporal visibility validation.",
+    "Visible shade stacking/raster irregularities and base front-edge crossings/uneven patches remain. No polished NPR or perceptual preference claim.",
+    "Bounded CLI supports width edits and saved-path replay only. Direction,spacing,length,crossing edits require explicit modern generators/config lineage; inherited generator counts are stale.",
+    "This CLI output authorization is pinned to unit005; later authorized units must migrate the explicit output boundary without modifying historical results."
+  ],
+  "outline_milestone": "P1 complete-object GT engineering slice: explicit part-width editing,asset persistence and replay",
+  "p1_progress": "已把完整三部件GT台灯从固定脚本输出推进为显式选资产、选部件、改屏幕线宽、保存并冷重放的可操作资产。unit003基线和unit004诊断预览分别命名，418路径未退回旧608路径；四视角真实局部响应/独立掩码隔离/覆盖及24帧编辑展示经过验证。unit004密度NO_GO、真实重建和时序阻塞仍保留；完整P1未完成。",
+  "claim_status": {
+    "coding": "COMPLETE_FOR_FROZEN_SCOPE",
+    "software": "GO_WIDTH_EDIT_SAVE_REPLAY",
+    "visual": "GO_BOUNDED_COMPLETE_LAMP_EDIT_PREVIEW",
+    "inherited_density_contract": "NO_GO",
+    "candidate_promotion": "DIAGNOSTIC_PREVIEW_ONLY",
+    "full_P1": "PARTIAL_NOT_COMPLETE",
+    "reconstructed_input": "BLOCKED",
+    "independent_temporal": "NOT_ESTABLISHED",
+    "H1_H2": "NOT_TESTED"
+  },
+  "historical_failures": "Original rc1/143/UNKNOWN,round004/012/013 NO_GO,rim outliers and unit001/002 visual NO_GO retained. Expected FFmpeg header-only rc1 explicitly recorded; decode rc0.",
+  "session_started_jst": "2026-10-21T17:53:23.094613+09:00",
+  "completed_utc": "2026-10-21T09:03:56.992299+00:00",
+  "protocol_commit": "840e74c3",
+  "protocol_source_commit": "7a2f8fa3b1c687daa7859c05a02285174046d4a6"
+}

@@ -1,0 +1,50 @@
+{
+  "reviewer": "independent_review subagent; separate actual view_image inspection",
+  "method": "Opened all four requested saved PNG figures with view_image; no image generation or render rerun",
+  "artifacts": [
+    {
+      "path": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/figures/full_lamp_comparison.png",
+      "sha256": "ab5042c6c4437f1c79215cc8bdb0db5732e387c99a595c66ed065bc8cd61aba5"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/figures/stem_comparison.png",
+      "sha256": "8f7e9a94dae735b5bdd2b9d7048827aaac5ae2df28ef26568d00c9f19b3ec97f"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/figures/all_parts_comparison.png",
+      "sha256": "585ecab2a1f7b29a04456c2c7c7704795ba11b95e05eaf2417045112fd084cd2"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_009/figures/edit_all_frames.png",
+      "sha256": "6c4689281dea0b7548aa6ae8b69b1918e6cfcd90d4cf0a23abdbeff6d2b94f57"
+    }
+  ],
+  "density_edit_visual": "GO_BOUNDED_FOUR_EXPOSED_VIEWS",
+  "full_visual": "NO_GO_RETAINED",
+  "observations": [
+    "All four before/after whole lamps are fully framed with shade, stem, and base readable; no blank image, gross crop, or missing part is visible.",
+    "The24-path stem is visibly lighter and less crowded than48 paths at30,120,210,300degrees. Several overlapping vertical traces disappear while shaft shape and axial hatch character remain readable.",
+    "Enlarged stem crops retain hatching through the visible shaft; no new gross empty axial section or apparent detached stroke is visible in these stills. This is a bounded visual observation, not complete surface or hiding validation.",
+    "Shade arcs and base crosshatch patterns appear unchanged away from the stem contacts; no gross new cross-part spill is apparent.",
+    "Uneven stem spacing and abrupt dark fragment endpoints remain. Some dark marks cluster near the top or lower shaft; density selection does not produce uniform geometric spacing.",
+    "The base still has crowded dark foreground crossings, strongest in the30and120degree crops, and uneven empty/crowded regions. This remains the clearest whole-object cleanup defect.",
+    "The shade retains stacked near-parallel arcs and uneven gaps; the top opening/rim marks do not establish correct hiding.",
+    "The complete24-frame contact sheet shows before frames00through11 and after frames12through23, with the lamp fully present in both states and the thinner stem visible after the switch. No intermediate morph is shown."
+  ],
+  "limitations": [
+    "Actual static PNG/contact-sheet inspection only; no movie playback or perceived temporal flicker judgment.",
+    "No new orbit or zoom was visually audited for this434-path asset.",
+    "Enlarged crops magnify native raster steps; this review does not treat magnification artifacts as a new renderer defect.",
+    "Quantitative four-bin coverage is restricted to independently visible pixels in world-y0.20through1.20; it is not all-stem or hidden-surface coverage.",
+    "Authored GT geometry, GT labels, and manual directions remain diagnostic upper bounds; no reconstruction or H1/H2 claim."
+  ],
+  "next_recommendation": {
+    "action": "continue",
+    "recommended_next_step": "One base-only length-control edit on the explicit unit009434-path asset: keep its24 selected stem paths and260 shade paths fixed, preserve75 base seed pairs and both cross directions, and freeze one shorter base length candidate before output, for example authored0.18to0.12world units. Rebuild or symmetrically trim only the150 base paths around their saved seeds with deterministic barycentric anchors and IDs. Freeze independent visible base coverage and target/leakage gates, inspect actual four-view full lamps and base crops, and validate cold replay. Refresh the fixed whole-object orbit/zoom/edit evidence for the resulting named asset within the same bounded unit if budget permits. Preserve any failure and do not sweep lengths.",
+    "hypothesis": "Shorter paired base strokes can reduce collisions at the foreground rim while retaining recognizable crosshatching and adding a missing local length operation.",
+    "p1_distance_reduced": "Unit009adds a usable local density control and visibly reduces stem crowding without emptying the visible shaft. The next base-only length operation targets the remaining prominent full-lamp clutter and advances the outline's editable length capability while retaining the improved stem.",
+    "estimated_next_minutes": 35,
+    "estimated_range_minutes": [30, 40]
+  },
+  "viewing_errors": []
+}

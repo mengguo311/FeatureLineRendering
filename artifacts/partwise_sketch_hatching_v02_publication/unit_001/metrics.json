@@ -1,0 +1,106 @@
+{
+  "software_contract": "GO_FOR_FROZEN_ENGINEERING_SCOPE",
+  "visual_verdict": "NO_GO",
+  "reconstructed_input": "BLOCKED_NOT_EXECUTED",
+  "H1": "NOT_TESTED",
+  "H2": "NOT_TESTED",
+  "assets": {
+    "cold_digest_matches": true,
+    "target_edit_matches_history": true,
+    "non_target_exact": true,
+    "legal_anchors": true
+  },
+  "edit_all_gates": true,
+  "selected_probe_status": "GO",
+  "selected_probe_counts": {
+    "visible": 1352,
+    "hidden": 1934,
+    "boundary": 1142,
+    "outside": 0,
+    "unmeasured": 0
+  },
+  "selected_probe_eligible_fraction": 0.3053297199638663,
+  "selected_probe_unmeasured_ids": [
+    "p1:seed0000:layer0",
+    "p3:seed0012:layer0"
+  ],
+  "hidden_profile_present_observations": 17,
+  "temporal_limits": "Per-ID localization/support at 30-degree probe spacing, not consecutive 10-degree video frames or universal temporal/occlusion GO. Profiles at 17 hidden samples contain ink; these may include nearby visible same-ID segments and same-part depth discontinuities.",
+  "controls": {
+    "dropout_all_eligible_missing": true,
+    "drift_max_mean_support_increase_px": 3.0,
+    "drift_sensitive": true
+  },
+  "videos": {
+    "orbit": {
+      "decoded_frames": 36,
+      "all_rgb_exact": true,
+      "distinct_frames": 36
+    },
+    "zoom": {
+      "decoded_frames": 24,
+      "all_rgb_exact": true,
+      "distinct_frames": 12
+    },
+    "edit": {
+      "decoded_frames": 24,
+      "all_rgb_exact": true,
+      "distinct_frames": 2
+    }
+  },
+  "actual_sequence_render_calls": {
+    "orbit": 36,
+    "zoom": 14,
+    "edit": 2
+  },
+  "cli": {
+    "angle35": {
+      "part": 1,
+      "angle_delta_deg": 35.0,
+      "width_px": null,
+      "spacing_scale": 1.0,
+      "length_scale": 1.0,
+      "crossing": null,
+      "regenerated_parts": [
+        1
+      ],
+      "regeneration_seconds": 1.3852656250819564,
+      "non_target_exact": true,
+      "regeneration_and_render_seconds": 4.606161443050951
+    },
+    "width2": {
+      "part": 1,
+      "angle_delta_deg": 0.0,
+      "width_px": 2.0,
+      "spacing_scale": 1.0,
+      "length_scale": 1.0,
+      "crossing": null,
+      "regenerated_parts": [],
+      "regeneration_seconds": 3.562774509191513e-06,
+      "non_target_exact": true,
+      "regeneration_and_render_seconds": 3.2147864243015647
+    }
+  },
+  "cli_images_exact": {
+    "angle35": true,
+    "width2": true
+  },
+  "full_lamp_render_timing": {
+    "calls": 64,
+    "median_seconds": 3.202270739013329,
+    "p95_seconds": 3.2509017407428473,
+    "scope": "12 new stills + unique orbit/zoom/edit scenes; excludes old backend, isolated probes, startup and I/O"
+  },
+  "independent_validation": "PASS",
+  "resources": {
+    "root_free_bytes": 125492236288,
+    "hdd_free_bytes": 7784817213440,
+    "output_bytes": 15847623,
+    "cpu_affinity": [
+      0,
+      1
+    ],
+    "numeric_threads": 1,
+    "gpu": false
+  }
+}

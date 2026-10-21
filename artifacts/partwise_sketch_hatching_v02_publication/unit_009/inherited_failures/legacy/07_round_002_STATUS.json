@@ -1,0 +1,123 @@
+{
+  "stage": "bounded_face_walk_repair_completed_after_output_validation",
+  "execution_state": "complete",
+  "execution_detail": "Complete science artifacts validated after final terminal-print failure; original process returncode remains 1",
+  "scientific_verdict": "P0_FACE_WALK_REPAIR_GO; P1_NOT_ESTABLISHED; CLI_STDOUT_FAILURE_RETAINED",
+  "tests": {
+    "regression_RED": {
+      "run": 4,
+      "passed": 2,
+      "failed": 2,
+      "returncode": 1,
+      "receipt": "TESTS_RED.json"
+    },
+    "regression_GREEN": {
+      "run": 4,
+      "passed": 4,
+      "returncode": 0,
+      "receipt": "TESTS_GREEN.json"
+    },
+    "original_contracts": {
+      "run": 9,
+      "passed": 9,
+      "returncode": 0,
+      "receipt": "TESTS_ORIGINAL_GREEN.json"
+    },
+    "frozen_original_gates": {
+      "determinism": true,
+      "part_isolation": true,
+      "attachment_self_proxy": true,
+      "nonzero_target_edit": true,
+      "far_non_target_leakage": true,
+      "analytic_depth": true,
+      "injected_leakage_response": true,
+      "injected_drift_response": true,
+      "video_decode": true
+    },
+    "repair_audit_gates": {
+      "original_nine_gates": true,
+      "no_short_edge_cycles": true,
+      "no_iteration_cap": true,
+      "no_stalled_half_paths": true,
+      "seed_layer_ids_identical": true,
+      "seed_anchors_identical": true,
+      "part_ownership": true,
+      "barycentric_valid": true,
+      "self_proxy_attachment": true,
+      "crossings_are_exact_edge_points": true,
+      "depth_and_reference_unchanged": true,
+      "edit_non_target_paths_identical": true
+    },
+    "audit": {
+      "returncode": 0,
+      "receipt": "AUDIT_EXECUTION.json"
+    },
+    "original_replay": {
+      "returncode": 1,
+      "receipt": "EXECUTION.json",
+      "failure": "FAILURE_PRINT.json"
+    },
+    "artifact_validation": {
+      "returncode": 0,
+      "receipt": "VALIDATION_EXECUTION.json",
+      "all_84_redecoded_frame_hashes_match": true
+    },
+    "prior_round_seal": {
+      "files_verified": 159,
+      "returncode": 0,
+      "receipt": "PRIOR_SEAL_VERIFY.json"
+    }
+  },
+  "artifacts": [
+    "metrics.json",
+    "REPAIR_AUDIT.json",
+    "assets/lamp_mesh.npz",
+    "strokes/",
+    "walk_traces/",
+    "stills/",
+    "figures/full_view_contact_sheet.png",
+    "figures/old_new_all_views.png",
+    "figures/orbit_all_frames.png",
+    "figures/zoom_all_frames.png",
+    "figures/edit_all_frames.png",
+    "videos/orbit.mp4",
+    "videos/zoom.mp4",
+    "videos/edit.mp4",
+    "FAILURE_PRINT.json",
+    "VALIDATION.json",
+    "SHA256_MANIFEST.json",
+    "SEAL.json",
+    "/home/u00134/3dgs_line/partwise_sketch_hatching_p0p1_v01/docs/partwise_sketch_hatching/round_002/REPORT_ZH.md"
+  ],
+  "blockers": [
+    "No lamp RGB+cameras or trained lamp RaDe-GS checkpoint found in prior bounded inventory; CPU-only prevents new training",
+    "Independent per-stroke temporal disappearance/flicker and persistent-visible alignment remain UNMEASURED",
+    "Two known azimuth-30 same-part rim depth outliers retained; no threshold or band expansion",
+    "Explicit field incompatibility/ambiguity truncates 6 mixed, 26 parallel and 57 cross strokes; style/coverage limitations remain",
+    "Original runner final stdout print still fails after writing complete artifacts; original returncode 1 retained; independent data validation passed"
+  ],
+  "source_commit": "87744df82d808e5d82f7725bfc8910b7b4f49786",
+  "amendment_commit": "f8827fd5",
+  "implementation_commit": "b6eb26fb",
+  "asset_lock_commit": "c9f748b2",
+  "validation_amendment_commit": "216ad365",
+  "validation_lock_commit": "cd80a313",
+  "updated_at_utc": "2026-10-20T19:20:56.792676+00:00",
+  "elapsed_since_user_start_minutes": 18.366566883333334,
+  "resource_scope": {
+    "cpu_cores_max": 2,
+    "gpu_used": false,
+    "push": false,
+    "merge": false,
+    "orchestration_modified": false,
+    "new_downloads_bytes": 0
+  },
+  "readiness": {
+    "P0_face_walk_repair": true,
+    "full_P1": false,
+    "RaDe_GS_reconstruction": false,
+    "H1_comparative_evidence": false,
+    "independent_temporal_stability": "UNMEASURED"
+  },
+  "next": "NEXT.json"
+}

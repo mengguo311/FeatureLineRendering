@@ -1,0 +1,80 @@
+{
+  "protocol_id": "round_001_p0_mesh_lamp_v1",
+  "status": "FROZEN_BEFORE_EVALUATION",
+  "hypothesis": "A known-part analytic lamp triangulation with fixed barycentric strokes supports a correct CPU P0 pipeline and isolated nonzero shade edits.",
+  "claim_scope": "Engineering correctness and GT diagnostic only; no H1 comparative or RaDe-GS reconstruction claim.",
+  "asset": {
+    "id": "authored_lathe_lamp_gt_v1",
+    "source": "original procedural fixture; no downloaded dataset",
+    "labels": {"1": "shade", "2": "stem", "3": "base"},
+    "angular_segments": 96,
+    "profiles_ry": {
+      "1": [[0.85,1.4],[0.52,2.35],[0.485,2.35],[0.815,1.4],[0.85,1.4]],
+      "2": [[0,0.12],[0.075,0.12],[0.075,1.72],[0,1.72]],
+      "3": [[0,0],[0.48,0],[0.58,0.08],[0.53,0.16],[0,0.16]]
+    },
+    "snapshot_binding": "Before evaluation, commit ASSET_LOCK.json containing fixture NPZ SHA256, complete implementation/config/test SHA256 and protocol commit; refuse unbound evaluation."
+  },
+  "splits": {
+    "train": [],
+    "validation": [{"azimuth_deg": 0, "elevation_deg": 20}],
+    "test": [{"azimuth_deg": 30, "elevation_deg": 20},{"azimuth_deg": 120, "elevation_deg": 20},{"azimuth_deg": 210, "elevation_deg": 20},{"azimuth_deg": 300, "elevation_deg": 20}],
+    "note": "No training; disjoint fixture diagnostic camera sets, no blind-data claim; validation reserved for infrastructure only."
+  },
+  "seed": 1729,
+  "strokes": {
+    "counts_by_part": {"1": 260, "2": 48, "3": 150},
+    "length_by_part": {"1": 0.32, "2": 0.55, "3": 0.18},
+    "step_world": 0.015,
+    "walk": "face adjacency with barycentric edge crossing; stop on physical or part boundary",
+    "styles": ["mixed", "parallel", "cross"],
+    "mixed": {"shade": "circumferential_S2", "stem": "axial_S1", "base": "short_cross_S3"},
+    "screen_width_px": 1.0,
+    "edit": {"part_id": 1, "angle_delta_deg": 35, "other_parts": "reuse identical serialized strokes"},
+    "LOD": "disabled; no per-frame resampling",
+    "tone": "fixed world light and deterministic per-stroke ink intensity, no tone calibration claim"
+  },
+  "renderer": {
+    "backend": "CPU NumPy triangle z-buffer + depth-tested explicit polylines",
+    "resolution": [512,512],
+    "supersample": 2,
+    "depth": "positive camera optical z",
+    "camera": "right-handed world y-up; camera x right, y down, z forward",
+    "focal_px": 600,
+    "distance": 4.5,
+    "look_at": [0,1.17,0],
+    "visibility_tolerance_world": 0.006,
+    "contours": "visible mesh part/depth foreground transitions; current-view raster contour",
+    "structure": "known physical rim curves only; not image-reconstructed"
+  },
+  "videos": {
+    "fps": 12,
+    "orbit": {"frames": 36, "azimuth_start": 0, "azimuth_end_exclusive": 360, "elevation_deg": 20},
+    "zoom": {"frames": 24, "azimuth_deg": 30, "elevation_deg": 20, "distance_range": [4.0,5.6], "path": "cosine outward-and-back"},
+    "edit": {"frames": 24, "azimuth_deg": 30, "elevation_deg": 20, "switch_frame": 12, "note": "one actual discrete shade edit, no image crossfade"}
+  },
+  "metrics": {
+    "edit": "L1 normalized ink delta / total; independent analytic raycast target mask",
+    "boundary_band_px": 2,
+    "attachment": "self-proxy barycentric residual and independent analytic profile distance, world and bbox fraction",
+    "visibility": "analytic raycast depth reference; interior excludes fixed 2px silhouette/part band",
+    "render_support": "distance to actual hatch pixels at projected analytically visible fixed samples; diagnostic with ambiguity, not full temporal metric",
+    "temporal_stability": "UNMEASURED unless independent per-stroke correspondence and disappearance coverage implemented",
+    "efficiency": "actual CPU per-frame median/P95, generation and edit latency",
+    "faults": {"raster_drift_px": 6, "leak": "non-target black patch", "occlusion": "two known separated layers"}
+  },
+  "go_no_go": {
+    "coordinate_max_error": 1e-9,
+    "barycentric_max_residual": 1e-9,
+    "determinism": "exact IDs/anchors on regeneration",
+    "non_target_stroke_change_count": 0,
+    "target_edit_delta_sum_min": 10,
+    "far_non_target_leakage_max": 0.02,
+    "analytic_depth_p95_interior_max_world": 0.01,
+    "fault_response": "injected leakage/drift increases corresponding metric",
+    "videos": "all frozen frames fully decoded; >=2 distinct decoded frames per video",
+    "failure_policy": "Keep failed artifacts and thresholds; only diagnosed infrastructure correction may be replayed with explicit amendment and new lock."
+  },
+  "resources": {"cpu_affinity": [0,1], "threads": 2, "GPU": false, "invocation_timeout_s": 600, "output_cap_bytes": 12884901888, "root_free_min_bytes": 1073741824, "hdd_free_min_bytes": 10737418240},
+  "unmeasured": ["reconstruction_accuracy","segmentation_mIoU","independent_temporal_flicker","H1_gain_vs_B0","H2","H3","H4","H5","user_preference","1024_24FPS"]
+}

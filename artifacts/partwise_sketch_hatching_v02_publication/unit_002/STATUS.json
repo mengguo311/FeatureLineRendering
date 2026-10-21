@@ -1,0 +1,69 @@
+{
+  "stage": "sealed_whole_lamp_contour_repair",
+  "execution_state": "complete",
+  "scientific_verdict": "WHOLE_LAMP_CONTOUR_REPAIR_GO_FULL_VISUAL_NO_GO",
+  "tests": {
+    "red": {
+      "returncode": 1,
+      "tests": 3,
+      "failed": 1,
+      "passed": 2
+    },
+    "green": {
+      "returncode": 0,
+      "tests": 3,
+      "passed": 3
+    },
+    "inherited_renderer": {
+      "returncode": 0,
+      "tests": 6,
+      "passed": 6
+    },
+    "artifact_validation": "VALID",
+    "all_frame_audit": "VALID",
+    "cold_snapshot_replay": true,
+    "edit_gates": true,
+    "contour_gates": true
+  },
+  "artifacts": [
+    "PROTOCOL.json",
+    "SOURCE_LOCK.json",
+    "VALIDATION_LOCK.json",
+    "metrics.json",
+    "INDEPENDENT_VALIDATION.json",
+    "AUDIT_UNIT002.json",
+    "COLD_REPLAY.json",
+    "VISUAL_REVIEW.json",
+    "HIDDEN_PROFILE_REVIEW.json",
+    "figures/full_lamp_comparison.png",
+    "figures/orbit_all_frames.png",
+    "videos/orbit.mkv",
+    "EXECUTION_orbit_INTERRUPTED.json",
+    "REPORT_ZH.md"
+  ],
+  "blockers": [
+    "Whole-object visual NO_GO: dense stem bars and tangled/uneven base crosshatching remain.",
+    "17 inherited hidden-profile observations remain unresolved; prior nine-ID coverage limitations retained.",
+    "2x contour sampling and .4px centerline cap endpoint extension; no new zoom/LOD or universal visibility claim.",
+    "No verified reconstructed lamp; GT geometry, labels and manual directions remain diagnostic upper bound.",
+    "Old CLI/common OUT still points to unit001 and renderer legacy default remains for backward compatibility; use explicit contour_visibility=visible_centerline API in a newly authorized output runner."
+  ],
+  "outline_milestone": "P1 GT complete-object engineering slice; contour readability repaired; full visual and reconstructed input pending.",
+  "p1_progress": "Removed actual full-object silhouette discontinuity across all3 parts/28 view-frame observations while retaining local angle/width edits and unchanged non-target paths; moves P1 from broken object outline to readable complete silhouette.",
+  "claim_status": {
+    "coding": "COMPLETE_FOR_FROZEN_SCOPE",
+    "software": "GO_FINITE_CONTRACT",
+    "contour_visual": "GO_BOUNDED",
+    "whole_object_visual": "NO_GO",
+    "reconstructed_input": "BLOCKED",
+    "H1_H2": "NOT_TESTED"
+  },
+  "original_failure": {
+    "orbit_wrapper_returncode": 143,
+    "scientific_child_returncode": "UNKNOWN",
+    "independent_artifact_validation": "VALID",
+    "all24_video_frames_exact": true
+  },
+  "historical_failures": "unit001 visual NO_GO and143/UNKNOWN; round001/002 stdout failures; round004/012/013 NO_GO and rim depth outliers all retained.",
+  "completed_utc": "2026-10-21T08:13:20.345199+00:00"
+}

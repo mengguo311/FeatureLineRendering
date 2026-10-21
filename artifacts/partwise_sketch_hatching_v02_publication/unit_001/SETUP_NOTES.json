@@ -1,0 +1,17 @@
+{
+  "non_scientific_failures": [
+    {
+      "command": "python - <<...",
+      "returncode": 127,
+      "reason": "Unqualified python absent; switched to specified read-only venv before scientific execution"
+    },
+    {
+      "command": "rg --files .runtime_p0",
+      "returncode": 2,
+      "reason": "Current worktree has no .runtime_p0; reused read-only historical ffmpeg binary"
+    }
+  ],
+  "base_commit": "47792c93da76783c1cf857c740e0ad36e25db367",
+  "starting_commit": "95c82bd9278b611585d28ed8b909fd3b2662abab",
+  "base_is_ancestor": true
+}

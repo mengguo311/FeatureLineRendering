@@ -1,0 +1,20 @@
+{
+  "failures": [
+    {
+      "action": "read guessed unit003 inputs/config.json",
+      "returncode": 1,
+      "reason": "File does not exist; correct CONFIG via explicit manifest subsequently read"
+    },
+    {
+      "action": "initial git add",
+      "returncode": 1,
+      "reason": "sparse checkout; used git add --sparse without changing sparse rules"
+    },
+    {
+      "action": "python text-only patch invocation",
+      "returncode": 127,
+      "reason": "python command absent; python3 applied same text edit before source freeze"
+    }
+  ],
+  "science_outputs_changed": false
+}

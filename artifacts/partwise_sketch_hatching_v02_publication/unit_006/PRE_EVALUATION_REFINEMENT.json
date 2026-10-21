@@ -1,0 +1,26 @@
+{
+  "phase": "BEFORE_ANY_RGB_GENERATION_OR_EVALUATION",
+  "old_protocol_sha256": "d6c014ff2e47606668865e40ea7bbe0da088391008c81a7f6580d7ef4a719223",
+  "new_protocol_sha256": "9d3efde451d4a61b0ede4131f90e78a002bed36fa86799fae9ee850ce3a775cd",
+  "reason": "Read-only official source review found half-pixel principal-point mismatch; match official 512 ndc2Pix center255.5 before data production. Also clarify depth-only perspective interpolation wording.",
+  "changed": [
+    "principal point256->255.5",
+    "renderer description depth interpolation"
+  ],
+  "unchanged": [
+    "all split angles/counts",
+    "geometry/material/light",
+    "resolution/focal/distance/elevations",
+    "all gates"
+  ],
+  "evidence": [
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/sources/RaDe-GS/utils/graphics_utils.py",
+      "sha256": "dde32405b269d71c8ddea36d80eda6c41a62f44b454a028ad7630f52159973f4"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/sources/RaDe-GS/submodules/diff-gaussian-rasterization/cuda_rasterizer/auxiliary.h",
+      "sha256": "4a675394228ae90d11b1d50f91cc929d3c6390885c56b92ed109fef8a67fa7f6"
+    }
+  ]
+}

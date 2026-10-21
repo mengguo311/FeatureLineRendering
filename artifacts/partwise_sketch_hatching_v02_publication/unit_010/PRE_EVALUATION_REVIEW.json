@@ -1,0 +1,26 @@
+{
+  "protocol_commit": "3f4c95f1",
+  "generator_and_runner_commit": "f1f9b58d",
+  "media_compatibility_commit": "96f751f1",
+  "validator_commit": "222d2a1e",
+  "candidate_or_threshold_changes": false,
+  "review_fixes_before_output_evaluation": [
+    "Independent source review found inherited video decoder assumes24frames; unit010 uses its own len(sources) decoder for frozen16frame zoom, historical code unchanged.",
+    "Recipe validator aligned with explicit input snapshot lineage and artifact-free baseline metadata before source lock.",
+    "Trajectory validator aligned with separate TRAJECTORY_orbit/zoom files before source lock."
+  ],
+  "source_test_order": "Protocol committed, generator and8tests committed, tests rc0, then complete evaluator/source/input lock before rendering.",
+  "engineering_execution_failures": [
+    {
+      "operation": "Read guessed historical NEXT paths under docs and guessed PROTOCOL_AMENDMENT filename",
+      "returncode": 1,
+      "recovery": "Read NEXT from historical rounds roots and correct AMENDMENT.json; no scientific producer ran or changed."
+    },
+    {
+      "operation": "Delegated history ledger initial unqualified python invocation",
+      "returncode": 127,
+      "recovery": "python3 standard-library ledger write rc0, preserved in HISTORY_REVIEW.json; no data evaluation involved."
+    }
+  ],
+  "scientific_failures_before_evaluation": "None; no candidate render existed at protocol/source lock. Historical failures preserved separately."
+}

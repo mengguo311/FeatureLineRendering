@@ -1,0 +1,1713 @@
+{
+  "verdict": "VALID",
+  "checks": {
+    "unit001_sealed_unit_files": {
+      "valid": true
+    },
+    "part_local_edit_paths": {
+      "valid": true
+    },
+    "all_still_and_orbit_contour_metrics": {
+      "valid": true
+    }
+  },
+  "details": {
+    "unit001_sealed_unit_files": {
+      "valid": true,
+      "manifest_sha256": "b0ffe53708f9f93fc634392bf69f65c91f6dbfd675b0a3a4cb7d52cf9c053c3b",
+      "unit_files_checked": 359,
+      "errors": [],
+      "source_snapshot_files_checked": 15,
+      "skipped_worktree_files": [
+        "experiments/partwise_sketch_hatching_v02/common.py",
+        "experiments/partwise_sketch_hatching_v02/edit_asset.py",
+        "experiments/partwise_sketch_hatching_v02/finish_unit.py",
+        "experiments/partwise_sketch_hatching_v02/lock_sources.py",
+        "experiments/partwise_sketch_hatching_v02/prepare.py",
+        "experiments/partwise_sketch_hatching_v02/receipt.py",
+        "experiments/partwise_sketch_hatching_v02/renderer.py",
+        "experiments/partwise_sketch_hatching_v02/run_unit.py",
+        "experiments/partwise_sketch_hatching_v02/seal_unit.py",
+        "experiments/partwise_sketch_hatching_v02/temporal_probe.py",
+        "experiments/partwise_sketch_hatching_v02/test_renderer.py",
+        "experiments/partwise_sketch_hatching_v02/validate_outputs.py",
+        "docs/partwise_sketch_hatching_v02/EXECUTION_CONTRACT.md",
+        "docs/partwise_sketch_hatching_v02/INHERITED_AUDIT_ZH.md",
+        "docs/partwise_sketch_hatching_v02/P1_ROADMAP_ZH.md",
+        "docs/partwise_sketch_hatching_v02/PROTOCOL_unit001.json",
+        "docs/partwise_sketch_hatching_v02/REPORT_unit001_ZH.md",
+        "docs/partwise_sketch_hatching_v02/REPRODUCE_unit001.md",
+        "docs/partwise_sketch_hatching_v02/SOURCE_LOCK_unit001.json",
+        "docs/partwise_sketch_hatching_v02/VALIDATION_LOCK_unit001.json"
+      ],
+      "skip_reason": "Current worktree renderer is intentionally changed in unit002. Historical unit001 source_snapshot files remain immutable and are checked above."
+    },
+    "part_local_edit_paths": {
+      "valid": true,
+      "stroke_count": 608,
+      "non_target_strokes": 348,
+      "non_target_changed_ids": [],
+      "target_geometry_changed_ids_count": 260,
+      "definition": "Exact persistent ID, part, faces, barycentric coordinates and ink for parts2/3; shade angle edit must actually change target geometry."
+    },
+    "all_still_and_orbit_contour_metrics": {
+      "valid": true,
+      "metric_mismatches": [],
+      "observations": [
+        {
+          "kind": "still",
+          "index": 0,
+          "azimuth": 30,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true,
+          "legacy": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 597,
+                "coverage": 0.7361282367447596,
+                "support_distance_p95_px": 4.123105625617661,
+                "support_distance_max_px": 6.708203932499369,
+                "missing_pixels": 214,
+                "missing_connected_components": 38,
+                "max_connected_missing_pixels": 13,
+                "go": false
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 18,
+                "coverage": 0.12,
+                "support_distance_p95_px": 21.02379604162864,
+                "support_distance_max_px": 23.021728866442675,
+                "missing_pixels": 132,
+                "missing_connected_components": 4,
+                "max_connected_missing_pixels": 43,
+                "go": false
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 429,
+                "coverage": 0.9953596287703016,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 2.23606797749979,
+                "missing_pixels": 2,
+                "missing_connected_components": 2,
+                "max_connected_missing_pixels": 1,
+                "go": true
+              }
+            },
+            "all_parts_go": false,
+            "contour_ink_mass": 336.26,
+            "support_pixels": 872,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_legacy_matches": true
+        },
+        {
+          "kind": "still",
+          "index": 1,
+          "azimuth": 120,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true,
+          "legacy": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 597,
+                "coverage": 0.7361282367447596,
+                "support_distance_p95_px": 4.123105625617661,
+                "support_distance_max_px": 6.708203932499369,
+                "missing_pixels": 214,
+                "missing_connected_components": 38,
+                "max_connected_missing_pixels": 13,
+                "go": false
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 18,
+                "coverage": 0.12,
+                "support_distance_p95_px": 21.02379604162864,
+                "support_distance_max_px": 23.021728866442675,
+                "missing_pixels": 132,
+                "missing_connected_components": 4,
+                "max_connected_missing_pixels": 43,
+                "go": false
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 429,
+                "coverage": 0.9953596287703016,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 2.23606797749979,
+                "missing_pixels": 2,
+                "missing_connected_components": 2,
+                "max_connected_missing_pixels": 1,
+                "go": true
+              }
+            },
+            "all_parts_go": false,
+            "contour_ink_mass": 336.26,
+            "support_pixels": 872,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_legacy_matches": true
+        },
+        {
+          "kind": "still",
+          "index": 2,
+          "azimuth": 210,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true,
+          "legacy": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 597,
+                "coverage": 0.7361282367447596,
+                "support_distance_p95_px": 4.123105625617661,
+                "support_distance_max_px": 6.708203932499369,
+                "missing_pixels": 214,
+                "missing_connected_components": 38,
+                "max_connected_missing_pixels": 13,
+                "go": false
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 18,
+                "coverage": 0.12,
+                "support_distance_p95_px": 21.02379604162864,
+                "support_distance_max_px": 23.021728866442675,
+                "missing_pixels": 132,
+                "missing_connected_components": 4,
+                "max_connected_missing_pixels": 43,
+                "go": false
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 429,
+                "coverage": 0.9953596287703016,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 2.23606797749979,
+                "missing_pixels": 2,
+                "missing_connected_components": 2,
+                "max_connected_missing_pixels": 1,
+                "go": true
+              }
+            },
+            "all_parts_go": false,
+            "contour_ink_mass": 336.26,
+            "support_pixels": 872,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_legacy_matches": true
+        },
+        {
+          "kind": "still",
+          "index": 3,
+          "azimuth": 300,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true,
+          "legacy": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 597,
+                "coverage": 0.7361282367447596,
+                "support_distance_p95_px": 4.123105625617661,
+                "support_distance_max_px": 6.708203932499369,
+                "missing_pixels": 214,
+                "missing_connected_components": 38,
+                "max_connected_missing_pixels": 13,
+                "go": false
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 18,
+                "coverage": 0.12,
+                "support_distance_p95_px": 21.02379604162864,
+                "support_distance_max_px": 23.021728866442675,
+                "missing_pixels": 132,
+                "missing_connected_components": 4,
+                "max_connected_missing_pixels": 43,
+                "go": false
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 429,
+                "coverage": 0.9953596287703016,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 2.23606797749979,
+                "missing_pixels": 2,
+                "missing_connected_components": 2,
+                "max_connected_missing_pixels": 1,
+                "go": true
+              }
+            },
+            "all_parts_go": false,
+            "contour_ink_mass": 336.26,
+            "support_pixels": 872,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_legacy_matches": true
+        },
+        {
+          "kind": "orbit",
+          "index": 0,
+          "azimuth": 0,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        },
+        {
+          "kind": "orbit",
+          "index": 1,
+          "azimuth": 15,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        },
+        {
+          "kind": "orbit",
+          "index": 2,
+          "azimuth": 30,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        },
+        {
+          "kind": "orbit",
+          "index": 3,
+          "azimuth": 45,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        },
+        {
+          "kind": "orbit",
+          "index": 4,
+          "azimuth": 60,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        },
+        {
+          "kind": "orbit",
+          "index": 5,
+          "azimuth": 75,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        },
+        {
+          "kind": "orbit",
+          "index": 6,
+          "azimuth": 90,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        },
+        {
+          "kind": "orbit",
+          "index": 7,
+          "azimuth": 105,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        },
+        {
+          "kind": "orbit",
+          "index": 8,
+          "azimuth": 120,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        },
+        {
+          "kind": "orbit",
+          "index": 9,
+          "azimuth": 135,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        },
+        {
+          "kind": "orbit",
+          "index": 10,
+          "azimuth": 150,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        },
+        {
+          "kind": "orbit",
+          "index": 11,
+          "azimuth": 165,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        },
+        {
+          "kind": "orbit",
+          "index": 12,
+          "azimuth": 180,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        },
+        {
+          "kind": "orbit",
+          "index": 13,
+          "azimuth": 195,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        },
+        {
+          "kind": "orbit",
+          "index": 14,
+          "azimuth": 210,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        },
+        {
+          "kind": "orbit",
+          "index": 15,
+          "azimuth": 225,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        },
+        {
+          "kind": "orbit",
+          "index": 16,
+          "azimuth": 240,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        },
+        {
+          "kind": "orbit",
+          "index": 17,
+          "azimuth": 255,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        },
+        {
+          "kind": "orbit",
+          "index": 18,
+          "azimuth": 270,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        },
+        {
+          "kind": "orbit",
+          "index": 19,
+          "azimuth": 285,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        },
+        {
+          "kind": "orbit",
+          "index": 20,
+          "azimuth": 300,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        },
+        {
+          "kind": "orbit",
+          "index": 21,
+          "azimuth": 315,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        },
+        {
+          "kind": "orbit",
+          "index": 22,
+          "azimuth": 330,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        },
+        {
+          "kind": "orbit",
+          "index": 23,
+          "azimuth": 345,
+          "candidate": {
+            "per_part": {
+              "1": {
+                "boundary_pixels": 811,
+                "supported_pixels": 811,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "2": {
+                "boundary_pixels": 150,
+                "supported_pixels": 150,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              },
+              "3": {
+                "boundary_pixels": 431,
+                "supported_pixels": 431,
+                "coverage": 1.0,
+                "support_distance_p95_px": 1.0,
+                "support_distance_max_px": 1.0,
+                "missing_pixels": 0,
+                "missing_connected_components": 0,
+                "max_connected_missing_pixels": 0,
+                "go": true
+              }
+            },
+            "all_parts_go": true,
+            "contour_ink_mass": 1023.5000000000001,
+            "support_pixels": 1964,
+            "far_external_ink_mass": 0.0,
+            "far_external_ink_fraction": 0.0,
+            "far_external_support_pixels": 0
+          },
+          "stored_candidate_matches": true,
+          "coverage_gate": true,
+          "far_external_support_gate": true,
+          "full_frozen_contour_gate": true
+        }
+      ],
+      "still_views_recomputed": 4,
+      "orbit_frames_recomputed": 24,
+      "all_coverage_gates": true,
+      "all_far_external_support_gates": true,
+      "all_frozen_contour_gates": true,
+      "stored_metric_policy": "Mismatches invalidate this audit; all original stored outputs are preserved, never corrected in place.",
+      "metric_implementation": "Second boundary/support calculation; shared SciPy EDT/component primitives and unchanged continuous-lathe reference implementation disclosed.",
+      "limits": [
+        "Outer-foreground contour only; internal hidden-edge test and visual review remain separate.",
+        "Legacy orbit metrics are not recomputed because legacy orbit contour layers were not retained. Candidate metrics are recomputed for all24 frames.",
+        "No rendered sequence regeneration or performance claim."
+      ]
+    }
+  },
+  "scientific_gates": {
+    "all_coverage_gates": true,
+    "all_far_external_support_gates": true,
+    "all_frozen_contour_gates": true,
+    "whole_object_visual": "SEPARATE_REVIEW",
+    "internal_hidden_contours": "SEPARATE_TESTS_AND_REVIEW"
+  },
+  "seconds": 9.954966428689659,
+  "role": "Validation-only supplement; no candidate, input, threshold or historical result changes."
+}

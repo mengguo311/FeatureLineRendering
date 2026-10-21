@@ -1,0 +1,81 @@
+{
+  "stage": "first_round_completed_with_known_engineering_failures",
+  "execution_state": "complete_after_data_only_summary_recovery",
+  "scientific_verdict": "P0_PARTIAL_ENGINEERING_SUCCESS; NO_GO_FOR_P1_PROMOTION_PENDING_FACE_WALK_REPAIR",
+  "tests": {
+    "RED": {
+      "run": 9,
+      "errors": 9,
+      "returncode": 1,
+      "receipt": "TESTS_RED.json"
+    },
+    "GREEN": {
+      "run": 9,
+      "passed": 9,
+      "returncode": 0,
+      "receipt": "TESTS_GREEN.json"
+    },
+    "recovery": {
+      "returncode": 0,
+      "receipt": "EXECUTION_RECOVERY.json"
+    },
+    "frozen_gates": {
+      "determinism": true,
+      "part_isolation": true,
+      "attachment_self_proxy": true,
+      "nonzero_target_edit": true,
+      "far_non_target_leakage": true,
+      "analytic_depth": true,
+      "injected_leakage_response": true,
+      "injected_drift_response": true,
+      "video_decode": true
+    }
+  },
+  "artifacts": [
+    "metrics.json",
+    "assets/lamp_mesh.npz",
+    "strokes/",
+    "stills/",
+    "figures/full_view_contact_sheet.png",
+    "figures/edit_contact_sheet.png",
+    "figures/orbit_all_frames.png",
+    "figures/zoom_all_frames.png",
+    "figures/edit_all_frames.png",
+    "videos/orbit.mp4",
+    "videos/zoom.mp4",
+    "videos/edit.mp4",
+    "PATH_AUDIT.json",
+    "DEPTH_AUDIT.json",
+    "FAILURE_INITIAL.json",
+    "SHA256_MANIFEST.json",
+    "SEAL.json",
+    "/home/u00134/3dgs_line/partwise_sketch_hatching_p0p1_v01/docs/partwise_sketch_hatching/round_001/REPORT_ZH.md"
+  ],
+  "blockers": [
+    "Path audit: >=100 adjacent-face backtracks in mixed 13/608, parallel 96/458, cross 117/916 strokes",
+    "Two azimuth-30 same-part rim depth outliers >0.01 world; retain and diagnose separately, do not expand exclusion band",
+    "No trained lamp/RGB+cameras found in bounded inventory; CPU-only blocks new RaDe-GS training",
+    "Independent per-stroke temporal disappearance/flicker metric remains UNMEASURED"
+  ],
+  "source_commit": "62a04c72bc093ddc60164c8d13a302dca555f28e",
+  "protocol_commit": "da8c8387",
+  "asset_lock_commit": "ee654a05",
+  "recovery_amendment_commit": "cab754db",
+  "updated_at_utc": "2026-10-20T19:01:57.024189+00:00",
+  "elapsed_since_user_start_minutes": 21.886084466666667,
+  "resource_scope": {
+    "cpu_cores_max": 2,
+    "gpu_used": false,
+    "push": false,
+    "merge": false,
+    "orchestration_modified": false
+  },
+  "next": "NEXT.json",
+  "readiness": {
+    "P0_minimal_fixture_execution": true,
+    "P1_full_system": false,
+    "RaDe_GS_reconstruction": false,
+    "H1_comparative_evidence": false,
+    "independent_temporal_stability": "UNMEASURED"
+  }
+}

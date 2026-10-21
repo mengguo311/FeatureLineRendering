@@ -1,0 +1,19 @@
+{
+  "source": "Delegated validator author's tool transcript, reported to root; no original runtime log file was created by those syntax-only invocations",
+  "scientific_evaluation_run": false,
+  "attempts": [
+    {
+      "command": "python -c \"import ast; from pathlib import Path; p=Path('experiments/partwise_sketch_hatching_v02/validate_unit004.py'); ast.parse(p.read_text()); print('validate_unit004.py syntax OK')\" && cat /mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_004/PROTOCOL.json && cat /mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_004/STYLE.json",
+      "returncode": 127,
+      "combined_output": "/bin/bash: line 1: python: command not found\n",
+      "stderr_separately_available": false,
+      "classification": "Engineering command lookup failure before Python or subsequent reads; preserved"
+    },
+    {
+      "command": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python -c \"import ast; from pathlib import Path; p=Path('experiments/partwise_sketch_hatching_v02/validate_unit004.py'); ast.parse(p.read_text()); print('validate_unit004.py syntax OK')\" && cat /mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_004/PROTOCOL.json && cat /mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_004/STYLE.json",
+      "returncode": 0,
+      "reported_output": "validate_unit004.py syntax OK followed by the two JSON files; no stderr diagnostic observed",
+      "classification": "Absolute interpreter correction; syntax only, no numerical validation or scientific change"
+    }
+  ]
+}

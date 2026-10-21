@@ -1,0 +1,75 @@
+{
+  "stage": "sealed_whole_lamp_integration",
+  "execution_state": "complete",
+  "scientific_verdict": "WHOLE_LAMP_SOFTWARE_SLICE_GO_VISUAL_NO_GO",
+  "tests": {
+    "old_renderer": {
+      "returncode": 1,
+      "tests": 6,
+      "failed": 2,
+      "preserved": true
+    },
+    "new_renderer": {
+      "returncode": 0,
+      "tests": 6,
+      "passed": 6
+    },
+    "cold_regeneration": {
+      "cold_digest_matches": true,
+      "target_edit_matches_history": true,
+      "non_target_exact": true,
+      "legal_anchors": true
+    },
+    "edit": true,
+    "selected_probe": "GO",
+    "independent_validation": {
+      "returncode": 0,
+      "verdict": "PASS",
+      "checks": 7
+    },
+    "cli_images_exact": {
+      "angle35": true,
+      "width2": true
+    }
+  },
+  "artifacts": [
+    "PROTOCOL.json",
+    "SOURCE_LOCK.json",
+    "metrics.json",
+    "ASSET_VALIDATION.json",
+    "EDIT_METRICS.json",
+    "TEMPORAL_PROBES.json",
+    "INDEPENDENT_VALIDATION.json",
+    "VISUAL_REVIEW.json",
+    "figures/full_lamp_comparison.png",
+    "videos/orbit.mkv",
+    "videos/zoom.mkv",
+    "videos/edit.mkv",
+    "EXECUTION_stills_INTERRUPTED.json",
+    "REPORT_ZH.md"
+  ],
+  "blockers": [
+    "Visual NO_GO: fragmented shade outline, crowded stem, tangled base.",
+    "Nine fixed probe IDs cover only 1352/4428 frame/sample observations; two IDs entirely ineligible.",
+    "17 hidden-sample normal profiles contain ink; profile support is not equivalent to centerline leakage and needs local review.",
+    "Same-part analytic depth interpolation and owner-plane extension remain approximations.",
+    "No verified reconstructed lamp input; inherited bounded inventory only, no new training or inventory in this unit.",
+    "CLI spacing is seed-density scaling, not guaranteed spacing; length/spacing/cross controls implemented but not validated this unit."
+  ],
+  "outline_milestone": "P1 GT full-object engineering slice; full P1 acceptance pending visual and reconstruction work",
+  "p1_progress": "Integrated all three parts and 608 persistent barycentric strokes into per-fragment depth-tested rendering; actual local angle/width CLI, three videos, finite independent-geometry rendered probes and cold replay completed.",
+  "claim_status": {
+    "coding": "COMPLETE_FOR_FROZEN_SCOPE",
+    "software": "GO_FINITE_CONTRACT",
+    "visual": "NO_GO",
+    "reconstructed_input": "BLOCKED",
+    "research_H1_H2": "NOT_TESTED"
+  },
+  "original_failure": {
+    "stills_wrapper_returncode": 143,
+    "scientific_child_returncode": "UNKNOWN",
+    "outputs_independently_validated": true
+  },
+  "historical_failures": "round001/002 stdout failures, round004/012/013 NO_GO, rim depth outliers and original scope restrictions remain unchanged.",
+  "updated_at_utc": "2026-10-21T07:55:02.021027+00:00"
+}

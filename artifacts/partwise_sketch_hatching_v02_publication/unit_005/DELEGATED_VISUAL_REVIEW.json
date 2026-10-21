@@ -1,0 +1,75 @@
+{
+  "reviewer": "delegated independent validator agent",
+  "method": "Actual image inspection through view_image; no producer renderer called and no image values inferred from metrics",
+  "observed_paths": [
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_005/figures/full_lamp_comparison.png",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_005/figures/shade_comparison.png",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_005/figures/edit_all_frames.png",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_005/figures/edit_first_middle_last.png",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_005/outputs/edited/renders/030.png",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_005/outputs/edited/renders/120.png",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_005/outputs/edited/renders/210.png",
+    "/mnt/hdd1/u00134/partwise_sketch_hatching_p1_v02/units/unit_005/outputs/edited/renders/300.png"
+  ],
+  "coverage": {
+    "paired_full_lamp_views": [30, 120, 210, 300],
+    "paired_shade_crops": [30, 120, 210, 300],
+    "original_edited_png_views": [30, 120, 210, 300],
+    "all_edit_contact_sheet_frames": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+    "first_middle_last_sheet": true,
+    "english_figure_titles": true
+  },
+  "per_view_observations": [
+    {
+      "azimuth": 30,
+      "shade_edit": "The edited circumferential strokes are visibly heavier, especially the lower central stack and the right-hand curved segments. Positions and broad spacing appear unchanged.",
+      "whole_object": "Full shade, long thin stem and elliptical base are present with surrounding white margins. The stem retains several separated vertical lines; the base retains short crossing strokes.",
+      "retained_defects": "Several shade strokes sit very close together in the lower center. Base strokes form a darker crossing chain along the front edge. The top rim and thin shade lines show raster irregularity."
+    },
+    {
+      "azimuth": 120,
+      "shade_edit": "The width increase is particularly easy to see in the central and lower-right bands. Nearby strokes become darker stacks, but the shade remains readable and mostly open white space.",
+      "whole_object": "All three parts remain distinguishable and nonempty. The edited panel shows no apparent change to stem length, base stroke layout or lamp framing.",
+      "retained_defects": "Dense paired shade lines and the dark crossing chain at the base front remain visible; the result is not a uniform or polished hand-drawn texture."
+    },
+    {
+      "azimuth": 210,
+      "shade_edit": "The heavier width is visible at the lower-left shade edge and in central curved fragments. The edit does not appear to introduce extra connecting strokes between parts.",
+      "whole_object": "The complete lamp is in frame. The stem remains thin and vertically hatched; base crossing strokes remain visible, with an open patch near the front center.",
+      "retained_defects": "Shade dark stacks and light fragments have uneven visual weight. Base coverage remains patchy and the front rim is comparatively exposed."
+    },
+    {
+      "azimuth": 300,
+      "shade_edit": "The edit is subtler because many shade strokes are light, but paired comparison shows visibly stronger horizontal curves, especially near the lower-left side and central rows.",
+      "whole_object": "Shade, stem and base are all visible, nonempty and fully framed. The three stroke directions remain distinct.",
+      "retained_defects": "The shade retains pale thin segments, occasional close parallel traces and raster stepping. The base remains irregularly spaced rather than evenly shaded."
+    }
+  ],
+  "edit_contact_sheet_observations": {
+    "frames_00_to_11": "All twelve tiles show the thinner-shade state with a complete lamp in consistent framing.",
+    "frames_12_to_23": "All twelve tiles show the stronger-shade state with the same full-lamp framing. The intended visible step occurs between the two groups.",
+    "first_middle_last": "The first tile has lighter shade strokes; middle and last have visibly heavier shade strokes. Stem and base show no obvious visual change.",
+    "missing_or_blank_tiles_observed": false,
+    "motion_or_flicker_conclusion": "NOT_ESTABLISHED; these are static contact sheets of a fixed-camera edit, not temporal correspondence or playback evidence"
+  },
+  "bounded_visual_gates": {
+    "intended_shade_width_response": "GO in all four paired views, with weaker perceptual contrast at azimuth300",
+    "all_three_parts_distinct_and_nonempty": "GO by image inspection",
+    "whole_lamp_fully_framed": "GO in all four views and all24 contact-sheet tiles",
+    "new_obvious_cross_part_artifact": "NONE_OBSERVED; numerical isolation remains the independent mask validator's responsibility",
+    "bounded_local_edit_visual_verdict": "GO",
+    "polished_hand_drawn_quality": "NOT_CLAIMED; inherited shade stacking, aliasing and uneven base crossings remain",
+    "inherited_unit004_density_contract": "NO_GO_RETAINED",
+    "candidate_promotion": "DIAGNOSTIC_PREVIEW_ONLY",
+    "full_P1": "PARTIAL_NOT_COMPLETE"
+  },
+  "p1_progress": "The explicitly loaded complete lamp gives a visible, understandable part-selected width edit while retaining its three distinct hatch styles and framing. This supports the practical edit/save/replay software slice; it does not establish reconstruction quality, temporal stability or resolve the inherited density failure.",
+  "limitations": [
+    "This review is qualitative and covers four previously exposed views of one authored GT lamp.",
+    "Contact-sheet thumbnails can conceal individual pixel defects; original512px edited PNGs were also inspected for all four views.",
+    "No numerical leakage, exact output equality, width calibration, depth correctness or camera-motion stability is inferred from appearance alone.",
+    "No video playback or new orbit/zoom sequence was reviewed here; the24-frame sheet only exposes a fixed-camera before/after edit.",
+    "Retained shade overlaps and base edge crossings remain visible; a functional width edit is not evidence that these quality defects are solved.",
+    "The inherited unit004 frozen density NO_GO and hidden-profile/limited temporal evidence remain unresolved."
+  ]
+}

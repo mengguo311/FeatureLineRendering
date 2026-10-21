@@ -1,0 +1,19 @@
+{
+  "created_utc": "2026-10-21T09:33:28.594713+00:00",
+  "stage": "After synthetic metric tests and during instrumentation regression; before any orbit/zoom or temporal evaluation",
+  "reason": "Source review found aggregate directional dropout could cancel against outgoing dropout at next frame. Use the deterministic chosen adjacent pair for the directional control assertion; retain full sequence quantities descriptively.",
+  "unchanged": [
+    "protocol",
+    "science thresholds",
+    "sampling",
+    "reference",
+    "renderer",
+    "trajectories",
+    "observed outputs"
+  ],
+  "preserved": [
+    "SOURCE_LOCK_INITIAL.json",
+    "source_snapshot_initial/"
+  ],
+  "gate_intent": "Prove known injected later-frame missing ink causes a directional dropout on independently common-visible pair."
+}

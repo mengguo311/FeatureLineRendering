@@ -1,0 +1,21 @@
+{
+  "status": "FROZEN_BEFORE_ADAPTER_EVALUATION",
+  "created_utc": "2026-10-21T09:19:41.125781+00:00",
+  "reason": "Exact official reader fails on current Pillow when handed signed np.byte RGB; original rc1 and INVALID retained",
+  "original_validation_sha256": "95fb55edb2dfff5663c9bacc9883b927d498cbc3fd93c267871109d81c565b93",
+  "original_execution_sha256": "119e2eeaf11bf58b6e51655ca3f1532ada7b729857605eefbca2b313d505ae1a",
+  "permitted_change": "New local AST adapter replaces the single np.byte dtype with np.uint8, preserving external official source bytes",
+  "fixed": [
+    "all RGB/camera/oracle artifacts",
+    "all camera/split/material/light controls and thresholds",
+    "all previous nine fault controls",
+    "initial validator and its INVALID verdict/receipt/log"
+  ],
+  "gates": [
+    "all120 local-adapter images equal PNG pixels AND original signed cast underlying unsigned byte view",
+    "all120 rotations/translations/focal/projection residual <1e-9",
+    "all120 RGB/oracle SHA and camera metadata SHA remain original",
+    "empty training transforms_test remains empty; no points3d/training/full loader"
+  ],
+  "claim": "Recover only local-adapter input readiness; unmodified official loader remains NO_GO in current dependency environment; no reconstruction claim"
+}

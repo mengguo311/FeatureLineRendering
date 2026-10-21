@@ -1,0 +1,30 @@
+{
+  "verdict": "RECOVERED_WITH_LOCAL_UINT8_CAMERA_ADAPTER",
+  "original_validation_sha256": "95fb55edb2dfff5663c9bacc9883b927d498cbc3fd93c267871109d81c565b93",
+  "original_validation_verdict": "INVALID",
+  "original_returncode": 1,
+  "original_unmodified_official_reader": "NO_GO_PILLOW_SIGNED_RGB_TYPE",
+  "unchanged_frames_and_oracles": 120,
+  "unchanged_camera_metadata": true,
+  "all_other_original_checks_passed": true,
+  "adapter_source_sha256": "f23d1ee9be63a0294c99f0fde26474187ef150785e63e159adccab65a59da782",
+  "official_source_unchanged": true,
+  "adapted_reader_counts": {
+    "train": 36,
+    "dev": 12,
+    "test": 72
+  },
+  "adapted_RGB_pixels_exact": true,
+  "maximum_absolute_errors": {
+    "rotation": 3.3306690738754696e-16,
+    "translation": 2.6645352591003757e-15,
+    "focal": 1.1368683772161603e-13,
+    "projection_px": 3.694822225952521e-13
+  },
+  "training_test_list_empty": true,
+  "full_scene_loader_called": false,
+  "training_called": false,
+  "seconds": 3.3808367853052914,
+  "scope": "Input/coordinate compatibility using a disclosed local one-dtype adapter; unmodified official loader failure remains and must not be reported as passing.",
+  "original_signed_cast_underlying_bytes_exact": true
+}

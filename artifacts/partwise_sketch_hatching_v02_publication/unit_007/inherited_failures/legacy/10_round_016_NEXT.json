@@ -1,0 +1,38 @@
+{
+  "action": "continue",
+  "priority": "P0_fixed_planar_linewidth_edit_response_audit",
+  "hypothesis": "Within the existing supported planar domain, one prescribed screen-width edit yields the independent visible-area and rendered-image change with nonzero target response and no extra leakage into known foreground/background; a fixed-width zoom GO does not establish width-edit response.",
+  "recommended_next_step": "One bounded CPU-only paired width-edit audit using the unchanged planar_fragments_exact renderer and existing fragment_oblique_partial_hidden fixture. Freeze identity camera eye=(0,0,0), geometry/path/owner identities, output64/internal128, ink .8, depth separation .006, cleanup and quantization; freeze exactly width1px before and width2px after (2 and4 internal pixels), no sweep. Independently compute both area references and analytic visible-target/foreground/background masks. Freeze the 2-output-pixel AA boundary band and all gates before opening outputs; report target change, boundary-band leakage, far foreground/background leakage and candidate-minus-reference excess separately. Require nonzero target change, unchanged inputs, raw-area agreement at inherited 1e-10 pixel/1e-8 mass tolerances, exact quantized/final agreement, nonzero injected leakage/no-edit control response, complete before/after full-view contact sheet and exact current/historical replay. Budget <=20min. This is a finite planar style-response diagnostic only: no renderer changes, geometry extension, curve/orbit/lamp integration, LOD, H2 or training. On any failure retain NO_GO, do not tune width or thresholds.",
+  "fixed_controls": [
+    "round016 protocol083da186, implementationa61db174, lockbe1e1a4f; retain all seals and exposed outputs.",
+    "planar_fragments_exact.py SHA256 f7d7c637068450acc149c450bd3998ac7af8a5343cba0e22fbf6bdbed5c1ca83",
+    "Independent reference never passed to candidate; world geometry/path/owner and camera fixed.",
+    "Existing .8 ink, .006 depth separation, 1e-12 cleanup, uint8 truncation then LANCZOS; width edit is sole changed style parameter.",
+    "Separate expected filtered boundary spread from candidate excess; fixed band cannot be enlarged after results.",
+    "CPU affinity[0,1],threads<=2,serial compute,invocation<=600s; no GPU/download/orchestration/push/merge.",
+    "No new rounds after10:40 JST; hard end11:00 JST; per-round<=40min."
+  ],
+  "go_no_go": {
+    "go": "Only finite planar width-edit response evidence if independent references, nonzero target and sensitivity controls, frozen per-stage gates and exact regression pass.",
+    "no_go": "Any frozen candidate gate failure is NO_GO; invalid reference/control/replay is ENGINEERING_INVALID. No test-driven tuning."
+  },
+  "blockers": [
+    "Only a single finite straight ribbon on fronto-parallel coplanar owners and constant-depth separated scene triangles; analytic GT, not reconstruction.",
+    "General orbit, inclined/curved surfaces, AA quality, effective line width, LOD, multi-stroke edit usability, lamp/P1 and RaDe-GS remain unproven.",
+    "Temporal eligibility covers 97/257 fixed path samples and 97/188 continuously visible samples; all pixels remain in full-frame gates.",
+    "Prior round013/012/004 NO_GO and original historical validation child UNKNOWN retained."
+  ],
+  "evidence_paths": [
+    "metrics.json",
+    "raw/sequence.npz",
+    "REGRESSION.json",
+    "VALIDATION.json",
+    "VIDEO_VALIDATION.json",
+    "figures/full_view_contact_sheet.png",
+    "videos/axial_zoom.mkv",
+    "STATUS.json",
+    "/home/u00134/3dgs_line/partwise_sketch_hatching_p0p1_v01/docs/partwise_sketch_hatching/round_016/REPORT_ZH.md",
+    "/home/u00134/3dgs_line/partwise_sketch_hatching_p0p1_v01/docs/partwise_sketch_hatching/round_016/PROTOCOL.json"
+  ],
+  "updated_at_utc": "2026-10-20T22:08:10.604833+00:00"
+}

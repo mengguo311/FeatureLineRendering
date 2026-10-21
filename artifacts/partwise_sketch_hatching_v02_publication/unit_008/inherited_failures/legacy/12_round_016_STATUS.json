@@ -1,0 +1,526 @@
+{
+  "stage": "complete_validated_reported",
+  "execution_state": "complete",
+  "scientific_verdict": "LIMITED_PLANAR_AXIAL_ZOOM_GO",
+  "tests": {
+    "normal_executions": 108,
+    "new_definitions": 6,
+    "inherited_executions": 102,
+    "normal_returncodes": 0,
+    "RED_AXIAL_returncode": 1,
+    "RED_AXIAL_failures": 3,
+    "RED_METRICS_returncode": 1,
+    "RED_METRICS_failures": 3,
+    "evaluation_returncode": 0,
+    "validation_returncode": 0,
+    "new_arrays_exact": 496,
+    "historical_science_arrays_exact": 7360,
+    "historical_adapter_arrays_exact": 180,
+    "frozen_candidate_gates": {
+      "nonempty_eligibility": true,
+      "reference_profile_present": true,
+      "all_frame_candidate_gates": true,
+      "full_frame_exact": true,
+      "temporal_residual_exact": true,
+      "extra_centroid": true,
+      "extra_motion": true,
+      "no_extra_dropout": true
+    },
+    "frozen_validity_gates": {
+      "axial_projection_scale_and_occlusion_nonzero": true,
+      "screen_width_unchanged": true,
+      "all_reference_gates": true,
+      "sensitivity_controls": true,
+      "nonempty_eligibility": true,
+      "reference_profile_present": true,
+      "regression_exact": true,
+      "tests_passed": true,
+      "video_integrity": true
+    },
+    "execution_receipts": {
+      "EVALUATION_EXECUTION": {
+        "argv": [
+          "taskset",
+          "-c",
+          "0,1",
+          "timeout",
+          "600",
+          "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+          "experiments/partwise_sketch_hatching/run_round016.py",
+          "evaluate"
+        ],
+        "execution_state": "completed",
+        "returncode": 0,
+        "log": "/mnt/hdd1/u00134/partwise_sketch_hatching_p0p1_v01/rounds/round_016/runtime/evaluation_execution.log",
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "threads_max": 2,
+        "GPU": false,
+        "wall_seconds": 24.332069265190512,
+        "log_sha256": "9923e1d678dbcbba98e2bca33fec99d66cdb7fbbfd70d390c1c2b77db1b30999"
+      },
+      "TEST_EXACT_TRIANGLE_SET": {
+        "argv": [
+          "taskset",
+          "-c",
+          "0,1",
+          "timeout",
+          "600",
+          "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+          "experiments/partwise_sketch_hatching/test_exact_triangle_set.py"
+        ],
+        "execution_state": "completed",
+        "returncode": 0,
+        "log": "/mnt/hdd1/u00134/partwise_sketch_hatching_p0p1_v01/rounds/round_016/runtime/test_exact_triangle_set.log",
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "threads_max": 2,
+        "GPU": false,
+        "wall_seconds": 0.32292337203398347,
+        "log_sha256": "1edecc8d77d7ddf38979b386f52f80c2493e9054596b03d295f70a46125d553a"
+      },
+      "VALIDATION_EXECUTION": {
+        "argv": [
+          "taskset",
+          "-c",
+          "0,1",
+          "timeout",
+          "600",
+          "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+          "experiments/partwise_sketch_hatching/run_round016.py",
+          "validate"
+        ],
+        "execution_state": "completed",
+        "returncode": 0,
+        "log": "/mnt/hdd1/u00134/partwise_sketch_hatching_p0p1_v01/rounds/round_016/runtime/validation_execution.log",
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "threads_max": 2,
+        "GPU": false,
+        "wall_seconds": 3.450094989966601,
+        "log_sha256": "fc7a55398ad7c943d5fb7d4c2354c423e627a8e73c49fee1b8ae0b79a408c69a"
+      },
+      "TEST_PHYSICAL_AREA_REFERENCE": {
+        "argv": [
+          "taskset",
+          "-c",
+          "0,1",
+          "timeout",
+          "600",
+          "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+          "experiments/partwise_sketch_hatching/test_physical_area_reference.py"
+        ],
+        "execution_state": "completed",
+        "returncode": 0,
+        "log": "/mnt/hdd1/u00134/partwise_sketch_hatching_p0p1_v01/rounds/round_016/runtime/test_physical_area_reference.log",
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "threads_max": 2,
+        "GPU": false,
+        "wall_seconds": 0.1459094136953354,
+        "log_sha256": "a0f4118b266d1b2e81f01bc13f32228de040de181429cff3366e1df13ed2001e"
+      },
+      "GREEN_AXIAL": {
+        "argv": [
+          "taskset",
+          "-c",
+          "0,1",
+          "timeout",
+          "600",
+          "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+          "experiments/partwise_sketch_hatching/test_planar_axial_reference.py"
+        ],
+        "execution_state": "completed",
+        "returncode": 0,
+        "log": "/mnt/hdd1/u00134/partwise_sketch_hatching_p0p1_v01/rounds/round_016/runtime/green_axial.log",
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "threads_max": 2,
+        "GPU": false,
+        "wall_seconds": 0.1608685706742108,
+        "log_sha256": "6d7143d09f2c2a9a2295bb84a764eb6bb86e4b97a775e4ea011ae18dc37590ba"
+      },
+      "TEST_TEMPORAL_AUDIT": {
+        "argv": [
+          "taskset",
+          "-c",
+          "0,1",
+          "timeout",
+          "600",
+          "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+          "experiments/partwise_sketch_hatching/test_temporal_audit.py"
+        ],
+        "execution_state": "completed",
+        "returncode": 0,
+        "log": "/mnt/hdd1/u00134/partwise_sketch_hatching_p0p1_v01/rounds/round_016/runtime/test_temporal_audit.log",
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "threads_max": 2,
+        "GPU": false,
+        "wall_seconds": 0.28436430590227246,
+        "log_sha256": "f7ecb0bb3dea4971fc301306abd43c44a69728840a4752e1f3d150780d55616c"
+      },
+      "GREEN_METRICS": {
+        "argv": [
+          "taskset",
+          "-c",
+          "0,1",
+          "timeout",
+          "600",
+          "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+          "experiments/partwise_sketch_hatching/test_planar_temporal_metrics.py"
+        ],
+        "execution_state": "completed",
+        "returncode": 0,
+        "log": "/mnt/hdd1/u00134/partwise_sketch_hatching_p0p1_v01/rounds/round_016/runtime/green_metrics.log",
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "threads_max": 2,
+        "GPU": false,
+        "wall_seconds": 0.2702044709585607,
+        "log_sha256": "45b5296f758ea6883fee1e9b4f1181b4e2499bc9e451e125731f9cb7b8aa3be3"
+      },
+      "RED_METRICS": {
+        "argv": [
+          "taskset",
+          "-c",
+          "0,1",
+          "timeout",
+          "600",
+          "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+          "experiments/partwise_sketch_hatching/test_planar_temporal_metrics.py",
+          "--broken"
+        ],
+        "execution_state": "completed",
+        "returncode": 1,
+        "log": "/mnt/hdd1/u00134/partwise_sketch_hatching_p0p1_v01/rounds/round_016/runtime/red_metrics.log",
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "threads_max": 2,
+        "GPU": false,
+        "wall_seconds": 0.2702482189051807,
+        "log_sha256": "2cee301b5b82332b10c22c07cac66cc102ec60930097e6221a0ee400970fa364"
+      },
+      "PREPARE_EXECUTION": {
+        "argv": [
+          "taskset",
+          "-c",
+          "0,1",
+          "timeout",
+          "600",
+          "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+          "experiments/partwise_sketch_hatching/run_round016.py",
+          "prepare"
+        ],
+        "execution_state": "completed",
+        "returncode": 0,
+        "log": "/mnt/hdd1/u00134/partwise_sketch_hatching_p0p1_v01/rounds/round_016/runtime/prepare_execution.log",
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "threads_max": 2,
+        "GPU": false,
+        "wall_seconds": 0.4026975082233548,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "TEST_PLANAR_FRAGMENTS": {
+        "argv": [
+          "taskset",
+          "-c",
+          "0,1",
+          "timeout",
+          "600",
+          "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+          "experiments/partwise_sketch_hatching/test_planar_fragments.py"
+        ],
+        "execution_state": "completed",
+        "returncode": 0,
+        "log": "/mnt/hdd1/u00134/partwise_sketch_hatching_p0p1_v01/rounds/round_016/runtime/test_planar_fragments.log",
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "threads_max": 2,
+        "GPU": false,
+        "wall_seconds": 0.3678684951737523,
+        "log_sha256": "345a5c3a44bef793beede49a90a1d8b8a61cca5845b2e8191bef1ec794e5a836"
+      },
+      "TEST_VISIBILITY_PRIMITIVE": {
+        "argv": [
+          "taskset",
+          "-c",
+          "0,1",
+          "timeout",
+          "600",
+          "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+          "experiments/partwise_sketch_hatching/test_visibility_primitive.py"
+        ],
+        "execution_state": "completed",
+        "returncode": 0,
+        "log": "/mnt/hdd1/u00134/partwise_sketch_hatching_p0p1_v01/rounds/round_016/runtime/test_visibility_primitive.log",
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "threads_max": 2,
+        "GPU": false,
+        "wall_seconds": 0.2974932538345456,
+        "log_sha256": "b3d72453f55f0aa5dad39ace17d35a09a57b9c2f7b763ba4cce716c0174d526d"
+      },
+      "CANDIDATE_FRAGMENTS": {
+        "argv": [
+          "taskset",
+          "-c",
+          "0,1",
+          "timeout",
+          "600",
+          "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+          "-c",
+          "import sys;sys.path.insert(0,'experiments/partwise_sketch_hatching');import round016_common;import test_planar_fragments as t;import planar_fragments_exact as n;import unittest;t.new=n;unittest.main(module=t,verbosity=2)"
+        ],
+        "execution_state": "completed",
+        "returncode": 0,
+        "log": "/mnt/hdd1/u00134/partwise_sketch_hatching_p0p1_v01/rounds/round_016/runtime/candidate_fragments.log",
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "threads_max": 2,
+        "GPU": false,
+        "wall_seconds": 0.36943526519462466,
+        "log_sha256": "1cbfee29c2a842a7a9cd923f63675e27be612bbfd5dc96990052216cf81564ea"
+      },
+      "RED_AXIAL": {
+        "argv": [
+          "taskset",
+          "-c",
+          "0,1",
+          "timeout",
+          "600",
+          "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+          "experiments/partwise_sketch_hatching/test_planar_axial_reference.py",
+          "--broken"
+        ],
+        "execution_state": "completed",
+        "returncode": 1,
+        "log": "/mnt/hdd1/u00134/partwise_sketch_hatching_p0p1_v01/rounds/round_016/runtime/red_axial.log",
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "threads_max": 2,
+        "GPU": false,
+        "wall_seconds": 0.1664875210262835,
+        "log_sha256": "4db37e89cc6941619e1fb5068bbf957b6a532e0e6c729292c3ed691bf11a2f7b"
+      },
+      "TEST_MESH_ATTACHMENT": {
+        "argv": [
+          "taskset",
+          "-c",
+          "0,1",
+          "timeout",
+          "600",
+          "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+          "experiments/partwise_sketch_hatching/test_mesh_attachment.py"
+        ],
+        "execution_state": "completed",
+        "returncode": 0,
+        "log": "/mnt/hdd1/u00134/partwise_sketch_hatching_p0p1_v01/rounds/round_016/runtime/test_mesh_attachment.log",
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "threads_max": 2,
+        "GPU": false,
+        "wall_seconds": 0.1367401429452002,
+        "log_sha256": "abfc014e2fdbeebcc2cad3ccab3f61ffc9a32e27bfa090d05ebf3991bdba440d"
+      },
+      "TEST_PATCH_ATTACHMENT": {
+        "argv": [
+          "taskset",
+          "-c",
+          "0,1",
+          "timeout",
+          "600",
+          "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+          "experiments/partwise_sketch_hatching/test_patch_attachment.py"
+        ],
+        "execution_state": "completed",
+        "returncode": 0,
+        "log": "/mnt/hdd1/u00134/partwise_sketch_hatching_p0p1_v01/rounds/round_016/runtime/test_patch_attachment.log",
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "threads_max": 2,
+        "GPU": false,
+        "wall_seconds": 0.2811325090005994,
+        "log_sha256": "a08c3fd4513e72213aacdac61e90848a0109479773767fe259eb519ea4b0a911"
+      },
+      "TEST_STAGE_ATTRIBUTION": {
+        "argv": [
+          "taskset",
+          "-c",
+          "0,1",
+          "timeout",
+          "600",
+          "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+          "experiments/partwise_sketch_hatching/test_stage_attribution.py"
+        ],
+        "execution_state": "completed",
+        "returncode": 0,
+        "log": "/mnt/hdd1/u00134/partwise_sketch_hatching_p0p1_v01/rounds/round_016/runtime/test_stage_attribution.log",
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "threads_max": 2,
+        "GPU": false,
+        "wall_seconds": 0.28410426806658506,
+        "log_sha256": "9e68a119676fc42de5ac47978a91e63ae6520e3cc3599712214755536930a198"
+      },
+      "TEST_CENTERED_COVERAGE": {
+        "argv": [
+          "taskset",
+          "-c",
+          "0,1",
+          "timeout",
+          "600",
+          "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+          "experiments/partwise_sketch_hatching/test_centered_coverage.py"
+        ],
+        "execution_state": "completed",
+        "returncode": 0,
+        "log": "/mnt/hdd1/u00134/partwise_sketch_hatching_p0p1_v01/rounds/round_016/runtime/test_centered_coverage.log",
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "threads_max": 2,
+        "GPU": false,
+        "wall_seconds": 0.271456987131387,
+        "log_sha256": "b2d8dc407309369564a39fa0c8ade91fba9f9583e76db702cff94042e5edee95"
+      },
+      "TEST_COVERAGE_FIXTURE": {
+        "argv": [
+          "taskset",
+          "-c",
+          "0,1",
+          "timeout",
+          "600",
+          "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+          "experiments/partwise_sketch_hatching/test_coverage_fixture.py"
+        ],
+        "execution_state": "completed",
+        "returncode": 0,
+        "log": "/mnt/hdd1/u00134/partwise_sketch_hatching_p0p1_v01/rounds/round_016/runtime/test_coverage_fixture.log",
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "threads_max": 2,
+        "GPU": false,
+        "wall_seconds": 0.2857897221110761,
+        "log_sha256": "43272586b03b6a765bd717c0e8284284cf98db281a178a843033d01281a58dd3"
+      },
+      "TEST_AREA_COVERAGE": {
+        "argv": [
+          "taskset",
+          "-c",
+          "0,1",
+          "timeout",
+          "600",
+          "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+          "experiments/partwise_sketch_hatching/test_area_coverage.py"
+        ],
+        "execution_state": "completed",
+        "returncode": 0,
+        "log": "/mnt/hdd1/u00134/partwise_sketch_hatching_p0p1_v01/rounds/round_016/runtime/test_area_coverage.log",
+        "cpu_affinity": [
+          0,
+          1
+        ],
+        "threads_max": 2,
+        "GPU": false,
+        "wall_seconds": 0.34990757005289197,
+        "log_sha256": "0b081d1d2e05ad9bd7ab7f779f40f29ac2f28efa07915c446b2659353cc0e6dd"
+      }
+    }
+  },
+  "artifacts": [
+    "metrics.json",
+    "PARTIAL_METRICS.json",
+    "raw/",
+    "REGRESSION.json",
+    "VALIDATION.json",
+    "VIDEO_VALIDATION.json",
+    "TESTS.json",
+    "PRIOR_SEAL_VERIFY.json",
+    "figures/full_view_contact_sheet.png",
+    "frames/",
+    "videos/axial_zoom.mkv",
+    "NEXT.json",
+    "SHA256_MANIFEST.json",
+    "SEAL.json",
+    "/home/u00134/3dgs_line/partwise_sketch_hatching_p0p1_v01/docs/partwise_sketch_hatching/round_016/REPORT_ZH.md",
+    "/home/u00134/3dgs_line/partwise_sketch_hatching_p0p1_v01/docs/partwise_sketch_hatching/round_016/REPRODUCE.md"
+  ],
+  "blockers": [
+    "Only a single finite straight ribbon on fronto-parallel coplanar owners and constant-depth separated scene triangles; analytic GT, not reconstruction.",
+    "General orbit, inclined/curved surfaces, AA quality, effective line width, LOD, multi-stroke edit usability, lamp/P1 and RaDe-GS remain unproven.",
+    "Temporal eligibility covers 97/257 fixed path samples and 97/188 continuously visible samples; all pixels remain in full-frame gates.",
+    "Prior round013/012/004 NO_GO and original historical validation child UNKNOWN retained."
+  ],
+  "started_at_jst": "2026-10-21T07:01:29.386458+09:00",
+  "round_deadline_jst": "2026-10-21T07:21:29.386458+09:00",
+  "scope": "Only round015 Astra NEXT: unchanged renderer, axial zoom audit, 12 frames, <=20 minutes.",
+  "updated_at_utc": "2026-10-20T22:08:33.298881+00:00",
+  "protocol_commit": "083da186",
+  "implementation_commit": "a61db174",
+  "asset_lock_commit": "be1e1a4f",
+  "resources": {
+    "root_free_bytes": 91618889728,
+    "hdd_free_bytes": 161908076544,
+    "task_bytes": 241850786,
+    "dependency_bytes": 79897236,
+    "cpu_affinity": [
+      0,
+      1
+    ],
+    "threads_max": 2,
+    "GPU": false
+  },
+  "readiness": {
+    "finite_planar_axial_zoom": true,
+    "general_temporal_stability": "UNMEASURED",
+    "AA_quality": "UNMEASURED",
+    "effective_line_width": "UNMEASURED",
+    "width_edit_response": "UNMEASURED",
+    "lamp_renderer_integration": false,
+    "full_P1": false,
+    "RaDe_GS_reconstruction": false
+  },
+  "write_scope_fully_compliant": true,
+  "next": "NEXT.json",
+  "completed_at_utc": "2026-10-20T22:08:33.298881+00:00",
+  "source_commit": "47792c93da76783c1cf857c740e0ad36e25db367",
+  "report_commit": "47792c93da76783c1cf857c740e0ad36e25db367",
+  "elapsed_minutes": 7.06520705
+}

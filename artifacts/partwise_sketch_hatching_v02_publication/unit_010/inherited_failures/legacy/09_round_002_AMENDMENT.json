@@ -1,0 +1,43 @@
+{
+  "id": "round_002_progress_aware_face_walk",
+  "status": "FROZEN_BEFORE_REPAIR_AND_REPLAY",
+  "scope": "One engineering repair prescribed by round_001 Astra NEXT; not a new scientific method comparison or P1 promotion.",
+  "outline_sections": ["3.2", "5.5", "5.6", "5.8", "9.4", "9.5", "11.1", "12", "14.3"],
+  "prior_source_commit": "62a04c72bc093ddc60164c8d13a302dca555f28e",
+  "prior_protocol": "docs/partwise_sketch_hatching/round_001/PROTOCOL.json",
+  "prior_protocol_sha256": "bed95c2b21ee2579f3cf9ced301d5ef758c42aa2efbca1642bccf5e441d246ff",
+  "mesh_sha256": "f8de0de7f1b8199dd3a8e3c1045dddaebc1a71a9419d8625665c17ce869a9d08",
+  "hypothesis": "Transporting the incoming tangent through the shared edge before sign alignment, and rejecting ambiguous/no-progress crossings, removes the diagnosed sharp-edge ping-pong while retaining the fixed controls and existing gates.",
+  "permitted_changes": [
+    "New versioned walker: shared-edge tangent transport; exact edge anchor; measured geometric arc accounting; explicit boundary/vertex/incompatible-field termination; no-progress cycle guard.",
+    "New versioned runner targeting round_002 and binding previous asset bytes, with native Python bool serialization for the already proven round_001 summary bug.",
+    "Regression, termination/progress audit, and old/new length/coverage/runtime reporting. Preserve all original sources and sealed artifacts."
+  ],
+  "fixed_controls": {
+    "configuration": "Entire round_001 PROTOCOL.json byte-for-byte; only walker and output namespace change.",
+    "seed": 1729,
+    "parts": [1, 2, 3],
+    "counts_lengths_styles_edit": "Unchanged including +35 degree shade edit; stable seed/layer IDs across versions; non-target paths identical before/after edit within each version.",
+    "renderer": "Identical existing renderer, depth tolerance 0.006 world, 512x512 and 2x supersampling.",
+    "cameras_videos": "Same four views; same 36 orbit, 24 zoom, 24 edit frames at 12 FPS.",
+    "mask_band": "Same independent analytic masks and fixed 2px band.",
+    "thresholds": "All prior nine gates unchanged; known two rim depth outliers retained.",
+    "resources": "CPU<=2, no GPU, <=600s per ordinary invocation, <=40min total, total output cap 12GiB."
+  },
+  "regressions": {
+    "minimal": "Two consistently oriented triangles folded by 120deg around shared x edge; .2 world travel to hinge plus .4 along flap. Expected endpoint [0,.2,-sqrt(3)*.2], total arc .6 to 1e-9, one crossing, <20 anchors.",
+    "boundary": "Identical crease with differing part IDs must stop exactly at hinge.",
+    "line_sign": "Negating the unoriented field and seed sign must preserve the path.",
+    "frozen_paths": ["mixed:p2:seed0021:layer0", "parallel:p3:seed0086:layer0", "cross:p1:seed0193:layer1"],
+    "path_failure": "A->B->A with cumulative geometric arc <1e-6 world, or >=200 anchors in a frozen half-path.",
+    "red_green": "Identical regression source must fail on original core.py and pass on core_walk_v2.py; retain exact return codes and outputs."
+  },
+  "go_no_go": {
+    "go": ["RED->GREEN regression", "All original nine correctness/edit/occlusion/video gates pass", "No repeated no-progress edge cycles or iteration-cap terminations in replay", "No changed seed/layer IDs across versions or changed non-target paths within edit", "Self-proxy attachment remains <=1e-9 world and analytic P95 does not exceed previous .01 depth gate"],
+    "no_go": "Any failure is retained. No threshold tuning, no expansion; report engineering_invalid or NO_GO as appropriate.",
+    "descriptive_audits": ["Every half-path termination reason and actual arc", "Arc-length distribution including shortened paths", "Old/new sampled attachment and rendered ink/foreground coverage; not a new quality superiority claim", "Full-view and all-frame contact sheets"],
+    "nonclaims": ["RaDe-GS reconstruction", "Automatic labels", "H1 comparative evidence", "H2-H5", "Independent temporal disappearance or flicker", "24 FPS"]
+  },
+  "data_integrity": "Commit this amendment and unchanged regression before RED. Commit new source and asset lock before identical-control replay. Do not rewrite round_001 seal, source, config, or evidence.",
+  "deadline_jst": "2026-10-21T04:42:34.798663+09:00"
+}

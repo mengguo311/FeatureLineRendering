@@ -1,0 +1,49 @@
+{
+  "verdict": "GO_SYNTHETIC_RGB_INPUT_COVERAGE",
+  "go": true,
+  "reviewed_utc": "2026-10-21T09:21:59.776770+00:00",
+  "method": "Root directly displayed all six actual saved sheets through view_image; independent delegated review also displayed all six with original detail",
+  "images": [
+    {
+      "path": "figures/train_all_views.png",
+      "sha256": "a537f3198f4c46b2790ea9682ff55e67ceab550c65ac8e9183024476e453930a"
+    },
+    {
+      "path": "figures/train_first_middle_last.png",
+      "sha256": "348311186ca33b8711877b3e3e1c7b0ecfde2eae2cc098733d992f5c834ba8df"
+    },
+    {
+      "path": "figures/dev_all_views.png",
+      "sha256": "5ad4885769cf637cf65efcdb1633b960904268d9c018bed509c2dab31b580722"
+    },
+    {
+      "path": "figures/dev_first_middle_last.png",
+      "sha256": "b8cd08c43517fedd30d57b4c161b9b2782b491ef1b92903ead54c9a6547a0f20"
+    },
+    {
+      "path": "figures/test_all_views.png",
+      "sha256": "83a465cc61fa8a1250f27a43245ed3d7cfeb98fdb6fe4423e9d642e35ccdf740"
+    },
+    {
+      "path": "figures/test_first_middle_last.png",
+      "sha256": "2c4cd1751db1356917329859b04b7420083230b3f1b2494eee8628e512841bba"
+    }
+  ],
+  "unique_views_reviewed_as_thumbnails": 120,
+  "native_first_middle_last_panels": 9,
+  "observations": [
+    "Every view shows a complete lamp within white margins; no blank/corrupt/missing image or silhouette clipping observed.",
+    "Orange-brown shade, gray stem and blue base remain distinct. At elevation40 the stem is foreshortened/partly hidden but a short central segment is visible in all tiles.",
+    "Native frames show opening/rim at elevation25/40; fixed world light changes apparent illumination around azimuth. Mild face shading bands on shade/stem and faceted base bevel remain visible.",
+    "Uniform materials, white background, absence of contact/cast shadows and texture make this plainly synthetic input."
+  ],
+  "limitations": [
+    "All120 seen at contact-sheet scale; only9 panels additionally inspected at native512. All120 full-resolution PNG independently decoded and coverage measured separately.",
+    "Visual inspection is input integrity/coverage only; no reconstructed surface, NPR quality, temporal stability or H1/H2 claim.",
+    "The initial principal-point draft mismatch was corrected before RGB generation; numerical compatibility evidence comes from explicit projection tests, not visual inspection.",
+    "Unmodified official reader failed on signed RGB dtype. Local adapter success and preserved initial failure are separate from this visual GO."
+  ],
+  "failing_views": [],
+  "changes_after_inspection": "NONE",
+  "delegated_review_sha256": "ca28f755ddaff1acf6894836c11a5fd52eda59273d075504881a34048eb77d31"
+}
