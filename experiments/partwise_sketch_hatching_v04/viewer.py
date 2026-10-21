@@ -13,7 +13,8 @@ from PIL import Image
 from urllib.parse import urlsplit
 from demo import load_asset,edit,new_output,save_frame
 from geometry import orbit_camera,ray_surface
-from region_tools import select_faces,selection_summary,author_region
+from region_tools import select_faces,selection_summary,author_face_selection
+from screen_selection import visible_faces,pick_region
 
 class Editor:
     def __init__(self,asset,output):
@@ -59,24 +60,37 @@ class Editor:
     def preview_selection(self,values):
         if int(values['revision'])!=self.revision:raise ValueError('view changed; preview again')
         mesh,_,_=load_asset(self.asset);source=int(values['source_region'])
-        ids=select_faces(mesh,values['bounds'],source)
-        summary=selection_summary(mesh,values['bounds'],source)
         camera=orbit_camera(**self.record['camera'])
+        mode=values.get('mode','box')
+        if mode=='visible':
+            ids,summary=visible_faces(mesh,camera,values['rectangle'],source)
+            provenance=dict(operation='manual_visible_rectangle',camera=camera,rectangle=summary['rectangle'],
+                            rule=summary['rule'],provenance='manual visible proxy face selection; not semantic segmentation')
+        elif mode=='box':
+            ids=select_faces(mesh,values['bounds'],source)
+            summary=selection_summary(mesh,values['bounds'],source)
+            provenance=dict(operation='manual_box_split',bounds=summary['bounds'],rule=summary['rule'])
+        else:raise ValueError('unknown selection mode')
         _,face,_,_=ray_surface(mesh,camera,2)
         selected=np.isin(face,ids).reshape(512,2,512,2).mean((1,3))
         proxy=np.asarray(Image.open(self.output/f'view_{self.revision:04d}/frame_000_proxy.png').convert('RGB'),float)/255
         overlay=proxy*(1-.75*selected[:,:,None])+np.array([.85,.16,.55])*(.75*selected[:,:,None])
         self.preview_count+=1;filename=f'selection_preview_{self.preview_count:04d}.png'
         Image.fromarray(np.uint8(overlay*255+.5)).save(self.output/filename)
-        self.pending=dict(revision=self.revision,source_region=source,bounds=summary['bounds'],
+        self.pending=dict(revision=self.revision,source_region=source,face_ids=ids,selection=provenance,
                           token=f'{self.revision}:{self.preview_count}')
         return dict(**summary,visible_pixels=float(selected.sum()),token=self.pending['token'],image='/image/'+filename)
+
+    def pick(self,values):
+        if int(values['revision'])!=self.revision:raise ValueError('view changed; pick again')
+        mesh,_,_=load_asset(self.asset)
+        return pick_region(mesh,orbit_camera(**self.record['camera']),values['point'])
 
     def author(self,values):
         if self.pending is None or values.get('token')!=self.pending['token'] or self.pending['revision']!=self.revision:
             raise ValueError('selection preview expired; preview the box again')
         pending=self.pending;destination=self.output/f'asset_{self.revision+1:04d}'
-        result=author_region(self.asset,destination,pending['bounds'],pending['source_region'],values['name'])
+        result=author_face_selection(self.asset,destination,pending['face_ids'],pending['source_region'],values['name'],pending['selection'])
         self.history.append((self.asset,self.record['camera']))
         self.revision+=1;self.pending=None
         meta=json.loads((destination/'asset.json').read_text());meta['viewer_camera']=self.record['camera']
@@ -115,13 +129,13 @@ class Handler(BaseHTTPRequestHandler):
         else:self.send({'error':'not found'},status=404)
     def do_POST(self):
         path=urlsplit(self.path).path
-        if path not in ('/render','/selection','/author','/undo'):return self.send({'error':'not found'},status=404)
+        if path not in ('/render','/selection','/author','/undo','/pick'):return self.send({'error':'not found'},status=404)
         try:
             length=int(self.headers.get('Content-Length',0))
             if not 0<length<=4096:raise ValueError('invalid request length')
             values=json.loads(self.rfile.read(length))
             result=(self.editor.apply(values) if path=='/render' else self.editor.preview_selection(values) if path=='/selection'
-                    else self.editor.author(values) if path=='/author' else self.editor.undo())
+                    else self.editor.author(values) if path=='/author' else self.editor.pick(values) if path=='/pick' else self.editor.undo())
             self.send(result)
         except (ValueError,KeyError,TypeError) as exc:self.send({'error':str(exc)},status=422)
 

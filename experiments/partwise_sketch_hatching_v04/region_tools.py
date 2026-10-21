@@ -41,9 +41,25 @@ def path_stats(data,region):
 
 def author_region(asset,output,bounds,source_region,name):
     mesh,strokes,meta=load_asset(asset)
+    selected=select_faces(mesh,bounds,source_region)
+    return author_face_selection(asset,output,selected,source_region,name,dict(
+        operation='manual_box_split',bounds=list(map(float,bounds)),
+        provenance='authored world-space bounds on proxy face centroids, NOT automatic semantic segmentation'))
+
+def author_face_selection(asset,output,selected,source_region,name,selection):
+    """Split saved proxy face IDs; preserve all unselected path segments exactly."""
+    mesh,strokes,meta=load_asset(asset)
     name=str(name).strip()
     if not 1<=len(name)<=80:raise ValueError('region name must have 1 to 80 characters')
-    selected=select_faces(mesh,bounds,source_region)
+    raw=np.asarray(selected)
+    if (raw.ndim!=1 or not len(raw) or not np.isfinite(raw).all() or
+        not ((raw==np.floor(raw))&(raw>=0)&(raw<len(mesh['faces']))).all()):
+        raise ValueError('selection requires valid integer proxy face IDs')
+    selected=np.unique(raw).astype(np.int32)
+    if source_region not in strokes or not (mesh['regions'][selected]==source_region).all():
+        raise ValueError('selected faces must belong to the source region')
+    if len(selected)==int((mesh['regions']==source_region).sum()):
+        raise ValueError('selection must leave some faces in the source region')
     region=max(strokes)+1
     if region>32:raise ValueError('demo supports at most 32 region IDs')
     labels=mesh['regions'].copy();labels[selected]=region
@@ -64,20 +80,20 @@ def author_region(asset,output,bounds,source_region,name):
     np.savez_compressed(output/f'region_{region}.npz',**generated)
     selection_file=f'selection_{region}.npz'
     np.savez_compressed(output/selection_file,face_ids=selected,previous_region=np.full(len(selected),source_region,np.int32))
-    record=dict(utc=now(),operation='manual_box_split',new_region=region,name=name,
-        source_region=source_region,bounds=list(map(float,bounds)),
+    record=dict(selection,utc=now(),new_region=region,name=name,
+        source_region=source_region,
         face_ids_file=selection_file,face_ids_sha256=sha(output/selection_file),
         selected_faces=len(selected),parent_asset_sha256=sha(Path(asset)/'asset.json'),
         parent_mesh_sha256=meta['mesh_sha256'],
         geometry='vertices and indexed faces unchanged; only face labels changed',
         retained_source_segments=int(keep.sum()),removed_source_segments=int((~keep).sum()),
         non_target_policy='all unselected segments retain points/bary/face/stroke_id exactly; other region files copied',
-        provenance='authored world-space bounds on proxy face centroids, NOT automatic semantic segmentation')
+        provenance=selection.get('provenance','manual proxy face selection, NOT automatic semantic segmentation'))
     meta['version']=2;meta['regions'][str(region)]=name;meta['styles'][str(region)]=style
     meta['statistics'][str(source_region)]=path_stats(retained,source_region)
     meta['statistics'][str(region)]=stats
     meta.setdefault('region_history',[]).append(record)
-    meta['region_provenance']='Authored height regions with saved manual world-box face selections; not learned semantic parts.'
+    meta['region_provenance']='Authored height regions with saved manual proxy face selections; not learned semantic parts.'
     meta['mesh_sha256']=sha(output/'mesh.npz')
     js(output/'asset.json',meta)
     print(__import__('json').dumps(dict(asset=str(output),authoring=record)),flush=True)

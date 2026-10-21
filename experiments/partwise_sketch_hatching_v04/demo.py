@@ -96,6 +96,7 @@ def main():
     p.add_argument('--scene',default='chair');p.add_argument('--unit',type=Path);p.add_argument('--asset',type=Path)
     p.add_argument('--output',required=True,type=Path);p.add_argument('--region','--part',type=int)
     p.add_argument('--bounds',type=float,nargs=6,metavar=('XMIN','YMIN','ZMIN','XMAX','YMAX','ZMAX'))
+    p.add_argument('--screen-rect',type=float,nargs=4,metavar=('LEFT','TOP','RIGHT','BOTTOM'))
     p.add_argument('--name',default='Manual region')
     for name in ('angle','spacing','length','width'):p.add_argument('--'+name,type=float)
     p.add_argument('--view');p.add_argument('--trajectory',choices=['static','orbit','zoom'])
@@ -125,9 +126,20 @@ def main():
         if not a.unit:p.error('create requires --unit')
         create(a.unit,a.output,a.scene)
     elif a.command=='author':
-        if not a.asset or not a.region or a.bounds is None:p.error('author requires --asset, --region and --bounds')
-        from region_tools import author_region
-        author_region(a.asset,a.output,a.bounds,a.region,a.name)
+        if not a.asset or not a.region or (a.bounds is None)==(a.screen_rect is None):
+            p.error('author requires --asset, --region and exactly one of --bounds or --screen-rect')
+        mesh,_,meta=load_asset(a.asset)
+        if meta['scene']!=a.scene:p.error('scene/asset mismatch')
+        from region_tools import author_region,author_face_selection
+        if a.bounds is not None:author_region(a.asset,a.output,a.bounds,a.region,a.name)
+        else:
+            if not 64<=a.size<=1024:p.error('--size must be between 64 and 1024')
+            from screen_selection import visible_faces
+            c=orbit_camera(a.azimuth,a.elevation,a.distance,a.size)
+            ids,summary=visible_faces(mesh,c,a.screen_rect,a.region)
+            author_face_selection(a.asset,a.output,ids,a.region,a.name,dict(operation='manual_visible_rectangle',
+                camera=c,rectangle=summary['rectangle'],rule=summary['rule'],
+                provenance='manual visible proxy face selection; not semantic segmentation'))
     elif a.command=='edit':
         if not a.asset or not a.region:p.error('edit requires --asset and --region')
         changes={k:getattr(a,k) for k in ('angle','spacing','length','width') if getattr(a,k) is not None}
