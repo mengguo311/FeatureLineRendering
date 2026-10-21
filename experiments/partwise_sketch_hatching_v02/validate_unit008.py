@@ -60,9 +60,28 @@ def arrays_equal(left, right, context):
     for key in sorted(left):
         require(left[key].dtype == right[key].dtype,
                 f'{context}: dtype differs: {key}')
-        require(np.array_equal(left[key], right[key]),
+        require(left[key].shape == right[key].shape and
+                left[key].tobytes() == right[key].tobytes(),
                 f'{context}: saved array differs: {key}')
     return list(sorted(left))
+
+
+def retained_bytes_equal(left_path, right_path, ids):
+    left, right = load_npz(left_path), load_npz(right_path)
+    lookup = [{str(sid): index for index, sid in enumerate(data['ids'])}
+              for data in (left, right)]
+    for sid in sorted(ids):
+        pieces = []
+        for data, indexes in zip((left, right), lookup):
+            index = indexes[sid]
+            lo, hi = data['offsets'][index:index + 2]
+            pieces.append({**{key: data[key][index:index + 1]
+                               for key in ('ids', 'parts', 'inks')},
+                           'faces': data['faces'][lo:hi], 'bary': data['bary'][lo:hi]})
+        arrays_equal(pieces[0], pieces[1], 'retained per-field bytes ' + sid)
+    return dict(strokes=len(ids), fields=['ids', 'parts', 'inks', 'faces', 'bary'],
+                checked=['dtype', 'shape', 'bytes'],
+                offsets='Archive offsets can shift with target path lengths; per-stroke slices are compared')
 
 
 def path_revision(path):
@@ -150,6 +169,8 @@ def audit_direction_contract(unit):
     edited_retained = {sid: path for sid, path in edited.items() if path['part'] != 1}
     require(assert_strokes_equal(retained, edited_retained, 'untouched parts') == 198,
             'non-target count is not198')
+    retained_byte_check = retained_bytes_equal(ORIGIN / 'inputs/selected.npz',
+                                               folders['edited'] / 'strokes.npz', retained)
     revisions = []
     for sid in sorted(baseline):
         old, new = baseline[sid], edited[sid]
@@ -178,6 +199,7 @@ def audit_direction_contract(unit):
         require(assert_strokes_equal(edited, strokes(folders[name] / 'strokes.npz'), name) == 458,
                 f'{name}: wrong count')
     return dict(unchanged_non_target_paths_ids_inks=198,
+                unchanged_non_target_per_field_bytes=retained_byte_check,
                 retained_target_seed_ids=260, changed_target_paths=changed,
                 target_revisions=revisions, cold_exact_array_keys=cold,
                 only_config_change='add direction_by_part={"1":15.0}',
