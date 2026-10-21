@@ -2,6 +2,7 @@ from runtime import *
 import unittest
 from unittest.mock import patch
 from diagnostic import headroom_status, topology, curve_evidence, display_metrics
+from reference import ray_depth
 sys.path.insert(0, str(WORK / 'experiments/partwise_sketch_hatching'))
 from experiments.partwise_sketch_hatching import core_walk_v2 as walker
 
@@ -69,6 +70,13 @@ class HeadroomTests(unittest.TestCase):
 
     def test_output_guard_rejects_old_output(self):
         with self.assertRaises(ValueError): output_path(BASE/'forbidden_probe.json')
+
+    def test_independent_continuous_hiding_reference_known_intersections(self):
+        _,_,cfg=load_asset()
+        depths,parts=ray_depth(cfg['asset'],np.array([[0.,3.,0.],[2.,1.,0.],[2.,.08,0.]]),
+                               np.array([[0.,-1.,0.],[-1.,0.,0.],[-1.,0.,0.]]))
+        np.testing.assert_allclose(depths,[1.28,1.925,1.42],rtol=0,atol=1e-12)
+        np.testing.assert_array_equal(parts,[2,2,3])
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
