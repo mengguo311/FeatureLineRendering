@@ -1,7 +1,7 @@
 {
   "unit": "unit_006",
   "status": "FROZEN_BEFORE_EVALUATION",
-  "created_utc": "2026-10-21T09:07:57.158871+00:00",
+  "created_utc": "2026-10-21T09:12:34.179803+00:00",
   "question": "Can the current complete three-part authored lamp become an explicit RGB/camera-only reconstruction input with disjoint splits, usable loader and isolated oracle?",
   "changed_variable": "One input-bridge addition only; inherited NPR styles, paths, renderer and failed density gates are not changed.",
   "scope": "Synthetic input readiness only; no trained reconstruction, main reconstructed proxy, H1/H2, or full-P1 claim.",
@@ -43,8 +43,8 @@
     "supersample": 2,
     "focal_px": 600.0,
     "principal_point": [
-      256.0,
-      256.0
+      255.5,
+      255.5
     ],
     "distance": 4.5,
     "look_at": [
@@ -59,7 +59,7 @@
     ],
     "world": "right-handed y-up",
     "canonical": "x-right,y-down,z-forward; W2C row-vector Xc=Xw@R.T+t; depth optical z",
-    "export": "NeRF/OpenGL C2W x-right,y-up,z-back; C2W_cv @ diag(1,-1,-1,1); pixel centers integer"
+    "export": "NeRF/OpenGL C2W x-right,y-up,z-back; C2W_cv @ diag(1,-1,-1,1); pixel centers integer; principal point (size-1)/2 agrees with official ndc2Pix; no subpixel export offset"
   },
   "splits": {
     "train": {
@@ -120,7 +120,7 @@
     "exposure": "New RGB viewpoints, authored geometry and profile already exposed in prior units; this is preparation and inspection, not blind research evaluation. Test RGB inspected for integrity only; no tuning after freeze."
   },
   "renderer": {
-    "name": "CPU triangle z-buffer, perspective-correct world interpolation, 2x2 box AA",
+    "name": "CPU triangle z-buffer, perspective-correct optical-depth interpolation, 2x2 box AA",
     "normal": "flat oriented face normals, two-sided triangles, no backface cull",
     "lighting": {
       "ambient": 0.35,
@@ -196,5 +196,6 @@
     "unit001/002 visual NO_GO; inherited17 hidden-profile observations/rim outliers",
     "historical rc1/143/UNKNOWN and round004/012/013 NO_GO",
     "unit005 preview is DIAGNOSTIC_PREVIEW_ONLY"
-  ]
+  ],
+  "revision": 2
 }
