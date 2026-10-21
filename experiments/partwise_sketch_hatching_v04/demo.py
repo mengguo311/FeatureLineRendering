@@ -15,7 +15,7 @@ from render import render
 def load_asset(path):
     path=Path(path);meta=json.loads((path/'asset.json').read_text())
     if sha(path/'mesh.npz')!=meta['mesh_sha256']:raise ValueError('proxy checksum mismatch')
-    with np.load(path/'mesh.npz') as d:mesh=mesh_data(d['vertices'],d['faces'])
+    with np.load(path/'mesh.npz') as d:mesh=mesh_data(d['vertices'],d['faces'],d.get('face_regions'))
     strokes={}
     for region in (1,2,3):
         with np.load(path/f'region_{region}.npz') as d:strokes[region]={k:d[k] for k in d.files}
@@ -37,7 +37,7 @@ def create(unit,output,scene):
     p=json.loads((unit/'PROTOCOL.json').read_text())
     if p['scene']!=scene:raise ValueError('scene/protocol mismatch')
     output=new_output(output);shutil.copy2(unit/'proxy/mesh.npz',output/'mesh.npz')
-    with np.load(output/'mesh.npz') as d:mesh=mesh_data(d['vertices'],d['faces'])
+    with np.load(output/'mesh.npz') as d:mesh=mesh_data(d['vertices'],d['faces'],d.get('face_regions'))
     stats={}
     for region in (1,2,3):
         data,stat=generate_region(mesh,region,p['styles'][str(region)])
@@ -96,7 +96,14 @@ def main():
         output=new_output(a.output)
         shutil.copy2(a.unit/'PROTOCOL.json',output/'PROTOCOL.json')
         from build_proxy import build
-        build(output)
+        if 'refinement' in protocol:
+            raw=output/'raw_source';raw.mkdir()
+            shutil.copy2(a.unit/'PROTOCOL.json',raw/'PROTOCOL.json')
+            build(raw)
+            from refine_proxy import build as refine_build
+            refine_build(output,source_mesh=raw/'proxy/mesh.npz')
+        else:
+            build(output)
         asset=output/'assets/baseline';create(output,asset,a.scene)
         mesh,strokes,meta=load_asset(asset)
         destination=output/'renders/first';destination.mkdir(parents=True)

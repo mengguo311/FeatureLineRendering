@@ -4,6 +4,8 @@ from runtime import js,now,output_guard
 import argparse
 import subprocess
 import time
+import os
+import signal
 from pathlib import Path
 
 if __name__=='__main__':
@@ -15,9 +17,30 @@ if __name__=='__main__':
     receipt=folder/(a.name+'.receipt.json')
     if receipt.exists():raise FileExistsError(receipt)
     start=now();t=time.monotonic()
+    interrupted=[]
     with open(folder/(a.name+'.log'),'w') as log:
-        result=subprocess.run(command,stdout=log,stderr=subprocess.STDOUT,timeout=590)
+        process=subprocess.Popen(command,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
+        js(folder/(a.name+'.start.json'),dict(command=command,start_utc=start,pid=process.pid,
+                                           own_process_group=process.pid))
+        def stop(signum, frame):
+            interrupted.append(signum)
+            if process.poll() is None:
+                try:os.killpg(process.pid,signal.SIGTERM)
+                except ProcessLookupError:pass
+        signal.signal(signal.SIGTERM,stop)
+        signal.signal(signal.SIGINT,stop)
+        while True:
+            try:
+                returncode=process.wait(timeout=5)
+                break
+            except subprocess.TimeoutExpired:
+                elapsed=time.monotonic()-t
+                print(f'{a.name}: running {elapsed:.0f}s; child PID {process.pid}',flush=True)
+                if elapsed>580 or interrupted:
+                    os.killpg(process.pid,signal.SIGKILL)
+                    returncode=process.wait(timeout=10)
+                    break
     js(receipt,dict(command=command,cwd=str(Path.cwd()),start_utc=start,end_utc=now(),seconds=time.monotonic()-t,
-                    returncode=result.returncode,log=str(folder/(a.name+'.log'))))
+                    returncode=returncode,interrupt_signals=interrupted,log=str(folder/(a.name+'.log'))))
     print(receipt.read_text(),flush=True)
-    raise SystemExit(result.returncode)
+    raise SystemExit(returncode if not interrupted else 128+interrupted[0])

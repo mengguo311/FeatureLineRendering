@@ -24,7 +24,7 @@ class Editor:
         save_frame(folder,'frame_000',mesh,strokes,meta,camera)
         record=dict(styles=meta['styles'],revision=self.revision,seconds=time.monotonic()-t,
                     images={k:f'/image/view_{self.revision:04d}/frame_000_{k}.png' for k in ('image','region_rgb','proxy')},
-                    asset=str(self.asset),camera=values)
+                    asset=str(self.asset),camera={k:values[k] for k in ('azimuth','elevation','distance')})
         js(self.output/'CURRENT.json',record)
         return record
 

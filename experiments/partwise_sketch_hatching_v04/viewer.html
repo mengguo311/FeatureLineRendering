@@ -29,5 +29,5 @@ $('controls').onsubmit=e=>{e.preventDefault();render();};for(const k of names)$(
 for(const [id,key] of [['hatch','image'],['regions','region_rgb'],['proxy','proxy']])$(id).onclick=()=>{mode=key;show();};
 for(const [id,d] of [['left',-30],['right',30]])$(id).onclick=()=>{$('azimuth').value=((+$('azimuth').value+d+540)%360)-180;values();render();};
 $('closer').onclick=()=>{$('distance').value=Math.max(3.8,+$('distance').value-.2);values();render();};
-fetch('/state').then(r=>r.json()).then(s=>{state=s;region();show();$('status').textContent='Ready · changes are saved as editable 3D assets';}).catch(e=>{$('status').textContent=e.message;});
+fetch('/state').then(r=>r.json()).then(s=>{state=s;for(const k of ['azimuth','elevation','distance'])$(k).value=s.camera[k];region();show();$('status').textContent='Ready · changes are saved as editable 3D assets';}).catch(e=>{$('status').textContent=e.message;});
 </script></html>

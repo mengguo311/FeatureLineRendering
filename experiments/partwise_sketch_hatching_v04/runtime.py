@@ -17,6 +17,8 @@ import shutil
 _package = Path(__file__).resolve().parent.parent
 OUTPUT_ROOT = (_package if (_package/'PORTABLE_DEMO.json').is_file()
                else Path('/mnt/hdd1/u00134/partwise_sketch_hatching_models_v04'))
+if not (_package/'PORTABLE_DEMO.json').is_file():
+    os.environ['TMPDIR'] = str(OUTPUT_ROOT/'orchestration/scratch')
 
 def sha(path):
     h = hashlib.sha256()

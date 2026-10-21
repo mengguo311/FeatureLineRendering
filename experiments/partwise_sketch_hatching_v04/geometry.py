@@ -52,11 +52,14 @@ def region_ids(points):
     """Authored height style regions, NOT learned semantic parts."""
     return np.where(points[:, 2] < -.35, 1, np.where(points[:, 2] < .20, 2, 3)).astype(np.int32)
 
-def mesh_data(vertices, faces):
+def mesh_data(vertices, faces, face_regions=None):
     tri = vertices[faces]
     cross = np.cross(tri[:, 1]-tri[:, 0], tri[:, 2]-tri[:, 0])
+    regions = region_ids(tri.mean(axis=1)) if face_regions is None else np.asarray(face_regions)
+    if regions.shape != (len(faces),) or not np.isin(regions, [1, 2, 3]).all():
+        raise ValueError('one valid saved region ID per face is required')
     return dict(vertices=vertices, faces=faces, tri=tri, normals=normalize(cross),
-                regions=region_ids(tri.mean(axis=1)))
+                regions=regions.astype(np.int32))
 
 def ray_surface(mesh, c, supersample=2):
     import open3d as o3d

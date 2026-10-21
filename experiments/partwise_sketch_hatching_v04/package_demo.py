@@ -21,9 +21,10 @@ def package(unit):
     shutil.copy2(unit/'proxy/source_train_r_32.png',previews/'source_model_rgb.png')
     deps=json.loads((unit/'DEPENDENCIES.json').read_text())
     (out/'requirements.txt').write_text(''.join(f'{k}=={v}\n' for k,v in deps['packages'].items()))
-    js(out/'PORTABLE_DEMO.json',dict(scene='chair',created_utc=now(),original_model_sha256=json.loads((unit/'PROTOCOL.json').read_text())['original']['sha256'],
+    protocol=json.loads((unit/'PROTOCOL.json').read_text())
+    js(out/'PORTABLE_DEMO.json',dict(scene=protocol['scene'],created_utc=now(),original_model_sha256=protocol['original']['sha256'],
                                    saved_asset_render_requires_original_inputs=False,
-                                   quality='partial exploratory proxy',source='unit_001 source snapshot',
+                                   quality='partial exploratory proxy',source=unit.name+' source snapshot',
                                    output_rule='portable code writes only inside this package directory'))
     shell='''#!/usr/bin/env bash
 set -eu
@@ -34,13 +35,13 @@ if [ -z "${DEMO_PY:-}" ]; then
 fi
 DEMO_STAMP=$(date +%Y%m%d_%H%M%S)
 case "${1:-preview}" in
-  preview) exec "$DEMO_PY" "$DEMO_PACKAGE/source/demo.py" render --scene chair --asset "$DEMO_PACKAGE/assets/edited" --view train_r_32 --output "$DEMO_PACKAGE/runs/preview_$DEMO_STAMP" ;;
-  viewer) exec "$DEMO_PY" "$DEMO_PACKAGE/source/viewer.py" --asset "$DEMO_PACKAGE/assets/baseline" --output "$DEMO_PACKAGE/runs/viewer_$DEMO_STAMP" --port "${DEMO_PORT:-8765}" ;;
-  orbit|zoom) exec "$DEMO_PY" "$DEMO_PACKAGE/source/demo.py" render --scene chair --asset "$DEMO_PACKAGE/assets/edited" --trajectory "$1" --output "$DEMO_PACKAGE/runs/${1}_$DEMO_STAMP" ;;
+  preview) exec "$DEMO_PY" "$DEMO_PACKAGE/source/demo.py" render --scene __SCENE__ --asset "$DEMO_PACKAGE/assets/${DEMO_ASSET:-edited}" --view train_r_32 --output "$DEMO_PACKAGE/runs/preview_$DEMO_STAMP" ;;
+  viewer) exec "$DEMO_PY" "$DEMO_PACKAGE/source/viewer.py" --asset "$DEMO_PACKAGE/assets/${DEMO_ASSET:-baseline}" --output "$DEMO_PACKAGE/runs/viewer_$DEMO_STAMP" --port "${DEMO_PORT:-8765}" ;;
+  orbit|zoom) exec "$DEMO_PY" "$DEMO_PACKAGE/source/demo.py" render --scene __SCENE__ --asset "$DEMO_PACKAGE/assets/${DEMO_ASSET:-edited}" --trajectory "$1" --output "$DEMO_PACKAGE/runs/${1}_$DEMO_STAMP" ;;
   *) printf '%s\n' 'Usage: ./run.sh [preview|viewer|orbit|zoom]'; exit 2 ;;
 esac
 '''
-    (out/'run.sh').write_text(shell);os.chmod(out/'run.sh',0o755)
+    (out/'run.sh').write_text(shell.replace('__SCENE__',protocol['scene']));os.chmod(out/'run.sh',0o755)
     readme=Path('docs/partwise_sketch_hatching_v04/DEMO_README_ZH.md').read_text()
     prefix='''# Portable quick start
 

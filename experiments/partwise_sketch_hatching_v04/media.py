@@ -25,9 +25,11 @@ def create(unit):
     p=json.loads((unit/'PROTOCOL.json').read_text())
     items=[]
     for i,c in enumerate(p['static_cameras']):
-        ref=Image.open(p['references'][c['view']]).convert('RGBA')
+        refpath=p['references'].get(c['view'],str(unit/f'source_model/frame_{i:03d}_rgb.png'))
+        ref=Image.open(refpath).convert('RGBA')
         white=Image.new('RGBA',ref.size,'white');white.alpha_composite(ref)
-        items.append((c['view']+' | reference RGB',white))
+        label='reference RGB' if c['view'] in p['references'] else 'source GS RGB'
+        items.append((c['view']+' | '+label,white))
         for label,key in [('Model-derived proxy','proxy'),('Authored height regions','region_rgb'),('Fixed 3D hatch baseline','image')]:
             items.append((label,Image.open(unit/f'renders/static_baseline/frame_{i:03d}_{key}.png')))
     contact(out/'reference_proxy_regions_hatch.png',items,title='Chair | original model -> exploratory TSDF proxy -> persistent 3D hatching')
@@ -36,6 +38,16 @@ def create(unit):
         for name in ('baseline','edited'):
             before_after.append((c['view']+' | '+name,Image.open(unit/f'renders/static_{name}/frame_{i:03d}_image.png')))
     contact(out/'local_edit_all_views.png',before_after,cols=4,title='Middle region angle 45 -> 95 degrees | upper/lower paths preserved')
+    if (unit/'renders/static_original').exists():
+        for start,group in [(0,'historical'),(4,'new')]:
+            comparisons=[]
+            for i,c in list(enumerate(p['static_cameras']))[start:start+4]:
+                comparisons.append((c['view']+' | source GS RGB',Image.open(unit/f'source_model/frame_{i:03d}_rgb.png')))
+                for label,arm,key in [('Original proxy','original','proxy'),('Bounded smooth proxy','baseline','proxy'),
+                                      ('Original hatching','original','image'),('Candidate hatching','baseline','image')]:
+                    comparisons.append((label,Image.open(unit/f'renders/static_{arm}/frame_{i:03d}_{key}.png')))
+            contact(out/f'refinement_{group}_views.png',comparisons,cols=5,size=384,
+                    title='Chair | same styles and cameras | geometry only | complete objects, including weak views')
     video_receipts=[]
     for name in ('orbit','zoom'):
         folder=unit/f'renders/{name}';files=sorted(folder.glob('frame_*_image.png'))
