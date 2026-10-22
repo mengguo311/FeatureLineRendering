@@ -9,6 +9,7 @@ import time
 import json
 import urllib.request
 import urllib.error
+import signal
 import numpy as np
 
 def run(unit):
@@ -16,6 +17,8 @@ def run(unit):
     command=[sys.executable,str(Path(__file__).with_name('viewer.py')),'--asset',str(unit/'assets/baseline'),
              '--output',str(out),'--port','0']
     process=subprocess.Popen(command,stdout=log,stderr=subprocess.STDOUT)
+    def interrupted(signum,frame):raise KeyboardInterrupt('stop own HTTP control test')
+    signal.signal(signal.SIGTERM,interrupted)
     events=[]
     try:
         start=time.monotonic()

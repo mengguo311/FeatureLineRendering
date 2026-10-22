@@ -11,7 +11,7 @@ import shutil
 import numpy as np
 from demo import load_asset, new_output
 from geometry import mesh_data
-from hatching import generate_region
+from hatching import generate_layers,layer_ids
 
 def select_faces(mesh,bounds,source_region):
     b=np.asarray(bounds,float)
@@ -47,7 +47,8 @@ def author_region(asset,output,bounds,source_region,name):
         provenance='authored world-space bounds on proxy face centroids, NOT automatic semantic segmentation'))
 
 def author_face_selection(asset,output,selected,source_region,name,selection):
-    """Split saved proxy face IDs; preserve all unselected path segments exactly."""
+    """Relabel faces and transfer existing segments without reflowing hatching."""
+    from hatching import visibility_masks
     mesh,strokes,meta=load_asset(asset)
     name=str(name).strip()
     if not 1<=len(name)<=80:raise ValueError('region name must have 1 to 80 characters')
@@ -65,21 +66,45 @@ def author_face_selection(asset,output,selected,source_region,name,selection):
     labels=mesh['regions'].copy();labels[selected]=region
     new_mesh=mesh_data(mesh['vertices'],mesh['faces'],labels)
     old=strokes[source_region];keep=~np.isin(old['face'],selected)
-    if not keep.any():raise ValueError('selection would leave source region without any hatch paths')
-    retained={k:v[keep] for k,v in old.items()}
+    if not (keep&(layer_ids(old)==0)).any():raise ValueError('selection would leave source region without any base hatch paths')
+    if meta['styles'][str(source_region)].get('cross_enabled',False) and not (keep&(layer_ids(old)==1)).any():
+        raise ValueError('selection would leave source region without its enabled cross hatch paths')
+    # Expand saved raster support wherever the split label previously appeared.
+    # This includes earlier siblings after repeated splits. Geometry/IDs stay
+    # unchanged; no visibility support is inferred from spatial proximity.
+    support_updates={}
+    for r,paths in strokes.items():
+        masks=visibility_masks(paths,r)
+        affected=(masks & np.uint64(1 << source_region))!=0
+        if affected.any():
+            masks=masks.copy();masks[affected] |= np.uint64(1 << region)
+            support_updates[r]=dict(paths,visibility_mask=masks)
+    old_with_support=support_updates[source_region]
+    retained={k:v[keep] for k,v in old_with_support.items()}
     style=dict(meta['styles'][str(source_region)])
     # Plane choice must follow the source style, never a newly allocated ID.
     style.setdefault('plane','xz' if source_region==3 else 'xy')
-    generated,stats=generate_region(new_mesh,region,style)
-    if not len(generated['points']):raise ValueError('selected faces have no hatch support at this spacing')
+    generated={k:v[~keep] for k,v in old_with_support.items()}
+    if not len(generated['points']) or not (layer_ids(generated)==0).any():
+        raise ValueError('selected faces have no existing base hatch support; choose a larger patch')
+    if style.get('cross_enabled',False) and not (layer_ids(generated)==1).any():
+        raise ValueError('selected faces have no existing cross hatch support; choose a larger patch')
+    stats=path_stats(generated,region)
+    stats['construction']='Transferred parent segments, original points/bary/face/stroke IDs and capsule support; no regeneration'
+    if 'cross_layer' in meta['statistics'][str(source_region)]:
+        stats['cross_layer']=path_stats({k:v[layer_ids(generated)==1] for k,v in generated.items()},region)
     output=new_output(output)
     for p in Path(asset).iterdir():
         if p.is_file():shutil.copy2(p,output/p.name)
     np.savez_compressed(output/'mesh.npz',vertices=mesh['vertices'],faces=mesh['faces'],face_regions=labels)
     np.savez_compressed(output/f'region_{source_region}.npz',**retained)
     np.savez_compressed(output/f'region_{region}.npz',**generated)
+    for r,data in support_updates.items():
+        if r!=source_region:np.savez_compressed(output/f'region_{r}.npz',**data)
     selection_file=f'selection_{region}.npz'
-    np.savez_compressed(output/selection_file,face_ids=selected,previous_region=np.full(len(selected),source_region,np.int32))
+    np.savez_compressed(output/selection_file,face_ids=selected,previous_region=np.full(len(selected),source_region,np.int32),
+                        parent_segment_index=np.flatnonzero(~keep),parent_stroke_id=old['stroke_id'][~keep],
+                        parent_layer_id=layer_ids(old)[~keep])
     record=dict(selection,utc=now(),new_region=region,name=name,
         source_region=source_region,
         face_ids_file=selection_file,face_ids_sha256=sha(output/selection_file),
@@ -87,14 +112,20 @@ def author_face_selection(asset,output,selected,source_region,name,selection):
         parent_mesh_sha256=meta['mesh_sha256'],
         geometry='vertices and indexed faces unchanged; only face labels changed',
         retained_source_segments=int(keep.sum()),removed_source_segments=int((~keep).sum()),
-        non_target_policy='all unselected segments retain points/bary/face/stroke_id exactly; other region files copied',
+        transferred_segments=int((~keep).sum()),paths_regenerated=False,
+        capsule_support_updated_regions=sorted(support_updates),
+        capsule_support='Explicit per-segment current-region bitset retains original depth-tested footprint across manual splits. New generated layers use owner-only support.',
+        parent_identity='selection file maps each transferred segment to parent array index, stroke ID and direction layer; stroke IDs retained, no Gaussian IDs',
+        non_target_policy='all unselected segments retain points/bary/face/stroke_id exactly; only inherited sibling capsule masks can expand; unrelated files copied',
         provenance=selection.get('provenance','manual proxy face selection, NOT automatic semantic segmentation'))
-    meta['version']=2;meta['regions'][str(region)]=name;meta['styles'][str(region)]=style
+    meta['version']=max(4,meta.get('version',1));meta['regions'][str(region)]=name;meta['styles'][str(region)]=style
     meta['statistics'][str(source_region)]=path_stats(retained,source_region)
     meta['statistics'][str(region)]=stats
     meta.setdefault('region_history',[]).append(record)
     meta['region_provenance']='Authored height regions with saved manual proxy face selections; not learned semantic parts.'
     meta['mesh_sha256']=sha(output/'mesh.npz')
+    from region_restore import save_origin
+    save_origin(output,meta,region)
     js(output/'asset.json',meta)
     print(__import__('json').dumps(dict(asset=str(output),authoring=record)),flush=True)
     return record

@@ -7,18 +7,42 @@
 <style>
 #imageStage{position:relative;width:min(700px,100%);line-height:0}#preview{display:block;user-select:none;touch-action:none;cursor:crosshair}#dragBox{display:none;position:absolute;border:2px solid #bc2980;background:#dc5aa633;pointer-events:none}#interaction{font-size:13px}.pickHelp{margin:0 0 12px;font-size:13px;line-height:1.5;color:#4c514b}
 </style>
+<style>
+header{padding:16px 25px}.actionbar{position:sticky;top:0;z-index:10;background:#f3f1edf5;border-bottom:1px solid #d8d8d1;padding:10px max(16px,calc((100vw - 1230px)/2));box-shadow:0 2px 8px #2427240b}.primaryActions{display:flex;gap:8px;flex-wrap:wrap}.primaryActions button,.primaryActions a{white-space:nowrap}.primaryActions #undo{background:#e0e5de;color:#2b4336}#status{margin:8px 0 0;min-height:18px;line-height:1.4}.actionbar a[aria-disabled=true]{opacity:.5;pointer-events:none}main{align-items:start;padding-top:18px}aside{max-height:calc(100dvh - 190px);overflow-y:auto;scrollbar-gutter:stable}section{position:sticky;top:105px}figure{min-height:0;padding:8px}#imageStage{width:min(700px,100%,calc(100dvh - 310px))}.toolbar{margin-top:10px}.note{margin-top:10px}.pickHelp{margin-bottom:8px}
+@media(max-width:800px){header{padding:12px 16px}h1{font-size:20px}main{display:flex;flex-direction:column;padding:14px;gap:16px}section{position:static;order:-1;width:100%}aside{max-height:none;width:100%}#imageStage{width:min(512px,100%)}.primaryActions{gap:6px}.primaryActions button,.primaryActions a{font-size:13px;padding:9px}#status{font-size:12px}.actionbar{padding:8px 12px}}
+details{border-top:1px solid #e0e2dc;margin-top:12px;padding-top:10px}summary{cursor:pointer;color:#315d48;font-size:14px;font-weight:550;padding:3px 0}summary:focus-visible{outline:2px solid #315d48;outline-offset:3px}#exampleDetails{margin:10px 0}aside{padding:16px 20px}aside label:first-child{margin-top:0}#controls{margin-top:14px}dialog{border:1px solid #b4c0b4;border-radius:12px;padding:24px;width:min(460px,calc(100vw - 32px));color:#242724}dialog::backdrop{background:#18271f77}dialog h2{margin-top:0}#closeImport{margin-top:12px;background:#e0e5de;color:#2b4336}#openSaved{background:#e0e5de;color:#2b4336}#importFile{max-width:100%}
+</style>
 <header><h1 id="sceneTitle">Partwise Hatch Demo</h1><p>Editable regions. Persistent strokes in 3D.</p></header>
-<main><aside><div id="sceneControl" hidden><label for="scene">Model</label><select id="scene"></select><p class="note">Each model keeps its edits and selection while this server is open. Download each saved asset to keep it.</p></div><form id="controls">
+<div class="actionbar" aria-label="Save and export">
+<div class="primaryActions"><button type="submit" form="controls" id="apply">Render &amp; save style</button><button type="button" id="undo">Undo last change</button><a id="downloadAsset" class="download" href="/export">Download saved asset</a><button type="button" id="downloadPng">Download hatch PNG</button><button type="button" id="openSaved" hidden>Open saved ZIP</button></div>
+<div id="status" role="status" aria-live="polite">Loading saved asset…</div>
+</div>
+
+<main><aside><div id="sceneControl" hidden><label for="scene">Model</label><select id="scene"></select><label for="example">Saved example</label><select id="example"></select></div><details id="exampleDetails"><summary>About this example</summary><p class="note" id="exampleSource" hidden></p><p class="note">Switching discards unsaved slider changes. Each example keeps saved edits during this session. Download its ZIP to keep them after restarting.</p></details><form id="controls">
 <label for="region">Style region</label><select id="region"></select>
+<label for="inkStrength">Hatch ink strength <output id="inkStrengthValue"></output></label><input id="inkStrength" type="range" min="0" max="1" step=".05" value=".8">
+<p class="note">Lighten or darken this region. Both hatch directions share this setting. Zero hides its hatching; outlines stay visible.</p>
+<details id="strokeControls"><summary>Stroke shape &amp; cross-hatching</summary>
 <label>Angle <output id="angleValue"></output></label><input id="angle" type="range" min="-90" max="180" step="1">
 <label>Plane spacing <output id="spacingValue"></output></label><input id="spacing" type="range" min=".012" max=".15" step=".003">
 <label>Stroke length <output id="lengthValue"></output></label><input id="length" type="range" min=".02" max=".5" step=".01">
 <label>Line width <output id="widthValue"></output></label><input id="width" type="range" min=".3" max="3" step=".1">
+<label><input id="crossEnabled" type="checkbox" style="width:auto"> Add cross-hatching to this region</label>
+<label for="crossAngle">Second direction offset <output id="crossAngleValue"></output></label><input id="crossAngle" type="range" min="5" max="175" step="1" value="60">
+<label for="crossSpacing">Second direction spacing <output id="crossSpacingValue"></output></label><input id="crossSpacing" type="range" min=".012" max=".15" step=".003" value=".06">
+<p class="note">Adds a second direction to the selected region. Turning it off keeps its saved strokes. Both directions share stroke length and line width.</p>
+</details><details id="cameraControls"><summary>Camera position</summary>
 <label>Orbit angle <output id="azimuthValue"></output></label><input id="azimuth" type="range" min="-180" max="180" step="1">
 <label>Elevation <output id="elevationValue"></output></label><input id="elevation" type="range" min="5" max="75" step="1">
 <label>Distance <output id="distanceValue"></output></label><input id="distance" type="range" min="3.8" max="6" step=".1">
-<button class="mainbutton" id="apply">Render &amp; save style</button><button type="button" class="mainbutton" id="updateView">Update view · keep selection</button></form>
-<div class="author"><h2>Create a manual region</h2>
+<button type="button" class="mainbutton" id="updateView">Update view · keep selection</button></details><details id="restoreControls"><summary>Restore this region</summary><button type="button" class="mainbutton" id="restoreRegion" disabled>Restore region’s original strokes</button><p class="note" id="restoreHelp"></p></details></form>
+<details id="contourControls"><summary>View contours</summary>
+<label><input id="contoursVisible" type="checkbox" style="width:auto"> Show contours</label>
+<label for="contourStrength">Contour strength <output id="contourStrengthValue"></output></label>
+<input id="contourStrength" type="range" min="0" max="1" step=".05">
+<button type="button" class="mainbutton" id="saveDisplay">Save contour display</button>
+<p class="note">Controls outlines for the whole model. Hatching stays unchanged. Saved with your downloaded asset.</p>
+</details><details id="manualControls"><summary>Create a manual region</summary>
 <label for="interaction">Image tool</label><select id="interaction"><option value="pick">Click to pick a region</option><option value="visible">Drag a visible rectangle</option><option value="box">World box (includes hidden sides)</option></select>
 <p class="note" id="toolHelp">Click the object to select its existing style region. Choose Drag to make a new region from visible surfaces.</p>
 <label for="sourceRegion">Select faces from</label><select id="sourceRegion"></select>
@@ -33,32 +57,49 @@
 <label for="regionName">New region name</label><input id="regionName" type="text" value="My region" maxlength="80">
 <p id="selectionStatus">Choose a tool above. Preview before saving a new region.</p>
 <button type="button" class="mainbutton" id="saveRegion" disabled>Save total selection as region</button>
-</div><p class="note">Geometry is a rough proxy of the original learned model. Regions are authored, not automatic semantic parts. A render takes a few seconds on CPU.</p>
-</aside><section><p class="pickHelp">Drag to add or subtract visible faces. Orbit to add another side, then save the total selection once.</p><figure><div id="imageStage"><img id="preview" alt="Rendered model hatch image" draggable="false"><div id="dragBox"></div></div></figure>
-<div class="toolbar"><button id="left">Orbit −30°</button><button id="right">Orbit +30°</button><button id="closer">Zoom in</button><button id="hatch">Hatching</button><button id="regions">Regions</button><button id="proxy">Proxy</button><button id="undo">Undo last change</button><a class="download" href="/export">Download saved asset</a></div>
-<div id="status" role="status">Loading saved asset…</div></section></main>
+</details><p class="note">Geometry is a rough proxy of the original learned model. Regions are authored, not automatic semantic parts. A render takes a few seconds on CPU.</p>
+</aside><section><p class="pickHelp">Click the model to pick a region, adjust its controls, then Render &amp; save. Orbit and zoom redraw on CPU and can take a few seconds.</p><figure><div id="imageStage"><img id="preview" alt="Rendered model hatch image" draggable="false"><div id="dragBox"></div></div></figure>
+<div class="toolbar"><button id="left">Orbit −30°</button><button id="right">Orbit +30°</button><button id="closer">Zoom in</button><button id="hatch">Hatching</button><button id="regions">Regions</button><button id="proxy">Proxy</button></div>
+<div class="author"><h2>Export your result</h2>
+<div class="toolbar"><button id="exportOrbit">Export orbit · 12 frames</button><button id="exportZoom">Export zoom · 6 frames</button></div>
+<p class="note">Exports the last rendered style, contour display and camera. Save pending changes first. Motion keeps the whole proxy in frame and may move the camera back. ZIP includes MP4, lossless video, PNG frames and the editable asset. CPU export can take up to a few minutes.</p>
+<div id="exportLinks" class="toolbar"></div></div>
+</section></main>
+<dialog id="importDialog" aria-labelledby="importTitle"><div id="importControl" hidden><h2 id="importTitle">Open your saved asset</h2>
+<label for="importFile">Saved asset ZIP</label><input id="importFile" type="file" accept=".zip,application/zip">
+<button id="importAsset" class="mainbutton">Open as a new example</button>
+<p class="note">Choose a ZIP from Download saved asset (up to 32 MB). Opens its model, styles and camera in an independent session. Undo starts at the imported state. Your current example stays available. Download again to keep later edits.</p></div><button type="button" id="closeImport">Cancel</button></dialog>
+
 <script>
 const $=id=>document.getElementById(id),names=['angle','spacing','length','width','azimuth','elevation','distance'],boxNames=['xmin','ymin','zmin','xmax','ymax','zmax'];
 let state=null,mode='image',pending=null,busy=false,drag=null;
-function values(){for(const k of names)$(k+'Value').textContent=$(k).value+(k==='width'?' px':['angle','azimuth','elevation'].includes(k)?'°':'');}
-function region(){const s=state.styles[$('region').value];if(s)for(const k of names.slice(0,4))$(k).value=s[k];values();}
+function values(){for(const k of names)$(k+'Value').textContent=$(k).value+(k==='width'?' px':['angle','azimuth','elevation'].includes(k)?'°':'');$('crossAngleValue').textContent=$('crossAngle').value+'°';$('crossSpacingValue').textContent=$('crossSpacing').value;$('inkStrengthValue').textContent=Math.round(+$('inkStrength').value*100)+'%';}
+function restoreControl(){const r=state?.region_restore?.[$('region').value];$('restoreRegion').disabled=busy||!!state?.draft?.step_count||!r?.available;$('restoreHelp').textContent=r?.reason||'No creation snapshot is saved for this region.';}
+function region(){const s=state.styles[$('region').value];if(s){for(const k of names.slice(0,4))$(k).value=s[k];$('crossEnabled').checked=s.cross_enabled??false;$('crossAngle').value=s.cross_angle??60;$('crossSpacing').value=s.cross_spacing??.06;$('inkStrength').value=s.ink_strength??.8;}values();restoreControl();}
 function show(){if(mode==='selection'&&state.draft)$('preview').src=state.draft.image;else{if(mode==='selection')mode='image';$('preview').src=state.images[mode];}}
 function selectionStatus(){const d=state.draft;if(!d)return;
  pending=d.token;$('sourceRegion').value=String(d.source_region);
  $('selectionStatus').textContent=`${d.face_count} of ${d.source_face_count} faces selected · ${d.step_count} steps · ${Math.round(d.visible_pixels)} visible pixels in this view. Total selection persists across views. Whole triangles may extend past rectangles; unseen faces are not filled.`;
 }
-function setBusy(value){busy=value;for(const e of document.querySelectorAll('button,input,select'))e.disabled=value;
+function setBusy(value){busy=value;$('downloadAsset').setAttribute('aria-disabled',String(value));$('downloadAsset').tabIndex=value?-1:0;for(const e of document.querySelectorAll('button,input,select'))e.disabled=value;
  if(!value&&state){const drafting=!!state.draft?.step_count;
-  $('saveRegion').disabled=!pending;$('undo').disabled=!state.can_undo||drafting;$('apply').disabled=drafting;
+  $('saveRegion').disabled=!pending;$('undo').disabled=!state.can_undo||drafting;$('apply').disabled=drafting;$('saveDisplay').disabled=drafting;
   $('sourceRegion').disabled=drafting;$('undoSelection').disabled=!drafting;
   $('clearSelection').disabled=!state.draft;$('showSelection').disabled=!state.draft;
+  for(const id of ['downloadPng','exportOrbit','exportZoom'])$(id).disabled=drafting;
+  restoreControl();
  }}
 function options(select,preferred){const current=preferred||select.value;select.replaceChildren(...Object.entries(state.regions).map(([id,name])=>{const o=document.createElement('option');o.value=id;o.textContent=name;return o;}));select.value=state.regions[current]?current:Object.keys(state.regions)[0];}
-function sync(preferred){options($('region'),preferred);options($('sourceRegion'));for(const k of ['azimuth','elevation','distance'])$(k).value=k==='azimuth'?((state.camera[k]+540)%360)-180:state.camera[k];region();pending=state.draft?.token||null;selectionStatus();show();}
-async function post(path,body){body={scene:state.scene,...body};const response=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const data=await response.json();if(!response.ok)throw Error(data.error);return data;}
+function displayValues(){$('contourStrengthValue').textContent=Math.round(+$('contourStrength').value*100)+'%';}
+function sync(preferred){$('exportLinks').replaceChildren();options($('region'),preferred);options($('sourceRegion'));for(const k of ['azimuth','elevation','distance'])$(k).value=k==='azimuth'?((state.camera[k]+540)%360)-180:state.camera[k];region();$('contoursVisible').checked=state.display.contours_visible;$('contourStrength').value=state.display.contour_strength;displayValues();pending=state.draft?.token||null;selectionStatus();show();$('downloadAsset').href=state.available_scenes?'/export?'+new URLSearchParams({scene:state.scene,example:state.example,revision:state.revision}):'/export';}
+async function post(path,body){body={scene:state.scene,...(state.example?{example:state.example}:{}),...body};const response=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const data=await response.json();if(!response.ok)throw Error(data.error);return data;}
+$('downloadAsset').onclick=e=>{if(busy)e.preventDefault();};
+async function showReady(){sync();await $('preview').decode();}
+function completedTiming(start){return `ready in ${((performance.now()-start)/1000).toFixed(2)} s · save + render ${(state.operation_seconds??state.seconds).toFixed(2)} s`;}
 function cameraValues(){return Object.fromEntries(['azimuth','elevation','distance'].map(k=>[k,+$(k).value]));}
-async function navigate(){if(busy)return;setBusy(true);$('status').textContent='Rendering the new view; selected faces stay fixed…';try{state=await post('/view',{revision:state.revision,...cameraValues()});sync();$('status').textContent=`View updated · ${state.seconds.toFixed(2)} s · saved paths unchanged`;}catch(e){$('status').textContent=e.message;}finally{setBusy(false);}}
-async function render(){if(busy)return;setBusy(true);$('status').textContent='Rendering and saving the 3D asset…';try{const body={region:+$('region').value};for(const k of names)body[k]=+$(k).value;state=await post('/render',body);sync();$('status').textContent=`Saved revision ${state.revision} · ${state.seconds.toFixed(2)} s · other regions retained`;}catch(e){$('status').textContent=e.message;}finally{setBusy(false);}}
+async function navigate(){if(busy)return;const started=performance.now();setBusy(true);$('status').textContent='Rendering the new view; selected faces stay fixed…';try{state=await post('/view',{revision:state.revision,...cameraValues()});await showReady();$('status').textContent=`View updated · ready in ${((performance.now()-started)/1000).toFixed(2)} s · saved paths unchanged`;}catch(e){$('status').textContent=e.message;}finally{setBusy(false);}}
+async function render(){if(busy)return;const started=performance.now();setBusy(true);$('status').textContent='Rendering and saving the 3D asset…';try{const body={region:+$('region').value,cross_enabled:$('crossEnabled').checked,cross_angle:+$('crossAngle').value,cross_spacing:+$('crossSpacing').value,ink_strength:+$('inkStrength').value};for(const k of names)body[k]=+$(k).value;state=await post('/render',body);await showReady();$('status').textContent=`Saved revision ${state.revision} · ${completedTiming(started)} · other regions retained`;}catch(e){$('status').textContent=e.message;}finally{setBusy(false);}}
+$('crossAngle').oninput=values;$('crossSpacing').oninput=values;$('inkStrength').oninput=values;
 function imagePoint(e){const b=$('preview').getBoundingClientRect();return [Math.max(0,Math.min(512,Math.round((e.clientX-b.left)*512/b.width))),Math.max(0,Math.min(512,Math.round((e.clientY-b.top)*512/b.height)))];}
 function drawBox(a,b){const box=$('dragBox');box.style.display='block';box.style.left=Math.min(a[0],b[0])/512*100+'%';box.style.top=Math.min(a[1],b[1])/512*100+'%';box.style.width=Math.abs(a[0]-b[0])/512*100+'%';box.style.height=Math.abs(a[1]-b[1])/512*100+'%';}
 async function selectionPreview(body){if(busy)return;setBusy(true);try{
@@ -75,20 +116,37 @@ $('preview').onpointerup=async e=>{if(!drag||busy)return;const a=drag,b=imagePoi
  setBusy(true);try{const hit=await post('/pick',{revision:state.revision,point:b});$('region').value=String(hit.region);if(!state.draft?.step_count)$('sourceRegion').value=String(hit.region);region();$('status').textContent=`Picked ${state.regions[hit.region]}. Change its style or drag a new visible region.`;}catch(error){$('status').textContent=error.message;}finally{setBusy(false);}};
 $('controls').onsubmit=e=>{e.preventDefault();render();};for(const k of names)$(k).oninput=values;$('region').onchange=region;
 $('updateView').onclick=navigate;
+$('restoreRegion').onclick=async()=>{if(busy)return;setBusy(true);$('status').textContent='Restoring this region’s original strokes and style…';try{state=await post('/restore',{revision:state.revision,region:+$('region').value});mode='image';sync(String(state.selected_region));$('status').textContent='Original region restored. Other regions and the view are unchanged. Undo is available; download to keep this version.';}catch(e){$('status').textContent=e.message;}finally{setBusy(false);}};
+for(const [id,kind] of [['downloadPng','image'],['exportOrbit','orbit'],['exportZoom','zoom']])$(id).onclick=async()=>{
+ if(busy)return;setBusy(true);$('exportLinks').replaceChildren();$('status').textContent=`Exporting ${kind} from the saved ${state.scene} asset…`;
+ try{const result=await post('/presentation',{revision:state.revision,kind});
+  for(const [key,label] of (kind==='image'?[['png','Download PNG'],['archive','PNG + asset ZIP']]:[['archive','Download frames + asset ZIP'],['video','Download MP4']])){
+   const link=document.createElement('a');link.className='download';link.href=result[key];link.download='';link.textContent=label;link.dataset.export=key;$('exportLinks').append(link);
+  }
+  $('exportLinks').querySelector('a').click();
+  $('status').textContent=`${result.scene} ${kind} exported · ${result.frame_count} frames · ${result.seconds.toFixed(1)} s. ${result.all_proxy_vertices_inside?'Whole proxy in frame.':'Current view crops the proxy; use orbit or zoom for a fitted view.'}`;
+ }catch(e){$('status').textContent=e.message;}finally{setBusy(false);}
+};
+$('contourStrength').oninput=displayValues;
+$('saveDisplay').onclick=async()=>{if(busy)return;setBusy(true);$('status').textContent='Saving contour display…';try{state=await post('/display',{revision:state.revision,display:{contours_visible:$('contoursVisible').checked,contour_strength:+$('contourStrength').value}});mode='image';sync();$('status').textContent=`Contour display saved · ${state.operation_seconds.toFixed(2)} s including save · hatching unchanged`;}catch(e){$('status').textContent=e.message;}finally{setBusy(false);}};
 for(const [id,key] of [['hatch','image'],['regions','region_rgb'],['proxy','proxy'],['showSelection','selection']])$(id).onclick=()=>{mode=key;show();};
 for(const [id,d] of [['left',-30],['right',30]])$(id).onclick=()=>{$('azimuth').value=((+$('azimuth').value+d+540)%360)-180;values();navigate();};
 $('closer').onclick=()=>{$('distance').value=Math.max(3.8,+$('distance').value-.2);values();navigate();};
 for(const k of [...boxNames,'sourceRegion'])$(k).oninput=()=>{if(!state.draft){pending=null;setBusy(false);$('selectionStatus').textContent='Selection input changed; preview before saving.';}};
 $('previewSelection').onclick=()=>selectionPreview({mode:'box',bounds:boxNames.map(k=>+$(k).value)});
 for(const [id,action] of [['undoSelection','undo'],['clearSelection','clear']])$(id).onclick=async()=>{if(busy)return;setBusy(true);try{state=await post('/draft',{revision:state.revision,action});pending=state.draft?.token||null;mode=state.draft?'selection':'image';sync();if(!state.draft)$('selectionStatus').textContent='Selection cleared. Choose a source region and drag to start again.';$('status').textContent=action==='clear'?'Selection cleared; saved asset unchanged.':'Last selection step undone; saved asset unchanged.';}catch(e){$('status').textContent=e.message;}finally{setBusy(false);}};
-$('saveRegion').onclick=async()=>{if(busy||!pending)return;setBusy(true);try{state=await post('/author',{token:pending,name:$('regionName').value});pending=null;mode='region_rgb';sync(String(state.selected_region));$('status').textContent=`Saved ${state.regions[state.selected_region]}. Change its style with the controls.`;$('selectionStatus').textContent='Total face selection saved. Other geometry and unselected path segments retained.';}catch(e){$('selectionStatus').textContent=e.message;}finally{setBusy(false);}};
+$('saveRegion').onclick=async()=>{if(busy||!pending)return;setBusy(true);try{state=await post('/author',{token:pending,name:$('regionName').value});pending=null;mode='region_rgb';sync(String(state.selected_region));$('status').textContent=`Saved ${state.regions[state.selected_region]}. Change its style with the controls.`;$('selectionStatus').textContent='Region saved with its existing strokes. Change the style when you are ready.';}catch(e){$('selectionStatus').textContent=e.message;}finally{setBusy(false);}};
 $('undo').onclick=async()=>{if(busy)return;setBusy(true);try{state=await post('/undo',{});sync(String(state.selected_region));$('status').textContent='Restored the previous asset and camera. Download to keep this version.';}catch(e){$('status').textContent=e.message;}finally{setBusy(false);}};
-function nameKey(){return 'draftRegionName:'+state.scene;}
+function nameKey(){return 'draftRegionName:'+state.scene+':'+(state.example||state.demo_example?.id||'default');}
 $('regionName').oninput=()=>sessionStorage.setItem(nameKey(),$('regionName').value);
 function sceneReady(){
  const title=state.scene[0].toUpperCase()+state.scene.slice(1)+' · Partwise Hatch Demo';$('sceneTitle').textContent=title;document.title=title;
  $('sceneControl').hidden=!state.available_scenes;
+ $('importControl').hidden=!state.can_import;$('openSaved').hidden=!state.can_import;
+ $('manualControls').open=!!state.draft?.step_count;
  if(state.available_scenes){$('scene').replaceChildren(...Object.entries(state.available_scenes).map(([id,name])=>{const o=document.createElement('option');o.value=id;o.textContent=name;return o;}));$('scene').value=state.scene;}
+ if(state.available_examples){$('example').replaceChildren(...Object.entries(state.available_examples).map(([id,name])=>{const o=document.createElement('option');o.value=id;o.textContent=name;return o;}));$('example').value=state.example;}
+ $('exampleSource').hidden=!state.demo_example;$('exampleSource').textContent=state.demo_example?.description||'';
  $('regionName').value=sessionStorage.getItem(nameKey())||'My region';
  boxNames.forEach((k,i)=>$(k).value=state.mesh_bounds[i].toFixed(3));
  mode=state.draft?'selection':'image';$('interaction').value=state.draft?'visible':'pick';$('interaction').dispatchEvent(new Event('change'));
@@ -96,5 +154,19 @@ function sceneReady(){
  sync(String(state.selected_region));if(!state.draft)$('sourceRegion').value=Object.keys(state.regions).at(-1);
 }
 $('scene').onchange=async()=>{if(busy)return;const target=$('scene').value;setBusy(true);$('status').textContent='Opening '+target+'…';try{state=await post('/scene',{scene:target,from_scene:state.scene});sceneReady();$('status').textContent='Model opened. Its saved edits and selection are restored.';}catch(e){$('scene').value=state.scene;$('status').textContent=e.message;}finally{setBusy(false);}};
-fetch('/state').then(r=>r.json()).then(s=>{state=s;sceneReady();setBusy(false);$('status').textContent=s.draft?'Selection restored. Orbit, refine it or save the region.':'Ready · select visible faces across views, then save one editable region';}).catch(e=>{$('status').textContent=e.message;});
+$('example').onchange=async()=>{if(busy)return;const target=$('example').value;setBusy(true);$('status').textContent='Opening saved example…';try{state=await post('/example',{target_example:target});sceneReady();$('status').textContent='Example opened. Its saved edits, camera and undo are restored.';}catch(e){$('example').value=state.example;$('status').textContent=e.message;}finally{setBusy(false);}};
+$('openSaved').onclick=()=>{if(!busy)$('importDialog').showModal();};
+$('closeImport').onclick=()=>$('importDialog').close();
+$('importAsset').onclick=async()=>{
+ if(busy)return;const file=$('importFile').files[0];
+ if(!file){$('status').textContent='Choose a saved asset ZIP first.';return;}
+ if(file.size>32*1024*1024){$('status').textContent='Saved asset ZIP must be at most 32 MB.';return;}
+ setBusy(true);$('status').textContent='Checking and opening your saved asset…';
+ try{const query=new URLSearchParams({scene:state.scene,example:state.example,revision:state.revision,name:file.name});
+  const response=await fetch('/import?'+query,{method:'POST',headers:{'Content-Type':'application/zip'},body:file});
+  const result=await response.json();if(!response.ok)throw Error(result.error);
+  state=result;sceneReady();$('importFile').value='';$('importDialog').close();$('status').textContent='Saved asset opened. Continue editing; download again to keep changes.';
+ }catch(e){$('status').textContent=e.message;}finally{setBusy(false);}
+};
+fetch('/state').then(r=>r.json()).then(s=>{state=s;sceneReady();setBusy(false);$('status').textContent=s.draft?'Selection restored. Orbit, refine it or save the region.':'Ready · pick a region, adjust ink, then Render & save style';}).catch(e=>{$('status').textContent=e.message;});
 </script></html>

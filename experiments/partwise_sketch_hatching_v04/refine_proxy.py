@@ -22,7 +22,7 @@ def refine(vertices, faces, regions, config):
     edges = np.sort(np.concatenate([faces[:, [0, 1]], faces[:, [1, 2]], faces[:, [2, 0]]]), axis=1)
     unique, inverse, count = np.unique(edges, axis=0, return_inverse=True, return_counts=True)
     edge_regions = np.tile(regions, 3)
-    rmin = np.full(len(unique), 4); rmax = np.zeros(len(unique), dtype=int)
+    rmin = np.full(len(unique), np.iinfo(regions.dtype).max); rmax = np.zeros(len(unique), dtype=int)
     np.minimum.at(rmin, inverse, edge_regions); np.maximum.at(rmax, inverse, edge_regions)
     pinned = np.zeros(len(original), bool)
     pinned[np.unique(unique[(count != 2) | (rmin != rmax)])] = True

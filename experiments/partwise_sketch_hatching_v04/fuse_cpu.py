@@ -14,6 +14,9 @@ from geometry import project,region_ids
 
 def fuse(unit):
     unit=output_guard(unit);p=json.loads((unit/'PROTOCOL.json').read_text());out=unit/'proxy'
+    face_budget=p.get('filtering',{}).get('simplify_faces',30000)
+    if type(face_budget) is not int or not 1<=face_budget<=150000:
+        raise ValueError('simplify_faces must be an integer in [1,150000]')
     if (out/'mesh.npz').exists():raise FileExistsError('frozen proxy exists')
     t=time.monotonic()
     raw=PlyData.read(p['original']['original_ply'])['vertex'].data
@@ -38,7 +41,7 @@ def fuse(unit):
     raw_faces=len(faces);labels,counts,areas=mesh.cluster_connected_triangles();counts=np.asarray(counts)
     mesh.remove_triangles_by_mask(counts[np.asarray(labels)]<40);mesh.remove_unreferenced_vertices()
     before_simplify=len(mesh.triangles)
-    if before_simplify>30000:mesh=mesh.simplify_quadric_decimation(30000)
+    if before_simplify>face_budget:mesh=mesh.simplify_quadric_decimation(face_budget)
     mesh.remove_degenerate_triangles();mesh.remove_unreferenced_vertices();mesh.compute_vertex_normals()
     vertices=np.asarray(mesh.vertices);faces=np.asarray(mesh.triangles)
     assert len(faces)>0 and np.isfinite(vertices).all()
@@ -49,6 +52,7 @@ def fuse(unit):
         fusion_backend='NumPy projective TSDF + skimage marching cubes; Open3D cleanup/simplification',
         vertices=len(vertices),faces=len(faces),raw_faces=raw_faces,raw_components=len(counts),
         removed_small_component_faces=raw_faces-before_simplify,before_simplification_faces=before_simplify,
+        requested_face_budget=face_budget,decimation_applied=before_simplify>face_budget,
         voxel=voxel,truncation=trunc,grid_shape=shape.tolist(),observed_voxels=int(observed.sum()),
         bbox_min=vertices.min(0).tolist(),bbox_max=vertices.max(0).tolist(),original_center_crop=bounds.tolist(),
         seconds=time.monotonic()-t,mesh_sha256=sha(out/'mesh.npz'),region_provenance=p['region_provenance'],

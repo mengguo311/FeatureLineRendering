@@ -1,0 +1,134 @@
+"""Frozen Chair seat authoring and local artistic edit, on the original default."""
+import runtime
+from runtime import OUTPUT_ROOT,js,sha,now,output_guard
+from pathlib import Path
+import argparse,json,shutil,subprocess,sys,time
+import numpy as np
+from PIL import Image
+from demo import load_asset,new_output,save_frame,edit
+from geometry import orbit_camera
+from media import contact
+
+U=OUTPUT_ROOT/'units/unit_021'
+PREV=OUTPUT_ROOT/'units/unit_020'
+SOURCE=Path(__file__).resolve().parent
+ASSET=PREV/'portable_demo/assets/chair'
+
+def hashes(folder):
+    return {str(f.relative_to(folder)):sha(f) for f in sorted(folder.rglob('*')) if f.is_file() and '__pycache__' not in f.parts}
+
+def protocol():return json.loads((U/'PROTOCOL.json').read_text())
+
+def freeze():
+    output_guard(U)
+    assert subprocess.check_output(['git','branch','--show-current'],text=True).strip()=='partwise-sketch-hatching-models-v04'
+    assert not (U/'PROTOCOL.json').exists()
+    for n in ('logs','metrics','media'):(U/n).mkdir()
+    mesh,paths,meta=load_asset(ASSET)
+    assert sha(meta['original']['original_ply'])==meta['original']['sha256']
+    shutil.copy2(PREV/'SELECTION_RECIPE.json',U/'SELECTION_RECIPE.json')
+    p=dict(unit='unit_021',frozen_utc=now(),asset=str(ASSET),inputs=hashes(ASSET),original=meta['original'],
+        decision='Preserve existing 3D segments and capsule coverage when manually splitting a style region; then edit only the saved seat angle.',
+        critical_review='Viewed actual unit020 full-object and source GS contact sheets. Complete Chair/local edit/cold reload work, but unchanged-style authoring reflows strokes (L1 32 to 467.8). Seat ripples, thin parts and rectangular partial selection remain. Fix the concrete authoring behavior before another model.',
+        alternatives_ranked=['Appearance-preserving authoring','More proxy smoothing: unit019 weak benefit','Additional model: four already runnable'],
+        inherited_catalog_inputs={n:hashes(PREV/'portable_demo'/n) for n in ('assets','examples')},
+        selection_recipe_sha256=sha(U/'SELECTION_RECIPE.json'),
+        region_source='Reuse unit020 two manually placed visible-face rectangles exactly; 2704 faces, partial seat patch, not automatic semantics.',
+        static_camera_values=[dict(azimuth=a,elevation=28,distance=4.9) for a in (29,119,209,299)],
+        viewer_camera=dict(azimuth=29,elevation=28,distance=4.9),
+        styles=meta['styles'],source_region=2,target_region=4,angle=65.,
+        fixed='Original mesh, frozen face selection, source styles and other path coordinates; no geometry/filter/selection/angle sweep.',
+        changed='Authoring transfers selected segments with original IDs instead of regenerating. Preserve inherited capsule visibility across the new label boundary with explicit support masks; new generated geometry uses current owner region. Save parent segment/ID mapping.',
+        expected_visual='Author-only image/hatch/contour/depth exactly unchanged; region debug colors intentionally change. Angle65 has visible target effect, far other/background unchanged using fixed2px band; show all whole-object views.',
+        support_scope='Inherited capsule footprints may straddle a new manual boundary, bounded by their screen width and unchanged depth test. This is explicit raster provenance, not automatic semantics. Angle regeneration drops inherited support for the regenerated layer; untouched layers retain it.',
+        promotion='Add an optional preserved-seat example; retain all old default assets and examples byte-exact.',
+        motion=dict(orbit_frames=12,zoom_frames=6,fps=6),
+        validation='Fail real Chair path/no-op raster test before implementation; pass after; focused author/edit/cross/import regressions; actual original PLY render; browser author/edit/undo/save, new-server import, complete motion decode+cold replay, relocated CLI author/edit/export.',
+        exposure='New az29/119/209/299 elev28 distance4.9 chosen before candidate; old scene/selection already exposed, not blind reconstruction holdouts.',
+        scientific_scope='Engineering authoring behavior only. H1/H2/H5 not tested; historical P1 NO_GO and P2 unidentifiability unchanged.',
+        resource=dict(cpu=2,threads=1,serial=True,gpu=False,nested_models=False,finish_by_jst='2026-10-22T08:49:57+09:00'))
+    js(U/'PROTOCOL.json',p);shutil.copy2(U/'PROTOCOL.json',SOURCE.parents[1]/'docs/partwise_sketch_hatching_v04/UNIT021_PROTOCOL.json')
+    shutil.copytree(SOURCE,U/'source_before',ignore=shutil.ignore_patterns('__pycache__'))
+    js(U/'SOURCE_BEFORE.json',hashes(SOURCE))
+    (U/'INHERITED_WORKTREE.diff').write_bytes(subprocess.check_output(['git','diff','--','experiments/partwise_sketch_hatching_v04','docs/partwise_sketch_hatching_v04']))
+    js(U/'STATUS.json',dict(stage='PROTOCOL_FROZEN',execution_state='partial',scientific_verdict=p['scientific_scope'],demo_progress=dict(genuinely_ran_old_model=False,reasoning=p['decision']),artifacts=['PROTOCOL.json'],blockers=[]))
+    js(U/'logs/PREPARATION_READ_ERRORS.json',dict(command='sed experiments/partwise_sketch_hatching_v03/core.py',returncode=2,reason='Guessed source filename absent; actual diagnostic.py subsequently read; no experiment invoked.'))
+    print(json.dumps(dict(protocol_sha256=sha(U/'PROTOCOL.json'))))
+
+def construction():
+    p=protocol();mesh,paths,meta=load_asset(ASSET);out=new_output(U/'construction');items=[]
+    for i,v in enumerate(p['construction_camera_values']):
+        c=orbit_camera(**v);save_frame(out,f'frame_{i:03d}',mesh,paths,meta,c)
+        for key in ('proxy','region_rgb'):items.append((f"Az{v['azimuth']} Elev65 | {key}",Image.open(out/f'frame_{i:03d}_{key}.png')))
+    contact(U/'media/construction.png',items,cols=2,size=512,title='Selection construction views | unchanged Chair proxy')
+
+def reference():
+    import model_adapter
+    p=protocol();out=new_output(U/'source_model');base=new_output(U/'renders/original')
+    model_adapter.LIB_PATH=out/'libsource.so';shutil.copy2(PREV/'source_model/libsource.so',model_adapter.LIB_PATH)
+    model=model_adapter.load_source(p['original']['original_ply'],p['original']['sha256'])
+    mesh,paths,meta=load_asset(ASSET);items=[];records=[]
+    for i,v in enumerate(p['static_camera_values']):
+        c=orbit_camera(**v);t=time.monotonic();r=model_adapter.render_source(model,c)
+        Image.fromarray(np.uint8(np.clip(r['rgb'],0,1)*255+.5)).save(out/f'frame_{i:03d}_rgb.png')
+        np.savez_compressed(out/f'frame_{i:03d}_arrays.npz',**r)
+        row=save_frame(base,f'frame_{i:03d}',mesh,paths,meta,c);assert row['bounds']['all_proxy_vertices_inside']
+        records.append(dict(camera=c,seconds=time.monotonic()-t))
+        for title,file in [('Original GS RGB',out/f'frame_{i:03d}_rgb.png'),('Exploratory proxy',base/f'frame_{i:03d}_proxy.png'),('Authored height regions',base/f'frame_{i:03d}_region_rgb.png'),('Original hatching',base/f'frame_{i:03d}_image.png')]:items.append((f"Az{v['azimuth']} | {title}",Image.open(file)))
+    contact(U/'media/source_reference_all_views.png',items,cols=4,size=384,title='Chair | actual original checkpoint and inherited model-derived proxy')
+    js(out/'RECEIPT.json',dict(original=p['original'],original_gaussians=model['audit']['count'],views=records,scope='CPU SH3/EWA reference; not independent geometry truth or GPU equivalence'))
+
+def candidate():
+    from selection_draft import replay_recipe
+    from region_tools import author_face_selection
+    p=protocol();assert hashes(ASSET)==p['inputs'];mesh,paths,meta=load_asset(ASSET)
+    recipe=json.loads((U/'SELECTION_RECIPE.json').read_text());d=replay_recipe(mesh,meta['mesh_sha256'],recipe)
+    assert sha(U/'SELECTION_RECIPE.json')==p['selection_recipe_sha256']
+    np.savez_compressed(U/'selection_faces.npz',face_ids=d.face_ids)
+    result=author_face_selection(ASSET,U/'assets/authored',d.face_ids,2,recipe['name'],d.provenance())
+    edit(U/'assets/authored',U/'assets/edited',4,dict(angle=p['angle']))
+    edit(U/'assets/edited',U/'assets/regenerated95',4,dict(angle=95.))
+    for arm in ('authored','edited','regenerated95'):
+        f=U/'assets'/arm/'asset.json';m=json.loads(f.read_text());m['viewer_camera']=p['viewer_camera'];m['selected_region']=4;js(f,m)
+    js(U/'metrics/SELECTION.json',dict(authoring=result,recipe_sha256=sha(U/'SELECTION_RECIPE.json'),selection_sha256=sha(U/'selection_faces.npz'),summary=d.summary()))
+
+def static():
+    from scipy.ndimage import binary_dilation,binary_erosion,distance_transform_edt
+    p=protocol();rows=[];items=[];selection=[]
+    loaded={a:load_asset(U/'assets'/a) for a in ('authored','edited')}
+    for arm in loaded:new_output(U/'renders'/arm)
+    for i,v in enumerate(p['static_camera_values']):
+        c=orbit_camera(**v);data={}
+        for arm in ('original','authored','edited'):
+            if arm!='original':
+                row=save_frame(U/'renders'/arm,f'frame_{i:03d}',*loaded[arm],c);assert row['bounds']['all_proxy_vertices_inside']
+            with np.load(U/f'renders/{arm}/frame_{i:03d}_arrays.npz') as z:data[arm]={k:z[k] for k in z.files}
+        a,b,e=(data[k] for k in ('original','authored','edited'));mask=b['regions']==4
+        for k in ('image','hatch','depth','contour'):assert np.array_equal(a[k],b[k]),k
+        band=binary_dilation(mask,iterations=2)&~binary_erosion(mask,iterations=2)
+        masks=dict(target_interior=mask&~band,boundary_band=band,far_other=(b['regions']>0)&~mask&~band,far_background=(b['regions']==0)&~band)
+        assert np.all(sum(m.astype(int) for m in masks.values())==1)
+        def delta(x,y):
+            d=np.abs(x['image']-y['image']);return {k:dict(pixels=int(m.sum()),L1=float(d[m].sum()),changed_pixels=int((d[m]>0).sum())) for k,m in masks.items()}
+        unchanged={k:bool(np.array_equal(b[k],e[k])) for k in ['depth','regions','contour']+[f'layer_{r}' for r in (1,2,3)]}
+        assert all(unchanged.values())
+        coverage={}
+        for arm,d in data.items():
+            layer=d['layer_2'] if arm=='original' else d['layer_4'];support=layer>.1
+            coverage[arm]=dict(visible_selection_pixels=int(mask.sum()),selection_ink=float(layer[mask].sum()),layer_ink=float(layer.sum()),
+                support_pixels=int((support&mask).sum()),support_fraction=float((support&mask).sum()/max(1,mask.sum())),
+                blank_distance_p95_px=float(np.quantile(distance_transform_edt(~support)[mask],.95)) if mask.any() else None,
+                whole_object_ink=float((1-d['image']).sum()))
+        rows.append(dict(camera=v,authoring_delta=delta(a,b),angle_delta=delta(b,e),unchanged_angle_arrays=unchanged,coverage=coverage,
+            authoring_other_region_layers_exact={str(r):bool(np.array_equal(a[f'layer_{r}'],b[f'layer_{r}'])) for r in (1,3)},
+            scope='Original layer2 covers more than the selection; selection ink uses common new-region mask, total layer ink is not directly comparable. Masks are proxy-relative, not independent semantics.'))
+        for arm,title in [('original','Original height regions'),('authored','Manual seat patch / angle95'),('edited','Same seat patch / angle65')]:items.append((f"Az{v['azimuth']} | {title}",Image.open(U/f'renders/{arm}/frame_{i:03d}_image.png')))
+        for key in ('proxy','region_rgb'):selection.append((f"Az{v['azimuth']} | {key}",Image.open(U/f'renders/authored/frame_{i:03d}_{key}.png')))
+    contact(U/'media/full_object_before_after.png',items,cols=3,size=512,title='Chair | manual surface selection, then target-only angle edit | fixed geometry')
+    contact(U/'media/selection_all_views.png',selection,cols=2,size=512,title='Chair | saved manual seat patch | incomplete semantic coverage disclosed')
+    extra=new_output(U/'renders/regenerated95')
+    save_frame(extra,'frame_000',*load_asset(U/'assets/regenerated95'),orbit_camera(**p['viewer_camera']))
+    js(U/'metrics/LOCALITY.json',dict(views=rows,fixed_band_px=2,scope='Finite proxy-relative artistic edit, no H1/H2/H5 or semantic completeness claim'))
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('phase',choices=['freeze','construction','reference','candidate','static']);a=p.parse_args();globals()[a.phase]()

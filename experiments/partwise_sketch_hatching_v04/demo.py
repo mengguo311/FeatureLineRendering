@@ -9,11 +9,13 @@ import time
 import numpy as np
 from PIL import Image
 from geometry import mesh_data,orbit_camera,resize_camera
-from hatching import generate_region,validate_style
+from hatching import generate_region,generate_layers,add_cross_layer,layer_ids,validate_style,visibility_masks
 from render import render
+from display_settings import validate_display
 
 def load_asset(path):
     path=Path(path);meta=json.loads((path/'asset.json').read_text())
+    validate_display(meta.get('display'))
     if sha(path/'mesh.npz')!=meta['mesh_sha256']:raise ValueError('proxy checksum mismatch')
     with np.load(path/'mesh.npz') as d:mesh=mesh_data(d['vertices'],d['faces'],d.get('face_regions'))
     strokes={}
@@ -25,14 +27,33 @@ def load_asset(path):
         if Path(filename).name!=filename or sha(path/filename)!=history['face_ids_sha256']:
             raise ValueError('saved selection checksum mismatch')
     for region in region_list:
+        validate_style(meta['styles'][str(region)])
         with np.load(path/f'region_{region}.npz') as d:strokes[region]={k:d[k] for k in d.files}
-        s=strokes[region]
-        if not len(s['points']) or not np.isfinite(s['points']).all():raise ValueError('empty or invalid region paths')
-        if ((s['face']<0)|(s['face']>=len(mesh['faces']))).any():raise ValueError('bad face anchor')
-        if not np.all(mesh['regions'][s['face']]==region):raise ValueError('region ownership mismatch')
-        reconstructed=np.einsum('nij,njk->nik',s['bary'],mesh['tri'][s['face']])
-        if np.max(np.abs(reconstructed-s['points']))>1e-9:raise ValueError('anchor mismatch')
+        validate_paths(mesh,strokes[region],meta['styles'][str(region)],region,region_list)
+    from region_restore import validate_origins
+    validate_origins(path,mesh,meta)
     return mesh,strokes,meta
+
+def validate_paths(mesh,s,style,region,region_list):
+    """Shared anchor/ownership contract for current and restorable saved paths."""
+    n=len(s['points'])
+    if (not n or s['points'].shape!=(n,2,3) or s['bary'].shape!=(n,2,3) or
+        not np.isfinite(s['points']).all() or not np.isfinite(s['bary']).all()):raise ValueError('empty or invalid region paths')
+    if s['face'].shape!=(n,) or s['face'].dtype.kind not in 'iu' or ((s['face']<0)|(s['face']>=len(mesh['faces']))).any():raise ValueError('bad face anchor')
+    if s['stroke_id'].shape!=(n,) or s['stroke_id'].dtype.kind not in 'iu' or (s['stroke_id']<0).any():raise ValueError('invalid stroke IDs')
+    if np.min(s['bary'])< -1e-8 or np.max(s['bary'])>1+1e-8 or not np.allclose(s['bary'].sum(-1),1,rtol=0,atol=1e-8):raise ValueError('invalid barycentric coordinates')
+    if not np.all(mesh['regions'][s['face']]==region):raise ValueError('region ownership mismatch')
+    if 'visibility_mask' in s:
+        support=s['visibility_mask'];allowed=np.uint64(sum(1 << r for r in region_list))
+        if support.shape!=(n,) or support.dtype.kind not in 'iu' or (support<0).any():raise ValueError('invalid capsule visibility masks')
+        support=support.astype(np.uint64)
+        if ((support & ~allowed)!=0).any() or ((support & np.uint64(1 << region))==0).any():raise ValueError('capsule visibility masks must include owner and only existing regions')
+    reconstructed=np.einsum('nij,njk->nik',s['bary'],mesh['tri'][s['face']])
+    if np.max(np.abs(reconstructed-s['points']))>1e-9:raise ValueError('anchor mismatch')
+    ids=layer_ids(s)
+    if ids.shape!=(n,) or not np.isin(ids,[0,1]).all() or not (ids==0).any():raise ValueError('invalid stroke layer IDs')
+    if style.get('cross_enabled',False) and not (ids==1).any():raise ValueError('enabled cross layer is missing saved paths')
+    if (ids==1).any() and np.intersect1d(s['stroke_id'][ids==0],s['stroke_id'][ids==1]).size:raise ValueError('stroke IDs overlap between layers')
 
 def new_output(path):
     path=output_guard(path)
@@ -47,7 +68,7 @@ def create(unit,output,scene):
     with np.load(output/'mesh.npz') as d:mesh=mesh_data(d['vertices'],d['faces'],d.get('face_regions'))
     stats={}
     for region in (1,2,3):
-        data,stat=generate_region(mesh,region,p['styles'][str(region)])
+        data,stat=generate_layers(mesh,region,p['styles'][str(region)])
         np.savez_compressed(output/f'region_{region}.npz',**data);stats[str(region)]=stat
     meta=dict(scene=scene,created_utc=now(),version=1,styles=p['styles'],regions=p['regions'],
               region_provenance=p['region_provenance'],geometry=p['geometry'],original=p['original'],
@@ -64,35 +85,71 @@ def edit(asset,output,region,changes):
     if str(region) not in meta['styles']:raise ValueError('unknown region')
     old_style=dict(meta['styles'][str(region)])
     style=dict(old_style);style.update(changes);validate_style(style)
+    geometry_changed=any(style.get(k)!=old_style.get(k) for k in ('angle','spacing','length','plane'))
+    old=strokes[region];ids=layer_ids(old);cached_cross=bool((ids==1).any())
+    cross_changed=any(style.get(k,default)!=old_style.get(k,default) for k,default in
+                      [('angle',0.),('length',.22),('plane',None),('cross_angle',60.),('cross_spacing',.06)])
+    regenerate_cross=(cached_cross and cross_changed) or (style.get('cross_enabled',False) and not cached_cross)
+    regenerated=[];data=None;stat=dict(meta['statistics'][str(region)])
+    if geometry_changed:
+        base,stat=generate_region(mesh,region,style);regenerated.append(0)
+        if not len(base['points']):raise ValueError('base layer has no proxy support at this spacing')
+    else:base={k:v[ids==0] for k,v in old.items() if k!='layer_id'}
+    if regenerate_cross:
+        data,cross=add_cross_layer(mesh,region,style,base)
+        stat['cross_layer']=cross;regenerated.append(1)
+    elif geometry_changed:
+        data=base
+        if cached_cross:
+            data={k:np.concatenate([base[k],old[k][ids==1]]) for k in base}
+            if 'visibility_mask' in old:
+                data['visibility_mask']=np.concatenate([visibility_masks(base,region),visibility_masks(old,region)[ids==1]])
+            data['layer_id']=np.concatenate([np.zeros(len(base['points']),np.uint8),np.ones(int((ids==1).sum()),np.uint8)])
+            stat['cross_layer']=meta['statistics'][str(region)].get('cross_layer',{})
     output=new_output(output)
     for p in Path(asset).iterdir():
         if p.is_file():shutil.copy2(p,output/p.name)
-    geometry_changed=any(style[k]!=old_style[k] for k in ('angle','spacing','length'))
-    if geometry_changed:
-        data,stat=generate_region(mesh,region,style)
+    if data is not None:
         np.savez_compressed(output/f'region_{region}.npz',**data);meta['statistics'][str(region)]=stat
+    if cached_cross or regenerate_cross:
+        meta['version']=max(3,meta.get('version',1))
+        meta['layer_identity']='layer0=legacy base; layer1=optional cross; IDs disjoint, coordinates revisioned on angle/spacing/length edits; none are Gaussian IDs'
     meta['styles'][str(region)]=style
-    meta['edit']=dict(region=region,changes=changes,geometry_changed=geometry_changed,
-                       target_path_revision='regenerated' if geometry_changed else 'unchanged',
+    meta['edit']=dict(region=region,changes=changes,geometry_changed=bool(regenerated),regenerated_layers=regenerated,
+                       target_path_revision='regenerated layers '+str(regenerated) if regenerated else 'unchanged',
                        parent_asset_sha256=sha(Path(asset)/'asset.json'),utc=now())
     js(output/'asset.json',meta)
     print(json.dumps(dict(asset=str(output),edit=meta['edit'])),flush=True)
 
-def save_frame(output,name,mesh,strokes,meta,c):
-    t=time.monotonic();r=render(mesh,strokes,meta['styles'],c)
+def set_display(asset,output,changes):
+    """Copy an asset and save display only; all geometry/path bytes are retained."""
+    _,_,meta=load_asset(asset)
+    settings=validate_display(dict(validate_display(meta.get('display')),**changes))
+    output=new_output(output)
+    for p in Path(asset).iterdir():
+        if p.is_file():shutil.copy2(p,output/p.name)
+    meta['display']=settings
+    meta['display_edit']=dict(changes=changes,parent_asset_sha256=sha(Path(asset)/'asset.json'),utc=now(),
+                              geometry_changed=False,paths_regenerated=False)
+    js(output/'asset.json',meta)
+
+def save_frame(output,name,mesh,strokes,meta,c,cache=None):
+    t=time.monotonic();r=render(mesh,strokes,meta['styles'],c,display=meta.get('display'),cache=cache)
     for key in ('image','hatch','contour','proxy','region_rgb'):
         Image.fromarray(np.uint8(np.clip(r[key],0,1)*255+.5)).save(output/f'{name}_{key}.png')
     arrays={k:r[k] for k in ('image','hatch','contour','regions','depth')}
     arrays.update({f'layer_{k}':v for k,v in r['layers'].items()})
+    arrays.update({f'stroke_layer_{k}':v for k,v in r['style_layers'].items()})
     np.savez_compressed(output/f'{name}_arrays.npz',**arrays)
-    record=dict(camera=c,seconds=time.monotonic()-t,diagnostics=r['diagnostics'],bounds=r['bounds'],
+    record=dict(camera=c,display=validate_display(meta.get('display')),seconds=time.monotonic()-t,diagnostics=r['diagnostics'],bounds=r['bounds'],
                 nonwhite_pixels=int((r['image']<.99).sum()))
+    if cache is not None:record['render_cache']=cache.info()
     js(output/f'{name}.json',record);print(json.dumps(dict(frame=name,**record)),flush=True)
     return record
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('command',choices=['build','create','author','edit','render'])
+    p.add_argument('command',choices=['build','create','author','edit','restore','display','render'])
     p.add_argument('--scene',default='chair');p.add_argument('--unit',type=Path);p.add_argument('--asset',type=Path)
     p.add_argument('--output',required=True,type=Path);p.add_argument('--region','--part',type=int)
     p.add_argument('--bounds',type=float,nargs=6,metavar=('XMIN','YMIN','ZMIN','XMAX','YMAX','ZMAX'))
@@ -100,6 +157,10 @@ def main():
     p.add_argument('--selection-recipe',type=Path,help='Saved multi-view add/subtract rectangle recipe')
     p.add_argument('--name',default='Manual region')
     for name in ('angle','spacing','length','width'):p.add_argument('--'+name,type=float)
+    p.add_argument('--ink-strength',type=float,help='Selected-region hatch darkness [0,1], default .80; paths stay fixed')
+    p.add_argument('--cross',choices=['on','off']);p.add_argument('--cross-angle',type=float);p.add_argument('--cross-spacing',type=float)
+    p.add_argument('--contour-strength',type=float)
+    p.add_argument('--contours',choices=['on','off'])
     p.add_argument('--view');p.add_argument('--trajectory',choices=['static','orbit','zoom'])
     p.add_argument('--azimuth',type=float,default=47);p.add_argument('--elevation',type=float,default=25)
     p.add_argument('--distance',type=float,default=4.6);p.add_argument('--size',type=int,default=512)
@@ -147,9 +208,28 @@ def main():
             author_face_selection(a.asset,a.output,ids,a.region,a.name,dict(operation='manual_visible_rectangle',
                 camera=c,rectangle=summary['rectangle'],rule=summary['rule'],
                 provenance='manual visible proxy face selection; not semantic segmentation'))
+    elif a.command=='display':
+        if not a.asset:p.error('display requires --asset')
+        meta=json.loads((a.asset/'asset.json').read_text())
+        if meta['scene']!=a.scene:p.error('scene/asset mismatch')
+        changes={}
+        if a.contour_strength is not None:changes['contour_strength']=a.contour_strength
+        if a.contours is not None:changes['contours_visible']=a.contours=='on'
+        if not changes:p.error('display requires --contour-strength or --contours')
+        set_display(a.asset,a.output,changes)
+    elif a.command=='restore':
+        if not a.asset or not a.region:p.error('restore requires --asset and --region')
+        meta=json.loads((a.asset/'asset.json').read_text())
+        if meta['scene']!=a.scene:p.error('scene/asset mismatch')
+        from region_restore import restore_region
+        print(json.dumps(restore_region(a.asset,a.output,a.region)))
     elif a.command=='edit':
         if not a.asset or not a.region:p.error('edit requires --asset and --region')
+        meta=json.loads((a.asset/'asset.json').read_text())
+        if meta['scene']!=a.scene:p.error('scene/asset mismatch')
         changes={k:getattr(a,k) for k in ('angle','spacing','length','width') if getattr(a,k) is not None}
+        changes.update({k:getattr(a,k) for k in ('cross_angle','cross_spacing','ink_strength') if getattr(a,k) is not None})
+        if a.cross is not None:changes['cross_enabled']=a.cross=='on'
         if not changes:p.error('edit requires at least one style change')
         edit(a.asset,a.output,a.region,changes)
     else:

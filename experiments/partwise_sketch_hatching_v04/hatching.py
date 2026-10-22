@@ -19,6 +19,50 @@ def validate_style(style):
     if not .008<=style['spacing']<=.5 or not .02<=style['length']<=2. or not .2<=style['width']<=8.:
         raise ValueError('spacing [.008,.5], length [.02,2] world; width [.2,8] pixels')
     if style.get('plane','xy') not in ('xy','xz'):raise ValueError('cutting plane must be xy or xz')
+    if type(style.get('cross_enabled',False)) is not bool:raise ValueError('cross_enabled must be boolean')
+    for key,default,lo,hi in [('cross_angle',60.,5.,175.),('cross_spacing',.06,.008,.5),('ink_strength',.80,0.,1.)]:
+        value=style.get(key,default)
+        if isinstance(value,(bool,np.bool_)) or not isinstance(value,(int,float,np.number)) or not np.isfinite(value) or not lo<=value<=hi:
+            raise ValueError(f'{key} must be finite in [{lo},{hi}]')
+
+def layer_ids(paths):
+    """Legacy assets have only layer0; new assets store explicit layer IDs."""
+    return paths.get('layer_id',np.zeros(len(paths['points']),np.uint8))
+
+def visibility_masks(paths, region):
+    """Saved capsule support across manual splits; legacy paths use their owner.
+
+    Bits refer to current proxy region labels, never Gaussian or semantic IDs.
+    The face anchor still belongs to exactly one region. Only raster footprints
+    retain the parent's support, so relabeling need not trim existing round caps.
+    """
+    masks=paths.get('visibility_mask', np.full(len(paths['points']), 1 << region, np.uint64))
+    # Import validation accepts signed integer arrays too; NumPy cannot safely
+    # combine a uint64 label buffer with an int64 scalar without this cast.
+    return masks.astype(np.uint64,copy=False)
+
+def cross_style(style):
+    return dict(style,angle=style['angle']+style.get('cross_angle',60.),spacing=style.get('cross_spacing',.06))
+
+def add_cross_layer(mesh,region,style,base):
+    """Append only the new direction. Existing base arrays are never regenerated."""
+    cross,stat=generate_region(mesh,region,cross_style(style))
+    if not len(cross['points']):raise ValueError('cross layer has no proxy support at this spacing')
+    if len(np.unique(cross['stroke_id']))>=500_000_000:raise ValueError('cross layer ID budget exceeded')
+    cross['stroke_id']=cross['stroke_id']+500_000_000
+    data={k:np.concatenate([base[k],cross[k]]) for k in ('points','bary','face','stroke_id')}
+    if 'visibility_mask' in base:
+        data['visibility_mask']=np.concatenate([visibility_masks(base,region),visibility_masks(cross,region)])
+    data['layer_id']=np.concatenate([np.zeros(len(base['points']),np.uint8),np.ones(len(cross['points']),np.uint8)])
+    stat.update(layer_id=1,angle_degrees=cross_style(style)['angle'],spacing=style.get('cross_spacing',.06))
+    return data,stat
+
+def generate_layers(mesh,region,style):
+    data,stat=generate_region(mesh,region,style)
+    if style.get('cross_enabled',False):
+        data,cross=add_cross_layer(mesh,region,style,data)
+        stat['cross_layer']=cross
+    return data,stat
 
 def generate_region(mesh, region, style):
     validate_style(style)

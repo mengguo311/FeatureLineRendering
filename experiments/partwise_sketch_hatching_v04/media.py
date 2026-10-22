@@ -38,7 +38,7 @@ def create(unit):
         for name in ('baseline','edited'):
             before_after.append((c['view']+' | '+name,Image.open(unit/f'renders/static_{name}/frame_{i:03d}_image.png')))
     contact(out/'local_edit_all_views.png',before_after,cols=4,title='Middle region angle 45 -> 95 degrees | upper/lower paths preserved')
-    if (unit/'renders/static_original').exists():
+    if (unit/'renders/static_original').exists() and 'refinement' in p:
         for start,group in [(0,'historical'),(4,'new')]:
             comparisons=[]
             for i,c in list(enumerate(p['static_cameras']))[start:start+4]:
