@@ -113,6 +113,12 @@ def finish(unit):
         '| Scene | 有效样点中来自整核UNKNOWN的责任质量范围 |','|---|---:|']
     for scene,s in summary.items():
         lo,hi=s['unknown_source_responsibility_fraction_range'];lines.append(f'| {scene} | {lo:.2%}–{hi:.2%} |')
+    lines+=['','以下逐ID案例在结果产生后用于解释失败，未用于改门槛或选择：']
+    for scene in summary:
+        visible=[r for sc,r in allrows if sc==scene and r['arms']['specific']['target_interior']['pixels']>0]
+        worst=max(visible,key=lambda r:r['arms']['specific']['far_non_target_fraction']);view=worst['camera']['view']
+        detail=diagnosis[scene+'/'+view];example=detail['top_far_bound_IDs'][0]
+        lines.append(f'\n{scene}/{view}：选中核的加权far责任比例从BUILD的{detail["build_weighted_far_fraction"]:.3%}变为该新视角的{detail["new_weighted_far_fraction"]:.3%}；{detail["new_exposed_selected_IDs"]}个有曝光选中核中有{detail["new_far_gt_5pct_IDs"]}个far比例超过5%。最大远区颜色差上界对应原始ID {example["source_index"]}，其BUILD far={example["BUILD_far_fraction"]:.3%}，新视角far={example["new_far_fraction"]:.3%}，投影长轴标准差={example["projected_sigma_major_px"]:.3f}px。此例说明BUILD footprint不是新投影的几何保证，不能只凭协方差大就解释全部失败；代理掩码、可见性和真实表面误差仍未独立消歧。')
     lines+=['','每个新视角保留全部128个Chair或93个Lego锚点，包括遮挡、低支持和零事件记录。CSR关联原stroke_id、segment、代理face/bary/world与实际原核ID、权重及深度拒绝；这是一对多/多对多渲染支持，不是物理表面身份或一线一点一核。',
         '', '逐核诊断保存全部选中ID的新视角inside/band/far质量、投影协方差长轴标准差和颜色L1远区上界。上界是每核far质量×强度×颜色差，像素处颜色抵消使其不能当作精确损伤分摊。`TRANSFER_DIAGNOSIS.json`明确对比BUILD与新视角far比例，供下一轮定位原核失败；本轮没有根据这些结果改选择。',
         '', 'Opacity是单独源副本上opacity×(1-.5×未缩放strength)的完整重渲染，重新计算透射率和背层接受事件；16个视角均验证新trace重建。该诊断没有跨臂配平，不据此宣称优越性。Full-T支持覆盖图、selected-only重算T图和真实改色不同；本轮面板明确区分源RGB、作者意图、支持诊断、实际源编辑及固定3D排线。',
