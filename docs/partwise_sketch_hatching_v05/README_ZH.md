@@ -1,3 +1,5 @@
+最新单元入口见 [UNIT003_LINKS.md](UNIT003_LINKS.md)：Chair/Lego 的路径原核支持增加完整 footprint 统计、固定弃权、实际源 GS 对照与冷重放。以下保留 unit001 的区域绑定说明和命令。
+
 Chair 的人工 region 4 已有真实的原高斯行号关联与局部改色诊断。代码只使用 CPU；原始 PLY、完整 SH3、几何及旧资产保持不变。科学范围为 `UNCERTIFIED_CPU_MAPPING`，不是原生 CUDA 逐核认证、物理附着或原生高斯排线。
 
 本单元数据：`/mnt/hdd1/u00134/partwise_sketch_hatching_gaussian_link_v05/units/unit_001`。详细结果见该目录的 `REPORT_ZH.md`、`STATUS.json` 和 `NEXT.json`。
