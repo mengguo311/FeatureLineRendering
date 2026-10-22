@@ -122,7 +122,7 @@ def finish(unit):
         '| Scene/view | opacity目标mean L1 | far占比 | 原门槛 | 新接受像素-ID对 |','|---|---:|---:|---|---:|',*opacity_rows,'',
         '针对性验证包括：2项先RED后GREEN测试；非连续原ID、近裁剪、排序、混合深度/背层、全像素质量分区与弃权；8个真实BUILD视角全图统计；2场景逐原ID固定网格独立求和精确一致；原CPU五数组及事件精确不变；6个opacity trace重建；8次固定预算强度BUILD实际重渲染；24个主改色结果独立指标复算。4次冷加载原GS重放全部数组精确一致。','',
         'media保存4个真实相机位置的30°短弧与4级实际改色，逐帧原始数组及相机齐全；视频完整解码，FFV1逐像素精确。不是360°转台或时序质量认证。','',
-        '最初TDD模块未实现返回1；一次生成C++时误用不存在的python命令返回127，随后编译测试返回1。改用python3生成后测试通过，原日志与退出码保留。Lego第三评估视角曾收到来源未确定的SIGTERM(rc=-15)；6个已写文件及原退出记录保存在interrupted_lego_evaluation_2和INTERRUPTED_EVALUATION_LOCK.json，按原冻结协议单独重跑，没有调整选择或门槛。unit002证据锁在开始和结束重新验证，原中断／失败和负结论字节不变。','',
+        '最初TDD模块未实现返回1；一次生成C++时误用不存在的python命令返回127，随后编译测试返回1。改用python3生成后测试通过，原日志与退出码保留。Lego第三评估视角曾收到来源未确定的SIGTERM(rc=-15)；6个已写文件及原退出记录保存在interrupted_lego_evaluation_2和INTERRUPTED_EVALUATION_LOCK.json，按原冻结协议单独重跑，没有调整选择或门槛。最终检查还发现TMPDIR虽指向unit003/scratch但目录尚未创建；交付入口已补充受路径检查保护的目录创建，早期编译器中间临时路径没有记录，不宣称这部分已验证。unit002证据锁在开始和结束重新验证，原中断／失败和负结论字节不变。','',
         '交付：`results/<scene>/SOURCE_BINDING.npz`、`PATH_BINDING.npz`保留继承绑定；`FOOTPRINT_BINDING.npz`保存所有原行的全图质量、逐视角证据和弃权；`EDIT_SELECTION.npz`保存实际强度。`query_<scene>/`保存完整锚点表及原ID支持CSV；`delivery_source/run_footprint.sh`可冷重放与查询；`REPRODUCE_ZH.md`给出命令。','',
         '四里程碑均有明确范围：M1两场景软区域绑定已复算；M2加入完整footprint的路径原核支持；M3完成实际原GS改色/opacity与公平主对照；M4有CLI、持久化与冷重放，但依赖外部源PLY和现有CPU环境。没有UI工作、原生Gaussian排线或H1/H2/H3结论。只封存验证通过的有限工程证据，scientific_seal=false。','',
         '**NEXT=continue。** '+next_step,'']
@@ -143,7 +143,9 @@ replay加载原始全SH3 GS以及逐原行权重，实际完整源渲染并与�
 完整执行次序和精确参数在`logs/*.receipt.json`；协议核心源码在`source_snapshot/`，最终CLI和独立验证器在`delivery_source/`。没有打包原始PLY或Python解释器。
 '''
     (unit/'REPRODUCE_ZH.md').write_text(repro)
-    js(unit/'ENGINEERING_NOTES.json',dict(nonzero_receipts=failures,additional_generation_command_failure=dict(command='python - [local source generator]',returncode=127,reason='python executable unavailable; used python3, no model or environment changes'),recovery='new C++ generated; original failed test logs retained; focused tests pass; protocol gates unchanged'))
+    js(unit/'ENGINEERING_NOTES.json',dict(nonzero_receipts=failures,additional_generation_command_failure=dict(command='python - [local source generator]',returncode=127,reason='python executable unavailable; used python3, no model or environment changes'),
+        scratch_scope='TMPDIR pointed to unit003/scratch but directory existence was not initially ensured; earlier compiler intermediate paths were not recorded. Final CLI now creates guarded HDD scratch before command execution.',
+        recovery='new C++ generated; original failed test logs retained; focused tests pass; protocol gates unchanged'))
     print(json.dumps(dict(execution_state='partial',passes=total_pass,report=str(unit/'REPORT_ZH.md')),default=runtime.json_default),flush=True)
 
 if __name__=='__main__':
