@@ -15,7 +15,10 @@ import json
 import shutil
 
 OUTPUT_ROOT = Path('/mnt/hdd1/u00134/partwise_sketch_hatching_gaussian_link_v05')
-os.environ['TMPDIR'] = str(OUTPUT_ROOT/'units/unit_001/scratch')
+ACTIVE_UNIT = Path(os.environ.get('V05_UNIT_DIR', str(OUTPUT_ROOT/'units/unit_002'))).resolve()
+if OUTPUT_ROOT.resolve() not in ACTIVE_UNIT.parents or OUTPUT_ROOT/'orchestration' in ACTIVE_UNIT.parents:
+    raise ValueError('V05_UNIT_DIR must be inside task outputs, outside orchestration')
+os.environ['TMPDIR'] = str(ACTIVE_UNIT/'scratch')
 
 def sha(path):
     h = hashlib.sha256()

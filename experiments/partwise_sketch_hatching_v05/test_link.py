@@ -7,7 +7,7 @@ import numpy as np
 from link_renderer import Renderer, prepare
 from membership import accumulate, resolve, save_binding, load_binding, tint_copy
 
-BUILD=runtime.OUTPUT_ROOT/'units/unit_001/build'
+BUILD=runtime.ACTIVE_UNIT/'build'
 
 def camera():
     return dict(extrinsic=np.eye(4).tolist(),width=16,height=16,fx=12.,fy=12.,cx=7.,cy=7.)

@@ -9,7 +9,7 @@ from link_renderer import prepare,validate_trace
 from membership import load_binding,accumulate,resolve
 from run_unit import delta_budget
 
-def validate(unit):
+def validate(unit, report=None):
     p=json.loads((unit/'PROTOCOL.json').read_text());out=unit/'results'
     a=base.load_source(p['source']['original_ply'],p['source']['sha256']);n=len(a['means'])
     b,meta=load_binding(out/'SOURCE_BINDING.npz',p['source']['sha256'],n)
@@ -95,7 +95,8 @@ def validate(unit):
     result=dict(utc=runtime.now(),views=checks,path_checks=path_checks,all_binding_arrays_recomputed_exact=True,
         matched_actual_BUILD_sample_L1=budgets,budget_max_spread=matched,source_PLY_unchanged=sha(p['source']['original_ply'])==p['source']['sha256'],
         confidence_scope='CPU internal acceptance and persistent linkage audit, not independent physical/native calibration')
-    js(unit/'VALIDATION.json',result);print(json.dumps(result,default=runtime.json_default),flush=True)
+    js(report or unit/'VALIDATION.json',result);print(json.dumps(result,default=runtime.json_default),flush=True)
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--unit',type=Path,required=True);validate(p.parse_args().unit)
+    p=argparse.ArgumentParser();p.add_argument('--unit',type=Path,required=True);p.add_argument('--report',type=Path)
+    args=p.parse_args();validate(args.unit,args.report)
