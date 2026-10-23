@@ -19,6 +19,10 @@ def validate_style(style):
     if not .008<=style['spacing']<=.5 or not .02<=style['length']<=2. or not .2<=style['width']<=8.:
         raise ValueError('spacing [.008,.5], length [.02,2] world; width [.2,8] pixels')
     if style.get('plane','xy') not in ('xy','xz'):raise ValueError('cutting plane must be xy or xz')
+    if 'cutting_basis' in style:
+        basis=np.asarray(style['cutting_basis'],float)
+        if basis.shape!=(2,3) or not np.isfinite(basis).all() or not np.allclose(basis@basis.T,np.eye(2),atol=1e-10,rtol=0):
+            raise ValueError('cutting_basis must be two finite orthonormal world vectors')
     if type(style.get('cross_enabled',False)) is not bool:raise ValueError('cross_enabled must be boolean')
     for key,default,lo,hi in [('cross_angle',60.,5.,175.),('cross_spacing',.06,.008,.5),('ink_strength',.80,0.,1.)]:
         value=style.get(key,default)
@@ -70,6 +74,9 @@ def generate_region(mesh, region, style):
     if not len(ids):
         raise ValueError('region has no proxy faces')
     normal=cutting_normal(region,style['angle'],style.get('plane'))
+    if 'cutting_basis' in style:
+        a=np.deg2rad(style['angle']);basis=np.asarray(style['cutting_basis'],float)
+        normal=np.cos(a)*basis[0]+np.sin(a)*basis[1]
     q=mesh['vertices']@normal
     qt=q[mesh['faces'][ids]]
     spacing=style['spacing'];max_length=style['length'];gap=.035
