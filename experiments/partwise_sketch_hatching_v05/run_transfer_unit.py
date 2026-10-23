@@ -162,6 +162,11 @@ def evaluate(unit,scene,index):
     mp,mstats=project_intent(t,b,p);np.savez_compressed(folder/'M1_PROJECTION.npz',**mp,xy=t['xy'],proxy_region=t['proxy_region'],sample_eligible=t['sample_eligible'])
     intent=np.where(d['regions']>0,1,0);intent[d['path_mask']]=4
     row=dict(camera=c,trace_check=check,M1_projection=mstats,path_support=path_stats(ps),arms={},coverage={},joint_transfer={},tint_reconstruction={},source_array_hashes=original)
+    if p.get('unit')=='unit_005':
+        reference,_=load_binding(Path(p['prior_unit'])/'results'/scene/'SOURCE_BINDING.npz',s['source']['sha256'],len(a['means']))
+        refmp,refstats=project_intent(t,reference,p)
+        np.savez_compressed(folder/'M1_PREVIOUS_PROJECTION.npz',**refmp,xy=t['xy'])
+        row['M1_previous_projection']=refstats
     col=base.source_colors(a,c);sid=t['sample_index'];ids=t['source_index'];xx,yy=t['xy'].T;images={}
     for arm in ARMS:
         ef,_=r.render(evaluated_tint_copy(a,c,sel[arm],p['diagnostic']['tint']),c)
@@ -200,8 +205,8 @@ def evaluate(unit,scene,index):
         ['Original GS / full SH3','Authored region + fixed paths','Full-T original-ID support','Frozen source tint','Source opacity diagnostic','Saved 3D hatches'],
         scene+' '+c['view']+' | New v05 camera; frozen BUILD budget; CPU mapping only')
     panel(folder/'controls.png',[f['rgb']]+[images[k] for k in ARMS],
-        ['Original GS','Full-footprint selection','Previous path selection','Nearest path / same count','Shuffled source IDs'],
-        'Same unit003 BUILD effect budget; no new-view matching; all failure views retained')
+        ['Original GS']+p['diagnostic'].get('arm_labels',['Full-footprint selection','Previous path selection','Nearest path / same count','Shuffled source IDs']),
+        'Matched actual BUILD source-RGB effect; no new-view matching; all failure views retained')
     differences=[]
     for arm in ARMS:
         value=np.clip(np.abs(images[arm]-f['rgb']).sum(2)/.3,0,1)
