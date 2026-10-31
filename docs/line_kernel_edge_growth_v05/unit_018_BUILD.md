@@ -1,0 +1,13 @@
+# Unit 018: scan24 protected M4 to M5
+
+This build enables exactly one additional protected endpoint-supplement round from the sealed unit015 scan24 M4. All 79 unit017 source files remain byte-identical. Eight new source files provide M5 routing, predecessor statistics, durable internal controls, configuration and tests. The protected numerical engine and its fitting/proposal/competition rules are unchanged.
+
+The immediate control is saved M4. Prefix-only and joint-competition M5 controls are computed from shared fits, saved with complete states and all-row memberships, cold-checked and labeled INTERNAL_SHARED_FIT_CONTROL. They are not historical replays. Their checkpoint hashes are included in the main M5 checkpoint. Main state is durable before export/statistics. Inherited dispute lineage is retained and disputed descendants are excluded from newly validated-growth counts without changing primary eligibility.
+
+The pre-implementation test genuinely failed because the old public contract rejected level5. Its raw log and receipt are retained in unit018/tests/RED_1.log and RED_RECEIPT.json. The first regression run exposed an aliasing error in the statistics fixture: in-place scaling changed shared arrays twice. That failed run and its receipt remain preserved. The fixture was corrected without changing scientific settings.
+
+The second regression run passed all nine tests, actual return code0, zero errors/failures, in36.496seconds. It includes125 deterministic real M4 seedlets (454kernels,24carriers,7fits), hard negatives and protection/ambiguity fixtures, unchanged growth-formula checks,120-kernel native export, checkpoint resume, damaged-control rejection and preservation after injected post-native failure. These numerical checks are bounded regressions; only the M5 interface contract has new test-first RED evidence.
+
+The parent alone creates the source snapshot and runs approved Python -B progressive_runner.py --config unit018/CONFIG.json. Max compute1800seconds, CPU2/BLAS2, stage limits120/1380/1800 with420seconds reserved for delivery; absolute science cutoff12:35JST. No full-asset science or background job was launched during BUILD. Tests used only temporary small assets under unit018/tests.
+
+Delivery requires cold-loaded458490-row M5 and both original-camera native Gaussian views. Promotion rejects incumbent loss/splitting or changed locked prefix carriers. Scientific evaluation compares supported interval union, outward support, substantial contributors, continuous runs and gaps against M4; inherited groups or additional compute are not sufficient. Original kernel fields/count/order, prior assets and all prior source snapshots remain unchanged.

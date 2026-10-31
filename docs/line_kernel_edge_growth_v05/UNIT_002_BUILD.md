@@ -1,0 +1,13 @@
+# Frozen-settings ficus transfer with saved building controls
+
+The scientific variable is scene only: original complete ficus line assets, strong v03 membership/chains and saved scene p. Unit 001's `core.py` bytes stay unchanged. A guard-only subclass wraps fits to enforce initialization deadlines without changing numerical results. The runner never launches subprocesses.
+
+The saved scan24 groups 103748 and 202626 are replayed without fitting, with identical original rows colored by L0/L1/M2 and parent contributions. Ficus then runs baseline initialization, two containment passes sharing the original 30000-fit budget, and one topology round with a fresh 30000-fit budget. Every pass saves its complete state before native export; accepted batches journal exact versions. Pool-pass resume restores counters, histories, auxiliary alternatives and next version. Incomplete competition/export prefixes are preserved and never promoted or overwritten.
+
+Elapsed limits are control 120s, L0 360s, L1 1020s, M2 1380s, final export/diagnostics 1800s, also constrained by absolute deadlines. All native stage mappings/images are persisted before statistics. All previous valid assignments are preserved. Unknown eligibility and all scientific guards remain unchanged.
+
+The selector retains largest cross-parent groups by count and support, adds top five actual growth-gate groups and the largest qualifying line/polyline, and explicitly records missing kinds. Native images remain primary. Secondary crops use the union of actual RGB8 pixels with any channel below254 across the compared images, 16-pixel padding clipped to image bounds, and4x nearest-neighbor enlargement. No camera, Gaussian geometry, width or opacity changes. Empty crops are recorded as invisible.
+
+Three genuine RED failures were recorded before implementing new behavior: the inherited selector omitted known saved qualifying groups; inherited scene assertions rejected configured ficus views/count; carrier-only resume restored zero fits after an actual pooling fit exhausted the budget. GREEN regressions cover all three, exact initialization/two-pool/one-merge comparisons against the unit001 frozen snapshot on small real ficus chains and synthetic hard cases, budget/version recovery, and a12-row native render/crop integration. Historical unit001/v04 failures and receipts remain unchanged.
+
+BUILD freezes CONFIG/RUN_REQUEST and all source hashes but creates no `source_snapshot` directory. Parent exclusively owns that target, preventing the previous read-only overwrite collision. BUILD launches no full-asset computation. Parent owns the actual child return; the runner only reports factual saved stages. Scan65 and further rounds remain outside this unit.

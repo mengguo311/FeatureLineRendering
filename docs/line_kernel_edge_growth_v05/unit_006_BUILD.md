@@ -1,0 +1,15 @@
+# Unit 006 build: scan65 M2 to M3
+
+This unit prepares one additional topology round from the sealed unit003 scan65 M2 state. All279616 original kernels, numeric settings, candidate order, fit accounting, competition, guards and selector are unchanged. The existing `continuation_scene.py` already supports the configured scene; all26 pre-existing source files match unit005 snapshots byte-for-byte. Only `freeze_unit6.py`, `build_unit6.py`, and `test_unit6.py` are added.
+
+The bounded synchronous suite passed11tests with actual process exit0. The initial sorted-ID real slice had120seedlets/564kernels and no fits; its passing receipt/log remain preserved. One documented supplement uses the sealed predecessor proposal order to choose surviving carriers, without full-scene proposal generation. This yielded123seedlets/577kernels/28carriers,7fit attempts and6accepted events, exactly matching the pinned unit005 core for ordered proposals/scores, fit/reason counts, events, memberships, carrier arrays and auxiliary state. These fixture results are not complete-scene scientific evidence.
+
+The suite also covers ten existing hard fixtures, predecessor binding and no-refit restoration, exact pinned statistics, selection of the saved three-fragment example,12-row scan65 native rendering through both0012/0036 cameras, hash-verified complete-stage resume, incumbent-preservation rejection, and retention of committed state/native output after an injected later failure. All fixture outputs live in temporary directories under unit006/tests and are not advertised as scene outputs.
+
+TDD status is REGRESSION_ONLY. There is no new production behavior and no manufactured failing test. `tests/RED_NOT_APPLICABLE.json` explains this; the initial passing log and supplement rationale are retained. The final raw log is `tests/GREEN_VERIFIED.log`, bound by `TESTS_RECEIPT.json`.
+
+The configuration binds unit006 DECISION, unit003 predecessor state/checkpoint/config, unit005 immutable source snapshots, original scan65 inputs, both fixed cameras, saved controls, and four approved external helpers. `source_files` covers all29 regular source files, excluding pycache. Historical snapshots are pinned configuration references rather than additional request helpers. Parent alone creates unit006/source_snapshot.
+
+Parent compute cap is1800seconds, with cumulative stages120/1380/1800 and420seconds reserved for delivery. The unchanged runner saves complete M3 state before export/statistics, preserves incomplete/rejected artifacts, cold-loads all-row membership, and renders unchanged original kernels. Per-unit and absolute deadlines, CPU2/BLAS2, strict serial execution, output/free-space guards and the actual parent process exit remain authoritative.
+
+BUILD launches no complete-asset science or background jobs. The only requested parent command is the approved venv Python with `-B continuation_scene.py --config <unit006>/CONFIG.json`, as represented by RUN_REQUEST.json. New M3 results remain NOT_RUN until parent compute. Reports, visual verdict and any subsequent unit decision follow actual saved outputs.

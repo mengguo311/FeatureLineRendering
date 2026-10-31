@@ -1,0 +1,11 @@
+# Unit 014: scan65 endpoint-supplement transfer
+
+This build prepares complete scan65 M3-to-M4 computation from unit006, with sealed unit009 M4 as its direct control. No full-asset computation was launched. Parent owns the immutable snapshot, numerical process and actual exit.
+
+All 63 existing unit013 source files remain byte-identical. Three new files adapt configuration and bounded tests to scan65, fixed cameras `0012`/`0036`, and tracked groups 56133/64877/167509. The numerical engine, guards, ambiguity rule and selectors are unchanged. Source/kernel/helper references are hash-bound; all old outputs remain read-only.
+
+Nine actual regression tests passed in 44.124 seconds, process returncode 0. The deterministic real fixture used 120 saved scan65 M3 seedlets, 491 kernels and 32 carriers, with fitting confined to that fixture. Prefix proposals, scores, fit accounting, reasons, events, carrier arrays, auxiliary state and memberships matched the frozen reference. Existing hard fixtures and the 120-kernel native fixture covered endpoint caps, original control replay, eight-to-nine accepted merges, scan65 dual-view routing, cold reload, later-failure preservation, hash-tamper refusal, shadow mismatch refusal and incumbent preservation. These are regressions for unchanged numerical code; historical unit012 RED evidence remains historical, with no fabricated unit014 RED.
+
+The variant ceiling remains 40000 attempts. Unit009 historically allowed 30000 and used 18069; shared-prefix replay must reproduce the exact original control without refitting before promotion. CONFIG and COMPARISONS retain the historical ceiling separately. The inherited SHADOW_CONTROL `control_fit_limit` field denotes the replay ceiling of 40000, explicitly documented in CONFIG.
+
+The plain runner accepts `--config`. Compute is capped at 1800 seconds, cumulative stages 120/1380/1800, with 420 seconds reserved for delivery. CPU/BLAS2, serial execution and disk/deadline guards remain active. Full state precedes export/statistics; native membership and both views precede diagnostics. No initialization, pooling, M5, other-scene rerun, GPU or new geometry is authorized. Full scan65 results and scientific verdict remain pending parent compute and subsequent analysis.

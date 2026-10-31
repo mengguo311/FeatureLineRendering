@@ -1,0 +1,11 @@
+# unit015 BUILD: prefix-protected endpoint competition
+
+This unit changes commit priority only. It fits the frozen unit012 prefix and supplement once, reconstructs both sealed controls without refitting, retains the full joint ambiguity mask, then protects prefix acceptances and permits supplemental commits only on unused original carriers. Locked carrier arrays/versions/raw auxiliary decisions remain exact; all prefix-assigned rows and group integrity are checked before promotion. Protected conflicts remain explicitly disputed and provisional.
+
+A genuine pre-implementation test failed because actual shared fits let a cheaper supplemental pair replace a prefix acceptance. The unchanged test passes after implementation. The final synchronous test process returned 0: 9 tests, 94.074 seconds. Bounded real regression used 126 saved M3 seedlets, 464 kernels and 23 carriers. Tests also cover hard geometric fixtures, exact shared fits and both control replays, full 120-kernel native export, checkpoint reload, later-stage failure preservation and joint-control mismatch rejection. Older endpoint regressions remain regressions, not new TDD.
+
+New source files are protected_engine.py, protected_runner.py, test_protected_contract.py, test_unit15.py, build_unit15.py and freeze_unit15.py. All unit014 source bytes remain unchanged. The unit freezes every regular source file except pycache; parent owns creation of source_snapshot and the full numerical process. No complete asset science was launched during BUILD.
+
+Durability: full topology STATE precedes native export and diagnostics. Delta journals contain phase, input/output versions, arrays, cursor and the exact next version at the last stored commit. Resume accepts only hash-verified complete checkpoints. Original kernel geometry, opacity, covariance, count and order remain frozen; figures render original kernels only.
+
+The approved request uses protected_runner.py --config, max_seconds=1800, stages120/1380/1800 and final420-second delivery reserve. The final decision/config/helper/source hashes and actual RED/GREEN logs live under unit_015. Historical snapshots, outputs and actual exits are not rewritten. Scientific outcomes remain pending parent compute and later analysis.

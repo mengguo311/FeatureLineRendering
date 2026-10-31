@@ -1,0 +1,13 @@
+# Unit 013: ficus endpoint-proposal transfer
+
+The build prepares the complete ficus M3-to-M4 endpoint-supplement experiment. It does not launch full-asset science. Parent owns the immutable source snapshot, numerical process and actual exit receipt.
+
+The numerical runner, endpoint engine, selector and all 60 existing unit012 source files remain byte-identical. Three new files provide unit013 configuration, bounded regression tests and their synchronous receipt. Original ficus arrays, saved p, cameras `test_r_1`/`test_r_79`, predecessor unit005 M3 and direct control unit008 M4 remain hash-bound. All old artifacts are read-only.
+
+The variant ceiling is 40000 fits. Historical control unit008 had a 30000 ceiling and actually used 19949 fits. Shared-prefix replay must exactly reproduce its candidates, events, carrier arrays, versions, auxiliary assignments, memberships, records and statistics before variant promotion. No second fitting pass is permitted. The inherited `SHADOW_CONTROL.control_fit_limit` field denotes the replay ceiling (40000); CONFIG records this field meaning explicitly, while CONFIG/COMPARISONS `control_fit_limit` records the historical 30000 ceiling.
+
+Actual regression process returned 0: nine tests passed in 48.323 seconds. The deterministic real fixture contains 127 ficus M3 seedlets, 518 kernels and 32 carriers; fitting is restricted to that fixture. Ordered prefix, scores, fit outcomes, reasons, events, membership and carrier state agree with the pinned reference. Existing duplicate/curve/S/parallel/T/X/gap/tie and endpoint-cap checks passed. A 120-kernel native fixture verifies ficus routing, both cameras, eight control versus nine supplemented merges, full-state cold reload, hash-tamper refusal, shadow-control mismatch refusal, incumbent preservation and saved native/checkpoint survival after injected later failure.
+
+These are regression checks for unchanged numerical behavior, not a newly manufactured RED/GREEN claim. The genuine historical endpoint-coverage RED remains unit012 evidence and is linked in the test receipt. Unit013 preimplementation receipt verifies all prior source bytes and the exited previous worker.
+
+The frozen request uses the existing plain `endpoint_runner.py --config CONFIG.json`, with 1800 seconds total, cumulative stages 120/1380/1800 seconds and 420 seconds reserved for delivery. CPU/BLAS2, strict serial, unit2GiB/runtime8GiB and root/HDD free-space guards remain active. No pooling, initialization, M5, other-scene rerun, GPU, new render geometry or background process is authorized by this build. Full ficus result, actual child exit and scientific verdict remain pending parent computation and later analysis.
