@@ -1,0 +1,41 @@
+{
+  "action": "continue",
+  "recommended_next_step": {
+    "unit": "unit_007",
+    "experiment": "Complete scan24 sealed M3 -> exactly one M4_MERGE_ONLY topology round, the third cumulative merge round. No initialization, pooling, additional rounds or other-scene reruns.",
+    "input_unit": "unit_004",
+    "state": "scenes/scan24/states/M3/STATE.pkl",
+    "state_sha256": "2d23b2c1d9af898a8ebbf93a03d11a8bffb1b80e5ac54ae14b4de445e5b73a45",
+    "checkpoint": "scenes/scan24/states/M3/CHECKPOINT.json",
+    "checkpoint_sha256": "e737c72867d081792758c1c541fbba561d860fedeee7e033584a9edd6ede8fd4",
+    "checkpoint_stage": "M3_STATE",
+    "predecessor_config_sha256": "a8686aee58a84382800bd199aed4c2fdc202f65490aa631a89fc9c333cbee941",
+    "reference_source": "unit_006/source_snapshot through PARENT_RUN_FROZEN.json",
+    "reference_config_sha256": "f8e62e62b769002ddd34efff8650711790e6013919c9201fd60d2ceb25d8064b",
+    "kernels": 458490,
+    "views": [
+      "0012",
+      "0036"
+    ],
+    "tracked_M3_groups": [
+      110254,
+      114600,
+      69519
+    ],
+    "controls": "Strong v03, sealed v04 L1, unit001 M2, unit004 M3. Saved ficus/scan65 M3 external references only.",
+    "changed_variable": "One additional cumulative round, with unchanged30000fit budget per round. Increased total fit opportunity is confounded with round count.",
+    "fixed": "All unit006 numeric settings, candidate order/caps, fitting, guards, competition, activation, UNKNOWN eligibility and original kernel fields/order. No tolerance or search-cap changes.",
+    "engineering": "Parameterize level4/stageM4/immediate predecessorM3 in the existing continuation runner and statistics. M4 growth must use largest M3 contribution; retain exact M2/L1/original-parent provenance. Restore original M3 binding/versions/aux without refitting or baseline promotion.",
+    "schedule_seconds": {
+      "restore_verify": 120,
+      "complete_competition_and_M4_state": 1380,
+      "native_export_diagnostics": 1800
+    },
+    "resources": "max_seconds1800; final420s delivery; CPU2/BLAS2 strict serial; unit<=2GiB/runtime<=8GiB, root>=1GiB/HDD>=10GiB. No new units after12:00JST; sciencewrap12:35.",
+    "protocol": "Next read-only decision/parent freeze, BUILD only small tests and RUN_REQUEST, parent owns compute, ANALYSIS reads results. This NEXT launches nothing. Genuine test-first RED for new level/predecessor labeling; numeric equivalence against frozen unit006 on bounded fixtures.",
+    "visuals": "Both native M4 whole views; same-row L0/L1/M2/M3/M4/original-parent colors and highlights. Retain fixed top3count/top3support/top5growth/largest line-polyline selectors; include tracked groups and largest growth with>=3substantialL1fragments. Existing crop rule. Exact versioned M3 negative contexts.",
+    "falsifier": "Require cold-loaded458490-row M4 and both whole views. Same growth formula relative to M3:>=5groups gain>=max(4p,25%largestM3support), two M3 contributors each>=6kernels/>=2p plus outward support. Separately count >=3substantialL1 AND >=2substantial original parents and outward>=4p. Inspect new straight/curved growth and gaps; inherited large groups, duplicate pooling or internal filling do not establish extension. Unresolved images remainPARTIAL; geometry/hash violations stop."
+  },
+  "rationale": "All three scenes now have saved two-round outputs. scan65 M3 gives8substantial cross-parent growth groups, but its3multi-L1 growth groups each have only one original parent, and its tracked M2 examples do not extend. The remaining question is deeper coherent cross-parent consolidation. Building M3 already contains substantial cross-parent line110254, polyline114600 and three-L1/three-parent line69519, making one fixed third round a concrete test of that question. Do not raise ficus/scan65 fit caps: their latest rounds did not exhaust30000. No claim that an extra round resolves native-scale visual uncertainty.",
+  "not_authorized_by_this_analysis": "No fitting, implementation or science launched; next unit remains subject to parent decision freeze/build/compute protocol."
+}

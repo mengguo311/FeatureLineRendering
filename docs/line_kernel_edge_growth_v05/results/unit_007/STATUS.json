@@ -1,0 +1,82 @@
+{
+  "unit": "unit_007",
+  "execution_state": "completed",
+  "scientific_verdict": "PARTIAL",
+  "scene": "scan24",
+  "stage": "M4_MERGE_ONLY",
+  "actual_child_returncode": 0,
+  "actual_child_reason": null,
+  "actual_child_exit_authority": "../../orchestration/unit_007/COMPUTE_EXIT.json",
+  "completed": [
+    "M3_RESTORE_VERIFIED",
+    "M4_STATE",
+    "M4_NATIVE",
+    "M4_DIAGNOSTICS",
+    "SAVED_ARRAY_AUDIT",
+    "VISUAL_ANALYSIS"
+  ],
+  "missing_requested_compute_stages": [],
+  "delivery_gate": true,
+  "requested_rows": 458490,
+  "assigned": 245985,
+  "unknown": 212505,
+  "primary_groups": 6020,
+  "delta_assigned_from_M3": 13461,
+  "fit_attempts": 30000,
+  "fit_cap_reached": true,
+  "accepted_merge_events": 4180,
+  "growth": {
+    "stored_gate_groups": 28,
+    "line": 15,
+    "polyline": 13,
+    "at_least_two_substantial_original_parents": 19,
+    "at_least_three_substantial_L1_fragments": 6,
+    "both_three_L1_and_two_original_parents": 5,
+    "outward_support_ge4p": 25,
+    "two_original_parents_and_outward_ge4p": 16,
+    "three_L1_two_original_parents_and_outward_ge4p": 4
+  },
+  "visual": {
+    "saved_pngs": 309,
+    "viewed_pngs": 54,
+    "straight_growth_examples": [
+      25859,
+      69200
+    ],
+    "new_curved_growth_in_both_views": "NOT_ESTABLISHED",
+    "unresolved_negative_contexts": true,
+    "invisible_gap_context_views": [
+      "0012",
+      "0036"
+    ],
+    "invisible_worst_acceptance_view": "0036"
+  },
+  "limitations": [
+    "Polyline classification does not establish visible curved continuation.",
+    "Finite observed support and gaps do not establish a continuous physical edge.",
+    "Existing large inherited groups and internal hole filling are not M4 extension.",
+    "Candidate, query and fit caps prevent exhaustive-search claims.",
+    "No physical-truth, independent held-out or generalization claim; all groups provisional."
+  ],
+  "not_run_in_this_unit": [
+    "initialization",
+    "pooling",
+    "M5",
+    "ficus M4",
+    "scan65 M4"
+  ],
+  "provenance": {
+    "config_sha256": "5ef2a3ea03b7b89e97a9349ab77b0ca67eac301f157212927e77fe52a004c012",
+    "decision_sha256": "fc46a472c90c482837926bba814df15a25b5e89d743c5d8dc81a3950dbcd9fc8",
+    "snapshot_manifest": "PARENT_RUN_FROZEN.json",
+    "verified_snapshot_files": 33,
+    "verified_input_files": 44,
+    "verified_helper_references": 33,
+    "approved_external_helpers": 4,
+    "audit": "ANALYSIS_AUDIT.json",
+    "visual_review": "VISUAL_REVIEW.json"
+  },
+  "source_changes_during_analysis": false,
+  "science_reruns_during_analysis": false,
+  "physical_identity_verified": false
+}

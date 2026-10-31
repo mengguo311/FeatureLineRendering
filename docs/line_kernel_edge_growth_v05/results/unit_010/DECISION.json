@@ -1,0 +1,59 @@
+{
+  "action": "continue",
+  "rationale_chinese": "三个场景的第三轮均已保存。scan65 M4未触及fit上限；大曲线61267没有增长，6个有效候选被歧义拒绝。冻结代码用整条候选的首尾弦比较参考曲线各处局部切向，可能把重合曲线误判为不同路径。选择同一M3输入上的单变量对照，检验局部切向表示；这仍是假设，不保证改善，也不增加轮次或放宽阈值。",
+  "recommended_next_step": {
+    "unit": "unit_010",
+    "experiment": "Complete scan65 M3 -> one M4 topology round with local-tangent duplicate equivalence. Compare with sealed unit009 M4; no initialization, pooling, M5 or other-scene reruns.",
+    "input": {
+      "unit_root": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_006",
+      "state": "scenes/scan65/states/M3/STATE.pkl",
+      "state_sha256": "96f2bbb51d80cf9e036753ae42f47cb1a19a72e41b945c7cc7137879d2623497",
+      "checkpoint": "scenes/scan65/states/M3/CHECKPOINT.json",
+      "checkpoint_sha256": "98069f8b101e55993a0cd87ed7e201d38f1d16a28af6af6d3911972f544c3244",
+      "checkpoint_stage": "M3_STATE",
+      "predecessor_config_sha256": "f8e62e62b769002ddd34efff8650711790e6013919c9201fd60d2ceb25d8064b",
+      "restore": "All279616 original kernels/tangents and saved p. Verify predecessor's own binding; restricted-load exact carriers/rows/reps/q/flags/origins/versions/aux/next_version. Cross-check saved membership/world-unit carriers; no refitting or baseline promotion."
+    },
+    "reference": {
+      "source": "unit_009/source_snapshot via PARENT_RUN_FROZEN.json",
+      "config_sha256": "3bbee014bf25d241a6576a43d0162da31700fd1a1dc098f9267e2c0f4f2e2979",
+      "controls": "Primary control: unit009 M4 from identical M3. Also retain strong v03, unit003 L1/M2 and unit006 M3."
+    },
+    "exact_change": "Inside ambiguity duplicate-equivalence only: retain x=sample(cc.q) and project(x,ref.q). Replace normalized cc.q[-1]-cc.q[0] with project(x,cc.q)[2], the donor local segment tangents. Require min(abs(sum(reference_tangent*donor_tangent,axis=1)),initial=1)>=cos(15*RAD). Preserve distance max<=0.5+EPS, deterministic lowest-segment ties, sample positions, directed comparison, reference/alternative order, short-circuit behavior and all remaining competition logic. Do not add reciprocal tests or change proposal/parallel guards.",
+    "fixed_settings": {
+      "candidate": "Pinned batch order: samples<=1p, radius4p, nearest32samples, first8distinct neighbors/sample, sorted symmetric degree8cap; unchanged score/stable-ID order.",
+      "fit": "Level4, reset fit count0, cap30000 including rejections; TLS then ordered polyline,3Huber iterations/delta0.5p, equal occupied1p-bin weight,8192kernels/128knots maximum, spacing<=4p, EPS1e-8; no pruning.",
+      "geometry": "All-member residual max<=1p/q95<=0.5p/tangent<=30deg; endpoint gap<=1.5p/connector<=35deg; monotone overlap>=min(2p,half shorter length); vertex turn<=30deg/every8p turn<=60deg; no cycles/nonadjacent contact<0.5p.",
+      "separation": "Parallel rejection at overlap>=2p, angle<=15deg, transverse median>0.5p. Three-arm rejection at separation>20deg, each>=3seedlets spanning>=2p. No endpoint-to-interior branch.",
+      "competition": "Original15%near-tie rule, <=2auxiliary alternatives without topology authority, original disjoint commit order and one merge/carrier. Activation>=3seedlets/6kernels/4p support. All valid UNKNOWN remain eligible; invalid sources UNKNOWN, failed legacy groups assigned/frozen."
+    },
+    "schedule_seconds": [
+      {
+        "cumulative_limit": 120,
+        "stage": "Verify resources/hashes; restore M3 and sealed control references."
+      },
+      {
+        "cumulative_limit": 1380,
+        "stage": "Run identical proposals/fits once. Record old/new equivalence decisions on the same valid fits. Shadow original competition without refitting; reproduce unit009 accepted input pairs before variant promotion. Complete variant competition, commit disjoint pairs, journal every256acceptances, save full reloadable state immediately."
+      },
+      {
+        "cumulative_limit": 1800,
+        "stage": "Cold-load and verify incumbent preservation; save all-row variant membership and both native full views before comparisons/diagnostics. Missing work NOT_RUN; incomplete competition never promoted."
+      }
+    ],
+    "visuals": "Cameras0012/0036, white floor0.0144, pinned CPU renderer/libjoint.so, unchanged original covariance/width/opacity; UNKNOWN gray. Preserve unit009 selector and track56133/64877/167509. Additionally select changed descendants touching61267/238627/64111 and top3changed groups by supported length, then ID. Show identical final rows colored by M3/control-M4/variant-M4/original parents, plus highlights. Existing RGB8<254union bbox/pad16/clip/4xnearest crops only. Retain six exact minimum-margin contexts and changed-equivalence examples with full input rows/versions; no camera substitution.",
+    "build_protocol": "Parent freezes decision. BUILD<=22min implements/tests/freezes RUN_REQUEST only. Genuine RED->GREEN: coincident curved alternatives rejected by old chord test but accepted as equivalent locally; include straight, reversed orientation, different knot spacing, diverging curve, parallel, S, T/X and gap controls. On <=128deterministic real M3seedlets compare candidate order, scores, proposals, fit/reason counts and pre-competition carrier arrays against unit009; only declared competition differences allowed. Test checkpoint/resume and later-failure preservation. Freeze all source files except pycache, config/decision hashes, four approved helpers and actual test receipts. Parent owns snapshot, plain --config process and actual EXIT; ANALYSIS<=8min reads saved outputs.",
+    "resources_outputs": "max_seconds1800, final420s delivery; CPU2/BLAS2 strict serial; unit<=2GiB/runtime<=8GiB, root free>=1GiB/HDD>=10GiB. Save mappings/reasons/provisional/aux, finite carriers/support, lineage, candidate/rejection/cap records, old/new competition decisions, control differences/lost growth, checkpoints, geometry audits and actual PNGs. No GPU/RGB sourceGS/train/install/agents/background jobs/provider fallback/secrets/env/push. No new units after12:00JST; science ends12:35, handoff12:45, hard stop13:00."
+  },
+  "changed_variable": {
+    "scientific": "Duplicate-equivalence direction representation: global donor chord -> corresponding local donor tangents. Same input, topology-round count and fit opportunity.",
+    "engineering": "Instrument old/new competition on shared fits and compare exact saved control memberships; no second fitting pass.",
+    "fixed": "All original kernel fields/count/order; many-to-one support remains distinct from carrier topology. No distance relaxation, component union or inserted gap geometry."
+  },
+  "falsification": {
+    "delivery": "Fail without cold-reloaded279616-row variant membership and both native full views. Shadow-control mismatch blocks promotion; preserve candidate state and sealed control.",
+    "growth": "Retain the M3 gate: >=5groups gain>=max(4p,25%largestM3support), two M3contributors each>=6kernels/>=2p, outward>EPS. Variant benefit additionally requires new or enlarged qualifying groups beyond unit009, with material outward support>=4p; report gained AND lost groups, two-original-parent/three-L1 intersections, interval union, longest run, finite extent/bbox and total/max gaps.",
+    "visual": "Require new straight and curved continuation in both views. Fewer ambiguity records, duplicate pooling, inherited curves or internal filling alone are negative results. Swallowed parallel/depth/branch structures falsify affected changes; clipped or unresolved evidence remains PARTIAL. No tuning.",
+    "preservation": "Preserve control and failures. Geometry/hash/resource violations stop immediately. Physical identities remain provisional; no held-out claim. Further units require actual-result evidence within the authorized window."
+  }
+}

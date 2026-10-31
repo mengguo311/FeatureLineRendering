@@ -1,0 +1,64 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit017交付完整且保住全部prefix分配，但54次补充接受没有产生新增实质增长组；继续同类场景迁移已无新问题可回答。scan24的unit015保存了4个实质增量案例，235032双视图可见直线、37087可见短弯折，但仍有间隙及视角限制。下一步仅增加一轮，检验已接受片段能否继续组成更大的边。接口检查确认M5尚被硬编码阻挡，且不存在封存M5控制，必须明确参数化并保存本轮共享拟合控制，不能伪称历史重放。",
+  "recommended_next_step": {
+    "unit": "unit_018",
+    "experiment": "Complete scan24 sealed protected M4 -> exactly one protected endpoint-supplement M5 round. No initialization, pooling, extra rounds or other-scene reruns.",
+    "input": {
+      "unit": "unit_015",
+      "state": "scenes/scan24/states/M4/STATE.pkl",
+      "state_sha256": "4f350e3a991c98d7cf011d833be4fc5aebcce1c7d328ae69b39948b5698ec31f",
+      "checkpoint": "scenes/scan24/states/M4/CHECKPOINT.json",
+      "checkpoint_sha256": "df5ca02705c86c9dc5a55a771deca2256801809828c432320d092a0ad687d8d9",
+      "predecessor_config_sha256": "8dd3a00ac789e9b67b6aa964d70e346de5fe955c244992f9f8ed58f623b20b70",
+      "restore": "All458490 original kernels/tangents and saved p. Verify predecessor binding; restricted-load exact carriers, flags, versions, aux and next_version; cross-check membership/world-unit carriers. No refitting or baseline promotion."
+    },
+    "reference": {
+      "source": "unit017/source_snapshot through PARENT_RUN_FROZEN.json",
+      "config_sha256": "6188a2f45240e56aed9df52e265dbea3bd77cf0ce3cfe82d97201608e493a5a4",
+      "controls": "Unit015 M4 is the no-additional-round control. Save new prefix-only and joint-competition M5 states/memberships from the same fits; label INTERNAL_SHARED_FIT_CONTROL, not historical replay. Retain strong v03, pooling-only L1 and M2/M3 references."
+    },
+    "policy": [
+      "Reset level5 accounting, retain versions/aux. Generate unchanged ordered prefix and endpoint supplement; fit each pair once, total40000 attempts including failures.",
+      "Compute prefix-only and full joint competition from shared fits; save both complete controls before protected commits. Capture joint ambiguity over all valid original M4 candidates before protection.",
+      "Lock accepted prefix inputs and output rows/geometry/flags/versions/aux. Supplemental pairs require both original inputs unused, exact versions and absence from the full ambiguity mask.",
+      "Commit in original cost/ID order; one merge per original carrier across both phases. Continue prefix next_version; retain unprotected joint alternatives<=2. Reject transactionally.",
+      "Preserve inherited dispute provenance through lineage and record new disputes. Disputed descendants remain provisional and excluded from newly validated-growth counts; primary eligibility is unchanged."
+    ],
+    "fixed_settings": {
+      "proposals": "Prefix samples<=1p/radius4p/nearest32/first8distinct/sorted symmetric degree8. Endpoint nearest32 within1.5p+EPS, workers1, self before filtering, original screens/order/ties;<=30000 screened survivors, one supplemental pair/endpoint,<=10000 appended; no reciprocity.",
+      "fit": "TLS then ordered polyline;3Huber iterations, delta0.5p, equal occupied1p-bin weight;<=8192kernels/128knots, spacing<=4p, EPS1e-8; no pruning.",
+      "guards": "All-member residual max1p/q95 0.5p/tangent30deg; endpoint gap1.5p/connector35deg; original monotone overlap; vertex turn30deg/every8p60deg; no cycles/nonadjacent contact<0.5p; unsupported gap<=1.5p. Parallel: overlap>=2p/angle<=15deg/transverse median>0.5p rejects. Three arms: separation>20deg, each>=3seedlets spanning>=2p rejects.",
+      "eligibility": "Original15% ambiguity/global-chord duplicate equivalence; activation3seedlets/6kernels/4p support. All valid UNKNOWN eligible, including historical ambiguity; invalid sources UNKNOWN, failed legacy groups assigned/frozen."
+    },
+    "schedule_seconds": [
+      {
+        "until": 120,
+        "stage": "Verify resources/hashes, restore M4, persist ordered proposals."
+      },
+      {
+        "until": 1380,
+        "stage": "Shared fits, complete internal controls and ambiguity, protected commits. Journal every256acceptances with phase/cursor/versions; immediately checkpoint full M5 state."
+      },
+      {
+        "until": 1800,
+        "stage": "Cold-load, verify M4 incumbent and M5-prefix preservation; export all-row M5 and both native full views first, then comparisons/diagnostics. Incomplete stages never promoted."
+      }
+    ],
+    "engineering": "Parameterize M5/M4 labels, history ownership through M3, protection paths and internal-control references. Preserve the growth formula using M4_contributions/gain_over_largest_M4_p. Controls generated during this run receive their own checkpoints; do not pretend they are prehashed inputs.",
+    "visuals": "Fixed0012/0036, pinned CPU renderer/libjoint.so, white floor0.0144, original covariance/width/opacity; actual kernels only, UNKNOWN gray. Select cross-parent top3count/top3support, top5new growth, largest qualifying line/polyline, largest three-L1 growth and descendants235032/44089/98755/37087. Show identical final rows colored by L0/L1/M2/M3/M4/M5/parents and internal controls, plus highlights and six exact versioned guard contexts. Existing union RGB8<254bbox/pad16/clip/4xnearest crops only.",
+    "protocol": "Parent freezes decision. BUILD<=22min: genuine RED for rejected M5 contract/hardcoded predecessor paths; GREEN plus<=128real M4seedlets and existing protection/ambiguity/hard-negative fixtures against pinned unit017 engine, comparing proposals/fits/accounting/controls/carriers/aux with only level labels differing. Test control checkpoint resume and later-failure preservation. Freeze decision/config/all source files except pycache, four approved helpers and actual test receipts into RUN_REQUEST. Parent owns snapshot/plain --config compute/actual EXIT; ANALYSIS<=8min reads saved outputs.",
+    "resources_outputs": "max_seconds1800, final420s delivery; CPU2/BLAS2 strict serial; unit<=2GiB/runtime<=8GiB/rootfree>=1GiB/HDD>=10GiB. Save full mappings/reasons/provisional/aux, finite support/carriers, versioned lineage, controls/disputes/caps, checkpoints, original-field audits and actual PNGs. No GPU/RGB sourceGS/train/install/agents/background jobs/provider fallback/env/secrets/push. No new units after12:00JST; science ends12:35."
+  },
+  "changed_variable": {
+    "scientific": "Cumulative topology rounds3->4, adding one40000-fit opportunity. Round count and cumulative compute increase together.",
+    "engineering": "M5/predecessor parameterization and durable same-pass controls; numerical policy unchanged.",
+    "fixed": "Every original kernel field/count/order; many-to-one support separate from topology. No component union, distance relaxation or inserted geometry."
+  },
+  "falsification": {
+    "delivery": "Require cold-reloaded458490-row M5 and both native full views. Lost M4-assigned rows, split incumbent groups, changed locked M5-prefix carriers or incomplete competition block promotion.",
+    "growth": "Keep stored gate relative to M4:>=5groups gain>=max(4p,25%largestM4support), two M4contributors each>=6kernels/2p, outward>EPS. Separately require/report material outward>=4p, substantial original-parent/L1 intersections and undisputed counts. Report gained/lost support, coverage, longest run, finite extent/bbox and total/max gaps.",
+    "visual": "Require newly growing straight AND curved continuation in both fixed views. Inherited groups, extra fits, duplicate support and internal filling are insufficient. Swallowed parallel/depth/branch structures falsify affected instances; clipped or unresolved evidence remains PARTIAL.",
+    "limits": "Preserve M4, controls, failures and actual exits. Zero benefit is a negative result, not permission to tune. Physical identities provisional; no held-out claim. Geometry/hash/resource violations stop immediately."
+  }
+}

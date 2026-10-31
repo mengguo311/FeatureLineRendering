@@ -1,0 +1,61 @@
+{
+  "action": "continue",
+  "rationale_chinese": "三场景M2均已实际交付，但ficus和scan65各只有3个实质跨原始parent增长组；scan65最大的可见曲线仍来自L1。scan24已有19个实质跨parent增长组及保存的直线/曲线示例，适合检验再推进一轮能否得到更大的实例。单轮限制只是待检验假设，fit-cap仍可能限制增长。另发现现有统计函数会把非M2级别的growth_gate强制设为false，M3需要修正级别标注，不能改变增长公式。",
+  "recommended_next_step": {
+    "unit": "unit_004",
+    "experiment": "Complete scan24: sealed M2 to exactly one M3_MERGE_ONLY topology round. No initialization, pooling, further rounds or other-scene reruns.",
+    "input": {
+      "kernels": 458490,
+      "state": "unit_001/scenes/scan24/stages/S2_MERGE/STATE.pkl",
+      "state_sha256": "b1678f236750a852ac58c03c12fd44c907e118fd754dd6aeb38f9bcd075cd7fd",
+      "input_checkpoint": "unit_001/scenes/scan24/stages/S2_MERGE/CHECKPOINT.json",
+      "checkpoint_sha256": "320bb4d8253bed99b8a31e6e5104bf6874bb8f1a64c33d4df680418079296b60",
+      "root": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units",
+      "restore": "Verify predecessor checkpoint against its original decision/config binding, not unit004's binding. Restricted-load exact carriers, rows, reps, normalized q, kind, valid/baseline flags, origins, versions, auxiliary state and next_version. Cross-check M2 membership and world-unit CARRIERS; no refitting or baseline-flag promotion."
+    },
+    "controls": "Strong v03, sealed v04 pooling-only L1, unit001 M2. Use original scan24 arrays/tangents and saved p. Preserve all valid UNKNOWN eligibility and historical ambiguity; invalid sources stay UNKNOWN, invalid legacy carriers stay assigned/frozen.",
+    "schedule_seconds": [
+      {
+        "cumulative_limit": 120,
+        "stage": "Verify inputs/resources; restore and cross-check complete M2; save reference manifest."
+      },
+      {
+        "cumulative_limit": 1380,
+        "stage": "Reset round accounting to level3/30000fits, retain versions/auxiliary state and external predecessor lineage. Generate ordered proposals, finish global competition, then original disjoint commits. Each carrier merges at most once. Journal every256accepted merges; save full reloadable M3 state immediately."
+      },
+      {
+        "cumulative_limit": 1800,
+        "stage": "Cold-load; save all-row membership and both native full views before statistics. Then finite-support comparisons, lineage, selected groups and exact negative contexts. Missing work remains NOT_RUN."
+      }
+    ],
+    "settings": {
+      "reference_config_sha256": "f376f26ceeb9676cb6616edc0fcd266dc561c783bbec58d7fd1721722eb49f5c",
+      "candidate": "Unchanged final-v04 batch order: sample<=1p, radius4p, nearest32samples, first8distinct neighbors/sample, symmetric sorted degree8 cap; original score/stable-ID ordering and attempt accounting.",
+      "fit": "TLS then original ordered polyline;3Huber iterations, delta0.5p, equal occupied1p-bin weight;8192kernels/128knots maximum, spacing<=4p, EPS1e-8; no pruning.",
+      "geometry": "All-member residual max<=1p/q95<=0.5p/tangent<=30deg; endpoint gap<=1.5p/connector<=35deg; monotone overlap>=min(2p,half shorter length); vertex turn<=30deg/every8p turn<=60deg; no cycles/nonadjacent contact<0.5p.",
+      "separation": "Original parallel guard: overlap>=2p, angle<=15deg, transverse separation>0.5p. Original branch guard: three arms separated>20deg, each>=3seedlets spanning>=2p. No endpoint-to-interior branching.",
+      "competition": "Original15% ambiguity and duplicate-equivalence rule; auxiliary<=2, no topology authority. Activation>=3seedlets/6kernels/4p support. Rejecting merges preserves predecessors."
+    },
+    "engineering": "Use unit003 frozen source helpers. Export statistics with immediate_predecessor=M2, M2_contributions and gain_over_largest_M2_p; retain original growth formula. Separately compute L1/v03/original-parent contributions by exact row/seed ownership, never GROUPS position. Do not force M3 growth_gate=false. If membership consistency or incumbent preservation fails, retain M2 and reject promotion of the affected M3 stage; never invent assignments.",
+    "visuals": {
+      "render": "Original cameras0012/0036, white, floor0.0144, unchanged Gaussian covariance/width/opacity; stable group colors, UNKNOWN gray, actual kernels only.",
+      "selection": "Union of cross-parent top3by count/top3by support, top5M3-growth groups by support then ID, largest qualifying line/polyline, and descendants containing M2 groups103748/202626. Missing examples explicit.",
+      "comparison": "Both-camera M3 whole assets; selected identical final-member row sets colored by L0/L1/M2/M3/original parents plus highlights. Existing crop rule only: union RGB8<254 bbox, pad16, clip,4xnearest.",
+      "negatives": "Minimum-margin parallel, branch, crossing/tangent, gap, ambiguity and worst acceptance; exact immutable M2 input versions and complete rows."
+    },
+    "build_and_freeze": "BUILD<=22min, no full science. Genuine RED for M3 statistics suppressing growth and predecessor-binding restore misuse; GREEN plus <=128real M2 seedlets and existing duplicate/curve/S/parallel/T/X/gap/tie fixtures. Compare original ordered proposals, scores, fit/reason counts, events and carrier arrays; test saved-state resume, incumbent boundary failure and post-checkpoint failure preservation. Freeze decision/config/all source hashes, approved helpers and actual test receipts. Historical snapshots are config references, not disallowed request helpers. Parent alone creates snapshots and runs Python -B SCRIPT --config CONFIG; ANALYSIS<=8min reads outputs.",
+    "resources": "max_seconds1800, final420s reserved; CPU2/BLAS2 strict serial; unit<=2GiB/runtime<=8GiB, root free>=1GiB/HDD>=10GiB. No GPU/RGB sourceGS/train/install/agents/background jobs/provider fallback/secrets/env output/push. No new units after12:00JST; science ends12:35.",
+    "outputs": "Versioned state/deltas, full-row membership/reasons/provisional/auxiliary IDs, finite carriers/support, merge DAG and attachment provenance, candidates/rejections/caps, native images/color-source references, original-field/order audits and factual RUN_RESULT. Parent actual exit preserved; report/status/NEXT/static seal after analysis."
+  },
+  "changed_variable": {
+    "scientific": "Cumulative topology rounds1→2, with unchanged30000fit cap per round. This increases total work; it does not isolate round count from total fit opportunity.",
+    "engineering": "Restore sealed M2 directly and make level/predecessor statistics explicit.",
+    "fixed": "All original kernel geometry/count/order; candidate order, fitting, guards, activation and ambiguity. Many-to-one support remains separate from degree-two carrier topology."
+  },
+  "falsification": {
+    "delivery": "No success without cold-loaded458490-row M3 membership and both native full views. Incomplete competition or inconsistent membership cannot become a completed level.",
+    "growth": "Target>=5groups gaining>=max(4p,25%) supported length over their largest M2 contributor, with two M2 contributors each>=6kernels and>=2p plus support outside that predecessor's finite domain. Separately count groups with>=3substantial L1 fragments and>=2substantial original parents. Report interval union, longest run, extent/bbox, total/max gaps and coverage.",
+    "visual": "Require actual straight and curved continuation in both cameras. Swallowed parallels/depth structures/branches falsify affected growth. Inherited large groups, recoloring, duplicate pooling or internal hole filling are insufficient. Missing or unresolved visuals remain PARTIAL; no tuning.",
+    "preservation": "Retain M2 and all failures. Geometry/hash/resource violations stop immediately. Physical identity remains provisional; no held-out claim. After actual results choose the next distinct useful unit within the authorized window."
+  }
+}

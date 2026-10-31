@@ -1,0 +1,48 @@
+{
+  "action": "continue",
+  "recommended_next_step": {
+    "unit": "unit_008",
+    "experiment": "Complete ficus sealed M3 -> exactly one M4_MERGE_ONLY topology round, third cumulative round. No initialization, pooling, further rounds or other-scene reruns.",
+    "input_unit": "unit_005",
+    "state": "scenes/ficus/states/M3/STATE.pkl",
+    "state_sha256": "7e98b2207da899e22931df43b2b37d6b3384d7c55e42e31e02bbf022b1432d98",
+    "checkpoint": "scenes/ficus/states/M3/CHECKPOINT.json",
+    "checkpoint_sha256": "89ac2d261cdbc62fbe6b394f592f5b4add0e7fe90d71809601a164dc5b32672e",
+    "checkpoint_stage": "M3_STATE",
+    "predecessor_config_sha256": "2221d81f5e1726660ce428804981a26d484fa8716cc3c60ee1c774cb23fd99be",
+    "reference_source": "unit_007/source_snapshot via PARENT_RUN_FROZEN.json",
+    "reference_config_sha256": "5ef2a3ea03b7b89e97a9349ab77b0ca67eac301f157212927e77fe52a004c012",
+    "kernels": 285956,
+    "views": [
+      "test_r_1",
+      "test_r_79"
+    ],
+    "tracked_M3_groups": [
+      79171,
+      204470,
+      57769
+    ],
+    "controls": "Ficus strong v03, unit002 L1/M2 and unit005 M3; saved scan24 M4 external reference only.",
+    "changed_variable": "Scene scan24 -> ficus; same level4 numerical core, ordering, fitting, guards, competition, eligibility and 30000-fit round cap. Relative to ficus M3, round count and total fit opportunity increase together.",
+    "settings": "Copy frozen unit007 numeric/settings unchanged. Preserve original geometry/row order, saved p, all valid UNKNOWN eligibility, source-invalid UNKNOWN, frozen legacy assignments, auxiliary state and versions. Restore predecessor under its own config/decision binding; no refit or baseline promotion.",
+    "schedule_seconds": [
+      {
+        "cumulative_limit": 120,
+        "stage": "verify/restore sealed M3"
+      },
+      {
+        "cumulative_limit": 1380,
+        "stage": "one level4 topology pass, global competition then disjoint commits; journal every256; complete state before export"
+      },
+      {
+        "cumulative_limit": 1800,
+        "stage": "cold-load/all-row M4/both native views first, then statistics and exact selected contexts"
+      }
+    ],
+    "visuals": "Same original CPU renderer, white/floor0.0144/width/opacity. Same selector and crops; track the three listed M3 groups. Both-view final-member L0/L1/M2/M3/M4/parent colors and highlights, exact six negative contexts. No camera substitution or fitted lines.",
+    "budget": "1800 seconds parent-owned compute, final420 delivery; CPU2/BLAS2 strict serial, unit<=2GiB/runtime<=8GiB, root>=1GiB/HDD>=10GiB. BUILD only bounded regressions and frozen request. No new units after12:00JST; science ends12:35.",
+    "protocol": "Next review freezes the decision; SAME SESSION BUILD tests/configures/freezes request only; parent computes; ANALYSIS inspects actual saved output. This NEXT does not launch science."
+  },
+  "rationale": "scan24 M4已交付并出现28个数值增长组，19个有两实质原parent，5个同时有三实质L1与两实质原parent；但本轮曲线在固定双视图中尚未成立。ficus已封存M3，79171有三实质L1与两实质原parent，204470有两实质原parent，可用相同第三轮设置检验曲线场景中的更深组合；57769保留为主要来自单parent的对照。此步骤补齐同设置场景迁移，不调阈值，也不把更多合并次数当研究成功。",
+  "falsification": "M4全行冷载与双原生图缺一即交付失败。沿用相对最大M3的>=5组/增量>=max(4p,25%)/两个M3贡献者各>=6核且>=2p/域外>EPS门槛；另报域外>=4p、三L1、两原parent及交集。必须实际看到新直线和曲线续接；继承大组、内部填洞、微小漂移和polyline标签均不足。误吞平行、深度结构或分支否定实例；不可见负例仍PARTIAL。失败保留M3与候选，不调参。"
+}

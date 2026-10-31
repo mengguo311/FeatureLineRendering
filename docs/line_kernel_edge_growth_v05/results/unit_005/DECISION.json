@@ -1,0 +1,66 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit004已保存完整scan24 M3，实际rc=0；34组通过冻结增长公式，19组有两个实质原始parent，但新曲线续接仍未视觉证实，只有一个增长组含三个实质L1片段且未被选图。ficus M2的34448短弧和36790短直线在双视图可见，适合检验同设置第二轮能否累积更大的实例。最早工程障碍是unit004硬编码的S2_MERGE_COMPLETE检查点类型和scan24统计标签，无需改变科学算法。",
+  "recommended_next_step": {
+    "unit": "unit_005",
+    "experiment": "完整ficus封存M2→恰好一轮M3_MERGE_ONLY；无初始化、池化、更多轮次或其他场景重跑。",
+    "reference": {
+      "source": "unit_004/source_snapshot，经PARENT_RUN_FROZEN.json验证",
+      "config_sha256": "a8686aee58a84382800bd199aed4c2fdc202f65490aa631a89fc9c333cbee941",
+      "controls": "ficus强v03、unit002 L1及M2；scan24 M3仅作已保存的外部对照。"
+    },
+    "input": {
+      "unit_root": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_002",
+      "state": "scenes/ficus/states/M2/STATE.pkl",
+      "state_sha256": "053f61f503abdb41c39297da4d8551ab43b9ef8dd0dc91ef30cd2378c5714a33",
+      "checkpoint": "scenes/ficus/states/M2/CHECKPOINT.json",
+      "checkpoint_sha256": "0cba68fd2e4755c10353166bc663334138869474b3467152da2305bf920cb7ad",
+      "checkpoint_stage": "M2_STATE",
+      "predecessor_config_sha256": "2b9042ad166cf5e8ba203b9306ac7d1c717be537fa25ff0681728b33c86eac54",
+      "native": "scenes/ficus/stages/M2_MERGE_ONLY",
+      "restore": "全部285956原始LINE核、原始切向和保存p。先验哈希；按unit002自身decision/config绑定验证检查点。Restricted-load原carriers、rows/reps/q、kind/valid/baseline/origins/version、aux、next_version；与全行membership和世界单位CARRIERS交叉核对，不重新拟合或提升baseline标志。"
+    },
+    "schedule_seconds": [
+      {
+        "cumulative_limit": 120,
+        "stage": "校验资源、输入和快照；恢复M2并保存引用清单。"
+      },
+      {
+        "cumulative_limit": 1380,
+        "stage": "level=3，fit计数重置为0，上限30000；保持版本和aux。完成全局竞争后按原顺序提交不相交配对，每载体最多一次合并。每256次接受保存delta，完整M3状态先于导出和统计落盘。"
+      },
+      {
+        "cumulative_limit": 1800,
+        "stage": "冷载并检查成员一致性/前驱保留；立即交付全行M3和双相机原生图，再完成统计、谱系和固定诊断。未完成项明确NOT_RUN。"
+      }
+    ],
+    "settings": {
+      "candidate": "原最终v04批量排序不变：采样≤1p、半径4p、最近32样本、每样本前8不同载体、排序后对称degree8截断；原score/稳定ID顺序及fit计数。",
+      "fit": "TLS优先后原ordered polyline；3次Huber IRLS、delta0.5p、每占用1p区间等总权重；≤8192核、≤128 knots、间距≤4p、EPS=1e-8，无成员剔除。",
+      "geometry": "全成员残差max≤1p/q95≤0.5p/无符号切向≤30°；endpoint gap≤1.5p、connector≤35°；单调重叠≥min(2p,短载体半长)；顶点turn≤30°、每8p累计≤60°；无新增环或非邻接接触<0.5p。",
+      "separation": "原parallel守卫：重叠≥2p、角度≤15°、横向中位距离>0.5p拒绝；原三臂守卫：分离>20°、每臂≥3seedlets且跨度≥2p；禁止端点接内部形成分支。",
+      "competition": "原15%歧义与重复等价规则；aux≤2且不能建立拓扑。新主组≥3seedlets/6核/4p去重支持。所有有效UNKNOWN含历史歧义继续候选，无效源保持UNKNOWN；失败旧组保持分配并冻结。拒绝保留前驱。",
+      "promotion": "保持unit004成员一致性检查。失败则保存候选状态和拒绝原因，保留M2，不制造主分配。"
+    },
+    "visuals": {
+      "cameras": ["test_r_1", "test_r_79"],
+      "render": "Pinned AST隔离CPU helper；白背景、floor0.0144、原covariance/宽度/opacity。实际未改变kernels，稳定组色、UNKNOWN灰。",
+      "selection": "跨parent核数top3与支持top3、跨parent增长组支持top5及最大合格line/polyline；跟踪M2组34448和36790的后代。另加入growth_gate=true且≥3实质L1片段者中支持最长、ID最小的一组；缺失明确记录。",
+      "comparison": "固定双视图全资产；选定最终成员同一行集按L0/L1/M2/M3/原parent着色及全景highlight。仅沿用已冻结RGB8<254联合bbox、pad16、clip、4倍最近邻裁剪。",
+      "negatives": "原最小裕量parallel、branch、crossing/tangent、gap、ambiguity及最差接受例，保存完整精确M2输入行和版本。"
+    },
+    "build_and_execution": "BUILD≤22min，只参数化场景、前驱stage和统计标签并添加固定三片段选图。真实RED覆盖旧stage硬编码/错误场景标签/漏选三片段；GREEN比较≤128真实M2 seedlets及原硬夹具的排序、score、fit/reason计数、事件、成员和载体，含恢复及后续失败保存。任何科学差异阻止请求。冻结decision/config/全部源码/四个获准外部helper及实际测试receipt；历史快照放config引用。Parent独占创建快照和启动Python -B SCRIPT --config CONFIG；ANALYSIS≤8min只检查保存结果。",
+    "resources_outputs": "max_seconds=1800，末420秒交付；CPU2/BLAS2严格串行、unit≤2GiB/runtime≤8GiB、root≥1GiB/HDD≥10GiB。保存全行UNKNOWN/reasons/aux/provisional、有限支持、merge DAG、候选拒绝/caps、checkpoint、原字段审计、真实PNG和事实RUN_RESULT；实际child EXIT由parent记录。12:00后不开新单元，12:35结束science。"
+  },
+  "changed_variable": {
+    "scientific": "累计两轮配置由scan24迁移至ficus；数值、候选排序、拟合、竞争和预算不变。对ficus M2的比较同时增加一轮及总fit机会，不宣称分离两者。",
+    "engineering": "前驱检查点类型/场景标签参数化；固定增加三个实质L1片段案例的选图。",
+    "fixed": "原始全部kernel字段、数量和顺序；many-to-one支持与载体拓扑分离；无component union、距离放宽或补画间隙。"
+  },
+  "falsification": {
+    "delivery": "缺少冷载285956行M3或任一原生全景即交付失败；不完整竞争不得晋级。",
+    "growth": "沿用≥5组增量≥max(4p,最大M2贡献者支持的25%)、两个M2贡献者各≥6核且≥2p、并有域外支持的公式。分别报告三实质L1片段、两实质原parent、支持并集/最长连续段/有限长度/bbox/总最大间隙。域外微小漂移、内部补洞、重复覆盖不能冒充明显延伸。",
+    "visual": "必须看到新增直线和曲线续接的双视图及贡献谱系；继承曲线或统一颜色不足。平行/深度结构或分支误吞否定对应实例；空图、不可辨负例或缺曲线证据仍PARTIAL，不调阈值补救。",
+    "limits": "所有身份暂定，无物理真值或held-out泛化主张。几何/hash/resource违规立即停止；保存失败与M2。实际结果后再选择独立下一单元，不因旧单pilot限制停止。"
+  }
+}

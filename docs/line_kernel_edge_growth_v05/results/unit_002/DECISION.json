@@ -1,0 +1,58 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit_001实际计算退出0，完整scan24状态和原始核图片已保存；29组达到数值增长门槛，但孤立选图没有覆盖其中任何一组。当前最早的缺口是增长例证不可见，而非缺少更宽松的阈值。第二单元选择同设置ficus迁移，同时用已保存scan24合格组补齐对照；不重新拟合building，不把池化、微小载体漂移或合并次数当成向外增长。",
+  "changed_variable": {
+    "scientific": "仅将完整场景从scan24换为ficus；科学算法和参数不变。",
+    "engineering": "移除runner的scan24专用路径、核数和相机断言；按真实增长门槛选择分组图片，增加原生图片的确定性像素裁剪。",
+    "reference": "unit_001/source_snapshot与CONFIG.json；配置SHA256=eca69514ff92ffe40d208427f9a551906122b272df3815e0015b9f8bb1daf361。不得依赖未来工作树HEAD。"
+  },
+  "recommended_next_step": {
+    "unit": "unit_002：完整ficus的L0→L1→M2_MERGE_ONLY，同设置场景迁移",
+    "protocol": "Parent冻结本决策；SAME SESSION BUILD仅实现、小规模测试并冻结RUN_REQUEST；parent启动并等待实际数值子进程；SAME SESSION ANALYSIS查看真实图片并报告。scan65留待下一独立单元。",
+    "inputs": "全部285956个原始ficus LINE kernels、强v03 MEMBERSHIP/CHAINS/REPRESENTATIVES、保存的场景p。GROUPS使用groups[]；链通过representative_edge_id匹配。所有旧文件与unit_001封存结果只读。",
+    "stages": [
+      {
+        "elapsed_limit_seconds": 120,
+        "stage": "校验输入与快照。仅重放已保存scan24组103748(line)、202626(polyline)的实际成员，输出L0/L1/M2同一行集合及parent颜色的双相机原生图；不拟合、不修改membership。"
+      },
+      {
+        "elapsed_limit_seconds": 360,
+        "stage": "ficus L0：按冻结initialize算法拟合辅助载体；主成员映射等于强v03。失败的旧组保持分配并冻结；所有有效UNKNOWN seedlet进入候选，包括历史歧义。保存状态、全行映射和双相机图。"
+      },
+      {
+        "elapsed_limit_seconds": 1020,
+        "stage": "L1：恰好两次固定宿主范围的containment pooling，共享30000次fit预算。每次pass独立checkpoint，第二次不重置预算；无几何延伸。保存最终L1全行资产和双相机图。"
+      },
+      {
+        "elapsed_limit_seconds": 1380,
+        "stage": "M2：重置本层fit预算为30000，仅一次拓扑合并轮。完整竞争结束后提交，每个载体最多参与一次拓扑合并。每256次接受保存版本化delta；完整状态先于membership、统计和渲染。无后续池化。"
+      },
+      {
+        "elapsed_limit_seconds": 1800,
+        "stage": "冷载M2、立即保存双相机全资产图，再完成支持长度、贡献、谱系、固定选图和审计。超时保留最近完整阶段，缺失项明确NOT_RUN。"
+      }
+    ],
+    "settings": {
+      "candidate": "原最终v04批量算法及精确排序：采样间距≤1p，半径4p，最近32样本，每样本前8个不同载体，原排序后的对称degree8截断；不得新增筛选、改排序或跳过fit。",
+      "fit": "直线TLS优先，失败后原有有序polyline；3次Huber IRLS，delta0.5p，每占用1p区间等总权重；≤8192核、≤128 knots、间距≤4p、EPS1e-8，无成员剔除。",
+      "guards": "全成员残差max≤1p、q95≤0.5p、无符号切向≤30°；端点gap≤1.5p、connector≤35°；单顶点turn≤30°、每8p累计≤60°；保持原重叠单调、parallel、三臂branch及非邻接接触守卫，拒绝事务保留前驱。",
+      "competition": "原15%近似并列与重复等价规则，最多两个辅助关联；辅助关联不能建立拓扑。新主组仍需≥3 seedlets、≥6 kernels及≥4p去重支持。",
+      "identity": "全部身份暂定；旧parent仅为溯源。原始位置、协方差、宽度、不透明度、数量和行顺序完全冻结。"
+    },
+    "visuals": {
+      "cameras": "scan24固定0012/0036；ficus固定test_r_1/test_r_79；原相机参数、白背景、floor0.0144、原宽度和opacity。",
+      "selection": "保留跨parent核数top3与去重支持top3；另从growth_gate=true且跨parent组中按支持长度降序、ID升序选top5，并加入最大line与最大polyline。不足则明确缺失，不以更大但不增长的组代替。",
+      "presentation": "每个选定组保存双相机L0/L1/M2同成员行集、parent贡献色和全景highlight。主图始终为实际原始kernels；辅助裁剪使用各比较图RGB8任一通道<254的联合包围框、外扩16px、边界截断、4倍最近邻放大；空图记录不可见，不改相机或核宽度。",
+      "negative_cases": "按冻结最小守卫裕量规则选择M2的parallel、branch、crossing/tangent、gap、ambiguity与最差接受案例；记录精确输入载体版本和完整成员行。"
+    },
+    "build_and_freeze": "真实RED→GREEN覆盖旧选择器漏掉已知合格组、场景参数化及跨pool pass恢复预算/版本；用小型夹具比较初始化、两次pool和一次merge的排序、fit计数、事件、映射与载体，任何语义差异阻止请求。冻结全部新源码文件、配置、helper及实际测试returncode/log。BUILD不占用parent的source_snapshot目标：由parent创建快照；已有同hash文件只校验，禁止重复覆盖只读快照。",
+    "resources": "parent max_seconds=1800；严格串行CPU2/BLAS2；最终420秒用于交付。unit≤2GiB、总runtime≤8GiB、root剩余≥1GiB、HDD≥10GiB。无GPU、RGB source GS、训练、安装、agents、后台子进程或provider切换。12:00后不开新单元，所有science在12:35前结束。",
+    "outputs": "全行MEMBERSHIP及UNKNOWN/reasons/auxiliary/provisional；有限CARRIERS与支持区间；GROUPS、合并/attachment版本DAG、候选拒绝与截断、各阶段原子checkpoint、实际PNG及颜色/source引用、冷载原始字段审计、事实RUN_RESULT。实际child EXIT仅由parent记录。"
+  },
+  "falsification": {
+    "delivery": "没有冷载全行M2与两张原生全资产图则交付失败；不得把内存进度或测试结果当完整资产结果。",
+    "growth": "沿用≥5组、相对最大L1贡献者增加≥max(4p,25%)支持、至少两个旧片段各贡献≥6核和≥2p支持的门槛，并单列宿主域外支持、最长连续段、总/最大间隙及bbox。内孔补充、重复支持与微小漂移不能支持实质延伸结论。",
+    "visual": "必须实际看到合格直线和曲线组的双视图及贡献谱系。吞并独立平行/深度结构或分支即否定对应增长；不可见、缺图或缺少曲线证据均为PARTIAL，禁止调阈值补救。",
+    "continuation": "ficus失败也保存原设置结果；再由真实证据决定同设置scan65单元。无物理真值或独立held-out泛化主张；几何/hash违规立即停止。"
+  }
+}

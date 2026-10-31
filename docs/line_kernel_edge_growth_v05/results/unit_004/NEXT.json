@@ -1,0 +1,48 @@
+{
+  "action": "continue",
+  "recommended_next_step": {
+    "experiment": "完整ficus：封存M2到恰好一轮M3_MERGE_ONLY",
+    "input_state": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_002/scenes/ficus/states/M2/STATE.pkl",
+    "input_state_sha256": "053f61f503abdb41c39297da4d8551ab43b9ef8dd0dc91ef30cd2378c5714a33",
+    "input_checkpoint": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_002/scenes/ficus/states/M2/CHECKPOINT.json",
+    "input_checkpoint_sha256": "0cba68fd2e4755c10353166bc663334138869474b3467152da2305bf920cb7ad",
+    "predecessor_stage": "M2_STATE",
+    "predecessor_config": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_002/CONFIG.json",
+    "predecessor_config_sha256": "2b9042ad166cf5e8ba203b9306ac7d1c717be537fa25ff0681728b33c86eac54",
+    "predecessor_native": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_002/scenes/ficus/stages/M2_MERGE_ONLY",
+    "kernels": 285956,
+    "reference_config": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_004/CONFIG.json",
+    "reference_config_sha256": "a8686aee58a84382800bd199aed4c2fdc202f65490aa631a89fc9c333cbee941",
+    "reference_source_snapshot": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_004/source_snapshot",
+    "scope": "只恢复M2并执行一轮；无初始化、池化、第三轮或scan24/scan65重跑",
+    "changed_variable": "将累计两轮设置从scan24迁移到ficus；同场景对照为封存ficus M2/L1/强v03",
+    "fixed": "unit004 numeric全字段、原候选精确排序/对称degree8截断、每轮30000fit、拟合/guard/15%竞争/激活；全部原始kernel字段、行序与UNKNOWN资格不变",
+    "engineering": "场景参数化；前驱检查点M2_STATE按unit002自己的决策/config绑定校验。保留baseline标志、aux与versions；M3晋级检查不通过则保留M2。",
+    "stages_seconds": {
+      "restore": 120,
+      "complete_topology_checkpoint": 1380,
+      "export_native_and_diagnostics": 1800
+    },
+    "max_seconds": 1800,
+    "resources": "CPU2/BLAS2严格串行，unit<=2GiB、runtime<=8GiB、root>=1GiB/HDD>=10GiB；最终420秒交付",
+    "cameras": [
+      "test_r_1",
+      "test_r_79"
+    ],
+    "render": "原kernel CPU白背景floor0.0144、原宽度/covariance/opacity；每张固定双相机原生图，UNKNOWN灰色",
+    "selection": "沿用unit004跨parent核数/支持top3、增长top5及最大合格line/polyline；另外固定加入growth_gate组中具有>=3实质L1片段、支持最长且ID最小者，缺失明确记录。此选择须在下一决策冻结。",
+    "controls": "按同一最终行集展示L0/L1/M2/M3及原parent颜色；只作保存资产比较",
+    "falsifier": "须保存/冷载全行M3和双视图；保留原>=5增长组公式，同时分别报告域外支持大小及实质原parent/L1贡献。重复覆盖、内部补洞、微小漂移和继承曲线不算明显延伸；新曲线与负例不可见/不确定仍PARTIAL，错误并吞否定对应实例。不得调阈值。",
+    "protocol": "下一次READ_ONLY决策冻结后，同session BUILD只测试/冻结请求；parent拥有实际计算和EXIT；ANALYSIS只看已存输出。此NEXT不是启动计算。",
+    "deadline": "12:00 JST后不新开单元；12:35结束science；13:00硬停"
+  },
+  "rationale": "scan24新增34个公式通过组、19个实质跨parent组，但新曲线续接未视觉证实且只有一个三实质L1片段组。ficus M2已有曲线却只有3个实质跨parent增长组；同设置第二轮场景迁移能检验累积增长，避免在建筑上继续调参。窗口尚足，旧单pilot停止限制不适用。",
+  "evidence": {
+    "scan24_M3_growth": 34,
+    "scan24_substantial_cross_parent_growth": 19,
+    "scan24_three_L1_growth": 1,
+    "ficus_existing_M2_substantial_cross_parent_growth": 3
+  },
+  "authorization_scope": "recommendation_only_no_science_launched",
+  "utc": "2026-10-30T22:06:13.004667+00:00"
+}

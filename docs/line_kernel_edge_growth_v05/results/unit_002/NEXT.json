@@ -1,0 +1,75 @@
+{
+  "action": "continue",
+  "recommended_next_step": {
+    "unit": "unit_003",
+    "experiment": "完整scan65同设置L0→L1两次固定宿主池化→M2单轮拓扑合并，无后续池化",
+    "changed_variable": "仅完整场景ficus→scan65；279616个原始LINE核、保存p、强v03链与membership，科学算法/阈值/排序不变。",
+    "control": "unit_001 scan24与unit_002 ficus的已封存结果；scan65自身L0与L1；不重跑旧场景。",
+    "implementation": "从unit_002/source_snapshot参数化scene标签和输入/相机；沿用已修复RUN_REQUEST的四个允许外部helper，旧快照作为配置内哈希引用；小型场景参数化/预算恢复等价测试后冻结新请求。",
+    "protocol": "新单元先冻结决策；BUILD只测试/封存；parent拥有实际进程；ANALYSIS仅读真实输出。",
+    "max_seconds": 1800,
+    "stage_elapsed_limits_seconds": {
+      "L0": 360,
+      "L1_two_passes": 1020,
+      "M2_complete_competition_and_checkpoint": 1380,
+      "native_export_and_diagnostics": 1800
+    },
+    "budget": "CPU2/BLAS2严格串行；两次L1共享30000fit，M2重置30000；每256接受写delta，完整M2状态先于全行映射/图片/统计；unit≤2GiB、runtime≤8GiB。",
+    "settings_reference": {
+      "unit_002_config_sha256": "2b9042ad166cf5e8ba203b9306ac7d1c717be537fa25ff0681728b33c86eac54",
+      "numeric": {
+        "coordinate_unit": "saved p",
+        "residual_max": 1.0,
+        "residual_q95": 0.5,
+        "tangent_deg": 30.0,
+        "knot_spacing": 4.0,
+        "knots": 128,
+        "irls": 3,
+        "huber": 0.5,
+        "member_cap": 8192,
+        "fit_cap_per_level": 30000,
+        "sample_spacing": 1.0,
+        "query_radius": 4.0,
+        "query_samples": 32,
+        "candidate_carriers": 8,
+        "gap": 1.5,
+        "connector_deg": 35.0,
+        "vertex_turn_deg": 30.0,
+        "window_length": 8.0,
+        "window_turn_deg": 60.0,
+        "parallel_overlap": 2.0,
+        "parallel_angle": 15.0,
+        "parallel_offset": 0.5,
+        "branch_angle": 20.0,
+        "branch_seedlets": 3,
+        "branch_span": 2.0,
+        "ambiguity": 0.15,
+        "min_reps": 3,
+        "min_kernels": 6,
+        "min_support": 4.0,
+        "numerical_epsilon": 1e-08
+      },
+      "settings": {
+        "candidate": "原最终v04批量算法及精确排序：采样间距≤1p，半径4p，最近32样本，每样本前8个不同载体，原排序后的对称degree8截断；不得新增筛选、改排序或跳过fit。",
+        "fit": "直线TLS优先，失败后原有有序polyline；3次Huber IRLS，delta0.5p，每占用1p区间等总权重；≤8192核、≤128 knots、间距≤4p、EPS1e-8，无成员剔除。",
+        "guards": "全成员残差max≤1p、q95≤0.5p、无符号切向≤30°；端点gap≤1.5p、connector≤35°；单顶点turn≤30°、每8p累计≤60°；保持原重叠单调、parallel、三臂branch及非邻接接触守卫，拒绝事务保留前驱。",
+        "competition": "原15%近似并列与重复等价规则，最多两个辅助关联；辅助关联不能建立拓扑。新主组仍需≥3 seedlets、≥6 kernels及≥4p去重支持。",
+        "identity": "全部身份暂定；旧parent仅为溯源。原始位置、协方差、宽度、不透明度、数量和行顺序完全冻结。"
+      }
+    },
+    "cameras": [
+      "0012",
+      "0036"
+    ],
+    "outputs": "L0/L1/M2全行映射、有限支持/载体、谱系及双相机原生图；相同top3/top5增长与line/polyline选图、parent颜色、精确负例；保留UNKNOWN、拒绝与cap。",
+    "visual_falsifier": "实际双视图检验直线/曲线跨旧片段延伸，单列跨原始parent及各parent≥6核≥2p的贡献；吞并独立平行/深度结构或分支否定对应增长；不可见/不足5个实质跨parent组仍PARTIAL，不调阈值补救。",
+    "cutoffs_jst": {
+      "no_new_units": "2026-10-31T12:00:00+09:00",
+      "science_wrap": "2026-10-31T12:35:00+09:00",
+      "hard_stop": "2026-10-31T13:00:00+09:00"
+    }
+  },
+  "rationale": "ficus实际保存/冷载/渲染已完成，但增长只在少量小组出现，原始parent实质贡献与硬负例视觉证据仍有限。当前尚缺scan65同设置结果；先完成这个独立场景对照，区分场景依赖与算法限制，再决定机制改动，避免在已看过的ficus上调阈值。",
+  "not_executed_in_analysis": true,
+  "utc": "2026-10-30T21:22:01.069916+00:00"
+}

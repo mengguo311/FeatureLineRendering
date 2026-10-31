@@ -1,0 +1,97 @@
+{
+  "unit": "unit_013",
+  "execution_state": "completed",
+  "scientific_verdict": "PARTIAL_NEGATIVE_NO_NEW_MATERIAL_GROWTH_WITH_COVERAGE_REGRESSION",
+  "analysis_jst": "2026-10-31T10:03:59.540873+09:00",
+  "actual_compute_exit": {
+    "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/orchestration/unit_013/COMPUTE_EXIT.json",
+    "sha256": "c8564d05d67a7fe2317395a9c49ece4166c854aed19904f5434f5122ff8d8d96",
+    "returncode": 0,
+    "reason": null,
+    "pid": 2956824,
+    "started_jst": "2026-10-31T09:53:21.423887+09:00",
+    "finished_jst": "2026-10-31T09:57:40.290902+09:00",
+    "stdout": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/orchestration/unit_013/NUMERICAL_STDOUT.log",
+    "actual_child_exit": true
+  },
+  "completed": [
+    "M3_RESTORE_VERIFIED",
+    "M4_STATE",
+    "M4_NATIVE",
+    "M4_DIAGNOSTICS"
+  ],
+  "not_run": [
+    "initialization",
+    "pooling",
+    "M5",
+    "scan24",
+    "scan65"
+  ],
+  "missing_or_unverified": [
+    "New qualifying straight/curved benefit versus unit008: none",
+    "Physical identity and 3D parallel/depth/branch correctness",
+    "Images not exhaustively inspected:44 of576 viewed"
+  ],
+  "metrics": {
+    "kernels": 285956,
+    "assigned": 118402,
+    "unknown": 167554,
+    "groups": 3455,
+    "control_assigned": 118428,
+    "control_groups": 3458,
+    "fits": 20017,
+    "control_fits": 19949,
+    "supplement_candidates": 68,
+    "supplement_accepted": 18,
+    "accepted_events": 1355,
+    "control_accepted_events": 1343,
+    "new_accepted_input_version_pairs": 19,
+    "lost_control_accepted_input_version_pairs": 7,
+    "changed_primary_id_rows": 227,
+    "changed_groups": 9,
+    "assigned_gained": 42,
+    "assigned_lost": 68,
+    "net_assigned": -26,
+    "damaged_control_groups": 5,
+    "preserved_control_growth_groups": 6,
+    "new_material_growth_groups": 0,
+    "growth_gate_groups": 6,
+    "growth_with_two_substantial_original_parents": 5,
+    "growth_with_three_substantial_L1": 0
+  },
+  "provenance": {
+    "decision_sha256": "da86f8d20e4427eb935e98b1edc3ea6539faa936b57d7540b1fb04ebd4f6163c",
+    "config_sha256": "40b69d014e2eb2dd1cbffe5aaaa8d52e86c5730b2006d052633dc6939e56452e",
+    "request_sha256": "90c52fe6f318af2f76111bfa60f15545262545018755cc5ce1837d8486be916e",
+    "source_snapshot_manifest": "PARENT_RUN_FROZEN.json",
+    "source_snapshot_manifest_sha256": "4b925b12c4a87b1a67a3febf94ef50f46ba6319a5a7e6ccf7df143269cd374cd",
+    "source_snapshot_files_verified": 63,
+    "source_policy": "Use immutable_source_snapshot mapping and source_files hashes in PARENT_RUN_FROZEN; later live worktree HEAD is not the provenance authority.",
+    "external_helper_files": {
+      "/home/u00134/3dgs_line/gaer_c2l50_8build_joint_gs_v01/reproduction/radegs_c2l50_8build_joint_gs_v01/renderer.py": "ce24cd30d663e6f421064d83006f097b02a5cf6a74b20c177a905ca514caed93",
+      "/home/u00134/3dgs_line/gaer_c2l50_8build_joint_gs_v01/reproduction/radegs_c2l50_8build_joint_gs_v01/format.py": "a734f93a6cd3a45c9c70c3dc532621d1d7860c37f1b0df19223e9de6649c0f49",
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_joint_gs_v01/build/libjoint.so": "033a973a71dc5364677a5bf0625f23dc4fe445b70257f04de7cb70cdccca84b0",
+      "/home/u00134/3dgs_line/line_kernel_edge_growth_v04/reproduction/line_kernel_edge_growth_v04/core.py": "7348df5b91d37c3486d5fb608b716a31ffc40883286a4a02f952df6c632c83db"
+    },
+    "config_helper_files_verified": 64,
+    "input_files_verified": 69,
+    "tests_receipt": "TESTS_RECEIPT.json",
+    "tests_returncode": 0,
+    "tests_run": 9,
+    "runner_command": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+      "-B",
+      "/home/u00134/3dgs_line/line_kernel_edge_growth_v05/reproduction/line_kernel_edge_growth_v05/endpoint_runner.py",
+      "--config",
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_013/CONFIG.json"
+    ]
+  },
+  "audits": "ANALYSIS_AUDIT.json",
+  "visual_review": "VISUAL_REVIEW.json",
+  "analysis_schema_attempts_preserved": [
+    "ANALYSIS_SCHEMA_ATTEMPT.json",
+    "ANALYSIS_SCHEMA_ATTEMPT_2.json"
+  ],
+  "science_rerun": false,
+  "source_or_parameter_edits": false
+}

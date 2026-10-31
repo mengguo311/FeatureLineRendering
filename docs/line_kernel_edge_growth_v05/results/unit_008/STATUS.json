@@ -1,0 +1,77 @@
+{
+  "unit": "unit_008",
+  "execution_state": "completed",
+  "scientific_verdict": "PARTIAL",
+  "scene": "ficus",
+  "stage": "M4_MERGE_ONLY",
+  "actual_child_returncode": 0,
+  "actual_child_reason": null,
+  "actual_child_exit_authority": "../../orchestration/unit_008/COMPUTE_EXIT.json",
+  "completed": [
+    "M3_RESTORE_VERIFIED",
+    "M4_STATE",
+    "M4_NATIVE",
+    "M4_DIAGNOSTICS",
+    "SAVED_ARRAY_AUDIT",
+    "VISUAL_ANALYSIS"
+  ],
+  "missing_requested_compute_stages": [],
+  "delivery_gate": true,
+  "requested_rows": 285956,
+  "assigned": 118428,
+  "unknown": 167528,
+  "primary_groups": 3458,
+  "delta_assigned_from_M3": 5895,
+  "fit_attempts": 19949,
+  "fit_cap_reached": false,
+  "accepted_merge_events": 1343,
+  "growth": {
+    "stored_gate_groups": 6,
+    "line": 1,
+    "polyline": 5,
+    "two_substantial_original_parents": 5,
+    "three_substantial_L1_fragments": 0,
+    "three_L1_and_two_original_parents": 0,
+    "outward_ge4p": 6,
+    "two_original_parents_and_outward_ge4p": 5
+  },
+  "visual": {
+    "saved_pngs": 312,
+    "viewed_pngs": 60,
+    "curved_continuation_examples": [
+      29734
+    ],
+    "approximately_straight_continuation_examples": [
+      80817
+    ],
+    "sixth_gate_group_not_selected_for_images": 50883,
+    "unresolved_negative_contexts": true
+  },
+  "limitations": [
+    "No newly growing group has three substantial L1 fragments; tracked79171/204470 do not grow.",
+    "Original-parent labels are provenance only; contribution lengths overlap and cannot be summed.",
+    "Finite support and gaps do not prove continuous physical edges.",
+    "Candidate/query caps remain; no independent held-out/generalization or physical-truth claim."
+  ],
+  "not_run_in_this_unit": [
+    "initialization",
+    "pooling",
+    "M5",
+    "scan24 rerun",
+    "scan65 M4"
+  ],
+  "physical_identity_verified": false,
+  "provenance": {
+    "config_sha256": "6d4cd08c821e15d3eb2bb42d7017375611662a2a942c48e8c5a61e27e2426052",
+    "decision_sha256": "3bf26559f71e241b04c316fedadf35358371ba6fbdc58273dd226d4fd70f292c",
+    "snapshot_manifest": "PARENT_RUN_FROZEN.json",
+    "verified_snapshot_files": 36,
+    "verified_input_files": 42,
+    "verified_helper_references": 37,
+    "approved_external_helpers": 4,
+    "audit": "ANALYSIS_AUDIT.json",
+    "visual_review": "VISUAL_REVIEW.json"
+  },
+  "source_changes_during_analysis": false,
+  "science_reruns_during_analysis": false
+}

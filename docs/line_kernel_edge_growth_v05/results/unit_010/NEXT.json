@@ -1,0 +1,27 @@
+{
+  "action": "continue",
+  "recommended_next_step": {
+    "unit": "unit_011 (proposed; requires parent-frozen review/build)",
+    "experiment": "Complete scan24: replay unit004 sealed M3 to exactly one M4 topology round, fit cap 30000 -> 40000; compare sealed unit007 M4.",
+    "reason_for_slice": "unit007 reports fit_attempts=30000 and fit_cap=3767; unit010 local-tangent rule changed zero choices and zero groups.",
+    "control": "Identical unit004 M3 state, original unit007 scientific algorithm and global-chord competition; strong v03/L1/M2/M3 retained. Do not combine with unit010 local-tangent variant.",
+    "changed_variable": "Only maximum attempted whole-group fits for the same ordered candidate pass. No candidate-generation/order, sample/neighbor cap, fit model, residual/turn/gap/parallel/branch/ambiguity/activation changes.",
+    "schedule_seconds": {
+      "restore": 120,
+      "competition_and_durable_state": 1380,
+      "delivery": 1800
+    },
+    "max_seconds": 1800,
+    "stages": [
+      "Verify exact source/input/control snapshots; restore unchanged scan24 M3, all 458490 rows and UNKNOWN eligibility.",
+      "Generate identical candidates; fit each at most once up to40000. Snapshot the original30000-fit competition input and shadow-reconstruct unit007 control, without refitting. Exact control failure blocks variant promotion.",
+      "Finish full global competition before disjoint commits; one merge/carrier; journal every256acceptances and save reloadable full state before export/statistics.",
+      "Cold-load, verify incumbent preservation, export all-row membership and native0012/0036 images, then support and lineage comparisons. No pooling or extra rounds."
+    ],
+    "comparisons": "Report gained and lost control groups, material supported/outward length, longest continuous run/gaps, substantial M3/L1/original-parent contributions, remaining cap. Preserve original M3 growth gate; counts alone insufficient.",
+    "visual_falsifier": "Original cameras/width/opacity/floor0.0144; fixed cross-parent top3count/top3support/top5growth plus top3 changed by support. Same rows colored by M3/control/variant/parents; both-camera straight and curved material growth and exact negative contexts. No >=4p outward gain beyond control, swallowed separate structures, clipping or unresolved evidence => negative/PARTIAL.",
+    "protocol": "Review freezes exact decision; BUILD bounded tests/RUN_REQUEST only; parent owns actual compute; ANALYSIS only saved outputs. CPU2/BLAS2 strict serial, unit<=2GiB/runtime<=8GiB/root>=1GiB/HDD>=10GiB. No agents/GPU/RGB GS/source geometry changes. No new units after12:00JST; science ends12:35."
+  },
+  "rationale": "局部切向修改在完整scan65上没有改变任何竞争选择，不应把同一增长重复计为收益，也不应无证据迁移该空效应。scan24此前确有3767条fit_cap拒绝，单独补足同一候选列表的拟合机会可直接检验现有截断是否阻止实质增长；无需放宽几何阈值或追加拓扑轮次。"
+}
+

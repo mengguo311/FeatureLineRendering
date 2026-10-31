@@ -1,0 +1,65 @@
+{
+  "execution_state": "completed",
+  "scientific_verdict": "PARTIAL",
+  "unit": "unit_002",
+  "scene": "ficus",
+  "actual_child_returncode": 0,
+  "actual_child_reason": null,
+  "actual_child_exit": true,
+  "compute_started_jst": "2026-10-31T06:11:48.302667+09:00",
+  "compute_finished_jst": "2026-10-31T06:17:48.399584+09:00",
+  "runner_elapsed_seconds": 359.42821311950684,
+  "completed": [
+    "SCAN24_SAVED_CONTROL",
+    "ficus/L0",
+    "ficus/L1_PASS1_STATE",
+    "ficus/L1_PASS2_STATE",
+    "ficus/L1",
+    "ficus/M2_STATE",
+    "ficus/M2_NATIVE",
+    "ficus/M2_DIAGNOSTICS"
+  ],
+  "missing_requested_stages": [],
+  "not_run": [
+    "ficus/post_merge_pooling",
+    "ficus/L3",
+    "ficus/L4",
+    "scan65/all_levels"
+  ],
+  "delivery_gate": true,
+  "growth_counts": {
+    "stored_gate": 10,
+    "line": 4,
+    "polyline": 6,
+    "cross_original_parent": 4,
+    "two_substantial_original_parents": 3,
+    "cross_original_parent_ids": [
+      34448,
+      14456,
+      36790,
+      107514
+    ],
+    "two_substantial_original_parent_ids": [
+      34448,
+      14456,
+      36790
+    ]
+  },
+  "numerical_fragment_growth_gate": "10 groups meet stored gate; 4 line, 6 polyline; all have outward support. This is not ten cross-original-parent identities.",
+  "cross_original_parent_target": "Only4 growth groups cross original parents; only3 have two substantial original-parent contributions. No claim of >=5 substantial cross-original-parent groups.",
+  "visual_verdict": "小型直线/曲线续接可见，硬负例像素不足；不能全面排除平行/分支/深度误并。",
+  "physical_identity_verified": false,
+  "independent_heldout_generalization_claim": false,
+  "fit_caps_reached": {
+    "L1": 30000,
+    "M2": 30000
+  },
+  "all_original_kernels": 285956,
+  "source_snapshot_verified": true,
+  "config_sha256": "2b9042ad166cf5e8ba203b9306ac7d1c717be537fa25ff0681728b33c86eac54",
+  "decision_sha256": "ed5eab00f056f7c27bf76617a8422abe70815625a7c208a3f8609f9211f1128e",
+  "geometry_audit": "All three saved all-row memberships reloaded; original row order/primitive IDs and saved bitexact geometry audit verified; original NPZ hash verified. No refitting in analysis.",
+  "historical_failures_preserved": true,
+  "report": "REPORT_ZH.md",
+  "utc": "2026-10-30T21:22:01.069916+00:00"
+}

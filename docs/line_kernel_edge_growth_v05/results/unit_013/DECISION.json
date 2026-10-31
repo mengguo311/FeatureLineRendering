@@ -1,0 +1,62 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit012实际保存了6个新增实质域外增长组，其中4个跨两个实质原parent；但630核退回UNKNOWN、84个控制组被拆散，新曲线双视图证据不足，结论仍为PARTIAL。下一步将同一端点补充机制迁移至完整ficus，检验曲线场景的收益和竞争损失。ficus封存控制仅使用19949次拟合，未触及30000上限，可通过共享前缀精确重放控制，不需要另跑基线。",
+  "recommended_next_step": {
+    "unit": "unit_013",
+    "experiment": "Complete ficus sealed M3 -> one M4_MERGE_ONLY round with unchanged unit012 endpoint supplement. No initialization, pooling, M5 or other-scene reruns.",
+    "input": {
+      "unit_root": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_005",
+      "state": "scenes/ficus/states/M3/STATE.pkl",
+      "state_sha256": "7e98b2207da899e22931df43b2b37d6b3384d7c55e42e31e02bbf022b1432d98",
+      "checkpoint": "scenes/ficus/states/M3/CHECKPOINT.json",
+      "checkpoint_stage": "M3_STATE",
+      "predecessor_config_sha256": "2221d81f5e1726660ce428804981a26d484fa8716cc3c60ee1c774cb23fd99be",
+      "restore": "All285956 original kernels/tangents and saved p. Verify predecessor's own binding; restricted-load exact carriers/rows/reps/q/flags/origins/versions/aux/next_version and cross-check membership/world-unit carriers. No refitting or baseline promotion."
+    },
+    "reference": {
+      "source": "unit012/source_snapshot verified through PARENT_RUN_FROZEN.json",
+      "config_sha256": "6a80dc26da122c66fa4a4a9c43b882f6c1b98d76570fa5046b12f8e26fa4d862",
+      "control": "unit008 sealed ficus M4; config SHA256 6d4cd08c821e15d3eb2bb42d7017375611662a2a942c48e8c5a61e27e2426052. Retain strong v03 and unit002 L1/M2 plus unit005 M3."
+    },
+    "proposals": [
+      "Preserve original prefix exactly: samples<=1p, radius4p, nearest32, first8distinct carriers/sample, sorted symmetric degree8cap and original score/ID order.",
+      "Index both endpoints of every valid carrier, including dormant UNKNOWN, ordered by carrier ID/endpoint. Query nearest32 within1.5p+EPS, workers1, including self before filtering; sort returned neighbors by distance/ID/endpoint. Exclude self/prefix pairs and canonicalize.",
+      "Apply unchanged nearest-endpoint gap1.5p, connector35deg and endpoint-tangent30deg checks with original host ordering/argmin ties. Rank by exact original canonical-pair score then IDs. Inspect at most30000 survivors with unchanged proposal(); retain endpoint operations only.",
+      "Greedily allow one supplemental pair per endpoint, at most two/carrier, without reciprocity; prefix consumes no supplemental slots. Append at most10000 in ranked order. Record every rejection/cap."
+    ],
+    "fixed_settings": {
+      "fit": "Level4, total40000 prefix+supplement attempts including failures; each pair fitted once. TLS then original ordered polyline;3Huber iterations, delta0.5p, equal occupied1p-bin weight,8192kernels/128knots maximum, spacing<=4p, EPS1e-8; no pruning.",
+      "geometry": "All-member residual max<=1p/q95<=0.5p/tangent<=30deg; endpoint gap<=1.5p/connector<=35deg; original monotone overlap; vertex turn<=30deg/every8p turn<=60deg; no new cycles/nonadjacent contact<0.5p; unsupported gap<=1.5p.",
+      "separation": "Original parallel rejection at overlap>=2p/angle<=15deg/transverse median>0.5p; three-arm rejection at separation>20deg, each>=3seedlets spanning>=2p. No endpoint-to-interior branch.",
+      "competition": "Original15% ambiguity/global-chord duplicate equivalence, aux<=2 without topology authority; activation>=3seedlets/6kernels/4p support. All valid UNKNOWN eligible; invalid sources UNKNOWN, failed legacy groups assigned/frozen. Transactional rejection preserves predecessors; one topology merge/carrier."
+    },
+    "schedule_seconds": [
+      {
+        "cumulative_limit": 120,
+        "stage": "Verify resources/hashes; restore M3; persist ordered prefix/supplement and provenance."
+      },
+      {
+        "cumulative_limit": 1380,
+        "stage": "Shared prefix fits must exactly reproduce unit008 candidates/events/carriers/aux/membership/records/stats without refitting. Historical control cap30000, actual19949; record variant ceiling40000 separately. Mismatch blocks promotion. Evaluate supplement and complete joint competition before disjoint commits; journal every256acceptances and immediately save complete reloadable state."
+      },
+      {
+        "cumulative_limit": 1800,
+        "stage": "Cold-load, verify incumbent preservation, export all-row membership and both native whole views before statistics/diagnostics. Incomplete competition never promoted; unfinished work NOT_RUN."
+      }
+    ],
+    "visuals": "Fixed test_r_1/test_r_79, white floor0.0144, pinned CPU helpers/libjoint.so, original covariance/width/opacity; actual kernels only, UNKNOWN gray. Preserve unit012 selector and track ficus M3 descendants79171/204470/57769, retaining57769 as single-parent control. Include cross-parent top3count/top3support, top5growth, largest qualifying line/polyline, largest three-L1 growth, top3changed/top3damaged control groups and first3supplemental acceptances. Both-camera identical-row M3/control/variant/parent colors and highlights; unchanged RGB8<254union bbox/pad16/clip/4xnearest crops. Save exact six guard contexts and supplemental input rows/versions.",
+    "protocol": "Parent freezes decision. BUILD<=22min: scene/control configuration and bounded regressions against unit012 snapshot using<=128real M3seedlets plus existing hard fixtures; verify prefix equivalence, accounting, restore and failure preservation. Genuine RED only for new failing behavior; unchanged checks remain regressions. Freeze decision/config/all source files except pycache, four approved helpers and actual test receipts into RUN_REQUEST. Parent creates snapshot and owns plain --config compute/actual EXIT. ANALYSIS<=8min reads saved outputs.",
+    "resources_outputs": "max_seconds1800, final420s delivery; CPU2/BLAS2 strict serial; unit<=2GiB/runtime<=8GiB/root free>=1GiB/HDD>=10GiB. Save full mappings/reasons/provisional/aux, finite carriers/support, versioned lineage, candidate/rejection/cap records, control gains/losses, checkpoints, geometry/order audits and actual PNGs. No GPU/RGB sourceGS/train/install/agents/background jobs/provider fallback/env/secrets/push. No new units after12:00JST; science ends12:35, handoff12:45, hardstop13:00."
+  },
+  "changed_variable": {
+    "scientific": "Transfer unit012 endpoint-supplement configuration from scan24 to ficus. Against unit008, proposal coverage changes; the higher ceiling must leave its entire prefix identical because the control exhausted candidates below30000. Actual total fit consumption may increase.",
+    "engineering": "Scene/input/control/camera/tracked-ID configuration only; preserve unit012 numerical core and selector.",
+    "fixed": "All original kernel fields/count/order and geometric settings. Many-to-one support remains distinct from topology; no component union, distance relaxation or inserted gap geometry."
+  },
+  "falsification": {
+    "delivery": "Fail without cold-reloaded285956-row variant membership and both native whole views. Shadow-control mismatch blocks promotion.",
+    "growth": "Retain M3 gate: >=5groups gain>=max(4p,25%largestM3support), two M3contributors each>=6kernels/>=2p and outward>EPS. Supplement benefit requires new/enlarged qualifying groups versus unit008 with incremental and outward support>=4p. Report gained AND lost pairs/groups/assigned kernels, substantial original-parent/L1 intersections, interval union, longest run, bbox and total/max gaps.",
+    "visual": "Require newly growing straight AND curved continuation visible in both views. More proposals, duplicate support, internal filling or inherited curves are insufficient. Swallowed parallels/depth structures/branches falsify affected changes; missing or unresolved evidence remains PARTIAL.",
+    "preservation": "Keep controls, failures and actual exits. Zero benefit is a preserved negative result, not permission to widen thresholds. Geometry/hash/resource violations stop immediately. All identities provisional; no physical-truth or held-out claim. Decide any later scan65 unit only after actual ficus results."
+  }
+}

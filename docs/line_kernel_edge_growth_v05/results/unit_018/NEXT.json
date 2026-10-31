@@ -1,0 +1,45 @@
+{
+  "action": "continue",
+  "recommended_next_step": {
+    "unit": "unit_019",
+    "experiment": "Complete ficus sealed unit016 protected M4 -> exactly one protected endpoint-supplement M5; unchanged unit018 engine/settings, no initialization/pooling/M6/other-scene reruns.",
+    "input": {
+      "unit": "unit_016",
+      "scene": "ficus",
+      "kernels": 285956,
+      "state": "scenes/ficus/states/M4/STATE.pkl",
+      "state_sha256": "7d1457b144b0c58b8a3fe1fd1f1620e967158c1ace8326c64e6d996671378900",
+      "checkpoint": "scenes/ficus/states/M4/CHECKPOINT.json",
+      "checkpoint_sha256": "e88c59049615d52df0a42b6780f3e2595a0204038eb7145e7c81e5cc25466b83",
+      "checkpoint_stage": "M4_STATE",
+      "config_sha256": "4cd1846f2b8aa17405e3e2f9270a5e723358daf538163355f941d97a8c5deeec"
+    },
+    "control": "unit016 M4 no-additional-round reference; new prefix/joint M5 states saved as INTERNAL_SHARED_FIT_CONTROL from same fits, not historical replays.",
+    "source": "unit018/source_snapshot verified by PARENT_RUN_FROZEN.json; config 6bf43845007491d21538a0b4032797e7d98e9f548b8ce7b66bba626b9dc509f2",
+    "changed_variable": "Scene scan24 -> ficus under the cumulative fourth topology round; versus ficus M4 one round and its fit opportunity are added together.",
+    "settings": "Identical ordered prefix/supplement, 40000-fit cap, geometry/parallel/branch/gap/turn guards, original 15% global-chord ambiguity, protected commits, inherited disputes, all valid UNKNOWN eligibility, and original Gaussian fields/count/order. No parameter search.",
+    "protocol": "Parent freezes a formal decision before BUILD. BUILD scene/config adaptation and bounded regressions only; parent owns plain compute; ANALYSIS only saved results.",
+    "time_budget": {
+      "review_seconds_max": 180,
+      "build_seconds_max": 600,
+      "parent_compute_seconds_max": 1800,
+      "analysis_seconds_max": 480,
+      "start_new_unit_before_jst": "2026-10-31T12:00:00+09:00",
+      "parent_launch_latest_jst": "2026-10-31T12:05:00+09:00",
+      "science_stop_jst": "2026-10-31T12:35:00+09:00",
+      "handoff_jst": "2026-10-31T12:45:00+09:00",
+      "if_missed": "Do not launch; hand off existing completed assets. No shortening final420s export reserve or hidden partial promotion."
+    },
+    "stages_seconds": [
+      120,
+      1380,
+      1800
+    ],
+    "resources": "CPU2/BLAS2 serial; unit<=2GiB/runtime<=8GiB/rootfree>=1GiB/HDD>=10GiB; no GPU/RGB source GS/agents/background science/source edits during analysis.",
+    "visuals": "Fixed test_r_1/test_r_79, original kernels only, white/floor0.0144. Preserve unit018 selector including newly growing line/polyline and substantial old-fragment contributions. Track ficus unit016 fixed cases 79171/204470/57769/21870/28829/28837/78077/62169/33824/29734 by exact row descendants; inherited curves are controls. Same-row M4/M5/internal-controls/parents, both full views and exact six versioned negative contexts.",
+    "falsification": "Cold-reloaded all285956 rows and both native whole views mandatory. Zero incumbent loss/splits and exact locked-prefix carriers/aux mandatory. Keep M4-relative growth gate and separately undisputed outward>=4p with substantial parent/L1 support, gaps/longest run. New straight and curved continuation must be visible in both cameras; inherited curves/internal filling/duplicate support not success. Missing evidence PARTIAL; retain failures, no tuning."
+  },
+  "rationale": "scan24 M5提供真实新增支持：34个排除争议的门槛组，31个域外支持>=4p，其中21个有两个实质原parent；但新曲线双视图证据仍不足。ficus尚无M5，迁移同设置可检验剩余曲线增长问题，不需要阈值扫描。此建议受剩余窗口约束，不在本分析阶段启动。",
+  "basis_unit": "unit_018",
+  "science_started_in_analysis": false
+}

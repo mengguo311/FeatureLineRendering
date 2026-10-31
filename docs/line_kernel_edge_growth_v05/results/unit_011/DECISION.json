@@ -1,0 +1,58 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit010实际rc=0，但1078个竞争选择中等价判定改变0项，成员、载体和全景均与unit009相同，没有新增增长。scan24的unit007则实际达到30000次fit上限，留下3767条fit_cap拒绝；其已查看增长例仍多为短直段或轻微弯曲。下一步只增加同一候选列表的拟合预算，直接检验截断是否阻止实质增长，不放宽几何守卫，也不追加拓扑轮次。",
+  "recommended_next_step": {
+    "unit": "unit_011",
+    "experiment": "完整scan24封存M3→一次M4_MERGE_ONLY；fit上限30000→40000。无初始化、池化、M5或其他场景重跑。",
+    "input": {
+      "unit_root": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_004",
+      "state": "scenes/scan24/states/M3/STATE.pkl",
+      "state_sha256": "2d23b2c1d9af898a8ebbf93a03d11a8bffb1b80e5ac54ae14b4de445e5b73a45",
+      "checkpoint": "scenes/scan24/states/M3/CHECKPOINT.json",
+      "checkpoint_sha256": "e737c72867d081792758c1c541fbba561d860fedeee7e033584a9edd6ede8fd4",
+      "checkpoint_stage": "M3_STATE",
+      "predecessor_config_sha256": "a8686aee58a84382800bd199aed4c2fdc202f65490aa631a89fc9c333cbee941",
+      "restore": "全部458490原始核、原切向和保存p；按前驱自身绑定验证。Restricted-load原rows/reps/q/flags/origins/versions/aux/next_version，交叉核对membership和世界单位carriers；不重新拟合或提升baseline标志。"
+    },
+    "control": {
+      "source": "unit007/source_snapshot，经PARENT_RUN_FROZEN.json验证；保留原全局弦方向等价规则，不混入unit010局部切向修改。",
+      "config_sha256": "5ef2a3ea03b7b89e97a9349ab77b0ca67eac301f157212927e77fe52a004c012",
+      "results": "unit007封存M4为直接对照；保留强v03、v04 L1及M2/M3。"
+    },
+    "schedule_seconds": [
+      {
+        "cumulative_limit": 120,
+        "stage": "验证资源、快照和输入；恢复M3，保存引用清单。"
+      },
+      {
+        "cumulative_limit": 1380,
+        "stage": "level4，fit计数从0开始，上限40000。完整候选顺序不变，每候选最多拟合一次。共享前30000次拟合及原后续fit_cap记录，影子重建unit007完整竞争、事件、载体、aux和成员；禁止额外拟合。精确对照失败阻止晋级。完成40000预算下全部竞争后，按原顺序提交不相交配对；每载体最多一次合并，每256次接受保存delta，立即保存完整状态。"
+      },
+      {
+        "cumulative_limit": 1800,
+        "stage": "冷载并验证前驱保留；先保存全行映射和两张原生全景，再完成支持、谱系、差异和固定诊断。缺失项NOT_RUN，不完整竞争不晋级。"
+      }
+    ],
+    "fixed_settings": {
+      "candidate": "原批量排序：采样≤1p、半径4p、最近32样本、每样本前8不同载体、排序后对称degree8截断；score/稳定ID及拒绝计数不变。",
+      "fit": "TLS后原ordered polyline；3次Huber IRLS、delta0.5p、每占用1p区间等总权重；≤8192核、≤128knots、间距≤4p、EPS1e-8，无剔除成员。只有pass_once和fit的预算检查统一改为配置40000。",
+      "geometry": "全成员残差max≤1p/q95≤0.5p/tangent≤30°；endpoint gap≤1.5p、connector≤35°；单调重叠≥min(2p,短载体半长)；顶点turn≤30°、每8p累计≤60°；无新环/非邻接接触<0.5p；最大不支持间隙≤1.5p。",
+      "separation": "原parallel守卫：重叠≥2p、角度≤15°、横向中位距离>0.5p拒绝。三臂分离>20°、各≥3seedlets且跨度≥2p拒绝；禁止端点接内部形成分支。",
+      "competition": "原15%近似并列、全局弦方向重复等价和提交顺序；aux≤2且无拓扑权。新主组≥3seedlets/6核/4p支持。所有有效UNKNOWN继续候选；无效源UNKNOWN，失败旧组分配保留并冻结。拒绝事务保留前驱。"
+    },
+    "visuals": "固定0012/0036、白背景、floor0.0144、原covariance/宽度/opacity，实际原始核，UNKNOWN灰。保留unit007选择器和110254/114600/69519后代；另选支持长度降序、ID升序的top3改变组及top3受损对照增长组。双视图全景、相同行集合的M3/control/variant/parents颜色与highlight；原RGB8<254联合bbox/pad16/clip/4倍最近邻裁剪。保留六类精确版本负例和最差接受例；展示新增预算区间实际接受案例，不补画间隙。",
+    "build_protocol": "Parent冻结决策。BUILD≤22min，仅实现、小测试和RUN_REQUEST。真实RED覆盖配置预算未穿透硬编码及小预算截断后的真实可接受合并；GREEN验证两处预算一致。≤128真实M3seedlets及既有硬夹具验证原候选顺序、预算内fit/reason/arrays和原规则竞争；测试影子对照、恢复及后续失败保留。冻结全部源码、decision/config、四个获准helper及真实测试receipt。Parent独占快照及plain --config计算；ANALYSIS≤8min只读真实输出。",
+    "resources_outputs": "max_seconds1800，末420s交付；CPU2/BLAS2严格串行，unit≤2GiB/runtime≤8GiB，root≥1GiB/HDD≥10GiB。保存全行UNKNOWN/reasons/provisional/aux、有限carriers/support、版本谱系、预算前后候选拒绝/竞争差异、checkpoint、原字段审计和真实PNG。保留实际child EXIT。无GPU/RGB sourceGS/train/install/agents/后台任务/provider fallback/env/secrets/push。12:00后不开新单元，12:35结束science。"
+  },
+  "changed_variable": {
+    "scientific": "同一scan24 M3、同一轮和候选顺序，最多拟合次数30000→40000；这是计算预算实验，不是等价加速。",
+    "engineering": "预算参数贯穿两个有效检查点；共享拟合重建30000对照。",
+    "fixed": "所有原核字段、数量/顺序、拟合与几何规则。many-to-one支持与载体拓扑分离，无component union或距离放宽。"
+  },
+  "falsification": {
+    "delivery": "缺少冷载458490行结果或任一全景即失败；影子对照不精确则不晋级，保留原M3和unit007。",
+    "growth": "保留M3门槛：≥5组gain≥max(4p,最大M3支持的25%)，两个M3贡献者各≥6核/2p且有域外支持。预算收益另外要求相对unit007新增或扩大合格组，支持增量及域外支持均≥4p；同时报告失去的增长、两原parent/三L1交集、最长连续段、bbox和总/最大间隙。",
+    "visual": "需新增直线和曲线的双视图证据。更多fit、核数、内部补洞、重复覆盖、继承曲线不是成功。吞并平行/深度结构或分支否定对应改变；裁切、缺图或不可辨证据保持PARTIAL，不调参补救。",
+    "limits": "所有身份暂定，无物理真值或held-out主张。几何/hash/resource违规立即停止；负结果照常保存，后续仅依据真实结果决定。"
+  }
+}

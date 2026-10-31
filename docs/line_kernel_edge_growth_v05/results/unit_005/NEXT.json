@@ -1,0 +1,39 @@
+{
+  "action": "continue",
+  "recommended_next_step": {
+    "unit": "unit_006",
+    "experiment": "Complete scan65 sealed M2 to exactly one M3_MERGE_ONLY round, same settings as unit005; no initialization, pooling, extra rounds or old-scene reruns.",
+    "input_unit": "unit_003",
+    "state": "scenes/scan65/states/M2/STATE.pkl",
+    "state_sha256": "bacf047808cc0a4e712ced6c24aa58eb526c314fd88c9622c054a833580e023f",
+    "checkpoint": "scenes/scan65/states/M2/CHECKPOINT.json",
+    "checkpoint_sha256": "0586d7e043f54ae418ee220f3a82d244bc411e172c4445969b0c13f8b738da2d",
+    "checkpoint_stage": "M2_STATE",
+    "predecessor_config_sha256": "f376f26ceeb9676cb6616edc0fcd266dc561c783bbec58d7fd1721722eb49f5c",
+    "reference_source": "unit_005/source_snapshot via PARENT_RUN_FROZEN.json",
+    "reference_config_sha256": "2221d81f5e1726660ce428804981a26d484fa8716cc3c60ee1c774cb23fd99be",
+    "kernels": 279616,
+    "views": [
+      "0012",
+      "0036"
+    ],
+    "tracked_M2_groups": [
+      62791,
+      167261
+    ],
+    "scientific_change": "Scene transfer of the cumulative two-round configuration from ficus to scan65. Comparison to scan65 M2 adds both one round and fit opportunity.",
+    "fixed": "Preserve all unit005 numeric settings, candidate ordering/caps, fit accounting, eligibility, activation, whole-group guards, competition and physical fields. All valid UNKNOWN remain eligible.",
+    "schedule_seconds": {
+      "restore_and_verify": 120,
+      "complete_competition_and_M3_state": 1380,
+      "native_export_and_diagnostics": 1800
+    },
+    "resources": "max_seconds1800, final420s delivery; CPU2/BLAS2 strict serial; unit<=2GiB/runtime<=8GiB; root>=1GiB/HDD>=10GiB; no new units after12:00JST/sciencewrap12:35.",
+    "protocol": "Next review/parent decision freeze, same-session BUILD only bounded tests and RUN_REQUEST; parent owns science subprocess; ANALYSIS only reads outputs. This NEXT launches nothing.",
+    "selection": "Same top3count/top3support/top5cross-parent growth, largest qualifying line/polyline, one largest >=3substantialL1 growth group; tracked scan65 descendants. Exact versioned negatives; fixed saved-crop rule.",
+    "controls": "scan65 strong v03, unit003 L1 and M2; saved scan24/ficus M3 external references.",
+    "falsifier": "Require cold-loaded279616-row M3 and both actual original-kernel full views; compare supported union/outward support/longest run/gaps and substantial L1/original-parent contributions. Same >=5growth formula; straight and curved new continuations must be visible in both views. Missing or unresolved evidence remains PARTIAL; geometry/hash violations stop. No threshold tuning."
+  },
+  "rationale": "ficus M3 now delivers genuine saved curved continuation and one three-L1-fragment example, but no new line growth and only four groups with two substantial original parents. scan65 remains at M2; applying the already-fixed second round completes this scene comparison before changing a mechanism. ficus used25884fits below30000, so raising its fit cap alone is not supported by current evidence.",
+  "unresolved_followup_not_selected": "After actual scan65 M3 results, assess candidate/competition/curve continuity bottlenecks; do not launch a sweep now."
+}

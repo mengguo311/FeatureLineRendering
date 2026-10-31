@@ -1,0 +1,63 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit014完整交付且实际退出0，但补充241个候选没有新增实质增长组，126个对照核失去分配。building的unit012已有6个实质增量组，却同时损失630个对照已分配核。源码显示补充候选通过联合歧义与提交排序改变了前缀结果。下一单元只检验前缀优先提交能否保留真实增长并避免这种回退；保留完整候选的歧义证据，不靠删除竞争者制造确定性。",
+  "recommended_next_step": {
+    "unit": "unit_015",
+    "experiment": "Complete scan24 M3 -> one M4 with prefix-protected endpoint supplementation. No initialization, pooling, M5 or other-scene reruns.",
+    "input": {
+      "unit": "unit_004",
+      "state": "scenes/scan24/states/M3/STATE.pkl",
+      "state_sha256": "2d23b2c1d9af898a8ebbf93a03d11a8bffb1b80e5ac54ae14b4de445e5b73a45",
+      "checkpoint_sha256": "e737c72867d081792758c1c541fbba561d860fedeee7e033584a9edd6ede8fd4",
+      "predecessor_config_sha256": "a8686aee58a84382800bd199aed4c2fdc202f65490aa631a89fc9c333cbee941",
+      "restore": "All458490 original kernels/tangents and saved p. Verify predecessor binding and M3_STATE checkpoint; restricted-load exact carriers/versions/aux/next_version, cross-check saved membership/world-unit carriers. No refitting or baseline promotion."
+    },
+    "controls": {
+      "prefix": "unit011 M4; config SHA256 2dca3f6c8d3f5572a69f7a6653124b7a4c1fd091d7f50cec7958b3a8939aa884",
+      "joint": "unit012 M4; config SHA256 6a80dc26da122c66fa4a4a9c43b882f6c1b98d76570fa5046b12f8e26fa4d862",
+      "implementation": "unit014/source_snapshot through PARENT_RUN_FROZEN.json; numerical proposals/fits remain unit012-equivalent. Retain strong v03, pooling-only L1 and M2/M3."
+    },
+    "exact_change": [
+      "Generate and fit the identical unit012 ordered prefix and supplement once, including fits later blocked by protection. Preserve total40000 ceiling and all rejection accounting.",
+      "Using shared fits, exactly replay unit011 prefix and unit012 joint competition on separate state copies: candidates, events, carrier arrays, auxiliary state, membership, records and statistics. Any mismatch blocks promotion; no refitting.",
+      "Capture the original joint ambiguity mask over ALL valid prefix and supplemental candidates on original M3 carriers. Do not recompute ambiguity after filtering protected carriers.",
+      "Start the variant from verified prefix result. Lock every input carrier used by an accepted prefix pair and preserve those output carriers, versions, rows, geometry and auxiliary decisions exactly.",
+      "Supplemental commit eligibility requires both original M3 carriers unused by prefix acceptances, exact unchanged input versions, and absence from the captured joint ambiguity mask. Prefix candidates are not reconsidered for additional commits.",
+      "Commit eligible supplemental pairs in original cost/ID order with original round-conflict handling. Each original carrier participates at most once across prefix and supplement. Continue next_version from prefix state; reject transactionally without pruning.",
+      "For unprotected carriers retain original joint ambiguity alternatives, capped at two. Log supplemental conflicts involving protected prefix groups separately; mark those inherited decisions disputed/provisional without overwriting locked primary/auxiliary state. Such groups cannot count as newly validated growth."
+    ],
+    "fixed_settings": {
+      "proposals": "Exact unit012 prefix and endpoint supplement: prefix sample<=1p/radius4p/nearest32/first8distinct/symmetric degree8; endpoint nearest32 within1.5p+EPS, original screens/order/ties, <=30000 screened survivors, one supplemental pair/endpoint, <=10000 appended.",
+      "fit": "Level4,40000 attempts including failures; TLS then ordered polyline,3Huber iterations/delta0.5p, equal occupied1p-bin weight; <=8192kernels/128knots, spacing<=4p, EPS1e-8.",
+      "guards": "All-member residual max1p/q95 0.5p/tangent30deg; endpoint gap1.5p/connector35deg; original monotone overlap; vertex turn30deg/every8p60deg; no cycles/nonadjacent contact<0.5p; unsupported gap<=1.5p. Original parallel and three-arm branch guards unchanged.",
+      "identity": "Original15% ambiguity/global-chord duplicate equivalence; activation3seedlets/6kernels/4p support. All valid UNKNOWN enter proposals, including historical ambiguity. Invalid sources UNKNOWN; failed legacy groups assigned/frozen. All original kernel fields/count/order fixed."
+    },
+    "schedule_seconds": [
+      {
+        "cumulative_limit": 120,
+        "stage": "Verify resources/hashes, restore M3; persist identical ordered proposals."
+      },
+      {
+        "cumulative_limit": 1380,
+        "stage": "Shared fits and both exact controls; complete ambiguity classification before variant commits. Journal every256acceptances with phase/cursor/input versions. Save complete reloadable variant state immediately."
+      },
+      {
+        "cumulative_limit": 1800,
+        "stage": "Cold-load; verify prefix preservation and all-row consistency; save full membership and both native views before comparisons/diagnostics. Incomplete stages remain unpromoted."
+      }
+    ],
+    "visuals": "Fixed0012/0036, pinned CPU renderer/libjoint.so, white floor0.0144, original covariance/width/opacity, UNKNOWN gray. Retain unit012 selection; explicitly include all six material-growth cases235032/218770/387535/98755/88292/37087 and damaged controls255246/36865/121930. Both-camera identical rows colored by prefix/joint/variant/original parents, plus highlights and six exact guard contexts. Existing union RGB8<254bbox/pad16/clip/4xnearest crop only. Missing/invisible cases explicit; actual kernels only.",
+    "protocol": "Parent freezes decision. BUILD<=22min implements/tests/freezes RUN_REQUEST only. Genuine RED->GREEN for joint competition losing a prefix acceptance; verify protection, free supplemental growth, and that a previously ambiguous supplemental pair stays blocked. Include duplicate/curve/S/parallel/T/X/gap fixtures and <=128real M3seedlets; compare proposals/fits/accounting and both replays. Test resume and later-failure preservation. Freeze all source/config/decision/four approved helpers and actual test receipts. Parent creates snapshot and owns plain --config compute/actual EXIT; ANALYSIS<=8min reads saved outputs.",
+    "resources_outputs": "max_seconds1800, final420s delivery; CPU2/BLAS2 strict serial; unit<=2GiB/runtime<=8GiB/root free>=1GiB/HDD>=10GiB. Save full mappings/reasons/provisional/aux, finite carriers/support, versioned lineage, protection/ambiguity/conflict records, both-control gains/losses, checkpoints, geometry audits and actual PNGs. No GPU/RGB sourceGS/train/install/agents/background jobs/provider fallback/env/secrets/push. No new units after12:00JST; science ends12:35."
+  },
+  "changed_variable": {
+    "scientific": "Commit priority: joint candidate competition -> verified prefix acceptances protected, followed only by eligible supplemental pairs. This is a scientific policy change, not equivalent acceleration.",
+    "fixed": "Same M3 input, round count, proposals, fit opportunities, joint ambiguity classification and geometric guards. Many-to-one support remains distinct from carrier topology."
+  },
+  "falsification": {
+    "delivery": "Require cold-reloaded458490-row variant and both native full views. Either shadow mismatch, changed locked carrier, lost prefix-assigned row or split prefix group blocks promotion; preserve candidate state and controls.",
+    "growth": "Keep original >=5-group M3 growth gate. Policy benefit additionally requires retained/new material growth versus unit011 with incremental AND outward support>=4p, with zero prefix assignment loss. Report survival/loss of each unit012 six material cases, substantial original-parent/L1 contributions, interval union, longest run, finite extent/bbox and total/max gaps. Preservation alone is not success.",
+    "visual": "Require newly supported straight AND curved continuation in both views. Inherited curves, recoloring, duplicates and internal filling are insufficient. Swallowed parallel/depth/branch structures falsify affected examples; invisible curves and unresolved negatives remain PARTIAL.",
+    "limits": "No surviving material benefit is a preserved negative result, not permission to tune thresholds. All identities provisional; no physical-truth or held-out claim. Geometry/hash/resource violations stop immediately."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "action": "continue",
+  "recommended_next_step": {
+    "unit": "unit_010",
+    "experiment": "Controlled scan65 M3 -> one M4 round with local-tangent duplicate equivalence. Reuse exact unit009 M3 input and compare with sealed unit009 M4. No M5, pooling, additional rounds or other-scene reruns.",
+    "changed_variable": "Only replace the single end-to-end donor chord in ambiguity duplicate-equivalence with donor local segment tangents at the same existing sample points, obtained using project(samples, donor.q). Compare unsigned against existing projected reference tangents, every angle<=15deg. Preserve current directed distance<=0.5p, sampling, reference/order and remaining equivalence logic. This changes scientific competition, not merely execution speed.",
+    "input_unit": "unit_006",
+    "state": "scenes/scan65/states/M3/STATE.pkl",
+    "state_sha256": "96f2bbb51d80cf9e036753ae42f47cb1a19a72e41b945c7cc7137879d2623497",
+    "checkpoint": "scenes/scan65/states/M3/CHECKPOINT.json",
+    "checkpoint_sha256": "98069f8b101e55993a0cd87ed7e201d38f1d16a28af6af6d3911972f544c3244",
+    "reference_source": "unit_009/source_snapshot via PARENT_RUN_FROZEN.json",
+    "reference_config_sha256": "3bbee014bf25d241a6576a43d0162da31700fd1a1dc098f9267e2c0f4f2e2979",
+    "fixed": "All279616 original kernels/tangents and saved p; identical ordered candidates, proposal geometry, fits/accounting/cap30000, guards,15%near-tie rule, <=2auxiliary alternatives, one merge/carrier, activation and UNKNOWN eligibility. No threshold relaxation or added fits.",
+    "build": "Next review freezes decision. Genuine RED->GREEN for coincident curved alternatives wrongly classified by chord test, with straight/parallel/diverging/T/X controls; identical candidates and pre-competition fit results on bounded real fixtures. Parent owns complete compute; no science in BUILD/ANALYSIS.",
+    "diagnostics": "Record old/new equivalence decisions with exact carrier versions, changed primary events and lost control growth. Same cameras0012/0036 and selector; add changed descendants touching61267/238627/64111/56133, comparing identical final rows under control/variant/parent colors in both cameras.",
+    "budget": "1800s; restore by120, topology/state by1380, final420s delivery. CPU2/BLAS2 serial, unit<=2GiB/runtime<=8GiB. No new unit after12:00JST; science ends12:35.",
+    "checkpoint_policy": "Full post-merge checkpoint before export/statistics; cold-load all-row membership and both native full views. Preserve unit009 and failed variant outputs."
+  },
+  "rationale": "三个场景第三轮已保存。scan65仅18069fits，未触预算；大曲线61267未增长且6个有效候选被ambiguity拒绝，238627/64111也有歧义。冻结代码用整条候选首尾弦比较局部切向，可能把重合曲线判为不同路径。只检验方向表示，复用相同M3输入隔离变量；尚未证明这就是实际停滞原因，不保证改善。",
+  "falsification": "非预期候选/拟合差异阻止请求。不能牺牲真实分岔/平行路径的歧义保护。只有相对unit009增加实质域外支持、两个实质旧片段贡献且直线/曲线双视图成立才算增益；仅少报ambiguity、重复池化、内部填补不算。无改变或视觉误吞均保存负结果；截断/缺图/负例不可辨仍PARTIAL。身份暂定。",
+  "science_started": false
+}

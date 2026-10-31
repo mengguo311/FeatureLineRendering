@@ -1,0 +1,67 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit018已实际交付scan24 M5：34个排除争议的增长门槛组，31个域外支持≥4p，其中21个具有两个实质原parent；但新增曲线的双视图证据仍不足。ficus unit016虽保住前缀，却未产生相对前缀的新实质增长。选择同设置再增加一轮，检验其是否仍受渐进合并深度限制；不调阈值。现有代码仅需场景配置迁移，能在明确截止时间内完成。",
+  "recommended_next_step": {
+    "unit": "unit_019",
+    "experiment": "完整ficus封存protected M4→恰好一次protected endpoint-supplement M5。无初始化、池化、M6或其他场景重跑。",
+    "input": {
+      "unit": "unit_016",
+      "kernels": 285956,
+      "state": "scenes/ficus/states/M4/STATE.pkl",
+      "state_sha256": "7d1457b144b0c58b8a3fe1fd1f1620e967158c1ace8326c64e6d996671378900",
+      "checkpoint": "scenes/ficus/states/M4/CHECKPOINT.json",
+      "checkpoint_sha256": "e88c59049615d52df0a42b6780f3e2595a0204038eb7145e7c81e5cc25466b83",
+      "checkpoint_stage": "M4_STATE",
+      "predecessor_config_sha256": "4cd1846f2b8aa17405e3e2f9270a5e723358daf538163355f941d97a8c5deeec",
+      "restore": "验证前驱自身绑定；restricted-load精确carriers/rows/reps/q/flags/origins/versions/aux/next_version，与membership及世界单位carriers核对。不重新拟合或提升baseline标志。"
+    },
+    "reference": {
+      "source": "unit018/source_snapshot，经PARENT_RUN_FROZEN.json验证",
+      "config_sha256": "6bf43845007491d21538a0b4032797e7d98e9f548b8ce7b66bba626b9dc509f2",
+      "controls": "unit016 M4为无新增轮次对照；本轮共享拟合生成prefix-only及joint M5，分别保存并标记INTERNAL_SHARED_FIT_CONTROL，不冒充历史重放。保留强v03、L1及M2/M3。"
+    },
+    "policy": [
+      "level5计数重置，40000次fit上限含失败，每对仅拟合一次。原顺序prefix和endpoint supplement不变。",
+      "由共享拟合完成prefix和joint竞争；完整控制状态先落盘。保护前捕获所有有效原M4候选的joint ambiguity。",
+      "锁定prefix接受的输入及输出rows/q/flags/versions/aux。补充配对仅在两个原输入均未使用、版本精确且不在完整歧义mask时提交。",
+      "沿用原cost/ID提交和冲突处理，每原载体全轮最多一次合并，延续prefix next_version；未保护载体保留joint辅助关联≤2。",
+      "继承争议经谱系传播并记录新争议；争议后代排除新增验证增长计数，但不改变主候选资格。拒绝事务保留前驱。"
+    ],
+    "fixed_settings": {
+      "proposals": "原prefix：sample≤1p/radius4p/nearest32/first8distinct/排序后对称degree8。端点补充：nearest32 within1.5p+EPS、workers1、过滤前含self、原screens/order/ties；≤30000 screened survivors、每端点最多一补充配对、≤10000追加；无互选要求。",
+      "fit": "TLS后原ordered polyline；3次Huber IRLS、delta0.5p、每占用1p区间等总权重；≤8192核/128knots、间距≤4p、EPS1e-8；无成员剔除。",
+      "guards": "全成员residual max≤1p/q95≤0.5p/tangent≤30°；endpoint gap≤1.5p/connector≤35°；原单调重叠；顶点turn≤30°/每8p累计≤60°；无新增环或非邻接接触<0.5p；unsupported gap≤1.5p。",
+      "separation": "parallel：overlap≥2p、angle≤15°、横向中位距离>0.5p拒绝。三臂：分离>20°、各≥3seedlets且跨度≥2p拒绝；禁止端点接内部形成分支。",
+      "eligibility": "原15% ambiguity/global-chord重复等价；activation≥3seedlets/6核/4p支持。所有有效UNKNOWN含历史歧义可候选；无效源UNKNOWN，失败旧组保持分配并冻结。"
+    },
+    "schedule": {
+      "build_seconds_max": 600,
+      "parent_compute_seconds_max": 1800,
+      "compute_stages": [
+        "0–120s：验证资源/hash，恢复M4并保存有序候选。",
+        "至1380s：共享拟合、内部控制、完整歧义分类及protected提交；每256次接受保存phase/cursor/version journal，立即保存完整M5状态。",
+        "至1800s：冷载，验证前驱及prefix保留；先全行映射和两张原生全景，再统计/诊断。末420s保留交付；不完整竞争不得晋级。"
+      ],
+      "new_unit_before": "2026-10-31T12:00:00+09:00",
+      "parent_launch_latest": "2026-10-31T12:05:00+09:00",
+      "science_stop": "2026-10-31T12:35:00+09:00",
+      "analysis_seconds_max": 480,
+      "handoff_by": "2026-10-31T12:45:00+09:00",
+      "missed_deadline": "不启动计算，交付已有成果；不缩减导出保留时间或伪称完成。"
+    },
+    "visuals": "固定test_r_1/test_r_79，白背景floor0.0144，原covariance/宽度/opacity，实际原始核及UNKNOWN灰。沿用unit018选组：跨parent核数top3/支持top3、top5新增长、最大合格line/polyline、最大三L1增长；跟踪79171/204470/57769及21870/28829/28837/78077/62169/33824/29734后代。相同最终行集合按M4/M5/内部控制/parents着色并highlight；原联合bbox/pad16/clip/4倍最近邻裁剪。保存六类精确版本上下文；继承曲线不能算新增。",
+    "protocol": "Parent冻结决策。BUILD仅配置迁移、小型回归与RUN_REQUEST：≤128真实M4seedlets及既有保护/歧义/硬负例，对照unit018数值核心、恢复及失败保存。仅实际新失败使用真实RED→GREEN，既有检查标为回归。冻结全部源码文件（除pycache）、decision/config、四个获准helper及实际测试returncode/log。Parent创建快照、独占plain --config计算和实际EXIT；ANALYSIS只看保存结果。",
+    "resources_outputs": "CPU2/BLAS2严格串行；unit≤2GiB/runtime≤8GiB/rootfree≥1GiB/HDD≥10GiB。保存全行reasons/provisional/aux、有限支持/carriers、版本谱系、内部控制/争议/caps、checkpoint、原字段审计及真实PNG。无GPU/RGB sourceGS/train/install/agents/后台任务/provider fallback/env/secrets/push。"
+  },
+  "changed_variable": {
+    "scientific": "累计四轮设置scan24→ficus；相对ficus M4同时增加一轮及其拟合机会，不宣称分离两者。",
+    "engineering": "仅场景、输入、相机和跟踪组配置。",
+    "fixed": "全部原核字段、数量、顺序及unit018数值策略；many-to-one支持与拓扑分离，无component union、距离放宽或补画间隙。"
+  },
+  "falsification": {
+    "delivery": "必须冷载285956行M5并具备两张原生全景。旧分配丢失、旧组拆分、锁定prefix载体/aux改变或竞争不完整均阻止晋级。",
+    "growth": "沿用相对M4门槛：≥5组gain≥max(4p,最大M4支持25%)，两个M4贡献者各≥6核/2p且域外>EPS。单列排除争议后的域外≥4p、实质原parent/L1交集、支持并集、最长段、有限extent/bbox及总/最大gap。",
+    "visual": "新增直线和曲线续接须双视图可见；继承曲线、更多fit、重复覆盖和内部填充不算成功。吞并平行/深度结构或分支否定对应实例；缺图、裁切或不可辨证据保持PARTIAL。",
+    "limits": "零收益照常保存，不调参补救。保留M4、内部控制、失败及实际退出；几何/hash/resource违规立即停止。物理身份暂定，无held-out主张。"
+  }
+}

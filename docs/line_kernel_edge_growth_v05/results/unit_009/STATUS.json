@@ -1,0 +1,82 @@
+{
+  "unit": "unit_009",
+  "execution_state": "completed",
+  "scientific_verdict": "PARTIAL",
+  "scene": "scan65",
+  "stage": "M4_MERGE_ONLY",
+  "actual_child_returncode": 0,
+  "actual_child_reason": null,
+  "actual_child_exit_authority": "../../orchestration/unit_009/COMPUTE_EXIT.json",
+  "completed": [
+    "M3_RESTORE_VERIFIED",
+    "M4_STATE",
+    "M4_NATIVE",
+    "M4_DIAGNOSTICS",
+    "SAVED_ARRAY_AUDIT",
+    "VISUAL_ANALYSIS"
+  ],
+  "missing_requested_compute_stages": [],
+  "delivery_gate": true,
+  "requested_rows": 279616,
+  "assigned": 125863,
+  "unknown": 153753,
+  "primary_groups": 3665,
+  "delta_assigned_from_M3": 7520,
+  "fit_attempts": 18069,
+  "fit_cap_reached": false,
+  "accepted_merge_events": 1657,
+  "growth": {
+    "stored_gate_groups": 11,
+    "line": 3,
+    "polyline": 8,
+    "two_substantial_original_parents": 8,
+    "three_substantial_L1_fragments": 1,
+    "three_L1_and_two_original_parents": 1,
+    "outward_ge4p": 9,
+    "two_original_parents_and_outward_ge4p": 6
+  },
+  "visual": {
+    "saved_pngs": 338,
+    "viewed_pngs": 62,
+    "straight_example": 5558,
+    "mild_curved_example": 61271,
+    "three_fragment_curve_second_view_clipped": 30579,
+    "unresolved_negative_contexts": true,
+    "numeric_only_growth": [
+      13285,
+      24690,
+      112102,
+      84607,
+      25117,
+      198936
+    ]
+  },
+  "limitations": [
+    "Largest inherited curves have zero outward growth.",
+    "Three-fragment growth30579 is clipped in camera0036.",
+    "Native pixels cannot settle negative parallel/depth/branch identities.",
+    "Candidate/query caps remain; fit/time caps were not reached.",
+    "Contributions may overlap; no physical-truth or held-out/generalization claim."
+  ],
+  "not_run_in_this_unit": [
+    "initialization",
+    "pooling",
+    "M5",
+    "scan24",
+    "ficus"
+  ],
+  "physical_identity_verified": false,
+  "provenance": {
+    "config_sha256": "3bbee014bf25d241a6576a43d0162da31700fd1a1dc098f9267e2c0f4f2e2979",
+    "decision_sha256": "1a2de64510339186e516c04c782ab080dc8602bd9b855dcd84d30b4c2aefe0e5",
+    "snapshot_manifest": "PARENT_RUN_FROZEN.json",
+    "verified_snapshot_files": 39,
+    "verified_input_files": 44,
+    "verified_helper_references": 40,
+    "approved_external_helpers": 4,
+    "audit": "ANALYSIS_AUDIT.json",
+    "visual_review": "VISUAL_REVIEW.json"
+  },
+  "source_changes_during_analysis": false,
+  "science_reruns_during_analysis": false
+}

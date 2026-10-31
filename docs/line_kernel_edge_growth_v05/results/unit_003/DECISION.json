@@ -1,0 +1,62 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit_002实际退出0，ficus完整L0/L1/M2已保存、冷载并渲染。10组通过旧片段增长门槛，但仅4组跨原始parent、3组具有两个实质parent贡献；图片显示小型直线和曲线续接，硬负例仍受像素尺度限制。当前最有用的独立步骤是补齐scan65同设置对照。最小工程障碍是runner强制重放scan24及硬编码ficus阶段标签，无须改变科学机制。",
+  "recommended_next_step": {
+    "unit": "unit_003",
+    "experiment": "Complete scan65: L0 initialization, two containment-only L1 passes, one M2 topology pass; no subsequent pooling.",
+    "reference": {
+      "source": "unit_002/source_snapshot, verified through PARENT_RUN_FROZEN.json",
+      "config_sha256": "2b9042ad166cf5e8ba203b9306ac7d1c717be537fa25ff0681728b33c86eac54",
+      "controls": "scan65 strong v03 membership and its L1; sealed scan24/ficus results remain external comparisons. No old-scene reruns."
+    },
+    "inputs": "All279616 original scan65 LINE kernels, original tangents, v03 REPRESENTATIVES/MEMBERSHIP/CHAINS/GROUPS and saved p. GROUPS.groups[]; match chains through representative_edge_id. Verify frozen hashes before loading.",
+    "eligibility": "All valid UNKNOWN seedlets remain eligible, including historical ambiguity. Source-invalid geometry/tangents stay explicit UNKNOWN. Failed baseline fits remain assigned and frozen. Parent IDs provide provenance only.",
+    "protocol": "Parent freezes this decision. BUILD<=22min implements only scene/interface parameterization, runs bounded tests and freezes RUN_REQUEST; no full science/background jobs. Parent creates source_snapshot, launches approved Python -B SCRIPT --config CONFIG and records actual exit. ANALYSIS<=8min reads saved arrays/images and reports.",
+    "schedule": [
+      {
+        "cumulative_seconds": 360,
+        "stage": "Verify inputs/resources; initialize unchanged L0 carriers; checkpoint state; export complete baseline-equivalent membership and both native views before statistics."
+      },
+      {
+        "cumulative_seconds": 1020,
+        "stage": "Exactly two containment passes sharing30000fit attempts. Lock host geometry/extent; checkpoint each pass with cumulative budget, auxiliary state and versions. Export final L1 and both native views."
+      },
+      {
+        "cumulative_seconds": 1380,
+        "stage": "Reset fit budget to30000; one topology round. Complete global competition before disjoint commits; each carrier merges at most once. Journal every256accepted merges; save complete reloadable state before export/statistics."
+      },
+      {
+        "cumulative_seconds": 1800,
+        "stage": "Cold-load M2; save all-row mappings and both native full views immediately, then support/lineage comparisons and fixed diagnostics. Missing work remains NOT_RUN; incomplete competition is never promoted."
+      }
+    ],
+    "settings": {
+      "candidate": "Unchanged final-v04 batch ordering: samples<=1p, radius4p, nearest32samples, first8distinct carriers/sample, sorted symmetric degree8 cap; original score/stable-ID ties and fit accounting.",
+      "model": "TLS first, then original ordered polyline; exactly3Huber iterations, delta0.5p, equal occupied1p-bin total weight; <=8192kernels, <=128knots, spacing<=4p, EPS1e-8; no member pruning.",
+      "geometry": "Every member: residual max<=1p, q95<=0.5p, unsigned tangent<=30deg. Endpoint gap<=1.5p, connector<=35deg. Monotone overlap>=min(2p,half shorter carrier). Vertex turn<=30deg, every8p turn<=60deg; no cycles/nonadjacent contact<0.5p.",
+      "separation": "Preserve parallel rejection at overlap>=2p, angle<=15deg, median transverse separation>0.5p; three-arm rejection at >20deg separation with each arm>=3seedlets spanning>=2p. No endpoint-to-interior branch.",
+      "competition": "Original15% near-tie and duplicate-equivalence rule; <=2auxiliary alternatives, none establishes topology. New primary activation requires>=3seedlets, >=6kernels, >=4p deduplicated support. Rejection preserves predecessors transactionally."
+    },
+    "visuals": {
+      "cameras": ["0012", "0036"],
+      "render": "Pinned AST-isolated CPU helpers/libjoint.so; white background, floor0.0144, original covariance/width/opacity. Actual unchanged kernels only; stable membership colors and UNKNOWN gray.",
+      "selection": "Unchanged unit_002 selector: union of cross-parent top3by count/top3by support, top5cross-parent growth_gate groups by support then ID, and largest qualifying line/polyline. Missing examples explicit.",
+      "presentation": "Both-camera whole assets at L0/L1/M2; selected groups with identical member rows colored by L0/L1/M2/original parents, plus highlights. Existing crop rule unchanged: union RGB8<254 bbox, pad16, clip,4xnearest.",
+      "negatives": "Exact versioned complete candidate rows for minimum-margin parallel, branch, crossing/tangent, gap, ambiguity and worst accepted case."
+    },
+    "build_freeze": "Genuine RED before fixing forced scan24 replay/ficus labels. GREEN verifies scan65 routing and compares initialization/two pools/one merge against pinned unit_002 core on <=128deterministic real seedlets plus existing hard fixtures: ordered pairs/scores, attempts/reasons, events, memberships, carriers and restored budgets/versions. Any semantic mismatch blocks RUN_REQUEST. Freeze every source file except pycache, exact decision/config SHA, actual test returncode/log. Use the repaired four-external-helper request classification; historical snapshots stay hash-pinned config references, not disallowed request helpers.",
+    "resources": "parent max_seconds1800; final420s reserved for delivery; CPU2/BLAS2 strict serial; unit<=2GiB/runtime<=8GiB; root free>=1GiB/HDD>=10GiB. No GPU/RGB sourceGS/train/install/agents/queue/provider fallback/secrets/env output/push. Unit deadline bounded by science-wrap12:35JST; no new units after12:00.",
+    "outputs": "Atomic checkpoints, full-row membership/reasons/provisional/auxiliary IDs, finite carriers/support intervals, versioned merge/attachment lineage, compact candidate/rejection/cap records, original-field/order audits, actual PNGs/color references and factual RUN_RESULT. Preserve failures and parent actual exit; Chinese report, STATUS/NEXT and static seal after analysis."
+  },
+  "changed_variable": {
+    "scientific": "Only complete scene ficus→scan65; numerical settings, candidate ordering, fitting, guards and activation unchanged.",
+    "engineering": "Parameterize scene labels/paths/cameras and disable redundant old-scene replay; preserve pinned scientific core.",
+    "fixed": "All original kernel fields/count/order; many-to-one support distinct from carrier topology; no component union, distance relaxation or invented gap geometry."
+  },
+  "falsification": {
+    "delivery": "Fails without cold-reloaded279616-row M2 membership and both native full-asset PNGs. Interrupted prefixes remain partial.",
+    "growth": "Keep stored gate unchanged: >=5groups gaining>=max(4p,25%) support over largest L1 contributor, with>=2old fragments each>=6kernels and>=2p, plus support outside predecessor finite domain. Separately report original-parent contributions and whether>=5groups have two substantial original parents. Pooling, internal hole filling, duplicate support and tiny drift do not establish extension.",
+    "visual": "Require visible straight and curved examples in both cameras. Swallowed parallel/depth structures or branches falsify affected growth; preserve outputs and predecessor. Unresolved native-scale negatives, missing curve evidence or insufficient substantial cross-parent growth remain PARTIAL.",
+    "limits": "Report interval union, longest continuous run, finite extent/bbox, total/max gaps and coverage separately. All physical identities provisional; no held-out generalization claim. Geometry/hash/resource violations stop immediately. After actual results choose the next distinct unit within the authorized window; no threshold sweep."
+  }
+}

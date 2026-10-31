@@ -1,0 +1,42 @@
+{
+  "action": "continue",
+  "created_jst": "2026-10-31T10:47:39.519895+09:00",
+  "recommended_next_step": {
+    "experiment": "Complete ficus sealed M3 -> exactly one prefix-protected endpoint-supplement M4; no initialization, pooling, M5 or other-scene reruns.",
+    "source": "unit_015/source_snapshot verified through PARENT_RUN_FROZEN.json",
+    "input": {
+      "unit": "unit_005",
+      "state": "scenes/ficus/states/M3/STATE.pkl",
+      "state_sha256": "7e98b2207da899e22931df43b2b37d6b3384d7c55e42e31e02bbf022b1432d98",
+      "checkpoint_sha256": "89ac2d261cdbc62fbe6b394f592f5b4add0e7fe90d71809601a164dc5b32672e",
+      "config_sha256": "2221d81f5e1726660ce428804981a26d484fa8716cc3c60ee1c774cb23fd99be",
+      "kernels": 285956
+    },
+    "controls": {
+      "prefix": "unit008 M4 / config6d4cd08c821e15d3eb2bb42d7017375611662a2a942c48e8c5a61e27e2426052",
+      "joint": "unit013 M4 / config40b69d014e2eb2dd1cbffe5aaaa8d52e86c5730b2006d052633dc6939e56452e"
+    },
+    "changed_variable": "Scene scan24 -> ficus only; exact unit015 protection policy, numerical core and selector retained.",
+    "settings": "Same40000 total attempts, unchanged prefix/supplement order and guards,3Huber iterations,15% global-chord ambiguity. Capture full joint ambiguity before protection. Shared fits exactly replay both controls; lock prefix inputs/outputs/versions/aux; supplemental commits only on free original inputs outside joint ambiguity. One merge per original carrier; all valid UNKNOWN eligible; source fields/count/order frozen.",
+    "schedule_seconds": [
+      {
+        "until": 120,
+        "stage": "verify and restore M3/proposals"
+      },
+      {
+        "until": 1380,
+        "stage": "shared fits, both exact controls, protected commit, immediate complete checkpoint"
+      },
+      {
+        "until": 1800,
+        "stage": "cold-load, all-row export, both native views then comparisons"
+      }
+    ],
+    "visuals": "Fixed test_r_1/test_r_79, white floor0.0144, original kernels/width/opacity. Same selection with ficus tracked79171/204470/57769, top3 changed/lost control groups and largest new qualifying line/polyline; identical-row prefix/joint/variant/parent comparisons and exact guard contexts.",
+    "resources": "parent compute1800s, final420s delivery; CPU2/BLAS2 serial, unit<=2GiB/runtime<=8GiB/rootfree>=1GiB/HDDfree>=10GiB.",
+    "protocol": "New frozen decision first; BUILD only bounded regressions/config/RUN_REQUEST, parent owns full compute, ANALYSIS only saved outputs. No science launched by this handoff.",
+    "deadlines": "No new unit after12:00JST, science ends12:35, handoff12:45, hardstop13:00 on2026-10-31."
+  },
+  "rationale": "本单元保留全部前缀分配并获得4个相对前缀实质增长组，但放弃联合竞争的3例，457个载体存在补充竞争争议。ficus的既有联合补充没有实质新增增长且发生成员损失，因此同一保护政策在曲线场景中的收益/代价仍未解决，值得一次固定设置迁移；不预设成功。",
+  "falsification": "Both control replays exact and zero prefix loss/split required. Report all gained/lost support and joint cases. Preserve original>=5 M3-group gate; policy benefit needs qualifying gains versus prefix with incremental AND outward support>=4p, not preservation alone. Actual new straight/curved continuations must be visible in both views. Invisible/unresolved cases remain PARTIAL; no threshold tuning. Geometry/hash/resource violations stop."
+}

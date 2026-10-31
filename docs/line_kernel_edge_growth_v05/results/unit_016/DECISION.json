@@ -1,0 +1,65 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit015实际保留全部前缀分配并新增4个实质增长组，但放弃联合控制的3例，视觉结论仍PARTIAL。ficus的unit013没有新增合格增长且损失68个控制分配核。下一步仅迁移同一保护政策，检验它能否保住ficus成员并产生实质曲线增长；不预设成功。",
+  "recommended_next_step": {
+    "unit": "unit_016",
+    "experiment": "Complete ficus sealed M3 -> exactly one prefix-protected endpoint-supplement M4. No initialization, pooling, M5 or other-scene reruns.",
+    "input": {
+      "unit": "unit_005",
+      "state": "scenes/ficus/states/M3/STATE.pkl",
+      "state_sha256": "7e98b2207da899e22931df43b2b37d6b3384d7c55e42e31e02bbf022b1432d98",
+      "checkpoint": "scenes/ficus/states/M3/CHECKPOINT.json",
+      "checkpoint_sha256": "89ac2d261cdbc62fbe6b394f592f5b4add0e7fe90d71809601a164dc5b32672e",
+      "predecessor_config_sha256": "2221d81f5e1726660ce428804981a26d484fa8716cc3c60ee1c774cb23fd99be",
+      "restore": "All285956 original kernels/tangents and saved p. Verify predecessor binding; restricted-load exact carriers/versions/aux/next_version and cross-check membership/world-unit carriers. No refitting or baseline promotion."
+    },
+    "controls": {
+      "source": "unit015/source_snapshot through PARENT_RUN_FROZEN.json",
+      "source_config_sha256": "8dd3a00ac789e9b67b6aa964d70e346de5fe955c244992f9f8ed58f623b20b70",
+      "prefix": "unit008 M4; config6d4cd08c821e15d3eb2bb42d7017375611662a2a942c48e8c5a61e27e2426052",
+      "joint": "unit013 M4; config40b69d014e2eb2dd1cbffe5aaaa8d52e86c5730b2006d052633dc6939e56452e",
+      "references": "Strong v03, unit002 pooling-only L1/M2 and unit005 M3 remain immutable."
+    },
+    "policy": [
+      "Generate and fit identical unit013 prefix/supplement once. Shared fits must exactly replay unit008 prefix and unit013 joint events/carriers/aux/membership/records/statistics; no refitting. Preserve historical control accounting:19949 prefix fits,20017 joint fits.",
+      "Capture original joint ambiguity over ALL valid prefix/supplement candidates on original M3 carriers before protection.",
+      "Start from verified prefix result. Lock every accepted prefix input and its output rows/geometry/flags/versions/aux exactly.",
+      "Only supplemental pairs with both original inputs unused by prefix, unchanged versions and outside the full joint ambiguity mask may commit. Original cost/ID order and conflict handling; one merge per original carrier across both phases. Continue prefix next_version.",
+      "Keep joint ambiguity alternatives for unprotected carriers, capped at two. Record conflicts touching protected outputs as disputed/provisional without replacing locked primary/aux. Disputed inheritance is not newly validated growth."
+    ],
+    "fixed_settings": {
+      "proposals": "Exact unit015 implementation: prefix samples<=1p/radius4p/nearest32/first8distinct/symmetric degree8. Endpoint supplement nearest32 within1.5p+EPS, workers1, original ordering/ties/screens;<=30000 screened survivors, one supplemental pair/endpoint,<=10000 appended. No reciprocity.",
+      "fit": "Level4,40000 total attempts including failures. TLS then ordered polyline;3Huber iterations/delta0.5p, equal occupied1p-bin weight;<=8192kernels/128knots, spacing<=4p, EPS1e-8; no pruning.",
+      "guards": "All-member residual max1p/q95 0.5p/tangent30deg; endpoint gap1.5p/connector35deg; original monotone overlap; vertex turn30deg/every8p60deg; no cycles/nonadjacent contact<0.5p; unsupported gap<=1.5p. Parallel rejection: overlap>=2p/angle<=15deg/transverse median>0.5p. Three-arm rejection: separation>20deg, each>=3seedlets spanning>=2p.",
+      "eligibility": "Original15% ambiguity/global-chord equivalence; activation3seedlets/6kernels/4p support. All valid UNKNOWN eligible, including historical ambiguity. Invalid sources UNKNOWN; failed legacy groups assigned/frozen. Transactional rejection preserves predecessors."
+    },
+    "schedule_seconds": [
+      {
+        "until": 120,
+        "stage": "Verify resources/hashes; restore M3 and persist ordered proposals."
+      },
+      {
+        "until": 1380,
+        "stage": "Shared fits, both exact controls, complete ambiguity classification, protected commits. Journal every256acceptances with phase/cursor/versions; immediately save full reloadable state."
+      },
+      {
+        "until": 1800,
+        "stage": "Cold-load; verify prefix preservation/all-row consistency; export membership and both native full views before comparisons/diagnostics. Incomplete stages never promoted."
+      }
+    ],
+    "visuals": "Fixed test_r_1/test_r_79, white floor0.0144, pinned CPU renderer/libjoint.so, original covariance/width/opacity, UNKNOWN gray. Retain unit015 selection rules with ficus tracked79171/204470/57769. Fixed cases21870/28829/28837/78077/62169 expose prior damage;33824 remains a below-threshold control and29734 an inherited curve. Both-camera identical rows colored by prefix/joint/variant/original parents plus highlights; six exact versioned guard contexts. Existing RGB8<254union bbox/pad16/clip/4xnearest crops only. Actual kernels, no rendered bridges.",
+    "protocol": "Parent freezes decision. BUILD<=22min only scene/control configuration and bounded regressions against unit015 snapshot:<=128real M3seedlets plus existing protection/free-growth/ambiguity and hard-negative fixtures; verify proposals/fits/both replays/resume/failure preservation. Genuine RED only for an actual new failure; unchanged checks remain regressions. Freeze all source files except pycache, decision/config, four approved helpers and actual test receipts into RUN_REQUEST. Parent creates snapshot and owns plain --config compute/actual EXIT. ANALYSIS<=8min reads saved outputs.",
+    "resources_outputs": "max_seconds1800, final420s delivery; CPU2/BLAS2 strict serial; unit<=2GiB/runtime<=8GiB/rootfree>=1GiB/HDD>=10GiB. Save full mappings/reasons/provisional/aux, finite carriers/support, versioned lineage, protection/ambiguity/conflicts, both-control gains/losses, checkpoints, geometry audits and actual PNGs. No GPU/RGB sourceGS/train/install/agents/background jobs/provider fallback/env/secrets/push. No new units after12:00JST; science ends12:35."
+  },
+  "changed_variable": {
+    "scientific": "Transfer unit015 protected-commit policy from scan24 to ficus. Against ficus unit013, only commit priority changes; proposals, fits, full joint ambiguity and geometric guards stay fixed.",
+    "engineering": "Scene/input/control/camera/fixed-case configuration only.",
+    "fixed": "Every original kernel field/count/order; many-to-one support distinct from topology. No component union, relaxed distances or inserted geometry."
+  },
+  "falsification": {
+    "delivery": "Require cold-reloaded285956-row result and both native full views. Either shadow mismatch, changed locked carrier, lost prefix-assigned row or split prefix group blocks promotion.",
+    "growth": "Retain>=5 M3-gate groups: gain>=max(4p,25%largestM3support), two M3contributors each>=6kernels/2p and outward>EPS. Policy benefit additionally requires new/enlarged qualifying groups versus unit008 with incremental AND outward support>=4p and zero prefix loss. Report gains/losses versus both controls, substantial original-parent/L1 contributions, interval union, longest run, finite extent/bbox and total/max gaps.",
+    "visual": "New straight AND curved continuation must be visible in both views. Preservation alone, inherited curves, duplicate pooling or internal filling is insufficient. Swallowed parallels/depth structures/branches falsify affected examples; missing/unresolved evidence remains PARTIAL.",
+    "limits": "Zero material benefit is a preserved negative result, not permission to tune. Physical identity provisional; no held-out claim. Preserve controls/failures/actual exits. Geometry/hash/resource violations stop immediately."
+  }
+}

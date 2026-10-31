@@ -1,0 +1,69 @@
+{
+  "action": "continue",
+  "recommended_next_step": {
+    "unit": "unit_004",
+    "experiment": "完整scan24从已封存M2追加恰好一个拓扑合并轮，交付M3_MERGE_ONLY；不池化、不重做初始化。",
+    "changed_variable": "累计拓扑轮数1→2；每轮仍30000fit，同样候选顺序、残差/间隙/切向/turn/parallel/branch/ambiguity和激活门槛。",
+    "hypothesis": "检验单轮每载体最多一次合并之后，第二轮能否把已有片段继续组织成真正更大的直线/曲线。不是已证明单轮是唯一瓶颈；fit-cap截断仍同时记录。",
+    "input_state": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_001/scenes/scan24/stages/S2_MERGE/STATE.pkl",
+    "input_state_sha256": "b1678f236750a852ac58c03c12fd44c907e118fd754dd6aeb38f9bcd075cd7fd",
+    "checkpoint": "完整竞争后按原次序提交，每载体本轮最多一次；每256接受保存delta，完整M3状态先于全行映射、两张全景和统计。超时/拒绝保留M2及实际已保存部分。",
+    "checkpoint_sha256": "320bb4d8253bed99b8a31e6e5104bf6874bb8f1a64c33d4df680418079296b60",
+    "input": "原始458490核及unit_001完整M2 membership/carriers/lineage；哈希验证后受限冷载，不重新拟合前驱。全部有效UNKNOWN/历史歧义继续有资格，冻结legacy组不增长。",
+    "controls": "同一scan24强v03、v04池化L1与unit_001 M2；ficus/scan65已完成的同设置结果为背景对照，不重跑。",
+    "schedule_seconds": {
+      "verify_and_restore": 120,
+      "complete_single_M3_pass_and_state": 1380,
+      "native_export_diagnostics_finish": 1800
+    },
+    "max_seconds": 1800,
+    "frozen_numeric_reference": {
+      "unit_003_config_sha256": "f376f26ceeb9676cb6616edc0fcd266dc561c783bbec58d7fd1721722eb49f5c",
+      "numeric": {
+        "coordinate_unit": "saved p",
+        "residual_max": 1.0,
+        "residual_q95": 0.5,
+        "tangent_deg": 30.0,
+        "knot_spacing": 4.0,
+        "knots": 128,
+        "irls": 3,
+        "huber": 0.5,
+        "member_cap": 8192,
+        "fit_cap_per_level": 30000,
+        "sample_spacing": 1.0,
+        "query_radius": 4.0,
+        "query_samples": 32,
+        "candidate_carriers": 8,
+        "gap": 1.5,
+        "connector_deg": 35.0,
+        "vertex_turn_deg": 30.0,
+        "window_length": 8.0,
+        "window_turn_deg": 60.0,
+        "parallel_overlap": 2.0,
+        "parallel_angle": 15.0,
+        "parallel_offset": 0.5,
+        "branch_angle": 20.0,
+        "branch_seedlets": 3,
+        "branch_span": 2.0,
+        "ambiguity": 0.15,
+        "min_reps": 3,
+        "min_kernels": 6,
+        "min_support": 4.0,
+        "numerical_epsilon": 1e-08
+      }
+    },
+    "engineering": "只增加hash-verified M2起点与M3级别导出；统计应明确以M2为直接前驱，保持原增长公式，另报告L1/v03与原始parent溯源，不把M3误标成L1或强制growth_gate=false。",
+    "visuals": "固定0012/0036、白背景floor0.0144、原核宽/opacity；M3全资产与top3核数/top3支持/top5增长、最大line/polyline、M2的103748/202626后继谱系，双相机相同行集L1/M2/M3与parent颜色；精确M2版本负例。",
+    "growth_falsifier": "相对最大M2贡献者新增≥max(4p,25%)去重支持且有域外支持、两个M2贡献者各≥6核≥2p；单列至少三个实质L1片段和两个实质原始parent的组数。仍以≥5合格组及真实直线/曲线证据为目标；重着色、孔填补、重复核增加不能替代增长。",
+    "visual_falsifier": "吞并平行/分支/深度结构否定受影响增长；仅继承旧大组、没有域外增长或双视图不足都报告PARTIAL，不调阈值补救。",
+    "resources": "CPU2/BLAS2严格串行，unit≤2GiB/runtime≤8GiB、root剩余≥1GiB/HDD≥10GiB；无GPU/RGB源GS/训练/安装/agents/provider切换；BUILD仅小测试并冻结请求，parent拥有计算，ANALYSIS只读输出。",
+    "cutoffs_jst": {
+      "no_new_units": "2026-10-31T12:00:00+09:00",
+      "science_wrap": "2026-10-31T12:35:00+09:00",
+      "hard_stop": "2026-10-31T13:00:00+09:00"
+    }
+  },
+  "rationale": "三场景现已完成同设置M2；ficus/scan65分别只有3个实质跨原始parent增长组，scan65最大可见曲线均来自L1。scan24保存指标有19个实质跨parent增长组，是继续检验逐轮延伸的较强起点。下一步仅追加一轮，直接测试能否超越当前短片段，而不是用更多场景、更多seal或调阈值代替增长。",
+  "not_executed_in_analysis": true,
+  "utc": "2026-10-30T21:42:47.333530+00:00"
+}

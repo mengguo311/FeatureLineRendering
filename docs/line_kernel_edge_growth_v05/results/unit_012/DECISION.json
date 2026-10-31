@@ -1,0 +1,63 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit011实际完成33767次拟合，新增3767次仅产生14个有效拟合，没有新增合格增长组，并有13核退回UNKNOWN。继续增加同一候选图的fit预算缺乏依据。源码确认原候选受样本近邻和每载体degree8截断，端点续接没有独立入口；76968次候选截断提示覆盖问题，但尚未证明因果。下一单元只检验受限端点提案补充，保持原几何、拟合与竞争规则。",
+  "recommended_next_step": {
+    "unit": "unit_012",
+    "experiment": "Complete scan24 sealed M3 -> one M4_MERGE_ONLY round with an endpoint-proposal supplement. No initialization, pooling, M5 or other-scene reruns.",
+    "input": {
+      "unit_root": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_004",
+      "state": "scenes/scan24/states/M3/STATE.pkl",
+      "state_sha256": "2d23b2c1d9af898a8ebbf93a03d11a8bffb1b80e5ac54ae14b4de445e5b73a45",
+      "checkpoint": "scenes/scan24/states/M3/CHECKPOINT.json",
+      "checkpoint_sha256": "e737c72867d081792758c1c541fbba561d860fedeee7e033584a9edd6ede8fd4",
+      "restore": "All458490 original kernels/tangents and saved p. Verify predecessor's own decision/config binding; restricted-load exact carriers/versions/aux/next_version, cross-check membership/world-unit carriers. No refitting or baseline promotion."
+    },
+    "control": {
+      "source": "unit011/source_snapshot through PARENT_RUN_FROZEN.json",
+      "config_sha256": "2dca3f6c8d3f5572a69f7a6653124b7a4c1fd091d7f50cec7958b3a8939aa884",
+      "results": "unit011 M4 is the direct control. Retain strong v03, pooling-only L1 and M2/M3 references."
+    },
+    "exact_proposal_change": [
+      "Preserve the original ordered candidate list, scores and degree8 truncation as an unchanged prefix.",
+      "Index both endpoints of every valid carrier, including dormant UNKNOWN. Insert by carrier ID then endpoint index; query nearest32 endpoints within1.5p+EPS, workers1, including self before filtering. Sort returned neighbors by distance/ID/endpoint; exclude self and prefix pairs.",
+      "Canonicalize unseen pairs. Apply the existing nearest-endpoint gap, connector35deg and endpoint-tangent30deg checks without relaxation. Use the same host ordering and endpoint argmin ties as proposal(). Rank survivors by the exact original canonical-pair candidate score, then IDs.",
+      "Inspect at most30000 ranked survivors with unchanged proposal(a,b,False); retain only operation='endpoint'. Overlap proposals do not enter the supplement. Record screening truncation and rejection reasons separately from control accounting.",
+      "Greedily retain pairs in that order with at most one supplemental pair per endpoint, hence at most two per carrier; original-prefix candidates do not consume these supplemental slots. No reciprocal-selection requirement. Append at most10000 pairs, preserving ranked order. Record every cap.",
+      "Fit each pair at most once. Total original-prefix plus supplement fit cap40000, including failures. Complete joint competition before original disjoint commits; each carrier merges at most once."
+    ],
+    "fixed_settings": {
+      "original_candidates": "Sample<=1p, radius4p, nearest32, first8distinct neighbors/sample, symmetric degree8cap; prefix ordering unchanged.",
+      "fit": "Level4; TLS then ordered polyline;3Huber iterations, delta0.5p, equal occupied1p-bin weight;8192kernels/128knots maximum, spacing<=4p, EPS1e-8; no pruning.",
+      "geometry": "All-member residual max<=1p/q95<=0.5p/tangent<=30deg; endpoint gap<=1.5p/connector<=35deg; original monotone overlap; vertex turn<=30deg/every8p turn<=60deg; no cycles/nonadjacent contact<0.5p; unsupported gap<=1.5p.",
+      "separation": "Original parallel guard at overlap>=2p/angle<=15deg/transverse median>0.5p; three-arm guard at separation>20deg, each>=3seedlets spanning>=2p. No endpoint-to-interior branch.",
+      "competition": "Original15% ambiguity and global-chord duplicate equivalence, aux<=2 without topology authority; activation>=3seedlets/6kernels/4p support. All valid UNKNOWN eligible; invalid sources UNKNOWN, failed legacy groups assigned/frozen. Transactional rejection preserves predecessors."
+    },
+    "schedule_seconds": [
+      {
+        "cumulative_limit": 120,
+        "stage": "Verify resources/hashes, restore M3 and persist original/supplement ordered proposals with provenance."
+      },
+      {
+        "cumulative_limit": 1380,
+        "stage": "Shared prefix fits must reproduce unit011 events/carriers/aux/membership/records/stats exactly without refitting. Mismatch blocks promotion. Evaluate supplement, complete joint competition, commit disjoint pairs; journal every256acceptances and immediately save full reloadable state."
+      },
+      {
+        "cumulative_limit": 1800,
+        "stage": "Cold-load and verify incumbent preservation; save all-row membership and both native whole views before statistics/diagnostics. Incomplete competition never promoted; missing work NOT_RUN."
+      }
+    ],
+    "visuals": "Fixed0012/0036, white floor0.0144, pinned CPU helpers/libjoint.so, original covariance/width/opacity. Actual kernels only, UNKNOWN gray. Retain unit011 selector; additionally select top3 changed and top3 damaged control groups by supported length then ID, largest new qualifying line/polyline and first3 accepted supplemental pairs in commit order. Both-camera identical-row M3/control/variant/parent colors and highlights; unchanged RGB8<254union bbox/pad16/clip/4xnearest crops. Save exact versioned six guard contexts and complete supplemental input rows.",
+    "protocol": "Parent freezes this decision. BUILD<=22min only implementation/small tests/RUN_REQUEST. Genuine RED->GREEN: dense duplicate candidates hide a feasible endpoint continuation; supplement recovers it while preserving the prefix. Test curved/S, parallel, T/X, gap, ambiguity, deterministic ties and caps. On<=128real M3seedlets compare original-prefix scores/fits/reasons/arrays and exact control replay; test resume and post-checkpoint failure preservation. Freeze all source/config/decision/helper hashes and actual test receipts. Parent owns snapshot/plain --config compute/actual EXIT; ANALYSIS<=8min reads saved outputs.",
+    "resources_outputs": "Compute1800s, final420s delivery; CPU2/BLAS2 strict serial; unit<=2GiB/runtime<=8GiB/root free>=1GiB/HDD>=10GiB. Save full memberships/reasons/provisional/aux, finite support/carriers, versioned lineage, prefix/supplement provenance and rejections, control gains/losses, checkpoints, geometry audits and actual PNGs. No GPU/RGB sourceGS/train/install/agents/background jobs/provider fallback/env/secrets/push. No new units after12:00JST; science ends12:35, handoff12:45, hardstop13:00."
+  },
+  "changed_variable": {
+    "scientific": "Bounded endpoint-specific proposal coverage added after the unchanged original prefix; same input, round count and40000fit ceiling. Actual fit consumption may increase.",
+    "fixed": "Original kernel fields/count/order, fitting, geometric guards and competition. Many-to-one support remains distinct from carrier topology; no component union, distance relaxation or inserted gap geometry."
+  },
+  "falsification": {
+    "delivery": "Fail without cold-reloaded458490-row variant membership and both native full views. Shadow-control mismatch blocks promotion.",
+    "growth": "Retain M3 gate: >=5groups gain>=max(4p,25%largestM3support), two M3contributors each>=6kernels/>=2p and outward support>EPS. Proposal benefit additionally requires new/enlarged qualifying groups versus unit011 with incremental and outward support>=4p. Report lost groups/UNKNOWN regressions, substantial original-parent/L1 intersections, interval union, longest run, bbox and total/max gaps.",
+    "visual": "Require new straight AND curved continuation visible in both views. More proposals/fits, duplicate support, internal filling or inherited curves are insufficient. Swallowed parallels/depth structures/branches falsify affected changes; invisible/unresolved evidence remains PARTIAL.",
+    "limits": "Zero useful supplemental pairs or no material benefit is a preserved negative result, not permission to widen thresholds. All identities provisional; no physical-truth or held-out claim. Geometry/hash/resource violations stop immediately."
+  }
+}
