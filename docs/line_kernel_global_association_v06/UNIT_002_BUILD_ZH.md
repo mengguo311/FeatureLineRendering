@@ -1,0 +1,9 @@
+本轮只完成BUILD。正式scan24数值与原核渲染由父进程启动，尚未执行。
+
+决策图覆盖所有已保存且通过固定歧义排除的endpoint边；证据邻域保存全部入射候选及完整对端行，拒绝/overlap边不递归生成决策变量。128上限只作用于完整决策分量，超限不裁竞争。port_paths.py、geometry_base.py与unit001冻结快照逐字节相同；没有改成本、UNKNOWN激活或几何守卫。
+
+每完成一对分量保存带hash的LINKS/RECEIPTS检查点。两臂最终全行映射冷载后先保存双视图全景，再保存统计与对称选图、相同行集合及证据邻域。原生图保留，裁剪只采用两臂联合前景bbox、pad16、clip和4倍最近邻；空图、出框有明示记录。
+
+实际RED：旧选择器将3个决策载体沿拒绝链扩成140个，且遗漏独立双载体分量。新增行为修复后GREEN；原路径/端口/branch/parallel/gap与四个保存真实载体的数值回归通过。18行合成纵向fixture验证后续渲染失败仍保留两臂完整映射；没有读取完整原核进行实验，也没有正式渲染。测试源码、真实returncode及原日志在unit002/tests及TESTS_RECEIPT.json绑定。
+
+CONFIG与RUN_REQUEST冻结后不得再改源码。父持有1800秒plain Python -B runner.py --config CONFIG计算，末600秒为交付保留；测试结果不代表物理同边正确。
