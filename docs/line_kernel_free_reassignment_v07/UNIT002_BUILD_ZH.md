@@ -1,0 +1,13 @@
+# unit002：完整有限曲线种子库与覆盖优先初始化
+
+本单元按冻结决策仅更换初始化候选族和分配方式。unit001 的 free_core.py 与 free_io.py 保持逐字节一致，逐核完整竞争、UNKNOWN、原核冻结、IRLS、支持拆分/死亡和三轮更新不变。旧载体的行归属仅校验来源、生成负例上下文，绝不限制新主归属。
+
+seed_coverage.load_seeds 验证旧checkpoint、自身config/decision绑定、29070载体/66114世界单位knots、全部285956源行的唯一性及carrier_id对应关系。valid、baseline、assigned/UNKNOWN均不作为种子资格或核资格。每条有限q按128p弧长窗口枚举，使用原unit001重采样/几何守卫；每个模型查询所有距离和切向合格的原核，按原cost<1计算潜在覆盖，再对1p体素去重。不存在top-k模型查询。
+
+完整库、所有拒绝记录及体素映射先落盘；精确lazy greedy按新增覆盖体素数和canonical键选最多512种子。未选且最终边际为0的候选明确标记。完整库不等于物理模型空间已穷尽，STATIC的model_discovery_complete始终false，另记录seed_bank_complete及相对库覆盖。几何输入错误可拒绝；覆盖计算出现意外异常则保存INCOMPLETE_BANK和BANK_FAILURE并阻止晋级，不能删除竞争候选伪造完整库。
+
+新运行器coverage_runner.py先完成库/选择，再运行相同STATIC和三轮ADAPTIVE；每次原始竞争结果和接受阶段均保存全行映射。旧unit001 STATIC/ADAPTIVE作为外部对照，不重跑。显示层保留unit001的144/382/482确切行集，并从CARRIERS.row_offsets恢复旧固定上下文含UNKNOWN的完整源行；缺失载体ID另列。新增直/曲候选按≥3实质M4贡献筛选，但形状标签仍只是转角代理，必须实际查看原核双视图。
+
+测试只打开unit002/tests_tmp下的合成NPZ，最大96行。33项显式测试含18项原回归与15项新测试。新加载器真实调用guard(phase)，30行新runner贯通四阶段/冷载，仅delivery被明确替换；无实际渲染。保留两个真实行为RED：覆盖ValueError误被吞为几何拒绝，以及有限库覆盖被误写为完整模型发现；修复后GREEN。缺失API的最初RED单列，不混为科学失败。
+
+父级将通过RUN_REQUEST启动正式全ficus计算，1800秒总上限，初始化截至360秒、science截至1200秒、最后600秒交付。只使用原核渲染，无辅助曲线/桥、无训练或GPU。所有科学结果仍待实际运行及图像分析。
