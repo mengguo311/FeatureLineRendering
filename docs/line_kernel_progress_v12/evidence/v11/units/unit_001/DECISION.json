@@ -1,0 +1,15 @@
+{
+  "action": "continue",
+  "rationale_chinese": "已核验INPUT_LOCK全部9项哈希、原始7字段数组及成员表：30579/v21779恰596核，完整资产279616行。已查看0012/0036隔离图、0036完整竞争背景及0012全景；目标细长略弯，邻近其他组不应一起收拢。旧Q记录自接触，不能直接作为中心线。本review只读检查，未拟合、测试或渲染。",
+  "recommended_next_step": {
+    "experiment": "单调主轴三次3D曲线合束；ORIGINAL、POSITION_ONLY、DERIVED三个固定阶段，无参数扫描。",
+    "binding": "使用NEW INPUT_LOCK全部绑定及SOURCE_CONFIG_EXTRACT。目标为锁定MEMBERSHIP中edge_id=30579的排序原行，与GROUPS逐项一致；596行的little-endian int64行号字节SHA256=5b0e387c307bc0a02e4737351f8c0eee3e635ea3da5aaa6f087f9eace8d4a9f6。canonical Gaussian SHA256=3690a326224470faa3b673fe1c55f019211e0354f427f7fa86a974c4605dc130。只修改该596行派生副本，不扩组、不减核、不改ID或顺序。",
+    "curve": "全部596原中心等权参与一次拟合。以均值c及中心协方差最大特征向量a建立主轴；a最大绝对分量取正，平局取最低坐标。选择与a最不平行的世界坐标轴，投影归一化为e1，e2=a×e1。s_i=a·(x_i-c)，保留每核原s_i；范围严格为[smin,smax]。u=2(s-smin)/(smax-smin)-1，Y_i=((x_i-c)·e1,(x_i-c)·e2)/p。用P0=1、P1=u、P2=(3u²-1)/2、P3=(5u³-3u)/2，唯一求解min mean||PB-Y||²+0.01(||B2||²+||B3||²)。q(s)=c+s*a+p*(e1,e2)PB。主轴坐标严格单调，不回绕；不使用旧Q、不迭代重投影、不裁成员、不根据相机调参。空、非有限、非正定原协方差、跨度≤1e-8p或主特征值间隔≤1e-12*max(lambda1,p²)时明确失败，无替代拟合。",
+    "derived_geometry": "POSITION_ONLY仅将目标means替换为q(s_i)，保留全部原covariance。DERIVED沿同一q使用解析单位切向t_i，sigma_perp=0.15p，sigma_parallel_i=clip(sqrt(lambda_max(C_original_i)),0.5p,1.5p)，Cnew=sigma_perp²I+(sigma_parallel_i²-sigma_perp²)t_i*t_i^T；p=.001725801957946726。不重新分布轴向采样，不外推中心；记录端点及3sigma尾部范围，Gaussian尾部不宣称严格有限支持。两派生阶段opacity、colors及来源字段均逐位保持；不做透明度补偿。原control/piece/arc_t保留为来源，不能再宣称派生means由原控制点生成。",
+    "render": "使用已审计renderer.render(a,c,background=(1,1,1),floor=.12**2)，绑定renderer.py、common.py、libjoint.so及其加载的sh_utils.py实际哈希；不调用旧producer/state写入函数。固定CAMERAS.scan65的0012/0036，777×581、COLMAP W2C，无GL转换。三个阶段各输出目标隔离及完整279616核背景，共12幅原尺寸Gaussian图；使用原colors和opacity、相同深度合成及显示协议，不用曲线替代墨迹。每相机以三个阶段目标投影3sigma框的并集加16px确定唯一裁剪框，裁至画幅，另作明确标注4倍最近邻展示；保留原尺寸及裁边事实，0036已有近边界风险。两相机必须读取同一冷载派生文件，竞争线全部保留。",
+    "audit_delivery": "先原子保存原版完整NPZ、POSITION_ONLY及DERIVED_GAUSSIANS.npz、原目标备份、TARGET_ROWS、模型系数/轴/参数和逐核新旧差，再渲染。保持原7字段类型及279616行顺序；核验所有非目标字段bitwise相等、目标非几何字段相等、源SHA前后相同、目标means/cov确实变化且SPD有限。保存位置位移分位数/最大值、固定拟合曲线的收拢前残差、协方差宽度/切向及像素alpha/覆盖变化；不能以拟合后中心位于曲线上这一构造事实证明物理正确。冷载字段与ID逐项一致，冷载渲染与内存渲染相符。输出标注双视图前后图及四份分析文件，明确原版可回退。",
+    "tests_budget": "BUILD≤12min，仅新源码与小型真实RED→GREEN：弯曲束收拢且保持弯曲、单调参数、SPD/切向/宽度、1:1行身份、非目标及原对象不变、真实NPZ加载/冷载、多相机共用资产、退化失败。不在BUILD运行全资产拟合或渲染。Parent max_seconds900：核验60、变换/冷存60、渲染600、审计交付180；CPU2串行、输出≤2GiB。science_deadline严格取WINDOW的2026-11-03T10:41:27.302605+09:00。单单元完成或失败后NEXT=stop，不启动后续实验。"
+  },
+  "changed_variable": "仅目标596核派生means，以及最终阶段covariance的切向/宽度改变；opacity和所有背景保持。POSITION_ONLY用于区分中心收拢与变细效果。canonical_geometry_frozen=true，derived_geometry_edit_allowed=true，final_ink_carrier=derived_line_gaussians，edit_scope=target_group_only，uses_gpu=false，uses_training=false。",
+  "falsification": "改动非目标核、丢失或重排身份、源文件变化、非SPD、逐相机改几何、用2D/辅助曲线替代Gaussian或冷载不一致即工程失败。若双视图仍缠绕、变成串珠/断线、明显偏离原束、压掉真实弯曲或过度变黑，保留原图与失败；仅变细/变淡不足称合束成功。背景其他线仍存在不通过扩大目标修补；裁边或不足分辨率明确记缺证据。本实验是允许插值的几何规整，不认证真实边、物理身份或新增观测。"
+}

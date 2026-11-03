@@ -1,0 +1,49 @@
+{
+  "diagnosis_zh": "组均权拟合真实改变几何和排名：38次接受（5558/22130/64111/238627分别8/5/4/21），16次纯池化，新增UNKNOWN183核。相较封存ROW_FIT17步自然停止，238627原死端被释放，但新增116核仍无起点域外支持，长弧主要继承/内部填充。第6步22130平行冲突、第15步64111自接触是明确保留的风险；同donor自接触端点Q的J=.067926低于无接触重叠Q的.076681，不是U奖励导致。全部接受的最大距离1.298543p/角71.753462度，未复现unit006的89度超限，这只是几何代理改善。最终因450秒增长预算PARTIAL，238627末库已有5个合格解释但其余未完，不能宣称自然耗尽或挑选截断库赢家。",
+  "failure_modes": [
+    {
+      "mode": "phase_deadline_not_exhaustion",
+      "evidence": "最后0109_238627：37donor、199已记录解释、5connectable；current_donor62128，未完62128/62168/201865/201942，selected=null。完整最后checkpoint保留38步。"
+    },
+    {
+      "mode": "parallel_absorption_after_rule4_off",
+      "evidence": "第6步[22130,149201]；第25步起238627引入[62038,62044]，末态另有[162192,238627]/[201913,238627]/[238627,271941]。是谓词冲突，不冒充物理误并真值。"
+    },
+    {
+      "mode": "self_contact_relation_wins",
+      "evidence": "第15步64111+-274465选endpoint方向1：contact距离.341466p、U1.150505p、J.067926；同donor overlap方向1无contact、U0、J.076681。仍closed=false。"
+    },
+    {
+      "mode": "inherited_arc_pooling_and_remapping",
+      "evidence": "238627域外0，368→484核；union122.813→122.992p，longest99.824→122.992p；不同Q上的支持连通改善不等于新观测或真实外延。"
+    },
+    {
+      "mode": "curve_proxy_and_visual_evidence_insufficient",
+      "evidence": "64111域外4.922p，但仅一个M4贡献达12核/2p（64111为204核）；新增仅18核分四小donor。隔离投影微小。238627虽有3个实质M4贡献，域外仍0且继承长弧。"
+    },
+    {
+      "mode": "asymmetric_completion",
+      "evidence": "ROW_FIT旧控制17步完整自然停止，本臂38步时间截断；不能据次数断言优越性。"
+    }
+  ],
+  "observed_images": [
+    "scenes/scan65/stages/GROUP_BALANCED_FIT_FINAL/0012_FULL.png",
+    "scenes/scan65/diagnostics/238627/GROUP_BALANCED_FIT_0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/238627/GROUP_BALANCED_FIT_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/worst_events/GROUP_BALANCED_FIT/0015/0036_ISOLATED_CROP.png",
+    "scenes/scan65/worst_events/GROUP_BALANCED_FIT/0038/0036_ADDED_CROP.png",
+    "scenes/scan65/stages/GROUP_BALANCED_FIT_FINAL/0036_FULL.png",
+    "scenes/scan65/diagnostics/238627/START_0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/238627/GROUP_BALANCED_FIT_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/238627/GROUP_BALANCED_FIT_0012_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/64111/GROUP_BALANCED_FIT_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/64111/GROUP_BALANCED_FIT_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/5558/GROUP_BALANCED_FIT_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/5558/GROUP_BALANCED_FIT_0012_QUERY_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/22130/GROUP_BALANCED_FIT_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/worst_events/GROUP_BALANCED_FIT/0026/0012_FULL_OBJECT_CONTEXT.png"
+  ],
+  "visual_evidence_missing": true,
+  "next_change": "另行冻结“GROUP_BALANCED_FIT终态续接＋固定起点支持坐标对照”，不再调拟合权重或恢复2/4/6。输入unit007 GROUP_BALANCED_FIT_FINAL，MEMBERSHIP SHA256=030f7025d5ce151dfde5ffd4e5d3aa6bbda055d5fc1586865480aa52dc63ccf1，next_version21707；保持五组队列及完整279616背景，优先完成238627尚未评完的37-donor整库，必须重查全库而非仅四个未完donor。完整ROW_FIT影子对照保留。诊断新增固定unit007 START q坐标下的同一原行协方差支持，与动态Q上的U/union/run及旧域运动并列；固定坐标对照只用于解释池化/重映射，不加入评分或接受门。第15步-274465的重叠/端点两解释作为固定反例：并列同核、分项J、接触与域外代理，不以解除接触等于闭合。新review冻结精确预算及独立证据；保持2p候选、五轮整组拟合、GROUP_BALANCED_SCORE、规则1/3/5、容量和闭合认证。若续接再到时仍PARTIAL；若真实穷尽，转预先绑定的新种子/场景而非重复阈值扫描。",
+  "visual_evidence_missing_reason": "已看15张全景/隔离/竞争/最坏事件PNG。238627长弧双视图可见，但START/FINAL轮廓近似，新增第38步仅细小墨点；64111为短小浅弧/竖痕，复杂完整背景难分层。足够确认保存图存在，不足认证新增直曲身份。"
+}

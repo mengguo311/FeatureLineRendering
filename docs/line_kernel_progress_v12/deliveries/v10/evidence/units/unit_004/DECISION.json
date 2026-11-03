@@ -1,0 +1,18 @@
+{
+  "action": "continue",
+  "rationale_chinese": "scan24已显示R6使同donor的端点自接触解释胜过重叠解释，但长组容量限制阻断后续。scan65封存终态5558有10个、22130有4个no_unique_support拒绝，且没有保存的容量中断，适合迁移检验。已核对checkpoint、49份v10快照并查看保存图；未运行数值实验。旧Nov2停止建议不适用于新窗口。",
+  "recommended_next_step": {
+    "experiment": "Scan65 WHOLE：新执行R2_R4 versus R2_R4_R6，共同终态起点。",
+    "binding": "代码继承v10 unit003 CONFIG 925b56d91889220832e54cda5273f57055c68b976cf8a096f8bd64b79f8b3453及49份已核验source_snapshot/helper绑定。数据冷载v09 continuation_001/unit003/scenes/scan65/stages/TRANSPORT_BRANCH_FINAL；CONFIG f344d0f0f3ee6cd6ef968ab4924440660fd1d0c121ffb8083959d2b2e6c198f1，MEMBERSHIP 252d9a2875a23fda6792d116ba08587c7e31368972924307e0609e05b10dc249；四个checkpoint文件已核验。",
+    "start": "279616行、126428 assigned、153188 UNKNOWN、next_version21669、p=.001725801957946726。固定5558/v21661、22130/v21667、64111/v21668、156151/v21665、238627/v21651；保留1759历史事件及上一事件、当前完整复合q和全部成员。复制NO_FURTHER_GROWTH，不重竞争或初始分配版本。238627继承长弧单列，不当新增多片段成功。",
+    "loader": "复用冻结branch_loader→scan65_loader及M4_STATE restricted loader，不误用scan24 M5适配。原M4为26713载体/62561世界单位knots；control/piece/parent为71227/62356/8874。保留行序、原字段、版本、控制索引、导数和basis-center核验。真实guard(phase)/冷载小测试；无旧producer或旧deadline。",
+    "policies": "两臂分别[2,4]、[2,4,6]，均WHOLE和TRANSPORT_BRANCH。R6_OFF取消contact/gap/no_unique硬返回，纯池化保留有限原J；R2/R4不恢复。规则1/3/5、非有限及事务不变量保持；方向缺失UNKNOWN、运输未决或未完成候选记整轮PARTIAL。旧严格终态仅历史参考，不要求新[2,4]零增长。",
+    "discovery_fit": "完整整曲线2p精确段距查询，无top-k；双向重叠1p对应/median偏移及四端点解释不变。assigned组整体donor、UNKNOWN按原载体。≤1p模板，全部并集成员/全部结点5轮Huber IRLS，delta=.5p，平均位置损失+.05平均二阶差平方+.001平均模板位移平方；LSQR atol/btol1e-8、iter_lim2000。8192成员/257结点不变；不从截断库选赢家。",
+    "score_control": "J=mean(d/p)^2+.25mean(theta/90)^2+.05mean(turn/90)^2+.1(maxgap/p)^2+.02K/(L/p+1)-.25(U/p)/(1+U/p)，平局donor/关系/方向。完整共同初始提案及拟合共享，两策略库冻结后分别增长；同状态保存双影子选择，后续候选分叉单列。不要求优于旧组总损失。",
+    "diagnostic_change": "每次访问按donor并列全部关系的原行集合、U、J各项、接触、gap和旧域位移；记录U=0重叠解释与U>0端点解释的竞争及实际赢家。仅诊断，不增加门槛或改权重。原规则3/5早拒绝写NOT_REACHED，不能假造R6通过。",
+    "repeat_closure": "ID轮转，提交完整库最低J，先原子保存全成员/q/版本及紧凑delta，再重查；种子互吞合并队列，无接受次数上限。仅完整无连接或支持闭合自然停止。闭合仍须端距≤.5p、长度≥6p、两端1p窗各≥3有效核、切向≤45度、闭合段协方差支持无洞及周期contact；R6关闭后自接触/超gap并组可接受，但不认证SUPPORTED_CLOSED或据此停止。",
+    "delivery_budget": "BUILD≤18min，实际M4终态loader、双臂派发、关系诊断、保核回滚小测试，诚实区分复用回归。Parent1800s：readiness120、共同库180、每臂450、交付600；CPU2串行，Nov3 05:35 science截止。先冷载两臂279616行，再0012/0036、777×581、COLMAP W2C原核全景/起中末/新增/完整竞争背景。保留六类旧负例及167509/7786/120042损伤参考，首个pooling/gap/contact事件及误差/规模各top3。按START/M4/M3/unit009前缀/unit014联合contingency报告；scan65无已执行M5/v06对照。小图明确不足，看图后两分钟写四分析文件；05:15停新单元。"
+  },
+  "changed_variable": "场景、强M4背景及五组范围改变，不能作跨场景单因素归因。新匹配两臂仅R6开关不同；诊断不参与决策。原核冻结、monotone_group_union、whole_curve_auxiliary_update=true、accepted_merge_is_ground_truth=false。",
+  "falsification": "禁用项仍硬拒绝、无限评分、失核、原核变化、截断晋级或无支持闭合认证即工程失败。保留平行/深度/第三臂吞并、自接触、长gap、巨组及最早损伤；同donor绕行造成U增加不算新观测。池化、小图、继承长弧或更多接受不是准确率。规则3/5或容量阻断如实保存，不恢复2/4/6、不宣称窗口耗尽；无辅助桥墨、物理或held-out认证。"
+}

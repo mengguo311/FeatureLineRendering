@@ -1,0 +1,95 @@
+{
+  "unit": "unit_004",
+  "execution_state": "completed",
+  "scientific_verdict": "PARTIAL_NO_JOINT_ADVANTAGE_FIXED_ANCHOR_COVERAGE_LIMITED",
+  "scope": {
+    "scene": "scan24",
+    "original_rows": 458490,
+    "input": "v05 unit015 M4",
+    "mechanism_scope": "8 complete successful-overlap components; endpoint continuation NOT_RUN; outside selected components restores M4, not unit003",
+    "decision_leaves": 42,
+    "selected_overlap_pairs": 38,
+    "all_successful_overlap_components": 1917,
+    "processed_components": 8,
+    "unprocessed_components": 1909,
+    "other_scenes": "NOT_RUN"
+  },
+  "mechanism": "Fixed finite original-carrier anchor hypotheses, indivisible overlap observations; shared-bank greedy versus MILP mutually exclusive set selection",
+  "actual_child_exit": {
+    "returncode": 0,
+    "reason": null,
+    "pid": 3109861,
+    "started_jst": "2026-11-01T07:21:45.503607+09:00",
+    "finished_jst": "2026-11-01T07:22:13.394110+09:00",
+    "stdout": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/orchestration/unit_004/NUMERICAL_STDOUT.log",
+    "actual_child_exit": true
+  },
+  "saved_run_elapsed_seconds": 27.088292432017624,
+  "fit_calls": 0,
+  "new_spatial_candidates": 0,
+  "delivery": {
+    "runner_cold_reload_completed": true,
+    "full_row_mappings": 2,
+    "native_full_views_per_arm": 2,
+    "actual_saved_pngs": 136,
+    "paired_pngs_identical_sha256": 68,
+    "both_mapping_checkpoint_hashes_verified": true,
+    "source_snapshot_files_verified": 28,
+    "approved_helpers_verified": 2,
+    "config_decision_hashes_verified": true
+  },
+  "results": {
+    "hypotheses": 11,
+    "selected_per_arm": 7,
+    "different_membership_rows": 0,
+    "greedy_joint_selection_identical": true,
+    "metrics_both_arms": {
+      "assigned": 246416,
+      "unknown": 212074,
+      "gained_assigned": 67,
+      "lost_assigned": 0,
+      "changed_rows": 265,
+      "overlap_groups": 7,
+      "physical_identity_verified": false,
+      "carrier_extension_run": false,
+      "overlap_pooling_run": true,
+      "holdout": false,
+      "versus_unit003": {
+        "gained_assigned": 54,
+        "lost_assigned": 3726,
+        "changed_rows": 7192,
+        "scope": "M4 restoration is explicit; unit003 new groups not protected"
+      }
+    },
+    "directed_donor_checks": 76,
+    "residual_rejections": 63,
+    "finite_domain_rejections": 2,
+    "compatible_donors": 11,
+    "all_63_residual_rejections_exceed_q95_half_p": true,
+    "new_host_extension_p": 0
+  },
+  "visual": {
+    "new_straight_and_curved_dual_view_improvement": "NOT_ESTABLISHED",
+    "largest_polyline_group": 18608,
+    "polyline_group_appearance": "near-straight in both fixed views; dominant inherited parent",
+    "largest_line_group": 57153,
+    "largest_line_0012": "EMPTY",
+    "gap_negative_301451_301459": "EMPTY_BOTH_VIEWS",
+    "negative_case_safety": "UNRESOLVED; tiny images/empty gap case do not establish parallel/branch/depth safety",
+    "physical_identity_verified": false,
+    "heldout": false
+  },
+  "provenance": {
+    "decision_sha256": "fb79a081d1d124e2fa9869359e406544f4147a525c974f0f356f28955465d6c6",
+    "config_sha256": "8833bdc5483c456e7803effe5b88f82df0d7c730e6d2119fe8b2dd6d9f223b1c",
+    "source_snapshot_manifest": "PARENT_RUN_FROZEN.json",
+    "snapshot_runner": "source_snapshot/overlap_runner.py",
+    "helper_files": {
+      "/home/u00134/3dgs_line/gaer_c2l50_8build_joint_gs_v01/reproduction/radegs_c2l50_8build_joint_gs_v01/renderer.py": "ce24cd30d663e6f421064d83006f097b02a5cf6a74b20c177a905ca514caed93",
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_joint_gs_v01/build/libjoint.so": "033a973a71dc5364677a5bf0625f23dc4fe445b70257f04de7cb70cdccca84b0"
+    }
+  },
+  "analysis_only": true,
+  "source_or_parameter_changes": false,
+  "parent_seals_closed_artifacts": true
+}

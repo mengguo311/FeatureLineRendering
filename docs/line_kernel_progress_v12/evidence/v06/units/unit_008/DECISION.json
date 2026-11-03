@@ -1,0 +1,47 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit007保存了可见直线重叠归组，但143分量未完成，joint优势及双视图曲线改善尚未成立。ficus具备封存M4及对应候选，旧112780短弧双视图可见，适合检验同一方法的曲线适用性。已核实1141条成功overlap组成628个完整分量、1716叶，最大9叶。64355/65064/116525没有成功overlap，必须保留为候选缺失参考，不能靠求解器补造。",
+  "recommended_next_step": {
+    "unit": "unit_008",
+    "experiment": "Ficus finite overlap model assignment: identical-bank greedy versus MILP. No endpoint links, additional topology rounds or other-scene reruns.",
+    "inputs": {
+      "root": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units",
+      "state": "unit_016/scenes/ficus/states/M4/STATE.pkl",
+      "state_sha256": "7d1457b144b0c58b8a3fe1fd1f1620e967158c1ace8326c64e6d996671378900",
+      "checkpoint_sha256": "e88c59049615d52df0a42b6780f3e2595a0204038eb7145e7c81e5cc25466b83",
+      "predecessor_config_sha256": "4cd1846f2b8aa17405e3e2f9270a5e723358daf538163355f941d97a8c5deeec",
+      "records": "unit_019/scenes/ficus/states/M5/{ORDERED_CANDIDATES.npz,JOINT_AMBIGUITY.npz,controls/joint/CANDIDATE_STATUS.npz}",
+      "candidate_status_sha256": "960fe5f1a49c48cc79684e358246a5a9e34ea0f2ef6c33aa669ccd1d81eaa8a8",
+      "geometry": "285956 original kernels; p=0.003530473547030632. Obtain asset/representatives/tangents/cameras and hashes from unit019 CONFIG and sealed checkpoints.",
+      "readiness": "Restricted-load exact M4 rows/reps/q/flags/versions/aux/next_version; verify predecessor decision binding, membership and world-unit carriers. Check89486 candidate rows,1141 successful overlaps and628 components. No original asset was loaded during this review."
+    },
+    "source": {
+      "implementation": "v06 unit007/source_snapshot through PARENT_RUN_FROZEN.json",
+      "config_sha256": "7bf5b9819a1f380d715baa4f990fe4abbf268799838287a56aaf6986242212f3",
+      "fit_core": "v05 unit019/source_snapshot/core.py; SHA256 c1565d2c33ee1f75e1a58469f14d8e153a138eb5f3c0dc73fbbcc5a9ab20e512, identical to unit018"
+    },
+    "selection": "All628 complete successful-overlap components, including historical ambiguity. Priority IDs64355/65064/112780/116525, then original polyline-first/max-leaf-support descending/min-ID ranking. Freeze before either arm; cap128 leaves without trimming. Save every incident record and complete opposite-carrier rows as nonrecursive evidence. Missing priority relations remain missing; endpoint records are context only.",
+    "models": "Apply unchanged unit007 bank rules afresh: original finite anchors plus at most1141 recovered pair models, each saved successful pair fitted once in canonical order. No scan24 model reuse or fictitious ficus historical replay. Original proposal must be overlap; canonical a,b rows/reps; original host role. TLS/ordered-polyline,3Huber/delta0.5p, occupied1p-bin weighting,8192kernels/128knots/4p spacing. Metrics/cost must reproduce saved values with rtol0/atol1e-10; mismatch blocks the entire component.",
+    "bank": "Original-anchor hypotheses retain old-q finite-domain checks. Recovered models use unit006 all-original-kernel-center extended_s containment±1e-8 and old-q sampled projection monotonicity. Host and generating partner mandatory; donors restricted to host's successful-overlap neighbors; enumerate cost/ID prefixes without removing intermediate members. cost=residual_max+tangent_max/30; B=sum_donor(2-cost), host0. Freeze complete common bank.",
+    "fixed_guards": "Unchanged unit007: indivisible valid M4 leaves; residual max1p/q95 0.5p/tangent30deg;8192kernel cap; all-pairs parallel and model-knot three-arm checks; vertex30deg/window8p60deg, contact0.5p, unsupported gap1.5p and check-only collinear handling. Preserve finite-domain/clamping diagnostics. Overlap observations consume no topology ports.",
+    "paired_arms": {
+      "greedy": "Descending B, canonical model key and leaf tuple; accept disjoint hypotheses.",
+      "joint": "Same bank; scipy.optimize.milp maximizes sum(B*x), binary hypotheses, each leaf<=1. Canonical order, no cost perturbation, mip_rel_gap0;120s/component,600s total. Save feasible incumbent/bound/gap; timeout PARTIAL. Without feasible incumbent both arms retain M4 for that component.",
+      "membership": "ID=min leaf ID, collision-free versions from M4 next_version; preserve original aux and at most two competing hypothesis references. UNKNOWN activation3seedlets/6kernels/4p deduplicated support. No M4 assignment loss or group split. Unfinished components retain M4.",
+      "references": "Ficus M4 is the no-new-association reference; sealed ficus M5 and scan24 unit007 are external references, not same-method controls."
+    },
+    "visuals": "Fixed test_r_1/test_r_79, actual original kernels, white floor0.0144, unchanged width/opacity, UNKNOWN gray; no carrier/bridge drawings. Save both full views. Select member-set-deduplicated top3 arm differences, top3 changes versus M4, largest new line/polyline groups; retain64355/65064/112780/116525. Fixed saved negative pairs11/80709,16931/18768,112/205435,33117/201172 are unresolved guard contexts, not GT. Identical rows and complete evidence neighborhoods across M4/greedy/joint; original union-bbox/pad16/clip/4xnearest crops. Empty or clipped views remain explicit.",
+    "protocol_budget": "BUILD<=18min: parameterize scene/count/paths and fresh-scene bootstrap; preserve numerical policy. Genuine RED only for new hardcoded-scene failures; bounded<=128-real-M4-seedlet regression against unit007 plus existing hard fixtures. Freeze source/config/helpers and actual receipts. Parent alone computes<=1800s: readiness/banks600s, solver600s, final600s reserved delivery. Complete-component checkpoints and cold-reloaded full285956-row mappings precede rendering. CPU/BLAS2, unit<=2GiB/runtime<=20GiB; no new units09:15, science stop09:38."
+  },
+  "changed_variable": {
+    "versus_unit007": "Scene scan24->ficus; scene-specific inputs, references, priorities and cameras. Same finite-model generation and association policy; no budget or threshold sweep.",
+    "between_arms": "Only greedy versus joint mutually exclusive selection on the same bank.",
+    "fixed": "Original kernel fields/count/order; geometric guards, costs, UNKNOWN and finite-support rules. Pooling remains distinct from extension."
+  },
+  "falsification": {
+    "readiness": "Hash/version/schema, fit reproduction or complete-competition failure blocks affected components; no competitor trimming.",
+    "delivery": "Require cold-reloaded285956-row maps and both native views. Changed kernels, lost/split M4 groups or rendered unsupported bridges fail.",
+    "science": "Require visibly coherent substantial cross-fragment straight AND curved identities; separately assess joint against same-bank greedy. Inherited112780, more assigned, duplicate support or higher objective are insufficient. Report gains/losses, substantial contributors, support union, longest run and gaps. Parallel/depth/branch swallowing falsifies affected cases; unresolved views remain PARTIAL.",
+    "continuation": "Preserve zero benefit and missing candidates. Do not widen this unit's thresholds; later redesign requires a separate evidence-based decision. No physical-truth or held-out claim."
+  }
+}

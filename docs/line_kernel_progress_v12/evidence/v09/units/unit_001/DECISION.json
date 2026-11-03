@@ -1,0 +1,18 @@
+{
+  "action": "continue",
+  "rationale_chinese": "已核对U11封存源码哈希、真实schema及失败见证：64355→116467、21870→21864的误差留在冻结前段，接缝修复不能改变它们。U11最终79841为121核，next_version=20585。下一步直接检验整组联合更新；U12不作数值基线。本review未运行数值实验。",
+  "recommended_next_step": {
+    "unit": "unit_001",
+    "experiment": "Ficus whole-group best-fragment growth: LOCAL versus WHOLE.",
+    "binding": "U11 CONFIG bde0a0525512038517f69cdb7bf0773d5dca11d68a14192d7f4332fdab87dab4及其PARENT_RUN_FROZEN/source_snapshot；冷载REPAIR_BASE_FINAL全部CHECKPOINT文件，MEMBERSHIP d2898b6b80072341fbcdda8f8034563986753d603f0945eb2f0edc292c1b1d28。285956原核，122019 assigned，next_version20585，p=.003530473547030632。沿用restricted M5及control/piece/parent/basis-center核验，不导入旧deadline。",
+    "scope": "固定21870、48496、64355、79841、112780、137016，ID轮转；完整背景精确继承。当前已归属组是不可丢成员的donor；UNKNOWN按原M5载体组织。使用当前复合q，不把已接受组拆回旧叶。种子被另一种子吸收时合并队列身份。旧valid仅来源信息；非有限/退化q不可用并记录。",
+    "discovery": "每轮完整查询当前整条q与所有未吸收donor有限段的精确最短距离<=2p；保守空间索引加精确段距，无top-k。保留全部候选与拒绝。每donor检查双向重叠注册及四个端点接续。重叠：donor按<=1p采样，使用距A<=1p且有向切向点积>0的全部对应，delta=median(sA-sB)，无对应则无此解释。两域联合，重叠区线性混合、非重叠沿原q；端点解释用有限拼接，连接段无观测支持。记录这不是穷尽注册偏移。",
+    "joint_fit": "共同模板按<=1p重采样。WHOLE全部结点可动；LOCAL仅新域及接合位置两侧2p内结点可动，其他模板结点固定。全部G∪F原核参加5轮确定性closest-segment投影/Huber IRLS线性最小二乘，delta=.5p；目标为平均Huber位置误差+.05平均二阶结点差平方+.001平均模板位移平方。坐标除p；每轮重新投影，最低段ID平局；稀疏LSQR atol=btol=1e-8、iter_lim=2000，失败标未完成。无裁成员、重启或局部柄长限制；记录所有旧段位移。",
+    "connectability": "两臂相同：新增至少一原行；全成员有限q距离max<=1.5p，有效导数与最近段unsigned角max<=75°；零导数保留成员但不供方向/支持证据。原叶有向采样投影须单调；非退化，vertex<90°；沿用独立branch/parallel冲突谓词及ARC非局部contact .5p/内在间隔1p，不调用旧PathOracle总门。支持用原协方差halfwidth=min(.5p,sqrt(tCt))，有限域裁剪逐项记账；max unsupported gap<=1.5p，F相对G的支持区间差U>EPS。无q95/.5p、HISTORY15°、4p增益或共享近距弃权门。",
+    "ranking": "在全部完成评估且可连接的解释中最小化 J=mean(d/p)^2+.25mean(theta/90)^2+.05mean(turn/90)^2+.1(max_gap/p)^2+.02*K/(L/p+1)-.25*(U/p)/(1+U/p)。方向项只用有效导数；无有效导数则证据UNKNOWN。平局按donor ID、关系、方向。每donor保留所有解释，提交全库最佳；不要求总残差或J优于不合并状态。失败最近者不阻止检查其余者。",
+    "repeat_stop": "接受后保留完整成员并更新全q、支持、版本和队列，立即原子checkpoint，再完整重查；无每种子8次或总接受次数上限。闭合仅当端距<=.5p、长度>=6p、两端各1p窗口至少3个不同有效核、端切向接续<=45°，且原核协方差支持覆盖闭合段无空洞；闭合后用周期弧距复检contact及全成员守卫。无此证据不得因端点接近称闭合。完整库无可连接者才自然停止。",
+    "limits_delivery": "8192成员或257结点容量超限、任一候选未完成即该轮PARTIAL，不从截断库选赢家。Parent1800s：readiness120s，选择/拟合至1200s，末600s交付；CPU/BLAS2，绝对截止15:38。冷载两臂全行映射，test_r_1/test_r_79全景及六种子前中后同核隔离/完整竞争上下文，保留原负例。报告M5/v06/起点交叉得失、union/run/gaps、域外支持、旧段位移；只渲染原核。BUILD测试整组旧段可变、非最近最优、>8步、假闭合、成员保留/回滚及真实loader回调。"
+  },
+  "changed_variable": "相对v08，候选、整组表达、排序及可连接规则共同改变；不作单因素历史优越性归因。新两臂共享协议，仅拟合自由结点范围不同，后续候选可分叉。membership_policy=monotone_group_union；whole_curve_auxiliary_update=true；accepted_merge_is_ground_truth=false。",
+  "falsification": "必须实际展示旧段联合调整且原核不变、最佳片段连续提交，以及双视图可辨的实质直线/曲线外延。池化、继承长弧、低loss或颜色不足；平行/分支/深度误吞、失核、假闭合直接否定相关实例。曲线三项M4贡献各12核/2p及4p域外支持仅作报告代理，不作接受门。容量/运行中断不是自然无连接；失败保存后另冻下一机制，不终止整个16:00窗口。"
+}

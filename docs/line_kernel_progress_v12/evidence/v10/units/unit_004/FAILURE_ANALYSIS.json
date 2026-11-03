@@ -1,0 +1,38 @@
+{
+  "diagnosis_zh": "匹配终态中关闭R6解锁24次提交（5558为16、22130为5、64111为3），对照[2,4]为2次；11次是U=0纯池化，未接受自接触/超gap/闭合。最早分歧5558<-76498仅4核池化，之后整组曲线改变才出现可连接外延。工程层面所有26次并集/checkpoint/最低J验证通过；科学层面5558的47.854p域外支持仍是依赖辅助Q的代理，两视图主要见继承细线变密，22130只有0.0114p域外、64111只有1.6186p且投影极小，尚不满足新增实质直曲身份的可见证据。末库余下瓶颈是规则1注册/端点解释与规则3急折/单调性，部分规则5分叉；不是R2/R4/R6暗中恢复或容量停止。",
+  "failure_modes": [
+    "证据最早缺口：首个R6增益是U=0池化，不能当作新增观测外延；24次中11次属于纯池化。",
+    "可见性不足：5558起止轮廓大致相同而局部增密；64111的0012隔离近乎竖短划，旧负例branch图近乎一个点，不能排除深度/第三臂误并。",
+    "剩余硬规则瓶颈：R6末态5558有51个vertex_degeneracy、1个branch_conflict；64111有30个vertex_degeneracy、1个original_leaf_nonmonotone；238627有33个vertex_degeneracy。未到R6的解释必须保持NOT_REACHED。",
+    "保留损伤：64111第二次接受后两名起点成员超过75度，R6第三次接受后仍有一名起点成员超过75度；5558末事件4行距离超过1.5p、最大2.33375p。不是恢复禁用门的理由。",
+    "平行谓词冲突确实被允许：两臂64111/127285，R6另有5721/5744、22130/149201。谓词命中不是物理误并真值，已看小图不能认证身份。",
+    "同Q映射的U与有限域外支持不是独立新增观测；5558的union增长47.557p而最长run只增长11.934p，不能称47.85p完整连续新边。",
+    "相对unit014联合参考的144核未归属和15个旧组split全部起点继承，本轮未新增；scan65没有已执行M5/v06对照。"
+  ],
+  "observed_images": [
+    "scenes/scan65/stages/R2_R4_R6_OFF_TRANSPORT_FINAL/0012_FULL.png",
+    "scenes/scan65/worst_events/R2_R4_R6_OFF_TRANSPORT/0024/0036_ISOLATED_CROP.png",
+    "scenes/scan65/worst_events/R2_R4_R6_OFF_TRANSPORT/0024/0036_FULL_OBJECT_CONTEXT.png",
+    "scenes/scan65/worst_events/R2_R4_R6_OFF_TRANSPORT/0001/0012_ISOLATED_CROP.png",
+    "scenes/scan65/stages/R2_R4_R6_OFF_TRANSPORT_FINAL/0036_FULL.png",
+    "scenes/scan65/diagnostics/5558/START_0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/5558/R2_R4_R6_OFF_TRANSPORT_0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/5558/R2_R4_R6_OFF_TRANSPORT_0036_ADDED_MEMBERS_CROP.png",
+    "scenes/scan65/diagnostics/22130/R2_R4_R6_OFF_TRANSPORT_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/22130/R2_R4_R6_OFF_TRANSPORT_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/64111/R2_R4_R6_OFF_TRANSPORT_0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/5558/START_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/5558/R2_R4_R6_OFF_TRANSPORT_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/5558/R2_R4_R6_OFF_TRANSPORT_0012_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/64111/R2_R4_R6_OFF_TRANSPORT_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/64111/R2_R4_R6_OFF_TRANSPORT_0012_QUERY_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/238627/R2_R4_R6_OFF_TRANSPORT_0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/negative_parallel/R2_R4_R6_OFF_TRANSPORT_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/negative_branch/R2_R4_R6_OFF_TRANSPORT_0012_ISOLATED_CROP.png"
+  ],
+  "visual_evidence_missing": true,
+  "visual_evidence_missing_reason": "真实PNG已查看，双全景齐全；局部投影小，不能确认实质新曲线或排除并行/深度/第三臂。负例隔离尤其不足，不能以放大或颜色替代。",
+  "next_change": "另冻同unit004 START、原五组、[2,4,6]：保留原J为封存控制，新增NO_U_REWARD令J_new=J+0.25*U/(1+U)，仅移除候选自身映射U的软奖励。保留整组WHOLE/全部成员、完整2p候选、原5轮IRLS/LSQR、规则1/3/5、原闭合证据、8192/257容量和无次数上限；纯池化/自接触/长gap仍可有限评分。先复核五个初始原J库，随后仅新策略增长并保存双影子选择；旧24次控制明确复用，不冒充新执行。readiness120/catalog180/new-growth900/delivery600，总1800s，05:35绝对截止。重点复核64111最早可分叉选择及5558后续外延/旧成员损伤，仍保留双原生视图、全对象背景及小图缺证据。须新review/DECISION；本次不执行。",
+  "engineering_failures_detected": [],
+  "scientific_identity_certified": false
+}

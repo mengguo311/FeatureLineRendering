@@ -1,0 +1,58 @@
+{
+  "returncode": 0,
+  "command": [
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+    "-B",
+    "/home/u00134/3dgs_line/line_kernel_bundle_collapse_v11/reproduction/line_kernel_bundle_collapse_v11/test_collapse.py"
+  ],
+  "tdd_status": "GENUINE_VERTICAL_RED_GREEN; additional interface/preservation/delivery checks are post-implementation regressions",
+  "red_returncode": 1,
+  "green_returncode": 0,
+  "red_log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_bundle_collapse_v11_20261103/units/unit_001/TEST_RED.log",
+  "green_log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_bundle_collapse_v11_20261103/units/unit_001/TEST_GREEN_FINAL.log",
+  "logs": [
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_bundle_collapse_v11_20261103/units/unit_001/TEST_RED.log",
+      "sha256": "5ec1519503f46f782c04c9bff3033beb4d49ad80f7e8d1bacc48f226d37b8f6b",
+      "actual_returncode": 1,
+      "test_count": 1
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_bundle_collapse_v11_20261103/units/unit_001/TEST_GREEN_VERTICAL.log",
+      "sha256": "35561b55e99e293b6b9f5a4b21e277319486564c34e623259a06b17ad9bb43ad",
+      "actual_returncode": 0,
+      "test_count": 1
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_bundle_collapse_v11_20261103/units/unit_001/TEST_GREEN_REGRESSION.log",
+      "sha256": "5ac0f8049d4d9d3f68c123fd59ad85f582fbe53178af791a171b59a2bc2c1a64",
+      "actual_returncode": 0,
+      "test_count": 5
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_bundle_collapse_v11_20261103/units/unit_001/TEST_GREEN_FINAL.log",
+      "sha256": "567a71f23ab5ab48bb59dbaa5bb836f672e923a8a6b90e67bef624d788c2d07c",
+      "actual_returncode": 0,
+      "test_count": 6
+    }
+  ],
+  "red_source_snapshot": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_bundle_collapse_v11_20261103/units/unit_001/TDD_RED_SOURCE.json",
+  "red_source_sha256": "4e4665a628fc18406915c38f186a2cc5e66d32adb9e3a9ec3be503f1869ab6b4",
+  "source_at_final_green": {
+    "/home/u00134/3dgs_line/line_kernel_bundle_collapse_v11/reproduction/line_kernel_bundle_collapse_v11/build_request.py": "a81eab53f584c31d99f5975a0f7efe7f5bbefb2f74f18dbbf981e70304722a07",
+    "/home/u00134/3dgs_line/line_kernel_bundle_collapse_v11/reproduction/line_kernel_bundle_collapse_v11/core.py": "829ca35b9ae2cddb80e6b0d8b75cf181d3eca46eabeb3fc4bcc8a00d786af9fc",
+    "/home/u00134/3dgs_line/line_kernel_bundle_collapse_v11/reproduction/line_kernel_bundle_collapse_v11/io_tools.py": "69ea27babe9fc185f03084e39c1c98a538066c2827c2340bfe3a78fc13890d1d",
+    "/home/u00134/3dgs_line/line_kernel_bundle_collapse_v11/reproduction/line_kernel_bundle_collapse_v11/limits.py": "3143399c11fe88a0c7b6021373ef616f42bfe01ec45d44414ccf36dcf4118737",
+    "/home/u00134/3dgs_line/line_kernel_bundle_collapse_v11/reproduction/line_kernel_bundle_collapse_v11/rendering.py": "5db71a650f20c24c9986e80ce3193b97d878e8237b5c31ed695b5a06c5b8f857",
+    "/home/u00134/3dgs_line/line_kernel_bundle_collapse_v11/reproduction/line_kernel_bundle_collapse_v11/runner.py": "95515d7f209a5b712ef311192ec40cdc4d5fae516ef25fef5bed9435ad782a05",
+    "/home/u00134/3dgs_line/line_kernel_bundle_collapse_v11/reproduction/line_kernel_bundle_collapse_v11/test_collapse.py": "d488a98c4e253b9504d71d7ab620c624d7e7ba387e1e9bdfe1e93d3209e6af6d"
+  },
+  "functional_red": "unchanged means fail nonzero geometry displacement assertion",
+  "final_test_count": 6,
+  "fixtures": "77 synthetic rows (75 target); real pinned EWA renderer at 32x24 in two synthetic cameras; no full-asset fit/render",
+  "full_data_science_executed_in_build": false,
+  "real_npz_loader_guard_phase_tested": true,
+  "numpy_scalar_json_serialization_tested": true,
+  "approved_cli_help_returncode": 0,
+  "recorded_jst": "2026-11-03T10:06:07.039900+09:00"
+}

@@ -1,0 +1,71 @@
+{
+  "diagnosis_zh": "工程执行和全行/双视图交付完成，三跳接力仍为零共同候选。最早瓶颈已经从unit001的单donor核数检查转移到有向q端点切向/connector几何：每臂37条查询中19条endpoint_tangent、6条connector、11条已用/种子/重复；仅112780左端→112776反向通过局部接续，却因vertex_turn失败，且仅4核/1.000568p外向支持。搜索继续扩展了该失败短前缀，但其邻居均不满足局部接续，未形成二/三donor前缀。历史从未被评价，因此不能确认或否定用户的缓变历史先验。",
+  "failure_modes": [
+    {
+      "code": "endpoint_direction_or_candidate_definition_bottleneck",
+      "evidence": "每臂8端口、9次完整半径查询、37记录；19切向拒绝、6connector拒绝。支持前沿/切向估计是否偏离真实观测尚未测定，不能直接认定这些拒绝错误。"
+    },
+    {
+      "code": "short_prefix_whole_path_turn_and_dead_end",
+      "evidence": "112780/side0→112776/port1：gap0.335252286p、4核、1.000568324p；整链vertex_turn。其后112771/port1 gap0.323143542p为endpoint_tangent，其他邻居也未产生合格第二跳。"
+    },
+    {
+      "code": "history_prior_unassessed",
+      "evidence": "common relay=0、history evaluated=0、attempts=0、accepted=0；两臂无分歧。不是0%物理成功率。"
+    },
+    {
+      "code": "no_new_outward_or_multifragment_recovery",
+      "evidence": "四种子每个只有2个符合12核/2p门槛的M4贡献者；新增域外支持、union增量和最长连续段增量均0。"
+    },
+    {
+      "code": "small_views_and_unverified_physical_context",
+      "evidence": "四固定负例均有非空小图，但不足以排除近平行/深度/分支错误；112780局部上下文呈投影接近，未证明真实连接。SCOPE明确physical_context_complete=false。"
+    },
+    {
+      "code": "inherited_spikes_and_partial_search",
+      "evidence": "完整原核全景保留明显向外长尖刺；本轮没有新归属吸收。仅四种子的三跳接力范围被搜索，全285956行导出不是全场景候选遍历。"
+    }
+  ],
+  "observed_images": [
+    "scenes/ficus/stages/BASE_FINAL/test_r_1_FULL.png",
+    "scenes/ficus/stages/HISTORY_FINAL/test_r_79_FULL.png",
+    "scenes/ficus/diagnostics/64355/BASE_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/64355/BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/64355/BASE_test_r_79_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/64355/BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/112780/BASE_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/112780/BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/112780/BASE_test_r_79_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/112780/BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/48496/HISTORY_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/48496/HISTORY_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/48496/HISTORY_test_r_79_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/48496/HISTORY_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/137016/HISTORY_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/137016/HISTORY_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/137016/HISTORY_test_r_79_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/137016/HISTORY_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_11_80709/BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_11_80709/BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_16931_18768/BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_16931_18768/BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_112_205435/BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_112_205435/BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_33117_201172/BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_33117_201172/BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/stages/BASE_FINAL/test_r_79_FULL.png",
+    "scenes/ficus/stages/HISTORY_FINAL/test_r_1_FULL.png",
+    "scenes/ficus/diagnostics/112780/BASE_test_r_1_HIGHLIGHT.png",
+    "scenes/ficus/diagnostics/137016/HISTORY_test_r_79_HIGHLIGHT.png"
+  ],
+  "visual_evidence_missing": true,
+  "visual_evidence_missing_explanation": "文件交付不缺图：222张保存PNG，本次实际查看30张。缺少可判别的新生长实例；负例太小且无可见性/深度真值，不能完成物理身份或安全判断。",
+  "next_change": "观测支持前沿与局部原核导数切向，对照原q端点/末段方向；固定原半径/角度/跳数，改变观测支持前沿与方向估计，并以原q端点库为影子对照。须另冻新单元；本轮不运行。",
+  "actual_child_returncode": 0,
+  "actual_child_reason": null,
+  "accepted_steps": {
+    "BASE": 0,
+    "HISTORY": 0
+  },
+  "last_valid_state": "两臂FINAL为原M5主归属；LINEAGE events=[]，没有已提交步骤或失败提交需要回滚。"
+}

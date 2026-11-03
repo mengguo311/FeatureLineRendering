@@ -1,0 +1,30 @@
+{
+  "action": "stop",
+  "rationale": "停止本窗口新science仅因Nov3 05:15授权边界已过；科学结果仍PARTIAL，研究机制未耗尽。继续工程交接。",
+  "recommended_next_step": "本窗口只交接，不启动新science：已过2026-11-03 05:15停新单元界限。下一另行授权单元应从BASE_J_FINAL（next_version21806，全部13origin）续接，保留26次接受；先完整重建8765未完成库和61271新终态库。针对8765十次完整零选择后仍反复拟合的开销，另冻“全量重拟合”对照与“完整查询后依赖签名相同时复用库”的工程控制：每轮仍做整曲线2p完整精确查询，仅当source及全部当前邻域donor的ID/version/成员/Q/叶与原核及策略绑定均逐项相同，才复用完整旧评分/守卫库；任何变化或不完整库必须重新拟合，禁止按上次无连接永久跳过。候选、WHOLE拟合、BASE_J、规则1/3/5及[2,4,6]关闭不变。另在增长前冻结可读投影尺度的真实标定视图和固定原行完整竞争背景，解决当前tiny-view身份缺证据；无匹配可读视图仍明确缺证据，不能设成合并否决。此实验NOT_RUN，不能只增加预算或恢复硬门。",
+  "scope": "this window new science only",
+  "future_science_status": "NOT_RUN",
+  "future_review_required": true,
+  "future_input": {
+    "stage": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_relaxed_guards_v10_20261103/units/unit_011/scenes/scan65/stages/BASE_J_FINAL",
+    "config_sha256": "90ac445d1db206c59d953639c2ae3976dd4be7be119afeeb372971c865a33eae",
+    "checkpoint_files": {
+      "MEMBERSHIP.npz": "622a94c235957a788471e3ecea8aded18871058328f85524efa2425b6e9ccb85",
+      "MODELS.npz": "8c870c1acf50c1f70f2ff2d9aab3c411ab9382052718ebbc08229fe0d9906ad6",
+      "GROUPS.json": "5f0c5bca7057fe912a1f05f5c9509037ebfb967b9a2797d80d25aa4886e312fb",
+      "LINEAGE.json": "adb2ab92edf0ff3b146e31b291daf787f1c02d230953692ad87d47121b27386a"
+    },
+    "rows": 279616,
+    "assigned": 127152,
+    "unknown": 152464,
+    "next_version": 21806,
+    "inherited_events": 1897,
+    "tracked_origins": 13,
+    "active_versions": {
+      "8765": 21794,
+      "61271": 21805
+    }
+  },
+  "future_control": "Exact same state and numerical policy; full recompute versus dependency-validated reuse after complete spatial query; different rollout truncation must be reported",
+  "falsification": "任何陈旧库复用、漏新邻居/最佳donor、截断晋级、失核/改核或恢复2/4/6即失败；重复增长/缓存加速仍不能证明身份。保留第15步旧成员方向损伤及所有反例。"
+}

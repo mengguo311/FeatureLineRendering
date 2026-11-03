@@ -1,0 +1,33 @@
+test_ambiguity (__main__.FreeTests) ... ok
+test_checkpoint_cold_and_tamper (__main__.FreeTests) ... ok
+test_complete_competitors (__main__.FreeTests) ... ok
+test_finite_distance (__main__.FreeTests) ... ok
+test_free_split_and_revoke (__main__.FreeTests) ... ok
+test_gap_split_and_death (__main__.FreeTests) ... ok
+test_geometry_turn_and_contact (__main__.FreeTests) ... ok
+test_group_diagnostics_real_arrays (__main__.FreeTests) ... ERROR
+test_guard_during_assignment (__main__.FreeTests) ... ok
+test_loader_guard_exception_propagates (__main__.FreeTests) ... ok
+test_real_loader_callback_and_zero_derivative (__main__.FreeTests) ... ok
+test_runner_actual_loader_four_stages_no_render (__main__.FreeTests) ... ok
+test_same_model_segments_not_competitors (__main__.FreeTests) ... ok
+test_short_dies (__main__.FreeTests) ... ok
+test_split_coordinates_match_child (__main__.FreeTests) ... ok
+test_trace_and_small_cycle (__main__.FreeTests) ... ok
+test_unknown_competes_with_cost_near_one (__main__.FreeTests) ... ok
+test_update_movement (__main__.FreeTests) ... ok
+
+======================================================================
+ERROR: test_group_diagnostics_real_arrays (__main__.FreeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/line_kernel_free_reassignment_v07/reproduction/line_kernel_free_reassignment_v07/test_free.py", line 48, in test_group_diagnostics_real_arrays
+    x,t=self.data(96);q=np.c_[np.arange(11.),np.zeros((11,2))];a=f.assign(x,t,np.ones(96,bool),{4:q});d=dict(x=x,half=np.full(96,.3),asset=dict(means=x,primitive_id=np.repeat(np.arange(3),32)));gg=groups(d,{4:q},a,np.repeat(np.arange(3),32),lambda:None);self.assertEqual(gg[0]['kernels'],96)
+  File "/home/u00134/3dgs_line/line_kernel_free_reassignment_v07/reproduction/line_kernel_free_reassignment_v07/free_delivery.py", line 25, in groups
+    take=labels[rr]==gid;su=union(it[take])[1];contrib.append(dict(id=int(gid),kernels=int(take.sum()),support_proxy_p=su,substantial=bool(gid>=0 and take.sum()>=12 and su>=4-EPS)))
+NameError: name 'EPS' is not defined
+
+----------------------------------------------------------------------
+Ran 18 tests in 1.011s
+
+FAILED (errors=1)

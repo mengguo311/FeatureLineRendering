@@ -1,0 +1,17 @@
+{
+  "action": "continue",
+  "recommended_next_step": {
+    "status": "PROPOSED_NOT_RUN_REQUIRES_NEXT_DECISION_FREEZE",
+    "experiment": "在同8个完整overlap分量上，以联合拟合的有限双叶模型扩充固定旧anchor模型库，保持共同库greedy/MILP对照。",
+    "input": "同一v05 unit015 scan24 M4、unit004已冻结8分量与38条成功overlap对；不新增空间候选、不扩大邻域或改变旧核。",
+    "changed_variable": "模型假设的生成：仅旧叶q -> 旧叶q加共同双叶有限q。不是提高旧轮fit预算或放宽守卫。",
+    "readiness": "先确认保存成功记录是否含完整拟合q；不得把metrics当q。若缺失，只在下一父持有计算中按原冻结TLS/polyline规则、原成员及顺序为这38对各生成一次辅助有限模型，失败原样保存；无旧producer执行。",
+    "paired_baseline": "封存unit004固定anchor库为模型覆盖对照；扩充后的同一模型库上继续greedy与MILP配对，表示、收益定义、UNKNOWN及组守卫一致。新模型必须承担其两片段全部成员，模型ID/来源独立记录；具体归属收益与前缀枚举须在下一决策中冻结，不能暗中偏置新anchor。",
+    "fixed": "原核/行序/宽度/opacity、完整M4叶、候选闭包、max1p/q95 .5p/tangent30deg及有限域、parallel/branch/turn/contact/gap约束；辅助模型不渲染、不补画间隙。",
+    "budget": "下一单元仅这8分量、最多38次双叶模型生成；parent compute<=1800s，CPU/BLAS2，末600s留全行映射及0012/0036原生图。09:15后不开新单元、09:38停止science。",
+    "falsifier": "若共同模型仍不能容纳原两叶，或新增解释只增加重复覆盖/同色而无可辨跨片段直线与曲线身份，则保存模型覆盖负结果；错吞平行/深度/分支或旧M4丢失/拆分立即否定。必须保留空图/UNKNOWN，不扫描阈值。"
+  },
+  "rationale": "76次有向旧anchor检查有63次残差失败（全部q95>.5p），仅2次有限域失败；11个假设使greedy和joint选择及全部PNG完全相同。最早限制是固定旧q模型库的可解释范围，尚无证据把失败归于MILP。保存候选的成功联合拟合不保证任一原叶q能解释另一叶；共同有限模型是需独立检验的机制。当前不宜直接扩大同设置至全场景。",
+  "experiments_run_in_analysis": false,
+  "current_window_continues": true
+}

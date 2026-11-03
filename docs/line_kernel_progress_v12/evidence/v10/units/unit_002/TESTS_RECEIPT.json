@@ -1,0 +1,53 @@
+{
+  "returncode": 0,
+  "test_count": 22,
+  "tdd_status": "GENUINE_FUNCTIONAL_RED_GREEN for new [2,4] library dispatch: actual unit001 library lacks this arm, assertion fails; new arm selects finite-score parallel candidate. Existing 18 geometry/loader regressions reused; three replay/new-runner integration tests were added after initial GREEN, not claimed test-first.",
+  "red": {
+    "returncode": 1,
+    "test_count": 19,
+    "failures": 1,
+    "command": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+      "-B",
+      "/home/u00134/3dgs_line/line_kernel_relaxed_guards_v10/reproduction/line_kernel_relaxed_guards_v10/test_r4.py"
+    ],
+    "recorded_utc": "2026-11-02T16:17:00.154793+00:00",
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_relaxed_guards_v10_20261103/units/unit_002/tests/RED.log",
+    "sha256": "f578834eb5c5bbe9b6c1d096e138a157f47745fe9b87eb5bd54add1d3dbbc181",
+    "test_source": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_relaxed_guards_v10_20261103/units/unit_002/tests/RED_test_r4.py",
+    "test_source_sha256": "52b0a09cf56155acaa484bbc5b38b1c45494d005e34296833b03257057df589e",
+    "baseline": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_relaxed_guards_v10_20261103/units/unit_002/tests/RED_relaxed_core.py",
+    "baseline_sha256": "b2f1c37f01b36b4d62d95e16fe3ee820163cf7757adaf2df422793031549bcdf"
+  },
+  "green": {
+    "returncode": 0,
+    "command": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+      "-B",
+      "/home/u00134/3dgs_line/line_kernel_relaxed_guards_v10/reproduction/line_kernel_relaxed_guards_v10/test_r4.py"
+    ],
+    "recorded_utc": "2026-11-02T16:21:02.506969+00:00",
+    "evidence": "Actual exec_command exit_code=0 observed during unit002 BUILD",
+    "test_count": 22,
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_relaxed_guards_v10_20261103/units/unit_002/tests/GREEN_INTEGRATION.log",
+    "sha256": "2be6646d3b70f6c1461b1751e36b54f41f89cbaf91fc8f32805b86084571ebae"
+  },
+  "cli": {
+    "returncode": 0,
+    "command": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+      "-B",
+      "/home/u00134/3dgs_line/line_kernel_relaxed_guards_v10/reproduction/line_kernel_relaxed_guards_v10/r4_runner.py",
+      "--help"
+    ],
+    "recorded_utc": "2026-11-02T16:21:02.507145+00:00",
+    "evidence": "Actual exec_command exit_code=0 observed during unit002 BUILD",
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_relaxed_guards_v10_20261103/units/unit_002/tests/CLI.log",
+    "sha256": "dd1ff063d0e869a3429c08e9c58df05fb3730c34067c6d367042c47e7c308e0c"
+  },
+  "real_loader_guard_test": true,
+  "full_asset_run": false,
+  "native_render": false,
+  "scope": "36-row actual restricted loader + restored composite/new runner through cold mapping and replay, renderer stopped at entry; bounded actual geometry including >8 commits",
+  "created_utc": "2026-11-02T16:21:03.132375+00:00"
+}

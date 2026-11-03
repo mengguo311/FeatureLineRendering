@@ -1,0 +1,119 @@
+{
+  "diagnosis_zh": "完整3655组已执行POSITION_ONLY且全部数值成功，实际126477个assigned核的means改变，675个候选核保持原值，152464个UNKNOWN完全未处理。双视图整帧及全部固定四分区已查看：整体轮廓和主要线网保留，局部更平顺，但密集重复线、细碎线和交叉仍明显，整体清理收益有限，不能宣称全模型缠绕已消除。最大位移组238627的局部弯折被平滑，形状损失与收拢收益并存。",
+  "failure_modes": [
+    {
+      "mode": "LIMITED_GLOBAL_VISUAL_GAIN",
+      "evidence": "0012/0036整帧及各四区整体差别细小，主要重复线网、细碎纹理和交叉仍在；不能由3655成功推断视觉清理成功。"
+    },
+    {
+      "mode": "LOCAL_CURVATURE_SMOOTHING_AND_SHIFT",
+      "evidence": "238627（489核）最大2.996954p，0012末端拐折及0036浅凹被平顺弧替代；156151（169核）最大2.260554p，短线弯头改变；84607（184核）最大2.224945p，上段/转弯更规则。均为形状变化，不足以断言真实尖角被错误删除或物理曲率得到恢复。"
+    },
+    {
+      "mode": "UNPROCESSED_UNKNOWN_AND_FIXED_GROUP_BOUNDARIES",
+      "evidence": "152464 UNKNOWN保持原样，跨edge_id重复线不会被本组内收拢合并；此轮没有新增归属。"
+    },
+    {
+      "mode": "DENSITY_INTENSITY_CONFOUND",
+      "evidence": "covariance/opacity/colors逐位未改；0012总alpha约-0.3257%、非白像素-211，0036约-0.3753%、非白像素-293。数值幅度小，也不能替代清理或可读性结论。"
+    },
+    {
+      "mode": "LIMITED_PER_GROUP_VISIBILITY",
+      "evidence": "要求的整帧和全部四区都有图；细小、重叠及原相机画外局部不能获得逐组身份/尖角保真认证。"
+    }
+  ],
+  "observed_images": [
+    "images/ORIGINAL_0012_FULL.png",
+    "images/FULL_POSITION_ONLY_0012_FULL.png",
+    "images/ORIGINAL_0036_FULL.png",
+    "images/FULL_POSITION_ONLY_0036_FULL.png",
+    "FIXED_FOUR_QUADRANTS_0012_2X.png",
+    "FIXED_FOUR_QUADRANTS_0036_2X.png",
+    "WORST_238627_0012_ISOLATED_2X.png",
+    "WORST_238627_0036_ISOLATED_2X.png",
+    "WORST_238627_0012_CONTEXT_2X.png",
+    "WORST_238627_0036_CONTEXT_2X.png",
+    "WORST_156151_0012_ISOLATED_2X.png",
+    "WORST_156151_0036_ISOLATED_2X.png",
+    "WORST_156151_0012_CONTEXT_2X.png",
+    "WORST_156151_0036_CONTEXT_2X.png",
+    "WORST_84607_0012_ISOLATED_2X.png",
+    "WORST_84607_0036_ISOLATED_2X.png",
+    "WORST_84607_0012_CONTEXT_2X.png",
+    "WORST_84607_0036_CONTEXT_2X.png",
+    "images/ORIGINAL_0012_Q3_2X.png",
+    "images/FULL_POSITION_ONLY_0012_Q3_2X.png",
+    "images/ORIGINAL_0036_Q4_2X.png",
+    "images/FULL_POSITION_ONLY_0036_Q4_2X.png",
+    "FULL_MODEL_BEFORE_AFTER_TWO_VIEWS.png"
+  ],
+  "visual_evidence_missing": true,
+  "visual_evidence_missing_reason": "四幅完整原生帧及八个固定空间分区均已查看，无交付图缺失；细小/遮叠/画外组的局部保真证据不足。",
+  "next_change": "停止：single complete-model demo finished。保留完整原版/派生NPZ、全部分组账本、固定四区及最大位移反例；交接中明确局部平滑与整体清理不足，不在本轮改参数、扩组、处理UNKNOWN或启动新方法。",
+  "first_saved_jst": "2026-11-03T13:21:33.197791+09:00",
+  "updated_jst": "2026-11-03T13:23:55.735521+09:00",
+  "saved_output_audit": "ANALYSIS_SAVED_AUDIT.json",
+  "worst_groups": [
+    {
+      "group_id": 238627,
+      "row_count": 489,
+      "maximum_displacement_p": 2.9969539331406554,
+      "displacement_quantiles_p": [
+        0.047429521702389385,
+        0.8567760105713093,
+        1.3952192345196677,
+        1.7283709115302166,
+        2.5872355108910376,
+        2.9969539331406554
+      ],
+      "changed_rows": 489
+    },
+    {
+      "group_id": 156151,
+      "row_count": 169,
+      "maximum_displacement_p": 2.2605542671398524,
+      "displacement_quantiles_p": [
+        0.01899826895483932,
+        0.2490922843705071,
+        0.7671192078167982,
+        1.0389154789128634,
+        1.849336929795436,
+        2.2605542671398524
+      ],
+      "changed_rows": 169
+    },
+    {
+      "group_id": 84607,
+      "row_count": 184,
+      "maximum_displacement_p": 2.2249453842534423,
+      "displacement_quantiles_p": [
+        0.04558287194094162,
+        0.4529242722250234,
+        1.1500562494540942,
+        1.2618695190177711,
+        1.732746079282485,
+        2.2249453842534423
+      ],
+      "changed_rows": 184
+    }
+  ],
+  "image_metrics": {
+    "0012": {
+      "alpha_sum_before": 27128.1875,
+      "alpha_sum_after": 27039.8203125,
+      "alpha_sum_relative_change": -0.0032573937164065425,
+      "nonwhite_before": 78424,
+      "nonwhite_after": 78213,
+      "nonwhite_difference": -211
+    },
+    "0036": {
+      "alpha_sum_before": 31523.048828125,
+      "alpha_sum_after": 31404.73046875,
+      "alpha_sum_relative_change": -0.0037533920027886802,
+      "nonwhite_before": 95881,
+      "nonwhite_after": 95588,
+      "nonwhite_difference": -293
+    }
+  },
+  "unknown_fraction": 0.5452620737010757
+}

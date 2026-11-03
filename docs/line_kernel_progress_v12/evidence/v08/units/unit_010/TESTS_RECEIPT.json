@@ -1,0 +1,60 @@
+{
+  "returncode": 0,
+  "tdd_status": "GENUINE_FUNCTIONAL_RED_GREEN: mixed increments reject a composition-shift fixture with zero within-source turn; paired increments pass while preserving full-bin orientation. 61 bounded tests passed; true within-source turn, parameter reversal/overlap, all-source weakness, missing paired rows, actual loader/schema, three-arm checkpoint/control replay, two accepted paired-growth transactions and complete rollback are covered.",
+  "red": {
+    "returncode": 1,
+    "command": "python -B -m unittest test_paired_history.PairedTests.test_composition_shift_is_not_within_source_turn",
+    "provenance": "actual functions exec/write_stdin exit observed in this BUILD; no full-asset run",
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_010/tests/RED.log",
+    "sha256": "e7661725ab206c338237c0eb030e6c43fb7f2c2e067e5c3da0b56da79c163c2f",
+    "baseline_source": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_010/tests/RED_paired_history_core.py",
+    "baseline_source_sha256": "eec960af395b88e7484832f1d4c2e2d4c2fdffab5eb4168170293cf3feef1be5"
+  },
+  "green": {
+    "returncode": 0,
+    "command": "approved_python -B test_paired_suite.py",
+    "provenance": "actual functions exec/write_stdin exit observed in this BUILD; no full-asset run",
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_010/tests/GREEN_FINAL.log",
+    "actual_exit_tool_chunk": "18b24f",
+    "sha256": "0048caff8af8193ff247d450f158f303610e47b8648aad1c7405c2d32a8dd4bd"
+  },
+  "test_exit_receipt": {
+    "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_010/tests/FINAL_TEST_EXIT.json",
+    "sha256": "ab5b88088f3a895559073230afd6c9d3e39925c7a252ab31625b526db60871c8"
+  },
+  "earlier_attempts": [
+    {
+      "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_010/tests/GREEN_CORE_1.log",
+      "sha256": "eb8c88bdf6d7bffd457b38469078be30b7e97db745e82c5f24162939bad78be2",
+      "returncode": 0
+    },
+    {
+      "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_010/tests/GREEN_1.log",
+      "sha256": "cd69a3d21a519a4ed6dad6b3bdd61950904006b99446f0356a7ccbe6e61b30bd",
+      "returncode": 1
+    },
+    {
+      "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_010/tests/GREEN_2.log",
+      "sha256": "674db6378aa7bd67f06a1e68bc20b240a645e7eb6d8c84136cdd2c9c571f0d09",
+      "returncode": 0
+    },
+    {
+      "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_010/tests/GREEN_VERIFIED.log",
+      "sha256": "e6c662d62fb39a63539579527c3a72013bf763ee6de2189ee83bbde13e046ea3",
+      "returncode": 0
+    }
+  ],
+  "cli_help": {
+    "returncode": 0,
+    "command": "approved_python -B paired_history_runner.py --help",
+    "provenance": "actual functions exec/write_stdin exit observed in this BUILD; no full-asset run",
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_010/tests/CLI_HELP.log",
+    "sha256": "d21ce30679165576196921afcacc21ec178a7a25be148d5ca30b9885ef86df23"
+  },
+  "real_loader_callback_test": true,
+  "real_runner_fixture_kernels": 48,
+  "full_asset_science_run": false,
+  "render_run": false,
+  "test_scope": "explicit classes; all test outputs unit010; no historical discovery",
+  "created_utc": "2026-11-01T18:06:14.446436+00:00"
+}

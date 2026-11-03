@@ -1,0 +1,1 @@
+This lightweight package includes selected short quotations only. Full PDF and extracted-text evidence paths in the original reading register refer to the complete server archive, not to this package. Use the original source URLs in the reports.

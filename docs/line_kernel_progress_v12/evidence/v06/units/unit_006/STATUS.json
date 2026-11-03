@@ -1,0 +1,76 @@
+{
+  "unit": "unit_006",
+  "execution_state": "completed",
+  "scientific_verdict": "PARTIAL_LIMITED_OVERLAP_POOLING_NO_JOINT_ADVANTAGE",
+  "scope": {
+    "scene": "scan24",
+    "full_mapping_rows": 458490,
+    "complete_processed_components": 8,
+    "decision_leaves": 42,
+    "saved_pairs": 38,
+    "all_saved_overlap_components": 1917,
+    "unselected_components": 1909,
+    "other_scenes": "NOT_RUN",
+    "endpoint_topology": "NOT_RUN"
+  },
+  "mechanism": "Fixed recovered finite models; all original kernel centers witness finite-domain compatibility; shared hypothesis bank, greedy versus exclusive-set MILP.",
+  "actual_child": {
+    "returncode": 0,
+    "reason": null,
+    "actual_child_exit": true,
+    "receipt": "../../orchestration/unit_006/COMPUTE_EXIT.json"
+  },
+  "run_result_status": "complete",
+  "fit_calls": 0,
+  "control_replay_exact": true,
+  "hypotheses": 32,
+  "selected_per_arm": 10,
+  "both_arms": {
+    "assigned": 246437,
+    "unknown": 212053,
+    "vs_M4": {
+      "gained": 88,
+      "lost": 0,
+      "changed_rows": 343
+    },
+    "vs_unit005": {
+      "gained": 21,
+      "lost": 0,
+      "changed_rows": 78
+    },
+    "vs_unit003": {
+      "gained": 75,
+      "lost": 3726,
+      "changed_rows": 7270
+    }
+  },
+  "between_arms": {
+    "different_membership_rows": 0,
+    "matching_png_pairs": 118,
+    "joint_advantage_demonstrated": false
+  },
+  "visual_verdict": "PARTIAL: no demonstrated new straight AND curved improvement in both cameras; inherited/model-replacement groups dominate saved selections.",
+  "missing_or_unresolved": [
+    "51111 and 51166 standalone group images not saved",
+    "57153 view0012 empty",
+    "301451/301459 negative both views empty",
+    "113545 view0036 clipped; 18608 view0012 clipped",
+    "Parallel/depth/branch identity unresolved in thin projected contexts"
+  ],
+  "geometry_changes_reported": false,
+  "M4_assignment_loss": 0,
+  "M4_group_split_reported": false,
+  "physical_identity_verified": false,
+  "heldout_claim": false,
+  "provenance": {
+    "config_sha256": "bcb3d5e7bf64493888bbf6b29ccbc27d5cdd6d87f52d4ec4258b3764b9f3fbdf",
+    "decision_sha256": "7d8a27df4c058abc161983a62b836efa5ec3b27b5c9a819513910c120b8d4eff",
+    "snapshot_files_verified": 44,
+    "helpers_verified": 2,
+    "both_mapping_checkpoint_hashes_verified": true,
+    "manifest": "PARENT_RUN_FROZEN.json"
+  },
+  "analysis_only": true,
+  "new_experiments_started": false,
+  "seal_owner": "parent"
+}

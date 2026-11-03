@@ -1,0 +1,47 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit001真实退出0，但5/8上下文因拒绝/overlap记录递归闭包超限而未求解；唯一非空图仅6条可选边，两臂结果相同。已查看的大组53254上下文包含可辨建筑边，却未进入比较。源码确认当前约束只耦合同一路径内载体，因此应分离决策连通性与只读证据邻域，覆盖现有839条可选边；不提高阈值、增加拟合或把小图平局当作联合优化失败。",
+  "recommended_next_step": {
+    "unit": "unit_002",
+    "experiment": "Scan24完整已保存endpoint决策图：有限复合载体上的joint port selector versus同条件greedy；采用决策分量与非递归证据邻域分离。",
+    "inputs": {
+      "binding": "继承unit001 CONFIG.json的全部input_files与helper hashes；config SHA256=a15b4f24fd57bbc138cdd456ac40642ea4f58afb8459763cdaf0af509d5c7be1。源码依据unit001/source_snapshot及PARENT_RUN_FROZEN.json，旧目录只读。",
+      "state": "v05 unit015 scan24 M4；STATE SHA256=4f350e3a991c98d7cf011d833be4fc5aebcce1c7d328ae69b39948b5698ec31f；458490原核，p=0.0014320037356621643。",
+      "records": "v05 unit018 M5的ORDERED_CANDIDATES、controls/joint/CANDIDATE_STATUS及JOINT_AMBIGUITY；这些候选对应原M4输入，不能套用到M5载体。",
+      "readiness": "Restricted-load并验证前驱自身绑定、rows/reps/version/q及世界单位knots、全行ownership。保持原a/b、operation/reason、metric_names/metrics/cost schema检查。预期成功endpoint2279、排除歧义后839；不符则保存阻断原因，不重建候选。"
+    },
+    "selection": [
+      "原eligible判定不变：endpoint且reason为accepted/round_conflict/ambiguous，成功指标有限并通过原检查；排除原完整joint ambiguity mask。成本仍为residual_max+tangent_max/30。",
+      "对全部eligible边按carrier连通分量划分决策问题，包括非正benefit边；每个载体所有可占端口连接必须留在同一分量。连通分量只用于分解求解，绝不直接作为edge_id。",
+      "每分量最多128个决策载体，超限整分量NOT_RUN，不剪竞争边。优先包含53254或210790原M4贡献者的分量，其余按最小carrier ID排序；冻结完整清单后再运行两臂。",
+      "保存每分量全部入射候选记录、masked alternatives及其对端完整载体行作只读证据邻域。拒绝/overlap记录不递归扩展决策分量，邻域重叠不自动合并问题；邻域数据不得裁掉以凑128。",
+      "断言无eligible边跨分量，且没有遗漏共享端口或现有硬约束依赖。邻域不是新增cannot-link；保持原PathOracle，不借此新增或移除几何守卫。跨独立路径的物理关系仍未验证。"
+    ],
+    "paired_arms": {
+      "representation": "保持unit001有序、可反向的不可变有限叶载体复合身份；不全组重拟合、不池化overlap。重复观测不占额外拓扑degree。",
+      "greedy": "按benefit降序及原canonical carrier/port IDs，逐次用同一完整路径oracle判定。",
+      "joint": "原scipy.optimize.milp；maximize sum((2-cost)*x)，每端口≤1、无环；canonical变量顺序，不扰动成本。违反路径守卫时原no-good cuts。",
+      "guards": "复用unit001冻结PathOracle：叶残差max1p/q95 0.5p/tangent30°，endpoint gap1.5p/connector35°，vertex30°/每8p累计60°，self-contact0.5p、原parallel/branch及unsupported gap1.5p。原check-only共线点处理不变。",
+      "unknown": "有效dormant载体继续候选；无效/冻结者不能增链接。3 seedlets/6 kernels/4p激活规则、原aux及歧义弃权不变。未处理载体保持M4；零旧分配丢失、零旧组拆分，身份均provisional。",
+      "limits": "每分量120s、32轮solve/check、mip_rel_gap0，总solver600s。仅导出守卫通过的incumbent；timeout保留PARTIAL及bound/gap，不冒称最优。两臂使用相同已处理分量。"
+    },
+    "delivery": {
+      "first": "每完成一对分量保存双臂进度；完整映射、ordered leaves/ports、lineage、alternatives及solver receipts先checkpoint再渲染。冷载两份458490行结果。",
+      "images": "固定0012/0036原核全景、白背景floor0.0144、原宽度/opacity；无carrier或connector绘制。诊断保留四个原负例；选两臂并集中的seed descendants支持最大者、top3不同路径、top3支持路径、最大≥3叶路径及最大含原polyline叶路径，均按支持降序/ID升序。polyline标签不等于可见曲线。",
+      "context": "选定行集在两臂用相同完整成员及证据邻域展示。保留native图；另按每视图两臂RGB8<254联合bbox、pad16、clip、4倍nearest确定性裁剪；空图/出框明确记录，不换相机。",
+      "diagnostics": "分别报告assigned得失、UNKNOWN、实质叶/原parent贡献、支持并集、最长观测段、域外支持、有限extent及总/最大gap；列出两臂所有连接差异。"
+    },
+    "protocol_budget": "BUILD≤18min，仅v06命名空间。真实RED覆盖拒绝边链导致无关变量扩张及遗漏竞争边；GREEN验证所有eligible边覆盖、邻域完整、原已求解分量重现及共享oracle/小型端口陷阱。冻结真实测试receipt、全部源码/config/helpers和RUN_REQUEST。Parent独占1800s计算：readiness≤300s，solver≤600s，1200s前保存映射，末600s交付；CPU/BLAS2，unit≤2GiB/runtime≤20GiB。无新拟合/候选/后台进程。09:15停新单元，09:38停science。"
+  },
+  "changed_variable": {
+    "versus_unit001": "只改变决策与证据的分解及覆盖范围；配对算法和科学守卫不变。附加像素裁剪属于展示工程。",
+    "between_arms": "仅greedy versus联合二进制选择。",
+    "fixed": "原核字段/数量/顺序、候选/成本/歧义、复合表示、UNKNOWN及路径守卫；无距离放宽或补画间隙。"
+  },
+  "falsification": {
+    "readiness": "漏竞争边、版本/cost绑定错误或遗漏现有共享约束即阻断对应结果；超限不裁剪。",
+    "delivery": "缺冷载全行映射或任一全景、原核改变、旧组拆分/丢失均失败。",
+    "visual": "联合选择须相对greedy出现可辨的实质跨片段直线及曲线身份改善；吞并平行、深度结构或分支否定对应实例。更多连接、同色或更低目标不足；不可见曲线仍PARTIAL。",
+    "continuation": "若完整现有决策图仍缺正确续接或被固定ambiguity排除，保存候选/弃权瓶颈，下一单元另冻结证据或关联机制；不偷偷松阈值，也不据此停止整个窗口。无物理真值或held-out主张。"
+  }
+}

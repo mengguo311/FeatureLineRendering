@@ -1,0 +1,56 @@
+{
+  "diagnosis_zh": "固定Hermite接缝的全成员残差/切向失败对79841→177351确是局部表达限制：两柄修复后通过原几何守卫，BASE产生一次进一步续接；PAIRED仍因32.257°方向差拒绝。这个条件化先验尚未获得视觉/物理支持：全部新变化只有一个小弧形局部身份并组，随后双端再次死路，没有新增曲线种子成功。其他多处失败位于固定前缀，继续调接缝不能解决。已看22张真实保存PNG，但小裁剪和不完整物理上下文仍缺决定性证据。",
+  "failure_modes": [
+    {
+      "type": "representation_limit_partly_repaired",
+      "evidence": "177351 q95 0.519927→0.494207p，最大切向32.33494→29.96323°；18次实际拟合、总1.271s，不是预算耗尽。"
+    },
+    {
+      "type": "history_disagreement_not_physical_falsification",
+      "evidence": "同一REPAIR库仅一个共同候选；BASE接受，PAIRED方向32.257218°>15°拒绝，曲率差0.030271<2sin7.5°。不能只因BASE接受而认定历史误拒。"
+    },
+    {
+      "type": "fixed_region_errors",
+      "evidence": "64355→116467的25个>0.5p或>30°见证全部在prefix；21870→21864的47个见证在prefix，局部修复不能救这些成员。"
+    },
+    {
+      "type": "downstream_domain_and_deadend",
+      "evidence": "230214→54197修复后改为有限域失败；新79841侧0的27404/79827仍全成员失败，侧1无通过注册的继续候选。"
+    },
+    {
+      "type": "limited_scope_and_visual_evidence",
+      "evidence": "24种子/48端口、全行映射不等于全资产搜索；新增身份仅65核整组转移，seed-kind统计zero_new_curves=true。"
+    },
+    {
+      "type": "unverified_parallel_branch_depth",
+      "evidence": "完整查询邻域已保存，但SCOPE声明physical_context_complete=false；微小负例PNG不能认证分支/平行/深度安全，固定原核尖刺仍在。"
+    }
+  ],
+  "observed_images": [
+    "scenes/ficus/stages/REPAIR_BASE_FINAL/test_r_1_FULL.png",
+    "scenes/ficus/stages/REPAIR_BASE_FINAL/test_r_79_FULL.png",
+    "scenes/ficus/diagnostics/79841/NO_FURTHER_GROWTH_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/79841/REPAIR_BASE_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/79841/REPAIR_BASE_test_r_79_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/79841/NO_FURTHER_GROWTH_test_r_79_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/79841/REPAIR_BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/79841/REPAIR_BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/79841/REPAIR_BASE_test_r_79_HIGHLIGHT.png",
+    "scenes/ficus/diagnostics/64355/REPAIR_BASE_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/64355/REPAIR_BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/48496/REPAIR_BASE_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/48496/REPAIR_BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/23209/REPAIR_BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/167360/REPAIR_BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/168654/REPAIR_BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_11_80709/REPAIR_BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_16931_18768/REPAIR_BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_112_205435/REPAIR_BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_33117_201172/REPAIR_BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/stages/NO_FURTHER_GROWTH/test_r_1_FULL.png",
+    "scenes/ficus/diagnostics/79841/REPAIR_PAIRED_test_r_79_ISOLATED_CROP.png"
+  ],
+  "visual_evidence_missing": true,
+  "visual_evidence_missing_reason": "不是PNG缺失：保存1344张，本次实际查看22张。决定性物理证据缺失：重点与负例在原生视图只有很少像素，4倍nearest放大不增加观测；两视图/查询上下文不能证明可见性或排除所有深度替代。",
+  "next_change": "真实双视图连续边缘链确认的最近前沿续接；不再增加接缝参数或拟合预算。本轮局部两柄修复只解除一个接缝失败；BASE接受65个已归属核，而PAIRED因32.257°方向差拒绝、曲率差仅0.03027。小尺度原核图不足以判定这是谁的错误。应引入真实连续观测核查该分歧，不把旧接受或更低残差当真值。"
+}

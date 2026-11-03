@@ -1,0 +1,34 @@
+{
+  "diagnosis_zh": "0.01有限接触代价确实改变首次全库最低分赢家，但两臂均一次接受后完整无连接；没有解除局部死端。BASE选-30821端点自接触（10个UNKNOWN核），SOFT选67269无接触纯池化（18个已归属核），新增平行冲突67265/67269。固定起点曲线独特支持增量两臂均0；BASE动态Q的支持增加包含重映射，不是已证实外延。",
+  "failure_modes": [
+    "首次排名分歧没有带来第二次接受：BASE完整终库498解释中50个规则3退化/急折（vertex_degeneracy），SOFT504解释中46个branch_conflict",
+    "SOFT以零独特支持的已归属18核池化替代10个UNKNOWN核加入，并新增67265/67269平行冲突；这是身份误并风险，当前图不足以认证物理错误",
+    "固定坐标独特支持增量均0；BASE动态union增加3.566428p及4.299810p域外代理不能直接称真实外延",
+    "后续SOFT首个branch拒绝：premerge_G旧Q为CLEAR，新Q上G与union同中心触发BRANCH，F为CLEAR；拟合与守卫耦合，不能简单归因于新第三臂或自接触",
+    "实际新增投影仅少数细像素，BASE0036新增图近乎空白；裁剪和竞争图不能认证实质多片段曲线身份"
+  ],
+  "observed_images": [
+    "scenes/scan65/stages/CONTACT_SOFT_J_FINAL/0012_FULL.png",
+    "scenes/scan65/worst_events/BASE_J/0001/0012_ISOLATED_CROP.png",
+    "scenes/scan65/worst_events/CONTACT_SOFT_J/0001/0036_FULL_OBJECT_CONTEXT.png",
+    "scenes/scan65/stages/BASE_J_FINAL/0036_FULL.png",
+    "scenes/scan65/diagnostics/30579/CONTACT_SOFT_J_0012_ISOLATED_CROP.png",
+    "scenes/scan65/worst_events/CONTACT_SOFT_J/0001/0012_ADDED_CROP.png",
+    "scenes/scan65/worst_events/BASE_J/0001/0036_ADDED_CROP.png",
+    "scenes/scan65/diagnostics/30579/CONTACT_SOFT_J_0036_QUERY_CONTEXT_CROP.png"
+  ],
+  "visual_evidence_missing": true,
+  "visual_evidence_missing_reason": "已查看全景及八张原核图，但新增核在固定0012/0036上的可辨尺度不足；不是无文件，而是缺少足够的身份视觉证据。",
+  "next_change": "另冻新范围而非继续30579权重/预算扫描：以本单元BASE_J_FINAL完整11组为起点，新增主动line8765/v21440（44核）、polyline61271/v21494（71核），原选择账均有两项实质M3贡献；先核验其完整行集/原M4版本未变，失败NOT_RUN不补选。保留11复合组为整组donor，新增两origin只做队列标记、不分配版本，checkpoint覆盖13origin。仅运行原BASE_J组均衡拟合/评分，[2,4,6]继续关闭，CONTACT_SOFT_J=.01只作同状态影子；NO_FURTHER_GROWTH精确复制起点。候选2p、五轮整组IRLS、规则1/3/TRANSPORT5、完整库最佳并重查、8192/257容量与闭合支持均不变。新观察范围不是接触软项优越性对照。",
+  "remaining_hard_rules": [
+    1,
+    3,
+    5
+  ],
+  "relaxed_rule_groups": [
+    2,
+    4,
+    6
+  ],
+  "analysis_no_rerun": true
+}

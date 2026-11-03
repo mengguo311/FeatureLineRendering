@@ -1,0 +1,64 @@
+{
+  "returncode": 0,
+  "tdd_status": "TEST_FIRST_NEW_API_THEN_REAL_RED_GREEN_SPLIT_COORDINATES",
+  "full_asset_science_run": false,
+  "render_run": false,
+  "logs": [
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_001/TEST_RED.log",
+      "sha256": "15eb33816c3fb0927a317c2fd1854cb7ec3c45e5eff40c58ade6cb7e8fe5f96a",
+      "returncode": 1,
+      "note": "new API absent before implementation"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_001/TEST_GREEN_1.log",
+      "sha256": "6317b8b15ba865198533b42a8a60f67b50ac00f2cd9aca9a63bf40b276ffd90f",
+      "returncode": 0,
+      "note": "12 small tests"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_001/TEST_GREEN_2.log",
+      "sha256": "69c5c803efb594d810cec93fb0d533d570c211aac9b53fef7e78a813508d6bc6",
+      "returncode": 0,
+      "note": "15 tests"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_001/TEST_RED_SPLIT.log",
+      "sha256": "43d7f15c6288b79cb527d3777843f27074f2f2552fd45090f405d0cda6665b8f",
+      "returncode": 1,
+      "note": "real child-coordinate regression failure"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_001/TEST_GREEN_3.log",
+      "sha256": "c6dce1195f336130fa3dc8c1bb7d6fc80ca65fd99f22d321ef9dcb0c94d3fe22",
+      "returncode": 0,
+      "note": "16 tests after coordinate fix"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_001/TEST_RED_DIAGNOSTICS.log",
+      "sha256": "7906e93f146b2cb91be60c2dbd7897d55d81f589d34d41f5f263d1299cfffe01",
+      "returncode": 1,
+      "note": "real diagnostic EPS import failure"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_001/TEST_FINAL.log",
+      "sha256": "389499f8294065d2c27f35b386973d2969ffaac86b9a6fa985f5af33cf1cbd3e",
+      "returncode": 0,
+      "note": "18 tests including actual four-stage30-row runner, rendering mocked explicitly"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_001/TEST_FINAL_VERIFIED.log",
+      "sha256": "1735999e2379b3ed839e9cdfc9c692e0d015dec35279ddd6e5a1eb63230cba46",
+      "returncode": 0,
+      "note": "18 tests after final delivery-error exit handling"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_001/CLI_HELP.log",
+      "sha256": "c648e01ca722cfe380be90b8c6487a5e961f2cecd551abca103b8c2acfc1b38d",
+      "returncode": 0,
+      "note": "plain --config CLI"
+    }
+  ],
+  "command": "approved python -B /home/u00134/3dgs_line/line_kernel_free_reassignment_v07/reproduction/line_kernel_free_reassignment_v07/test_free.py",
+  "scope": "isolated <=96 synthetic rows, actual loader reads temporary NPZ and guard(phase); source and old outputs untouched"
+}

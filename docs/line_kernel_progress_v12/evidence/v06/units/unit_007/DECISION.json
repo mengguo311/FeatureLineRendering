@@ -1,0 +1,44 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit006实际增加21个assigned、无unit005分配损失，但greedy/joint归属及图片完全相同；新增曲线改善未获证明。当前仅处理1917个保存overlap分量中的8个，存在覆盖上的明确未知。下一步扩大同一机制的完整分量覆盖，不再调整有限域、EPS或拟合阈值；同时让真实成员变化优先进入图像。",
+  "recommended_next_step": {
+    "unit": "unit_007",
+    "experiment": "Scan24完整保存overlap图上的有限模型归属：相同假设库greedy versus MILP。无端点续接、额外拓扑轮或其他场景重跑。",
+    "inputs": {
+      "binding": "继承unit006 CONFIG原始input/helper绑定；CONFIG SHA256=bcb3d5e7bf64493888bbf6b29ccbc27d5cdd6d87f52d4ec4258b3764b9f3fbdf。源码使用其source_snapshot，经PARENT_RUN_FROZEN验证。",
+      "state": "v05 unit015 scan24 M4，458490原核，p=0.0014320037356621643；STATE SHA256=4f350e3a991c98d7cf011d833be4fc5aebcce1c7d328ae69b39948b5698ec31f。",
+      "records": "同一v05 unit018 M5-on-M4候选记录。核对112414行、5452条成功overlap及1917个完整分量；不符阻断。成功仍指accepted/round_conflict/ambiguous且metrics有限有效。"
+    },
+    "selection": [
+      "复用unit006原select_components排序，取消前8个截断，冻结全部1917个分量及全部入射记录/对端完整行的非递归证据邻域。原8分量应保持原顺序。",
+      "每分量最多128个决策叶；超限整分量NOT_RUN，不裁竞争者。断言成功overlap无跨分量边。旧ambiguity保留为来源，不新增硬禁令；endpoint不参加本轮选择。",
+      "按冻结顺序处理；未完成分量整块保留M4，不选择性提升部分假设。分量覆盖与458490行完整导出分别报告。"
+    ],
+    "models_and_control": [
+      "复用38个已保存配对模型；先精确重放unit006的32假设、双臂选择、全行归属及版本谱系，忽略耗时字段。失败阻止新范围晋级。",
+      "新增分量先生成原固定anchor假设，再为其全部保存成功overlap配对各恢复一次原拟合。沿用pinned_v05_fit_core及unit005 fit_pair：原proposal须为overlap，rows/reps按canonical a,b拼接，原host角色；TLS后ordered polyline、3Huber/delta0.5p、占用1p-bin等权、8192核/128knots、间距4p。无重试或新空间候选；最多5414次新恢复。",
+      "恢复metrics/cost须与保存值rtol0、atol1e-10一致；任一不符阻断整个受影响分量，保存失败。不能以删除该模型制造更容易的竞争。",
+      "原anchor库保持旧q有限域规则；恢复模型严格沿用unit006原核中心extended_s域内±1e-8、旧q采样投影单调性及全核残差/切向检查。保留越界与支持钳制诊断。",
+      "生成host/partner必须入组；donor仅限host的成功overlap邻居，按cost/ID枚举全部前缀。cost=max_residual+tangent_max/30，B=sum_donor(2-cost)，host收益0。不同模型解释保留，冻结完整库后供双臂共享。"
+    ],
+    "fixed_guards": "不可分M4叶、局部有效性；残差max1p/q95 0.5p/tangent30°；8192核上限、原all-pairs parallel及model knots三臂守卫；vertex30°/每8p60°、contact0.5p、unsupported gap1.5p和check-only共线处理全部不变。无外推、成员剔除或端口占用；支持映射仍是投影代理。",
+    "paired_arms": {
+      "greedy": "B降序、canonical model key、排序叶ID；接受互斥叶集合。",
+      "joint": "scipy.optimize.milp最大化sum(B*x)，每假设binary、每叶最多一个；canonical顺序、不扰动成本、mip_rel_gap0。120s/分量、总600s；仅导出可行incumbent，超时保存bound/gap并标PARTIAL。无可行incumbent时该分量双臂均保留M4。",
+      "membership": "保留原8分量控制版本，再为新增身份分配无碰撞版本；ID=min叶ID，完整模型/叶谱系及最多两个替代引用。未选叶保留M4。UNKNOWN仍须3seedlets/6kernels/4p去重支持才激活；原M4零丢失、零拆分。"
+    },
+    "delivery": "完整分量逐个checkpoint；双臂全458490行映射、模型库、拒绝、lineage及求解回执先保存并冷载，再渲染固定0012/0036。实际原核、白底floor0.0144、原宽度/opacity、UNKNOWN灰，不画carrier/桥。按成员集合去重选择top3实际改变、top3受损、最大新增直/曲组，支持降序再ID；固定包含51111/51166/113545及原四负例。相同成员并集和完整邻域比较M4/unit006/双臂；沿用联合bbox/pad16/clip/4xnearest。模型key替换不得挤掉真实成员变化；空图/裁切明确记录。",
+    "protocol_budget": "BUILD≤18min，仅真实小型RED/GREEN覆盖8分量截断、完整竞争、控制重放、超时整分量保留和成员变化选图；冻结request后返回。Parent计算≤1800s：readiness/模型库累计≤600s、solver≤600s，1200s前停止数值并保存映射，末600s交付。CPU/BLAS2、unit≤2GiB/runtime≤20GiB；09:15停新单元、09:38停science。ANALYSIS只看保存输出。"
+  },
+  "changed_variable": {
+    "versus_unit006": "处理覆盖从8分量扩到全部可处理的保存overlap分量；新增模型恢复随覆盖扩大，不是提高同一候选的拟合预算。",
+    "between_arms": "仅共享完整假设库上的greedy versus联合互斥选择。",
+    "fixed": "原核字段/数量/顺序、候选图、模型生成规则、有限域/成本/守卫与UNKNOWN；展示按真实成员变化选择。"
+  },
+  "falsification": {
+    "readiness": "绑定、控制重放、恢复metrics或竞争闭包不符则阻断；超限/未完成不得裁剪后宣称完整。",
+    "delivery": "必须冷载双臂全行映射及两原生全景；原核改变、M4组丢失/拆分、渲染无支持桥立即失败。",
+    "science": "须出现可辨的实质跨片段直线和曲线归属改善，另判joint是否优于同库greedy。assigned、目标值、同色及重复支持增加均不足。报告支持并集/最长段/域外代理/gap及实质parent贡献；误吞parallel/depth/branch否定实例，缺图或不可辨保持PARTIAL。",
+    "continuation": "完整现有图仍无收益时保存覆盖、模型或候选瓶颈，后续另冻结候选/共同参数化机制，不继续扫域阈值。所有身份暂定，无物理真值或held-out主张。"
+  }
+}

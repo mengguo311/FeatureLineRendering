@@ -1,0 +1,10 @@
+{
+  "batching.py": {
+    "text": "import limits\nimport numpy as np\ndef transform(asset, membership, p, guard, journal=None):\n    return dict(asset={**asset, 'means':asset['means'].copy()}, ledger=[], complete=True)\n",
+    "sha256": "9d518881e4f19ffec25089b13710445ef0314dab51e150b50abea5bf87f5f2ad"
+  },
+  "test_batch.py": {
+    "text": "import limits\nimport unittest, tempfile\nfrom pathlib import Path\nimport numpy as np\nfrom batching import transform\n\ndef fixture():\n    s=np.linspace(-2,2,15); a=np.column_stack([s,.2*s*s+.05*np.sin(9*s),3+.1*s])\n    b=a+np.array([8.,4.,1.]); x=np.vstack([a, np.ones((3,3))*4, b, [[99.,99.,99.]]])\n    n=len(x); asset=dict(means=x,covariance=np.tile(np.eye(3)*.3,(n,1,1)),opacity=np.full(n,.8),colors=np.zeros((n,3)),primitive_id=np.arange(n,dtype=np.int32),internal_piece_id=np.arange(n,dtype=np.int32),arc_t=np.linspace(0,1,n))\n    edge=np.r_[np.full(15,10),np.full(3,20),np.full(15,30),-1].astype(np.int64)\n    member=dict(line_kernel_id=np.arange(n,dtype=np.int64),edge_id=edge,primitive_id=asset['primitive_id'].copy())\n    return asset,member\n\nclass Vertical(unittest.TestCase):\n    def test_real_multigroup_transform(self):\n        a,m=fixture(); before={k:v.copy() for k,v in a.items()}; phases=[]\n        r=transform(a,m,1.,phases.append)\n        self.assertGreater(np.max(np.abs(r['asset']['means'][:15]-a['means'][:15])),.001)\n        self.assertGreater(np.max(np.abs(r['asset']['means'][18:33]-a['means'][18:33])),.001)\n        self.assertEqual([x['status'] for x in r['ledger']],['SUCCESS','SKIPPED_NUMERICAL','SUCCESS'])\n        self.assertTrue(r['complete'])\n        for k in a: np.testing.assert_array_equal(a[k],before[k])\n        for k in a:\n            if k!='means':np.testing.assert_array_equal(a[k],r['asset'][k])\n        np.testing.assert_array_equal(a['means'][15:18],r['asset']['means'][15:18])\n        np.testing.assert_array_equal(a['means'][-1],r['asset']['means'][-1])\n        self.assertTrue(phases)\n\nif __name__=='__main__':unittest.main(verbosity=2)\n",
+    "sha256": "e18671f568748615bad3a60796e41853946b0a588bd49ff1fd2456989e6b0a3e"
+  }
+}

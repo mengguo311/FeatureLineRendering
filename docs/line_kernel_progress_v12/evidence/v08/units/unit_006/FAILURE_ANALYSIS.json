@@ -1,0 +1,54 @@
+{
+  "diagnosis_zh": "24种子48初始端口中仅一个共同合格候选。BASE把UNKNOWN的54189载体17核接到230214，新增域外支持2.58160p；HISTORY因预测角26.1006°>15°拒绝，曲率差本身近零。BASE随后无第二次接受。其最近后续54197端口轴相容，但端点连接反向；重叠注册仅0.14589p窗口后全成员切向53.3559°失败。这是局部关系/接缝表示与全成员检验的瓶颈证据，尚不能认定守卫误拒或物理续接正确。未产生新实质曲线恢复，用户连续增长先验未获支持。",
+  "failure_modes": [
+    {
+      "type": "candidate_or_guard_deadend",
+      "evidence": "47/48 initial frontiers have zero common eligible candidates; all processed, no library overflow. BASE has one further visit but no second acceptance."
+    },
+    {
+      "type": "history_angle_rejection",
+      "evidence": "230214/54189 prediction 26.1006120434 degrees exceeds15; curvature difference1.81555e-14. Only one eligible case, physical false rejection unresolved."
+    },
+    {
+      "type": "overlap_seam_or_member_tangent_failure",
+      "evidence": "After acceptance,54197 endpoint tangent14.34975 degrees but connector145.19281/130.88406 degrees; overlap width0.14588949p, max residual0.53607p/q95 0.37979p pass, tangent53.35585 degrees fails. Seam causality remains a hypothesis."
+    },
+    {
+      "type": "insufficient_substantial_growth",
+      "evidence": "17 added kernels, outward2.5815977599p<4p; no new curved seed growth, no second acceptance; three qualified M4 contributors do not establish a physical new long curve."
+    },
+    {
+      "type": "visual_resolution_and_depth_unknown",
+      "evidence": "Full views exist; isolated changed strip and four negative contexts are tiny. Complete queried context is not a physical visibility/depth certificate."
+    }
+  ],
+  "observed_images": [
+    "scenes/ficus/stages/BASE_FINAL/test_r_1_FULL.png",
+    "scenes/ficus/stages/BASE_FINAL/test_r_79_FULL.png",
+    "scenes/ficus/stages/HISTORY_FINAL/test_r_1_FULL.png",
+    "scenes/ficus/diagnostics/230214/NO_FURTHER_GROWTH_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/230214/BASE_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/230214/HISTORY_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/230214/BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/230214/HISTORY_test_r_79_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/92122/BASE_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/92122/BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/26025/BASE_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/8820/BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_11_80709/BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_16931_18768/BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_112_205435/BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_33117_201172/BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/stages/HISTORY_FINAL/test_r_79_FULL.png",
+    "scenes/ficus/diagnostics/230214/BASE_test_r_79_ISOLATED_CROP.png"
+  ],
+  "visual_evidence_missing": true,
+  "visual_evidence_explanation": "非无图：已看18张实际保存PNG。缺的是可判定新完整曲线及平行/分支/深度安全的有效视觉证据；小裁图不当作安全通过。",
+  "next_change": "另行review并冻结局部有限接缝参数化对照：从本轮保存状态出发，保留24种子、完整当前候选及所有竞争者，比较原固定线性blend与仅接缝区域的受约束共同载体；固定接缝外前缀/尾段，全部原成员、有限域/切向/转角/parallel/branch守卫不变。重点检查230214→54189后与54197的0.14589p重叠接缝，同时保留96009等替代。分别保留BASE/HISTORY，先同状态影子比较再rollout；不放宽半径、连接角或历史15°，不预认54197正确。拟合形式与预算须在新DECISION中冻结，本轮不执行。",
+  "metadata_recovery_prior_exit": {
+    "returncode": 0,
+    "reason": "HARD_DEADLINE",
+    "source": "latest user metadata recovery instruction",
+    "interpretation": "Preserved separately from saved numerical COMPUTE_EXIT, which records returncode=0 and reason=null; no exit record overwritten."
+  }
+}

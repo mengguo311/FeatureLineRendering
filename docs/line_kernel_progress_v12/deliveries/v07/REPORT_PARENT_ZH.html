@@ -1,0 +1,38 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>v07自由重归属最终验收 · PARTIAL</title><style>@page{size:A4;margin:14mm}body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;max-width:1050px;margin:24px auto;line-height:1.65;color:#17202a;font-size:14px}h1{font-size:26px}h2{font-size:19px;margin-top:1.5em;break-after:avoid}img{max-width:100%;max-height:210mm;height:auto;object-fit:contain}p:has(img){break-inside:avoid;text-align:center}code{font-size:.9em;overflow-wrap:anywhere}li{margin:.3em 0}@media print{body{font-size:11px;margin:0}h1{font-size:21px}h2{font-size:16px}img{max-height:200mm}}</style></head><body><h1>v07 大胆自由重归属：最终父级验收</h1>
+<p><strong>结论：PARTIAL，不建议替换原v05/v06参考成果。</strong></p>
+<p>本窗口确实从“旧片段不能拆”转向逐核自由竞争、辅助模型更新/拆分/合并/出生，原核本身仍冻结。六个真实实验全部数值退出0，最后一轮结束于19:21:45 JST，模型最终交付19:31:22结束。19:15停开新轮的预定边界已经过去，停止属于行政窗口，不是证明方法空间耗尽。</p>
+<h2>最终实际成果与负结果</h2>
+<ul>
+<li>只有ficus实际运行v07；285,956原核全行导出，最新56,762有标签、229,194为UNKNOWN。scan24、scan65本窗口NOT_RUN。</li>
+<li>相对旧v05 M5：新分配9,205核，撤回74,408核，45个旧组被分到多个新身份。已允许拆旧组，但不能把大量撤回自动当作正确去噪。</li>
+<li>第一轮组144确有198核、5个实质旧片段/5个parent，两个相机可见短弧；后来变成150核归55、47核归441、1UNKNOWN，直到最终没有修复。后期覆盖更多不代表支配早期局部正例。</li>
+<li>第三轮端点续接的5个提案全部在容量/几何检查处被拒；没有成功验证全核能量事务接受。第四轮18个重叠合并尝试仅接受1个，主要是局部小段重组，不是完整长曲边。</li>
+<li>第五轮位置—切向图路径出生接受15条，较同轮不出生对照新增540、丢失0；受64种子/32路径尝试等发现范围限制，12个新组仍为单parent。不是完整全图寻边。</li>
+<li>第六轮已用真实val双视图的正向边缘支持为同一图降权，但只改变1条规范路径并被拒。最终映射、模型、两张全景与第五轮<strong>文件字节相同</strong>，没有额外收益。不能再累计一次第五轮的540核。</li>
+</ul>
+<p>当前只有局部跨片段短弧和支持汇集的证据，<strong>没有证明新增完整长直边/长曲边，没有认证物理同边、完整误并安全、盲held-out或时间稳定性</strong>。多方向候选、种子预算和独立对应证据仍限制结果；不能把此预算下的失败扩大成所有自由重归属方法不可能。</p>
+<h2>原核图：保留覆盖不足和身份退化</h2>
+<p><img alt="三轮完整原核双视图" src="parent_figures/FICUS_WHOLE_PROGRESSION.png" /></p>
+<p>列依次为U1、U2、U6，行是固定相机test_r_1与test_r_79。灰色是UNKNOWN，核没有被删；原有长尖刺、叠线、碎裂都保留。只有成员标签/辅助解释变化，原核几何不变。无源表面遮挡，不画辅助曲线或补gap；不能只凭颜色宣布同边恢复。</p>
+<p><img alt="同一198核短弧的改善与退化" src="parent_figures/SHORT_ARC144_REGRESSION.png" /></p>
+<p>左为U1组144的同核集合，右为U2同一198行的新标签，双视图可见分色。图片只排列保存的4倍最近邻裁剪并加标签/白边，没有重绘、拉伸原始图片或新科学渲染。该案例为后验诊断，不是随机代表性或盲测。</p>
+<h2>独立核验的实际范围</h2>
+<ul>
+<li>6个单元的7,751封存条目、126源码快照记录、绑定输入/helper哈希通过；47个接受阶段CHECKPOINT和全行映射逐项核对，另核对9份raw竞争映射的行数。新辅助MODELS允许变化，没有错误要求其等于旧CARRIERS。</li>
+<li>直接加载原gaussians，核对各接受阶段原资产全部7个数组的shape/dtype/内容哈希；原means、covariance、opacity、行序和数量不变。</li>
+<li>使用原核协方差半宽与保存的弧参数，独立重算5,394组、570,951次成员支持项的区间union/最长段/gap；这是投影支持代理的算术核验，不是物理连续性认证，也不是重新执行所有几何oracle。</li>
+<li>独立按旧→新成员交叉表重算参考得失与旧组拆分，不把数字edge_id重编号当身份变化。已核对最终与U5映射/模型/双全景字节完全相同，以及旧短弧144的实际分裂。</li>
+<li>5,652条科学PNG路径哈希核对，824种独立编码全部解码；U1/U2/U6各两张原核全景从原数组、保存颜色、冻结CPU native renderer独立重放，6张RGB8最大误差全部为0。这不是CUDA执行或物理准确性验证。</li>
+<li>58旧worktrees、53,824旧引用和514继承物化源未变；27个记录的自有监督/模型/数值PID已退出。未干预其他进程。</li>
+<li>首轮review时间界和后续同会话综合回执均保留；实际子退出以对应COMPUTE_EXIT为准，不用外层SSH/tmux零码代替。</li>
+</ul>
+<p>完整机器证据见 <code>PARENT_INDEPENDENT_ACCEPTANCE.json</code>。源码本地提交 <code>6eb3d6d9ecd74d8aef9ffdecea15bcfe84f1b90b</code>，36源码Git blobs与第6轮冻结快照逐SHA匹配，分支 <code>line-kernel-free-reassignment-v07</code> 工作树clean；没有push/merge，旧分支不动。源码保持封存字节，非零whitespace检查另存，不宣称lint全绿。</p>
+<h2>交付包怎么用</h2>
+<ul>
+<li><code>ficus_v07_original_kernels_and_variants.zip</code>：完整原始gaussians.npz原字节副本、固定相机、U1/U2/U4/U6四个互不自动融合的候选版本，包含完整MEMBERSHIP、辅助MODELS、颜色、统计和谱系。U1保留早期局部短弧，U6保留最新完整状态；<strong>“最新”不等于“最好”</strong>。</li>
+<li><code>v07_reports_and_real_figures.zip</code>：全部6轮报告、5,652条科学原核PNG、各轮不可变源码快照、协议/退出/封存记录、父级验收和中文图文报告。不是所有大体积候选图/cache/每轮NPZ的完整镜像；未打包的原始记录继续封存在服务器。</li>
+</ul>
+<p><code>line_kernel_id</code>为零起始原行号，<code>edge_id=-1</code>为UNKNOWN；<code>primitive_id</code>是旧线parent，不是源RGB高斯ID。所有身份仍provisional。要看同组颜色，使用对应 <code>DISPLAY_COLORS.npz</code> 的colors作为原核显示副本，保留原几何/opacity；不要把辅助MODELS画成新线补洞。原资产不是完整RGB场景模型。</p>
+<h2>尚未运行的下一方向</h2>
+<p>真实多视图<strong>有序线轨对应生成新三维曲线候选</strong>，而不是仅给现有局部图边增加奖励。两张图/相机已核对，但可靠可见性、线轨对应和新3D提案尚未实现验证。这个后续实验没有运行，也不是本次取得的成果。当前不继续扫半径、奖励或拟合预算。</p>
+<p>原始封存根：<code>/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101</code>。原始Astra逐轮详细报告见 <code>FINAL_REPORT_ZH.md</code> 和 <code>units/</code>；本报告的工程PASS不升级其科学PARTIAL。</p></body></html>

@@ -1,0 +1,52 @@
+{
+  "diagnosis_zh": "四个合并种子的八个端点都没有共同守卫合格donor，历史条件未被执行。最先拒绝的20条非自身端点记录中16条因单donor不足六核，其余3条切向、1条connector拒绝。零增长是本局部单步提案规则的负结果，尚不是局部历史先验的有效反证。",
+  "failure_modes": [
+    {
+      "code": "SINGLE_DONOR_SUPPORT_GRANULARITY",
+      "evidence": "每臂16条donor_kernel_count；只是最先拒绝原因，后续几何相容未知。"
+    },
+    {
+      "code": "LOCAL_DIRECTION_OR_CONNECTOR_REJECTION",
+      "evidence": "199430、112786、168633被endpoint_tangent拒绝；199356被connector拒绝。无证据把它们改称真实正确续接。"
+    },
+    {
+      "code": "HISTORY_NOT_EXERCISED",
+      "evidence": "8个访问状态的BASE/HISTORY影子选择均为null；0次历史计算、0次提交、0次接受。"
+    },
+    {
+      "code": "VISUAL_COUNTEREXAMPLE_UNRESOLVED",
+      "evidence": "两全景和局部裁剪已查看；负例及候选短痕像素太少，无法验证parallel/branch/depth安全。局部上下文完整性仅相对端点查询，physical_context_complete=false。"
+    }
+  ],
+  "observed_images": [
+    "scenes/ficus/stages/BASE_FINAL/test_r_1_FULL.png",
+    "scenes/ficus/stages/HISTORY_FINAL/test_r_79_FULL.png",
+    "scenes/ficus/diagnostics/64355/HISTORY_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/64355/HISTORY_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/64355/BASE_test_r_79_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/64355/BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/112780/HISTORY_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/112780/HISTORY_test_r_79_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/112780/BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/112780/BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/48496/HISTORY_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/48496/HISTORY_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/137016/HISTORY_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/137016/HISTORY_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_11_80709/HISTORY_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_11_80709/HISTORY_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_16931_18768/HISTORY_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_16931_18768/HISTORY_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_112_205435/HISTORY_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_112_205435/HISTORY_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_33117_201172/HISTORY_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_33117_201172/HISTORY_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/64355/HISTORY_test_r_1_HIGHLIGHT.png",
+    "scenes/ficus/diagnostics/112780/HISTORY_test_r_79_HIGHLIGHT.png"
+  ],
+  "visual_evidence_missing": true,
+  "visual_evidence_missing_reason": "222张PNG已保存，本次查看24张；不是无图片。关键微小竞争者和负例虽可定位，却不足以判读物理深度、分叉或准确续接，故决定性反例证据仍缺。",
+  "next_change": "另行review冻结短片段接力机制：不增大半径，将至多三个相容donor组成完整提案，支持门槛在新增整段上检查后原子提交，并继续比较相同接力库中的有/无历史条件。不得直接在本轮降低门槛或宣称小片段正确。",
+  "changed_existing_artifacts": false,
+  "scientific_exhaustion": false
+}

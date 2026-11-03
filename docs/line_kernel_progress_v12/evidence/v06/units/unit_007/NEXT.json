@@ -1,0 +1,26 @@
+{
+  "action": "continue",
+  "recommended_next_step": {
+    "experiment": "Same-settings finite overlap model association on ficus: identical-bank greedy versus MILP",
+    "status": "PROPOSED_NOT_RUN_REQUIRES_NEXT_FROZEN_DECISION",
+    "input_state": "v05 units/unit_016/scenes/ficus/states/M4/STATE.pkl",
+    "candidate_source": "v05 units/unit_019/scenes/ficus/states/M5/{ORDERED_CANDIDATES.npz,controls/joint/CANDIDATE_STATUS.npz}",
+    "readiness": "checkpoint and candidate files exist; verify sealed hashes, original285956 rows, M4 versions, successful overlap metrics and full component closure before freezing selection; not yet loaded/recounted in this analysis",
+    "implementation": "unit007/source_snapshot verified through PARENT_RUN_FROZEN.json",
+    "changed_variable": "Scene scan24 to ficus; scene/input/camera configuration only",
+    "fixed": "unit007 complete saved-overlap components, cap128 without trimming; original anchors plus once-recovered pair models; unit006 original-means finite-domain rule; donor-prefix bank/cost/parallel/branch/turn/contact/gap/UNKNOWN unchanged; no endpoint links, thresholds or added topology rounds",
+    "paired_baseline": "Fresh same-bank greedy versus MILP on ficus; frozen ficus M4 reference; scan24 unit007 only external comparison, not historical replay",
+    "budget": {
+      "parent_compute_seconds": 1800,
+      "bank_seconds": 600,
+      "solver_seconds": 600,
+      "delivery_reserved_seconds": 600,
+      "cpu_blas": 2,
+      "new_units_stop_jst": "2026-11-01T09:15:00+09:00",
+      "science_stop_jst": "2026-11-01T09:38:00+09:00"
+    },
+    "delivery": "checkpoint and cold-reload both285956-row mappings before original-kernel test_r_1/test_r_79 full/group/context PNGs; whole incomplete components retain M4",
+    "falsifier": "Require visible substantial cross-fragment straight and curved identity in both fixed views; separately test joint benefit over same-bank greedy. More assigned/pooled support/model labels are insufficient; parallel/depth/branch swallowing falsifies the affected instance; missing/invisible curves remain PARTIAL; no threshold rescue."
+  },
+  "rationale": "scan24扩大覆盖已保存可见直线重叠归组及真实全局选择差异，但最大改变polyline在一视图为空，联合选择优势未成立。用同一规则在具有不同曲线结构的ficus检验适用性，比继续提高scan24预算或重复域阈值更有区分力。当前只建议此一个独立场景对照，不自动开跑。"
+}

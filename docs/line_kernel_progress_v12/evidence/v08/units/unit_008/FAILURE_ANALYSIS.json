@@ -1,0 +1,46 @@
+{
+  "diagnosis_zh": "ARC修正使5个旧self_contact提案进入下游检查；3个仍因外向支持不足拒绝，79841的两个共同候选分别被BASE/HISTORY接受。BASE吸收177351共65核，HISTORY拒绝其15.73096°预测角而吸收15核的79855。两臂均仅一步后死端，没有进一步连续接受；HISTORY优越性及完整直/曲双类型恢复未建立。接触见证已明确旧判据命中0.203–0.234p局部弧邻近，但这不认证新合并物理正确。",
+  "failure_modes": [
+    {
+      "type": "second_growth_deadend",
+      "detail": "ARC_BASE新外端的50407因overlap_distance拒绝，83549无重叠尾部且端点切向拒绝；ARC_HISTORY外端79865切向/距离拒绝，177351再接时q95=0.519926934p、最大切向32.334937°失败。两臂没有第二次接受。"
+    },
+    {
+      "type": "history_evidence_representation_bias",
+      "detail": "同状态的两个候选曲率差仅约1e-14，源q割线k约0。HISTORY区分主要是15.730963° versus9.520381°方向门槛；尚不能把辅助直线的零曲率当原核观察历史，也不能按所得长度判断哪一个为真。"
+    },
+    {
+      "type": "insufficient_outward_support",
+      "detail": "112780→168654仅2核/0.581861p，23216→23209为6核/1.029606p，26025→167360仅2核/0.488639p；修复接触后仍不足冻结的6核/2p，不得当曲线恢复。"
+    },
+    {
+      "type": "limited_visual_and_source_evidence",
+      "detail": "已看16张真实图；79841跨组变化在小弧上可见，但双视图仅少量原生像素，深度/平行/分支无法据此认证。BASE虽有3个实质M4来源，原parent仅1个实质来源；无新的完整直线与曲线双类型成功。四负例裁图很小。"
+    },
+    {
+      "type": "scope_and_inherited_losses",
+      "detail": "全285956行导出，但只处理24种子；相对v06的1821/174核撤回及184/12组拆分均为继承差异。本轮原叶被保护，未发生新拆分或撤回；不可隐去旧损失。"
+    }
+  ],
+  "observed_images": [
+    "scenes/ficus/stages/ARC_BASE_FINAL/test_r_1_FULL.png",
+    "scenes/ficus/stages/ARC_BASE_FINAL/test_r_79_FULL.png",
+    "scenes/ficus/diagnostics/79841/NO_FURTHER_GROWTH_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/79841/ARC_BASE_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/79841/ARC_BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/79841/ARC_HISTORY_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/79841/ARC_HISTORY_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/79841/NO_FURTHER_GROWTH_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/79841/ARC_BASE_test_r_79_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/79841/ARC_HISTORY_test_r_79_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/112780/ARC_BASE_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/137016/ARC_BASE_test_r_79_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/negative_11_80709/ARC_BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_16931_18768/ARC_BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_112_205435/ARC_BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_33117_201172/ARC_BASE_test_r_1_CONTEXT_CROP.png"
+  ],
+  "visual_evidence_missing": true,
+  "visual_evidence_missing_explanation": "1164张PNG和双原生全景实际存在；缺的是足够可辨的物理续接/深度证据和新完整曲线实例，不是无图。小负例不能作为安全通过。",
+  "next_change": "另行审查并冻结观察切向历史对照：从本轮NO_FURTHER_GROWTH共同起点重开同24种子，保留ARC接触、Hermite表示、完整候选及所有成员/支持阈值；比较BASE、原q割线HISTORY、原核control导数HISTORY。后者在同一有限弧坐标的两段1p窗口各统计原核轴向外积，按原观察端口规则定向并要求足够核数/谱间隔，缺证据则UNKNOWN；仍用原15°和2sin7.5°门槛，不调角度救177351。先冻结79841两竞争者的同状态影子选择，再运行双端续接；保存每bin行ID、轴谱和候选差异。该建议尚未执行，须单独review/DECISION；重点检验当前几乎零曲率是否仅源于直线辅助q，而非真实核切向历史。"
+}

@@ -1,0 +1,43 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit002改善了局部覆盖，但已检视长组仍由单个旧种子覆盖全域，主要是重复支持汇集；unit001短弧144又被模型55/441拆开。现有代码只有局部更新、出生、死亡和支持拆分，没有共同模型合并。下一步直接检验模型合并能否产生真正跨片段续接，不增加种子或重复原更新周期。",
+  "recommended_next_step": {
+    "unit": "unit_003",
+    "experiment": "Whole-ficus：完整逐核竞争下，带全局能量检验的动态有限曲线合并。",
+    "inputs": {
+      "binding": "继承unit002 CONFIG全部原始资产、相机和helper绑定；CONFIG SHA256=9df62cacc28d37f6cd1ac99c7f75af9908ea7f7e39fb71234b451fecb0b21180。使用其PARENT_RUN_FROZEN指向的source_snapshot。",
+      "state": "unit002/scenes/ficus/stages/FREE_ADAPTIVE_3；MODELS SHA256=e990caaa4a47272a8285da8453400b231ffe575df53493557040fb9bf95e4ef3；MEMBERSHIP SHA256=a55f34bb2e74bcff84d6d3c2c408bae0902970e6025953fb2ed83e87b12ebb3e。",
+      "readiness": "验证完整checkpoint、520个模型的offsets/q/hash、285956行原序、next_id=712及p=0.003530473547030632。原核/control导数加载沿用unit002。review未加载原核或计算端点关系；不得预称55/441可合并。"
+    },
+    "control": "冷载上述模型，执行一次原assign和validate_support，保存NO_MERGE完整对照。可能发生重竞争变化，须单列，不能冒称精确历史重放。变体从此对照状态出发，不运行额外出生、延伸或普通更新周期。",
+    "proposals": [
+      "枚举当前不同模型的全部四种端点组合，无nearest-k截断。端点距离<=1.5p、定向接续切向夹角<=30度；非零间隙的连接方向与两侧切向均<=35度。零间隙只检切向。",
+      "记录完整候选表；按间隙升序、canonical模型ID/端口排序。每个模型几何版本对及端口组合最多尝试一次，总计最多64次，包含失败。每次接受后重新枚举当前模型端点；未尝试候选显式保留。",
+      "本轮仅端点续接，不把重叠或端点到内部强制拼接。55/441若不满足条件，记录候选缺失，不能为固定案例扩大范围。"
+    ],
+    "joint_model": [
+      "将两条q定向为首尾接续，拼接并只删除相邻距离<=EPS的重复点；连接段仅作辅助模板。总长>128p或两模型当前主成员并集>8192核则记录提案容量拒绝，不截断成员。",
+      "按原resample得到间距<=1p、最多129knots的模板；用两模型当前主成员的原行号排序并集，调用一次unit002 irls_update：三Huber步、delta0.5p、占用1p-bin等权、平滑0.1、结点移动上限0.5p。不在拟合前以拼接转角拒绝共同模型。",
+      "拟合后须通过原geometry_ok。临时移除两个模型，加入新ID的共同模型；所有285956核重新对全部当前有限段竞争，再执行原支持拆分/死亡。核可改投第三模型或UNKNOWN，不锁定任何旧成员。",
+      "共同模型必须保有一个有效支持片段；死亡或分裂成多个片段则拒绝本提案。其他模型的成员变化和支持变化保留在试验状态中评估。"
+    ],
+    "acceptance": {
+      "energy": "E=sum_i L_i + 1.0*M。UNKNOWN的L_i=1；已归属核按最终所属有限q重新计算原距离/切向cost；M为支持验证后有效模型数。固定模型惩罚1.0，不扫描。",
+      "commit": "仅E下降超过1e-8时事务提交整个试验状态，否则精确恢复前态。保存数据项、模型惩罚、各核得失与拒绝原因。该正则化偏好简洁解释，不是物理正确性证明。",
+      "freedom": "没有旧组保留约束、旧pair库或MILP。当前模型只生成提案；最终所有核可自由改投。"
+    },
+    "fixed": "沿用unit002完整有限段竞争：距离1p、切向30度、cost=d²+0.25*(angle/30)²、UNKNOWN cost1和margin0.05；支持>=12核/6占用bin、协方差半宽<=0.5p、gap1.5p；turn30度/window8p60度/contact0.5p。EPS1e-8，原核字段/数量/顺序冻结，模型上限704。未新增物理parallel/branch安全认证。",
+    "delivery": "先保存NO_MERGE及每次接受后的完整映射/模型/谱系与checkpoint；拒绝试验保存q、目标分解及相对输入checkpoint的无损归属差分。冷载最终状态再渲染两臂test_r_1/test_r_79原核全景。保留unit001144精确行集、unit002的7/11/15、全部固定负例和损失案例；另选top3真实成员/外延变化及top3受损组。同核双视图、局部全部竞争上下文及全对象highlight；无辅助桥。",
+    "budget_protocol": "BUILD<=18min，只做真实loader/恢复、完整端点枚举、逐核撤回、全局能量、失败回滚及检查点小测试。Parent独占1800s：readiness120s、对照至240s、最多64次提案至1200s，最后600s交付。超时只导出最后完整接受状态并标PARTIAL。CPU/BLAS2；unit<=2GiB/runtime<=20GiB。19:15停新单元、19:38停science。"
+  },
+  "changed_variable": {
+    "main": "增加动态模型合并及共同重拟合、全局能量接受；不是扩大旧固定pair假设库。",
+    "paired": "同一保存状态、同一逐核竞争下，不合并 versus 有界合并操作。",
+    "fixed": "legacy_groups_locked=false；kernel_geometry_frozen=true；final_ink_carrier=original_gaussians；uses_gpu=false；uses_training=false。"
+  },
+  "falsification": {
+    "engineering": "绑定错误、遗漏赋值竞争者、失败回滚不完整或缺冷载全行映射/双全景即阻断。保存实际退出，不以测试通过替代科学交付。",
+    "science": "须出现双视图可辨的实质直线及曲线续接；曲线至少三个旧片段各贡献>=12核/4p支持代理，并相对最大单输入模型有>=4p域外支持代理。合并颜色、减少模型数、降低E或继承长弧不算成功。",
+    "counterexample": "吞并平行边、分支、深度交叉或尖刺否定相关实例；单列55/441短弧的恢复与损伤。支持并集不等于连续观测。候选缺失或零接受是机制范围内负结果，不允许临场调阈值；物理身份与held-out均未验证。"
+  }
+}

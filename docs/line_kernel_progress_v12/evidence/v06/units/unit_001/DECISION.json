@@ -1,0 +1,43 @@
+{
+  "action": "continue",
+  "rationale_chinese": "先做scan24真实局部配对实验。已核对：unit015 M4有36403个载体、458490行映射；unit018保存112414条针对该M4的候选及逐候选operation/reason/cost/metrics，不能将其套到最新M5。STATE含精确rows/reps/q/version，NPZ knots为世界单位；primitive_id仅为来源。现成记录足以尝试不重新拟合的复合身份路径，但完整竞争闭包大小和可用端点数量尚未计算，须在parent计算的首阶段核验。已看210790原图裁剪，近直短段，不能预称曲线成功。",
+  "recommended_next_step": {
+    "unit": "unit_001",
+    "experiment": "Frozen scan24 M4 finite carriers: joint port-path selection versus identical-representation greedy.",
+    "inputs": {
+      "root": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units",
+      "carriers": "unit015/scenes/scan24/states/M4/STATE.pkl and stages/M4_MERGE_ONLY/{MEMBERSHIP,CARRIERS}.npz",
+      "state_sha256": "4f350e3a991c98d7cf011d833be4fc5aebcce1c7d328ae69b39948b5698ec31f",
+      "candidates": "unit018/scenes/scan24/states/M5/ORDERED_CANDIDATES.npz; controls/joint/CANDIDATE_STATUS.npz; JOINT_AMBIGUITY.npz",
+      "geometry": "Original458490 scan24 kernels, representatives/tangents and p=0.0014320037356621643 from unit018 CONFIG references.",
+      "verification": "Bind all input/helper hashes from sealed manifests before loading. Restricted state loader; cross-check row ownership, versions, normalized q versus world-unit knots, candidate pair coverage and cost semantics. No old producer execution."
+    },
+    "representation": "Immutable M4 carriers are topology leaves. Their many-to-one kernel supports consume no additional degree. A new persistent edge_id owns an ordered list of oriented finite leaves; do not refit their union into one polyline. Between-leaf overlap proposals are recorded but not pooled in this tracer; inherited duplicate supports remain intact.",
+    "fixed_graph": {
+      "eligible_edges": "Only saved operation=endpoint with joint reason accepted, round_conflict or ambiguous; require finite successful-fit metrics. Recover nearest-endpoint ports using original host ordering and argmin ties. Use successful-fit cost residual_max+tangent_max/30, never candidate-ranking cost.",
+      "unknown": "Both arms exclude pairs in the saved full joint ambiguity mask; retain them as alternatives and disclose this conservative limitation. Valid dormant UNKNOWN carriers remain graph vertices. Invalid/frozen carriers cannot gain links. No new fits, candidates or thresholds.",
+      "contexts": "Priority seeds: exact M4 contributors of saved M5 groups53254 and210790; four saved negative pairs84842/362883,153248/377058,153427/153430,301451/301459. Add at most two remaining feasible endpoint components with>=3 leaves, ranked leaf count descending then minimum ID.",
+      "closure": "Close each seed over ALL successful endpoint candidates before ambiguity exclusion; include every incident saved overlap/rejected candidate and its complete endpoint carrier rows as context. Merge intersecting contexts and repeat closure. Cap128 total carriers/context; oversized contexts remain NOT_RUN, never trim competitors. Freeze selection before either arm runs. Saved neighborhoods are complete only relative to the capped v05 proposal list; preserve saturation/cap limitations."
+    },
+    "paired_arms": {
+      "baseline": "Descending benefit then canonical carrier/port IDs; accept if both ports free and resulting complete path passes all shared guards.",
+      "joint": "scipy.optimize.milp binary variable per eligible endpoint link. Minimize sum(cost*x)+number_of_unmatched_ports; equivalently maximize sum((2-cost)*x). Each port<=1 link; no cycles. Empty selection is feasible. Canonical variable ordering; do not perturb scientific costs for ties.",
+      "whole_path": "Orient unchanged leaf q; connectors exist only for checking, carry zero observed support and are never rendered. Check joined tangent30deg/connector35deg/gap1.5p, vertex turn30deg, every8p cumulative turn60deg, nonadjacent contact0.5p, original parallel and three-arm predicates over complete path membership, and unsupported gap1.5p. Preserve local leaf residual/tangent validity; do not impose a new single-carrier union fit.",
+      "cuts": "For MILP solutions violating a cycle or whole-path guard, add a no-good cut excluding that selected path's edge set and resolve. Same guard oracle for greedy. At most32 solve/check rounds per context,120s cumulative solver time/context, total solver budget600s; mip_rel_gap=0. Preserve status,bound,gap and cuts. Only a checked feasible incumbent may be exported; timeout is PARTIAL, never claimed optimal.",
+      "membership": "Preserve incumbent rows/groups; new path ID=min constituent carrier ID with versioned lineage. Outside processed contexts retain M4 IDs. Dormant rows activate only with existing3-seedlet/6-kernel/4p deduplicated-support gate; otherwise remain UNKNOWN with proposed association recorded. All identities provisional."
+    },
+    "delivery": "Save both arms' full458490-row mappings, ordered leaves/ports, alternatives, candidates, solver receipts and checkpoint before rendering. Cold-reload. Actual original-kernel0012/0036 full views plus complete-context and isolated-group comparisons; same camera, white background, floor0.0144, original width/opacity. Include failed/ambiguous contexts, no carrier or bridge drawings. Report support union, longest observed run, gaps, parent contributions and assignment gains/losses separately. Sealed M4/M5 are references, not rerun controls.",
+    "budget_protocol": "BUILD<=22min: new v06 namespace only, genuine RED/GREEN for port-conflict greedy trap, three-leaf composite identity, overlap support not consuming ports, cycle/whole-path rejection and complete-neighborhood overflow; bounded fixtures only. Freeze CONFIG/source/helper/test receipts and RUN_REQUEST. Parent alone owns1800s compute:300s readiness/selection, up to600s solver, reserve final600s for mappings/rendering/diagnostics. CPU/BLAS2, no subprocess/background science, output<=2GiB and runtime total<=20GiB. No new units09:15, science stop09:38."
+  },
+  "changed_variable": {
+    "between_new_arms": "Only link-selection strategy: greedy versus joint binary optimization; identical leaves, candidates, costs, abstention and whole-path guards.",
+    "versus_v05": "Composite identity can contain several unchanged finite carriers and connect both ports in one unit. This jointly changes representation and association; it is not merely adding polyline support or equivalent acceleration.",
+    "scope": "This tracer does not solve inter-carrier duplicate consolidation or previously masked ambiguity. Those limitations remain explicit potential next mechanisms."
+  },
+  "falsification": {
+    "readiness": "Missing cost/version binding, incomplete competition closure or oversized contexts cannot be called valid comparisons. Preserve an input-bottleneck result and real reference artifacts.",
+    "visual": "Joint must improve visibly coherent cross-fragment identity over greedy without swallowing distinct parallel/depth structures or branches. Lower objective, more links or common color alone are insufficient. Missing visible curved continuation remains PARTIAL.",
+    "delivery": "No completed tracer without cold-reloaded full-row mappings and both actual full views. Geometry changes, lost incumbent rows, split incumbent groups or rendered unsupported bridges fail immediately.",
+    "continuation": "If candidate coverage, overlap representation or the retained ambiguity mask removes the useful continuations, log that specific bottleneck and propose a separately frozen redesign next. Do not widen this unit's thresholds or declare the entire authorized window exhausted."
+  }
+}

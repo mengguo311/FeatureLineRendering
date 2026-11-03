@@ -1,0 +1,224 @@
+{
+  "research_only": true,
+  "experiments_run": false,
+  "all_new_methods_status": "PROPOSED/NOT_RUN",
+  "survey_root": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_grouping_method_survey_20261031",
+  "created_jst": "2026-11-01T00:03:46.178133+09:00",
+  "project_head": "77aaee103a74d6f9fa912915ea2d90b16d40906e",
+  "numerical_commit": "9f856724bc0fa8ebc615f9ddca347062d591e38a",
+  "ranked_methods": [
+    {
+      "rank": 1,
+      "name": "分层载体上的全局端口路径选择",
+      "status": "PROPOSED/NOT_RUN",
+      "mechanism": "将kernel观测->有限carrier片段的多对一支持，与carrier端口->路径身份分开。多个有序有限片段共享edge_id；联合选择续接、起止和未决状态，不先全组重拟合为一个载体。局部弧长DAG可用费用流，一般无向/有环3D需要端口整数规划或路径集合选择。",
+      "required_inputs": [
+        "已封存seedlet成员行和有限carrier几何/切向/版本",
+        "完整局部候选与竞争邻居、有效pair的成本/守卫记录",
+        "重复支持与拓扑连接的独立表示",
+        "少量真实上下文的可判/不可判参考标注，非旧parent真值"
+      ],
+      "why_not_current_v05": "由逐轮不相交pair提交变为完整路径联合选择；共同身份不再必须只有一个全成员拟合载体。共享新表示的贪心对照用于隔离全局选择效果。",
+      "primary_source_ids": [
+        3,
+        8,
+        9
+      ],
+      "original_paper_scope": "流论文是按时间排序的多目标检测关联；StrokeStrip输入已分簇2D笔画。本方案是3D迁移推断，不是论文证明。",
+      "objective_constraints": [
+        "同一端口至多一个continuation；重复核不消耗拓扑度数",
+        "每kernel主归属至多一个edge_id；aux可记替代；UNKNOWN不是共同拓扑簇",
+        "逐片段残差/切向守卫与完整路径曲率、平行、分支、交叉、gap约束同时成立",
+        "缺失支持不画桥；junction与其各条边身份分开",
+        "未确认闭环不自动闭合；无向/环约束不冒称普通min-cost-flow可解"
+      ],
+      "curve_parallel_branch_unknown": "分段保曲率；可信parallel cannot-link保分离；branch用junction终止/分开edge；证据冲突或不足保留UNKNOWN与替代。",
+      "direct_existing_assets": "可开展未来局部原型；本次仅检查schema，未验证每个计划上下文的全部运行输入均可提取。",
+      "strong_baseline": "同一片段表示、候选、代价、约束上的成本排序端口贪心；封存v05仅作额外参考。",
+      "cheapest_falsifier": "在固定真实直/曲/parallel/branch/depth/gap上下文中，完整原核显示若仅颜色统一、没有可辨连续性收益，或吞并明确独立边，即否定；正确续接不在原候选内时停止并归因候选缺失。",
+      "risks": [
+        "3D无自然时间顺序，不能直接继承tracking流问题的最优性",
+        "错误duplicate压缩会先丢失独立边",
+        "整条路径的高阶约束使求解更难",
+        "固定几何下尖刺仍会出现在全核图中"
+      ]
+    },
+    {
+      "rank": 2,
+      "name": "带远程排斥与几何约束的全局归组",
+      "status": "PROPOSED/NOT_RUN",
+      "mechanism": "在有限carrier片段图上以signed costs和lifted非邻接关联求一致划分，允许移动、拆分、重分配；另加高阶几何/端口约束，输出持久edge_id与复合carrier集合。",
+      "required_inputs": [
+        "载体片段与正负关联证据",
+        "可信cannot-link；不能把所有v05拒绝自动当物理反证",
+        "UNKNOWN/置信度定义及固定的关联代价",
+        "几何可行性的高阶或路径约束"
+      ],
+      "why_not_current_v05": "整体划分可重评历史合并和多个竞争解释；不依赖局部15% near-tie后永久排除，也不永久锁prefix。",
+      "primary_source_ids": [
+        1,
+        2
+      ],
+      "objective_constraints": [
+        "multicut一致性/cycle与lifted连接约束",
+        "可靠must-cut；不以缺观测/距离远强行cannot-link",
+        "额外parallel/turn/branch约束；普通multicut没有这些语义",
+        "不把最优目标值等同于物理正确"
+      ],
+      "direct_existing_assets": "几何原型可做；可靠关联成本/硬约束尚需设计并验证。作者C++库仅确认存在，未安装。",
+      "strong_baseline": "同一signed graph和几何约束上的局部凝聚，与可重新分配的求解作对照。",
+      "cheapest_falsifier": "冻结实际parallel和T/X上下文；目标降低却出现巨组、吞并支路或成员对候选顺序明显不稳，则关联目标不合适。",
+      "risks": [
+        "错误负边会永久分裂真实边",
+        "正边成链仍可造成过合并，必须检查全组/路径",
+        "NP难；启发式无全局最优保证",
+        "额外几何约束的近似求解可能无证书"
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "有限直线/样条模型库的鲁棒联合归属与模型选择",
+      "status": "PROPOSED/NOT_RUN",
+      "mechanism": "保留多个有限载体假设，以几何/切向/有限域残差、模型复杂度、邻域一致性和显式UNKNOWN标签联合分配，交替优化辅助模型；原核不移动。",
+      "required_inputs": [
+        "原seedlet和局部切向、有限支持",
+        "候选直线/局部样条库及其有效域",
+        "噪声尺度与模型复杂度/UNKNOWN代价",
+        "原始核映射和重复支持权重"
+      ],
+      "why_not_current_v05": "允许成员在多个假设间竞争/重分配及不支持成员留UNKNOWN；避免一次全组最大误差否决和既成单载体压缩。不是单纯放宽拟合阈值。",
+      "primary_source_ids": [
+        4,
+        5,
+        9
+      ],
+      "objective_constraints": [
+        "点/片段到模型的鲁棒残差与切向代价",
+        "有限域外不默认属于无限直线",
+        "模型数/复杂度与UNKNOWN惩罚；并列解释不强行唯一",
+        "拓扑邻接单独检查，低残差不证明无分支"
+      ],
+      "direct_existing_assets": "可开发未来局部原型；没有已验证可直接处理此NPZ的原作者程序。",
+      "strong_baseline": "相同有限模型库下最近残差分配加UNKNOWN，固定模型不重估。",
+      "cheapest_falsifier": "固定真实近平行/交叉曲线及重复支持权重压力对照；若复杂度惩罚吞掉第二条边、样条追尖刺或桥接空隙，则失败。",
+      "risks": [
+        "PEARL只有局部极小，初始假设覆盖影响结果",
+        "T-Linkage仍凝聚且需离群处理，并不天然解决全局决策",
+        "有限样条和拓扑约束属于本项目推断",
+        "原资产噪声若系统性偏移，统计稳健性不能恢复真值"
+      ]
+    }
+  ],
+  "conditional_routes": [
+    {
+      "name": "共同参数化/线稿聚合",
+      "primary_source_ids": [
+        8,
+        9
+      ],
+      "reason": "借鉴重叠观测对齐；不是直接3D无序聚类器，StrokeStrip需要已分簇输入。"
+    },
+    {
+      "name": "多视图关联与结构先验",
+      "primary_source_ids": [
+        10
+      ],
+      "required_extra": "标定真实图像边缘/线对应及可见性；不能从线核自渲染得到独立支持。",
+      "guard": "遮挡或检测缺失保持UNKNOWN；平行仅说明方向而非共同身份。"
+    },
+    {
+      "name": "主曲线/骨架",
+      "primary_source_ids": [
+        6,
+        7
+      ],
+      "reason": "主曲线仅做已兼容簇的辅助载体；整物体中心骨架不对应表面边身份，不直接使用。"
+    },
+    {
+      "name": "NEF/learned affinity/GNN",
+      "primary_source_ids": [
+        11
+      ],
+      "required_extra": "NEF需标定边缘图与训练；GNN需适用训练数据/标签或已验证权重。",
+      "status": "CONDITIONAL_NOT_RECOMMENDED_NOW/NOT_RUN"
+    }
+  ],
+  "next_experiment": {
+    "name": "一个真实区域、共享片段表示的端口贪心 vs 联合路径选择对照",
+    "status": "PROPOSED/NOT_RUN",
+    "auto_execution_authorized": false,
+    "requires_new_user_authorization": true,
+    "selected_method_rank": 1,
+    "goal": "检验在不增加候选和不动核几何时，联合路径选择是否改善可见同边完整性与干净程度。",
+    "sample_plan": {
+      "contexts": 8,
+      "composition": [
+        "两条直段",
+        "两条曲段",
+        "parallel",
+        "T分支",
+        "depth crossing",
+        "unsupported gap"
+      ],
+      "seed_examples_only": [
+        "scan24 53254（直段，不能冒充多实质原parent）",
+        "scan65 9353（直段且原材料门槛未达）",
+        "ficus 64355/112780（已看过的局部曲线）"
+      ],
+      "selection": "在查看任何新方法结果前，从已保存完整上下文与lineage冻结样本及所有竞争邻居。负例从封存最小裕量记录取；视图不可判的标UNKNOWN。不得只裁成功成员或把这些开发案例叫held-out。",
+      "size_guard": "每个上下文最多128个carrier片段；若保留全部竞争邻居超限，记NOT_RUN，不剪掉不利邻居来凑预算。"
+    },
+    "arms": [
+      "封存v05输出：参考，不重跑",
+      "shared composite-carrier representation + cost-ordered greedy port selection",
+      "same representation/evidence/constraints + joint path selection"
+    ],
+    "only_between_new_arms_changed": "connection selection strategy; no candidate additions, geometry changes or different UNKNOWN rules",
+    "input_readiness": "本次未载完整资产。未来首先核验input state/records/versions完整；有效pair成本可从记录恢复，但记录缺失或无可信候选时NOT_READY，不悄悄补数。",
+    "future_cost_freeze_requirement": "使用同一来源的归一化pair代价和同一预先冻结目标。不能只比较有无branch约束。具体权重/目标与solver须在未来BUILD前冻结；此研究报告不冒充RUN_REQUEST。",
+    "guards": [
+      "原片段各自满足残差/切向约束",
+      "完整组合额外验证窗口转角、self-contact、parallel、branch、unsupported gap；两两通过不代表整体通过",
+      "保留原核行、几何、opacity、宽度、数量；辅助carrier不进入渲染",
+      "保留所有失败和替代解释；未知不得强填主身份"
+    ],
+    "deliverables_if_later_authorized": [
+      "局部新membership和carrier-path/lineage；原资产只读",
+      "固定相机实际原核全景、完整上下文单组对照；不得补桥/平滑核",
+      "短固定相机序列及固定edge_id颜色；这不是独立物理证据",
+      "全部得失、误吞、未决和区间支持诊断"
+    ],
+    "primary_falsifier": "任一明确独立的parallel/depth/branch被吞，或仅重新着色而没有直线与曲线的可辨连续性收益，则不扩大到全资产；候选缺正确解时把失败归为信息不足而非继续调solver。",
+    "metrics_secondary_only": [
+      "支持并集 vs 最长连续观测段",
+      "独立旧片段贡献与UNKNOWN得失",
+      "错误连接、切断与身份不稳定",
+      "不以assigned/merge/solver目标值单独宣布成功"
+    ],
+    "budget_proposal": {
+      "compute_seconds_hard_cap": 1800,
+      "cpu_total": 2,
+      "blas_total": 2,
+      "gpu": false,
+      "threshold_sweeps": false,
+      "timing_is": "proposed future stop cap, not a measured runtime or performance promise"
+    },
+    "current_actions": "No implementation, fitting, rendering, training or experimental tests performed."
+  },
+  "not_recommended": [
+    "更宽DBSCAN或直接连通分量",
+    "无新证据的额外M轮/fit预算",
+    "直接把L1-medial中心骨架当表面边",
+    "按旧parent训练或按assigned增长证明物理正确",
+    "把源核渲染当独立多视图证据"
+  ],
+  "most_important_uncertainties": [
+    "现有几何可辨识的物理同边关系数量未知",
+    "固定原核的全资产图无法仅靠归组消除尖刺",
+    "缺乏独立物理真值、完整parallel/branch/depth安全和held-out证据"
+  ],
+  "citation_ledger": "citations.json",
+  "reading_register": "notes/SOURCE_READING_REGISTER.json",
+  "source_evidence": "evidence/",
+  "no_repo_or_experiment_output_writes": true
+}

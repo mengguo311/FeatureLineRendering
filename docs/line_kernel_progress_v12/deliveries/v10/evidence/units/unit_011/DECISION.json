@@ -1,0 +1,18 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit010两臂各接受一次后完整无连接；软项只把自接触端点解释换成带新增平行冲突的纯池化，未带来第二次增长。应换未访问实例，不再扫描30579权重。已核验84份快照、两个helper及BASE_FINAL四个checkpoint文件，并核对8765/61271的M4版本、贡献和保存行数；本review未运行拟合、测试或新数值实验。",
+  "recommended_next_step": {
+    "experiment": "Scan65新8765/61271：BASE_J增长，CONTACT_SOFT_J仅影子。",
+    "binding": "继承unit010 CONFIG 37743b427484a8af2073749e549a737a26ac26521af78d9b38ce742e76f13781及PARENT_RUN_FROZEN。冷载scenes/scan65/stages/BASE_J_FINAL，逐文件核验CHECKPOINT；MEMBERSHIP=5304129f738a33395f8b5318a1ff286876dfe508764971d7ee70452fd8ba1371。",
+    "start": "279616行、127010 assigned、152606 UNKNOWN、next_version21780、p=.001725801957946726、1871继承事件。保留全部11复合组及强M4背景，30579/v21779的自接触接受也原样保留，不视为GT；精确复制NO_FURTHER_GROWTH。",
+    "seeds_loader": "固定line8765/v21440/44核、polyline61271/v21494/71核。保存M3贡献分别31+13核和38+33核，各贡献支持均>2p；polyline不等于真实曲率认证。原M4 loader仍使用原五组schema，再按checkpoint全部11组版本恢复。核对新两组完整行集、版本、原叶及Q未变后仅添加origin标记，主动队列仅8765/61271，不重选、不分配版本；失败NOT_RUN不补选。checkpoint覆盖13个origin，旧组仍是完整donor。保留restricted M4/control/piece/parent/basis-center及真实guard(phase)。",
+    "control": "重放unit010 libraries/BASE_J/0001_30579完整83donor/498解释及零选择，核对原记录、评分、Q/template/masks，忽略新增诊断；仅readiness，不重启30579增长。冻结新两组完整BASE/CONTACT评分库后，只执行BASE_J。NO_FURTHER_GROWTH为匹配状态控制；CONTACT_SOFT_J及现有ROW_FIT仅同状态影子，不能冒充执行对照。",
+    "fixed_algorithm": "relaxed_rule_groups=[2,4,6]。整曲线完整2p精确段距查询，无top-k；双向重叠1p对应/median偏移及四端点解释。assigned整组donor、UNKNOWN原载体。模板≤1p；全部并集成员和全部结点五轮组均衡IRLS，h=min(1,.5/max(d,1e-30))，矩阵因子sqrt(h/(4*n_H))，平滑.05、模板.001，LSQR atol/btol1e-8、iter_lim2000。",
+    "score_guards": "BASE J=.5D_G+.5D_F+.25mean(T_H有效侧)+.05mean((turn/90)^2)+.1maxgap²+.02K/(L+1)，p归一化、U奖励0；平局donor/关系/方向。CONTACT影子仅加.01*现有self_contact布尔值。保留规则1/3/TRANSPORT5、原UNKNOWN处理；不恢复距离、角度、平行、contact、gap或U=0硬门。缺诊断、运输未决、8192成员/257结点超限或任何未完成候选使该轮PARTIAL，禁止截断晋级。",
+    "repeat_closure": "ID轮转提交完整库最低J，先原子保存完整并集/Q/版本和紧凑delta，再完整重查；吸收种子合并队列，无接受次数上限或旧总损失改善门。仅完整无连接或支持闭合自然停止。闭合仍须端距≤.5p、长度≥6p、两端1p窗各≥3有效核、切向≤45度、协方差无洞覆盖及周期contact。自接触/gap合并允许，但不能据此认证闭合。",
+    "evidence": "冻结13个START origin的Q/行集，固定坐标内部支持与动态union/run/gap/域外代理分开记账。先冷载全行映射，再0012/0036原核全景、两新组起中末/新增/完整对象竞争背景、六类负例和三损伤参考。保留首次排名分歧、pooling/contact/gap及误差/规模top3；unit010两条坏轨迹作为封存参考，不重算为新收益。记录G/F/union及premerge_G分叉见证，早拒绝保持NOT_REACHED。小投影明确缺证据。",
+    "budget": "BUILD目标≤4min，仅适配与真实loader/13-origin保留小测试，诚实复用原回归。Parent780s：readiness60、共同库含旧重放120、增长240、交付360；CPU2串行。必须05:15前ready并启动，否则保留NOT_RUN并交接。绝对science05:35、模型05:40、hard06:00。看保存图后两分钟内写四分析文件。"
+  },
+  "changed_variable": "仅主动实例范围和继承起点改变；BASE拟合、候选、评分及2/4/6关闭状态不变。CONTACT仅影子，不作其优越性归因。原核冻结、monotone_group_union、whole_curve_auxiliary_update=true、accepted_merge_is_ground_truth=false。",
+  "falsification": "丢旧复合组、改核/失核、漏竞争者、旧库不复现、截断晋级、恢复2/4/6或假闭合均为工程失败。新组若仍只池化、吞并平行/深度/第三臂或牵坏旧成员，保存最早反例；计数、低loss和模型标签不能证明身份。小图/无连接/预算中断分别记录，不宣称研究问题耗尽；无辅助桥墨、物理或held-out认证。"
+}

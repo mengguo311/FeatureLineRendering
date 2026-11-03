@@ -1,0 +1,80 @@
+{
+  "unit": "unit_007",
+  "execution_state": "partial",
+  "scientific_verdict": "PARTIAL: substantial visible straight overlap grouping; joint superiority and new curved identity in both views not established",
+  "scope": {
+    "scene": "scan24",
+    "original_rows": 458490,
+    "selected_components": 1917,
+    "complete_components": 1774,
+    "not_run_bank_deadline": 143,
+    "complete_component_leaves": 6463,
+    "all_decision_leaves": 6775,
+    "full_row_mappings_both_arms": true,
+    "native_views_both_arms": [
+      "0012",
+      "0036"
+    ],
+    "other_scenes_run": []
+  },
+  "mechanism": "Fixed finite anchor plus recovered pair model hypothesis bank; indivisible overlap leaves; greedy versus MILP mutually exclusive selection; no endpoint extension",
+  "actual_child_exit": {
+    "returncode": 0,
+    "reason": null,
+    "source": "../../orchestration/unit_007/COMPUTE_EXIT.json"
+  },
+  "control_replay_exact": true,
+  "model_reproduction_failures": 0,
+  "new_models_recovered": 5241,
+  "reused_models": 38,
+  "hypotheses": 7245,
+  "greedy": {
+    "assigned": 263539,
+    "unknown": 194951,
+    "gained_vs_M4": 17190,
+    "lost_vs_M4": 0,
+    "gained_vs_unit006": 17102,
+    "lost_vs_unit006": 0,
+    "lost_vs_unit003": 2854
+  },
+  "joint": {
+    "assigned": 263491,
+    "unknown": 194999,
+    "gained_vs_M4": 17142,
+    "lost_vs_M4": 0,
+    "gained_vs_unit006": 17054,
+    "lost_vs_unit006": 0,
+    "lost_vs_unit003": 2868
+  },
+  "joint_vs_greedy": {
+    "different_edge_id_rows": 5059,
+    "gained_assigned": 593,
+    "lost_assigned": 641
+  },
+  "provenance": {
+    "source_snapshot_verified_files": 53,
+    "verified_helpers": 2,
+    "config_sha256": "7bf5b9819a1f380d715baa4f990fe4abbf268799838287a56aaf6986242212f3",
+    "both_mapping_checkpoint_hashes_verified": true
+  },
+  "unresolved": [
+    "143 entire components retained M4",
+    "48211 view0012 empty",
+    "301451/301459 both views empty",
+    "cropped native-boundary cases",
+    "joint superiority unproven",
+    "parallel/branch/depth physical safety unverified",
+    "support union is not continuous observed length",
+    "source geometry spikes remain",
+    "no held-out or physical identity validation"
+  ],
+  "analysis_mode": "saved outputs only; no fitting/rerender/source changes",
+  "parent_seals_artifacts": true,
+  "saved_mapping_analysis": {
+    "exact_row_ids_both_arms": true,
+    "M4_assignment_losses_both_arms": 0,
+    "M4_split_groups_both_arms": 0,
+    "joint_optimal_component_receipts": 1774,
+    "joint_fallback_M4_receipts": 143
+  }
+}

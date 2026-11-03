@@ -1,0 +1,195 @@
+{
+  "returncode": 0,
+  "tdd_status": "REAL_PREIMPLEMENTATION_HOST_REMAP_ASSERTION_RED_TO_GREEN; NEW_INTERFACE_IMPORT_RED_TO_GREEN; EXISTING_CHECKS_REGRESSIONS",
+  "tests": 24,
+  "command": [
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+    "-B",
+    "-m",
+    "unittest",
+    "test_pair_model",
+    "test_pair_runner",
+    "test_pair_contract",
+    "test_overlap_model",
+    "test_overlap_contract",
+    "-v"
+  ],
+  "cwd": "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06",
+  "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_005/tests/GREEN_ALL_02.log",
+  "log_sha256": "cdf43091d275321d169e1b587fa7e709483bd6b2db9581fa14b1e1e2342cfd35",
+  "red": [
+    {
+      "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_005/tests/RED_HOST_REMAP.log",
+      "returncode": 1,
+      "kind": "actual assertion before implementation: unchanged old host-ID shortcut returns [0,6] instead of [1,7] for shifted model domain"
+    },
+    {
+      "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_005/tests/RED_NEW_API.log",
+      "returncode": 1,
+      "kind": "test-first missing new module; not claimed numerical assertion failure"
+    }
+  ],
+  "green": [
+    {
+      "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_005/tests/GREEN_MODEL_01.log",
+      "returncode": 0,
+      "tests": 7
+    },
+    {
+      "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_005/tests/GREEN_VERTICAL_01.log",
+      "returncode": 0,
+      "tests": 17
+    },
+    {
+      "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_005/tests/GREEN_ALL_02.log",
+      "returncode": 0,
+      "tests": 24
+    }
+  ],
+  "excluded_invocation_errors": [
+    {
+      "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_005/tests/RED_INTERFACE.log",
+      "returncode": 1,
+      "reason": "wrong unittest working directory; excluded from RED evidence"
+    },
+    {
+      "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_005/tests/GREEN_ALL_01.log",
+      "returncode": 1,
+      "reason": "wrong unittest working directory; excluded from GREEN evidence"
+    }
+  ],
+  "non_test_command_error": {
+    "returncode": 127,
+    "reason": "mistyped Python -V path while creating test file; no interpreter executed; not RED evidence"
+  },
+  "config_build": {
+    "returncode": 0,
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_005/tests/CONFIG_BUILD.log"
+  },
+  "cli_help": {
+    "returncode": 0,
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_005/tests/CLI_HELP.log"
+  },
+  "log_hashes": {
+    "RED_INTERFACE.log": "9dda4122ec7ea3ec75dfb1787848238a98be3025ef6b32cca8e8e974b91b85fc",
+    "RED_NEW_API.log": "0adf8ab33b37e2250b3bff23a2d4de72147d7bffb8c41dfddce4cf4ee832a3b7",
+    "RED_HOST_REMAP.log": "5275f930b1b0774b0b80a75427d388462ed1121b65fb787ac29d8a3834eee037",
+    "GREEN_MODEL_01.log": "451c167e16c6db57b2cf7bcc9f808f7d8ab338cf7a37a3808ed4ea250d565989",
+    "GREEN_VERTICAL_01.log": "f696b4c52166b1253d63b35c7a0b907e9803cb8afa5a9050bb8dda81b647c0aa",
+    "GREEN_ALL_01.log": "c74311cc0c4f4796742f9b44b2cf72f836ddb7370a73ed2f7fbc4403c4bb652b",
+    "GREEN_ALL_02.log": "cdf43091d275321d169e1b587fa7e709483bd6b2db9581fa14b1e1e2342cfd35",
+    "CONFIG_BUILD.log": "20c44e89973575e3b9a26a72e8602b7f2e07c14173b6706ce38dc69342cc98a6",
+    "CLI_HELP.log": "d514c00460eab8213a7ab9c9f86a6a90b52ab88528ed08ac67d332a1a458a56c"
+  },
+  "coverage": [
+    "12-row actual original-core fit fixture; old anchors fail and shared model succeeds",
+    "mandatory seed pair and host support remapping",
+    "finite-domain, parallel, branch, UNKNOWN and preserved old auxiliary fields",
+    "same-bank greedy trap and no solver without budget",
+    "both complete mapping checkpoints before deliberately refused renderer",
+    "cold resume prohibits refitting, bank rebuild, solving and mapping regeneration",
+    "saved metric mismatch keeps control mappings",
+    "9 real original carriers/35 seedlets and 9 saved candidate record schema regression"
+  ],
+  "full_asset_science_run": false,
+  "render_run": false,
+  "old_source_files_unchanged": 28,
+  "source_files": {
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/adapter.py": "af4a89acdb1b11f553709d5a876ce4890b8d27b67029c5488b8883f22828f9ce",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/ambiguity_delivery.py": "c5c9b1844192e14552ace859ed5f05cc2ab2e26b2621c68105c1a50dfbb04576",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/ambiguity_policy.py": "11d2a14c66bde2a4fab7d6043d7d8491b6d6f55392f2ea6d82873941b59be31b",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/ambiguity_runner.py": "fb863516c1cb9c280ba4565d45a91d08236189bcdd48742df8b05cd979d1d6c7",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/build_ambiguity_config.py": "ea8e1e322f304f7f477a26f329c4a3e024b69e26b7ccc2827e91ce68eba2b716",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/build_config.py": "22717de73f81981cb289ab824536e29079c729e008c2d55a19552a092de0507d",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/build_overlap_config.py": "5f56db0039dcbdfcc96c61c8337fcf13f9781b29174349cfdbf48cedfe7dec5b",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/build_pair_config.py": "f93d218f0d1d6ab671a225e8d3e5bff214ad950204c79fbd4c3caadeec2c9513",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/delivery.py": "806f445a15b3ca3fefb3fe933ed9ea5a9f2c46fdc664cd28f83cf7e7f6ac0dce",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/geometry_base.py": "e05d836192be29709cc139a6c04bb77dbf256425f5e4a8e7c92fa7fae26afe71",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/overlap_delivery.py": "201abd1bf120d44a907de06fb6a3f5e6264af8f25a0541f934f112ae4d17d352",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/overlap_model.py": "d54d123d7361a03a7f66658bd8e6de953288981500eb6351d70217e20126224f",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/overlap_runner.py": "b7e4c01457ec3135d32685de39f1f5af0c0f21f994bcb83c5944d21693fdf3c2",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/pair_delivery.py": "0a502a74fce950f1b4d7a36824a98f836737033059df24affb264f4e9cc9ae20",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/pair_model.py": "3ef33ca01d8bd45d4f003dd3dae648c1024970b06fcd2be6933316d96f7fbe0e",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/pair_runner.py": "142961775414f393438b7a0bbb06429d4e7a7c7afdd81c7eef38e3eb368ee6d7",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/pair_stages.py": "b39855d7cabe63daf1ded6ca2b3f00741b120ca8df538cdb7573bd8f16bb5d55",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/paired_delivery.py": "67e6dac305caab608fe6205e90a9b1d7faaac4fbbf80a5056f5107e6bbbe8c22",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/port_paths.py": "b08baad4113f838f02f6bebc93153ca8bfff3b8c92168c296b6a7d0c5ba2851c",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/run_build_tests.py": "a9198102468e799e4f5af2cc153349b5f86b832c8b6f7011e9542482395624cb",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/runner.py": "445d7cb2cda1476223f40d9de997c0f8672f1e4789c573fc12a99100e82ccef5",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/runtime_io.py": "910e143fa2265109601dbc325b42475d3955368427be05be7a1c2fc68d2e3180",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_adapter.py": "74794684081ae44bcf243259b6ae9afa422189b82785414b3dab1c621ed52261",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_ambiguity.py": "30f9abe27a3b89dc7b910a85d5e84e66a40235614e3944a0e3b48eab56484f2c",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_ambiguity_delivery.py": "50b7b3e7c375d120434254992362f096b5a5de9283b07f9cd754cf2fc8138eda",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_overlap_contract.py": "3cdbd8e18a8040b81f29ecaefbf15df4088c925357b9faf3b5b5a0a4350c9833",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_overlap_model.py": "0a360b2cd56c729e213efbd192f433a5679498f5b4a415d16ef2f3a51083edc7",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_overlap_runner.py": "45f4c35d45db94bd5a399224dc09b165494386acbeb226dd0a0c864598e8a2b0",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_pair_contract.py": "0d655401107fad5db5be57d71f09da9547371d52fb6c50b110c9b6f2c33d1b68",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_pair_model.py": "5ca713f0f91919e454f564e2f7d3eb9ff94edc49b2e516ba202795ea11b11c8a",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_pair_runner.py": "1f28e545fc8337c3152b7cbdadbf46fc0d4434cb05e8b3b92ac9644e14a1cd9e",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_paired_delivery.py": "66cfc6271519fc9dcb434b819a53674b09cba933e0941a8846c9ec5ceb56acb6",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_port_paths.py": "bff90e56f484ab6beeac07e9a10325d871e75c4b65ec40a4f10b866b09e1e0b1",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_real_ambiguity.py": "af42687ea9e486c3ae3face2b010da8c49c6ed25b35969b16b2ef369d1e66584",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_runner_fixture.py": "1b7be50e52eeea52112121bb7ce6485972220d534c50e4756365f4302e552d22",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_scope.py": "e7edcfd7d072c120539bc1052104950fdc151c924832469d5e4f41816f7a0655",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/pinned_v05_fit_core.py": "c1565d2c33ee1f75e1a58469f14d8e153a138eb5f3c0dc73fbbcc5a9ab20e512"
+  },
+  "created_jst": "2026-11-01T07:36:47.594295+09:00",
+  "original_suite_source_files": {
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/adapter.py": "af4a89acdb1b11f553709d5a876ce4890b8d27b67029c5488b8883f22828f9ce",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/ambiguity_delivery.py": "c5c9b1844192e14552ace859ed5f05cc2ab2e26b2621c68105c1a50dfbb04576",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/ambiguity_policy.py": "11d2a14c66bde2a4fab7d6043d7d8491b6d6f55392f2ea6d82873941b59be31b",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/ambiguity_runner.py": "fb863516c1cb9c280ba4565d45a91d08236189bcdd48742df8b05cd979d1d6c7",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/build_ambiguity_config.py": "ea8e1e322f304f7f477a26f329c4a3e024b69e26b7ccc2827e91ce68eba2b716",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/build_config.py": "22717de73f81981cb289ab824536e29079c729e008c2d55a19552a092de0507d",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/build_overlap_config.py": "5f56db0039dcbdfcc96c61c8337fcf13f9781b29174349cfdbf48cedfe7dec5b",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/build_pair_config.py": "f93d218f0d1d6ab671a225e8d3e5bff214ad950204c79fbd4c3caadeec2c9513",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/delivery.py": "806f445a15b3ca3fefb3fe933ed9ea5a9f2c46fdc664cd28f83cf7e7f6ac0dce",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/geometry_base.py": "e05d836192be29709cc139a6c04bb77dbf256425f5e4a8e7c92fa7fae26afe71",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/overlap_delivery.py": "201abd1bf120d44a907de06fb6a3f5e6264af8f25a0541f934f112ae4d17d352",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/overlap_model.py": "d54d123d7361a03a7f66658bd8e6de953288981500eb6351d70217e20126224f",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/overlap_runner.py": "b7e4c01457ec3135d32685de39f1f5af0c0f21f994bcb83c5944d21693fdf3c2",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/pair_delivery.py": "0a502a74fce950f1b4d7a36824a98f836737033059df24affb264f4e9cc9ae20",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/pair_model.py": "3ef33ca01d8bd45d4f003dd3dae648c1024970b06fcd2be6933316d96f7fbe0e",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/pair_runner.py": "142961775414f393438b7a0bbb06429d4e7a7c7afdd81c7eef38e3eb368ee6d7",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/pair_stages.py": "b39855d7cabe63daf1ded6ca2b3f00741b120ca8df538cdb7573bd8f16bb5d55",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/paired_delivery.py": "67e6dac305caab608fe6205e90a9b1d7faaac4fbbf80a5056f5107e6bbbe8c22",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/port_paths.py": "b08baad4113f838f02f6bebc93153ca8bfff3b8c92168c296b6a7d0c5ba2851c",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/run_build_tests.py": "a9198102468e799e4f5af2cc153349b5f86b832c8b6f7011e9542482395624cb",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/runner.py": "445d7cb2cda1476223f40d9de997c0f8672f1e4789c573fc12a99100e82ccef5",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/runtime_io.py": "910e143fa2265109601dbc325b42475d3955368427be05be7a1c2fc68d2e3180",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_adapter.py": "74794684081ae44bcf243259b6ae9afa422189b82785414b3dab1c621ed52261",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_ambiguity.py": "30f9abe27a3b89dc7b910a85d5e84e66a40235614e3944a0e3b48eab56484f2c",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_ambiguity_delivery.py": "50b7b3e7c375d120434254992362f096b5a5de9283b07f9cd754cf2fc8138eda",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_overlap_contract.py": "3cdbd8e18a8040b81f29ecaefbf15df4088c925357b9faf3b5b5a0a4350c9833",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_overlap_model.py": "0a360b2cd56c729e213efbd192f433a5679498f5b4a415d16ef2f3a51083edc7",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_overlap_runner.py": "45f4c35d45db94bd5a399224dc09b165494386acbeb226dd0a0c864598e8a2b0",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_pair_contract.py": "0d655401107fad5db5be57d71f09da9547371d52fb6c50b110c9b6f2c33d1b68",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_pair_model.py": "5ca713f0f91919e454f564e2f7d3eb9ff94edc49b2e516ba202795ea11b11c8a",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_pair_runner.py": "1f28e545fc8337c3152b7cbdadbf46fc0d4434cb05e8b3b92ac9644e14a1cd9e",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_paired_delivery.py": "66cfc6271519fc9dcb434b819a53674b09cba933e0941a8846c9ec5ceb56acb6",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_port_paths.py": "bff90e56f484ab6beeac07e9a10325d871e75c4b65ec40a4f10b866b09e1e0b1",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_real_ambiguity.py": "af42687ea9e486c3ae3face2b010da8c49c6ed25b35969b16b2ef369d1e66584",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_runner_fixture.py": "1b7be50e52eeea52112121bb7ce6485972220d534c50e4756365f4302e552d22",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_scope.py": "e7edcfd7d072c120539bc1052104950fdc151c924832469d5e4f41816f7a0655"
+  },
+  "interface_repair": {
+    "status": "PASS",
+    "returncode": 0,
+    "failure": "helper outside allowed scientific sources",
+    "change": "Byte-identical approved historical fitting core copied into v06 source namespace and frozen as source_files; no numerical changes. External helper list restored to approved renderer/libjoint.",
+    "scientific_decision_unchanged": true,
+    "preexisting_source_files_unchanged": 36,
+    "added_source_sha256": "c1565d2c33ee1f75e1a58469f14d8e153a138eb5f3c0dc73fbbcc5a9ab20e512",
+    "historical_source_sha256": "c1565d2c33ee1f75e1a58469f14d8e153a138eb5f3c0dc73fbbcc5a9ab20e512",
+    "config_sha256_before": "5d6c67aeda0e433fcc48e81d51e51228d9d6cab7036158ba05438f2b04b60f21",
+    "config_sha256_after": "0a7e8e75c4a378c6ccaf39d26e9b3cfad5f5f31bf6e13bfb461b58c8db003701",
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_005/tests/INTERFACE_REPAIR_GREEN.log",
+    "log_sha256": "f0269f773eb82e8fb73468bf5b25105ffd6ab3aa04a008b5394c4449efddede8",
+    "validation": "Actual parent validate_request with unchanged parent helper roots; exact approved command. No run_owned call.",
+    "small_test": "12-row synthetic fitting output identical for historical and byte-identical local source copies",
+    "full_science_run": false,
+    "render_run": false,
+    "created_jst": "2026-11-01T07:38:29.354954+09:00"
+  },
+  "original_receipt_sha256": "891c1df808b06358cd8a17849be9277a89b45bfc30f91d7f5daea2b92eba47b6"
+}

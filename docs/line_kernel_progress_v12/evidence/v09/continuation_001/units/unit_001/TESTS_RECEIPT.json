@@ -1,0 +1,47 @@
+{
+  "returncode": 0,
+  "tdd_status": "GENUINE_FUNCTIONAL_RED_GREEN: actual restricted M5 load succeeded but old composite-state adapter rejected the M5 checkpoint schema; new direct-M5 adapter passes without replacing the loader. All original numerical regression tests also pass.",
+  "red": {
+    "returncode": 1,
+    "command": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+      "-B",
+      "/home/u00134/3dgs_line/line_kernel_best_fragment_growth_v09/reproduction/line_kernel_best_fragment_growth_v09/test_scan24.py"
+    ],
+    "created_utc": "2026-11-02T04:54:13.808457+00:00",
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_best_fragment_growth_v09_20261102/continuation_001/units/unit_001/tests/RED.log",
+    "sha256": "8a45f07141d2cf24b96746ffa1630d8cf6d91e8c90f2fbcd3380134de65e619f",
+    "baseline_adapter": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_best_fragment_growth_v09_20261102/continuation_001/units/unit_001/tests/RED_scan24_loader.py",
+    "baseline_sha256": "27c7d747efb93ad11efb25e196802384e6b6a83079ef0dba1ae2fa834624c348"
+  },
+  "green": {
+    "returncode": 0,
+    "command": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+      "-B",
+      "/home/u00134/3dgs_line/line_kernel_best_fragment_growth_v09/reproduction/line_kernel_best_fragment_growth_v09/test_scan24.py"
+    ],
+    "created_utc": "2026-11-02T04:56:07.564888+00:00",
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_best_fragment_growth_v09_20261102/continuation_001/units/unit_001/tests/GREEN.log",
+    "sha256": "d6ec04c883cfe7d9ce957252dddbdd6a201aa0ff49eeae3edcdbfbde9d29d979"
+  },
+  "cli": {
+    "returncode": 0,
+    "command": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+      "-B",
+      "/home/u00134/3dgs_line/line_kernel_best_fragment_growth_v09/reproduction/line_kernel_best_fragment_growth_v09/scan24_runner.py",
+      "--help"
+    ],
+    "created_utc": "2026-11-02T04:57:25.086257+00:00",
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_best_fragment_growth_v09_20261102/continuation_001/units/unit_001/tests/CLI.log",
+    "sha256": "95cbe4291ac9fb30c61004c56f74c1c376acc44f39eba2e10518a6eefad3ef14"
+  },
+  "real_loader_guard_test": true,
+  "full_asset_run": false,
+  "render_run": false,
+  "fixture_scope": "36 original-schema synthetic rows and bounded geometric fixtures; Pillow context fixture only, no native renderer invoked",
+  "test_count": 16,
+  "original_core_byte_identical": true,
+  "created_utc": "2026-11-02T04:57:39.631688+00:00"
+}

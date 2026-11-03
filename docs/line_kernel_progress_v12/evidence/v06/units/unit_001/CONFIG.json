@@ -1,0 +1,180 @@
+{
+  "unit": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_001",
+  "output": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_001",
+  "runtime": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101",
+  "scene": "scan24",
+  "kernel_count": 458490,
+  "p": 0.0014320037356621643,
+  "decision_path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_001/DECISION.json",
+  "decision_sha256": "02bfda02ed358041390851cc32e6e292dd83ad5e088016466e33eacac92bb24b",
+  "max_seconds": 1800,
+  "absolute_deadline_jst": "2026-11-01T09:38:00+09:00",
+  "state": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/scenes/scan24/states/M4/STATE.pkl",
+  "predecessor_checkpoint": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/scenes/scan24/states/M4/CHECKPOINT.json",
+  "predecessor_config": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/CONFIG.json",
+  "membership": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/scenes/scan24/stages/M4_MERGE_ONLY/MEMBERSHIP.npz",
+  "carriers": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/scenes/scan24/stages/M4_MERGE_ONLY/CARRIERS.npz",
+  "ordered_candidates": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_018/scenes/scan24/states/M5/ORDERED_CANDIDATES.npz",
+  "candidate_status": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_018/scenes/scan24/states/M5/controls/joint/CANDIDATE_STATUS.npz",
+  "ambiguity": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_018/scenes/scan24/states/M5/JOINT_AMBIGUITY.npz",
+  "reference_membership": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_018/scenes/scan24/stages/M5_MERGE_ONLY/MEMBERSHIP.npz",
+  "candidate_metrics": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_018/scenes/scan24/states/M5/controls/joint/METRICS.json",
+  "views": [
+    "0012",
+    "0036"
+  ],
+  "seed_groups": [
+    53254,
+    210790
+  ],
+  "negative_pairs": [
+    [
+      84842,
+      362883
+    ],
+    [
+      153248,
+      377058
+    ],
+    [
+      153427,
+      153430
+    ],
+    [
+      301451,
+      301459
+    ]
+  ],
+  "solver": {
+    "per_context_seconds": 120,
+    "total_seconds": 600,
+    "max_cut_rounds": 32,
+    "mip_rel_gap": 0,
+    "threads": 2,
+    "parallel": false
+  },
+  "stage_budgets": {
+    "readiness_seconds": 300,
+    "solver_seconds": 600,
+    "mapping_deadline_elapsed_seconds": 1200,
+    "delivery_reserved_seconds": 600,
+    "total_seconds": 1800
+  },
+  "resource_limits": {
+    "cpu": 2,
+    "blas": 2,
+    "gpu": false,
+    "unit_bytes": 2147483648,
+    "runtime_bytes": 21474836480,
+    "root_free_bytes": 1073741824,
+    "hdd_free_bytes": 10737418240
+  },
+  "scientific_decision": {
+    "unit": "unit_001",
+    "experiment": "Frozen scan24 M4 finite carriers: joint port-path selection versus identical-representation greedy.",
+    "inputs": {
+      "root": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units",
+      "carriers": "unit015/scenes/scan24/states/M4/STATE.pkl and stages/M4_MERGE_ONLY/{MEMBERSHIP,CARRIERS}.npz",
+      "state_sha256": "4f350e3a991c98d7cf011d833be4fc5aebcce1c7d328ae69b39948b5698ec31f",
+      "candidates": "unit018/scenes/scan24/states/M5/ORDERED_CANDIDATES.npz; controls/joint/CANDIDATE_STATUS.npz; JOINT_AMBIGUITY.npz",
+      "geometry": "Original458490 scan24 kernels, representatives/tangents and p=0.0014320037356621643 from unit018 CONFIG references.",
+      "verification": "Bind all input/helper hashes from sealed manifests before loading. Restricted state loader; cross-check row ownership, versions, normalized q versus world-unit knots, candidate pair coverage and cost semantics. No old producer execution."
+    },
+    "representation": "Immutable M4 carriers are topology leaves. Their many-to-one kernel supports consume no additional degree. A new persistent edge_id owns an ordered list of oriented finite leaves; do not refit their union into one polyline. Between-leaf overlap proposals are recorded but not pooled in this tracer; inherited duplicate supports remain intact.",
+    "fixed_graph": {
+      "eligible_edges": "Only saved operation=endpoint with joint reason accepted, round_conflict or ambiguous; require finite successful-fit metrics. Recover nearest-endpoint ports using original host ordering and argmin ties. Use successful-fit cost residual_max+tangent_max/30, never candidate-ranking cost.",
+      "unknown": "Both arms exclude pairs in the saved full joint ambiguity mask; retain them as alternatives and disclose this conservative limitation. Valid dormant UNKNOWN carriers remain graph vertices. Invalid/frozen carriers cannot gain links. No new fits, candidates or thresholds.",
+      "contexts": "Priority seeds: exact M4 contributors of saved M5 groups53254 and210790; four saved negative pairs84842/362883,153248/377058,153427/153430,301451/301459. Add at most two remaining feasible endpoint components with>=3 leaves, ranked leaf count descending then minimum ID.",
+      "closure": "Close each seed over ALL successful endpoint candidates before ambiguity exclusion; include every incident saved overlap/rejected candidate and its complete endpoint carrier rows as context. Merge intersecting contexts and repeat closure. Cap128 total carriers/context; oversized contexts remain NOT_RUN, never trim competitors. Freeze selection before either arm runs. Saved neighborhoods are complete only relative to the capped v05 proposal list; preserve saturation/cap limitations."
+    },
+    "paired_arms": {
+      "baseline": "Descending benefit then canonical carrier/port IDs; accept if both ports free and resulting complete path passes all shared guards.",
+      "joint": "scipy.optimize.milp binary variable per eligible endpoint link. Minimize sum(cost*x)+number_of_unmatched_ports; equivalently maximize sum((2-cost)*x). Each port<=1 link; no cycles. Empty selection is feasible. Canonical variable ordering; do not perturb scientific costs for ties.",
+      "whole_path": "Orient unchanged leaf q; connectors exist only for checking, carry zero observed support and are never rendered. Check joined tangent30deg/connector35deg/gap1.5p, vertex turn30deg, every8p cumulative turn60deg, nonadjacent contact0.5p, original parallel and three-arm predicates over complete path membership, and unsupported gap1.5p. Preserve local leaf residual/tangent validity; do not impose a new single-carrier union fit.",
+      "cuts": "For MILP solutions violating a cycle or whole-path guard, add a no-good cut excluding that selected path's edge set and resolve. Same guard oracle for greedy. At most32 solve/check rounds per context,120s cumulative solver time/context, total solver budget600s; mip_rel_gap=0. Preserve status,bound,gap and cuts. Only a checked feasible incumbent may be exported; timeout is PARTIAL, never claimed optimal.",
+      "membership": "Preserve incumbent rows/groups; new path ID=min constituent carrier ID with versioned lineage. Outside processed contexts retain M4 IDs. Dormant rows activate only with existing3-seedlet/6-kernel/4p deduplicated-support gate; otherwise remain UNKNOWN with proposed association recorded. All identities provisional."
+    },
+    "delivery": "Save both arms' full458490-row mappings, ordered leaves/ports, alternatives, candidates, solver receipts and checkpoint before rendering. Cold-reload. Actual original-kernel0012/0036 full views plus complete-context and isolated-group comparisons; same camera, white background, floor0.0144, original width/opacity. Include failed/ambiguous contexts, no carrier or bridge drawings. Report support union, longest observed run, gaps, parent contributions and assignment gains/losses separately. Sealed M4/M5 are references, not rerun controls.",
+    "budget_protocol": "BUILD<=22min: new v06 namespace only, genuine RED/GREEN for port-conflict greedy trap, three-leaf composite identity, overlap support not consuming ports, cycle/whole-path rejection and complete-neighborhood overflow; bounded fixtures only. Freeze CONFIG/source/helper/test receipts and RUN_REQUEST. Parent alone owns1800s compute:300s readiness/selection, up to600s solver, reserve final600s for mappings/rendering/diagnostics. CPU/BLAS2, no subprocess/background science, output<=2GiB and runtime total<=20GiB. No new units09:15, science stop09:38."
+  },
+  "changed_variable": {
+    "between_new_arms": "Only link-selection strategy: greedy versus joint binary optimization; identical leaves, candidates, costs, abstention and whole-path guards.",
+    "versus_v05": "Composite identity can contain several unchanged finite carriers and connect both ports in one unit. This jointly changes representation and association; it is not merely adding polyline support or equivalent acceleration.",
+    "scope": "This tracer does not solve inter-carrier duplicate consolidation or previously masked ambiguity. Those limitations remain explicit potential next mechanisms."
+  },
+  "falsification": {
+    "readiness": "Missing cost/version binding, incomplete competition closure or oversized contexts cannot be called valid comparisons. Preserve an input-bottleneck result and real reference artifacts.",
+    "visual": "Joint must improve visibly coherent cross-fragment identity over greedy without swallowing distinct parallel/depth structures or branches. Lower objective, more links or common color alone are insufficient. Missing visible curved continuation remains PARTIAL.",
+    "delivery": "No completed tracer without cold-reloaded full-row mappings and both actual full views. Geometry changes, lost incumbent rows, split incumbent groups or rendered unsupported bridges fail immediately.",
+    "continuation": "If candidate coverage, overlap representation or the retained ambiguity mask removes the useful continuations, log that specific bottleneck and propose a separately frozen redesign next. Do not widen this unit's thresholds or declare the entire authorized window exhausted."
+  },
+  "model_fit": false,
+  "new_candidate_generation": false,
+  "gaussians": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_multiview05_v01/arms/C/scenes/scan24/full/gaussians.npz",
+  "representatives": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_grouping_v03/units/unit_001/scan24/REPRESENTATIVES.npz",
+  "controls": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_multiview05_v01/arms/C/scenes/scan24/full/SHARED_CONTROL_AND_SAMPLING.npz",
+  "cameras": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v04/units/unit_001/CAMERAS.json",
+  "renderer": "/home/u00134/3dgs_line/gaer_c2l50_8build_joint_gs_v01/reproduction/radegs_c2l50_8build_joint_gs_v01/renderer.py",
+  "libroot": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_joint_gs_v01",
+  "helper_files": {
+    "/home/u00134/3dgs_line/gaer_c2l50_8build_joint_gs_v01/reproduction/radegs_c2l50_8build_joint_gs_v01/renderer.py": "ce24cd30d663e6f421064d83006f097b02a5cf6a74b20c177a905ca514caed93",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_joint_gs_v01/build/libjoint.so": "033a973a71dc5364677a5bf0625f23dc4fe445b70257f04de7cb70cdccca84b0"
+  },
+  "input_files": {
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_multiview05_v01/arms/C/scenes/scan24/full/SHARED_CONTROL_AND_SAMPLING.npz": "0012cd6de8cd87af708f7b43e47daee653a331b538c622095cf7b71293596eb3",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_multiview05_v01/arms/C/scenes/scan24/full/gaussians.npz": "af26ea9aa0cd5015d99e5104113b286a1d88c71c35672564ca0d523bfe190e71",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_grouping_v03/units/unit_001/scan24/REPRESENTATIVES.npz": "2d09418483faaff72e09d5cda548929955cf64cdd8f75e7da80bf022cfbab2c7",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v04/units/unit_001/CAMERAS.json": "9020d0599f28aaa500b3c24bb28a8c6cc0c6896eda6753b407a9924e970670c4",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/CONFIG.json": "8dd3a00ac789e9b67b6aa964d70e346de5fe955c244992f9f8ed58f623b20b70",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/DECISION.json": "081f4e12b94337e14ec72e50fe5a76eb16bf831f3248afeaab9c3c32696a980c",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/SEAL.json": "f1f4311380b18abde8e5c2cf44c8b3c10212e3a6596151de0ea98aff6e15579a",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/scenes/scan24/stages/M4_MERGE_ONLY/CARRIERS.npz": "23e909189be15c337deb956074019d309e047191d1f15e29e37b7a64bd7d0134",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/scenes/scan24/stages/M4_MERGE_ONLY/MEMBERSHIP.npz": "2c4cc0870e4579f8fa846025f85a698b8d3616bcbd972a2c99d3a95edf83a961",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/scenes/scan24/states/M4/CHECKPOINT.json": "df5ca02705c86c9dc5a55a771deca2256801809828c432320d092a0ad687d8d9",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/scenes/scan24/states/M4/COMPETITION_AUX.pkl": "b93203348b6bec13095581cf526cb61446e4e60cd050bc2afb20f6433decaec6",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/scenes/scan24/states/M4/COMPETITION_COMPLETE.json": "7d9989f3144ac05872e5a63cee79fd3a4630985b5a0e5ede12665e86c084092b",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/scenes/scan24/states/M4/CONTROL_CANDIDATE_STATUS.npz": "8a7c2352ce764b7c3fb958468b89a599d1f0ab530da95ebededf497420784a89",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/scenes/scan24/states/M4/DIAGNOSTIC_MARGINS.pkl": "80a851566ee1a7a2befb5e20a055e34efa5da462e1cd787f241c8355ce0aa3ea",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/scenes/scan24/states/M4/JOINT_AMBIGUITY.npz": "014245b647a64fb7d35156318b9d37b93988e8c12c6f51f4ba0730fd25fbd90c",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/scenes/scan24/states/M4/ORDERED_CANDIDATES.npz": "06554e6317323dd21768ddb0f8b8defed1a4f691e193aac5f95446c8071fb507",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/scenes/scan24/states/M4/PREFIX_CANDIDATES.npz": "af81ff4aeacf1cd2e881a16dd94105f3ee4264608dc226379fc1c62fa5c797d9",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/scenes/scan24/states/M4/PROTECTED_INPUTS.npz": "b028bbcda7a77bbf571a906f5bc55d8c339a904130df74b2ae4840d1a91771cf",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/scenes/scan24/states/M4/PROTECTION.json": "2852249b325f14bade3fa1e1600f36b093d55089cc39f2031044492b7ba91562",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/scenes/scan24/states/M4/PROTECTION_CONFLICTS.json": "bacaec058061c00a84213d1fda81df8f54cbb055833bbf35856c51f65adc8e20",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/scenes/scan24/states/M4/SHADOW_CONTROL.json": "a7b82db3d9fb20ccfe3d65fd301ed48b3fb625ea8be2b5d3a1306cefbc8eaeaf",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/scenes/scan24/states/M4/SHADOW_JOINT.json": "db0c7cd24fc9826aa95408ac12bb45c0044f9aa911a72f9a32bdcea3ffed0e35",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/scenes/scan24/states/M4/STATE.pkl": "4f350e3a991c98d7cf011d833be4fc5aebcce1c7d328ae69b39948b5698ec31f",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/scenes/scan24/states/M4/SUPPLEMENT_CANDIDATES.npz": "c8465b9a854b4fac7dc9a6d38bac93d6638e6db71e8f8497426a8e5c272ed453",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/scenes/scan24/states/M4/SUPPLEMENT_SCREEN.npz": "66e279919e69d1536dfc38c637f794e89d87b985a58f871a0706b4595d33cc85",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_015/scenes/scan24/states/M4/SUPPLEMENT_STATS.json": "fe4b5295ec09f60608659b3635b7e287f11bb31435da6297d4344a68f7c375aa",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_018/CONFIG.json": "6bf43845007491d21538a0b4032797e7d98e9f548b8ce7b66bba626b9dc509f2",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_018/DECISION.json": "81e1d809724a4252d4b343a4529d394935d614dce69199c740fb8171dc6c00af",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_018/PARENT_RUN_FROZEN.json": "9f348b6864c2bf061c5497245b57257a44b50aa137c1789edbae34a82a30d074",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_018/SEAL.json": "01f42af057979fe10a9a7528d877e5579e1b747f0c9e86324ba5f10e47e85bcc",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_018/scenes/scan24/stages/M5_MERGE_ONLY/MEMBERSHIP.npz": "929a7c21d3d4c88991def8cd35a8ff654d30b9e86b42b6b135dfdba9ae5b607b",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_018/scenes/scan24/states/M5/JOINT_AMBIGUITY.npz": "abd2eb237b4e7ee8be7cbc0d7864242f9468686e23c4cc94484dcc03c6efe1bd",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_018/scenes/scan24/states/M5/ORDERED_CANDIDATES.npz": "076538cd77d7e664d62758c0fa2ecb9d1aee13e1d5764001e77dfcd8be0b236c",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_018/scenes/scan24/states/M5/controls/joint/CANDIDATE_STATUS.npz": "df47daa89e59c4e63d7fa71618eaa68b10e49c08b28427cb84c3fdd58f6f7c34",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_018/scenes/scan24/states/M5/controls/joint/METRICS.json": "0e51cd4ed2ec6eee3f6472eb7c04c863994339e42707b7550dc4060d044f04ce",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_edge_growth_v05_20261031/units/unit_018/source_snapshot/core.py": "c1565d2c33ee1f75e1a58469f14d8e153a138eb5f3c0dc73fbbcc5a9ab20e512",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/orchestration/INPUT_LOCK.json": "ee24a8239a7ce093da07b811f114f322cbf59f402a0c77119c211715a6cab7c4",
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/orchestration/WINDOW.json": "f5345c77e07115e32a215970e18a42506be668b463095e53bc92719ffed7d35d"
+  },
+  "source_files": {
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/adapter.py": "500d9d8b9707a42a89924da34f0fc753fadb500e55a7fa2512dc6350e0b45c65",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/build_config.py": "f41bc2463d38a2d6c50efc89fd3c6f65357d823deaf88f6e5df4f79c89f1ae63",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/delivery.py": "806f445a15b3ca3fefb3fe933ed9ea5a9f2c46fdc664cd28f83cf7e7f6ac0dce",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/geometry_base.py": "e05d836192be29709cc139a6c04bb77dbf256425f5e4a8e7c92fa7fae26afe71",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/port_paths.py": "b08baad4113f838f02f6bebc93153ca8bfff3b8c92168c296b6a7d0c5ba2851c",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/runner.py": "f9bb813259921ae84f8384abd11aa4a2933f32cc3f972a402f56ec1d54e58631",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/runtime_io.py": "910e143fa2265109601dbc325b42475d3955368427be05be7a1c2fc68d2e3180",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_adapter.py": "1a4f446ebbd9a38484c2b584794ff1399a163204a75dd5aabd63e3b1b4f6d69f",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_port_paths.py": "bff90e56f484ab6beeac07e9a10325d871e75c4b65ec40a4f10b866b09e1e0b1"
+  },
+  "implementation_details": {
+    "closure": "Recursive incident-record closure equals raw undirected candidate connected component; oversized closure never pruned",
+    "contact_oracle": "Exact collinear redundant knots removed only from temporary contact-check curve; all exported finite q unchanged",
+    "unknown": "Saved ambiguity pairs abstain identically in both arms; existing UNKNOWN eligibility retained",
+    "no_evidence_of_physical_identity": true
+  }
+}

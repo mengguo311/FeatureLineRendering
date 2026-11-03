@@ -1,0 +1,17 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit002起点201906有6个no_unique_support拒绝，包含-201934，适合直接检验R6关闭后的纯池化。其终态200509已被候选113545的结点容量阻断，因此采用封存START作匹配实验，保留旧六次接受及PARTIAL结果。本review核验43份snapshot和START四文件哈希，只读保存记录与源码，未运行数值实验。",
+  "recommended_next_step": {
+    "experiment": "Scan24 WHOLE：封存R2_R4控制 versus 新R2_R4_R6增长。",
+    "binding": "继承unit002 CONFIG 44b274d4a6144296258f6542444ff65dd11ffdb0fdb07ed8c2ef6752c66a6bb7及PARENT_RUN_FROZEN的43份snapshot/helper绑定。冷载unit002/scenes/scan24/stages/START，逐文件核验CHECKPOINT；MEMBERSHIP SHA256=74c85f36ff766f27c1336e0e5ceff38c252e7c61e78217ad1648e43f4bdc7b2c。",
+    "start": "458490行、260029 assigned、198461 UNKNOWN、next_version33931、p=.0014320037356621643。固定53254/v33925、132977/v33930、200509/v33918、201906/v33891、202023/v33881、210790/v33927。保留完整背景、复合q、历史谱系和restricted M5/control核验；复制NO_FURTHER_GROWTH，不初始分配版本。",
+    "policy": "控制[2,4]，新策略[2,4,6]。新增取消nonlocal_contact、unsupported_gap、no_unique_support硬返回；U=0纯池化可获有限原J并参与排名。保留接触见证、gap、重复支持和成员损伤诊断，不以inf、别名或新增软罚分恢复拒绝。规则1/3/TRANSPORT_BRANCH规则5不变；无有效方向仍UNKNOWN，运输未决使整轮PARTIAL。",
+    "control": "共同初始拟合计算两策略完整六组库，重放unit002 initial_catalogs/R2_R4_OFF_TRANSPORT，核对候选、拒绝、评分、q及选择，忽略新增诊断字段；不一致阻断。控制后续直接引用封存六次接受轨迹和容量停止，不重复旧增长或冒充本轮执行。只运行新策略，后续每状态保存两策略影子选择；旧控制明确PARTIAL。",
+    "discovery_fit": "整曲线完整2p精确段距查询，无top-k；原双向重叠1p对应/median偏移及四端点解释不变。assigned组整体为donor，UNKNOWN沿原载体。模板≤1p；全部并集成员、全部结点进行5轮Huber IRLS，delta=.5p，平均位置损失+.05平均二阶差平方+.001平均模板位移平方；LSQR atol/btol1e-8、iter_lim2000。8192成员/257结点或任一未完成候选仍使整轮PARTIAL，不升容量。",
+    "ranking": "J=mean(d/p)^2+.25mean(theta/90)^2+.05mean(turn/90)^2+.1(maxgap/p)^2+.02K/(L/p+1)-.25(U/p)/(1+U/p)。方向项仅用有效导数，全部行参加距离与拟合。平局donor/关系/方向；不要求优于旧组总损失。非退化、vertex<90度、原叶单调和TRANSPORT分叉保持。",
+    "repeat_closure": "完整初始库冻结后，ID轮转提交全库最低J，原子保存完整成员/q/版本及紧凑delta，再重查；种子互吞合并队列，无接受次数上限。完整无连接才自然停止。闭合保留端距≤.5p、长度≥6p、两端1p窗各≥3有效核、切向≤45度、闭合段协方差支持无洞及周期contact检查。自接触或超原gap界的并组仍可接受，但不得标SUPPORTED_CLOSED或据此停止；仅取消闭合认证，不恢复合并否决。",
+    "delivery_budget": "BUILD≤18min：真实loader、[2,4,6]派发、纯池化/自接触/gap有限评分、控制一致、未认证闭合仍可并、保核回滚小型RED/GREEN。Parent1800s：readiness120、共同库180、新增长900、交付600；CPU2串行，Nov3 05:35绝对science截止。先冷载全行映射，再0012/0036原核全景、六组起中末/新增/全对象竞争背景和旧负例；保留首个纯池化/跨gap/接触事件，最大损伤及最大规模各top3。旧202023空视图继续标缺证据。看图后前两分钟写四文件；05:15停新单元。"
+  },
+  "changed_variable": "匹配START仅新增关闭规则6；R2/R4保持关闭，WHOLE、候选、J和规则1/3/5不变。旧控制复用已执行轨迹而非新运行；新轨迹可能分叉。回到START的实验选择明确披露，不删除或撤销封存终态。原核冻结、monotone_group_union、whole_curve_auxiliary_update=true、accepted_merge_is_ground_truth=false。",
+  "falsification": "工程：禁用项仍否决或无穷评分、控制不匹配、失核、原核变化、截断库晋级或无支持闭合认证即失败。经验：保存首次纯池化、长gap、自接触、平行/深度/第三臂吞并及旧成员损伤；更多接受不是准确率。规则3/5或容量再次阻断仍保存，不恢复2/4/6，不宣称窗口耗尽。原核墨迹不画桥；无物理、held-out或时间稳定认证。"
+}

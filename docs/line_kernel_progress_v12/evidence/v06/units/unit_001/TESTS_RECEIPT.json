@@ -1,0 +1,97 @@
+{
+  "returncode": 0,
+  "tests_count": 18,
+  "command": [
+    "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06",
+    "-p",
+    "test_*.py",
+    "-v"
+  ],
+  "green_log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_001/tests/GREEN_FREEZE.log",
+  "green_log_sha256": "1907b9004b26dd87b6a280ec95093dc3a6a995bdc0b2ccac7561d218a557d15c",
+  "red_log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_001/tests/RED.log",
+  "red_log_sha256": "59de968c1e4506ea000d91d199609ada46534b3a55f972695ea717e4732fee1e",
+  "tdd_status": "REAL_TEST_FIRST_RED_TO_GREEN_WITH_ADDED_REGRESSIONS",
+  "red_cause": "New port_paths module absent before implementation",
+  "first_implementation_failure": "GREEN_1: continuous three-leaf straight path incorrectly rejected by redundant collinear contact subdivision; fixed without moving leaves or relaxing threshold",
+  "additional_failure": "GREEN_3: restricted-schema fixture omitted kind; fixture corrected, failure preserved",
+  "added_regressions": "Adapter/checkpoint/UNKNOWN/resource tests added after initial feature implementation; not described as original preimplementation tests",
+  "source_files": {
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/adapter.py": "500d9d8b9707a42a89924da34f0fc753fadb500e55a7fa2512dc6350e0b45c65",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/build_config.py": "f41bc2463d38a2d6c50efc89fd3c6f65357d823deaf88f6e5df4f79c89f1ae63",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/delivery.py": "806f445a15b3ca3fefb3fe933ed9ea5a9f2c46fdc664cd28f83cf7e7f6ac0dce",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/geometry_base.py": "e05d836192be29709cc139a6c04bb77dbf256425f5e4a8e7c92fa7fae26afe71",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/port_paths.py": "b08baad4113f838f02f6bebc93153ca8bfff3b8c92168c296b6a7d0c5ba2851c",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/runner.py": "f9bb813259921ae84f8384abd11aa4a2933f32cc3f972a402f56ec1d54e58631",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/runtime_io.py": "910e143fa2265109601dbc325b42475d3955368427be05be7a1c2fc68d2e3180",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_adapter.py": "1a4f446ebbd9a38484c2b584794ff1399a163204a75dd5aabd63e3b1b4f6d69f",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_port_paths.py": "bff90e56f484ab6beeac07e9a10325d871e75c4b65ec40a4f10b866b09e1e0b1"
+  },
+  "receipts": {
+    "RED.log": {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_001/tests/RED.log",
+      "sha256": "59de968c1e4506ea000d91d199609ada46534b3a55f972695ea717e4732fee1e",
+      "returncode": 1
+    },
+    "GREEN_1.log": {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_001/tests/GREEN_1.log",
+      "sha256": "a43fa4ecf908c632fcf9f148ef82dbea9159593a7a0d435a30a2865ec4634868",
+      "returncode": 1
+    },
+    "GREEN_2.log": {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_001/tests/GREEN_2.log",
+      "sha256": "cf45cfdb0a464178db8b99a499fe0907e6be8067d2c198b9e48ca8442987513f",
+      "returncode": 0
+    },
+    "GREEN_3.log": {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_001/tests/GREEN_3.log",
+      "sha256": "16f6def6e58fa7240881846295ad0f459aec1623cd51880aa790ce03a3a151d9",
+      "returncode": 1
+    },
+    "GREEN_4.log": {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_001/tests/GREEN_4.log",
+      "sha256": "3bf9336148d3ab6cbee7e796eab491020295b6c22de1525b3265c33c2f818b45",
+      "returncode": 0
+    },
+    "GREEN_5.log": {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_001/tests/GREEN_5.log",
+      "sha256": "96b557a7c08f94224d0cd87bea71b922c0d10b36942c3f76bcc87e5c8584321d",
+      "returncode": 0
+    },
+    "GREEN_6.log": {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_001/tests/GREEN_6.log",
+      "sha256": "8449a543019ed085802405fbfc96ba95d60e35e0a5f5143b54f8dff3f59dffc3",
+      "returncode": 0
+    },
+    "GREEN_FINAL.log": {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_001/tests/GREEN_FINAL.log",
+      "sha256": "7a6f85ef9df0e2697b76e1650d14f2853b9791854e9e119ddd5ed9f7b7e56a06",
+      "returncode": 0
+    },
+    "GREEN_FREEZE.log": {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_001/tests/GREEN_FREEZE.log",
+      "sha256": "1907b9004b26dd87b6a280ec95093dc3a6a995bdc0b2ccac7561d218a557d15c",
+      "returncode": 0
+    },
+    "CLI_HELP.log": {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_001/tests/CLI_HELP.log",
+      "sha256": "c648e01ca722cfe380be90b8c6487a5e961f2cecd551abca103b8c2acfc1b38d",
+      "returncode": 0
+    }
+  },
+  "real_fixture": {
+    "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_001/tests/REAL_LEAVES.npz",
+    "sha256": "0b3f19c72a07db59cafd99848b6077057f98c2a277d9902eec5fdaf47688b198",
+    "provenance": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_001/tests/REAL_LEAVES_INPUT.json",
+    "scope": "Four actual M4 ID/version/world-knot slices only; synthetic rows/reps for serialization test; no full asset load"
+  },
+  "full_asset_science_run": false,
+  "rendering_run": false,
+  "utc": "2026-10-31T21:22:48.258740+00:00"
+}

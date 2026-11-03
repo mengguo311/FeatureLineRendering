@@ -1,0 +1,26 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit011修复后BASE完成第二次续接，但PAIRED因32.257°方向差拒绝；小图无法判定谁正确。真实val图及相机绑定可用，下一步以连续图像证据检验这个分歧，不继续增加拟合预算。",
+  "recommended_next_step": {
+    "unit": "unit_012",
+    "experiment": "Ficus persistent-frontier growth: BASE versus PAIRED versus ordered image-chain confirmation.",
+    "binding": "Inherit unit011 CONFIG bde0a0525512038517f69cdb7bf0773d5dca11d68a14192d7f4332fdab87dab4 and verified PARENT_RUN_FROZEN/source_snapshot. Cold-copy NO_FURTHER_GROWTH, whose checkpoint remains bound to unit010 CONFIG f4f8cabd201ccf58c6b4c8ef0545ef23b6b2d269e341b811c6d994e5cb68e88f. Verify every checkpoint file.",
+    "start": "285956 rows,122019 assigned,next_version20584,24 seeds,four historical events,p=0.003530473547030632. Preserve strong M5 background,used leaves and auxiliary curves; reopen48 ports/reset only new counters. Accepted merges are not GT.",
+    "images": "Bind v07 unit006 CONFIG 6ef789ee86b78f1e339b399ce390ebaace322ac7aefa1e1a158d97bf89aa8843 image/calibration inputs: /home/u00134/cglib/data/full/ficus/val/r_1.png,r_79.png and transforms_val.json. Their hashes were rechecked and images viewed. Parent must revalidate original_c2w_gl,800x800,intrinsics and OpenGL conversion. Reuse audited projection/gradient equations only; never execute the old producer.",
+    "control": "Use unchanged unit011 REPAIR geometry/library. Replay48 initial REPAIR catalogs before promotion. Newly executed BASE/PAIRED must reproduce unit011 REPAIR_BASE/REPAIR_PAIRED membership,curves,versions and scientific lineage; mismatch blocks comparison.",
+    "image_chain": [
+      "White-composite RGBA; luminance .2126R+.7152G+.0722B; Gaussian sigma1 reflect, Sobel/8; magnitude>=.1, no scan.",
+      "Orient proposed finite Q outward. Project the pre-update source endpoint onto Q with lowest-segment ties, obtaining f. Require at least2p on both sides; otherwise evidence UNKNOWN. Clip Q to[f-2,f+2], retaining every knot and anchors f-2,f,f+2; project world coordinates Q*p.",
+      "Nonpositive depth,out-of-frame points or degenerate projection give UNKNOWN. Each projected half must have arc length>=2 pixels; no upsampling to manufacture resolution.",
+      "Retain ALL integer pixels within2px of the projected finite polyline whose gradient passes and gradient-perpendicular direction agrees with its closest projected segment within30deg unsigned. Lowest segment wins projection ties. Save pixel coordinates,gradient,segment and projected arc coordinate.",
+      "Build complete8-neighbor pixel graph, allowing directed edges only when projected arc coordinate does not decrease beyond1e-8. Start pixels lie within2px of first anchor with arc coordinate<=1px; end pixels lie within2px of last anchor with coordinate>=total-1px. Require a path visiting the middle-anchor2px neighborhood in order and at least3 distinct pixels.",
+      "Deterministic Dijkstra uses pixel-step Euclidean length, row-major node/predecessor ties. Save the full graph and selected path, preserving alternative branches. Both views must pass; otherwise abstain without declaring cannot-link. A chain is projected support, not verified visibility or uniqueness."
+    ],
+    "arms": "BASE nearest common candidate; PAIRED unchanged derivative history; IMAGE_CHAIN nearest common candidate passing both views. Original ranking and shared .15p ambiguity abstention precede every policy. Freeze complete initial evidence catalogs before promotion; save all same-state choices and rollout divergence.",
+    "fixed": "Keep complete1.5p overlap/<=3-donor relay discovery,256-prefix frontier cap,seed protection,unit011 one-call two-handle repair and200s total optimizer cap. All original member/domain/monotonicity/turn/ARC-contact/parallel/branch/support guards and UNKNOWN activation unchanged. No new spatial candidates,member pruning or threshold rescue.",
+    "transactions_delivery": "64 attempts/arm,8 accepts/seed,ascending-ID double-port growth; checkpoint every acceptance before continuing,complete rollback. Cold full-row maps precede native test_r_1/test_r_79. Preserve79841/79855/177351/79865,later deadends,four seeds/negatives and all queried competitors; save real-image evidence separately from original-kernel ink. Report union,longest run,gaps,outward support and reference gains/losses.",
+    "budget": "BUILD<=18min: real loader/calibration,connected versus scattered hits,ordered anchors,insufficient resolution,missing evidence and rollback fixtures. Parent1800s:readiness120s,growth/evidence through1200s,final600s delivery. Incomplete catalog cannot promote. CPU/BLAS2; Nov2 no-new07:15,science07:38. Review ran no numerical experiment."
+  },
+  "changed_variable": "Only the continuation evidence policy changes. IMAGE_CHAIN uses continuous real-image support instead of derivative-history conditioning; shared geometry and candidates remain fixed at each state. No candidate births or global MILP; original kernels and ink frozen.",
+  "falsification": "零链、低分辨率或仍然死端均保存负结果。纹理/遮挡诱导跨平行、分支或深度层即否定实例。须有双视图实质直线及曲线外延；曲线至少三个M4贡献各12核/2p，并较起点新增4p域外代理。链存在、颜色或接受率不足；无物理概率、GT或held-out认证。"
+}

@@ -1,0 +1,65 @@
+{
+  "diagnosis_zh": "本轮修复了首次接入：两种子各吸收一个donor，但两个新外端均在有限域端点关系处停止。32/56候选记录因no_overlap_or_tail拒绝，历史层只收到两个共同可行者且都接受，不能证明HISTORY有益或用户先验成立。两组有第三个实质M4来源，但域外代理分别2.2802p和3.951944p，均未达4p；最长连续支持未增长。实际图很小，不能把统一颜色或自守卫通过当物理成功。",
+  "failure_modes": [
+    {
+      "type": "candidate_relation_deadend",
+      "evidence": "BASE/HISTORY visits0009:199351 gap0.5947404328p；0010:92215 gap0.4492283040p；两向都no_overlap_or_tail。不能据此宣布没有物理续接。"
+    },
+    {
+      "type": "history_not_discriminative",
+      "evidence": "两臂全部映射字段一致；两个共同候选history均pass，预测角6.4035°/1.6618°，曲率差近零；没有第二步接受或历史误拒实例。"
+    },
+    {
+      "type": "geometry_and_registration_rejection",
+      "evidence": "每臂56记录：32 no_overlap_or_tail、15 overlap_distance、6 whole_member_residual_tangent、1 window_turn、2 common_candidate。112780→168654在window_turn处拒绝；64355→116467 q95=.573577p、tangent30.303284°，不能调阈值掩盖。"
+    },
+    {
+      "type": "extent_and_continuity_insufficient",
+      "evidence": "64355/137016均3个合格M4贡献者，但域外<4p；137016另有1.038123p内部填充；最长连续段3.440110p/9.208710p未变。"
+    },
+    {
+      "type": "visual_evidence_insufficient",
+      "evidence": "全景完整；已看两变化组双视图及四负例，4倍nearest裁图仍小而淡。SCOPE明确physical_context_complete=false，完整算法查询邻域不等于完整物理替代解释。未证实或排除平行/分支/深度误吞。"
+    }
+  ],
+  "observed_images": [
+    "scenes/ficus/stages/BASE_FINAL/test_r_1_FULL.png",
+    "scenes/ficus/stages/BASE_FINAL/test_r_79_FULL.png",
+    "scenes/ficus/diagnostics/64355/M5_REFERENCE_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/64355/BASE_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/64355/BASE_test_r_79_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/64355/BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/137016/M5_REFERENCE_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/137016/BASE_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/137016/BASE_test_r_79_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/137016/BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/48496/BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/112780/BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_11_80709/BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_16931_18768/BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_112_205435/BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_33117_201172/BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/stages/HISTORY_FINAL/test_r_79_FULL.png",
+    "scenes/ficus/diagnostics/64355/HISTORY_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/137016/HISTORY_test_r_79_ISOLATED_CROP.png",
+    "scenes/ficus/stages/M5_REFERENCE/test_r_1_FULL.png",
+    "scenes/ficus/diagnostics/64355/BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/137016/BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_11_80709/BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_16931_18768/BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_112_205435/BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_33117_201172/BASE_test_r_1_CONTEXT_CROP.png"
+  ],
+  "visual_evidence_missing": true,
+  "visual_evidence_missing_explanation": "不是没有PNG或渲染失败，而是缺少足以判明实质新增曲线和全部物理竞争解释的可辨证据；上述列表只包含实际通过image工具查看的PNG。",
+  "next_change": "另冻结关系可切换的有限前沿接力：正重叠接入与无重叠端点续接进入同一完整竞争库；从unit004两个已接受种子的最后完整状态出发，并保留48496/112780和全部背景；unit004作为不再生长的保存对照。；先审计199351、92215及199430、137076的真实支持、端口和全部竞争邻域。保持1.5p查询、原几何/UNKNOWN/历史阈值，分别标记overlap或endpoint关系；沿用至多3个donor的最小合格接力及整库超限弃权，不把端点接续伪装为零宽重叠。完整seed+接力共同验证与原子提交，两臂只差HISTORY；冻结后才运行。；相同混合关系库的BASE versus HISTORY；封存本轮overlap-only为关系机制参考。候选及表示改变须单列，不归因为历史或求解器。；仍无第二次接受、缺>=4p域外支持、只汇集短段或误吞平行/分支/深度结构均保存负结果；不放宽残差、转角、查询半径或支持门槛。",
+  "actual_child_returncode": 0,
+  "next_change_details": {
+    "mechanism": "另冻结关系可切换的有限前沿接力：正重叠接入与无重叠端点续接进入同一完整竞争库",
+    "start": "从unit004两个已接受种子的最后完整状态出发，并保留48496/112780和全部背景；unit004作为不再生长的保存对照。",
+    "design": "先审计199351、92215及199430、137076的真实支持、端口和全部竞争邻域。保持1.5p查询、原几何/UNKNOWN/历史阈值，分别标记overlap或endpoint关系；沿用至多3个donor的最小合格接力及整库超限弃权，不把端点接续伪装为零宽重叠。完整seed+接力共同验证与原子提交，两臂只差HISTORY；冻结后才运行。",
+    "control": "相同混合关系库的BASE versus HISTORY；封存本轮overlap-only为关系机制参考。候选及表示改变须单列，不归因为历史或求解器。",
+    "falsifier": "仍无第二次接受、缺>=4p域外支持、只汇集短段或误吞平行/分支/深度结构均保存负结果；不放宽残差、转角、查询半径或支持门槛。"
+  },
+  "actual_child_reason": null
+}

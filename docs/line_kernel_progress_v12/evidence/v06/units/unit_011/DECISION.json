@@ -1,0 +1,51 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit010实际rc=1，完成阶段为空、fit_calls=0，没有科学PNG。错误是runner传入无参数回调，而真实加载器调用guard('readiness')；共同参数化尚未得到科学检验。当前仍可在09:15前冻结一次接口修复后的执行，不应把这个工程失败当作方法负结果或另调阈值。",
+  "recommended_next_step": {
+    "unit": "unit_011",
+    "experiment": "接口修复后执行unit010原定四臂实验：ficus完整有限路径库，叶q拼接 versus 共同有限辅助曲线，每种表示分别比较greedy与MILP。",
+    "provenance": {
+      "source": "unit010/source_snapshot，经PARENT_RUN_FROZEN.json验证；所有旧单元和快照只读。",
+      "config_sha256": "034ebbb44b46e9a989f7019dcf6ed287922028cbd3a7ae32ec6edd609a9d19e6",
+      "scientific_contract": "原样继承unit010 DECISION的路径库、表示、守卫、四臂、membership及visual规则；其decision SHA256为82b0d3bad636e82f8458fc42511a8aa2e7a0c70743d341238fca245d74dbc77b。",
+      "failed_attempt": "保留unit010实际rc1、RUN_RESULT、全部日志和测试隔离事件，不覆盖或改称成功。"
+    },
+    "exact_repair": [
+      "将path_library_runner.run中的load(c, lambda: guard('readiness'))改为load(c, guard)，使用已有接受phase的guard；不绕过加载器、哈希、资源或阶段检查。",
+      "仅迁移unit/config/decision/output/test目录绑定到unit011；所有测试输出必须在unit011，禁止再次写unit010或更早单元。",
+      "保持数值实现与参数不变；新问题如需科学规则变更则NOT_READY，不临场修科学合同。"
+    ],
+    "input_readiness": {
+      "state": "v05 unit016 ficus M4，285956原核，p=0.003530473547030632；STATE SHA256=7d1457b144b0c58b8a3fe1fd1f1620e967158c1ace8326c64e6d996671378900。",
+      "records": "原v05 unit019 M5-on-M4候选；冻结预期89486行、756成功endpoint、593 masked、163 eligible、148完整分量、最大4叶。",
+      "verification": "继承unit010全部原始input/helper绑定。真实加载时验证前驱自身绑定、rows/reps/q/flags/versions/aux/next_version、全行所有权及候选成本。unit010未完成这些数值加载检查，不能冒称已验证。",
+      "competition": "完整eligible分量和全部非递归证据邻域不变；不增加候选、解禁mask或裁竞争者。"
+    },
+    "fixed_science": {
+      "library": "全部端口相容、无环、无重复叶的简单路径，反向规范化；每完整分量最多128条，超限整体NOT_RUN。包含非正收益边，路径总B>EPS才选择；B=sum(2-saved_residual_max-saved_tangent_max/30)。",
+      "models": "concat逐路径调用原PathOracle。common每路径一次原TLS→ordered-polyline拟合，canonical ID rows/reps、有向原q拼接template；3Huber/delta0.5p、占用1p-bin等权、8192核/128knots/4p间距。原核和原叶不变，无重试或裁成员。",
+      "guards": "原endpoint gap1.5p/tangent30°/connector35°、all-pairs parallel；common全核residual max1p/q95 0.5p/tangent30°、extended_s有限域±1e-8、有向投影单调及叶中点顺序。turn30°/每8p60°、contact0.5p、原/新knots并集三臂及unsupported gap1.5p不变。失败短路径不得剪掉更长路径。",
+      "arms": "concat_greedy、concat_joint、common_greedy、common_joint。每表示同库：greedy按B/key接受互斥叶集合；MILP每路径binary、每叶最多一个，最大化sum(B*x)，mip_rel_gap0，不扰动成本。",
+      "fallback": "无可行incumbent或分量模型库不完整时四臂共同保留M4。UNKNOWN仍须3seedlets/6kernels/4p支持；旧M4不得丢失或拆分。支持重映射和钳制只作代理统计。"
+    },
+    "build_and_budget": {
+      "build": "≤4min。先用真实scene_adapter.load调用契约复现RED，再修复为GREEN；仅隔离后续资产读取，不mock掉整个load。覆盖runner传入的phase-aware回调及阶段/资源异常传播，重跑原19项小型回归；禁止自动发现带旧输出路径的TestCase。",
+      "freeze": "Parent在09:15前冻结本单元；BUILD冻结全部源码、decision/config/helper及真实测试receipt后立即返回，模型不启动正式计算。",
+      "compute": "Parent独占≤1200s：readiness≤300s、模型库累计≤400s、solver总≤200s且每分量≤120s、600s前停止选择并交付映射，末600s保留图像/诊断。",
+      "deadlines": "最迟09:18 JST启动，09:38停止science；若不能按时提供有效request则NOT_RUN，不缩减交付保留时间。",
+      "resources": "CPU/BLAS2严格串行，unit≤2GiB/runtime≤20GiB；无GPU、安装、训练、后台任务或agents。"
+    },
+    "delivery": "四臂完整285956行映射、模型/路径库、失败记录、谱系和checkpoint先冷载，再保存test_r_1/test_r_79实际原核全景。原unit010固定重点/负例及成员差异选图规则不变；完整邻域、相同行集合、白底floor0.0144、原宽度/opacity、UNKNOWN灰，不画辅助曲线或桥。unit009为历史参考，unit010不是数值对照。"
+  },
+  "changed_variable": {
+    "versus_unit010": "仅phase-aware回调接口及新单元输出绑定；科学设置完全不变。",
+    "scientific_question": "首次实际检验共同有限参数化相对叶q拼接的效果，并分别评估同库MILP是否优于greedy。",
+    "fixed": "原核字段/数量/顺序、候选/成本/mask、完整竞争、所有几何阈值及UNKNOWN政策；不新增M轮或扫描预算。"
+  },
+  "falsification": {
+    "engineering": "真实加载契约、绑定或闭包失败即阻断；保留实际子进程退出。测试通过不能代替科学交付。",
+    "delivery": "缺任一四臂冷载全行映射或双原生全景，改变核、丢失/拆分M4组或补画桥均失败。",
+    "visual": "须有双视图可辨的实质跨片段直线及曲线归属改善；更多拟合、同色、平滑模型、支持钳制或目标提高不足。吞并parallel/depth/branch否定实例；不可辨保持PARTIAL。",
+    "limits": "物理身份暂定、无held-out主张。若再次阻断或到期，交付真实失败与已有成果，不伪称方法已被证伪或研究方向耗尽。"
+  }
+}

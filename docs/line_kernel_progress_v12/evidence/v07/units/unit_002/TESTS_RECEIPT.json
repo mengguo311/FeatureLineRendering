@@ -1,0 +1,60 @@
+{
+  "returncode": 0,
+  "tdd_status": "NEW_API_TEST_FIRST_AND_REAL_RED_GREEN_BANK_FAILURE_PROPAGATION",
+  "command": "approved_venv_python -B /home/u00134/3dgs_line/line_kernel_free_reassignment_v07/reproduction/line_kernel_free_reassignment_v07/run_coverage_tests.py",
+  "full_asset_science_run": false,
+  "render_run": false,
+  "test_count": 33,
+  "fixture_max_rows": 96,
+  "logs": [
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_002/TEST_RED_NEW_API.log",
+      "sha256": "671271a1f85f191fe0d63341908bf1036373a33efa4703448718af7e66c74acc",
+      "returncode": 1,
+      "note": "Missing new seed API before implementation; not a claimed scientific failure"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_002/TEST_GREEN_COVERAGE_1.log",
+      "sha256": "33e8837a27b6bc9bf00f0975f6fb41e4510bd498ca83762ee44f26a5c407928f",
+      "returncode": 0,
+      "note": "11 new small seed/coverage tests"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_002/TEST_RED_BANK_FAILURE.log",
+      "sha256": "a3762e845f2748b429dc2e5293c727dc61dda0b41f7559b9fc5569aff7526978",
+      "returncode": 1,
+      "note": "Real failure: coverage ValueError swallowed as geometric rejection"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_002/TEST_GREEN_COVERAGE_2.log",
+      "sha256": "d7513f5f65af75ba138c4a6dca5f3920e401c27f686d0edc2c53d7da03768252",
+      "returncode": 0,
+      "note": "15 new tests, including blocked incomplete bank and actual new30-row runner"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_002/TEST_ALL_GREEN.log",
+      "sha256": "8660985d3917f61aa867fb155a19c6de40798f5e4b8f5107469ef07052aa7516",
+      "returncode": 0,
+      "note": "33 explicit small tests:18 unchanged regressions plus15 coverage tests"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_002/TEST_RED_SCOPE.log",
+      "sha256": "029cac306608b7f9aaf8181f4a462310b2a0b2c136f7d402acc4727e3d1db90c",
+      "returncode": 1,
+      "note": "Real failure: finite-bank coverage incorrectly labeled complete model discovery"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_002/TEST_FINAL_GREEN.log",
+      "sha256": "01d95eb05ecceb4d127e0342e2c939ed8690a958eb4fba29de62830ab1bdb337",
+      "returncode": 0,
+      "note": "33 tests after explicit finite-bank scope correction"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_002/CLI_HELP.log",
+      "sha256": "448f5907bcd14a0a34d5a324900968d1ef8a762affa2ce7b8044ee6943ea1474",
+      "returncode": 0,
+      "note": "approved plain --config runner CLI"
+    }
+  ],
+  "scope": "Actual original-kernel and seed loaders read temporary NPZ; actual30-row initialization/assignment/update/cold-load runner; only delivery is explicitly mocked. No protected unit writes."
+}

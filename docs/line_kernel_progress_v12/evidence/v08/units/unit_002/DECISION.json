@@ -1,0 +1,25 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit001两臂均零提交：20条非自身端点记录中16条首先因donor不足六核被拒，历史条件从未执行。这支持检验“单片段支持门槛是否阻断短片段接力”，不证明这些小片段正确。下一步改变提案单位，保持距离、角度及完整路径守卫。",
+  "recommended_next_step": {
+    "unit": "unit_002",
+    "experiment": "Ficus M5 bounded fragment-relay frontier growth: shared relay library, BASE versus HISTORY.",
+    "inputs": "继承unit001 CONFIG原始input/helper绑定；CONFIG SHA256=010cd6389206a5093067c20c790a41757483844cb70bcfe765f3e1a343f9fe2e。使用PARENT_RUN_FROZEN验证的source_snapshot。旧快照/回执属于哈希输入，实际renderer/lib属于helper，保留接口修复。",
+    "readiness": "同一v05 unit019 M5 STATE，SHA256=5128247be907311d68963405696c9a445b09c5c8aa6b20fa95dea6c686c9dbfb；285956核、28635载体、65335knots、next_version20576、p=0.003530473547030632。Restricted-load及原行序/版本/世界单位检查不变。本review仅读保存记录、源码和headers，未计算新邻接。",
+    "seeds": "固定48496/v20415、64355/v20526、112780/v20225、137016/v20281；双端、ID轮转。保护原有限叶成员，未处理背景保持121965已归属的强M5。旧合并不是GT。",
+    "relay_library": [
+      "每访问端点，从全部未使用有效载体完整查询1.5p端点邻接，递归枚举最多三个新增donor的无重复叶有向路径；种子不能互吞。每跳原tangent30°/connector35°及零gap规则不变，无nearest-k。",
+      "取消中间单donor的六核/2p资格要求，改在新增relay整体检查：相对起始端点外向半空间，至少六个不同原核、至少2p支持。沿用half_support，支持映射到有序路径坐标去重；连接段零支持。",
+      "全部原叶局部有效性与完整seed+relay的PathOracle保持不变。按canonical载体/端口深度遍历；遇到首个支持和共同守卫均合格的前缀即作为该分支最小relay，不再扩展其超集。失败或支持不足的短前缀仍可扩展至三跳。",
+      "每端口最多256条局部接续合格的非空路径前缀；发现第257条则整端口NOT_RUN，不提升截断库。保存所有查询、拒绝、最小relay及未探索范围。完整库生成后才选择；三跳范围不是全场景闭包。"
+    ],
+    "paired_selection": "最小relay按首个gap、总gap、donor数、canonical有向序列排序。共同合格库前两条首gap差<=0.15p时两臂先弃权，包括共享首donor但后续分叉的不同relay；不删除竞争解释。BASE取最近者；HISTORY在同库应用原history函数后取最近合格者。",
+    "history": "history的q为当前种子外向有序链，r为完整relay的有向q拼接，gap为首个gap。原1p割线、两侧2p历史、预测角15°、曲率差2sin7.5°不变；不足或退化弃权。relay内部仍受共同完整转角守卫；不伪称逐小叶获得独立历史认证。",
+    "fixed_guards": "原local_validator与PathOracle：max残差1p/q95 0.5p/tangent30°，8192核，vertex30°/8p累计60°，contact0.5p、parallel/branch、unsupported gap1.5p；EPS1e-8。UNKNOWN仍3reps/6核/4p激活。无拟合、外推、成员裁剪或辅助墨迹。",
+    "transactions": "relay所有donor一次性占用、更新有序叶/外端口/版本/aux并原子checkpoint；中间叶不单独晋级。失败完整回滚。每臂64次事务尝试、每种子8次接受；接受后重建候选，保存两策略同状态影子选择及各自rollout差异。",
+    "control_delivery": "先重现unit001八端点的单步候选/理由及零选择，不重跑其渲染。双臂每次接受保存冷载285956行；固定test_r_1/test_r_79全景、四种子同核单组/完整查询上下文、原四负例。记录所有得失、M4/原parent贡献、union/最长段/gap及种子域外支持。",
+    "budget": "BUILD<=18min，真实RED/GREEN覆盖两小叶联合达标、短失败不误剪、分叉歧义、完整库超限、真实loader及批量回滚。Parent1800s：readiness120s、生长至1200s、末600s交付；CPU/BLAS2。Nov2 07:15停新单元、07:38停science。"
+  },
+  "changed_variable": "相对unit001：单donor提交变为完整短片段relay提交，支持资格作用于新增整段，候选范围随之改变；不是仅调阈值。新两臂仅历史条件不同。原核和强背景冻结，accepted_merge_is_ground_truth=false。",
+  "falsification": "须有双视图可辨的新直线及曲线外延；曲线至少三个M4片段各>=12核/2p支持且较种子新增>=4p域外支持。小片段堆积、同色、更多提交或重叠池化不足。平行/分支/深度误吞、历史误拒真实续接均记反证；空小图保持PARTIAL。无共同候选仍不能评价历史先验。缺完整竞争、冷载全行映射或双全景则阻断，保存FAILURE_ANALYSIS，不临场扩大半径/跳数。"
+}

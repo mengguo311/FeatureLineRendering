@@ -1,0 +1,46 @@
+{
+  "action": "stop",
+  "rationale": "single-demo-finished：已完成唯一有界几何demo，保存成功的工程收拢和最终串珠视觉失败，不启动新实验或旧v10增长循环。",
+  "recommended_next_step": "本单组demo结束并停止；保留ORIGINAL、POSITION_ONLY与DERIVED三份资产及串珠反例，交接时将仅位置收拢对照与最终宽度规整的视觉损失并列，不在本轮调整宽度/opacity、扩组或另起单元。",
+  "diagnosis_zh": "596个目标核的means与covariance均真实改变，279020个非目标核全部字段bitwise保持，双相机共用同一冷载3D资产；工程合束已实现。POSITION_ONLY把可见曲折收拢为较平顺、较连续的细弧，最终DERIVED进一步统一宽度后在0012和0036均呈明显串珠/虚线状，未达到双视图连续单线的完整视觉目标。opacity未改，但投影覆盖和alpha积分明显减少，不能把变细/变淡当作更好的几何合并。完整背景仍有邻近多条线，这是限定596核之外的保留对象，不扩组修补。0036裁剪框越过画幅下边，画外部分缺证据。",
+  "failure_modes": [
+    {
+      "mode": "DERIVED_BEADING_OR_SUBPIXEL_BREAKS",
+      "evidence": "已查看双视图三阶段隔离面板，DERIVED有周期性浅色间隔；POSITION_ONLY较连续。",
+      "interpretation": "固定横宽0.15p、原采样及投影像素足迹共同作用的候选解释；不把它诊断成3D均值曲线断裂。"
+    },
+    {
+      "mode": "WIDTH_AND_INTENSITY_CONFOUND",
+      "evidence": "0012隔离alpha和64.6805→27.1463；0036为83.8038→34.4672，原opacity全部保持。"
+    },
+    {
+      "mode": "GEOMETRY_DISPLACEMENT_AND_SMOOTHING",
+      "evidence": "目标位移中位0.597283p、最大2.074344p；旧局部弯折被三次低复杂度拟合平滑，物理形状保真未认证。"
+    },
+    {
+      "mode": "PARTIAL_FRAME_AND_UNEDITED_COMPETITION",
+      "evidence": "0036目标3sigma并集框y至606，原生画幅至581；背景保留其他组线条，完整上下文仍多线。"
+    }
+  ],
+  "observed_images": [
+    "BEFORE_AFTER_TWO_VIEWS.png",
+    "FULL_CONTEXT_TWO_VIEWS.png",
+    "images/ORIGINAL_0012_FULL.png",
+    "images/DERIVED_0012_FULL.png",
+    "images/ORIGINAL_0036_FULL.png",
+    "images/DERIVED_0036_FULL.png",
+    "images/ORIGINAL_0012_ISOLATED.png",
+    "images/DERIVED_0012_ISOLATED.png",
+    "images/ORIGINAL_0036_ISOLATED.png",
+    "images/DERIVED_0036_ISOLATED.png",
+    "images/POSITION_ONLY_0012_ISOLATED_CROP_4X.png",
+    "images/POSITION_ONLY_0036_ISOLATED_CROP_4X.png"
+  ],
+  "visual_evidence_missing": true,
+  "next_change": "本单组demo结束并停止；保留ORIGINAL、POSITION_ONLY与DERIVED三份资产及串珠反例，交接时将仅位置收拢对照与最终宽度规整的视觉损失并列，不在本轮调整宽度/opacity、扩组或另起单元。",
+  "new_unit_authorized": false,
+  "created_jst": "2026-11-03T10:11:44.362380+09:00",
+  "saved_output_audit": "ANALYSIS_SAVED_AUDIT.json",
+  "updated_jst": "2026-11-03T10:13:19.434616+09:00",
+  "confound_note": "DERIVED同时改变长轴方向与横宽；缺少单独消融，串珠原因仅作候选解释，原opacity不变。"
+}

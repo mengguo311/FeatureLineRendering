@@ -1,0 +1,79 @@
+{
+  "unit": "unit_008",
+  "analysis_completed_jst": "2026-11-01T08:44:30.975667+09:00",
+  "execution_state": "completed",
+  "scientific_verdict": "PARTIAL_NO_DEMONSTRATED_JOINT_VISUAL_ADVANTAGE",
+  "scope": {
+    "scene": "ficus",
+    "original_kernel_rows": 285956,
+    "full_row_mappings": 2,
+    "native_full_views": 4,
+    "complete_overlap_components": 628,
+    "total_overlap_components": 628,
+    "recovered_models": 1141,
+    "hypotheses": 1222,
+    "new_spatial_candidates": 0,
+    "other_scenes_run": [],
+    "endpoint_association_run": false
+  },
+  "mechanism": "Fixed finite anchors plus recovered pair models; indivisible overlapping M4 observations; identical-bank greedy versus mutually exclusive MILP selection.",
+  "actual_compute_exit": {
+    "returncode": 0,
+    "reason": null,
+    "actual_child_exit": true,
+    "source": "../../orchestration/unit_008/COMPUTE_EXIT.json",
+    "started_jst": "2026-11-01T08:36:42.615711+09:00",
+    "finished_jst": "2026-11-01T08:40:36.371123+09:00"
+  },
+  "results": {
+    "greedy": {
+      "assigned": 121883,
+      "unknown": 164073,
+      "gained_vs_M4": 3413,
+      "lost_vs_M4": 0,
+      "groups": 509
+    },
+    "joint": {
+      "assigned": 121883,
+      "unknown": 164073,
+      "gained_vs_M4": 3413,
+      "lost_vs_M4": 0,
+      "groups": 516
+    },
+    "joint_vs_greedy": {
+      "different_edge_id_rows": 147,
+      "assigned_gained": 3,
+      "assigned_lost": 3
+    },
+    "M4_group_splits": 0,
+    "solver_joint_optimal_components": 628,
+    "elapsed_seconds": 233.03319415263832
+  },
+  "verification": {
+    "snapshot_files_hash_checked": 64,
+    "approved_helpers_hash_checked": 2,
+    "source_hash_mismatches": 0,
+    "mapping_and_full_view_checkpoint_hash_mismatches": 0,
+    "row_order_exact": true,
+    "original_fields_unchanged_saved_audit": true,
+    "geometry_recomputed_during_analysis": false
+  },
+  "limitations": [
+    "New substantial straight AND curved continuation not demonstrated in both views.",
+    "Visible inherited straight/shallow-curve supports and overlap pooling do not prove extension.",
+    "Finite projected interval support is not physical continuous observation.",
+    "Parallel, branch and depth safety remain unresolved; saved rejection labels are not ground truth.",
+    "Fixed original geometry retains spikes.",
+    "No independent physical truth or held-out claim.",
+    "Three fixed descendant selections missing:64355,65064,116525; their reference contexts are saved."
+  ],
+  "provenance": {
+    "decision_sha256": "5e0ccb9fed915795b51b3dff1da92767d365bc63be6f1ca40fa38e2d111bbaa7",
+    "config_sha256": "1a1702f58d22b2146bf7958c39ed2fc156a2953e7d6c19b43e238c94cc5dc852",
+    "source_manifest": "PARENT_RUN_FROZEN.json",
+    "source_snapshot": "source_snapshot",
+    "input_receipt": "INPUT_HASH_RECEIPT.json",
+    "geometry_audit": "GEOMETRY_AUDIT.json"
+  },
+  "analysis_actions": "Saved JSON/NPZ and original-kernel PNG inspection only; no fits, reruns, renders, tests or source edits."
+}

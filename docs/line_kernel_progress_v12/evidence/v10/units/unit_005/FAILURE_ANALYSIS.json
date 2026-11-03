@@ -1,0 +1,53 @@
+{
+  "diagnosis_zh": "仅移除U奖励确实改变轨迹：5个初始原J库精确重放，11个同状态影子选择分歧；最早第3步64111从127285改选纯池化-158889，新增3行方向角77.118°，小donor角度问题对全组均值贡献较小（待下轮验证组成稀释，不当物理误并真值）。本轮33步/27次纯池化，5558域外代理0.134p而旧控制47.854p；64111则从旧控制1.619p提高到8.356p且20步连续生长。效果是增长方向和池化分配改变，不能称整体准确率提高或恶化。末库238627在450秒阶段预算中断；关键曲线0012投影只有约4×15像素有效范围，不能给实质双视图身份认证。",
+  "failure_modes": [
+    {
+      "mode": "ranking_tradeoff_not_identity_accuracy",
+      "evidence": "取消奖励后纯池化27/33（原控制11/24）；5558+51核几乎无域外，64111+116核有8.356p代理，两种效果并存。"
+    },
+    {
+      "mode": "new_angular_outliers_in_first_divergence",
+      "evidence": "第3步新增158897/158898/158899三行77.1176度，后续仍在20个接受事件中出现旧R2超限；末步82.0248度。保留，不恢复R2。"
+    },
+    {
+      "mode": "parallel_conflict_retained",
+      "evidence": "第8步22130吸收-149202，叶对[22130,149201]命中parallel；第11/14步继承同对。相对于本轮START新增，相对unit004该现象已经存在；未凭小图断言真实深度或第三臂吞并。"
+    },
+    {
+      "mode": "growth_phase_truncation",
+      "evidence": "105个库，第0104_238627不完整，222条已存解释；不得以STOP内旧NO_CONNECTABLE标签覆盖PHASE_DEADLINE。"
+    },
+    {
+      "mode": "insufficient_substantial_dual_view_evidence",
+      "evidence": "全景可读；短隔离线与邻近平行线拥挤背景不能认证新增实质曲线，继承238627长弧无新增长。"
+    }
+  ],
+  "observed_images": [
+    "scenes/scan65/stages/NO_U_REWARD_FINAL/0012_FULL.png",
+    "scenes/scan65/diagnostics/5558/NO_U_REWARD_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/5558/NO_U_REWARD_0012_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/64111/NO_U_REWARD_0036_ISOLATED_CROP.png",
+    "scenes/scan65/worst_events/NO_U_REWARD/0033/0036_FULL_OBJECT_CONTEXT.png",
+    "scenes/scan65/stages/NO_U_REWARD_FINAL/0036_FULL.png",
+    "scenes/scan65/diagnostics/64111/START_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/64111/NO_U_REWARD_MID_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/64111/NO_U_REWARD_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/64111/NO_U_REWARD_0012_ADDED_MEMBERS_CROP.png",
+    "scenes/scan65/diagnostics/64111/NO_U_REWARD_0012_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/worst_events/NO_U_REWARD/0003/0036_ADDED_CROP.png",
+    "scenes/scan65/diagnostics/negative_parallel/NO_U_REWARD_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/5558/START_0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/5558/NO_U_REWARD_0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/64111/START_0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/64111/NO_U_REWARD_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/negative_branch/NO_U_REWARD_0012_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/damage_120042/NO_U_REWARD_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/22130/START_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/22130/NO_U_REWARD_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/22130/NO_U_REWARD_0012_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/22130/NO_U_REWARD_0036_ISOLATED_CROP.png"
+  ],
+  "visual_evidence_missing": true,
+  "visual_evidence_missing_reason": "23张原核PNG已实际查看，非无图：64111的0012含16px padding框36×47、0036框75×47；有效结构细小，双视图不足以确认新增曲线/平行深度身份。自动small_evidence=false不覆盖人工不足判断。并未逐张审阅全部负例图片。",
+  "next_change": "下一单元单独REVIEW/冻结Scan65同START五种子配对：封存NO_U_REWARD控制 versus GROUP_BALANCED_SCORE。保持relaxed_rule_groups=[2,4,6]、规则1/3/TRANSPORT5、整曲线2p完整库、五轮WHOLE拟合及450秒新臂预算。仅把距离项改为0.5*mean_G(d/p)^2+0.5*mean_F(d/p)^2，方向项改为0.25*(0.5*mean_G(theta/90)^2+0.5*mean_F(theta/90)^2)；各集合用原有效方向行，任一集合无方向证据则该方向项标UNKNOWN但不新增硬拒绝，沿用共同合法性处理。turn/gap/复杂度系数不变、U奖励仍0，所有已解除规则不恢复。初始库重放原NO_U分数/几何/选择，再仅执行新臂，每状态并存双评分和旧G/新F误差分布，原33次控制明确PARTIAL不重跑或冒充穷尽。检验小donor误差被大G均值稀释的假说；池化本身不预设为错。5558/64111为重点，全部五组、完整竞争背景和最坏例保留。05:15停新、05:35数值止、05:40收尾、06:00硬停。"
+}

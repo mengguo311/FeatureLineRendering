@@ -1,0 +1,75 @@
+{
+  "audit_kind": "READ_ONLY_PROGRESS_CHECK_NOT_FINAL_ACCEPTANCE",
+  "science_output": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_relaxed_guards_v10_20261103/units/unit_009",
+  "sealed_files_verified": 3984,
+  "sealed_bytes_verified": 340316683,
+  "seal_mismatches": [],
+  "parent_seal_sha256": "0b871b768678fd08b7bbf56cfa90682d9e32e60a826da676423667a21c2d2e08",
+  "actual_compute_exit": 0,
+  "review_build_analysis_exit_codes": [0, 0, 0],
+  "model": "gpt-6-astra",
+  "effort": "ultra",
+  "session": "01a187da-c1a9-7a91-9a65-91fad4f3e85f",
+  "astra_image_receipt_audit": {
+    "phase": "unit_009/analysis_0",
+    "start_jst": "2026-11-03T04:41:12.685405+09:00",
+    "end_jst": "2026-11-03T04:48:02.365192+09:00",
+    "resolved_literal_image_calls": 4,
+    "requested_images": 18,
+    "returned_input_images": 18,
+    "returned_png_bytes_match_saved_files": 18,
+    "physical_identity_certification": false
+  },
+  "independent_saved_membership_audit": {
+    "rows": 279616,
+    "row_ids_equal": true,
+    "primitive_ids_equal": true,
+    "assigned_start": 126616,
+    "assigned_final": 127016,
+    "gained_unknown": 400,
+    "lost_assigned": 0,
+    "changed_labels": 947,
+    "old_assigned_groups_split": 0,
+    "new_events": 74,
+    "pure_pooling": 8,
+    "parallel_flagged": 17,
+    "angle_exceed": 4,
+    "self_contact": 1,
+    "counts_by_group_start_final": {
+      "13285": [72, 188],
+      "30579": [99, 596],
+      "84607": [55, 190],
+      "136538": [75, 116],
+      "162227": [83, 95],
+      "233067": [45, 191]
+    }
+  },
+  "growth_status": "PARTIAL_PHASE_DEADLINE_450_SECONDS_NOT_FULL_EXHAUSTION",
+  "parent_image_inspection": {
+    "original_full_frames": [
+      "scenes/scan65/stages/GROUP_BALANCED_FIT_FINAL/0012_FULL.png",
+      "scenes/scan65/stages/GROUP_BALANCED_FIT_FINAL/0036_FULL.png"
+    ],
+    "original_crops_displayed_at_explicit_4x": [
+      "scenes/scan65/diagnostics/30579/START_0012_START_MEMBERS_CROP.png",
+      "scenes/scan65/diagnostics/30579/GROUP_BALANCED_FIT_MID_0012_ISOLATED_CROP.png",
+      "scenes/scan65/diagnostics/30579/GROUP_BALANCED_FIT_0012_ISOLATED_CROP.png",
+      "scenes/scan65/diagnostics/30579/GROUP_BALANCED_FIT_0012_ADDED_MEMBERS_CROP.png",
+      "scenes/scan65/diagnostics/30579/GROUP_BALANCED_FIT_0012_FULL_OBJECT_CONTEXT_CROP.png",
+      "scenes/scan65/diagnostics/30579/GROUP_BALANCED_FIT_0036_ISOLATED_CROP.png",
+      "scenes/scan65/diagnostics/84607/GROUP_BALANCED_FIT_0012_ISOLATED_CROP.png",
+      "scenes/scan65/diagnostics/negative_parallel/GROUP_BALANCED_FIT_0012_FULL_OBJECT_CONTEXT_CROP.png"
+    ],
+    "local_original_root": "/Users/menakuniay/.hermes/cache/scratch/v10_progress_20261103_0451",
+    "interpretation_zh": "30579在0012从很短一段扩展为明显更长、略弯的原核细线，0036也有长细段；84607呈弯弧。54x106等低分辨率裁图与紧邻竞争线不足以认证同一物理边。全帧仍有密集碎线和离体尖刺；这是固定原核的身份聚合，不是几何清理、时间稳定或物理正确性认证。"
+  },
+  "unit010_review": {
+    "frozen_decision_seen": true,
+    "description": "Matched unit009 step71, BASE_J vs J+0.01*self_contact diagnostic; disabled hard rules 2/4/6 remain disabled.",
+    "build_was_live_at_first_check": true,
+    "no_new_result_claimed": true
+  },
+  "no_remote_science_or_orchestration_changes": true,
+  "no_attachments_sent": true,
+  "sole_attachment_owner": "separate_final_acceptance_job"
+}

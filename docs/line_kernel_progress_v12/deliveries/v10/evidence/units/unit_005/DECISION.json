@@ -1,0 +1,16 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit004已完成R2/R4/R6解除：24次接受中11次纯池化，5558连续16次。保存库显示去掉U奖励会改变部分排名；64111初始库的127285依赖该奖励胜出，而-158889的其余代价更低。应检验排序作用，不恢复硬门，也不预设池化错误。已核验54份快照及START四文件；本review未运行拟合或新数值实验。",
+  "recommended_next_step": {
+    "experiment": "Scan65 WHOLE：[2,4,6]原J封存控制 versus NO_U_REWARD新增长。",
+    "binding": "继承unit004 CONFIG 4bc1a97468d1c4e6b70c58671d49ac79d102dbc53d0ec73287287b6801275d8b及PARENT_RUN_FROZEN的54份snapshot/helper绑定。冷载其scenes/scan65/stages/START，核验全部CHECKPOINT文件；MEMBERSHIP SHA256=252d9a2875a23fda6792d116ba08587c7e31368972924307e0609e05b10dc249。",
+    "start": "279616行、126428 assigned、153188 UNKNOWN、next_version21669、p=.001725801957946726；固定5558/v21661、22130/v21667、64111/v21668、156151/v21665、238627/v21651。保留1760历史事件、完整复合q及背景，精确复制NO_FURTHER_GROWTH。复用branch_loader→scan65_loader的restricted M4/control检查，不分配初始版本。回到匹配START不撤销封存终态。",
+    "score": "两策略均relaxed_rule_groups=[2,4,6]。原J保持；NO_U_REWARD令Jnew=J+0.25*U/(1+U)，即mean(d/p)^2+.25mean(theta/90)^2+.05mean(turn/90)^2+.1(maxgap/p)^2+.02K/(L/p+1)。仅移除U软奖励，U仍计算并记录。平局donor/关系/方向；不比较旧组总损失。U=0、自接触、长gap仍可有限评分。",
+    "control": "共同初始拟合后重放unit004五个R2_R4_R6_OFF_TRANSPORT初始库，精确比较候选、原J、拒绝、q/template及选择；新增诊断字段除外。不一致阻断。冻结两评分库后只运行NO_U_REWARD；原24次轨迹和自然停止直接引用，明确未重新执行。每状态保存两评分及影子赢家，后续轨迹可分叉。",
+    "fixed_algorithm": "完整整曲线2p精确段距查询，无top-k；双向重叠1p对应/median偏移及四端点解释不变。assigned整组donor、UNKNOWN原载体；模板≤1p，全部并集成员与全部结点5轮Huber IRLS，delta=.5p，平均位置损失+.05平均二阶差平方+.001平均模板位移平方；LSQR atol/btol1e-8、iter_lim2000。规则1/3/TRANSPORT规则5不变；缺方向UNKNOWN，运输未决、8192成员/257结点或未完成候选使整轮PARTIAL，不截断选赢家。",
+    "repeat_closure": "ID轮转，必须提交完整库最低Jnew；先原子保存全并集/q/版本及紧凑delta，再重查，无接受次数上限，种子吸收合并队列。仅完整无连接或支持闭合自然停止。闭合仍须端距≤.5p、长度≥6p、两端1p窗各≥3有效核、切向≤45度、闭合段协方差支持无洞及周期contact；自接触/超gap可并但不可认证闭合。",
+    "delivery_budget": "BUILD≤18min：真实M4 loader、原J精确重放、U=0评分不变/U>0仅消除奖励、有限评分及保核回滚。Parent1350s：readiness120、共同库180、新增长450、交付600；新臂增长预算匹配旧臂。CPU2串行，Nov3 05:35绝对截止，05:15停新单元。先冷载全行映射，再0012/0036原核全景、五组起中末/新增/完整对象背景、六类负例及三损伤参考。保留最早排名分歧、首次池化/gap/contact及误差/规模各top3；小图明确缺证据。看图后两分钟写四分析文件。"
+  },
+  "changed_variable": "仅U软奖励系数0.25→0；输入、候选、拟合、其余评分及合法性相同。旧控制复用已执行轨迹，后续库可分叉。原核冻结、整组单调并集、全曲线更新；accepted_merge_is_ground_truth=false。",
+  "falsification": "恢复2/4/6否决、无穷评分、原J不复现、失核、原核变化、截断晋级或无支持闭合均为工程失败。若取消奖励仅增加池化、削弱有用延伸或加重平行/深度/第三臂吞并，保存反例；不以接受数或低loss称准确率。继承长弧、同Q重映射U和小图不是新增实质曲线证据。规则3/5阻断仍保留，不宣称窗口耗尽；无辅助桥墨或物理、held-out认证。"
+}

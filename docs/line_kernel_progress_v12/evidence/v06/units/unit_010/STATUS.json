@@ -1,0 +1,53 @@
+{
+  "unit": "unit_010",
+  "analysis_at": "2026-11-01T09:11:49.963361+09:00",
+  "execution_state": "blocked",
+  "scientific_verdict": "NOT_RUN_INTERFACE_FAILURE",
+  "scope": {
+    "planned_scene": "ficus",
+    "planned_original_kernel_count": 285956,
+    "completed_scientific_stages": [],
+    "saved_science_files": 0,
+    "saved_original_kernel_pngs": 0,
+    "planned_arms": [
+      "concat_greedy",
+      "concat_joint",
+      "common_greedy",
+      "common_joint"
+    ],
+    "other_scenes": "NOT_RUN"
+  },
+  "mechanism": "Planned complete finite path library: immutable-leaf concatenation versus common auxiliary curve; greedy versus same-bank MILP for each. Not numerically executed.",
+  "actual_child_returncode": 1,
+  "actual_child_reason": null,
+  "actual_child_exit": true,
+  "delivery_gate": false,
+  "fit_calls": 0,
+  "new_candidates": 0,
+  "assigned": null,
+  "unknown": null,
+  "assigned_gain": null,
+  "assigned_loss": null,
+  "old_group_splits": null,
+  "support_union": null,
+  "longest_run": null,
+  "gaps": null,
+  "blocker": {
+    "type": "TypeError",
+    "runner": "path_library_runner.py:29",
+    "loader": "scene_adapter.py:54",
+    "cause": "Zero-argument callback passed where loader invokes guard(phase)",
+    "before_state_and_asset_numeric_load": true
+  },
+  "provenance": {
+    "config_sha256": "034ebbb44b46e9a989f7019dcf6ed287922028cbd3a7ae32ec6edd609a9d19e6",
+    "decision_sha256": "82b0d3bad636e82f8458fc42511a8aa2e7a0c70743d341238fca245d74dbc77b",
+    "source_snapshots_verified": 78,
+    "helpers_verified": 2
+  },
+  "visual_evidence": "No unit010 images; only explicitly labeled unit009 reference PNGs viewed",
+  "physical_identity": "NOT_ASSESSED_PROVISIONAL",
+  "held_out": "NOT_VALIDATED",
+  "analysis_reruns": false,
+  "analysis_source_edits": false
+}

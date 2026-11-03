@@ -1,0 +1,53 @@
+{
+  "kind": "READ_ONLY_PROGRESS_AUDIT_NOT_FINAL_ACCEPTANCE",
+  "remote_unit": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_relaxed_guards_v10_20261103/units/unit_007",
+  "local_evidence": "/Users/menakuniay/.hermes/cache/scratch/relaxed_guards_v10_monitor_20261103_0405",
+  "seal_verified_at_jst": "2026-11-03T04:05:59.549577+09:00",
+  "seal_sha256": "bf99b0888bbe6b0d7c718905a4bf4cdf5c36dbf1beea1004c7769284484d2b9f",
+  "sealed_file_count": 3674,
+  "sha_mismatch_count": 0,
+  "actual_compute_exit": 0,
+  "compute_started_jst": "2026-11-03T03:41:22.550260+09:00",
+  "compute_finished_jst": "2026-11-03T03:51:01.796163+09:00",
+  "review_build_analysis_exit_codes": [0, 0, 0],
+  "model": "gpt-6-astra",
+  "effort": "ultra",
+  "session": "01a187da-c1a9-7a91-9a65-91fad4f3e85f",
+  "scientific_completion": "PARTIAL_GROWTH_PHASE_DEADLINE_WITH_SAVED_FINAL_MAPPING",
+  "findings_zh": [
+    "组均权拟合后保存38次接受，16次纯支持池化；封存报告记载新增183个原UNKNOWN核，旧成员无丢失无拆分。这不是准确率。",
+    "相较旧ROW_FIT的17次自然停止，新臂仍有未评完候选，比较完成程度不对称。增长450秒阶段预算结束，不是窗口截止或候选耗尽。",
+    "原距离/角阈值没有作为硬门恢复；本轮接受事件记录最大1.298543p、71.753462度，未复现unit006的89度损伤代理，不足以证明物理正确。",
+    "保存平行冲突和自接触风险；第15步自接触解释即使U奖励为0仍胜出，不能只归咎于独特支持奖励。",
+    "父级实际查看两张777x581完整相机图，原碎边和尖刺仍可见。238627的128x62起末孤立图长弧形状近似，仅有微弱墨量差别；64111的36x47孤立图太小，不能认证外延。",
+    "名为FULL_OBJECT_CONTEXT的第15步和第26步图实际分别只有72x44、61x97，只是局部竞争背景，不是整幅物体证据。完整相机图另看，未将小crop当全景。"
+  ],
+  "parent_actually_viewed_images": [
+    "scenes/scan65/stages/GROUP_BALANCED_FIT_FINAL/0012_FULL.png",
+    "scenes/scan65/stages/GROUP_BALANCED_FIT_FINAL/0036_FULL.png",
+    "scenes/scan65/diagnostics/238627/START_0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/238627/GROUP_BALANCED_FIT_0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/238627/GROUP_BALANCED_FIT_0012_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/worst_events/GROUP_BALANCED_FIT/0015/0036_ISOLATED_CROP.png",
+    "scenes/scan65/worst_events/GROUP_BALANCED_FIT/0015/0036_FULL_OBJECT_CONTEXT.png",
+    "scenes/scan65/worst_events/GROUP_BALANCED_FIT/0026/0012_FULL_OBJECT_CONTEXT.png",
+    "scenes/scan65/diagnostics/64111/GROUP_BALANCED_FIT_0012_ISOLATED_CROP.png"
+  ],
+  "viewing_scope": "Parent native image inspection only; does not certify every Astra image-call receipt or physical identity. All nine downloaded files independently SHA-matched sealed remote members and decoded.",
+  "next_unit_at_readback": {
+    "unit": 8,
+    "stage": "ASTRA_EXECUTING_REVIEW_DECISION",
+    "supervisor_pid": 3420947,
+    "child_pid": 3477173,
+    "both_pid_comm_alive": true,
+    "review_exit": 0,
+    "review_guard_passed": true,
+    "decision_sha256": "86177ba46c68fcfcb93540e5eda040a0cd6f5f4d316daadc9a2ef804c84cc5d2",
+    "decision": "Carry forward unit007 final accepted state without changing selection/fit/score; add immutable-reference support accounting as diagnostics only. Rebuild the entire interrupted donor library before selecting."
+  },
+  "remote_writes": false,
+  "restarted_or_interfered_with_active_tasks": false,
+  "deadline_extended": false,
+  "attachment_owner": "independent_final_acceptance_job_only",
+  "pending": ["Full final acceptance", "ZIP-member cold load", "Physical edge identity", "Temporal/held-out evaluation"]
+}

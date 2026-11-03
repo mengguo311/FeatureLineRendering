@@ -1,0 +1,42 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit003的5个端点提案全部在容量或几何检查阶段拒绝，没有试验进入全核重竞争与能量比较；55/441也不满足端点条件。这尚未证伪自由重归属或全局能量。下一步改用共享兼容原核建立重叠关系，并消除重叠参数段后共同拟合，不扩大端点距离、转角或预算。",
+  "recommended_next_step": {
+    "unit": "unit_004",
+    "experiment": "Whole-ficus：共享原核支持的动态重叠模型合并，逐核自由竞争与全局能量事务接受。",
+    "inputs": {
+      "source": "unit003/source_snapshot，经PARENT_RUN_FROZEN验证；继承全部原资产、相机和helper绑定。",
+      "config_sha256": "8231ab7ff396c30c7e359fd139c53b2cf65f92d6092d97dd81d1ce6eee59e256",
+      "state": "unit003/scenes/ficus/stages/NO_MERGE；520模型、285956原核、next_id712、p=0.003530473547030632。",
+      "models_sha256": "e990caaa4a47272a8285da8453400b231ffe575df53493557040fb9bf95e4ef3",
+      "membership_sha256": "1d544bc84345ae8e8f268c2009d277c7d9ecf5019409bb775d39fd9b1842ea20",
+      "readiness": "冷载验证完整checkpoint、原行序、模型版本及控制导数schema。review只读源码/保存报告，未计算共享关系；不得预称55/441可合并。"
+    },
+    "control": "NO_OVERLAP_MERGE精确复制验证后的保存状态，不额外重竞争。变体从同一状态出发；不加入普通更新、出生或延伸周期。",
+    "proposals": [
+      "按原assign的完整半径查询，为每个有效原核保存全部cost<1的模型兼容关系及各模型最低cost段的s/segment；保留原段ID平局规则，禁止只用top2 alternatives。",
+      "模型对必须共有至少12个兼容原核；这些核投影到两模型的原协方差支持区间并集分别至少2p。包含当前UNKNOWN，不按旧parent筛选。",
+      "按两侧共享支持并集长度的较小值降序，再canonical模型ID排序。保存完整关系与候选表后才尝试；每几何版本对一次，总计64次含失败。接受后更新完整关系，可缓存未变q的兼容表；未尝试候选显式保存。"
+    ],
+    "common_parameterization": [
+      "A为较小ID。用共享核对应段切向点积之和决定B方向，非负保持、负则反向。取delta=median(sA-sB_oriented)，共同坐标域为A的[0,LA]和B的[delta,delta+LB]。",
+      "两域交集长度须>=2p；在交集两端及均匀间距<=1p的位置检查两条有限q距离<=1p、定向切向夹角<=30度，段边界取较小段ID。失败记录，不外推或重试偏移。",
+      "联合域左端所属曲线作为左owner，右端所属曲线作为右owner，边界平局取较小ID。若同一owner覆盖两端，以其q为模板；否则在重叠域内从左owner到右owner线性混合，非重叠部分沿原曲线。保留两曲线映射后的knots与重叠边界，再原resample。禁止把两段重叠q直接串接成往返路径。",
+      "模板长>128p或两模型当前主成员并集>8192核则拒绝，不裁成员。按原行号排序的主成员并集调用一次原irls_update；不预先以拼接转角否决。拟合后必须通过原geometry_ok。"
+    ],
+    "free_assignment_and_acceptance": "临时移除两个模型并加入共同q；全部285956核对全部当前模型重新竞争，再执行原支持拆分/死亡。共同模型须恰有一个有效支持后代；其他核可改投第三模型或UNKNOWN。沿用unit003的E=sum最终归属cost+1.0*M，仅下降>1e-8提交完整状态；否则无损回滚归属、模型、aux及next_id。",
+    "fixed": "原cost=d²+0.25*(angle/30)²、距离1p、切向30度、UNKNOWN1/margin0.05；支持12核/6占用bin、协方差半宽<=0.5p、gap1.5p；turn30度/window8p60度/contact0.5p；三Huber、delta0.5p、占用bin等权、平滑0.1、结点移动<=0.5p、最多129knots/704模型。EPS1e-8。无新增物理parallel/branch认证。",
+    "delivery": "保存完整兼容关系、共享支持、方向/偏移/重叠检查及所有拒绝。每次接受先保存全行状态和谱系，拒绝保留模型与无损归属差分；冷载后输出两臂test_r_1/test_r_79原核全景。同核展示top3实际直/曲变化及损伤，保留55/441、unit001弧144、unit002的7/11/15、原负例与旧损失。分别报告重复池化、域外支持、union/最长段/gap及旧标签撤回拆分；仅原核墨迹。",
+    "budget": "BUILD<=18min，小型真实loader、完整兼容关系、反向/包含/部分重叠参数化、自由撤回和回滚RED/GREEN；不跑全资产。Parent计算<=1800s：readiness120s、完整初始关系至360s、最多64提案至1200s、末600s交付。未完成关系不可选择性晋级，超时保留最后完整状态。CPU/BLAS2；unit<=2GiB/runtime<=20GiB；19:15停新单元、19:38停science。"
+  },
+  "changed_variable": {
+    "main": "端点接续候选及直接拼接模板，改为共享兼容核的重叠关系和单调共同坐标模板；候选证据与参数化同时改变。",
+    "paired": "同一保存状态的不合并对照 versus 动态重叠模型替换；不是固定片段库或greedy/MILP比较。",
+    "fixed": "legacy_groups_locked=false；kernel_geometry_frozen=true；final_ink_carrier=original_gaussians；uses_gpu=false；uses_training=false。"
+  },
+  "falsification": {
+    "engineering": "绑定错误、遗漏兼容模型、截断竞争、回滚不完整或缺冷载全行映射/双全景即阻断。",
+    "science": "须有双视图可辨的新实质直线及曲线归组。曲线至少三个旧片段各贡献12核/4p支持代理，并较最大单输入模型有4p域外代理；只减少模型、降低E或池化重叠支持不算长曲线恢复。",
+    "counterexample": "吞并平行、分支、深度结构或尖刺否定实例。55/441缺共享证据必须保持缺失，不强连。零候选/零接受保存为本机制负结果，不调阈值救场；不可辨视图保持PARTIAL，物理身份和held-out未验证。"
+  }
+}

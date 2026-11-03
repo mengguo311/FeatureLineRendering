@@ -1,0 +1,148 @@
+{
+  "execution_state": "completed",
+  "scientific_verdict": "PARTIAL_LOCAL_CURVED_GROUPING_WITH_SEVERE_COVERAGE_LOSS",
+  "actual_child_exit": {
+    "returncode": 0,
+    "reason": null,
+    "pid": 3184107,
+    "started_jst": "2026-11-01T17:29:21.177021+09:00",
+    "finished_jst": "2026-11-01T17:30:10.362662+09:00",
+    "stdout": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/orchestration/unit_001/NUMERICAL_STDOUT.log",
+    "actual_child_exit": true
+  },
+  "saved_execution": {
+    "scientific_verdict": "PENDING_SAVED_IMAGE_ANALYSIS",
+    "experiments_run": true,
+    "completed_stages": [
+      "FREE_STATIC",
+      "FREE_ADAPTIVE_1",
+      "FREE_ADAPTIVE_2",
+      "FREE_ADAPTIVE_3"
+    ],
+    "errors": [],
+    "full_views_complete": true,
+    "full_view_stages": [
+      "FREE_STATIC",
+      "FREE_ADAPTIVE_3"
+    ],
+    "group_cases": 13,
+    "diagnostics_complete": true,
+    "elapsed_seconds": 48.763817984610796,
+    "execution_state": "completed",
+    "kernel_geometry_frozen": true,
+    "legacy_groups_locked": false,
+    "uses_training": false,
+    "uses_gpu": false
+  },
+  "scope": {
+    "scene": "ficus",
+    "original_rows": 285956,
+    "all_rows_evaluated": true,
+    "model_discovery_complete": false,
+    "completed_stages": [
+      "FREE_STATIC",
+      "FREE_ADAPTIVE_1",
+      "FREE_ADAPTIVE_2",
+      "FREE_ADAPTIVE_3"
+    ],
+    "native_full_views": [
+      "FREE_STATIC/test_r_1",
+      "FREE_STATIC/test_r_79",
+      "FREE_ADAPTIVE_3/test_r_1",
+      "FREE_ADAPTIVE_3/test_r_79"
+    ],
+    "intermediate_cycle_images": "NOT_REQUESTED_NOT_SAVED",
+    "other_scenes": "NOT_RUN",
+    "fixed_negative_11_80709": "EMPTY_REFERENCE_ROWS; missing evidence, not passed"
+  },
+  "mechanism": "Kernel-level competitive assignment to voxel-tangent traced finite curves, with adaptive IRLS geometry, supported endpoint extension, births and support-driven deaths; old groups are revisable.",
+  "comparisons": {
+    "v05_M4": {
+      "old_assigned": 118470,
+      "new_assigned": 6184,
+      "assigned_gained": 2072,
+      "assigned_lost": 114358,
+      "new_UNKNOWN": 279772,
+      "old_groups_split": 15,
+      "numeric_id_changes_not_identity_accuracy": 120542
+    },
+    "v05_M5": {
+      "old_assigned": 121965,
+      "new_assigned": 6184,
+      "assigned_gained": 1908,
+      "assigned_lost": 117689,
+      "new_UNKNOWN": 279772,
+      "old_groups_split": 15,
+      "numeric_id_changes_not_identity_accuracy": 123873
+    },
+    "v06_overlap_joint": {
+      "old_assigned": 121883,
+      "new_assigned": 6184,
+      "assigned_gained": 1874,
+      "assigned_lost": 117573,
+      "new_UNKNOWN": 279772,
+      "old_groups_split": 15,
+      "numeric_id_changes_not_identity_accuracy": 123757
+    },
+    "v06_common_joint": {
+      "old_assigned": 119860,
+      "new_assigned": 6184,
+      "assigned_gained": 2066,
+      "assigned_lost": 115742,
+      "new_UNKNOWN": 279772,
+      "old_groups_split": 15,
+      "numeric_id_changes_not_identity_accuracy": 121926
+    }
+  },
+  "local_evidence": {
+    "curve144": {
+      "kernels": 198,
+      "substantial_M4_fragments": 5,
+      "substantial_parents": 5,
+      "support_union_proxy_p": 15.727938062821899,
+      "longest_run_proxy_p": 15.727938062821899,
+      "visual": "Visible short curved stroke in both fixed views; promising local regrouping, no physical certification or complete leaf recovery."
+    },
+    "curve382": "182 kernels/4 substantial M4 fragments, but appears nearly straight in both crops despite auxiliary cumulative turn81.42deg. Curve label alone fails.",
+    "straight482": "127 kernels,36.876p support proxy, one M4 fragment and one parent; not new cross-fragment recovery.",
+    "qualifying_numeric_fragment_groups": 6,
+    "numeric_gate_is_not_visual_pass": true
+  },
+  "limitations": [
+    "Original spikes remain visible; UNKNOWN is a label, not geometric removal.",
+    "Parallel/branch/depth safety unresolved; prior negative contexts mostly gray and one missing.",
+    "Covariance-projected interval union/longest run are support proxies, not physical continuously observed length.",
+    "Whole-object color coverage poor; physical identity, heldout and temporal stability unverified.",
+    "Static/adaptive differ in both model geometry and births/deaths; no solver-only causal claim."
+  ],
+  "provenance": {
+    "config_sha256": "7f9151d1e010d15029ef745c78459ebc3575c1214686214db168ed5e9c107aea",
+    "decision_sha256": "55b431d28b05563f79e56bc9367a08cb22f232b3b5de621523623c333dc03bbf",
+    "source_snapshot_files_verified": 6,
+    "source_files": {
+      "/home/u00134/3dgs_line/line_kernel_free_reassignment_v07/reproduction/line_kernel_free_reassignment_v07/build_request.py": "9a2825ebcc284f068a96145f223b3c5c55fec10bf32e64c8a484167d5fcb554c",
+      "/home/u00134/3dgs_line/line_kernel_free_reassignment_v07/reproduction/line_kernel_free_reassignment_v07/free_core.py": "5fa12b98da4d24000294a760281e3a51054e455d5cf0762ea18b2b1bb4efa81e",
+      "/home/u00134/3dgs_line/line_kernel_free_reassignment_v07/reproduction/line_kernel_free_reassignment_v07/free_delivery.py": "58871599d9c46778d3f247cec78a3ff049e8c88a20fa491e89986b11ee3ef73a",
+      "/home/u00134/3dgs_line/line_kernel_free_reassignment_v07/reproduction/line_kernel_free_reassignment_v07/free_io.py": "fc5b48bc18950d28d2a2eecc64533645b2b7acfb8fba2b09d8d2378fe2d19ad4",
+      "/home/u00134/3dgs_line/line_kernel_free_reassignment_v07/reproduction/line_kernel_free_reassignment_v07/runner.py": "8e7c8997944db20c805881a9cf627fd1f913853c2635c5453bf4848dc9f0cd24",
+      "/home/u00134/3dgs_line/line_kernel_free_reassignment_v07/reproduction/line_kernel_free_reassignment_v07/test_free.py": "cfb3b1ebf10679f72ca2f6367c109dec6b8078e918ee89344f6c6806de573b5c"
+    },
+    "immutable_source_snapshot": {
+      "/home/u00134/3dgs_line/line_kernel_free_reassignment_v07/reproduction/line_kernel_free_reassignment_v07/build_request.py": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_001/source_snapshot/build_request.py",
+      "/home/u00134/3dgs_line/line_kernel_free_reassignment_v07/reproduction/line_kernel_free_reassignment_v07/free_core.py": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_001/source_snapshot/free_core.py",
+      "/home/u00134/3dgs_line/line_kernel_free_reassignment_v07/reproduction/line_kernel_free_reassignment_v07/free_delivery.py": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_001/source_snapshot/free_delivery.py",
+      "/home/u00134/3dgs_line/line_kernel_free_reassignment_v07/reproduction/line_kernel_free_reassignment_v07/free_io.py": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_001/source_snapshot/free_io.py",
+      "/home/u00134/3dgs_line/line_kernel_free_reassignment_v07/reproduction/line_kernel_free_reassignment_v07/runner.py": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_001/source_snapshot/runner.py",
+      "/home/u00134/3dgs_line/line_kernel_free_reassignment_v07/reproduction/line_kernel_free_reassignment_v07/test_free.py": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_001/source_snapshot/test_free.py"
+    },
+    "helper_files": {
+      "/home/u00134/3dgs_line/gaer_c2l50_8build_joint_gs_v01/reproduction/radegs_c2l50_8build_joint_gs_v01/renderer.py": "ce24cd30d663e6f421064d83006f097b02a5cf6a74b20c177a905ca514caed93",
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_joint_gs_v01/build/libjoint.so": "033a973a71dc5364677a5bf0625f23dc4fe445b70257f04de7cb70cdccca84b0"
+    },
+    "original_gaussians_sha256": "c68a8243172e3aa1a1641e0372b483ff82d082a9000d204b5bcb34a7803ba065",
+    "original_controls_sha256": "0010535c3f30ce54021b10b6f284508fd04fb57baa099cdc7da91b540553b20a",
+    "checkpoint_verification": "All4 accepted-stage file maps verified; saved original-field audits before/after identical. Analysis did not reload original assets or rerender."
+  },
+  "analysis_only": true,
+  "analysis_helper_note": "First read-only lineage summary encountered KeyError(operation) on seed events; corrected parser only. Actual numerical child rc remains0; no source or saved science changed."
+}

@@ -1,0 +1,61 @@
+{
+  "returncode": 0,
+  "tdd_status": "GENUINE_FUNCTIONAL_RED_GREEN: original linear registration fails the short-overlap constrained-seam fixture; frozen Hermite seam passes the unchanged test. 28 bounded tests pass, including real loader and four-arm runner through cold final maps before deliberate renderer stop. No full-asset science.",
+  "red": {
+    "returncode": 1,
+    "command": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+      "-B",
+      "/home/u00134/3dgs_line/line_kernel_frontier_growth_v08/reproduction/line_kernel_frontier_growth_v08/test_seam.py"
+    ],
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_007/tests/RED.log",
+    "sha256": "3b66ed9d64977d83d5424bcee2161a6b51e3a4c8401a144172752efa22a64127",
+    "baseline_source": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_007/tests/RED_seam_core.py",
+    "baseline_source_sha256": "13b87e143e9848f1ab4a76707901edee9aa804f125139bf82067acfeef04c40d",
+    "test_source": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_007/tests/RED_test_seam.py",
+    "test_source_sha256": "0f98f0e91acca70ce4d1a409a3bf7cc5a9a7696d48ec84e10b235df813404b51"
+  },
+  "green": {
+    "returncode": 0,
+    "command": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+      "-B",
+      "/home/u00134/3dgs_line/line_kernel_frontier_growth_v08/reproduction/line_kernel_frontier_growth_v08/test_seam_suite.py"
+    ],
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_007/tests/GREEN_VERIFIED.log",
+    "sha256": "3d86d535c51b0683aafd17d0dc46747828f4266da2cfde6b5c8b650e2003ba13"
+  },
+  "test_exit_receipt": {
+    "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_007/tests/TEST_EXIT.json",
+    "sha256": "f42137080b249c8a1d97400f2135df43ef16d9f3f465f6bbfbbe08a219812aa8"
+  },
+  "intermediate_failure": {
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_007/tests/GREEN_1.log",
+    "sha256": "e15b99312c2db37bf2590f2334dc247ce57c82cfde39d72b280eea9acffba922",
+    "exit": {
+      "returncode": 1,
+      "command": [
+        "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+        "-B",
+        "/home/u00134/3dgs_line/line_kernel_frontier_growth_v08/reproduction/line_kernel_frontier_growth_v08/test_seam_suite.py"
+      ]
+    }
+  },
+  "cli_help": {
+    "returncode": 0,
+    "command": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+      "-B",
+      "/home/u00134/3dgs_line/line_kernel_frontier_growth_v08/reproduction/line_kernel_frontier_growth_v08/seam_runner.py",
+      "--help"
+    ],
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_007/tests/CLI_HELP.log",
+    "sha256": "3bb632830534f8e5881dab5f4049668f9c90f414959010978d9a88656928daca"
+  },
+  "real_loader_callback_test": true,
+  "real_runner_fixture_kernels": 48,
+  "full_asset_science_run": false,
+  "render_run": false,
+  "test_scope": "only synthetic <=48 kernels; all fixture ROOTs explicitly unit007; no old test discovery",
+  "created_utc": "2026-11-01T17:05:58.828676+00:00"
+}

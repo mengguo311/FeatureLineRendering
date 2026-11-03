@@ -1,0 +1,17 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit009第72步的自接触端点解释以J=.06134870胜出；无自接触67269池化解释为.06347362，同donor重叠解释为.07514767。随后截断库出现47个急折拒绝，适合检验有限软排序，不能直接断言自接触导致死端。已核验78份快照、两个helper及第71步四个checkpoint文件；本review未运行拟合或数值实验。",
+  "recommended_next_step": {
+    "experiment": "Scan6530579：BASE_J versus CONTACT_SOFT_J，匹配第71步状态。",
+    "binding": "继承unit009 CONFIG b7bd482602aff3be2cebf1b25cf6370614193e176c7908abaf36028957e3e258及PARENT_RUN_FROZEN。冷载scenes/scan65/stages/GROUP_BALANCED_FIT_0071；MEMBERSHIP SHA256=34f0bc3d1e440ca8d52dae22c442f740c980a95409be80283b7d6b11dcb7db3f，核验全部CHECKPOINT文件，不替换为FINAL。",
+    "start_loader": "279616行，预期127000 assigned、152616 UNKNOWN、next_version21779、p=.001725801957946726；保留1799历史及71次事件、全部11个复合组。30579/v21776有586核，仅它进入主动队列，其余组完整保留为donor。原始M4加载仍用原五组schema，再按checkpoint的全部11组版本恢复；不要重新执行新六组筛选或分配版本。保留restricted M4/control/piece/parent/basis-center及guard(phase)核验，精确复制NO_FURTHER_GROWTH。",
+    "score_change": "两臂均relaxed_rule_groups=[2,4,6]。BASE使用原组均衡J；CONTACT_SOFT令Jc=J+0.01*I(metrics.rule6.self_contact)。只读取现有最终Q接触诊断布尔值，不重新定义接触距离或增加检查。保存原J、有限增量、Jc和见证；接触候选仍可排名第一并必须接受。早期规则1/3/5失败保持NOT_REACHED，不伪造分数；缺诊断是工程不完整。纯池化、gap、平行和方向超限不新增罚分或硬门。",
+    "control": "先完整重放unit009 libraries/GROUP_BALANCED_FIT/0091_30579：85donor、510解释、40可连接，核对全部记录、原J、q/template/masks和原选择327；不一致阻断。共同拟合后的GROUP_BALANCED_FIT库派生两个评分库，冻结后分别执行两个新rollout。沿用现有ROW_FIT影子计算，仅作诊断。每状态保存两个评分的影子赢家，后续候选分叉明确记录；旧74步结果保持封存。",
+    "fixed_algorithm": "整条有限Q完整2p精确段距查询，无top-k；双向重叠1p对应/median偏移及四端点解释不变。assigned整组donor、UNKNOWN原载体；模板≤1p。全部成员、全部结点五轮组均衡Huber IRLS，delta=.5p，矩阵因子sqrt(h/(4*n_H))，平滑.05、模板.001，LSQR atol/btol1e-8、iter_lim2000。原J=.5D_G+.5D_F+.25mean(T_H有效侧)+.05mean((turn/90)^2)+.1maxgap²+.02K/(L+1)，p归一化、U奖励0；平局donor/关系/方向。规则1/3/TRANSPORT5及UNKNOWN处理保持。",
+    "repeat_stop": "完整库最低分必须提交，原子保存完整成员/Q/版本及紧凑delta后重查，无接受次数上限。8192成员/257结点、运输未决或任何未完成候选使整轮PARTIAL，不从截断库晋级。仅完整无连接或支持闭合自然停止。闭合保留端距≤.5p、长度≥6p、两端1p窗各≥3有效核、切向≤45度、协方差无洞覆盖及周期contact；自接触/gap合并仍允许，但不能据此认证闭合。",
+    "evidence": "冻结本START全部11个origin的Q/原行，沿用固定坐标内部支持与动态union/run/gap分开记账。两臂先冷载全行映射，再保存0012/0036原核全景、30579起中末/新增/完整竞争背景、六类负例及三损伤参考。保留-30821两种解释、67269池化竞争、首次分歧、接触、平行及误差/规模top3；214901损伤仅作封存背景证据，不算本轮改善。裁边和细小投影继续标缺证据。",
+    "budget": "BUILD≤18min：真实11组恢复、原库重放、0.01有限增量、接触候选仍能胜出、其余规则不变及保核回滚。Parent1320s：readiness120、共同库120、每臂增长300、交付480，CPU2串行。Nov3 05:15停新单元、05:35停science、05:40模型收尾、06:00硬截止。看图后两分钟内写四分析文件。"
+  },
+  "changed_variable": "匹配两臂仅增加0.01倍既有自接触布尔诊断的有限软代价；拟合、合法性和其余评分不变。起点回到第71步、主动范围缩为30579，不能混算旧六组轨迹。原核冻结、monotone_group_union、whole_curve_auxiliary_update=true、accepted_merge_is_ground_truth=false。",
+  "falsification": "若软项变成隐式硬拒绝、原控制不复现、失核/改核、截断晋级或假闭合，即工程失败。若仅增加池化、抑制有用延伸、牵坏旧成员或扩大平行/深度/第三臂吞并，保存最早反例；不恢复2/4/6。低分、更多接受及小图不证明身份；无辅助桥墨、物理或held-out认证。单组结束不代表06:00窗口耗尽。"
+}

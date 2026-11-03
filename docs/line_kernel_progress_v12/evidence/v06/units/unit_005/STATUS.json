@@ -1,0 +1,85 @@
+{
+  "unit": "unit_005",
+  "updated_jst": "2026-11-01T07:42:56.114612+09:00",
+  "execution_state": "completed",
+  "scientific_verdict": "PARTIAL_NEGATIVE: 新模型库没有新增主归属或可辨视觉收益；joint与同库greedy完全相同。",
+  "scope": {
+    "scene": "scan24",
+    "original_rows": 458490,
+    "complete_overlap_components": 8,
+    "decision_leaves": 42,
+    "saved_pairs": 38,
+    "whole_scene_optimization": false,
+    "other_scenes": "NOT_RUN"
+  },
+  "mechanism": "固定叶anchor库增补成功复现的有限配对模型；同库贪心与互斥集合MILP。只归属/辅助载体，不改原核。",
+  "actual_child_exit": {
+    "returncode": 0,
+    "reason": null,
+    "pid": 3115804,
+    "started_jst": "2026-11-01T07:38:40.405214+09:00",
+    "finished_jst": "2026-11-01T07:39:11.697629+09:00",
+    "stdout": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/orchestration/unit_005/NUMERICAL_STDOUT.log",
+    "actual_child_exit": true
+  },
+  "result": {
+    "recovered_models": 38,
+    "reproduction_failures": 0,
+    "original_hypotheses": 11,
+    "new_hypotheses": 1,
+    "selected_hypotheses_each_arm": 8,
+    "new_hypothesis_unknown_rows": 9,
+    "new_activated_rows_vs_unit004": 0,
+    "assigned": 246416,
+    "unknown": 212074,
+    "vs_M4": {
+      "gained": 67,
+      "lost": 0,
+      "changed_rows": 265
+    },
+    "vs_unit004": {
+      "gained": 0,
+      "lost": 0,
+      "changed_rows": 0
+    },
+    "vs_unit003": {
+      "gained": 54,
+      "lost": 3726,
+      "changed_rows": 7192
+    },
+    "greedy_joint_different_rows": 0,
+    "host_finite_domain_rejections": 32
+  },
+  "delivery": {
+    "runner_reported_cold_reload": true,
+    "both_mapping_checkpoint_hashes_verified": true,
+    "native_full_views_each_arm": [
+      "0012",
+      "0036"
+    ],
+    "png_count_each_arm": 74,
+    "paired_png_sha_equal": 74,
+    "shared_unit004_png_sha_equal": 68
+  },
+  "visual": {
+    "new_straight_continuation_verified": false,
+    "new_curved_continuation_verified": false,
+    "new_case_0012": "EMPTY",
+    "new_case_0036": "tiny gray point; unresolved, not empty by stored crop mask",
+    "negative_cases": "unresolved; 301451/301459 empty both views",
+    "parallel_branch_depth_safety": "NOT_ESTABLISHED",
+    "physical_identity": "PROVISIONAL",
+    "heldout": false
+  },
+  "provenance": {
+    "config_sha256": "0a7e8e75c4a378c6ccaf39d26e9b3cfad5f5f31bf6e13bfb461b58c8db003701",
+    "decision_sha256": "13696f9b24f479352e4d719f572b9d4acc10627aecc126ea4c59b8d385d5e1eb",
+    "snapshot_files_verified": 37,
+    "helpers_verified": 2,
+    "binding": "PARENT_RUN_FROZEN.json"
+  },
+  "analysis_only": true,
+  "science_rerun": false,
+  "source_changed": false,
+  "seal_owner": "parent"
+}

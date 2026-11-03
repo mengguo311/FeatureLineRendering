@@ -1,0 +1,60 @@
+{
+  "returncode": 0,
+  "test_count": 48,
+  "tdd_status": "REAL_NEW_API_RED_GREEN_AND_PROGRESS_CONTRACT_RED_GREEN",
+  "command": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python -B /home/u00134/3dgs_line/line_kernel_free_reassignment_v07/reproduction/line_kernel_free_reassignment_v07/run_merge_tests.py",
+  "full_asset_science_run": false,
+  "render_run": false,
+  "fixture_max_rows": 96,
+  "logs": [
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_003/TEST_RED_API.log",
+      "sha256": "3bb5d0cdd8b3458206b80886b257a9e4bc6ddd7cb5fc432eb664445b678b96b0",
+      "returncode": 1,
+      "note": "New merge behavior test-first: missing new module; not science failure"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_003/TEST_CORE_1.log",
+      "sha256": "a64328699a26dbdb00d415fb0ed5ab123c4084e03eb51b2974065385d0197f84",
+      "returncode": 1,
+      "note": "Test record-container schema assertion corrected (8 columns versus row count); not algorithm RED claim"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_003/TEST_ALL_1.log",
+      "sha256": "7ed8c3be1aebe07b8094bee54e1e708c693e3e8d4b3e4be34606b555bb33c671",
+      "returncode": 0,
+      "note": "46 bounded regression tests"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_003/TEST_RED_PROGRESS.log",
+      "sha256": "4d7e11abb96d81acbe2dcd4eb5ea10ad383810c96b47e2a5830602f0dd93a769",
+      "returncode": 1,
+      "note": "Missing progress callback meant later support failure could not expose trial raw state"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_003/TEST_ALL_2.log",
+      "sha256": "03c3f27f8de8e58259333fde1a6d31f9e30b9d5b5b612e7cf8d456cf93930ed9",
+      "returncode": 0,
+      "note": "47 tests after progress persistence interface"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_003/TEST_ALL_3.log",
+      "sha256": "4c2fb823d9d86ec96285eea324a0411e444862b374f57d691e71af3874440d77",
+      "returncode": 0,
+      "note": "48 tests including actual63-row merge and energy rejection"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_003/TEST_FINAL_GREEN.log",
+      "sha256": "61f8bd87c78efcb52fee120d4222d5f437ba772f8c8d9f64c00c7d4a509d4ab7",
+      "returncode": 0,
+      "note": "Final48-test suite; actual loader/recovery/accepted checkpoint and later failure preservation"
+    },
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/units/unit_003/CLI_HELP.log",
+      "sha256": "0d17ed28203189018450bfec24e01068dcf4598312d2973e250d4c36cd87fe95",
+      "returncode": 0,
+      "note": "Actual plain --config CLI"
+    }
+  ],
+  "scope": "Explicit small suites only, all temporary files unit003. Real original-kernel loader and checkpoint restore; actual63-row free-merge runner. Only rendering/diagnostic delivery mocked in runner fixtures; injected later failure kept rc1 in fixture."
+}

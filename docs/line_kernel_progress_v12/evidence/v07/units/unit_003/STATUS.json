@@ -1,0 +1,172 @@
+{
+  "unit": "unit_003",
+  "execution_state": "completed",
+  "scientific_verdict": "NO_GAIN_PRE_ENERGY_REJECTION; OVERALL_CURVE_RECOVERY_PARTIAL",
+  "scope": {
+    "scene": "ficus",
+    "rows": 285956,
+    "all_rows_competed_in_control": true,
+    "models": 520,
+    "full_endpoint_combinations_saved": 539760,
+    "eligible_proposals": 5,
+    "attempts": 5,
+    "accepted": 0,
+    "trials_reaching_full_reassignment": 0,
+    "search_complete_for_current_version_pairs": true,
+    "model_discovery_complete": false,
+    "other_scenes_run": false
+  },
+  "mechanism": "Dynamic finite-model endpoint merging, one shared refit and transactional global E=sum per-kernel loss+model count; per-kernel labels revisable. All actual proposals rejected before trial assignment/energy.",
+  "actual_child_exit": {
+    "returncode": 0,
+    "reason": null,
+    "pid": 3196699,
+    "started_jst": "2026-11-01T18:14:00.661253+09:00",
+    "finished_jst": "2026-11-01T18:15:41.996470+09:00",
+    "stdout": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_free_reassignment_v07_20261101/orchestration/unit_003/NUMERICAL_STDOUT.log",
+    "actual_child_exit": true
+  },
+  "run_result": "RUN_RESULT.json",
+  "experiments_run": true,
+  "analysis_reruns": false,
+  "assigned": 56213,
+  "UNKNOWN": 229743,
+  "UNKNOWN_reasons": {
+    "no_geometric_candidate": 228033,
+    "competition_or_UNKNOWN_margin": 1710
+  },
+  "versus_NO_MERGE": {
+    "assigned_gained": 0,
+    "assigned_lost": 0,
+    "old_groups_split": 0,
+    "membership_all_fields_equal": true,
+    "models_byte_equal": true,
+    "both_full_pngs_byte_equal": true
+  },
+  "versus_predecessor_adaptive3": {
+    "assigned_gained": 28,
+    "assigned_lost": 0,
+    "old_groups_split": 0,
+    "attribution": "control recompetition, not merge benefit"
+  },
+  "comparisons": {
+    "v05_M4": {
+      "old_assigned": 118470,
+      "new_assigned": 56213,
+      "assigned_gained": 9697,
+      "assigned_lost": 71954,
+      "new_UNKNOWN": 229743,
+      "old_groups_split": 43,
+      "numeric_id_changes_not_identity_accuracy": 128167
+    },
+    "v05_M5": {
+      "old_assigned": 121965,
+      "new_assigned": 56213,
+      "assigned_gained": 9118,
+      "assigned_lost": 74870,
+      "new_UNKNOWN": 229743,
+      "old_groups_split": 44,
+      "numeric_id_changes_not_identity_accuracy": 131083
+    },
+    "v06_overlap_joint": {
+      "old_assigned": 121883,
+      "new_assigned": 56213,
+      "assigned_gained": 8648,
+      "assigned_lost": 74318,
+      "new_UNKNOWN": 229743,
+      "old_groups_split": 42,
+      "numeric_id_changes_not_identity_accuracy": 130531
+    },
+    "v06_common_joint": {
+      "old_assigned": 119860,
+      "new_assigned": 56213,
+      "assigned_gained": 9577,
+      "assigned_lost": 73224,
+      "new_UNKNOWN": 229743,
+      "old_groups_split": 44,
+      "numeric_id_changes_not_identity_accuracy": 129437
+    },
+    "unit001_STATIC": {
+      "old_assigned": 4577,
+      "new_assigned": 56213,
+      "assigned_gained": 53557,
+      "assigned_lost": 1921,
+      "new_UNKNOWN": 229743,
+      "old_groups_split": 4,
+      "numeric_id_changes_not_identity_accuracy": 58134
+    },
+    "unit001_ADAPTIVE": {
+      "old_assigned": 6184,
+      "new_assigned": 56213,
+      "assigned_gained": 52367,
+      "assigned_lost": 2338,
+      "new_UNKNOWN": 229743,
+      "old_groups_split": 6,
+      "numeric_id_changes_not_identity_accuracy": 58551
+    },
+    "unit002_STATIC": {
+      "old_assigned": 53176,
+      "new_assigned": 56213,
+      "assigned_gained": 3326,
+      "assigned_lost": 289,
+      "new_UNKNOWN": 229743,
+      "old_groups_split": 19,
+      "numeric_id_changes_not_identity_accuracy": 3712
+    },
+    "unit002_ADAPTIVE": {
+      "old_assigned": 56185,
+      "new_assigned": 56213,
+      "assigned_gained": 28,
+      "assigned_lost": 0,
+      "new_UNKNOWN": 229743,
+      "old_groups_split": 0,
+      "numeric_id_changes_not_identity_accuracy": 28
+    }
+  },
+  "rejections": {
+    "fit:length_cap": 2,
+    "geometry:window_turn": 1,
+    "geometry:vertex_turn": 2
+  },
+  "energy": {
+    "control_and_final": 240886.3417603029,
+    "data": 240366.3417603029,
+    "model_penalty": 520.0,
+    "candidate_after_energies_available": false
+  },
+  "delivery": {
+    "completed_stages": [
+      "NO_MERGE",
+      "MERGE_FINAL"
+    ],
+    "cold_saved_rows_verified": 285956,
+    "native_full_views_per_stage": 2,
+    "saved_cases": 15,
+    "case_view_union_bboxes_nonempty": 30,
+    "new_curved_success_cases": 0,
+    "new_substantial_straight_cases": 0
+  },
+  "provenance": {
+    "decision_sha256": "58b60925666956479d9fb581b4b219d8bff69f3a3594c844d37848940cbca1fe",
+    "config_sha256": "8231ab7ff396c30c7e359fd139c53b2cf65f92d6092d97dd81d1ce6eee59e256",
+    "source_snapshot_manifest": "PARENT_RUN_FROZEN.json",
+    "source_snapshot_files_verified": 18,
+    "helper_files": {
+      "/home/u00134/3dgs_line/gaer_c2l50_8build_joint_gs_v01/reproduction/radegs_c2l50_8build_joint_gs_v01/renderer.py": "ce24cd30d663e6f421064d83006f097b02a5cf6a74b20c177a905ca514caed93",
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_joint_gs_v01/build/libjoint.so": "033a973a71dc5364677a5bf0625f23dc4fe445b70257f04de7cb70cdccca84b0"
+    },
+    "helpers_verified": true,
+    "both_stage_checkpoint_files_verified": true,
+    "geometry_audit_all_fields_exact": true,
+    "final_membership_sha256": "1d544bc84345ae8e8f268c2009d277c7d9ecf5019409bb775d39fd9b1842ea20",
+    "final_models_sha256": "e990caaa4a47272a8285da8453400b231ffe575df53493557040fb9bf95e4ef3"
+  },
+  "legacy_groups_locked": false,
+  "kernel_geometry_frozen": true,
+  "final_ink_carrier": "original_gaussians",
+  "uses_gpu": false,
+  "uses_training": false,
+  "physical_identity_verified": false,
+  "held_out_validation": false,
+  "next_action": "continue"
+}

@@ -1,0 +1,43 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit009完整处理148分量，但greedy与joint均只得到相同39个二叶身份。重点64355/65064、112780/116525确实进入求解，分别被window_turn、self_contact拒绝；这不是候选缺失或求解预算不足。下一步检验共同有限参数化，而不放宽守卫。源码显示旧cut会排除失败路径的所有超集；共同拟合后失败不具备这种单调性，因此采用完整路径假设库，避免错误剪枝。",
+  "recommended_next_step": {
+    "unit": "unit_010",
+    "experiment": "Ficus完整端点路径库：不可变叶拼接 versus 共同有限辅助曲线；每种表示均比较同库greedy与MILP。",
+    "inputs": {
+      "binding": "继承unit009 CONFIG全部原始input/helper绑定；CONFIG SHA256=a1fc0bee29f9440196368c3ded858b655cb86bf0dd794ae74c3665bd4093a6dd。使用其source_snapshot，经PARENT_RUN_FROZEN验证。",
+      "state": "v05 unit016 ficus M4，285956原核；STATE SHA256=7d1457b144b0c58b8a3fe1fd1f1620e967158c1ace8326c64e6d996671378900；p=0.003530473547030632。",
+      "graph": "原unit019 M5-on-M4记录：89486行、756成功endpoint、593旧mask排除、163 eligible边、148完整分量、最大4叶。保持unit009顺序、端口、成本、全部证据邻域；不新增候选或解禁mask。",
+      "readiness": "Restricted-load及原绑定/行序/版本/世界单位检查不变。本次review没有加载原核资产。数量或竞争闭包不符即阻断。"
+    },
+    "path_library": [
+      "逐完整分量枚举所有至少两叶、无重复叶、无环、端口相容的简单路径；包含非正benefit边，只有路径总收益B>EPS才进入选择。",
+      "按正反两个有向叶/端口序列的字典序较小者规范化，去重并排序。每分量最多128条路径，超限整分量NOT_RUN，不能删竞争路径。",
+      "B=sum_links(2-residual_max-tangent_max/30)，沿用保存成功拟合成本。两种表示共用路径列表、B和确定性排序。"
+    ],
+    "representations": {
+      "concat_control": "逐路径调用原unit009 PathOracle，保存全部接受/拒绝。原叶q及支持坐标不变；不重跑旧producer。",
+      "common_curve": "每路径仅拟合一次辅助q。rows/reps按carrier ID升序拼接，保留叶内部顺序；template为规范路径中有向原q的clean拼接。使用已pin的v05 TLS→ordered-polyline fit：3Huber、delta0.5p、占用1p-bin等权、8192核/128knots、间距4p；无重试、裁成员或外推。此次是新路径模型，不冒充历史pair指标重放。",
+      "identity": "共同edge_id仍持有全部不可变原叶及版本；辅助q只作参数化和几何见证，不替换或渲染原核。失败短路径不能据此剪掉更长路径。"
+    },
+    "guards": "两种表示均保留原叶有效性、原端口gap1.5p/tangent30°/connector35°及all-pairs parallel。共同模型额外要求全部原核residual max1p/q95 0.5p/tangent30°、extended_s在有限域±1e-8；有向叶q以≤1p采样后的投影须按路径方向单调，各叶投影中点顺序一致。模型方向按与template两端的总距离确定，平局保持fit方向。转角30°/每8p60°、contact0.5p在共同q上检查，保留check-only共线处理；三臂检测在原叶knots与新q knots并集上执行。原叶支持区间端点映射到新q后去重，gap≤1.5p；记录钳制与越界，投影支持不冒充新观测。",
+    "paired_selection": {
+      "greedy": "每种表示各自的可行路径库，按B降序、规范路径key排序，接受叶集合互斥的路径。",
+      "joint": "相同可行库上scipy.optimize.milp：每路径binary，maximize sum(B*x)，每叶最多属于一个选中路径。canonical变量顺序，不扰动成本，mip_rel_gap=0；不用失败子路径的超集cut。",
+      "limits": "120s/分量，总solver200s；保存可行incumbent/bound/gap，timeout为PARTIAL。无可行incumbent或模型库不完整时，该分量四臂均保留M4。",
+      "membership": "四臂分别保存完整285956行映射；ID=min叶ID、版本无碰撞、谱系及替代解释保留。UNKNOWN仍用3seedlets/6kernels/4p去重支持门槛。M4零丢失/拆分；对unit009撤回另列。"
+    },
+    "delivery": "完整分量checkpoint及冷载四臂全行映射先于渲染。固定test_r_1/test_r_79原核全景，白底floor0.0144、原宽度/opacity，UNKNOWN灰，无carrier/桥。固定两重点配对、21870/22319和原四负例；另选成员集合去重的top3表示差异、top3求解差异、最大三叶及直/曲路径。相同行集合与完整邻域、原联合bbox/pad16/clip/4倍nearest裁剪。保存失败模型、缺图及全部得失。",
+    "protocol_budget": "BUILD≤10min：真实RED/GREEN覆盖短路径失败但长路径可行不可误剪、完整路径枚举、共同q有限域/单调性、parallel/branch、互斥greedy陷阱及checkpoint保留；仅小夹具。Parent独占≤1200s计算：readiness/模型库400s、solver200s、末600s交付。09:15前冻结新单元，最迟09:18启动，09:38停止；错过则NOT_RUN，不缩减交付。CPU/BLAS2，unit≤2GiB/runtime≤20GiB。"
+  },
+  "changed_variable": {
+    "representation": "独立有限叶q拼接→完整路径的共同有限辅助参数化；支持坐标随之改变，须单列。",
+    "selection": "两种表示均使用同样的整路径greedy/MILP，从而隔离表示效应；unit009的逐连接greedy另作历史参考，不能混称等价。",
+    "fixed": "原核字段/数量/顺序、完整候选图、mask、端口、成本、几何阈值和UNKNOWN公式；没有overlap池化、额外M轮或阈值扫描。"
+  },
+  "falsification": {
+    "delivery": "缺冷载全行映射或原生全景、改变原核、丢失/拆分M4组、裁竞争路径或补画桥均失败。",
+    "science": "共同参数化须相对拼接对照带来双视图可辨的实质直线及曲线跨片段归属；另判断MILP是否优于同库greedy。更多拟合、同色、平滑q、支持钳制或目标提高均不足。",
+    "safety": "若新q掩盖平行、深度、分支或真实转角，否定对应实例。失败模型及不可辨图保持PARTIAL；物理身份暂定，无held-out主张。"
+  }
+}

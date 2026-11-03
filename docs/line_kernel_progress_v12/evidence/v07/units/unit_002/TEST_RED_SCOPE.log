@@ -1,0 +1,28 @@
+test_all_equal_ties_canonical (__main__.CoverageTests) ... ok
+test_bank_numerical_failure_cannot_be_rejection (__main__.CoverageTests) ... ok
+test_canonical_windows (__main__.CoverageTests) ... ok
+test_complete_bank_and_flags_do_not_lock (__main__.CoverageTests) ... ok
+test_complete_radius_and_voxel_dedup (__main__.CoverageTests) ... ok
+test_finite_cost_and_tangent (__main__.CoverageTests) ... ok
+test_lazy_matches_full_recompute (__main__.CoverageTests) ... ok
+test_loader_bad_ownership_rejected (__main__.CoverageTests) ... ok
+test_marginal_coverage_not_density (__main__.CoverageTests) ... ok
+test_neighbor_outside_old_owner_is_included (__main__.CoverageTests) ... ok
+test_real_new_runner_contract (__main__.CoverageTests) ... FAIL
+test_real_seed_loader_guard_unknown_and_offsets (__main__.CoverageTests) ... ok
+test_seed_guard_exception (__main__.CoverageTests) ... ok
+test_unchanged_frozen_core (__main__.CoverageTests) ... ok
+test_zero_gain_stop_and_empty (__main__.CoverageTests) ... ok
+
+======================================================================
+FAIL: test_real_new_runner_contract (__main__.CoverageTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/line_kernel_free_reassignment_v07/reproduction/line_kernel_free_reassignment_v07/test_coverage.py", line 56, in test_real_new_runner_contract
+    result=json.loads((p/'out/RUN_RESULT.json').read_text());self.assertEqual(rc,0,result);self.assertEqual(len(result['completed_stages']),4);self.assertFalse(result['errors']);self.assertTrue((p/'out/seed_bank/BANK_CHECKPOINT.json').exists());scope=json.loads((p/'out/scenes/fixture/stages/FREE_STATIC/SCOPE.json').read_text());self.assertFalse(scope['model_discovery_complete']);self.assertTrue(scope['seed_bank_complete'])
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 15 tests in 1.119s
+
+FAILED (failures=1)

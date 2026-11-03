@@ -1,0 +1,65 @@
+{
+  "diagnosis_zh": "工程链已通过保存证据审计：74次完整库最小J选择、全成员均衡拟合、原核并集与原子checkpoint均成立；新六组产生947个身份加入行，其中400来自UNKNOWN、547来自既有组。最早风险为第30步30579平行对30422/274294；第62步84607接入3核时牵动已接受行214901至83.06度；第72步30579自接触端点解释低分胜出，下一部分库出现47个急折拒绝。400新增UNKNOWN不等于准确率。预算中断与身份未证实是独立限制。",
+  "failure_modes": [
+    {
+      "mode": "administrative_truncation",
+      "evidence": "PHASE_DEADLINE GROUP_BALANCED_FIT; 452.2065s growth; 74 checkpoints retained"
+    },
+    {
+      "mode": "parallel_identity_risk",
+      "evidence": "17 accepted events have parallel_conflicts; first sequence30 group30579; no physical identity adjudication"
+    },
+    {
+      "mode": "local_member_direction_damage",
+      "evidence": "4 accepted events exceed75deg; first sequence62 group84607 max83.05997deg"
+    },
+    {
+      "mode": "self_contact_and_pooling",
+      "evidence": "8 pure-pooling events; sequence72 self-contact accepted without closure certification"
+    },
+    {
+      "mode": "insufficient_visual_identity_evidence",
+      "evidence": "Viewed native full and30579 dual-view crops; thin small projections and nearby competing lines cannot certify a coherent new curve"
+    },
+    {
+      "mode": "endpoint_explanation_wins_then_degeneracy",
+      "sequence": 72,
+      "group": 30579,
+      "contact_distance_p": 0.4910708115201683,
+      "segments": [
+        1,
+        7
+      ],
+      "selected_score": 0.06134869576555517,
+      "same_donor_overlap_score": 0.0751476715750982,
+      "next_partial_library_vertex_rejections": 47,
+      "causality": "saved sequence supports a representation/ranking bottleneck; partial catalog cannot establish full exhaustion"
+    }
+  ],
+  "observed_images": [
+    "scenes/scan65/stages/GROUP_BALANCED_FIT_FINAL/0012_FULL.png",
+    "scenes/scan65/diagnostics/30579/GROUP_BALANCED_FIT_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/30579/GROUP_BALANCED_FIT_0012_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/30579/GROUP_BALANCED_FIT_0036_ISOLATED_CROP.png",
+    "scenes/scan65/worst_events/GROUP_BALANCED_FIT/0072/0012_ISOLATED_CROP.png",
+    "scenes/scan65/worst_events/GROUP_BALANCED_FIT/0072/0012_FULL_OBJECT_CONTEXT.png",
+    "scenes/scan65/stages/GROUP_BALANCED_FIT_FINAL/0036_FULL.png",
+    "scenes/scan65/diagnostics/84607/GROUP_BALANCED_FIT_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/84607/GROUP_BALANCED_FIT_0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/84607/GROUP_BALANCED_FIT_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/13285/GROUP_BALANCED_FIT_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/13285/GROUP_BALANCED_FIT_0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/30579/START_0012_START_MEMBERS_CROP.png",
+    "scenes/scan65/diagnostics/30579/GROUP_BALANCED_FIT_MID_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/30579/GROUP_BALANCED_FIT_0012_ADDED_MEMBERS_CROP.png",
+    "scenes/scan65/diagnostics/84607/GROUP_BALANCED_FIT_0012_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/13285/GROUP_BALANCED_FIT_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/negative_parallel/GROUP_BALANCED_FIT_0012_FULL_OBJECT_CONTEXT_CROP.png"
+  ],
+  "visual_evidence_missing": true,
+  "visual_evidence_missing_reason": "已实际查看18张保存PNG：全对象两视图、30579起中末/新增及竞争背景、84607与13285双视图、旧平行负例。30579的0036框触及图像底边；13285的0036仅32个墨迹像素、162227仅13个。细线与完整背景存在，但足够分辨第三臂/深度身份的证据仍不足；不能把自动small_evidence=false当认证。",
+  "next_change": "下一次只读review应优先冻结针对第72步的有限软排序对照，而非仅给末库追加时间：从本单元GROUP_BALANCED_FIT_0071共同冷载，仅激活30579，完整保留其余十个跟踪组和全部背景；原J对照与J_contact=J+0.01*I(原ARC自接触诊断为true)两臂，各300秒增长，先重放0091_30579完整510解释/40可连接库。只改有限软评分，所有[2,4,6]仍关闭，contact候选仍可胜出并接受，无新硬门；WHOLE、组均衡拟合、完整2p候选、规则1/3/5和闭合认证不变。保存两影子赢家、后续急折拒绝、同donor重叠/端点竞争、已接受行214901损伤和原核双视图完整竞争背景；不能用多池化冒充更好延伸。该提案须下一review再冻结；当前NOT_RUN。原74步终态与截断末库全部保留，不撤销。05:15停新单元、05:35停science。",
+  "first_written_jst": "2026-11-03T04:42:22.680318+09:00",
+  "updated_jst": "2026-11-03T04:47:37.216961+09:00",
+  "saved_output_audit": "SAVED_OUTPUT_AUDIT.json"
+}

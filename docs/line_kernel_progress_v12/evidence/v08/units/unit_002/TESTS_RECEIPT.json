@@ -1,0 +1,48 @@
+{
+  "returncode": 0,
+  "tdd_status": "GENUINE_FUNCTIONAL_RED_GREEN: the two-three-kernel-leaf relay test failed with zero common candidates under the initial delegation to unit001 single-donor logic; after relay implementation the same test and 17 regressions pass. No real-asset numerical claim.",
+  "red": {
+    "returncode": 1,
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_002/tests/RED.log",
+    "sha256": "195d63bf997038d946b587d53549b9ab9d0adba4a003aca90fe446a714341fd4",
+    "command": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+      "-B",
+      "-m",
+      "unittest",
+      "-v",
+      "test_relay.RelayTests.test_two_small_leaves_jointly_qualify"
+    ],
+    "cwd": "/home/u00134/3dgs_line/line_kernel_frontier_growth_v08/reproduction/line_kernel_frontier_growth_v08",
+    "failure": "AssertionError: 0 != 1"
+  },
+  "green": {
+    "returncode": 0,
+    "tests": 18,
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_002/tests/GREEN_FINAL.log",
+    "sha256": "e962fe16cfb0d712d973b89b7f9ee479d025d09f11befaa06ab36b1b1370825f",
+    "command": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+      "-B",
+      "-m",
+      "unittest",
+      "-v",
+      "test_frontier",
+      "test_loader_fixture",
+      "test_relay"
+    ],
+    "cwd": "/home/u00134/3dgs_line/line_kernel_frontier_growth_v08/reproduction/line_kernel_frontier_growth_v08"
+  },
+  "intermediate_logs": [
+    {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_002/tests/GREEN_initial.log",
+      "sha256": "73b80ec503afaf709081f079a20a56536d509ff516e893025c060307167d07c6",
+      "returncode": 0
+    }
+  ],
+  "loader_test": "Actual six-row restricted pickle/NPZ/control loader; guard(phase) call and exception propagation retained. Atomic full fixture-row relay checkpoint cold-loaded.",
+  "full_asset_science_run": false,
+  "render_run": false,
+  "cli_help_returncode": 0,
+  "created_utc": "2026-11-01T15:17:14.865624+00:00"
+}

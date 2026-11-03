@@ -1,0 +1,41 @@
+{
+  "diagnosis_zh": "26次真实最佳片段提交并重搜（8765八次、61271十八次）证实新队列可重复增长，非仅池化：3次U=0，其余为动态支持增加，但仅为投影代理。第15步首现原R2方向超限，旧成员253954–253956被新donor拟合牵至79.604°，这是明确的旧成员方向损伤。未见接受事件的R4平行冲突、self-contact或超gap诊断；不得凭空声称新第三臂/深度误吞。最终240s增长阶段中断在8765重复重查，61271最新状态尚未重查，故PARTIAL而非自然穷尽。",
+  "failure_modes": [
+    "26步后PHASE_DEADLINE BASE_J：末8765库仅60/102解释，7个donor未尝试/未完成，61271第18次接受后的库尚未查询；禁止将两组范围标自然穷尽",
+    "第15步8765接受-8727的10核后，较早第5步加入的三核253954/253955/253956方向达到79.604°；原核未动但辅助Q不再兼容旧局部方向",
+    "第7/9/11步纯池化；动态U、外域代理与固定Q内部补洞不能混作真实曲线外延",
+    "8765已有10次完整零选择访问，仍在最后一次重复查询上耗尽阶段预算；需另冻保持完整竞争的依赖复用控制，不暗中跳过组",
+    "固定两视图显示细短原核及紧邻竞争纹理；计数和三项M4贡献代理未能认证物理同边或排除深度混入"
+  ],
+  "observed_images": [
+    "scenes/scan65/stages/BASE_J_FINAL/0012_FULL.png",
+    "scenes/scan65/diagnostics/61271/BASE_J_0036_ISOLATED_CROP.png",
+    "scenes/scan65/worst_events/BASE_J/0026/0012_FULL_OBJECT_CONTEXT.png",
+    "scenes/scan65/worst_events/BASE_J/0011/0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/61271/START_0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/61271/BASE_J_0036_ADDED_MEMBERS_CROP.png",
+    "scenes/scan65/diagnostics/61271/BASE_J_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/61271/BASE_J_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/8765/BASE_J_0012_ISOLATED_CROP.png",
+    "scenes/scan65/worst_events/BASE_J/0015/0012_FULL_OBJECT_CONTEXT.png",
+    "scenes/scan65/worst_events/BASE_J/0015/0036_ADDED_CROP.png",
+    "scenes/scan65/stages/BASE_J_FINAL/0036_FULL.png",
+    "scenes/scan65/diagnostics/61271/BASE_J_MID_0036_ISOLATED_CROP.png"
+  ],
+  "visual_evidence_missing": true,
+  "visual_evidence_missing_reason": "图像存在且已实际查看13张；但细小投影和并行背景不足以认证新增多片段身份，缺少可辨的实质曲率及深度竞争证据。",
+  "next_change": "本窗口只交接，不启动新science：已过2026-11-03 05:15停新单元界限。下一另行授权单元应从BASE_J_FINAL（next_version21806，全部13origin）续接，保留26次接受；先完整重建8765未完成库和61271新终态库。针对8765十次完整零选择后仍反复拟合的开销，另冻“全量重拟合”对照与“完整查询后依赖签名相同时复用库”的工程控制：每轮仍做整曲线2p完整精确查询，仅当source及全部当前邻域donor的ID/version/成员/Q/叶与原核及策略绑定均逐项相同，才复用完整旧评分/守卫库；任何变化或不完整库必须重新拟合，禁止按上次无连接永久跳过。候选、WHOLE拟合、BASE_J、规则1/3/5及[2,4,6]关闭不变。另在增长前冻结可读投影尺度的真实标定视图和固定原行完整竞争背景，解决当前tiny-view身份缺证据；无匹配可读视图仍明确缺证据，不能设成合并否决。此实验NOT_RUN，不能只增加预算或恢复硬门。",
+  "earliest_pooling_sequence": 7,
+  "earliest_old_member_angle_damage_sequence": 15,
+  "relaxed_rule_groups": [
+    2,
+    4,
+    6
+  ],
+  "remaining_hard_rules": [
+    1,
+    3,
+    5
+  ],
+  "no_physical_certification": true
+}

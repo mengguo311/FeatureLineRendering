@@ -1,0 +1,45 @@
+{
+  "diagnosis_zh": "最早排序分歧发生在第3次提交：64111改选25核127285（带[64111,127285]平行冲突），替代12核-158889；均衡评分对两者分别为0.109068/0.208513。软排序可避开一个高方向损伤donor，却没有解决旧成员拟合损伤：第6次后旧行240923超75度，第12次旧行240923/240924最大89.166835度。17次接受中15次U=0，新增UNKNOWN65核，全部起点成员保留；最终实质域外支持代理很小，不能把均衡评分/池化当身份改善。五组均完整无连接停止；旧NO_U控制33步为PHASE_DEADLINE截断。",
+  "failure_modes": [
+    {
+      "mode": "earliest_parallel_absorption",
+      "evidence": "第3步64111+127285、第5步22130+-149202分别触发保存平行对[64111,127285]/[22130,149201]；R4关闭故真实接受，尚非目视认证误并。"
+    },
+    {
+      "mode": "old_member_damage_after_whole_refit",
+      "evidence": "第6/9/12步旧行240923及240924方向偏差79.457/82.483/89.167度；受损行不是当步新增行。拟合仍按行加权，组均衡只作用排序。"
+    },
+    {
+      "mode": "pooling_dominates_extension",
+      "evidence": "15/17纯池化；5558/22130/64111最终域外支持仅0.11658/0.01130/0.00795p；64111旧NO_U部分轨迹为8.35574p。均为辅助Q上的代理。"
+    },
+    {
+      "mode": "inadequate_identity_views",
+      "evidence": "已看原核两全景及隔离/竞争/最坏事件图；64111隔离框约几十像素，0012近竖短痕、0036浅弧，新增核仅细小点划，完整对象邻域多条交叠边，不能判定平行/深度/第三臂物理归属。缺的是足够可辨身份证据，并非没有PNG。"
+    },
+    {
+      "mode": "archived_control_partial",
+      "evidence": "旧NO_U33次接受止于PHASE_DEADLINE；本轮17步自然结束。不能以17对33估计正确率或预算公平的最终优越性。"
+    },
+    {
+      "mode": "remaining_rules_and_candidate_scope",
+      "evidence": "64111终态34 donor/204解释：46无注册、31vertex、127端距；5558仍有5个branch解释拒绝。规则1/3/5下的局部无连接，不是全资产/整个窗口耗尽。"
+    }
+  ],
+  "observed_images": [
+    "scenes/scan65/stages/GROUP_BALANCED_SCORE_FINAL/0012_FULL.png",
+    "scenes/scan65/diagnostics/5558/GROUP_BALANCED_SCORE_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/64111/GROUP_BALANCED_SCORE_0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/64111/GROUP_BALANCED_SCORE_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/worst_events/GROUP_BALANCED_SCORE/0003/0036_ADDED_CROP.png",
+    "scenes/scan65/stages/GROUP_BALANCED_SCORE_FINAL/0036_FULL.png",
+    "scenes/scan65/diagnostics/64111/START_0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/64111/GROUP_BALANCED_SCORE_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/22130/GROUP_BALANCED_SCORE_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/worst_events/GROUP_BALANCED_SCORE/0009/0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/5558/GROUP_BALANCED_SCORE_0012_QUERY_CONTEXT_CROP.png"
+  ],
+  "visual_evidence_missing": true,
+  "visual_evidence_missing_reason": "已看原核两全景及隔离/竞争/最坏事件图；64111隔离框约几十像素，0012近竖短痕、0036浅弧，新增核仅细小点划，完整对象邻域多条交叠边，不能判定平行/深度/第三臂物理归属。缺的是足够可辨身份证据，并非没有PNG。",
+  "next_change": "下一单元另行review并冻结“相同GROUP_BALANCED_SCORE排序，行均权拟合 versus 组均权拟合”。从本单元封存START、同五组开始；控制复用本轮17步完整轨迹，仅重放共同初始库。新拟合仍保留全部G/F成员、整条Q可动、五轮Huber IRLS(delta=.5p)，仅将位置项改为.5*mean_G(Huber)+.5*mean_F(Huber)，即基础行权1/(2nG)、1/(2nF)；其余平滑.05、模板.001、LSQR1e-8/2000、GROUP_BALANCED_SCORE、2p完整候选、规则1/3/5、[2,4,6]关闭及容量/闭合定义不变。比较最早64111/127285、22130/149201平行吸收及旧行240923/240924损伤，保留坏例，不新增方向/平行拒绝。以新机制检验排序均衡而拟合仍按行加权是否限制效果，不能预言改善。复用封存控制，不重跑全部旧science。后续范围扩展另选预先可辨新种子，不把五组耗尽当窗口耗尽。"
+}

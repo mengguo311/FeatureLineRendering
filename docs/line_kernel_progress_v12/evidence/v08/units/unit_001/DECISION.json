@@ -1,0 +1,20 @@
+{
+  "action": "continue",
+  "rationale_chinese": "以强ficus M5为背景做四个已合并种子的双端生长。已核实合并谱系、载体及全行schema；尚未计算新邻接。v07最终图像奖励未带来新增收益，其FAILURE_ANALYSIS文件缺失，NEXT指向候选证据不足。本轮直接检验端点历史先验，不继承其低覆盖背景；接受过合并不等于身份正确。",
+  "recommended_next_step": {
+    "unit": "unit_001",
+    "experiment": "Ficus M5 persistent-frontier growth: nearest-compatible versus history-conditioned continuation.",
+    "inputs": "v05 unit019/scenes/ficus/states/M5/STATE.pkl及M5_MERGE_ONLY的MEMBERSHIP/CARRIERS/GROUPS/LINEAGE；285956核，p=0.003530473547030632。STATE SHA256=5128247be907311d68963405696c9a445b09c5c8aa6b20fa95dea6c686c9dbfb。CONFIG SHA256=9bff7e59af8c3cee6a40790a5ec1c6aea4039bfd9463815e34440b33ad01ff81。",
+    "readiness": "继承INPUT_LOCK资产/helper绑定；restricted-load验证M5_STATE、前驱绑定、28635载体/65335世界单位knots、rows/reps/flags/versions/aux及next_version20576。v06 unit009 loader须显式支持M5；禁止使用其M4候选。复用快照PathOracle和local_validator，冻结依赖哈希，不执行旧producer。",
+    "seeds": "固定64355/v20526、112780/v20225两曲线，48496/v20415、137016/v20281两直线；均有M5 endpoint事件。种子不互相吞并，按ID轮转，每轮依次处理两个持久端口。缺失或验证失败原样记录，不替换种子。",
+    "representation": "有向不可变有限叶序列；初始叶为M5载体。接受后仅追加/前置donor并更新外端口、版本、归属及谱系；无联合拟合。连接段零支持、永不渲染。本示踪保护已有叶内部成员，明确不是自由拆分实验；未处理背景保持M5。",
+    "candidates": "每次从全部当前未使用有效M5载体的两个端点完整查询gap<=1.5p，无nearest-k；保留所有拒绝及竞争者。定向切向<=30°、connector<=35°；donor在当前端点外向切向正半空间内须有>=2p实际区间支持及>=6核。有效UNKNOWN参与，沿用3reps/6核/4p激活门槛。",
+    "shared_guards": "完整链复用PathOracle：局部残差max1p/q95 0.5p/tangent30°、vertex30°/8p累计60°、contact0.5p、parallel/branch及unsupported gap1.5p；8192核上限，EPS1e-8。不可裁成员或竞争者。",
+    "arms": "BASE按gap、donor ID、端口选择最近的共同守卫合格者。HISTORY增加以下条件后同序选择：沿外向方向取末两段1p单位割线t_minus,t0，k=t0-t_minus；donor前两段1p割线u0,u1。要求angle(normalize(t0+gap*k),u0)<=15°且norm((u1-u0)-k)<=2sin(7.5°)。长度不足或预测退化时HISTORY弃权，记录UNKNOWN；不补点。",
+    "competition": "两臂均在共同合格候选中，最近两者gap差<=0.15p时先弃权，历史不得消除该歧义。每个访问状态保存两策略影子选择；各自提交后的候选变化单列，不能声称整段rollout候选相同。",
+    "transactions": "每臂最多64次提交尝试、每种子最多8次接受；失败精确回滚rows/aux/版本/端口，失败版本组合不重试。每次接受先checkpoint再更新队列；无可行者停止该端。保存全部候选、原因、未尝试范围及历史量。",
+    "delivery_budget": "BUILD<=18min仅小型真实loader/双端/曲率反向/完整邻接/回滚测试。Parent1800s：readiness120s，生长至1200s，末600s交付。冷载双臂285956行，固定test_r_1/test_r_79原核全景、四种子同核孤立图与完整竞争上下文、负例；CPU/BLAS2。Nov2 07:15停新单元、07:38停science。"
+  },
+  "changed_variable": "两臂仅增加局部切向变化历史条件；原核、表示、共同守卫和预算相同。相对旧方法改为M5双端动态新候选与重复事务生长，不是旧候选重放。accepted_merge_is_ground_truth=false。",
+  "falsification": "须有双视图可辨的新直线及曲线续接，曲线至少三个M4片段各贡献>=12核/2p支持，并较种子新增>=4p域外支持。分别报告union、最长段、gap及所有损伤；颜色、计数、继承弧不算成功。平行/分支/深度误吞否定实例；历史误拒真实续接同样反证。无候选与历史拒绝分开；零收益保存FAILURE_ANALYSIS/NEXT，不调阈值。缺冷载映射/双全景、改变原核或补画桥阻断；身份暂定，无held-out主张。"
+}

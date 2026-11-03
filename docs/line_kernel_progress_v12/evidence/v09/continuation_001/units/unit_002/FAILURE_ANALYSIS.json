@@ -1,0 +1,69 @@
+{
+  "diagnosis_zh": "执行与主循环证据成立，但完整曲线身份恢复仍PARTIAL。LOCAL51/WHOLE48次实际接受均为完整候选库最低J，99次并集无失核；WHOLE48次都改变LOCAL冻结区域外结点，最大0.507202p。两臂五组均完整无连接停止，无闭合、容量或时间截断。64111从初轮即无可连接：38邻居仍存在，WHOLE末轮26个branch冲突解释未提供具体聚类见证；不能判断是正确拒绝还是旧曲线内部转向被误判。22130虽有4个实质M4来源及36.97p域外代理，双视图投影仍小且近直。238627新增77核/23.52p域外代理，但291核长弧继承，新增图主要是短尾与散点，不能称新完整曲线。",
+  "failure_modes": [
+    {
+      "code": "BRANCH_WITNESS_MISSING",
+      "evidence": "64111两臂0接受，WHOLE末轮38邻居/228解释，其中26 branch_conflict；当前branch仅返回布尔值，没有保存导致否决的中心/簇/来源。",
+      "interpretation": "最早曲线增长瓶颈位于拓扑冲突判定，不能据残差通过宣称应该接受，也不能据布尔否决证明物理分支。"
+    },
+    {
+      "code": "INSUFFICIENT_CURVED_VISUAL_EVIDENCE",
+      "evidence": "实际看22130两视图、起点/新增/最终以及完整竞争背景；原生目标仅数十像素，轮廓近直。",
+      "interpretation": "polyline标签、4项M4贡献或36.97p域外代理不替代双视图实质弯曲身份。"
+    },
+    {
+      "code": "INHERITED_ARC_AND_SPARSE_ADDITIONS",
+      "evidence": "238627 WHOLE291→368核，原291核长弧占主导；0036新增图是左侧短尾和少量散点。",
+      "interpretation": "有外延代理与曲边可见，但不能把继承弧算本轮完整曲线恢复。"
+    },
+    {
+      "code": "DENSE_PARALLEL_DEPTH_CONTEXT",
+      "evidence": "全对象及六类负例/三个损伤参考可见密集重叠线层、细尖刺及UNKNOWN；这些固定参考的成员本轮均未改变。",
+      "interpretation": "没有可靠确认新增误吞的实例，但也不能排除平行/深度/分支身份混淆；几何冻结只保证未移动原核。"
+    },
+    {
+      "code": "SCOPE_LIMIT",
+      "evidence": "完整279616行映射，仅五种子增长；64111无增长，156151末轮邻居为空，其余有邻居但无合格解释。",
+      "interpretation": "自然停止仅针对已冻结有限候选定义，不是全场景穷尽、物理不可连接或整个16:00窗口耗尽。"
+    }
+  ],
+  "observed_images": [
+    "scenes/scan65/stages/WHOLE_FINAL/0012_FULL.png",
+    "scenes/scan65/stages/WHOLE_FINAL/0036_FULL.png",
+    "scenes/scan65/diagnostics/5558/WHOLE_0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/5558/WHOLE_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/22130/WHOLE_0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/22130/WHOLE_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/22130/START_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/22130/WHOLE_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/22130/WHOLE_0012_ADDED_MEMBERS_CROP.png",
+    "scenes/scan65/diagnostics/22130/WHOLE_0012_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/238627/START_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/238627/WHOLE_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/238627/WHOLE_0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/238627/WHOLE_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/5558/START_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/5558/WHOLE_MID_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/5558/WHOLE_0012_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/5558/WHOLE_0012_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/64111/WHOLE_0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/64111/WHOLE_0036_QUERY_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/negative_parallel/WHOLE_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/negative_branch/WHOLE_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/negative_crossing_tangent/WHOLE_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/negative_gap/WHOLE_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/238627/WHOLE_0036_ADDED_MEMBERS_CROP.png",
+    "scenes/scan65/diagnostics/238627/LOCAL_0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/22130/LOCAL_0036_ISOLATED_CROP.png",
+    "scenes/scan65/diagnostics/negative_ambiguity/WHOLE_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/negative_accepted_worst_margin/WHOLE_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/damage_167509/WHOLE_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/damage_7786/WHOLE_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan65/diagnostics/damage_120042/WHOLE_0036_FULL_OBJECT_CONTEXT_CROP.png"
+  ],
+  "visual_evidence_missing": true,
+  "visual_evidence_missing_reason": "1550张PNG已保存，实际查看32张；双全景与竞争上下文存在，但部分目标原生很小，足够清晰的新实质曲线及物理替代解释证据仍缺，不是全体图片缺失。",
+  "next_change": "下一轮先作单独只读review，冻结scan65的曲线分支见证溯源对照：以同一完整M4起点、五组、2p完整候选、整组拟合/J及原核保留为基线，对64111的38个邻居中所有branch拒绝保存具体中心、代表行、方向簇、投影弧坐标和来源；在同一中心分别检查G、F、G∪F，区分原有弯曲/已有歧义与新增三路分叉，不能仅因冲突已存在就放行。若来源审计支持把平滑有序曲线误当分支，再另行冻结“沿曲线顺序一致的分支判定”与当前全组方向簇判定的配对真实生长，保留所有平行/深度替代解释和当前硬负例；不改半径、角度、预算或整组保核规则。并预选两个原生分辨率足够的已标定互补视图，保存完整对象背景。若不能形成可验证修复，保持本轮负结果并转未处理实质曲线队列；不重跑已完成单元。",
+  "analysis_stage": "SAVED_OUTPUT_REVIEW_COMPLETE",
+  "updated_utc": "2026-11-02T05:55:24.304713+00:00"
+}

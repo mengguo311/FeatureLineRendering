@@ -1,0 +1,54 @@
+{
+  "action": "continue",
+  "rationale": "完整两臂终库已穷尽30579，固定支持与小图未提供软项改善身份的证据；保存该负结果，按已保存八个未访问候选换实际直/曲范围。",
+  "recommended_next_step": {
+    "experiment": "Scan65 unvisited line8765 and polyline61271; BASE_J rollout plus CONTACT_SOFT_J shadows",
+    "protocol": "另冻新范围而非继续30579权重/预算扫描：以本单元BASE_J_FINAL完整11组为起点，新增主动line8765/v21440（44核）、polyline61271/v21494（71核），原选择账均有两项实质M3贡献；先核验其完整行集/原M4版本未变，失败NOT_RUN不补选。保留11复合组为整组donor，新增两origin只做队列标记、不分配版本，checkpoint覆盖13origin。仅运行原BASE_J组均衡拟合/评分，[2,4,6]继续关闭，CONTACT_SOFT_J=.01只作同状态影子；NO_FURTHER_GROWTH精确复制起点。候选2p、五轮整组IRLS、规则1/3/TRANSPORT5、完整库最佳并重查、8192/257容量与闭合支持均不变。新观察范围不是接触软项优越性对照。",
+    "input_stage": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_relaxed_guards_v10_20261103/units/unit_010/scenes/scan65/stages/BASE_J_FINAL",
+    "config_sha256": "37743b427484a8af2073749e549a737a26ac26521af78d9b38ce742e76f13781",
+    "checkpoint_files": {
+      "MEMBERSHIP.npz": "5304129f738a33395f8b5318a1ff286876dfe508764971d7ee70452fd8ba1371",
+      "MODELS.npz": "ae9e6302c7a56209e37b5df04994ca2a8a55a8a936129ad5737a73f298b5d543",
+      "GROUPS.json": "6e22612b9804a42a930796b55ca85369cc88d1a71d83e68e70d63fee6167cd94",
+      "LINEAGE.json": "5e13e356a44d8c9d38c89378899519d54a467619cb251d7434beff3e1080da61"
+    },
+    "expected_start": {
+      "rows": 279616,
+      "assigned": 127010,
+      "unknown": 152606,
+      "next_version": 21780,
+      "tracked_origins": 11,
+      "inherited_events": 1871
+    },
+    "new_seed_bindings": [
+      {
+        "id": 8765,
+        "version": 21440,
+        "rows": 44,
+        "model": "line",
+        "saved_M3_substantial": 2
+      },
+      {
+        "id": 61271,
+        "version": 21494,
+        "rows": 71,
+        "model": "polyline",
+        "saved_M3_substantial": 2
+      }
+    ],
+    "budget": {
+      "parent_seconds": 780,
+      "readiness": 60,
+      "catalog": 120,
+      "growth": 240,
+      "delivery": 360
+    },
+    "no_new_after_jst": "2026-11-03T05:15:00+09:00",
+    "science_deadline_jst": "2026-11-03T05:35:00+09:00",
+    "if_not_ready_before_no_new": "仅保存交接，不启动新science；不能把未运行说成无连接。"
+  },
+  "requires_separate_frozen_review": true,
+  "new_science_executed": false,
+  "changed_variable": "主动新范围与继承起点改变；数值拟合/BASE_J/规则不变，软项仅影子。",
+  "falsification": "丢旧复合组、漏竞争者、恢复2/4/6、截断库晋级或假闭合即工程失败；新组若仍仅池化/平行深度第三臂吞并或小图不辨，保留负结果，不以计数认证。"
+}

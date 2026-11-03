@@ -1,0 +1,47 @@
+{
+  "unit": "unit_005",
+  "diagnosis_zh": "关系切换已实际接入，但四种子八端口的共同合格库全部为空。每臂19个未占用端点候选在首跳被16个观察轴切向拒绝和3个connector拒绝拦下；42个overlap方向解释也全部失败。尚未形成relay，HISTORY没有可评价输入。本轮无第二步增长，不能把继承的unit004两次接受再计为成功，也不能据此证明或全面否定用户的缓转续接先验。",
+  "failure_modes": [
+    {
+      "type": "candidate_direction_gate_deadend",
+      "evidence": "19个未占用endpoint候选全部首跳拒绝；没有局部合格endpoint前缀，不能归咎三跳上限。",
+      "earliest": true
+    },
+    {
+      "type": "overlap_library_empty",
+      "evidence": "42方向解释：26 no_overlap_or_tail，11 overlap_distance，4 whole_member_residual_tangent，1 window_turn。"
+    },
+    {
+      "type": "history_not_identifiable",
+      "evidence": "共同库为空，HISTORY未评估；不是历史误拒。"
+    },
+    {
+      "type": "limited_seed_scope",
+      "evidence": "4固定种子不能代表全部M5合并前沿；285956行保存不等于全部搜索。"
+    },
+    {
+      "type": "visual_safety_unresolved",
+      "evidence": "已查看的负例仅小段灰/彩原核，不能辨清平行、深度或分支真值；算法查询完整不等于物理上下文完整。"
+    }
+  ],
+  "observed_images": [
+    "scenes/ficus/stages/BASE_FINAL/test_r_1_FULL.png",
+    "scenes/ficus/stages/BASE_FINAL/test_r_79_FULL.png",
+    "scenes/ficus/stages/NO_FURTHER_GROWTH/test_r_1_FULL.png",
+    "scenes/ficus/diagnostics/64355/BASE_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/64355/BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/137016/BASE_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/112780/BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/48496/BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_11_80709/BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_16931_18768/BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_112_205435/BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_33117_201172/BASE_test_r_79_CONTEXT_CROP.png"
+  ],
+  "visual_evidence_missing": true,
+  "visual_evidence_missing_reason": "原生全景和隔离/上下文图实际存在并已查看；但负例和局部图过小、无可认证深度/遮挡证据，且无新增实质直/曲组。并非未产图。",
+  "next_change": "下一单元先冻结M5成功endpoint合并事件的全场景种子队列，改变种子证据覆盖而不放宽几何门槛：按已有line/polyline分层、原支持长度降序及ID排序，在看续接结果前选取最多各16个完整种子（不足全取），保存未选范围及所有初始端口库。两臂复用本轮关系切换表示、完整候选、30°/35°守卫和原HISTORY，背景仍为强M5；原四种子保留为负对照，逐种子给出共同库非空率及同状态影子选择，再执行有界重复增长。当前四个端口对的q方向也有大偏转，不以更换切向估计或提高角阈值强救。种子队列变化属于覆盖/抽样证据修正，不是当前四例获救，也不能将筛选后接受率当物理概率；需另行review和冻结后执行。",
+  "actual_child_returncode": 0,
+  "actual_child_reason": null
+}
+

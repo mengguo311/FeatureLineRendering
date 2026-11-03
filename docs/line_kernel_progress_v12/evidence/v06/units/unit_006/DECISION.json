@@ -1,0 +1,40 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit005的38个配对模型全部复现，但32个随后被旧host辅助q的有限域检查拒绝；唯一新增假设未激活，主归属与unit004完全相同，joint也未胜过greedy。源码确认：该检查使用旧拟合载体采样点；保存的支持区间又来自seedlet端点投影，并非独立原始观测。下一步只检验以全部原核中心替代辅助q作为有限域证据，不扩大模型或放宽数值阈值。现有日志没有越界幅度，不能预判收益或称其只是浮点误差。",
+  "recommended_next_step": {
+    "unit": "unit_006",
+    "experiment": "同一有限配对模型库上的原核观测域归属：greedy versus同库MILP，unit005为旧域规则对照。",
+    "inputs": {
+      "binding": "继承unit005 CONFIG全部原始input/helper绑定；CONFIG SHA256=0a7e8e75c4a378c6ccaf39d26e9b3cfad5f5f31bf6e13bfb461b58c8db003701。实现依据其source_snapshot及PARENT_RUN_FROZEN。",
+      "state": "原v05 unit015 scan24 M4，458490核，p=0.0014320037356621643；STATE SHA256=4f350e3a991c98d7cf011d833be4fc5aebcce1c7d328ae69b39948b5698ec31f。",
+      "models": "读取unit005/models下38个RECOVERED MODEL.json及各自checkpoint；核对生成配对、版本、record_id、q、metrics及hash。禁止重新拟合。",
+      "selection": "固定原8个完整overlap分量、42叶、38配对及全部入射记录证据邻域；不重选、不增加空间候选或endpoint连接、不裁竞争叶。"
+    },
+    "exact_change": [
+      "仅对38个恢复模型的host/donor兼容性改变有限域见证：令x=全部原核means[leaf.rows]/p，要求extended_s(x,model.q)全部位于[0,L]±EPS。使用原最低segment ties，EPS=1e-8；不得裁成员、延长q或以截断投影代替此检查。",
+      "保留原sample(leaf.q)<=1p投影弧长的全序单调性检查，允许整体反向；旧q采样点的域外量改作诊断，不再作为有限域否决条件。",
+      "全部原核对有限model.q的残差max<=1p、q95<=0.5p、unsigned tangent<=30deg保持原实现。原核中心越界即拒绝，即使旧q检查通过也不能豁免。",
+      "逐成员保存旧q与原核中心各自的左右越界量、越界核数、最坏行ID及新旧兼容结论。原支持区间仍按unit005映射，另记录映射前的越界/钳制；其长度仅是投影支持统计，不冒充新增观测或外延。"
+    ],
+    "bank_and_control": "先用保存模型和旧兼容规则重建unit005的12个假设及两臂选择、主归属，忽略耗时字段后应一致；不匹配阻断。新库保留unit004原11假设不变，仅重建恢复模型假设。生成host/partner必须同时入组；donor仍限host原成功overlap邻居，按原cost/ID排序枚举前缀，不删中间成员；B=sum_donor(2-cost)，host收益0。新库冻结后两臂共享。",
+    "fixed_guards": "原不可分M4叶、局部有效性、8192核上限、all-pairs parallel、model knots处原三臂检测、vertex30deg/window8p60deg、contact0.5p、unsupported gap1.5p及check-only共线处理不变。重叠观测不占拓扑端口。本轮不合成路径、不改原核任何字段。",
+    "paired_arms": {
+      "greedy": "B降序、canonical model key、叶ID元组；仅接受叶集合互斥的假设。",
+      "joint": "scipy.optimize.milp最大化sum(B*x)，每假设binary、每叶最多一个假设；canonical顺序、不扰动成本、mip_rel_gap=0。120s/分量、总600s，保存incumbent/bound/gap；timeout保持PARTIAL。",
+      "membership": "ID=min叶ID，保存模型/叶版本谱系及最多两个替代引用。范围外和未选叶保留M4；UNKNOWN仍须3seedlets/6kernels/4p去重支持才激活。零M4旧分配丢失或拆分；相对unit005/unit003的得失另列。"
+    },
+    "delivery": "先checkpoint并冷载双臂458490行映射、完整假设库/拒绝、模型和lineage，再渲染固定0012/0036原核全景。保留unit005案例及四负例；新增两臂并集top3改变、top3受损、最大新直/曲模型组，按支持降序/ID升序。相同行集合、完整邻域、原白底floor0.0144/宽度/opacity、UNKNOWN灰，沿用联合bbox/pad16/clip/4xnearest裁剪。无carrier或桥绘制；空图、不可辨曲线和继承组明确标记。",
+    "protocol_budget": "BUILD<=18min：真实RED/GREEN覆盖旧q越界但全部原核中心在域内、真实核中心越界必须拒绝、单调性/parallel/branch、旧库重放及UNKNOWN；仅小夹具。Parent独占<=1800s：readiness/库<=600s、solver<=600s、末600s映射与图像交付。CPU/BLAS2，unit<=2GiB/runtime<=20GiB；09:15停新单元，09:38停science。冻结所有源码/config/helper及实际测试回执。"
+  },
+  "changed_variable": {
+    "versus_unit005": "恢复模型的有限域证据从旧辅助载体采样点改为全部原核中心；可改变接受和拒绝集合，不声称等价实现。",
+    "between_arms": "仅同一新假设库上的greedy versus联合互斥选择。",
+    "fixed": "模型q、候选、完整竞争范围、成本、其余守卫、支持统计和UNKNOWN门槛；无重拟合、外推或阈值扫描。"
+  },
+  "falsification": {
+    "readiness": "缺模型/version/hash绑定、控制重放不符或遗漏竞争叶则阻断对应比较。",
+    "delivery": "必须冷载全行映射及双全景；原核改变、M4旧组丢失/拆分或渲染桥均失败。",
+    "science": "须超出unit005出现可辨的实质跨片段直线和曲线身份改善，并单独判断joint是否优于同库greedy。更多假设、同色、assigned或目标值不足；误吞parallel/depth/branch否定实例。支持并集不等于最长连续段，钳制不等于新观测。",
+    "continuation": "若真实核也越界或仍只有未激活小组，保存该有限模型负结果，不再扩大EPS或扫同一域门槛；后续另审候选或共同参数化机制。物理身份暂定，无held-out主张。"
+  }
+}

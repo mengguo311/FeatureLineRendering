@@ -1,0 +1,44 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit003的73个分量中，raw greedy与joint全部同解；新增421行归属未带来可辨的实质跨parent曲线优势。960个endpoint分量因成功overlap竞争未建模而排除，应转向观测多重性。已核对5452条成功overlap及其schema；可见曲线201906的入射overlap均失败，不能冒充现成正例。本轮采用固定有限模型上的联合假设选择，明确检验身份整合，不把重复覆盖称为延长。",
+  "recommended_next_step": {
+    "unit": "unit_004",
+    "experiment": "Scan24重叠观测的有限模型竞争：共同假设库上的greedy versus全局互斥集合选择。无端点续接、重拟合或新空间候选。",
+    "inputs": {
+      "binding": "继承unit003 CONFIG的原始input/helper哈希；CONFIG SHA256=739636ada8e953befbb72aa4dc82c95a9536a0e849216fa3b31eafd2d2ec5e2f。实现依据其source_snapshot及PARENT_RUN_FROZEN。",
+      "state": "v05 unit015 scan24 M4，458490原核，p=0.0014320037356621643；STATE SHA256=4f350e3a991c98d7cf011d833be4fc5aebcce1c7d328ae69b39948b5698ec31f。",
+      "records": "112414行保存候选中，仅operation=overlap且reason为accepted/round_conflict/ambiguous的5452条作为候选关系。验证有限成功metrics及前驱版本；拒绝记录仅作上下文，不直接作为cannot-link。"
+    },
+    "selection": [
+      "对全部成功overlap闭合carrier连通分量，包括旧ambiguity；连接分量仅用于竞争闭包。",
+      "每分量上限128叶，超限整体NOT_RUN。优先含53254/334283、10975/273281/347158的分量；其余先含polyline叶，再按最大叶的已存支持长度降序、最小ID升序。最多8个完整分量，冻结后运行两臂。",
+      "保存全部入射候选及对端完整行作为非递归证据邻域。endpoint关系本轮不参与身份选择；明确模型范围。201906作为无成功overlap的缺候选参考，保留四个原负例。"
+    ],
+    "hypothesis_bank": [
+      "每个有效M4叶的原q作为一个固定有限anchor。观测单位是完整M4叶，不能拆行；一个身份可拥有多个重叠叶，不消耗端口degree。",
+      "anchor仅接纳与其有成功overlap记录的叶。按原project及最低segment ties投影全部原核：residual max<=1p、q95<=0.5p、unsigned tangent<=30deg。按<=1p采样 donor q，投影弧长须单调（允许整体反向），extended_s全部位于anchor有限域内±EPS；不外推。",
+      "定义donor代价c=max_residual+tangent_max/30。对每anchor按c、carrier ID排序兼容donor，枚举含anchor的每个非空donor前缀；不删除中间不利成员。保留所有通过共同组守卫的前缀，记录失败。该有限假设库不宣称覆盖所有子集。",
+      "假设收益B=sum_donor(2-c)。anchor自身不计收益。只允许B>EPS及至少两个叶；保留不同anchor解释，不能按原parent筛选。",
+      "组守卫：每叶有效；全部成员<=8192核；任意叶对通过原parallel守卫；在anchor原knots处对全部成员seedlets执行原三臂检测；anchor满足原turn/contact检查。按原支持区间端点映射到anchor弧长去重，最大unsupported gap<=1.5p；不得串接重叠叶制造虚假路径。EPS=1e-8。"
+    ],
+    "paired_arms": {
+      "greedy": "假设按B降序、anchor ID、排序叶ID元组；全部叶尚未占用时接受。",
+      "joint": "scipy.optimize.milp：每假设一个binary变量，maximize sum(B*x)，每叶最多属于一个选中假设。空选择可行；canonical变量顺序，不扰动成本。每分量120s、总600s、mip_rel_gap=0。仅导出可行incumbent；timeout标PARTIAL并保存bound/gap。",
+      "membership": "两臂共同使用冻结假设库。选中身份ID=min叶ID，保留anchor及全部原叶几何/版本谱系。未选叶和范围外恢复M4原归属。有效UNKNOWN仅在选中组满足3seedlets/6kernels/4p去重支持后激活，否则保留UNKNOWN。旧assigned不丢失、不拆分。相对unit003的回退另列，不能伪称保留其所有新归属。",
+      "ambiguity": "旧mask保留为来源，本机制不将其作为overlap硬禁令。保存竞争假设及每叶最多两个替代引用；所有选择provisional，不把最优目标解释为物理确定性。"
+    },
+    "delivery": "先保存并冷载双臂458490行映射、假设库/得分/拒绝、anchor与叶集合、aux/lineage及求解回执，再渲染固定0012/0036原核全景。选两臂并集top3不同身份、最大直anchor组、最大曲anchor组和上述参考/负例；完整邻域与同一行集合比较。白底floor0.0144、原宽度/opacity、UNKNOWN灰；仅原核，无carrier或桥。分别报告重复支持、支持并集、最长段、有限范围、gap及parent贡献。",
+    "protocol_budget": "BUILD<=18min，真实RED/GREEN覆盖超过两份重叠观测不占端口、集合选择greedy陷阱、有限域外拒绝、parallel/branch拒绝、UNKNOWN及完整分量超限。Parent独占1800s计算：readiness/假设库<=600s、求解<=600s、末600s交付。CPU/BLAS2，unit<=2GiB/runtime<=20GiB；无安装/训练/后台任务。09:15停新单元，09:38停science。"
+  },
+  "changed_variable": {
+    "between_arms": "仅共同有限假设库上的贪心选择 versus联合互斥集合优化。",
+    "versus_unit003": "从端口续接与反事实弃权转为重叠观测的有限模型联合归属；表示、成本和竞争机制均改变，不能称等价加速。",
+    "fixed": "原核全部字段/数量/顺序；不可分M4叶、固定有限q、无重新拟合、无空间候选扩张、无距离放宽。"
+  },
+  "falsification": {
+    "readiness": "版本/schema不符、漏竞争叶、裁掉邻居或将失败cost当成功拟合cost则阻断。零兼容假设应保存模型库覆盖负结果，不扩大有限域。",
+    "delivery": "必须冷载完整映射和双全景；原核改变、旧M4组拆分/丢失或补画间隙立即失败。",
+    "science": "联合选择须相对同库greedy改善可见的实质跨片段直线和曲线身份。重复覆盖减少不等于外延增长；更多同色、assigned或更高B不足。误吞parallel/depth/branch否定实例；空图或不可辨仍PARTIAL。",
+    "continuation": "若固定anchor无法覆盖正确重叠观测，归因有限模型/候选证据瓶颈，后续另冻结共同参数化或模型库机制；不扫本轮阈值。无物理真值或held-out主张。"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit004的11个假设使greedy与joint得到相同7组，68对PNG完全相同。76次有向旧anchor检查中63次因残差失败、仅2次因有限域失败；最大polyline案例未显示新增曲线改善。最早瓶颈是固定旧q的模型覆盖，尚非求解器。保存候选只有metrics、没有拟合q；下一步应检验共同有限模型，而非扩大预算或放宽阈值。",
+  "recommended_next_step": {
+    "unit": "unit_005",
+    "experiment": "Augment the frozen overlap hypothesis bank with jointly fitted finite pair models; compare greedy and MILP on the identical augmented bank.",
+    "inputs": {
+      "binding": "Inherit unit004 CONFIG input/helper bindings; CONFIG SHA256=8833bdc5483c456e7803effe5b88f82df0d7c730e6d2119fe8b2dd6d9f223b1c. Verify its source_snapshot through PARENT_RUN_FROZEN.json.",
+      "state": "Original v05 unit015 scan24 M4, all458490 kernels; STATE SHA256=4f350e3a991c98d7cf011d833be4fc5aebcce1c7d328ae69b39948b5698ec31f; p=0.0014320037356621643.",
+      "selection": "Reuse exactly unit004's eight complete overlap components:42 leaves,38 successful overlap pairs and every saved incident-record evidence neighborhood. Hash selection/banks/checkpoints. No new spatial candidates, endpoint links, component reselection or competitor trimming.",
+      "fit_source": "v05 unit018/source_snapshot/core.py SHA256=c1565d2c33ee1f75e1a58469f14d8e153a138eb5f3c0dc73fbbcc5a9ab20e512. Isolate required numerical definitions without executing old producers/common deadlines."
+    },
+    "model_generation": [
+      "Retain all11 unit004 hypotheses unchanged. Reproduce their greedy/joint selections before using the augmented bank.",
+      "For each of the38 saved pairs in canonical ID order, reconstruct original proposal(a,b,False), requiring operation=overlap. Concatenate rows/reps in original canonical a,b order, not host order. Invoke original fit once: TLS then ordered polyline, three Huber iterations/delta0.5p, equal occupied1p-bin weight,8192kernels/128knots, spacing<=4p. Count every attempt; no retries or alternate templates.",
+      "Compare returned successful metrics/cost with saved values using rtol=0,atol=1e-10. Missing proposal, failed reproduction or mismatch blocks that component's new-model comparison and preserves the evidence; do not silently repair it.",
+      "Each recovered q is an auxiliary finite model keyed by its generating pair. Original proposal host is its anchor role; both generating leaves are mandatory members. Original leaf q, rows, flags and versions remain immutable.",
+      "Potential donors remain only the host's original successful-overlap neighbors. Check every member, including host, against the new q: all-kernel max residual<=1p/q95<=0.5p/tangent<=30deg; <=1p samples of original leaf q must project monotonically, allowing reversal, with extended_s inside the new finite domain±EPS.",
+      "Sort compatible donors by c=max_residual+tangent_max/30 then ID. Enumerate every nonempty prefix, retaining only prefixes containing the generating partner and passing group guards. Host contributes zero benefit as in unit004; B=sum_donors(2-c)>EPS. No pruning intermediate members, no bonus for fitted models.",
+      "Map every leaf's original support-interval endpoints onto the new q, including the host; never copy host arc coordinates from its old q. Deduplicate interval support. Preserve distinct model interpretations."
+    ],
+    "shared_guards": "EPS1e-8; original local-leaf validity, whole indivisible leaves,8192-member cap, all-pairs parallel predicate, original three-arm predicate at model knots, vertex30deg/window8p60deg, contact0.5p and unsupported gap1.5p. Use unit004 check-only collinear handling. Preserve donor-prefix representative order. No extrapolation, kernel pruning or rendered bridges.",
+    "paired_selection": {
+      "greedy": "Descending B, then canonical model key and sorted leaf tuple; accept only disjoint hypotheses.",
+      "joint": "Same bank; scipy.optimize.milp maximizes sum(B*x), binary hypothesis variables, each leaf<=1 selected hypothesis. Canonical ordering, no cost perturbation, mip_rel_gap0;120s/component and600s total solver budget. Save feasible incumbent/bound/gap; timeout remains PARTIAL.",
+      "controls": "Unit004 fixed-anchor bank and saved mappings are the model-library control. Between augmented-bank arms only selection strategy differs. Endpoint competition remains outside scope.",
+      "membership": "ID=min constituent leaf ID with collision-free versioned model/leaf lineage. Preserve M4 assigned rows and groups; unselected/outside leaves retain M4. UNKNOWN activation remains3seedlets/6kernels/4p deduplicated support. Preserve old aux and at most two competing hypothesis references. Report withdrawals versus unit004/unit003 explicitly. All identities provisional."
+    },
+    "delivery": "Checkpoint recovered models, complete banks, solver receipts and both458490-row mappings before rendering; cold-reload. Fixed0012/0036 original-kernel full views, white floor0.0144, unchanged covariance/width/opacity, UNKNOWN gray. Retain unit004 references/four negatives; additionally select top3 changed identities and largest new line/polyline groups by supported length then ID. Compare identical rows and complete evidence neighborhoods; original union-bbox/pad16/clip/4xnearest crops. Empty views remain explicit. Report parent contributions, pooling, interval union, longest run, gaps and finite extent separately.",
+    "protocol_budget": "BUILD<=18min: genuine RED/GREEN for pair-model recovery where old anchors fail, mandatory seed membership, host support remapping, finite-domain/parallel/branch rejection and same-bank greedy trap; bounded fixtures only. Freeze source/config/helper hashes and actual receipts. Parent alone runs <=1800s: readiness/model bank<=600s, solver<=600s, final600s mappings/images/diagnostics. CPU/BLAS2, unit<=2GiB/runtime<=20GiB. No new units09:15; science stop09:38. No full science during BUILD or ANALYSIS."
+  },
+  "changed_variable": {
+    "versus_unit004": "Finite model library: original leaf anchors only -> original anchors plus at most38 jointly fitted pair models. This is auxiliary model generation, not another topology round or a fit-budget sweep.",
+    "between_arms": "Only greedy versus joint mutually exclusive hypothesis selection.",
+    "fixed": "Original kernels/count/order, complete selected neighborhoods, spatial candidates, geometric thresholds, indivisible observations and UNKNOWN policy. Overlap observations consume no topology ports."
+  },
+  "falsification": {
+    "readiness": "Source/version/metric mismatch or incomplete competition blocks the affected comparison; preserve failure and controls.",
+    "delivery": "Require cold-reloaded full mappings and both actual full views. Changed original kernels, lost/split M4 groups or rendered unsupported geometry fails.",
+    "science": "Require visibly coherent substantial cross-fragment straight AND curved identities beyond unit004, and assess joint against same-bank greedy. More hypotheses, assigned rows, duplicated support or higher objective is insufficient. Parallel/depth/branch swallowing falsifies affected examples; invisible or inherited curves remain PARTIAL.",
+    "continuation": "If recovered models still fail containment or only pool tiny duplicates, preserve that model/candidate limitation. Do not widen thresholds within this unit. No physical-truth or held-out claim."
+  }
+}

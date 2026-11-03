@@ -1,0 +1,47 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit004仅接受一个57核、两个实质旧片段的小组，域外支持不足4p；228037核仍无几何候选。主要瓶颈是当前曲线族覆盖，而非合并次数。下一步从原核位置与切向图提出新路径，允许其夺取旧模型成员；不再调整端点或共享支持门槛。本次未构图，不能预称任何固定案例可恢复。",
+  "recommended_next_step": {
+    "unit": "unit_005",
+    "experiment": "Whole-ficus位置—切向观测图上的有限路径出生，与相同保存状态的不出生对照比较。",
+    "inputs": {
+      "binding": "继承unit004原资产、相机及helper绑定；CONFIG SHA256=32e458dc5e5640d0f3a9c91cfd1135fb1f653929a8d446cf608797981ef9dd18。实现依据PARENT_RUN_FROZEN所指source_snapshot。",
+      "state": "unit004/scenes/ficus/stages/OVERLAP_FINAL；519模型、285956原核、next_id713、p=0.003530473547030632。",
+      "models_sha256": "099f9a5955c8be96a0d8ad0afe51f49d33dcae16688cede57b26e883316dc2ca",
+      "membership_sha256": "638516c98f696a31e4fda76568cadf8d2a88c3fc30b2996526a31e5867d06b11",
+      "readiness": "冷载验证checkpoint、版本、原行序及全部原字段。切向仍由control/control_index/derivative_basis生成；无效导数保持UNKNOWN。旧parent仅作诊断。"
+    },
+    "control": "NO_BIRTH精确复制验证后的保存状态，不重竞争。变体从同一状态出发；不加普通更新、延伸或合并周期。",
+    "observation_graph": [
+      "坐标除以p，使用1p空间voxel。每voxel按原行ID处理有效切向：加入与其固定代表切向夹角最小且<=15度的已有模式，否则创建模式；平局取最小代表行ID。模式位置为成员中心均值，方向为创建时代表切向，符号以最大绝对坐标分量为正。保留全部模式及成员，不设每voxel方向上限。",
+      "每模式建立正负两个有向状态。完整查询不同voxel模式中心距离<=1.5p的关系，无nearest-k。i到j要求位移与两端有向切向夹角各<=35度，两切向夹角<=30度；零距离不连。重叠核只是观测，不各自占拓扑端口。",
+      "边代价为距离乘以[1+(切向夹角/30)^2+0.25*(两端连接角平方和/35^2)]。保存完整图；最多400万有向边，超限整体容量阻断，不裁边。连通分量仅作诊断，不直接产生身份。"
+    ],
+    "path_proposals": [
+      "候选种子为包含对照UNKNOWN核且有入边和出边的模式。其覆盖集合为中心8p内含UNKNOWN核的不同空间voxel。按最大尚未覆盖voxel数贪心选至多64种子，平局取代表行ID；最大增益为零即停。完整计算覆盖关系，记录未选范围；旧已归属核仍参与图和后续竞争。",
+      "每种子分别从正负状态运行确定性Dijkstra，累计图代价上限64；相同距离采用canonical状态/前驱顺序，不扰动成本。对每个可达终点恢复最短路径，按不同UNKNOWN voxel数降序、几何长度降序、总代价升序、终点ID排序，取第一条。",
+      "反转负向路径并与正向路径拼接，种子只保留一次。重复空间voxel、少于6个voxel或总长>128p则拒绝；不换第二条救场。按规范正反序列去重。这是有界最短路径树候选，不声称求得最长路径或全局最优曲线。",
+      "冻结全部候选及排序后才做出生事务；最多64次，失败也计数。完整图不随接受结果改变。"
+    ],
+    "birth_and_assignment": [
+      "路径中心折线按原resample生成<=1p间距、最多129knots的模板。完整查询全部原核对模板的原cost<1兼容关系；以这些核按原行ID排序拟合，超过8192核整提案拒绝，不裁成员。",
+      "每候选仅调用一次原irls_update：三Huber步、delta0.5p、占用1p-bin等权、平滑0.1、结点移动<=0.5p。拟合后检查原geometry_ok；不以原始折线转角提前否定共同拟合。",
+      "添加新模型，保留其他模型，然后所有285956核对全部当前有限段重新竞争并执行原支持拆分/死亡。新模型须恰有一个有效支持后代；其他模型可失去成员、拆分或死亡。",
+      "沿用E=sum最终归属cost+1.0*M；仅下降>1e-8事务提交全部状态，否则恢复模型、归属、aux和next_id。总模型数不得超过704；保存完整失败及差分。"
+    ],
+    "fixed": "原cost=d²+0.25*(angle/30)²，距离1p、切向30度、UNKNOWN1/margin0.05；完整模型竞争，无top-k裁减。支持12核/6占用bin、协方差半宽<=0.5p、gap1.5p；turn30度/window8p60度/contact0.5p。EPS1e-8。无新增物理parallel/branch安全认证。",
+    "delivery": "先保存NO_BIRTH及每次接受后的完整映射、模型、图路径谱系与checkpoint，冷载后输出test_r_1/test_r_79原核全景。展示top3新增实质直/曲组及top3损伤，保留55/441、unit001弧144、unit002的7/11/15、unit004小组712和原负例。相同行集合、完整竞争上下文、全对象highlight；仅原核墨迹。分别记录旧v05/v06得失拆分、UNKNOWN原因、支持union/最长段/gap和域外代理。",
+    "budget": "BUILD<=18min，仅真实loader、方向交叉保留、完整邻接、确定性路径、自由撤回及事务回滚小测试。Parent独占1800s：readiness120s，完整图/候选至420s，出生事务至1200s，末600s交付。完整图或候选库未完成不得选择性晋级；事务超时保留最后完整状态并标PARTIAL。CPU/BLAS2；unit<=2GiB/runtime<=20GiB。最迟19:08启动，19:38停science。"
+  },
+  "changed_variable": {
+    "main": "从现有模型对的端点/重叠替换，转为全原核位置—切向图提供的新路径出生；方向表示、候选证据和搜索共同改变。",
+    "versus_unit001": "保留同voxel不同方向，使用完整局部图上的路径证据及空间覆盖选种，不使用局部平均方向的nearest32逐步追踪。",
+    "paired": "同一保存状态不出生 versus 有界图路径出生；赋值、支持验证和能量相同。",
+    "fixed": "legacy_groups_locked=false；kernel_geometry_frozen=true；final_ink_carrier=original_gaussians；uses_gpu=false；uses_training=false。"
+  },
+  "falsification": {
+    "engineering": "缺绑定、图邻接被隐瞒裁减、赋值竞争遗漏、回滚不完整或缺冷载全行映射/双全景即阻断。",
+    "science": "须有双视图可辨的新实质直线及曲线归组；曲线至少三个旧片段各贡献12核/4p支持代理，且相对贡献最多的已有模型有>=4p域外代理。更多候选、assigned、路径长度、降低E或统一颜色均不足。",
+    "counterexample": "方向模式混淆、图路径跨平行边/分支/深度结构、吸收尖刺均否定相关实例。原核全景保持完整，无辅助桥；支持union不是连续观测。候选失败或零接受保存负结果，不扩大半径或换终点救场。物理身份、时间稳定性及held-out均未验证。"
+  }
+}

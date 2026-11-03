@@ -1,0 +1,322 @@
+{
+  "status": "complete",
+  "completed": [
+    "readiness",
+    "greedy_mapping",
+    "joint_mapping",
+    "greedy_full_native",
+    "joint_full_native",
+    "greedy_native_images",
+    "joint_native_images"
+  ],
+  "parent_exit_authoritative": true,
+  "config_sha256": "a15b4f24fd57bbc138cdd456ac40642ea4f58afb8459763cdaf0af509d5c7be1",
+  "science_claim": "UNASSESSED",
+  "started_utc": "2026-10-31T21:22:59.752554+00:00",
+  "outputs": {
+    "greedy": {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_001/scenes/scan24/stages/greedy",
+      "selected_links": 3,
+      "paths": 3,
+      "solver": [
+        {
+          "context_id": 0,
+          "status": "NOT_RUN_OVERSIZE"
+        },
+        {
+          "status": "greedy_complete",
+          "records": [
+            {
+              "edge": 107129,
+              "reason": "accepted"
+            },
+            {
+              "edge": 108630,
+              "reason": "self_contact"
+            },
+            {
+              "edge": 108632,
+              "reason": "accepted"
+            },
+            {
+              "edge": 111179,
+              "reason": "self_contact"
+            },
+            {
+              "edge": 111897,
+              "reason": "vertex_turn"
+            },
+            {
+              "edge": 112094,
+              "reason": "accepted"
+            }
+          ],
+          "benefit": 2.234404499330625,
+          "context_id": 1
+        },
+        {
+          "context_id": 2,
+          "status": "NOT_RUN_OVERSIZE"
+        },
+        {
+          "context_id": 3,
+          "status": "NOT_RUN_OVERSIZE"
+        },
+        {
+          "context_id": 4,
+          "status": "NOT_RUN_OVERSIZE"
+        },
+        {
+          "status": "greedy_complete",
+          "records": [],
+          "benefit": 0,
+          "context_id": 5
+        },
+        {
+          "context_id": 6,
+          "status": "NOT_RUN_OVERSIZE"
+        },
+        {
+          "status": "greedy_complete",
+          "records": [],
+          "benefit": 0,
+          "context_id": 7
+        }
+      ],
+      "full_images": [
+        "0012_FULL.png",
+        "0036_FULL.png"
+      ],
+      "images": [
+        "0012_FULL.png",
+        "0036_FULL.png",
+        "diagnostics/CONTEXT_0_0012.png",
+        "diagnostics/CONTEXT_0_0036.png",
+        "diagnostics/CONTEXT_1_0012.png",
+        "diagnostics/CONTEXT_1_0036.png",
+        "diagnostics/CONTEXT_2_0012.png",
+        "diagnostics/CONTEXT_2_0036.png",
+        "diagnostics/CONTEXT_3_0012.png",
+        "diagnostics/CONTEXT_3_0036.png",
+        "diagnostics/CONTEXT_4_0012.png",
+        "diagnostics/CONTEXT_4_0036.png",
+        "diagnostics/CONTEXT_5_0012.png",
+        "diagnostics/CONTEXT_5_0036.png",
+        "diagnostics/CONTEXT_6_0012.png",
+        "diagnostics/CONTEXT_6_0036.png",
+        "diagnostics/CONTEXT_7_0012.png",
+        "diagnostics/CONTEXT_7_0036.png",
+        "diagnostics/GROUP_1354_0012.png",
+        "diagnostics/GROUP_1354_0036.png",
+        "diagnostics/GROUP_1727_0012.png",
+        "diagnostics/GROUP_1727_0036.png",
+        "diagnostics/GROUP_2352_0012.png",
+        "diagnostics/GROUP_2352_0036.png"
+      ]
+    },
+    "joint": {
+      "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_001/scenes/scan24/stages/joint",
+      "selected_links": 3,
+      "paths": 3,
+      "solver": [
+        {
+          "context_id": 0,
+          "status": "NOT_RUN_OVERSIZE"
+        },
+        {
+          "status": "optimal",
+          "cuts": [
+            {
+              "reason": "vertex_turn",
+              "edges": [
+                111897
+              ]
+            },
+            {
+              "reason": "self_contact",
+              "edges": [
+                111179
+              ]
+            },
+            {
+              "reason": "self_contact",
+              "edges": [
+                108630
+              ]
+            }
+          ],
+          "solves": [
+            {
+              "status": 0,
+              "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+              "warnings": [
+                "Unrecognized options detected: {'threads', 'parallel'}. These will be passed to HiGHS verbatim."
+              ],
+              "fun": -3.692556827337001,
+              "mip_gap": 0.0,
+              "mip_dual_bound": -3.6925568273370004,
+              "mip_node_count": 0.0
+            },
+            {
+              "status": 0,
+              "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+              "warnings": [
+                "Unrecognized options detected: {'threads', 'parallel'}. These will be passed to HiGHS verbatim."
+              ],
+              "fun": -3.2084024556808455,
+              "mip_gap": 0.0,
+              "mip_dual_bound": -3.2084024556808455,
+              "mip_node_count": 0.0
+            },
+            {
+              "status": 0,
+              "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+              "warnings": [
+                "Unrecognized options detected: {'threads', 'parallel'}. These will be passed to HiGHS verbatim."
+              ],
+              "fun": -3.0599881643607607,
+              "mip_gap": 0.0,
+              "mip_dual_bound": -3.0599881643607607,
+              "mip_node_count": 0.0
+            },
+            {
+              "status": 0,
+              "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+              "warnings": [
+                "Unrecognized options detected: {'threads', 'parallel'}. These will be passed to HiGHS verbatim."
+              ],
+              "fun": -2.234404499330625,
+              "mip_gap": 0.0,
+              "mip_dual_bound": -2.234404499330625,
+              "mip_node_count": 0.0
+            }
+          ],
+          "seconds": 0.013159239199012518,
+          "benefit": 2.234404499330625,
+          "checked_feasible": true,
+          "context_id": 1
+        },
+        {
+          "context_id": 2,
+          "status": "NOT_RUN_OVERSIZE"
+        },
+        {
+          "context_id": 3,
+          "status": "NOT_RUN_OVERSIZE"
+        },
+        {
+          "context_id": 4,
+          "status": "NOT_RUN_OVERSIZE"
+        },
+        {
+          "status": "no_edges",
+          "cuts": [],
+          "solves": [],
+          "seconds": 0,
+          "benefit": 0,
+          "context_id": 5
+        },
+        {
+          "context_id": 6,
+          "status": "NOT_RUN_OVERSIZE"
+        },
+        {
+          "status": "no_edges",
+          "cuts": [],
+          "solves": [],
+          "seconds": 0,
+          "benefit": 0,
+          "context_id": 7
+        }
+      ],
+      "full_images": [
+        "0012_FULL.png",
+        "0036_FULL.png"
+      ],
+      "images": [
+        "0012_FULL.png",
+        "0036_FULL.png",
+        "diagnostics/CONTEXT_0_0012.png",
+        "diagnostics/CONTEXT_0_0036.png",
+        "diagnostics/CONTEXT_1_0012.png",
+        "diagnostics/CONTEXT_1_0036.png",
+        "diagnostics/CONTEXT_2_0012.png",
+        "diagnostics/CONTEXT_2_0036.png",
+        "diagnostics/CONTEXT_3_0012.png",
+        "diagnostics/CONTEXT_3_0036.png",
+        "diagnostics/CONTEXT_4_0012.png",
+        "diagnostics/CONTEXT_4_0036.png",
+        "diagnostics/CONTEXT_5_0012.png",
+        "diagnostics/CONTEXT_5_0036.png",
+        "diagnostics/CONTEXT_6_0012.png",
+        "diagnostics/CONTEXT_6_0036.png",
+        "diagnostics/CONTEXT_7_0012.png",
+        "diagnostics/CONTEXT_7_0036.png",
+        "diagnostics/GROUP_1354_0012.png",
+        "diagnostics/GROUP_1354_0036.png",
+        "diagnostics/GROUP_1727_0012.png",
+        "diagnostics/GROUP_1727_0036.png",
+        "diagnostics/GROUP_2352_0012.png",
+        "diagnostics/GROUP_2352_0036.png"
+      ]
+    }
+  },
+  "delivery_gate": true,
+  "scope_status": "READY",
+  "solver_seconds": 0.013159239199012518,
+  "scientific_verdict": "PARTIAL_PENDING_VISUAL_REVIEW",
+  "ended_utc": "2026-10-31T21:23:19.256661+00:00",
+  "elapsed_seconds": 19.504179418087006,
+  "actual_saved_pngs": [
+    "scenes/scan24/stages/greedy/0012_FULL.png",
+    "scenes/scan24/stages/greedy/0036_FULL.png",
+    "scenes/scan24/stages/greedy/diagnostics/CONTEXT_0_0012.png",
+    "scenes/scan24/stages/greedy/diagnostics/CONTEXT_0_0036.png",
+    "scenes/scan24/stages/greedy/diagnostics/CONTEXT_1_0012.png",
+    "scenes/scan24/stages/greedy/diagnostics/CONTEXT_1_0036.png",
+    "scenes/scan24/stages/greedy/diagnostics/CONTEXT_2_0012.png",
+    "scenes/scan24/stages/greedy/diagnostics/CONTEXT_2_0036.png",
+    "scenes/scan24/stages/greedy/diagnostics/CONTEXT_3_0012.png",
+    "scenes/scan24/stages/greedy/diagnostics/CONTEXT_3_0036.png",
+    "scenes/scan24/stages/greedy/diagnostics/CONTEXT_4_0012.png",
+    "scenes/scan24/stages/greedy/diagnostics/CONTEXT_4_0036.png",
+    "scenes/scan24/stages/greedy/diagnostics/CONTEXT_5_0012.png",
+    "scenes/scan24/stages/greedy/diagnostics/CONTEXT_5_0036.png",
+    "scenes/scan24/stages/greedy/diagnostics/CONTEXT_6_0012.png",
+    "scenes/scan24/stages/greedy/diagnostics/CONTEXT_6_0036.png",
+    "scenes/scan24/stages/greedy/diagnostics/CONTEXT_7_0012.png",
+    "scenes/scan24/stages/greedy/diagnostics/CONTEXT_7_0036.png",
+    "scenes/scan24/stages/greedy/diagnostics/GROUP_1354_0012.png",
+    "scenes/scan24/stages/greedy/diagnostics/GROUP_1354_0036.png",
+    "scenes/scan24/stages/greedy/diagnostics/GROUP_1727_0012.png",
+    "scenes/scan24/stages/greedy/diagnostics/GROUP_1727_0036.png",
+    "scenes/scan24/stages/greedy/diagnostics/GROUP_2352_0012.png",
+    "scenes/scan24/stages/greedy/diagnostics/GROUP_2352_0036.png",
+    "scenes/scan24/stages/joint/0012_FULL.png",
+    "scenes/scan24/stages/joint/0036_FULL.png",
+    "scenes/scan24/stages/joint/diagnostics/CONTEXT_0_0012.png",
+    "scenes/scan24/stages/joint/diagnostics/CONTEXT_0_0036.png",
+    "scenes/scan24/stages/joint/diagnostics/CONTEXT_1_0012.png",
+    "scenes/scan24/stages/joint/diagnostics/CONTEXT_1_0036.png",
+    "scenes/scan24/stages/joint/diagnostics/CONTEXT_2_0012.png",
+    "scenes/scan24/stages/joint/diagnostics/CONTEXT_2_0036.png",
+    "scenes/scan24/stages/joint/diagnostics/CONTEXT_3_0012.png",
+    "scenes/scan24/stages/joint/diagnostics/CONTEXT_3_0036.png",
+    "scenes/scan24/stages/joint/diagnostics/CONTEXT_4_0012.png",
+    "scenes/scan24/stages/joint/diagnostics/CONTEXT_4_0036.png",
+    "scenes/scan24/stages/joint/diagnostics/CONTEXT_5_0012.png",
+    "scenes/scan24/stages/joint/diagnostics/CONTEXT_5_0036.png",
+    "scenes/scan24/stages/joint/diagnostics/CONTEXT_6_0012.png",
+    "scenes/scan24/stages/joint/diagnostics/CONTEXT_6_0036.png",
+    "scenes/scan24/stages/joint/diagnostics/CONTEXT_7_0012.png",
+    "scenes/scan24/stages/joint/diagnostics/CONTEXT_7_0036.png",
+    "scenes/scan24/stages/joint/diagnostics/GROUP_1354_0012.png",
+    "scenes/scan24/stages/joint/diagnostics/GROUP_1354_0036.png",
+    "scenes/scan24/stages/joint/diagnostics/GROUP_1727_0012.png",
+    "scenes/scan24/stages/joint/diagnostics/GROUP_1727_0036.png",
+    "scenes/scan24/stages/joint/diagnostics/GROUP_2352_0012.png",
+    "scenes/scan24/stages/joint/diagnostics/GROUP_2352_0036.png"
+  ],
+  "fit_calls": 0,
+  "new_candidates": 0
+}

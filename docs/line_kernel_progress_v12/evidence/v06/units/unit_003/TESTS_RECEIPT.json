@@ -1,0 +1,98 @@
+{
+  "returncode": 0,
+  "tdd_status": "REAL_TEST_FIRST_RED_TO_GREEN_WITH_BOUNDED_REGRESSIONS",
+  "red": {
+    "returncode": 1,
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_003/tests/RED.log",
+    "log_sha256": "c45dc94b535bcf83a53141548e26a9778febe04f4d7165bfb692fc4c04993975",
+    "command": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+      "-B",
+      "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_ambiguity.py"
+    ],
+    "behavior": "Actual old adapter.select excludes the fully masked four-carrier component; assertion fails before ambiguity_policy implementation. Additional missing-certificate contract assertions also fail; their legacy shim is not claimed as a numerical science evaluation.",
+    "failed_tests": 3,
+    "skipped_unimplemented_tests": 3
+  },
+  "green": {
+    "returncode": 0,
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_003/tests/GREEN_FINAL.log",
+    "log_sha256": "6f6adecfb8c103e1afeca7705ff9692b9cd4acaef9d2301d8576bc68a2b27b26",
+    "command": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+      "-B",
+      "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/run_build_tests.py",
+      "--unit",
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_003"
+    ],
+    "tests_run": 39,
+    "elapsed_seconds_from_unittest": 3.231
+  },
+  "intermediate_runs": [
+    {
+      "log": "tests/GREEN_POLICY.log",
+      "returncode": 0,
+      "tests": 7
+    },
+    {
+      "log": "tests/GREEN_VERTICAL_1.log",
+      "returncode": 0,
+      "tests": 6,
+      "note": "Included three unintentionally discovered legacy fixture tests; see BUILD_INCIDENT.json"
+    },
+    {
+      "log": "tests/GREEN_ALL_1.log",
+      "returncode": 0,
+      "tests": 39
+    }
+  ],
+  "real_fixture": {
+    "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_003/tests/REAL_COMPONENT.npz",
+    "sha256": "95ae1755db6e70fb99219e1a3f16855b4a3ee0f1a3884dfe7ec17f7e01ecca24",
+    "carriers": 9,
+    "seedlets": 35,
+    "kernel_row_indices": 105,
+    "geometry_and_candidate_records_only": true,
+    "full_original_gaussians_loaded": false,
+    "provenance": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_003/tests/REAL_COMPONENT_PROVENANCE.json"
+  },
+  "checks": [
+    "global unique versus symmetric alternative",
+    "incident successful overlap excludes whole component",
+    "raw metrics/ports/arrays/pinned unit002 oracle equivalence",
+    "UNKNOWN support gate",
+    "whole-path guards and cycle/port regressions",
+    "both-arm incomplete-proof fallback",
+    "complete checkpoint hash resume",
+    "out-of-scope all membership fields and composite versions exact",
+    "mappings preserved before intentional renderer refusal"
+  ],
+  "source_files": {
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/adapter.py": "af4a89acdb1b11f553709d5a876ce4890b8d27b67029c5488b8883f22828f9ce",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/ambiguity_delivery.py": "c5c9b1844192e14552ace859ed5f05cc2ab2e26b2621c68105c1a50dfbb04576",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/ambiguity_policy.py": "11d2a14c66bde2a4fab7d6043d7d8491b6d6f55392f2ea6d82873941b59be31b",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/ambiguity_runner.py": "fb863516c1cb9c280ba4565d45a91d08236189bcdd48742df8b05cd979d1d6c7",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/build_ambiguity_config.py": "ea8e1e322f304f7f477a26f329c4a3e024b69e26b7ccc2827e91ce68eba2b716",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/build_config.py": "22717de73f81981cb289ab824536e29079c729e008c2d55a19552a092de0507d",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/delivery.py": "806f445a15b3ca3fefb3fe933ed9ea5a9f2c46fdc664cd28f83cf7e7f6ac0dce",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/geometry_base.py": "e05d836192be29709cc139a6c04bb77dbf256425f5e4a8e7c92fa7fae26afe71",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/paired_delivery.py": "67e6dac305caab608fe6205e90a9b1d7faaac4fbbf80a5056f5107e6bbbe8c22",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/port_paths.py": "b08baad4113f838f02f6bebc93153ca8bfff3b8c92168c296b6a7d0c5ba2851c",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/run_build_tests.py": "a9198102468e799e4f5af2cc153349b5f86b832c8b6f7011e9542482395624cb",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/runner.py": "445d7cb2cda1476223f40d9de997c0f8672f1e4789c573fc12a99100e82ccef5",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/runtime_io.py": "910e143fa2265109601dbc325b42475d3955368427be05be7a1c2fc68d2e3180",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_adapter.py": "74794684081ae44bcf243259b6ae9afa422189b82785414b3dab1c621ed52261",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_ambiguity.py": "30f9abe27a3b89dc7b910a85d5e84e66a40235614e3944a0e3b48eab56484f2c",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_ambiguity_delivery.py": "50b7b3e7c375d120434254992362f096b5a5de9283b07f9cd754cf2fc8138eda",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_paired_delivery.py": "66cfc6271519fc9dcb434b819a53674b09cba933e0941a8846c9ec5ceb56acb6",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_port_paths.py": "bff90e56f484ab6beeac07e9a10325d871e75c4b65ec40a4f10b866b09e1e0b1",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_real_ambiguity.py": "af42687ea9e486c3ae3face2b010da8c49c6ed25b35969b16b2ef369d1e66584",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_runner_fixture.py": "1b7be50e52eeea52112121bb7ce6485972220d534c50e4756365f4302e552d22",
+    "/home/u00134/3dgs_line/line_kernel_global_association_v06/reproduction/line_kernel_global_association_v06/test_scope.py": "e7edcfd7d072c120539bc1052104950fdc151c924832469d5e4f41816f7a0655"
+  },
+  "build_incident": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_003/BUILD_INCIDENT.json",
+  "old_seal_recheck": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/units/unit_003/OLD_SEAL_RECHECK.json",
+  "full_science_run": false,
+  "actual_asset_render_run": false,
+  "subagents_used": false
+}

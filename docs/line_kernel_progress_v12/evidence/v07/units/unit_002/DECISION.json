@@ -1,0 +1,41 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit001确实实现自由重归属，组144有双视图可见的实质跨片段短弧；但最终278220核没有几何候选，竞争弃权仅348核。主要瓶颈是初始化覆盖，而非归属阈值。已核实封存M4含29070个有限载体及完整行来源，可作为可撤销的曲线种子，不恢复旧组锁定。",
+  "recommended_next_step": {
+    "unit": "unit_002",
+    "experiment": "Whole-ficus coverage-first finite-curve initialization, followed by unchanged kernel-level static/adaptive competition.",
+    "inputs": {
+      "original": "Inherit unit001 original Gaussian/control/camera/helper bindings;285956 kernels,p=0.003530473547030632.",
+      "source": "unit001/source_snapshot through PARENT_RUN_FROZEN.json; CONFIG SHA256=7f9151d1e010d15029ef745c78459ebc3575c1214686214db168ed5e9c107aea.",
+      "seeds": "v05 unit016/scenes/ficus/stages/M4_MERGE_ONLY/CARRIERS.npz; SHA256=813b45f98b34c8f64b21a9655ed72b0da5063f373192e55356e10c8b5e029415.",
+      "readiness": "Verify sealed checkpoint and predecessor config binding,29070 carrier records,66114 world-unit knots, offsets/IDs/versions and285956 source rows. Normalize knots by p. Review inspected headers only; numerical checks remain parent-compute work."
+    },
+    "initialization": [
+      "Enumerate every saved finite q, regardless of old assigned/UNKNOWN, valid or baseline flags. These flags are provenance only. Reject nonfinite/degenerate geometry under the current guards; never require its old member rows to fit.",
+      "Split curves longer than128p into canonical nonoverlapping arc windows[128k,min(128(k+1),L)]. Apply unit001 arc resampling,spacing<=1p/max129knots, then unchanged turn/contact checks. Key each candidate by carrier ID/version/window index; preserve rejection reasons.",
+      "For every candidate, query ALL original valid-tangent kernels within1p of its finite segments. Use unchanged distance/tangent cost; potential coverage comprises kernels with angle<=30deg and cost<1. Convert their centers to occupied1p voxel IDs, counting each voxel once. No old membership or pair-candidate mask restricts coverage.",
+      "Select at most512 seeds by greatest marginal count of previously uncovered compatible voxels; ties by canonical candidate key. Stop when maximum marginal gain is zero. Exact lazy-greedy evaluation is allowed; no approximate top-k or unrecorded candidate truncation.",
+      "Persist the complete candidate/coverage bank and selection order before assignment. If bank construction is incomplete, preserve its failure but do not promote a selectively truncated comparison. Record zero-marginal candidates explicitly.",
+      "Assign new model IDs with source-curve/window lineage. Old row ownership supplies no initial labels, activation privilege or preservation constraint."
+    ],
+    "paired_control": {
+      "new_static": "Freeze selected seed geometry; execute the unchanged unit001 complete per-kernel competition and support validation once.",
+      "new_adaptive": "Same selected initialization; unchanged three update cycles, IRLS, trimming, supported extension, UNKNOWN-driven voxel-trace births and support-driven splitting/death.",
+      "historical": "Retain unit001 FREE_STATIC/FREE_ADAPTIVE_3 as the density-trace initialization reference; do not rerun it. Retain v05 M5 and v06 references."
+    },
+    "fixed": "Unit001 free_core numerical policy unchanged: ALL finite-segment competitors within1p; cost=d^2+0.25*(angle/30)^2; UNKNOWN cost1,margin0.05;>=12 primary kernels/6 occupied arc bins; covariance support halfwidth<=0.5p, unsupported gap1.5p; turn30deg/window8p60deg/contact0.5p. Three Huber steps,delta0.5p,smoothing0.1,knot movement<=0.5p/update,<=2 supported extension steps/end/cycle;<=64 births/cycle,total active models<=704. Reject updates transactionally. All old labels may split or disappear; original kernel fields/count/order remain fixed.",
+    "delivery": "Save raw competition and each complete full285956-row stage before diagnostics; cold-reload STATIC/latest complete ADAPTIVE. Actual test_r_1/test_r_79 full views, original covariance/opacity, white floor0.0144, UNKNOWN gray, no auxiliary ink. Show top3 substantial cross-fragment curved/straight candidates and top3 damaged groups; retain unit001144/382/482 exact saved row sets and old fixed cases. Recover negative-context rows from CARRIERS row offsets, including UNKNOWN, rather than edge_id filtering that made11/80709 empty. Preserve full-object highlights and identical-row reference comparisons.",
+    "accounting": "Report all reference assignment gains/losses, old-group splits, candidate coverage before/after selection, support deaths, model updates and UNKNOWN reasons. Separate source-parent/M4 contributions, interval union, longest run, gaps and finite extent. Coverage-selected seeds may suppress nearby parallel explanations; this remains a visual risk, not a cannot-link fact.",
+    "budget_protocol": "BUILD<=18min: small real loader/offset-contract tests, coverage-selection versus density trap, voxel duplicate weighting, complete competitor coverage, and unchanged split/revoke/UNKNOWN/checkpoint regressions. No full science in BUILD. Parent alone computes<=1800s: readiness120s, complete seed bank/selection by360s, updates/checkpoints by1200s, final600s delivery. CPU/BLAS2; unit<=2GiB/runtime<=20GiB. Freeze all source/config/helpers/test receipts. No new units19:15; science stop19:38."
+  },
+  "changed_variable": {
+    "versus_unit001": "Initialization changes from density-first tangent tracing to existing finite-curve proposals selected for marginal spatial coverage. Seed family and allocation change together; this is not a solver-only effect.",
+    "between_new_arms": "Static geometry versus the same adaptive geometry/population updates as unit001.",
+    "fixed": "Kernel-level freedom, assignment/geometry thresholds, model caps, cycle count and original-kernel rendering. legacy_groups_locked=false; kernel_geometry_frozen=true; uses_gpu=false; uses_training=false."
+  },
+  "falsification": {
+    "engineering": "Hash/schema failure, incomplete seed-bank comparison, truncated assignment competitors or missing cold full-row mappings/native views blocks completion.",
+    "science": "Require visibly coherent new straight AND curved cross-fragment identities in both views. Curved success requires at least three substantial old-fragment contributions, each>=12 kernels/4p support proxy; merely inheriting a long seed, increasing assigned counts or recoloring fails.",
+    "counterexample": "Absorbing parallel edges, branches, depth crossings or spikes falsifies affected groups. Improved voxel coverage is not physical correctness. Preserve unit001 short-arc positives and all losses; unresolved or empty views remain PARTIAL. No threshold rescue, physical-truth or held-out claim."
+  }
+}

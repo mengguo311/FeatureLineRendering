@@ -1,0 +1,48 @@
+{
+  "diagnosis_zh": "工程执行与两历史对照重现完成；观测导数历史在唯一有共同候选的前沿明确拒绝两者，零增长。两个对照均仅接受一步随后几何死端。用户的“成功合并后缓转近邻可持续增长”在该24种子示踪内没有得到支持；不能据此否定所有场景或宣布物理误拒。",
+  "failure_modes": [
+    {
+      "mode": "history_rejection_not_missing_evidence",
+      "evidence": "仅79841-side1有两个共同候选。源近/远6/7核；177351供体4/4核，79855供体4/6核；全部方向轴known。导数预测角/曲率差分别16.205526685deg/0.714486356与11.057581021deg/0.345333989，超过15deg或2sin7.5deg约0.261052384门槛。OBS零接受不是稀疏区间弃权。"
+    },
+    {
+      "mode": "mixed_observation_history_identifiability",
+      "evidence": "源端两个区间的原parent组成不同，79855供体也如此。混合轴差不能单独证明同一物理曲线曲率；来源组成影响只是待检验解释，不是假定错误。"
+    },
+    {
+      "mode": "post_acceptance_deadends",
+      "evidence": "BASE接受177351后50407注册距离失败、83549端点/尾域失败；SECANT接受79855后79865切向/注册失败，177351全成员q95=0.519926934p、最大切向32.334937095deg。第二步在共同几何库前失败，不能归咎后续历史条件。"
+    },
+    {
+      "mode": "limited_candidate_scope",
+      "evidence": "24种子48初始前沿中47个无共同候选；初始库完整且无截断。全285956行映射并不代表全场景搜索，scan24/scan65未运行。"
+    },
+    {
+      "mode": "visual_resolution_and_physical_ambiguity",
+      "evidence": "79841同核局部图只占少量原生像素；BASE统一小弧颜色，无法可靠判别平行/深度归属。四负例过小模糊；没有新直段与新曲段的双重实质证据。"
+    }
+  ],
+  "observed_images": [
+    "scenes/ficus/stages/OBS_HISTORY_FINAL/test_r_1_FULL.png",
+    "scenes/ficus/stages/BASE_FINAL/test_r_79_FULL.png",
+    "scenes/ficus/diagnostics/79841/NO_FURTHER_GROWTH_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/79841/BASE_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/79841/SECANT_HISTORY_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/79841/OBS_HISTORY_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/79841/BASE_test_r_79_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/79841/OBS_HISTORY_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/79841/BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/79841/BASE_test_r_1_HIGHLIGHT.png",
+    "scenes/ficus/diagnostics/112780/OBS_HISTORY_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/137016/OBS_HISTORY_test_r_79_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/negative_11_80709/OBS_HISTORY_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_16931_18768/OBS_HISTORY_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_112_205435/OBS_HISTORY_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_33117_201172/OBS_HISTORY_test_r_79_CONTEXT_CROP.png"
+  ],
+  "visual_evidence_missing": true,
+  "visual_evidence_missing_reason": "1120个保存PNG存在，已实际查看16张；缺失的是足以分辨物理归属、第二步和新增实质直/曲结构的视觉证据，尤其小图及深度/平行负例。不是未产图。",
+  "next_change": "在同一ARC/Hermite候选与几何守卫下，改验同一原控制曲线跨相邻区间的配对导数增量，分离连续转向与来源混合比例变化；以本轮区间混合张量历史和BASE为对照。先验证control_index/原参数到曲线身份的绑定，旧parent只标识相关观测、不是真值；缺跨区间证据保留UNKNOWN。完整保留各来源和竞争模式，不挑选有利来源。另行review冻结实现与统计规则后执行，不扩大半径、角度、区间或预算。",
+  "actual_child_returncode": 0,
+  "actual_child_reason": null
+}

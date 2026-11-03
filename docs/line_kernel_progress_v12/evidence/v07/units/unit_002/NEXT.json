@@ -1,0 +1,22 @@
+{
+  "action": "continue",
+  "recommended_next_step": {
+    "status": "PROPOSED_NOT_RUN_REQUIRES_NEW_REVIEW_AND_FROZEN_DECISION",
+    "mechanism": "可撤销的有限曲线模型合并/共同重拟合，随后逐核完整重竞争",
+    "scene": "whole ficus; start from unit002 saved FREE_ADAPTIVE_3, not legacy indivisible groups",
+    "problem": "覆盖种子能收集重叠观测，但已检视长组的全域已有单个旧种子覆盖；unit001短弧144被55/441两个模型分割，现有更新只有局部移动/生灭，没有把多个解释合成为更长共同模型的操作。",
+    "experiment": "以保存的520个动态模型及其逐核归属/替代作为可撤销初态，提出相容相邻或重叠模型的共同有限曲线；候选接受前必须对完整局部竞争邻域重评估，并对全285956核重新竞争。模型不是不可拆旧片段，原核可改投其他模型或UNKNOWN。仅一次有界合并提案轮；新review须预先冻结完整候选、模型选择准则与预算。",
+    "control": "同一unit002状态、同一赋值/支持规则、不启用合并的完整重竞争对照；不拿旧编号变化当收益。",
+    "fixed": "原核字段和行序、现有距离/切向/UNKNOWN阈值、几何/有限支持守卫不放宽，不提高种子或fit上限，不渲染辅助曲线；保留拒绝的旧模型及检查点。",
+    "mandatory_cases": [
+      "unit001 CURVED_144 exact198 rows and current55/441 competition",
+      "current CURVED_7/11/15 inherited-span controls",
+      "all four saved ficus negative contexts",
+      "top losses including13054/37737/9969"
+    ],
+    "cheapest_falsifier": "只合并颜色、重复覆盖或继承单个旧长弧不算成功；须双视图显示超过任一输入模型的真实跨片段续接，至少三个实质来源，并单列旧短弧能否恢复及平行/分支/深度误吞。若只是减少UNKNOWN或目标改善，保存负结果。",
+    "budget": "建议parent compute<=1800s，末600s交付；19:15后不开新单元，19:38停止science。当前分析不实施。"
+  },
+  "rationale": "现有实际结果支持覆盖初始化带来更多局部多来源归属，但不能证明新的长曲线恢复；自由模型缺少合并/重组操作且已损伤已见短弧。此瓶颈比继续加种子、重复IRLS或移场景更直接。",
+  "experiments_run_in_analysis": false
+}

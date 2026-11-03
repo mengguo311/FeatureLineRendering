@@ -1,0 +1,19 @@
+{
+  "unit": "unit_011",
+  "action": "stop",
+  "reason_code": "NEW_UNIT_CUTOFF_REACHED_HANDOFF_EXISTING_RESULTS",
+  "recommended_next_step": {
+    "status": "DEFERRED_NOT_AUTHORIZED_TO_START_AFTER_NEW_UNIT_CUTOFF",
+    "mechanism": "真实多视图观测支持的端点歧义弃权，而非继续增加拟合或放宽有限域",
+    "experiment": "未来另行授权窗口中，针对ficus保存的593条masked endpoint关系，预先冻结少量完整竞争邻域；比较旧mask弃权与真实多视图证据支持的弃权，共用本轮common有限路径表示、几何守卫与选择器。",
+    "readiness": "先确认存在可绑定原图、相机及可见性/投影观测；本轮未核实这些输入。若没有独立观测则NOT_READY，不用线核自渲染循环证明。完整邻域必须保留端点及重叠替代解释，不能删除竞争者制造确定性。",
+    "fixed": "原核、有限几何、端口规则及UNKNOWN；遮挡/未观测仍为UNKNOWN，不自动作cannot-link。不得把历史GS训练视角称为held-out。",
+    "paired_control": "冻结旧mask结果为基线；只改变候选关系的证据及弃权，不扫阈值，不增加同一候选的fit预算。",
+    "cheapest_falsifier": "仅在有真实独立证据的完整邻域上比较原核全景、同一成员与上下文的两个固定视图。若仍只有单parent小组、继承曲线、颜色变化或吞并平行/分支/深度结构，则保存负结果。",
+    "execution": "NOT_RUN；需要未来明确授权与另行冻结，不在当前窗口启动。"
+  },
+  "rationale": "当前已过09:15停开新科学单元时刻。先交付已保存四臂结果并保留unit010真实失败；不以本轮弱收益宣称方向耗尽。共同参数化改变可行库，但两个库的MILP与greedy均同解，剩余主要限制为固定候选/593条mask及物理证据不足；下一独立机制应增加真实独立证据，而不是继续扫有限域或拟合预算。",
+  "science_stop_jst": "2026-11-01T09:38:00+09:00",
+  "handoff_by_jst": "2026-11-01T09:45:00+09:00",
+  "no_new_unit_started": true
+}

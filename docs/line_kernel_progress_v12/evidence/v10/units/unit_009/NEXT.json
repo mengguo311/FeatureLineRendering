@@ -1,0 +1,40 @@
+{
+  "action": "continue",
+  "recommended_next_step": "下一次只读review应优先冻结针对第72步的有限软排序对照，而非仅给末库追加时间：从本单元GROUP_BALANCED_FIT_0071共同冷载，仅激活30579，完整保留其余十个跟踪组和全部背景；原J对照与J_contact=J+0.01*I(原ARC自接触诊断为true)两臂，各300秒增长，先重放0091_30579完整510解释/40可连接库。只改有限软评分，所有[2,4,6]仍关闭，contact候选仍可胜出并接受，无新硬门；WHOLE、组均衡拟合、完整2p候选、规则1/3/5和闭合认证不变。保存两影子赢家、后续急折拒绝、同donor重叠/端点竞争、已接受行214901损伤和原核双视图完整竞争背景；不能用多池化冒充更好延伸。该提案须下一review再冻结；当前NOT_RUN。原74步终态与截断末库全部保留，不撤销。05:15停新单元、05:35停science。",
+  "rationale": "第72步自接触端点解释J=.06134870胜过无自接触67269池化解释J=.06347362；相同donor的重叠解释也可连接但J=.07514767。随后部分库出现47个急折拒绝，具备可重放的排序/表达反例。有限软代价是新独立机制，不恢复已禁用的硬拒绝；也可能只增加池化，必须保留反例。",
+  "changed_variable": "仅新增0.01倍已有自接触布尔诊断的有限排名项；候选合法性不变。新实验从第71步匹配起点，不能混算旧74步全队列结果。",
+  "input_stage": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_relaxed_guards_v10_20261103/units/unit_009/scenes/scan65/stages/GROUP_BALANCED_FIT_0071",
+  "input_checkpoint": {
+    "complete": true,
+    "stage": "COMPLETE_MONOTONE_GROUP_UNION",
+    "config_sha256": "b7bd482602aff3be2cebf1b25cf6370614193e176c7908abaf36028957e3e258",
+    "files": {
+      "MEMBERSHIP.npz": "34f0bc3d1e440ca8d52dae22c442f740c980a95409be80283b7d6b11dcb7db3f",
+      "MODELS.npz": "567230ab09c66bc92478cab15e0fe6ac3eebb9b1950822ed0d4b29f1fca46c98",
+      "GROUPS.json": "fbda28dab053d1a555dc75f1879d4225d380091d8d5f1270cca39f3f30636a50",
+      "LINEAGE.json": "75f1e0671fedbedb90747fd5cab76411251dfd3476f4ba5f7708bfccb79095f1"
+    }
+  },
+  "control_replay": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_relaxed_guards_v10_20261103/units/unit_009/scenes/scan65/libraries/GROUP_BALANCED_FIT/0091_30579/LIBRARY.json",
+  "proposed_active_seed_ids": [
+    30579
+  ],
+  "relaxed_rule_groups": [
+    2,
+    4,
+    6
+  ],
+  "proposed_budget": {
+    "readiness": 120,
+    "initial_catalog": 120,
+    "growth_each": 300,
+    "delivery": 480,
+    "total": 1320
+  },
+  "falsification": "若只能池化、损害旧成员、吞入第三臂/平行/深度层或仍很快急折死端，即保留经验负例；任何禁用项硬拒绝、截断晋级、失核/改核或假闭合为工程失败。",
+  "executed": false,
+  "first_written_jst": "2026-11-03T04:42:22.680318+09:00",
+  "updated_jst": "2026-11-03T04:47:37.216961+09:00",
+  "no_new_after_jst": "2026-11-03T05:15:00+09:00",
+  "science_deadline": "2026-11-03T05:35:00+09:00"
+}

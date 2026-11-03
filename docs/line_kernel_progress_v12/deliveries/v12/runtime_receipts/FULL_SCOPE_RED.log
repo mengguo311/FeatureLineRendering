@@ -1,0 +1,18 @@
+test_canonical_cannot_change (test_full_scope.FullScopeTests.test_canonical_cannot_change) ... ok
+test_covariance_variant_cannot_replace_position_only (test_full_scope.FullScopeTests.test_covariance_variant_cannot_replace_position_only) ... ok
+test_full_model_authorized (test_full_scope.FullScopeTests.test_full_model_authorized) ... FAIL
+test_unknown_cannot_be_swallowed (test_full_scope.FullScopeTests.test_unknown_cannot_be_swallowed) ... ok
+
+======================================================================
+FAIL: test_full_model_authorized (test_full_scope.FullScopeTests.test_full_model_authorized)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_full_bundle_collapse_v12_20261103/orchestration/test_full_scope.py", line 5, in test_full_model_authorized
+    def test_full_model_authorized(self):self.assertTrue(validate_derived_config(VALID))
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (failures=1)

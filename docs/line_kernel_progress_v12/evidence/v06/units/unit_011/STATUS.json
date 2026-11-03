@@ -1,0 +1,126 @@
+{
+  "unit": "unit_011",
+  "execution_state": "completed",
+  "scientific_verdict": "PARTIAL_REPRESENTATION_EFFECT_WITHOUT_PAIRED_SOLVER_GAIN",
+  "scope": {
+    "scene": "ficus",
+    "original_rows": 285956,
+    "components_completed": 148,
+    "components_expected": 148,
+    "eligible_endpoint_pairs": 163,
+    "masked_endpoint_pairs": 593,
+    "full_views_per_arm": 2,
+    "arms": [
+      "concat_greedy",
+      "concat_joint",
+      "common_greedy",
+      "common_joint"
+    ],
+    "other_scenes_run": false
+  },
+  "mechanism": "Four-arm complete finite-path library: immutable leaf concatenation versus common auxiliary parameterization; greedy versus same-bank MILP.",
+  "actual_child_exit": {
+    "returncode": 0,
+    "reason": null,
+    "pid": 3152172,
+    "started_jst": "2026-11-01T09:16:15.659260+09:00",
+    "finished_jst": "2026-11-01T09:17:36.874034+09:00",
+    "stdout": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_global_association_v06_20261101/orchestration/unit_011/NUMERICAL_STDOUT.log",
+    "actual_child_exit": true
+  },
+  "run_status": "complete",
+  "fit_calls": 176,
+  "new_candidates": 0,
+  "solver_seconds": 0.5681606102734804,
+  "elapsed_seconds": 80.49823829811066,
+  "metrics": {
+    "concat_greedy": {
+      "assigned": 118911,
+      "unknown": 167045,
+      "gained_assigned": 441,
+      "lost_assigned": 0,
+      "changed_rows": 507,
+      "physical_identity_verified": false,
+      "overlap_pooling_run": false
+    },
+    "concat_joint": {
+      "assigned": 118911,
+      "unknown": 167045,
+      "gained_assigned": 441,
+      "lost_assigned": 0,
+      "changed_rows": 507,
+      "physical_identity_verified": false,
+      "overlap_pooling_run": false
+    },
+    "common_greedy": {
+      "assigned": 119860,
+      "unknown": 166096,
+      "gained_assigned": 1390,
+      "lost_assigned": 0,
+      "changed_rows": 1600,
+      "physical_identity_verified": false,
+      "overlap_pooling_run": false
+    },
+    "common_joint": {
+      "assigned": 119860,
+      "unknown": 166096,
+      "gained_assigned": 1390,
+      "lost_assigned": 0,
+      "changed_rows": 1600,
+      "physical_identity_verified": false,
+      "overlap_pooling_run": false
+    }
+  },
+  "selected_group_counts": {
+    "concat_greedy": 39,
+    "concat_joint": 39,
+    "common_greedy": 130,
+    "common_joint": 130
+  },
+  "common_vs_concat": {
+    "assigned_gained": 1079,
+    "assigned_lost": 130,
+    "changed_id_rows": 1381,
+    "reference_groups_split": 5,
+    "split_reference_ids": [
+      47878,
+      47914,
+      54189,
+      71920,
+      158396
+    ],
+    "id_changes_not_accuracy": true
+  },
+  "within_representation_membership_identical": true,
+  "within_representation_full_png_bytes_identical": true,
+  "M4_assignment_loss": 0,
+  "M4_group_splits": 0,
+  "scientific_limits": [
+    "Selected hypotheses include groups with retained UNKNOWN; 130 is not 130 validated edges.",
+    "No demonstrated MILP gain on either frozen bank.",
+    "No demonstrated new substantial curved continuation in both views.",
+    "Original-parent IDs are provenance, not physical truth.",
+    "Projected support union is not continuous observation or physical extension.",
+    "Parallel/branch/depth safety unresolved; saved negative contexts are not labelled truth.",
+    "No held-out claim; original spikes remain."
+  ],
+  "missing_cases": [
+    "top3_selection_member_differences: no actual same-representation arm difference exists"
+  ],
+  "provenance": {
+    "config_sha256": "f13916c506a78b767e01cde78ecd8e0c754428dc55ca1ba69e8610cdc6c61168",
+    "decision_sha256": "d5fa8f7711577cec59f2e7303ffd6954c77b46c33316ef9c52cb5d8258025794",
+    "source_snapshot_manifest": "PARENT_RUN_FROZEN.json",
+    "source_snapshot_files_verified": 79,
+    "helper_files": {
+      "/home/u00134/3dgs_line/gaer_c2l50_8build_joint_gs_v01/reproduction/radegs_c2l50_8build_joint_gs_v01/renderer.py": "ce24cd30d663e6f421064d83006f097b02a5cf6a74b20c177a905ca514caed93",
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_joint_gs_v01/build/libjoint.so": "033a973a71dc5364677a5bf0625f23dc4fe445b70257f04de7cb70cdccca84b0"
+    },
+    "mapping_and_full_native_checkpoint_hashes_verified": true,
+    "membership_shape_verified_for_all_arms": 285956,
+    "geometry_audit": "GEOMETRY_AUDIT.json",
+    "old_unit010_child_rc_preserved": 1
+  },
+  "analysis_only": true,
+  "analysis_created_jst": "2026-11-01T09:20:44.718015+09:00"
+}

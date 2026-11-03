@@ -1,0 +1,18 @@
+{
+  "returncode": 1,
+  "reason": "functional assertion: unchanged means; expected nonzero derived movement",
+  "files": {
+    "test_collapse.py": {
+      "sha256": "4eb29f1d514d2b7c9fdb067c32fc373d657d34dc4a4e78d8697fea3388be4a92",
+      "text": "\"\"\"Small synthetic Gaussian fixtures only; no real-asset science in BUILD.\"\"\"\nimport limits\nimport unittest\nimport numpy as np\nfrom core import collapse\n\ndef fixture():\n    s = np.repeat(np.linspace(-5., 5., 25), 3)\n    offsets = np.tile(np.array([-.3, 0., .3]), 25)\n    means = np.column_stack([s, .09*s*s + offsets, .02*s*s*s + offsets*.3])\n    means = np.vstack([means, [30., 30., 30.], [-30., 30., 30.]])\n    n = len(means)\n    asset = dict(means=means.astype(np.float64), covariance=np.tile(np.diag([.64, .16, .09]), (n, 1, 1)),\n                 opacity=np.linspace(.1, .2, n), colors=np.zeros((n, 3)),\n                 primitive_id=np.arange(n, dtype=np.int32), internal_piece_id=np.zeros(n, dtype=np.int32),\n                 arc_t=np.linspace(0., 1., n))\n    return asset, np.arange(n-2, dtype=np.int64)\n\nclass CollapseTests(unittest.TestCase):\n    def test_01_curved_bundle_changes_real_gaussians(self):\n        asset, rows = fixture()\n        before = {k: v.copy() for k, v in asset.items()}\n        result = collapse(asset, rows, 1.)\n        derived = result['derived']\n        self.assertGreater(np.linalg.norm(derived['means'][rows]-asset['means'][rows]), .1)\n        self.assertGreater(np.linalg.norm(derived['covariance'][rows]-asset['covariance'][rows]), .1)\n        for k in asset:\n            self.assertEqual(asset[k].tobytes(), before[k].tobytes())\n            self.assertEqual(derived[k][-2:].tobytes(), asset[k][-2:].tobytes())\n        self.assertEqual(result['position_only']['covariance'].tobytes(), asset['covariance'].tobytes())\n\nif __name__ == '__main__':\n    unittest.main(verbosity=2)\n"
+    },
+    "limits.py": {
+      "sha256": "3143399c11fe88a0c7b6021373ef616f42bfe01ec45d44414ccf36dcf4118737",
+      "text": "\"\"\"Known CPU limits only; never inspect or report environment contents.\"\"\"\nimport os\n\nfor key in ('OMP_NUM_THREADS', 'OPENBLAS_NUM_THREADS', 'MKL_NUM_THREADS', 'NUMEXPR_NUM_THREADS'):\n    os.environ[key] = '2'\nif hasattr(os, 'sched_getaffinity'):\n    os.sched_setaffinity(0, sorted(os.sched_getaffinity(0))[:2])\n"
+    },
+    "core.py": {
+      "sha256": "8dd8ab4ae3470c9590f140a1bbf7edc7a203a981b00aa99091297f3d0ccff86f",
+      "text": "\"\"\"Frozen target-only bundle collapse.\"\"\"\nimport limits\nimport numpy as np\n\ndef collapse(asset, rows, p):\n    # Deliberately unchanged geometry for the functional RED fixture.\n    return {'position_only': {k: v.copy() for k, v in asset.items()},\n            'derived': {k: v.copy() for k, v in asset.items()}, 'model': {}}\n"
+    }
+  }
+}

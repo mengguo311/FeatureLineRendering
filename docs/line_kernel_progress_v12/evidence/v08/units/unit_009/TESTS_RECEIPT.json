@@ -1,0 +1,76 @@
+{
+  "returncode": 0,
+  "tdd_status": "GENUINE_FUNCTIONAL_RED_GREEN: inherited secant history incorrectly passes synthetic straight-q/20-degree original-derivative case; new derivative evidence fails it as required. 48 bounded tests passed, including repeated accepted frontier growth, real loader and all three cold mappings/control reproduction before deliberate render-boundary stop.",
+  "red": {
+    "returncode": 1,
+    "command": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+      "-B",
+      "-m",
+      "unittest",
+      "test_derivative_history.DerivativeTests.test_original_derivatives_can_reject_straight_auxiliary_history"
+    ],
+    "cwd": "/home/u00134/3dgs_line/line_kernel_frontier_growth_v08/reproduction/line_kernel_frontier_growth_v08",
+    "actual_exit_evidence": "exec_command exit_code=1; RED_FUNCTIONAL.log assertion failure; initial RED.log import error preserved separately",
+    "recorded_utc": "2026-11-01T17:44:34.938006+00:00",
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_009/tests/RED_FUNCTIONAL.log",
+    "sha256": "6c5c736dd7d1cd482aa3bc6555ca9b42fdf7ee9134f144d7e0c31a851e73b07e",
+    "baseline_source": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_009/tests/RED_derivative_history_core.py",
+    "baseline_source_sha256": "0964501d5b460116d89256d33e7be678c88448a66808dcf99916fb1fc53ecd16",
+    "test_source": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_009/tests/RED_test_derivative_history.py",
+    "test_source_sha256": "5fef073bb79932d6cd67d6cf80afc79bb5bee1ad0a15e2e9ccb4e96abcaad1d2"
+  },
+  "green": {
+    "returncode": 0,
+    "command": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+      "-B",
+      "/home/u00134/3dgs_line/line_kernel_frontier_growth_v08/reproduction/line_kernel_frontier_growth_v08/test_derivative_suite.py"
+    ],
+    "tests": 48,
+    "actual_exit_evidence": "write_stdin session56425 exit_code=0; GREEN_VERIFIED.log 48 tests OK",
+    "recorded_utc": "2026-11-01T17:44:34.938195+00:00",
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_009/tests/GREEN_VERIFIED.log",
+    "sha256": "f4abcf0f5fd6c5936a41c7eb064fb046dcb1f662f5da005cf35bb77a58abe0e8"
+  },
+  "test_exit_receipt": {
+    "path": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_009/tests/TEST_EXIT.json",
+    "sha256": "fa2b129fca49ac5b9326f66cf91c46ab1334add8a4809fb4de130390b63a6841"
+  },
+  "earlier_attempts": [
+    {
+      "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_009/tests/RED.log",
+      "sha256": "2177e2ad8205c6ac55b6edd358200a5a0fde11a45d4297db06ad483fc0fad9fb",
+      "returncode": 1
+    },
+    {
+      "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_009/tests/GREEN_1.log",
+      "sha256": "65a9d0c0b482a7b75e270e99a44f5f945f5e9a13b22f45bd2cf31d07e484e012",
+      "returncode": 1
+    },
+    {
+      "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_009/tests/GREEN_2.log",
+      "sha256": "1405b1082f5c564b6c8c6b8f632f299fbfd3d4b23571781a99ac81cb8649afd4",
+      "returncode": 0
+    }
+  ],
+  "cli_help": {
+    "returncode": 0,
+    "command": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+      "-B",
+      "/home/u00134/3dgs_line/line_kernel_frontier_growth_v08/reproduction/line_kernel_frontier_growth_v08/derivative_history_runner.py",
+      "--help"
+    ],
+    "actual_exit_evidence": "exec_command exit_code=0",
+    "recorded_utc": "2026-11-01T17:44:34.938275+00:00",
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_frontier_growth_v08_20261102/units/unit_009/tests/CLI_HELP.log",
+    "sha256": "ed7921854d2427b411b4a293737fa38f97d3da8968b6b21ffaa35f9104a8d2a0"
+  },
+  "real_loader_callback_test": true,
+  "real_runner_fixture_kernels": 48,
+  "full_asset_science_run": false,
+  "render_run": false,
+  "test_scope": "explicit classes only; all test outputs unit009; no historical discovery",
+  "created_utc": "2026-11-01T17:45:17.714399+00:00"
+}

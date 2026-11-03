@@ -1,0 +1,51 @@
+{
+  "diagnosis_zh": "四臂工程交付完整，但24种子48前沿的两种表示均无共同合格候选，新增事务为0；所以未检验“已合并后可继续低曲率外延”或HISTORY优越性。Hermite部分改善成员切向，却留下成员/有限域拒绝，并出现5次self_contact。旧接触实现只排除相邻段索引，稠密弯曲采样可能把弧上局部邻近当作自接触；保存记录没有最近接触见证，不能断言这5例均为误拒。",
+  "failure_modes": [
+    {
+      "type": "empty_common_library",
+      "detail": "两种表示各48个完整初始前沿库均无共同合格候选；四臂0新接受/0事务尝试，frontiers_exhausted。HISTORY无可用共同候选，未获得有效对照。"
+    },
+    {
+      "type": "member_tangent_not_cured",
+      "detail": "230214→54197最大成员切向53.355854°降至30.070360°，仍超过30°；96009仍有q95=0.505381p和切向37.184276°。不得阈值救场。"
+    },
+    {
+      "type": "finite_domain",
+      "detail": "Hermite两重叠提案在全部成员残差合格后仍有有限域超界：106166右侧0.00580044p；127970左侧0.00348965p。"
+    },
+    {
+      "type": "sampling_dependent_contact_suspected",
+      "detail": "5个Hermite提案达到self_contact拒绝。contact_bounded按i+2开始比较，未按内在弧长排除局部邻近；<=0.25p采样可让非相邻索引段仍相距<0.5p。缺具体接触见证，物理自接触与离散化假阳性尚未区分。"
+    },
+    {
+      "type": "visual_scope_limit",
+      "detail": "已看原生全景及16张保存图；小组112780和四负例裁图仍很小、模糊，无法据此排除深度/平行/分支错误。没有本轮新增直线或曲线，更没有第二次新接受。"
+    },
+    {
+      "type": "inherited_gain_not_new_growth",
+      "detail": "相对M5的39核新增、75行标签差异及3历史事件均在本轮起点已有；不可当本轮成功或物理概率。"
+    }
+  ],
+  "observed_images": [
+    "scenes/ficus/stages/HERMITE_BASE_FINAL/test_r_1_FULL.png",
+    "scenes/ficus/stages/HERMITE_BASE_FINAL/test_r_79_FULL.png",
+    "scenes/ficus/diagnostics/230214/HERMITE_BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/54197/HERMITE_BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/stages/LINEAR_BASE_FINAL/test_r_1_FULL.png",
+    "scenes/ficus/diagnostics/230214/LINEAR_BASE_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/230214/HERMITE_HISTORY_test_r_79_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/64355/HERMITE_BASE_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/64355/HERMITE_BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/137016/HERMITE_BASE_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/112780/HERMITE_BASE_test_r_1_ISOLATED_CROP.png",
+    "scenes/ficus/diagnostics/112780/HERMITE_BASE_test_r_79_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_11_80709/HERMITE_BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_16931_18768/HERMITE_BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_112_205435/HERMITE_BASE_test_r_1_CONTEXT_CROP.png",
+    "scenes/ficus/diagnostics/negative_33117_201172/HERMITE_BASE_test_r_1_CONTEXT_CROP.png"
+  ],
+  "visual_evidence_missing": true,
+  "visual_evidence_missing_explanation": "不是缺原生图：双视图和684张PNG已保存。缺少可辨的新外延实例、若干负例的足够视觉分辨率及被拒曲线的具体接触见证；当前小裁图不能提供物理安全认证。",
+  "next_change": "另行审查并冻结“按内在弧长定义非局部接触”的对照：保持距离0.5p、所有候选、Q、30°切向/有限域/支持条件不变，比较旧段索引排除与弧长分离>=1p的精确线段参数对接触检查；记录最近接触点、段号、弧长差与距离。先用相同折线几何细分的不变性及真实回折/交叉小夹具，再在相同冻结前沿比较BASE/HISTORY。此为接触守卫定义变更，必须另行冻结，不能回改本轮；54197仍按30.07036°拒绝，不放宽30°阈值。"
+}
+

@@ -1,0 +1,45 @@
+test_ambiguity (__main__.FreeTests) ... ok
+test_checkpoint_cold_and_tamper (__main__.FreeTests) ... ok
+test_complete_competitors (__main__.FreeTests) ... ok
+test_finite_distance (__main__.FreeTests) ... ok
+test_free_split_and_revoke (__main__.FreeTests) ... ok
+test_gap_split_and_death (__main__.FreeTests) ... ok
+test_geometry_turn_and_contact (__main__.FreeTests) ... ok
+test_guard_during_assignment (__main__.FreeTests) ... ok
+test_loader_guard_exception_propagates (__main__.FreeTests) ... ok
+test_real_loader_callback_and_zero_derivative (__main__.FreeTests) ... ok
+test_same_model_segments_not_competitors (__main__.FreeTests) ... ok
+test_short_dies (__main__.FreeTests) ... ok
+test_split_coordinates_match_child (__main__.FreeTests) ... FAIL
+test_trace_and_small_cycle (__main__.FreeTests) ... ok
+test_unknown_competes_with_cost_near_one (__main__.FreeTests) ... ok
+test_update_movement (__main__.FreeTests) ... ok
+
+======================================================================
+FAIL: test_split_coordinates_match_child (__main__.FreeTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/u00134/3dgs_line/line_kernel_free_reassignment_v07/reproduction/line_kernel_free_reassignment_v07/test_free.py", line 29, in test_split_coordinates_match_child
+    rr=np.flatnonzero(b['edge_id']==mid);dist,ss,j,u=f.project(x[rr],child);np.testing.assert_array_equal(b['segment'][rr],j);np.testing.assert_allclose(b['u'][rr],u)
+  File "/home/u00134/bin/miniconda3/envs/ts_diffusion/lib/python3.10/site-packages/numpy/_utils/__init__.py", line 86, in wrapper
+    return fun(*args, **kwargs)
+  File "/home/u00134/bin/miniconda3/envs/ts_diffusion/lib/python3.10/site-packages/numpy/testing/_private/utils.py", line 1057, in assert_array_equal
+    assert_array_compare(operator.__eq__, actual, desired, err_msg=err_msg,
+  File "/home/u00134/bin/miniconda3/envs/ts_diffusion/lib/python3.10/site-packages/numpy/testing/_private/utils.py", line 921, in assert_array_compare
+    raise AssertionError(msg)
+AssertionError: 
+Arrays are not equal
+
+Mismatched elements: 36 / 36 (100%)
+Max absolute difference among violations: 9
+Max relative difference among violations: 9.
+ ACTUAL: array([ 9, 10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12,
+       12, 13, 13, 13, 13, 13, 13, 14, 14, 14, 14, 14, 14, 15, 15, 15, 15,
+       15, 15], dtype=int32)
+ DESIRED: array([0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4,
+       4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6])
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.167s
+
+FAILED (failures=1)

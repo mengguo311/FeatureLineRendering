@@ -1,0 +1,47 @@
+{
+  "returncode": 0,
+  "tdd_status": "GENUINE_FUNCTIONAL_RED_GREEN: existing hard gates ignore relaxed switches and fail real geometry fixtures; conditional gates pass finite-score R2, parallel, pooling/gap/selfcontact fixtures. Integration tests added after initial RED are explicitly subsequent regressions.",
+  "red": {
+    "returncode": 1,
+    "recorded_utc": "2026-11-02T15:44:17.161354+00:00",
+    "functional_failures": 5,
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_relaxed_guards_v10_20261103/units/unit_001/tests/RED.log",
+    "sha256": "92731074881e311f8f67627726cbfd158bff9ac82be17b8dad4fac399404e29c",
+    "baseline": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_relaxed_guards_v10_20261103/units/unit_001/tests/RED_whole_core.py",
+    "baseline_sha256": "80242e04d7474cc4d8ad2a4758ab1f94358d4954c6c11595a1743ab686d082bc",
+    "test_source": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_relaxed_guards_v10_20261103/units/unit_001/tests/RED_test_relaxed.py",
+    "test_source_sha256": "776b442ba35dbd9456d800427f38dc88cc800b5402438de7914eb138bbe71353"
+  },
+  "green": {
+    "returncode": 0,
+    "command": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+      "-B",
+      "/home/u00134/3dgs_line/line_kernel_relaxed_guards_v10/reproduction/line_kernel_relaxed_guards_v10/test_relaxed.py"
+    ],
+    "recorded_utc": "2026-11-02T15:54:45.871594+00:00",
+    "evidence": "Actual exec_command completion exit_code=0 in this BUILD",
+    "test_count": 18,
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_relaxed_guards_v10_20261103/units/unit_001/tests/GREEN_VERIFIED.log",
+    "sha256": "7525b6e2cb7c35e6cb72065c1081827f8ec8ad00d62c04c26bc8c0a6e6476503"
+  },
+  "cli": {
+    "returncode": 0,
+    "command": [
+      "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/c2l50_8build_part_prior_feasibility_v03/venv/bin/python",
+      "-B",
+      "/home/u00134/3dgs_line/line_kernel_relaxed_guards_v10/reproduction/line_kernel_relaxed_guards_v10/relaxed_runner.py",
+      "--help"
+    ],
+    "recorded_utc": "2026-11-02T15:54:45.871737+00:00",
+    "evidence": "Actual exec_command completion exit_code=0 in this BUILD",
+    "log": "/mnt/hdd1/u00134/radegs_paper_reproduction_v01/line_kernel_relaxed_guards_v10_20261103/units/unit_001/tests/CLI.log",
+    "sha256": "043fb38440e43c3d44a6acb7038734a130d6a4591ff5221c168b3b6cbcfaec2e"
+  },
+  "test_count": 18,
+  "real_loader_guard_test": true,
+  "full_asset_run": false,
+  "native_render": false,
+  "scope": "36-row restricted-M5 composite restoration plus bounded synthetic full-loop geometry; renderer stopped at call boundary",
+  "created_utc": "2026-11-02T15:54:46.382482+00:00"
+}

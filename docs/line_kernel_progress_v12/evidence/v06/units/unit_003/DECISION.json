@@ -1,0 +1,41 @@
+{
+  "action": "continue",
+  "rationale_chinese": "unit002全部699分量已完成，但两臂主归属与94对PNG完全相同，不能归因求解预算不足。只读核对发现：2279条成功endpoint构成1252个分量；其中292个分量没有任何入射成功overlap竞争，共459条endpoint。73个分量含195条旧mask排除边，最大9个载体。这提供了无需忽略重叠竞争、无需新增拟合的真实全局歧义试验范围；不预断这些被排除关系正确。",
+  "recommended_next_step": {
+    "unit": "unit_003",
+    "experiment": "Scan24有限载体上的分量级反事实歧义认证；共享认证规则的greedy与joint对照，unit002为封存参考。",
+    "inputs": {
+      "binding": "继承unit002 CONFIG全部原始input/helper hashes；CONFIG SHA256=d32eb66790e729d8e8a3203dad8e08fc3979a7682ff6791cffcfa2d970afa6f1。实现依据unit002/source_snapshot及PARENT_RUN_FROZEN.json。",
+      "state": "原v05 unit015 scan24 M4，STATE SHA256=4f350e3a991c98d7cf011d833be4fc5aebcce1c7d328ae69b39948b5698ec31f；458490原核，p=0.0014320037356621643。",
+      "records": "原v05 unit018 M5-on-M4的112414行CANDIDATE_STATUS、ORDERED_CANDIDATES和JOINT_AMBIGUITY。成功定义仍为accepted/round_conflict/ambiguous及有限有效metrics；cost=residual_max+tangent_max/30。禁止重拟合或新候选。"
+    },
+    "selection": [
+      "先用全部2279条成功endpoint划完整carrier连通分量，包括旧masked及非正benefit边。",
+      "仅处理包含旧masked endpoint、且任何成员均无入射成功overlap记录的完整分量。预期73个；核对不符则阻断，不按结果更换选择。",
+      "按载体数降序、最小ID升序冻结清单；每分量上限128，超限整体NOT_RUN。不得先删除竞争者再判定分量纯净。",
+      "保存全部入射候选及对端完整行作非递归证据邻域。其他分量保留对应unit002结果；未建模overlap竞争不是已解决或物理cannot-link。"
+    ],
+    "paired_policy": {
+      "raw_selection": "两臂使用相同扩展endpoint图、有限叶复合表示、成本和PathOracle。greedy按benefit降序及原canonical IDs；joint用原MILP最大化sum((2-cost)*x)，每端口≤1、无环及原路径no-good cuts。",
+      "common_certificate": "每分量先取得守卫通过且已证明optimal的完整图解S*及benefit F*。对S*每条边e，按canonical顺序另解强制x_e=0的相同问题，取得守卫通过且optimal的F_without_e。定义delta_e=F*-F_without_e。仅当benefit_e>0且delta_e>0.15*max(benefit_e,1e-8)+1e-8时认证。未在S*中的边不认证，因为已有最优反例。",
+      "promotion": "每臂只保留其自身raw选择与公共认证边集的交集；重新检查所得完整子路径及原UNKNOWN激活门槛后导出。未认证边保留为替代，不建立主身份。该公共认证器使baseline明确成为greedy加共享全局弃权，而非纯局部greedy。",
+      "uncertainty": "这是新定义的全局交换收益规则，0.15不是旧局部cost近似并列规则的等价实现。不得用全分量总收益归一化、扰动成本打破并列或进行阈值扫描。",
+      "incomplete": "任一必要求解未证optimal、超时或cut上限时，该分量两臂均回退对应unit002结果，标PARTIAL并保存incumbent/bound/gap；不得伪造认证。"
+    },
+    "fixed": "原不可变有限叶、端口及argmin ties不变，无overlap pooling。复用unit002完整PathOracle：叶residual max1p/q95 0.5p/tangent30°；gap1.5p/connector35°；vertex30°/每8p累计60°；contact0.5p、原parallel/branch及unsupported gap1.5p。保留valid UNKNOWN资格，激活3seedlets/6kernels/4p。M4旧组不得拆分或丢失；相对unit002的撤回、拆分与UNKNOWN回退必须单列。原核全部字段、行序和数量固定。",
+    "delivery": "保存raw选择、每边反事实解/目标/认证理由、完整竞争邻域、两臂最终全458490行映射、叶序/端口及版本谱系，先checkpoint并冷载再渲染。处理范围外保留unit002主归属/aux，旧谱系引用保留，新复合版本不得碰撞。",
+    "visuals": "固定0012/0036实际原核全景，白背景floor0.0144，原宽度/opacity，UNKNOWN灰，不画carrier或桥。两臂并集选top3新增认证路径、top3相对unit002受损路径、最大新直线/含polyline路径，按支持降序/ID升序；保留53254/201906/10975参考及原四负例。相同行集及完整证据邻域双视图，沿用联合bbox/pad16/clip/4xnearest裁剪；缺曲线、空图明确记录。",
+    "protocol_budget": "BUILD≤18min：真实RED/GREEN覆盖局部歧义但全局唯一、对称全局并列必须弃权、成功overlap导致整分量排除、认证后子路径及UNKNOWN、超时双臂回退；冻结真实receipt及RUN_REQUEST。Parent独占1800s计算，readiness≤300s、全部求解≤600s、1200s前映射、末600s交付。每分量原解及反事实合计≤120s，每MILP调用≤32轮solve/check，mip_rel_gap=0。CPU/BLAS2，unit≤2GiB/runtime≤20GiB；无后台任务。09:15停新单元，09:38停science。"
+  },
+  "changed_variable": {
+    "versus_unit002": "局部mask永久排除改为完整endpoint-only竞争分量上的全局反事实弃权；不新增候选或放宽几何。",
+    "between_new_arms": "仅raw连接选择greedy versus joint；公共认证、候选、表示和守卫一致。",
+    "scope_limit": "仅73个具备完整endpoint竞争的分量；不宣称解决overlap多重观测或全部物理身份。"
+  },
+  "falsification": {
+    "readiness": "遗漏竞争边、混入成功overlap竞争、版本或cost绑定错误均阻断；不能裁邻居制造确定性。",
+    "delivery": "须有冷载全行映射及两原生全景；改变核、丢失/拆分M4旧组、渲染无支持桥立即失败。",
+    "science": "须相对unit002及配对baseline出现可辨的实质跨片段直线和曲线归组改善；低目标、认证数或同色不足。报告所有得失、实质parent贡献、支持并集/最长段/域外支持及gap。误吞平行、深度或分支否定对应实例；不可辨仍PARTIAL。",
+    "continuation": "零新增认证或仅细小UNKNOWN差异是保留的负结果；下一步应针对实际候选/重叠表示瓶颈另冻结机制，不调本轮阈值。身份暂定，无held-out主张。"
+  }
+}

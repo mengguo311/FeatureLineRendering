@@ -1,0 +1,166 @@
+{
+  "execution_state": "COMPLETED",
+  "scientific_verdict": "R2_GATE_EFFECT_OBSERVED_IDENTITY_UNVERIFIED",
+  "actual_child_exit": {
+    "returncode": 0,
+    "reason": null,
+    "started_jst": "2026-11-03T00:55:59.621372+09:00",
+    "finished_jst": "2026-11-03T01:03:06.806811+09:00"
+  },
+  "accepted": {
+    "STRICT_TRANSPORT": 0,
+    "R2_OFF_TRANSPORT": 5
+  },
+  "closed": 0,
+  "run_result_status": "completed",
+  "geometry_audit_unchanged": true,
+  "analysis_initial_written_utc": "2026-11-02T16:04:43.269141+00:00",
+  "diagnosis_zh": "R2解除产生真实有限评分与5次完整最佳片段提交（132977四次、210790一次）；严格臂0次。最早放开的见证是事件1新UNKNOWN行63866的80.6835度；事件2另有1.52436p距离与78.0419度。事件3起原已归属行230338/230339超过75度，说明整组调整也会损害旧成员的方向一致性。132977获得9.078p域外支持代理，但最长连续段缩短；210790域外为0。原核未变、无失核，但小投影/密集竞争背景不足以确定是否吞并并行或深度层。最后瓶颈转移至规则3/4/5/6，不是超时、容量截断或支持闭合。",
+  "failure_modes": [
+    "新增身份正确性未证实：双视图已看，但132977约百像素、210790约几十像素局部图；新增行近乎微小点/短划，不能排除邻近平行边、分支或深度层误吞。没有把风险写成已证实错误。",
+    "旧成员方向损伤：事件3起原起点132977行230338/230339，事件4/5还包括27506x行超过75度；最终最大84.9959度。保留这些坏例，不恢复R2。",
+    "连续性不随归组计数单调改善：132977 union147.615→155.847p，但最长run55.614→54.183p、总gap1.359→2.585p；域外9.078p是投影支持代理，不是连续实边长度。",
+    "210790新增8行却域外支持为0，属于内部补充/重叠支撑；132977首事件unique仅0.170p且union略降，不能都算外延。",
+    "实质新曲线未成立：201906/202023曲线零增长，210790仅8行；既有M4实质贡献数没有增加，继承长段不算本轮恢复。",
+    "规则4/6仍开启且尚未作解除实验；终态201906有10条parallel拒绝，132977有9条parallel和8条branch拒绝，规则3急折也占大量拒绝。后续按授权逐组解除，而非阈值加码。",
+    "未出现支持闭合或巨组膨胀证据；本次不是对全部场景组的搜索，六组范围自然无连接不代表整个研究窗口耗尽。"
+  ],
+  "observed_images": [
+    "scenes/scan24/stages/R2_OFF_TRANSPORT_FINAL/0012_FULL.png",
+    "scenes/scan24/worst_events/R2_OFF_TRANSPORT/0005/0012_ISOLATED_CROP.png",
+    "scenes/scan24/worst_events/R2_OFF_TRANSPORT/0005/0012_FULL_OBJECT_CONTEXT.png",
+    "scenes/scan24/worst_events/R2_OFF_TRANSPORT/0001/0036_ISOLATED_CROP.png",
+    "scenes/scan24/stages/R2_OFF_TRANSPORT_FINAL/0036_FULL.png",
+    "scenes/scan24/diagnostics/132977/START_0012_ISOLATED_CROP.png",
+    "scenes/scan24/diagnostics/132977/R2_OFF_TRANSPORT_0036_ISOLATED_CROP.png",
+    "scenes/scan24/diagnostics/132977/R2_OFF_TRANSPORT_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan24/diagnostics/132977/R2_OFF_TRANSPORT_0012_ADDED_MEMBERS_CROP.png",
+    "scenes/scan24/diagnostics/210790/R2_OFF_TRANSPORT_0012_ISOLATED_CROP.png",
+    "scenes/scan24/diagnostics/210790/R2_OFF_TRANSPORT_0036_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan24/diagnostics/201906/R2_OFF_TRANSPORT_0036_ISOLATED_CROP.png",
+    "scenes/scan24/diagnostics/negative_84842_362883/R2_OFF_TRANSPORT_0012_FULL_OBJECT_CONTEXT_CROP.png",
+    "scenes/scan24/worst_events/R2_OFF_TRANSPORT/0002/0012_ISOLATED_CROP.png",
+    "scenes/scan24/worst_events/R2_OFF_TRANSPORT/0002/0036_ISOLATED_CROP.png",
+    "scenes/scan24/worst_events/R2_OFF_TRANSPORT/0002/0012_FULL_OBJECT_CONTEXT.png",
+    "scenes/scan24/worst_events/R2_OFF_TRANSPORT/0003/0012_ISOLATED_CROP.png",
+    "scenes/scan24/diagnostics/132977/R2_OFF_TRANSPORT_0012_QUERY_CONTEXT_CROP.png",
+    "scenes/scan24/diagnostics/201906/R2_OFF_TRANSPORT_0012_ISOLATED_CROP.png"
+  ],
+  "visual_evidence_missing": true,
+  "next_change": "另行review/freeze：从本单元R2_OFF_TRANSPORT_FINAL同一完整458490行/260029 assigned/198461 UNKNOWN、next_version33931出发，六种子匹配比较R2_OFF=[2]与R2_R4_OFF=[2,4]；只解除parallel硬返回，保留冲突诊断、WHOLE五轮拟合、J、整曲线2p完整候选及规则1/3/5/6。优先保存201906的10条和132977的9条终态parallel拒绝及全部替代解释，报告首个新吞并/最大误差/最大组；不以身份完美为继续条件，不恢复R2。随后另冻[2,4,6]，不在本分析执行。",
+  "visual_evidence_missing_reason": "原核全景、隔离/新增/竞争/最坏事件PNG存在且已查看；缺少足以辨认新增实质曲线及区分并行/深度身份的投影尺度证据，并非没有图片。",
+  "assigned_start": 259985,
+  "assigned_final": 260029,
+  "unknown_final": 198461,
+  "new_assigned_rows": 44,
+  "lost_assigned_rows": 0,
+  "new_splits_of_start_groups": 0,
+  "all_five_exact_union_checks": true,
+  "all_five_checkpoint_hash_checks": true,
+  "strict_all_membership_fields_identical_to_start": true,
+  "final_equals_last_checkpoint": true,
+  "selected_lowest_saved_score_all_five": true,
+  "selection_eligible_counts": [
+    1,
+    1,
+    3,
+    3,
+    20
+  ],
+  "budget_truncated": false,
+  "whole_old_curve_fit_only_motion_max_p": [
+    0.7290988628205625,
+    1.001936844561106,
+    0.32447344718039034,
+    0.43152758890812587,
+    0.33344928142192437
+  ],
+  "phase_elapsed_seconds": {
+    "readiness": 11.929611762054265,
+    "catalog": 44.038210636004806,
+    "STRICT_TRANSPORT": 4.014382818713784,
+    "R2_OFF_TRANSPORT": 231.95665143150836,
+    "delivery": 134.21847349312156
+  },
+  "call_counts": {
+    "fits": 2306,
+    "evaluations": 4612
+  },
+  "references_at_start": {
+    "M4": {
+      "gained": 13636,
+      "lost": 0,
+      "label_changed_rows": 28834,
+      "old_groups_split_including_unknown": 0
+    },
+    "v06_greedy": {
+      "gained": 11128,
+      "lost": 1231,
+      "label_changed_rows": 27307,
+      "old_groups_split_including_unknown": 81
+    },
+    "v06_joint": {
+      "gained": 11128,
+      "lost": 1231,
+      "label_changed_rows": 27307,
+      "old_groups_split_including_unknown": 81
+    },
+    "v09_WHOLE_FINAL": {
+      "gained": 0,
+      "lost": 0,
+      "label_changed_rows": 0,
+      "old_groups_split_including_unknown": 0
+    },
+    "START": {
+      "gained": 0,
+      "lost": 0,
+      "label_changed_rows": 0,
+      "old_groups_split_including_unknown": 0
+    },
+    "M5": {
+      "gained": 227,
+      "lost": 0,
+      "label_changed_rows": 1807,
+      "old_groups_split_including_unknown": 0
+    }
+  },
+  "references_at_final": {
+    "M4": {
+      "gained": 13680,
+      "lost": 0,
+      "label_changed_rows": 28878,
+      "old_groups_split_including_unknown": 0
+    },
+    "v06_greedy": {
+      "gained": 11172,
+      "lost": 1231,
+      "label_changed_rows": 27351,
+      "old_groups_split_including_unknown": 81
+    },
+    "v06_joint": {
+      "gained": 11172,
+      "lost": 1231,
+      "label_changed_rows": 27351,
+      "old_groups_split_including_unknown": 81
+    },
+    "v09_WHOLE_FINAL": {
+      "gained": 44,
+      "lost": 0,
+      "label_changed_rows": 44,
+      "old_groups_split_including_unknown": 0
+    },
+    "START": {
+      "gained": 44,
+      "lost": 0,
+      "label_changed_rows": 44,
+      "old_groups_split_including_unknown": 0
+    },
+    "M5": {
+      "gained": 271,
+      "lost": 0,
+      "label_changed_rows": 1851,
+      "old_groups_split_including_unknown": 0
+    }
+  },
+  "analysis_completed_utc": "2026-11-02T16:10:07.457753+00:00"
+}
