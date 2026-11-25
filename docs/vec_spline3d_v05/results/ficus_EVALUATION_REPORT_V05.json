@@ -1,0 +1,1291 @@
+{
+  "raw_c2l_baseline": {
+    "num_primitives": 11503,
+    "train_build_8views": {
+      "num_gaussians": 285956,
+      "hull_violation_node_pct": 5.000419644980346,
+      "free_space_violation_node_pct": 19.185469093147198,
+      "mean_bg_sky_leak_pixels": 1231.25,
+      "precision_2_5px_pct": 76.60128414931702,
+      "recall_2_5px_pct": 97.75380944975645,
+      "bidirectional_chamfer_2d_px": 1.2452287174914896
+    },
+    "heldout_test_5views": {
+      "num_gaussians": 285956,
+      "hull_violation_node_pct": 5.000419644980346,
+      "free_space_violation_node_pct": 19.185469093147198,
+      "mean_bg_sky_leak_pixels": 10403.8,
+      "precision_2_5px_pct": 64.5917614061348,
+      "recall_2_5px_pct": 81.1558596410081,
+      "bidirectional_chamfer_2d_px": 2.854529354241739
+    }
+  },
+  "v04_occluding_contour_envelopes": {
+    "summary": {
+      "scene": "ficus",
+      "num_curves": 5750,
+      "num_line_3d": 3534,
+      "num_arc_3d": 1972,
+      "num_cubic_bspline_3d": 244,
+      "num_coaxial_families": 1,
+      "num_coaxial_ring_arcs": 28,
+      "num_cocircular_merged_arcs": 512,
+      "num_bridges": 318,
+      "num_ribbon_3d_primitives": 5750,
+      "num_lathe_contour_generators": 1,
+      "num_swept_tube_generators": 5,
+      "total_contour_generators": 6,
+      "edge_class_counts": {
+        "SILHOUETTE_CONTOUR": 5066,
+        "SURFACE_STRIPE": 160,
+        "DIHEDRAL_CREASE": 178,
+        "TOPOLOGY_BRIDGE": 318,
+        "COAXIAL_RING": 28,
+        "VIEW_CONTOUR_GENERATOR": 6
+      },
+      "total_control_points": 15149,
+      "generator_control_nodes": 67,
+      "num_nodes": 7526,
+      "node_degrees": {
+        "deg1_open": 5034,
+        "deg2_cont": 1068,
+        "deg3plus_junction": 1424
+      },
+      "open_endpoint_ratio": 0.43773913043478263,
+      "multiview_2plus_curve_count": 5749,
+      "multiview_2plus_curve_ratio": 0.9998260869565218,
+      "total_arc_length": 184.91722263618718,
+      "median_arc_length": 0.019949526673392757,
+      "mean_arc_length": 0.032159516980206464,
+      "p90_arc_length": 0.06581283070334794
+    },
+    "coaxial_families": [
+      {
+        "family_id": 0,
+        "axis_origin": [
+          -0.022355264676899408,
+          0.0166258666167975,
+          -9.789306694002235e-05
+        ],
+        "axis_dir": [
+          -0.0022720642237969097,
+          0.002832924469056512,
+          0.9999934061098181
+        ],
+        "h_range": [
+          -1.016809279195097,
+          -0.5114925029494309
+        ],
+        "num_coaxial_rings": 14,
+        "ring_heights": [
+          -1.01493,
+          -0.98953,
+          -0.94656,
+          -0.90552,
+          -0.8646,
+          -0.84303,
+          -0.80403,
+          -0.76114,
+          -0.71436,
+          -0.67132,
+          -0.63239,
+          -0.59736,
+          -0.56221,
+          -0.5271
+        ],
+        "ring_radii": [
+          0.19316,
+          0.20259,
+          0.22071,
+          0.2371,
+          0.25168,
+          0.25811,
+          0.26652,
+          0.27083,
+          0.27028,
+          0.26321,
+          0.25235,
+          0.23855,
+          0.22095,
+          0.20081
+        ],
+        "member_curve_ids": [
+          9368,
+          9369,
+          9370,
+          9371,
+          9372,
+          9373,
+          9374,
+          9375,
+          9376,
+          9377,
+          9378,
+          9379,
+          9380,
+          9381,
+          9382,
+          9383,
+          9384,
+          9385,
+          9386,
+          9387,
+          9388,
+          9389,
+          9390,
+          9391,
+          9392,
+          9393,
+          9394,
+          9395
+        ]
+      }
+    ],
+    "contour_generators": [
+      {
+        "generator_id": 0,
+        "generator_type": "LATHE_ENVELOPE_3D",
+        "axis_origin": [
+          -0.022355264676899408,
+          0.0166258666167975,
+          -9.789306694002235e-05
+        ],
+        "axis_dir": [
+          -0.0022720642237969097,
+          0.002832924469056512,
+          0.9999934061098181
+        ],
+        "profile_h": [
+          -1.03024,
+          -1.01325,
+          -0.99627,
+          -0.97928,
+          -0.9623,
+          -0.94531,
+          -0.92833,
+          -0.91135,
+          -0.89436,
+          -0.87738,
+          -0.86039,
+          -0.84341,
+          -0.82642,
+          -0.80944,
+          -0.79245,
+          -0.77547,
+          -0.75849,
+          -0.7415,
+          -0.72452,
+          -0.70753,
+          -0.69055,
+          -0.67356,
+          -0.65658,
+          -0.63959,
+          -0.62261,
+          -0.60563,
+          -0.58864,
+          -0.57166,
+          -0.55467,
+          -0.53769,
+          -0.5207,
+          -0.50372
+        ],
+        "profile_r": [
+          0.19117,
+          0.19816,
+          0.20635,
+          0.21371,
+          0.22124,
+          0.22764,
+          0.23413,
+          0.24158,
+          0.24846,
+          0.25407,
+          0.25952,
+          0.26529,
+          0.26887,
+          0.27231,
+          0.27623,
+          0.27804,
+          0.27941,
+          0.28047,
+          0.27995,
+          0.27811,
+          0.27565,
+          0.27352,
+          0.27026,
+          0.2649,
+          0.25738,
+          0.25094,
+          0.24425,
+          0.23606,
+          0.22648,
+          0.21688,
+          0.20673,
+          0.19733
+        ],
+        "half_width_px": 0.4,
+        "inward_shift_px": 0.28,
+        "num_supporting_views": 32
+      },
+      {
+        "generator_id": 1,
+        "generator_type": "SWEPT_TUBE_ENVELOPE_3D",
+        "degree": 3,
+        "spine_control_points": [
+          [
+            -0.01497,
+            -0.0171,
+            -0.46399
+          ],
+          [
+            -0.01865,
+            -0.01694,
+            -0.42897
+          ],
+          [
+            -0.01723,
+            -0.01827,
+            -0.35892
+          ],
+          [
+            -0.01524,
+            -0.01825,
+            -0.25407
+          ],
+          [
+            -0.01639,
+            -0.01855,
+            -0.14906
+          ],
+          [
+            -0.01301,
+            -0.01797,
+            -0.07919
+          ],
+          [
+            -0.01545,
+            -0.01826,
+            -0.04399
+          ]
+        ],
+        "control_radii": [
+          0.01397,
+          0.01668,
+          0.01278,
+          0.0113,
+          0.01038,
+          0.01235,
+          0.01274
+        ],
+        "half_width_px": 0.38,
+        "inward_shift_px": 0.22,
+        "num_supporting_views": 32
+      },
+      {
+        "generator_id": 2,
+        "generator_type": "SWEPT_TUBE_ENVELOPE_3D",
+        "degree": 3,
+        "spine_control_points": [
+          [
+            -0.01955,
+            0.09053,
+            -0.46399
+          ],
+          [
+            -0.02243,
+            0.07719,
+            -0.40475
+          ],
+          [
+            0.01969,
+            0.08092,
+            -0.2945
+          ],
+          [
+            0.07037,
+            0.11121,
+            -0.12842
+          ],
+          [
+            0.05546,
+            0.17846,
+            0.03712
+          ],
+          [
+            0.02256,
+            0.20205,
+            0.1457
+          ],
+          [
+            0.00975,
+            0.21783,
+            0.20101
+          ]
+        ],
+        "control_radii": [
+          0.01204,
+          0.0102,
+          0.01194,
+          0.00891,
+          0.00912,
+          0.00667,
+          0.01053
+        ],
+        "half_width_px": 0.38,
+        "inward_shift_px": 0.22,
+        "num_supporting_views": 32
+      },
+      {
+        "generator_id": 3,
+        "generator_type": "SWEPT_TUBE_ENVELOPE_3D",
+        "degree": 3,
+        "spine_control_points": [
+          [
+            0.0538,
+            0.03059,
+            -0.46399
+          ],
+          [
+            0.043,
+            0.03388,
+            -0.40394
+          ],
+          [
+            0.04658,
+            -0.00549,
+            -0.2936
+          ],
+          [
+            0.07686,
+            -0.06256,
+            -0.12816
+          ],
+          [
+            0.14702,
+            -0.04055,
+            0.03632
+          ],
+          [
+            0.17432,
+            -0.0133,
+            0.14552
+          ],
+          [
+            0.18937,
+            0.00109,
+            0.20101
+          ]
+        ],
+        "control_radii": [
+          0.01128,
+          0.01117,
+          0.01176,
+          0.00885,
+          0.00925,
+          0.00902,
+          0.00873
+        ],
+        "half_width_px": 0.38,
+        "inward_shift_px": 0.22,
+        "num_supporting_views": 32
+      },
+      {
+        "generator_id": 4,
+        "generator_type": "SWEPT_TUBE_ENVELOPE_3D",
+        "degree": 3,
+        "spine_control_points": [
+          [
+            -0.0094,
+            -0.06989,
+            -0.46399
+          ],
+          [
+            -0.0111,
+            -0.0669,
+            -0.40086
+          ],
+          [
+            -0.05322,
+            -0.08141,
+            -0.28565
+          ],
+          [
+            -0.1057,
+            -0.1427,
+            -0.11707
+          ],
+          [
+            -0.08933,
+            -0.24736,
+            0.03893
+          ],
+          [
+            -0.05072,
+            -0.28833,
+            0.14937
+          ],
+          [
+            -0.03575,
+            -0.31922,
+            0.20101
+          ]
+        ],
+        "control_radii": [
+          0.01072,
+          0.01128,
+          0.01027,
+          0.00993,
+          0.01049,
+          0.00819,
+          0.00978
+        ],
+        "half_width_px": 0.38,
+        "inward_shift_px": 0.22,
+        "num_supporting_views": 32
+      },
+      {
+        "generator_id": 5,
+        "generator_type": "SWEPT_TUBE_ENVELOPE_3D",
+        "degree": 3,
+        "spine_control_points": [
+          [
+            -0.04867,
+            0.01226,
+            -0.46399
+          ],
+          [
+            -0.03341,
+            0.01142,
+            -0.40694
+          ],
+          [
+            -0.02639,
+            0.04682,
+            -0.29935
+          ],
+          [
+            -0.02468,
+            0.09106,
+            -0.13211
+          ],
+          [
+            -0.06625,
+            0.08129,
+            0.0372
+          ],
+          [
+            -0.06708,
+            0.04066,
+            0.14579
+          ],
+          [
+            -0.06735,
+            0.02602,
+            0.20101
+          ]
+        ],
+        "control_radii": [
+          0.01273,
+          0.01214,
+          0.01183,
+          0.0084,
+          0.01051,
+          0.00979,
+          0.00969
+        ],
+        "half_width_px": 0.38,
+        "inward_shift_px": 0.22,
+        "num_supporting_views": 32
+      }
+    ],
+    "train_build_8views": {
+      "num_gaussians": 158416,
+      "hull_violation_node_pct": 0.06376430683560583,
+      "free_space_violation_node_pct": 22.111877941689322,
+      "mean_bg_sky_leak_pixels": 0.125,
+      "precision_2_5px_pct": 77.04786628630359,
+      "recall_2_5px_pct": 92.73388282720077,
+      "bidirectional_chamfer_2d_px": 1.4410264616480604
+    },
+    "heldout_test_5views": {
+      "num_gaussians": 159172,
+      "hull_violation_node_pct": 0.06345357039734698,
+      "free_space_violation_node_pct": 22.086072034254613,
+      "mean_bg_sky_leak_pixels": 5748.6,
+      "precision_2_5px_pct": 67.06774877895096,
+      "recall_2_5px_pct": 75.65208131098075,
+      "bidirectional_chamfer_2d_px": 3.0015307298781435
+    }
+  },
+  "v05_arbitrary_coaxial_and_planar_ortho": {
+    "summary": {
+      "scene": "ficus",
+      "num_curves": 6292,
+      "num_line_3d": 4009,
+      "num_arc_3d": 2154,
+      "num_cubic_bspline_3d": 129,
+      "num_coaxial_families": 2,
+      "num_coaxial_ring_arcs": 30,
+      "num_cocircular_merged_arcs": 607,
+      "num_bridges": 294,
+      "num_ribbon_3d_primitives": 6292,
+      "num_lathe_contour_generators": 1,
+      "num_swept_tube_generators": 5,
+      "total_contour_generators": 6,
+      "num_planar_patches": 0,
+      "edge_class_counts": {
+        "SILHOUETTE_CONTOUR": 5596,
+        "SURFACE_STRIPE": 176,
+        "DIHEDRAL_CREASE": 196,
+        "TOPOLOGY_BRIDGE": 294,
+        "COAXIAL_RING": 30,
+        "VIEW_CONTOUR_GENERATOR": 6
+      },
+      "total_control_points": 15424,
+      "generator_control_nodes": 67,
+      "num_nodes": 7999,
+      "node_degrees": {
+        "deg1_open": 4927,
+        "deg2_cont": 1611,
+        "deg3plus_junction": 1461
+      },
+      "open_endpoint_ratio": 0.3915289256198347,
+      "multiview_2plus_curve_count": 6292,
+      "multiview_2plus_curve_ratio": 1.0,
+      "total_arc_length": 188.20485989560385,
+      "median_arc_length": 0.01920056376458438,
+      "mean_arc_length": 0.02991177048563316,
+      "p90_arc_length": 0.05895843078098908
+    },
+    "coaxial_families": [
+      {
+        "family_id": 0,
+        "axis_origin": [
+          -0.022355264676899408,
+          0.0166258666167975,
+          -9.789306694002235e-05
+        ],
+        "axis_dir": [
+          -0.0022720642237969097,
+          0.002832924469056512,
+          0.9999934061098181
+        ],
+        "h_range": [
+          -1.016809279195097,
+          -0.5114925029494309
+        ],
+        "num_coaxial_rings": 14,
+        "ring_heights": [
+          -1.01495,
+          -0.9895,
+          -0.94654,
+          -0.90549,
+          -0.8646,
+          -0.84301,
+          -0.80401,
+          -0.76109,
+          -0.7143,
+          -0.67132,
+          -0.63242,
+          -0.59734,
+          -0.56216,
+          -0.52711
+        ],
+        "ring_radii": [
+          0.19312,
+          0.20262,
+          0.22065,
+          0.23703,
+          0.25167,
+          0.25815,
+          0.26652,
+          0.2709,
+          0.27026,
+          0.26323,
+          0.25244,
+          0.23848,
+          0.22088,
+          0.20082
+        ],
+        "member_curve_ids": [
+          10102,
+          10103,
+          10104,
+          10105,
+          10106,
+          10107,
+          10108,
+          10109,
+          10110,
+          10111,
+          10112,
+          10113,
+          10114,
+          10115,
+          10116,
+          10117,
+          10118,
+          10119,
+          10120,
+          10121,
+          10122,
+          10123,
+          10124,
+          10125,
+          10126,
+          10127,
+          10128,
+          10129
+        ]
+      },
+      {
+        "family_id": 1,
+        "axis_origin": [
+          -0.021081026764779378,
+          0.00893365950420719,
+          0.00012837217262318124
+        ],
+        "axis_dir": [
+          -0.000890716640180336,
+          -0.016469391058148857,
+          0.999863973639435
+        ],
+        "h_range": [
+          -0.5095067255708692,
+          -0.5024393447803153
+        ],
+        "num_coaxial_rings": 1,
+        "ring_heights": [
+          -0.50574
+        ],
+        "ring_radii": [
+          0.18838
+        ],
+        "member_curve_ids": [
+          10130,
+          10131
+        ]
+      }
+    ],
+    "contour_generators": [
+      {
+        "generator_id": 0,
+        "generator_type": "LATHE_ENVELOPE_3D",
+        "axis_origin": [
+          -0.022355264676899408,
+          0.0166258666167975,
+          -9.789306694002235e-05
+        ],
+        "axis_dir": [
+          -0.0022720642237969097,
+          0.002832924469056512,
+          0.9999934061098181
+        ],
+        "profile_h": [
+          -1.03024,
+          -1.01325,
+          -0.99627,
+          -0.97928,
+          -0.9623,
+          -0.94531,
+          -0.92833,
+          -0.91135,
+          -0.89436,
+          -0.87738,
+          -0.86039,
+          -0.84341,
+          -0.82642,
+          -0.80944,
+          -0.79245,
+          -0.77547,
+          -0.75849,
+          -0.7415,
+          -0.72452,
+          -0.70753,
+          -0.69055,
+          -0.67356,
+          -0.65658,
+          -0.63959,
+          -0.62261,
+          -0.60563,
+          -0.58864,
+          -0.57166,
+          -0.55467,
+          -0.53769,
+          -0.5207,
+          -0.50372
+        ],
+        "profile_r": [
+          0.19094,
+          0.1979,
+          0.20569,
+          0.21313,
+          0.22129,
+          0.22855,
+          0.23511,
+          0.24152,
+          0.24805,
+          0.25453,
+          0.25988,
+          0.26519,
+          0.26958,
+          0.27327,
+          0.27593,
+          0.27771,
+          0.27888,
+          0.28023,
+          0.28027,
+          0.27757,
+          0.27528,
+          0.2738,
+          0.26967,
+          0.26431,
+          0.25798,
+          0.2512,
+          0.24442,
+          0.23626,
+          0.2266,
+          0.2164,
+          0.20649,
+          0.19774
+        ],
+        "half_width_px": 0.4,
+        "inward_shift_px": 0.28,
+        "num_supporting_views": 32
+      },
+      {
+        "generator_id": 1,
+        "generator_type": "SWEPT_TUBE_ENVELOPE_3D",
+        "degree": 3,
+        "spine_control_points": [
+          [
+            -0.01964,
+            0.09025,
+            -0.46349
+          ],
+          [
+            -0.02159,
+            0.07735,
+            -0.40373
+          ],
+          [
+            0.02074,
+            0.08126,
+            -0.29239
+          ],
+          [
+            0.07093,
+            0.11182,
+            -0.12403
+          ],
+          [
+            0.05352,
+            0.18059,
+            0.04221
+          ],
+          [
+            0.02282,
+            0.20405,
+            0.15327
+          ],
+          [
+            0.00614,
+            0.2192,
+            0.20791
+          ]
+        ],
+        "control_radii": [
+          0.01172,
+          0.0101,
+          0.01208,
+          0.00851,
+          0.01045,
+          0.00629,
+          0.01029
+        ],
+        "half_width_px": 0.38,
+        "inward_shift_px": 0.22,
+        "num_supporting_views": 32
+      },
+      {
+        "generator_id": 2,
+        "generator_type": "SWEPT_TUBE_ENVELOPE_3D",
+        "degree": 3,
+        "spine_control_points": [
+          [
+            0.0538,
+            0.03059,
+            -0.46349
+          ],
+          [
+            0.0436,
+            0.03395,
+            -0.40303
+          ],
+          [
+            0.04524,
+            -0.00602,
+            -0.29105
+          ],
+          [
+            0.07947,
+            -0.06339,
+            -0.12463
+          ],
+          [
+            0.14685,
+            -0.03915,
+            0.04223
+          ],
+          [
+            0.17907,
+            -0.01197,
+            0.1517
+          ],
+          [
+            0.18947,
+            0.0042,
+            0.20791
+          ]
+        ],
+        "control_radii": [
+          0.01157,
+          0.01084,
+          0.01264,
+          0.00847,
+          0.00898,
+          0.00735,
+          0.0101
+        ],
+        "half_width_px": 0.38,
+        "inward_shift_px": 0.22,
+        "num_supporting_views": 32
+      },
+      {
+        "generator_id": 3,
+        "generator_type": "SWEPT_TUBE_ENVELOPE_3D",
+        "degree": 3,
+        "spine_control_points": [
+          [
+            -0.0094,
+            -0.06989,
+            -0.46349
+          ],
+          [
+            -0.0115,
+            -0.06707,
+            -0.39972
+          ],
+          [
+            -0.05397,
+            -0.08174,
+            -0.28366
+          ],
+          [
+            -0.1064,
+            -0.14398,
+            -0.11285
+          ],
+          [
+            -0.08763,
+            -0.25064,
+            0.04317
+          ],
+          [
+            -0.04864,
+            -0.29371,
+            0.15443
+          ],
+          [
+            -0.03388,
+            -0.32218,
+            0.20791
+          ]
+        ],
+        "control_radii": [
+          0.01035,
+          0.01014,
+          0.01087,
+          0.00885,
+          0.01082,
+          0.00866,
+          0.00825
+        ],
+        "half_width_px": 0.38,
+        "inward_shift_px": 0.22,
+        "num_supporting_views": 32
+      },
+      {
+        "generator_id": 4,
+        "generator_type": "SWEPT_TUBE_ENVELOPE_3D",
+        "degree": 3,
+        "spine_control_points": [
+          [
+            -0.01527,
+            -0.0171,
+            -0.46349
+          ],
+          [
+            -0.01869,
+            -0.01742,
+            -0.40741
+          ],
+          [
+            -0.01555,
+            -0.01849,
+            -0.29556
+          ],
+          [
+            -0.01594,
+            -0.01839,
+            -0.12767
+          ],
+          [
+            -0.01355,
+            -0.0175,
+            0.04025
+          ],
+          [
+            -0.0128,
+            -0.01844,
+            0.15219
+          ],
+          [
+            -0.01254,
+            -0.01633,
+            0.20791
+          ]
+        ],
+        "control_radii": [
+          0.0143,
+          0.01624,
+          0.01043,
+          0.00966,
+          0.01531,
+          0.01008,
+          0.01923
+        ],
+        "half_width_px": 0.38,
+        "inward_shift_px": 0.22,
+        "num_supporting_views": 32
+      },
+      {
+        "generator_id": 5,
+        "generator_type": "SWEPT_TUBE_ENVELOPE_3D",
+        "degree": 3,
+        "spine_control_points": [
+          [
+            -0.04856,
+            0.01265,
+            -0.46349
+          ],
+          [
+            -0.03364,
+            0.01148,
+            -0.40584
+          ],
+          [
+            -0.0257,
+            0.04775,
+            -0.29695
+          ],
+          [
+            -0.02576,
+            0.09148,
+            -0.12819
+          ],
+          [
+            -0.06717,
+            0.08021,
+            0.04322
+          ],
+          [
+            -0.06678,
+            0.03912,
+            0.15254
+          ],
+          [
+            -0.06739,
+            0.0229,
+            0.20791
+          ]
+        ],
+        "control_radii": [
+          0.01218,
+          0.0128,
+          0.01182,
+          0.00807,
+          0.01074,
+          0.00919,
+          0.00975
+        ],
+        "half_width_px": 0.38,
+        "inward_shift_px": 0.22,
+        "num_supporting_views": 32
+      }
+    ],
+    "planar_patches": [],
+    "train_build_8views": {
+      "num_gaussians": 161867,
+      "hull_violation_node_pct": 0.06240534076016811,
+      "free_space_violation_node_pct": 22.289263368769376,
+      "mean_bg_sky_leak_pixels": 0.125,
+      "precision_2_5px_pct": 77.17065952276982,
+      "recall_2_5px_pct": 93.14693123893423,
+      "bidirectional_chamfer_2d_px": 1.423576638685112
+    },
+    "heldout_test_5views": {
+      "num_gaussians": 162692,
+      "hull_violation_node_pct": 0.0620806550341053,
+      "free_space_violation_node_pct": 22.244539748418152,
+      "mean_bg_sky_leak_pixels": 5815.6,
+      "precision_2_5px_pct": 67.1519730968089,
+      "recall_2_5px_pct": 75.9854948604333,
+      "bidirectional_chamfer_2d_px": 2.9801131432441523
+    }
+  },
+  "stages": {
+    "stage1_base": {
+      "total_input_parents": 11503,
+      "total_input_nodes": 73330,
+      "state2_extrapolated_nodes": 36895,
+      "initial_hull_violation_nodes": 3424,
+      "initial_free_space_violation_nodes": 3535,
+      "flagged_for_ray_retriangulation": 7004,
+      "repaired_nodes": 6805,
+      "post_repair_hull_violation_nodes": 565,
+      "kept_valid_nodes": 71813,
+      "pruned_outlier_nodes": 1517,
+      "output_clean_subchains": 8151
+    },
+    "stage1_complementary_seeding": {
+      "extra_seed_views": 24,
+      "raw_2d_chains_considered": 9008,
+      "uncovered_2d_chains_lifted": 2760,
+      "stage1_ray_refined_seeds": 4530,
+      "accepted_strong_complementary_segments": 1808,
+      "added_complementary_3d_nodes": 9786,
+      "wall_seconds": 19.46
+    },
+    "stage2": {
+      "input_clean_segments": 9959,
+      "scms_iterations": 5,
+      "mean_scms_displacement_px": 0.5570969639922451,
+      "merged_segment_pairs": 6330,
+      "output_consolidated_ridges": 6779,
+      "multiview_merged_ridges": 1854,
+      "multiview_merged_ratio": 0.2734916654373801,
+      "wall_seconds": 10.24
+    },
+    "stage3": {
+      "coaxial_ring_consolidation": {
+        "detected_families": 2,
+        "axis_origin": [
+          -0.02236,
+          0.01663,
+          -0.0001
+        ],
+        "axis_dir": [
+          -0.002272,
+          0.002833,
+          0.999993
+        ],
+        "axis_tilt_deg": 0.208,
+        "axis_center_std_world": 0.000685,
+        "num_coaxial_rings": 15,
+        "num_coaxial_arc_primitives": 30,
+        "absorbed_shell_rib_ridges": 779,
+        "pruned_opaque_interior_ghost_ridges": 512,
+        "pruned_grazing_horizon_scratches": 0,
+        "arbitrary_axis_subfamilies": {
+          "arb_detected_families": 1,
+          "arb_coaxial_rings": 1,
+          "arb_axis_tilt_deg_list": [
+            0.95
+          ],
+          "arb_absorbed_ridges": 9
+        },
+        "remaining_non_lathe_ridges": 5488
+      },
+      "contour_generators": {
+        "lathe_generators": 1,
+        "swept_tube_generators": 5,
+        "tube_tracking": {
+          "detected_swept_tubes": 5,
+          "absorbed_bare_trunk_horizon_ridges": 38,
+          "remaining_ridges_after_tubes": 5450
+        }
+      },
+      "cocircular_consolidation": {
+        "candidate_circles_tested": 3289,
+        "verified_cocircular_groups": 320,
+        "absorbed_short_arc_ridges": 738,
+        "output_ridges_after_cocircular": 5032
+      },
+      "planar_wireframe_regularization": {
+        "detected_planes": 0
+      },
+      "ribbon_3d_annotation": {
+        "annotated_ribbon_curves": 6719,
+        "edge_class_breakdown": {
+          "SILHOUETTE_CONTOUR": 5995,
+          "SURFACE_STRIPE": 198,
+          "DIHEDRAL_CREASE": 202,
+          "TOPOLOGY_BRIDGE": 294,
+          "COAXIAL_RING": 30
+        },
+        "mean_ribbon_half_width_px": 0.4698,
+        "mean_dihedral_crease_deg": 60.24
+      },
+      "initial_fitted_primitives": 5062,
+      "candidate_connections_scored": 4220,
+      "physically_valid_candidates": 4097,
+      "milp_selected_connections": 2620,
+      "selected_e2e_bridges": 273,
+      "selected_t_junctions": 1795,
+      "g1_smooth_chain_unifications": 980,
+      "post_topology_summary": {
+        "scene": "ficus",
+        "num_curves": 6719,
+        "num_line_3d": 3918,
+        "num_arc_3d": 1762,
+        "num_cubic_bspline_3d": 1039,
+        "num_coaxial_families": 2,
+        "num_coaxial_ring_arcs": 30,
+        "num_cocircular_merged_arcs": 621,
+        "num_bridges": 294,
+        "num_ribbon_3d_primitives": 6719,
+        "num_lathe_contour_generators": 1,
+        "num_swept_tube_generators": 5,
+        "total_contour_generators": 6,
+        "num_planar_patches": 0,
+        "edge_class_counts": {
+          "SILHOUETTE_CONTOUR": 5995,
+          "SURFACE_STRIPE": 198,
+          "DIHEDRAL_CREASE": 202,
+          "TOPOLOGY_BRIDGE": 294,
+          "COAXIAL_RING": 30,
+          "VIEW_CONTOUR_GENERATOR": 6
+        },
+        "total_control_points": 18260,
+        "generator_control_nodes": 67,
+        "num_nodes": 8300,
+        "node_degrees": {
+          "deg1_open": 5094,
+          "deg2_cont": 1355,
+          "deg3plus_junction": 1851
+        },
+        "open_endpoint_ratio": 0.3790742670040185,
+        "multiview_2plus_curve_count": 6719,
+        "multiview_2plus_curve_ratio": 1.0,
+        "total_arc_length": 194.74345243807048,
+        "median_arc_length": 0.01769307107374788,
+        "mean_arc_length": 0.02898399351660522,
+        "p90_arc_length": 0.05690995455529455
+      },
+      "wall_seconds": 123.26
+    },
+    "stage4": {
+      "optimization_steps": 80,
+      "loss_history": [
+        {
+          "step": 1,
+          "total": 1.8549842834472656,
+          "chamfer_px": 0.8450546860694885,
+          "tang": 0.35942500829696655,
+          "hull": 0.005042096599936485,
+          "render": 0.10384565591812134
+        },
+        {
+          "step": 20,
+          "total": 1.3519418239593506,
+          "chamfer_px": 0.7179771065711975,
+          "tang": 0.3429688513278961,
+          "hull": 0.004145926330238581,
+          "render": 0.11019548028707504
+        },
+        {
+          "step": 40,
+          "total": 1.283499002456665,
+          "chamfer_px": 0.6722907423973083,
+          "tang": 0.33578988909721375,
+          "hull": 0.0037085639778524637,
+          "render": 0.08163811266422272
+        },
+        {
+          "step": 60,
+          "total": 1.3196659088134766,
+          "chamfer_px": 0.6780149936676025,
+          "tang": 0.331950306892395,
+          "hull": 0.0027829951141029596,
+          "render": 0.07755835354328156
+        },
+        {
+          "step": 80,
+          "total": 1.2606810331344604,
+          "chamfer_px": 0.6573280096054077,
+          "tang": 0.32859498262405396,
+          "hull": 0.0030004652217030525,
+          "render": 0.07903039455413818
+        }
+      ],
+      "topology_cleanup": {
+        "post_merged_duplicates": 384,
+        "linearized_to_line3d": 473,
+        "upgraded_splines_to_arc3d": 416,
+        "pruned_weak_spurs": 43
+      },
+      "final_summary": {
+        "scene": "ficus",
+        "num_curves": 6292,
+        "num_line_3d": 4009,
+        "num_arc_3d": 2154,
+        "num_cubic_bspline_3d": 129,
+        "num_coaxial_families": 2,
+        "num_coaxial_ring_arcs": 30,
+        "num_cocircular_merged_arcs": 607,
+        "num_bridges": 294,
+        "num_ribbon_3d_primitives": 6292,
+        "num_lathe_contour_generators": 1,
+        "num_swept_tube_generators": 5,
+        "total_contour_generators": 6,
+        "num_planar_patches": 0,
+        "edge_class_counts": {
+          "SILHOUETTE_CONTOUR": 5596,
+          "SURFACE_STRIPE": 176,
+          "DIHEDRAL_CREASE": 196,
+          "TOPOLOGY_BRIDGE": 294,
+          "COAXIAL_RING": 30,
+          "VIEW_CONTOUR_GENERATOR": 6
+        },
+        "total_control_points": 15424,
+        "generator_control_nodes": 67,
+        "num_nodes": 7999,
+        "node_degrees": {
+          "deg1_open": 4927,
+          "deg2_cont": 1611,
+          "deg3plus_junction": 1461
+        },
+        "open_endpoint_ratio": 0.3915289256198347,
+        "multiview_2plus_curve_count": 6292,
+        "multiview_2plus_curve_ratio": 1.0,
+        "total_arc_length": 188.20485989560385,
+        "median_arc_length": 0.01920056376458438,
+        "mean_arc_length": 0.02991177048563316,
+        "p90_arc_length": 0.05895843078098908
+      },
+      "wall_seconds": 18.41
+    }
+  },
+  "saved_files": {
+    "json": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/ficus_full_v05/curve_network.json",
+    "controls_npz": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/ficus_full_v05/curve_controls.npz",
+    "obj": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/ficus_full_v05/curves_wireframe.obj",
+    "ribbons_obj": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/ficus_full_v05/ribbons_mesh.obj",
+    "ink_gaussians_npz": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/ficus_full_v05/resampled_ink_gaussians.npz",
+    "colored_gaussians_npz": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/ficus_full_v05/resampled_colored_gaussians.npz",
+    "semantic_gaussians_npz": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/ficus_full_v05/resampled_semantic_gaussians.npz",
+    "envelopes_obj": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/ficus_full_v05/contour_envelopes_mesh.obj"
+  },
+  "wall_seconds": 279.58
+}

@@ -1,0 +1,1002 @@
+{
+  "scene": "chair",
+  "domain": "NeRF_Synthetic_3DGS",
+  "has_silhouette_mask": true,
+  "median_pixel_scale": 0.003421071155562747,
+  "raw_baseline": {
+    "label": "Raw 8-View Lifted (3388 chains)",
+    "num_input_chains": 3388,
+    "num_input_nodes": 43105,
+    "train_build_8views": {
+      "num_gaussians": 365611,
+      "hull_violation_node_pct": 1.791248075139971,
+      "free_space_violation_node_pct": 41.421346731909054,
+      "mean_bg_sky_leak_pixels": 5289.875,
+      "precision_2_5px_pct": 57.27798634163877,
+      "recall_2_5px_pct": 99.49977754487837,
+      "bidirectional_chamfer_2d_px": 1.9398283427989877
+    },
+    "heldout_eval_views": {
+      "num_gaussians": 365611,
+      "hull_violation_node_pct": 1.791248075139971,
+      "free_space_violation_node_pct": 41.421346731909054,
+      "mean_bg_sky_leak_pixels": 2761.0,
+      "precision_2_5px_pct": 46.5266656153156,
+      "recall_2_5px_pct": 99.42179060035144,
+      "bidirectional_chamfer_2d_px": 2.6770428231160546
+    }
+  },
+  "vec_spline3d_v04": {
+    "summary": {
+      "scene": "chair",
+      "num_curves": 9448,
+      "num_line_3d": 5836,
+      "num_arc_3d": 3223,
+      "num_cubic_bspline_3d": 389,
+      "num_coaxial_families": 0,
+      "num_coaxial_ring_arcs": 0,
+      "num_cocircular_merged_arcs": 230,
+      "num_bridges": 338,
+      "num_ribbon_3d_primitives": 9448,
+      "num_lathe_contour_generators": 0,
+      "num_swept_tube_generators": 0,
+      "total_contour_generators": 0,
+      "num_planar_patches": 17,
+      "edge_class_counts": {
+        "DIHEDRAL_CREASE": 3524,
+        "SURFACE_STRIPE": 2425,
+        "SILHOUETTE_CONTOUR": 3161,
+        "TOPOLOGY_BRIDGE": 338
+      },
+      "total_control_points": 24473,
+      "generator_control_nodes": 0,
+      "num_nodes": 13017,
+      "node_degrees": {
+        "deg1_open": 8998,
+        "deg2_cont": 2229,
+        "deg3plus_junction": 1790
+      },
+      "open_endpoint_ratio": 0.4761854360711262,
+      "multiview_2plus_curve_count": 9443,
+      "multiview_2plus_curve_ratio": 0.9994707874682472,
+      "total_arc_length": 263.43644149660275,
+      "median_arc_length": 0.021525581572484513,
+      "mean_arc_length": 0.02788277323207057,
+      "p90_arc_length": 0.05440525611541275
+    },
+    "coaxial_families": [],
+    "contour_generators": [],
+    "planar_patches": [
+      {
+        "plane_id": 0,
+        "normal": [
+          0.045762,
+          0.994927,
+          -0.089592
+        ],
+        "offset_d": 0.542822,
+        "has_manhattan_frame": false,
+        "manhattan_strength": 0.1402,
+        "principal_axes": [],
+        "surface_support_points": 1405,
+        "num_member_curves": 24,
+        "member_curve_ids": [
+          187,
+          2019,
+          3758,
+          4312,
+          5265,
+          5557,
+          6441,
+          6442,
+          6754,
+          6876,
+          7896,
+          7898,
+          7983,
+          7988,
+          8010,
+          8011,
+          8014,
+          8695,
+          11241,
+          12311,
+          12504,
+          13120,
+          13487,
+          13559
+        ]
+      },
+      {
+        "plane_id": 1,
+        "normal": [
+          0.989843,
+          -0.131541,
+          -0.053929
+        ],
+        "offset_d": -0.619161,
+        "has_manhattan_frame": false,
+        "manhattan_strength": 0.1585,
+        "principal_axes": [],
+        "surface_support_points": 403,
+        "num_member_curves": 38,
+        "member_curve_ids": [
+          71,
+          85,
+          2631,
+          2796,
+          2804,
+          2934,
+          3226,
+          4727,
+          4753,
+          4925,
+          5082,
+          5118,
+          5146,
+          5502,
+          6048,
+          6180,
+          6703,
+          7873,
+          7875,
+          7921,
+          8021,
+          8087,
+          8467,
+          8482,
+          9719,
+          9720,
+          9806,
+          9824,
+          9887,
+          10010,
+          10012,
+          10142,
+          11170,
+          11172,
+          11953,
+          12076,
+          12915,
+          13788
+        ]
+      },
+      {
+        "plane_id": 2,
+        "normal": [
+          0.035314,
+          0.998722,
+          -0.036153
+        ],
+        "offset_d": 0.603173,
+        "has_manhattan_frame": false,
+        "manhattan_strength": 0.0521,
+        "principal_axes": [],
+        "surface_support_points": 1217,
+        "num_member_curves": 24,
+        "member_curve_ids": [
+          1329,
+          1331,
+          1339,
+          2054,
+          2055,
+          3859,
+          5397,
+          5914,
+          8015,
+          8018,
+          8667,
+          8670,
+          8801,
+          8802,
+          8839,
+          9936,
+          9939,
+          10508,
+          10535,
+          11215,
+          11259,
+          11448,
+          12138,
+          13806
+        ]
+      },
+      {
+        "plane_id": 3,
+        "normal": [
+          0.045581,
+          0.998859,
+          0.014244
+        ],
+        "offset_d": 0.656173,
+        "has_manhattan_frame": false,
+        "manhattan_strength": 0.1146,
+        "principal_axes": [],
+        "surface_support_points": 797,
+        "num_member_curves": 27,
+        "member_curve_ids": [
+          1002,
+          1351,
+          1353,
+          1356,
+          1359,
+          1517,
+          2056,
+          2591,
+          2725,
+          3733,
+          4179,
+          6105,
+          8880,
+          8966,
+          9020,
+          9021,
+          9293,
+          9675,
+          9764,
+          10089,
+          10090,
+          10302,
+          11465,
+          11466,
+          11512,
+          13941,
+          13947
+        ]
+      },
+      {
+        "plane_id": 4,
+        "normal": [
+          -0.063307,
+          -0.984828,
+          0.161576
+        ],
+        "offset_d": -0.493945,
+        "has_manhattan_frame": true,
+        "manhattan_strength": 0.3629,
+        "principal_axes": [
+          [
+            0.994402,
+            -0.048522,
+            0.093863
+          ],
+          [
+            -0.084599,
+            0.166614,
+            0.982386
+          ]
+        ],
+        "surface_support_points": 1792,
+        "num_member_curves": 20,
+        "member_curve_ids": [
+          487,
+          1999,
+          2353,
+          2679,
+          3358,
+          3476,
+          5673,
+          7100,
+          7956,
+          7973,
+          7974,
+          8187,
+          9233,
+          9236,
+          9724,
+          9731,
+          10157,
+          10235,
+          11197,
+          11712
+        ]
+      },
+      {
+        "plane_id": 5,
+        "normal": [
+          0.201235,
+          -0.975163,
+          0.092532
+        ],
+        "offset_d": -0.596154,
+        "has_manhattan_frame": true,
+        "manhattan_strength": 0.329,
+        "principal_axes": [
+          [
+            0.949744,
+            0.217364,
+            0.225255
+          ],
+          [
+            -0.239773,
+            0.042552,
+            0.969896
+          ]
+        ],
+        "surface_support_points": 742,
+        "num_member_curves": 23,
+        "member_curve_ids": [
+          1349,
+          1350,
+          1352,
+          6282,
+          6429,
+          8128,
+          8878,
+          9248,
+          9575,
+          9722,
+          10077,
+          10078,
+          10260,
+          10333,
+          10933,
+          10948,
+          11892,
+          11893,
+          11926,
+          11932,
+          12312,
+          13819,
+          13912
+        ]
+      },
+      {
+        "plane_id": 6,
+        "normal": [
+          0.983602,
+          -0.178762,
+          -0.023898
+        ],
+        "offset_d": -0.608562,
+        "has_manhattan_frame": false,
+        "manhattan_strength": 0.2319,
+        "principal_axes": [],
+        "surface_support_points": 401,
+        "num_member_curves": 22,
+        "member_curve_ids": [
+          106,
+          110,
+          2562,
+          2904,
+          4512,
+          5138,
+          5310,
+          5482,
+          6733,
+          7292,
+          8034,
+          9645,
+          9646,
+          9663,
+          10004,
+          10051,
+          11344,
+          11537,
+          12086,
+          12416,
+          13553,
+          13937
+        ]
+      },
+      {
+        "plane_id": 7,
+        "normal": [
+          0.162501,
+          -0.986703,
+          0.003212
+        ],
+        "offset_d": -0.567897,
+        "has_manhattan_frame": true,
+        "manhattan_strength": 0.3971,
+        "principal_axes": [
+          [
+            0.986601,
+            0.162434,
+            -0.015293
+          ],
+          [
+            0.014568,
+            0.005654,
+            0.999878
+          ],
+          [
+            0.666125,
+            0.107302,
+            -0.738081
+          ]
+        ],
+        "surface_support_points": 745,
+        "num_member_curves": 20,
+        "member_curve_ids": [
+          301,
+          3636,
+          4383,
+          5536,
+          5672,
+          6231,
+          7583,
+          8057,
+          8058,
+          9673,
+          9798,
+          10363,
+          10364,
+          10815,
+          10816,
+          10818,
+          11863,
+          11946,
+          12120,
+          13850
+        ]
+      },
+      {
+        "plane_id": 8,
+        "normal": [
+          -0.003091,
+          0.998183,
+          0.060178
+        ],
+        "offset_d": 0.684802,
+        "has_manhattan_frame": false,
+        "manhattan_strength": 0.1562,
+        "principal_axes": [],
+        "surface_support_points": 828,
+        "num_member_curves": 17,
+        "member_curve_ids": [
+          1320,
+          1325,
+          2731,
+          3628,
+          4166,
+          4763,
+          5537,
+          8092,
+          9249,
+          9250,
+          9252,
+          9295,
+          10145,
+          10932,
+          11598,
+          12511,
+          13111
+        ]
+      },
+      {
+        "plane_id": 9,
+        "normal": [
+          0.086035,
+          0.996162,
+          -0.016082
+        ],
+        "offset_d": 0.56165,
+        "has_manhattan_frame": true,
+        "manhattan_strength": 0.3021,
+        "principal_axes": [
+          [
+            0.939251,
+            -0.086482,
+            -0.332157
+          ],
+          [
+            -0.332273,
+            0.013472,
+            -0.943087
+          ]
+        ],
+        "surface_support_points": 985,
+        "num_member_curves": 24,
+        "member_curve_ids": [
+          356,
+          357,
+          1717,
+          1718,
+          4274,
+          4400,
+          4531,
+          4708,
+          5268,
+          6278,
+          8148,
+          8149,
+          8151,
+          8162,
+          8163,
+          9029,
+          9030,
+          9031,
+          9542,
+          9543,
+          9544,
+          9545,
+          10682,
+          12116
+        ]
+      },
+      {
+        "plane_id": 10,
+        "normal": [
+          -0.128091,
+          0.990322,
+          -0.053437
+        ],
+        "offset_d": 0.548101,
+        "has_manhattan_frame": false,
+        "manhattan_strength": 0.0491,
+        "principal_axes": [],
+        "surface_support_points": 898,
+        "num_member_curves": 18,
+        "member_curve_ids": [
+          287,
+          327,
+          848,
+          2062,
+          3188,
+          3337,
+          3539,
+          3690,
+          4114,
+          4628,
+          7968,
+          7969,
+          8341,
+          8591,
+          10681,
+          10976,
+          13270,
+          13959
+        ]
+      },
+      {
+        "plane_id": 11,
+        "normal": [
+          -0.055367,
+          -0.984823,
+          0.164496
+        ],
+        "offset_d": -0.518845,
+        "has_manhattan_frame": false,
+        "manhattan_strength": 0.1363,
+        "principal_axes": [],
+        "surface_support_points": 2011,
+        "num_member_curves": 11,
+        "member_curve_ids": [
+          5267,
+          5366,
+          6204,
+          6205,
+          6919,
+          7410,
+          7911,
+          7940,
+          10411,
+          10648,
+          10759
+        ]
+      },
+      {
+        "plane_id": 12,
+        "normal": [
+          -0.053877,
+          0.997876,
+          0.036619
+        ],
+        "offset_d": 0.525127,
+        "has_manhattan_frame": true,
+        "manhattan_strength": 0.5524,
+        "principal_axes": [
+          [
+            0.944534,
+            0.062826,
+            -0.322348
+          ],
+          [
+            -0.323964,
+            0.017221,
+            -0.945913
+          ]
+        ],
+        "surface_support_points": 521,
+        "num_member_curves": 13,
+        "member_curve_ids": [
+          1106,
+          1107,
+          1943,
+          2068,
+          2551,
+          4733,
+          5939,
+          5961,
+          10797,
+          11503,
+          11931,
+          12036,
+          13845
+        ]
+      },
+      {
+        "plane_id": 13,
+        "normal": [
+          0.233659,
+          0.972318,
+          0.000541
+        ],
+        "offset_d": 0.629639,
+        "has_manhattan_frame": false,
+        "manhattan_strength": 0.1524,
+        "principal_axes": [
+          [
+            0.757918,
+            -0.181788,
+            -0.62651
+          ]
+        ],
+        "surface_support_points": 409,
+        "num_member_curves": 11,
+        "member_curve_ids": [
+          705,
+          2261,
+          3598,
+          5390,
+          9770,
+          10328,
+          10433,
+          10434,
+          10836,
+          12147,
+          13948
+        ]
+      },
+      {
+        "plane_id": 14,
+        "normal": [
+          0.066318,
+          -0.957309,
+          0.281356
+        ],
+        "offset_d": -0.439801,
+        "has_manhattan_frame": true,
+        "manhattan_strength": 0.5321,
+        "principal_axes": [
+          [
+            0.991459,
+            0.031487,
+            -0.126562
+          ],
+          [
+            0.1123,
+            0.287347,
+            0.951221
+          ]
+        ],
+        "surface_support_points": 1656,
+        "num_member_curves": 9,
+        "member_curve_ids": [
+          1748,
+          5389,
+          7946,
+          8596,
+          9044,
+          9633,
+          10756,
+          11073,
+          12199
+        ]
+      },
+      {
+        "plane_id": 15,
+        "normal": [
+          0.051312,
+          -0.963812,
+          0.261597
+        ],
+        "offset_d": -0.465697,
+        "has_manhattan_frame": true,
+        "manhattan_strength": 0.4644,
+        "principal_axes": [
+          [
+            0.998149,
+            0.058057,
+            0.018114
+          ],
+          [
+            -0.032646,
+            0.260184,
+            0.965007
+          ]
+        ],
+        "surface_support_points": 1509,
+        "num_member_curves": 8,
+        "member_curve_ids": [
+          153,
+          6646,
+          6836,
+          7954,
+          7960,
+          7961,
+          11006,
+          11414
+        ]
+      },
+      {
+        "plane_id": 16,
+        "normal": [
+          0.219168,
+          -0.963441,
+          0.154101
+        ],
+        "offset_d": -0.443558,
+        "has_manhattan_frame": true,
+        "manhattan_strength": 0.3994,
+        "principal_axes": [
+          [
+            0.903407,
+            0.260043,
+            0.340931
+          ],
+          [
+            -0.36854,
+            0.064494,
+            0.927372
+          ]
+        ],
+        "surface_support_points": 407,
+        "num_member_curves": 9,
+        "member_curve_ids": [
+          3498,
+          4353,
+          6648,
+          7593,
+          8335,
+          8336,
+          10417,
+          10856,
+          12523
+        ]
+      }
+    ],
+    "train_build_8views": {
+      "num_gaussians": 221917,
+      "hull_violation_node_pct": 0.005407427101123393,
+      "free_space_violation_node_pct": 34.11590819991258,
+      "mean_bg_sky_leak_pixels": 0.875,
+      "precision_2_5px_pct": 69.39648061490087,
+      "recall_2_5px_pct": 96.80460756240602,
+      "bidirectional_chamfer_2d_px": 1.6346421988204622
+    },
+    "heldout_eval_views": {
+      "num_gaussians": 221917,
+      "hull_violation_node_pct": 0.005407427101123393,
+      "free_space_violation_node_pct": 34.11590819991258,
+      "mean_bg_sky_leak_pixels": 44.0,
+      "precision_2_5px_pct": 54.50059747437056,
+      "recall_2_5px_pct": 96.85409152708279,
+      "bidirectional_chamfer_2d_px": 2.3921770453622306
+    }
+  },
+  "stages": {
+    "stage1_base": {
+      "total_input_parents": 3388,
+      "total_input_nodes": 43105,
+      "state2_extrapolated_nodes": 42710,
+      "initial_hull_violation_nodes": 162,
+      "initial_free_space_violation_nodes": 3015,
+      "flagged_for_ray_retriangulation": 10987,
+      "repaired_nodes": 9442,
+      "post_repair_hull_violation_nodes": 141,
+      "kept_valid_nodes": 42861,
+      "pruned_outlier_nodes": 244,
+      "output_clean_subchains": 5578
+    },
+    "stage1_complementary_seeding": {
+      "extra_seed_views": 12,
+      "raw_2d_chains_considered": 3870,
+      "uncovered_2d_chains_lifted": 2049,
+      "stage1_ray_refined_seeds": 3336,
+      "accepted_strong_complementary_segments": 2358,
+      "added_complementary_3d_nodes": 11286,
+      "wall_seconds": 10.58
+    },
+    "stage2": {
+      "input_clean_segments": 7936,
+      "scms_iterations": 5,
+      "mean_scms_displacement_px": 0.5210128663955153,
+      "merged_segment_pairs": 1704,
+      "output_consolidated_ridges": 8021,
+      "multiview_merged_ridges": 1339,
+      "multiview_merged_ratio": 0.16693679092382496,
+      "wall_seconds": 5.71
+    },
+    "stage3": {
+      "coaxial_ring_consolidation": {
+        "arb_detected_families": 0,
+        "arb_coaxial_rings": 0,
+        "detected_families": 0,
+        "num_coaxial_rings": 0,
+        "num_coaxial_arc_primitives": 0
+      },
+      "contour_generators": {
+        "lathe_generators": 0,
+        "swept_tube_generators": 0,
+        "tube_tracking": {
+          "detected_swept_tubes": 0,
+          "absorbed_bare_trunk_horizon_ridges": 0
+        }
+      },
+      "cocircular_consolidation": {
+        "candidate_circles_tested": 3123,
+        "verified_cocircular_groups": 151,
+        "absorbed_short_arc_ridges": 318,
+        "output_ridges_after_cocircular": 7854
+      },
+      "planar_wireframe_regularization": {
+        "detected_planes": 17,
+        "manhattan_planes": 8,
+        "coplanar_assigned_curves": 318,
+        "axis_aligned_lines": 32,
+        "linearized_shallow_planar_curves": 13,
+        "coplanar_projected_nodes": 559,
+        "axis_snapped_lines": 7,
+        "welded_collinear_window_gaps": 0,
+        "orthogonal_corner_nodes": 252
+      },
+      "ribbon_3d_annotation": {
+        "annotated_ribbon_curves": 9889,
+        "edge_class_breakdown": {
+          "DIHEDRAL_CREASE": 3681,
+          "SURFACE_STRIPE": 2509,
+          "SILHOUETTE_CONTOUR": 3361,
+          "TOPOLOGY_BRIDGE": 338
+        },
+        "mean_ribbon_half_width_px": 0.4608,
+        "mean_dihedral_crease_deg": 53.27
+      },
+      "initial_fitted_primitives": 7854,
+      "candidate_connections_scored": 5202,
+      "physically_valid_candidates": 4398,
+      "milp_selected_connections": 3013,
+      "selected_e2e_bridges": 313,
+      "selected_t_junctions": 2112,
+      "g1_smooth_chain_unifications": 1075,
+      "post_topology_summary": {
+        "scene": "chair",
+        "num_curves": 9889,
+        "num_line_3d": 5646,
+        "num_arc_3d": 2513,
+        "num_cubic_bspline_3d": 1730,
+        "num_coaxial_families": 0,
+        "num_coaxial_ring_arcs": 0,
+        "num_cocircular_merged_arcs": 235,
+        "num_bridges": 338,
+        "num_ribbon_3d_primitives": 9889,
+        "num_lathe_contour_generators": 0,
+        "num_swept_tube_generators": 0,
+        "total_contour_generators": 0,
+        "num_planar_patches": 17,
+        "edge_class_counts": {
+          "DIHEDRAL_CREASE": 3681,
+          "SURFACE_STRIPE": 2509,
+          "SILHOUETTE_CONTOUR": 3361,
+          "TOPOLOGY_BRIDGE": 338
+        },
+        "total_control_points": 28351,
+        "generator_control_nodes": 0,
+        "num_nodes": 13256,
+        "node_degrees": {
+          "deg1_open": 9059,
+          "deg2_cont": 1965,
+          "deg3plus_junction": 2232
+        },
+        "open_endpoint_ratio": 0.4580341793912428,
+        "multiview_2plus_curve_count": 9884,
+        "multiview_2plus_curve_ratio": 0.999494387703509,
+        "total_arc_length": 275.34402220607956,
+        "median_arc_length": 0.021019050186486577,
+        "mean_arc_length": 0.027843464678539747,
+        "p90_arc_length": 0.05282763773664243
+      },
+      "wall_seconds": 208.21
+    },
+    "stage4": {
+      "optimization_steps": 80,
+      "loss_history": [
+        {
+          "step": 1,
+          "total": 1.5937570333480835,
+          "chamfer_px": 0.9761382341384888,
+          "tang": 0.3419961631298065,
+          "hull": 0.0013769813813269138,
+          "render": 0.11777282506227493
+        },
+        {
+          "step": 20,
+          "total": 1.0666072368621826,
+          "chamfer_px": 0.8035922646522522,
+          "tang": 0.32006707787513733,
+          "hull": 0.0011719688773155212,
+          "render": 0.09946488589048386
+        },
+        {
+          "step": 40,
+          "total": 0.9968124628067017,
+          "chamfer_px": 0.7566272616386414,
+          "tang": 0.308610200881958,
+          "hull": 0.0008937414968386292,
+          "render": 0.0904596596956253
+        },
+        {
+          "step": 60,
+          "total": 0.9720946550369263,
+          "chamfer_px": 0.7333493828773499,
+          "tang": 0.3047913610935211,
+          "hull": 0.000978413736447692,
+          "render": 0.08705243468284607
+        },
+        {
+          "step": 80,
+          "total": 0.9869116544723511,
+          "chamfer_px": 0.7503408193588257,
+          "tang": 0.3015068471431732,
+          "hull": 0.000791060971096158,
+          "render": 0.0861908346414566
+        }
+      ],
+      "topology_cleanup": {
+        "post_merged_duplicates": 418,
+        "linearized_to_line3d": 573,
+        "upgraded_splines_to_arc3d": 759,
+        "pruned_weak_spurs": 23
+      },
+      "final_summary": {
+        "scene": "chair",
+        "num_curves": 9448,
+        "num_line_3d": 5836,
+        "num_arc_3d": 3223,
+        "num_cubic_bspline_3d": 389,
+        "num_coaxial_families": 0,
+        "num_coaxial_ring_arcs": 0,
+        "num_cocircular_merged_arcs": 230,
+        "num_bridges": 338,
+        "num_ribbon_3d_primitives": 9448,
+        "num_lathe_contour_generators": 0,
+        "num_swept_tube_generators": 0,
+        "total_contour_generators": 0,
+        "num_planar_patches": 17,
+        "edge_class_counts": {
+          "DIHEDRAL_CREASE": 3524,
+          "SURFACE_STRIPE": 2425,
+          "SILHOUETTE_CONTOUR": 3161,
+          "TOPOLOGY_BRIDGE": 338
+        },
+        "total_control_points": 24473,
+        "generator_control_nodes": 0,
+        "num_nodes": 13017,
+        "node_degrees": {
+          "deg1_open": 8998,
+          "deg2_cont": 2229,
+          "deg3plus_junction": 1790
+        },
+        "open_endpoint_ratio": 0.4761854360711262,
+        "multiview_2plus_curve_count": 9443,
+        "multiview_2plus_curve_ratio": 0.9994707874682472,
+        "total_arc_length": 263.43644149660275,
+        "median_arc_length": 0.021525581572484513,
+        "mean_arc_length": 0.02788277323207057,
+        "p90_arc_length": 0.05440525611541275
+      },
+      "wall_seconds": 21.58
+    }
+  },
+  "saved_files": {
+    "json": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/cross_scene_chair/curve_network.json",
+    "controls_npz": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/cross_scene_chair/curve_controls.npz",
+    "obj": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/cross_scene_chair/curves_wireframe.obj",
+    "ribbons_obj": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/cross_scene_chair/ribbons_mesh.obj",
+    "ink_gaussians_npz": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/cross_scene_chair/resampled_ink_gaussians.npz",
+    "colored_gaussians_npz": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/cross_scene_chair/resampled_colored_gaussians.npz",
+    "semantic_gaussians_npz": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/cross_scene_chair/resampled_semantic_gaussians.npz"
+  },
+  "wall_seconds": 317.17
+}

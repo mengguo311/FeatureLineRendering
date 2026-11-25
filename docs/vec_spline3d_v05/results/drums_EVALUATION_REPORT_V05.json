@@ -1,0 +1,676 @@
+{
+  "scene": "drums",
+  "domain": "NeRF_Synthetic_3DGS",
+  "has_silhouette_mask": true,
+  "median_pixel_scale": 0.003056490965588273,
+  "raw_baseline": {
+    "label": "Raw 8-View Lifted (3560 chains)",
+    "num_input_chains": 3560,
+    "num_input_nodes": 54701,
+    "train_build_8views": {
+      "num_gaussians": 455499,
+      "hull_violation_node_pct": 8.919448780348585,
+      "free_space_violation_node_pct": 26.978105330637387,
+      "mean_bg_sky_leak_pixels": 26726.0,
+      "precision_2_5px_pct": 48.26353694150451,
+      "recall_2_5px_pct": 99.78749164175287,
+      "bidirectional_chamfer_2d_px": 2.326749740663776
+    },
+    "heldout_eval_views": {
+      "num_gaussians": 455499,
+      "hull_violation_node_pct": 8.919448780348585,
+      "free_space_violation_node_pct": 26.978105330637387,
+      "mean_bg_sky_leak_pixels": 26151.0,
+      "precision_2_5px_pct": 47.50484368628156,
+      "recall_2_5px_pct": 99.49294279534936,
+      "bidirectional_chamfer_2d_px": 2.3624280593923386
+    }
+  },
+  "vec_spline3d_v04": {
+    "summary": {
+      "scene": "drums",
+      "num_curves": 8634,
+      "num_line_3d": 5213,
+      "num_arc_3d": 3023,
+      "num_cubic_bspline_3d": 398,
+      "num_coaxial_families": 3,
+      "num_coaxial_ring_arcs": 6,
+      "num_cocircular_merged_arcs": 171,
+      "num_bridges": 296,
+      "num_ribbon_3d_primitives": 8634,
+      "num_lathe_contour_generators": 0,
+      "num_swept_tube_generators": 0,
+      "total_contour_generators": 0,
+      "num_planar_patches": 6,
+      "edge_class_counts": {
+        "DIHEDRAL_CREASE": 1924,
+        "SILHOUETTE_CONTOUR": 5112,
+        "SURFACE_STRIPE": 1296,
+        "TOPOLOGY_BRIDGE": 296,
+        "COAXIAL_RING": 6
+      },
+      "total_control_points": 22593,
+      "generator_control_nodes": 0,
+      "num_nodes": 11579,
+      "node_degrees": {
+        "deg1_open": 7602,
+        "deg2_cont": 2318,
+        "deg3plus_junction": 1659
+      },
+      "open_endpoint_ratio": 0.4402362751911049,
+      "multiview_2plus_curve_count": 8619,
+      "multiview_2plus_curve_ratio": 0.998262682418346,
+      "total_arc_length": 225.91770150444552,
+      "median_arc_length": 0.01868691612785572,
+      "mean_arc_length": 0.026166052988701127,
+      "p90_arc_length": 0.05149820322589288
+    },
+    "coaxial_families": [
+      {
+        "family_id": 0,
+        "axis_origin": [
+          0.5695742508419073,
+          -0.3923608437908286,
+          0.17976193308537458
+        ],
+        "axis_dir": [
+          -0.1600017420329179,
+          0.20966483443001038,
+          0.9645932302011392
+        ],
+        "h_range": [
+          0.6960335981915095,
+          0.7021465801226859
+        ],
+        "num_coaxial_rings": 1,
+        "ring_heights": [
+          0.69909
+        ],
+        "ring_radii": [
+          0.24057
+        ],
+        "member_curve_ids": [
+          12808,
+          12809
+        ]
+      },
+      {
+        "family_id": 1,
+        "axis_origin": [
+          -0.8578152294350845,
+          -0.0325774280607325,
+          0.0778036178193447
+        ],
+        "axis_dir": [
+          0.08895337411530498,
+          0.035044170166858735,
+          0.9954191094060928
+        ],
+        "h_range": [
+          0.47153151447255953,
+          0.47764449640373613
+        ],
+        "num_coaxial_rings": 1,
+        "ring_heights": [
+          0.47461
+        ],
+        "ring_radii": [
+          0.28121
+        ],
+        "member_curve_ids": [
+          12810,
+          12811
+        ]
+      },
+      {
+        "family_id": 2,
+        "axis_origin": [
+          0.7786137361596664,
+          0.055722178643265036,
+          0.0043594259281021785
+        ],
+        "axis_dir": [
+          -0.005514565324439777,
+          -0.001177992459494478,
+          0.999984100825132
+        ],
+        "h_range": [
+          0.4737433565985971,
+          0.4798563385297737
+        ],
+        "num_coaxial_rings": 1,
+        "ring_heights": [
+          0.4768
+        ],
+        "ring_radii": [
+          0.1867
+        ],
+        "member_curve_ids": [
+          12812,
+          12813
+        ]
+      }
+    ],
+    "contour_generators": [],
+    "planar_patches": [
+      {
+        "plane_id": 0,
+        "normal": [
+          -0.179922,
+          0.17123,
+          0.968663
+        ],
+        "offset_d": 0.699534,
+        "has_manhattan_frame": false,
+        "manhattan_strength": 0.127,
+        "principal_axes": [],
+        "surface_support_points": 1429,
+        "num_member_curves": 44,
+        "member_curve_ids": [
+          2,
+          279,
+          308,
+          443,
+          457,
+          1254,
+          1275,
+          1507,
+          1716,
+          2922,
+          3207,
+          3291,
+          3292,
+          3592,
+          3629,
+          3652,
+          3658,
+          3674,
+          4431,
+          4432,
+          4434,
+          4912,
+          5531,
+          5858,
+          6067,
+          6433,
+          6550,
+          6646,
+          7120,
+          7524,
+          7525,
+          7527,
+          8454,
+          8455,
+          10161,
+          10162,
+          10554,
+          10555,
+          11493,
+          11521,
+          11582,
+          11583,
+          12071,
+          12072
+        ]
+      },
+      {
+        "plane_id": 1,
+        "normal": [
+          -0.135325,
+          0.043747,
+          0.989835
+        ],
+        "offset_d": 0.804755,
+        "has_manhattan_frame": false,
+        "manhattan_strength": 0.1318,
+        "principal_axes": [],
+        "surface_support_points": 461,
+        "num_member_curves": 32,
+        "member_curve_ids": [
+          131,
+          2101,
+          3563,
+          3564,
+          3569,
+          3596,
+          3628,
+          3655,
+          3663,
+          3664,
+          3668,
+          4232,
+          4900,
+          5644,
+          5645,
+          5646,
+          5656,
+          6524,
+          6604,
+          6610,
+          9748,
+          9749,
+          9750,
+          9751,
+          9753,
+          9754,
+          9785,
+          10159,
+          10546,
+          10989,
+          10990,
+          10991
+        ]
+      },
+      {
+        "plane_id": 2,
+        "normal": [
+          -0.019311,
+          0.134019,
+          0.990791
+        ],
+        "offset_d": 0.309415,
+        "has_manhattan_frame": true,
+        "manhattan_strength": 0.2678,
+        "principal_axes": [
+          [
+            0.988679,
+            0.150042,
+            -0.001026
+          ],
+          [
+            -0.148797,
+            0.979554,
+            -0.135399
+          ]
+        ],
+        "surface_support_points": 1035,
+        "num_member_curves": 27,
+        "member_curve_ids": [
+          244,
+          1834,
+          1985,
+          1987,
+          1988,
+          1990,
+          3100,
+          3143,
+          5333,
+          6141,
+          7489,
+          7490,
+          7491,
+          7796,
+          7797,
+          8665,
+          8667,
+          8669,
+          8671,
+          8843,
+          9408,
+          9409,
+          9432,
+          9739,
+          9740,
+          9992,
+          12208
+        ]
+      },
+      {
+        "plane_id": 3,
+        "normal": [
+          -0.23495,
+          -0.013571,
+          0.971913
+        ],
+        "offset_d": 0.768346,
+        "has_manhattan_frame": false,
+        "manhattan_strength": 0.066,
+        "principal_axes": [],
+        "surface_support_points": 568,
+        "num_member_curves": 12,
+        "member_curve_ids": [
+          489,
+          3845,
+          3856,
+          4234,
+          4782,
+          5563,
+          5643,
+          5883,
+          5887,
+          6431,
+          6768,
+          10921
+        ]
+      },
+      {
+        "plane_id": 4,
+        "normal": [
+          -0.00038,
+          0.003738,
+          0.999993
+        ],
+        "offset_d": 0.481073,
+        "has_manhattan_frame": false,
+        "manhattan_strength": 0.1369,
+        "principal_axes": [],
+        "surface_support_points": 478,
+        "num_member_curves": 18,
+        "member_curve_ids": [
+          35,
+          2115,
+          2148,
+          2151,
+          2938,
+          2941,
+          2943,
+          3853,
+          3876,
+          4247,
+          4866,
+          4868,
+          5566,
+          7981,
+          9364,
+          9760,
+          11187,
+          12287
+        ]
+      },
+      {
+        "plane_id": 5,
+        "normal": [
+          0.997767,
+          -0.001359,
+          0.066774
+        ],
+        "offset_d": -0.405659,
+        "has_manhattan_frame": true,
+        "manhattan_strength": 0.5961,
+        "principal_axes": [
+          [
+            0.002495,
+            0.999854,
+            -0.016928
+          ],
+          [
+            -0.066741,
+            0.017057,
+            0.997625
+          ]
+        ],
+        "surface_support_points": 483,
+        "num_member_curves": 17,
+        "member_curve_ids": [
+          613,
+          2773,
+          5061,
+          6456,
+          6490,
+          6492,
+          6493,
+          6880,
+          8646,
+          8647,
+          9069,
+          10123,
+          10651,
+          10652,
+          11555,
+          11944,
+          12529
+        ]
+      }
+    ],
+    "train_build_8views": {
+      "num_gaussians": 216674,
+      "hull_violation_node_pct": 0.046152284076538944,
+      "free_space_violation_node_pct": 26.042810858709398,
+      "mean_bg_sky_leak_pixels": 1.625,
+      "precision_2_5px_pct": 68.28554048725488,
+      "recall_2_5px_pct": 93.32262727934057,
+      "bidirectional_chamfer_2d_px": 1.7438781053950003
+    },
+    "heldout_eval_views": {
+      "num_gaussians": 216674,
+      "hull_violation_node_pct": 0.046152284076538944,
+      "free_space_violation_node_pct": 26.042810858709398,
+      "mean_bg_sky_leak_pixels": 9.0,
+      "precision_2_5px_pct": 66.99926678320807,
+      "recall_2_5px_pct": 91.29427045604906,
+      "bidirectional_chamfer_2d_px": 1.856188752742818
+    }
+  },
+  "stages": {
+    "stage1_base": {
+      "total_input_parents": 3560,
+      "total_input_nodes": 54701,
+      "state2_extrapolated_nodes": 53397,
+      "initial_hull_violation_nodes": 2871,
+      "initial_free_space_violation_nodes": 1948,
+      "flagged_for_ray_retriangulation": 13964,
+      "repaired_nodes": 10240,
+      "post_repair_hull_violation_nodes": 2039,
+      "kept_valid_nodes": 52446,
+      "pruned_outlier_nodes": 2255,
+      "output_clean_subchains": 6226
+    },
+    "stage1_complementary_seeding": {
+      "extra_seed_views": 12,
+      "raw_2d_chains_considered": 4250,
+      "uncovered_2d_chains_lifted": 1358,
+      "stage1_ray_refined_seeds": 2079,
+      "accepted_strong_complementary_segments": 1377,
+      "added_complementary_3d_nodes": 6515,
+      "wall_seconds": 10.84
+    },
+    "stage2": {
+      "input_clean_segments": 7603,
+      "scms_iterations": 5,
+      "mean_scms_displacement_px": 0.6451014287639357,
+      "merged_segment_pairs": 2835,
+      "output_consolidated_ridges": 7429,
+      "multiview_merged_ridges": 1711,
+      "multiview_merged_ratio": 0.23031363575178354,
+      "wall_seconds": 7.12
+    },
+    "stage3": {
+      "coaxial_ring_consolidation": {
+        "arb_detected_families": 3,
+        "arb_coaxial_rings": 3,
+        "arb_axis_tilt_deg_list": [
+          15.29,
+          5.49,
+          0.32
+        ],
+        "arb_absorbed_ridges": 32,
+        "detected_families": 3,
+        "num_coaxial_rings": 3,
+        "num_coaxial_arc_primitives": 6
+      },
+      "contour_generators": {
+        "lathe_generators": 0,
+        "swept_tube_generators": 0,
+        "tube_tracking": {
+          "detected_swept_tubes": 0,
+          "absorbed_bare_trunk_horizon_ridges": 0
+        }
+      },
+      "cocircular_consolidation": {
+        "candidate_circles_tested": 2678,
+        "verified_cocircular_groups": 110,
+        "absorbed_short_arc_ridges": 236,
+        "output_ridges_after_cocircular": 7271
+      },
+      "planar_wireframe_regularization": {
+        "detected_planes": 6,
+        "manhattan_planes": 2,
+        "coplanar_assigned_curves": 150,
+        "axis_aligned_lines": 15,
+        "linearized_shallow_planar_curves": 3,
+        "coplanar_projected_nodes": 263,
+        "axis_snapped_lines": 8,
+        "welded_collinear_window_gaps": 0,
+        "orthogonal_corner_nodes": 240
+      },
+      "ribbon_3d_annotation": {
+        "annotated_ribbon_curves": 9185,
+        "edge_class_breakdown": {
+          "DIHEDRAL_CREASE": 1996,
+          "SILHOUETTE_CONTOUR": 5509,
+          "SURFACE_STRIPE": 1376,
+          "TOPOLOGY_BRIDGE": 298,
+          "COAXIAL_RING": 6
+        },
+        "mean_ribbon_half_width_px": 0.4628,
+        "mean_dihedral_crease_deg": 57.65
+      },
+      "initial_fitted_primitives": 7277,
+      "candidate_connections_scored": 4442,
+      "physically_valid_candidates": 3898,
+      "milp_selected_connections": 2724,
+      "selected_e2e_bridges": 223,
+      "selected_t_junctions": 1966,
+      "g1_smooth_chain_unifications": 917,
+      "post_topology_summary": {
+        "scene": "drums",
+        "num_curves": 9185,
+        "num_line_3d": 5136,
+        "num_arc_3d": 2300,
+        "num_cubic_bspline_3d": 1749,
+        "num_coaxial_families": 3,
+        "num_coaxial_ring_arcs": 6,
+        "num_cocircular_merged_arcs": 172,
+        "num_bridges": 298,
+        "num_ribbon_3d_primitives": 9185,
+        "num_lathe_contour_generators": 0,
+        "num_swept_tube_generators": 0,
+        "total_contour_generators": 0,
+        "num_planar_patches": 6,
+        "edge_class_counts": {
+          "DIHEDRAL_CREASE": 1996,
+          "SILHOUETTE_CONTOUR": 5509,
+          "SURFACE_STRIPE": 1376,
+          "TOPOLOGY_BRIDGE": 298,
+          "COAXIAL_RING": 6
+        },
+        "total_control_points": 26761,
+        "generator_control_nodes": 0,
+        "num_nodes": 11987,
+        "node_degrees": {
+          "deg1_open": 7760,
+          "deg2_cont": 2153,
+          "deg3plus_junction": 2074
+        },
+        "open_endpoint_ratio": 0.42242787152966793,
+        "multiview_2plus_curve_count": 9170,
+        "multiview_2plus_curve_ratio": 0.9983669025585193,
+        "total_arc_length": 240.10607828174625,
+        "median_arc_length": 0.018217453246542583,
+        "mean_arc_length": 0.026141108141725232,
+        "p90_arc_length": 0.05060061877657477
+      },
+      "wall_seconds": 172.45
+    },
+    "stage4": {
+      "optimization_steps": 80,
+      "loss_history": [
+        {
+          "step": 1,
+          "total": 1.7573416233062744,
+          "chamfer_px": 0.9775408506393433,
+          "tang": 0.3476603627204895,
+          "hull": 0.004912048112601042,
+          "render": 0.09287268668413162
+        },
+        {
+          "step": 20,
+          "total": 1.169965386390686,
+          "chamfer_px": 0.7808424234390259,
+          "tang": 0.3238726258277893,
+          "hull": 0.004854344762861729,
+          "render": 0.07875240594148636
+        },
+        {
+          "step": 40,
+          "total": 1.1086887121200562,
+          "chamfer_px": 0.7348607182502747,
+          "tang": 0.3125322461128235,
+          "hull": 0.004131079185754061,
+          "render": 0.07340186089277267
+        },
+        {
+          "step": 60,
+          "total": 1.0974640846252441,
+          "chamfer_px": 0.7259637117385864,
+          "tang": 0.3073008358478546,
+          "hull": 0.003899965202435851,
+          "render": 0.07176711410284042
+        },
+        {
+          "step": 80,
+          "total": 1.113469123840332,
+          "chamfer_px": 0.7428997755050659,
+          "tang": 0.30467671155929565,
+          "hull": 0.003848459105938673,
+          "render": 0.07130517065525055
+        }
+      ],
+      "topology_cleanup": {
+        "post_merged_duplicates": 357,
+        "linearized_to_line3d": 513,
+        "upgraded_splines_to_arc3d": 795,
+        "pruned_weak_spurs": 194
+      },
+      "final_summary": {
+        "scene": "drums",
+        "num_curves": 8634,
+        "num_line_3d": 5213,
+        "num_arc_3d": 3023,
+        "num_cubic_bspline_3d": 398,
+        "num_coaxial_families": 3,
+        "num_coaxial_ring_arcs": 6,
+        "num_cocircular_merged_arcs": 171,
+        "num_bridges": 296,
+        "num_ribbon_3d_primitives": 8634,
+        "num_lathe_contour_generators": 0,
+        "num_swept_tube_generators": 0,
+        "total_contour_generators": 0,
+        "num_planar_patches": 6,
+        "edge_class_counts": {
+          "DIHEDRAL_CREASE": 1924,
+          "SILHOUETTE_CONTOUR": 5112,
+          "SURFACE_STRIPE": 1296,
+          "TOPOLOGY_BRIDGE": 296,
+          "COAXIAL_RING": 6
+        },
+        "total_control_points": 22593,
+        "generator_control_nodes": 0,
+        "num_nodes": 11579,
+        "node_degrees": {
+          "deg1_open": 7602,
+          "deg2_cont": 2318,
+          "deg3plus_junction": 1659
+        },
+        "open_endpoint_ratio": 0.4402362751911049,
+        "multiview_2plus_curve_count": 8619,
+        "multiview_2plus_curve_ratio": 0.998262682418346,
+        "total_arc_length": 225.91770150444552,
+        "median_arc_length": 0.01868691612785572,
+        "mean_arc_length": 0.026166052988701127,
+        "p90_arc_length": 0.05149820322589288
+      },
+      "wall_seconds": 20.84
+    }
+  },
+  "saved_files": {
+    "json": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/cross_scene_drums/curve_network.json",
+    "controls_npz": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/cross_scene_drums/curve_controls.npz",
+    "obj": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/cross_scene_drums/curves_wireframe.obj",
+    "ribbons_obj": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/cross_scene_drums/ribbons_mesh.obj",
+    "ink_gaussians_npz": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/cross_scene_drums/resampled_ink_gaussians.npz",
+    "colored_gaussians_npz": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/cross_scene_drums/resampled_colored_gaussians.npz",
+    "semantic_gaussians_npz": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/cross_scene_drums/resampled_semantic_gaussians.npz"
+  },
+  "wall_seconds": 274.14
+}

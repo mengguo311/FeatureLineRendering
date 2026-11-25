@@ -1,0 +1,293 @@
+{
+  "scene": "drums",
+  "domain": "NeRF_Synthetic_3DGS",
+  "has_silhouette_mask": true,
+  "median_pixel_scale": 0.003056490965588273,
+  "raw_baseline": {
+    "label": "Raw 8-View Lifted (3560 chains)",
+    "num_input_chains": 3560,
+    "num_input_nodes": 54701,
+    "train_build_8views": {
+      "num_gaussians": 455499,
+      "hull_violation_node_pct": 8.919448780348585,
+      "free_space_violation_node_pct": 26.978105330637387,
+      "mean_bg_sky_leak_pixels": 26726.0,
+      "precision_2_5px_pct": 48.26353694150451,
+      "recall_2_5px_pct": 99.78749164175287,
+      "bidirectional_chamfer_2d_px": 2.326749740663776
+    },
+    "heldout_eval_views": {
+      "num_gaussians": 455499,
+      "hull_violation_node_pct": 8.919448780348585,
+      "free_space_violation_node_pct": 26.978105330637387,
+      "mean_bg_sky_leak_pixels": 26151.0,
+      "precision_2_5px_pct": 47.50484368628156,
+      "recall_2_5px_pct": 99.49294279534936,
+      "bidirectional_chamfer_2d_px": 2.3624280593923386
+    }
+  },
+  "vec_spline3d_v04": {
+    "summary": {
+      "scene": "drums",
+      "num_curves": 8673,
+      "num_line_3d": 5245,
+      "num_arc_3d": 3035,
+      "num_cubic_bspline_3d": 393,
+      "num_coaxial_families": 0,
+      "num_coaxial_ring_arcs": 0,
+      "num_cocircular_merged_arcs": 174,
+      "num_bridges": 301,
+      "num_ribbon_3d_primitives": 8673,
+      "num_lathe_contour_generators": 0,
+      "num_swept_tube_generators": 0,
+      "total_contour_generators": 0,
+      "edge_class_counts": {
+        "SURFACE_STRIPE": 1306,
+        "SILHOUETTE_CONTOUR": 5142,
+        "DIHEDRAL_CREASE": 1924,
+        "TOPOLOGY_BRIDGE": 301
+      },
+      "total_control_points": 22675,
+      "generator_control_nodes": 0,
+      "num_nodes": 11608,
+      "node_degrees": {
+        "deg1_open": 7607,
+        "deg2_cont": 2315,
+        "deg3plus_junction": 1686
+      },
+      "open_endpoint_ratio": 0.4385449094892194,
+      "multiview_2plus_curve_count": 8658,
+      "multiview_2plus_curve_ratio": 0.9982704946385333,
+      "total_arc_length": 223.7420689542562,
+      "median_arc_length": 0.018774531890154607,
+      "mean_arc_length": 0.025797540522801362,
+      "p90_arc_length": 0.05172572199344378
+    },
+    "coaxial_families": [],
+    "contour_generators": [],
+    "train_build_8views": {
+      "num_gaussians": 214755,
+      "hull_violation_node_pct": 0.049824218295266696,
+      "free_space_violation_node_pct": 25.8978836348397,
+      "mean_bg_sky_leak_pixels": 1.625,
+      "precision_2_5px_pct": 68.81660131342244,
+      "recall_2_5px_pct": 93.17362778487623,
+      "bidirectional_chamfer_2d_px": 1.7358184758622857
+    },
+    "heldout_eval_views": {
+      "num_gaussians": 214755,
+      "hull_violation_node_pct": 0.049824218295266696,
+      "free_space_violation_node_pct": 25.8978836348397,
+      "mean_bg_sky_leak_pixels": 8.4,
+      "precision_2_5px_pct": 67.46897904326221,
+      "recall_2_5px_pct": 91.22626367088938,
+      "bidirectional_chamfer_2d_px": 1.8455885275666841
+    }
+  },
+  "stages": {
+    "stage1_base": {
+      "total_input_parents": 3560,
+      "total_input_nodes": 54701,
+      "state2_extrapolated_nodes": 53397,
+      "initial_hull_violation_nodes": 2871,
+      "initial_free_space_violation_nodes": 1948,
+      "flagged_for_ray_retriangulation": 13964,
+      "repaired_nodes": 10240,
+      "post_repair_hull_violation_nodes": 2039,
+      "kept_valid_nodes": 52446,
+      "pruned_outlier_nodes": 2255,
+      "output_clean_subchains": 6226
+    },
+    "stage1_complementary_seeding": {
+      "extra_seed_views": 12,
+      "raw_2d_chains_considered": 4250,
+      "uncovered_2d_chains_lifted": 1358,
+      "stage1_ray_refined_seeds": 2079,
+      "accepted_strong_complementary_segments": 1377,
+      "added_complementary_3d_nodes": 6515,
+      "wall_seconds": 10.96
+    },
+    "stage2": {
+      "input_clean_segments": 7603,
+      "scms_iterations": 5,
+      "mean_scms_displacement_px": 0.6451014287639357,
+      "merged_segment_pairs": 2835,
+      "output_consolidated_ridges": 7429,
+      "multiview_merged_ridges": 1711,
+      "multiview_merged_ratio": 0.23031363575178354,
+      "wall_seconds": 6.59
+    },
+    "stage3": {
+      "coaxial_ring_consolidation": {
+        "detected_families": 0
+      },
+      "contour_generators": {
+        "lathe_generators": 0,
+        "swept_tube_generators": 0,
+        "tube_tracking": {
+          "detected_swept_tubes": 0,
+          "absorbed_bare_trunk_horizon_ridges": 0
+        }
+      },
+      "cocircular_consolidation": {
+        "candidate_circles_tested": 2699,
+        "verified_cocircular_groups": 113,
+        "absorbed_short_arc_ridges": 243,
+        "output_ridges_after_cocircular": 7299
+      },
+      "ribbon_3d_annotation": {
+        "annotated_ribbon_curves": 9225,
+        "edge_class_breakdown": {
+          "SURFACE_STRIPE": 1384,
+          "SILHOUETTE_CONTOUR": 5543,
+          "DIHEDRAL_CREASE": 1996,
+          "TOPOLOGY_BRIDGE": 302
+        },
+        "mean_ribbon_half_width_px": 0.4626,
+        "mean_dihedral_crease_deg": 57.64
+      },
+      "initial_fitted_primitives": 7299,
+      "candidate_connections_scored": 4465,
+      "physically_valid_candidates": 3923,
+      "milp_selected_connections": 2742,
+      "selected_e2e_bridges": 222,
+      "selected_t_junctions": 1982,
+      "g1_smooth_chain_unifications": 918,
+      "post_topology_summary": {
+        "scene": "drums",
+        "num_curves": 9225,
+        "num_line_3d": 5154,
+        "num_arc_3d": 2307,
+        "num_cubic_bspline_3d": 1764,
+        "num_coaxial_families": 0,
+        "num_coaxial_ring_arcs": 0,
+        "num_cocircular_merged_arcs": 177,
+        "num_bridges": 302,
+        "num_ribbon_3d_primitives": 9225,
+        "num_lathe_contour_generators": 0,
+        "num_swept_tube_generators": 0,
+        "total_contour_generators": 0,
+        "edge_class_counts": {
+          "SURFACE_STRIPE": 1384,
+          "SILHOUETTE_CONTOUR": 5543,
+          "DIHEDRAL_CREASE": 1996,
+          "TOPOLOGY_BRIDGE": 302
+        },
+        "total_control_points": 26931,
+        "generator_control_nodes": 0,
+        "num_nodes": 12014,
+        "node_degrees": {
+          "deg1_open": 7754,
+          "deg2_cont": 2168,
+          "deg3plus_junction": 2092
+        },
+        "open_endpoint_ratio": 0.4202710027100271,
+        "multiview_2plus_curve_count": 9210,
+        "multiview_2plus_curve_ratio": 0.9983739837398374,
+        "total_arc_length": 238.59203884130062,
+        "median_arc_length": 0.01822436650741463,
+        "mean_arc_length": 0.025863635646753456,
+        "p90_arc_length": 0.050913338403873236
+      },
+      "wall_seconds": 161.76
+    },
+    "stage4": {
+      "optimization_steps": 80,
+      "loss_history": [
+        {
+          "step": 1,
+          "total": 1.7559237480163574,
+          "chamfer_px": 0.9758156538009644,
+          "tang": 0.3477122485637665,
+          "hull": 0.004864781629294157,
+          "render": 0.09198138862848282
+        },
+        {
+          "step": 20,
+          "total": 1.181570291519165,
+          "chamfer_px": 0.7756879925727844,
+          "tang": 0.32407644391059875,
+          "hull": 0.004803386051207781,
+          "render": 0.0778760015964508
+        },
+        {
+          "step": 40,
+          "total": 1.116633415222168,
+          "chamfer_px": 0.7284432649612427,
+          "tang": 0.31244775652885437,
+          "hull": 0.004021153319627047,
+          "render": 0.07242879271507263
+        },
+        {
+          "step": 60,
+          "total": 1.1051656007766724,
+          "chamfer_px": 0.7191668748855591,
+          "tang": 0.3072887361049652,
+          "hull": 0.0038159319665282965,
+          "render": 0.07076473534107208
+        },
+        {
+          "step": 80,
+          "total": 1.1223058700561523,
+          "chamfer_px": 0.7370986938476562,
+          "tang": 0.3049663007259369,
+          "hull": 0.0037876951973885298,
+          "render": 0.07030076533555984
+        }
+      ],
+      "topology_cleanup": {
+        "post_merged_duplicates": 369,
+        "linearized_to_line3d": 522,
+        "upgraded_splines_to_arc3d": 801,
+        "pruned_weak_spurs": 183
+      },
+      "final_summary": {
+        "scene": "drums",
+        "num_curves": 8673,
+        "num_line_3d": 5245,
+        "num_arc_3d": 3035,
+        "num_cubic_bspline_3d": 393,
+        "num_coaxial_families": 0,
+        "num_coaxial_ring_arcs": 0,
+        "num_cocircular_merged_arcs": 174,
+        "num_bridges": 301,
+        "num_ribbon_3d_primitives": 8673,
+        "num_lathe_contour_generators": 0,
+        "num_swept_tube_generators": 0,
+        "total_contour_generators": 0,
+        "edge_class_counts": {
+          "SURFACE_STRIPE": 1306,
+          "SILHOUETTE_CONTOUR": 5142,
+          "DIHEDRAL_CREASE": 1924,
+          "TOPOLOGY_BRIDGE": 301
+        },
+        "total_control_points": 22675,
+        "generator_control_nodes": 0,
+        "num_nodes": 11608,
+        "node_degrees": {
+          "deg1_open": 7607,
+          "deg2_cont": 2315,
+          "deg3plus_junction": 1686
+        },
+        "open_endpoint_ratio": 0.4385449094892194,
+        "multiview_2plus_curve_count": 8658,
+        "multiview_2plus_curve_ratio": 0.9982704946385333,
+        "total_arc_length": 223.7420689542562,
+        "median_arc_length": 0.018774531890154607,
+        "mean_arc_length": 0.025797540522801362,
+        "p90_arc_length": 0.05172572199344378
+      },
+      "wall_seconds": 20.69
+    }
+  },
+  "saved_files": {
+    "json": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/cross_scene_drums/curve_network.json",
+    "controls_npz": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/cross_scene_drums/curve_controls.npz",
+    "obj": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/cross_scene_drums/curves_wireframe.obj",
+    "ribbons_obj": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/cross_scene_drums/ribbons_mesh.obj",
+    "ink_gaussians_npz": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/cross_scene_drums/resampled_ink_gaussians.npz",
+    "colored_gaussians_npz": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/cross_scene_drums/resampled_colored_gaussians.npz",
+    "semantic_gaussians_npz": "/home/u00134/.gemini/antigravity/scratch/vec_spline3d_v01/outputs/cross_scene_drums/resampled_semantic_gaussians.npz"
+  },
+  "wall_seconds": 286.19
+}

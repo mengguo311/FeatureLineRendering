@@ -1,0 +1,313 @@
+{
+  "benchmark": "vec_spline3d_v04_cross_scene_zero_tuning",
+  "num_scenes": 5,
+  "scenes": {
+    "ficus": {
+      "domain": "NeRF_Synthetic_C2L_Registry",
+      "raw_eval": {
+        "num_gaussians": 285956,
+        "hull_violation_node_pct": 5.000419644980346,
+        "free_space_violation_node_pct": 19.185469093147198,
+        "mean_bg_sky_leak_pixels": 10403.8,
+        "precision_2_5px_pct": 64.5917614061348,
+        "recall_2_5px_pct": 81.1558596410081,
+        "bidirectional_chamfer_2d_px": 2.854529354241739
+      },
+      "v04_summary": {
+        "scene": "ficus",
+        "num_curves": 5750,
+        "num_line_3d": 3534,
+        "num_arc_3d": 1972,
+        "num_cubic_bspline_3d": 244,
+        "num_coaxial_families": 1,
+        "num_coaxial_ring_arcs": 28,
+        "num_cocircular_merged_arcs": 512,
+        "num_bridges": 318,
+        "num_ribbon_3d_primitives": 5750,
+        "num_lathe_contour_generators": 1,
+        "num_swept_tube_generators": 5,
+        "total_contour_generators": 6,
+        "edge_class_counts": {
+          "SILHOUETTE_CONTOUR": 5066,
+          "SURFACE_STRIPE": 160,
+          "DIHEDRAL_CREASE": 178,
+          "TOPOLOGY_BRIDGE": 318,
+          "COAXIAL_RING": 28,
+          "VIEW_CONTOUR_GENERATOR": 6
+        },
+        "total_control_points": 15149,
+        "generator_control_nodes": 67,
+        "num_nodes": 7526,
+        "node_degrees": {
+          "deg1_open": 5034,
+          "deg2_cont": 1068,
+          "deg3plus_junction": 1424
+        },
+        "open_endpoint_ratio": 0.43773913043478263,
+        "multiview_2plus_curve_count": 5749,
+        "multiview_2plus_curve_ratio": 0.9998260869565218,
+        "total_arc_length": 184.91722263618718,
+        "median_arc_length": 0.019949526673392757,
+        "mean_arc_length": 0.032159516980206464,
+        "p90_arc_length": 0.06581283070334794
+      },
+      "v04_eval": {
+        "num_gaussians": 159172,
+        "hull_violation_node_pct": 0.06345357039734698,
+        "free_space_violation_node_pct": 22.086072034254613,
+        "mean_bg_sky_leak_pixels": 5748.6,
+        "precision_2_5px_pct": 67.06774877895096,
+        "recall_2_5px_pct": 75.65208131098075,
+        "bidirectional_chamfer_2d_px": 3.0015307298781435
+      }
+    },
+    "scan24": {
+      "domain": "DTU_RealWorld_MVS",
+      "has_silhouette_mask": false,
+      "median_pixel_scale": 0.0014294864351912116,
+      "raw_input_chains": 11309,
+      "raw_input_nodes": 122765,
+      "raw_eval": {
+        "num_gaussians": 458490,
+        "hull_violation_node_pct": 1.9167266461645838,
+        "free_space_violation_node_pct": 9.71449758991472,
+        "mean_bg_sky_leak_pixels": 0.0,
+        "precision_2_5px_pct": 73.37747096103269,
+        "recall_2_5px_pct": 96.44299769527743,
+        "bidirectional_chamfer_2d_px": 1.4486625018316333
+      },
+      "v04_summary": {
+        "scene": "scan24",
+        "num_curves": 5400,
+        "num_line_3d": 3481,
+        "num_arc_3d": 1571,
+        "num_cubic_bspline_3d": 348,
+        "num_coaxial_families": 0,
+        "num_coaxial_ring_arcs": 0,
+        "num_cocircular_merged_arcs": 214,
+        "num_bridges": 214,
+        "num_ribbon_3d_primitives": 5400,
+        "num_lathe_contour_generators": 0,
+        "num_swept_tube_generators": 0,
+        "total_contour_generators": 0,
+        "edge_class_counts": {
+          "SURFACE_STRIPE": 2150,
+          "DIHEDRAL_CREASE": 2119,
+          "SILHOUETTE_CONTOUR": 917,
+          "TOPOLOGY_BRIDGE": 214
+        },
+        "total_control_points": 14632,
+        "generator_control_nodes": 0,
+        "num_nodes": 7375,
+        "node_degrees": {
+          "deg1_open": 4910,
+          "deg2_cont": 1530,
+          "deg3plus_junction": 935
+        },
+        "open_endpoint_ratio": 0.4546296296296296,
+        "multiview_2plus_curve_count": 5383,
+        "multiview_2plus_curve_ratio": 0.9968518518518519,
+        "total_arc_length": 77.823972538459,
+        "median_arc_length": 0.008697946910016262,
+        "mean_arc_length": 0.014411846766381298,
+        "p90_arc_length": 0.028771134719217592
+      },
+      "v04_eval": {
+        "num_gaussians": 155995,
+        "hull_violation_node_pct": 0.0,
+        "free_space_violation_node_pct": 22.694317125548896,
+        "mean_bg_sky_leak_pixels": 0.0,
+        "precision_2_5px_pct": 75.94259072532046,
+        "recall_2_5px_pct": 84.25550856997913,
+        "bidirectional_chamfer_2d_px": 1.7322638270737893
+      },
+      "wall_seconds": 221.32
+    },
+    "scan65": {
+      "domain": "DTU_RealWorld_MVS",
+      "has_silhouette_mask": false,
+      "median_pixel_scale": 0.0017242887555653154,
+      "raw_input_chains": 8874,
+      "raw_input_nodes": 71227,
+      "raw_eval": {
+        "num_gaussians": 279616,
+        "hull_violation_node_pct": 2.3689631494621195,
+        "free_space_violation_node_pct": 13.56109807736324,
+        "mean_bg_sky_leak_pixels": 0.0,
+        "precision_2_5px_pct": 60.25261190851565,
+        "recall_2_5px_pct": 92.95543663962924,
+        "bidirectional_chamfer_2d_px": 2.0518834960109675
+      },
+      "v04_summary": {
+        "scene": "scan65",
+        "num_curves": 4639,
+        "num_line_3d": 2916,
+        "num_arc_3d": 1510,
+        "num_cubic_bspline_3d": 213,
+        "num_coaxial_families": 0,
+        "num_coaxial_ring_arcs": 0,
+        "num_cocircular_merged_arcs": 195,
+        "num_bridges": 123,
+        "num_ribbon_3d_primitives": 4639,
+        "num_lathe_contour_generators": 0,
+        "num_swept_tube_generators": 0,
+        "total_contour_generators": 0,
+        "edge_class_counts": {
+          "SILHOUETTE_CONTOUR": 1198,
+          "SURFACE_STRIPE": 2919,
+          "DIHEDRAL_CREASE": 399,
+          "TOPOLOGY_BRIDGE": 123
+        },
+        "total_control_points": 12284,
+        "generator_control_nodes": 0,
+        "num_nodes": 6892,
+        "node_degrees": {
+          "deg1_open": 5273,
+          "deg2_cont": 876,
+          "deg3plus_junction": 743
+        },
+        "open_endpoint_ratio": 0.5683336926061652,
+        "multiview_2plus_curve_count": 4603,
+        "multiview_2plus_curve_ratio": 0.9922397068333693,
+        "total_arc_length": 78.10836898726116,
+        "median_arc_length": 0.010702977086863538,
+        "mean_arc_length": 0.016837328947458752,
+        "p90_arc_length": 0.03610281017310111
+      },
+      "v04_eval": {
+        "num_gaussians": 125841,
+        "hull_violation_node_pct": 0.0,
+        "free_space_violation_node_pct": 28.736262426395214,
+        "mean_bg_sky_leak_pixels": 0.0,
+        "precision_2_5px_pct": 65.33420158009439,
+        "recall_2_5px_pct": 89.12245598954009,
+        "bidirectional_chamfer_2d_px": 2.059509614573928
+      },
+      "wall_seconds": 143.52
+    },
+    "drums": {
+      "domain": "NeRF_Synthetic_3DGS",
+      "has_silhouette_mask": true,
+      "median_pixel_scale": 0.003056490965588273,
+      "raw_input_chains": 3560,
+      "raw_input_nodes": 54701,
+      "raw_eval": {
+        "num_gaussians": 455499,
+        "hull_violation_node_pct": 8.919448780348585,
+        "free_space_violation_node_pct": 26.978105330637387,
+        "mean_bg_sky_leak_pixels": 26151.0,
+        "precision_2_5px_pct": 47.50484368628156,
+        "recall_2_5px_pct": 99.49294279534936,
+        "bidirectional_chamfer_2d_px": 2.3624280593923386
+      },
+      "v04_summary": {
+        "scene": "drums",
+        "num_curves": 8673,
+        "num_line_3d": 5245,
+        "num_arc_3d": 3035,
+        "num_cubic_bspline_3d": 393,
+        "num_coaxial_families": 0,
+        "num_coaxial_ring_arcs": 0,
+        "num_cocircular_merged_arcs": 174,
+        "num_bridges": 301,
+        "num_ribbon_3d_primitives": 8673,
+        "num_lathe_contour_generators": 0,
+        "num_swept_tube_generators": 0,
+        "total_contour_generators": 0,
+        "edge_class_counts": {
+          "SURFACE_STRIPE": 1306,
+          "SILHOUETTE_CONTOUR": 5142,
+          "DIHEDRAL_CREASE": 1924,
+          "TOPOLOGY_BRIDGE": 301
+        },
+        "total_control_points": 22675,
+        "generator_control_nodes": 0,
+        "num_nodes": 11608,
+        "node_degrees": {
+          "deg1_open": 7607,
+          "deg2_cont": 2315,
+          "deg3plus_junction": 1686
+        },
+        "open_endpoint_ratio": 0.4385449094892194,
+        "multiview_2plus_curve_count": 8658,
+        "multiview_2plus_curve_ratio": 0.9982704946385333,
+        "total_arc_length": 223.7420689542562,
+        "median_arc_length": 0.018774531890154607,
+        "mean_arc_length": 0.025797540522801362,
+        "p90_arc_length": 0.05172572199344378
+      },
+      "v04_eval": {
+        "num_gaussians": 214755,
+        "hull_violation_node_pct": 0.049824218295266696,
+        "free_space_violation_node_pct": 25.8978836348397,
+        "mean_bg_sky_leak_pixels": 8.4,
+        "precision_2_5px_pct": 67.46897904326221,
+        "recall_2_5px_pct": 91.22626367088938,
+        "bidirectional_chamfer_2d_px": 1.8455885275666841
+      },
+      "wall_seconds": 286.19
+    },
+    "chair": {
+      "domain": "NeRF_Synthetic_3DGS",
+      "has_silhouette_mask": true,
+      "median_pixel_scale": 0.003421071155562747,
+      "raw_input_chains": 3388,
+      "raw_input_nodes": 43105,
+      "raw_eval": {
+        "num_gaussians": 365611,
+        "hull_violation_node_pct": 1.791248075139971,
+        "free_space_violation_node_pct": 41.421346731909054,
+        "mean_bg_sky_leak_pixels": 2761.0,
+        "precision_2_5px_pct": 46.5266656153156,
+        "recall_2_5px_pct": 99.42179060035144,
+        "bidirectional_chamfer_2d_px": 2.6770428231160546
+      },
+      "v04_summary": {
+        "scene": "chair",
+        "num_curves": 9433,
+        "num_line_3d": 5807,
+        "num_arc_3d": 3251,
+        "num_cubic_bspline_3d": 375,
+        "num_coaxial_families": 0,
+        "num_coaxial_ring_arcs": 0,
+        "num_cocircular_merged_arcs": 233,
+        "num_bridges": 338,
+        "num_ribbon_3d_primitives": 9433,
+        "num_lathe_contour_generators": 0,
+        "num_swept_tube_generators": 0,
+        "total_contour_generators": 0,
+        "edge_class_counts": {
+          "DIHEDRAL_CREASE": 3504,
+          "SURFACE_STRIPE": 2432,
+          "SILHOUETTE_CONTOUR": 3159,
+          "TOPOLOGY_BRIDGE": 338
+        },
+        "total_control_points": 24420,
+        "generator_control_nodes": 0,
+        "num_nodes": 13017,
+        "node_degrees": {
+          "deg1_open": 9007,
+          "deg2_cont": 2240,
+          "deg3plus_junction": 1770
+        },
+        "open_endpoint_ratio": 0.47741969680907453,
+        "multiview_2plus_curve_count": 9428,
+        "multiview_2plus_curve_ratio": 0.9994699459344853,
+        "total_arc_length": 263.08920917618536,
+        "median_arc_length": 0.02152951903904177,
+        "mean_arc_length": 0.027890300983375953,
+        "p90_arc_length": 0.054273385235936875
+      },
+      "v04_eval": {
+        "num_gaussians": 221510,
+        "hull_violation_node_pct": 0.0054173626472845465,
+        "free_space_violation_node_pct": 34.25127533745655,
+        "mean_bg_sky_leak_pixels": 44.8,
+        "precision_2_5px_pct": 54.56903540174411,
+        "recall_2_5px_pct": 96.85385018002515,
+        "bidirectional_chamfer_2d_px": 2.388077232833311
+      },
+      "wall_seconds": 294.24
+    }
+  }
+}
