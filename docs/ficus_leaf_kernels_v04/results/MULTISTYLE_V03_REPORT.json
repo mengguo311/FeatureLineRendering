@@ -1,0 +1,143 @@
+{
+  "schema": "ficus_multistyle_leaves/v03",
+  "substrate_method": "M1_OpacitySharpening + M2_SeamSplitting (M3_Dropped)",
+  "num_total_kernels": 297343,
+  "num_discrete_3d_leaves": 472,
+  "substrate_build_seconds": 2.093,
+  "substrate_stats": {
+    "m2_seam_split": {
+      "kernels_before": 284835,
+      "kernels_after": 297343,
+      "total_parent_splits": 12508,
+      "children_reassigned_across_seams": 5022,
+      "overhanging_air_children_trimmed": 1537
+    },
+    "m1_opacity_sharp": {
+      "faint_halo_suppressed_count": 77678,
+      "outer_fringe_tucked_count": 2467,
+      "median_active_leaf_opacity_before": 0.0819,
+      "median_active_leaf_opacity_after": 0.2901
+    }
+  },
+  "style_presets_evaluated_on_5_test_views": {
+    "ghibli_gouache": {
+      "title": "Ghibli Gouache",
+      "silhouette_iou_vs_gt_pct": 95.05,
+      "within_leaf_chromatic_mad": 0.0362,
+      "render_fps_800x800": 5.1
+    },
+    "sumie_ink_wash": {
+      "title": "Sumi-e Ink Wash",
+      "silhouette_iou_vs_gt_pct": 94.82,
+      "within_leaf_chromatic_mad": 0.042,
+      "render_fps_800x800": 5.0
+    },
+    "ukiyoe_papercut": {
+      "title": "Ukiyo-e Cutout",
+      "silhouette_iou_vs_gt_pct": 94.2,
+      "within_leaf_chromatic_mad": 0.05,
+      "render_fps_800x800": 5.1
+    },
+    "pointillist_stipple": {
+      "title": "3D Pointillist",
+      "silhouette_iou_vs_gt_pct": 85.55,
+      "within_leaf_chromatic_mad": 0.1314,
+      "render_fps_800x800": 5.1
+    },
+    "sakura_watercolor": {
+      "title": "Sakura Pastel",
+      "silhouette_iou_vs_gt_pct": 95.03,
+      "within_leaf_chromatic_mad": 0.0421,
+      "render_fps_800x800": 5.1
+    },
+    "cyanotype_celadon": {
+      "title": "Cyanotype Glaze",
+      "silhouette_iou_vs_gt_pct": 95.03,
+      "within_leaf_chromatic_mad": 0.0548,
+      "render_fps_800x800": 5.0
+    }
+  },
+  "mixed_style_same_plant_modes": {
+    "mode_a_crown_6zone_symphony": {
+      "leaf_counts_by_style": {
+        "ghibli_gouache": 110,
+        "sumie_ink_wash": 107,
+        "ukiyoe_papercut": 59,
+        "pointillist_stipple": 71,
+        "sakura_watercolor": 42,
+        "cyanotype_celadon": 83
+      },
+      "silhouette_iou_vs_gt_pct": 93.88,
+      "within_leaf_chromatic_mad": 0.0597,
+      "render_fps_800x800": 5.0
+    },
+    "mode_b_intra_rosette_mosaic": {
+      "leaf_counts_by_style": {
+        "ghibli_gouache": 79,
+        "sumie_ink_wash": 79,
+        "ukiyoe_papercut": 79,
+        "pointillist_stipple": 79,
+        "sakura_watercolor": 78,
+        "cyanotype_celadon": 78
+      },
+      "mosaic_neighbor_style_isolation_purity_pct": 58.54,
+      "silhouette_iou_vs_gt_pct": 93.64,
+      "within_leaf_chromatic_mad": 0.0744,
+      "render_fps_800x800": 5.0
+    },
+    "mode_c_sumie_hero_bloom": {
+      "leaf_counts_by_style": {
+        "ghibli_gouache": 22,
+        "sumie_ink_wash": 387,
+        "ukiyoe_papercut": 21,
+        "sakura_watercolor": 21,
+        "cyanotype_celadon": 21
+      },
+      "silhouette_iou_vs_gt_pct": 94.92,
+      "within_leaf_chromatic_mad": 0.0445,
+      "render_fps_800x800": 4.9
+    }
+  },
+  "saved_m1_m2_substrate_npz": "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/m1_m2_per_leaf_kernels.npz",
+  "saved_panels": [
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/gallery_6presets_full_test_r_1.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/gallery_6presets_ink_full_test_r_1.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/gallery_6presets_canopy_zoom_test_r_1.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/gallery_6presets_ink_canopy_zoom_test_r_1.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/gallery_6presets_rosette_zoom_test_r_1.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/gallery_6presets_ink_rosette_zoom_test_r_1.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/mixed_same_plant_full_test_r_1.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/mixed_same_plant_ink_full_test_r_1.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/mixed_same_plant_canopy_zoom_test_r_1.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/mixed_same_plant_ink_canopy_zoom_test_r_1.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/mixed_same_plant_rosette_zoom_test_r_1.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/mixed_same_plant_ink_rosette_zoom_test_r_1.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/mixed_same_plant_full_test_r_14.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/mixed_same_plant_ink_full_test_r_14.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/gallery_6presets_full_test_r_7.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/gallery_6presets_ink_full_test_r_7.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/gallery_6presets_canopy_zoom_test_r_7.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/gallery_6presets_ink_canopy_zoom_test_r_7.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/gallery_6presets_rosette_zoom_test_r_7.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/gallery_6presets_ink_rosette_zoom_test_r_7.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/mixed_same_plant_full_test_r_7.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/mixed_same_plant_ink_full_test_r_7.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/mixed_same_plant_canopy_zoom_test_r_7.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/mixed_same_plant_ink_canopy_zoom_test_r_7.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/mixed_same_plant_rosette_zoom_test_r_7.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/mixed_same_plant_ink_rosette_zoom_test_r_7.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/gallery_6presets_full_test_r_79.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/gallery_6presets_ink_full_test_r_79.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/gallery_6presets_canopy_zoom_test_r_79.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/gallery_6presets_ink_canopy_zoom_test_r_79.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/gallery_6presets_rosette_zoom_test_r_79.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/gallery_6presets_ink_rosette_zoom_test_r_79.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/mixed_same_plant_full_test_r_79.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/mixed_same_plant_ink_full_test_r_79.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/mixed_same_plant_canopy_zoom_test_r_79.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/mixed_same_plant_ink_canopy_zoom_test_r_79.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/mixed_same_plant_rosette_zoom_test_r_79.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_multistyle_v03/mixed_same_plant_ink_rosette_zoom_test_r_79.png"
+  ],
+  "total_wall_seconds": 32.37
+}

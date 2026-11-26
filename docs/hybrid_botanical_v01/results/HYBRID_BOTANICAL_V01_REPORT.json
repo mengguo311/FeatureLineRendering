@@ -1,0 +1,92 @@
+{
+  "schema": "hybrid_botanical_benchmark/v01",
+  "workspace_root": "/home/u00134/.gemini/antigravity/scratch/hybrid_botanical_v01",
+  "device_used": "cuda:0",
+  "total_kernels_completed_cloud": 298015,
+  "layer2_4level_tree": {
+    "num_primary_trunks_lvl0": 5,
+    "num_secondary_branches_lvl1": 50,
+    "num_rosette_stalks_lvl2": 189,
+    "num_petiole_links_lvl3": 472,
+    "total_bspline_branches": 716,
+    "num_palmate_rosette_hubs": 189,
+    "mean_leaflets_per_rosette_hub": 2.5,
+    "leaf_to_root_reachability_pct": 100.0,
+    "infilled_occluded_twig_kernels": 477,
+    "bound_wood_kernels_total": 29313
+  },
+  "layer3_dual_arc_eigen_leaves": {
+    "num_dual_arc_leaf_patches": 472,
+    "eigen_leaf_pca_singular_stds": [
+      0.083,
+      0.0786,
+      0.0592
+    ],
+    "eigen_leaf_median_length_cm": 10.58,
+    "eigen_leaf_median_width_ratio": 0.449,
+    "occluded_leaves_amodally_expanded": 45,
+    "shadow_zone_infilled_foliage_kernels": 195,
+    "total_canopy_leaf_area_m2": 1.1232
+  },
+  "heldout_5views_reconstruction": {
+    "heldout_5views_iou_before_completion_pct": 95.03,
+    "heldout_5views_iou_after_completion_pct": 91.05,
+    "shadow_infill_unpruned_consistency_psnr_db": 31.19
+  },
+  "app1_8x_vector_superzoom": {
+    "zoom_magnification": "8.0x optical (6400x6400 effective scene resolution)",
+    "raw_3dgs_edge_gradient_sharpness": 0.0358,
+    "m1_m2_untrimmed_edge_sharpness": 0.0433,
+    "hybrid_spline_trimmed_edge_sharpness": 0.2371,
+    "sharpness_gain_vs_raw_3dgs_x": 6.62,
+    "saved_panels": [
+      "/home/u00134/.gemini/antigravity/scratch/hybrid_botanical_v01/outputs/ficus_hybrid_v01/app1_8x_vector_superzoom_test_r_7.png",
+      "/home/u00134/.gemini/antigravity/scratch/hybrid_botanical_v01/outputs/ficus_hybrid_v01/app1_8x_vector_superzoom_test_r_79.png"
+    ]
+  },
+  "app2_topological_bonsai_pruning": {
+    "num_cut_secondary_branches": 3,
+    "total_removed_branch_segments": 153,
+    "total_removed_subtree_leaves": 113,
+    "remaining_leaves": 359,
+    "exposed_inner_window_coverage_without_completion_pct": 49.54,
+    "exposed_inner_window_coverage_with_completion_pct": 50.19,
+    "inner_canopy_completeness_gain_pp": 0.64,
+    "saved_panels": [
+      "/home/u00134/.gemini/antigravity/scratch/hybrid_botanical_v01/outputs/ficus_hybrid_v01/app2_topological_pruning_full_test_r_1.png",
+      "/home/u00134/.gemini/antigravity/scratch/hybrid_botanical_v01/outputs/ficus_hybrid_v01/app2_exposed_inner_canopy_zoom_test_r_1.png"
+    ]
+  },
+  "app3_4level_hierarchical_kinematics": {
+    "pot_base_max_drift_mm": 0.0,
+    "p90_wood_skeleton_displacement_cm": 49.06,
+    "p90_coupled_leaf_displacement_cm": 66.03,
+    "saved_panels": [
+      "/home/u00134/.gemini/antigravity/scratch/hybrid_botanical_v01/outputs/ficus_hybrid_v01/app3_4level_coupled_bonsai_kinematics_test_r_1.png"
+    ],
+    "saved_gif": "/home/u00134/.gemini/antigravity/scratch/hybrid_botanical_v01/outputs/ficus_hybrid_v01/anim_app3_4level_coupled_sway_test_r_1.gif"
+  },
+  "app4_inverse_phyllotaxis_and_regrowth": {
+    "discovered_leaflets_per_rosette_mean": 3.48,
+    "discovered_intra_rosette_divergence_deg_median": 68.8,
+    "discovered_branching_pitch_deg_median": 39.3,
+    "discovered_leaf_allometry_exponent_beta": 0.871,
+    "num_spawned_apical_shoots": 16,
+    "num_spawned_juvenile_eigen_leaves": 80,
+    "total_leaves_after_growth": 552,
+    "saved_panels": [
+      "/home/u00134/.gemini/antigravity/scratch/hybrid_botanical_v01/outputs/ficus_hybrid_v01/app4_inverse_phyllotaxis_regrowth_full_test_r_1.png",
+      "/home/u00134/.gemini/antigravity/scratch/hybrid_botanical_v01/outputs/ficus_hybrid_v01/app4_apical_shoots_crown_zoom_test_r_1.png"
+    ]
+  },
+  "exported_assets": {
+    "standard_3dgs_ply": "/home/u00134/.gemini/antigravity/scratch/hybrid_botanical_v01/outputs/ficus_hybrid_v01/hybrid_botanical_completed.ply",
+    "cad_skeleton_and_splines_obj": "/home/u00134/.gemini/antigravity/scratch/hybrid_botanical_v01/outputs/ficus_hybrid_v01/hybrid_skeleton_and_dual_arc_leaves.obj",
+    "unified_primitive_json": "/home/u00134/.gemini/antigravity/scratch/hybrid_botanical_v01/outputs/ficus_hybrid_v01/hybrid_botanical_primitive.json",
+    "overview_panels": [
+      "/home/u00134/.gemini/antigravity/scratch/hybrid_botanical_v01/outputs/ficus_hybrid_v01/overview_3tier_hybrid_test_r_1.png",
+      "/home/u00134/.gemini/antigravity/scratch/hybrid_botanical_v01/outputs/ficus_hybrid_v01/overview_3tier_hybrid_test_r_79.png"
+    ]
+  },
+  "total_wall_seconds": 86.47
+}

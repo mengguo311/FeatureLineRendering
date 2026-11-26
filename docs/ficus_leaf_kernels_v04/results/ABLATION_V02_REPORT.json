@@ -1,0 +1,192 @@
+{
+  "schema": "ficus_leaf_ablation/v02",
+  "workspace_root": "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01",
+  "device_used": "cuda:0",
+  "num_heldout_eval_views": 5,
+  "best_single_optimization_method": "1_m1_opacity_sharpening",
+  "best_overall_configuration": "4_v02_combined_m123",
+  "arms": {
+    "0_v01_baseline": {
+      "short_title": "v01 Baseline",
+      "wall_seconds": 0.191,
+      "build_stats": {
+        "num_leaves": 472
+      },
+      "heldout_5views_metrics": {
+        "num_total_kernels": 284835,
+        "front_leaf_xray_transmittance_pct": 16.86,
+        "single_leaf_core_purity_pct": 52.24,
+        "inter_leaf_seam_sharpness": 20.19,
+        "pure_3dgs_c2l_boundary_recall_pct": 93.19,
+        "intra_leaf_venation_detail": 1.49,
+        "silhouette_iou_vs_gt_pct": 89.94
+      },
+      "delta_vs_baseline": {
+        "xray_transmittance_reduction_pp": 0.0,
+        "single_leaf_purity_gain_pp": 0.0,
+        "inter_leaf_seam_sharpness_gain": 0.0,
+        "pure_3dgs_c2l_boundary_recall_gain_pp": 0.0,
+        "intra_leaf_venation_detail_gain": 0.0,
+        "silhouette_iou_delta_pp": 0.0
+      },
+      "composite_effectiveness_score": 70.21
+    },
+    "1_m1_opacity_sharpening": {
+      "short_title": "+M1 Opacity Sharp",
+      "wall_seconds": 0.469,
+      "build_stats": {
+        "faint_halo_suppressed_count": 75272,
+        "outer_fringe_tucked_count": 2390,
+        "median_active_leaf_opacity_before": 0.0826,
+        "median_active_leaf_opacity_after": 0.2868
+      },
+      "heldout_5views_metrics": {
+        "num_total_kernels": 284835,
+        "front_leaf_xray_transmittance_pct": 12.69,
+        "single_leaf_core_purity_pct": 66.28,
+        "inter_leaf_seam_sharpness": 20.66,
+        "pure_3dgs_c2l_boundary_recall_pct": 92.53,
+        "intra_leaf_venation_detail": 1.22,
+        "silhouette_iou_vs_gt_pct": 95.2
+      },
+      "delta_vs_baseline": {
+        "xray_transmittance_reduction_pp": 4.17,
+        "single_leaf_purity_gain_pp": 14.04,
+        "inter_leaf_seam_sharpness_gain": 0.47,
+        "pure_3dgs_c2l_boundary_recall_gain_pp": -0.66,
+        "intra_leaf_venation_detail_gain": -0.27,
+        "silhouette_iou_delta_pp": 5.26
+      },
+      "composite_effectiveness_score": 75.4
+    },
+    "2_m2_seam_splitting": {
+      "short_title": "+M2 Seam Split",
+      "wall_seconds": 1.644,
+      "build_stats": {
+        "kernels_before": 284835,
+        "kernels_after": 297343,
+        "total_parent_splits": 12508,
+        "children_reassigned_across_seams": 5022,
+        "overhanging_air_children_trimmed": 1537
+      },
+      "heldout_5views_metrics": {
+        "num_total_kernels": 297343,
+        "front_leaf_xray_transmittance_pct": 16.6,
+        "single_leaf_core_purity_pct": 51.99,
+        "inter_leaf_seam_sharpness": 20.33,
+        "pure_3dgs_c2l_boundary_recall_pct": 93.45,
+        "intra_leaf_venation_detail": 1.53,
+        "silhouette_iou_vs_gt_pct": 89.92
+      },
+      "delta_vs_baseline": {
+        "xray_transmittance_reduction_pp": 0.26,
+        "single_leaf_purity_gain_pp": -0.25,
+        "inter_leaf_seam_sharpness_gain": 0.14,
+        "pure_3dgs_c2l_boundary_recall_gain_pp": 0.26,
+        "intra_leaf_venation_detail_gain": 0.04,
+        "silhouette_iou_delta_pp": -0.02
+      },
+      "composite_effectiveness_score": 70.37
+    },
+    "3_m3_uv_venation": {
+      "short_title": "+M3 UV Venation",
+      "wall_seconds": 0.918,
+      "build_stats": {
+        "texel_kernels_before": 284835,
+        "texel_kernels_after": 495240,
+        "texel_subdivisions": 210405
+      },
+      "heldout_5views_metrics": {
+        "num_total_kernels": 495240,
+        "front_leaf_xray_transmittance_pct": 15.56,
+        "single_leaf_core_purity_pct": 51.31,
+        "inter_leaf_seam_sharpness": 20.83,
+        "pure_3dgs_c2l_boundary_recall_pct": 96.28,
+        "intra_leaf_venation_detail": 2.58,
+        "silhouette_iou_vs_gt_pct": 90.24
+      },
+      "delta_vs_baseline": {
+        "xray_transmittance_reduction_pp": 1.3,
+        "single_leaf_purity_gain_pp": -0.93,
+        "inter_leaf_seam_sharpness_gain": 0.64,
+        "pure_3dgs_c2l_boundary_recall_gain_pp": 3.09,
+        "intra_leaf_venation_detail_gain": 1.09,
+        "silhouette_iou_delta_pp": 0.3
+      },
+      "composite_effectiveness_score": 72.15
+    },
+    "4_v02_combined_m123": {
+      "short_title": "v02 Full (M1+M2+M3)",
+      "wall_seconds": 2.775,
+      "build_stats": {
+        "m2_split": {
+          "kernels_before": 284835,
+          "kernels_after": 297343,
+          "total_parent_splits": 12508,
+          "children_reassigned_across_seams": 5022,
+          "overhanging_air_children_trimmed": 1537
+        },
+        "m3_texel": {
+          "texel_kernels_before": 297343,
+          "texel_kernels_after": 499656,
+          "texel_subdivisions": 202313
+        },
+        "m1_opacity": {
+          "faint_halo_suppressed_count": 79185,
+          "outer_fringe_tucked_count": 4090,
+          "median_active_leaf_opacity_before": 0.0702,
+          "median_active_leaf_opacity_after": 0.2676
+        }
+      },
+      "heldout_5views_metrics": {
+        "num_total_kernels": 499656,
+        "front_leaf_xray_transmittance_pct": 10.99,
+        "single_leaf_core_purity_pct": 64.83,
+        "inter_leaf_seam_sharpness": 21.27,
+        "pure_3dgs_c2l_boundary_recall_pct": 96.14,
+        "intra_leaf_venation_detail": 2.62,
+        "silhouette_iou_vs_gt_pct": 93.95
+      },
+      "delta_vs_baseline": {
+        "xray_transmittance_reduction_pp": 5.87,
+        "single_leaf_purity_gain_pp": 12.59,
+        "inter_leaf_seam_sharpness_gain": 1.08,
+        "pure_3dgs_c2l_boundary_recall_gain_pp": 2.95,
+        "intra_leaf_venation_detail_gain": 1.13,
+        "silhouette_iou_delta_pp": 4.01
+      },
+      "composite_effectiveness_score": 77.52
+    }
+  },
+  "saved_v02_refined_npz": "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/v02_refined_leaf_kernels.npz",
+  "saved_panels": [
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_inst_full_test_r_1.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_pure_stylized_full_test_r_1.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_ink_stylized_full_test_r_1.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_inst_canopy_zoom_test_r_1.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_pure_stylized_canopy_zoom_test_r_1.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_ink_stylized_canopy_zoom_test_r_1.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_inst_rosette_zoom_test_r_1.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_pure_stylized_rosette_zoom_test_r_1.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_ink_stylized_rosette_zoom_test_r_1.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_inst_full_test_r_7.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_pure_stylized_full_test_r_7.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_ink_stylized_full_test_r_7.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_inst_canopy_zoom_test_r_7.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_pure_stylized_canopy_zoom_test_r_7.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_ink_stylized_canopy_zoom_test_r_7.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_inst_rosette_zoom_test_r_7.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_pure_stylized_rosette_zoom_test_r_7.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_ink_stylized_rosette_zoom_test_r_7.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_inst_full_test_r_79.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_pure_stylized_full_test_r_79.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_ink_stylized_full_test_r_79.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_inst_canopy_zoom_test_r_79.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_pure_stylized_canopy_zoom_test_r_79.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_ink_stylized_canopy_zoom_test_r_79.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_inst_rosette_zoom_test_r_79.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_pure_stylized_rosette_zoom_test_r_79.png",
+    "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_ablation_v02/ablation_ink_stylized_rosette_zoom_test_r_79.png"
+  ],
+  "total_wall_seconds": 28.24
+}

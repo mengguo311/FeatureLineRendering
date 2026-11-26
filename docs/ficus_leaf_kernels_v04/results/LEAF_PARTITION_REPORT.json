@@ -1,0 +1,46 @@
+{
+  "device_used": "cuda:0",
+  "workspace_root": "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01",
+  "partition_summary": {
+    "semantic_preclassification": {
+      "total_3dgs_kernels": 284835,
+      "pot_and_soil_kernels": 37126,
+      "wood_stem_kernels": 24805,
+      "total_foliage_kernels": 222904,
+      "active_foliage_kernels_opac_ge_0025": 145269,
+      "faint_halo_foliage_kernels": 77635
+    },
+    "multiview_2d_detection": {
+      "num_train_views": 32,
+      "total_valid_2d_enclosed_cells": 2337,
+      "mean_2d_enclosed_cells_per_view": 73.0
+    },
+    "leaf_3d_partitioning": {
+      "num_3d_leaf_instances": 472,
+      "visibility_tier_counts": {
+        "OUTER_ENCLOSED": 264,
+        "MID_PARTIAL_OCCLUDED": 195,
+        "DEEP_OCCLUDED": 13
+      },
+      "median_active_kernels_per_leaf": 292.5,
+      "mean_active_kernels_per_leaf": 307.8,
+      "median_leaf_length_cm_equiv": 10.84,
+      "median_leaf_width_cm_equiv": 5.05,
+      "median_leaf_thickness_mm_equiv": 7.3,
+      "unassigned_foliage_kernels_remaining": 0
+    },
+    "partition_wall_seconds": 16.7
+  },
+  "heldout_test_5views_evaluation": {
+    "num_eval_views": 5,
+    "mean_2d_enclosed_cells_on_test_views": 73.2,
+    "within_2d_leaf_3d_instance_homogeneity_pct": 47.69
+  },
+  "saved_files": {
+    "kernels_npz": "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_baseline_v01/leaf_partitioned_kernels.npz",
+    "instances_json": "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_baseline_v01/leaf_instances.json",
+    "closed_boundaries_obj": "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_baseline_v01/leaf_closed_boundaries.obj",
+    "leaf_patches_mesh_obj": "/home/u00134/.gemini/antigravity/scratch/ficus_leaf_kernels_v01/outputs/ficus_leaf_baseline_v01/leaf_patches_mesh.obj"
+  },
+  "total_wall_seconds": 23.69
+}
