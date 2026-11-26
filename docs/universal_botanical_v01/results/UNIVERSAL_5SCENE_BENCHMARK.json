@@ -1,0 +1,436 @@
+{
+  "schema": "universal_botanical_5scene_benchmark/v01",
+  "device": "cuda:0",
+  "zero_manual_annotations": true,
+  "zero_scene_hardcoding": true,
+  "config": {
+    "active_opacity_min": 0.03,
+    "open_ground_width_over_height_min": 1.35,
+    "smooth_shell_djump_max": 0.0185,
+    "smooth_shell_alpha_min": 0.9,
+    "rect_tray_fill_min": 0.9,
+    "lathe_aspect_max": 1.16,
+    "min_cell_area_px": 24,
+    "max_cell_area_frac": 0.28,
+    "detrended_depth_iqr_mult": 4.8,
+    "coplanar_normal_deg": 33.0,
+    "coplanar_step_mult": 1.75,
+    "seam_merge_normal_deg": 52.0,
+    "seam_merge_step_mult": 2.8,
+    "seam_merge_djump_mult": 2.8,
+    "laminar_thickness_ratio_max": 0.24,
+    "min_laminar_active_kernels": 22,
+    "num_periodic_ctrl": 24
+  },
+  "scenes": {
+    "ficus": {
+      "build_wall_seconds": 111.68,
+      "domain_discovery": {
+        "basal_regime": "AXISYMMETRIC_LATHE",
+        "vessel_bot_z": -1.0173,
+        "rim_z": -0.4912,
+        "total_kernels": 284835,
+        "static_stand_or_table_kernels": 1867,
+        "static_basal_support_kernels": 35207,
+        "verified_stem_chains": 5,
+        "stem_kernels": 9790,
+        "canopy_candidate_kernels": 237971
+      },
+      "organ_partition": {
+        "total_build_2d_cells": 1688,
+        "mean_build_2d_cells_per_view": 52.75,
+        "initial_3d_clusters_before_seam_merge": 224,
+        "curved_lamina_seam_merges": 12,
+        "num_3d_organs": 212,
+        "num_laminar_blades": 104,
+        "num_volumetric_clusters": 108,
+        "tier_counts": {
+          "OUTER_ENCLOSED": 114,
+          "MID_PARTIAL_OCCLUDED": 76,
+          "DEEP_OCCLUDED": 22
+        },
+        "selective_m2_seam_refinement": {
+          "split_parents": 75,
+          "reassigned_children": 13
+        }
+      },
+      "comparison_vs_previous_strict_v04": {
+        "prev_build_closed_2d_regions": 2337,
+        "ours_build_closed_2d_regions": 1688,
+        "prev_outer_enclosed_organs": 264,
+        "ours_outer_enclosed_organs": 114,
+        "prev_iou_after_spline_trim_pct": 90.98,
+        "prev_trim_iou_delta_pp": -4.05,
+        "ours_substrate_iou_pct": 100.0,
+        "ours_spline_hybrid_iou_pct": 92.88,
+        "ours_trim_iou_delta_pp": -7.11,
+        "ours_substrate_sh3_psnr_db": 76.73,
+        "ours_spline_hybrid_sh3_psnr_db": 32.24
+      },
+      "superzoom_8x_sharpness": {
+        "raw_3dgs_p95_grad": 0.6971,
+        "ours_hybrid_p95_grad": 1.1267,
+        "sharpness_gain_x": 1.62
+      },
+      "wind_motion_support_audit": {
+        "own_static_support_and_stand_max_disp_pmed": 0.0,
+        "independent_verified_container_p90_disp_pmed": null
+      },
+      "independent_heldout_support_mesh_eval": null,
+      "brassica_blade_spot_check": null,
+      "exported_assets": {
+        "sh3_ply": "/home/u00134/.gemini/antigravity/scratch/universal_botanical_v01/outputs/universal_5scene_v01/ficus/universal_botanical_sh3.ply",
+        "geometry_obj": "/home/u00134/.gemini/antigravity/scratch/universal_botanical_v01/outputs/universal_5scene_v01/ficus/universal_geometry.obj"
+      }
+    },
+    "brassica": {
+      "build_wall_seconds": 38.48,
+      "domain_discovery": {
+        "basal_regime": "NO_ENCLOSED_SUPPORT",
+        "vessel_bot_z": -0.8702,
+        "rim_z": -0.8702,
+        "total_kernels": 214598,
+        "static_stand_or_table_kernels": 0,
+        "static_basal_support_kernels": 0,
+        "verified_stem_chains": 0,
+        "stem_kernels": 0,
+        "canopy_candidate_kernels": 214598
+      },
+      "organ_partition": {
+        "total_build_2d_cells": 1398,
+        "mean_build_2d_cells_per_view": 43.69,
+        "initial_3d_clusters_before_seam_merge": 581,
+        "curved_lamina_seam_merges": 104,
+        "num_3d_organs": 477,
+        "num_laminar_blades": 77,
+        "num_volumetric_clusters": 400,
+        "tier_counts": {
+          "OUTER_ENCLOSED": 161,
+          "MID_PARTIAL_OCCLUDED": 300,
+          "DEEP_OCCLUDED": 16
+        },
+        "selective_m2_seam_refinement": {
+          "split_parents": 99,
+          "reassigned_children": 37
+        }
+      },
+      "comparison_vs_previous_strict_v04": {
+        "prev_build_closed_2d_regions": 5146,
+        "ours_build_closed_2d_regions": 1398,
+        "prev_outer_enclosed_organs": 364,
+        "ours_outer_enclosed_organs": 161,
+        "prev_iou_after_spline_trim_pct": 86.98,
+        "prev_trim_iou_delta_pp": -7.59,
+        "ours_substrate_iou_pct": 100.0,
+        "ours_spline_hybrid_iou_pct": 98.27,
+        "ours_trim_iou_delta_pp": -1.72,
+        "ours_substrate_sh3_psnr_db": 71.74,
+        "ours_spline_hybrid_sh3_psnr_db": 34.97
+      },
+      "superzoom_8x_sharpness": {
+        "raw_3dgs_p95_grad": 1.1998,
+        "ours_hybrid_p95_grad": 1.2216,
+        "sharpness_gain_x": 1.02
+      },
+      "wind_motion_support_audit": {
+        "own_static_support_and_stand_max_disp_pmed": 0.0,
+        "independent_verified_container_p90_disp_pmed": null
+      },
+      "independent_heldout_support_mesh_eval": null,
+      "brassica_blade_spot_check": {
+        "A": {
+          "pixels": 3412,
+          "largest_positive_label_area_share_pct": 100.0,
+          "positive_labels_owning_ge5pct": 1,
+          "top_clusters": [
+            {
+              "organ_id": 59,
+              "share_pct": 100.0
+            }
+          ]
+        },
+        "B": {
+          "pixels": 3288,
+          "largest_positive_label_area_share_pct": 75.76,
+          "positive_labels_owning_ge5pct": 2,
+          "top_clusters": [
+            {
+              "organ_id": 157,
+              "share_pct": 75.76
+            },
+            {
+              "organ_id": 299,
+              "share_pct": 24.12
+            },
+            {
+              "organ_id": 372,
+              "share_pct": 0.12
+            }
+          ]
+        },
+        "C": {
+          "pixels": 1442,
+          "largest_positive_label_area_share_pct": 86.27,
+          "positive_labels_owning_ge5pct": 2,
+          "top_clusters": [
+            {
+              "organ_id": 274,
+              "share_pct": 86.27
+            },
+            {
+              "organ_id": 198,
+              "share_pct": 13.73
+            }
+          ]
+        }
+      },
+      "exported_assets": {
+        "sh3_ply": "/home/u00134/.gemini/antigravity/scratch/universal_botanical_v01/outputs/universal_5scene_v01/brassica/universal_botanical_sh3.ply",
+        "geometry_obj": "/home/u00134/.gemini/antigravity/scratch/universal_botanical_v01/outputs/universal_5scene_v01/brassica/universal_geometry.obj"
+      }
+    },
+    "bonsai": {
+      "build_wall_seconds": 16.13,
+      "domain_discovery": {
+        "basal_regime": "RECTANGULAR_TRAY_LOFT",
+        "vessel_bot_z": -0.3886,
+        "rim_z": -0.2348,
+        "total_kernels": 103634,
+        "static_stand_or_table_kernels": 5696,
+        "static_basal_support_kernels": 14494,
+        "verified_stem_chains": 1,
+        "stem_kernels": 3653,
+        "canopy_candidate_kernels": 79791
+      },
+      "organ_partition": {
+        "total_build_2d_cells": 2068,
+        "mean_build_2d_cells_per_view": 64.62,
+        "initial_3d_clusters_before_seam_merge": 233,
+        "curved_lamina_seam_merges": 71,
+        "num_3d_organs": 162,
+        "num_laminar_blades": 21,
+        "num_volumetric_clusters": 141,
+        "tier_counts": {
+          "OUTER_ENCLOSED": 127,
+          "MID_PARTIAL_OCCLUDED": 34,
+          "DEEP_OCCLUDED": 1
+        },
+        "selective_m2_seam_refinement": {
+          "split_parents": 46,
+          "reassigned_children": 10
+        }
+      },
+      "comparison_vs_previous_strict_v04": {
+        "prev_build_closed_2d_regions": 3,
+        "ours_build_closed_2d_regions": 2068,
+        "prev_outer_enclosed_organs": 0,
+        "ours_outer_enclosed_organs": 127,
+        "prev_iou_after_spline_trim_pct": 92.75,
+        "prev_trim_iou_delta_pp": -6.23,
+        "ours_substrate_iou_pct": 100.0,
+        "ours_spline_hybrid_iou_pct": 99.55,
+        "ours_trim_iou_delta_pp": -0.45,
+        "ours_substrate_sh3_psnr_db": 74.27,
+        "ours_spline_hybrid_sh3_psnr_db": 42.3
+      },
+      "superzoom_8x_sharpness": {
+        "raw_3dgs_p95_grad": 1.1236,
+        "ours_hybrid_p95_grad": 1.3287,
+        "sharpness_gain_x": 1.18
+      },
+      "wind_motion_support_audit": {
+        "own_static_support_and_stand_max_disp_pmed": 0.0,
+        "independent_verified_container_p90_disp_pmed": 0.0
+      },
+      "independent_heldout_support_mesh_eval": {
+        "mean_projected_iou_pct": 63.92,
+        "mean_visible_iou_pct": 67.03,
+        "mean_depth_err_px_equiv": 14.17,
+        "per_view": {
+          "DSCF5805": {
+            "projected_iou_pct": 74.55248053645508,
+            "visible_iou_pct": 75.14490495481458,
+            "median_abs_depth_error_pixel_equiv": 13.678625925275997
+          },
+          "DSCF5685": {
+            "projected_iou_pct": 62.7046783625731,
+            "visible_iou_pct": 63.519179996893925,
+            "median_abs_depth_error_pixel_equiv": 14.914746326077934
+          },
+          "DSCF5741": {
+            "projected_iou_pct": 65.38263995891114,
+            "visible_iou_pct": 65.72374899292812,
+            "median_abs_depth_error_pixel_equiv": 17.448688569007793
+          },
+          "DSCF5621": {
+            "projected_iou_pct": 61.227934453899714,
+            "visible_iou_pct": 72.27095093356492,
+            "median_abs_depth_error_pixel_equiv": 13.401323657534281
+          },
+          "DSCF5565": {
+            "projected_iou_pct": 55.717373990215044,
+            "visible_iou_pct": 58.46669147748418,
+            "median_abs_depth_error_pixel_equiv": 11.418814853595428
+          }
+        }
+      },
+      "brassica_blade_spot_check": null,
+      "exported_assets": {
+        "sh3_ply": "/home/u00134/.gemini/antigravity/scratch/universal_botanical_v01/outputs/universal_5scene_v01/bonsai/universal_botanical_sh3.ply",
+        "geometry_obj": "/home/u00134/.gemini/antigravity/scratch/universal_botanical_v01/outputs/universal_5scene_v01/bonsai/universal_geometry.obj"
+      }
+    },
+    "garden": {
+      "build_wall_seconds": 24.06,
+      "domain_discovery": {
+        "basal_regime": "CONVEX_SECTION_LOFT",
+        "vessel_bot_z": -0.2452,
+        "rim_z": 0.0115,
+        "total_kernels": 83437,
+        "static_stand_or_table_kernels": 7345,
+        "static_basal_support_kernels": 18652,
+        "verified_stem_chains": 1,
+        "stem_kernels": 45,
+        "canopy_candidate_kernels": 57395
+      },
+      "organ_partition": {
+        "total_build_2d_cells": 263,
+        "mean_build_2d_cells_per_view": 8.22,
+        "initial_3d_clusters_before_seam_merge": 116,
+        "curved_lamina_seam_merges": 15,
+        "num_3d_organs": 101,
+        "num_laminar_blades": 6,
+        "num_volumetric_clusters": 95,
+        "tier_counts": {
+          "OUTER_ENCLOSED": 16,
+          "MID_PARTIAL_OCCLUDED": 12,
+          "DEEP_OCCLUDED": 73
+        },
+        "selective_m2_seam_refinement": {
+          "split_parents": 2,
+          "reassigned_children": 0
+        }
+      },
+      "comparison_vs_previous_strict_v04": {
+        "prev_build_closed_2d_regions": 0,
+        "ours_build_closed_2d_regions": 263,
+        "prev_outer_enclosed_organs": 0,
+        "ours_outer_enclosed_organs": 16,
+        "prev_iou_after_spline_trim_pct": 84.8,
+        "prev_trim_iou_delta_pp": -8.73,
+        "ours_substrate_iou_pct": 100.0,
+        "ours_spline_hybrid_iou_pct": 99.86,
+        "ours_trim_iou_delta_pp": -0.14,
+        "ours_substrate_sh3_psnr_db": 100.0,
+        "ours_spline_hybrid_sh3_psnr_db": 54.54
+      },
+      "superzoom_8x_sharpness": {
+        "raw_3dgs_p95_grad": 0.5508,
+        "ours_hybrid_p95_grad": 0.5508,
+        "sharpness_gain_x": 1.0
+      },
+      "wind_motion_support_audit": {
+        "own_static_support_and_stand_max_disp_pmed": 0.0,
+        "independent_verified_container_p90_disp_pmed": 0.0
+      },
+      "independent_heldout_support_mesh_eval": {
+        "mean_projected_iou_pct": 85.33,
+        "mean_visible_iou_pct": 83.63,
+        "mean_depth_err_px_equiv": 2.86,
+        "per_view": {
+          "DSC07996": {
+            "projected_iou_pct": 89.00169204737733,
+            "visible_iou_pct": 87.25341426403642,
+            "median_abs_depth_error_pixel_equiv": 2.4046019881218625
+          },
+          "DSC07980": {
+            "projected_iou_pct": 88.85402659494994,
+            "visible_iou_pct": 81.9677033492823,
+            "median_abs_depth_error_pixel_equiv": 2.8318060352687247
+          },
+          "DSC07972": {
+            "projected_iou_pct": 90.65994299495725,
+            "visible_iou_pct": 88.08165057067603,
+            "median_abs_depth_error_pixel_equiv": 3.0396309282642036
+          },
+          "DSC08052": {
+            "projected_iou_pct": 84.00353513035793,
+            "visible_iou_pct": 78.5994915645944,
+            "median_abs_depth_error_pixel_equiv": 3.0457707108346406
+          },
+          "DSC08124": {
+            "projected_iou_pct": 74.10649161196207,
+            "visible_iou_pct": 82.26024313372355,
+            "median_abs_depth_error_pixel_equiv": 2.974353569616975
+          }
+        }
+      },
+      "brassica_blade_spot_check": null,
+      "exported_assets": {
+        "sh3_ply": "/home/u00134/.gemini/antigravity/scratch/universal_botanical_v01/outputs/universal_5scene_v01/garden/universal_botanical_sh3.ply",
+        "geometry_obj": "/home/u00134/.gemini/antigravity/scratch/universal_botanical_v01/outputs/universal_5scene_v01/garden/universal_geometry.obj"
+      }
+    },
+    "flowers": {
+      "build_wall_seconds": 29.53,
+      "domain_discovery": {
+        "basal_regime": "OPEN_GROUND_BED",
+        "vessel_bot_z": -0.4473,
+        "rim_z": -0.2384,
+        "total_kernels": 243189,
+        "static_stand_or_table_kernels": 0,
+        "static_basal_support_kernels": 64813,
+        "verified_stem_chains": 0,
+        "stem_kernels": 0,
+        "canopy_candidate_kernels": 178376
+      },
+      "organ_partition": {
+        "total_build_2d_cells": 1070,
+        "mean_build_2d_cells_per_view": 33.44,
+        "initial_3d_clusters_before_seam_merge": 173,
+        "curved_lamina_seam_merges": 19,
+        "num_3d_organs": 154,
+        "num_laminar_blades": 52,
+        "num_volumetric_clusters": 102,
+        "tier_counts": {
+          "OUTER_ENCLOSED": 96,
+          "MID_PARTIAL_OCCLUDED": 49,
+          "DEEP_OCCLUDED": 9
+        },
+        "selective_m2_seam_refinement": {
+          "split_parents": 273,
+          "reassigned_children": 54
+        }
+      },
+      "comparison_vs_previous_strict_v04": {
+        "prev_build_closed_2d_regions": 51,
+        "ours_build_closed_2d_regions": 1070,
+        "prev_outer_enclosed_organs": 0,
+        "ours_outer_enclosed_organs": 96,
+        "prev_iou_after_spline_trim_pct": 87.41,
+        "prev_trim_iou_delta_pp": -11.3,
+        "ours_substrate_iou_pct": 100.0,
+        "ours_spline_hybrid_iou_pct": 99.01,
+        "ours_trim_iou_delta_pp": -0.99,
+        "ours_substrate_sh3_psnr_db": 69.36,
+        "ours_spline_hybrid_sh3_psnr_db": 36.45
+      },
+      "superzoom_8x_sharpness": {
+        "raw_3dgs_p95_grad": 1.0305,
+        "ours_hybrid_p95_grad": 1.8279,
+        "sharpness_gain_x": 1.77
+      },
+      "wind_motion_support_audit": {
+        "own_static_support_and_stand_max_disp_pmed": 0.0,
+        "independent_verified_container_p90_disp_pmed": null
+      },
+      "independent_heldout_support_mesh_eval": null,
+      "brassica_blade_spot_check": null,
+      "exported_assets": {
+        "sh3_ply": "/home/u00134/.gemini/antigravity/scratch/universal_botanical_v01/outputs/universal_5scene_v01/flowers/universal_botanical_sh3.ply",
+        "geometry_obj": "/home/u00134/.gemini/antigravity/scratch/universal_botanical_v01/outputs/universal_5scene_v01/flowers/universal_geometry.obj"
+      }
+    }
+  },
+  "total_wall_seconds": 254.09
+}
